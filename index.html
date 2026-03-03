@@ -1,316 +1,375 @@
-import React, { useState, useEffect } from 'react';
-import { 
-  Zap, 
-  Target, 
-  Cpu, 
-  Layers, 
-  ArrowRight, 
-  CheckCircle2, 
-  Play, 
-  Users, 
-  Sparkles, 
-  ShieldCheck,
-  Menu,
-  X,
-  ChevronRight,
-  MessageSquare
-} from 'lucide-react';
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Nextframe.Ph — Human-Guided AI Execution</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Nextframe.Ph bridges the gap between your business intuition and high-fidelity AI video — human-guided, AI-assisted execution." />
 
-// --- Components ---
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        inter: ["Inter", "system-ui", "sans-serif"],
+                    },
+                },
+            },
+        };
+    </script>
 
-const Navbar = ({ onOpenModal }) => {
-  const [isScrolled, setIsScrolled] = useState(false);
-  
-  useEffect(() => {
-    const handleScroll = () => setIsScrolled(window.scrollY > 20);
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet" />
 
-  return (
-    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/80 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-6'}`}>
-      <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-        <div className="flex items-center gap-2 group cursor-pointer">
-          <div className="w-8 h-8 bg-[#CCFF00] flex items-center justify-center rounded-sm rotate-45 group-hover:rotate-90 transition-transform duration-500">
-            <Zap size={18} className="text-black -rotate-45 group-hover:-rotate-90 transition-transform duration-500" />
-          </div>
-          <span className="text-2xl font-black tracking-tighter text-white uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
-        </div>
-        
-        <div className="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-white/70">
-          <a href="#process" className="hover:text-[#CCFF00] transition-colors">Process</a>
-          <a href="#services" className="hover:text-[#CCFF00] transition-colors">Services</a>
-          <a href="#legacy" className="hover:text-[#CCFF00] transition-colors">Legacy</a>
-          <button 
-            onClick={onOpenModal}
-            className="px-6 py-2 bg-[#00F0FF] text-black hover:bg-[#CCFF00] transition-all duration-300 rounded-full text-xs font-black shadow-[0_0_15px_rgba(0,240,255,0.3)]"
-          >
-            Start The Conversation
-          </button>
-        </div>
-        
-        <button className="md:hidden text-white"><Menu /></button>
-      </div>
-    </nav>
-  );
-};
-
-const Hero = ({ onOpenModal }) => {
-  return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
-      {/* BACKGROUND VIDEO LAYER - UPDATED WITH VERCEL BLOB */}
-      <div className="absolute inset-0 z-0">
-        <video 
-          autoPlay 
-          muted 
-          loop 
-          playsInline 
-          className="w-full h-full object-cover opacity-70"
-        >
-          <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Dark Overlays for Text Legibility */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black"></div>
-        <div className="absolute inset-0 bg-black/30"></div>
-      </div>
-
-      {/* Grid & Scanline Overlay */}
-      <div className="absolute inset-0 opacity-10 z-1" style={{ backgroundImage: 'linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px)', backgroundSize: '40px 40px' }}></div>
-      <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-30 z-2 animate-[scan_4s_linear_infinite]"></div>
-      
-      <div className="relative z-10 max-w-6xl mx-auto px-6 text-center mt-12">
-        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00]/10 text-[#CCFF00] text-[10px] font-black uppercase tracking-widest mb-8 animate-pulse">
-          <Sparkles size={12} /> The Human-AI Interface
-        </div>
-        
-        <h1 className="text-5xl md:text-8xl font-black text-white uppercase italic tracking-tighter leading-[0.9] mb-6 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
-          Stop Shooting.<br />
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]">Start Visioning.</span>
-        </h1>
-        
-        <p className="max-w-2xl mx-auto text-lg md:text-xl text-white font-medium mb-12 leading-relaxed drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
-          Traditional production is expensive, slow, and rigid. Nextframe.Ph bridges the gap between your business intuition and high-fidelity AI execution.
-        </p>
-        
-        <div className="flex flex-col md:flex-row items-center justify-center gap-6">
-          <button 
-            onClick={onOpenModal}
-            className="group flex items-center gap-3 px-10 py-5 bg-[#CCFF00] text-black font-black uppercase italic tracking-tighter text-xl rounded-sm hover:bg-white transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.3)]"
-          >
-            Start The Conversation
-            <ArrowRight className="group-hover:translate-x-2 transition-transform" />
-          </button>
-          <button className="flex items-center gap-3 px-8 py-5 border border-white/20 bg-black/40 backdrop-blur-md text-white font-black uppercase italic tracking-tighter text-xl rounded-sm hover:bg-white/10 transition-all">
-            <Play fill="white" size={18} /> Watch Reel
-          </button>
-        </div>
-      </div>
-
-      {/* Decorative System Status */}
-      <div className="absolute bottom-10 left-10 hidden lg:block z-10">
-        <div className="text-[10px] text-white/40 font-mono space-y-1 text-left">
-          <div>// SYSTEM_BOOT: OK</div>
-          <div>// AI_ENGINE: ACTIVE</div>
-          <div className="text-[#00F0FF] font-bold tracking-widest animate-pulse">STREAMING_JADE_BAR_V2.5</div>
-        </div>
-      </div>
-    </section>
-  );
-};
-
-// ... Rest of the components remain the same for structure ...
-
-const ProcessStep = ({ number, title, desc, icon: Icon }) => (
-  <div className="relative group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all duration-500">
-    <div className="absolute -top-4 -left-4 w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-[#00F0FF] font-black italic rounded-lg">
-      0{number}
-    </div>
-    <div className="mb-6 w-14 h-14 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:scale-110 transition-transform duration-500">
-      <Icon size={28} />
-    </div>
-    <h3 className="text-xl font-black text-white uppercase italic mb-4 tracking-tighter">{title}</h3>
-    <p className="text-white/50 text-sm leading-relaxed">{desc}</p>
-  </div>
-);
-
-const ServiceCard = ({ title, price, features, tag, highlighted }) => (
-  <div className={`relative flex flex-col p-8 rounded-3xl transition-all duration-500 border ${highlighted ? 'bg-gradient-to-b from-white/[0.08] to-transparent border-[#00F0FF]/30 scale-105 z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]' : 'bg-white/[0.03] border-white/5 hover:border-white/20'}`}>
-    {tag && <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#CCFF00] text-black text-[10px] font-black uppercase italic rounded-full">{tag}</div>}
-    
-    <h3 className="text-2xl font-black text-white uppercase italic tracking-tighter mb-2">{title}</h3>
-    <div className="flex items-baseline gap-1 mb-8">
-      <span className="text-3xl font-black text-[#00F0FF]">₱</span>
-      <span className="text-5xl font-black text-white tracking-tighter">{price}</span>
-      {typeof price === 'string' && price.includes('k') && <span className="text-white/40 font-bold uppercase text-xs ml-2">/ month</span>}
-    </div>
-    
-    <div className="space-y-4 mb-10 flex-grow">
-      {features.map((f, i) => (
-        <div key={i} className="flex items-start gap-3 text-sm text-white/60">
-          <CheckCircle2 size={16} className="text-[#CCFF00] mt-0.5 flex-shrink-0" />
-          <span>{f}</span>
-        </div>
-      ))}
-    </div>
-    
-    <button className={`w-full py-4 rounded-xl font-black uppercase italic tracking-tighter transition-all ${highlighted ? 'bg-[#00F0FF] text-black hover:bg-[#CCFF00]' : 'bg-white/10 text-white hover:bg-white/20'}`}>
-      Select Plan
-    </button>
-  </div>
-);
-
-const Modal = ({ isOpen, onClose }) => {
-  if (!isOpen) return null;
-  return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
-      <div className="absolute inset-0 bg-black/90 backdrop-blur-xl" onClick={onClose}></div>
-      <div className="relative w-full max-w-xl bg-[#111] border border-white/10 rounded-3xl p-8 shadow-2xl overflow-hidden">
-        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]"></div>
-        <button onClick={onClose} className="absolute top-6 right-6 text-white/40 hover:text-white transition-colors"><X /></button>
-        
-        <div className="mb-8">
-          <h2 className="text-3xl font-black text-white uppercase italic tracking-tighter">Start the Conversation</h2>
-          <p className="text-white/50 text-sm mt-2">Let's bridge your intuition with our execution.</p>
-        </div>
-        
-        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-          <div className="grid grid-cols-2 gap-4">
-            <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase text-white/40 ml-2">Name</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="John Doe" />
-            </div>
-            <div className="space-y-1">
-              <label className="text-[10px] font-black uppercase text-white/40 ml-2">Business</label>
-              <input type="text" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="Company Name" />
-            </div>
-          </div>
-          <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase text-white/40 ml-2">Email Address</label>
-            <input type="email" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="john@example.com" />
-          </div>
-          <div className="space-y-1">
-            <label className="text-[10px] font-black uppercase text-white/40 ml-2">Message</label>
-            <textarea rows="4" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all resize-none" placeholder="What are we building?"></textarea>
-          </div>
-          
-          <button className="w-full py-5 bg-[#CCFF00] text-black font-black uppercase italic tracking-tighter text-xl rounded-xl hover:bg-white transition-all shadow-[0_10px_30px_rgba(204,255,0,0.2)]">
-            Deploy Inquiry
-          </button>
-        </form>
-      </div>
-    </div>
-  );
-};
-
-export default function App() {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  return (
-    <div className="bg-[#050505] text-white selection:bg-[#CCFF00] selection:text-black font-['Inter',sans-serif]">
-      <style>{`
+    <style>
         @keyframes scan {
-          0% { transform: translateY(0); }
-          100% { transform: translateY(100vh); }
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
         }
-      `}</style>
-      
-      <Navbar onOpenModal={() => setModalOpen(true)} />
-      
-      <main>
-        <Hero onOpenModal={() => setModalOpen(true)} />
+        .animate-scan { animation: scan 4s linear infinite; }
+        html { scroll-behavior: smooth; }
+    </style>
+</head>
 
-        {/* LOGO STRIP */}
-        <div className="py-12 border-y border-white/5 bg-white/[0.01]">
-          <div className="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all">
-            <span className="font-black italic text-2xl tracking-tighter">JADE_BAR</span>
-            <span className="font-black italic text-2xl tracking-tighter">REALTY_PH</span>
-            <span className="font-black italic text-2xl tracking-tighter">VISION_MEDIA</span>
-            <span className="font-black italic text-2xl tracking-tighter">TECH_LOGIC</span>
-          </div>
+<body class="bg-[#050505] text-white font-inter selection:bg-[#CCFF00] selection:text-black">
+    <nav id="navbar" class="fixed top-0 w-full z-50 transition-all duration-300 bg-transparent py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2 group cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-8 h-8 bg-[#CCFF00] flex items-center justify-center rounded-sm rotate-45 group-hover:rotate-90 transition-transform duration-500">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="w-4 h-4 text-black -rotate-45 group-hover:-rotate-90 transition-transform duration-500" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+                    </svg>
+                </div>
+                <span class="text-2xl font-black tracking-tighter text-white uppercase italic">
+                    Nextframe<span class="text-[#00F0FF]">.Ph</span>
+                </span>
+            </div>
+
+            <div class="hidden md:flex items-center gap-8 text-sm font-bold uppercase tracking-widest text-white/70">
+                <a href="#why" class="hover:text-[#CCFF00] transition-colors">Why</a>
+                <a href="#services" class="hover:text-[#CCFF00] transition-colors">Tiers</a>
+                <a href="#process" class="hover:text-[#CCFF00] transition-colors">Process</a>
+                <a href="#legacy" class="hover:text-[#CCFF00] transition-colors">Legacy</a>
+                <button onclick="openModal()" class="px-6 py-2 bg-[#00F0FF] text-black hover:bg-[#CCFF00] transition-all duration-300 rounded-full text-xs font-black shadow-[0_0_15px_rgba(0,240,255,0.3)]">
+                    Start The Conversation
+                </button>
+            </div>
+
+            <button class="md:hidden text-white">
+                <div class="space-y-1.5">
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                    <span class="block w-5 h-0.5 bg-white"></span>
+                </div>
+            </button>
+        </div>
+    </nav>
+
+    <section class="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+        <div class="absolute inset-0 z-0">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover opacity-70">
+                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4" />
+                Your browser does not support the video tag.
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-b from-black via-black/40 to-black"></div>
+            <div class="absolute inset-0 bg-black/30"></div>
         </div>
 
-        {/* PROCESS SECTION */}
-        <section id="process" className="py-32 relative overflow-hidden">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-20 max-w-2xl">
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-6">
-                The Athlete <span className="text-[#CCFF00]">Mindset</span>
-              </h2>
-              <p className="text-white/50 text-lg leading-relaxed">
-                We operate like a trained athlete—elite, high-performance, and designed for speed. Our 4-step framework turns cold AI into authentic brand stories.
-              </p>
-            </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-              <ProcessStep number={1} title="Brand DNA Discovery" icon={Target} desc="Mapping your unique culture and voice so the AI sounds like you." />
-              <ProcessStep number={2} title="Competitive Insight" icon={Cpu} desc="AI-driven analysis of local competitors to see exactly where they are failing." />
-              <ProcessStep number={3} title="Market Gap ID" icon={Layers} desc="Pinpointing the 'empty spaces' your competitors are missing." />
-              <ProcessStep number={4} title="Targeted Campaigns" icon={Zap} desc="Deploying high-fidelity commercials to dominate your market instantly." />
-            </div>
-          </div>
-        </section>
+        <div class="absolute inset-0 opacity-10 z-0" style="background-image: linear-gradient(#ffffff0a 1px, transparent 1px), linear-gradient(90deg, #ffffff0a 1px, transparent 1px); background-size: 40px 40px;"></div>
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-30 z-0 animate-scan"></div>
 
-        {/* SERVICES SECTION */}
-        <section id="services" className="py-32 bg-white/[0.02]">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="text-center mb-20">
-              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4">Precision Pricing</h2>
-              <p className="text-white/50 max-w-xl mx-auto">Scalable solutions for entrepreneurs, entertainers, and enterprise leaders.</p>
+        <div class="relative z-10 max-w-6xl mx-auto px-6 text-center mt-12">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00]/10 text-[#CCFF00] text-[10px] font-black uppercase tracking-widest mb-8 animate-pulse">
+                <span>✦</span>
+                <span>Human-Guided AI Execution</span>
             </div>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
-              <ServiceCard title="The Spotlight" price="15,000" features={["Single A-List Quality 60s Commercial", "Cinematic AI Visuals", "Custom Sound Design", "Fast 48h Turnaround"]} />
-              <ServiceCard title="The Lean Engine" price="30,000" tag="Most Popular" highlighted={true} features={["3x Targeted AI Commercials", "Market Gap Strategy", "Social Media Optimization", "Re-lighting & Swap Access"]} />
-              <ServiceCard title="The Partnership" price="80k" features={["Fully Integrated Marketing", "Custom Brand Ambassadors", "Automated Production Line", "Priority GPU Pipeline Access"]} />
-              <ServiceCard title="Internal Machine" price="Custom" features={["Proprietary Internal AI System", "Custom Trained Agents/Avatars", "Asset Libraries for Teams", "Full Workforce Training"]} />
-            </div>
-          </div>
-        </section>
 
-        {/* LEGACY LAB SECTION */}
-        <section id="legacy" className="py-32 relative overflow-hidden">
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00F0FF]/5 rounded-full blur-[120px]"></div>
-          <div className="max-w-7xl mx-auto px-6 relative">
-            <div className="grid lg:grid-cols-2 gap-20 items-center">
-              <div>
-                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-6">Expansion Phase: The Legacy Lab</div>
-                <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Don't just remember your story. <span className="text-[#00F0FF]">Relive it.</span></h2>
-                <div className="space-y-6 text-lg text-white/60 leading-relaxed mb-10">
-                  <p>Our **Prime Preservation** tech upscales old photos of elders into cinematic life stories.</p>
-                  <p>Coming soon: **The Gala AI Experience**. High-end movie photobooths for events delivering personalized mini-movies to guests.</p>
-                </div>
-              </div>
-              <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 group cursor-pointer shadow-2xl">
-                <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Legacy Preview" className="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
-                <div className="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center">
-                  <div className="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-[#CCFF00] group-hover:text-black transition-all"><Play fill="currentColor" size={32} /></div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
+            <h1 class="text-5xl md:text-8xl font-black text-white uppercase italic tracking-tighter leading-[0.9] mb-6 drop-shadow-[0_10px_10px_rgba(0,0,0,0.8)]">
+                Stop Shooting.<br />
+                <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]">Start Visioning.</span>
+            </h1>
 
-        {/* FINAL CTA */}
-        <section className="py-40 bg-black text-center">
-          <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-10 leading-none">Geared for a <br /><span className="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]">Better Future.</span></h2>
-          <button onClick={() => setModalOpen(true)} className="px-12 py-6 bg-white text-black font-black uppercase italic tracking-tighter text-2xl rounded-sm hover:bg-[#00F0FF] transition-all duration-300">Start The Conversation</button>
-        </section>
-      </main>
+            <p class="max-w-2xl mx-auto text-lg md:text-xl text-white font-medium mb-12 leading-relaxed drop-shadow-[0_5px_5px_rgba(0,0,0,0.8)]">
+                Traditional production is expensive, slow, and rigid. Nextframe.Ph is the human interface layer between your business intuition and high-fidelity AI video — no dashboards, no tool overwhelm, just execution.
+            </p>
 
-      <footer className="py-20 border-t border-white/5 bg-[#050505]">
-        <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
-          <div className="col-span-2">
-            <div className="flex items-center gap-2 mb-6 text-xl font-black tracking-tighter uppercase italic">
-              <Zap size={18} className="text-[#CCFF00]" /> Nextframe<span className="text-[#00F0FF]">.Ph</span>
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6">
+                <button onclick="openModal()" class="group flex items-center gap-3 px-10 py-5 bg-[#CCFF00] text-black font-black uppercase italic tracking-tighter text-xl rounded-sm hover:bg-white transition-all duration-300 shadow-[0_0_30px_rgba(204,255,0,0.3)]">
+                    Start The Conversation
+                    <span class="group-hover:translate-x-2 transition-transform">➜</span>
+                </button>
+                <button onclick="document.getElementById('reel')?.scrollIntoView({ behavior: 'smooth' })" class="flex items-center gap-3 px-8 py-5 border border-white/20 bg-black/40 backdrop-blur-md text-white font-black uppercase italic tracking-tighter text-xl rounded-sm hover:bg-white/10 transition-all">
+                    ▶ Watch Reel
+                </button>
             </div>
-            <p className="text-white/40 max-w-sm">Built for entrepreneurs, by entrepreneurs. The Human Bridge between intuition and AI.</p>
-          </div>
-          <div className="text-white/40 text-sm">© 2025 NEXTFRAME.PH // MANILA // GLOBAL</div>
         </div>
-      </footer>
 
-      <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+        <div class="absolute bottom-10 left-10 hidden lg:block z-10">
+            <div class="text-[10px] text-white/40 font-mono space-y-1 text-left">
+                <div>// SYSTEM_BOOT: OK</div>
+                <div>// AI_ENGINE: ACTIVE</div>
+                <div class="text-[#00F0FF] font-bold tracking-widest animate-pulse">STREAMING_JADE_BAR_V2.5</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reel" class="py-24 bg-black border-y border-white/5">
+        <div class="max-w-5xl mx-auto px-6">
+            <div class="flex items-center justify-between gap-4 mb-8">
+                <div>
+                    <h2 class="text-3xl md:text-4xl font-black uppercase italic tracking-tighter mb-2">Watch The Spotlight</h2>
+                    <p class="text-white/50 text-sm md:text-base">A 60-second AI-assisted commercial built for Jade Bar – showing how we translate a real business into cinematic AI output.</p>
+                </div>
+            </div>
+            <div class="relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-black shadow-2xl">
+                <video controls playsinline class="w-full h-full object-cover">
+                    <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4" />
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+        </div>
+    </section>
+
+    <div class="py-12 border-y border-white/5 bg-white/[0.01]">
+        <div class="max-w-7xl mx-auto px-6 flex flex-wrap justify-center gap-12 md:gap-24 opacity-30 grayscale hover:grayscale-0 transition-all">
+            <span class="font-black italic text-2xl tracking-tighter">JADE_BAR</span>
+            <span class="font-black italic text-2xl tracking-tighter">REALTY_PH</span>
+            <span class="font-black italic text-2xl tracking-tighter">VISION_MEDIA</span>
+            <span class="font-black italic text-2xl tracking-tighter">TECH_LOGIC</span>
+        </div>
     </div>
-  );
-}
+
+    <section id="why" class="py-24 bg-black">
+        <div class="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-16 items-center">
+            <div>
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-6">
+                    Not Tools.<br />
+                    <span class="text-[#CCFF00]">Execution.</span>
+                </h2>
+                <p class="text-white/60 text-lg leading-relaxed mb-6">
+                    AI is moving faster than human understanding. Most teams don't need another dashboard — they need a partner who can translate AI into outcomes without breaking trust, identity, or brand.
+                </p>
+                <p class="text-white/50 text-sm leading-relaxed">
+                    Nextframe.Ph is built as the human layer on top of AI. We map your brand DNA, design the systems, and run the content engine with you — not instead of you.
+                </p>
+            </div>
+            <div class="grid sm:grid-cols-2 gap-6">
+                <div class="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                    <p class="text-[#00F0FF] mb-4 text-xl">✔</p>
+                    <h3 class="font-black uppercase text-sm tracking-widest mb-2">Human Supervision</h3>
+                    <p class="text-white/60 text-sm">Every output is human-reviewed for ethics, context, and brand fit before it ships.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                    <p class="text-[#CCFF00] mb-4 text-xl">⚙</p>
+                    <h3 class="font-black uppercase text-sm tracking-widest mb-2">AI As Engine</h3>
+                    <p class="text-white/60 text-sm">We treat AI as an engine, not a replacement for your team — augmenting capability instead of erasing it.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                    <p class="text-[#00F0FF] mb-4 text-xl">👥</p>
+                    <h3 class="font-black uppercase text-sm tracking-widest mb-2">Built For Teams</h3>
+                    <p class="text-white/60 text-sm">From first video to full internal system, the same strategy scales with you.</p>
+                </div>
+                <div class="p-6 rounded-2xl border border-white/10 bg-white/[0.02]">
+                    <p class="text-[#CCFF00] mb-4 text-xl">✉</p>
+                    <h3 class="font-black uppercase text-sm tracking-widest mb-2">Clear Translation</h3>
+                    <p class="text-white/60 text-sm">We sit between tech and reality — turning AI possibilities into clear, confident decisions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="py-32 bg-white/[0.02]">
+        <div class="max-w-7xl mx-auto px-6 text-center mb-20">
+            <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-4">Four Ways In</h2>
+            <p class="text-white/50 max-w-xl mx-auto">From a single AI spotlight video to a full internal AI content machine. Each tier serves a different stage of adoption.</p>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-start">
+            <div class="relative flex flex-col p-8 rounded-3xl border bg-white/[0.03] border-white/5 hover:border-white/20 transition-all duration-500">
+                <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter mb-2">AI Spotlight Video</h3>
+                <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-3xl font-black text-[#00F0FF]">₱</span>
+                    <span class="text-5xl font-black text-white tracking-tighter">15,000</span>
+                </div>
+                <div class="space-y-4 mb-10 flex-grow">
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> One 30–60s hero commercial</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> AI-assisted environments & visuals</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Script & creative direction</p>
+                </div>
+                <button class="w-full py-4 rounded-xl font-black uppercase italic tracking-tighter bg-white/10 text-white hover:bg-white/20 transition-all">Select Plan</button>
+            </div>
+
+            <div class="relative flex flex-col p-8 rounded-3xl border bg-gradient-to-b from-white/[0.08] to-transparent border-[#00F0FF]/30 scale-105 z-10 shadow-[0_20px_50px_rgba(0,0,0,0.5)]">
+                <div class="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-[#CCFF00] text-black text-[10px] font-black uppercase italic rounded-full">Most Popular</div>
+                <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter mb-2">AI Lite Subscription</h3>
+                <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-3xl font-black text-[#00F0FF]">₱</span>
+                    <span class="text-5xl font-black text-white tracking-tighter">30,000</span>
+                    <span class="text-white/40 font-bold uppercase text-xs ml-2">/ month</span>
+                </div>
+                <div class="space-y-4 mb-10 flex-grow">
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> 2 AI-assisted videos per month</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Light brand alignment</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Simple approval workflow</p>
+                </div>
+                <button class="w-full py-4 rounded-xl font-black uppercase italic tracking-tighter bg-[#00F0FF] text-black hover:bg-[#CCFF00] transition-all">Select Plan</button>
+            </div>
+
+            <div class="relative flex flex-col p-8 rounded-3xl border bg-white/[0.03] border-white/5 hover:border-white/20 transition-all duration-500">
+                <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter mb-2">AI Content Engine</h3>
+                <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-3xl font-black text-[#00F0FF]">₱</span>
+                    <span class="text-5xl font-black text-white tracking-tighter">70,000</span>
+                    <span class="text-white/40 font-bold uppercase text-xs ml-2">/ month</span>
+                </div>
+                <div class="space-y-4 mb-10 flex-grow">
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> 4–8 videos per month</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Brand-consistent visual systems</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> AI spokespersons or models</p>
+                </div>
+                <button class="w-full py-4 rounded-xl font-black uppercase italic tracking-tighter bg-white/10 text-white hover:bg-white/20 transition-all">Select Plan</button>
+            </div>
+
+            <div class="relative flex flex-col p-8 rounded-3xl border bg-white/[0.03] border-white/5 hover:border-white/20 transition-all duration-500">
+                <h3 class="text-2xl font-black text-white uppercase italic tracking-tighter mb-2">AI Systems</h3>
+                <div class="flex items-baseline gap-1 mb-8">
+                    <span class="text-3xl font-black text-[#00F0FF] tracking-tighter">Custom Build</span>
+                </div>
+                <div class="space-y-4 mb-10 flex-grow">
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Business workflow diagnostics</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Custom AI agents & avatars</p>
+                    <p class="flex items-start gap-3 text-sm text-white/60"><span class="text-[#CCFF00] mt-0.5">✔</span> Internal content pipelines</p>
+                </div>
+                <button class="w-full py-4 rounded-xl font-black uppercase italic tracking-tighter bg-white/10 text-white hover:bg-white/20 transition-all">Select Plan</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="process" class="py-32 relative overflow-hidden bg-black">
+        <div class="max-w-7xl mx-auto px-6">
+            <div class="mb-20 max-w-2xl">
+                <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-6">The Athlete <span class="text-[#CCFF00]">Mindset</span></h2>
+                <p class="text-white/50 text-lg leading-relaxed">We operate like a trained athlete — elite, high-performance, and designed for speed. Our framework turns cold AI into authentic, compounding brand assets.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="relative group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-[#00F0FF] font-black italic rounded-lg">01</div>
+                    <div class="mb-6 w-14 h-14 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:scale-110 transition-transform">🎯</div>
+                    <h3 class="text-xl font-black text-white uppercase italic mb-4 tracking-tighter">Brand DNA Discovery</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">We map your culture and non-negotiables so the AI sounds like you — not a template.</p>
+                </div>
+                <div class="relative group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-[#00F0FF] font-black italic rounded-lg">02</div>
+                    <div class="mb-6 w-14 h-14 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:scale-110 transition-transform">🧠</div>
+                    <h3 class="text-xl font-black text-white uppercase italic mb-4 tracking-tighter">Market Analysis</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">AI-driven analysis to find the empty spaces your competitors aren’t speaking to.</p>
+                </div>
+                <div class="relative group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-[#00F0FF] font-black italic rounded-lg">03</div>
+                    <div class="mb-6 w-14 h-14 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:scale-110 transition-transform">🧩</div>
+                    <h3 class="text-xl font-black text-white uppercase italic mb-4 tracking-tighter">Opportunity Mapping</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">We design systems that turn those market gaps into unfair creative leverage.</p>
+                </div>
+                <div class="relative group p-8 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.05] transition-all">
+                    <div class="absolute -top-4 -left-4 w-12 h-12 bg-black border border-white/10 flex items-center justify-center text-[#00F0FF] font-black italic rounded-lg">04</div>
+                    <div class="mb-6 w-14 h-14 rounded-xl bg-[#00F0FF]/10 flex items-center justify-center text-[#00F0FF] group-hover:scale-110 transition-transform">⚡</div>
+                    <h3 class="text-xl font-black text-white uppercase italic mb-4 tracking-tighter">Execution</h3>
+                    <p class="text-white/50 text-sm leading-relaxed">We deploy AI-assisted content, measure response, and iterate with every frame shipped.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="legacy" class="py-32 relative overflow-hidden">
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-[#00F0FF]/5 rounded-full blur-[120px]"></div>
+        <div class="max-w-7xl mx-auto px-6 relative">
+            <div class="grid lg:grid-cols-2 gap-20 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#00F0FF]/30 bg-[#00F0FF]/10 text-[#00F0FF] text-[10px] font-black uppercase tracking-widest mb-6">Expansion Phase: The Legacy Lab</div>
+                    <h2 class="text-4xl md:text-6xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Don&apos;t just remember your story. <span class="text-[#00F0FF]">Relive it.</span></h2>
+                    <div class="space-y-6 text-lg text-white/60 leading-relaxed mb-10">
+                        <p>Using archival photos and stories, our Prime Preservation tech builds cinematic narratives reconnecting people with their legacy.</p>
+                        <p>This is built on consent, dignity, and clear storytelling — accessing markets who care about their story more than their feed.</p>
+                    </div>
+                </div>
+                <div class="relative aspect-video rounded-3xl overflow-hidden border border-white/10 group cursor-pointer shadow-2xl">
+                    <img src="https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=1925&auto=format&fit=crop" alt="Legacy Preview" class="w-full h-full object-cover grayscale group-hover:grayscale-0 group-hover:scale-105 transition-all duration-700" />
+                    <div class="absolute inset-0 bg-black/40 group-hover:bg-black/20 flex items-center justify-center">
+                        <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur-md flex items-center justify-center border border-white/20 group-hover:bg-[#CCFF00] group-hover:text-black transition-all text-3xl">▶</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-40 bg-black text-center">
+        <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-10 leading-none">Geared for a <br /><span class="text-transparent bg-clip-text bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]">Better Future.</span></h2>
+        <button onclick="openModal()" class="px-12 py-6 bg-white text-black font-black uppercase italic tracking-titter text-2xl rounded-sm hover:bg-[#00F0FF] transition-all duration-300">Start The Conversation</button>
+    </section>
+
+    <footer class="py-20 border-t border-white/5 bg-[#050505]">
+        <div class="max-w-7xl mx-auto px-6 grid md:grid-cols-4 gap-12">
+            <div class="col-span-2">
+                <div class="flex items-center gap-2 mb-6 text-xl font-black tracking-tighter uppercase italic">
+                    <span class="text-[#CCFF00]">✦</span> Nextframe<span class="text-[#00F0FF]">.Ph</span>
+                </div>
+                <p class="text-white/40 max-w-sm">Built for entrepreneurs, by entrepreneurs. The human bridge between intuition and AI — Manila // Global.</p>
+            </div>
+            <div class="text-white/40 text-sm">© 2026 NEXTFRAME.PH</div>
+        </div>
+    </footer>
+
+    <div id="contact-modal" class="fixed inset-0 z-[100] flex items-center justify-center px-6 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur-xl" onclick="closeModal()"></div>
+        <div class="relative w-full max-w-xl bg-[#111] border border-white/10 rounded-3xl p-8 shadow-2xl overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]"></div>
+            <button onclick="closeModal()" class="absolute top-6 right-6 text-white/40 hover:text-white transition-colors text-xl">✕</button>
+            <div class="mb-8">
+                <h2 class="text-3xl font-black text-white uppercase italic tracking-tighter">Start the Conversation</h2>
+            </div>
+            <form class="space-y-4" onsubmit="event.preventDefault(); closeModal();">
+                <div class="grid grid-cols-2 gap-4">
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase text-white/40 ml-2">Name</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="John Doe" />
+                    </div>
+                    <div class="space-y-1">
+                        <label class="text-[10px] font-black uppercase text-white/40 ml-2">Business</label>
+                        <input type="text" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="Company Name" />
+                    </div>
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-white/40 ml-2">Email Address</label>
+                    <input type="email" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all" placeholder="john@example.com" />
+                </div>
+                <div class="space-y-1">
+                    <label class="text-[10px] font-black uppercase text-white/40 ml-2">Message</label>
+                    <textarea rows="4" class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] transition-all resize-none" placeholder="What are we building?"></textarea>
+                </div>
+                <button class="w-full py-5 bg-[#CCFF00] text-black font-black uppercase italic tracking-tighter text-xl rounded-xl hover:bg-white transition-all shadow-[0_10px_30px_rgba(204,255,0,0.2)]">Deploy Inquiry</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const navbar = document.getElementById("navbar");
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 20) {
+                navbar.classList.replace("bg-transparent", "bg-black/80");
+                navbar.classList.replace("py-6", "py-3");
+                navbar.classList.add("backdrop-blur-md", "border-b", "border-white/10");
+            } else {
+                navbar.classList.replace("bg-black/80", "bg-transparent");
+                navbar.classList.replace("py-3", "py-6");
+                navbar.classList.remove("backdrop-blur-md", "border-b", "border-white/10");
+            }
+        });
+
+        function openModal() { document.getElementById("contact-modal").classList.remove("hidden"); }
+        function closeModal() { document.getElementById("contact-modal").classList.add("hidden"); }
+    </script>
+</body>
+</html>
