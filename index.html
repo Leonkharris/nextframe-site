@@ -3,156 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nextframe.Ph | Geared for a Better Future</title>
-    
-    <!-- 1. Tailwind CSS -->
+    <title>NextFrame AI | Stop Shooting. Start Visioning.</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 2. Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- 3. React & Babel Engine (Required to run the code) -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- 4. Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
     <style>
-        body { font-family: 'Inter', sans-serif; background-color: black; color: white; margin: 0; overflow-x: hidden; }
-        @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100vh); } }
-        .scan-line { animation: scan 4s linear infinite; }
-        .text-gradient { background: linear-gradient(to right, #00F0FF, #CCFF00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 100vh;
+            overflow: hidden;
+        }
+        video {
+            object-fit: cover;
+            width: 100vw;
+            height: 100vh;
+        }
     </style>
 </head>
-<body>
-    <div id="root"></div>
+<body class="bg-black text-white font-sans">
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+    <section class="video-container relative flex items-center justify-center">
+        <video autoplay muted loop playsinline class="absolute z-0">
+            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
+            Your browser does not support the video tag.
+        </video>
+        
+        <div class="absolute inset-0 bg-black/40 z-10"></div>
 
-        // Assets
-        const LOGO_URL = "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png";
-        const HERO_VIDEO = "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4";
-        const TAGLINE_2 = "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4";
+        <div class="relative z-20 text-center px-4">
+            <h1 class="text-5xl md:text-7xl font-bold mb-4 tracking-tight">Stop Shooting. <span class="text-blue-500">Start Visioning.</span></h1>
+            <p class="text-xl md:text-2xl mb-8 text-gray-200">AI-Powered Media Production & Marketing Strategy</p>
+            <a href="#contact" class="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-full font-bold transition-all transform hover:scale-105 inline-block">
+                Start Your Project
+            </a>
+        </div>
+    </section>
 
-        const Navbar = ({ onOpenModal }) => {
-            const [scrolled, setScrolled] = useState(false);
-            useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+    <section class="py-20 bg-zinc-900">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-3xl font-bold mb-12 text-center">Featured Work: Doomsday</h2>
+            <div class="aspect-video rounded-2xl overflow-hidden shadow-2xl border border-zinc-700 bg-black">
+                <video autoplay muted loop playsinline class="w-full h-full">
+                    <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </section>
 
-            return (
-                <nav className={`fixed top-0 w-full z-50 transition-all ${scrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
-                    <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <div className="flex items-center gap-3 cursor-pointer">
-                            <img src={LOGO_URL} alt="Logo" className="h-10" />
-                            <span className="text-xl font-black tracking-tighter uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
-                        </div>
-                        <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest opacity-70">
-                            <a href="#work" className="hover:text-[#CCFF00]">Showcase</a>
-                            <a href="#services" className="hover:text-[#CCFF00]">Services</a>
-                            <button onClick={onOpenModal} className="bg-[#00F0FF] text-black px-6 py-2 rounded-full font-black hover:bg-[#CCFF00]">Sync</button>
-                        </div>
-                    </div>
-                </nav>
-            );
-        };
-
-        const Hero = ({ onOpenModal }) => (
-            <section className="relative h-screen flex flex-col items-center justify-center text-center px-6">
-                <div className="absolute inset-0 z-0">
-                    <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-60">
-                        <source src={HERO_VIDEO} type="video/mp4" />
-                    </video>
-                    <div className="absolute inset-0 bg-black/40"></div>
+    <section class="py-20 bg-black">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="p-8 rounded-3xl bg-zinc-800 border border-zinc-700 hover:border-blue-500 transition-colors">
+                    <h3 class="text-2xl font-bold mb-2">AI Spotlight</h3>
+                    <p class="text-4xl font-black mb-6">₱15,000</p>
+                    <ul class="space-y-3 text-gray-400 mb-8">
+                        <li>• 1x 4K AI-Enhanced Short</li>
+                        <li>• Viral Scripting & Strategy</li>
+                        <li>• 7-Day Turnaround</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-white text-black font-bold hover:bg-gray-200">Choose Plan</button>
                 </div>
-                <div className="relative z-10">
-                    <h1 className="text-5xl md:text-[8rem] font-black uppercase italic tracking-tighter leading-[0.85] mb-8">
-                        Stop Shooting.<br />
-                        <span className="text-gradient">Start Visioning.</span>
-                    </h1>
-                    <p className="text-lg md:text-2xl opacity-80 mb-12 max-w-2xl mx-auto">The Human Interface between business intuition and AI execution.</p>
-                    <button onClick={onOpenModal} className="bg-[#CCFF00] text-black px-12 py-6 font-black uppercase italic text-2xl shadow-2xl hover:bg-white transition-all">Start The Conversation</button>
+
+                <div class="p-8 rounded-3xl bg-blue-600 border border-blue-400 relative overflow-hidden">
+                    <div class="absolute top-4 right-4 bg-white text-blue-600 text-xs font-bold px-3 py-1 rounded-full uppercase">Most Popular</div>
+                    <h3 class="text-2xl font-bold mb-2">Content Engine</h3>
+                    <p class="text-4xl font-black mb-6">₱70,000</p>
+                    <ul class="space-y-3 text-blue-100 mb-8">
+                        <li>• 8x AI-Powered Reels/TikToks</li>
+                        <li>• Full Social Media Management</li>
+                        <li>• Monthly Performance Analytics</li>
+                    </ul>
+                    <button class="w-full py-3 rounded-xl bg-black text-white font-bold hover:bg-zinc-900">Choose Plan</button>
                 </div>
-            </section>
-        );
+            </div>
+        </div>
+    </section>
 
-        const Showcase = () => (
-            <section id="work" className="py-32 max-w-7xl mx-auto px-6">
-                <h2 className="text-5xl md:text-8xl font-black uppercase italic mb-16 tracking-tighter">Showcase</h2>
-                <div className="grid md:grid-cols-2 gap-8">
-                    {[
-                        { client: "JADE_BAR", title: "Cinematic Mixology", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" },
-                        { client: "PAVILION", title: "Spatial Narrative", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4" },
-                        { client: "VISION_RETAIL", title: "Million Dollar Dream", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4" },
-                        { client: "LUX_LOOP", title: "Infinite Luxury", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4" }
-                    ].map((work, i) => (
-                        <div key={i} className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group">
-                            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-700">
-                                <source src={work.src} type="video/mp4" />
-                            </video>
-                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
-                            <div className="absolute bottom-8 left-8">
-                                <p className="text-[#00F0FF] font-black text-[10px] tracking-widest">{work.client}</p>
-                                <h3 className="text-3xl font-black uppercase italic">{work.title}</h3>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-        );
+    <footer id="contact" class="py-10 border-t border-zinc-800 text-center text-gray-500">
+        <p>&copy; 2026 NextFrame AI. All rights reserved.</p>
+        <p class="mt-2">Contact: hello@next-frame.agency</p>
+    </footer>
 
-        function App() {
-            const [modalOpen, setModalOpen] = useState(false);
-            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, []);
-
-            return (
-                <div>
-                    <Navbar onOpenModal={() => setModalOpen(true)} />
-                    <Hero onOpenModal={() => setModalOpen(true)} />
-                    <Showcase />
-                    
-                    <section className="py-48 text-center relative bg-black overflow-hidden">
-                        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-20">
-                            <source src={TAGLINE_2} type="video/mp4" />
-                        </video>
-                        <div className="relative z-10">
-                            <h2 className="text-5xl md:text-[9rem] font-black uppercase italic tracking-tighter mb-12">Geared for a <br /><span className="text-[#CCFF00]">Better Future.</span></h2>
-                            <button onClick={() => setModalOpen(true)} className="bg-white text-black px-16 py-8 font-black uppercase italic text-3xl hover:bg-[#00F0FF]">Connect</button>
-                        </div>
-                    </section>
-
-                    <footer className="py-20 text-center opacity-30 text-[10px] font-black uppercase tracking-[0.4em]">
-                        <img src={LOGO_URL} alt="Logo" className="h-10 mx-auto mb-8 grayscale" />
-                        © 2025 NEXTFRAME.PH // PHILIPPINES
-                    </footer>
-
-                    {modalOpen && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
-                            <div className="absolute inset-0 bg-black/95" onClick={() => setModalOpen(false)}></div>
-                            <div className="relative bg-[#080808] border border-white/10 p-10 rounded-3xl w-full max-w-xl">
-                                <h2 className="text-3xl font-black italic uppercase mb-6">Initiate Sync</h2>
-                                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
-                                    <input className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Name" />
-                                    <input className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Email" />
-                                    <textarea rows="4" className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Mission Brief"></textarea>
-                                    <button className="w-full bg-[#CCFF00] text-black py-5 font-black uppercase italic text-xl rounded-xl">Submit</button>
-                                </form>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        }
-
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
 </body>
 </html>
