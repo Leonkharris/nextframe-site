@@ -5,37 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Nextframe.Ph | Geared for a Better Future</title>
     
-    <!-- 1. Tailwind CSS for Styling -->
+    <!-- 1. Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- 2. Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
     
-    <!-- 3. React & Babel (The engine that makes the code work) -->
+    <!-- 3. React & Babel Engine (Required to run the code) -->
     <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
     <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
     
-    <!-- 4. Lucide Icons -->
+    <!-- 4. Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
     <style>
         body { font-family: 'Inter', sans-serif; background-color: black; color: white; margin: 0; overflow-x: hidden; }
         @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100vh); } }
         .scan-line { animation: scan 4s linear infinite; }
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: #050505; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #00F0FF; }
         .text-gradient { background: linear-gradient(to right, #00F0FF, #CCFF00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        ::-webkit-scrollbar { width: 6px; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
     </style>
 </head>
 <body>
     <div id="root"></div>
 
-    <!-- Note the 'type="text/babel"' - this is CRITICAL -->
     <script type="text/babel">
-        const { useState, useEffect, useRef } = React;
+        const { useState, useEffect } = React;
 
         // Assets
         const LOGO_URL = "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png";
@@ -43,25 +40,24 @@
         const TAGLINE_2 = "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4";
 
         const Navbar = ({ onOpenModal }) => {
-            const [isScrolled, setIsScrolled] = useState(false);
+            const [scrolled, setScrolled] = useState(false);
             useEffect(() => {
-                const handleScroll = () => setIsScrolled(window.scrollY > 20);
+                const handleScroll = () => setScrolled(window.scrollY > 50);
                 window.addEventListener('scroll', handleScroll);
                 return () => window.removeEventListener('scroll', handleScroll);
             }, []);
 
             return (
-                <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-black/95 backdrop-blur-md border-b border-white/10 py-3' : 'bg-transparent py-6'}`}>
+                <nav className={`fixed top-0 w-full z-50 transition-all ${scrolled ? 'bg-black/90 backdrop-blur-md py-4' : 'bg-transparent py-8'}`}>
                     <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                        <div className="flex items-center gap-3 group cursor-pointer" onClick={() => window.scrollTo({top: 0, behavior: 'smooth'})}>
-                            <img src={LOGO_URL} alt="Logo" className="h-8 md:h-10 object-contain brightness-110" />
-                            <span className="hidden sm:inline text-xl font-black tracking-tighter uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
+                        <div className="flex items-center gap-3 cursor-pointer">
+                            <img src={LOGO_URL} alt="Logo" className="h-10" />
+                            <span className="text-xl font-black tracking-tighter uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
                         </div>
-                        <div className="hidden md:flex items-center gap-8 text-[10px] font-black uppercase tracking-[0.2em] text-white/70">
-                            <a href="#work" className="hover:text-[#CCFF00] transition-colors">Showcase</a>
-                            <a href="#process" className="hover:text-[#CCFF00] transition-colors">Process</a>
-                            <a href="#services" className="hover:text-[#CCFF00] transition-colors">Services</a>
-                            <button onClick={onOpenModal} className="px-6 py-2 bg-[#00F0FF] text-black hover:bg-[#CCFF00] rounded-full font-black transition-all">Initiate Sync</button>
+                        <div className="hidden md:flex gap-8 text-[10px] font-black uppercase tracking-widest opacity-70">
+                            <a href="#work" className="hover:text-[#CCFF00]">Showcase</a>
+                            <a href="#services" className="hover:text-[#CCFF00]">Services</a>
+                            <button onClick={onOpenModal} className="bg-[#00F0FF] text-black px-6 py-2 rounded-full font-black hover:bg-[#CCFF00]">Sync</button>
                         </div>
                     </div>
                 </nav>
@@ -69,100 +65,88 @@
         };
 
         const Hero = ({ onOpenModal }) => (
-            <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden bg-black">
+            <section className="relative h-screen flex flex-col items-center justify-center text-center px-6">
                 <div className="absolute inset-0 z-0">
                     <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-60">
                         <source src={HERO_VIDEO} type="video/mp4" />
                     </video>
-                    <div className="absolute inset-0 bg-gradient-to-b from-black via-transparent to-black"></div>
+                    <div className="absolute inset-0 bg-black/40"></div>
                 </div>
-                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-30 z-2 scan-line"></div>
-                <div className="relative z-10 max-w-6xl mx-auto px-6 text-center">
-                    <h1 className="text-5xl md:text-[8rem] font-black uppercase italic tracking-tighter leading-[0.8] mb-8 drop-shadow-[0_10px_30px_rgba(0,0,0,1)]">
+                <div className="relative z-10">
+                    <h1 className="text-5xl md:text-[8rem] font-black uppercase italic tracking-tighter leading-[0.85] mb-8">
                         Stop Shooting.<br />
                         <span className="text-gradient">Start Visioning.</span>
                     </h1>
-                    <p className="max-w-2xl mx-auto text-lg md:text-2xl font-medium mb-12 text-white/80 drop-shadow-lg">The Human Interface between business intuition and AI execution.</p>
-                    <button onClick={onOpenModal} className="px-12 py-6 bg-[#CCFF00] text-black font-black uppercase italic tracking-tighter text-2xl hover:bg-white transition-all shadow-[0_0_50px_rgba(204,255,0,0.3)]">Start The Conversation</button>
+                    <p className="text-lg md:text-2xl opacity-80 mb-12 max-w-2xl mx-auto">The Human Interface between business intuition and AI execution.</p>
+                    <button onClick={onOpenModal} className="bg-[#CCFF00] text-black px-12 py-6 font-black uppercase italic text-2xl shadow-2xl hover:bg-white transition-all">Start The Conversation</button>
                 </div>
             </section>
         );
 
-        const WorkCard = ({ videoSrc, title, client }) => (
-            <div className="relative group overflow-hidden rounded-2xl border border-white/5 bg-white/[0.02] aspect-video">
-                <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-1000">
-                    <source src={videoSrc} type="video/mp4" />
-                </video>
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90"></div>
-                <div className="absolute bottom-8 left-8 transition-transform group-hover:-translate-y-2">
-                    <div className="text-[10px] font-black text-[#00F0FF] uppercase tracking-[0.4em] mb-2">{client}</div>
-                    <h3 className="text-3xl font-black text-white uppercase italic tracking-tighter">{title}</h3>
+        const Showcase = () => (
+            <section id="work" className="py-32 max-w-7xl mx-auto px-6">
+                <h2 className="text-5xl md:text-8xl font-black uppercase italic mb-16 tracking-tighter">Showcase</h2>
+                <div className="grid md:grid-cols-2 gap-8">
+                    {[
+                        { client: "JADE_BAR", title: "Cinematic Mixology", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" },
+                        { client: "PAVILION", title: "Spatial Narrative", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4" },
+                        { client: "VISION_RETAIL", title: "Million Dollar Dream", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4" },
+                        { client: "LUX_LOOP", title: "Infinite Luxury", src: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4" }
+                    ].map((work, i) => (
+                        <div key={i} className="relative aspect-video rounded-2xl overflow-hidden border border-white/10 group">
+                            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-700">
+                                <source src={work.src} type="video/mp4" />
+                            </video>
+                            <div className="absolute inset-0 bg-gradient-to-t from-black to-transparent"></div>
+                            <div className="absolute bottom-8 left-8">
+                                <p className="text-[#00F0FF] font-black text-[10px] tracking-widest">{work.client}</p>
+                                <h3 className="text-3xl font-black uppercase italic">{work.title}</h3>
+                            </div>
+                        </div>
+                    ))}
                 </div>
-            </div>
+            </section>
         );
-
-        const Modal = ({ isOpen, onClose }) => {
-            if (!isOpen) return null;
-            return (
-                <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
-                    <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={onClose}></div>
-                    <div className="relative w-full max-w-xl bg-[#080808] border border-white/10 rounded-3xl p-8 shadow-2xl">
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]"></div>
-                        <h2 className="text-3xl font-black text-white uppercase italic mb-6">Initiate Sync</h2>
-                        <form className="space-y-4" onSubmit={(e) => { e.preventDefault(); onClose(); }}>
-                            <input type="text" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF]" placeholder="Name" />
-                            <input type="email" required className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF]" placeholder="Email Address" />
-                            <textarea rows="4" className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white outline-none focus:border-[#00F0FF] resize-none" placeholder="How can we help?"></textarea>
-                            <button className="w-full py-5 bg-[#CCFF00] text-black font-black uppercase italic text-xl rounded-xl hover:bg-white transition-all">Submit Brief</button>
-                        </form>
-                    </div>
-                </div>
-            );
-        };
 
         function App() {
             const [modalOpen, setModalOpen] = useState(false);
-            
-            useEffect(() => {
-                if (window.lucide) window.lucide.createIcons();
-            }, []);
+            useEffect(() => { if (window.lucide) window.lucide.createIcons(); }, []);
 
             return (
-                <div className="bg-black text-white selection:bg-[#CCFF00] selection:text-black">
+                <div>
                     <Navbar onOpenModal={() => setModalOpen(true)} />
+                    <Hero onOpenModal={() => setModalOpen(true)} />
+                    <Showcase />
                     
-                    <main>
-                        <Hero onOpenModal={() => setModalOpen(true)} />
-                        
-                        <section id="work" className="py-32 max-w-7xl mx-auto px-6">
-                            <h2 className="text-5xl md:text-8xl font-black uppercase italic mb-16 tracking-tighter">Intelligence Showcase</h2>
-                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                                <WorkCard client="JADE_BAR" title="Cinematic Mixology" videoSrc="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" />
-                                <WorkCard client="PAVILION" title="Spatial Narrative" videoSrc="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4" />
-                                <WorkCard client="VISION_RETAIL" title="Million Dollar Dream" videoSrc="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4" />
-                                <WorkCard client="LUX_LOOP" title="Infinite Luxury" videoSrc="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4" />
-                            </div>
-                        </section>
-
-                        <section className="py-48 text-center relative overflow-hidden bg-black">
-                            <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
-                                <source src={TAGLINE_2} type="video/mp4" />
-                            </video>
-                            <div className="relative z-10 px-6">
-                                <h2 className="text-6xl md:text-[11rem] font-black uppercase italic tracking-tighter mb-16 leading-none">Geared for a <br /><span className="text-[#CCFF00]">Better Future.</span></h2>
-                                <button onClick={() => setModalOpen(true)} className="px-16 py-8 bg-white text-black font-black uppercase italic text-3xl hover:bg-[#00F0FF] transition-all shadow-2xl">Start The Conversation</button>
-                            </div>
-                        </section>
-                    </main>
-
-                    <footer className="py-24 border-t border-white/5 text-center px-6">
-                        <img src={LOGO_URL} alt="Logo" className="h-10 mx-auto mb-8 opacity-50" />
-                        <div className="text-[10px] tracking-[0.4em] text-white/20 uppercase font-black">
-                            © 2025 NEXTFRAME.PH // PHILIPPINES // HUMAN INTERFACE DEPLOYMENT LAB
+                    <section className="py-48 text-center relative bg-black overflow-hidden">
+                        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-20">
+                            <source src={TAGLINE_2} type="video/mp4" />
+                        </video>
+                        <div className="relative z-10">
+                            <h2 className="text-5xl md:text-[9rem] font-black uppercase italic tracking-tighter mb-12">Geared for a <br /><span className="text-[#CCFF00]">Better Future.</span></h2>
+                            <button onClick={() => setModalOpen(true)} className="bg-white text-black px-16 py-8 font-black uppercase italic text-3xl hover:bg-[#00F0FF]">Connect</button>
                         </div>
+                    </section>
+
+                    <footer className="py-20 text-center opacity-30 text-[10px] font-black uppercase tracking-[0.4em]">
+                        <img src={LOGO_URL} alt="Logo" className="h-10 mx-auto mb-8 grayscale" />
+                        © 2025 NEXTFRAME.PH // PHILIPPINES
                     </footer>
 
-                    <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} />
+                    {modalOpen && (
+                        <div className="fixed inset-0 z-[100] flex items-center justify-center p-6">
+                            <div className="absolute inset-0 bg-black/95" onClick={() => setModalOpen(false)}></div>
+                            <div className="relative bg-[#080808] border border-white/10 p-10 rounded-3xl w-full max-w-xl">
+                                <h2 className="text-3xl font-black italic uppercase mb-6">Initiate Sync</h2>
+                                <form className="space-y-4" onSubmit={(e) => e.preventDefault()}>
+                                    <input className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Name" />
+                                    <input className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Email" />
+                                    <textarea rows="4" className="w-full bg-white/5 border border-white/10 p-4 rounded-xl" placeholder="Mission Brief"></textarea>
+                                    <button className="w-full bg-[#CCFF00] text-black py-5 font-black uppercase italic text-xl rounded-xl">Submit</button>
+                                </form>
+                            </div>
+                        </div>
+                    )}
                 </div>
             );
         }
