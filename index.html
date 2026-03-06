@@ -3,560 +3,934 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Next-Frame.Agency | AI Video Production</title>
+    <title>NextFrame.ai | Human-Guided AI Execution</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            background-color: #050505;
+            background-color: #0a0a0a;
             color: #ffffff;
             font-family: 'Inter', sans-serif;
             overflow-x: hidden;
+            line-height: 1.6;
         }
-        
-        .font-display { font-family: 'Space Grotesk', sans-serif; }
-        
         .grain {
             position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
             pointer-events: none;
             z-index: 9999;
-            opacity: 0.03;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.025;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
-        
-        .hero-text {
-            font-size: clamp(2.5rem, 10vw, 8rem);
-            line-height: 0.9;
-            letter-spacing: -0.04em;
+        .gradient-text {
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 50%, #c0392b 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        
-        .video-container {
-            position: relative;
-            overflow: hidden;
+        .glow-text { text-shadow: 0 0 40px rgba(255, 71, 87, 0.5); }
+        .nav-blur { backdrop-filter: blur(20px); background: rgba(10, 10, 10, 0.8); }
+        .hero-overlay {
+            background: linear-gradient(180deg, rgba(10, 10, 10, 0.3) 0%, rgba(10, 10, 10, 0.6) 50%, rgba(10, 10, 10, 0.95) 100%);
         }
-        
-        .video-container video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-        
-        .video-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(5,5,5,0.95) 0%, rgba(5,5,5,0.3) 50%, rgba(5,5,5,0.5) 100%);
-        }
-        
-        .glass {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(10px);
+        .tier-card {
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
-        
-        .edit-card {
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-        .edit-card:hover {
+        .tier-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 40px rgba(255, 51, 51, 0.15);
+            border-color: rgba(255, 71, 87, 0.4);
+            box-shadow: 0 20px 60px rgba(255, 71, 87, 0.15);
         }
-        
-        .version-badge {
-            position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(255, 51, 51, 0.9);
-            color: white;
-            padding: 4px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            z-index: 10;
+        .tier-card.featured {
+            border-color: rgba(255, 71, 87, 0.5);
+            box-shadow: 0 0 60px rgba(255, 71, 87, 0.2);
         }
-        
-        .play-button {
-            position: absolute;
-            inset: 0;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+        .btn-primary {
+            background: linear-gradient(135deg, #ff4757 0%, #c0392b 100%);
+            transition: all 0.3s ease;
+        }
+        .btn-primary:hover {
+            transform: scale(1.02);
+            box-shadow: 0 10px 40px rgba(255, 71, 87, 0.4);
+        }
+        .btn-outline {
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+        }
+        .btn-outline:hover {
+            border-color: #ff4757;
+            background: rgba(255, 71, 87, 0.1);
+        }
+        .section-divider {
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(255, 71, 87, 0.3), transparent);
+        }
+        .video-wrapper {
+            position: relative;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        .video-wrapper video {
+            width: 100%; height: 100%;
+            object-fit: cover;
+        }
+        .play-overlay {
+            position: absolute; inset: 0;
+            display: flex; align-items: center; justify-content: center;
+            background: rgba(0, 0, 0, 0.4);
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: rgba(0,0,0,0.5);
         }
-        
-        .video-wrapper:hover .play-button {
+        .video-wrapper:hover .play-overlay { opacity: 1; }
+        .stat-number {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            line-height: 1;
+        }
+        .badge {
+            display: inline-flex; align-items: center; gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 9999px;
+            font-size: 0.75rem; font-weight: 600;
+            text-transform: uppercase; letter-spacing: 0.1em;
+        }
+        .badge-red {
+            background: rgba(255, 71, 87, 0.15);
+            color: #ff4757;
+            border: 1px solid rgba(255, 71, 87, 0.3);
+        }
+        .quote {
+            font-style: italic;
+            position: relative;
+            padding-left: 2rem;
+            border-left: 3px solid #ff4757;
+        }
+        .comparison-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            padding: 1.5rem 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        }
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease;
+        }
+        .mobile-menu.open { transform: translateX(0); }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .fade-in.visible {
             opacity: 1;
+            transform: translateY(0);
         }
-        
-        .video-thumb {
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .marquee {
-            display: flex;
-            animation: scroll 25s linear infinite;
-        }
-        
-        @keyframes scroll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-        
-        .nav-scrolled {
-            background: rgba(5, 5, 5, 0.9);
-            backdrop-filter: blur(20px);
-        }
-        
-        .logo-img {
-            height: 40px;
-            width: auto;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: #0a0a0a; }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
+        ::-webkit-scrollbar-thumb:hover { background: #ff4757; }
     </style>
 </head>
-<body class="antialiased selection:bg-[#ff3333] selection:text-white">
+<body>
     <div class="grain"></div>
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center transition-all duration-300">
-        <a href="#" class="flex items-center">
-            <img src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png" alt="Next-Frame.Agency" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
-            <span class="font-display font-bold text-xl ml-2 hidden">NEXT-FRAME.AGENCY</span>
-        </a>
-        <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
-            <a href="#work" class="hover:text-[#ff3333] transition-colors">Work</a>
-            <a href="#edits" class="hover:text-[#ff3333] transition-colors">Multiple Edits</a>
-            <a href="#commercials" class="hover:text-[#ff3333] transition-colors">Commercials</a>
-            <a href="#contact" class="hover:text-[#ff3333] transition-colors">Contact</a>
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-6 py-5">
+            <div class="flex items-center justify-between">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-10 h-10 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center">
+                        <span class="font-bold text-white text-lg">N</span>
+                    </div>
+                    <span class="font-bold text-xl tracking-tight">NEXTFRAME.AI</span>
+                </a>
+                <div class="hidden md:flex items-center gap-10 text-sm font-medium">
+                    <a href="#philosophy" class="text-gray-400 hover:text-white transition-colors">Philosophy</a>
+                    <a href="#problem" class="text-gray-400 hover:text-white transition-colors">The Problem</a>
+                    <a href="#services" class="text-gray-400 hover:text-white transition-colors">Services</a>
+                    <a href="#process" class="text-gray-400 hover:text-white transition-colors">Process</a>
+                    <a href="#work" class="text-gray-400 hover:text-white transition-colors">Work</a>
+                </div>
+                <div class="hidden md:block">
+                    <a href="#contact" class="btn-primary px-6 py-3 rounded-full text-sm font-semibold">Start Your Project</a>
+                </div>
+                <button id="menuBtn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
         </div>
-        <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
-            </svg>
-        </button>
     </nav>
 
     <!-- Mobile Menu -->
-    <div id="mobileMenu" class="fixed inset-0 bg-black/95 z-40 hidden flex-col items-center justify-center gap-8">
-        <a href="#work" class="text-2xl uppercase tracking-widest hover:text-[#ff3333]" onclick="toggleMobileMenu()">Work</a>
-        <a href="#edits" class="text-2xl uppercase tracking-widest hover:text-[#ff3333]" onclick="toggleMobileMenu()">Multiple Edits</a>
-        <a href="#commercials" class="text-2xl uppercase tracking-widest hover:text-[#ff3333]" onclick="toggleMobileMenu()">Commercials</a>
-        <a href="#contact" class="text-2xl uppercase tracking-widest hover:text-[#ff3333]" onclick="toggleMobileMenu()">Contact</a>
+    <div id="mobileMenu" class="mobile-menu fixed inset-0 z-40 bg-black/95 backdrop-blur-xl md:hidden">
+        <div class="flex flex-col items-center justify-center h-full gap-8">
+            <a href="#philosophy" class="text-2xl font-medium" onclick="closeMenu()">Philosophy</a>
+            <a href="#problem" class="text-2xl font-medium" onclick="closeMenu()">The Problem</a>
+            <a href="#services" class="text-2xl font-medium" onclick="closeMenu()">Services</a>
+            <a href="#process" class="text-2xl font-medium" onclick="closeMenu()">Process</a>
+            <a href="#work" class="text-2xl font-medium" onclick="closeMenu()">Work</a>
+            <a href="#contact" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold mt-4" onclick="closeMenu()">Start Your Project</a>
+        </div>
+        <button onclick="closeMenu()" class="absolute top-6 right-6">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+            </svg>
+        </button>
     </div>
 
-    <!-- Hero Section - AUTOPLAY -->
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
-        <div class="absolute inset-0 video-container">
-            <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
+        <div class="absolute inset-0">
+            <video autoplay muted loop playsinline class="w-full h-full object-cover">
                 <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4" type="video/mp4">
             </video>
-            <div class="video-overlay"></div>
+            <div class="hero-overlay absolute inset-0"></div>
         </div>
-        
-        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto">
-            <div class="mb-6 inline-block">
-                <span class="text-xs uppercase tracking-[0.3em] text-[#ff3333] border border-[#ff3333]/30 px-4 py-2 rounded-full bg-black/30 backdrop-blur-sm">Featured Work</span>
+        <div class="relative z-10 text-center px-6 max-w-5xl mx-auto pt-20">
+            <div class="fade-in">
+                <span class="badge badge-red mb-8">
+                    <span class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></span>
+                    Human-Guided AI Execution
+                </span>
             </div>
-            
-            <h1 class="hero-text font-display font-bold uppercase mb-6">
-                Cyber Security<br>
-                <span class="text-[#ff3333]">Awards</span>
+            <h1 class="fade-in text-5xl md:text-7xl lg:text-8xl font-black mb-8 leading-[0.95] tracking-tight">
+                AI is the engine.<br>
+                <span class="gradient-text glow-text">Humans give it meaning.</span>
             </h1>
-            
-            <p class="text-xl text-gray-300 max-w-2xl mx-auto mb-10 font-light">
-                Judges Wall - 30s Showcase
+            <p class="fade-in text-xl md:text-2xl text-gray-400 max-w-3xl mx-auto mb-12 leading-relaxed">
+                We don't sell software. We don't sell dashboards. We sell execution, clarity, and leverage — powered by AI.
             </p>
-            
-            <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4')" class="px-8 py-4 bg-[#ff3333] hover:bg-[#cc0000] text-white rounded-full font-medium transition-all flex items-center gap-2">
-                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                    Watch Full Video
-                </button>
-                <a href="#work" class="px-8 py-4 glass text-white rounded-full font-medium hover:bg-white/10 transition-all">
-                    View All Work
+            <div class="fade-in flex flex-col sm:flex-row gap-4 justify-center items-center">
+                <a href="#services" class="btn-primary px-8 py-4 rounded-full text-lg font-semibold flex items-center gap-2">
+                    Explore Our Services
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
+                    </svg>
                 </a>
+                <button onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4')" class="btn-outline px-8 py-4 rounded-full text-lg font-semibold flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    Watch Showreel
+                </button>
+            </div>
+            <div class="fade-in mt-20 grid grid-cols-3 gap-8 max-w-2xl mx-auto">
+                <div class="text-center">
+                    <div class="stat-number gradient-text">₱15K</div>
+                    <p class="text-gray-500 text-sm mt-2">Starting Price</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number gradient-text">48h</div>
+                    <p class="text-gray-500 text-sm mt-2">Delivery Time</p>
+                </div>
+                <div class="text-center">
+                    <div class="stat-number gradient-text">∞</div>
+                    <p class="text-gray-500 text-sm mt-2">Variations</p>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Marquee -->
-    <div class="border-y border-white/10 bg-black py-4 overflow-hidden">
-        <div class="marquee whitespace-nowrap">
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">AI Video Production</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">Multiple Edits</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">Realistic Commercials</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">AI Video Production</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">Multiple Edits</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-white/10 uppercase mx-8">Realistic Commercials</span>
-            <span class="text-3xl md:text-5xl font-display font-bold text-[#ff3333]/30 uppercase mx-8">•</span>
-        </div>
-    </div>
-
-    <!-- Featured Work Section -->
-    <section id="work" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="mb-16">
-            <span class="text-[#ff3333] text-xs uppercase tracking-[0.3em] mb-4 block">Portfolio</span>
-            <h2 class="text-5xl md:text-6xl font-display font-bold mb-6">Featured<br>Projects</h2>
-        </div>
-
-        <div class="grid md:grid-cols-2 gap-8">
-            <!-- Work 1 - Jade Bar - AUTOPLAY -->
-            <div class="group">
-                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative">
-                    <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
-                    </video>
-                    <span class="version-badge">v2.5</span>
-                    <div class="play-button cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
-                        <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <!-- Philosophy Section -->
+    <section id="philosophy" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <span class="badge badge-red mb-6">Our Philosophy</span>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        Most people don't want AI tools.<br>
+                        <span class="gradient-text">They want outcomes.</span>
+                    </h2>
+                    <div class="space-y-6 text-gray-400 text-lg">
+                        <p>AI adoption is inevitable. But most people feel behind, not resistant.</p>
+                        <p>Tools without guidance create fear. Automation without humans creates mistrust.</p>
+                        <p class="text-white font-medium">AI should augment human capability, not erase it.</p>
+                    </div>
+                    <div class="mt-10 grid grid-cols-2 gap-6">
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                </svg>
+                            </div>
+                            <h4 class="font-bold mb-2">AI Supervised</h4>
+                            <p class="text-sm text-gray-500">Every output reviewed by humans</p>
+                        </div>
+                        <div class="p-6 bg-white/5 rounded-2xl border border-white/10">
+                            <div class="w-12 h-12 bg-red-500/20 rounded-xl flex items-center justify-center mb-4">
+                                <svg class="w-6 h-6 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                                </svg>
+                            </div>
+                            <h4 class="font-bold mb-2">Contextualized</h4>
+                            <p class="text-sm text-gray-500">Tailored to your brand DNA</p>
                         </div>
                     </div>
                 </div>
+                <div class="fade-in">
+                    <div class="video-wrapper aspect-video bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden border border-white/10">
+                        <video muted loop playsinline class="w-full h-full object-cover opacity-80">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
+                        </video>
+                    </div>
+                    <p class="text-center text-gray-500 text-sm mt-4">Sample: Jade Bar Commercial v2.5</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- The Problem Section -->
+    <section id="problem" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in">
+                <span class="badge badge-red mb-6">The Core Problem</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    AI is moving faster than<br><span class="gradient-text">human understanding.</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="fade-in p-8 bg-white/5 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Overwhelm</h3>
+                    <p class="text-gray-500">Too many AI tools, no clear starting point</p>
+                </div>
+                <div class="fade-in p-8 bg-white/5 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fear of Wrong Choice</h3>
+                    <p class="text-gray-500">"What if I invest in the wrong approach?"</p>
+                </div>
+                <div class="fade-in p-8 bg-white/5 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Fear of Waste</h3>
+                    <p class="text-gray-500">"What if I waste money on something that doesn't work?"</p>
+                </div>
+                <div class="fade-in p-8 bg-white/5 rounded-3xl border border-white/10 hover:border-red-500/30 transition-all">
+                    <div class="w-14 h-14 bg-red-500/10 rounded-2xl flex items-center justify-center mb-6">
+                        <svg class="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3">Brand Risk</h3>
+                    <p class="text-gray-500">"What if AI damages my brand or identity?"</p>
+                </div>
+            </div>
+            <div class="fade-in mt-16 text-center">
+                <p class="quote text-2xl md:text-3xl text-gray-300 max-w-4xl mx-auto">
+                    "I know AI matters, but I don't know where to start. I want someone to help me do this properly."
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Comparison Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16 fade-in">
+                <span class="badge badge-red mb-6">The Difference</span>
+                <h2 class="text-4xl md:text-5xl font-black">Traditional vs NextFrame</h2>
+            </div>
+            <div class="fade-in bg-white/5 rounded-3xl border border-white/10 overflow-hidden">
+                <div class="comparison-row bg-red-500/10 px-8">
+                    <div class="text-gray-400 font-medium">Traditional Production</div>
+                    <div class="text-red-400 font-bold">NextFrame.ai</div>
+                </div>
+                <div class="comparison-row px-8">
+                    <div class="text-gray-400">₱60,000+ per single-day shoot</div>
+                    <div class="text-white font-semibold">₱15,000 starting price</div>
+                </div>
+                <div class="comparison-row px-8">
+                    <div class="text-gray-400">2-week post-production cycles</div>
+                    <div class="text-white font-semibold">48-hour delivery</div>
+                </div>
+                <div class="comparison-row px-8">
+                    <div class="text-gray-400">One mistake = expensive reshoot</div>
+                    <div class="text-white font-semibold">Infinite variations, no reshoots</div>
+                </div>
+                <div class="comparison-row px-8">
+                    <div class="text-gray-400">Rigid physical setups</div>
+                    <div class="text-white font-semibold">Reusable digital assets</div>
+                </div>
+                <div class="comparison-row border-b-0 px-8">
+                    <div class="text-gray-400">High cost per iteration</div>
+                    <div class="text-white font-semibold">Lower marginal cost</div>
+                </div>
+            </div>
+            <p class="fade-in text-center text-gray-500 mt-8">
+                This is not cheaper marketing. This is <span class="text-red-400 font-semibold">non-linear marketing</span>.
+            </p>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Services Section -->
+    <section id="services" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in">
+                <span class="badge badge-red mb-6">Service Tiers</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Four tiers.<br><span class="gradient-text">One philosophy.</span>
+                </h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto">
+                    Each tier serves a different customer maturity level. No tier is a discounted version of another.
+                </p>
+            </div>
+            <div class="grid lg:grid-cols-2 gap-8">
+                <!-- Tier 1 -->
+                <div class="fade-in tier-card p-8 rounded-3xl bg-gradient-to-br from-gray-900 to-black">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-sm text-gray-500 font-medium">TIER 1</span>
+                        <span class="badge badge-red">Entry Point</span>
+                    </div>
+                    <h3 class="text-3xl font-black mb-2">AI Spotlight Video</h3>
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="text-4xl font-black gradient-text">₱15,000</span>
+                        <span class="text-gray-500">/video</span>
+                    </div>
+                    <p class="text-gray-400 mb-8">One strong video to communicate an idea. Perfect for first-time clients and proof-of-quality buyers.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            One 30-second video
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            One 60-second version
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Scriptwriting & creative direction
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            AI-assisted visuals & voice-over
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Human editing & quality control
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-outline w-full py-4 rounded-full text-center font-semibold block">Get Started</a>
+                </div>
+
+                <!-- Tier 2 -->
+                <div class="fade-in tier-card p-8 rounded-3xl bg-gradient-to-br from-gray-900 to-black">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-sm text-gray-500 font-medium">TIER 2</span>
+                        <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6; border: 1px solid rgba(59, 130, 246, 0.3);">Subscription</span>
+                    </div>
+                    <h3 class="text-3xl font-black mb-2">AI Lite</h3>
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="text-4xl font-black" style="background: linear-gradient(135deg, #3b82f6, #1d4ed8); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">₱25K–30K</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <p class="text-gray-400 mb-8">Consistent content without large monthly spend. Perfect for entrepreneurs and small businesses.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            2 AI-assisted videos per month
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Light brand alignment
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            AI visuals and copy
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Simple approval workflow
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Monthly check-in
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-outline w-full py-4 rounded-full text-center font-semibold block" style="border-color: rgba(59, 130, 246, 0.3);">Subscribe Now</a>
+                </div>
+
+                <!-- Tier 3 - Featured -->
+                <div class="fade-in tier-card featured p-8 rounded-3xl bg-gradient-to-br from-gray-900 to-black relative">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2">
+                        <span class="bg-red-500 text-white px-4 py-1 rounded-full text-sm font-bold">MOST POPULAR</span>
+                    </div>
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-sm text-gray-500 font-medium">TIER 3</span>
+                        <span class="badge badge-red">Engine</span>
+                    </div>
+                    <h3 class="text-3xl font-black mb-2">AI Content Engine</h3>
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="text-4xl font-black gradient-text">₱60K–80K</span>
+                        <span class="text-gray-500">/month</span>
+                    </div>
+                    <p class="text-gray-400 mb-8">You're no longer buying content. You're operating an AI-assisted marketing engine.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            4-8 videos per month
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Brand-consistent visual systems
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            AI spokespersons or models
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Campaign-level planning
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Priority turnaround
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-primary w-full py-4 rounded-full text-center font-semibold block">Start Your Engine</a>
+                </div>
+
+                <!-- Tier 4 -->
+                <div class="fade-in tier-card p-8 rounded-3xl bg-gradient-to-br from-gray-900 to-black">
+                    <div class="flex items-center justify-between mb-6">
+                        <span class="text-sm text-gray-500 font-medium">TIER 4</span>
+                        <span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7; border: 1px solid rgba(168, 85, 247, 0.3);">Enterprise</span>
+                    </div>
+                    <h3 class="text-3xl font-black mb-2">AI System Build</h3>
+                    <div class="flex items-baseline gap-2 mb-6">
+                        <span class="text-4xl font-black" style="background: linear-gradient(135deg, #a855f7, #7c3aed); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">Custom</span>
+                    </div>
+                    <p class="text-gray-400 mb-8">A custom-built AI content and workflow machine that your organization owns and operates internally.</p>
+                    <ul class="space-y-3 mb-8">
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Business & workflow diagnostics
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Custom AI agent design
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            AI avatars & brand assets
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Internal content pipelines
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-300">
+                            <svg class="w-5 h-5 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            Training & documentation
+                        </li>
+                    </ul>
+                    <a href="#contact" class="btn-outline w-full py-4 rounded-full text-center font-semibold block" style="border-color: rgba(168, 85, 247, 0.3);">Request Custom Quote</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Process Section -->
+    <section id="process" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-20 fade-in">
+                <span class="badge badge-red mb-6">Our Process</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    From discovery to<br><span class="gradient-text">domination.</span>
+                </h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <div class="fade-in relative">
+                    <div class="w-16 h-16 bg-red-500 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">01</div>
+                    <h3 class="text-xl font-bold mb-3">Brand DNA Discovery</h3>
+                    <p class="text-gray-500">We map your unique culture and voice so AI output sounds like your best day, not a generic algorithm.</p>
+                </div>
+                <div class="fade-in relative">
+                    <div class="w-16 h-16 bg-red-500/80 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">02</div>
+                    <h3 class="text-xl font-bold mb-3">Competitive Insight</h3>
+                    <p class="text-gray-500">AI-driven deep dives into the local landscape. We see where competitors win — and where they fail.</p>
+                </div>
+                <div class="fade-in relative">
+                    <div class="w-16 h-16 bg-red-500/60 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">03</div>
+                    <h3 class="text-xl font-bold mb-3">Market Gap ID</h3>
+                    <p class="text-gray-500">We pinpoint the "empty spaces" — the emotional and visual voids in your industry ripe for disruption.</p>
+                </div>
+                <div class="fade-in relative">
+                    <div class="w-16 h-16 bg-red-500/40 rounded-2xl flex items-center justify-center mb-6 text-2xl font-black">04</div>
+                    <h3 class="text-xl font-bold mb-3">Targeted AI Campaigns</h3>
+                    <p class="text-gray-500">Deploying high-fidelity commercials and automated production lines to dominate identified gaps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
+
+    <!-- Work Section -->
+    <section id="work" class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row md:items-end md:justify-between mb-16 fade-in">
                 <div>
-                    <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Commercial</span>
-                    <h3 class="text-2xl font-bold mb-2">Jade Bar</h3>
-                    <p class="text-gray-400 text-sm">Luxury venue promotional content</p>
+                    <span class="badge badge-red mb-6">Selected Work</span>
+                    <h2 class="text-4xl md:text-6xl font-black">
+                        Proof of<br><span class="gradient-text">execution.</span>
+                    </h2>
+                </div>
+                <p class="text-gray-400 max-w-md mt-6 md:mt-0">
+                    Click any video to watch. Only hero and featured videos autoplay to optimize load times.
+                </p>
+            </div>
+
+            <!-- Featured Work - Autoplay -->
+            <div class="grid lg:grid-cols-2 gap-8 mb-12">
+                <div class="fade-in group">
+                    <div class="video-wrapper aspect-video bg-gray-900 rounded-3xl overflow-hidden mb-6 border border-white/10">
+                        <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
+                            <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">v2.5</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-red-500 text-sm font-medium">Commercial</span>
+                        <span class="text-gray-600">•</span>
+                        <span class="text-gray-500 text-sm">Featured</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Jade Bar</h3>
+                    <p class="text-gray-500 mt-1">Luxury venue promotional content</p>
+                </div>
+
+                <div class="fade-in group">
+                    <div class="video-wrapper aspect-video bg-gray-900 rounded-3xl overflow-hidden mb-6 border border-white/10">
+                        <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
+                        </video>
+                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
+                            <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                        </div>
+                        <span class="absolute top-4 right-4 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold">v2.5</span>
+                    </div>
+                    <div class="flex items-center gap-3 mb-2">
+                        <span class="text-red-500 text-sm font-medium">Commercial</span>
+                        <span class="text-gray-600">•</span>
+                        <span class="text-gray-500 text-sm">Full Version</span>
+                    </div>
+                    <h3 class="text-2xl font-bold">Jade Bar — Full Commercial</h3>
+                    <p class="text-gray-500 mt-1">Complete 60-second promotional film</p>
                 </div>
             </div>
 
-            <!-- Work 2 - Pavilion - CLICK TO PLAY -->
-            <div class="group">
-                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4')">
-                    <div class="video-thumb">
+            <!-- More Work - Click to Play -->
+            <div class="grid md:grid-cols-3 gap-6 mb-12">
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4')">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                         <div class="text-center">
-                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
+                                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">Click to play</p>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-gray-700 text-white px-2 py-1 rounded-full text-xs font-bold">v2</span>
+                    </div>
+                    <span class="text-red-500 text-xs font-medium uppercase tracking-wider">Event</span>
+                    <h4 class="font-bold mt-1">Pavilion</h4>
+                </div>
+
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4')">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
+                                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">Click to play</p>
+                        </div>
+                        <span class="absolute top-3 right-3 bg-gray-700 text-white px-2 py-1 rounded-full text-xs font-bold">v3</span>
+                    </div>
+                    <span class="text-red-500 text-xs font-medium uppercase tracking-wider">Concept</span>
+                    <h4 class="font-bold mt-1">What Would You Do With a Million</h4>
+                </div>
+
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4')">
+                    <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                        <div class="text-center">
+                            <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
+                                <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
                             <p class="text-gray-400 text-sm">Click to play</p>
                         </div>
                     </div>
-                    <span class="version-badge">v2</span>
+                    <span class="text-red-500 text-xs font-medium uppercase tracking-wider">Lifestyle</span>
+                    <h4 class="font-bold mt-1">Luxury Loop</h4>
                 </div>
+            </div>
+
+            <!-- Multiple Edits -->
+            <div class="fade-in">
+                <h3 class="text-2xl font-bold mb-6 flex items-center gap-3">
+                    <span class="w-8 h-8 bg-red-500 rounded-lg flex items-center justify-center text-sm">AI</span>
+                    Multiple Edits & Variations
+                </h3>
+                <p class="text-gray-500 mb-8">See how AI generates different versions of the same concept. Click to play any video.</p>
+
+                <!-- Doomsday Series -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-400 mb-4">Doomsday Series</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1</span>
+                            </div>
+                        </div>
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2</span>
+                            </div>
+                        </div>
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v3</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cocktail Nights Series -->
+                <div class="mb-8">
+                    <h4 class="text-lg font-semibold text-gray-400 mb-4">Cocktail Nights Series</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1.2</span>
+                            </div>
+                        </div>
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2.2</span>
+                            </div>
+                        </div>
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
+                                <div class="text-center">
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v3.2</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Tag Lines Series -->
                 <div>
-                    <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Event</span>
-                    <h3 class="text-2xl font-bold mb-2">Pavilion</h3>
-                    <p class="text-gray-400 text-sm">Final edit showcase</p>
-                </div>
-            </div>
-
-            <!-- Work 3 - Million - CLICK TO PLAY -->
-            <div class="group">
-                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4')">
-                    <div class="video-thumb">
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <p class="text-gray-400 text-sm">Click to play</p>
-                        </div>
-                    </div>
-                    <span class="version-badge">v3</span>
-                </div>
-                <div>
-                    <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Concept</span>
-                    <h3 class="text-2xl font-bold mb-2">What Would You Do With a Million</h3>
-                    <p class="text-gray-400 text-sm">Engaging narrative content</p>
-                </div>
-            </div>
-
-            <!-- Work 4 - Luxury Loop - CLICK TO PLAY -->
-            <div class="group">
-                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4')">
-                    <div class="video-thumb">
-                        <div class="text-center">
-                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
-                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                            </div>
-                            <p class="text-gray-400 text-sm">Click to play</p>
-                        </div>
-                    </div>
-                </div>
-                <div>
-                    <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Lifestyle</span>
-                    <h3 class="text-2xl font-bold mb-2">Luxury Loop</h3>
-                    <p class="text-gray-400 text-sm">Seamless luxury brand content</p>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Multiple Edits Section -->
-    <section id="edits" class="py-32 bg-neutral-900 border-y border-white/10">
-        <div class="max-w-7xl mx-auto px-6">
-            <div class="mb-16">
-                <span class="text-[#ff3333] text-xs uppercase tracking-[0.3em] mb-4 block">AI Variations</span>
-                <h2 class="text-5xl md:text-6xl font-display font-bold mb-6">Multiple Edits<br>& Outputs</h2>
-                <p class="text-gray-400 max-w-xl">See how AI generates different versions of the same concept. Each variation offers unique creative direction.</p>
-            </div>
-
-            <!-- Doomsday Series - ALL CLICK TO PLAY -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Doomsday Series</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
+                    <h4 class="text-lg font-semibold text-gray-400 mb-4">Tag Lines Series</h4>
+                    <div class="grid grid-cols-3 gap-4">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1</span>
                             </div>
-                            <span class="version-badge">v1</span>
                         </div>
-                        <h4 class="font-bold text-sm mb-1">Doomsday</h4>
-                        <p class="text-xs text-gray-500">Version 1</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2</span>
                             </div>
-                            <span class="version-badge">v2</span>
                         </div>
-                        <h4 class="font-bold text-sm mb-1">Doomsday</h4>
-                        <p class="text-xs text-gray-500">Version 2</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4')">
+                            <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-4 h-4 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                                     </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
+                                <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v3</span>
                             </div>
-                            <span class="version-badge">v3</span>
                         </div>
-                        <h4 class="font-bold text-sm mb-1">Doomsday</h4>
-                        <p class="text-xs text-gray-500">Version 3</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Cocktail Nights Series - ALL CLICK TO PLAY -->
-            <div class="mb-12">
-                <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Cocktail Nights Series</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v1.2</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
-                        <p class="text-xs text-gray-500">Version 1.2</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v2.2</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
-                        <p class="text-xs text-gray-500">Version 2.2</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v3.2</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
-                        <p class="text-xs text-gray-500">Version 3.2</p>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Tag Lines Series - ALL CLICK TO PLAY -->
-            <div>
-                <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Tag Lines Series</h3>
-                <div class="grid md:grid-cols-3 gap-6">
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v1</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
-                        <p class="text-xs text-gray-500">Version 1</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v2</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
-                        <p class="text-xs text-gray-500">Version 2</p>
-                    </div>
-
-                    <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4')">
-                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <div class="video-thumb">
-                                <div class="text-center">
-                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
-                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
-                                    </div>
-                                    <p class="text-gray-500 text-xs">Click to play</p>
-                                </div>
-                            </div>
-                            <span class="version-badge">v3</span>
-                        </div>
-                        <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
-                        <p class="text-xs text-gray-500">Version 3</p>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Commercials Section -->
-    <section id="commercials" class="py-32 px-6 max-w-7xl mx-auto">
-        <div class="mb-16">
-            <span class="text-[#ff3333] text-xs uppercase tracking-[0.3em] mb-4 block">Realistic AI</span>
-            <h2 class="text-5xl md:text-6xl font-display font-bold mb-6">Commercial<br>Production</h2>
-            <p class="text-gray-400 max-w-xl">High-quality commercial content generated with AI. Professional grade outputs for brands and businesses.</p>
-        </div>
+    <div class="section-divider max-w-4xl mx-auto"></div>
 
-        <div class="group grid md:grid-cols-2 gap-8 items-center">
-            <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
-                <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                    <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
-                </video>
-                <span class="version-badge">v2.5</span>
-                <div class="play-button">
-                    <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
-                        <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    <!-- Legacy Section -->
+    <section class="py-32 px-6">
+        <div class="max-w-7xl mx-auto">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <div class="fade-in">
+                    <span class="badge badge-red mb-6">Legacy Initiative</span>
+                    <h2 class="text-4xl md:text-5xl font-black mb-8 leading-tight">
+                        Immortalize your story.<br>
+                        <span class="gradient-text">Choose NextFrame.</span>
+                    </h2>
+                    <div class="space-y-6 text-gray-400 text-lg">
+                        <p>We also use AI as a medium for memory, legacy, and storytelling.</p>
+                        <p>Using archival photos, videos, and stories, we create respectful cinematic narratives that reconnect individuals with earlier chapters of their lives.</p>
+                        <div class="quote text-xl text-gray-300 mt-8">
+                            "This is not anti-aging. This is not deception. This is legacy preservation."
+                        </div>
+                    </div>
+                    <div class="mt-10 flex flex-wrap gap-4">
+                        <div class="flex items-center gap-2 text-gray-500">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Consent-first
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-500">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            No deceptive deepfakes
+                        </div>
+                        <div class="flex items-center gap-2 text-gray-500">
+                            <svg class="w-5 h-5 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                            Dignity preserved
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div>
-                <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Commercial Series</span>
-                <h3 class="text-3xl font-bold mb-4">Jade Bar</h3>
-                <p class="text-gray-400 mb-6">Luxury venue promotional content showcasing the ambiance and premium experience. Multiple versions for different marketing channels.</p>
-                <div class="flex gap-4">
-                    <span class="px-4 py-2 glass rounded-full text-xs uppercase tracking-wider">15s</span>
-                    <span class="px-4 py-2 glass rounded-full text-xs uppercase tracking-wider">30s</span>
-                    <span class="px-4 py-2 glass rounded-full text-xs uppercase tracking-wider">60s</span>
+                <div class="fade-in">
+                    <div class="p-10 bg-gradient-to-br from-gray-900 to-black rounded-3xl border border-white/10">
+                        <svg class="w-12 h-12 text-red-500 mb-6" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/>
+                        </svg>
+                        <p class="text-2xl font-light italic text-gray-300 leading-relaxed mb-6">
+                            "An elderly woman laughs and whispers with a friend. The scene transitions into a cinematic memory of her younger self using restored archival material."
+                        </p>
+                        <p class="text-gray-500">
+                            The message is not "look how young she is." The message is "this is who she has always been."
+                        </p>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
+
+    <div class="section-divider max-w-4xl mx-auto"></div>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-32 px-6 max-w-4xl mx-auto text-center">
-        <span class="text-[#ff3333] text-xs uppercase tracking-[0.3em] mb-4 block">Get Started</span>
-        <h2 class="text-5xl md:text-6xl font-display font-bold mb-6">Ready to Create<br>Amazing Content?</h2>
-        <p class="text-gray-400 text-lg mb-10 max-w-2xl mx-auto">Let's discuss your next project. From concept to final output, we deliver high-quality AI-generated video content tailored to your brand.</p>
-        
-        <div class="flex flex-col sm:flex-row gap-4 justify-center mb-12">
-            <a href="mailto:hello@next-frame.agency" class="px-8 py-4 bg-[#ff3333] hover:bg-[#cc0000] text-white rounded-full font-medium transition-all">
-                Start a Project
-            </a>
-            <a href="#work" class="px-8 py-4 glass text-white rounded-full font-medium hover:bg-white/10 transition-all">
-                View More Work
-            </a>
-        </div>
-
-        <div class="flex justify-center gap-8 text-sm text-gray-400">
-            <a href="mailto:hello@next-frame.agency" class="hover:text-[#ff3333] transition-colors">hello@next-frame.agency</a>
-            <span class="text-gray-600">|</span>
-            <a href="#" class="hover:text-[#ff3333] transition-colors">Instagram</a>
-            <span class="text-gray-600">|</span>
-            <a href="#" class="hover:text-[#ff3333] transition-colors">LinkedIn</a>
-            <span class="text-gray-600">|</span>
-            <a href="#" class="hover:text-[#ff3333] transition-colors">YouTube</a>
+    <section id="contact" class="py-32 px-6">
+        <div class="max-w-4xl mx-auto text-center">
+            <div class="fade-in">
+                <span class="badge badge-red mb-6">Get Started</span>
+                <h2 class="text-4xl md:text-6xl font-black mb-6">
+                    Ready to execute?<br>
+                    <span class="gradient-text">Let's talk.</span>
+                </h2>
+                <p class="text-gray-400 text-xl max-w-2xl mx-auto mb-12">
+                    From concept to final output, we deliver high-quality AI-generated video content tailored to your brand.
+                </p>
+                <div class="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+                    <a href="mailto:hello@nextframe.ai" class="btn-primary px-10 py-5 rounded-full text-lg font-semibold">
+                        Start Your Project
+                    </a>
+                    <a href="#work" class="btn-outline px-10 py-5 rounded-full text-lg font-semibold">
+                        View More Work
+                    </a>
+                </div>
+                <div class="flex flex-wrap justify-center gap-8 text-gray-500">
+                    <a href="mailto:hello@nextframe.ai" class="hover:text-red-400 transition-colors">hello@nextframe.ai</a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="#" class="hover:text-red-400 transition-colors">Instagram</a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="#" class="hover:text-red-400 transition-colors">LinkedIn</a>
+                    <span class="hidden sm:inline">|</span>
+                    <a href="#" class="hover:text-red-400 transition-colors">YouTube</a>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer class="py-12 border-t border-white/10 px-6">
-        <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
-            <a href="#" class="flex items-center">
-                <span class="font-display font-bold text-xl">NEXT-FRAME.AGENCY</span>
-            </a>
-            <div class="text-sm text-gray-500">
-                © 2025 NEXT-FRAME.AGENCY. All rights reserved.
-            </div>
-            <div class="flex gap-6 text-sm text-gray-400">
-                <a href="#" class="hover:text-white transition-colors">Privacy</a>
-                <a href="#" class="hover:text-white transition-colors">Terms</a>
+    <footer class="py-12 px-6 border-t border-white/10">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                <a href="#" class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-gradient-to-br from-red-500 to-red-700 rounded-lg flex items-center justify-center">
+                        <span class="font-bold text-white text-sm">N</span>
+                    </div>
+                    <span class="font-bold text-lg tracking-tight">NEXTFRAME.AI</span>
+                </a>
+                <div class="text-sm text-gray-500">
+                    © 2025 NextFrame.ai. All rights reserved.
+                </div>
+                <div class="flex gap-6 text-sm text-gray-400">
+                    <a href="#" class="hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="hover:text-white transition-colors">Terms</a>
+                </div>
             </div>
         </div>
     </footer>
 
     <!-- Video Modal -->
-    <div id="videoModal" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6">
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-[#ff3333] transition-colors z-50">
+    <div id="videoModal" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-4">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-red-400 transition-colors z-50">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>
-        <div id="modalContent" class="max-w-5xl w-full flex items-center justify-center">
+        <div id="modalContent" class="max-w-6xl w-full flex items-center justify-center">
             <!-- Video will be inserted here -->
         </div>
     </div>
@@ -565,28 +939,32 @@
         // Navbar scroll effect
         window.addEventListener('scroll', () => {
             const navbar = document.getElementById('navbar');
-            if (window.scrollY > 100) {
-                navbar.classList.add('nav-scrolled');
+            if (window.scrollY > 50) {
+                navbar.classList.add('nav-blur');
             } else {
-                navbar.classList.remove('nav-scrolled');
+                navbar.classList.remove('nav-blur');
             }
         });
 
-        // Mobile menu toggle
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobileMenu');
-            menu.classList.toggle('hidden');
-            menu.classList.toggle('flex');
+        // Mobile menu
+        const menuBtn = document.getElementById('menuBtn');
+        const mobileMenu = document.getElementById('mobileMenu');
+        
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.add('open');
+        });
+        
+        function closeMenu() {
+            mobileMenu.classList.remove('open');
         }
 
-        // Open video modal - creates video element on demand
+        // Video modal
         function openModal(videoSrc) {
             const modal = document.getElementById('videoModal');
             const modalContent = document.getElementById('modalContent');
             
-            // Create video element
             modalContent.innerHTML = `
-                <video controls autoplay class="max-w-full max-h-[85vh] rounded-lg">
+                <video controls autoplay class="max-w-full max-h-[85vh] rounded-xl">
                     <source src="${videoSrc}" type="video/mp4">
                 </video>
             `;
@@ -596,18 +974,16 @@
             document.body.style.overflow = 'hidden';
         }
 
-        // Close video modal
         function closeModal() {
             const modal = document.getElementById('videoModal');
             const modalContent = document.getElementById('modalContent');
             
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            modalContent.innerHTML = ''; // Remove video to stop loading
+            modalContent.innerHTML = '';
             document.body.style.overflow = '';
         }
 
-        // Close modal on outside click or ESC key
         document.getElementById('videoModal').addEventListener('click', (e) => {
             if (e.target.id === 'videoModal') {
                 closeModal();
@@ -617,7 +993,21 @@
         document.addEventListener('keydown', (e) => {
             if (e.key === 'Escape') {
                 closeModal();
+                closeMenu();
             }
+        });
+
+        // Fade in animation
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
         });
     </script>
 </body>
