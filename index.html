@@ -92,11 +92,20 @@
             justify-content: center;
             opacity: 0;
             transition: opacity 0.3s ease;
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.5);
         }
         
         .video-wrapper:hover .play-button {
             opacity: 1;
+        }
+        
+        .video-thumb {
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0a0a0a 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         
         .marquee {
@@ -126,7 +135,8 @@
     <!-- Navigation -->
     <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 px-6 py-4 flex justify-between items-center transition-all duration-300">
         <a href="#" class="flex items-center">
-            <img src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png" alt="Next-Frame.Agency" class="logo-img">
+            <img src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png" alt="Next-Frame.Agency" class="logo-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='block'">
+            <span class="font-display font-bold text-xl ml-2 hidden">NEXT-FRAME.AGENCY</span>
         </a>
         <div class="hidden md:flex items-center gap-8 text-sm uppercase tracking-widest">
             <a href="#work" class="hover:text-[#ff3333] transition-colors">Work</a>
@@ -149,7 +159,7 @@
         <a href="#contact" class="text-2xl uppercase tracking-widest hover:text-[#ff3333]" onclick="toggleMobileMenu()">Contact</a>
     </div>
 
-    <!-- Hero Section -->
+    <!-- Hero Section - AUTOPLAY -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 video-container">
             <video autoplay muted loop playsinline class="absolute inset-0 w-full h-full object-cover">
@@ -173,7 +183,7 @@
             </p>
             
             <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <button onclick="playHeroVideo()" class="px-8 py-4 bg-[#ff3333] hover:bg-[#cc0000] text-white rounded-full font-medium transition-all flex items-center gap-2">
+                <button onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4')" class="px-8 py-4 bg-[#ff3333] hover:bg-[#cc0000] text-white rounded-full font-medium transition-all flex items-center gap-2">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     Watch Full Video
                 </button>
@@ -210,14 +220,14 @@
         </div>
 
         <div class="grid md:grid-cols-2 gap-8">
-            <!-- Work 1 - Jade Bar -->
+            <!-- Work 1 - Jade Bar - AUTOPLAY -->
             <div class="group">
-                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
+                <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative">
                     <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
                         <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
                     </video>
                     <span class="version-badge">v2.5</span>
-                    <div class="play-button">
+                    <div class="play-button cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
                         <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
                             <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                         </div>
@@ -230,18 +240,18 @@
                 </div>
             </div>
 
-            <!-- Work 2 - Pavilion -->
+            <!-- Work 2 - Pavilion - CLICK TO PLAY -->
             <div class="group">
                 <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4')">
-                    <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4" type="video/mp4">
-                    </video>
-                    <span class="version-badge">v2</span>
-                    <div class="play-button">
-                        <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="video-thumb">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">Click to play</p>
                         </div>
                     </div>
+                    <span class="version-badge">v2</span>
                 </div>
                 <div>
                     <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Event</span>
@@ -250,18 +260,18 @@
                 </div>
             </div>
 
-            <!-- Work 3 - Million -->
+            <!-- Work 3 - Million - CLICK TO PLAY -->
             <div class="group">
                 <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4')">
-                    <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4" type="video/mp4">
-                    </video>
-                    <span class="version-badge">v3</span>
-                    <div class="play-button">
-                        <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="video-thumb">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">Click to play</p>
                         </div>
                     </div>
+                    <span class="version-badge">v3</span>
                 </div>
                 <div>
                     <span class="text-xs text-[#ff3333] uppercase tracking-wider mb-2 block">Concept</span>
@@ -270,15 +280,15 @@
                 </div>
             </div>
 
-            <!-- Work 4 - Luxury Loop -->
+            <!-- Work 4 - Luxury Loop - CLICK TO PLAY -->
             <div class="group">
                 <div class="video-wrapper aspect-video bg-gray-900 rounded-2xl overflow-hidden mb-6 relative cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4')">
-                    <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                        <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4" type="video/mp4">
-                    </video>
-                    <div class="play-button">
-                        <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center backdrop-blur-sm">
-                            <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                    <div class="video-thumb">
+                        <div class="text-center">
+                            <div class="w-20 h-20 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                            </div>
+                            <p class="text-gray-400 text-sm">Click to play</p>
                         </div>
                     </div>
                 </div>
@@ -300,53 +310,53 @@
                 <p class="text-gray-400 max-w-xl">See how AI generates different versions of the same concept. Each variation offers unique creative direction.</p>
             </div>
 
-            <!-- Doomsday Series -->
+            <!-- Doomsday Series - ALL CLICK TO PLAY -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Doomsday Series</h3>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v1</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v1</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Doomsday</h4>
                         <p class="text-xs text-gray-500">Version 1</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v2</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v2</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Doomsday</h4>
                         <p class="text-xs text-gray-500">Version 2</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v3</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v3</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Doomsday</h4>
                         <p class="text-xs text-gray-500">Version 3</p>
@@ -354,53 +364,53 @@
                 </div>
             </div>
 
-            <!-- Cocktail Nights Series -->
+            <!-- Cocktail Nights Series - ALL CLICK TO PLAY -->
             <div class="mb-12">
                 <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Cocktail Nights Series</h3>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v1.2</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v1.2</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
                         <p class="text-xs text-gray-500">Version 1.2</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v2.2</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v2.2</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
                         <p class="text-xs text-gray-500">Version 2.2</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v3.2</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v3.2</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Cocktail Nights</h4>
                         <p class="text-xs text-gray-500">Version 3.2</p>
@@ -408,53 +418,53 @@
                 </div>
             </div>
 
-            <!-- Tag Lines Series -->
+            <!-- Tag Lines Series - ALL CLICK TO PLAY -->
             <div>
                 <h3 class="text-2xl font-bold mb-6 text-[#ff3333]">Tag Lines Series</h3>
                 <div class="grid md:grid-cols-3 gap-6">
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v1</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v1</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
                         <p class="text-xs text-gray-500">Version 1</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v2</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v2</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
                         <p class="text-xs text-gray-500">Version 2</p>
                     </div>
 
                     <div class="edit-card group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4')">
-                        <div class="video-wrapper aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
-                            <video muted loop playsinline class="w-full h-full object-cover">
-                                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4" type="video/mp4">
-                            </video>
-                            <span class="version-badge">v3</span>
-                            <div class="play-button">
-                                <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center">
-                                    <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        <div class="aspect-[9/16] bg-gray-900 rounded-xl overflow-hidden relative mb-4">
+                            <div class="video-thumb">
+                                <div class="text-center">
+                                    <div class="w-12 h-12 bg-[#ff3333]/90 rounded-full flex items-center justify-center mx-auto mb-2">
+                                        <svg class="w-5 h-5 text-white ml-0.5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                                    </div>
+                                    <p class="text-gray-500 text-xs">Click to play</p>
                                 </div>
                             </div>
+                            <span class="version-badge">v3</span>
                         </div>
                         <h4 class="font-bold text-sm mb-1">Tag Lines</h4>
                         <p class="text-xs text-gray-500">Version 3</p>
@@ -527,7 +537,7 @@
     <footer class="py-12 border-t border-white/10 px-6">
         <div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-6">
             <a href="#" class="flex items-center">
-                <img src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png" alt="Next-Frame.Agency" class="logo-img">
+                <span class="font-display font-bold text-xl">NEXT-FRAME.AGENCY</span>
             </a>
             <div class="text-sm text-gray-500">
                 © 2025 NEXT-FRAME.AGENCY. All rights reserved.
@@ -541,14 +551,14 @@
 
     <!-- Video Modal -->
     <div id="videoModal" class="fixed inset-0 bg-black/95 z-50 hidden items-center justify-center p-6">
-        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-[#ff3333] transition-colors">
+        <button onclick="closeModal()" class="absolute top-6 right-6 text-white hover:text-[#ff3333] transition-colors z-50">
             <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
             </svg>
         </button>
-        <video id="modalVideo" controls class="max-w-full max-h-[90vh] rounded-lg">
-            <source src="" type="video/mp4">
-        </video>
+        <div id="modalContent" class="max-w-5xl w-full flex items-center justify-center">
+            <!-- Video will be inserted here -->
+        </div>
     </div>
 
     <script>
@@ -569,52 +579,45 @@
             menu.classList.toggle('flex');
         }
 
-        // Play hero video in modal
-        function playHeroVideo() {
-            openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4');
-        }
-
-        // Open video modal
+        // Open video modal - creates video element on demand
         function openModal(videoSrc) {
             const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
-            modalVideo.src = videoSrc;
+            const modalContent = document.getElementById('modalContent');
+            
+            // Create video element
+            modalContent.innerHTML = `
+                <video controls autoplay class="max-w-full max-h-[85vh] rounded-lg">
+                    <source src="${videoSrc}" type="video/mp4">
+                </video>
+            `;
+            
             modal.classList.remove('hidden');
             modal.classList.add('flex');
-            modalVideo.play();
+            document.body.style.overflow = 'hidden';
         }
 
         // Close video modal
         function closeModal() {
             const modal = document.getElementById('videoModal');
-            const modalVideo = document.getElementById('modalVideo');
+            const modalContent = document.getElementById('modalContent');
+            
             modal.classList.add('hidden');
             modal.classList.remove('flex');
-            modalVideo.pause();
-            modalVideo.src = '';
+            modalContent.innerHTML = ''; // Remove video to stop loading
+            document.body.style.overflow = '';
         }
 
-        // Close modal on outside click
+        // Close modal on outside click or ESC key
         document.getElementById('videoModal').addEventListener('click', (e) => {
             if (e.target.id === 'videoModal') {
                 closeModal();
             }
         });
 
-        // Hover play for videos
-        document.querySelectorAll('.video-wrapper').forEach(wrapper => {
-            const video = wrapper.querySelector('video');
-            
-            wrapper.addEventListener('mouseenter', () => {
-                if (video) video.play();
-            });
-            
-            wrapper.addEventListener('mouseleave', () => {
-                if (video) {
-                    video.pause();
-                    video.currentTime = 0;
-                }
-            });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeModal();
+            }
         });
     </script>
 </body>
