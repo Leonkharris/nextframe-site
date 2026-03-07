@@ -4,10 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NextFrame.ai | Human-Guided AI Execution</title>
-    <script src="https://cdn.tailwindcss.com "></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com ">
-    <link rel="preconnect" href="https://fonts.gstatic.com " crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300 ;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -25,7 +25,7 @@
             pointer-events: none;
             z-index: 9999;
             opacity: 0.025;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg '%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
         }
         .gradient-text {
             background: linear-gradient(135deg, #ff6b6b 0%, #ff4757 50%, #c0392b 100%);
@@ -137,6 +137,7 @@
         ::-webkit-scrollbar-thumb { background: #333; border-radius: 4px; }
         ::-webkit-scrollbar-thumb:hover { background: #ff4757; }
     </style>
+<base target="_blank">
 </head>
 <body>
     <div class="grain"></div>
@@ -191,7 +192,7 @@
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0">
             <video autoplay muted loop playsinline class="w-full h-full object-cover">
-                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4 " type="video/mp4">
+                <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4" type="video/mp4">
             </video>
             <div class="hero-overlay absolute inset-0"></div>
         </div>
@@ -216,7 +217,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/>
                     </svg>
                 </a>
-                <button onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4 ')" class="btn-outline px-8 py-4 rounded-full text-lg font-semibold flex items-center gap-2">
+                <button onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4')" class="btn-outline px-8 py-4 rounded-full text-lg font-semibold flex items-center gap-2">
                     <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                     Watch Showreel
                 </button>
@@ -277,7 +278,7 @@
                 <div class="fade-in">
                     <div class="video-wrapper aspect-video bg-gradient-to-br from-gray-900 to-black rounded-3xl overflow-hidden border border-white/10">
                         <video muted loop playsinline class="w-full h-full object-cover opacity-80">
-                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4 " type="video/mp4">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
                         </video>
                     </div>
                     <p class="text-center text-gray-500 text-sm mt-4">Sample: Jade Bar Commercial v2.5</p>
@@ -340,83 +341,8 @@
                     "I know AI matters, but I don't know where to start. I want someone to help me do this properly."
                 </p>
             </div>
-export default function Hero() {
-  const [isLoaded, setIsLoaded] = useState(false);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoaded(true), 100);
-    return () => clearTimeout(timer);
-  }, []);
-
-  return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Animated gradient background */}
-      <div className="absolute inset-0 animated-gradient" />
-      
-      {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-10"
-        style={{
-          backgroundImage: `
-            linear-gradient(rgba(255, 71, 87, 0.1) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(255, 71, 87, 0.1) 1px, transparent 1px)
-          `,
-          backgroundSize: '50px 50px'
-        }}
-      />
-
-      {/* Floating orbs */}
-      <div className="absolute top-1/4 left-1/4 w-64 h-64 bg-[#ff4757]/10 rounded-full blur-3xl animate-float" />
-      
-      {/* Hero Video Background (subtle) */}
-      <div className="absolute inset-0 z-0">
-        <video
-          autoPlay muted loop playsInline
-          className="w-full h-full object-cover opacity-30"
-          poster="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Screenshot%202025-11-01%20115042-f7Bq7OQ3W2Xf8Yv9Z0a1b2c3d4e5f6g7h8i9j0k1l2m3n4o5p6q7r8s9t0u1v2w3x4y5z.jpg "
-        >
-          <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/jade%20bar%20ai%20generated%20video%20(1)-qR9sT8uV2wX3Y4Z5a6b7c8d9e0f1g2h3i4j5k6l7m8n9o0p1q2r3s4t5u6v7w8x9y0.mp4 " type="video/mp4" />
-        </video>
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black" />
-      </div>
-
-      {/* Content */}
-      <div className="relative z-10 container-custom px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-        <div className="max-w-5xl mx-auto text-center">
-          {/* Badge */}
-          <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-8 transition-all duration-700 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <Sparkles className="w-4 h-4 text-[#ff4757]" />
-            <span className="text-sm font-medium text-white/80">AI-Powered Video Production</span>
-          </div>
-
-          {/* Main headline */}
-          <h1 className={`text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-black tracking-tight mb-6 transition-all duration-700 delay-100 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            <span className="block">We Create</span>
-            <span className="block gradient-text mt-2">Visual Magic</span>
-          </h1>
-
-          {/* Subheadline */}
-          <p className={`text-xl sm:text-2xl md:text-3xl text-white/70 font-light max-w-3xl mx-auto mb-4 transition-all duration-700 delay-200 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            Next-Frame.Agency transforms your ideas into stunning AI-generated videos
-          </p>
-          
-          {/* Stats */}
-          <div className={`grid grid-cols-2 md:grid-cols-4 gap-8 max-w-3xl mx-auto transition-all duration-700 delay-500 ${isLoaded ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'}`}>
-            {[
-              { icon: Film, value: '500+', label: 'Videos Created' },
-              { icon: Zap, value: '10x', label: 'Faster Delivery' },
-              { icon: Sparkles, value: '98%', label: 'Client Satisfaction' },
-              { icon: Play, value: '50M+', label: 'Views Generated' },
-            ].map((stat, index) => (
-              <div key={index} className="text-center">
-                <stat.icon className="w-6 h-6 text-[#ff4757] mx-auto mb-2" />
-                <div className="text-3xl md:text-4xl font-bold text-white mb-1">{stat.value}</div>
-                <div className="text-sm text-white/50">{stat.label}</div>
-              </div>
-            ))}
-          </div>
-</div>
-      </div>
-</section>
+        </div>
+    </section>
 
     <div class="section-divider max-w-4xl mx-auto"></div>
 
@@ -685,9 +611,9 @@ export default function Hero() {
                 <div class="fade-in group">
                     <div class="video-wrapper aspect-video bg-gray-900 rounded-3xl overflow-hidden mb-6 border border-white/10">
                         <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4 " type="video/mp4">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
                         </video>
-                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4 ')">
+                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
                             <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
                                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
@@ -706,9 +632,9 @@ export default function Hero() {
                 <div class="fade-in group">
                     <div class="video-wrapper aspect-video bg-gray-900 rounded-3xl overflow-hidden mb-6 border border-white/10">
                         <video muted loop playsinline class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105">
-                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4 " type="video/mp4">
+                            <source src="https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4" type="video/mp4">
                         </video>
-                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4 ')">
+                        <div class="play-overlay cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4')">
                             <div class="w-20 h-20 bg-red-500 rounded-full flex items-center justify-center">
                                 <svg class="w-8 h-8 text-white ml-1" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
                             </div>
@@ -727,7 +653,7 @@ export default function Hero() {
 
             <!-- More Work - Click to Play -->
             <div class="grid md:grid-cols-3 gap-6 mb-12">
-                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4 ')">
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4')">
                     <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
@@ -741,7 +667,7 @@ export default function Hero() {
                     <h4 class="font-bold mt-1">Pavilion</h4>
                 </div>
 
-                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4 ')">
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4')">
                     <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
@@ -755,7 +681,7 @@ export default function Hero() {
                     <h4 class="font-bold mt-1">What Would You Do With a Million</h4>
                 </div>
 
-                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4 ')">
+                <div class="fade-in group cursor-pointer" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4')">
                     <div class="aspect-video bg-gradient-to-br from-gray-800 to-gray-900 rounded-2xl overflow-hidden mb-4 border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                         <div class="text-center">
                             <div class="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-red-500/40 transition-all">
@@ -781,7 +707,7 @@ export default function Hero() {
                 <div class="mb-8">
                     <h4 class="text-lg font-semibold text-gray-400 mb-4">Doomsday Series</h4>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -791,7 +717,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v2.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -801,7 +727,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -818,7 +744,7 @@ export default function Hero() {
                 <div class="mb-8">
                     <h4 class="text-lg font-semibold text-gray-400 mb-4">Cocktail Nights Series</h4>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v1.2.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -828,7 +754,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1.2</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v2.2.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -838,7 +764,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2.2</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -855,7 +781,7 @@ export default function Hero() {
                 <div>
                     <h4 class="text-lg font-semibold text-gray-400 mb-4">Tag Lines Series</h4>
                     <div class="grid grid-cols-3 gap-4">
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -865,7 +791,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v1</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -875,7 +801,7 @@ export default function Hero() {
                                 <span class="absolute top-2 right-2 bg-red-500 text-white px-2 py-0.5 rounded-full text-xs font-bold">v2</span>
                             </div>
                         </div>
-                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4 ')">
+                        <div class="cursor-pointer group" onclick="openModal('https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%203.mp4')">
                             <div class="aspect-[9/16] bg-gradient-to-br from-gray-800 to-gray-900 rounded-xl overflow-hidden border border-white/10 flex items-center justify-center group-hover:border-red-500/30 transition-all relative">
                                 <div class="text-center">
                                     <div class="w-10 h-10 bg-red-500/20 rounded-full flex items-center justify-center mx-auto mb-2">
@@ -1087,5 +1013,3 @@ export default function Hero() {
     </script>
 </body>
 </html>
-  );
-}
