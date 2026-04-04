@@ -1,0 +1,2207 @@
+﻿<!DOCTYPE html><!-- Last Published: Tue Mar 24 2026 23:15:56 GMT+0000 (Coordinated Universal Time) --><html data-wf-domain="www.bland.ai" data-wf-page="68cbee39b457bbb25fe98ee8" data-wf-site="66cddff3a7bb08f0bc015747" lang="en"><head><meta charset="utf-8"/><title>Bland AI | Automate Phone Calls with Conversational AI for Enterprises</title><meta content="Transform your enterprise communication with Bland AI. Automate inbound and outbound phone calls using AI that sounds human. Perfect for sales, customer support, and operations with customizable voices and seamless integrations." name="description"/><meta content="Bland AI | Automate Phone Calls with Conversational AI for Enterprises" property="og:title"/><meta content="Transform your enterprise communication with Bland AI. Automate inbound and outbound phone calls using AI that sounds human. Perfect for sales, customer support, and operations with customizable voices and seamless integrations." property="og:description"/><meta content="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/678198b4ff9b9067e073e57e_og_image.jpg" property="og:image"/><meta content="Bland AI | Automate Phone Calls with Conversational AI for Enterprises" property="twitter:title"/><meta content="Transform your enterprise communication with Bland AI. Automate inbound and outbound phone calls using AI that sounds human. Perfect for sales, customer support, and operations with customizable voices and seamless integrations." property="twitter:description"/><meta content="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/678198b4ff9b9067e073e57e_og_image.jpg" property="twitter:image"/><meta property="og:type" content="website"/><meta content="summary_large_image" name="twitter:card"/><meta content="width=device-width, initial-scale=1" name="viewport"/><meta content="DrDEkI0gZ0Hhhih1xo4mCClWjnbTMjvHt2dv85757mA" name="google-site-verification"/><link href="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/css/bland-ai-staging.shared.4da82a0d9.min.css" rel="stylesheet" type="text/css" integrity="sha384-TagqDZWXLruraGeF6DZnSAQ4TiT+qwVbyRHC3hLbfjt/pERxXm7Ocx587piLYMKk" crossorigin="anonymous"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link href="https://fonts.gstatic.com" rel="preconnect" crossorigin="anonymous"/><script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js" type="text/javascript"></script><script type="text/javascript">WebFont.load({  google: {    families: ["Open Sans:300,300italic,400,400italic,600,600italic,700,700italic,800,800italic","PT Sans:400,400italic,700,700italic"]  }});</script><script type="text/javascript">!function(o,c){var n=c.documentElement,t=" w-mod-";n.className+=t+"js",("ontouchstart"in o||o.DocumentTouch&&c instanceof DocumentTouch)&&(n.className+=t+"touch")}(window,document);</script><link href="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/67854eb77ab319a37d0829d7_favicon.jpg" rel="shortcut icon" type="image/x-icon"/><link href="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/67854ec97636ec7284f56ae0_webclip.jpg" rel="apple-touch-icon"/><link href="https://www.bland.ai" rel="canonical"/><style>                                                                                                           
+  @font-face {
+    font-family: "Taurus Grotesk";                                                                                  
+    font-weight: 500;
+    font-style: normal;
+    src: url("https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/677a7e6133f86ff2ec9e0e3c_TaurusGrotesk-Med
+  ium.otf") format("opentype");
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Taurus Grotesk";
+    font-weight: 300;
+    font-style: normal;
+    src: url("https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/677a7e6045dccfa1e473a702_TaurusGrotesk-Lig
+  ht.otf") format("opentype");
+    font-display: swap;
+  }
+  </style>
+
+
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id=GTM-TTDMQ78F'+dl;
+f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-TTDMQ78F');</script>
+<!-- End Google Tag Manager -->
+
+<script>
+console.log('INITIAL URL BEFORE SCRIPT:', window.location.href);
+(function() {
+  var STORAGE_KEY = 'bland_utm_data';
+  var FIRST_SEEN_KEY = 'bland_first_pageview_seen';
+
+  function getStoredUtms() {
+    try {
+      var raw = sessionStorage.getItem(STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function storeUtms(utms) {
+    try {
+      sessionStorage.setItem(STORAGE_KEY, JSON.stringify(utms));
+    } catch (e) {}
+  }
+
+  function hasFirstPageBeenSeen() {
+    try {
+      return !!sessionStorage.getItem(FIRST_SEEN_KEY);
+    } catch (e) {
+      return false;
+    }
+  }
+
+  function markFirstPageSeen() {
+    try {
+      sessionStorage.setItem(FIRST_SEEN_KEY, 'true');
+    } catch (e) {}
+  }
+
+  function applyUtmsToUrl(utms) {
+    if (!utms) return;
+
+    var url = new URL(window.location.href);
+
+    // Don’t overwrite if URL already has utm_source
+    if (url.searchParams.has('utm_source')) {
+      return;
+    }
+
+    Object.keys(utms).forEach(function(key) {
+      if (utms[key]) {
+        url.searchParams.set(key, utms[key]);
+      }
+    });
+
+    history.replaceState(null, '', url.toString());
+    console.log('UTMs applied to URL from sessionStorage:', utms);
+  }
+
+  // --- MAIN ---
+
+  var url = new URL(window.location.href);
+
+  // 1) If current URL already has UTMs, store them & done
+  //    (e.g. Google Ads, Facebook Ads, or any manually tagged campaign)
+  if (url.searchParams.has('utm_source')) {
+    var utmsFromUrl = {
+      utm_source:  url.searchParams.get('utm_source'),
+      utm_medium:  url.searchParams.get('utm_medium'),
+      utm_campaign: url.searchParams.get('utm_campaign'),
+      utm_term:    url.searchParams.get('utm_term'),
+      utm_content: url.searchParams.get('utm_content')
+    };
+    storeUtms(utmsFromUrl);
+    console.log('UTMs found in URL; stored in session:', utmsFromUrl);
+    return;
+  }
+
+  // 2) No UTMs in URL → see if we already have a stored source for this session
+  var stored = getStoredUtms();
+  if (stored) {
+    // Persist same UTMs across pages
+    applyUtmsToUrl(stored);
+    return;
+  }
+
+  // 3) No UTMs anywhere yet → classify ONLY on first pageview
+  if (!hasFirstPageBeenSeen()) {
+    markFirstPageSeen();
+
+    var ref = document.referrer;
+
+    // Has a referrer (LinkedIn, YouTube, Reddit, Google, etc.)
+    if (ref && ref !== '') {
+      try {
+        var refUrl = new URL(ref);
+        var domain = refUrl.hostname.replace(/^www\./, '');
+
+        // Auto-inferred sessions: only utm_source + utm_medium
+        var inferredUtms = {
+          utm_source: domain,       // e.g. linkedin.com, youtube.com, reddit.com
+          utm_medium: 'referral'
+        };
+
+        storeUtms(inferredUtms);
+        applyUtmsToUrl(inferredUtms);
+
+        console.log('Referrer detected → UTMs set from referrer:', inferredUtms, 'referrer:', ref);
+      } catch (e) {
+        console.log('Referrer exists but URL parsing failed:', ref, e);
+      }
+      return;
+    }
+
+    // True direct traffic: no referrer and no UTMs
+    // Direct should only have utm_source
+    var directUtms = {
+      utm_source: 'direct'
+    };
+    storeUtms(directUtms);
+    applyUtmsToUrl(directUtms);
+    console.log('Direct session detected; UTMs set to direct.');
+  } else {
+    console.log('Later pageview without stored UTMs; doing nothing.');
+  }
+})();
+</script>
+
+
+<!-- Default Form Manager -->
+<script async src="https://pixel-cdn.default.com"></script>
+<!-- End Default Form Manager -->    
+  
+ <script>
+  	window.__turnstile_response = ""
+    window.__positional_config = {
+        customerId: "2dedb215-e43b-4cc7-988e-662e3e3cdc16",
+    };
+</script>
+
+<script>
+window.onloadTurnstileCallback = function () {
+  function renderTurnstile() {
+    if (document.getElementById('bland-turnstile')) {
+      turnstile.render("#bland-turnstile", {
+        sitekey: "0x4AAAAAAAxjZ88OGKNpTFL2",
+        action: "welcome_call",
+        callback: function (token) {
+          window.__turnstile_response = token;
+        },
+      });
+    }
+  }
+  
+  // Check if DOM is already loaded
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderTurnstile);
+  } else {
+    // DOM already loaded, render immediately
+    renderTurnstile();
+  }
+};
+</script>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback"></script>
+
+    <!-- Reb2b Script -->
+
+  <script>!function(key) {if (window.reb2b) return;window.reb2b = {loaded: true};var s = document.createElement("script");s.async = true;s.src = "https://ddwl4m2hdecbv.cloudfront.net/b/" + key + "/" + key + ".js.gz";document.getElementsByTagName("script")[0].parentNode.insertBefore(s, document.getElementsByTagName("script")[0]);}("1N5W0H7MDDO5");</script>
+
+    <!-- Pixel CDN Script -->
+    <script async src="https://pixel-cdn.default.com"></script>
+
+<!-- Vibe.co tracking pixel -->
+<script>  !function(v,i,b,e,c,o){if(!v[c]){var s=v[c]=function(){s.process?s.process.apply(s,arguments):s.queue.push(arguments)};s.queue=[],s.b=1*new Date;var t=i.createElement(b);t.async=!0,t.src=e;var n=i.getElementsByTagName(b)[0];n.parentNode.insertBefore(t,n)}}(window,document,"script","https://s.vibe.co/vbpx.js","vbpx");  vbpx('init','wXkpdr');  vbpx('event', 'page_view'); </script>
+
+<!-- Cookies -->
+<script src="https://cdn.delve.co/src/delve-cookie-consent-default.js"></script><meta name="robots" content="index, follow">
+<script async type="module" src="https://cdn.jsdelivr.net/npm/@finsweet/attributes@2/attributes.js" fs-selectcustom></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.12.2/lottie.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+
+<link rel="preload" as="audio" href="https://cdn.sanity.io/files/tmmoa80b/production/7c3fbd277a18b3c09fd8e78d2f967424fc80b697.wav" type="audio/wav">
+
+<link rel="preload" as="fetch" href="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69bed28ff97d1b957d6e8fb4_live-call-no-button.json" crossorigin="anonymous">
+<style>
+.swiper-slide.is-customers{opacity: 0; transition: opacity .4s ease-out;pointer-events: none;}
+.swiper-slide.is-customers.swiper-slide-active, .swiper-slide.is-customers.swiper-slide-duplicate-active{opacity: 1; pointer-events: auto;}
+</style></head><body data-page="white-new" class="lp_body is-rebrend"><div class="page-wrapper is--lp"><div class="global-styles w-embed"><style>
+
+/* Make text look crisper and more legible in all browsers */
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+  overscroll-behavior: none;
+}
+
+/* Focus state style for keyboard navigation for the focusable elements */
+*[tabindex]:focus-visible,
+  input[type="file"]:focus-visible {
+   outline: 0.125rem solid #4d65ff;
+   outline-offset: 0.125rem;
+}
+
+/* Set color style to inherit */
+.inherit-color * {
+    color: inherit;
+}
+
+/* Get rid of top margin on first element in any rich text element */
+.w-richtext > :not(div):first-child, .w-richtext > div:first-child > :first-child {
+  margin-top: 0 !important;
+}
+
+/* Get rid of bottom margin on last element in any rich text element */
+.w-richtext>:last-child, .w-richtext ol li:last-child, .w-richtext ul li:last-child {
+	margin-bottom: 0 !important;
+}
+
+
+/* Make sure containers never lose their center alignment */
+.container-medium,.container-small, .container-large {
+	margin-right: auto !important;
+  margin-left: auto !important;
+}
+
+/* 
+Make the following elements inherit typography styles from the parent and not have hardcoded values. 
+Important: You will not be able to style for example "All Links" in Designer with this CSS applied.
+Uncomment this CSS to use it in the project. Leave this message for future hand-off.
+*/
+/*
+a,
+.w-input,
+.w-select,
+.w-tab-link,
+.w-nav-link,
+.w-dropdown-btn,
+.w-dropdown-toggle,
+.w-dropdown-link {
+  color: inherit;
+  text-decoration: inherit;
+  font-size: inherit;
+}
+*/
+
+/* Apply "..." after 3 lines of text */
+.text-style-3lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 3;
+	-webkit-box-orient: vertical;
+}
+
+/* Apply "..." after 2 lines of text */
+.text-style-2lines {
+	display: -webkit-box;
+	overflow: hidden;
+	-webkit-line-clamp: 2;
+	-webkit-box-orient: vertical;
+}
+
+/* Adds inline flex display */
+.display-inlineflex {
+  display: inline-flex;
+}
+
+/* These classes are never overwritten */
+.hide {
+  display: none !important;
+}
+
+@media screen and (max-width: 991px) {
+    .hide, .hide-tablet {
+        display: none !important;
+    }
+}
+  @media screen and (max-width: 767px) {
+    .hide-mobile-landscape{
+      display: none !important;
+    }
+}
+  @media screen and (max-width: 479px) {
+    .hide-mobile{
+      display: none !important;
+    }
+}
+ 
+.margin-0 {
+  margin: 0rem !important;
+}
+  
+.padding-0 {
+  padding: 0rem !important;
+}
+
+.spacing-clean {
+padding: 0rem !important;
+margin: 0rem !important;
+}
+
+.margin-top {
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-top {
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+  
+.margin-right {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-right {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-bottom {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+
+.padding-bottom {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+
+.margin-left {
+  margin-top: 0rem !important;
+  margin-right: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+  
+.padding-left {
+  padding-top: 0rem !important;
+  padding-right: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+  
+.margin-horizontal {
+  margin-top: 0rem !important;
+  margin-bottom: 0rem !important;
+}
+
+.padding-horizontal {
+  padding-top: 0rem !important;
+  padding-bottom: 0rem !important;
+}
+
+.margin-vertical {
+  margin-right: 0rem !important;
+  margin-left: 0rem !important;
+}
+  
+.padding-vertical {
+  padding-right: 0rem !important;
+  padding-left: 0rem !important;
+}
+.h2-rte :nth-last-child(1){margin-bottom: 0rem;}
+
+[faq-btn-type="red"]{padding: .825rem; width: 2.5rem; height: 2.5rem; border-radius: 50%; background: var(--lp-red);}
+[faq-btn-type="red"] .faq_line{background: white;}
+[faq-btn-type="red"] .faq_line.is-vertical{height: 1rem; width: .125rem;}
+[faq-btn-type="red"] .faq_line.is-horizontal{width: 1rem;height: .125rem;}
+
+[data-bg="beige"]{background: #f9f8f4!important;}
+[data-bg="beige-50"]{background: rgba(243, 241, 233, 0.5)!important;}
+[data-bg="white"]{background: white!important;}
+
+[data-bg-section="beige"]{background: #f9f8f4!important;}
+[data-bg-section="beige-50"]{background: rgba(243, 241, 233, 0.5)!important;}
+[data-bg-section="white"]{background: white!important;}
+
+[data-link="abs"]:before{content:''; position: absolute; z-index: 1; width: 100%; height: 100%;}
+
+[data-page="white-new"] :is([data-element="nav"],[data-element="nav-drop-list"]){background: #fdf9ec!important;}
+
+  [data-section="red"]{background: var(--lp-red); color: var(--lp-white);}
+  [data-section="red"] :is(h1, h2, h3, p){color: var(--lp-white);}
+</style></div><div class="w-embed w-iframe"><!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGHSRXZW"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --></div><header data-element="nav" class="navigation_new is-white"><div class="banner"><p class="z-index-2">Download our new guide!</p><a href="/replace-ivr-guide" class="inline-link is--white z-index-2">Replace your legacy IVR with voice AI</a></div><div data-animation="default" data-collapse="medium" data-duration="400" data-easing="ease" data-easing2="ease" role="banner" class="section_navbar w-nav"><div data-element="nav" class="nav_container"><a href="/" data-element="nav-link" aria-current="page" class="nav_brand is-lp is-center w-nav-brand w--current"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 111 28" fill="none"><path d="M110.052 0H102.057C101.921 0 101.812 0.1086 101.812 0.244349V2.30096C101.812 2.43671 101.704 2.54531 101.568 2.54531H91.6311C88.4986 2.54531 85.8651 4.6664 85.0811 7.55108H85.0777C85.0489 7.65459 84.9556 7.73264 84.8419 7.73264C84.7282 7.73264 84.6348 7.65628 84.6077 7.55108H84.6043C83.8221 4.6664 81.1868 2.54531 78.0544 2.54531H66.1763C63.3137 2.54531 60.8668 4.31684 59.869 6.82312C59.7706 7.07086 59.4007 6.9979 59.399 6.73149L59.3888 2.78966C59.3888 2.6556 59.2785 2.54531 59.1445 2.54531H40.7232C37.8623 2.54531 35.4171 4.31514 34.4176 6.81973C34.3192 7.06747 33.9493 6.9945 33.9476 6.7281L33.9357 0.244349C33.9357 0.110297 33.8254 0 33.6914 0H25.694C25.56 0 25.4497 0.1086 25.4497 0.244349L25.4378 6.7281C25.4378 6.9962 25.0679 7.06917 24.9678 6.81973C23.97 4.31514 21.5231 2.54531 18.6622 2.54531H8.72531C8.58956 2.54531 8.48096 2.43671 8.48096 2.30096V0.244349C8.48096 0.1086 8.37236 0 8.23661 0H0.244349C0.1086 0 0 0.1086 0 0.244349V10.7853C0 10.9211 0.1086 11.0297 0.244349 11.0297H110.052C110.188 11.0297 110.297 10.9211 110.297 10.7853V0.244349C110.297 0.1086 110.188 0 110.052 0Z" fill="currentColor"></path><path d="M110.053 19.5139H0.277553C0.141803 19.5139 0.0332031 19.6225 0.0332031 19.7583V27.7539C0.0332031 27.8897 0.141803 27.9983 0.277553 27.9983H18.6665C21.5292 27.9983 23.9761 26.2267 24.9738 23.7205C25.0722 23.4727 25.4422 23.5457 25.4438 23.8121L25.454 27.7556C25.454 27.8897 25.5643 28 25.6984 28H33.6957C33.8298 28 33.9401 27.8914 33.9401 27.7556L33.9503 23.8121C33.9503 23.5457 34.3219 23.471 34.4203 23.7205C35.4181 26.2267 37.8649 27.9983 40.7276 27.9983H84.6019C84.7359 27.9983 84.8462 27.8897 84.8462 27.7539L84.8564 23.8121C84.8564 23.5457 85.228 23.471 85.3264 23.7205C86.3242 26.2267 88.7711 27.9983 91.6337 27.9983H110.055C110.191 27.9983 110.299 27.8897 110.299 27.7539V19.7583C110.299 19.6225 110.191 19.5139 110.055 19.5139H110.053Z" fill="currentColor"></path><path d="M110.297 15.291C110.297 16.1456 109.636 16.7666 108.821 16.7666C108.007 16.7666 107.346 16.1456 107.346 15.291C107.346 14.4364 108.007 13.8154 108.821 13.8154C109.636 13.8154 110.297 14.4364 110.297 15.291ZM109.99 15.291C109.99 14.61 109.489 14.0892 108.821 14.0892C108.154 14.0892 107.653 14.61 107.653 15.291C107.653 15.972 108.154 16.4928 108.821 16.4928C109.489 16.4928 109.99 15.972 109.99 15.291ZM108.581 15.3911V16.0588H108.214V14.5031H108.961C109.295 14.5031 109.496 14.6834 109.496 14.9438C109.496 15.1374 109.375 15.3244 109.128 15.3778L109.562 16.0588H109.155L108.734 15.3911H108.581ZM108.895 14.7635H108.581V15.1374H108.895C109.042 15.1374 109.108 15.0506 109.108 14.9505C109.108 14.8437 109.042 14.7635 108.895 14.7635Z" fill="currentColor"></path></svg></a><nav role="navigation" class="nav_menu is-lp w-nav-menu"><div class="nav_links-wrap"><div data-hover="true" data-delay="0" data-element="nav-drop" class="nav_drop w-dropdown"><div class="nav_drop-toggle w-dropdown-toggle"><div class="nav_drop-chevron w-icon-dropdown-toggle"></div><div class="nav_menu-link is-lp">Product</div></div><nav data-element="nav-drop-list" class="nav_drop-list w-dropdown-list"><div class="nav_drop-bridge"></div><a href="/product/bland-voice" id="docs_hero" class="nav_menu-link is-lp is-big w-nav-link">Voice</a><a href="/product/bland-sms" id="university_hero" class="nav_menu-link is-lp is-big w-nav-link">SMS</a><a href="/product/bland-chat" id="blog_hero" class="nav_menu-link is-lp is-big w-nav-link">Chat</a><a href="/product/conversational-pathways" id="blog_hero" class="nav_menu-link is-lp is-big w-nav-link">Pathways</a></nav></div><a href="/for-enterprises" id="enterprise_page" data-element="nav-link" class="nav_menu-link is-lp w-nav-link">Enterprises</a><div data-hover="true" data-delay="0" data-element="nav-drop" class="nav_drop w-dropdown"><div class="nav_drop-toggle w-dropdown-toggle"><div class="nav_menu-link is-lp">Case Studies</div><div class="nav_drop-chevron w-icon-dropdown-toggle"></div></div><nav data-element="nav-drop-list" class="nav_drop-list w-dropdown-list"><div class="nav_drop-bridge"></div><a href="/case-studies/mpa" id="parade" class="nav_menu-link is-lp w-nav-link">MyPlanAdvocate</a><a href="/case-studies/needle" id="parade" class="nav_menu-link is-lp w-nav-link">Needle</a><a href="/case-studies/monster-rg" id="monster_rg" class="nav_menu-link is-lp w-nav-link">MonsterRG</a><a href="/case-studies/oxycell" id="monster_rg" class="nav_menu-link is-lp w-nav-link">Oxycell</a><a href="/case-studies/slash" id="monster_rg" class="nav_menu-link is-lp w-nav-link">Slash</a><a href="/case-studies/ihfa" id="ihfa" class="nav_menu-link is-lp w-nav-link">Idaho Finance</a><a href="/case-studies/kin-insurance" id="monster_rg" class="nav_menu-link is-lp w-nav-link">Kin Insurance</a><a href="http://www.bland.ai/case-studies/financial-services-outbound" id="monster_rg" class="nav_menu-link is-lp w-nav-link">Financial Services</a></nav></div><div data-hover="true" data-delay="0" data-element="nav-drop" class="nav_drop w-dropdown"><div class="nav_drop-toggle w-dropdown-toggle"><div class="nav_drop-chevron w-icon-dropdown-toggle"></div><div class="nav_menu-link is-lp">Resources</div></div><nav data-element="nav-drop-list" class="nav_drop-list w-dropdown-list"><div class="nav_drop-bridge"></div><a href="/blog" id="blog_hero" class="nav_menu-link is-lp w-nav-link">Blog</a><a href="https://docs.bland.ai" id="docs_hero" target="_blank" class="nav_menu-link is-lp w-nav-link">Docs</a><a href="https://university.bland.ai" id="university_hero" target="_blank" class="nav_menu-link is-lp w-nav-link">University</a><div data-hover="true" data-delay="0" data-element="nav-drop" class="nav_drop w-dropdown"><div class="nav_drop-toggle w-dropdown-toggle"><div class="nav_menu-link is-lp">Use Cases</div><div class="nav_drop-chevron w-icon-dropdown-toggle"></div></div><nav data-element="nav-drop-list" class="nav_drop-list is-sec w-dropdown-list"><div class="nav_drop-bridge is-sec"></div><a href="/use-cases/inbound-call-handling" class="nav_menu-link is-lp w-dropdown-link">Inbound Call Handling</a><a href="/use-cases/appointment-booking" id="appointment_booking_hero" class="nav_menu-link is-lp w-nav-link">Appointment Booking</a><a href="/use-cases/financial-intakes" id="financial_intake_hero" class="nav_menu-link is-lp w-nav-link">Financial Intake</a><a href="/use-cases/logistics-id-verification" id="logistics_id_verification_hero" class="nav_menu-link is-lp w-nav-link">Logistics ID Verification</a></nav></div></nav></div></div><div class="nav_btns-wrap"><a href="https://app.bland.ai/login" id="signup" data-element="nav-link" class="nav-menu-link is-lp is-sec w-nav-link">Sign in</a><a href="https://app.bland.ai/signup" id="signup" data-element="nav-link" class="nav-menu-link is-lp w-nav-link">Sign up</a><a id="enterprise_hero_btn" data-element="nav-btn" href="/enterprise" class="button_new w-inline-block"><div>Talk to Us</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="icon-16"><rect x="8" y="3" width="2" height="2" rx="0.5" transform="rotate(90 8 3)" fill="currentColor"></rect><rect x="12" y="3" width="2" height="2" rx="0.5" transform="rotate(90 12 3)" fill="currentColor"></rect><rect x="6" y="1" width="2" height="2" rx="0.5" transform="rotate(90 6 1)" fill="currentColor"></rect><rect x="10" y="1" width="2" height="2" rx="0.5" transform="rotate(90 10 1)" fill="currentColor"></rect><rect x="10" y="5" width="2" height="2" rx="0.5" transform="rotate(90 10 5)" fill="currentColor"></rect><rect x="14" y="5" width="2" height="2" rx="0.5" transform="rotate(90 14 5)" fill="currentColor"></rect><rect x="12" y="7" width="2" height="2" rx="0.5" transform="rotate(90 12 7)" fill="currentColor"></rect><rect x="16" y="7" width="2" height="2" rx="0.5" transform="rotate(90 16 7)" fill="currentColor"></rect><rect x="10" y="9" width="2" height="2" rx="0.5" transform="rotate(90 10 9)" fill="currentColor"></rect><rect x="14" y="9" width="2" height="2" rx="0.5" transform="rotate(90 14 9)" fill="currentColor"></rect><rect x="8" y="11" width="2" height="2" rx="0.5" transform="rotate(90 8 11)" fill="currentColor"></rect><rect x="12" y="11" width="2" height="2" rx="0.5" transform="rotate(90 12 11)" fill="currentColor"></rect><rect x="6" y="13" width="2" height="2" rx="0.5" transform="rotate(90 6 13)" fill="currentColor"></rect><rect x="10" y="13" width="2" height="2" rx="0.5" transform="rotate(90 10 13)" fill="currentColor"></rect></svg></a></div><div class="hide w-embed"><style>
+@media only screen and (max-width: 991px){
+	.nav_drop-list .nav_menu-link.is-lp:not(div){margin-bottom: 1rem;}
+	.nav_drop-list .nav_menu-link.is-lp:nth-last-child(1){margin-bottom:0rem!important;}
+	.nav_menu.is-lp.w-nav-menu a{opacity: 1!important;}
+	.nav_menu.is-lp.w-nav-menu:has(.nav_drop-toggle.w-dropdown-toggle.w--nav-dropdown-toggle-open.w--open) :is(a, .nav_drop-toggle){opacity: .4!important;}
+  .nav_menu.is-lp.w-nav-menu:has(.nav_drop-toggle.w-dropdown-toggle.w--nav-dropdown-toggle-open.w--open) .nav_drop.w-dropdown.w--nav-dropdown-open a{opacity: 1!important;}
+}
+@media only screen and (max-width: 479px){
+	.nav_drop-list .nav_menu-link.is-lp:not(div){margin-bottom: 1.5rem;}
+	.nav_drop-list .nav_menu-link.is-lp:not(div):nth-last-child(1){margin-bottom:0rem!important;}
+}
+
+.navigation_new.is-white .nav_button-line.is-lp{background: var(--lp-black);}
+.navigation_new.is-white:has(.nav_button.padding-0.w-nav-button.w--open) .nav_button-line.is-lp{background: var(--lp-black);}
+.navigation_new.is-white :is(.nav_menu-link, .nav_brand){color: var(--lp-black);}
+.navigation_new.is-white .nav_container{background: var(--lp-white);}
+.navigation_new.is-white .lp_button{background: var(--lp-black); color: var(--lp-white); }
+.navigation_new.is-white .nav_drop-list{background: var(--lp-white);}
+.navigation_new.is-white .nav_drop-list :is(a, .nav_menu-link){color: var(--lp-black);}
+
+
+@media only screen and (min-width: 991px){
+.navigation_new.is-white .lp_button:hover{border-color: var(--lp-red); background: var(--lp-red);}
+.navigation_new.is-white:has(.nav_button.padding-0.w-nav-button.w--open) .nav_menu.is-lp.w-nav-menu[data-nav-menu-open]{background: transparent!importnat; position: relative!important;}
+.navigation_new:has(.nav_button.padding-0.w-nav-button.w--open) .nav_menu.is-lp.w-nav-menu[data-nav-menu-open]{background: transparent!importnat; position: relative!important;}
+.navigation_new.is-white .nav_drop-chevron{color: var(--lp-black);}
+}
+@media only screen and (max-width: 990px){
+.navigation_new.is-white .nav_menu{background: var(--lp-white);}
+.navigation_new.is-white .nav_btns-wrap {border-top: 1px solid rgba(0, 0, 0, 0.1);}
+.navigation_new.is-white .nav_drop-chevron{color: var(--lp-black);}
+.navigation_new.is-white .lp_button{background: var(--lp-white); color: var(--lp-black); border: none;}
+.navigation_new.is-white .nav_button.is-in{background: var(--lp-white); border: 1px solid var(--lp-black);}
+}
+
+
+
+[data-page="black-start"] :is(.nav_container, .nav_drop-list){background: var(--lp-black)!important;}
+[data-page="black-start"] .nav_drop-chevron{color: var(--lp-white)!important;}
+[data-page="black-start"] .nav_menu-link{color: var(--lp-white)!important;}
+[data-page="black-start"] nav .lp_button{background: var(--lp-white)!important;color: var(--lp-black)!important;}
+@media only screen and (min-width: 991px){
+[data-page="black-start"] .lp_button:hover{background: var(--lp-red)!important; color: var(--lp-white)!important;}
+}
+
+[data-page="black-start"] .nav_brand{color: var(--lp-white)!important;}
+
+@media only screen and (max-width: 990px){
+[data-page="black-start"] .navigation_new.is-white :is(.lp_button.is-nav, .nav_container, .nav_drop-list, .nav_menu, .nav_button){background: var(--lp-black)!important;}
+[data-page="black-start"] .navigation_new.is-white :is(.nav_menu-link, .navigation_new.is-white, .nav_drop-chevron){color: var(--lp-white)!important;}
+[data-page="black-start"] .navigation_new.is-white .lp_button.is-nav{background: var(--lp-black)!important;color: var(--lp-white)!important;}
+[data-page="black-start"] .navigation_new.is-white .nav_button{border: 1px solid rgb(from var(--lp-white) r g b / 0.2)!important; }
+
+
+[data-page="black-start"] .navigation_new.is-white .nav_button-line{background: var(--lp-white)!important;}
+}
+</style></div></nav><div class="hide-desktop"><div class="nav_button padding-0 w-nav-button"><div class="nav_button is-in"><div class="nav_button-line is-lp"></div><div class="nav_button-line is-lp"></div></div></div></div><div class="display-none w-embed"><style>
+@media (max-width: 767px) {
+  .nav_menu {
+    position: fixed;
+    inset: 0px;
+    height: calc(100dvh - 130px);
+    overflow-y: auto;
+    overflow-x: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+  .links-wrap {
+    overflow: visible !important;
+    height: auto;
+  }
+  .nav_drop-list {
+    position: static;
+    max-height: none;
+    overflow: visible;
+  }
+  .nav_menu {
+    touch-action: pan-y;
+  }
+}
+</style></div></div></div><div class="cookie-wrapper"><div id="modal2" class="bottom-cookie-wrapper"><div class="cookie-content"><div class="cookie-consent-to-wrap color-white"><p>When you visit our website, cookies and similar technologies may be used by our online data partners or vendors to associate these activities with personal information they or others have about you. We (or service providers on our behalf) may then send communications or marketing to these email addresses or phone numbers. Accepting this also means you confirm that you are 18 years of age or older, have read our <a href="/legal/privacy-policy" class="inline-link is-white">Privacy Policy</a>, and consent to receiving a demonstration call.</p></div></div><div class="cookie-content bottom-banner-content"><a id="close-modal3" data-w-id="bae4ced7-9364-303a-b40a-af8eae23207d" href="#" class="inline-link is-white">Reject All</a><a id="close-modal2" data-w-id="bae4ced7-9364-303a-b40a-af8eae23207f" href="#" class="lp_button is--outline is-new w-button">Accept All</a><a id="close-modal-x2" data-w-id="bae4ced7-9364-303a-b40a-af8eae232081" href="#" class="white-x w-inline-block"></a></div><div class="hide w-embed w-script"><script>
+  // Cookie helpers
+  function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+  }
+
+  function setCookie(name, value, days) {
+    const expires = new Date();
+    expires.setTime(expires.getTime() + days * 24 * 60 * 60 * 1000);
+    document.cookie = `${name}=${value};expires=${expires.toUTCString()};path=/`;
+  }
+
+  function deleteCookie(name) {
+    document.cookie = `${name}=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;`;
+  }
+
+  // Load tracking scripts
+  function loadTrackingScripts() {
+    // Default Form Manager
+    const dfm = document.createElement('script');
+    dfm.src = "https://pixel-cdn.default.com";
+    dfm.async = true;
+    document.head.appendChild(dfm);
+
+    // Fox Tracker
+    const fox = document.createElement('img');
+    fox.src = "https://jelly.mdhv.io/v1/star.gif?pid=iCejbJ73OamL5xjHyOkCry3yCfhW&src=mh&evt=hi";
+    fox.style.display = "none";
+    fox.width = 0;
+    fox.height = 0;
+    document.body.appendChild(fox);
+
+    // Default Tag Manager
+    const dtm = document.createElement('script');
+    dtm.src = "https://import-cdn.default.com/gtm.js";
+    dtm.async = true;
+    document.head.appendChild(dtm);
+
+    // Google Tag Manager
+    const gtm = document.createElement('script');
+    gtm.innerHTML = `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KGHSRXZW');`;
+    document.head.appendChild(gtm);
+
+    // Turnstile
+    const turnstileScript = document.createElement('script');
+    turnstileScript.src = "https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback";
+    document.head.appendChild(turnstileScript);
+
+    const blandDiv = document.createElement('div');
+    blandDiv.id = "bland-turnstile";
+    blandDiv.className = "bland-turnstile";
+    blandDiv.setAttribute("data-sitekey", "0x4AAAAAAAxjZ88OGKNpTFL2");
+    document.body.appendChild(blandDiv);
+
+    const blandLogic = document.createElement('script');
+    blandLogic.innerHTML = `
+      window.__turnstile_response = "";
+      window.onloadTurnstileCallback = function () {
+        turnstile.render("#bland-turnstile", {
+          sitekey: "0x4AAAAAAAxjZ88OGKNpTFL2",
+          action: "welcome_call",
+          callback: function (token) {
+            window.__turnstile_response = token
+          },
+        });
+      };`;
+    document.head.appendChild(blandLogic);
+
+    // gtag
+    const gtag1 = document.createElement('script');
+    gtag1.src = "https://www.googletagmanager.com/gtag/js?id=AW-11433301113";
+    gtag1.async = true;
+    document.head.appendChild(gtag1);
+
+    const gtag2 = document.createElement('script');
+    gtag2.innerHTML = `
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'AW-11433301113');`;
+    document.head.appendChild(gtag2);
+
+    // Reb2b
+    const rebScript = document.createElement('script');
+    rebScript.innerHTML = `!function () {
+      var reb2b = window.reb2b = window.reb2b || [];
+      if (reb2b.invoked) return;
+      reb2b.invoked = true;
+      reb2b.methods = ["identify", "collect"];
+      reb2b.factory = function (method) {
+        return function () {
+          var args = Array.prototype.slice.call(arguments);
+          args.unshift(method);
+          reb2b.push(args);
+          return reb2b;
+        };
+      };
+      for (var i = 0; i < reb2b.methods.length; i++) {
+        var key = reb2b.methods[i];
+        reb2b[key] = reb2b.factory(key);
+      }
+      reb2b.load = function (key) {
+        var script = document.createElement("script");
+        script.type = "text/javascript";
+        script.async = true;
+        script.src = "https://s3-us-west-2.amazonaws.com/b2bjsstore/b/" + key + "/reb2b.js.gz";
+        var first = document.getElementsByTagName("script")[0];
+        first.parentNode.insertBefore(script, first);
+      };
+      reb2b.SNIPPET_VERSION = "1.0.1";
+      reb2b.load("RGNLKQHJJ36Q");
+    }();`;
+    document.body.appendChild(rebScript);
+
+    // LinkedIn
+    const linkedin1 = document.createElement('script');
+    linkedin1.type = 'text/javascript';
+    linkedin1.innerHTML = `_linkedin_partner_id = "5896988";
+      window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
+      window._linkedin_data_partner_ids.push(_linkedin_partner_id);`;
+    document.body.appendChild(linkedin1);
+
+    const linkedin2 = document.createElement('script');
+    linkedin2.type = 'text/javascript';
+    linkedin2.innerHTML = `(function(l) {
+      if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+      window.lintrk.q=[]}
+      var s = document.getElementsByTagName("script")[0];
+      var b = document.createElement("script");
+      b.type = "text/javascript";b.async = true;
+      b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+      s.parentNode.insertBefore(b, s);})(window.lintrk);`;
+    document.body.appendChild(linkedin2);
+  }
+
+  // Remove tracking scripts
+  function removeTrackingScripts() {
+    const patterns = [
+      'pixel-cdn.default.com',
+      'jelly.mdhv.io',
+      'import-cdn.default.com',
+      'googletagmanager.com',
+      'cloudflare.com/turnstile',
+      's3-us-west-2.amazonaws.com/b2bjsstore',
+      'snap.licdn.com',
+      'px.ads.linkedin.com'
+    ];
+
+    document.querySelectorAll('script[src], img[src]').forEach(el => {
+      if (patterns.some(p => el.src.includes(p))) {
+        el.remove();
+      }
+    });
+
+    document.querySelectorAll('noscript').forEach(el => {
+      if (patterns.some(p => el.innerHTML.includes(p))) {
+        el.remove();
+      }
+    });
+
+    // Clear globals
+    window.dataLayer = [];
+    window.reb2b = { push: () => {}, invoked: true };
+    window.lintrk = () => {};
+  }
+
+  // Main logic
+  document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('modal2');
+    const closeBtn2 = document.getElementById('close-modal2'); // Turn ON
+    const closeBtn3 = document.getElementById('close-modal3'); // Turn OFF
+
+    const cookieName = 'modalClosed2';
+    const toggleCookie = 'disableTrackingScripts';
+
+    // Respect stored preference
+    if (getCookie(toggleCookie) === 'true') {
+      removeTrackingScripts();
+    } else {
+      loadTrackingScripts();
+    }
+
+    // Hide modal if user closed it before
+    if (getCookie(cookieName)) {
+      if (modal) modal.remove();
+    }
+
+    // Turn cookies ON
+    if (closeBtn2) {
+      closeBtn2.addEventListener('click', function () {
+        if (modal) modal.remove();
+        deleteCookie(toggleCookie); // Enable tracking
+        setCookie(cookieName, 'ok', 7);
+        loadTrackingScripts();
+      });
+    }
+
+    // Turn cookies OFF
+    if (closeBtn3) {
+      closeBtn3.addEventListener('click', function () {
+        if (modal) modal.remove();
+        setCookie(toggleCookie, 'true', 365); // Disable tracking
+        setCookie(cookieName, 'ok', 7);
+        removeTrackingScripts();
+      });
+    }
+  });
+</script></div></div></div></header><div class="hide w-embed"><style>  
+  html { font-size: 1rem; }
+  @media screen and (max-width:1328px) { html { font-size: calc(0.011904761904761751rem + 1.1904761904761907vw); } }
+  @media screen and (max-width:992px) { html { font-size: calc(0.19642857142857145rem + 0.8928571428571428vw); } }
+  @media screen and (max-width:767px) { html { font-size: 1rem; } }
+  
+  @media only screen and (min-width: 991px){
+  [class*="button"]:hover [class*="arrow"]{transform: translateX(.25rem);}
+  .blog_item-link:hover .blog_image{transform: scale(1.1);}
+  }
+  @media only screen and (max-width: 991px){
+  .section_navbar:has(.nav_button.padding-0.w-nav-button.w--open) .nav_button-line:nth-child(1){transform: translateY(.1625rem) rotate(-45deg);}
+  .section_navbar:has(.nav_button.padding-0.w-nav-button.w--open) .nav_button-line:nth-child(2){transform: translateY(-.1625rem) rotate(45deg);}
+  .section_navbar:has(.nav_button.padding-0.w-nav-button.w--open) .nav_button-line{background: var(--lp-white);} 
+  .nav_button-line{background: var(--lp-white);} 
+  .nav_button.padding-0.w-nav-button.w--open{background: var(--lp-black);}
+  }
+</style>
+<style id="color-themes" speed="0.4" ease="power1.out" percent-from-top="50" min-width="0">
+[element-theme="1"] {
+--lp-page--background: var(--light--background);
+--lp-page--text: var(--light--text);
+}
+[element-theme="2"] {
+--lp-page--background: var(--dark--background);
+--lp-page--text: var(--dark--text);
+}
+.lp_form-block.is-hero:hover{width: 25rem;}
+.lp_form-block.is-hero:has(.lp_cta_input:focus){width: 25rem;}
+@media only screen and (max-width: 767px){
+.lp_form-block.is-hero:hover{width: 20rem;}
+.lp_form-block.is-hero:has(.lp_cta_input:focus){width: 20rem;}
+}
+@media only screen and (max-width: 767px){
+.lp_form-block.is-hero{width: 100%;}
+.lp_form-block.is-hero:hover{width: 100%;}
+.lp_form-block.is-hero:has(.lp_cta_input:focus){width: 100%;}
+}
+.logo-video-wrap{overflow: hidden;-webkit-mask-image: -webkit-radial-gradient(white, black);
+}
+.blinker{
+-webkit-animation: 1s blink step-end infinite;
+  -moz-animation: 1s blink step-end infinite;
+  -ms-animation: 1s blink step-end infinite;
+  -o-animation: 1s blink step-end infinite;
+  animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+  from, to {opacity: 0;}
+  50%{opacity: 1;}
+}
+
+@-moz-keyframes blink {
+  from, to {opacity: 0;}
+  50%{opacity: 1;}
+}
+
+@-webkit-keyframes blink {
+  from, to {opacity: 0;}
+  50%{opacity: 1;}
+}
+
+@-ms-keyframes blink {
+  from, to {opacity: 0;}
+  50%{opacity: 1;}
+}
+
+@-o-keyframes blink {
+  from, to {opacity: 0;}
+  50%{opacity: 1;}
+}
+.input-wrap:has(.lp_hero_input:focus) .blinker{animation:none;opacity: 0;}
+.blinker.is-none{-webkit-animation: none;
+  -moz-animation: none;
+  -ms-animation: none;
+  -o-animation: none;
+  animation: none;}
+  
+.lp_button.is-red.is-rebrand{background-position: calc(100% - 0.5rem) center;}
+</style></div><main><div class="p-relative"><section class="lp-new_hero rel is-grid"><div class="container-1280 is-hero"><div class="hero-heading_wrap"><h1 class="new-h1">Meet Norm, the first Voice AI builder</h1><p class="p-20_500 ls-4 lh-1-4 color-text_sec">Just tell it what you want to build</p></div><div class="hero-right_wrap"><div class="hero-svg_wrap"><svg xmlns="http://www.w3.org/2000/svg" class="hero-svg norm-hero-alt__mascot" width="100%" viewBox="0 0 60 40" fill="none" data-element="norm"><path d="M37.0443 36.5446C37.8763 36.5453 38.5998 36.8832 38.8359 37.5538C39.0847 38.2608 38.6521 38.9192 37.9987 39.1892C36.7114 39.743 35.3729 39.9102 34.0312 39.9461C31.2855 40.0194 28.5 40.019 25.7565 39.9382C24.4444 39.8996 23.1817 39.7327 21.9987 39.1826C21.3617 38.8881 21.094 38.2289 21.2109 37.6453C21.3354 37.0241 21.8718 36.5458 22.6367 36.5446L29.9193 36.5119H29.9245L37.0443 36.5446Z" fill="currentColor"></path><g transform="translate(0.5944003230387683,2.73618132731941)"><path d="M18.2279 8.11419C21.2891 8.11419 23.7214 10.7352 23.7214 13.7668C23.7212 16.6631 21.2643 19.3253 18.2031 19.3253C15.1912 19.3251 12.7346 16.7885 12.7344 13.8112C12.7344 10.8116 15.1324 8.11424 18.2279 8.11419Z" fill="currentColor" data-element="eye-l"></path></g><g transform="translate(0.26648880455567864,2.787289672252686)"><path d="M46.8464 8.35996C49.9076 8.35996 52.3398 10.981 52.3398 14.0126C52.3398 16.9089 49.8828 19.5711 46.8216 19.5711C43.8096 19.5709 41.353 17.0343 41.3529 14.057C41.3529 11.0574 43.7509 8.35997 46.8464 8.35996Z" fill="currentColor" data-element="eye-r"></path></g><path fill-rule="evenodd" clip-rule="evenodd" d="M44.4271 0C51.0614 7.04811e-05 56.2125 4.89773 56.9206 11.0229H58.5013C58.9534 11.0229 59.3609 11.2167 59.638 11.5523C59.8994 11.869 59.9999 12.2535 60 12.6007C60 12.8217 59.9615 13.2102 59.6862 13.5563C59.3771 13.9449 58.9283 14.0884 58.5013 14.0884H56.8672C55.9625 20.1918 50.5882 24.9936 44.3945 24.9936C42.024 24.9935 39.8718 24.3709 38.043 23.3111C38.1103 23.6293 38.1571 23.9598 38.1706 24.3099C38.2812 27.1829 36.3639 29.9178 33.3711 30.0344C31.3 30.1149 29.7382 28.9059 28.7682 27.378C28.5233 26.9963 28.4008 26.5434 28.4609 26.0969C28.5227 25.6393 28.7745 25.2239 29.2031 24.9544L29.2057 24.9531L29.2096 24.9505C29.4786 24.7804 29.8507 24.6866 30.237 24.7661C30.6453 24.8503 31.0109 25.1158 31.263 25.5583L31.332 25.6668C31.6891 26.2079 32.3051 26.6978 33.2031 26.663C34.3258 26.6193 35.2076 25.7481 35.1523 24.3151C35.1399 23.9927 35.1193 23.7305 34.9674 23.3164L32.7578 17.3226L32.7565 17.3199L32.7552 17.316C32.7215 17.2214 32.694 17.1239 32.6732 17.0245C32.1253 15.6146 31.8268 14.0988 31.8268 12.5445C31.8268 12.221 31.8351 11.959 31.8542 11.7026C31.6017 11.5869 31.3902 11.5057 31.1914 11.449C30.8667 11.3565 30.5366 11.3157 30.0716 11.3157C29.546 11.3157 29.2062 11.3438 28.8841 11.4216C28.6951 11.4673 28.4948 11.535 28.2539 11.6386C28.2763 11.9248 28.2904 12.2088 28.2904 12.5445C28.2903 19.3012 22.5246 24.9936 15.6315 24.9936C8.80078 24.9934 3.99189 19.8714 3.1849 14.1132H1.57161C1.23715 14.1131 0.824473 14.0283 0.485677 13.7237C0.151517 13.4231 0.016762 13.0243 0.00130208 12.6504L0 12.5772L0.00130208 12.5014C0.0161701 12.1244 0.147044 11.68 0.554688 11.3627C0.931938 11.0691 1.38077 11.0229 1.69922 11.0229H3.17578C3.84023 4.86427 9.41807 0.000132853 15.7148 0C21.7318 0 25.9269 3.66761 27.6966 8.67109C27.9148 8.60079 28.1295 8.54181 28.349 8.49461C28.892 8.37782 29.4253 8.34035 30.0716 8.34035C30.9273 8.34038 31.6254 8.41188 32.4128 8.65932C34.3005 3.39001 38.8511 0 44.4271 0ZM15.7122 3.20933C10.3712 3.20957 6.12514 7.30162 6.125 12.5197C6.125 17.7235 10.4142 22.1241 15.6641 22.1241C20.9136 22.1239 25.1783 17.7459 25.1784 12.5445C25.1783 7.36611 21.0315 3.20935 15.7122 3.20933ZM44.4271 3.20933C39.0235 3.20933 34.905 7.31053 34.9049 12.5445C34.905 17.7339 39.0597 22.1238 44.3945 22.1241C49.6371 22.1241 53.8502 17.7532 53.8503 12.5445C53.8502 7.36959 49.6102 3.20941 44.4271 3.20933Z" fill="currentColor"></path></svg></div><div class="mb0 w-form"><form id="wf-form-Norm-Form" name="wf-form-Norm-Form" data-name="Norm Form" redirect="https://app.bland.ai/signup" data-redirect="https://app.bland.ai/signup" method="get" class="hero-ai_wrap" data-wf-page-id="68cbee39b457bbb25fe98ee8" data-wf-element-id="ec61dc54-9625-d080-29f7-2e701c212c86"><div><div class="hero-ai_message-holder"><textarea class="hero-ai_message w-input" maxlength="5000" name="Norm-create" data-name="Norm create" placeholder="|" data-element="norm-input" id="Norm-create" required=""></textarea><input type="submit" data-wait="" data-btn="submit" class="hero-ai_button w-button" value=""/></div></div><div class="hero-ai-cards_wrap"><button data-element="norm-btn" data-copy="Create a customer service agent for my SaaS..." type="button" class="hero-ai_card"><p>Create a customer service agent</p></button><div data-element="norm-btn" data-copy="Build an appointment scheduling bot for my clinic..." type="button" class="hero-ai_card"><p>Build an appointment scheduling bot</p></div><div data-element="norm-btn" data-copy="Make a lead qualification agent for my pipeline..." type="button" class="hero-ai_card"><p>Make a lead qualification agent</p></div><div data-element="norm-btn" data-copy="Set up an outbound sales caller that handles objections..." type="button" class="hero-ai_card"><p>Set up an outbound sales caller</p></div></div></form><div class="w-form-done"><div>Thank you! Your submission has been received!</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div></div></div></div><div class="norm-controller"></div></section><section class="lp-trust"><div class="container-1280 is-trust"><div class="trust-heading"><h2 class="fw500 ls-4">Where every call counts</h2></div><div class="trust-grid"><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9c5db5e90bd0c89358_Travelperk.avif" loading="eager" alt="travelperk logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9caf2f50470ee3082d_Samsara.avif" loading="eager" alt="samsara logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b042ee8149319d913_First%20Financial.avif" loading="eager" alt="First Financial Bank logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b997eeb28c8a48a0d_Kin.avif" loading="eager" alt="Kin logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9c17c80dacc21ec4a5_Signant.avif" loading="eager" alt="Signant health logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3df68996f066907e584cb_Nuite%CC%81e.avif" loading="eager" alt="Nuitée logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b99fe0304b77beecf_Innovacer.avif" loading="lazy" alt="Innovacer logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b59d3eac596212eb7_Evenup.avif" loading="lazy" alt="Evenup logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b4a366f85bf1842ce_Corgi.avif" loading="lazy" alt="Corgi logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b430858290e5d44ce_Mutual%20of%20Omaha.avif" loading="lazy" alt="Mutual of Omaha logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3dd9b38517e8a834226a6_Medallion.avif" loading="lazy" alt="Medallion logo" class="trust-card-img_src"/><div class="trust-card_abs"></div></div><div class="trust-card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b962eab2dc01cc01716f08_Mpa.avif" loading="lazy" alt="" class="trust-card-img_src"/><div class="trust-card_abs"></div></div></div></div><div class="display-none w-embed"><style>
+/* kartica dobija bg 20% */
+.trust-card:hover{
+  background-color: rgba(var(--trust-hover-rgb), 0.2);
+  border-color: var(--trust-hover-color);
+}
+
+/* abs layer dobija istu boju ali jaču */
+.trust-card:hover .trust-card_abs{
+  opacity: 1;
+  background-color: rgba(var(--trust-hover-rgb), 1);
+}
+</style></div></section><section data-section="audio" class="lp-benefits"><div class="container-1280 is-benefits"><div class="benefits-left"><h2 class="new-h2">Automate calls without sacrificing quality</h2><div class="benefits-left_flex"><div class="benefits-text_wrap"><p class="p-16_500">65%+ FCR</p><p class="p-14_500 color-grey">First-call resolution across all deployments</p></div><div class="benefits-text_wrap"><p class="p-16_500">Live in 30 days</p><p class="p-14_500 color-grey">From kickoff to production-grade agents</p></div><div class="benefits-text_wrap"><p class="p-16_500">$100s of millions saved</p><p class="p-14_500 color-grey">Annual cost reduction for enterprise customers</p></div><div class="benefits-text_wrap"><p class="p-16_500">Increased CSAT</p><p class="p-14_500 color-grey">Consistent, patient interactions every time</p></div><div class="benefits-text_wrap"><p class="p-16_500">Millions of calls automated</p><p class="p-14_500 color-grey">Repetitive calls handled without human agents</p></div></div><div class="benefits-buttons_wrap"><a href="/for-enterprises" class="button_new is-newest w-inline-block"><div>Book a demo</div></a><a href="/product/bland-voice" class="lp_button is-second_newest w-inline-block"><div>Learn more</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 15 14" fill="none" class="icon-16"><path d="M7.99006 13.253L6.71165 11.9888L11.1506 7.54989H0V5.7033H11.1506L6.71165 1.27148L7.99006 0.000176907L14.6165 6.6266L7.99006 13.253Z" fill="currentColor"></path></svg></a></div></div><div id="call-lottie" class="benefits-right p-relative"><audio id="call-audio" muted="" playsinline="playsinline" preload="auto"><source src="https://cdn.sanity.io/files/tmmoa80b/production/7c3fbd277a18b3c09fd8e78d2f967424fc80b697.wav" type="audio/wav"/></audio><div class="benefits-panel_top"><button type="button" class="benefit-mute_btn"><svg width="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-icon="volume-off" class="icon-16"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg><svg width="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" data-icon="volume-on" class="icon-16 hide"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M15.54 8.46a5 5 0 0 1 0 7.07"></path><path d="M19.07 4.93a10 10 0 0 1 0 14.14"></path></svg><div data-text="">Hear a real call</div></button></div></div></div></section><section data-section="red"><div class="container-1280 is-cta"><div class="hero-v2_heading is-s"><h2 class="lp_hero_h1 is-4 ls-4">Try for yourself</h2><p class="p-20_400 mw-470"><strong>Have our AI agent give you a call right now.<br/></strong></p></div><div class="form-0 is-new w-form"><form method="get" class="lp_hero_form-wrap is-newest" data-memory="true" data-form="multistep" name="wf-form-Hero-Form" data-name="Hero Form" data-get-input="true" data-enter="true" id="wf-form-Hero-Form" data-submit="true" data-wf-page-id="68cbee39b457bbb25fe98ee8" data-wf-element-id="6893ef75-df0c-5fa7-2d09-f1dbfb064519"><div data-form="step" class="input_wrap is-new"><div class="input-wrap is-new is-red"><input class="lp_hero_input is-newest is-red-bg w-input" maxlength="256" name="user_phone" data-name="user_phone" placeholder="Your Phone Number" type="tel" id="user_phone" required=""/></div><div class="_2-card-grid"><a data-form="next-btn" id="w-node-_6893ef75-df0c-5fa7-2d09-f1dbfb06451e-5fe98ee8" href="#" class="lp_button is-white is-newer w-inline-block"><div>Continue</div></a></div></div><div data-form="step" class="input_wrap is-new"><div data-hover="false" data-delay="0" id="persona-select" fs-selectcustom-element="dropdown" class="form-dd w-dropdown"><div class="form-dd-toggle w-dropdown-toggle"><div class="w-icon-dropdown-toggle"></div><div>Select your use case</div></div><nav class="w-dropdown-list"><a href="#" class="form-dd-link w-dropdown-link">Payment Collection (American Female)</a><select id="persona_type" name="persona_type" data-name="persona_type" required="" class="display-none w-select"><option value="">Select your use case and voice</option><option value="scheduling">Appointment Scheduling (American Female)</option><option value="leadqual">Lead Qualification (British Female)</option><option value="customerservice">Customer Service (American Male)</option><option value="payments">Payment Collection (American Female)</option></select></nav></div><div class="_2-card-grid is-2"><a data-form="back-btn" href="#" class="button_new w-inline-block"><div>Back</div></a><a data-form="next-btn" id="w-node-_6893ef75-df0c-5fa7-2d09-f1dbfb064535-5fe98ee8" href="#" class="lp_button is-white is-newer w-inline-block"><div>Continue</div></a></div></div><div data-form="step" class="input_wrap is-new"><div class="input-wrap is-new is-red"><input class="lp_hero_input is-newest is-red-bg w-input" maxlength="256" name="email" data-name="email" placeholder="Your Business Email" type="email" id="email" required=""/></div><div class="_2-card-grid"><a data-form="back-btn" href="#" class="button_new w-inline-block"><div>Back</div></a><input type="submit" data-wait="Let&#x27;s Talk" data-form="submit-btn" class="lp_button is-white is-newer w-button" value="Let&#x27;s Talk"/></div></div></form><div class="lp_success_new w-form-done"><div>You are now receiving a call from Blandy. <br/>Please make sure your &quot;do not disturb&quot; is off so she can reach you.</div></div><div class="w-form-fail"><div>Oops! Something went wrong while submitting the form.</div></div><div class="form-error-wrap"><div><a href="https://app.bland.ai/login" target="_blank" class="span-link">Sign up</a> to continue making calls</div></div></div></div></section><section class="lp-infra"><div class="container-1280 is-infra"><div class="infra-heading is-vert"><h2 class="fw500 mw-50 ls-4">Self-hosted infrastructure optimized for speed, security, and reliability</h2><a href="/model-governance" class="button_new mw-164 w-inline-block"><div>Learn more</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="icon-16"><rect x="8" y="3" width="2" height="2" rx="0.5" transform="rotate(90 8 3)" fill="currentColor"></rect><rect x="12" y="3" width="2" height="2" rx="0.5" transform="rotate(90 12 3)" fill="currentColor"></rect><rect x="6" y="1" width="2" height="2" rx="0.5" transform="rotate(90 6 1)" fill="currentColor"></rect><rect x="10" y="1" width="2" height="2" rx="0.5" transform="rotate(90 10 1)" fill="currentColor"></rect><rect x="10" y="5" width="2" height="2" rx="0.5" transform="rotate(90 10 5)" fill="currentColor"></rect><rect x="14" y="5" width="2" height="2" rx="0.5" transform="rotate(90 14 5)" fill="currentColor"></rect><rect x="12" y="7" width="2" height="2" rx="0.5" transform="rotate(90 12 7)" fill="currentColor"></rect><rect x="16" y="7" width="2" height="2" rx="0.5" transform="rotate(90 16 7)" fill="currentColor"></rect><rect x="10" y="9" width="2" height="2" rx="0.5" transform="rotate(90 10 9)" fill="currentColor"></rect><rect x="14" y="9" width="2" height="2" rx="0.5" transform="rotate(90 14 9)" fill="currentColor"></rect><rect x="8" y="11" width="2" height="2" rx="0.5" transform="rotate(90 8 11)" fill="currentColor"></rect><rect x="12" y="11" width="2" height="2" rx="0.5" transform="rotate(90 12 11)" fill="currentColor"></rect><rect x="6" y="13" width="2" height="2" rx="0.5" transform="rotate(90 6 13)" fill="currentColor"></rect><rect x="10" y="13" width="2" height="2" rx="0.5" transform="rotate(90 10 13)" fill="currentColor"></rect></svg></a></div><div class="infra-grid"><div class="infra-card"><div class="infra-card_top"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3eb6ae5a44be22d7d5fe6_Global%20Voice.avif" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3eb6ae5a44be22d7d5fe6_Global%20Voice-p-500.avif 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3eb6ae5a44be22d7d5fe6_Global%20Voice-p-800.avif 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3eb6ae5a44be22d7d5fe6_Global%20Voice-p-1080.avif 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3eb6ae5a44be22d7d5fe6_Global%20Voice.avif 2516w" alt="Global Voice Delivery Network"/></div><div class="infra-card_bot"><h3 class="p-20_500 ls-4">Global Voice Delivery Network</h3><p class="p-16 color-black60">The fastest, most reliable, and secure voice AI, powered by a proprietary orchestration framework, edge delivery network, and dedicated, latency-optimized CPUs and GPUs.</p></div></div><div class="infra-card"><div class="infra-card_top"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec0fbe83d7add3a586b8_custom%20models.avif" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec0fbe83d7add3a586b8_custom%20models-p-500.avif 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec0fbe83d7add3a586b8_custom%20models-p-800.avif 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec0fbe83d7add3a586b8_custom%20models-p-1080.avif 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec0fbe83d7add3a586b8_custom%20models.avif 2516w" alt="Custom models built for realt-ime conversation"/></div><div class="infra-card_bot"><h3 class="p-20_500 ls-4">Custom models built for realt-time conversation</h3><p class="p-16 color-black60">Proprietary transcription, inference, and TTS models served on optimized V100s for the fastest, most consistent conversations possible.</p></div></div><div class="infra-card"><div class="infra-card_top"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90345d55d03f82f47e_airtight%20data.avif" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90345d55d03f82f47e_airtight%20data-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90345d55d03f82f47e_airtight%20data-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90345d55d03f82f47e_airtight%20data-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90345d55d03f82f47e_airtight%20data.avif 2512w" alt="data privacy and security"/></div><div class="infra-card_bot"><h3 class="p-20_500 ls-4">Airtight data privacy and security</h3><p class="p-16 color-black60">We control the entire stack — hardware, models, and servers — so your customers’ data never passes through a third-party provider. No sudden changes to your model, pricing, or terms of service.</p></div></div><div class="infra-card"><div class="infra-card_top"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90ab8d9d3713c72bf1_Dedicated%20instances.avif" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90ab8d9d3713c72bf1_Dedicated%20instances-p-500.avif 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90ab8d9d3713c72bf1_Dedicated%20instances-p-800.avif 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90ab8d9d3713c72bf1_Dedicated%20instances-p-1080.avif 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ec90ab8d9d3713c72bf1_Dedicated%20instances.avif 2516w" alt="deployment flexibility"/></div><div class="infra-card_bot"><h3 class="p-20_500 ls-4">Dedicated instances and deployment flexibility</h3><p class="p-16 color-black60">Each customer gets their own dedicated instance, ensuring maximum security, reliability, and control. Deploy on Bland infrastructure, on-premise, or in your VPC. </p></div></div></div></div></section><section class="lp-customers"><div class="container-1280 is-customers"><div class="customers-top"><div class="cta-content"><h2 class="fw500 ls-4"><span>AI call centers for  </span><br/><span class="headline-change"><span class="changer">Financial Services</span><span class="changer is-1">Insurance</span><span class="changer is-2">Healthcare</span></span></h2><a href="/for-enterprises" class="button_new w-inline-block"><div>See all customer stories</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="icon-16"><rect x="8" y="3" width="2" height="2" rx="0.5" transform="rotate(90 8 3)" fill="currentColor"></rect><rect x="12" y="3" width="2" height="2" rx="0.5" transform="rotate(90 12 3)" fill="currentColor"></rect><rect x="6" y="1" width="2" height="2" rx="0.5" transform="rotate(90 6 1)" fill="currentColor"></rect><rect x="10" y="1" width="2" height="2" rx="0.5" transform="rotate(90 10 1)" fill="currentColor"></rect><rect x="10" y="5" width="2" height="2" rx="0.5" transform="rotate(90 10 5)" fill="currentColor"></rect><rect x="14" y="5" width="2" height="2" rx="0.5" transform="rotate(90 14 5)" fill="currentColor"></rect><rect x="12" y="7" width="2" height="2" rx="0.5" transform="rotate(90 12 7)" fill="currentColor"></rect><rect x="16" y="7" width="2" height="2" rx="0.5" transform="rotate(90 16 7)" fill="currentColor"></rect><rect x="10" y="9" width="2" height="2" rx="0.5" transform="rotate(90 10 9)" fill="currentColor"></rect><rect x="14" y="9" width="2" height="2" rx="0.5" transform="rotate(90 14 9)" fill="currentColor"></rect><rect x="8" y="11" width="2" height="2" rx="0.5" transform="rotate(90 8 11)" fill="currentColor"></rect><rect x="12" y="11" width="2" height="2" rx="0.5" transform="rotate(90 12 11)" fill="currentColor"></rect><rect x="6" y="13" width="2" height="2" rx="0.5" transform="rotate(90 6 13)" fill="currentColor"></rect><rect x="10" y="13" width="2" height="2" rx="0.5" transform="rotate(90 10 13)" fill="currentColor"></rect></svg></a></div><div class="swiper is-customers w-dyn-list"><div role="list" class="swiper-wrapper is-customers w-dyn-items"><div role="listitem" class="swiper-slide is-customers w-dyn-item"><a href="/case-studies/ihfa" class="customer-slide w-inline-block"><img src="https://cdn.prod.website-files.com/66ce25ac617e8a493bd3fa09/69c18e25879b2a161bb52189_Idaho%20housing%20logo%20-%20black.png" STYLE="max-height: 4.5rem;" class="logo is-auto"/><p style="color:#232a45"><span class="new_h3">$750K/yr </span><span>saved</span></p><p class="text-size-medium fw500 text-color-gray">&quot;Within just a week or so, I just knew immediately Bland was the one.&quot;</p><div><p class="text-size-regular">Greg Blake</p><p class="text-color-gray text-size-regular">CIO</p></div></a></div><div role="listitem" class="swiper-slide is-customers w-dyn-item"><a href="/case-studies/mpa" class="customer-slide w-inline-block"><img src="https://cdn.prod.website-files.com/66ce25ac617e8a493bd3fa09/69c10e35dcbfc2d8f5db9491_mpa%201.svg" STYLE="max-height: 2.5em;" class="logo is-auto"/><p style="color:#ca071a"><span class="new_h3">262x </span><span>ROI</span></p><p class="text-size-medium fw500 text-color-gray">&quot;Most people think Emily is a real person.&quot;</p><div><p class="text-size-regular">Jake Peters</p><p class="text-color-gray text-size-regular">VP of Growth</p></div></a></div><div role="listitem" class="swiper-slide is-customers w-dyn-item"><a href="/case-studies/needle" class="customer-slide w-inline-block"><img src="https://cdn.prod.website-files.com/66ce25ac617e8a493bd3fa09/69c1946fe30ae3796f3e1907_need%20logo.png" STYLE="max-height: 2.5rem;" class="logo is-auto"/><p style="color:#048244"><span class="new_h3">800K+ </span><span>calls completed</span></p><p class="text-size-medium fw500 text-color-gray">&quot;Our product wouldn&#x27;t exist without Bland. Full stop.&quot;</p><div><p class="text-size-regular">Brennan Staheli</p><p class="text-color-gray text-size-regular">CEO</p></div></a></div></div></div></div><div class="customers-swiper_holder"></div></div></section><section class="lp-workflow"><div class="container-1280 is-workflow"><div class="workflow-sb"><h2 class="fw500 mw-20ch ls-4">The most robust agent development platform</h2><a href="/for-enterprises" class="button_new mw-164 w-inline-block"><div>Book a demo</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="icon-16"><rect x="8" y="3" width="2" height="2" rx="0.5" transform="rotate(90 8 3)" fill="currentColor"></rect><rect x="12" y="3" width="2" height="2" rx="0.5" transform="rotate(90 12 3)" fill="currentColor"></rect><rect x="6" y="1" width="2" height="2" rx="0.5" transform="rotate(90 6 1)" fill="currentColor"></rect><rect x="10" y="1" width="2" height="2" rx="0.5" transform="rotate(90 10 1)" fill="currentColor"></rect><rect x="10" y="5" width="2" height="2" rx="0.5" transform="rotate(90 10 5)" fill="currentColor"></rect><rect x="14" y="5" width="2" height="2" rx="0.5" transform="rotate(90 14 5)" fill="currentColor"></rect><rect x="12" y="7" width="2" height="2" rx="0.5" transform="rotate(90 12 7)" fill="currentColor"></rect><rect x="16" y="7" width="2" height="2" rx="0.5" transform="rotate(90 16 7)" fill="currentColor"></rect><rect x="10" y="9" width="2" height="2" rx="0.5" transform="rotate(90 10 9)" fill="currentColor"></rect><rect x="14" y="9" width="2" height="2" rx="0.5" transform="rotate(90 14 9)" fill="currentColor"></rect><rect x="8" y="11" width="2" height="2" rx="0.5" transform="rotate(90 8 11)" fill="currentColor"></rect><rect x="12" y="11" width="2" height="2" rx="0.5" transform="rotate(90 12 11)" fill="currentColor"></rect><rect x="6" y="13" width="2" height="2" rx="0.5" transform="rotate(90 6 13)" fill="currentColor"></rect><rect x="10" y="13" width="2" height="2" rx="0.5" transform="rotate(90 10 13)" fill="currentColor"></rect></svg></a></div><div class="workflow-flex"><div data-subsection="build" class="workflow_holder"><div class="workflow-tab_text"><div class="workflow-step"><div class="workflow-step_cube"></div><div class="p-14">01</div></div><h3 class="fw400 ls-4">Build</h3><p class="p-16 color-black60">Build AI agents that perform like your best human agents. Test real-world scenarios so you can validate behavior and launch confidently in production.</p></div><div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="workflow-tabs is-reverse w-tabs"><div class="workflow-tabs_menu w-tab-menu"><a data-w-tab="Tab 1" class="workflow-accordion w-inline-block w-tab-link w--current"><div class="workflow-acc_top"><div class="p-20_400">Personas</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Unified AI agents that work across all your phone numbers and use cases. Build once, use everywhere.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 2" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">Pathways</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Design how your AI phone agent handles a conversation, from greeting the caller to completing actions like collecting information, or transferring the call.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 3" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">Voices</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Choose a voice from our library or clone custom voices from short audio samples.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a></div><div class="workflow-tabs_content w-tab-content"><div data-w-tab="Tab 1" class="home_tab-img-wrap w-tab-pane w--tab-active"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f09692a18ad27c4ef8b5_bland_build_tab_1.png" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f09692a18ad27c4ef8b5_bland_build_tab_1-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f09692a18ad27c4ef8b5_bland_build_tab_1-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f09692a18ad27c4ef8b5_bland_build_tab_1-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f09692a18ad27c4ef8b5_bland_build_tab_1.png 1500w" alt=""/></div><div data-w-tab="Tab 2" class="home_tab-img-wrap w-tab-pane"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096f21250bddb9f94c0_bland_build_tab_2.png" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096f21250bddb9f94c0_bland_build_tab_2-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096f21250bddb9f94c0_bland_build_tab_2-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096f21250bddb9f94c0_bland_build_tab_2-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096f21250bddb9f94c0_bland_build_tab_2.png 1502w" alt=""/></div><div data-w-tab="Tab 3" class="home_tab-img-wrap w-tab-pane"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096b1b3e05e4bfd4e75_bland_build_tab_3.png" loading="lazy" sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096b1b3e05e4bfd4e75_bland_build_tab_3-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096b1b3e05e4bfd4e75_bland_build_tab_3-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096b1b3e05e4bfd4e75_bland_build_tab_3-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f096b1b3e05e4bfd4e75_bland_build_tab_3.png 1502w" alt=""/></div></div></div></div><div data-subsection="deploy" class="workflow_holder"><div class="workflow-tab_text"><div class="workflow-step"><div class="workflow-step_cube"></div><div class="p-14">02</div></div><h3 class="fw400 ls-4">Deploy</h3><p class="p-16 color-black60">Bland integrates with major telephony providers and enterprise systems, with support for custom API integrations and batch calls.</p></div><div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="workflow-tabs is-reverse w-tabs"><div class="workflow-tabs_menu w-tab-menu"><a data-w-tab="Tab 1" class="workflow-accordion w-inline-block w-tab-link w--current"><div class="workflow-acc_top"><div class="p-20_400">SIP</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Configure and manage SIP for call routing to and from Bland, with guided setup wizard, auto-discovery, test calls, and number porting.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 2" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">API for Sending Calls</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Send calls directly through the Bland platform, or build your own architecture around our API.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 3" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">Batch Calls</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Upload a list of recipients via CSV and send a high-volume of calls all at once.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a></div><div class="workflow-tabs_content w-tab-content"><div data-w-tab="Tab 1" class="home_tab-img-wrap w-tab-pane w--tab-active"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f145c4acfba8681d63ac_bland_deploy_tab_1-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f145c4acfba8681d63ac_bland_deploy_tab_1-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f145c4acfba8681d63ac_bland_deploy_tab_1-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f145c4acfba8681d63ac_bland_deploy_tab_1.png 1500w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f145c4acfba8681d63ac_bland_deploy_tab_1.png" loading="lazy"/></div><div data-w-tab="Tab 2" class="home_tab-img-wrap w-tab-pane"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1454b40b4494327c12a_bland_deploy_tab_2-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1454b40b4494327c12a_bland_deploy_tab_2-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1454b40b4494327c12a_bland_deploy_tab_2-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1454b40b4494327c12a_bland_deploy_tab_2.png 1502w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1454b40b4494327c12a_bland_deploy_tab_2.png" loading="lazy"/></div><div data-w-tab="Tab 3" class="home_tab-img-wrap w-tab-pane"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b46533da5b12abf78953f1_bland_deploy_integrations-p-500.avif 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b46533da5b12abf78953f1_bland_deploy_integrations-p-800.avif 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b46533da5b12abf78953f1_bland_deploy_integrations.avif 1502w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b46533da5b12abf78953f1_bland_deploy_integrations.avif" loading="lazy"/></div></div></div></div><div data-subsection="monitor" class="workflow_holder"><div class="workflow-tab_text"><div class="workflow-step"><div class="workflow-step_cube"></div><div class="p-14">03</div></div><h3 class="fw400 ls-4">Monitor</h3><p class="p-16 color-black60">Bland provides real-time visibility into agent behavior and records every call, enabling you to extract key insights for analysis and reporting.</p></div><div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="workflow-tabs is-reverse w-tabs"><div class="workflow-tabs_menu w-tab-menu"><a data-w-tab="Tab 1" class="workflow-accordion w-inline-block w-tab-link w--current"><div class="workflow-acc_top"><div class="p-20_400">Citations</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Extract specific data from call transcripts and use it for custom analysis and reporting.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 2" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">Outcomes</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Transform call data by extracting structured data with custom JavaScript that runs automatically in your post-call workflow.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 3" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">Compliance &amp; Guardrails</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Guardrails keep your AI agent safe and on track. They monitor calls in real time and step in if rules are broken or a human handoff is needed.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a></div><div class="workflow-tabs_content w-tab-content"><div data-w-tab="Tab 1" class="home_tab-img-wrap w-tab-pane w--tab-active"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bd1de41bdcef326f34_bland_monitor_tab_1-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bd1de41bdcef326f34_bland_monitor_tab_1-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bd1de41bdcef326f34_bland_monitor_tab_1-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bd1de41bdcef326f34_bland_monitor_tab_1.png 1485w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bd1de41bdcef326f34_bland_monitor_tab_1.png" loading="lazy"/></div><div data-w-tab="Tab 2" class="home_tab-img-wrap w-tab-pane"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdd3a2357d1a2c85af_bland_monitor_tab_2-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdd3a2357d1a2c85af_bland_monitor_tab_2-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdd3a2357d1a2c85af_bland_monitor_tab_2-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdd3a2357d1a2c85af_bland_monitor_tab_2.png 1502w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdd3a2357d1a2c85af_bland_monitor_tab_2.png" loading="lazy"/></div><div data-w-tab="Tab 3" class="home_tab-img-wrap w-tab-pane"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdc6464fd53f527223_bland_monitor_tab_3-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdc6464fd53f527223_bland_monitor_tab_3-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdc6464fd53f527223_bland_monitor_tab_3-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdc6464fd53f527223_bland_monitor_tab_3.png 1502w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f1bdc6464fd53f527223_bland_monitor_tab_3.png" loading="lazy"/></div></div></div></div><div data-subsection="refine" class="workflow_holder"><div class="workflow-tab_text"><div class="workflow-step"><div class="workflow-step_cube"></div><div class="p-14">04</div></div><h3 class="fw400 ls-4">Refine</h3><p class="p-16 color-black60">AI agents improve with every interaction, identifying knowledge gaps and continuously updating their responses.</p></div><div data-current="Tab 1" data-easing="ease" data-duration-in="300" data-duration-out="100" class="workflow-tabs is-reverse w-tabs"><div class="workflow-tabs_menu w-tab-menu"><a data-w-tab="Tab 1" class="workflow-accordion w-inline-block w-tab-link w--current"><div class="workflow-acc_top"><div class="p-20_400">Testbed &amp; Standards</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Standard allows for node-level regression testing, so you can backtest prompt changes and run simulations to catch regressions before they reach production.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a><a data-w-tab="Tab 2" class="workflow-accordion w-inline-block w-tab-link"><div class="workflow-acc_top"><div class="p-20_400">KB gaps</div><svg width="100%" viewBox="0 0 16 16" fill="none" class="workflow-caret"><path d="M4 6L8 10L12 6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></div><div class="workflow-accordion_bot"><div class="accordion-spacer"></div><p class="p-16 color-black60">Knowledge Base Gaps automatically detect unanswered questions during calls so your team can address them, making your agents more capable and improving resolution rates.</p></div><div class="workflow-line_wrap"><div class="workflow-line_fill"></div></div></a></div><div class="workflow-tabs_content w-tab-content"><div data-w-tab="Tab 1" class="home_tab-img-wrap w-tab-pane w--tab-active"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a2653ba21d198dd43_bland_refine_tab_1-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a2653ba21d198dd43_bland_refine_tab_1-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a2653ba21d198dd43_bland_refine_tab_1-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a2653ba21d198dd43_bland_refine_tab_1.png 1500w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a2653ba21d198dd43_bland_refine_tab_1.png" loading="lazy"/></div><div data-w-tab="Tab 2" class="home_tab-img-wrap w-tab-pane"><img sizes="100vw" srcset="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a8b4b9ec661af3738_bland_refine_tab_2-p-500.png 500w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a8b4b9ec661af3738_bland_refine_tab_2-p-800.png 800w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a8b4b9ec661af3738_bland_refine_tab_2-p-1080.png 1080w, https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a8b4b9ec661af3738_bland_refine_tab_2.png 1500w" alt="" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2f29a8b4b9ec661af3738_bland_refine_tab_2.png" loading="lazy"/></div></div></div></div></div></div><div class="display-none w-embed"><style>
+.workflow-accordion_bot{
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease;
+}
+
+.workflow-accordion.w--current .workflow-accordion_bot{
+  max-height: 500px;
+}
+
+.workflow-tabs_content {
+  position: relative;
+}
+
+.workflow-tabs_content .w-tab-pane {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+  display: block !important;
+}
+
+.workflow-tabs_content .w-tab-pane.w--tab-active {
+  position: relative;
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.workflow-caret {
+  transition: transform 0.3s ease;
+}
+
+.workflow-accordion.w--current .workflow-caret {
+  transform: rotate(180deg);
+}
+
+/* line */
+.workflow-line_wrap {
+
+  overflow: hidden;
+}
+
+.workflow-line_fill {
+  transition: none;
+}
+
+/* aktivna linija se puni preko JS */
+.workflow-accordion.is-filling .workflow-line_fill {
+  transition: width 5s linear;
+  width: 100%;
+}
+</style></div></section><section class="lp-integ"><div class="container-1280 is-integ"><div class="integ-space_b"><div class="integ-heading"><h2 class="p-66_500 ls-4">Integrations</h2><p class="p-20_400">Build custom workflows with our open REST API &amp; webhooks</p></div></div><div class="integ-grid_5"><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ee33c27aeac8357bce86_Salesforce.com_logo.svg%201.avif" loading="lazy" alt="salesforce logo" class="mw-54"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ef2330a3fb4104ea3998_nice.avif" loading="lazy" alt="nice logo" class="mw-98"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ef535b74ee3ddec776d3_vonage.avif" loading="lazy" alt="Vonage logo" class="mw-127"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3ef835acea15d698d735b_slack.avif" loading="lazy" alt="slack logo" class="mw-110"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3efb36f264009b9d95fdc_hubspot.avif" loading="lazy" alt="Hubspot logo" class="mw-102"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3f03c42bfae49040f3fc2_twilio.avif" loading="lazy" alt="twilio logo" class="mw-102"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3f08ae58a4e37a2df8c8d_Five9-Emblem%201.avif" loading="lazy" alt="five9 logo" class="mw-75"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3f0c8fec93799d1978855_connect.avif" loading="lazy" alt="amazon connect logo" class="mw-116"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3f0c8f3a8030ac03157c4_calendly.avif" loading="lazy" alt="calendly logo" class="mw-118"/></div><div class="integ-logo_card"><img src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b3f0c8ba6f1825fe7f8ae2_zapier.svg" loading="lazy" alt="Zapier logo" class="mw-104"/></div></div></div></section><section class="lp-cta_new"><div class="container-1280 is-cta_new"><div class="cta-heading is-start"><h2 class="new-h1">Build AI that people actually want to talk to</h2><p class="p-20_500 ls-2 color-text_sec mw-28">Deploy production-grade voice agents in 30 days. Book a demo to get started today.</p><a id="enterprise_hero_btn" href="/enterprise" class="button_new w-inline-block"><div>Talk to Us</div><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 16 16" fill="none" class="icon-16"><rect x="8" y="3" width="2" height="2" rx="0.5" transform="rotate(90 8 3)" fill="currentColor"></rect><rect x="12" y="3" width="2" height="2" rx="0.5" transform="rotate(90 12 3)" fill="currentColor"></rect><rect x="6" y="1" width="2" height="2" rx="0.5" transform="rotate(90 6 1)" fill="currentColor"></rect><rect x="10" y="1" width="2" height="2" rx="0.5" transform="rotate(90 10 1)" fill="currentColor"></rect><rect x="10" y="5" width="2" height="2" rx="0.5" transform="rotate(90 10 5)" fill="currentColor"></rect><rect x="14" y="5" width="2" height="2" rx="0.5" transform="rotate(90 14 5)" fill="currentColor"></rect><rect x="12" y="7" width="2" height="2" rx="0.5" transform="rotate(90 12 7)" fill="currentColor"></rect><rect x="16" y="7" width="2" height="2" rx="0.5" transform="rotate(90 16 7)" fill="currentColor"></rect><rect x="10" y="9" width="2" height="2" rx="0.5" transform="rotate(90 10 9)" fill="currentColor"></rect><rect x="14" y="9" width="2" height="2" rx="0.5" transform="rotate(90 14 9)" fill="currentColor"></rect><rect x="8" y="11" width="2" height="2" rx="0.5" transform="rotate(90 8 11)" fill="currentColor"></rect><rect x="12" y="11" width="2" height="2" rx="0.5" transform="rotate(90 12 11)" fill="currentColor"></rect><rect x="6" y="13" width="2" height="2" rx="0.5" transform="rotate(90 6 13)" fill="currentColor"></rect><rect x="10" y="13" width="2" height="2" rx="0.5" transform="rotate(90 10 13)" fill="currentColor"></rect></svg></a></div></div></section></div></main><section class="lp-footer"><div class="container-1280 is-footer"><div class="footer-top"><div class="footer-links_wrap"><div class="footer-links_holder"><div class="p-14_500 is-upper">Industries</div><div class="footer-links_flex"><a href="/conversational-ai-for-hospitality" class="footer-link">Hospitality</a><a href="/conversational-ai-for-banks" class="footer-link">Banks</a><a href="/conversational-ai-for-telecom" class="footer-link">Telecom</a><a href="/conversational-ai-in-healthcare" class="footer-link">Healthcare</a><a href="/conversational-ai-for-insurance" class="footer-link">Insurance</a></div></div><div class="footer-links_holder"><div class="p-14_500 is-upper">Use Cases</div><div class="footer-links_flex"><a href="/use-cases/logistics-id-verification" class="footer-link">Logistics</a><a href="/use-cases/appointment-booking" class="footer-link">Healthcare</a><a href="/ai-receptionist" class="footer-link">Receptionist</a><a href="/use-cases/appointment-booking" class="footer-link">Appointments</a><a href="/ai-customer-service" class="footer-link">Customer Service</a></div></div><div class="footer-links_holder"><div class="p-14_500 is-upper">Resources</div><div class="footer-links_flex"><a href="/blog" class="footer-link">Blog</a><a href="https://docs.bland.ai/welcome-to-bland" target="_blank" class="footer-link">Docs</a><a href="https://jobs.ashbyhq.com/bland" target="_blank" class="footer-link">Careers</a><a href="https://zapier.com/apps/bland-ai/integrations" target="_blank" class="footer-link">No Code University</a></div></div><div class="footer-links_holder"><div class="p-14_500 is-upper">Support</div><div class="footer-links_flex"><a href="/legal/terms-of-service" class="footer-link">Terms</a><a href="/legal/privacy-policy" class="footer-link">Privacy Policy</a><a href="/legal/cookie-policy" class="footer-link">Cookie Policy</a><a href="/legal/sub-processor-list" class="footer-link">Sub-processor</a></div></div></div><div name="Form Block" class="is-footer_form"><form name="Form" action="https://hubspotonwebflow.com/api/forms/8ff7aea4-011a-4271-bd49-29dbabed52c6" method="POST" enctype="multipart/form-data" data-name="Webflow Newsletter Form" data-wf-hs-form="webflowHubSpotForm" data-wf-page-id="68cbee39b457bbb25fe98ee8" data-wf-element-id="92d0f46e-302f-fe09-4147-6e1172bc4a68"><div class="input-wrap is-newsletter_footer"><input type="email" name="email" required="" id="email" placeholder="Subscribe to our newsletter" class="lp_hero_input is-newsletter_footer"/><input type="hidden" name="hutk" value=""/><input type="hidden" name="ipAddress" value=""/><input type="hidden" name="pageUri" value=""/><input type="hidden" name="pageId" value=""/><input type="hidden" name="pageName" value=""/><button type="submit" class="u-button-main is-newsletter_footer"><svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 24 24" fill="none" class="mw-24"><g clip-path="url(#clip0_457_1511)"><path d="M16.1765 10.9967L10.8125 5.63275L12.2265 4.21875L20.0045 11.9967L12.2265 19.7747L10.8125 18.3608L16.1765 12.9967L17.0039 11.9967L16.1765 10.9967Z" fill="currentColor"></path><path d="M9.364 10.9967L4 5.63275L5.414 4.21875L13.192 11.9967L5.414 19.7747L4 18.3608L9.364 12.9967L10.1914 11.9967L9.364 10.9967Z" fill="currentColor"></path></g><defs><clippath id="clip0_457_1511"><rect width="24" height="24" fill="currentColor"></rect></clippath></defs></svg></button></div></form></div></div><a href="/" aria-current="page" class="footer-logo_wrap w-inline-block w--current"><img loading="lazy" src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69b2bc43b09ce93f292ea475_Bland.svg" alt="" class="footer-logo"/></a></div><div class="w-embed"><style>
+  .lp_hero_input.is-newsletter_footer::placeholder{
+color: white;
+font-weight: 400;
+font-size: 1rem;
+}
+</style></div></section></div><script src="https://d3e54v103j8qbb.cloudfront.net/js/jquery-3.5.1.min.dc5e7f18c8.js?site=66cddff3a7bb08f0bc015747" type="text/javascript" integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/js/bland-ai-staging.schunk.e0c428ff9737f919.js" type="text/javascript" integrity="sha384-ar82P9eriV3WGOD8Lkag3kPxxkFE9GSaSPalaC0MRlR/5aACGoFQNfyqt0dNuYvt" crossorigin="anonymous"></script><script src="https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/js/bland-ai-staging.058e9954.b752f0ba6bc9189c.js" type="text/javascript" integrity="sha384-ZaguHjCsNZRaXGqJ8MZDT/4U9n2smo/sJfDiMnj2/OBgO3dOWoHmPlGYKU7xNRwq" crossorigin="anonymous"></script><script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+
+<script>
+  // Function to extract UTM parameters from the current URL
+  function getURLParameters() {
+    const params = new URLSearchParams(window.location.search);
+    return params;
+  }
+
+  // Function for adding UTM parameters to the base URL
+  function buildURLWithParameters(baseURL, queryParams) {
+    let url = baseURL;
+    if (queryParams.toString() !== '') {
+      url += (url.includes('?') ? '&' : '?') + [...queryParams].map(([key, value]) => `${key}=${value}`).join('&');
+    }
+    return url;
+  }
+
+  // Function for redirecting to a page with UTM parameters
+  function redirectToCustomPage(buttonId) {
+    const queryParams = getURLParameters();
+    const baseUrls = {
+      'utm-button-1': 'https://bland.ai/enterprise',
+      'utm-button-2': 'https://bland.ai/enterprise',
+      'utm-button-3': 'https://bland.ai/enterprise',
+      'utm-button-4': 'https://bland.ai/enterprise',
+      'utm-button-5': 'https://bland.ai/enterprise',
+      'utm-button-6': 'https://bland.ai/enterprise',
+    };
+    const selectedURL = baseUrls[buttonId] || 'https://bland.ai/enterprise';
+    const finalURL = buildURLWithParameters(selectedURL, queryParams);
+    
+    // Follow the link
+    window.location.href = finalURL;
+  }
+
+  // Function for adding a button click listener
+  function addClickListener(buttonId, callback) {
+    const buttonElement = document.getElementById(buttonId);
+    if (buttonElement) {
+      buttonElement.addEventListener('click', callback);
+    }
+  }
+
+  // Add click handlers for all buttons
+  addClickListener('utm-button-1', () => redirectToCustomPage('utm-button-1'));
+  addClickListener('utm-button-2', () => redirectToCustomPage('utm-button-2'));
+  addClickListener('utm-button-3', () => redirectToCustomPage('utm-button-3'));
+  addClickListener('utm-button-4', () => redirectToCustomPage('utm-button-4'));
+  addClickListener('utm-button-5', () => redirectToCustomPage('utm-button-5'));
+  addClickListener('utm-button-6', () => redirectToCustomPage('utm-button-6'));
+</script>
+
+<script>
+    // Define an array of background colors to cycle through
+    const highlightBackgrounds = ['#F9A900', '#FF5900', '#CA071A', '#5E007E'];
+
+    // Helper function to calculate the brightness of a color
+    function getBrightness(hexColor) {
+        const r = parseInt(hexColor.substr(1, 2), 16); // Red component
+        const g = parseInt(hexColor.substr(3, 2), 16); // Green component
+        const b = parseInt(hexColor.substr(5, 2), 16); // Blue component
+        return (r * 0.299 + g * 0.587 + b * 0.114) / 255; // Weighted brightness formula
+    }
+
+    // Helper function to determine text color for optimal contrast
+    function getTextColor(hexColor) {
+        return getBrightness(hexColor) > 0.5 ? '#151515' : '#FFFDF5';
+    }
+
+    // Create a <style> element to dynamically update ::selection styles
+    const style = document.createElement('style');
+    document.head.appendChild(style);
+
+    // Counter for cycling through highlight colors
+    let selectionCount = 0;
+
+    // Function to update ::selection styles dynamically
+    function updateSelectionStyle() {
+        const currentBackground = highlightBackgrounds[selectionCount % highlightBackgrounds.length];
+        const currentTextColor = getTextColor(currentBackground);
+        style.textContent = `
+            ::selection {
+                background: ${currentBackground} !important;
+                color: ${currentTextColor} !important;
+            }
+        `;
+    }
+
+    // Initialize the ::selection style
+    updateSelectionStyle();
+
+    // Event listener for mouseup to cycle selection colors
+    document.addEventListener('mouseup', () => {
+        const selectionText = window.getSelection().toString(); // Get selected text
+        if (selectionText.length > 0) {
+            selectionCount++; // Increment selection counter
+            updateSelectionStyle(); // Update the selection style
+        }
+    });
+
+    // Optional: Handle cases when the user clears the selection
+    document.addEventListener('selectionchange', () => {
+        if (window.getSelection().toString().length === 0) {
+            // No reset required here unless intended
+        }
+    });
+</script>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const links = document.querySelectorAll('a[href^="/"], a[href^="https://bland.ai"]');
+  const params = new URLSearchParams(window.location.search);
+
+  links.forEach(link => {
+    link.addEventListener('click', function(event) {
+      const href = new URL(link.href);
+      params.forEach((value, key) => {
+        href.searchParams.set(key, value);
+      });
+      link.href = href.toString();
+    });
+  });
+});
+</script>
+
+<!-- Start of HubSpot Embed Code -->
+<script type="text/javascript" id="hs-script-loader" async defer src="//js.hs-scripts.com/45282614.js"></script>
+<!-- End of HubSpot Embed Code -->
+
+<script type="text/javascript">
+(function(l) {
+if (!l){window.lintrk = function(a,b){window.lintrk.q.push([a,b])};
+window.lintrk.q=[]}
+var s = document.getElementsByTagName("script")[0];
+var b = document.createElement("script");
+b.type = "text/javascript";b.async = true;
+b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js";
+s.parentNode.insertBefore(b, s);})(window.lintrk);
+</script>
+
+<script>
+  DelveCookieConsent.init({
+    message: "We use cookies to enhance your development experience and keep your data secure.",
+    privacyPolicyUrl: "https://delve.co/privacy-policy",
+    manageScriptTags: true,
+    preferencesDisplayMode: 'button', // use 'button' to show preferences in modal
+    categories: {
+      necessary: {
+        enabled: true,
+        cookieTable: {
+          cookies: [
+            { name: 'delve_cookie_consent', purpose: 'Stores your cookie preferences', duration: '1 year' },
+            { name: 'session_id', purpose: 'Keeps you logged in', duration: 'Session' },
+            { name: 'csrf_token', purpose: 'Security protection', duration: 'Session' }
+          ]
+        }
+      },
+      analytics: {
+        enabled: false,
+        cookieTable: {
+          cookies: [
+            { name: '_ga*', purpose: 'Google Analytics – Distinguishes users', duration: '2 years' },
+            { name: '_gid', purpose: 'Google Analytics – Session identification', duration: '24 hours' },
+            { name: '_gat', purpose: 'Google Analytics – Throttles request rate', duration: '1 minute' },
+            { name: 'analytics_session', purpose: 'Custom analytics session', duration: 'Session' }
+          ]
+        }
+      },
+      marketing: {
+        enabled: false,
+        cookieTable: {
+          cookies: [
+            { name: '_fbp*', purpose: 'Facebook Browser Pixel', duration: '3 months' },
+            { name: '_fbc*', purpose: 'Facebook Click ID', duration: '7 days' },
+            { name: '_gcl_au', purpose: 'Google Ads attribution', duration: '90 days' },
+            { name: 'utm_*', purpose: 'UTM tracking parameters', duration: 'Session' }
+          ]
+        }
+      },
+      preferences: {
+        enabled: false,
+        cookieTable: {
+          cookies: [
+            { name: 'theme_*', purpose: 'UI theme preferences', duration: '1 year' },
+            { name: 'lang_*', purpose: 'Language preferences', duration: '1 year' },
+            { name: 'user_prefs', purpose: 'General user settings', duration: '1 year' }
+          ]
+        }
+      }
+    }
+  });
+</script>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TTDMQ78F"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) --><script>
+document.addEventListener("DOMContentLoaded", async () => {
+  const section = document.querySelector('[data-section="audio"]');
+  const muteBtn = document.querySelector(".benefit-mute_btn");
+  const textEl = document.querySelector("[data-text]");
+  const iconOff = document.querySelector('[data-icon="volume-off"]');
+  const iconOn = document.querySelector('[data-icon="volume-on"]');
+  const audio = document.querySelector("#call-audio");
+  const lottieContainer = document.querySelector("#call-lottie");
+
+  if (!section || !audio || !lottieContainer || typeof lottie === "undefined") return;
+
+  const LOTTIE_URL =
+    "https://cdn.prod.website-files.com/66cddff3a7bb08f0bc015747/69bed28ff97d1b957d6e8fb4_live-call-no-button.json";
+
+  let animation = null;
+  let lottieReady = false;
+  let audioReady = false;
+  let hasEnteredTrigger = false;
+  let hasStarted = false;
+  let isStarting = false;
+  let lottieData = null;
+
+  audio.muted = true;
+  audio.playsInline = true;
+  audio.preload = "auto";
+
+  function setMutedUI(isMuted) {
+    if (textEl) {
+      textEl.textContent = isMuted ? "Hear a real call" : "Mute";
+    }
+
+    if (iconOff) {
+      iconOff.classList.toggle("hide", !isMuted);
+    }
+
+    if (iconOn) {
+      iconOn.classList.toggle("hide", isMuted);
+    }
+  }
+
+  function bothReady() {
+    return !!(audioReady && lottieReady && animation);
+  }
+
+  function shouldTrigger() {
+    const rect = section.getBoundingClientRect();
+    return rect.top + rect.height * 0.2 <= window.innerHeight;
+  }
+
+  function resetBoth() {
+    try {
+      audio.pause();
+      audio.currentTime = 0;
+    } catch (e) {}
+
+    try {
+      animation.stop();
+      animation.goToAndStop(0, true);
+    } catch (e) {}
+  }
+
+  async function warmupAudio() {
+    try {
+      await audio.play();
+      audio.pause();
+      audio.currentTime = 0;
+      audioReady = true;
+    } catch (e) {
+      // Some browsers may block this before interaction.
+      // Keep listening for readiness events below.
+    }
+  }
+
+  async function preloadLottie() {
+    try {
+      const res = await fetch(LOTTIE_URL, { credentials: "omit" });
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+      lottieData = await res.json();
+    } catch (e) {
+      console.warn("[Audio/Lottie] Failed to preload Lottie JSON:", e);
+    }
+  }
+
+  function initLottie() {
+    if (!lottieData) return;
+
+    animation = lottie.loadAnimation({
+      container: lottieContainer,
+      renderer: "svg",
+      loop: false,
+      autoplay: false,
+      animationData: lottieData,
+      rendererSettings: {
+        preserveAspectRatio: "xMidYMid meet"
+      }
+    });
+
+    animation.addEventListener("DOMLoaded", () => {
+      lottieReady = true;
+
+      try {
+        animation.goToAndStop(0, true);
+      } catch (e) {}
+
+      checkTrigger();
+    });
+  }
+
+  async function startBothFromZero() {
+    if (!bothReady() || isStarting) return;
+
+    isStarting = true;
+    resetBoth();
+
+    try {
+      // Start audio first — usually better for perceived sync
+      await audio.play();
+    } catch (e) {
+      console.warn("[Audio/Lottie] Audio play failed:", e);
+    }
+
+    try {
+      animation.play();
+    } catch (e) {
+      console.warn("[Audio/Lottie] Lottie play failed:", e);
+    }
+
+    hasStarted = true;
+    isStarting = false;
+  }
+
+  async function checkTrigger() {
+    if (!bothReady()) return;
+
+    const active = shouldTrigger();
+
+    if (active && !hasEnteredTrigger) {
+      hasEnteredTrigger = true;
+      await startBothFromZero();
+    }
+
+    if (!active && hasEnteredTrigger) {
+      hasEnteredTrigger = false;
+    }
+  }
+
+  function markAudioReady() {
+    audioReady = true;
+    checkTrigger();
+  }
+
+  audio.addEventListener("loadedmetadata", markAudioReady);
+  audio.addEventListener("canplay", markAudioReady);
+  audio.addEventListener("canplaythrough", markAudioReady);
+
+  if (muteBtn) {
+    muteBtn.addEventListener("click", async () => {
+      if (!hasStarted && bothReady()) {
+        await startBothFromZero();
+      } else if (audio.paused && bothReady()) {
+        await startBothFromZero();
+      }
+
+      audio.muted = !audio.muted;
+      setMutedUI(audio.muted);
+    });
+  }
+
+  window.addEventListener("scroll", checkTrigger, { passive: true });
+  window.addEventListener("resize", checkTrigger);
+
+  setMutedUI(true);
+
+  try {
+    audio.load();
+  } catch (e) {}
+
+  await Promise.all([
+    preloadLottie(),
+    warmupAudio()
+  ]);
+
+  initLottie();
+  checkTrigger();
+});
+</script>
+<script defer>
+(() => {
+  // ✅ Bland AI Welcome Call endpoint (only sends phoneNumber + persona_type)
+  const WELCOME_URL = "https://api.bland.ai/welcome";
+
+  // ✅ Default.com webhook for lead capture (sends all form data)
+  const DEFAULT_WEBHOOK_URL = "https://nucleus.default.com/webhooks/84722";
+
+  function setDisabled(el, disabled) {
+    if (!el) return;
+
+    if (disabled) {
+      el.style.opacity = "0.5";
+      el.style.pointerEvents = "none";
+      el.setAttribute("aria-disabled", "true");
+
+      if (el.tagName === "A") el.setAttribute("tabindex", "-1");
+      if (el.tagName === "INPUT" || el.tagName === "BUTTON") el.disabled = true;
+    } else {
+      el.style.opacity = "";
+      el.style.pointerEvents = "";
+      el.removeAttribute("aria-disabled");
+
+      if (el.tagName === "A") el.removeAttribute("tabindex");
+      if (el.tagName === "INPUT" || el.tagName === "BUTTON") el.disabled = false;
+    }
+  }
+
+  function getStepFields(step) {
+    return Array.from(step.querySelectorAll("input, select, textarea")).filter(
+      (el) => el.type !== "hidden" && el.type !== "submit"
+    );
+  }
+
+  function isStepValid(step) {
+    const requiredFields = getStepFields(step).filter((el) => el.required);
+    return requiredFields.every(
+      (el) => el.checkValidity() && String(el.value).trim() !== ""
+    );
+  }
+
+  function refreshButtons(step) {
+    const valid = isStepValid(step);
+
+    step.querySelectorAll('[data-form="next-btn"]').forEach((btn) => {
+      setDisabled(btn, !valid);
+    });
+
+    const submitBtn =
+      step.querySelector('[data-form="submit-btn"]') ||
+      step.querySelector('[data-form-ms="submit-btn"]');
+
+    if (submitBtn) setDisabled(submitBtn, !valid);
+  }
+
+  function showWebflowState(form, type) {
+    const wrapper = form.closest(".w-form") || form.parentElement;
+
+    const done = wrapper.querySelector(".w-form-done");
+    const fail = wrapper.querySelector(".w-form-fail");
+    const customError = wrapper.querySelector(".form-error-wrap");
+
+    if (type === "success") {
+      form.style.display = "none";
+      if (done) done.style.display = "block";
+      if (fail) fail.style.display = "none";
+      if (customError) customError.style.display = "none";
+    } else {
+      if (fail) fail.style.display = "block";
+      if (done) done.style.display = "none";
+      if (customError) customError.style.display = "block";
+    }
+  }
+
+  function serializeForm(form) {
+    const payload = {};
+    new FormData(form).forEach((value, key) => {
+      payload[key] = value;
+    });
+
+    payload.page_url = window.location.href;
+    payload.page_title = document.title;
+
+    return payload;
+  }
+
+  function initMultiStepForm(form) {
+    const steps = Array.from(form.querySelectorAll('[data-form="step"]'));
+    if (!steps.length) return;
+
+    let currentIndex = 0;
+
+    steps.forEach((step) => {
+      const computed = window.getComputedStyle(step).display;
+      step.dataset.originalDisplay = computed !== "none" ? computed : "block";
+    });
+
+    function showStep(index) {
+      steps.forEach((step, i) => {
+        const original = step.dataset.originalDisplay || "block";
+        step.style.display = i === index ? original : "none";
+
+        step.querySelectorAll('[data-form="back-btn"]').forEach((btn) => {
+          btn.style.display = i === 0 ? "none" : "";
+        });
+
+        const isLast = i === steps.length - 1;
+
+        step.querySelectorAll('[data-form="next-btn"]').forEach((btn) => {
+          btn.style.display = isLast ? "none" : "";
+        });
+
+        const submitBtn =
+          step.querySelector('[data-form="submit-btn"]') ||
+          step.querySelector('[data-form-ms="submit-btn"]');
+
+        if (submitBtn) submitBtn.style.display = isLast ? "" : "none";
+      });
+
+      const firstField = steps[index].querySelector(
+        "input:not([type='hidden']):not([type='submit']), textarea, select"
+      );
+      if (firstField) firstField.focus({ preventScroll: true });
+
+      refreshButtons(steps[index]);
+    }
+
+    function goToFirstInvalidField() {
+      const invalid = form.querySelector(":invalid");
+      if (!invalid) return;
+
+      const stepEl = invalid.closest('[data-form="step"]');
+      if (stepEl) {
+        const idx = steps.indexOf(stepEl);
+        if (idx !== -1) {
+          currentIndex = idx;
+          showStep(currentIndex);
+        }
+      }
+
+      setTimeout(() => {
+        invalid.focus({ preventScroll: true });
+        invalid.reportValidity();
+      }, 0);
+    }
+
+    function trySubmitViaShortcut(e) {
+      const isSubmitCombo = (e.ctrlKey || e.metaKey) && e.key === "Enter";
+      if (!isSubmitCombo) return false;
+
+      e.preventDefault();
+
+      if (!form.checkValidity()) {
+        goToFirstInvalidField();
+        return true;
+      }
+
+      form.requestSubmit?.();
+      return true;
+    }
+
+    showStep(currentIndex);
+
+    steps.forEach((step, index) => {
+      const fields = getStepFields(step);
+
+      fields.forEach((field) => {
+        field.addEventListener("input", () => refreshButtons(step));
+        field.addEventListener("change", () => refreshButtons(step));
+
+        field.addEventListener("keydown", (e) => {
+          if (e.key !== "Enter") return;
+
+          if (trySubmitViaShortcut(e)) return;
+
+          e.preventDefault();
+
+          if (!isStepValid(step)) {
+            const invalid = step.querySelector(":invalid");
+            if (invalid) invalid.reportValidity();
+            return;
+          }
+
+          const isLast = index === steps.length - 1;
+          if (isLast) {
+            form.requestSubmit?.();
+          } else {
+            currentIndex = Math.min(currentIndex + 1, steps.length - 1);
+            showStep(currentIndex);
+          }
+        });
+      });
+
+      step.querySelectorAll('[data-form="next-btn"]').forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (index !== currentIndex) return;
+
+          if (!isStepValid(step)) {
+            const invalid = step.querySelector(":invalid");
+            if (invalid) invalid.reportValidity();
+            return;
+          }
+
+          currentIndex = Math.min(currentIndex + 1, steps.length - 1);
+          showStep(currentIndex);
+        });
+      });
+
+      step.querySelectorAll('[data-form="back-btn"]').forEach((btn) => {
+        btn.addEventListener("click", (e) => {
+          e.preventDefault();
+          if (index !== currentIndex) return;
+
+          currentIndex = Math.max(currentIndex - 1, 0);
+          showStep(currentIndex);
+        });
+      });
+    });
+
+        form.addEventListener(
+      "submit",
+      async (e) => {
+        e.preventDefault();
+        e.stopImmediatePropagation();
+
+        if (!form.checkValidity()) {
+          goToFirstInvalidField();
+          return;
+        }
+
+        const allBtns = form.querySelectorAll(
+          '[data-form="next-btn"], [data-form="back-btn"], [data-form="submit-btn"], [data-form-ms="submit-btn"]'
+        );
+        allBtns.forEach((btn) => setDisabled(btn, true));
+
+        try {
+          // Get all form data
+          const fullPayload = serializeForm(form);
+          const phoneNumber = fullPayload.user_phone || fullPayload.phone || fullPayload.phoneNumber || '';
+          const personaType = fullPayload.persona_type || '';
+
+          if (!phoneNumber || phoneNumber.trim().length < 10) {
+            throw new Error("Please enter a valid phone number.");
+          }
+
+          // Skip everything for +44 numbers
+          if (phoneNumber.trim().startsWith('+44')) {
+            console.log("[Welcome Call] Skipped for +44 number");
+            showWebflowState(form, "success");
+            return;
+          }
+
+          // Get Turnstile token
+          const turnstileToken = window.__turnstile_response || '';
+          if (!turnstileToken) {
+            throw new Error("Security verification not ready. Please refresh the page.");
+          }
+
+          console.log("[Welcome Call] Calling api.bland.ai/welcome");
+
+          // ✅ Step 1: Call Bland AI Welcome endpoint (only phoneNumber + persona_type)
+          const res = await fetch(WELCOME_URL, {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              "x-bland-nonce": turnstileToken
+            },
+            body: JSON.stringify({
+              phoneNumber: phoneNumber.trim(),
+              persona_type: personaType
+            }),
+          });
+
+          if (res.status === 451) {
+            throw new Error("Request blocked. Please try again later.");
+          }
+          if (res.status === 429) {
+            throw new Error("Too many requests. Please wait and try again.");
+          }
+          if (!res.ok) {
+            const errorData = await res.json().catch(() => ({}));
+            throw new Error(errorData.message || `Request failed (${res.status})`);
+          }
+
+          const data = await res.json();
+          console.log("[Welcome Call] Success:", data);
+
+            // ✅ Step 2: Send all lead data to Default.com webhook
+          console.log("[Default Webhook] Sending lead data...");
+          try {
+            await fetch(DEFAULT_WEBHOOK_URL, {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify(fullPayload),
+            });
+            console.log("[Default Webhook] Lead data sent successfully");
+          } catch (webhookErr) {
+            console.warn("[Default Webhook] Failed to send lead data:", webhookErr);
+          }
+
+          // Reset turnstile
+          if (typeof turnstile !== 'undefined') {
+            turnstile.reset("#bland-turnstile");
+          }
+
+          showWebflowState(form, "success");
+        } catch (err) {
+          console.error("[Welcome Call] Error:", err);
+
+          // Reset turnstile on error
+          if (typeof turnstile !== 'undefined') {
+            turnstile.reset("#bland-turnstile");
+          }
+
+          // Re-enable buttons
+          allBtns.forEach((btn) => setDisabled(btn, false));
+
+          showWebflowState(form, "error");
+        }
+      },
+      true
+    );
+  }
+
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll('[data-form="multistep"]').forEach(initMultiStepForm);
+  });
+})();
+
+</script>
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+  const cards = Array.from(document.querySelectorAll(".trust-card"));
+  if (!cards.length) return;
+
+  const colors = [
+  { hex: "#1C54A5", rgb: "28, 84, 165" },
+  { hex: "#5E007E", rgb: "94, 0, 126" },
+  { hex: "#C41812", rgb: "196, 24, 18" },
+  { hex: "#FF5900", rgb: "255, 89, 0" }
+];
+
+  function shuffle(array) {
+    const arr = array.slice();
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  let pool = [];
+
+  cards.forEach((card, index) => {
+    if (!pool.length) pool = shuffle(colors);
+
+    let color = pool.pop();
+
+    if (index > 0) {
+      const prev = cards[index - 1].style.getPropertyValue("--trust-hover-rgb").trim();
+      if (color.rgb === prev && pool.length) {
+        const next = pool.pop();
+        pool.unshift(color);
+        color = next;
+      }
+    }
+
+    card.style.setProperty("--trust-hover-color", color.hex);
+    card.style.setProperty("--trust-hover-rgb", color.rgb);
+  });
+});
+</script>
+
+
+<script defer>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const groups = document.querySelectorAll(".workflow-tabs");
+
+  groups.forEach(group => {
+    const firstAccordion = group.querySelector(".workflow-accordion");
+    if (!firstAccordion) return;
+
+    const trigger = firstAccordion.querySelector(".workflow-accordion_top") || firstAccordion;
+    trigger.click();
+  });
+
+});
+</script>
+<script async>
+document.addEventListener("DOMContentLoaded", () => {
+  const MIN_WIDTH = 991;
+  const EASE = 0.28;
+
+  // Single radial cap — keeps corner travel natural
+  const MAX_TRAVEL = 3.5;
+
+  // Higher = softer / slower to reach edge
+  // Lower = snappier / reaches edge faster
+  const RESPONSE_RADIUS = 90;
+
+  // Slight vertical bias so top can travel a bit more than bottom
+  const TOP_BIAS = 1.82;
+  const BOTTOM_BIAS = 0.88;
+
+  const svg = document.querySelector('[data-element="norm"]');
+  const leftEye = document.querySelector('[data-element="eye-l"]');
+  const rightEye = document.querySelector('[data-element="eye-r"]');
+
+  if (!svg || !leftEye || !rightEye) return;
+
+  const leftGroup = leftEye.closest("g");
+  const rightGroup = rightEye.closest("g");
+
+  if (!leftGroup || !rightGroup) return;
+
+  const originalLeftTransform = leftGroup.getAttribute("transform") || "";
+  const originalRightTransform = rightGroup.getAttribute("transform") || "";
+
+  // Same anchor logic as the implementation guide
+  // Adjust only if your actual SVG pupil centers differ
+  const eyes = [
+    {
+      el: leftGroup,
+      base: originalLeftTransform,
+      cx: 18.2,
+      cy: 13.75,
+      currentX: 0,
+      currentY: 0,
+      targetX: 0,
+      targetY: 0
+    },
+    {
+      el: rightGroup,
+      base: originalRightTransform,
+      cx: 46.85,
+      cy: 13.97,
+      currentX: 0,
+      currentY: 0,
+      targetX: 0,
+      targetY: 0
+    }
+  ];
+
+  let pointerX = window.innerWidth / 2;
+  let pointerY = window.innerHeight / 2;
+  let rafId = null;
+
+  function isDesktop() {
+    return window.innerWidth >= MIN_WIDTH;
+  }
+
+  function elementInViewport(el) {
+    const rect = el.getBoundingClientRect();
+    return (
+      rect.bottom > 0 &&
+      rect.right > 0 &&
+      rect.top < window.innerHeight &&
+      rect.left < window.innerWidth
+    );
+  }
+
+  function shouldRun() {
+    return isDesktop() && elementInViewport(svg);
+  }
+
+  function getViewBoxSize() {
+    const viewBox = svg.viewBox && svg.viewBox.baseVal;
+
+    if (viewBox && viewBox.width && viewBox.height) {
+      return {
+        width: viewBox.width,
+        height: viewBox.height
+      };
+    }
+
+    // Same fallback logic as the guide's SVG viewBox
+    return {
+      width: 60,
+      height: 40
+    };
+  }
+
+  function resetEyes() {
+    eyes.forEach((eye) => {
+      eye.currentX = 0;
+      eye.currentY = 0;
+      eye.targetX = 0;
+      eye.targetY = 0;
+      eye.el.setAttribute("transform", eye.base);
+    });
+  }
+
+  function applyTransforms() {
+    eyes.forEach((eye) => {
+      eye.el.setAttribute(
+        "transform",
+        `${eye.base} translate(${eye.currentX} ${eye.currentY})`
+      );
+    });
+  }
+
+  function updateTargets() {
+    if (!shouldRun()) {
+      resetEyes();
+      return;
+    }
+
+    const rect = svg.getBoundingClientRect();
+    if (!rect.width || !rect.height) return;
+
+    const vb = getViewBoxSize();
+    const sx = rect.width / vb.width;
+    const sy = rect.height / vb.height;
+
+    eyes.forEach((eye) => {
+      const screenX = rect.left + eye.cx * sx;
+      const screenY = rect.top + eye.cy * sy;
+
+      const dx = pointerX - screenX;
+      const dy = pointerY - screenY;
+
+      const dist = Math.sqrt(dx * dx + dy * dy);
+      const angle = Math.atan2(dy, dx);
+
+      // same idea as the guide, but exposed as a clean constant
+      const travel = Math.min(dist / RESPONSE_RADIUS, 1) * MAX_TRAVEL;
+
+      // true radial movement first
+      const moveX = Math.cos(angle) * travel;
+
+      // slight vertical bias after radial calc
+      const verticalBias = Math.sin(angle) < 0 ? TOP_BIAS : BOTTOM_BIAS;
+      const moveY = Math.sin(angle) * travel * verticalBias;
+
+      eye.targetX = moveX;
+      eye.targetY = moveY;
+    });
+
+    requestAnimation();
+  }
+
+  function animate() {
+    if (!shouldRun()) {
+      resetEyes();
+      rafId = null;
+      return;
+    }
+
+    let settled = true;
+
+    eyes.forEach((eye) => {
+      eye.currentX += (eye.targetX - eye.currentX) * EASE;
+      eye.currentY += (eye.targetY - eye.currentY) * EASE;
+
+      if (
+        Math.abs(eye.targetX - eye.currentX) > 0.01 ||
+        Math.abs(eye.targetY - eye.currentY) > 0.01
+      ) {
+        settled = false;
+      }
+    });
+
+    applyTransforms();
+
+    if (settled) {
+      rafId = null;
+      return;
+    }
+
+    rafId = requestAnimationFrame(animate);
+  }
+
+  function requestAnimation() {
+    if (rafId) return;
+    rafId = requestAnimationFrame(animate);
+  }
+
+  window.addEventListener(
+    "mousemove",
+    (e) => {
+      if (!isDesktop()) return;
+      pointerX = e.clientX;
+      pointerY = e.clientY;
+      updateTargets();
+    },
+    { passive: true }
+  );
+
+  window.addEventListener("scroll", updateTargets, { passive: true });
+  window.addEventListener("resize", updateTargets);
+  window.addEventListener("blur", resetEyes);
+
+  updateTargets();
+});
+</script>
+<script defer>
+document.addEventListener("DOMContentLoaded", () => {
+  const input = document.querySelector('[data-element="norm-input"]');
+  const buttons = document.querySelectorAll('[data-element="norm-btn"]');
+
+  if (!input) return;
+
+  const phrases = [
+    "Build a customer service agent for my SaaS...|",
+    "Create an outbound sales caller who handles objections...|",
+    "Make an appointment scheduling bot for my clinic...|",
+    "Set up a lead qualification bot for my pipeline...|",
+    "Make an appointment scheduling bot for my clinic...|",
+    "create a collections agent that's firm but emphatic....|"
+  ];
+
+  const TYPE_SPEED = 45;
+  const DELETE_SPEED = 24;
+  const PAUSE_AFTER_TYPED = 1000;
+  const PAUSE_AFTER_DELETED = 250;
+
+  let phraseIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let isPausedByClick = false;
+  let timeoutId = null;
+
+  function setPlaceholder(value) {
+    input.setAttribute("placeholder", value);
+  }
+
+  function clearTimer() {
+    if (timeoutId) {
+      clearTimeout(timeoutId);
+      timeoutId = null;
+    }
+  }
+
+  function typeLoop() {
+    if (isPausedByClick) return;
+
+    const currentPhrase = phrases[phraseIndex];
+
+    if (!isDeleting) {
+      charIndex++;
+      setPlaceholder(currentPhrase.slice(0, charIndex));
+
+      if (charIndex < currentPhrase.length) {
+        timeoutId = setTimeout(typeLoop, TYPE_SPEED);
+      } else {
+        timeoutId = setTimeout(() => {
+          isDeleting = true;
+          typeLoop();
+        }, PAUSE_AFTER_TYPED);
+      }
+    } else {
+      charIndex--;
+      setPlaceholder(currentPhrase.slice(0, charIndex));
+
+      if (charIndex > 0) {
+        timeoutId = setTimeout(typeLoop, DELETE_SPEED);
+      } else {
+        isDeleting = false;
+        phraseIndex = (phraseIndex + 1) % phrases.length;
+
+        timeoutId = setTimeout(typeLoop, PAUSE_AFTER_DELETED);
+      }
+    }
+  }
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      const copyValue = button.getAttribute("data-copy") || "";
+
+      clearTimer();
+      isPausedByClick = true;
+
+      input.value = copyValue;
+      input.focus();
+    });
+  });
+
+  input.addEventListener("input", () => {
+    if (input.value.length > 0) {
+      clearTimer();
+      isPausedByClick = true;
+      setPlaceholder("");
+    } else if (isPausedByClick) {
+      isPausedByClick = false;
+      charIndex = 0;
+      isDeleting = false;
+      setPlaceholder("");
+      typeLoop();
+    }
+  });
+
+  input.addEventListener("focus", () => {
+    if (input.value.length > 0) {
+      clearTimer();
+      isPausedByClick = true;
+      setPlaceholder("");
+    }
+  });
+
+  input.addEventListener("blur", () => {
+    if (input.value.length === 0 && isPausedByClick) {
+      isPausedByClick = false;
+      charIndex = 0;
+      isDeleting = false;
+      setPlaceholder("");
+      typeLoop();
+    }
+  });
+
+  typeLoop();
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const changers = document.querySelectorAll(".headline-change .changer");
+
+  if (!changers.length) return;
+
+  function setChangerPositions(activeIndex) {
+    changers.forEach((changer, index) => {
+      const offset = (index - activeIndex) * 100;
+      changer.style.transform = `translateY(${offset}%)`;
+    });
+  }
+
+  const clientsSwiper = new Swiper(".swiper.is-customers", {
+    loop: true,
+    autoplay: {
+      delay: 4000,
+      disableOnInteraction: false,
+      pauseOnMouseEnter: false
+    },
+    speed: 0,
+    slidesPerView: 1,
+    allowTouchMove: false,
+
+    on: {
+      init: function () {
+        setChangerPositions(this.realIndex);
+      },
+      slideChange: function () {
+        setChangerPositions(this.realIndex);
+      }
+    }
+  });
+});
+</script>
+
+
+
+<!--
+<script>
+const audio = document.getElementById("audio-player");
+const recording = document.querySelector(".recording-wrap");
+
+document.querySelectorAll(".play-audio").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    if (audio.paused) {
+      audio.play();
+      recording.classList.add("is-recording");
+    } else {
+      audio.pause();
+      recording.classList.remove("is-recording");
+    }
+
+  });
+});
+
+audio.addEventListener("ended", () => {
+  recording.classList.remove("is-recording");
+});
+</script>
+-->
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+  const AUTO_ROTATE_DELAY = 5000;
+
+  // umesto .workflow_holder
+  const holders = Array.from(document.querySelectorAll("[data-subsection]"));
+  const tabSystems = [];
+  let activeSystem = null;
+
+  function createTabSystem(holder) {
+    const subsectionName = holder.getAttribute("data-subsection");
+    const group = holder.querySelector(".workflow-tabs");
+    if (!group) return null;
+
+    const links = Array.from(group.querySelectorAll(".workflow-tabs_menu .w-tab-link"));
+    const panes = Array.from(group.querySelectorAll(".workflow-tabs_content .w-tab-pane"));
+
+    if (!links.length || !panes.length) return null;
+
+    let currentIndex = 0;
+    let autoplay = null;
+    let isRunning = false;
+
+    function resetAllFills() {
+      links.forEach((link) => {
+        const fill = link.querySelector(".workflow-line_fill");
+        link.classList.remove("is-filling");
+
+        if (fill) {
+          fill.style.transition = "none";
+          fill.style.width = "0%";
+          fill.offsetHeight;
+        }
+      });
+    }
+
+    function startFill(activeLink) {
+      const fill = activeLink.querySelector(".workflow-line_fill");
+      if (!fill) return;
+
+      activeLink.classList.remove("is-filling");
+      fill.style.transition = "none";
+      fill.style.width = "0%";
+      fill.offsetHeight;
+
+      activeLink.classList.add("is-filling");
+      fill.style.transition = `width ${AUTO_ROTATE_DELAY}ms linear`;
+      fill.style.width = "100%";
+    }
+
+    function activateTabByIndex(index, restartTimer = true) {
+      currentIndex = index;
+
+      links.forEach((link, i) => {
+        const isActive = i === index;
+        link.classList.toggle("w--current", isActive);
+        link.setAttribute("aria-selected", isActive ? "true" : "false");
+        link.tabIndex = isActive ? "0" : "-1";
+      });
+
+      panes.forEach((pane, i) => {
+        pane.classList.toggle("w--tab-active", i === index);
+      });
+
+      resetAllFills();
+
+      if (isRunning) {
+        startFill(links[index]);
+      }
+
+      if (restartTimer && isRunning) {
+        clearTimeout(autoplay);
+        autoplay = setTimeout(() => {
+          const nextIndex = (currentIndex + 1) % links.length;
+          activateTabByIndex(nextIndex, true);
+        }, AUTO_ROTATE_DELAY);
+      }
+    }
+
+    function start() {
+      if (isRunning) return;
+      isRunning = true;
+
+      resetAllFills();
+      startFill(links[currentIndex]);
+
+      clearTimeout(autoplay);
+      autoplay = setTimeout(() => {
+        const nextIndex = (currentIndex + 1) % links.length;
+        activateTabByIndex(nextIndex, true);
+      }, AUTO_ROTATE_DELAY);
+    }
+
+    function stop() {
+      isRunning = false;
+      clearTimeout(autoplay);
+      resetAllFills();
+    }
+
+    const system = {
+      holder,
+      subsectionName,
+      start,
+      stop,
+      activateTabByIndex
+    };
+
+    links.forEach((link, index) => {
+      link.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        if (activeSystem !== system) {
+          if (activeSystem) activeSystem.stop();
+          activeSystem = system;
+          activeSystem.start();
+        }
+
+        activateTabByIndex(index, true);
+      });
+    });
+
+    const initialIndex = links.findIndex((link) => link.classList.contains("w--current"));
+    currentIndex = initialIndex >= 0 ? initialIndex : 0;
+    activateTabByIndex(currentIndex, false);
+
+    return system;
+  }
+
+  holders.forEach((holder) => {
+    const system = createTabSystem(holder);
+    if (system) tabSystems.push(system);
+  });
+
+  function setActiveSystem(nextSystem) {
+    if (activeSystem === nextSystem) return;
+
+    if (activeSystem) activeSystem.stop();
+    activeSystem = nextSystem;
+    if (activeSystem) activeSystem.start();
+  }
+
+  function detectActiveHolder() {
+    const triggerY = window.innerHeight * 0.5;
+    let matchedSystem = null;
+
+    tabSystems.forEach((system) => {
+      const rect = system.holder.getBoundingClientRect();
+      const isAtMiddle = rect.top <= triggerY && rect.bottom >= triggerY;
+
+      if (isAtMiddle) {
+        matchedSystem = system;
+      }
+    });
+
+    if (matchedSystem) {
+      setActiveSystem(matchedSystem);
+    }
+  }
+
+  window.addEventListener("scroll", detectActiveHolder, { passive: true });
+  window.addEventListener("resize", detectActiveHolder);
+
+  detectActiveHolder();
+
+  if (!activeSystem && tabSystems.length) {
+    setActiveSystem(tabSystems[0]);
+  }
+});
+</script><script src="https://hubspotonwebflow.com/assets/js/form-124.js" type="text/javascript" integrity="sha384-bjyNIOqAKScdeQ3THsDZLGagNN56B4X2Auu9YZIGu+tA/PlggMk4jbWruG/P6zYj" crossorigin="anonymous"></script></body></html>

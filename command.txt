@@ -1,0 +1,3 @@
+﻿web_fetch https://www.bland.ai
+Write findings to C:\Users\Leonp\NextFrame-Agency\output\result.md
+Say COMPLETE only
