@@ -38,19 +38,27 @@
     <script type="text/babel">
         const { useState, useEffect } = React;
 
-        // Assets Mapping - Precise Vercel Blob Links
+        // Assets Mapping - YouTube IDs + Storage URLs
+        // MIGRATED from Vercel Blob to YouTube (showcase) + Storage (hero loops)
+        // Upload guide:
+        //   - Showcase/portfolio videos -> YouTube (unlisted), paste ID here
+        //   - Background loops / hero videos -> Supabase/Backblaze B2, paste URL here
         const ASSETS = {
             LOGO: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png",
-            HERO: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/hero-video%20-%20Cyber%20Security%20Awards-Judges%20wall-SHORT%2030S%20-%20v3.mp4",
-            WORK_1: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-1%20-%20Commercial%20one%20-%20Jade%20bar%20v%202.5.mp4",
-            WORK_2: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-2%20-%20Pavilion%20findal%20edit%20v2.mp4",
-            WORK_3: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-3%20What%20would%20you%20do%20with%20a%20Million%20v3.mp4",
-            WORK_4: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/work-4%20-%20luxuxy%20loop.mp4",
-            PROCESS_BG: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%201.mp4",
-            LEGACY_BG: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20v3.mp4",
-            LEGACY_DEMO_1: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/cocktail%20nights%20v3.2.mp4",
-            LEGACY_DEMO_2: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/Doomsday%20-%20v1.mp4",
-            CTA_BG: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/tag%20lines%202.mp4"
+            // Hero: background loop — use storage_url (no UI overlays)
+            HERO: "",  // TODO: Upload hero loop to Supabase/Backblaze B2
+            HERO_YT: "",  // Fallback: YouTube ID if no storage URL
+            // Showcase: portfolio work — use youtube_id for embeds
+            WORK_1_YT: "",  // TODO: Upload "Jade Bar" to YouTube (unlisted)
+            WORK_2_YT: "",  // TODO: Upload "Pavilion" to YouTube (unlisted)
+            WORK_3_YT: "",  // TODO: Upload "Million Dream" to YouTube (unlisted)
+            WORK_4_YT: "",  // TODO: Upload "Luxury Loop" to YouTube (unlisted)
+            // Background loops — use storage_url (ambient, no controls)
+            PROCESS_BG: "",  // TODO: Upload process BG to Supabase/Backblaze B2
+            LEGACY_BG: "",   // TODO: Upload legacy BG to Supabase/Backblaze B2
+            LEGACY_DEMO_1_YT: "",  // TODO: Upload "Cocktail Nights" to YouTube
+            LEGACY_DEMO_2_YT: "",  // TODO: Upload "Doomsday" to YouTube
+            CTA_BG: ""  // TODO: Upload CTA BG to Supabase/Backblaze B2
         };
 
         const App = () => {
