@@ -1,116 +1,28 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=3.0">
-    <title>Next-Frame Agency - Hero Section</title>
-    <!-- Tailwind CSS 4.0 (CDN) -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Next-Frame Agency</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Framer Motion -->
-    <script src="https://unpkg.com/framer-motion@11.0.0/dist/framer-motion.js"></script>
     <style>
-        /* Custom styles for glassmorphism and neon glow */
-        .glassmorphism {
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px) saturate(180%);
-            -webkit-backdrop-filter: blur(10px) saturate(180%);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
-        }
-        .scanline-overlay::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(to bottom, rgba(255,255,255,0.05) 50%, rgba(0,0,0,0.1) 50%);
-            background-size: 100% 4px; /* Adjust scanline frequency */
-            z-index: 1;
-            pointer-events: none;
-            opacity: 0.5;
-        }
-        .neon-glow {
-            text-shadow: 0 0 5px #00f2ff, 0 0 10px #00f2ff, 0 0 15px #00f2ff, 0 0 20px #00f2ff, 0 0 25px #00f2ff, 0 0 30px #1100ff, 0 0 35px #1100ff;
-        }
-         /* Ensure background image covers the entire section */
-        .bg-image-cover {
-            background-image: url('C:\Users\Leonp\NextFrame-Agency\output\Hero_Avatar.jpg');
-            background-size: cover;
-            background-position: center right;
-            background-repeat: no-repeat;
-        }
-        /* For mobile responsiveness, ensure the correct aspect ratio for background */
-        @media (max-width: 768px) {
-            .bg-image-cover {
-                background-position: center center; /* Center background on smaller screens */
-            }
-        }
+        .glass { background: rgba(0, 0, 0, 0.85); backdrop-filter: blur(20px); border-right: 1px solid #00f2ff; }
+        .neon { text-shadow: 0 0 15px #00f2ff; }
+        .scanlines { background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 50%); background-size: 100% 4px; }
     </style>
 </head>
-<body class="font-sans antialiased bg-black text-white">
-
-    <div class="relative h-screen flex flex-col md:flex-row">
-
-        <!-- Left Section: Text Content -->
-        <motion.div 
-            class="w-full md:w-1/2 h-full flex flex-col justify-center items-start p-8 md:p-16 relative glassmorphism scanline-overlay"
-            initial={{ opacity: 0, x: -100 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 1.2, ease: "easeOut" }}
-        >
-            <div class="content-wrapper relative z-10">
-                <!-- "Next-Frame" Logo Placeholder -->
-                <h1 class="text-6xl md:text-7xl font-extrabold mb-4 neon-glow">
-                    Next-Frame
-                </h1>
-                
-                <!-- Title -->
-                <h2 class="text-5xl md:text-6xl font-bold mb-3 text-gray-300">
-                    THE ARCHITECT
-                </h2>
-                
-                <!-- Subtitle -->
-                <p class="text-xl md:text-2xl text-gray-400 mb-8">
-                    Next-Gen Video for Next-Gen Brands.
-                </p>
-                
-                <!-- CTA Button -->
-                <button class="px-8 py-3 bg-teal-500 text-black font-semibold rounded-lg shadow-lg hover:bg-teal-400 transition duration-300 ease-in-out neon-glow"
-                    style="text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #00f2ff;"
-                >
-                    Explore Our Work
-                </button>
-            </div>
-        </motion.div>
-
-        <!-- Right Section: Background Image and Visuals -->
-        <div class="w-full md:w-1/2 h-screen md:h-full bg-image-cover relative overflow-hidden">
-            <!-- Matte Black Overlay -->
-            <div class="absolute inset-0 bg-black bg-opacity-60"></div>
-            <!-- Teal Neon Pulse Effect (example, could be animated via Framer Motion if needed) -->
-            <div class="absolute inset-0 flex items-center justify-center" 
-                 animate={{ 
-                     color: ["#00f2ff", "#03e1ff", "#00f2ff"], 
-                     transition: { duration: 4, repeat: Infinity, ease: "easeInOut" } 
-                 }}>
-                {/* This element is a placeholder for the glow effect associated with the logo */}
-                {/* The actual logo is text above, styled with neon-glow */}
-                {/* If 'Next-Frame' text above needs a separate pulse, it would be managed differently */}
-            </div>
+<body class="bg-black text-white flex h-screen overflow-hidden font-sans antialiased">
+    <div class="w-1/2 glass p-20 flex flex-col justify-center z-20 scanlines">
+        <div class="border-l-4 border-teal-500 pl-8">
+            <h1 class="text-teal-400 font-black italic text-5xl neon mb-2 tracking-tighter">NEXT-FRAME</h1>
+            <h2 class="text-8xl font-extrabold tracking-tight leading-none mb-8">THE<br>ARCHITECT</h2>
+            <p class="text-xl text-gray-400 mb-10 font-light">High-speed, AI-driven production out of Makati. Viral retention. Cinematic techwear.</p>
+            <button class="bg-teal-500 text-black px-12 py-5 font-black uppercase tracking-widest hover:bg-white transition-all">Explore Work</button>
         </div>
-
     </div>
-
-    <script>
-        // Framer Motion for the text container fade-in
-        // Initial and animate properties are handled directly in the HTML 'motion.div' tag above.
-        // For inline animations like neon pulse on text, CSS variables or direct style manipulation might be needed if complex. 
-        // The current CSS `neon-glow` and the `animate` property on a div for color pulse are illustrative.
-
-        // Placeholder for potential dynamic script execution if more complex animations are required
-        console.log("Hero section loaded. Tailwind CSS and Framer Motion are active.");
-    </script>
-
+    <div class="w-full absolute right-0 h-full z-10">
+        <img src="output/Hero_Avatar.jpg" class="w-full h-full object-cover opacity-90" alt="Architect Hero">
+        <div class="absolute inset-0 bg-gradient-to-r from-black via-black/40 to-transparent"></div>
+    </div>
 </body>
 </html>
