@@ -1,313 +1,402 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nextframe.Ph | Geared for a Better Future</title>
-    
-    <!-- 1. Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- 2. Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
-    
-    <!-- 3. React, ReactDOM, Babel Engine -->
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    
-    <!-- 4. Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest"></script>
-
-    <style>
-        body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
-        .text-gradient { background: linear-gradient(to right, #00F0FF, #CCFF00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        @keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100vh); } }
-        .scan-line { animation: scan 6s linear infinite; }
-        .video-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,1) 100%); }
-        ::-webkit-scrollbar { width: 6px; }
-        ::-webkit-scrollbar-track { background: #000; }
-        ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
-        ::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
-        .glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Nextframe.Ph | Geared for a Better Future</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+<script src="https://unpkg.com/react@18/umd/react.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js" crossorigin></script>
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<style>
+body { font-family: 'Inter', sans-serif; background-color: #000; color: #fff; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
+.text-gradient { background: linear-gradient(to right, #00F0FF, #CCFF00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+@keyframes scan { 0% { transform: translateY(0); } 100% { transform: translateY(100vh); } }
+.scan-line { animation: scan 6s linear infinite; }
+.video-overlay { background: linear-gradient(to bottom, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, rgba(0,0,0,1) 100%); }
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #000; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
+.glass-panel { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+.yt-bg-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+.yt-bg-wrap iframe { position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; transform: translate(-50%, -50%); border: 0; }
+.yt-showcase-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.yt-showcase-wrap iframe { position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; transform: translate(-50%, -50%); border: 0; }
+.yt-vertical-wrap { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+.yt-vertical-wrap iframe { position: absolute; top: 50%; left: 50%; width: 177.78%; height: 177.78%; transform: translate(-50%, -50%); border: 0; }
+.video-thumb { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.video-card-overlay { background: linear-gradient(to top, rgba(0,0,0,0.95) 0%, rgba(0,0,0,0.25) 55%, rgba(0,0,0,0.15) 100%); }
+</style>
 </head>
 <body>
-    <div id="root"></div>
+<div id="root"></div>
+<script type="text/babel">
+const { useState, useEffect } = React;
 
-    <script type="text/babel">
-        const { useState, useEffect } = React;
+const YT_IDS = {
+  HERO:         "D3oRbzmBwqE",
+  WORK_1:       "LRQfWCd5_o8",
+  WORK_2:       "HnUG6sFpReI",
+  WORK_3:       "q_58rOdi5hk",
+  WORK_4:       "-0u0gIXAw_k",
+  PROCESS_BG:   "HD7d9l5XMxU",
+  LEGACY_BG:    "9Psj1pTcLVY",
+  LEGACY_1:     "RL_XRbP_TLU",
+  LEGACY_2:     "ITcVSxSKvVA",
+  CTA_BG:       "ZdgCfGbKCbI",
+  LOGO: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png"
+};
 
-        // Assets Mapping - YouTube IDs + Storage URLs
-        // MIGRATED from Vercel Blob to YouTube (showcase) + Storage (hero loops)
-        // Upload guide:
-        //   - Showcase/portfolio videos -> YouTube (unlisted), paste ID here
-        //   - Background loops / hero videos -> Supabase/Backblaze B2, paste URL here
-        const ASSETS = {
-            LOGO: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png",
-            // Hero: background loop — use storage_url (no UI overlays)
-            HERO: "",  // TODO: Upload hero loop to Supabase/Backblaze B2
-            HERO_YT: "",  // Fallback: YouTube ID if no storage URL
-            // Showcase: portfolio work — use youtube_id for embeds
-            WORK_1_YT: "",  // TODO: Upload "Jade Bar" to YouTube (unlisted)
-            WORK_2_YT: "",  // TODO: Upload "Pavilion" to YouTube (unlisted)
-            WORK_3_YT: "",  // TODO: Upload "Million Dream" to YouTube (unlisted)
-            WORK_4_YT: "",  // TODO: Upload "Luxury Loop" to YouTube (unlisted)
-            // Background loops — use storage_url (ambient, no controls)
-            PROCESS_BG: "",  // TODO: Upload process BG to Supabase/Backblaze B2
-            LEGACY_BG: "",   // TODO: Upload legacy BG to Supabase/Backblaze B2
-            LEGACY_DEMO_1_YT: "",  // TODO: Upload "Cocktail Nights" to YouTube
-            LEGACY_DEMO_2_YT: "",  // TODO: Upload "Doomsday" to YouTube
-            CTA_BG: ""  // TODO: Upload CTA BG to Supabase/Backblaze B2
-        };
+const ytSrc = (id, extra = "") =>
+  `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&mute=1&loop=1&playlist=${id}&controls=0&playsinline=1&rel=0&modestbranding=1${extra}`;
 
-        const App = () => {
-            const [modalOpen, setModalOpen] = useState(false);
-            const [scrolled, setScrolled] = useState(false);
+const ytModalSrc = (id) =>
+  `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
 
-            useEffect(() => {
-                const handleScroll = () => setScrolled(window.scrollY > 50);
-                window.addEventListener('scroll', handleScroll);
-                if (window.lucide) window.lucide.createIcons();
-                return () => window.removeEventListener('scroll', handleScroll);
-            }, []);
+const ytThumb = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
-            return (
-                <div className="min-h-screen bg-black text-white">
-                    {/* Navigation */}
-                    <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-3 border-b border-white/10' : 'bg-transparent py-8'}`}>
-                        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                            <div className="flex items-center gap-3">
-                                <img src={ASSETS.LOGO} alt="Logo" className="h-8 md:h-10 brightness-110" />
-                                <span className="text-xl font-black tracking-tighter uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
-                            </div>
-                            <div className="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
-                                <a href="#philosophy" className="hover:text-[#CCFF00] transition-colors">Philosophy</a>
-                                <a href="#work" className="hover:text-[#CCFF00] transition-colors">Showcase</a>
-                                <a href="#process" className="hover:text-[#CCFF00] transition-colors">Process</a>
-                                <a href="#services" className="hover:text-[#CCFF00] transition-colors">Services</a>
-                                <a href="#legacy" className="hover:text-[#CCFF00] transition-colors">Legacy</a>
-                                <button onClick={() => setModalOpen(true)} className="px-6 py-2 bg-[#00F0FF] text-black hover:bg-[#CCFF00] rounded-full font-black tracking-normal transition-all">Initiate Sync</button>
-                            </div>
-                        </div>
-                    </nav>
+const PosterBackground = ({ id, opacity = 0.28 }) => (
+  <div className="absolute inset-0 z-0" style={{ opacity }}>
+    <img
+      src={ytThumb(id)}
+      alt=""
+      className="video-thumb"
+      onError={(e) => { e.currentTarget.src = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`; }}
+    />
+  </div>
+);
 
-                    {/* Hero Section */}
-                    <header className="relative h-screen flex items-center justify-center text-center px-6">
-                        <div className="absolute inset-0 z-0">
-                            <video autoPlay muted loop playsInline className="w-full h-full object-cover opacity-60">
-                                <source src={ASSETS.HERO} type="video/mp4" />
-                            </video>
-                            <div className="absolute inset-0 video-overlay"></div>
-                        </div>
-                        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-30 scan-line"></div>
-                        
-                        <div className="relative z-10 max-w-6xl">
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00]/10 text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
-                                <i data-lucide="activity" className="w-3 h-3"></i> The Human-AI Interface
-                            </div>
-                            <h1 className="text-6xl md:text-[10rem] font-black uppercase italic tracking-tighter leading-[0.8] mb-8 drop-shadow-[0_10px_30px_rgba(0,0,0,1)]">
-                                Stop Shooting.<br />
-                                <span className="text-gradient">Start Visioning.</span>
-                            </h1>
-                            <p className="text-lg md:text-2xl font-medium mb-12 text-white/80 max-w-3xl mx-auto drop-shadow-lg">
-                                We are the Human Bridge between business intuition and AI execution. Turning cold patterns into authentic brand stories.
-                            </p>
-                            <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                                <button onClick={() => setModalOpen(true)} className="px-12 py-6 bg-[#CCFF00] text-black font-black uppercase italic text-2xl hover:bg-white shadow-[0_0_50px_rgba(204,255,0,0.3)] transition-all">Start The Conversation</button>
-                                <button className="px-10 py-6 border border-white/20 bg-black/40 backdrop-blur-md text-white font-black uppercase italic text-2xl hover:bg-white/10 transition-all">Our Reel</button>
-                            </div>
-                        </div>
-                    </header>
+const VideoCard = ({ id, code, title, onPlay, vertical = false, className = "" }) => (
+  <button
+    type="button"
+    onClick={() => onPlay(id, title)}
+    className={`relative group rounded-3xl overflow-hidden border border-white/5 bg-zinc-900 text-left ${vertical ? "aspect-[3/4]" : "aspect-video"} ${className}`}
+  >
+    <img
+      src={ytThumb(id)}
+      alt={title}
+      className={`video-thumb transition-transform duration-700 group-hover:scale-105 ${vertical ? "grayscale group-hover:grayscale-0" : ""}`}
+      onError={(e) => { e.currentTarget.src = `https://i.ytimg.com/vi/${id}/mqdefault.jpg`; }}
+    />
+    <div className="absolute inset-0 video-card-overlay"></div>
+    <div className="absolute top-5 right-5 z-20 rounded-full border border-white/20 bg-black/55 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-[#CCFF00]">
+      Play
+    </div>
+    <div className={`absolute z-20 ${vertical ? "bottom-8 left-8 right-8" : "bottom-10 left-10"}`}>
+      {code && <div className="text-[10px] font-black text-[#00F0FF] uppercase tracking-[0.4em] mb-3">{code}</div>}
+      <h3 className={`${vertical ? "text-2xl" : "text-4xl"} font-black text-white uppercase italic tracking-tighter leading-none`}>{title}</h3>
+    </div>
+  </button>
+);
 
-                    {/* Philosophy Section */}
-                    <section id="philosophy" className="py-32 relative overflow-hidden bg-black">
-                        <div className="max-w-7xl mx-auto px-6">
-                            <div className="grid md:grid-cols-2 gap-20 items-center">
-                                <div className="space-y-8">
-                                    <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none">The <span className="text-[#00F0FF]">Human Interface</span></h2>
-                                    <p className="text-xl text-white/60 leading-relaxed font-medium">
-                                        AI is the shift from the paintbrush to the camera. It changes the tools, but it can never replace human taste, culture, or storytelling. We are the "Human Interface" that ensures every pixel has a pulse.
-                                    </p>
-                                    <div className="flex gap-10">
-                                        <div className="flex flex-col"><span className="text-3xl font-black italic">Rapid</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Deployment</span></div>
-                                        <div className="flex flex-col"><span className="text-3xl font-black italic">∞</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Flexibility</span></div>
-                                        <div className="flex flex-col"><span className="text-3xl font-black italic">0</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Reshoots</span></div>
-                                    </div>
-                                </div>
-                                <div className="glass-panel p-10 rounded-3xl relative overflow-hidden">
-                                    <div className="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="shield-check" className="w-40 h-40"></i></div>
-                                    <h3 className="text-2xl font-black uppercase italic mb-6 tracking-tighter text-[#CCFF00]">Lean & Scrappy</h3>
-                                    <p className="text-white/50 mb-8">Built like a trained athlete—elite, high-performance, and designed for speed. We don't overcomplicate. We execute.</p>
-                                    <button onClick={() => setModalOpen(true)} className="flex items-center gap-2 text-[#00F0FF] font-black uppercase italic text-sm tracking-widest hover:translate-x-2 transition-all">The Athlete DNA <i data-lucide="arrow-right" className="w-4 h-4"></i></button>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+const YTBackground = ({ id, opacity = 0.6 }) => (
+  <div className="yt-bg-wrap" style={{ opacity }}>
+    <iframe
+      src={ytSrc(id)}
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+    />
+  </div>
+);
 
-                    {/* Showcase */}
-                    <section id="work" className="py-32 max-w-7xl mx-auto px-6">
-                        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
-                            <div>
-                                <div className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.4em] mb-4">Field Assets // Cinematic Showcase</div>
-                                <h2 className="text-5xl md:text-[7rem] font-black uppercase italic tracking-tighter leading-none">Intelligence</h2>
-                            </div>
-                            <div className="text-white/30 text-xs font-bold uppercase tracking-[0.2em] md:w-64 text-right">World-class high-fidelity output.</div>
-                        </div>
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
-                            {[
-                                { c: "JADE_BAR", t: "Cinematic Mixology", v: ASSETS.WORK_1 },
-                                { c: "PAVILION", t: "Spatial Narrative", v: ASSETS.WORK_2 },
-                                { c: "VISION_RETAIL", t: "The Million Dream", v: ASSETS.WORK_3 },
-                                { c: "LUX_LOOP", t: "Infinite Luxury", v: ASSETS.WORK_4 }
-                            ].map((work, i) => (
-                                <div key={i} className="relative group rounded-3xl overflow-hidden border border-white/5 aspect-video bg-zinc-900">
-                                    <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-50 group-hover:opacity-100 transition-opacity duration-1000">
-                                        <source src={work.v} type="video/mp4" />
-                                    </video>
-                                    <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent opacity-90"></div>
-                                    <div className="absolute bottom-10 left-10 transition-transform group-hover:-translate-y-2">
-                                        <div className="text-[10px] font-black text-[#00F0FF] uppercase tracking-[0.4em] mb-3">{work.c}</div>
-                                        <h3 className="text-4xl font-black text-white uppercase italic tracking-tighter leading-none">{work.t}</h3>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </section>
+const YTShowcase = ({ id }) => (
+  <div className="yt-showcase-wrap">
+    <iframe
+      src={ytSrc(id)}
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+    />
+  </div>
+);
 
-                    {/* The 4-Step Process */}
-                    <section id="process" className="py-32 relative overflow-hidden bg-black">
-                        {/* Kinetic background for process */}
-                        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-10 grayscale pointer-events-none z-0">
-                            <source src={ASSETS.PROCESS_BG} type="video/mp4" />
-                        </video>
-                        <div className="max-w-7xl mx-auto px-6 relative z-10">
-                            <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-20 text-center">The 4-Step <span className="text-[#CCFF00]">Journey</span></h2>
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
-                                {[
-                                    { n: 1, t: "DNA Discovery", d: "Mapping your unique culture and voice so the AI sounds like you.", i: "target" },
-                                    { n: 2, t: "Competitive Intel", d: "AI-driven analysis of local rivals to see where they are winning and failing.", i: "search" },
-                                    { n: 3, t: "Gap Analysis", d: "Identifying the visual and emotional 'empty spaces' your market is missing.", i: "layers" },
-                                    { n: 4, t: "Campaign Deploy", d: "Rapid cinematic execution to fill those gaps instantly.", i: "zap" }
-                                ].map((step, i) => (
-                                    <div key={i} className="p-10 rounded-3xl glass-panel group hover:bg-[#00F0FF]/5 transition-all">
-                                        <div className="text-5xl font-black italic text-[#00F0FF] mb-8 opacity-20">0{step.n}</div>
-                                        <i data-lucide={step.i} className="text-[#CCFF00] mb-6 w-10 h-10"></i>
-                                        <h3 className="text-2xl font-black uppercase italic mb-4 tracking-tighter">{step.t}</h3>
-                                        <p className="text-white/40 text-sm leading-relaxed">{step.d}</p>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+const YTVertical = ({ id }) => (
+  <div className="yt-vertical-wrap">
+    <iframe
+      src={ytSrc(id)}
+      allow="autoplay; encrypted-media"
+      allowFullScreen
+    />
+  </div>
+);
 
-                    {/* Pricing Services */}
-                    <section id="services" className="py-32">
-                        <div className="max-w-7xl mx-auto px-6">
-                            <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-20 text-center">Service <span className="text-gradient">Tiers</span></h2>
-                            <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-                                {[
-                                    { t: "The Spotlight", p: "15,000", f: ["Single A-List 60s Commercial", "Cinematic AI Visuals", "Custom Soundscape", "Rapid Delivery"] },
-                                    { t: "The Lean Engine", p: "30,000", tag: "Best Value", h: true, f: ["3x Targeted Ads", "Competitive Gap Analysis", "Social Optimization", "Background Swapping"] },
-                                    { t: "The Partnership", p: "80k", f: ["Custom Brand Ambassadors", "Full Integrated Ecosystem", "Automated Assets", "GPU Pipeline Priority"] },
-                                    { t: "Internal Machine", p: "Custom", f: ["Proprietary Internal AI", "Workforce Training", "Trained Team Agents", "Enterprise Asset Bank"] }
-                                ].map((tier, i) => (
-                                    <div key={i} className={`p-8 rounded-3xl flex flex-col border ${tier.h ? 'border-[#00F0FF] bg-[#00F0FF]/5 scale-105 z-10 shadow-2xl' : 'border-white/5 bg-zinc-900'}`}>
-                                        {tier.tag && <div className="bg-[#CCFF00] text-black text-[10px] font-black uppercase py-1 px-4 rounded-full mb-6 w-fit">{tier.tag}</div>}
-                                        <h3 className="text-2xl font-black uppercase italic tracking-tighter mb-2">{tier.t}</h3>
-                                        <div className="text-4xl font-black mb-8">₱{tier.p}</div>
-                                        <ul className="space-y-4 mb-10 flex-grow">
-                                            {tier.f.map((feat, j) => (
-                                                <li key={j} className="text-white/50 text-xs flex gap-3"><i data-lucide="check" className="w-4 h-4 text-[#CCFF00]"></i> {feat}</li>
-                                            ))}
-                                        </ul>
-                                        <button onClick={() => setModalOpen(true)} className={`w-full py-4 rounded-xl font-black uppercase italic text-sm tracking-widest transition-all ${tier.h ? 'bg-[#00F0FF] text-black hover:bg-white' : 'bg-white/10 hover:bg-white/20'}`}>Select Plan</button>
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
-                    </section>
+const App = () => {
+  const [contactOpen, setContactOpen] = useState(false);
+  const [activeVideo, setActiveVideo] = useState(null);
+  const [scrolled, setScrolled] = useState(false);
 
-                    {/* Legacy Lab */}
-                    <section id="legacy" className="py-32 relative overflow-hidden bg-black border-y border-white/5">
-                        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 pointer-events-none">
-                            <source src={ASSETS.LEGACY_BG} type="video/mp4" />
-                        </video>
-                        <div className="max-w-7xl mx-auto px-6 relative z-10">
-                            <div className="grid lg:grid-cols-2 gap-24 items-center">
-                                <div>
-                                    <div className="text-[10px] font-black text-[#00F0FF] uppercase tracking-[0.4em] mb-6">Prime Preservation // Legacy Lab</div>
-                                    <h2 className="text-5xl md:text-[7rem] font-black uppercase italic tracking-tighter mb-10 leading-[0.85]">Don't Just <br />Remember. <span className="text-gradient">Relive.</span></h2>
-                                    <p className="text-xl text-white/50 mb-12 leading-relaxed max-w-lg">Upscale ancestral memories into cinematic 4K life stories. Immortalize your appearance for future generations.</p>
-                                    <button onClick={() => setModalOpen(true)} className="flex items-center gap-6 text-white font-black uppercase italic text-2xl hover:text-[#CCFF00] transition-all">
-                                        <i data-lucide="play-circle" className="w-10 h-10"></i> Enter The Lab
-                                    </button>
-                                </div>
-                                <div className="grid grid-cols-2 gap-6 relative">
-                                    <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl translate-y-12 bg-zinc-900">
-                                        <video autoPlay muted loop playsInline className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                                            <source src={ASSETS.LEGACY_DEMO_1} type="video/mp4" />
-                                        </video>
-                                    </div>
-                                    <div className="aspect-[3/4] rounded-3xl overflow-hidden border border-white/10 shadow-2xl bg-zinc-900">
-                                        <video autoPlay muted loop playsInline className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700">
-                                            <source src={ASSETS.LEGACY_DEMO_2} type="video/mp4" />
-                                        </video>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </section>
+  const openVideo = (id, title) => setActiveVideo({ id, title });
+  const closeVideo = () => setActiveVideo(null);
 
-                    {/* Final CTA */}
-                    <section className="py-48 text-center relative overflow-hidden bg-black">
-                        <video autoPlay muted loop playsInline className="absolute inset-0 w-full h-full object-cover opacity-20 grayscale-0 pointer-events-none">
-                            <source src={ASSETS.CTA_BG} type="video/mp4" />
-                        </video>
-                        <div className="absolute inset-0 bg-black/60"></div>
-                        <div className="relative z-10 px-6">
-                            <h2 className="text-6xl md:text-[11rem] font-black uppercase italic tracking-tighter mb-16 leading-none">Geared for a <br /><span className="text-[#CCFF00]">Better Future.</span></h2>
-                            <button onClick={() => setModalOpen(true)} className="px-16 py-8 bg-white text-black font-black uppercase italic text-3xl hover:bg-[#00F0FF] transition-all shadow-2xl">Start The Conversation</button>
-                        </div>
-                    </section>
+  useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 50);
+    window.addEventListener('scroll', handleScroll);
+    if (window.lucide) window.lucide.createIcons();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
-                    {/* Footer */}
-                    <footer className="py-24 border-t border-white/5 text-center px-6">
-                        <div className="flex items-center justify-center gap-4 text-3xl font-black tracking-tighter uppercase italic mb-12">
-                            <img src={ASSETS.LOGO} alt="Logo" className="h-10 brightness-110" />
-                            <span>Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
-                        </div>
-                        <div className="text-[10px] tracking-[0.4em] text-white/20 uppercase font-black">
-                            © 2025 NEXTFRAME.PH // PHILIPPINES // HUMAN INTERFACE DEPLOYMENT LAB
-                        </div>
-                    </footer>
+  return (
+    <div className="min-h-screen bg-black text-white">
 
-                    {/* Modal */}
-                    {modalOpen && (
-                        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
-                            <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={() => setModalOpen(false)}></div>
-                            <div className="relative w-full max-w-2xl bg-[#080808] border border-white/10 rounded-3xl p-12 shadow-2xl overflow-hidden">
-                                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]"></div>
-                                <h2 className="text-4xl font-black text-white uppercase italic mb-6 tracking-tighter">Initiate Sync</h2>
-                                <p className="text-white/40 text-sm mb-10">Map your vision. We handle the intelligence.</p>
-                                <form className="space-y-6" onSubmit={(e) => e.preventDefault()}>
-                                    <div className="grid grid-cols-2 gap-6">
-                                        <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF]" />
-                                        <input type="text" placeholder="Industry" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF]" />
-                                    </div>
-                                    <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF]" />
-                                    <textarea placeholder="Message / Mission Brief" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF] h-40 resize-none"></textarea>
-                                    <button className="w-full py-6 bg-[#CCFF00] text-black font-black uppercase italic text-2xl rounded-2xl hover:bg-white transition-all">Submit Brief</button>
-                                </form>
-                            </div>
-                        </div>
-                    )}
-                </div>
-            );
-        };
+      {/* Navigation */}
+      <nav className={`fixed top-0 w-full z-50 transition-all duration-300 ${scrolled ? 'bg-black/95 py-3 border-b border-white/10' : 'bg-transparent py-8'}`}>
+        <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+          <div className="flex items-center gap-3">
+            <img src={YT_IDS.LOGO} alt="Logo" className="h-8 md:h-10 brightness-110" />
+            <span className="text-xl font-black tracking-tighter uppercase italic">Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
+          </div>
+          <div className="hidden lg:flex items-center gap-10 text-[10px] font-black uppercase tracking-[0.3em] text-white/60">
+            <a href="#philosophy" className="hover:text-[#CCFF00] transition-colors">Philosophy</a>
+            <a href="#work" className="hover:text-[#CCFF00] transition-colors">Showcase</a>
+            <a href="#process" className="hover:text-[#CCFF00] transition-colors">Process</a>
+            <a href="#services" className="hover:text-[#CCFF00] transition-colors">Services</a>
+            <a href="#legacy" className="hover:text-[#CCFF00] transition-colors">Legacy</a>
+            <button onClick={() => setContactOpen(true)} className="px-6 py-2 bg-[#00F0FF] text-black hover:bg-[#CCFF00] rounded-full font-black tracking-normal transition-all">Initiate Sync</button>
+          </div>
+        </div>
+      </nav>
 
-        const root = ReactDOM.createRoot(document.getElementById('root'));
-        root.render(<App />);
-    </script>
+      {/* Hero Section */}
+      <header className="relative h-screen flex items-center justify-center text-center px-6">
+        <PosterBackground id={YT_IDS.HERO} opacity={0.38} />
+        <div className="absolute inset-0 video-overlay z-[1]"></div>
+        <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-[#00F0FF] to-transparent opacity-30 scan-line z-[2]"></div>
+        <div className="relative z-10 max-w-6xl">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-[#CCFF00]/30 bg-[#CCFF00]/10 text-[#CCFF00] text-[10px] font-black uppercase tracking-[0.2em] mb-8">
+            <i data-lucide="activity" className="w-3 h-3"></i> The Human-AI Interface
+          </div>
+          <h1 className="text-6xl md:text-[10rem] font-black uppercase italic tracking-tighter leading-[0.8] mb-8 drop-shadow-[0_10px_30px_rgba(0,0,0,1)]">
+            Stop Shooting.<br />
+            <span className="text-gradient">Start Visioning.</span>
+          </h1>
+          <p className="text-lg md:text-2xl font-medium mb-12 text-white/80 max-w-3xl mx-auto drop-shadow-lg">
+            We are the Human Bridge between business intuition and AI execution. Turning cold patterns into authentic brand stories.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-6 justify-center">
+            <button onClick={() => setContactOpen(true)} className="px-12 py-6 bg-[#CCFF00] text-black font-black uppercase italic text-2xl hover:bg-white shadow-[0_0_50px_rgba(204,255,0,0.3)] transition-all">Start The Conversation</button>
+            <button onClick={() => openVideo(YT_IDS.HERO, "Our Reel")} className="px-10 py-6 border border-white/20 bg-black/40 backdrop-blur-md text-white font-black uppercase italic text-2xl hover:bg-white/10 transition-all">Our Reel</button>
+          </div>
+        </div>
+      </header>
+
+      {/* Philosophy Section */}
+      <section id="philosophy" className="py-32 relative overflow-hidden bg-black">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid md:grid-cols-2 gap-20 items-center">
+            <div className="space-y-8">
+              <h2 className="text-4xl md:text-6xl font-black uppercase italic tracking-tighter leading-none">The <span className="text-[#00F0FF]">Human Interface</span></h2>
+              <p className="text-xl text-white/60 leading-relaxed font-medium">
+                AI is the shift from the paintbrush to the camera. It changes the tools, but it can never replace human taste, culture, or storytelling. We are the "Human Interface" that ensures every pixel has a pulse.
+              </p>
+              <div className="flex gap-10">
+                <div className="flex flex-col"><span className="text-3xl font-black italic">Rapid</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Deployment</span></div>
+                <div className="flex flex-col"><span className="text-3xl font-black italic">âˆž</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Flexibility</span></div>
+                <div className="flex flex-col"><span className="text-3xl font-black italic">0</span><span className="text-[10px] text-white/40 uppercase tracking-widest">Reshoots</span></div>
+              </div>
+            </div>
+            <div className="glass-panel p-10 rounded-3xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 p-4 opacity-10"><i data-lucide="shield-check" className="w-40 h-40"></i></div>
+              <h3 className="text-2xl font-black uppercase italic mb-6 tracking-tighter text-[#CCFF00]">Lean & Scrappy</h3>
+              <p className="text-white/50 mb-8">Built like a trained athleteâ€”elite, high-performance, and designed for speed. We don't overcomplicate. We execute.</p>
+              <button onClick={() => setContactOpen(true)} className="flex items-center gap-2 text-[#00F0FF] font-black uppercase italic text-sm tracking-widest hover:translate-x-2 transition-all">The Athlete DNA <i data-lucide="arrow-right" className="w-4 h-4"></i></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Showcase */}
+      <section id="work" className="py-32 max-w-7xl mx-auto px-6">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+          <div>
+            <div className="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.4em] mb-4">Field Assets // Cinematic Showcase</div>
+            <h2 className="text-5xl md:text-[7rem] font-black uppercase italic tracking-tighter leading-none">Intelligence</h2>
+          </div>
+          <div className="text-white/30 text-xs font-bold uppercase tracking-[0.2em] md:w-64 text-right">World-class high-fidelity output.</div>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
+          {[
+            { c: "JADE_BAR",      t: "Cinematic Mixology",  id: YT_IDS.WORK_1 },
+            { c: "MILLION_DREAM", t: "The Million Dream",   id: YT_IDS.WORK_2 },
+            { c: "LUX_LOOP",      t: "Infinite Luxury",     id: YT_IDS.WORK_3 },
+            { c: "DEMO_REEL",     t: "Corporate Narrative", id: YT_IDS.WORK_4 }
+          ].map((work, i) => (
+            <VideoCard key={i} id={work.id} code={work.c} title={work.t} onPlay={openVideo} />
+          ))}
+        </div>
+      </section>
+
+      {/* The 4-Step Process */}
+      <section id="process" className="py-32 relative overflow-hidden bg-black">
+        <PosterBackground id={YT_IDS.PROCESS_BG} opacity={0.12} />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <h2 className="text-4xl md:text-7xl font-black uppercase italic tracking-tighter mb-20 text-center">The 4-Step <span className="text-[#CCFF00]">Journey</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+            {[
+              { n: 1, t: "DNA Discovery",    d: "Mapping your unique culture and voice so the AI sounds like you.", i: "target" },
+              { n: 2, t: "Competitive Intel", d: "AI-driven analysis of local rivals to see where they are winning and failing.", i: "search" },
+              { n: 3, t: "Gap Analysis",      d: "Identifying the visual and emotional 'empty spaces' your market is missing.", i: "layers" },
+              { n: 4, t: "Campaign Deploy",   d: "Rapid cinematic execution to fill those gaps instantly.", i: "zap" }
+            ].map((step, i) => (
+              <div key={i} className="p-10 rounded-3xl glass-panel group hover:bg-[#00F0FF]/5 transition-all">
+                <div className="text-5xl font-black italic text-[#00F0FF] mb-8 opacity-20">0{step.n}</div>
+                <i data-lucide={step.i} className="text-[#CCFF00] mb-6 w-10 h-10"></i>
+                <h3 className="text-2xl font-black uppercase italic mb-4 tracking-tighter">{step.t}</h3>
+                <p className="text-white/40 text-sm leading-relaxed">{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Pricing Services */}
+      <section id="services" className="py-32">
+        <div className="max-w-7xl mx-auto px-6">
+          <h2 className="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-20 text-center">Service <span className="text-gradient">Tiers</span></h2>
+          <div className="grid grid-cols-1 md:grid-cols-5 gap-5">
+            {[
+              {
+                t: "Daily Flash",
+                p: "500â€“1,500",
+                sub: "per video",
+                f: ["15-Second Short-Form Video", "Same-Day Turnaround", "AI-Generated Visuals", "Entry-Level Sampler"]
+              },
+              {
+                t: "The Spotlight",
+                p: "15,000",
+                f: ["Single A-List 60s Commercial", "Cinematic AI Visuals", "Custom Soundscape", "Rapid Delivery"]
+              },
+              {
+                t: "The Lean Engine",
+                p: "30,000",
+                tag: "Best Value",
+                h: true,
+                f: ["3x Targeted Ads", "Competitive Gap Analysis", "Social Optimization", "Background Swapping"]
+              },
+              {
+                t: "The Partnership",
+                p: "60kâ€“80k",
+                f: ["Custom Brand Ambassadors", "Full Integrated Ecosystem", "Automated Assets", "GPU Pipeline Priority"]
+              },
+              {
+                t: "Internal Machine",
+                p: "Custom",
+                f: ["Proprietary Internal AI", "Workforce Training", "Trained Team Agents", "Enterprise Asset Bank"]
+              }
+            ].map((tier, i) => (
+              <div key={i} className={`p-7 rounded-3xl flex flex-col border ${tier.h ? 'border-[#00F0FF] bg-[#00F0FF]/5 scale-105 z-10 shadow-2xl' : 'border-white/5 bg-zinc-900'}`}>
+                {tier.tag && <div className="bg-[#CCFF00] text-black text-[10px] font-black uppercase py-1 px-4 rounded-full mb-4 w-fit">{tier.tag}</div>}
+                <h3 className="text-xl font-black uppercase italic tracking-tighter mb-1">{tier.t}</h3>
+                <div className="text-3xl font-black mb-1">â‚±{tier.p}</div>
+                {tier.sub && <div className="text-[10px] text-white/30 uppercase tracking-widest mb-6">{tier.sub}</div>}
+                {!tier.sub && <div className="mb-6"></div>}
+                <ul className="space-y-3 mb-8 flex-grow">
+                  {tier.f.map((feat, j) => (
+                    <li key={j} className="text-white/50 text-xs flex gap-3">
+                      <i data-lucide="check" className="w-4 h-4 text-[#CCFF00] flex-shrink-0"></i> {feat}
+                    </li>
+                  ))}
+                </ul>
+                <button onClick={() => setContactOpen(true)} className={`w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest transition-all ${tier.h ? 'bg-[#00F0FF] text-black hover:bg-white' : 'bg-white/10 hover:bg-white/20'}`}>Select Plan</button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Legacy Lab */}
+      <section id="legacy" className="py-32 relative overflow-hidden bg-black border-y border-white/5">
+        <PosterBackground id={YT_IDS.LEGACY_BG} opacity={0.18} />
+        <div className="max-w-7xl mx-auto px-6 relative z-10">
+          <div className="grid lg:grid-cols-2 gap-24 items-center">
+            <div>
+              <div className="text-[10px] font-black text-[#00F0FF] uppercase tracking-[0.4em] mb-6">Prime Preservation // Legacy Lab</div>
+              <h2 className="text-5xl md:text-[7rem] font-black uppercase italic tracking-tighter mb-10 leading-[0.85]">Don't Just <br />Remember. <span className="text-gradient">Relive.</span></h2>
+              <p className="text-xl text-white/50 mb-12 leading-relaxed max-w-lg">Upscale ancestral memories into cinematic 4K life stories. Immortalize your appearance for future generations.</p>
+              <button onClick={() => openVideo(YT_IDS.LEGACY_1, "Legacy Lab Demo")} className="flex items-center gap-6 text-white font-black uppercase italic text-2xl hover:text-[#CCFF00] transition-all">
+                <i data-lucide="play-circle" className="w-10 h-10"></i> Enter The Lab
+              </button>
+            </div>
+            <div className="grid grid-cols-2 gap-6 relative">
+              <VideoCard id={YT_IDS.LEGACY_1} title="Legacy Story I" onPlay={openVideo} vertical={true} className="translate-y-12 border-white/10 shadow-2xl" />
+              <VideoCard id={YT_IDS.LEGACY_2} title="Legacy Story II" onPlay={openVideo} vertical={true} className="border-white/10 shadow-2xl" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
+      <section className="py-48 text-center relative overflow-hidden bg-black">
+        <PosterBackground id={YT_IDS.CTA_BG} opacity={0.18} />
+        <div className="absolute inset-0 bg-black/60 z-[1]"></div>
+        <div className="relative z-10 px-6">
+          <h2 className="text-6xl md:text-[11rem] font-black uppercase italic tracking-tighter mb-16 leading-none">Geared for a <br /><span className="text-[#CCFF00]">Better Future.</span></h2>
+          <button onClick={() => setContactOpen(true)} className="px-16 py-8 bg-white text-black font-black uppercase italic text-3xl hover:bg-[#00F0FF] transition-all shadow-2xl">Start The Conversation</button>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-24 border-t border-white/5 text-center px-6">
+        <div className="flex items-center justify-center gap-4 text-3xl font-black tracking-tighter uppercase italic mb-12">
+          <img src={YT_IDS.LOGO} alt="Logo" className="h-10 brightness-110" />
+          <span>Nextframe<span className="text-[#00F0FF]">.Ph</span></span>
+        </div>
+        <div className="text-[10px] tracking-[0.4em] text-white/20 uppercase font-black">
+          Â© 2026 NEXTFRAME.PH // PHILIPPINES // HUMAN INTERFACE DEPLOYMENT LAB
+        </div>
+      </footer>
+
+      {/* Video Modal */}
+      {activeVideo && (
+        <div className="fixed inset-0 z-[110] flex items-center justify-center px-4 md:px-6">
+          <div className="absolute inset-0 bg-black/90 backdrop-blur-md" onClick={closeVideo}></div>
+          <div className="relative w-full max-w-5xl overflow-hidden rounded-3xl border border-white/10 bg-black shadow-2xl">
+            <div className="flex items-center justify-between border-b border-white/10 px-6 py-4">
+              <div className="text-sm font-black uppercase tracking-[0.3em] text-[#CCFF00]">{activeVideo.title}</div>
+              <button type="button" onClick={closeVideo} className="rounded-full border border-white/15 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-white/70 hover:text-white">Close</button>
+            </div>
+            <div className="relative aspect-video bg-black">
+              <iframe
+                src={ytModalSrc(activeVideo.id)}
+                title={activeVideo.title}
+                className="absolute inset-0 h-full w-full border-0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Contact Modal */}
+      {contactOpen && (
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-6">
+          <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={() => setContactOpen(false)}></div>
+          <div className="relative w-full max-w-2xl bg-[#080808] border border-white/10 rounded-3xl p-12 shadow-2xl overflow-hidden">
+            <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-[#00F0FF] to-[#CCFF00]"></div>
+            <h2 className="text-4xl font-black text-white uppercase italic mb-6 tracking-tighter">Initiate Sync</h2>
+            <p className="text-white/40 text-sm mb-10">Map your vision. We handle the intelligence.</p>
+            <div className="space-y-6">
+              <div className="grid grid-cols-2 gap-6">
+                <input type="text" placeholder="Full Name" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF] text-white" />
+                <input type="text" placeholder="Industry" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF] text-white" />
+              </div>
+              <input type="email" placeholder="Email Address" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF] text-white" />
+              <textarea placeholder="Message / Mission Brief" className="w-full bg-white/5 border border-white/10 rounded-2xl px-6 py-4 outline-none focus:border-[#00F0FF] h-40 resize-none text-white"></textarea>
+              <button className="w-full py-6 bg-[#CCFF00] text-black font-black uppercase italic text-2xl rounded-2xl hover:bg-white transition-all">Submit Brief</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+    </div>
+  );
+};
+
+const root = ReactDOM.createRoot(document.getElementById('root'));
+root.render(<App />);
+</script>
 </body>
 </html>
