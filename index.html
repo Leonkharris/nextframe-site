@@ -42,11 +42,12 @@ const YT_IDS = {
   WORK_2:       "HnUG6sFpReI",
   WORK_3:       "q_58rOdi5hk",
   WORK_4:       "-0u0gIXAw_k",
-  PROCESS_BG:   "HD7d9l5XMxU",
-  LEGACY_BG:    "9Psj1pTcLVY",
+  PROCESS_BG:   "LRQfWCd5_o8",
+  LEGACY_BG:    "HnUG6sFpReI",
   LEGACY_1:     "RL_XRbP_TLU",
   LEGACY_2:     "ITcVSxSKvVA",
-  CTA_BG:       "ZdgCfGbKCbI",
+  CTA_BG:       "q_58rOdi5hk",
+  MUSIC_PLAYLIST: "PLpIvQM74C6trizIZ0DSxYImb9JC9CNPOk",
   LOGO: "https://ce6vsiuf1fnatbbk.public.blob.vercel-storage.com/next%20fram%20logo.png"
 };
 
@@ -55,6 +56,9 @@ const ytSrc = (id, extra = "") =>
 
 const ytModalSrc = (id) =>
   `https://www.youtube-nocookie.com/embed/${id}?autoplay=1&playsinline=1&rel=0&modestbranding=1`;
+
+const ytPlaylistSrc = (listId) =>
+  `https://www.youtube-nocookie.com/embed/videoseries?list=${listId}&autoplay=1&controls=0&playsinline=1&rel=0&modestbranding=1`;
 
 const ytThumb = (id) => `https://i.ytimg.com/vi/${id}/hqdefault.jpg`;
 
@@ -125,6 +129,7 @@ const YTVertical = ({ id }) => (
 const App = () => {
   const [contactOpen, setContactOpen] = useState(false);
   const [activeVideo, setActiveVideo] = useState(null);
+  const [musicOn, setMusicOn] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
   const openVideo = (id, title) => setActiveVideo({ id, title });
@@ -346,6 +351,25 @@ const App = () => {
           © 2026 NEXTFRAME.PH // PHILIPPINES // HUMAN INTERFACE DEPLOYMENT LAB
         </div>
       </footer>
+
+      {musicOn && (
+        <div className="fixed bottom-0 right-0 h-px w-px overflow-hidden opacity-0 pointer-events-none" aria-hidden="true">
+          <iframe
+            src={ytPlaylistSrc(YT_IDS.MUSIC_PLAYLIST)}
+            title="Site soundtrack"
+            className="h-full w-full border-0"
+            allow="autoplay; encrypted-media"
+          />
+        </div>
+      )}
+
+      <button
+        type="button"
+        onClick={() => setMusicOn((value) => !value)}
+        className="fixed bottom-6 right-6 z-[95] rounded-full border border-white/15 bg-black/75 px-5 py-3 text-[10px] font-black uppercase tracking-[0.3em] text-white/80 backdrop-blur-md transition-all hover:border-[#00F0FF] hover:text-white"
+      >
+        {musicOn ? "Mute Soundtrack" : "Play Soundtrack"}
+      </button>
 
       {/* Video Modal */}
       {activeVideo && (
