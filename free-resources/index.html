@@ -1,0 +1,1009 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Free AI Growth Resources | Next-Frame Agency</title>
+  <meta name="description" content="Free Next-Frame guides, scripts, and checklists for local businesses that want more leads from Facebook, Instagram, Messenger, Google, and AI automation.">
+  <meta property="og:title" content="Free AI Growth Resources">
+  <meta property="og:description" content="Original Next-Frame playbooks for local business visibility, buyer-path repair, and comment-to-DM automation.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://next-frame.agency/free-resources/">
+  <link rel="icon" href="/public/assets/logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800;900&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root {
+      --ink: #061215;
+      --bg: #08191c;
+      --panel: rgba(246, 251, 248, 0.075);
+      --panel-strong: rgba(246, 251, 248, 0.115);
+      --line: rgba(246, 251, 248, 0.14);
+      --text: #f6fbf8;
+      --muted: rgba(246, 251, 248, 0.7);
+      --dim: rgba(246, 251, 248, 0.48);
+      --teal: #42d3bd;
+      --cyan: #00f0ff;
+      --lime: #ccff00;
+      --gold: #ffcf66;
+      --coral: #ff7f66;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(66, 211, 189, 0.16), transparent 32rem),
+        linear-gradient(180deg, #061215 0%, #0b2022 58%, #08191c 100%);
+      color: var(--text);
+      font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      overflow-x: hidden;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    button,
+    input,
+    textarea {
+      font: inherit;
+    }
+
+    .page {
+      width: min(1120px, calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .site-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 22px 0 18px;
+      border-bottom: 1px solid rgba(246, 251, 248, 0.08);
+    }
+
+    .brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-width: max-content;
+    }
+
+    .brand img {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--line);
+    }
+
+    .brand span {
+      display: grid;
+      gap: 1px;
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .brand strong {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: 950;
+    }
+
+    .brand em {
+      color: rgba(246, 251, 248, 0.66);
+      font-size: 0.72rem;
+      font-style: normal;
+      font-weight: 900;
+      letter-spacing: 0.08em;
+    }
+
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .nav a,
+    .button,
+    .ghost-button,
+    .copy-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 42px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(246, 251, 248, 0.07);
+      color: rgba(246, 251, 248, 0.86);
+      padding: 10px 14px;
+      font-size: 0.88rem;
+      font-weight: 850;
+      line-height: 1;
+      cursor: pointer;
+      transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+    }
+
+    .nav a:hover,
+    .button:hover,
+    .ghost-button:hover,
+    .copy-button:hover {
+      transform: translateY(-1px);
+      border-color: rgba(66, 211, 189, 0.52);
+      background: rgba(66, 211, 189, 0.12);
+    }
+
+    .nav a:last-child,
+    .primary {
+      background: var(--teal);
+      color: var(--ink);
+      border-color: transparent;
+      box-shadow: 0 16px 38px rgba(66, 211, 189, 0.22);
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 0.86fr) minmax(330px, 0.54fr);
+      gap: 34px;
+      align-items: end;
+      min-height: 540px;
+      padding: 78px 0 44px;
+    }
+
+    .hero-copy {
+      display: grid;
+      gap: 22px;
+      align-content: center;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      width: fit-content;
+      gap: 8px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(66, 211, 189, 0.24);
+      background: rgba(66, 211, 189, 0.09);
+      color: var(--teal);
+      font-size: 0.75rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    h1,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    h1 {
+      color: #ffffff;
+      max-width: 850px;
+      font-size: clamp(3.2rem, 8vw, 7rem);
+      line-height: 0.88;
+      letter-spacing: 0;
+    }
+
+    .hero-copy > p,
+    .section-head p,
+    .resource-card p,
+    .guide-body p,
+    .guide-body li,
+    .tool-card p,
+    .handoff p {
+      color: var(--muted);
+      line-height: 1.58;
+    }
+
+    .hero-copy > p {
+      max-width: 680px;
+      font-size: clamp(1.06rem, 2vw, 1.28rem);
+    }
+
+    .actions,
+    .metrics {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .button {
+      min-height: 50px;
+      padding: 14px 18px;
+      font-size: 0.94rem;
+      font-weight: 920;
+    }
+
+    .button i,
+    .resource-card i,
+    .guide-body i,
+    .tool-card i,
+    .copy-button i,
+    .handoff > i {
+      width: 18px;
+      height: 18px;
+      flex: 0 0 auto;
+    }
+
+    .metrics {
+      align-self: stretch;
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .metric {
+      min-height: 130px;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 18px;
+      display: grid;
+      align-content: space-between;
+      gap: 18px;
+    }
+
+    .metric strong {
+      color: #ffffff;
+      font-size: 2rem;
+      line-height: 1;
+    }
+
+    .metric span {
+      color: var(--dim);
+      font-size: 0.78rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .section {
+      padding: 58px 0;
+    }
+
+    .section-head {
+      display: grid;
+      gap: 14px;
+      max-width: 760px;
+      margin-bottom: 22px;
+    }
+
+    h2 {
+      color: #ffffff;
+      font-size: clamp(2rem, 5vw, 4.2rem);
+      line-height: 0.98;
+      letter-spacing: 0;
+    }
+
+    .resource-list {
+      display: grid;
+      gap: 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .resource-card {
+      width: 100%;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) auto;
+      gap: 24px;
+      align-items: center;
+      padding: 24px 0;
+      border: 0;
+      border-bottom: 1px solid var(--line);
+      background: transparent;
+      color: inherit;
+      text-align: left;
+      cursor: pointer;
+    }
+
+    .resource-card:hover h3,
+    .resource-card.active h3 {
+      color: var(--teal);
+    }
+
+    .resource-card small {
+      display: inline-flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      color: var(--dim);
+      font-size: 0.76rem;
+      font-weight: 850;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 8px;
+    }
+
+    .resource-card h3 {
+      color: #ffffff;
+      font-size: clamp(1.14rem, 2.5vw, 1.45rem);
+      line-height: 1.22;
+      font-weight: 900;
+      margin-bottom: 9px;
+      transition: color 180ms ease;
+    }
+
+    .resource-card p {
+      max-width: 760px;
+      font-size: 0.94rem;
+    }
+
+    .resource-card .arrow {
+      display: inline-grid;
+      place-items: center;
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: rgba(66, 211, 189, 0.1);
+      color: var(--teal);
+    }
+
+    .guide-panel {
+      display: grid;
+      grid-template-columns: minmax(0, 0.72fr) minmax(320px, 0.5fr);
+      gap: 16px;
+      align-items: stretch;
+      margin-top: 24px;
+    }
+
+    .guide-body,
+    .prompt-box,
+    .tool-card,
+    .handoff,
+    .source-note {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+    }
+
+    .guide-body {
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    .guide-body header {
+      display: grid;
+      gap: 10px;
+    }
+
+    .guide-body .date {
+      color: var(--teal);
+      font-size: 0.76rem;
+      font-weight: 950;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .guide-body h3 {
+      color: #ffffff;
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      line-height: 1;
+    }
+
+    .guide-body ul,
+    .guide-body ol {
+      margin: 0;
+      padding-left: 20px;
+      display: grid;
+      gap: 10px;
+    }
+
+    .guide-body li strong {
+      color: #ffffff;
+    }
+
+    .prompt-box {
+      display: grid;
+      gap: 14px;
+      padding: 20px;
+      background: rgba(66, 211, 189, 0.08);
+      border-color: rgba(66, 211, 189, 0.24);
+    }
+
+    .prompt-box pre {
+      margin: 0;
+      white-space: pre-wrap;
+      color: rgba(246, 251, 248, 0.86);
+      font-size: 0.9rem;
+      line-height: 1.5;
+      background: rgba(2, 9, 10, 0.62);
+      border: 1px solid rgba(246, 251, 248, 0.1);
+      border-radius: 8px;
+      padding: 14px;
+    }
+
+    .copy-button {
+      width: fit-content;
+      background: #ffffff;
+      color: var(--ink);
+      border-color: transparent;
+    }
+
+    .tool-grid {
+      display: grid;
+      gap: 10px;
+    }
+
+    .tool-card {
+      padding: 20px;
+      display: grid;
+      gap: 12px;
+      align-content: start;
+    }
+
+    .tool-card i {
+      color: var(--gold);
+      width: 24px;
+      height: 24px;
+    }
+
+    .tool-card strong {
+      color: #ffffff;
+      font-size: 1.08rem;
+      line-height: 1.1;
+    }
+
+    .handoff {
+      margin: 52px 0 24px;
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 20px;
+      align-items: center;
+      padding: 28px;
+      background: var(--panel-strong);
+    }
+
+    .handoff > i {
+      width: 42px;
+      height: 42px;
+      color: var(--teal);
+    }
+
+    .source-note {
+      margin: 36px 0 0;
+      padding: 18px;
+      color: var(--dim);
+      font-size: 0.84rem;
+      line-height: 1.55;
+    }
+
+    .footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      padding: 30px 0 44px;
+      color: rgba(246, 251, 248, 0.42);
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 18px;
+      z-index: 50;
+      transform: translate(-50%, calc(100% + 32px));
+      border-radius: 999px;
+      border: 1px solid rgba(66, 211, 189, 0.28);
+      background: rgba(7, 21, 22, 0.94);
+      color: #ffffff;
+      padding: 12px 16px;
+      font-size: 0.9rem;
+      font-weight: 850;
+      box-shadow: 0 18px 54px rgba(0, 0, 0, 0.35);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 180ms ease, transform 180ms ease;
+    }
+
+    .toast.visible {
+      transform: translate(-50%, 0);
+      opacity: 1;
+    }
+
+    @media (max-width: 920px) {
+      .hero,
+      .guide-panel,
+      .handoff {
+        grid-template-columns: 1fr;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .page {
+        width: min(100% - 24px, 1120px);
+      }
+
+      .site-header {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav {
+        justify-content: flex-start;
+      }
+
+      .nav a {
+        min-height: 36px;
+        padding: 8px 10px;
+        font-size: 0.78rem;
+      }
+
+      .hero {
+        min-height: auto;
+        padding: 46px 0 34px;
+      }
+
+      h1 {
+        font-size: clamp(3rem, 15vw, 4.5rem);
+      }
+
+      .actions .button,
+      .handoff .button {
+        width: 100%;
+      }
+
+      .metrics {
+        grid-template-columns: 1fr;
+      }
+
+      .resource-card {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .resource-card .arrow {
+        justify-self: start;
+      }
+
+      .guide-body,
+      .handoff {
+        padding: 22px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="site-header">
+      <a class="brand" href="/">
+        <img src="/public/assets/logo.png" alt="Next-Frame logo">
+        <span>
+          <strong>Next-Frame</strong>
+          <em>Agency</em>
+        </span>
+      </a>
+      <nav class="nav" aria-label="Free resources navigation">
+        <a href="/messenger-leak-check/">Leak check</a>
+        <a href="#guides">Guides</a>
+        <a href="#open-guide">Open guide</a>
+        <a href="#handoff">Work with us</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="eyebrow"><i data-lucide="sparkles"></i> Free local-business AI guides</span>
+          <h1>Free resources for turning attention into booked work.</h1>
+          <p>Practical Next-Frame playbooks for Philippine businesses using Facebook, Instagram, Messenger, Google, and simple AI automation. No gate. No theory. Pick one, copy the script, ship the next step.</p>
+          <div class="actions">
+            <a class="button primary" href="#guides">Browse the guides <i data-lucide="arrow-down"></i></a>
+            <a class="button" href="/messenger-leak-check/?source=FreeResources">Get a leak check <i data-lucide="search-check"></i></a>
+          </div>
+        </div>
+        <div class="metrics" aria-label="Resource hub highlights">
+          <article class="metric">
+            <strong>12</strong>
+            <span>Original resource drops</span>
+          </article>
+          <article class="metric">
+            <strong>5</strong>
+            <span>Copy-ready prompt packs</span>
+          </article>
+          <article class="metric">
+            <strong>48h</strong>
+            <span>Repair sprint path</span>
+          </article>
+          <article class="metric">
+            <strong>PHP</strong>
+            <span>Built for local buyers</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section" id="guides">
+        <div class="section-head">
+          <h2>Guides you can actually use this week.</h2>
+          <p>These are original Next-Frame resources built from our current automation stack and the local-service buyer path we are selling now.</p>
+        </div>
+        <div class="resource-list" id="resource-list"></div>
+      </section>
+
+      <section class="section" id="open-guide">
+        <div class="section-head">
+          <h2>Open resource.</h2>
+          <p>Each resource gives you the idea, the implementation checklist, and a copy-ready prompt or script.</p>
+        </div>
+        <div class="guide-panel">
+          <article class="guide-body" id="guide-body"></article>
+          <aside class="tool-grid" id="tool-grid"></aside>
+        </div>
+      </section>
+
+      <section class="handoff" id="handoff">
+        <i data-lucide="bot"></i>
+        <div>
+          <h2>Want us to install the system?</h2>
+          <p>Start with the Messenger Lead Leak Check. We will inspect the public buyer path and show the first fix before pitching a bigger build.</p>
+        </div>
+        <a class="button primary" href="/messenger-leak-check/?source=FreeResourcesCTA">Get the leak check <i data-lucide="arrow-right"></i></a>
+      </section>
+
+      <p class="source-note">Reference note: this hub borrows the proven format of a simple, date-stamped free-resource index, while all Next-Frame titles, copy, scripts, checklists, and positioning here are original and built for our offer.</p>
+    </main>
+
+    <footer class="footer">
+      <span>Next-Frame.Agency</span>
+      <span>Free resources // Philippines</span>
+    </footer>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">Copied</div>
+
+  <script>
+    const resources = [
+      {
+        slug: "comment-to-dm-leak-map",
+        date: "May 6, 2026",
+        type: "Buyer path",
+        title: "The Comment-to-DM Leak Map for Local Businesses",
+        summary: "Find where buyers disappear between a Facebook comment, Messenger reply, Google listing, and booking step.",
+        steps: [
+          ["Capture the trigger", "Pick one keyword for comments: LEAK, CHECK, AUDIT, MENU, BOOK, or PRICE."],
+          ["Trace the next action", "Write the exact next message, link, or question the buyer sees after they comment."],
+          ["Mark the leak", "Look for delay, unclear price, weak proof, hidden booking action, or no follow-up."],
+          ["Send one repair", "Reply with a short fix: clearer offer, booking link, review proof, or a paid quick report."]
+        ],
+        prompt: "Act as a local-business buyer-path auditor. Review this Facebook page, Google listing, website, or Messenger path: [PASTE LINK]. Identify the 3 most likely places a buyer drops off. For each leak, give me: the symptom, why it hurts conversion, one rewritten CTA or reply, and the fastest 48-hour fix.",
+        tools: [
+          ["MessageSquare", "Use for Facebook and Instagram comment replies."],
+          ["SearchCheck", "Pair with the Messenger Lead Leak Check page."],
+          ["Clock3", "Sell the first repair as a 48-hour sprint."]
+        ]
+      },
+      {
+        slug: "seven-auto-replies",
+        date: "May 6, 2026",
+        type: "Scripts",
+        title: "7 Auto-Replies That Turn Comments Into Conversations",
+        summary: "Copy-ready replies for restaurants, salons, clinics, venues, real estate pages, and service businesses.",
+        steps: [
+          ["Use one verb", "Do not ask people to do five things. Ask them to send, book, check, or reply."],
+          ["Keep the thread alive", "Never send a link by itself. Add a human sentence that makes the next step obvious."],
+          ["Tag the source", "Use source parameters so the lead desk knows if the request came from Facebook, Instagram, or Messenger."],
+          ["Ask one qualifying question", "End with one question that reveals urgency, budget, location, or service fit."]
+        ],
+        prompt: "Create 7 short auto-replies for [BUSINESS TYPE]. Each reply should handle a comment keyword, invite the person into Messenger, include this URL: [LANDING PAGE], and ask one useful qualifying question. Tone: direct, friendly, local, no hype.",
+        tools: [
+          ["Copy", "Copy into Meta Business Suite saved replies."],
+          ["Tags", "Use source tags like FacebookOrganicPH or InstagramComment."],
+          ["UserCheck", "Hand off warm leads to a human before price negotiation."]
+        ]
+      },
+      {
+        slug: "google-profile-repair",
+        date: "May 6, 2026",
+        type: "Checklist",
+        title: "Google Business Profile Repair Checklist",
+        summary: "A fast checklist for businesses that get profile views but not calls, messages, reservations, or direction taps.",
+        steps: [
+          ["Open with the offer", "The business description should name the service, buyer, location, and outcome in the first sentence."],
+          ["Audit photos", "The first 12 photos should prove the product, place, people, and result."],
+          ["Rewrite services", "Every service needs a short buyer benefit, price range if possible, and booking action."],
+          ["Harvest proof", "Ask recent customers for reviews that mention the exact service and neighborhood."]
+        ],
+        prompt: "Audit this Google Business Profile: [PASTE LINK]. Give me a repair checklist for profile description, photos, services, reviews, Q&A, and booking CTA. Prioritize fixes that can be completed in one afternoon.",
+        tools: [
+          ["MapPinCheck", "Use for maps, calls, and direction-intent buyers."],
+          ["Star", "Turn reviews into conversion proof."],
+          ["Image", "Photo order often fixes trust faster than copy."]
+        ]
+      },
+      {
+        slug: "first-dollar-ai-audit",
+        date: "May 6, 2026",
+        type: "Offer",
+        title: "The First-Dollar AI Audit Offer",
+        summary: "A small paid offer you can sell before building a full chatbot, content engine, or automation system.",
+        steps: [
+          ["Name the pain", "Do not sell AI first. Sell the leak: missed replies, weak offer, slow booking, no follow-up."],
+          ["Keep the scope tiny", "Deliver 3 leaks, 1 rewritten CTA, 1 follow-up message, 3 content ideas, and 1 repair path."],
+          ["Price for yes", "Start at PHP 1,500 to PHP 2,500 for the report, then offer implementation."],
+          ["Upsell the fix", "Turn the report into a 48-hour buyer path repair or monthly content system."]
+        ],
+        prompt: "Build a first-dollar offer for [BUSINESS TYPE]. The offer should diagnose where leads are leaking between social posts, Messenger, Google, and booking. Include deliverables, price range in PHP, turnaround time, sales message, and upsell path.",
+        tools: [
+          ["Coins", "Small paid reports create trust before retainers."],
+          ["ClipboardCheck", "Use a fixed deliverable so scope stays controlled."],
+          ["TrendingUp", "Report becomes a proof asset for the next client."]
+        ]
+      },
+      {
+        slug: "thirty-day-local-content",
+        date: "May 5, 2026",
+        type: "Content",
+        title: "30-Day Local Content Calendar That Does Not Feel Generic",
+        summary: "A local-business content framework that uses proof, objections, buyer questions, offers, and behind-the-scenes posts.",
+        steps: [
+          ["Collect buyer questions", "Pull questions from comments, Messenger, Google reviews, and staff conversations."],
+          ["Rotate five angles", "Proof, offer, objection, story, and direct invitation."],
+          ["Make one post do one job", "Do not mix education, pricing, booking, and brand story in the same post."],
+          ["Score every week", "Keep posts that create comments, saves, DMs, or page visits. Rewrite the rest."]
+        ],
+        prompt: "Create a 30-day Facebook and Instagram content calendar for [BUSINESS TYPE] in [CITY]. Use five angles: proof, offer, objection, story, direct invitation. For each post include hook, caption, visual idea, CTA, and comment keyword.",
+        tools: [
+          ["CalendarDays", "Use weekly rotation instead of random posting."],
+          ["Megaphone", "Tie each post to one buyer action."],
+          ["MessageCircle", "Every post should create a DM route."]
+        ]
+      },
+      {
+        slug: "review-capture-system",
+        date: "May 5, 2026",
+        type: "Automation",
+        title: "Review Capture System for Salons, Clinics, Cafes, and Venues",
+        summary: "A lightweight workflow for asking happy customers for useful reviews without sounding robotic.",
+        steps: [
+          ["Pick the moment", "Ask after a successful service, resolved issue, event, or repeat visit."],
+          ["Give a memory cue", "Mention the service, staff member, result, or occasion so the review is specific."],
+          ["Route the review", "Use Google first, then Facebook if the customer already interacts there."],
+          ["Reuse the proof", "Turn the best review lines into posts, story frames, and sales page proof."]
+        ],
+        prompt: "Write 5 review request messages for [BUSINESS TYPE]. Each one should feel human, mention a likely customer moment, ask for a Google review, and include a shorter SMS version. Avoid pressure and fake enthusiasm.",
+        tools: [
+          ["Star", "Specific reviews sell better than generic five-star proof."],
+          ["Repeat2", "Send from a repeatable service checklist."],
+          ["Quote", "Repurpose the customer's words into content."]
+        ]
+      },
+      {
+        slug: "competitor-sculpting",
+        date: "May 4, 2026",
+        type: "Research",
+        title: "Competitor Sculpting Worksheet",
+        summary: "A practical worksheet for studying competitors without copying them: offers, CTAs, proof, channels, gaps, and positioning.",
+        steps: [
+          ["List visible offers", "Capture what they sell, who it is for, the CTA, and whether pricing is visible."],
+          ["Find the proof pattern", "Record testimonials, case studies, portfolio, reviews, and founder trust signals."],
+          ["Identify the gap", "Look for unanswered buyer questions, missing local proof, weak lead capture, or old content."],
+          ["Build the counter-position", "Write the angle that makes Next-Frame easier to buy than the competitor."]
+        ],
+        prompt: "Analyze these 5 competitor websites: [PASTE LINKS]. Do not copy their wording. Extract their offer type, CTA, proof, pricing signal, lead magnet, and missing buyer reassurance. Then propose 3 original Next-Frame offers we can publish this week.",
+        tools: [
+          ["Search", "Use public pages and profiles only."],
+          ["Scale", "Compare patterns, not sentences."],
+          ["Lightbulb", "Convert gaps into original lead magnets."]
+        ]
+      },
+      {
+        slug: "ai-visibility-audit",
+        date: "May 4, 2026",
+        type: "Audit",
+        title: "AI Visibility Audit for a Local Business",
+        summary: "A simple way to show owners whether AI tools, search, maps, and social profiles can understand what they do.",
+        steps: [
+          ["Ask AI the buyer question", "Search for the service and location as a customer would."],
+          ["Check if the business appears", "Record whether the brand, category, reviews, and services are easy to find."],
+          ["Fix structured clarity", "Make name, category, location, services, proof, and booking route consistent everywhere."],
+          ["Create a visibility brief", "Show what AI missed and what content must exist next."]
+        ],
+        prompt: "Run an AI visibility audit for [BUSINESS NAME] in [CITY]. Tell me what a customer and an AI assistant can understand from the public website, Google profile, Facebook page, and Instagram profile. List missing clarity, missing proof, and the first 5 content fixes.",
+        tools: [
+          ["Bot", "AI search rewards clear public facts."],
+          ["Globe", "Consistency across profiles matters."],
+          ["FileSearch", "Use findings as the sales report."]
+        ]
+      },
+      {
+        slug: "ugc-proof-pack",
+        date: "May 3, 2026",
+        type: "Creative",
+        title: "UGC Proof Pack for Local Offers",
+        summary: "A guide for turning customer questions, staff answers, and service proof into simple ad-style videos.",
+        steps: [
+          ["Start with one objection", "Pick price, trust, speed, pain, location, or result."],
+          ["Use real environment", "Film counter, chair, treatment room, venue, kitchen, car, or product in hand."],
+          ["Keep the line direct", "The first sentence should sound like a customer question, not a brand slogan."],
+          ["End with comment keyword", "Invite CHECK, MENU, BOOK, PRICE, or AUDIT instead of a vague follow us."]
+        ],
+        prompt: "Create 10 UGC-style short video scripts for [LOCAL BUSINESS OFFER]. Each script should have: customer objection hook, 2 proof beats, simple shot list, and comment keyword CTA. Keep every script under 25 seconds.",
+        tools: [
+          ["Video", "Use phone-first video, not polished corporate content."],
+          ["BadgeCheck", "Proof beats should be visible on screen."],
+          ["MessageCircle", "CTA should trigger the DM path."]
+        ]
+      },
+      {
+        slug: "messenger-qualification",
+        date: "May 3, 2026",
+        type: "Lead desk",
+        title: "Messenger Qualification Questions That Do Not Kill the Sale",
+        summary: "The questions to ask before quoting price, booking a call, or sending a proposal.",
+        steps: [
+          ["Ask context first", "What service, date, location, or result are they looking for?"],
+          ["Ask urgency second", "When do they need it? Today, this week, this month, or just checking?"],
+          ["Ask decision path third", "Are they the buyer, helping someone else, or comparing options?"],
+          ["Ask contact last", "Only ask for phone or email after they show enough intent."]
+        ],
+        prompt: "Write a Messenger qualification script for [BUSINESS TYPE]. It should ask 4 questions max, keep the buyer comfortable, avoid sounding like a form, and end with a booking or quote handoff.",
+        tools: [
+          ["MessagesSquare", "Use in Messenger saved replies."],
+          ["UserCheck", "Qualify without making the buyer feel interrogated."],
+          ["PhoneCall", "Move high-intent leads to call or booking."]
+        ]
+      },
+      {
+        slug: "n8n-lead-router",
+        date: "May 2, 2026",
+        type: "Workflow",
+        title: "No-Code Lead Router Blueprint",
+        summary: "A simple blueprint for routing Facebook, Instagram, form, and email leads into one operator queue.",
+        steps: [
+          ["Normalize inputs", "Convert every source into name, contact, source, need, urgency, and link."],
+          ["Score intent", "High intent means asking price, availability, booking, quote, or audit."],
+          ["Create the packet", "Generate triage, mini-audit, sales sheet, action brief, and outbox response."],
+          ["Notify the operator", "Send one clear action, not a flood of raw messages."]
+        ],
+        prompt: "Design a no-code lead router for [BUSINESS]. Inputs: Facebook comments, Messenger, Instagram, website form, email. Output one operator queue with lead score, recommended reply, next action, and follow-up time.",
+        tools: [
+          ["Route", "Use n8n, Zapier, Make, or a small custom API."],
+          ["Gauge", "Score leads by buying intent."],
+          ["Inbox", "One queue beats five inboxes."]
+        ]
+      },
+      {
+        slug: "one-page-offer",
+        date: "May 2, 2026",
+        type: "Landing page",
+        title: "One-Page Offer Framework for Comment Traffic",
+        summary: "A landing page structure for people arriving from a comment, DM, or profile click.",
+        steps: [
+          ["Repeat the pain", "Open with the exact problem the comment thread created."],
+          ["Show the path", "Explain what happens after they send their page, listing, or site."],
+          ["Reduce risk", "Offer a small report before the full implementation."],
+          ["Attach the source", "Keep source in the URL so replies, reports, and offers can be traced."]
+        ],
+        prompt: "Write a one-page landing page for [OFFER]. Traffic comes from Facebook and Instagram comments. Include headline, promise, proof row, 3-step process, deliverables, starter price, upsell, and auto-reply copy.",
+        tools: [
+          ["LayoutTemplate", "Use for pages like /messenger-leak-check/."],
+          ["MousePointerClick", "One clear CTA per section."],
+          ["Link", "Use source-tagged URLs for tracking."]
+        ]
+      }
+    ];
+
+    const resourceList = document.getElementById("resource-list");
+    const guideBody = document.getElementById("guide-body");
+    const toolGrid = document.getElementById("tool-grid");
+    const toast = document.getElementById("toast");
+
+    function iconName(name) {
+      return name.replace(/[A-Z]/g, (match, offset) => `${offset ? "-" : ""}${match.toLowerCase()}`);
+    }
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("visible");
+      window.setTimeout(() => toast.classList.remove("visible"), 2200);
+    }
+
+    async function copyText(text) {
+      try {
+        await navigator.clipboard.writeText(text);
+        showToast("Copied");
+      } catch (error) {
+        window.prompt("Copy this text", text);
+      }
+    }
+
+    function renderList() {
+      resourceList.innerHTML = resources.map((resource, index) => `
+        <button class="resource-card${index === 0 ? " active" : ""}" type="button" data-index="${index}">
+          <span>
+            <small>${resource.date} <span>${resource.type}</span></small>
+            <h3>${resource.title}</h3>
+            <p>${resource.summary}</p>
+          </span>
+          <span class="arrow"><i data-lucide="arrow-right"></i></span>
+        </button>
+      `).join("");
+    }
+
+    function renderGuide(index) {
+      const resource = resources[index];
+      guideBody.innerHTML = `
+        <header>
+          <span class="date">${resource.date} // ${resource.type}</span>
+          <h3>${resource.title}</h3>
+          <p>${resource.summary}</p>
+        </header>
+        <ol>
+          ${resource.steps.map(([title, detail]) => `<li><strong>${title}:</strong> ${detail}</li>`).join("")}
+        </ol>
+        <section class="prompt-box">
+          <strong>Copy-ready prompt or script</strong>
+          <pre>${resource.prompt}</pre>
+          <button class="copy-button" type="button" data-copy-prompt><i data-lucide="copy"></i> Copy prompt</button>
+        </section>
+      `;
+
+      toolGrid.innerHTML = resource.tools.map(([icon, text]) => `
+        <article class="tool-card">
+          <i data-lucide="${iconName(icon)}"></i>
+          <strong>${text.split(".")[0]}.</strong>
+          <p>${text.split(".").slice(1).join(".").trim()}</p>
+        </article>
+      `).join("");
+
+      document.querySelectorAll(".resource-card").forEach((card) => card.classList.remove("active"));
+      const active = document.querySelector(`.resource-card[data-index="${index}"]`);
+      if (active) {
+        active.classList.add("active");
+      }
+
+      const copyButton = guideBody.querySelector("[data-copy-prompt]");
+      copyButton.addEventListener("click", () => copyText(resource.prompt));
+
+      if (window.lucide) {
+        window.lucide.createIcons();
+      }
+    }
+
+    renderList();
+    renderGuide(0);
+
+    resourceList.addEventListener("click", (event) => {
+      const button = event.target.closest(".resource-card");
+      if (!button) {
+        return;
+      }
+
+      renderGuide(Number(button.dataset.index));
+      document.getElementById("open-guide").scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+
+    if (window.lucide) {
+      window.lucide.createIcons();
+    }
+  </script>
+</body>
+</html>
