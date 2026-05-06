@@ -924,6 +924,311 @@
         padding: 22px;
       }
     }
+
+    /* White Next-Frame resource-page alignment */
+    :root {
+      --ink: #101114;
+      --bg: #f7f8fb;
+      --panel: #ffffff;
+      --panel-strong: #ffffff;
+      --line: rgba(16, 17, 20, 0.1);
+      --text: #101114;
+      --muted: #566171;
+      --dim: #6a7280;
+      --teal: #0f766e;
+      --cyan: #0f766e;
+      --lime: #0f766e;
+      --gold: #0f766e;
+      --coral: #0f766e;
+    }
+
+    body {
+      background: linear-gradient(180deg, #f7f8fb 0%, #eef3f6 52%, #f7f8fb 100%);
+      color: #101114;
+    }
+
+    .site-header {
+      padding: 10px 0 28px;
+      border-bottom: 0;
+    }
+
+    .brand img {
+      background: #101114;
+      border-color: rgba(16, 17, 20, 0.12);
+      box-shadow: 0 18px 40px rgba(15, 118, 110, 0.14);
+    }
+
+    .brand strong,
+    .hero h1,
+    .section h2,
+    .diagnostic h2,
+    .media-copy h2,
+    .auto-replies h2,
+    .send-page h2,
+    .price-card h2,
+    .next-box h2,
+    .strip strong,
+    .flow strong,
+    .signal-card span,
+    .deliverable span,
+    .post-preview strong,
+    .reply-card strong {
+      color: #101114;
+    }
+
+    .brand em,
+    .eyebrow,
+    .flow span,
+    .price-card > span,
+    .reply-card > span,
+    .source-pill,
+    .media-copy span,
+    .section-head > span {
+      color: #0f766e;
+    }
+
+    .nav a,
+    .button,
+    .copy-button {
+      border-color: rgba(16, 17, 20, 0.1);
+      border-radius: 8px;
+      background: #ffffff;
+      color: #101114;
+      box-shadow: none;
+    }
+
+    .nav a:last-child,
+    .primary,
+    .phone-cta {
+      border-color: #0f766e;
+      background: #0f766e;
+      color: #ffffff;
+      box-shadow: none;
+    }
+
+    .hero {
+      min-height: min(720px, calc(100vh - 120px));
+      grid-template-columns: minmax(0, 0.92fr) minmax(360px, 0.68fr);
+      padding: clamp(28px, 6vw, 78px) 0 clamp(30px, 6vw, 84px);
+    }
+
+    .eyebrow {
+      padding: 0;
+      border: 0;
+      border-radius: 0;
+      background: transparent;
+      letter-spacing: 0.16em;
+    }
+
+    .hero h1 {
+      max-width: 12ch;
+      font-size: clamp(3.35rem, 8vw, 7.4rem);
+      line-height: 0.84;
+    }
+
+    .hero-copy > p,
+    .strip p,
+    .section-head p,
+    .flow p,
+    .diagnostic-copy p,
+    .price-card p,
+    .next-box p,
+    .reply-card p,
+    .mini-form p,
+    .media-copy p,
+    .media-card p,
+    .post-preview p {
+      color: #566171;
+    }
+
+    .proof-row span {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+      color: #2f3a49;
+    }
+
+    .proof-row i,
+    .signal-card i,
+    .deliverable i,
+    .next-box > i {
+      color: #0f766e;
+    }
+
+    .phone-wrap {
+      min-height: 620px;
+      border: 1px solid rgba(16, 17, 20, 0.12);
+      border-radius: 8px;
+      background: #101114;
+      box-shadow: 0 24px 70px rgba(16, 17, 20, 0.14);
+      overflow: hidden;
+    }
+
+    .system-image {
+      inset: 0 0 auto;
+      width: 100%;
+      height: 270px;
+      border: 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 0;
+      box-shadow: none;
+    }
+
+    .leak-map {
+      top: 220px;
+      left: 18px;
+      width: min(312px, calc(100% - 36px));
+      border-color: rgba(16, 17, 20, 0.1);
+      background: #ffffff;
+      color: #101114;
+      box-shadow: 0 18px 48px rgba(16, 17, 20, 0.16);
+    }
+
+    .phone {
+      right: 18px;
+      bottom: 18px;
+      width: min(340px, calc(100% - 36px));
+      border-color: rgba(16, 17, 20, 0.12);
+      border-radius: 8px;
+      background: #ffffff;
+      color: #101114;
+      box-shadow: 0 22px 56px rgba(16, 17, 20, 0.2);
+    }
+
+    .map-header span,
+    .phone-top span {
+      color: #6a7280;
+      letter-spacing: 0.14em;
+    }
+
+    .map-header strong,
+    .phone-top strong {
+      border-radius: 8px;
+      background: rgba(15, 118, 110, 0.1);
+      color: #0f766e;
+    }
+
+    .map-node {
+      border-color: rgba(16, 17, 20, 0.1);
+      border-left-color: #0f766e;
+      background: #f7f8fb;
+    }
+
+    .map-node strong {
+      color: #101114;
+    }
+
+    .map-node p {
+      color: #566171;
+    }
+
+    .incoming {
+      background: #eef3f6;
+      color: #1b1d22;
+    }
+
+    .outgoing {
+      background: #101114;
+      color: #ffffff;
+    }
+
+    .strip article,
+    .flow article,
+    .signal-card,
+    .deliverable,
+    .price-card,
+    .reply-card,
+    .media-card,
+    .mini-form,
+    .next-box,
+    .post-bank-command,
+    .post-preview {
+      border-color: rgba(16, 17, 20, 0.1);
+      background: #ffffff;
+      color: #101114;
+      box-shadow: none;
+    }
+
+    .media-card strong {
+      color: #101114;
+    }
+
+    .price-card strong {
+      color: #0f766e;
+    }
+
+    .mini-form {
+      border-color: rgba(16, 17, 20, 0.1);
+    }
+
+    .mini-form label {
+      color: #2f3a49;
+    }
+
+    .mini-form input,
+    .mini-form textarea {
+      border-color: rgba(16, 17, 20, 0.12);
+      background: #ffffff;
+      color: #101114;
+    }
+
+    .source-pill {
+      border-color: rgba(15, 118, 110, 0.18);
+      background: rgba(15, 118, 110, 0.08);
+    }
+
+    .footer {
+      color: #6a7280;
+    }
+
+    @media (max-width: 980px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+
+      .phone-wrap {
+        min-height: 600px;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .hero {
+        gap: 18px;
+        padding-top: 18px;
+      }
+
+      .proof-row {
+        display: none;
+      }
+
+      .phone-wrap {
+        display: grid;
+        min-height: auto;
+        gap: 0;
+      }
+
+      .system-image,
+      .leak-map,
+      .phone {
+        position: relative;
+        inset: auto;
+        width: 100%;
+      }
+
+      .system-image {
+        height: 250px;
+      }
+
+      .leak-map,
+      .phone {
+        width: calc(100% - 24px);
+        margin: 12px;
+      }
+
+      .phone {
+        margin-top: 0;
+      }
+    }
   </style>
 </head>
 <body>
