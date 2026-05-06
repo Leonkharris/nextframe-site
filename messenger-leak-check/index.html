@@ -188,8 +188,8 @@
       margin: 0;
       max-width: 840px;
       color: #ffffff;
-      font-size: clamp(3rem, 8vw, 6.6rem);
-      line-height: 0.9;
+      font-size: 5.15rem;
+      line-height: 0.94;
       letter-spacing: 0;
     }
 
@@ -197,7 +197,7 @@
       max-width: 720px;
       margin: 0;
       color: var(--muted);
-      font-size: clamp(1.05rem, 2vw, 1.34rem);
+      font-size: 1.24rem;
       line-height: 1.55;
     }
 
@@ -245,29 +245,96 @@
     }
 
     .phone-wrap {
-      min-height: 560px;
-      display: grid;
-      align-items: end;
-      justify-items: end;
+      min-height: 610px;
       position: relative;
     }
 
-    .phone-wrap:before {
-      content: "";
+    .system-image {
       position: absolute;
-      inset: 44px 0 36px 16%;
-      border: 1px solid rgba(0, 240, 255, 0.12);
-      background:
-        linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px),
-        linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px);
-      background-size: 34px 34px;
-      transform: skewY(-5deg);
+      top: 8px;
+      right: 0;
+      width: 315px;
+      height: 315px;
+      object-fit: cover;
+      border: 1px solid rgba(246, 251, 248, 0.18);
+      border-radius: 8px;
+      box-shadow: 0 24px 70px rgba(0, 0, 0, 0.28);
+    }
+
+    .leak-map {
+      position: absolute;
+      top: 94px;
+      left: 0;
+      width: 330px;
+      padding: 16px;
+      border: 1px solid rgba(12, 37, 40, 0.1);
+      border-radius: 8px;
+      background: rgba(255, 255, 255, 0.96);
+      color: #102528;
+      box-shadow: 0 22px 70px rgba(0, 0, 0, 0.2);
+    }
+
+    .map-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+      margin-bottom: 12px;
+    }
+
+    .map-header span {
+      color: rgba(12, 37, 40, 0.62);
+      font-size: 0.78rem;
+      font-weight: 900;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .map-header strong {
+      display: inline-grid;
+      place-items: center;
+      min-width: 42px;
+      min-height: 30px;
+      border-radius: 999px;
+      background: var(--gold);
+      color: #1c1505;
+      font-size: 0.82rem;
+    }
+
+    .map-rail {
+      display: grid;
+      gap: 8px;
+    }
+
+    .map-node {
+      display: grid;
+      gap: 3px;
+      padding: 10px 11px;
+      border: 1px solid #d9ebe6;
+      border-left: 5px solid var(--teal);
+      border-radius: 8px;
+      background: #f5fbf8;
+    }
+
+    .map-node strong {
+      color: #102528;
+      font-size: 0.96rem;
+      line-height: 1.1;
+    }
+
+    .map-node p {
+      margin: 0;
+      color: #496665;
+      font-size: 0.82rem;
+      line-height: 1.35;
     }
 
     .phone {
-      position: relative;
       z-index: 2;
-      width: min(390px, 100%);
+      position: absolute;
+      right: 16px;
+      bottom: 4px;
+      width: 340px;
       display: grid;
       gap: 16px;
       padding: 18px;
@@ -392,6 +459,7 @@
 
     .section,
     .diagnostic,
+    .media-band,
     .pricing,
     .auto-replies,
     .send-page,
@@ -413,8 +481,8 @@
     h2 {
       margin: 0;
       color: #ffffff;
-      font-size: clamp(2rem, 5vw, 4rem);
-      line-height: 0.98;
+      font-size: 3.2rem;
+      line-height: 1;
       letter-spacing: 0;
     }
 
@@ -474,6 +542,66 @@
       height: 24px;
     }
 
+    .media-band {
+      display: grid;
+      grid-template-columns: minmax(0, 0.58fr) minmax(0, 1fr);
+      gap: 24px;
+      align-items: start;
+    }
+
+    .media-copy {
+      display: grid;
+      gap: 13px;
+    }
+
+    .media-copy span {
+      color: var(--teal);
+      font-size: 0.78rem;
+      font-weight: 950;
+      letter-spacing: 0;
+      text-transform: uppercase;
+    }
+
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .media-card {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      box-shadow: 0 14px 42px rgba(0, 0, 0, 0.16);
+    }
+
+    .media-card img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 12;
+      object-fit: cover;
+      background: #d9ebe6;
+    }
+
+    .media-card div {
+      display: grid;
+      gap: 6px;
+      padding: 15px;
+    }
+
+    .media-card strong {
+      color: #ffffff;
+      font-size: 1rem;
+    }
+
+    .media-card p,
+    .media-copy p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
     .deliverables {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
@@ -510,7 +638,7 @@
 
     .price-card strong {
       color: var(--gold);
-      font-size: clamp(1.6rem, 4vw, 2.5rem);
+      font-size: 2.18rem;
       line-height: 1;
     }
 
@@ -667,6 +795,7 @@
       .diagnostic,
       .pricing,
       .send-page,
+      .media-band,
       .next-box {
         grid-template-columns: 1fr;
       }
@@ -678,7 +807,18 @@
 
       .phone-wrap {
         min-height: 490px;
-        justify-items: center;
+      }
+
+      .system-image {
+        right: 7%;
+      }
+
+      .leak-map {
+        left: 7%;
+      }
+
+      .phone {
+        right: 7%;
       }
 
       .strip,
@@ -715,22 +855,44 @@
       }
 
       .hero h1 {
-        font-size: clamp(3rem, 15vw, 4.2rem);
+        font-size: 3rem;
       }
 
       .actions .button,
-      .proof-row span,
       .price-card .button,
       .next-box .button {
         width: 100%;
       }
 
-      .phone-wrap {
-        min-height: 430px;
+      .hero-copy {
+        gap: 16px;
       }
 
-      .phone-wrap:before {
+      .hero {
+        gap: 18px;
+        padding-bottom: 36px;
+      }
+
+      .proof-row {
         display: none;
+      }
+
+      .phone-wrap {
+        display: grid;
+        min-height: auto;
+        gap: 12px;
+      }
+
+      .system-image,
+      .leak-map,
+      .phone {
+        position: relative;
+        inset: auto;
+        width: 100%;
+      }
+
+      .system-image {
+        height: 250px;
       }
 
       .phone {
@@ -741,12 +903,21 @@
         grid-template-columns: 1fr;
       }
 
+      .media-grid {
+        grid-template-columns: 1fr;
+      }
+
       .section,
       .diagnostic,
+      .media-band,
       .pricing,
       .auto-replies,
       .send-page {
         padding: 44px 0;
+      }
+
+      h2 {
+        font-size: 2.18rem;
       }
 
       .next-box {
@@ -776,9 +947,9 @@
     <main>
       <section class="hero">
         <div class="hero-copy">
-          <span class="eyebrow"><i data-lucide="message-circle"></i> For comment and DM traffic</span>
-          <h1>Stop losing buyers between comments, Messenger, Google, and follow-up.</h1>
-          <p>Next-Frame checks the public path customers already use, then sends the first repair map before anything turns into a bigger build.</p>
+          <span class="eyebrow"><i data-lucide="message-circle"></i> Messenger Lead Leak Check</span>
+          <h1>Turn comments into booked inquiries.</h1>
+          <p>Send the page, listing, or site. Next-Frame maps where buyers drop off between the post, DM, Google, and follow-up.</p>
           <div class="actions">
             <a class="button primary" href="#send-page">Get my leak check <i data-lucide="arrow-right"></i></a>
             <a class="button" href="#what-you-get">See the report <i data-lucide="clipboard-check"></i></a>
@@ -791,15 +962,40 @@
         </div>
 
         <aside class="phone-wrap" aria-label="Messenger lead leak check preview">
+          <img class="system-image" src="/public/assets/free-resources/nextframe-free-resources-concept.png" alt="Next-Frame automation resource preview">
+          <div class="leak-map">
+            <div class="map-header">
+              <span>Buyer path scan</span>
+              <strong>48h</strong>
+            </div>
+            <div class="map-rail">
+              <article class="map-node">
+                <strong>Comment</strong>
+                <p>Catch the buyer while the post still has their attention.</p>
+              </article>
+              <article class="map-node">
+                <strong>Messenger</strong>
+                <p>Check the first reply, handoff, and next question.</p>
+              </article>
+              <article class="map-node">
+                <strong>Google</strong>
+                <p>Match the profile, proof, and contact path.</p>
+              </article>
+              <article class="map-node">
+                <strong>Booking</strong>
+                <p>Close the loop with a clear CTA and follow-up.</p>
+              </article>
+            </div>
+          </div>
           <div class="phone">
             <div class="phone-top">
               <span>Comment trigger</span>
               <strong>LEAK</strong>
             </div>
             <div class="thread">
-              <p class="incoming">Can you check why our page gets comments but not bookings?</p>
-              <p class="outgoing">Yes. Send the page, listing, or site here and we will map the first leak.</p>
-              <p class="incoming small">We use Facebook and Messenger mostly.</p>
+              <p class="incoming">Why do we get comments but no bookings?</p>
+              <p class="outgoing">Send your page. We will find the first leak.</p>
+              <p class="incoming small">Mostly Facebook and Messenger.</p>
               <p class="outgoing small">Perfect. We will check offer, CTA, proof, and follow-up.</p>
             </div>
             <a class="phone-cta" href="#send-page">Send page for review <i data-lucide="send"></i></a>
@@ -862,6 +1058,37 @@
         </div>
       </section>
 
+      <section class="media-band" aria-label="Next-Frame campaign visuals">
+        <div class="media-copy">
+          <span>Built like a free-resource funnel</span>
+          <h2>Posts, replies, and repair offers can point to one clean page.</h2>
+          <p>This landing page gives us a reusable destination for Facebook comments, Instagram DMs, Messenger replies, and manual outreach.</p>
+        </div>
+        <div class="media-grid">
+          <article class="media-card">
+            <img src="/public/assets/facebook/ai-audit-invitation.png" alt="Next-Frame audit invitation creative">
+            <div>
+              <strong>Comment hook</strong>
+              <p>A free-resource style post that starts the conversation.</p>
+            </div>
+          </article>
+          <article class="media-card">
+            <img src="/public/assets/facebook/ai-workflow-optimization.png" alt="Next-Frame workflow optimization creative">
+            <div>
+              <strong>Automation map</strong>
+              <p>The reply, intake, and review steps behind the page.</p>
+            </div>
+          </article>
+          <article class="media-card">
+            <img src="/public/assets/facebook/nextframe-brand-launch.png" alt="Next-Frame brand launch creative">
+            <div>
+              <strong>Repair offer</strong>
+              <p>A clear next step for owners who want us to fix the path.</p>
+            </div>
+          </article>
+        </div>
+      </section>
+
       <section class="section" id="what-you-get">
         <div class="section-head">
           <h2>The first report is small enough to buy today.</h2>
@@ -880,7 +1107,7 @@
         <article class="price-card">
           <span>Start here</span>
           <h2>Quick Leak Report</h2>
-          <strong>PHP 1,500-2,500</strong>
+          <strong>PHP 1,500-PHP 2,500</strong>
           <p>Best for owners who want to see the first leak before committing to implementation, content, ads, or a chatbot.</p>
           <a class="button primary" href="#send-page">Request the quick report <i data-lucide="arrow-right"></i></a>
         </article>
