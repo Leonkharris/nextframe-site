@@ -1,0 +1,7 @@
+.superpowers/
+
+redesign-prototype/node_modules/
+redesign-prototype/dist/
+redesign-prototype/*.log
+redesign-prototype/*.pid
+redesign-prototype/audit-*.png
