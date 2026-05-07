@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Next-Frame Agency | Human-AI Interface</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <style>
+    * { box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #000; color: #fff; margin: 0; overflow-x: hidden; scroll-behavior: smooth; }
+    .glass { background: rgba(0,0,0,0.85); backdrop-filter: blur(20px); border-right: 1px solid #00f2ff; }
+    .glass-dark { background: rgba(255,255,255,0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.06); }
+    .neon { text-shadow: 0 0 15px #00f2ff; }
+    .text-gradient { background: linear-gradient(to right, #00F0FF, #CCFF00); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .scanlines { background: linear-gradient(to bottom, transparent 50%, rgba(0,0,0,0.3) 50%); background-size: 100% 4px; }
+    .yt-bg { position: absolute; inset: 0; overflow: hidden; pointer-events: none; z-index: 0; }
+    .yt-bg iframe { position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; transform: translate(-50%,-50%); border: 0; }
+    .yt-showcase { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .yt-showcase iframe { position: absolute; top: 50%; left: 50%; width: 177.78vh; min-width: 100%; height: 56.25vw; min-height: 100%; transform: translate(-50%,-50%); border: 0; }
+    .yt-vertical { position: absolute; inset: 0; overflow: hidden; pointer-events: none; }
+    .yt-vertical iframe { position: absolute; top: 50%; left: 50%; width: 177.78%; height: 177.78%; transform: translate(-50%,-50%); border: 0; }
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: #000; }
+    ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+    ::-webkit-scrollbar-thumb:hover { background: #CCFF00; }
+    @keyframes scan { 0% { transform: translateY(-100vh); } 100% { transform: translateY(100vh); } }
+    .scan-line { position: absolute; top: 0; left: 0; width: 100%; height: 2px; background: linear-gradient(to right, transparent, #00f2ff, transparent); opacity: 0.3; animation: scan 6s linear infinite; pointer-events: none; }
+    .tier-featured { border-color: #00F0FF !important; background: rgba(0,240,255,0.05) !important; transform: scale(1.04); box-shadow: 0 0 40px rgba(0,240,255,0.1); }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav" class="fixed top-0 w-full z-50 py-8" style="transition: background 0.3s, padding 0.3s;">
+  <div class="max-w-7xl mx-auto px-8 flex justify-between items-center">
+    <div class="flex items-center gap-3">
+      <span class="text-teal-400 font-black italic text-2xl tracking-tighter neon">NEXT-FRAME</span>
+      <span class="text-white/30 text-xs font-bold uppercase tracking-widest">.Agency</span>
+    </div>
+    <div class="hidden lg:flex items-center gap-10 text-[11px] font-black uppercase tracking-[0.3em] text-white/50">
+      <a href="#work" class="transition-colors hover:text-teal-400">Showcase</a>
+      <a href="#process" class="transition-colors hover:text-teal-400">Process</a>
+      <a href="#services" class="transition-colors hover:text-teal-400">Services</a>
+      <a href="#legacy" class="transition-colors hover:text-teal-400">Legacy</a>
+      <a href="#contact" class="px-6 py-2 bg-teal-400 text-black font-black rounded-full hover:bg-[#CCFF00] transition-all tracking-normal">Initiate Sync</a>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="relative h-screen flex items-center overflow-hidden">
+  <div class="yt-bg" style="opacity:0.55;">
+    <iframe src="https://www.youtube.com/embed/D3oRbzmBwqE?autoplay=1&mute=1&loop=1&playlist=D3oRbzmBwqE&controls=0&playsinline=1&rel=0&showinfo=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="absolute inset-0 z-[1]" style="background: linear-gradient(to right, rgba(0,0,0,0.95) 40%, rgba(0,0,0,0.2) 100%);"></div>
+  <div class="scan-line z-[2]"></div>
+  <div class="relative z-10 w-full max-w-7xl mx-auto px-8">
+    <div class="max-w-2xl scanlines p-12 rounded-2xl" style="background:rgba(0,0,0,0.6); border-left:4px solid #00f2ff;">
+      <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-teal-500/30 bg-teal-500/10 text-teal-400 text-[10px] font-black uppercase tracking-[0.2em] mb-6">● The Human-AI Interface</div>
+      <h1 class="text-teal-400 font-black italic text-4xl neon mb-2 tracking-tighter">NEXT-FRAME</h1>
+      <h2 class="text-7xl md:text-9xl font-extrabold tracking-tight leading-none mb-6">THE<br><span class="text-gradient">ARCHITECT</span></h2>
+      <p class="text-xl text-gray-400 mb-10 font-light leading-relaxed">High-speed, AI-driven production out of Makati. Viral retention. Cinematic techwear. We are the Human Bridge between business intuition and AI execution.</p>
+      <div class="flex flex-col sm:flex-row gap-4">
+        <a href="#work" class="bg-teal-400 text-black px-10 py-5 font-black uppercase tracking-widest hover:bg-[#CCFF00] transition-all text-center">Explore Work</a>
+        <a href="#contact" class="border border-white/20 bg-black/40 px-10 py-5 font-black uppercase tracking-widest hover:bg-white/10 transition-all text-center">Initiate Sync</a>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- PHILOSOPHY -->
+<section class="py-32 bg-black overflow-hidden">
+  <div class="max-w-7xl mx-auto px-8 grid md:grid-cols-2 gap-20 items-center">
+    <div class="space-y-8">
+      <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em]">Philosophy // Human Interface</div>
+      <h2 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter leading-none">Every <span class="text-gradient">Pixel</span><br>Has a Pulse.</h2>
+      <p class="text-xl text-white/50 leading-relaxed">AI is the shift from the paintbrush to the camera. It changes the tools, but it can never replace human taste, culture, or storytelling. We are the interface that ensures every frame means something.</p>
+      <div class="flex gap-12 pt-4">
+        <div><div class="text-4xl font-black italic text-teal-400">Rapid</div><div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">Deployment</div></div>
+        <div><div class="text-4xl font-black italic text-teal-400">∞</div><div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">Flexibility</div></div>
+        <div><div class="text-4xl font-black italic text-teal-400">0</div><div class="text-[10px] text-white/30 uppercase tracking-widest mt-1">Reshoots</div></div>
+      </div>
+    </div>
+    <div class="glass-dark p-10 rounded-3xl">
+      <h3 class="text-2xl font-black uppercase italic mb-4 tracking-tighter text-[#CCFF00]">Built Like an Athlete</h3>
+      <p class="text-white/40 leading-relaxed mb-8">Elite, high-performance, and designed for speed. We don't overcomplicate. We identify the gap, fill it with cinematic precision, and ship before the trend dies.</p>
+      <a href="#contact" class="inline-flex items-center gap-2 text-teal-400 font-black uppercase italic text-sm tracking-widest hover:translate-x-2 transition-all">Start The Conversation →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SHOWCASE -->
+<section id="work" class="py-32 max-w-7xl mx-auto px-8">
+  <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-4">
+    <div>
+      <div class="text-[10px] font-black text-[#CCFF00] uppercase tracking-[0.4em] mb-4">Field Assets // Cinematic Showcase</div>
+      <h2 class="text-6xl md:text-8xl font-black uppercase italic tracking-tighter leading-none">The <span class="text-gradient">Work</span></h2>
+    </div>
+    <div class="text-white/30 text-xs font-bold uppercase tracking-[0.2em] md:w-64 md:text-right">World-class high-fidelity AI output.</div>
+  </div>
+
+  <!-- Landscape 2x2 -->
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
+    <div class="relative rounded-2xl overflow-hidden aspect-video bg-zinc-900 group border border-white/5">
+      <div class="yt-showcase"><iframe src="https://www.youtube.com/embed/LRQfWCd5_o8?autoplay=1&mute=1&loop=1&playlist=LRQfWCd5_o8&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-90 group-hover:opacity-30 transition-opacity duration-700 z-10"></div>
+      <div class="absolute bottom-8 left-8 z-20 group-hover:-translate-y-2 transition-transform duration-500">
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-2">JADE BAR</div>
+        <h3 class="text-3xl font-black text-white uppercase italic tracking-tighter">Cinematic Mixology</h3>
+      </div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden aspect-video bg-zinc-900 group border border-white/5">
+      <div class="yt-showcase"><iframe src="https://www.youtube.com/embed/HnUG6sFpReI?autoplay=1&mute=1&loop=1&playlist=HnUG6sFpReI&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-90 group-hover:opacity-30 transition-opacity duration-700 z-10"></div>
+      <div class="absolute bottom-8 left-8 z-20 group-hover:-translate-y-2 transition-transform duration-500">
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-2">VISION RETAIL</div>
+        <h3 class="text-3xl font-black text-white uppercase italic tracking-tighter">The Million Dream</h3>
+      </div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden aspect-video bg-zinc-900 group border border-white/5">
+      <div class="yt-showcase"><iframe src="https://www.youtube.com/embed/q_58rOdi5hk?autoplay=1&mute=1&loop=1&playlist=q_58rOdi5hk&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-90 group-hover:opacity-30 transition-opacity duration-700 z-10"></div>
+      <div class="absolute bottom-8 left-8 z-20 group-hover:-translate-y-2 transition-transform duration-500">
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-2">LUX LOOP</div>
+        <h3 class="text-3xl font-black text-white uppercase italic tracking-tighter">Infinite Luxury</h3>
+      </div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden aspect-video bg-zinc-900 group border border-white/5">
+      <div class="yt-showcase"><iframe src="https://www.youtube.com/embed/D3oRbzmBwqE?autoplay=1&mute=1&loop=1&playlist=D3oRbzmBwqE&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black via-black/10 to-transparent opacity-90 group-hover:opacity-30 transition-opacity duration-700 z-10"></div>
+      <div class="absolute bottom-8 left-8 z-20 group-hover:-translate-y-2 transition-transform duration-500">
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-2">CYBER AWARDS</div>
+        <h3 class="text-3xl font-black text-white uppercase italic tracking-tighter">Event Production</h3>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vertical shorts row -->
+  <div class="text-[10px] font-black text-white/30 uppercase tracking-[0.4em] mb-6">Short-Form // Vertical Content</div>
+  <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/HD7d9l5XMxU?autoplay=1&mute=1&loop=1&playlist=HD7d9l5XMxU&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Taglines 1</div></div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/9Psj1pTcLVY?autoplay=1&mute=1&loop=1&playlist=9Psj1pTcLVY&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Taglines 2</div></div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/ZdgCfGbKCbI?autoplay=1&mute=1&loop=1&playlist=ZdgCfGbKCbI&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Taglines 3</div></div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/RL_XRbP_TLU?autoplay=1&mute=1&loop=1&playlist=RL_XRbP_TLU&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Two Friends v2</div></div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/ITcVSxSKvVA?autoplay=1&mute=1&loop=1&playlist=ITcVSxSKvVA&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Two Friends v3</div></div>
+    </div>
+    <div class="relative rounded-2xl overflow-hidden bg-zinc-900 border border-white/5 group" style="aspect-ratio:9/16;">
+      <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/-0u0gIXAw_k?autoplay=1&mute=1&loop=1&playlist=-0u0gIXAw_k&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+      <div class="absolute inset-0 bg-gradient-to-t from-black to-transparent opacity-80 group-hover:opacity-20 transition-opacity z-10"></div>
+      <div class="absolute bottom-4 left-4 z-20"><div class="text-[9px] font-black text-teal-400 uppercase tracking-widest">Corporate Demo</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process" class="py-32 relative overflow-hidden bg-black">
+  <div class="yt-bg" style="opacity:0.07;">
+    <iframe src="https://www.youtube.com/embed/HD7d9l5XMxU?autoplay=1&mute=1&loop=1&playlist=HD7d9l5XMxU&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="absolute inset-0 bg-black/85 z-[1]"></div>
+  <div class="max-w-7xl mx-auto px-8 relative z-10">
+    <div class="text-center mb-20">
+      <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-4">How We Work</div>
+      <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter">The 4-Step <span class="text-gradient">Journey</span></h2>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+      <div class="glass-dark p-10 rounded-2xl hover:border-teal-500/30 transition-all">
+        <div class="text-5xl font-black italic text-teal-400 mb-6 opacity-20">01</div>
+        <h3 class="text-xl font-black uppercase italic mb-3 tracking-tighter text-[#CCFF00]">DNA Discovery</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Mapping your unique culture and voice so the AI sounds like you — not like everyone else.</p>
+      </div>
+      <div class="glass-dark p-10 rounded-2xl hover:border-teal-500/30 transition-all">
+        <div class="text-5xl font-black italic text-teal-400 mb-6 opacity-20">02</div>
+        <h3 class="text-xl font-black uppercase italic mb-3 tracking-tighter text-[#CCFF00]">Competitive Intel</h3>
+        <p class="text-white/40 text-sm leading-relaxed">AI-driven analysis of local rivals to see exactly where they are winning and where they are bleeding.</p>
+      </div>
+      <div class="glass-dark p-10 rounded-2xl hover:border-teal-500/30 transition-all">
+        <div class="text-5xl font-black italic text-teal-400 mb-6 opacity-20">03</div>
+        <h3 class="text-xl font-black uppercase italic mb-3 tracking-tighter text-[#CCFF00]">Gap Analysis</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Identifying the visual and emotional empty spaces your market is missing. That's where we plant the flag.</p>
+      </div>
+      <div class="glass-dark p-10 rounded-2xl hover:border-teal-500/30 transition-all">
+        <div class="text-5xl font-black italic text-teal-400 mb-6 opacity-20">04</div>
+        <h3 class="text-xl font-black uppercase italic mb-3 tracking-tighter text-[#CCFF00]">Campaign Deploy</h3>
+        <p class="text-white/40 text-sm leading-relaxed">Rapid cinematic execution to fill those gaps before your competition even sees them.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="services" class="py-32 bg-black">
+  <div class="max-w-7xl mx-auto px-8">
+    <div class="text-center mb-20">
+      <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-4">Investment // Service Tiers</div>
+      <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter">Pick Your <span class="text-gradient">Weapon</span></h2>
+      <p class="text-white/40 mt-6 max-w-xl mx-auto">All pricing in Philippine Peso. No lock-in contracts. No bloated retainers. Just output.</p>
+    </div>
+    <div class="grid grid-cols-1 md:grid-cols-5 gap-5 items-start">
+
+      <div class="rounded-2xl border border-white/10 bg-zinc-900 p-7 flex flex-col">
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-widest mb-4">Entry Point</div>
+        <h3 class="text-xl font-black uppercase italic tracking-tighter mb-1">Daily Flash</h3>
+        <div class="text-3xl font-black text-white mb-1">₱500<span class="text-lg text-white/50">–1,500</span></div>
+        <div class="text-[10px] text-white/30 uppercase tracking-widest mb-6">per video</div>
+        <ul class="space-y-3 mb-8 flex-grow text-white/50 text-xs">
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> 15-Second Short-Form</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Same-Day Turnaround</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> AI-Generated Visuals</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Entry-Level Sampler</li>
+        </ul>
+        <a href="#contact" class="w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest bg-white/10 hover:bg-white/20 transition-all text-center block">Get Started</a>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-zinc-900 p-7 flex flex-col">
+        <div class="text-[10px] font-black text-white/30 uppercase tracking-widest mb-4">Single Shot</div>
+        <h3 class="text-xl font-black uppercase italic tracking-tighter mb-1">The Spotlight</h3>
+        <div class="text-3xl font-black text-white mb-1">₱15,000</div>
+        <div class="text-[10px] text-white/30 uppercase tracking-widest mb-6">one-time</div>
+        <ul class="space-y-3 mb-8 flex-grow text-white/50 text-xs">
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Single A-List 60s Commercial</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Cinematic AI Visuals</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Custom Soundscape</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Rapid Delivery</li>
+        </ul>
+        <a href="#contact" class="w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest bg-white/10 hover:bg-white/20 transition-all text-center block">Select Plan</a>
+      </div>
+
+      <div class="rounded-2xl tier-featured p-7 flex flex-col" style="border:1px solid;">
+        <div class="bg-[#CCFF00] text-black text-[9px] font-black uppercase py-1 px-4 rounded-full mb-4 w-fit">Best Value</div>
+        <h3 class="text-xl font-black uppercase italic tracking-tighter mb-1">The Lean Engine</h3>
+        <div class="text-3xl font-black text-white mb-1">₱30,000</div>
+        <div class="text-[10px] text-white/30 uppercase tracking-widest mb-6">per month</div>
+        <ul class="space-y-3 mb-8 flex-grow text-white/50 text-xs">
+          <li class="flex gap-2 items-start"><span class="text-[#CCFF00]">✓</span> 3x Targeted Ads</li>
+          <li class="flex gap-2 items-start"><span class="text-[#CCFF00]">✓</span> Competitive Gap Analysis</li>
+          <li class="flex gap-2 items-start"><span class="text-[#CCFF00]">✓</span> Social Optimization</li>
+          <li class="flex gap-2 items-start"><span class="text-[#CCFF00]">✓</span> Background Swapping</li>
+        </ul>
+        <a href="#contact" class="w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest bg-teal-400 text-black hover:bg-white transition-all text-center block">Select Plan</a>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-zinc-900 p-7 flex flex-col">
+        <div class="text-[10px] font-black text-white/30 uppercase tracking-widest mb-4">Full Stack</div>
+        <h3 class="text-xl font-black uppercase italic tracking-tighter mb-1">The Partnership</h3>
+        <div class="text-3xl font-black text-white mb-1">₱60k<span class="text-lg text-white/50">–80k</span></div>
+        <div class="text-[10px] text-white/30 uppercase tracking-widest mb-6">per month</div>
+        <ul class="space-y-3 mb-8 flex-grow text-white/50 text-xs">
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Custom Brand Ambassadors</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Full Integrated Ecosystem</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Automated Assets</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> GPU Pipeline Priority</li>
+        </ul>
+        <a href="#contact" class="w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest bg-white/10 hover:bg-white/20 transition-all text-center block">Select Plan</a>
+      </div>
+
+      <div class="rounded-2xl border border-white/10 bg-zinc-900 p-7 flex flex-col">
+        <div class="text-[10px] font-black text-white/30 uppercase tracking-widest mb-4">Enterprise</div>
+        <h3 class="text-xl font-black uppercase italic tracking-tighter mb-1">Internal Machine</h3>
+        <div class="text-3xl font-black text-white mb-1">₱Custom</div>
+        <div class="text-[10px] text-white/30 uppercase tracking-widest mb-6">scoped project</div>
+        <ul class="space-y-3 mb-8 flex-grow text-white/50 text-xs">
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Proprietary Internal AI</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Workforce Training</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Trained Team Agents</li>
+          <li class="flex gap-2 items-start"><span class="text-teal-400">✓</span> Enterprise Asset Bank</li>
+        </ul>
+        <a href="#contact" class="w-full py-3 rounded-xl font-black uppercase italic text-xs tracking-widest bg-white/10 hover:bg-white/20 transition-all text-center block">Let's Talk</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LEGACY LAB -->
+<section id="legacy" class="py-32 relative overflow-hidden bg-black border-t border-white/5">
+  <div class="yt-bg" style="opacity:0.12;">
+    <iframe src="https://www.youtube.com/embed/9Psj1pTcLVY?autoplay=1&mute=1&loop=1&playlist=9Psj1pTcLVY&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="absolute inset-0 bg-black/75 z-[1]"></div>
+  <div class="max-w-7xl mx-auto px-8 relative z-10">
+    <div class="grid lg:grid-cols-2 gap-20 items-center">
+      <div>
+        <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-6">Prime Preservation // Legacy Lab</div>
+        <h2 class="text-5xl md:text-8xl font-black uppercase italic tracking-tighter mb-8 leading-[0.9]">Don't Just Remember.<br><span class="text-gradient">Relive.</span></h2>
+        <p class="text-xl text-white/50 mb-10 leading-relaxed max-w-lg">Upscale ancestral memories into cinematic 4K life stories. Immortalize your appearance for future generations. The past, rendered in the future.</p>
+        <a href="#contact" class="inline-flex items-center gap-4 text-white font-black uppercase italic text-xl hover:text-teal-400 transition-all">▶ Enter The Lab</a>
+      </div>
+      <div class="grid grid-cols-2 gap-6">
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 relative translate-y-8" style="aspect-ratio:3/4;">
+          <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/RL_XRbP_TLU?autoplay=1&mute=1&loop=1&playlist=RL_XRbP_TLU&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        </div>
+        <div class="rounded-2xl overflow-hidden border border-white/10 bg-zinc-900 relative" style="aspect-ratio:3/4;">
+          <div class="yt-vertical"><iframe src="https://www.youtube.com/embed/ITcVSxSKvVA?autoplay=1&mute=1&loop=1&playlist=ITcVSxSKvVA&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="py-48 text-center relative overflow-hidden bg-black">
+  <div class="yt-bg" style="opacity:0.15;">
+    <iframe src="https://www.youtube.com/embed/ZdgCfGbKCbI?autoplay=1&mute=1&loop=1&playlist=ZdgCfGbKCbI&controls=0&playsinline=1&rel=0&modestbranding=1" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+  </div>
+  <div class="absolute inset-0 bg-black/70 z-[1]"></div>
+  <div class="relative z-10 px-8">
+    <h2 class="text-6xl md:text-[10rem] font-black uppercase italic tracking-tighter mb-12 leading-none">Geared for a<br><span class="text-[#CCFF00]">Better Future.</span></h2>
+    <a href="#contact" class="inline-block px-16 py-8 bg-white text-black font-black uppercase italic text-2xl hover:bg-teal-400 transition-all shadow-2xl">Start The Conversation</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-32 bg-black border-t border-white/5">
+  <div class="max-w-3xl mx-auto px-8">
+    <div class="text-center mb-16">
+      <div class="text-[10px] font-black text-teal-400 uppercase tracking-[0.4em] mb-4">Initiate Sync</div>
+      <h2 class="text-5xl md:text-7xl font-black uppercase italic tracking-tighter">Let's <span class="text-gradient">Build.</span></h2>
+      <p class="text-white/40 mt-4">Map your vision. We handle the intelligence.</p>
+    </div>
+    <div class="glass-dark rounded-3xl p-12">
+      <div class="space-y-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <input type="text" placeholder="Full Name" class="w-full border border-white/10 rounded-2xl px-6 py-4 outline-none text-white transition-colors" style="background:rgba(255,255,255,0.04);" onfocus="this.style.borderColor='#00f2ff'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+          <input type="text" placeholder="Industry / Business Type" class="w-full border border-white/10 rounded-2xl px-6 py-4 outline-none text-white transition-colors" style="background:rgba(255,255,255,0.04);" onfocus="this.style.borderColor='#00f2ff'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        </div>
+        <input type="email" placeholder="Email Address" class="w-full border border-white/10 rounded-2xl px-6 py-4 outline-none text-white transition-colors" style="background:rgba(255,255,255,0.04);" onfocus="this.style.borderColor='#00f2ff'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'" />
+        <select class="w-full border border-white/10 rounded-2xl px-6 py-4 outline-none text-white/50 transition-colors" style="background:rgba(0,0,0,0.8);" onfocus="this.style.borderColor='#00f2ff'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'">
+          <option value="" disabled selected>Select Service Tier</option>
+          <option>Daily Flash — ₱500–1,500 per video</option>
+          <option>The Spotlight — ₱15,000</option>
+          <option>The Lean Engine — ₱30,000/mo</option>
+          <option>The Partnership — ₱60k–80k/mo</option>
+          <option>Internal Machine — Custom</option>
+        </select>
+        <textarea placeholder="Mission Brief — tell us what you're building and who you're trying to reach." class="w-full border border-white/10 rounded-2xl px-6 py-4 outline-none h-40 resize-none text-white transition-colors" style="background:rgba(255,255,255,0.04);" onfocus="this.style.borderColor='#00f2ff'" onblur="this.style.borderColor='rgba(255,255,255,0.1)'"></textarea>
+        <button class="w-full py-6 bg-teal-400 text-black font-black uppercase italic text-xl rounded-2xl hover:bg-[#CCFF00] transition-all">Submit Brief</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="py-16 border-t border-white/5 text-center px-8">
+  <div class="text-teal-400 font-black italic text-2xl neon tracking-tighter uppercase mb-4">NEXT-FRAME<span class="text-white/30">.Agency</span></div>
+  <div class="text-[10px] tracking-[0.4em] text-white/20 uppercase font-black">© 2026 NEXT-FRAME.AGENCY // PHILIPPINES // HUMAN INTERFACE DEPLOYMENT LAB</div>
+</footer>
+
+<script>
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 60) {
+      nav.style.background = 'rgba(0,0,0,0.95)';
+      nav.style.borderBottom = '1px solid rgba(255,255,255,0.08)';
+      nav.style.paddingTop = '12px';
+      nav.style.paddingBottom = '12px';
+    } else {
+      nav.style.background = 'transparent';
+      nav.style.borderBottom = 'none';
+      nav.style.paddingTop = '32px';
+      nav.style.paddingBottom = '32px';
+    }
+  });
+</script>
+
+</body>
+</html>
