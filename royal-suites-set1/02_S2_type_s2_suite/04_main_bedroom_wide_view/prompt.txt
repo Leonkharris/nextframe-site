@@ -1,0 +1,56 @@
+You are a senior architectural visualization director with 25 years of experience in spatial planning and real estate rendering.
+
+I am providing a 2D floor plan for Royal Suites at Pavilion Damansara Heights.
+
+Your task:
+Analyze the attached floor plan carefully.
+Find the area labeled or corresponding to: Main Bedroom / Sleeping Zone.
+Generate ONE wide-angle rendered image for this room/area only.
+
+Unit: Type S2 Suite (S2), 538 sq ft.
+Known zones in this unit: living/dining, pantry, bedroom zone, bath, wardrobe.
+Plan notes: compact suite layout, keep the kitchen/pantry run and bath core exactly where the plan shows them.
+S2-specific spatial lock: the bed/sleeping zone is at the lower-right side of an open-plan suite, not inside a separate enclosed bedroom. It shares the same main volume as living/dining, with the wardrobe and bath core to the left/center and the window/glazing line on the right.
+
+CORE RULES:
+Base the design strictly on the attached plan layout.
+Maintain room size and wall placements accurately.
+Maintain door and window positions.
+Do not redesign structure.
+Do not merge rooms into one image.
+One image = one room/area only.
+Do not skip the target room.
+Do not show a different room as the main subject.
+If the target is an open-plan zone, keep its real adjacency to the neighboring zone visible but keep the camera focus on Main Bedroom / Sleeping Zone.
+If this plan has multiple bedrooms or bathrooms, use the main/primary bedroom or main/primary bathroom for this four-view package unless the prompt title says otherwise.
+If a closet, wardrobe, study, utility, or extra room exists, include it only when naturally visible from the target room. Do not create a separate extra-room image.
+For this bedroom/sleeping-zone image, show the bed as the main subject with realistic open adjacency to living/dining. Do not add a wall, glass sliding partition, bedroom door, hallway, or hotel corridor between the sleeping zone and living/dining. Wardrobe/bath core may be visible only where the plan allows.
+
+IMAGE STYLE REQUIREMENTS:
+9:16 vertical output, 1080x1920 or taller vertical equivalent.
+Use wide-angle lens, realistic and not distorted.
+Camera height: 1.6m human eye level.
+Show full spatial depth so the viewer understands room size.
+Capture as much of the room as possible in one frame.
+Clear perspective showing floor depth and ceiling height.
+Contemporary luxury serviced residence style matching Royal Suites.
+Realistic furniture scaled according to room size.
+White or soft studio lighting.
+4K quality.
+Clean and professional real estate presentation.
+
+ROOM COVERAGE RULE:
+This prompt is for Main Bedroom / Sleeping Zone only.
+Generate a standalone rendered image for Main Bedroom / Sleeping Zone.
+Do not create a multi-angle collage.
+Do not include counters, numbered labels, arrows, floor-plan text, or explanatory text in the image.
+
+NEGATIVE PROMPT:
+Floor plan copy, top-down view, isometric view, dollhouse view, presentation board, split screen, before/after board, collage, labels, arrows, captions, counters, wrong room, duplicate room, invented room, invented balcony, invented staircase, wrong windows, wrong door positions, wrong kitchen position, wrong bathroom position, enclosed bedroom, bedroom door, glass bedroom partition, invented hallway, invented corridor, extra door wall, unrealistic mansion scale, fisheye distortion, warped walls, distorted furniture.
+
+OUTPUT FORMAT:
+9:16 vertical image, 1080x1920 or taller vertical equivalent.
+Rendered image only.
+No long explanations.
+No multi-angle collage.
+No counters.

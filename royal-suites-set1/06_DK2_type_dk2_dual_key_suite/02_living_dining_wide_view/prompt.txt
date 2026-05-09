@@ -1,0 +1,56 @@
+You are a senior architectural visualization director with 25 years of experience in spatial planning and real estate rendering.
+
+I am providing a 2D floor plan for Royal Suites at Pavilion Damansara Heights.
+
+Your task:
+Analyze the attached floor plan carefully.
+Find the area labeled or corresponding to: Living / Dining.
+Generate ONE wide-angle rendered image for this room/area only.
+
+Unit: Type DK2 Dual-Key Suite (DK2), 1,679 sq ft.
+Known zones in this unit: dual-key entry, main residence living/dining, wet kitchen, dry kitchen, study room, bedroom 1, master bedroom, bath 1, master bath, separate studio suite with pantry and bath 2, wardrobes/storage.
+Plan notes: largest dual-key layout, preserve entries, room count, corridor, bath cores, and main living facade.
+DK2-specific spatial lock: this shot is for the MAIN RESIDENCE living/dining area at the lower-left/lower-center of the plan, not the separate studio suite at the top. Dry kitchen and wet kitchen sit above the main dining/living area. Master bedroom is enclosed at the lower-right, Bedroom 1 is enclosed upper-right/center, and the studio suite is separate above.
+
+CORE RULES:
+Base the design strictly on the attached plan layout.
+Maintain room size and wall placements accurately.
+Maintain door and window positions.
+Do not redesign structure.
+Do not merge rooms into one image.
+One image = one room/area only.
+Do not skip the target room.
+Do not show a different room as the main subject.
+If the target is an open-plan zone, keep its real adjacency to the neighboring zone visible but keep the camera focus on Living / Dining.
+If this plan has multiple bedrooms or bathrooms, use the main/primary bedroom or main/primary bathroom for this four-view package unless the prompt title says otherwise.
+If a closet, wardrobe, study, utility, or extra room exists, include it only when naturally visible from the target room. Do not create a separate extra-room image.
+For this living/dining image, show the main residence living/dining with the bottom facade/window wall and dry/wet kitchen adjacency above. Do not render the top studio suite as the living/dining target. Do not merge bedrooms into the living area and do not duplicate the studio bed.
+
+IMAGE STYLE REQUIREMENTS:
+9:16 vertical output, 1080x1920 or taller vertical equivalent.
+Use wide-angle lens, realistic and not distorted.
+Camera height: 1.6m human eye level.
+Show full spatial depth so the viewer understands room size.
+Capture as much of the room as possible in one frame.
+Clear perspective showing floor depth and ceiling height.
+Contemporary luxury serviced residence style matching Royal Suites.
+Realistic furniture scaled according to room size.
+White or soft studio lighting.
+4K quality.
+Clean and professional real estate presentation.
+
+ROOM COVERAGE RULE:
+This prompt is for Living / Dining only.
+Generate a standalone rendered image for Living / Dining.
+Do not create a multi-angle collage.
+Do not include counters, numbered labels, arrows, floor-plan text, or explanatory text in the image.
+
+NEGATIVE PROMPT:
+Floor plan copy, top-down view, isometric view, dollhouse view, presentation board, split screen, before/after board, collage, labels, arrows, captions, counters, wrong room, duplicate room, invented room, invented balcony, invented staircase, wrong windows, wrong door positions, wrong kitchen position, wrong bathroom position, studio suite as living target, studio bed visible as main subject, merged bedrooms, invented hallway, unrealistic mansion scale, fisheye distortion, warped walls, distorted furniture.
+
+OUTPUT FORMAT:
+9:16 vertical image, 1080x1920 or taller vertical equivalent.
+Rendered image only.
+No long explanations.
+No multi-angle collage.
+No counters.
