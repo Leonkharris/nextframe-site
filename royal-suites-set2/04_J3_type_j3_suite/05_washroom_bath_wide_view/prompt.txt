@@ -1,0 +1,91 @@
+You are a senior architectural visualization director with 25 years of experience in spatial planning and real estate rendering.
+
+I am providing a 2D floor plan for Royal Suites at Pavilion Damansara Heights.
+
+Your task:
+Analyze the attached floor plan carefully.
+Find the area labeled or corresponding to: Washroom / Bath.
+Generate ONE wide-angle rendered image for this room/area only.
+
+Unit: Type J3 Suite (J3), 743 sq ft.
+Known zones in this unit: living/dining, kitchen/pantry, master bedroom, bedroom 1, master bath, bath 1, wardrobe/storage.
+Plan notes: larger two-bedroom suite, preserve the room widths and internal partitions from the floor plan.
+J3-specific spatial lock: use the primary MASTER BATH at the right-center beside the master bedroom, not Bath 1. It is a compact internal bathroom in the right-side bathroom core.
+
+CORE RULES:
+Base the design strictly on the attached plan layout.
+Maintain room size and wall placements accurately.
+Maintain door and window positions.
+Do not redesign structure.
+Do not merge rooms into one image.
+One image = one room/area only.
+Do not skip the target room.
+Do not show a different room as the main subject.
+If the target is an open-plan zone, keep its real adjacency to the neighboring zone visible but keep the camera focus on Washroom / Bath.
+If this plan has multiple bedrooms or bathrooms, use the main/primary bedroom or main/primary bathroom for this four-view package unless the prompt title says otherwise.
+If a closet, wardrobe, study, utility, or extra room exists, include it only when naturally visible from the target room. Do not create a separate extra-room image.
+For this washroom image, stay inside the master bath only. Show the compact primary bathroom fixtures and do not show Bedroom 1, living/dining, kitchen, or the secondary Bath 1 as the target.
+
+IMAGE STYLE REQUIREMENTS:
+9:16 vertical output, 1080x1920 or taller vertical equivalent.
+Use wide-angle lens, realistic and not distorted.
+Camera height: 1.6m human eye level.
+Show full spatial depth so the viewer understands room size.
+Capture as much of the room as possible in one frame.
+Clear perspective showing floor depth and ceiling height.
+Contemporary luxury serviced residence style matching Royal Suites.
+Realistic furniture scaled according to room size.
+White or soft studio lighting.
+4K quality.
+Clean and professional real estate presentation.
+
+ROOM COVERAGE RULE:
+This prompt is for Washroom / Bath only.
+Generate a standalone rendered image for Washroom / Bath.
+Do not create a multi-angle collage.
+Do not include counters, numbered labels, arrows, floor-plan text, or explanatory text in the image.
+
+NEGATIVE PROMPT:
+Floor plan copy, top-down view, isometric view, dollhouse view, presentation board, split screen, before/after board, collage, labels, arrows, captions, counters, wrong room, duplicate room, invented room, invented balcony, invented staircase, wrong windows, wrong door positions, wrong kitchen position, wrong bathroom position, secondary Bath 1 as target, Bedroom 1 visible, living visible, kitchen visible, oversized bathroom, luxury spa suite, unrealistic mansion scale, fisheye distortion, warped walls, distorted furniture.
+
+OUTPUT FORMAT:
+9:16 vertical image, 1080x1920 or taller vertical equivalent.
+Rendered image only.
+No long explanations.
+No multi-angle collage.
+No counters.
+
+SET 2 CINEMATIC DESIGN DIRECTION:
+Create a NEW cinematic contrast version of this exact same floor-plan shot. It must not look like Set 1's clean daylight render. Keep the same floor plan, room relationship, walls, doors, windows, and target zone, but change the design language, materials, light, and mood.
+
+Material palette for this unit:
+black-stained oak cabinetry, Calacatta marble highlights, bronze lighting, oatmeal boucle seating, muted stone flooring, warm wall washers.
+
+Cinematic lighting:
+- bright blue-hour or early-evening ambience outside the windows, not night-black
+- warm interior practical lighting, cove lighting, shelf lighting, under-cabinet glow, and pendant accents where appropriate
+- balanced luxury real-estate exposure: readable midtones, visible wall/floor texture, visible furniture detail, no crushed shadows
+- stronger contrast than Set 1 but still client-readable; keep shadows soft and dimensional, not dark or muddy
+- photorealistic real-estate render, editorial and premium
+
+Cinematic composition:
+- 9:16 vertical image
+- human eye-level camera, wide-angle but not distorted
+- richer depth, warm focal glow, crisp architectural lines, clean visible room geometry
+- no overexposed white daylight look
+- no flat beige showroom look
+
+SET 2 BRIGHTNESS OVERRIDE:
+This is still Set 2, but the image must be substantially brighter than the previous dark pass. Aim for an upscale magazine / luxury real-estate exposure, not a moody nightclub exposure. Use the equivalent of +1 to +1.5 EV camera exposure, soft fill light from the room side, and warm practical lights bright enough to reveal materials. The room should be easy for a client to inspect on a phone screen at small size. Keep warm cinematic contrast, but lift the ambient fill light and preserve detail in dark wood, stone, bedding, upholstery, cabinetry, and bathroom tile. Dark walnut and black oak should read as textured brown/charcoal surfaces, not black silhouettes. Ceilings and floors must show visible detail. Avoid black empty corners, underexposed ceilings, muddy floors, dark foregrounds, and silhouette furniture. Target: premium, dramatic, warm, clearly visible, and bright enough for a real-estate sales presentation.
+
+SET 2 PLAN ACCURACY LOCK FOR THIS SHOT:
+Use the master bath on the right side. Keep fixture order and scale compact; do not make it a large spa room.
+
+IMPORTANT SAMPLE INTERPRETATION:
+Use the supplied sample only for mood: high contrast, warm dramatic lighting, cinematic real-estate atmosphere, and premium materials. Do NOT create a social-media poster. Do NOT add big text, numbers, arrows, badges, inset frames, thumbnails, captions, borders, collages, UI elements, or promotional graphics inside the render.
+
+SET 2 NEGATIVE PROMPT:
+same look as Set 1, plain daylight render, over-bright white room, underexposed image, low exposure, crushed blacks, black empty corners, muddy shadows, unreadable dark wood, black ceiling, black floor, dark foreground, silhouette furniture, nightclub lighting, generic condo layout, social media poster, typography, giant numbers, arrows, inset render, badges, labels, captions, collage, split screen, floor-plan copy, top-down view, isometric view, wrong room, invented wall, invented corridor, invented balcony, wrong windows, glass floor, floor-level window, moved kitchen, oversized showroom kitchen, separate bedroom in open studio, oversized spa bathroom, fisheye distortion, warped walls, distorted furniture.
+
+OUTPUT:
+One cinematic 9:16 vertical photorealistic render only. No text. No collage. No overlay graphics.
