@@ -1,0 +1,366 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Modern Set 3 QA</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f6f3ed; color: #171717; }
+    header { position: sticky; top: 0; z-index: 10; background: rgba(246,243,237,.96); padding: 20px 24px; border-bottom: 1px solid #ddd5c8; }
+    h1 { margin: 0 0 8px; font-size: 38px; }
+    p { color: #625c54; }
+    nav { display: flex; flex-wrap: wrap; gap: 8px; }
+    button { border: 1px solid #cfc5b6; background: white; border-radius: 6px; padding: 8px 12px; font-weight: 700; cursor: pointer; }
+    button.active { background: #171717; color: white; }
+    main { padding: 22px; display: grid; gap: 20px; }
+    .card { background: white; border: 1px solid #ddd5c8; border-radius: 8px; padding: 18px; }
+    h2 { margin: 0 0 6px; }
+    .pair { display: grid; grid-template-columns: 1fr minmax(220px, 420px); gap: 16px; align-items: start; }
+    figure { margin: 0; border: 1px solid #ddd5c8; border-radius: 6px; overflow: hidden; background: #fbfaf7; }
+    img { display: block; width: 100%; height: auto; max-height: 780px; object-fit: contain; }
+    figcaption { padding: 10px; border-top: 1px solid #ddd5c8; color: #625c54; }
+    @media (max-width: 900px) { .pair { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Modern Set 3 QA</h1>
+    <p>Browser-based previews, avoiding Codex chat image tiles.</p>
+    <nav><button data-filter="ALL">ALL</button><button data-filter="S1">S1</button><button data-filter="S2">S2</button><button data-filter="J1">J1</button><button data-filter="J2">J2</button><button data-filter="J3">J3</button><button data-filter="J4">J4</button><button data-filter="M1">M1</button><button data-filter="M2">M2</button><button data-filter="DK1">DK1</button><button data-filter="DK2">DK2</button></nav>
+  </header>
+  <main>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S1">
+        <h2>S1 - Living / Dining</h2>
+        <p>Type S1 Suite | 5.22 m x 4.75 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../01_S1_type_s1_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../01_S1_type_s1_suite/02_living_dining_wide_view/render_9x16.png?v=1778313799095414100" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S1">
+        <h2>S1 - Kitchen / Pantry</h2>
+        <p>Type S1 Suite | 2.7 m x 3.75 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../01_S1_type_s1_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../01_S1_type_s1_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778314041053730800" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S1">
+        <h2>S1 - Main Bedroom</h2>
+        <p>Type S1 Suite | 3.48 m x 4.5 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../01_S1_type_s1_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../01_S1_type_s1_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778314131054445800" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S1">
+        <h2>S1 - Washroom / Bath</h2>
+        <p>Type S1 Suite | 2.9 m x 3.66 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../01_S1_type_s1_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../01_S1_type_s1_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778314379753632000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S2">
+        <h2>S2 - Living / Dining</h2>
+        <p>Type S2 Suite | 6.32 m x 3.12 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../02_S2_type_s2_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../02_S2_type_s2_suite/02_living_dining_wide_view/render_9x16.png?v=1778314493951781500" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S2">
+        <h2>S2 - Kitchen / Pantry</h2>
+        <p>Type S2 Suite | 4.06 m x 1.52 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../02_S2_type_s2_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../02_S2_type_s2_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778314601342555400" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S2">
+        <h2>S2 - Main Bedroom</h2>
+        <p>Type S2 Suite | 3.33 m x 2.7 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../02_S2_type_s2_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../02_S2_type_s2_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778314912227598300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="S2">
+        <h2>S2 - Washroom / Bath</h2>
+        <p>Type S2 Suite | 2.73 m x 2.53 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../02_S2_type_s2_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../02_S2_type_s2_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778314765162984500" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J1">
+        <h2>J1 - Living / Dining</h2>
+        <p>Type J1 Suite | 3.47 m x 4.64 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../03_J1_type_j1_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../03_J1_type_j1_suite/02_living_dining_wide_view/render_9x16.png?v=1778315078668911900" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J1">
+        <h2>J1 - Kitchen / Pantry</h2>
+        <p>Type J1 Suite | 2.69 m x 3.09 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../03_J1_type_j1_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../03_J1_type_j1_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778328781001169000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J1">
+        <h2>J1 - Main Bedroom</h2>
+        <p>Type J1 Suite | 2.99 m x 3.26 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../03_J1_type_j1_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../03_J1_type_j1_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778315488777090200" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J1">
+        <h2>J1 - Washroom / Bath</h2>
+        <p>Type J1 Suite | 3.38 m x 2.58 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../03_J1_type_j1_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../03_J1_type_j1_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778315578515914700" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J2">
+        <h2>J2 - Living / Dining</h2>
+        <p>Type J2 Suite | 3.51 m x 5.4 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../07_J2_type_j2_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../07_J2_type_j2_suite/02_living_dining_wide_view/render_9x16.png?v=1778316700562026300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J2">
+        <h2>J2 - Kitchen / Pantry</h2>
+        <p>Type J2 Suite | 3.18 m x 3.13 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../07_J2_type_j2_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../07_J2_type_j2_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778316800139147200" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J2">
+        <h2>J2 - Main Bedroom</h2>
+        <p>Type J2 Suite | 2.76 m x 3.31 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../07_J2_type_j2_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../07_J2_type_j2_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778316889875387900" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J2">
+        <h2>J2 - Washroom / Bath</h2>
+        <p>Type J2 Suite | 3.01 m x 3.13 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../07_J2_type_j2_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../07_J2_type_j2_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778316982930223300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J3">
+        <h2>J3 - Living / Dining</h2>
+        <p>Type J3 Suite | 3.26 m x 5.48 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../04_J3_type_j3_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../04_J3_type_j3_suite/02_living_dining_wide_view/render_9x16.png?v=1778317149895266000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J3">
+        <h2>J3 - Kitchen / Pantry</h2>
+        <p>Type J3 Suite | 2.83 m x 3.08 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../04_J3_type_j3_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../04_J3_type_j3_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778317240724912900" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J3">
+        <h2>J3 - Main Bedroom</h2>
+        <p>Type J3 Suite | 2.74 m x 3.08 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../04_J3_type_j3_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../04_J3_type_j3_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778317330904488500" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J3">
+        <h2>J3 - Washroom / Bath</h2>
+        <p>Type J3 Suite | 2.44 m x 2.57 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../04_J3_type_j3_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../04_J3_type_j3_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778317421545106300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J4">
+        <h2>J4 - Living / Dining</h2>
+        <p>Type J4 Suite | 3.6 m x 5.66 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../08_J4_type_j4_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../08_J4_type_j4_suite/02_living_dining_wide_view/render_9x16.png?v=1778317580324750400" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J4">
+        <h2>J4 - Kitchen / Pantry</h2>
+        <p>Type J4 Suite | 3.26 m x 2.96 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../08_J4_type_j4_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../08_J4_type_j4_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778317669656771200" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J4">
+        <h2>J4 - Main Bedroom</h2>
+        <p>Type J4 Suite | 2.93 m x 3.4 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../08_J4_type_j4_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../08_J4_type_j4_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778317760279264100" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="J4">
+        <h2>J4 - Washroom / Bath</h2>
+        <p>Type J4 Suite | 3.01 m x 3.13 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../08_J4_type_j4_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../08_J4_type_j4_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778317852147882000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M1">
+        <h2>M1 - Living / Dining</h2>
+        <p>Type M1 Suite | 4.15 m x 5.57 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../05_M1_type_m1_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../05_M1_type_m1_suite/02_living_dining_wide_view/render_9x16.png?v=1778317970389979700" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M1">
+        <h2>M1 - Kitchen / Pantry</h2>
+        <p>Type M1 Suite | 3.62 m x 3.22 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../05_M1_type_m1_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../05_M1_type_m1_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778318060012842200" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M1">
+        <h2>M1 - Main Bedroom</h2>
+        <p>Type M1 Suite | 2.91 m x 3.74 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../05_M1_type_m1_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../05_M1_type_m1_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778318150255512100" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M1">
+        <h2>M1 - Washroom / Bath</h2>
+        <p>Type M1 Suite | 2.38 m x 3.74 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../05_M1_type_m1_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../05_M1_type_m1_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778318240350056100" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M2">
+        <h2>M2 - Living / Dining</h2>
+        <p>Type M2 Suite | 4.46 m x 3.12 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../09_M2_type_m2_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../09_M2_type_m2_suite/02_living_dining_wide_view/render_9x16.png?v=1778318372621951900" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M2">
+        <h2>M2 - Kitchen / Pantry</h2>
+        <p>Type M2 Suite | 4.81 m x 2.6 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../09_M2_type_m2_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../09_M2_type_m2_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778318462580849300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M2">
+        <h2>M2 - Main Bedroom</h2>
+        <p>Type M2 Suite | 2.66 m x 3.12 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../09_M2_type_m2_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../09_M2_type_m2_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778318552670930400" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="M2">
+        <h2>M2 - Washroom / Bath</h2>
+        <p>Type M2 Suite | 3 m x 2.95 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../09_M2_type_m2_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../09_M2_type_m2_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778318642725377300" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK1">
+        <h2>DK1 - Living / Dining</h2>
+        <p>Type DK1 Dual-Key Suite | 4.07 m x 5.36 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/02_living_dining_wide_view/render_9x16.png?v=1778318767538451100" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK1">
+        <h2>DK1 - Kitchen / Pantry</h2>
+        <p>Type DK1 Dual-Key Suite | 3.56 m x 3.09 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778318841991835000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK1">
+        <h2>DK1 - Main Bedroom</h2>
+        <p>Type DK1 Dual-Key Suite | 2.37 m x 3.61 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778318932703058800" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK1">
+        <h2>DK1 - Washroom / Bath</h2>
+        <p>Type DK1 Dual-Key Suite | 3.05 m x 3.71 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../10_DK1_type_dk1_dual_key_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778319039187154700" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK2">
+        <h2>DK2 - Living / Dining</h2>
+        <p>Type DK2 Dual-Key Suite | 4.82 m x 4.85 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/render_9x16.png?v=1778319167963541400" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK2">
+        <h2>DK2 - Kitchen / Pantry</h2>
+        <p>Type DK2 Dual-Key Suite | 5.34 m x 3.72 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/render_9x16.png?v=1778319259135740800" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK2">
+        <h2>DK2 - Main Bedroom</h2>
+        <p>Type DK2 Dual-Key Suite | 3.02 m x 3.89 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/render_9x16.png?v=1778319365683281000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+      <article class="card" data-status="generated_needs_accuracy_review" data-unit="DK2">
+        <h2>DK2 - Washroom / Bath</h2>
+        <p>Type DK2 Dual-Key Suite | 3.1 m x 3.89 m | generated_needs_accuracy_review</p>
+        <div class="pair">
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/reference_card.png" alt="Reference"><figcaption>Reference card</figcaption></figure>
+          <figure><img src="../06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/render_9x16.png?v=1778319456040169000" alt="Generated render"><figcaption>Generated output</figcaption></figure>
+        </div>
+      </article>
+  </main>
+  <script>
+    const buttons = [...document.querySelectorAll('button')];
+    const cards = [...document.querySelectorAll('.card')];
+    buttons[0].classList.add('active');
+    buttons.forEach(btn => btn.addEventListener('click', () => {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const f = btn.dataset.filter;
+      cards.forEach(card => card.style.display = f === 'ALL' || card.dataset.unit === f ? '' : 'none');
+    }));
+  </script>
+</body>
+</html>
