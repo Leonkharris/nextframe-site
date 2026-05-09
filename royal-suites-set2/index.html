@@ -21,6 +21,10 @@
     .brand span { display:grid; gap:2px; line-height:1; }
     .brand strong { font-size:1.06rem; letter-spacing:-.035em; }
     .brand em { color:var(--dim); font-size:.69rem; font-style:normal; letter-spacing:.1em; text-transform:uppercase; }
+    .nav-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+    .set-switcher { display:inline-flex; align-items:center; gap:4px; padding:4px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.055); }
+    .set-link { min-height:32px; display:inline-flex; align-items:center; border-radius:999px; padding:0 12px; color:var(--muted); font-size:.8rem; font-weight:840; }
+    .set-link:hover,.set-link.active { color:#111; background:var(--acid); }
     .nav-pill { min-height:40px; display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:0 14px; color:var(--muted); background:rgba(255,255,255,.06); font-size:.86rem; font-weight:760; }
     .hero { padding:clamp(42px,7vw,92px) 0 28px; display:grid; grid-template-columns:minmax(0,.76fr) minmax(280px,.44fr); gap:clamp(28px,5vw,72px); align-items:end; }
     .kicker { color:var(--acid); font-size:.76rem; font-weight:840; letter-spacing:.12em; text-transform:uppercase; }
@@ -55,7 +59,7 @@
     .links { display:grid; gap:8px; padding:12px; }
     .links a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; background:var(--paper); color:#111; font-weight:820; }
     @media (max-width:1000px) { .hero,.viewer { grid-template-columns:1fr; } .stats { grid-template-columns:repeat(4,minmax(0,1fr)); } .image-wrap { min-height:62vh; } }
-    @media (max-width:680px) { .shell { width:min(100% - 28px,1480px); } .nav { align-items:flex-start; flex-direction:column; padding:16px 0; } .hero { padding-top:34px; } .stats { grid-template-columns:repeat(2,minmax(0,1fr)); } .stage-top { align-items:flex-start; flex-direction:column; } .arrow { width:44px; height:44px; } .arrow.prev { left:8px; } .arrow.next { right:8px; } .image-wrap { padding:12px; } }
+    @media (max-width:680px) { .shell { width:min(100% - 28px,1480px); } .nav { align-items:flex-start; flex-direction:column; padding:16px 0; } .nav-actions { width:100%; align-items:flex-start; justify-content:flex-start; } .set-switcher { width:100%; justify-content:space-between; } .set-link { flex:1; justify-content:center; } .hero { padding-top:34px; } .stats { grid-template-columns:repeat(2,minmax(0,1fr)); } .stage-top { align-items:flex-start; flex-direction:column; } .arrow { width:44px; height:44px; } .arrow.prev { left:8px; } .arrow.next { right:8px; } .image-wrap { padding:12px; } }
   </style>
 </head>
 <body>
@@ -65,7 +69,14 @@
         <img src="/Netframe-logo.png.png" alt="NextFrame">
         <span><strong>NextFrame</strong><em>AI growth studio</em></span>
       </a>
-      <a class="nav-pill" href="/">Back to main site</a>
+      <div class="nav-actions">
+        <nav class="set-switcher" aria-label="Render set selector">
+          <a class="set-link" href="/royal-suites-set1/" data-set="set1">Set 1</a>
+          <a class="set-link" href="/royal-suites-set2/" data-set="set2">Set 2</a>
+          <a class="set-link" href="/royal-suites-set3/" data-set="set3">Set 3</a>
+        </nav>
+        <a class="nav-pill" href="/royal-suites/">All versions</a>
+      </div>
     </div>
   </header>
   <main class="shell">
@@ -128,6 +139,12 @@
       if (path.includes("set2")) return "Set 2";
       if (path.includes("set3")) return "Set 3";
       return "Render Set";
+    }
+    function markActiveSet() {
+      const path = window.location.pathname;
+      document.querySelectorAll(".set-link").forEach(link => {
+        link.classList.toggle("active", path.includes(link.dataset.set));
+      });
     }
     function queueFile() {
       const path = window.location.pathname;
@@ -199,6 +216,7 @@
       });
     }
     async function init() {
+      markActiveSet();
       const csv = await fetch(`${queueFile()}?v=${Date.now()}`, { cache: "reload" }).then(r => r.text());
       state.rows = normalizeRows(parseCsv(csv));
       state.units = [...new Set(state.rows.map(row => row.unitCode))];
