@@ -1,0 +1,821 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Royal Suites Render Viewer - Set 2</title>
+  <style>
+    :root {
+      --bg: #15130f;
+      --surface: #211d17;
+      --surface-strong: #f4efe5;
+      --text: #f4efe5;
+      --muted: #c4b59d;
+      --line: #51483b;
+      --accent: #d9a552;
+      --accent-2: #6aa39b;
+      --shadow: 0 22px 58px rgba(0, 0, 0, 0.42);
+      --radius: 8px;
+      --sidebar: 280px;
+      color-scheme: dark;
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--text);
+      background:
+        radial-gradient(circle at 74% 0%, rgba(217, 165, 82, 0.14), transparent 34%),
+        linear-gradient(180deg, rgba(33,29,23,0.82), rgba(14,13,11,0.98)),
+        var(--bg);
+    }
+
+    button {
+      font: inherit;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 20;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 18px;
+      min-height: 72px;
+      padding: 14px 28px;
+      border-bottom: 1px solid rgba(81, 72, 59, 0.9);
+      background: rgba(21, 19, 15, 0.92);
+      backdrop-filter: blur(18px);
+    }
+
+    .brand {
+      min-width: 0;
+    }
+
+    .brand h1 {
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 28px);
+      line-height: 1.05;
+      letter-spacing: 0;
+      font-weight: 720;
+    }
+
+    .brand p {
+      margin: 7px 0 0;
+      color: var(--muted);
+      font-size: 13px;
+      line-height: 1.3;
+    }
+
+    .counter {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .counter strong {
+      color: var(--text);
+      font-weight: 700;
+    }
+
+    .shell {
+      display: grid;
+      grid-template-columns: var(--sidebar) minmax(0, 1fr);
+      min-height: calc(100vh - 72px);
+    }
+
+    .sidebar {
+      border-right: 1px solid var(--line);
+      padding: 22px 18px;
+      background: rgba(255, 255, 255, 0.05);
+    }
+
+    .unit-list {
+      display: grid;
+      gap: 8px;
+    }
+
+    .unit-button {
+      width: 100%;
+      border: 1px solid transparent;
+      background: transparent;
+      color: var(--text);
+      text-align: left;
+      padding: 12px 12px;
+      border-radius: var(--radius);
+      cursor: pointer;
+      transition: border-color 160ms ease, background 160ms ease, transform 160ms ease;
+    }
+
+    .unit-button:hover {
+      background: rgba(66, 107, 100, 0.08);
+      border-color: rgba(66, 107, 100, 0.18);
+    }
+
+    .unit-button[aria-selected="true"] {
+      background: var(--surface-strong);
+      color: #15130f;
+      border-color: var(--surface-strong);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.34);
+    }
+
+    .unit-code {
+      display: block;
+      font-size: 18px;
+      line-height: 1.05;
+      font-weight: 760;
+      letter-spacing: 0;
+    }
+
+    .unit-name {
+      display: block;
+      margin-top: 5px;
+      font-size: 13px;
+      line-height: 1.25;
+      color: inherit;
+      opacity: 0.72;
+    }
+
+    .viewer {
+      min-width: 0;
+      padding: 24px clamp(18px, 3vw, 42px) 34px;
+      display: grid;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 18px;
+    }
+
+    .viewer-head {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 18px;
+    }
+
+    .shot-title h2 {
+      margin: 0;
+      font-size: clamp(24px, 3vw, 42px);
+      line-height: 1;
+      letter-spacing: 0;
+      font-weight: 780;
+    }
+
+    .shot-title p {
+      margin: 8px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.35;
+    }
+
+    .shot-index {
+      color: var(--muted);
+      font-size: 13px;
+      white-space: nowrap;
+    }
+
+    .stage {
+      min-height: 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .image-frame {
+      position: relative;
+      min-height: 460px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #0f0e0c;
+      box-shadow: var(--shadow);
+    }
+
+    .image-frame img {
+      width: 100%;
+      height: 100%;
+      max-height: calc(100vh - 238px);
+      min-height: 460px;
+      object-fit: contain;
+      display: block;
+      background: #0f0e0c;
+      cursor: zoom-in;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.52);
+      border-radius: 999px;
+      color: #fff;
+      background: rgba(17, 20, 19, 0.62);
+      cursor: pointer;
+      backdrop-filter: blur(8px);
+      transition: background 160ms ease, transform 160ms ease;
+    }
+
+    .nav-button:hover {
+      background: rgba(17, 20, 19, 0.84);
+      transform: translateY(-50%) scale(1.04);
+    }
+
+    .prev { left: 16px; }
+    .next { right: 16px; }
+
+    .side-panel {
+      display: grid;
+      grid-template-rows: auto 1fr;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .plan-preview {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      overflow: hidden;
+      background: #15130f;
+    }
+
+    .plan-preview img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1.08;
+      object-fit: contain;
+      background: #15130f;
+    }
+
+    .meta-panel {
+      border-left: 3px solid var(--accent);
+      padding: 2px 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.45;
+    }
+
+    .meta-panel strong {
+      display: block;
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.2;
+      margin-bottom: 7px;
+    }
+
+    .thumb-strip {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 10px;
+    }
+
+    .thumb {
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 0;
+      overflow: hidden;
+      background: #211d17;
+      cursor: pointer;
+      text-align: left;
+      transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+    }
+
+    .thumb:hover {
+      transform: translateY(-2px);
+      border-color: rgba(66, 107, 100, 0.38);
+      box-shadow: 0 10px 24px rgba(23, 26, 24, 0.12);
+    }
+
+    .thumb[aria-selected="true"] {
+      border-color: var(--surface-strong);
+      box-shadow: 0 0 0 2px var(--surface-strong);
+    }
+
+    .thumb img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 12;
+      object-fit: cover;
+      background: #0f0e0c;
+    }
+
+    .thumb span {
+      display: block;
+      padding: 9px 10px 10px;
+      font-size: 12px;
+      line-height: 1.2;
+      color: var(--text);
+      min-height: 42px;
+    }
+
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 50;
+      display: none;
+      grid-template-rows: auto minmax(0, 1fr) auto;
+      gap: 12px;
+      padding: 18px;
+      background: rgba(12, 14, 13, 0.94);
+      color: #fff;
+    }
+
+    .lightbox.open {
+      display: grid;
+    }
+
+    .lightbox-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .lightbox-head h3 {
+      margin: 0;
+      font-size: clamp(18px, 2.2vw, 26px);
+      line-height: 1.15;
+      font-weight: 720;
+    }
+
+    .icon-button {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.08);
+      color: #fff;
+      cursor: pointer;
+    }
+
+    .lightbox-stage {
+      position: relative;
+      min-height: 0;
+      display: grid;
+      place-items: center;
+    }
+
+    .lightbox-stage img {
+      max-width: 100%;
+      max-height: calc(100vh - 150px);
+      object-fit: contain;
+      box-shadow: 0 18px 70px rgba(0,0,0,0.55);
+      border-radius: var(--radius);
+      background: #f4f5f3;
+    }
+
+    .lightbox .nav-button {
+      position: fixed;
+    }
+
+    .lightbox-thumbs {
+      display: flex;
+      justify-content: center;
+      gap: 8px;
+      overflow-x: auto;
+      padding-bottom: 2px;
+    }
+
+    .lightbox-thumbs button {
+      width: 58px;
+      flex: 0 0 auto;
+      border: 1px solid rgba(255,255,255,0.2);
+      border-radius: 6px;
+      padding: 0;
+      overflow: hidden;
+      background: rgba(255,255,255,0.08);
+      cursor: pointer;
+    }
+
+    .lightbox-thumbs button[aria-selected="true"] {
+      border-color: #fff;
+      box-shadow: 0 0 0 2px #fff;
+    }
+
+    .lightbox-thumbs img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 9 / 12;
+      object-fit: cover;
+    }
+
+    svg {
+      width: 20px;
+      height: 20px;
+      display: block;
+    }
+
+    @media (max-width: 980px) {
+      .shell {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        border-right: 0;
+        border-bottom: 1px solid var(--line);
+        padding: 12px 16px;
+        overflow-x: auto;
+      }
+
+      .unit-list {
+        display: flex;
+        gap: 8px;
+      }
+
+      .unit-button {
+        width: 160px;
+        flex: 0 0 auto;
+      }
+
+      .stage {
+        grid-template-columns: 1fr;
+      }
+
+      .side-panel {
+        grid-template-columns: minmax(160px, 220px) 1fr;
+        grid-template-rows: auto;
+        align-items: start;
+      }
+
+      .image-frame img {
+        max-height: 68vh;
+      }
+    }
+
+    @media (max-width: 680px) {
+      .topbar {
+        position: static;
+        align-items: flex-start;
+        flex-direction: column;
+        padding: 18px;
+      }
+
+      .counter {
+        white-space: normal;
+      }
+
+      .viewer {
+        padding: 18px 14px 26px;
+      }
+
+      .viewer-head {
+        align-items: start;
+        flex-direction: column;
+      }
+
+      .stage {
+        gap: 14px;
+      }
+
+      .image-frame {
+        min-height: 360px;
+      }
+
+      .image-frame img {
+        min-height: 360px;
+        max-height: 72vh;
+      }
+
+      .side-panel {
+        grid-template-columns: 1fr;
+      }
+
+      .thumb-strip {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .nav-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">
+        <h1>Royal Suites Render Viewer</h1>
+        <p>Set 2 - Cinematic Contrast</p>
+    </div>
+    <div class="counter"><strong id="unitCount">6</strong> floor plans <span>&middot;</span> <strong>24</strong> perspective renders</div>
+  </header>
+
+  <main class="shell">
+    <aside class="sidebar" aria-label="Floor plan selector">
+      <nav class="unit-list" id="unitList"></nav>
+    </aside>
+
+    <section class="viewer" aria-live="polite">
+      <div class="viewer-head">
+        <div class="shot-title">
+          <h2 id="unitTitle"></h2>
+          <p id="shotTitle"></p>
+        </div>
+        <div class="shot-index" id="shotIndex"></div>
+      </div>
+
+      <div class="stage">
+        <figure class="image-frame">
+          <button class="nav-button prev" type="button" id="prevButton" aria-label="Previous image">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+          <img id="mainImage" alt="">
+          <button class="nav-button next" type="button" id="nextButton" aria-label="Next image">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </button>
+        </figure>
+
+        <aside class="side-panel">
+          <div class="plan-preview">
+            <img id="planPreview" alt="">
+          </div>
+          <div class="meta-panel">
+            <strong id="metaTitle"></strong>
+            <span id="metaText"></span>
+          </div>
+        </aside>
+      </div>
+
+      <div class="thumb-strip" id="thumbStrip" aria-label="Image selector"></div>
+    </section>
+  </main>
+
+  <div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Expanded image viewer">
+    <div class="lightbox-head">
+      <h3 id="lightboxTitle"></h3>
+      <button class="icon-button" type="button" id="closeLightbox" aria-label="Close">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-stage">
+      <button class="nav-button prev" type="button" id="lightboxPrev" aria-label="Previous image">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <img id="lightboxImage" alt="">
+      <button class="nav-button next" type="button" id="lightboxNext" aria-label="Next image">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div class="lightbox-thumbs" id="lightboxThumbs" aria-label="Expanded image selector"></div>
+  </div>
+
+  <script>
+    const units = [
+      {
+        code: "S1",
+        name: "Type S1 Suite",
+        size: "452 sq ft",
+        dir: "01_S1_type_s1_suite",
+        plan: "01_S1_type_s1_suite/00_source_floor_plan.jpg",
+        note: "Compact suite with open living, pantry, sleeping zone, and bath.",
+        images: [
+          { title: "Floor Plan", src: "01_S1_type_s1_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "01_S1_type_s1_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "01_S1_type_s1_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "01_S1_type_s1_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "01_S1_type_s1_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      },
+      {
+        code: "S2",
+        name: "Type S2 Suite",
+        size: "538 sq ft",
+        dir: "02_S2_type_s2_suite",
+        plan: "02_S2_type_s2_suite/00_source_floor_plan.jpg",
+        note: "Open-plan suite with pantry, dining, living, sleeping zone, wardrobe, and bath.",
+        images: [
+          { title: "Floor Plan", src: "02_S2_type_s2_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "02_S2_type_s2_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "02_S2_type_s2_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "02_S2_type_s2_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "02_S2_type_s2_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      },
+      {
+        code: "J1",
+        name: "Type J1 Suite",
+        size: "635 sq ft",
+        dir: "03_J1_type_j1_suite",
+        plan: "03_J1_type_j1_suite/00_source_floor_plan.jpg",
+        note: "One-bedroom suite with separate bedroom, study room, bath, kitchen, and living/dining.",
+        images: [
+          { title: "Floor Plan", src: "03_J1_type_j1_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "03_J1_type_j1_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "03_J1_type_j1_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "03_J1_type_j1_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "03_J1_type_j1_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      },
+      {
+        code: "J3",
+        name: "Type J3 Suite",
+        size: "743 sq ft",
+        dir: "04_J3_type_j3_suite",
+        plan: "04_J3_type_j3_suite/00_source_floor_plan.jpg",
+        note: "Two-bedroom suite with open living/dining/kitchen and enclosed bedroom wing.",
+        images: [
+          { title: "Floor Plan", src: "04_J3_type_j3_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "04_J3_type_j3_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "04_J3_type_j3_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "04_J3_type_j3_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "04_J3_type_j3_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      },
+      {
+        code: "M1",
+        name: "Type M1 Suite",
+        size: "1,119 sq ft",
+        dir: "05_M1_type_m1_suite",
+        plan: "05_M1_type_m1_suite/00_source_floor_plan.jpg",
+        note: "Larger residence with living/dining, kitchen, study, bedroom, master suite, and bath core.",
+        images: [
+          { title: "Floor Plan", src: "05_M1_type_m1_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "05_M1_type_m1_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "05_M1_type_m1_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "05_M1_type_m1_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "05_M1_type_m1_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      },
+      {
+        code: "DK2",
+        name: "Type DK2 Dual-Key Suite",
+        size: "1,679 sq ft",
+        dir: "06_DK2_type_dk2_dual_key_suite",
+        plan: "06_DK2_type_dk2_dual_key_suite/00_source_floor_plan.jpg",
+        note: "Dual-key layout with main residence, dry/wet kitchen, master suite, Bedroom 1, study, and separate studio suite.",
+        images: [
+          { title: "Floor Plan", src: "06_DK2_type_dk2_dual_key_suite/00_source_floor_plan.jpg" },
+          { title: "Living / Dining", src: "06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/render_9x16.png" },
+          { title: "Kitchen / Pantry", src: "06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/render_9x16.png" },
+          { title: "Main Bedroom", src: "06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/render_9x16.png" },
+          { title: "Washroom / Bath", src: "06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/render_9x16.png" }
+        ]
+      }
+    ];
+
+    const state = {
+      unit: 0,
+      image: 1,
+      lightboxOpen: false
+    };
+
+    const assetVersion = "2026-05-09-j3-m1-fix";
+
+    function assetUrl(src) {
+      return `${src}?v=${assetVersion}`;
+    }
+
+    const unitList = document.getElementById("unitList");
+    const unitTitle = document.getElementById("unitTitle");
+    const shotTitle = document.getElementById("shotTitle");
+    const shotIndex = document.getElementById("shotIndex");
+    const mainImage = document.getElementById("mainImage");
+    const planPreview = document.getElementById("planPreview");
+    const metaTitle = document.getElementById("metaTitle");
+    const metaText = document.getElementById("metaText");
+    const thumbStrip = document.getElementById("thumbStrip");
+    const lightbox = document.getElementById("lightbox");
+    const lightboxImage = document.getElementById("lightboxImage");
+    const lightboxTitle = document.getElementById("lightboxTitle");
+    const lightboxThumbs = document.getElementById("lightboxThumbs");
+
+    function iconLabel(unit) {
+      return `${unit.code} ${unit.name} ${unit.size}`;
+    }
+
+    function activeUnit() {
+      return units[state.unit];
+    }
+
+    function activeImage() {
+      return activeUnit().images[state.image];
+    }
+
+    function setUnit(index) {
+      state.unit = index;
+      state.image = 1;
+      render();
+    }
+
+    function setImage(index) {
+      const unit = activeUnit();
+      state.image = (index + unit.images.length) % unit.images.length;
+      render();
+    }
+
+    function nextImage() {
+      setImage(state.image + 1);
+    }
+
+    function prevImage() {
+      setImage(state.image - 1);
+    }
+
+    function openLightbox() {
+      state.lightboxOpen = true;
+      lightbox.classList.add("open");
+      document.body.style.overflow = "hidden";
+      renderLightbox();
+    }
+
+    function closeLightbox() {
+      state.lightboxOpen = false;
+      lightbox.classList.remove("open");
+      document.body.style.overflow = "";
+    }
+
+    function renderUnits() {
+      unitList.innerHTML = "";
+      units.forEach((unit, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "unit-button";
+        button.setAttribute("aria-selected", String(index === state.unit));
+        button.setAttribute("aria-label", iconLabel(unit));
+        button.innerHTML = `<span class="unit-code">${unit.code}</span><span class="unit-name">${unit.name}<br>${unit.size}</span>`;
+        button.addEventListener("click", () => setUnit(index));
+        unitList.appendChild(button);
+      });
+    }
+
+    function renderThumbs() {
+      const unit = activeUnit();
+      thumbStrip.innerHTML = "";
+      unit.images.forEach((image, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.className = "thumb";
+        button.setAttribute("aria-selected", String(index === state.image));
+        button.setAttribute("aria-label", `${unit.code} ${image.title}`);
+        button.innerHTML = `<img src="${assetUrl(image.src)}" alt=""><span>${image.title}</span>`;
+        button.addEventListener("click", () => setImage(index));
+        thumbStrip.appendChild(button);
+      });
+    }
+
+    function renderLightbox() {
+      if (!state.lightboxOpen) return;
+      const unit = activeUnit();
+      const image = activeImage();
+      lightboxTitle.textContent = `${unit.code} - ${image.title}`;
+      lightboxImage.src = assetUrl(image.src);
+      lightboxImage.alt = `${unit.name} ${image.title}`;
+      lightboxThumbs.innerHTML = "";
+      unit.images.forEach((thumb, index) => {
+        const button = document.createElement("button");
+        button.type = "button";
+        button.setAttribute("aria-selected", String(index === state.image));
+        button.setAttribute("aria-label", `${unit.code} ${thumb.title}`);
+        button.innerHTML = `<img src="${assetUrl(thumb.src)}" alt="">`;
+        button.addEventListener("click", () => setImage(index));
+        lightboxThumbs.appendChild(button);
+      });
+    }
+
+    function render() {
+      const unit = activeUnit();
+      const image = activeImage();
+      unitTitle.textContent = `${unit.code} - ${unit.name}`;
+      shotTitle.textContent = `${image.title} - ${unit.size}`;
+      shotIndex.textContent = `${state.image + 1} / ${unit.images.length}`;
+      mainImage.src = assetUrl(image.src);
+      mainImage.alt = `${unit.name} ${image.title}`;
+      planPreview.src = assetUrl(unit.plan);
+      planPreview.alt = `${unit.name} floor plan`;
+      metaTitle.textContent = unit.name;
+      metaText.textContent = unit.note;
+      renderUnits();
+      renderThumbs();
+      renderLightbox();
+    }
+
+    document.getElementById("prevButton").addEventListener("click", prevImage);
+    document.getElementById("nextButton").addEventListener("click", nextImage);
+    document.getElementById("lightboxPrev").addEventListener("click", prevImage);
+    document.getElementById("lightboxNext").addEventListener("click", nextImage);
+    document.getElementById("closeLightbox").addEventListener("click", closeLightbox);
+    mainImage.addEventListener("click", openLightbox);
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) closeLightbox();
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "ArrowRight") nextImage();
+      if (event.key === "ArrowLeft") prevImage();
+      if (event.key === "Escape" && state.lightboxOpen) closeLightbox();
+    });
+
+    render();
+  </script>
+</body>
+</html>

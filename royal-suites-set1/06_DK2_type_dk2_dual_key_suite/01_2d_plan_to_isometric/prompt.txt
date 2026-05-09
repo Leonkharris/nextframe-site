@@ -1,0 +1,61 @@
+Create a high resolution 3D isometric floor plan render based EXACTLY on the provided 2D architectural floor plan image.
+
+Project: Royal Suites at Pavilion Damansara Heights, Kuala Lumpur.
+Unit: Type DK2 Dual-Key Suite (DK2), 1,679 sq ft.
+Known zones to preserve: dual-key entry, living/dining, kitchen, primary suite, secondary suite, baths, storage.
+Plan notes: largest dual-key layout, preserve entries, room count, corridor, bath cores, and main living facade.
+
+IMPORTANT:
+Do NOT change the layout, wall positions, room sizes, door placements, window placements, circulation space, bathroom positions, kitchen/pantry positions, wardrobe/storage positions, bedroom positions, or structural proportions in any way.
+Maintain the exact same architectural measurements and spatial relationships from the original plan.
+Use only dimensions visible on the provided plan. Do not invent dimensions that are not visible.
+
+Convert the 2D plan into a realistic 3D isolated dollhouse-style floor plan.
+
+Requirements:
+- Keep all rooms and zones in the exact same position shown on the floor plan.
+- Maintain original wall thickness.
+- Maintain exact door swing directions.
+- Maintain window positions.
+- Maintain corridor width and entry sequence.
+- Maintain bathrooms and wet areas in the same positions.
+- Maintain kitchen/pantry in the same position.
+- Maintain bedrooms, wardrobe, closet, storage, study, and utility areas only where shown.
+- No redesign or optimization of space.
+- Do not merge separate rooms.
+- Do not split open-plan zones unless the source plan shows a wall.
+
+3D Style:
+- Contemporary luxury serviced residence interior style for Royal Suites.
+- Realistic wall height, approximately 9-10 feet.
+- Matte warm white interior walls.
+- Light natural stone or light grey premium tiled flooring where appropriate.
+- Refined light oak / warm wood veneer built-ins.
+- Realistic timber doors.
+- Slim black or dark bronze aluminium window frames.
+- Modern sofa set scaled to the actual living area.
+- Dining sized to the actual plan.
+- Premium kitchen/pantry with integrated appliances and overhead cabinets.
+- Double or queen beds with side tables only where the plan supports them.
+- Wardrobes only where shown in plan.
+- Realistic sanitary fittings in bathrooms.
+
+Render Settings:
+- 9:16 vertical output, 1080x1920 or taller vertical equivalent.
+- The rendered apartment must fit cleanly inside a vertical frame.
+- Isometric top angle view, dollhouse view.
+- Soft daylight lighting.
+- Ambient occlusion shadows.
+- Neutral background.
+- Isolated cut-out apartment, no terrain.
+- Photorealistic materials.
+- High resolution, 4K quality.
+- Global illumination.
+- Clean shadow falloff.
+
+Output:
+Ultra realistic 3D isolated floor plan render without modifying the architectural layout.
+No long explanations.
+No counters.
+No labels unless they are already part of the provided floor plan reference and unavoidable.
+No multi-angle collage.

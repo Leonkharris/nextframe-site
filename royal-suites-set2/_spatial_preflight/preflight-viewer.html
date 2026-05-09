@@ -1,0 +1,838 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Royal Suites Spatial Preflight</title>
+  <style>
+    :root { color-scheme: light; --ink: #171717; --muted: #5f625d; --line: #dedbd2; --paper: #faf8f2; --accent: #dd5c30; }
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: Arial, Helvetica, sans-serif; background: #f4f2ec; color: var(--ink); }
+    header { position: sticky; top: 0; z-index: 10; padding: 20px 28px; background: rgba(250, 248, 242, .95); border-bottom: 1px solid var(--line); }
+    h1 { margin: 0 0 6px; font-size: clamp(26px, 4vw, 42px); letter-spacing: 0; }
+    header p { margin: 0; color: var(--muted); max-width: 980px; line-height: 1.45; }
+    main { padding: 24px; display: grid; gap: 22px; }
+    .card { display: grid; grid-template-columns: minmax(260px, 360px) 1fr; gap: 20px; padding: 20px; border: 1px solid var(--line); background: white; border-radius: 8px; box-shadow: 0 12px 34px rgba(30, 25, 15, .07); }
+    .kicker { margin: 0 0 8px; font-weight: 700; color: var(--accent); text-transform: uppercase; font-size: 13px; }
+    h2 { margin: 0 0 10px; font-size: 24px; }
+    .dims, .camera { color: var(--muted); line-height: 1.45; }
+    a { color: #9c3f23; font-weight: 700; }
+    .images { display: grid; grid-template-columns: minmax(260px, 1fr) minmax(180px, 360px); gap: 16px; align-items: start; }
+    figure { margin: 0; border: 1px solid var(--line); border-radius: 6px; overflow: hidden; background: #f7f6f2; }
+    img { display: block; width: 100%; height: auto; max-height: 760px; object-fit: contain; background: white; }
+    figcaption { padding: 10px 12px; font-size: 13px; color: var(--muted); border-top: 1px solid var(--line); background: #fbfaf7; }
+    @media (max-width: 900px) {
+      .card, .images { grid-template-columns: 1fr; }
+      main { padding: 14px; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Royal Suites Spatial Preflight</h1>
+    <p>Use this before perspective prompt engineering. Each card shows the floor-plan area to generate, its crop, estimated dimensions, contents, and the accuracy gate brief.</p>
+  </header>
+  <main>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S1 - Type S1 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 5.22 m x 4.75 m | Position: 0% from left, 1% from top</p>
+          <p>Open studio living/dining field: sofa/living zone, dining/table area, window end, and adjacent bed zone visible without adding partitions.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from pantry/kitchen side toward living/window wall.</p>
+          <a href="01_S1_type_s1_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="01_S1_type_s1_suite/02_living_dining_wide_view/plan_highlight.png" alt="S1 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="01_S1_type_s1_suite/02_living_dining_wide_view/target_crop.png" alt="S1 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S1 - Type S1 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 2.7 m x 3.75 m | Position: -4% from left, 48% from top</p>
+          <p>Compact pantry/kitchen run near entry on left side, with sink/cooktop/cabinets and open studio beyond.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level along pantry wall toward studio depth.</p>
+          <a href="01_S1_type_s1_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="01_S1_type_s1_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="S1 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="01_S1_type_s1_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="S1 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S1 - Type S1 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 3.48 m x 4.5 m | Position: 30% from left, 3% from top</p>
+          <p>Open studio bed/sleeping zone beside living, not a separate enclosed bedroom.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from living/pantry edge toward bed/window zone.</p>
+          <a href="01_S1_type_s1_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="01_S1_type_s1_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="S1 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="01_S1_type_s1_suite/04_main_bedroom_wide_view/target_crop.png" alt="S1 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S1 - Type S1 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 2.9 m x 3.66 m | Position: 43% from left, 47% from top</p>
+          <p>Compact master bath core with vanity, toilet, shower, and wardrobe adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside compact bath, showing fixtures without enlarging room.</p>
+          <a href="01_S1_type_s1_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="01_S1_type_s1_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="S1 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="01_S1_type_s1_suite/05_washroom_bath_wide_view/target_crop.png" alt="S1 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S2 - Type S2 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 6.32 m x 3.12 m | Position: 23% from left, 5% from top</p>
+          <p>Open dining and living area across upper/right side, with sofa, dining table, window wall, and pantry adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from pantry/dining side toward living/window side.</p>
+          <a href="02_S2_type_s2_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="02_S2_type_s2_suite/02_living_dining_wide_view/plan_highlight.png" alt="S2 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="02_S2_type_s2_suite/02_living_dining_wide_view/target_crop.png" alt="S2 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S2 - Type S2 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 4.06 m x 1.52 m | Position: 3% from left, 36% from top</p>
+          <p>Central pantry run across middle-left with sink/cooktop/counter, close to dining/living and bath core.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level parallel to pantry run with open suite visible.</p>
+          <a href="02_S2_type_s2_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="02_S2_type_s2_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="S2 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="02_S2_type_s2_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="S2 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S2 - Type S2 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 3.33 m x 2.7 m | Position: 56% from left, 53% from top</p>
+          <p>Open-adjacent master bed zone at lower-right, with bedside tables and nearby wardrobe/bath core.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from suite center toward bed/window side.</p>
+          <a href="02_S2_type_s2_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="02_S2_type_s2_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="S2 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="02_S2_type_s2_suite/04_main_bedroom_wide_view/target_crop.png" alt="S2 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">S2 - Type S2 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 2.73 m x 2.53 m | Position: 4% from left, 56% from top</p>
+          <p>Compact master bath core with shower, toilet, vanity, and adjacent wardrobes.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside compact bath.</p>
+          <a href="02_S2_type_s2_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="02_S2_type_s2_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="S2 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="02_S2_type_s2_suite/05_washroom_bath_wide_view/target_crop.png" alt="S2 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J1 - Type J1 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 3.47 m x 4.64 m | Position: 53% from left, 2% from top</p>
+          <p>Right-side living/dining field with sofa at upper-right, living table, dining table, and kitchen below/right.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen/dining side toward living/window wall.</p>
+          <a href="03_J1_type_j1_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="03_J1_type_j1_suite/02_living_dining_wide_view/plan_highlight.png" alt="J1 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="03_J1_type_j1_suite/02_living_dining_wide_view/target_crop.png" alt="J1 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J1 - Type J1 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 2.69 m x 3.09 m | Position: 65% from left, 60% from top</p>
+          <p>Lower-right kitchen zone connected to dining/living, with compact counters and cooking fixtures.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen looking back to dining/living.</p>
+          <a href="03_J1_type_j1_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="03_J1_type_j1_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="J1 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="03_J1_type_j1_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="J1 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J1 - Type J1 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.99 m x 3.26 m | Position: 1% from left, 3% from top</p>
+          <p>Enclosed upper-left master bedroom with bed, side tables, top/left window walls, and wardrobe/bath adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bedroom entry/inner wall toward bed/window.</p>
+          <a href="03_J1_type_j1_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="03_J1_type_j1_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="J1 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="03_J1_type_j1_suite/04_main_bedroom_wide_view/target_crop.png" alt="J1 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J1 - Type J1 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3.38 m x 2.58 m | Position: 9% from left, 41% from top</p>
+          <p>Master bath core beside master bedroom with shower, toilet, vanity, and door swing constraints.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bath doorway into compact fixture layout.</p>
+          <a href="03_J1_type_j1_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="03_J1_type_j1_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="J1 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="03_J1_type_j1_suite/05_washroom_bath_wide_view/target_crop.png" alt="J1 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J2 - Type J2 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 3.51 m x 5.4 m | Position: 0% from left, 0% from top</p>
+          <p>Left-side open living/dining stack with sofa, dining table, kitchen below, and window wall at the upper edge. The bedroom/bath core remains enclosed on the right.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen/dining side toward living/window wall; no overhead or dollhouse angle.</p>
+          <a href="07_J2_type_j2_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="07_J2_type_j2_suite/02_living_dining_wide_view/plan_highlight.png" alt="J2 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="07_J2_type_j2_suite/02_living_dining_wide_view/target_crop.png" alt="J2 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J2 - Type J2 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 3.18 m x 3.13 m | Position: 0% from left, 45% from top</p>
+          <p>Lower-left kitchen/pantry zone near entry, directly connected to dining/living; compact linear/L-shaped counters only where shown.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen toward dining/living, keeping the compact suite scale.</p>
+          <a href="07_J2_type_j2_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="07_J2_type_j2_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="J2 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="07_J2_type_j2_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="J2 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J2 - Type J2 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.76 m x 3.31 m | Position: 59% from left, 4% from top</p>
+          <p>Upper-right enclosed master bedroom with bed, side tables, exterior wall/window condition, and nearby wardrobe/bath adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bedroom entry/wardrobe side toward bed/window.</p>
+          <a href="07_J2_type_j2_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="07_J2_type_j2_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="J2 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="07_J2_type_j2_suite/04_main_bedroom_wide_view/target_crop.png" alt="J2 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J2 - Type J2 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3.01 m x 3.13 m | Position: 55% from left, 34% from top</p>
+          <p>Right-side compact bath zone with toilet, vanity, shower/tub fixtures, and doors preserved from the plan.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside compact bath, no spa enlargement.</p>
+          <a href="07_J2_type_j2_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="07_J2_type_j2_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="J2 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="07_J2_type_j2_suite/05_washroom_bath_wide_view/target_crop.png" alt="J2 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J3 - Type J3 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 3.26 m x 5.48 m | Position: 0% from left, 0% from top</p>
+          <p>Left-side vertical stack: kitchen below, dining middle-left, living/sofa upper-left by the top/north window wall. Right-side rooms remain enclosed.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from lower-left kitchen/dining side toward living and top window wall; never overhead.</p>
+          <a href="04_J3_type_j3_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="04_J3_type_j3_suite/02_living_dining_wide_view/plan_highlight.png" alt="J3 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="04_J3_type_j3_suite/02_living_dining_wide_view/target_crop.png" alt="J3 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J3 - Type J3 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 2.83 m x 3.08 m | Position: 0% from left, 52% from top</p>
+          <p>Compact lower-left kitchen with counters and appliances, directly below dining zone and near entry.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen side toward dining/living, showing compact footprint.</p>
+          <a href="04_J3_type_j3_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="04_J3_type_j3_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="J3 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="04_J3_type_j3_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="J3 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J3 - Type J3 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.74 m x 3.08 m | Position: 58% from left, 7% from top</p>
+          <p>Enclosed upper-right master bedroom with bed, side tables, exterior wall/window, and wardrobe/bath adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside bedroom from entry/wardrobe side toward bed/window.</p>
+          <a href="04_J3_type_j3_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="04_J3_type_j3_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="J3 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="04_J3_type_j3_suite/04_main_bedroom_wide_view/target_crop.png" alt="J3 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J3 - Type J3 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 2.44 m x 2.57 m | Position: 62% from left, 33% from top</p>
+          <p>Master bath on right side with compact fixture arrangement and door swing preserved.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside bath, no spa enlargement.</p>
+          <a href="04_J3_type_j3_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="04_J3_type_j3_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="J3 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="04_J3_type_j3_suite/05_washroom_bath_wide_view/target_crop.png" alt="J3 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J4 - Type J4 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 3.6 m x 5.66 m | Position: 49% from left, 2% from top</p>
+          <p>Right-side living/dining stack with living at upper-right, dining middle-right, and kitchen below/right. Left-side bedroom/study zones remain enclosed.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen/dining side toward living/window side.</p>
+          <a href="08_J4_type_j4_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="08_J4_type_j4_suite/02_living_dining_wide_view/plan_highlight.png" alt="J4 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="08_J4_type_j4_suite/02_living_dining_wide_view/target_crop.png" alt="J4 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J4 - Type J4 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 3.26 m x 2.96 m | Position: 54% from left, 54% from top</p>
+          <p>Lower-right kitchen zone near the entry/study relationship, connected to dining/living; do not turn into oversized showroom kitchen.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen toward dining/living.</p>
+          <a href="08_J4_type_j4_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="08_J4_type_j4_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="J4 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="08_J4_type_j4_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="J4 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J4 - Type J4 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.93 m x 3.4 m | Position: 1% from left, 3% from top</p>
+          <p>Upper-left enclosed master bedroom with bed, side tables, exterior wall/window, and nearby master bath.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bedroom entry toward bed/window.</p>
+          <a href="08_J4_type_j4_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="08_J4_type_j4_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="J4 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="08_J4_type_j4_suite/04_main_bedroom_wide_view/target_crop.png" alt="J4 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">J4 - Type J4 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3.01 m x 3.13 m | Position: 26% from left, 33% from top</p>
+          <p>Central bath/wardrobe core between master and living zones, compact fixtures and door swings preserved.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bath doorway into compact fixture layout.</p>
+          <a href="08_J4_type_j4_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="08_J4_type_j4_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="J4 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="08_J4_type_j4_suite/05_washroom_bath_wide_view/target_crop.png" alt="J4 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M1 - Type M1 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 4.15 m x 5.57 m | Position: 0% from left, 41% from top</p>
+          <p>Large lower-left living/dining zone with sofa, table, dining set, window wall, and kitchen directly above.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen/dining side toward living/window wall.</p>
+          <a href="05_M1_type_m1_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="05_M1_type_m1_suite/02_living_dining_wide_view/plan_highlight.png" alt="M1 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="05_M1_type_m1_suite/02_living_dining_wide_view/target_crop.png" alt="M1 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M1 - Type M1 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 3.62 m x 3.22 m | Position: 0% from left, 9% from top</p>
+          <p>Compact upper-left kitchen near entry, directly above dining/living. It is not a large L-shaped showroom kitchen.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from compact kitchen toward dining/living below.</p>
+          <a href="05_M1_type_m1_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="05_M1_type_m1_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="M1 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="05_M1_type_m1_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="M1 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M1 - Type M1 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.91 m x 3.74 m | Position: 72% from left, 58% from top</p>
+          <p>Enclosed lower-right master bedroom with exterior glazing and wardrobe/bath adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bedroom entry side toward bed/window.</p>
+          <a href="05_M1_type_m1_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="05_M1_type_m1_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="M1 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="05_M1_type_m1_suite/04_main_bedroom_wide_view/target_crop.png" alt="M1 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M1 - Type M1 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 2.38 m x 3.74 m | Position: 77% from left, 6% from top</p>
+          <p>Upper-right master bath with tub/shower, toilet, vanity, and exterior wall/window constraints.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside master bath, compact to plan.</p>
+          <a href="05_M1_type_m1_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="05_M1_type_m1_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="M1 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="05_M1_type_m1_suite/05_washroom_bath_wide_view/target_crop.png" alt="M1 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M2 - Type M2 Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 4.46 m x 3.12 m | Position: 17% from left, 42% from top</p>
+          <p>Large living/dining zone in the lower-left/center with sofa, dining table, exterior glazing, and dry kitchen adjacency.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from dry kitchen/dining edge toward living/window wall.</p>
+          <a href="09_M2_type_m2_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="09_M2_type_m2_suite/02_living_dining_wide_view/plan_highlight.png" alt="M2 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="09_M2_type_m2_suite/02_living_dining_wide_view/target_crop.png" alt="M2 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M2 - Type M2 Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 4.81 m x 2.6 m | Position: 11% from left, 4% from top</p>
+          <p>Upper-left wet/dry kitchen relationship with yard/service nearby; keep kitchen zones compact and positioned as shown.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen counter zone toward dining/living if naturally visible.</p>
+          <a href="09_M2_type_m2_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="09_M2_type_m2_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="M2 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="09_M2_type_m2_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="M2 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M2 - Type M2 Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.66 m x 3.12 m | Position: 81% from left, 52% from top</p>
+          <p>Right-side master bedroom zone with bed, wardrobe/bath adjacency, and exterior wall condition.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from bedroom entry/wardrobe side toward bed/window.</p>
+          <a href="09_M2_type_m2_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="09_M2_type_m2_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="M2 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="09_M2_type_m2_suite/04_main_bedroom_wide_view/target_crop.png" alt="M2 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">M2 - Type M2 Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3 m x 2.95 m | Position: 78% from left, 11% from top</p>
+          <p>Right-side master bath/fixture area adjacent to master bedroom, with compact sanitary layout preserved.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside master bath, no oversized spa or added glazing.</p>
+          <a href="09_M2_type_m2_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="09_M2_type_m2_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="M2 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="09_M2_type_m2_suite/05_washroom_bath_wide_view/target_crop.png" alt="M2 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK1 - Type DK1 Dual-Key Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 4.07 m x 5.36 m | Position: 37% from left, 11% from top</p>
+          <p>Main-side living/dining zone in the center/right of the plan, with sofa/living, dining, and kitchen below; studio side remains separate on the left.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from kitchen/dining side toward main living/window wall.</p>
+          <a href="10_DK1_type_dk1_dual_key_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/02_living_dining_wide_view/plan_highlight.png" alt="DK1 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/02_living_dining_wide_view/target_crop.png" alt="DK1 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK1 - Type DK1 Dual-Key Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 3.56 m x 3.09 m | Position: 40% from left, 63% from top</p>
+          <p>Main-side kitchen zone below the dining/living area, distinct from the separate studio pantry.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from main kitchen toward dining/living, no split dual-key collage.</p>
+          <a href="10_DK1_type_dk1_dual_key_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="DK1 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="DK1 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK1 - Type DK1 Dual-Key Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 2.37 m x 3.61 m | Position: 77% from left, 9% from top</p>
+          <p>Right-side enclosed master bedroom with bed and nearby bath/wardrobe relationship.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside master bedroom from entry side toward bed/window.</p>
+          <a href="10_DK1_type_dk1_dual_key_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="DK1 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/04_main_bedroom_wide_view/target_crop.png" alt="DK1 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK1 - Type DK1 Dual-Key Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3.05 m x 3.71 m | Position: 68% from left, 45% from top</p>
+          <p>Main-side bath core near the bedrooms, not the studio bath; compact fixtures and door swings preserved.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside main bath.</p>
+          <a href="10_DK1_type_dk1_dual_key_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="DK1 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="10_DK1_type_dk1_dual_key_suite/05_washroom_bath_wide_view/target_crop.png" alt="DK1 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK2 - Type DK2 Dual-Key Suite</p>
+          <h2>Living / Dining</h2>
+          <p class="dims">Approx. crop: 4.82 m x 4.85 m | Position: 11% from left, 64% from top</p>
+          <p>Main residence lower-left/lower-center living/dining zone with sofa, dining table, window wall, and dry kitchen adjacency. Not the top studio suite.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level single-frame camera from dry kitchen/dining side toward main living.</p>
+          <a href="06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/plan_highlight.png" alt="DK2 Living / Dining highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/02_living_dining_wide_view/target_crop.png" alt="DK2 Living / Dining cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK2 - Type DK2 Dual-Key Suite</p>
+          <h2>Kitchen / Pantry</h2>
+          <p class="dims">Approx. crop: 5.34 m x 3.72 m | Position: 12% from left, 42% from top</p>
+          <p>Main residence dry kitchen and nearby wet-kitchen/service relationship. Dry kitchen connects to living/dining; wet kitchen only as background if naturally visible.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level from dry kitchen, one continuous frame, no split views.</p>
+          <a href="06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/plan_highlight.png" alt="DK2 Kitchen / Pantry highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/03_kitchen_pantry_wide_view/target_crop.png" alt="DK2 Kitchen / Pantry cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK2 - Type DK2 Dual-Key Suite</p>
+          <h2>Main Bedroom</h2>
+          <p class="dims">Approx. crop: 3.02 m x 3.89 m | Position: 72% from left, 71% from top</p>
+          <p>Lower-right main residence master bedroom with bed, side tables, wardrobe/bath adjacency, and normal exterior wall glazing.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside enclosed bedroom from entry/wardrobe side.</p>
+          <a href="06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/plan_highlight.png" alt="DK2 Main Bedroom highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/04_main_bedroom_wide_view/target_crop.png" alt="DK2 Main Bedroom cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+      <article class="card">
+        <div class="meta">
+          <p class="kicker">DK2 - Type DK2 Dual-Key Suite</p>
+          <h2>Washroom / Bath</h2>
+          <p class="dims">Approx. crop: 3.1 m x 3.89 m | Position: 71% from left, 41% from top</p>
+          <p>Main residence master bath core with shower/toilet/vanity area. Not Bath 1 and not the studio Bath 2.</p>
+          <p class="camera"><strong>Camera:</strong> Eye-level inside main bath, no oversized spa.</p>
+          <a href="06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/AREA_BRIEF.md">Open AREA_BRIEF.md</a>
+        </div>
+        <div class="images">
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/plan_highlight.png" alt="DK2 Washroom / Bath highlighted floor plan">
+            <figcaption>Highlighted full plan</figcaption>
+          </figure>
+          <figure>
+            <img src="06_DK2_type_dk2_dual_key_suite/05_washroom_bath_wide_view/target_crop.png" alt="DK2 Washroom / Bath cropped target area">
+            <figcaption>Cropped target zone</figcaption>
+          </figure>
+        </div>
+      </article>
+  </main>
+</body>
+</html>
