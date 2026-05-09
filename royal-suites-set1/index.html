@@ -185,7 +185,7 @@
       });
     }
     async function init() {
-      const csv = await fetch("generation_queue.csv", { cache: "no-store" }).then(r => r.text());
+      const csv = await fetch(`generation_queue.csv?v=${Date.now()}`, { cache: "reload" }).then(r => r.text());
       state.rows = normalizeRows(parseCsv(csv));
       state.units = [...new Set(state.rows.map(row => row.unitCode))];
       state.unit = state.units[0];
