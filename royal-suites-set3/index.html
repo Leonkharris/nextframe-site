@@ -3,6 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
   <title>Royal Suites Render Viewer | NextFrame</title>
   <style>
     :root { --ink:#070809; --paper:#f2f0eb; --muted:rgba(247,243,236,.68); --dim:rgba(247,243,236,.42); --line:rgba(242,240,235,.14); --acid:#d0f100; --blue:#91a2ff; color:var(--paper); background:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
@@ -127,6 +129,13 @@
       if (path.includes("set3")) return "Set 3";
       return "Render Set";
     }
+    function queueFile() {
+      const path = window.location.pathname;
+      if (path.includes("set1")) return "generation_queue_set1_v2.csv";
+      if (path.includes("set2")) return "generation_queue_set2_v2.csv";
+      if (path.includes("set3")) return "generation_queue_set3_v2.csv";
+      return "generation_queue.csv";
+    }
     function localPath(winPath) {
       if (!winPath) return "";
       const normalized = String(winPath).replace(/\\/g, "/");
@@ -139,6 +148,11 @@
     }
     function assetUrl(path) {
       return path ? new URL(path, window.location.href).href : "";
+    }
+    function referencePath(row, renderPath) {
+      const explicit = localPath(row.referenceFile);
+      if (explicit && !explicit.endsWith("00_source_floor_plan.jpg")) return explicit;
+      return renderPath.replace(/render_9x16\.png$/i, "reference_card.png");
     }
     function normalizeRows(rows) {
       return rows
@@ -162,7 +176,7 @@
       document.getElementById("shotMeta").textContent = [row.unitName, row.dimensions].filter(Boolean).join(" | ");
       document.getElementById("shotCounter").textContent = `${state.index + 1} / ${rows.length}`;
       const renderPath = assetUrl(localPath(row.targetFile));
-      const refPath = assetUrl(localPath(row.referenceFile));
+      const refPath = assetUrl(referencePath(row, localPath(row.targetFile)));
       const renderImage = document.getElementById("renderImage");
       const referenceImage = document.getElementById("referenceImage");
       renderImage.onerror = () => {
@@ -185,7 +199,7 @@
       });
     }
     async function init() {
-      const csv = await fetch(`generation_queue.csv?v=${Date.now()}`, { cache: "reload" }).then(r => r.text());
+      const csv = await fetch(`${queueFile()}?v=${Date.now()}`, { cache: "reload" }).then(r => r.text());
       state.rows = normalizeRows(parseCsv(csv));
       state.units = [...new Set(state.rows.map(row => row.unitCode))];
       state.unit = state.units[0];
