@@ -169,7 +169,11 @@
     function referencePath(row, renderPath) {
       const explicit = localPath(row.referenceFile);
       if (explicit && !explicit.endsWith("00_source_floor_plan.jpg")) return explicit;
+      if (renderPath.includes("01_2d_plan_to_isometric")) return explicit;
       return renderPath.replace(/render_9x16\.png$/i, "reference_card.png");
+    }
+    function fallbackReferencePath(row) {
+      return localPath(row.referenceFile || row.sourceFloorPlan || row.sourceImage || "");
     }
     function normalizeRows(rows) {
       return rows
@@ -180,7 +184,8 @@
           jobTitle: (row.jobTitle || row.title || row.jobId || "Render").replace(" - Wide View", ""),
           dimensions: row.dimensions || row.kind || row.status || "",
           targetFile: row.targetFile,
-          referenceFile: row.referenceFile || row.sourceFloorPlan || row.sourceImage || ""
+          referenceFile: row.referenceFile || row.sourceFloorPlan || row.sourceImage || "",
+          sourceFloorPlan: row.sourceFloorPlan || row.sourceImage || ""
         }));
     }
     function currentRows() { return state.rows.filter(row => row.unitCode === state.unit); }
@@ -194,12 +199,21 @@
       document.getElementById("shotCounter").textContent = `${state.index + 1} / ${rows.length}`;
       const renderPath = assetUrl(localPath(row.targetFile));
       const refPath = assetUrl(referencePath(row, localPath(row.targetFile)));
+      const fallbackRefPath = assetUrl(fallbackReferencePath(row));
       const renderImage = document.getElementById("renderImage");
       const referenceImage = document.getElementById("referenceImage");
       renderImage.onerror = () => {
         renderImage.alt = `Image failed to load: ${renderPath}`;
       };
       referenceImage.onerror = () => {
+        if (fallbackRefPath && referenceImage.src !== fallbackRefPath) {
+          referenceImage.onerror = () => {
+            referenceImage.alt = `Reference failed to load: ${fallbackRefPath}`;
+          };
+          referenceImage.src = fallbackRefPath;
+          document.getElementById("referenceLink").href = fallbackRefPath;
+          return;
+        }
         referenceImage.alt = `Reference failed to load: ${refPath}`;
       };
       renderImage.src = renderPath;
