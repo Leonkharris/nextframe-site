@@ -129,13 +129,16 @@
     }
     function localPath(winPath) {
       if (!winPath) return "";
-      const normalized = winPath.replaceAll("\\", "/");
+      const normalized = String(winPath).replace(/\\/g, "/");
       const markers = ["MODERN_SET_3/", "CURRENT_ANTIGRAVITY_PACKAGE/", "CINEMATIC_SET_2/"];
       for (const marker of markers) {
         const idx = normalized.lastIndexOf(marker);
         if (idx >= 0) return normalized.slice(idx + marker.length);
       }
       return normalized.split("/").slice(-3).join("/");
+    }
+    function assetUrl(path) {
+      return path ? new URL(path, window.location.href).href : "";
     }
     function normalizeRows(rows) {
       return rows
@@ -158,10 +161,18 @@
       document.getElementById("shotTitle").textContent = `${row.unitCode} - ${row.jobTitle}`;
       document.getElementById("shotMeta").textContent = [row.unitName, row.dimensions].filter(Boolean).join(" | ");
       document.getElementById("shotCounter").textContent = `${state.index + 1} / ${rows.length}`;
-      const renderPath = localPath(row.targetFile);
-      const refPath = localPath(row.referenceFile);
-      document.getElementById("renderImage").src = `${renderPath}?v=${Date.now()}`;
-      document.getElementById("referenceImage").src = refPath;
+      const renderPath = assetUrl(localPath(row.targetFile));
+      const refPath = assetUrl(localPath(row.referenceFile));
+      const renderImage = document.getElementById("renderImage");
+      const referenceImage = document.getElementById("referenceImage");
+      renderImage.onerror = () => {
+        renderImage.alt = `Image failed to load: ${renderPath}`;
+      };
+      referenceImage.onerror = () => {
+        referenceImage.alt = `Reference failed to load: ${refPath}`;
+      };
+      renderImage.src = renderPath;
+      referenceImage.src = refPath;
       document.getElementById("referenceLink").href = refPath || renderPath;
       document.getElementById("openRender").href = renderPath;
       const list = document.getElementById("shotList"); list.innerHTML = "";
