@@ -1,0 +1,206 @@
+ROYAL SUITES NEXT-GENERATION FLOOR PLAN VISUAL
+
+        Agent route: floor_plan_to_living_miniature_diorama
+        Set theme: Set 2
+        Unit: DK1 - Type DK1 Dual-Key Suite
+        Output target: D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\10_DK1_type_dk1_dual_key_suite\07_living_miniature_diorama\render_9x16.png
+        Required aspect ratio: vertical 9:16
+
+        SOURCE / REFERENCE TO UPLOAD
+        Upload this exact composite reference card as the only image source:
+        D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\10_DK1_type_dk1_dual_key_suite\00_source_floor_plan.jpg
+
+        The composite reference card contains the source floor plan and cropped/highlighted spatial locks. The source plan is the geometry authority. The cropped/highlighted cards define the real zones and prevent invented walls, islands, extra baths, extra bedrooms, corridors, balconies, or wrong adjacencies.
+
+        THEME ADAPTATION
+        Apply this visual language for Set 2:
+        cinematic but readable luxury serviced-residence direction; warm walnut, marble/stone, brass or brushed metal details, controlled contrast, brighter than the earlier dark tests, dramatic lighting without losing plan clarity
+
+        ALLOWED ROOMS / ZONES FOR THIS UNIT
+        These are the only zones you may represent. Do not add extra bedrooms, bathrooms, corridors, islands, foyers, balconies, or partitions unless they are clearly present in the source plan:
+        - 02 living dining
+- 03 kitchen pantry
+- 04 main bedroom
+- 05 washroom bath
+
+        SPATIAL / CROP NOTES
+        - 02_living_dining_wide_view: Approximate crop size from plan scale: 4.07 m x 5.36 m. Approximate position within whole unit plan: 37% from left, 11% from top. What is inside the cropped/highlighted area: Main-side living/dining zone in the center/right of the plan, with sofa/living, dining, and kitchen below; studio side remains separate on the left. Camera intent: Eye-level from kitchen/dining side toward main living/window wall.
+- 03_kitchen_pantry_wide_view: Approximate crop size from plan scale: 3.56 m x 3.09 m. Approximate position within whole unit plan: 40% from left, 63% from top. What is inside the cropped/highlighted area: Main-side kitchen zone below the dining/living area, distinct from the separate studio pantry. Camera intent: Eye-level from main kitchen toward dining/living, no split dual-key collage.
+- 04_main_bedroom_wide_view: Approximate crop size from plan scale: 2.37 m x 3.61 m. Approximate position within whole unit plan: 77% from left, 9% from top. What is inside the cropped/highlighted area: Right-side enclosed master bedroom with bed and nearby bath/wardrobe relationship. Camera intent: Eye-level inside master bedroom from entry side toward bed/window.
+- 05_washroom_bath_wide_view: Approximate crop size from plan scale: 3.05 m x 3.71 m. Approximate position within whole unit plan: 68% from left, 45% from top. What is inside the cropped/highlighted area: Main-side bath core near the bedrooms, not the studio bath; compact fixtures and door swings preserved. Camera intent: Eye-level inside main bath.
+
+        CORE LOCK RULES
+        Preserve the Royal Suites floor plan geometry. Trace the uploaded plan; do not redesign it. Do not move walls, windows, doors, entry, bathrooms, wardrobes, kitchen/pantry, bed zones, living/dining zones, room count, or major adjacency. Do not duplicate wet areas. Do not invent a second bathroom, extra bedroom, separate corridor, balcony, stair, island, or enclosed room. If a zone is open-plan in the source, keep it open-plan. The output may be stylized, cinematic, editorial, miniature, or split-screen, but the layout must remain traceable to the source plan.
+
+        HARD NEGATIVE PROMPT
+        No phones, no gadgets, no product render, no abstract object, no sci-fi device, no app UI, no dashboard, no marketing graphic, no generic technology concept, no unrelated object. This must be an architectural Royal Suites floor-plan visualization only.
+
+        PLAN-FIDELITY CHECK BEFORE SAVING
+        Before finalizing, compare the generated image back to the uploaded floor plan:
+        1. Same outer footprint and proportions.
+        2. Same number of bathrooms/wet areas.
+        3. Same kitchen/pantry location.
+        4. Same bed/living/dining adjacency.
+        5. Same entry and major door/window positions.
+        If any item fails, regenerate instead of saving.
+
+        TEMPLATE TO FOLLOW
+        {
+  "name": "Royal Suites Living Miniature Floor Plan Diorama",
+  "task_route": "floor_plan_to_living_miniature_diorama",
+  "objective": "Create an editorial architectural visualization where the uploaded Royal Suites floor plan lies on a drafting table and rises into a faithful inhabitable miniature, with the source plan still readable underneath.",
+  "aspect_ratio": {
+    "default": "9:16",
+    "alternate": "3:4 for portfolio, card, or presentation-board use only when requested"
+  },
+  "source_contract": {
+    "source_asset": "Use the uploaded floor plan as the only geometry authority.",
+    "must_preserve": [
+      "overall unit outline",
+      "room positions and adjacency",
+      "wall lines",
+      "door and window positions",
+      "wet areas",
+      "kitchen or pantry placement",
+      "balconies or exterior openings if present",
+      "circulation logic",
+      "relative proportions"
+    ],
+    "may_interpret": [
+      "furniture scaled to the plan",
+      "miniature wall height",
+      "finish palette",
+      "lighting mood",
+      "tiny inhabitants",
+      "diagram overlays",
+      "drafting-table environment"
+    ],
+    "never_change": [
+      "do not add rooms",
+      "do not remove rooms",
+      "do not shift walls",
+      "do not relocate doors or windows",
+      "do not hide the floor plan base",
+      "do not replace the source plan with a generic dollhouse"
+    ]
+  },
+  "royal_suites_defaults": {
+    "building_type": "Royal Suites serviced-residence apartment/unit",
+    "positioning": "premium urban serviced-residence, buyer-readable and elegant",
+    "material_language": [
+      "warm wood",
+      "soft stone",
+      "neutral wall finishes",
+      "subtle metal accents",
+      "warm integrated LEDs",
+      "clean hotel-residence styling"
+    ],
+    "real_estate_intent": "make the floor plan feel understandable, livable, premium, and spatially convincing"
+  },
+  "prompt_variables": {
+    "BUILDING_TYPE": "Royal Suites serviced-residence apartment/unit or exact unit type",
+    "ROOM_1": "living/dining zone",
+    "FURNITURE_1": "scaled sofa, coffee table, media wall, dining set",
+    "ACTIVITY_1": "quiet arrival, reading, dining setup, or hosting moment",
+    "ROOM_2": "bedroom or suite zone",
+    "DESIGN_ELEMENT": "bedhead wall, wardrobe line, soft textiles, accent lighting",
+    "HUMAN_MOMENT": "relaxing, unpacking, waking up, or morning routine",
+    "ROOM_3": "kitchen, pantry, bathroom, balcony, or detail zone",
+    "DETAIL_1": "island, pantry wall, vanity, shower glass, appliance wall, balcony seating, or storage detail",
+    "LIGHTING_1": "warm under-cabinet LEDs, daylight, mirror glow, cove lighting, or soft window light"
+  },
+  "composition": {
+    "layout": "single editorial scene, not a split-screen",
+    "base": "source floor plan spread across a drafting table",
+    "miniature_effect": "selected spaces rise from the plan as inhabitable scaled rooms while walls remain aligned to the printed linework",
+    "camera": "slightly elevated 35mm to 50mm architectural/product view, enough angle to see both plan linework and miniature depth",
+    "framing": "vertical social/poster framing with the unit plan centered and drafting tools around the edges",
+    "readability": "the original plan geometry must remain traceable underneath the miniature"
+  },
+  "visual_elements": {
+    "drafting_table": [
+      "trace paper",
+      "architectural scale ruler",
+      "pencils",
+      "subtle paper texture",
+      "clean studio surface"
+    ],
+    "miniature_rooms": [
+      "actual partitions rising from the drawn wall lines",
+      "scaled furniture aligned to room footprints",
+      "tiny inhabitants performing quiet lifestyle moments",
+      "material and lighting cues matching a premium serviced residence"
+    ],
+    "diagram_layers": [
+      "sight lines marked on the plan becoming real views between spaces",
+      "ghosted circulation trails showing movement",
+      "subtle section cuts revealing vertical relationships",
+      "mechanical systems suggested as restrained invisible-function pulses"
+    ]
+  },
+  "room_scene_mapping": [
+    {
+      "room": "living/dining zone",
+      "suggested_prompt": "living/dining zone emerges with a scaled sofa, coffee table, media wall, dining set, and a quiet hosting or arrival moment in progress"
+    },
+    {
+      "room": "bedroom or suite",
+      "suggested_prompt": "bedroom rises with a warm bedhead wall, wardrobe line, soft textiles, and a calm relaxing or unpacking human moment"
+    },
+    {
+      "room": "kitchen, pantry, bathroom, or balcony/detail zone",
+      "suggested_prompt": "detail zone pushes up with the supported feature from the plan, such as pantry wall, vanity, shower glass, appliance wall, or balcony seating, lit by warm architectural LEDs or daylight"
+    }
+  ],
+  "mechanical_and_diagram_layers": {
+    "use_restrained": true,
+    "allowed": [
+      "thin ghosted circulation paths",
+      "soft sightline arrows",
+      "subtle HVAC, plumbing, and electrical indicators",
+      "section-cut hints"
+    ],
+    "avoid": [
+      "neon clutter",
+      "unreadable technical overlays",
+      "invented labels or dimensions",
+      "diagram marks that hide the floor plan"
+    ]
+  },
+  "camera_lighting_style": {
+    "lighting": "golden design-studio light with warm highlights and realistic miniature shadows",
+    "style": "high-end architectural editorial, photoreal miniature, plan as promise and proof",
+    "quality": "8K-level clarity, crisp linework, believable scale, premium real estate atmosphere"
+  },
+  "negative_constraints": [
+    "no changed floor plan",
+    "no added rooms",
+    "no removed rooms",
+    "no shifted walls",
+    "no relocated doors or windows",
+    "no generic toy dollhouse",
+    "no cartoon styling",
+    "no giant full-size humans",
+    "no cluttered drafting tools covering the plan",
+    "no neon sci-fi mechanical systems",
+    "no illegible plan linework",
+    "no ordinary interior render detached from the floor plan",
+    "no labels or dimensions unless supplied or requested"
+  ],
+  "qa_gate": [
+    "The uploaded floor plan remains visible as the base.",
+    "Room adjacency and proportions match the source plan.",
+    "Walls, openings, wet areas, and circulation are traceable to the source.",
+    "The miniature rooms rise from the plan rather than replacing it.",
+    "Drafting-table context is visible but does not dominate.",
+    "Human moments are tiny scale figures and do not distort the architecture.",
+    "The result feels premium, architectural, and buyer-readable."
+  ],
+  "adapted_prompt_skeleton": "An architectural floor plan of {BUILDING_TYPE} spread across a drafting table, with the source geometry preserved exactly and the spaces rising into an inhabitable miniature. {ROOM_1} emerges with {FURNITURE_1} and {ACTIVITY_1} in progress, {ROOM_2} rises with {DESIGN_ELEMENT} and {HUMAN_MOMENT}, {ROOM_3} pushes up with {DETAIL_1} and {LIGHTING_1}. Walls exist as both printed plan lines and actual miniature partitions simultaneously, aligned to the source plan. Sight lines marked on the plan become actual views between spaces. HVAC, plumbing, and electrical systems are suggested through restrained invisible-function pulses. Human circulation appears as subtle ghosted movement trails. Architectural scale figures become tiny inhabitants living quiet real estate lifestyle moments. Section cuts reveal vertical relationships without changing the plan. Architect's tools surround the drawing: scale ruler, pencils, trace paper. Golden design-studio light, premium Royal Suites serviced-residence material palette, the plan as promise and proof, photoreal architectural miniature, crisp readable linework, vertical 9:16, 8K clarity."
+}
+
+        OUTPUT
+        Generate one clean, high-resolution vertical 9:16 image for this job only.
+        No captions, watermarks, UI, fake app interface, social media text blocks, or explanatory labels unless the template explicitly requires tiny plan labels.
+        Save the final generated image over:
+        D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\10_DK1_type_dk1_dual_key_suite\07_living_miniature_diorama\render_9x16.png
