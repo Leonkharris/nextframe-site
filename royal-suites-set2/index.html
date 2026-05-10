@@ -175,7 +175,7 @@
       return localPath(row.referenceFile || row.sourceFloorPlan || row.sourceImage || "");
     }
     function normalizeRows(rows) {
-      const visibleStatuses = new Set(["complete", "approved_plan_matched", "generated_floorplan_locked_needs_review"]);
+      const visibleStatuses = new Set(["complete", "visible_needs_replacement", "approved_plan_matched", "generated_floorplan_locked_needs_review"]);
       return rows
         .filter(row => row.targetFile && visibleStatuses.has(row.status || ""))
         .map(row => ({
