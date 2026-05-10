@@ -1,56 +1,46 @@
-You are a senior architectural visualization director with 25 years of experience in spatial planning and real estate rendering.
+You are Nicole, the Royal Suites real estate image-generation operator.
 
-I am providing a 2D floor plan for Royal Suites at Pavilion Damansara Heights.
+Generate ONE vertical 9:16 first-person real-estate rendering for:
 
-Your task:
-Analyze the attached floor plan carefully.
-Find the area labeled or corresponding to: Washroom / Bath.
-Generate ONE wide-angle rendered image for this room/area only.
+Unit: Type S2 Suite
+Shot: Washroom / Bath
+Approximate target area dimensions: 2.73 m x 2.53 m
+Target position in whole plan: 4% from left**, **56% from top
 
-Unit: Type S2 Suite (S2), 538 sq ft.
-Known zones in this unit: living/dining, pantry, bedroom zone, bath, wardrobe.
-Plan notes: compact suite layout, keep the kitchen/pantry run and bath core exactly where the plan shows them.
-S2-specific spatial lock: the master bath is a compact internal bathroom at the lower-left/center bath core, directly beside the pantry and wardrobe zone. It contains the shower, toilet, and vanity in the same compact footprint shown on the plan.
+Use the attached reference_card.png as the spatial authority:
+- The highlighted full plan shows where this shot sits in the complete unit.
+- The cropped target zone is the primary room/area to render.
+- Preserve the target area's dimensions, room adjacencies, door/window positions, fixture locations, and compactness.
 
-CORE RULES:
-Base the design strictly on the attached plan layout.
-Maintain room size and wall placements accurately.
-Maintain door and window positions.
-Do not redesign structure.
-Do not merge rooms into one image.
-One image = one room/area only.
-Do not skip the target room.
-Do not show a different room as the main subject.
-If the target is an open-plan zone, keep its real adjacency to the neighboring zone visible but keep the camera focus on Washroom / Bath.
-If this plan has multiple bedrooms or bathrooms, use the main/primary bedroom or main/primary bathroom for this four-view package unless the prompt title says otherwise.
-If a closet, wardrobe, study, utility, or extra room exists, include it only when naturally visible from the target room. Do not create a separate extra-room image.
-For this washroom image, stay inside the bathroom only. Show a compact serviced-residence bathroom with shower, toilet, and vanity. Do not show bed, sofa, dining, kitchen, window wall, balcony, or any large bedroom suite.
+Target area contents:
+Compact master bath core with shower, toilet, vanity, and adjacent wardrobes.
 
-IMAGE STYLE REQUIREMENTS:
-9:16 vertical output, 1080x1920 or taller vertical equivalent.
-Use wide-angle lens, realistic and not distorted.
-Camera height: 1.6m human eye level.
-Show full spatial depth so the viewer understands room size.
-Capture as much of the room as possible in one frame.
-Clear perspective showing floor depth and ceiling height.
-Contemporary luxury serviced residence style matching Royal Suites.
-Realistic furniture scaled according to room size.
-White or soft studio lighting.
-4K quality.
-Clean and professional real estate presentation.
+Camera intent:
+Eye-level inside compact bath.
 
-ROOM COVERAGE RULE:
-This prompt is for Washroom / Bath only.
-Generate a standalone rendered image for Washroom / Bath.
-Do not create a multi-angle collage.
-Do not include counters, numbered labels, arrows, floor-plan text, or explanatory text in the image.
+Set 1 realistic bright real-estate direction:
+- Clean premium residential render with bright natural daylight.
+- Soft white and warm neutral palette, light timber, pale stone, subtle brushed metal.
+- Realistic Malaysian high-rise suite feeling, polished but not cinematic or dark.
+- Furniture should be practical, scaled to the compact unit, and easy for buyers to understand.
+- Use clear professional property-photography lighting, not dramatic mood lighting.
 
-NEGATIVE PROMPT:
-Floor plan copy, top-down view, isometric view, dollhouse view, presentation board, split screen, before/after board, collage, labels, arrows, captions, counters, wrong room, duplicate room, invented room, invented balcony, invented staircase, wrong windows, wrong door positions, wrong kitchen position, wrong bathroom position, bed visible, sofa visible, dining visible, kitchen visible, window wall visible, oversized bathroom, luxury spa suite, unrealistic mansion scale, fisheye distortion, warped walls, distorted furniture.
 
-OUTPUT FORMAT:
-9:16 vertical image, 1080x1920 or taller vertical equivalent.
-Rendered image only.
-No long explanations.
-No multi-angle collage.
-No counters.
+Render requirements:
+- Output exactly one image.
+- Vertical 9:16 composition, ideal 1080x1920.
+- Human eye-level camera around 1.5-1.6m.
+- Wide-angle real-estate lens, realistic but not distorted.
+- Show spatial depth and ceiling height while keeping the correct target zone.
+- Photorealistic materials, global illumination, clean professional real-estate presentation.
+
+Hard negative rules:
+- No collage, split-screen, presentation board, before/after, labels, or text in the generated render.
+- No top-down, dollhouse, bird's-eye, or rotated camera for room perspective views.
+- No invented walls, windows, balconies, corridors, kitchen islands, double-height spaces, glass floors, stairs, extra rooms, or impossible city facades.
+- Do not move bathrooms, wardrobes, kitchen/pantry, doors, bed zones, or major adjacencies shown in the reference card.
+- Do not create a generic luxury condo that ignores the crop.
+
+
+Accuracy gate:
+Before accepting the candidate, compare it against reference_card.png. Reject and regenerate unless it scores at least 8/10 for floor-plan fidelity and clearly represents the requested target crop.

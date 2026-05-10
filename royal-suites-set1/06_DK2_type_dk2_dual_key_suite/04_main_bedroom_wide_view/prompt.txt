@@ -1,56 +1,46 @@
-You are a senior architectural visualization director with 25 years of experience in spatial planning and real estate rendering.
+You are Nicole, the Royal Suites real estate image-generation operator.
 
-I am providing a 2D floor plan for Royal Suites at Pavilion Damansara Heights.
+Generate ONE vertical 9:16 first-person real-estate rendering for:
 
-Your task:
-Analyze the attached floor plan carefully.
-Find the area labeled or corresponding to: Main Bedroom / Sleeping Zone.
-Generate ONE wide-angle rendered image for this room/area only.
+Unit: Type DK2 Dual-Key Suite
+Shot: Main Bedroom
+Approximate target area dimensions: 3.02 m x 3.89 m
+Target position in whole plan: 72% from left**, **71% from top
 
-Unit: Type DK2 Dual-Key Suite (DK2), 1,679 sq ft.
-Known zones in this unit: dual-key entry, main residence living/dining, wet kitchen, dry kitchen, study room, bedroom 1, master bedroom, bath 1, master bath, separate studio suite with pantry and bath 2, wardrobes/storage.
-Plan notes: largest dual-key layout, preserve entries, room count, corridor, bath cores, and main living facade.
-DK2-specific spatial lock: this shot is for the MAIN RESIDENCE master bedroom at the lower-right of the plan. Bedroom 1 is above it and the studio suite bed is at the top-right; neither should be shown as the main bedroom target.
+Use the attached reference_card.png as the spatial authority:
+- The highlighted full plan shows where this shot sits in the complete unit.
+- The cropped target zone is the primary room/area to render.
+- Preserve the target area's dimensions, room adjacencies, door/window positions, fixture locations, and compactness.
 
-CORE RULES:
-Base the design strictly on the attached plan layout.
-Maintain room size and wall placements accurately.
-Maintain door and window positions.
-Do not redesign structure.
-Do not merge rooms into one image.
-One image = one room/area only.
-Do not skip the target room.
-Do not show a different room as the main subject.
-If the target is an open-plan zone, keep its real adjacency to the neighboring zone visible but keep the camera focus on Main Bedroom / Sleeping Zone.
-If this plan has multiple bedrooms or bathrooms, use the main/primary bedroom or main/primary bathroom for this four-view package unless the prompt title says otherwise.
-If a closet, wardrobe, study, utility, or extra room exists, include it only when naturally visible from the target room. Do not create a separate extra-room image.
-For this main-bedroom image, stay inside the enclosed lower-right master bedroom with its bottom/right exterior glazing and wardrobe/entry side. Do not show Bedroom 1, the studio bed, or the living/dining area as the target.
+Target area contents:
+Lower-right main residence master bedroom with bed, side tables, wardrobe/bath adjacency, and normal exterior wall glazing.
 
-IMAGE STYLE REQUIREMENTS:
-9:16 vertical output, 1080x1920 or taller vertical equivalent.
-Use wide-angle lens, realistic and not distorted.
-Camera height: 1.6m human eye level.
-Show full spatial depth so the viewer understands room size.
-Capture as much of the room as possible in one frame.
-Clear perspective showing floor depth and ceiling height.
-Contemporary luxury serviced residence style matching Royal Suites.
-Realistic furniture scaled according to room size.
-White or soft studio lighting.
-4K quality.
-Clean and professional real estate presentation.
+Camera intent:
+Eye-level inside enclosed bedroom from entry/wardrobe side.
 
-ROOM COVERAGE RULE:
-This prompt is for Main Bedroom / Sleeping Zone only.
-Generate a standalone rendered image for Main Bedroom / Sleeping Zone.
-Do not create a multi-angle collage.
-Do not include counters, numbered labels, arrows, floor-plan text, or explanatory text in the image.
+Set 1 realistic bright real-estate direction:
+- Clean premium residential render with bright natural daylight.
+- Soft white and warm neutral palette, light timber, pale stone, subtle brushed metal.
+- Realistic Malaysian high-rise suite feeling, polished but not cinematic or dark.
+- Furniture should be practical, scaled to the compact unit, and easy for buyers to understand.
+- Use clear professional property-photography lighting, not dramatic mood lighting.
 
-NEGATIVE PROMPT:
-Floor plan copy, top-down view, isometric view, dollhouse view, presentation board, split screen, before/after board, collage, labels, arrows, captions, counters, wrong room, duplicate room, invented room, invented balcony, invented staircase, wrong windows, wrong door positions, wrong kitchen position, wrong bathroom position, Bedroom 1 as target, studio bed as target, open studio bed, merged bedroom/living, unrealistic mansion scale, fisheye distortion, warped walls, distorted furniture.
 
-OUTPUT FORMAT:
-9:16 vertical image, 1080x1920 or taller vertical equivalent.
-Rendered image only.
-No long explanations.
-No multi-angle collage.
-No counters.
+Render requirements:
+- Output exactly one image.
+- Vertical 9:16 composition, ideal 1080x1920.
+- Human eye-level camera around 1.5-1.6m.
+- Wide-angle real-estate lens, realistic but not distorted.
+- Show spatial depth and ceiling height while keeping the correct target zone.
+- Photorealistic materials, global illumination, clean professional real-estate presentation.
+
+Hard negative rules:
+- No collage, split-screen, presentation board, before/after, labels, or text in the generated render.
+- No top-down, dollhouse, bird's-eye, or rotated camera for room perspective views.
+- No invented walls, windows, balconies, corridors, kitchen islands, double-height spaces, glass floors, stairs, extra rooms, or impossible city facades.
+- Do not move bathrooms, wardrobes, kitchen/pantry, doors, bed zones, or major adjacencies shown in the reference card.
+- Do not create a generic luxury condo that ignores the crop.
+
+
+Accuracy gate:
+Before accepting the candidate, compare it against reference_card.png. Reject and regenerate unless it scores at least 8/10 for floor-plan fidelity and clearly represents the requested target crop.

@@ -1,0 +1,138 @@
+ROYAL SUITES NEXT-GENERATION FLOOR PLAN VISUAL
+
+        Agent route: floor_plan_to_split_blueprint_render
+        Set theme: Set 3
+        Unit: J4 - Type J4 Suite
+        Output target: D:\New AI Directory\Damasara Heights - Royal Suites\MODERN_SET_3\08_J4_type_j4_suite\06_split_blueprint_render\render_9x16.png
+        Required aspect ratio: vertical 9:16
+
+        SOURCE / REFERENCE TO UPLOAD
+        Upload this exact composite reference card as the only image source:
+        D:\New AI Directory\Damasara Heights - Royal Suites\MODERN_SET_3\08_J4_type_j4_suite\00_source_floor_plan.jpg
+
+        The composite reference card contains the source floor plan and cropped/highlighted spatial locks. The source plan is the geometry authority. The cropped/highlighted cards define the real zones and prevent invented walls, islands, extra baths, extra bedrooms, corridors, balconies, or wrong adjacencies.
+
+        THEME ADAPTATION
+        Apply this visual language for Set 3:
+        modern sophisticated Royal Suites direction; refined warm neutrals, soft stone, architectural lighting, clean urban serviced-apartment styling, polished and premium without excessive darkness
+
+        ALLOWED ROOMS / ZONES FOR THIS UNIT
+        These are the only zones you may represent. Do not add extra bedrooms, bathrooms, corridors, islands, foyers, balconies, or partitions unless they are clearly present in the source plan:
+        - 02 living dining
+- 03 kitchen pantry
+- 04 main bedroom
+- 05 washroom bath
+
+        SPATIAL / CROP NOTES
+        - 02_living_dining_wide_view: Approximate crop size from plan scale: 3.6 m x 5.66 m. Approximate position within whole unit plan: 49% from left, 2% from top. What is inside the cropped/highlighted area: Right-side living/dining stack with living at upper-right, dining middle-right, and kitchen below/right. Left-side bedroom/study zones remain enclosed. Camera intent: Eye-level from kitchen/dining side toward living/window side.
+- 03_kitchen_pantry_wide_view: Approximate crop size from plan scale: 3.26 m x 2.96 m. Approximate position within whole unit plan: 54% from left, 54% from top. What is inside the cropped/highlighted area: Lower-right kitchen zone near the entry/study relationship, connected to dining/living; do not turn into oversized showroom kitchen. Camera intent: Eye-level from kitchen toward dining/living.
+- 04_main_bedroom_wide_view: Approximate crop size from plan scale: 2.93 m x 3.4 m. Approximate position within whole unit plan: 1% from left, 3% from top. What is inside the cropped/highlighted area: Upper-left enclosed master bedroom with bed, side tables, exterior wall/window, and nearby master bath. Camera intent: Eye-level from bedroom entry toward bed/window.
+- 05_washroom_bath_wide_view: Approximate crop size from plan scale: 3.01 m x 3.13 m. Approximate position within whole unit plan: 26% from left, 33% from top. What is inside the cropped/highlighted area: Central bath/wardrobe core between master and living zones, compact fixtures and door swings preserved. Camera intent: Eye-level from bath doorway into compact fixture layout.
+
+        CORE LOCK RULES
+        Preserve the Royal Suites floor plan geometry. Trace the uploaded plan; do not redesign it. Do not move walls, windows, doors, entry, bathrooms, wardrobes, kitchen/pantry, bed zones, living/dining zones, room count, or major adjacency. Do not duplicate wet areas. Do not invent a second bathroom, extra bedroom, separate corridor, balcony, stair, island, or enclosed room. If a zone is open-plan in the source, keep it open-plan. The output may be stylized, cinematic, editorial, miniature, or split-screen, but the layout must remain traceable to the source plan.
+
+        HARD NEGATIVE PROMPT
+        No phones, no gadgets, no product render, no abstract object, no sci-fi device, no app UI, no dashboard, no marketing graphic, no generic technology concept, no unrelated object. This must be an architectural Royal Suites floor-plan visualization only.
+
+        PLAN-FIDELITY CHECK BEFORE SAVING
+        Before finalizing, compare the generated image back to the uploaded floor plan:
+        1. Same outer footprint and proportions.
+        2. Same number of bathrooms/wet areas.
+        3. Same kitchen/pantry location.
+        4. Same bed/living/dining adjacency.
+        5. Same entry and major door/window positions.
+        If any item fails, regenerate instead of saving.
+
+        TEMPLATE TO FOLLOW
+        {
+  "name": "Royal Suites Split Blueprint + Matched 3D Render",
+  "task_route": "floor_plan_to_split_blueprint_render",
+  "objective": "Create one vertical split architectural visualization where the top section is a premium dark blueprint derived from the source floor plan and the bottom section is a photorealistic or 3D cutaway Royal Suites render that matches the blueprint exactly.",
+  "aspect_ratio": "9:16 vertical for Royal Suites render queue; 3:4 only if explicitly requested",
+  "source_contract": {
+    "source_asset": "[approved Royal Suites floor plan / site plan path]",
+    "source_role": "geometry authority",
+    "must_preserve": [
+      "wall positions",
+      "room count and room order",
+      "doors, openings, and windows",
+      "kitchen, pantry, bathrooms, and wet areas",
+      "balconies, service zones, and circulation paths if present",
+      "relative proportions and adjacency"
+    ]
+  },
+  "composition": {
+    "layout": "vertical split",
+    "top_section": "premium technical blueprint",
+    "bottom_section": "matched 3D / photoreal real estate visualization",
+    "alignment": "every major zone in the render must correspond to the blueprint above"
+  },
+  "top_section": {
+    "type": "architectural blueprint",
+    "style": "dark luxury blueprint",
+    "visual_style": {
+      "background": "deep navy or charcoal blue",
+      "lines": "thin warm beige or soft gold architectural lines",
+      "walls": "slight extruded 3D wall depth",
+      "labels": "minimal clean modern sans-serif labels only if needed",
+      "lighting": "soft ambient glow without clutter"
+    },
+    "content": [
+      "source-plan-accurate room zoning",
+      "furniture outlines scaled to the plan",
+      "door swings and openings",
+      "window placements",
+      "circulation paths",
+      "exact proportions and spacing"
+    ]
+  },
+  "bottom_section": {
+    "type": "photorealistic or 3D cutaway Royal Suites render",
+    "constraint": "Must match the blueprint exactly; no added, removed, or shifted rooms.",
+    "architecture": {
+      "style": "premium serviced-residence interior visualization",
+      "materials": [
+        "warm natural wood",
+        "light stone or marble",
+        "soft neutral wall finishes",
+        "brushed metal accents",
+        "large glazing if present in source plan"
+      ]
+    },
+    "layout_mapping_rules": [
+      "kitchen and pantry positions must match the source plan",
+      "bathrooms and wet areas must stay in the correct locations",
+      "bed/living/dining zones must match source adjacency",
+      "doors and windows must align logically with the blueprint",
+      "balconies or exterior edges must remain where shown in the source"
+    ],
+    "camera": {
+      "angle": "high oblique 3D cutaway / isometric dollhouse / plan-faithful aerial interior",
+      "goal": "show the whole unit clearly, not a cropped generic room"
+    },
+    "lighting": "premium daylight or warm golden-hour interior lighting with realistic shadows"
+  },
+  "negative_constraints": [
+    "no mismatch between blueprint and render",
+    "no extra rooms",
+    "no moved doors or windows",
+    "no invented balconies, pools, garages, stairs, or amenities",
+    "no generic suburban house exterior unless the source is a house/site plan",
+    "no distorted proportions",
+    "no cluttered environment",
+    "no unreadable labels"
+  ],
+  "qa_gate": [
+    "Top blueprint is visibly derived from the uploaded source floor plan.",
+    "Bottom render matches the blueprint room-for-room and opening-for-opening.",
+    "The image reads as a high-end Royal Suites real estate presentation.",
+    "Split-screen layout is intentional, clean, and vertically composed."
+  ]
+}
+
+        OUTPUT
+        Generate one clean, high-resolution vertical 9:16 image for this job only.
+        No captions, watermarks, UI, fake app interface, social media text blocks, or explanatory labels unless the template explicitly requires tiny plan labels.
+        Save the final generated image over:
+        D:\New AI Directory\Damasara Heights - Royal Suites\MODERN_SET_3\08_J4_type_j4_suite\06_split_blueprint_render\render_9x16.png
