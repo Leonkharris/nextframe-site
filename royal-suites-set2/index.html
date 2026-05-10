@@ -129,7 +129,7 @@
         cell += ch;
       }
       if (cell || row.length) { row.push(cell); rows.push(row); }
-      const headers = rows.shift();
+      const headers = rows.shift().map(header => header.replace(/^\uFEFF/, "").trim());
       return rows.map(values => Object.fromEntries(headers.map((h, i) => [h, values[i] || ""])));
     }
     function setLabel() {
@@ -175,9 +175,9 @@
       return localPath(row.referenceFile || row.sourceFloorPlan || row.sourceImage || "");
     }
     function normalizeRows(rows) {
-      const visibleStatuses = new Set(["complete", "visible_needs_replacement", "approved_plan_matched", "generated_floorplan_locked_needs_review"]);
+      const hiddenJobIds = new Set(["06_split_blueprint_render", "07_living_miniature_diorama"]);
       return rows
-        .filter(row => row.targetFile && visibleStatuses.has(row.status || ""))
+        .filter(row => row.targetFile && !hiddenJobIds.has(row.jobId || ""))
         .map(row => ({
           unitCode: row.unitCode || row.unit || "Unit",
           unitName: row.unitName || "",
