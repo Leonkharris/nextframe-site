@@ -1,0 +1,233 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
+  <meta http-equiv="Pragma" content="no-cache">
+  <title>Royal Suites New Perspective Candidates | NextFrame</title>
+  <style>
+    :root { --ink:#070809; --paper:#f2f0eb; --muted:rgba(247,243,236,.68); --dim:rgba(247,243,236,.42); --line:rgba(242,240,235,.14); --acid:#d0f100; --warn:#ffc46b; color:var(--paper); background:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    * { box-sizing:border-box; }
+    body { margin:0; min-width:320px; background:radial-gradient(circle at 76% 8%,rgba(145,162,255,.18),transparent 30rem),radial-gradient(circle at 10% 12%,rgba(208,241,0,.10),transparent 24rem),linear-gradient(180deg,#070809,#0f1114 50%,#08090b); }
+    a { color:inherit; text-decoration:none; }
+    button { font:inherit; cursor:pointer; }
+    .shell { width:min(1480px,calc(100vw - 36px)); margin:0 auto; }
+    header { position:sticky; top:0; z-index:8; backdrop-filter:blur(22px); background:rgba(7,8,9,.82); border-bottom:1px solid var(--line); }
+    .nav { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
+    .brand { display:inline-flex; align-items:center; gap:12px; min-width:max-content; }
+    .brand img { width:42px; height:42px; object-fit:contain; border-radius:11px; border:1px solid var(--line); background:rgba(255,255,255,.08); }
+    .brand span { display:grid; gap:2px; line-height:1; }
+    .brand strong { font-size:1.06rem; letter-spacing:-.035em; }
+    .brand em { color:var(--dim); font-size:.69rem; font-style:normal; letter-spacing:.1em; text-transform:uppercase; }
+    .nav-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
+    .set-switcher { display:inline-flex; align-items:center; gap:4px; padding:4px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.055); }
+    .set-link,.nav-pill { min-height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:0 13px; color:var(--muted); font-size:.82rem; font-weight:840; }
+    .set-link:hover,.set-link.active { color:#111; background:var(--acid); }
+    .nav-pill { border:1px solid var(--line); background:rgba(255,255,255,.06); }
+    .hero { padding:clamp(40px,6vw,78px) 0 24px; display:grid; grid-template-columns:minmax(0,.9fr) minmax(280px,.38fr); gap:clamp(26px,5vw,64px); align-items:end; }
+    .kicker { color:var(--acid); font-size:.76rem; font-weight:840; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { max-width:840px; margin:12px 0 0; font-size:clamp(42px,6.8vw,88px); line-height:.94; letter-spacing:-.06em; }
+    .hero p { max-width:720px; margin:20px 0 0; color:var(--muted); font-size:clamp(1rem,1.5vw,1.2rem); line-height:1.45; }
+    .notice { border:1px solid rgba(255,196,107,.3); border-radius:16px; padding:16px; color:rgba(255,244,224,.84); background:linear-gradient(135deg,rgba(255,196,107,.13),transparent 62%),rgba(255,255,255,.045); }
+    .notice strong { display:block; margin-bottom:6px; color:var(--warn); letter-spacing:.03em; text-transform:uppercase; font-size:.78rem; }
+    .controls { display:flex; flex-wrap:wrap; gap:8px; padding:14px 0 24px; }
+    .filter { min-height:42px; border:1px solid var(--line); border-radius:999px; padding:0 15px; background:rgba(255,255,255,.06); color:var(--muted); font-weight:780; }
+    .filter:hover,.filter.active { color:#111; background:var(--acid); border-color:rgba(208,241,0,.8); }
+    .viewer { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,410px); gap:18px; align-items:start; padding-bottom:70px; }
+    .stage { border:1px solid var(--line); border-radius:24px; overflow:hidden; background:#050505; box-shadow:0 30px 90px rgba(0,0,0,.45); }
+    .stage-top { min-height:78px; display:flex; justify-content:space-between; align-items:center; gap:14px; padding:17px 18px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.055); }
+    .stage-top h2 { margin:0; font-size:clamp(1.35rem,2.6vw,2.3rem); letter-spacing:-.045em; }
+    .stage-top p { margin:5px 0 0; color:var(--dim); }
+    .badge { min-width:max-content; border:1px solid rgba(208,241,0,.28); border-radius:999px; padding:10px 13px; color:var(--acid); background:rgba(208,241,0,.08); font-size:.82rem; font-weight:840; }
+    .image-wrap { position:relative; min-height:72vh; display:grid; place-items:center; padding:18px; background:radial-gradient(circle at 72% 10%,rgba(145,162,255,.12),transparent 22rem),#030303; }
+    .render { display:block; max-width:min(520px,100%); width:auto; max-height:78vh; border-radius:12px; box-shadow:0 28px 80px rgba(0,0,0,.55); background:#111; }
+    .arrow { position:absolute; top:50%; transform:translateY(-50%); width:52px; height:52px; border-radius:50%; border:1px solid rgba(255,255,255,.22); color:var(--paper); background:rgba(0,0,0,.52); backdrop-filter:blur(16px); font-size:28px; }
+    .arrow.prev { left:18px; } .arrow.next { right:18px; }
+    aside { display:grid; gap:14px; }
+    .panel { border:1px solid var(--line); border-radius:18px; background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 62%),rgba(255,255,255,.045); overflow:hidden; }
+    .panel h3 { margin:0; padding:16px; border-bottom:1px solid var(--line); font-size:.8rem; color:var(--dim); letter-spacing:.12em; text-transform:uppercase; }
+    .shot-list { display:grid; padding:8px; gap:8px; }
+    .shot-btn { width:100%; min-height:64px; display:grid; gap:4px; text-align:left; border:1px solid transparent; border-radius:12px; padding:10px 12px; color:var(--muted); background:transparent; }
+    .shot-btn:hover,.shot-btn.active { color:var(--paper); border-color:rgba(208,241,0,.28); background:rgba(208,241,0,.08); }
+    .shot-btn strong { font-size:.95rem; } .shot-btn span { color:var(--dim); font-size:.8rem; }
+    .reference img { display:block; width:100%; height:auto; background:#050505; }
+    .links { display:grid; gap:8px; padding:12px; }
+    .links a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; background:var(--paper); color:#111; font-weight:820; }
+    @media (max-width:1000px) { .hero,.viewer { grid-template-columns:1fr; } .image-wrap { min-height:62vh; } }
+    @media (max-width:680px) { .shell { width:min(100% - 28px,1480px); } .nav { align-items:flex-start; flex-direction:column; padding:16px 0; } .nav-actions { width:100%; justify-content:flex-start; } .set-switcher { width:100%; justify-content:space-between; } .set-link { flex:1; } .stage-top { align-items:flex-start; flex-direction:column; } .arrow { width:44px; height:44px; } .arrow.prev { left:8px; } .arrow.next { right:8px; } .image-wrap { padding:12px; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="shell nav">
+      <a class="brand" href="/">
+        <img src="/Netframe-logo.png.png" alt="NextFrame">
+        <span><strong>NextFrame</strong><em>AI growth studio</em></span>
+      </a>
+      <div class="nav-actions">
+        <nav class="set-switcher" aria-label="Rolled back render set selector">
+          <a class="set-link" href="/royal-suites-set1/">Set 1</a>
+          <a class="set-link" href="/royal-suites-set2/">Set 2</a>
+          <a class="set-link" href="/royal-suites-set3/">Set 3</a>
+          <a class="set-link active" href="/royal-suites-new-perspectives/">New</a>
+        </nav>
+        <a class="nav-pill" href="/royal-suites/">All versions</a>
+      </div>
+    </div>
+  </header>
+
+  <main class="shell">
+    <section class="hero">
+      <div>
+        <div class="kicker">Royal Suites internal QA</div>
+        <h1>New generated perspective candidates</h1>
+        <p>This page is intentionally separate from the rolled-back client viewers. Use it to inspect the newer generated shots against their cropped spatial reference before anything is promoted back to the public sets.</p>
+      </div>
+      <div class="notice">
+        <strong>Not the client-approved viewer</strong>
+        The existing Set 1, Set 2, and Set 3 links are preserved above. These are isolated candidates only.
+      </div>
+    </section>
+
+    <div class="controls" id="filters"></div>
+
+    <section class="viewer">
+      <article class="stage">
+        <div class="stage-top">
+          <div>
+            <h2 id="title"></h2>
+            <p id="meta"></p>
+          </div>
+          <div class="badge" id="counter"></div>
+        </div>
+        <div class="image-wrap">
+          <button class="arrow prev" id="prev" aria-label="Previous image">‹</button>
+          <img class="render" id="render" alt="Royal Suites generated perspective candidate">
+          <button class="arrow next" id="next" aria-label="Next image">›</button>
+        </div>
+      </article>
+
+      <aside>
+        <section class="panel">
+          <h3>Candidate Shots</h3>
+          <div class="shot-list" id="shotList"></div>
+        </section>
+        <section class="panel reference">
+          <h3>Spatial Lock Reference</h3>
+          <img id="reference" alt="Highlighted and cropped floor plan reference">
+        </section>
+        <section class="panel">
+          <h3>Rolled Back Viewers</h3>
+          <div class="links">
+            <a href="/royal-suites-set1/">Open rolled-back Set 1</a>
+            <a href="/royal-suites-set2/">Open rolled-back Set 2</a>
+            <a href="/royal-suites-set3/">Open rolled-back Set 3</a>
+          </div>
+        </section>
+      </aside>
+    </section>
+  </main>
+
+  <script>
+    const shots = [
+      {
+        set:"Set 3", unit:"S1", shot:"Kitchen / Pantry", status:"approved local candidate",
+        note:"Fixed to show the sofa/living zone beyond the pantry, not the bed.",
+        render:"set3/01_S1_type_s1_suite/03_kitchen_pantry_wide_view/render_9x16.png",
+        reference:"set3/01_S1_type_s1_suite/03_kitchen_pantry_wide_view/reference_card.png"
+      },
+      {
+        set:"Set 2", unit:"S2", shot:"Living / Dining", status:"candidate under QA",
+        note:"Mounted for review only; do not treat as approved.",
+        render:"set2/02_S2_type_s2_suite/02_living_dining_wide_view/render_9x16.png",
+        reference:"set2/02_S2_type_s2_suite/02_living_dining_wide_view/reference_card.png"
+      },
+      {
+        set:"Set 2", unit:"S2", shot:"Kitchen / Pantry", status:"candidate under QA",
+        note:"Mounted for review only; do not treat as approved.",
+        render:"set2/02_S2_type_s2_suite/03_kitchen_pantry_wide_view/render_9x16.png",
+        reference:"set2/02_S2_type_s2_suite/03_kitchen_pantry_wide_view/reference_card.png"
+      },
+      {
+        set:"Set 2", unit:"S2", shot:"Main Bedroom", status:"candidate under QA",
+        note:"Mounted for review only; do not treat as approved.",
+        render:"set2/02_S2_type_s2_suite/04_main_bedroom_wide_view/render_9x16.png",
+        reference:"set2/02_S2_type_s2_suite/04_main_bedroom_wide_view/reference_card.png"
+      },
+      {
+        set:"Set 2", unit:"S2", shot:"Washroom / Bath", status:"candidate under QA",
+        note:"Mounted for review only; do not treat as approved.",
+        render:"set2/02_S2_type_s2_suite/05_washroom_bath_wide_view/render_9x16.png",
+        reference:"set2/02_S2_type_s2_suite/05_washroom_bath_wide_view/reference_card.png"
+      }
+    ];
+
+    const filters = ["All", ...Array.from(new Set(shots.map(s => `${s.set} ${s.unit}`)))];
+    let activeFilter = "All";
+    let activeIndex = 0;
+
+    const $ = id => document.getElementById(id);
+
+    function filteredShots() {
+      return activeFilter === "All" ? shots : shots.filter(s => `${s.set} ${s.unit}` === activeFilter);
+    }
+
+    function renderFilters() {
+      $("filters").innerHTML = filters.map(label => `<button class="filter${label === activeFilter ? " active" : ""}" data-filter="${label}">${label}</button>`).join("");
+      document.querySelectorAll(".filter").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeFilter = btn.dataset.filter;
+          activeIndex = 0;
+          renderAll();
+        });
+      });
+    }
+
+    function renderShotList(list) {
+      $("shotList").innerHTML = list.map((s, i) => `
+        <button class="shot-btn${i === activeIndex ? " active" : ""}" data-index="${i}">
+          <strong>${s.set} · ${s.unit} · ${s.shot}</strong>
+          <span>${s.status}</span>
+        </button>
+      `).join("");
+      document.querySelectorAll(".shot-btn").forEach(btn => {
+        btn.addEventListener("click", () => {
+          activeIndex = Number(btn.dataset.index);
+          renderAll(false);
+        });
+      });
+    }
+
+    function renderAll(updateFilters = true) {
+      const list = filteredShots();
+      const shot = list[activeIndex] || list[0];
+      if (!shot) return;
+      if (updateFilters) renderFilters();
+      $("title").textContent = `${shot.set} · ${shot.unit} · ${shot.shot}`;
+      $("meta").textContent = `${shot.status} | ${shot.note}`;
+      $("counter").textContent = `${activeIndex + 1} / ${list.length}`;
+      $("render").src = `${shot.render}?v=20260511-new-perspectives`;
+      $("reference").src = `${shot.reference}?v=20260511-new-perspectives`;
+      renderShotList(list);
+    }
+
+    $("prev").addEventListener("click", () => {
+      const list = filteredShots();
+      activeIndex = (activeIndex - 1 + list.length) % list.length;
+      renderAll(false);
+    });
+    $("next").addEventListener("click", () => {
+      const list = filteredShots();
+      activeIndex = (activeIndex + 1) % list.length;
+      renderAll(false);
+    });
+    document.addEventListener("keydown", event => {
+      if (event.key === "ArrowLeft") $("prev").click();
+      if (event.key === "ArrowRight") $("next").click();
+    });
+
+    renderAll();
+  </script>
+</body>
+</html>
