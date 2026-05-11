@@ -1170,18 +1170,18 @@ const markOptions = [
 ];
 
 const backgroundOptions = [
-  { id: "cyan-ink", name: "Cyan Ink Wipe", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
-  { id: "particle-field", name: "Particle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
-  { id: "cream-wipe", name: "Cream Blue Wipe", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
-  { id: "red-laser", name: "Red Laser Sweep", className: "bg-red-laser", thumb: "thumb-red-laser" },
-  { id: "halftone-pulse", name: "Halftone Pulse", className: "bg-halftone-pulse", thumb: "thumb-halftone-pulse" },
-  { id: "signal-tunnel", name: "Signal Tunnel", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
-  { id: "smoke-sweep", name: "Smoke Light Sweep", className: "bg-smoke-sweep", thumb: "thumb-smoke-sweep" },
-  { id: "white-flash", name: "White Flash Reveal", className: "bg-white-flash", thumb: "thumb-white-flash" },
-  { id: "blade-storm", name: "Blade Storm", className: "bg-red-laser", thumb: "thumb-blade-storm" },
-  { id: "electric-grid", name: "Electric Grid", className: "bg-signal-tunnel", thumb: "thumb-electric-grid" },
-  { id: "stage-burst", name: "Stage Burst", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
-  { id: "slash-tunnel", name: "Slash Tunnel", className: "bg-particle-field", thumb: "thumb-slash-tunnel" },
+  { id: "cyan-ink", name: "Cyan Paint Flood", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
+  { id: "particle-field", name: "Paint Speckle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
+  { id: "cream-wipe", name: "Cream Paint Wipe", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
+  { id: "red-laser", name: "Red Ink Slash", className: "bg-red-laser", thumb: "thumb-red-laser" },
+  { id: "halftone-pulse", name: "Halftone Paint Pulse", className: "bg-halftone-pulse", thumb: "thumb-halftone-pulse" },
+  { id: "signal-tunnel", name: "Liquid Screen Grid", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
+  { id: "smoke-sweep", name: "Smoke Paint Sweep", className: "bg-smoke-sweep", thumb: "thumb-smoke-sweep" },
+  { id: "white-flash", name: "White Paint Reveal", className: "bg-white-flash", thumb: "thumb-white-flash" },
+  { id: "blade-storm", name: "Red Paint Storm", className: "bg-red-laser", thumb: "thumb-blade-storm" },
+  { id: "electric-grid", name: "Cyan Ink Grid", className: "bg-signal-tunnel", thumb: "thumb-electric-grid" },
+  { id: "stage-burst", name: "Stage Paint Burst", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
+  { id: "slash-tunnel", name: "Ink Slash Tunnel", className: "bg-particle-field", thumb: "thumb-slash-tunnel" },
 ];
 
 const state = {
@@ -1299,7 +1299,85 @@ function drawInkBlob(ctx, x, y, r, color, alpha) {
   ctx.fill();
 }
 
+function drawLiquidBlob(ctx, x, y, rx, ry, color, alpha, rotation = 0) {
+  ctx.save();
+  ctx.translate(x, y);
+  ctx.rotate(rotation);
+  ctx.scale(rx, ry);
+  const gradient = ctx.createRadialGradient(-0.18, -0.12, 0.02, 0, 0, 1);
+  gradient.addColorStop(0, color.replace("ALPHA", String(alpha)));
+  gradient.addColorStop(0.42, color.replace("ALPHA", String(alpha * 0.72)));
+  gradient.addColorStop(0.72, color.replace("ALPHA", String(alpha * 0.26)));
+  gradient.addColorStop(1, color.replace("ALPHA", "0"));
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(0, 0, 1, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawPaintRibbon(ctx, t, w, h, color, alpha, phase = 0, verticalOffset = 0) {
+  const move = ((t * 0.045 + phase * 260) % (w * 1.8)) - w * 0.55;
+  const y = h * (0.42 + verticalOffset + Math.sin(t * 0.001 + phase) * 0.08);
+  const thickness = h * (0.11 + Math.sin(t * 0.0017 + phase) * 0.025);
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 32;
+  ctx.beginPath();
+  ctx.moveTo(move - w * 0.18, y + thickness);
+  ctx.bezierCurveTo(move + w * 0.16, y - thickness * 1.2, move + w * 0.46, y + thickness * 0.8, move + w * 0.82, y - thickness * 0.35);
+  ctx.lineTo(move + w * 0.9, y + thickness * 0.45);
+  ctx.bezierCurveTo(move + w * 0.52, y + thickness * 1.6, move + w * 0.2, y + thickness * 0.5, move - w * 0.22, y + thickness * 1.85);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawPaintDrips(ctx, t, w, h, color, count = 30) {
+  ctx.save();
+  ctx.fillStyle = color;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 12;
+  for (let i = 0; i < count; i += 1) {
+    const lane = (i * 37) % 101;
+    const x = (lane / 100) * w + Math.sin(t * 0.0012 + i) * 28;
+    const y = ((i * 53 + t * (0.018 + (i % 5) * 0.006)) % (h + 140)) - 70;
+    const radius = 2 + (i % 6) * 1.1;
+    ctx.globalAlpha = 0.08 + (i % 4) * 0.035;
+    ctx.beginPath();
+    ctx.ellipse(x, y, radius * 0.8, radius * (1.2 + (i % 3) * 0.7), 0, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawLiquidPaint(ctx, t, w, h, palette = "cyan") {
+  const cyan = palette === "red" ? "rgba(239,23,47,ALPHA)" : "rgba(19,214,255,ALPHA)";
+  const warm = palette === "cream" ? "rgba(239,230,204,ALPHA)" : "rgba(255,255,255,ALPHA)";
+  const dark = "rgba(4,6,7,ALPHA)";
+  const accent = palette === "red" ? "rgba(255,255,255,ALPHA)" : "rgba(239,23,47,ALPHA)";
+  const flow = Math.sin(t * 0.00072);
+  const flowB = Math.cos(t * 0.00058);
+
+  ctx.save();
+  ctx.globalCompositeOperation = "source-over";
+  drawLiquidBlob(ctx, w * (0.18 + flow * 0.05), h * (0.28 + flowB * 0.05), w * 0.3, h * 0.34, cyan, 0.52, -0.4 + flow * 0.2);
+  drawLiquidBlob(ctx, w * (0.76 + flowB * 0.04), h * (0.66 + flow * 0.06), w * 0.27, h * 0.31, palette === "cream" ? dark : warm, palette === "cream" ? 0.58 : 0.34, 0.35 + flowB * 0.25);
+  drawLiquidBlob(ctx, w * (0.52 + Math.sin(t * 0.00047) * 0.07), h * (0.5 + Math.cos(t * 0.00051) * 0.05), w * 0.42, h * 0.2, accent, 0.12, -0.22);
+  ctx.globalCompositeOperation = "lighter";
+  drawPaintRibbon(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.18, 0.2, -0.18);
+  drawPaintRibbon(ctx, t * 0.82, w, h, palette === "red" ? "#ffffff" : "#efe6cc", 0.13, 1.4, 0.2);
+  drawPaintRibbon(ctx, t * 1.08, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.22, 2.1, 0.06);
+  drawPaintDrips(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 34);
+  drawPaintDrips(ctx, t * 0.7, w, h, "#ffffff", 18);
+  ctx.restore();
+}
+
 function drawCyanInk(ctx, t, w, h) {
+  drawLiquidPaint(ctx, t, w, h, "cyan");
   drawInkBlob(ctx, w * (0.18 + Math.sin(t * 0.0007) * 0.04), h * 0.28, w * 0.26, "rgba(19,214,255,ALPHA)", 0.72);
   drawInkBlob(ctx, w * (0.74 + Math.cos(t * 0.0009) * 0.05), h * 0.68, w * 0.22, "rgba(239,230,204,ALPHA)", 0.58);
   const sweep = ((t * 0.085) % (w * 1.8)) - w * 0.4;
@@ -1308,6 +1386,7 @@ function drawCyanInk(ctx, t, w, h) {
 }
 
 function drawRedLaser(ctx, t, w, h) {
+  drawLiquidPaint(ctx, t, w, h, "red");
   const sweep = ((t * 0.12) % (w * 1.7)) - w * 0.36;
   drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.22, -h * 0.2, "#ef172f", 8, 0.9);
   drawGlowLine(ctx, -w * 0.1, h * (0.68 + Math.sin(t * 0.0012) * 0.08), w * 1.05, h * (0.48 + Math.cos(t * 0.001) * 0.05), "#ef172f", 5, 0.76);
@@ -1316,6 +1395,7 @@ function drawRedLaser(ctx, t, w, h) {
 }
 
 function drawCreamWipe(ctx, t, w, h) {
+  drawLiquidPaint(ctx, t, w, h, "cream");
   drawInkBlob(ctx, w * 0.22, h * (0.2 + Math.sin(t * 0.001) * 0.08), w * 0.33, "rgba(19,214,255,ALPHA)", 0.62);
   drawInkBlob(ctx, w * 0.8, h * (0.72 + Math.cos(t * 0.0011) * 0.06), w * 0.28, "rgba(4,6,7,ALPHA)", 0.68);
   const sweep = ((t * 0.07) % (w * 1.5)) - w * 0.2;
@@ -1335,12 +1415,14 @@ function drawTunnel(ctx, t, w, h) {
 }
 
 function drawSmoke(ctx, t, w, h) {
+  drawLiquidPaint(ctx, t, w, h, "cyan");
   drawInkBlob(ctx, w * (0.28 + Math.sin(t * 0.0008) * 0.1), h * 0.62, w * 0.32, "rgba(255,255,255,ALPHA)", 0.24);
   drawInkBlob(ctx, w * (0.7 + Math.cos(t * 0.0009) * 0.1), h * 0.35, w * 0.26, "rgba(19,214,255,ALPHA)", 0.2);
   drawGlowLine(ctx, ((t * 0.08) % (w * 1.4)) - w * 0.2, h * 1.1, ((t * 0.08) % (w * 1.4)) + w * 0.16, -h * 0.1, "#ffffff", 7, 0.28);
 }
 
 function drawWhiteFlash(ctx, t, w, h) {
+  drawLiquidPaint(ctx, t, w, h, "cream");
   const sweep = ((t * 0.16) % (w * 1.6)) - w * 0.3;
   drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.18, -h * 0.12, "#ffffff", 13, 0.72);
   drawGlowLine(ctx, sweep + w * 0.1, h * 1.1, sweep + w * 0.28, -h * 0.12, "#13d6ff", 5, 0.34);
@@ -1422,6 +1504,7 @@ function drawLoopFrame(t) {
     drawCyanInk(loopCtx, t, w, h);
     drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
   } else if (state.backgroundId === "signal-tunnel") {
+    drawLiquidPaint(loopCtx, t, w, h, "cyan");
     drawTunnel(loopCtx, t, w, h);
     drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
   } else if (state.backgroundId === "smoke-sweep") {
@@ -1431,6 +1514,7 @@ function drawLoopFrame(t) {
     drawWhiteFlash(loopCtx, t, w, h);
     drawSlashTunnel(loopCtx, t, w, h, "#ffffff");
   } else if (state.backgroundId === "particle-field") {
+    drawLiquidPaint(loopCtx, t, w, h, "cyan");
     drawParticles(loopCtx, t, w, h, 1.35);
     drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.18)");
     drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 16, 0.06);
@@ -1439,6 +1523,7 @@ function drawLoopFrame(t) {
     drawEnergyShards(loopCtx, t, w, h, "#ef172f", 34, 0.22);
     drawSlashTunnel(loopCtx, t, w, h, "#ef172f");
   } else if (state.backgroundId === "electric-grid") {
+    drawLiquidPaint(loopCtx, t, w, h, "cyan");
     drawTunnel(loopCtx, t, w, h);
     drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
     drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 24, 0.18);
@@ -1447,6 +1532,7 @@ function drawLoopFrame(t) {
     drawStageBars(loopCtx, t, w, h, "rgb(239,23,47)");
     drawWhiteFlash(loopCtx, t * 0.7, w, h);
   } else if (state.backgroundId === "slash-tunnel") {
+    drawLiquidPaint(loopCtx, t, w, h, "cyan");
     drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
     drawEnergyShards(loopCtx, t, w, h, "#ffffff", 24, 0.13);
     drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.16)");
@@ -1791,8 +1877,9 @@ emailFeedback.addEventListener("click", async () => {
       headers: { Accept: "application/json" },
       body: formData,
     });
-    if (!response.ok) {
-      throw new Error(`Feedback send failed: ${response.status}`);
+    const result = await response.json().catch(() => ({}));
+    if (!response.ok || result.success === false || result.success === "false") {
+      throw new Error(result.message || `Feedback send failed: ${response.status}`);
     }
     emailFeedback.textContent = "Feedback Sent";
     selectionOutput.textContent = `${text}\n\nStatus: feedback sent`;
@@ -1804,7 +1891,7 @@ emailFeedback.addEventListener("click", async () => {
       // The visible status below is the fallback when browser permissions block direct send and clipboard.
     }
     emailFeedback.textContent = "Send Failed";
-    selectionOutput.textContent = `${text}\n\nStatus: direct send was blocked by the browser. The feedback was copied when possible. Try again from the live site.`;
+    selectionOutput.textContent = `${text}\n\nStatus: feedback send needs setup. Use the newest FormSubmit activation email, then send again from the live site.`;
   } finally {
     window.setTimeout(() => {
       emailFeedback.dataset.sending = "false";
