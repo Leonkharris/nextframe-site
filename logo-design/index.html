@@ -425,7 +425,7 @@ p,
 }
 
 #markGrid {
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .logo-card,
@@ -1097,7 +1097,7 @@ textarea:focus {
         <section>
           <div class="section-heading">
             <h2>Top ML Logos</h2>
-            <span>12 marks</span>
+            <span>20 marks</span>
           </div>
           <div class="logo-grid" id="markGrid"></div>
         </section>
@@ -1155,18 +1155,26 @@ const logoOptions = [
 ];
 
 const markOptions = [
-  { id: "ML1", name: "Client Loop", mark: "loop-original", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML2", name: "Heavy Loop", mark: "loop-bold", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML3", name: "Split Rings", mark: "split-rings", accent: "#ef172f", family: "linked initials" },
-  { id: "ML4", name: "Linked Capsule", mark: "linked-capsule", accent: "#13d6ff", family: "linked initials" },
-  { id: "ML5", name: "Block Italic", mark: "block-italic", accent: "#ef172f", family: "bold ML monogram" },
-  { id: "ML6", name: "Framed Badge", mark: "framed-badge", accent: "#ffffff", family: "badge ML monogram" },
-  { id: "ML7", name: "Twin Circle", mark: "twin-circle", accent: "#ef172f", family: "round ML monogram" },
-  { id: "ML8", name: "Razor Box", mark: "razor-box", accent: "#ef172f", family: "slash badge" },
-  { id: "ML9", name: "Ribbon Link", mark: "ribbon-link", accent: "#13d6ff", family: "continuous ribbon" },
-  { id: "ML10", name: "Stage Diamond", mark: "stage-diamond", accent: "#ffffff", family: "stage badge" },
-  { id: "ML11", name: "Red Slash ML", mark: "slash-ml", accent: "#ef172f", family: "slash ML monogram" },
-  { id: "ML12", name: "Clean Mono", mark: "clean-mono", accent: "#ffffff", family: "minimal ML monogram" },
+  { id: "ML1", name: "Reference Loop", mark: "reference-loop", accent: "#ffffff", family: "client sample" },
+  { id: "ML2", name: "Infinity Blade", mark: "infinity-blade", accent: "#ef172f", family: "client sample" },
+  { id: "ML3", name: "Liquid Link", mark: "liquid-link", accent: "#13d6ff", family: "paint loop" },
+  { id: "ML4", name: "Split Rings", mark: "split-rings", accent: "#ef172f", family: "linked initials" },
+  { id: "ML5", name: "Arena Badge", mark: "arena-badge", accent: "#ffffff", family: "stage badge" },
+  { id: "ML6", name: "Razor Box", mark: "razor-box", accent: "#ef172f", family: "slash badge" },
+  { id: "ML7", name: "Chrome Block", mark: "chrome-block", accent: "#ffffff", family: "bold ML monogram" },
+  { id: "ML8", name: "Red Wing", mark: "red-wing", accent: "#ef172f", family: "speed mark" },
+  { id: "ML9", name: "Cyan Wing", mark: "cyan-wing", accent: "#13d6ff", family: "speed mark" },
+  { id: "ML10", name: "Diamond Link", mark: "diamond-link", accent: "#ffffff", family: "stage badge" },
+  { id: "ML11", name: "Bolt Link", mark: "bolt-link", accent: "#ef172f", family: "electric mark" },
+  { id: "ML12", name: "Orbit ML", mark: "orbit-ml", accent: "#13d6ff", family: "linked initials" },
+  { id: "ML13", name: "Wide Motorsport", mark: "wide-motorsport", accent: "#ef172f", family: "motorsport" },
+  { id: "ML14", name: "Hex Cut", mark: "hex-cut", accent: "#ffffff", family: "badge ML monogram" },
+  { id: "ML15", name: "Ribbon ML", mark: "ribbon-ml", accent: "#13d6ff", family: "continuous ribbon" },
+  { id: "ML16", name: "Slash Mono", mark: "slash-mono", accent: "#ef172f", family: "slash ML monogram" },
+  { id: "ML17", name: "Twin Lens", mark: "twin-lens", accent: "#ffffff", family: "round ML monogram" },
+  { id: "ML18", name: "Stage Crown", mark: "stage-crown", accent: "#ef172f", family: "stage badge" },
+  { id: "ML19", name: "Minimal Link", mark: "minimal-link", accent: "#ffffff", family: "minimal ML monogram" },
+  { id: "ML20", name: "Paint Strike", mark: "paint-strike", accent: "#13d6ff", family: "paint slash" },
 ];
 
 const backgroundOptions = [
@@ -1657,6 +1665,24 @@ function markSvg(option) {
     `<svg ${common} class="ml-mark ml-chrome">${shadow}<path fill="${primary}" d="M23 91 57 25h36l27 38 31-38h39l-29 66h-33l15-36-25 30h-11L83 55 67 91z"/><path fill="${secondary}" d="M160 25h58l-45 66h-53l15-23h20l29-43z"/><path fill="${accent}" d="M12 79 229 30l-20 20L0 95z"/></svg>`;
 
   const templates = {
+    "reference-loop": loopOriginal(),
+    "infinity-blade": loopRedCut(),
+    "liquid-link": ribbonLink(),
+    "arena-badge": framedBadge(),
+    "chrome-block": chromeMark("currentColor", "currentColor", "#f0142f"),
+    "red-wing": wingMark("#f0142f", "currentColor", "#f0142f"),
+    "cyan-wing": wingMark("#13d6ff", "currentColor", "#13d6ff"),
+    "diamond-link": stageDiamond(),
+    "bolt-link": boltMark("#f0142f", "currentColor", "#f0142f"),
+    "orbit-ml": loopCircle(),
+    "wide-motorsport": wideMark("#f0142f", "currentColor", "#f0142f"),
+    "hex-cut": frameMark("currentColor", "currentColor", "#13d6ff"),
+    "ribbon-ml": linkedCapsule(),
+    "slash-mono": slashMl(),
+    "twin-lens": twinCircle(),
+    "stage-crown": blockItalic(),
+    "minimal-link": cleanMono(),
+    "paint-strike": loopCyanCut(),
     "loop-original": loopOriginal(),
     "loop-bold": loopBold(),
     "loop-red-cut": loopRedCut(),
