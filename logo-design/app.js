@@ -720,24 +720,57 @@ function drawMeigenPaintLoop(ctx, t, w, h, variant = "cyan") {
 
 function drawSamplePaintLoop(ctx, t, w, h, option) {
   const image = getBackgroundImage(option);
-  const phase = (t * 0.00016) % 1;
+  const phase = (t * 0.0001) % 1;
   const wave = Math.sin(phase * Math.PI * 2);
   const waveB = Math.cos(phase * Math.PI * 2);
+  const waveFast = Math.sin(phase * Math.PI * 4 - 0.6);
   ctx.save();
   ctx.fillStyle = "#050607";
   ctx.fillRect(0, 0, w, h);
-  const loaded = drawImageCover(ctx, image, w, h, 1.055 + wave * 0.012, wave * w * 0.018, waveB * h * 0.012);
+  const loaded = drawImageCover(ctx, image, w, h, 1.075 + wave * 0.018, wave * w * 0.034, waveB * h * 0.022);
   if (!loaded) {
     drawMeigenPaintLoop(ctx, t, w, h, "cyan");
   }
 
+  if (loaded) {
+    ctx.save();
+    ctx.globalAlpha = 0.34;
+    ctx.globalCompositeOperation = "screen";
+    ctx.beginPath();
+    ctx.moveTo(0, 0);
+    ctx.lineTo(w * 0.68, 0);
+    ctx.lineTo(w * 0.48, h);
+    ctx.lineTo(0, h);
+    ctx.closePath();
+    ctx.clip();
+    drawImageCover(ctx, image, w, h, 1.12 + waveB * 0.015, -wave * w * 0.06, waveFast * h * 0.032);
+    ctx.restore();
+
+    ctx.save();
+    ctx.globalAlpha = 0.25;
+    ctx.globalCompositeOperation = "multiply";
+    ctx.beginPath();
+    ctx.moveTo(w * 0.55, 0);
+    ctx.lineTo(w, 0);
+    ctx.lineTo(w, h);
+    ctx.lineTo(w * 0.68, h);
+    ctx.lineTo(w * 0.46, h * 0.52);
+    ctx.closePath();
+    ctx.clip();
+    drawImageCover(ctx, image, w, h, 1.1 - wave * 0.012, waveB * w * 0.052, -wave * h * 0.03);
+    ctx.restore();
+  }
+
   ctx.globalCompositeOperation = "screen";
-  const wash = ctx.createLinearGradient(-w * 0.1 + wave * w * 0.04, h * 0.78, w * 1.05, h * 0.18);
-  wash.addColorStop(0, "rgba(19,214,255,0.14)");
-  wash.addColorStop(0.46, "rgba(255,255,255,0.07)");
+  const wash = ctx.createLinearGradient(-w * 0.1 + wave * w * 0.1, h * 0.78 + waveB * h * 0.05, w * 1.05, h * 0.18);
+  wash.addColorStop(0, "rgba(19,214,255,0.22)");
+  wash.addColorStop(0.46, "rgba(255,255,255,0.12)");
   wash.addColorStop(1, "rgba(239,230,204,0)");
   ctx.fillStyle = wash;
   ctx.fillRect(0, 0, w, h);
+
+  drawMeigenStroke(ctx, t, w, h, { color: "cyan", alpha: 0.2, y: 0.66, width: 0.11, phase: 2.3, angle: -0.18, drift: 0.025, speed: 0.0005 });
+  drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.18, count: 22, phase: option.id.length });
 
   ctx.globalCompositeOperation = "source-over";
   const vignette = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.22, w * 0.5, h * 0.52, w * 0.7);
