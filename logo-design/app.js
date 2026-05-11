@@ -45,12 +45,12 @@ const markOptions = [
 ];
 
 const backgroundOptions = [
-  { id: "meigen-cyan", name: "Liquid Paint 01", className: "bg-meigen-cyan", thumb: "thumb-meigen-cyan" },
-  { id: "meigen-cream", name: "Liquid Paint 02", className: "bg-meigen-cream", thumb: "thumb-meigen-cream" },
-  { id: "meigen-dark", name: "Liquid Paint 03", className: "bg-meigen-dark", thumb: "thumb-meigen-dark" },
-  { id: "meigen-red", name: "Liquid Paint 04", className: "bg-meigen-red", thumb: "thumb-meigen-red" },
-  { id: "meigen-halftone", name: "Liquid Paint 05", className: "bg-meigen-halftone", thumb: "thumb-meigen-halftone" },
-  { id: "meigen-white", name: "Liquid Paint 06", className: "bg-meigen-white", thumb: "thumb-meigen-white" },
+  { id: "meigen-cyan", name: "Liquid Paint 01", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-01.jpg" },
+  { id: "meigen-cream", name: "Liquid Paint 02", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-02.jpg" },
+  { id: "meigen-dark", name: "Liquid Paint 03", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-03.jpg" },
+  { id: "meigen-red", name: "Liquid Paint 04", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-04.jpg" },
+  { id: "meigen-halftone", name: "Liquid Paint 05", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-05.jpg" },
+  { id: "meigen-white", name: "Liquid Paint 06", className: "bg-sample-paint", thumb: "thumb-sample-paint", asset: "assets/backgrounds/meigen-sample-06.jpg" },
   { id: "cyan-ink", name: "Liquid Cyan Pour", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
   { id: "cream-wipe", name: "Cream Liquid Wash", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
   { id: "stage-burst", name: "Blue Paint Bloom", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
@@ -112,6 +112,21 @@ const particles = Array.from({ length: 170 }, (_, index) => ({
   cyan: index % 3 === 0,
 }));
 
+const backgroundImageCache = new Map();
+
+function getBackgroundImage(option) {
+  if (!option?.asset) return null;
+  if (!backgroundImageCache.has(option.id)) {
+    const image = new Image();
+    image.decoding = "async";
+    image.src = option.asset;
+    backgroundImageCache.set(option.id, image);
+  }
+  return backgroundImageCache.get(option.id);
+}
+
+backgroundOptions.forEach(getBackgroundImage);
+
 function resizeLoopCanvas() {
   const rect = stage.getBoundingClientRect();
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
@@ -120,6 +135,17 @@ function resizeLoopCanvas() {
   loopCanvas.style.width = `${rect.width}px`;
   loopCanvas.style.height = `${rect.height}px`;
   loopCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function drawImageCover(ctx, image, w, h, scale = 1, offsetX = 0, offsetY = 0) {
+  if (!image || !image.complete || !image.naturalWidth || !image.naturalHeight) return false;
+  const baseScale = Math.max(w / image.naturalWidth, h / image.naturalHeight) * scale;
+  const drawW = image.naturalWidth * baseScale;
+  const drawH = image.naturalHeight * baseScale;
+  const x = (w - drawW) / 2 + offsetX;
+  const y = (h - drawH) / 2 + offsetY;
+  ctx.drawImage(image, x, y, drawW, drawH);
+  return true;
 }
 
 function drawGlowLine(ctx, x1, y1, x2, y2, color, width, alpha = 1) {
@@ -692,12 +718,44 @@ function drawMeigenPaintLoop(ctx, t, w, h, variant = "cyan") {
   ctx.restore();
 }
 
+function drawSamplePaintLoop(ctx, t, w, h, option) {
+  const image = getBackgroundImage(option);
+  const phase = (t * 0.00016) % 1;
+  const wave = Math.sin(phase * Math.PI * 2);
+  const waveB = Math.cos(phase * Math.PI * 2);
+  ctx.save();
+  ctx.fillStyle = "#050607";
+  ctx.fillRect(0, 0, w, h);
+  const loaded = drawImageCover(ctx, image, w, h, 1.055 + wave * 0.012, wave * w * 0.018, waveB * h * 0.012);
+  if (!loaded) {
+    drawMeigenPaintLoop(ctx, t, w, h, "cyan");
+  }
+
+  ctx.globalCompositeOperation = "screen";
+  const wash = ctx.createLinearGradient(-w * 0.1 + wave * w * 0.04, h * 0.78, w * 1.05, h * 0.18);
+  wash.addColorStop(0, "rgba(19,214,255,0.14)");
+  wash.addColorStop(0.46, "rgba(255,255,255,0.07)");
+  wash.addColorStop(1, "rgba(239,230,204,0)");
+  ctx.fillStyle = wash;
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.globalCompositeOperation = "source-over";
+  const vignette = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.22, w * 0.5, h * 0.52, w * 0.7);
+  vignette.addColorStop(0, "rgba(0,0,0,0)");
+  vignette.addColorStop(0.72, "rgba(0,0,0,0.1)");
+  vignette.addColorStop(1, "rgba(0,0,0,0.38)");
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+}
+
 function drawLoopFrame(t) {
   const rect = stage.getBoundingClientRect();
   const w = rect.width;
   const h = rect.height;
   loopCtx.clearRect(0, 0, w, h);
   loopCtx.save();
+  const selectedBg = selectedBackground();
   const meigenVariants = {
     "meigen-cyan": "cyan",
     "meigen-cream": "cream",
@@ -706,7 +764,9 @@ function drawLoopFrame(t) {
     "meigen-halftone": "halftone",
     "meigen-white": "white",
   };
-  if (meigenVariants[state.backgroundId]) {
+  if (selectedBg.asset) {
+    drawSamplePaintLoop(loopCtx, t, w, h, selectedBg);
+  } else if (meigenVariants[state.backgroundId]) {
     drawMeigenPaintLoop(loopCtx, t, w, h, meigenVariants[state.backgroundId]);
   } else if (state.backgroundId === "cyan-ink") {
     drawLegacyPaintLoop(loopCtx, t, w, h, "cyan");
@@ -995,7 +1055,7 @@ function renderBackgroundGrid() {
   backgroundGrid.innerHTML = backgroundOptions
     .map((option) => `
       <button type="button" class="bg-card${option.id === state.backgroundId ? " is-selected" : ""}" data-bg="${option.id}">
-        <div class="bg-thumb ${option.thumb}"></div>
+        <div class="bg-thumb ${option.thumb}"${option.asset ? ` style="--bg-thumb-image:url('${option.asset}')"` : ""}></div>
         <div class="bg-caption"><strong>${option.name}</strong></div>
       </button>
     `)
@@ -1007,6 +1067,12 @@ function updatePreview() {
   const logo = selectedLogo();
   const bg = selectedBackground();
   stage.className = `stage ${bg.className}`;
+  if (bg.asset) {
+    stage.style.setProperty("--bg-image", `url("${bg.asset}")`);
+    getBackgroundImage(bg);
+  } else {
+    stage.style.removeProperty("--bg-image");
+  }
   document.querySelector(".stage > .logo-lockup").outerHTML = lockupHtml(logo, false, mark, true);
   document.querySelector(".stage > .logo-lockup").id = "logoLockup";
   comboLabel.textContent = `${mark.id} + Text ${logo.id} + ${bg.name}`;
