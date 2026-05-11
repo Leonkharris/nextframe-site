@@ -625,32 +625,30 @@ textarea:focus {
 .bg-cyan-ink,
 .thumb-cyan-ink {
   background:
-    radial-gradient(circle at 62% 58%, rgba(255, 255, 255, 0.12), transparent 22%),
-    radial-gradient(circle at 15% 20%, rgba(19, 214, 255, 0.48), transparent 21%),
-    radial-gradient(circle at 74% 83%, rgba(19, 214, 255, 0.32), transparent 24%),
-    linear-gradient(130deg, rgba(255,255,255,0.05), transparent 34% 66%, rgba(19,214,255,0.08)),
-    #030507;
+    radial-gradient(ellipse at 20% 42%, rgba(19, 214, 255, 0.72), transparent 38%),
+    radial-gradient(ellipse at 73% 64%, rgba(239, 230, 204, 0.72), transparent 28%),
+    linear-gradient(100deg, #efe6cc 0 18%, #0a0f12 66%, #020303 100%);
 }
 
 .bg-cyan-ink::before,
 .thumb-cyan-ink::before {
   background:
-    radial-gradient(ellipse at 18% 28%, rgba(19, 214, 255, 0.72) 0 12%, transparent 27%),
-    radial-gradient(ellipse at 81% 70%, rgba(239, 230, 204, 0.9) 0 9%, transparent 24%),
-    linear-gradient(118deg, transparent 0 36%, rgba(19, 214, 255, 0.58) 38% 44%, transparent 47% 100%);
-  filter: blur(5px);
-  animation: driftWide 8s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 18% 37%, rgba(19, 214, 255, 0.92) 0 22%, transparent 43%),
+    linear-gradient(104deg, transparent 0 34%, rgba(19, 214, 255, 0.54) 37% 52%, transparent 58%);
+  filter: blur(8px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
 }
 
 .bg-cyan-ink::after,
 .thumb-cyan-ink::after {
   background:
-    repeating-linear-gradient(90deg, transparent 0 22px, rgba(19, 214, 255, 0.18) 23px 24px, transparent 25px 56px),
-    linear-gradient(112deg, transparent 0 36%, rgba(255, 255, 255, 0.28) 40%, transparent 45%),
-    linear-gradient(24deg, transparent 0 48%, rgba(19, 214, 255, 0.32) 50%, transparent 53%);
-  opacity: 0.74;
+    radial-gradient(circle, rgba(19, 214, 255, 0.42) 0 1.4px, transparent 2.2px),
+    linear-gradient(112deg, transparent 0 38%, rgba(255, 255, 255, 0.24) 44%, transparent 52%);
+  background-size: 18px 18px, auto;
+  mask-image: linear-gradient(90deg, transparent 0 54%, black 66% 100%);
+  opacity: 0.62;
   mix-blend-mode: screen;
-  animation: detailSlide 5.6s linear infinite;
+  animation: dotPulse 6.8s ease-in-out infinite;
 }
 
 .bg-particle-field,
@@ -667,42 +665,45 @@ textarea:focus {
 
 .bg-cream-wipe,
 .thumb-cream-wipe {
-  background: var(--cream);
+  background:
+    radial-gradient(ellipse at 24% 33%, rgba(19, 214, 255, 0.72), transparent 34%),
+    radial-gradient(ellipse at 78% 68%, rgba(5, 9, 12, 0.62), transparent 32%),
+    var(--cream);
 }
 
 .bg-cream-wipe::before,
 .thumb-cream-wipe::before {
   background:
-    radial-gradient(ellipse at 18% 15%, rgba(19, 214, 255, 0.92) 0 18%, transparent 34%),
-    radial-gradient(ellipse at 92% 82%, rgba(5, 9, 12, 0.88) 0 17%, transparent 32%),
-    linear-gradient(100deg, transparent 0 31%, rgba(19, 214, 255, 0.62) 34% 42%, transparent 45%);
-  animation: wipeSlide 9s ease-in-out infinite alternate;
+    radial-gradient(ellipse at 18% 24%, rgba(19, 214, 255, 0.92) 0 22%, transparent 42%),
+    linear-gradient(100deg, transparent 0 28%, rgba(19, 214, 255, 0.58) 35% 50%, transparent 58%);
+  filter: blur(6px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
 }
 
 .bg-red-laser,
 .thumb-red-laser {
   background:
-    radial-gradient(ellipse at 40% 73%, rgba(255, 255, 255, 0.18), transparent 34%),
-    linear-gradient(180deg, #040406, #130507 52%, #030304);
+    radial-gradient(ellipse at 38% 48%, rgba(239, 23, 47, 0.46), transparent 34%),
+    radial-gradient(ellipse at 72% 67%, rgba(255, 255, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #050606, #120608 58%, #030304);
 }
 
 .bg-red-laser::before,
 .thumb-red-laser::before {
   background:
-    linear-gradient(102deg, transparent 0 44%, rgba(239, 23, 47, 0.95) 45% 46%, transparent 47%),
-    linear-gradient(174deg, transparent 0 60%, rgba(239, 23, 47, 0.85) 61% 62%, transparent 63%),
-    linear-gradient(88deg, transparent 0 30%, rgba(255, 255, 255, 0.24) 31%, transparent 33%);
-  filter: drop-shadow(0 0 16px rgba(239, 23, 47, 0.8));
-  animation: laserSweep 5.8s linear infinite;
+    radial-gradient(ellipse at 30% 45%, rgba(239, 23, 47, 0.74) 0 18%, transparent 38%),
+    linear-gradient(106deg, transparent 0 24%, rgba(239, 23, 47, 0.62) 31% 52%, transparent 60%);
+  filter: blur(7px) drop-shadow(0 0 16px rgba(239, 23, 47, 0.5));
+  animation: wipeSlide 8.8s ease-in-out infinite alternate;
 }
 
 .bg-red-laser::after,
 .thumb-red-laser::after {
   background:
-    radial-gradient(circle at 22% 18%, rgba(239, 23, 47, 0.42), transparent 22%),
-    radial-gradient(circle at 78% 74%, rgba(255, 255, 255, 0.18), transparent 20%),
-    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.08) 0 1px, transparent 1px 18px);
-  opacity: 0.78;
+    radial-gradient(circle, rgba(239, 23, 47, 0.32) 0 1.5px, transparent 2.4px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(90deg, transparent 0 55%, black 66% 100%);
+  opacity: 0.48;
   animation: redPulse 4.6s ease-in-out infinite alternate;
 }
 

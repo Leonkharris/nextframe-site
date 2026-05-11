@@ -362,61 +362,107 @@ function drawSlashTunnel(ctx, t, w, h, color = "#13d6ff") {
   }
 }
 
+function drawClientHalftone(ctx, t, w, h, color = "rgba(19,214,255,0.34)") {
+  ctx.save();
+  const gap = 18;
+  for (let y = h * 0.08; y < h * 0.94; y += gap) {
+    for (let x = w * 0.58; x < w * 1.02; x += gap) {
+      const edgeFade = Math.min(1, Math.max(0, (x - w * 0.58) / (w * 0.22)));
+      const pulse = 0.65 + Math.sin(t * 0.0018 + x * 0.017 + y * 0.021) * 0.35;
+      ctx.globalAlpha = 0.07 + edgeFade * pulse * 0.22;
+      ctx.fillStyle = color;
+      ctx.beginPath();
+      ctx.arc(x + Math.sin(t * 0.0009 + y) * 6, y, 1.6 + pulse * 1.1, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawClientPaintLoop(ctx, t, w, h, variant = "cyan") {
+  const isDark = variant === "dark" || variant === "red";
+  const isRed = variant === "red";
+  ctx.save();
+  ctx.globalCompositeOperation = "source-over";
+
+  const base = ctx.createLinearGradient(0, 0, w, h);
+  if (isDark) {
+    base.addColorStop(0, "#030607");
+    base.addColorStop(0.54, "#071015");
+    base.addColorStop(1, "#020303");
+  } else {
+    base.addColorStop(0, "#efe6cc");
+    base.addColorStop(0.54, "#f6efd9");
+    base.addColorStop(1, "#101316");
+  }
+  ctx.fillStyle = base;
+  ctx.fillRect(0, 0, w, h);
+
+  const flow = Math.sin(t * 0.00055);
+  const sweep = ((t * 0.035) % (w * 1.35)) - w * 0.25;
+  const mainColor = isRed ? "rgba(239,23,47,ALPHA)" : "rgba(19,214,255,ALPHA)";
+  const secondary = isRed ? "rgba(255,255,255,ALPHA)" : "rgba(239,230,204,ALPHA)";
+
+  drawLiquidBlob(ctx, w * (0.18 + flow * 0.06), h * 0.42, w * 0.42, h * 0.54, mainColor, isDark ? 0.48 : 0.72, -0.18);
+  drawLiquidBlob(ctx, w * (0.72 - flow * 0.04), h * 0.6, w * 0.34, h * 0.32, secondary, isDark ? 0.28 : 0.54, 0.2);
+
+  ctx.globalAlpha = isDark ? 0.42 : 0.72;
+  ctx.fillStyle = isRed ? "#ef172f" : "#13d6ff";
+  ctx.beginPath();
+  ctx.moveTo(sweep - w * 0.24, h * 0.22);
+  ctx.bezierCurveTo(sweep + w * 0.18, h * 0.08, sweep + w * 0.38, h * 0.46, sweep + w * 0.88, h * 0.28);
+  ctx.lineTo(sweep + w * 0.95, h * 0.48);
+  ctx.bezierCurveTo(sweep + w * 0.5, h * 0.66, sweep + w * 0.19, h * 0.42, sweep - w * 0.28, h * 0.62);
+  ctx.closePath();
+  ctx.fill();
+  ctx.globalAlpha = 1;
+
+  ctx.globalCompositeOperation = "lighter";
+  drawPaintRibbon(ctx, t * 0.72, w, h, isRed ? "#ef172f" : "#13d6ff", isDark ? 0.2 : 0.28, 0.6, -0.08);
+  drawPaintRibbon(ctx, t * 0.58, w, h, "#ffffff", isDark ? 0.1 : 0.18, 1.8, 0.18);
+  drawClientHalftone(ctx, t, w, h, isRed ? "rgba(239,23,47,0.34)" : "rgba(19,214,255,0.34)");
+  drawPaintDrips(ctx, t * 0.42, w, h, isRed ? "#ef172f" : "#13d6ff", 18);
+  ctx.restore();
+}
+
 function drawLoopFrame(t) {
   const rect = stage.getBoundingClientRect();
   const w = rect.width;
   const h = rect.height;
   loopCtx.clearRect(0, 0, w, h);
   loopCtx.save();
-  loopCtx.globalCompositeOperation = "lighter";
-  if (state.backgroundId === "red-laser") {
-    drawRedLaser(loopCtx, t, w, h);
-    drawEnergyShards(loopCtx, t, w, h, "#ef172f", 22, 0.16);
+  if (state.backgroundId === "cyan-ink") {
+    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
   } else if (state.backgroundId === "cream-wipe") {
-    drawCreamWipe(loopCtx, t, w, h);
-    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
-  } else if (state.backgroundId === "halftone-pulse") {
-    drawHalftone(loopCtx, t, w, h);
-    drawCyanInk(loopCtx, t, w, h);
-    drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
-  } else if (state.backgroundId === "signal-tunnel") {
-    drawLiquidPaint(loopCtx, t, w, h, "cyan");
-    drawTunnel(loopCtx, t, w, h);
-    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
-  } else if (state.backgroundId === "smoke-sweep") {
-    drawSmoke(loopCtx, t, w, h);
-    drawEnergyShards(loopCtx, t, w, h, "#ffffff", 14, 0.08);
-  } else if (state.backgroundId === "white-flash") {
-    drawWhiteFlash(loopCtx, t, w, h);
-    drawSlashTunnel(loopCtx, t, w, h, "#ffffff");
-  } else if (state.backgroundId === "particle-field") {
-    drawLiquidPaint(loopCtx, t, w, h, "cyan");
-    drawParticles(loopCtx, t, w, h, 1.35);
-    drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.18)");
-    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 16, 0.06);
-  } else if (state.backgroundId === "blade-storm") {
-    drawRedLaser(loopCtx, t, w, h);
-    drawEnergyShards(loopCtx, t, w, h, "#ef172f", 34, 0.22);
-    drawSlashTunnel(loopCtx, t, w, h, "#ef172f");
-  } else if (state.backgroundId === "electric-grid") {
-    drawLiquidPaint(loopCtx, t, w, h, "cyan");
-    drawTunnel(loopCtx, t, w, h);
-    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
-    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 24, 0.18);
+    drawClientPaintLoop(loopCtx, t, w, h, "cream");
   } else if (state.backgroundId === "stage-burst") {
-    drawCyanInk(loopCtx, t, w, h);
-    drawStageBars(loopCtx, t, w, h, "rgb(239,23,47)");
-    drawWhiteFlash(loopCtx, t * 0.7, w, h);
+    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+  } else if (state.backgroundId === "red-laser") {
+    drawClientPaintLoop(loopCtx, t, w, h, "red");
+  } else if (state.backgroundId === "halftone-pulse") {
+    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawHalftone(loopCtx, t, w, h);
+  } else if (state.backgroundId === "signal-tunnel") {
+    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawClientHalftone(loopCtx, t, w, h);
+  } else if (state.backgroundId === "smoke-sweep") {
+    drawClientPaintLoop(loopCtx, t, w, h, "cream");
+    drawSmoke(loopCtx, t, w, h);
+  } else if (state.backgroundId === "white-flash") {
+    drawClientPaintLoop(loopCtx, t, w, h, "cream");
+  } else if (state.backgroundId === "particle-field") {
+    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawParticles(loopCtx, t, w, h, 0.45);
+  } else if (state.backgroundId === "blade-storm") {
+    drawClientPaintLoop(loopCtx, t, w, h, "red");
+  } else if (state.backgroundId === "electric-grid") {
+    drawClientPaintLoop(loopCtx, t, w, h, "dark");
   } else if (state.backgroundId === "slash-tunnel") {
-    drawLiquidPaint(loopCtx, t, w, h, "cyan");
-    drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
-    drawEnergyShards(loopCtx, t, w, h, "#ffffff", 24, 0.13);
-    drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.16)");
+    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
   } else {
-    drawCyanInk(loopCtx, t, w, h);
-    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 16, 0.1);
+    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
   }
-  drawParticles(loopCtx, t, w, h, state.backgroundId === "particle-field" ? 1.4 : 0.82);
   loopCtx.restore();
   requestAnimationFrame(drawLoopFrame);
 }
