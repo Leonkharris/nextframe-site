@@ -224,11 +224,20 @@ p,
 
 .logo-mark {
   display: block;
-  width: 39%;
+  width: 43%;
   min-width: 190px;
-  max-width: 340px;
+  max-width: 380px;
   margin: 0 auto 12px;
   transform: none;
+}
+
+.generated-logo-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(0 12px 10px rgba(0, 0, 0, 0.44))
+    drop-shadow(0 0 10px color-mix(in srgb, var(--accent, #ffffff) 18%, transparent));
 }
 
 .wordmark {
@@ -462,9 +471,13 @@ p,
 }
 
 .mini-logo.mark-only .logo-mark {
-  width: 76%;
+  width: 84%;
   max-width: 190px;
   margin: 0;
+}
+
+.mini-logo.mark-only .generated-logo-mark {
+  max-width: 220px;
 }
 
 .mini-logo.text-only .logo-lockup {

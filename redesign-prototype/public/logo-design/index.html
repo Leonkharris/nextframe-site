@@ -231,11 +231,20 @@ p,
 
 .logo-mark {
   display: block;
-  width: 39%;
+  width: 43%;
   min-width: 190px;
-  max-width: 340px;
+  max-width: 380px;
   margin: 0 auto 12px;
   transform: none;
+}
+
+.generated-logo-mark img {
+  display: block;
+  width: 100%;
+  height: auto;
+  filter:
+    drop-shadow(0 12px 10px rgba(0, 0, 0, 0.44))
+    drop-shadow(0 0 10px color-mix(in srgb, var(--accent, #ffffff) 18%, transparent));
 }
 
 .wordmark {
@@ -469,9 +478,13 @@ p,
 }
 
 .mini-logo.mark-only .logo-mark {
-  width: 76%;
+  width: 84%;
   max-width: 190px;
   margin: 0;
+}
+
+.mini-logo.mark-only .generated-logo-mark {
+  max-width: 220px;
 }
 
 .mini-logo.text-only .logo-lockup {
@@ -1156,26 +1169,26 @@ const logoOptions = [
 ];
 
 const markOptions = [
-  { id: "ML1", name: "Reference Loop", mark: "reference-loop", accent: "#ffffff", family: "client sample" },
-  { id: "ML2", name: "Infinity Blade", mark: "infinity-blade", accent: "#ef172f", family: "client sample" },
-  { id: "ML3", name: "Liquid Link", mark: "liquid-link", accent: "#13d6ff", family: "paint loop" },
-  { id: "ML4", name: "Split Rings", mark: "split-rings", accent: "#ef172f", family: "linked initials" },
-  { id: "ML5", name: "Arena Badge", mark: "arena-badge", accent: "#ffffff", family: "stage badge" },
-  { id: "ML6", name: "Razor Box", mark: "razor-box", accent: "#ef172f", family: "slash badge" },
-  { id: "ML7", name: "Chrome Block", mark: "chrome-block", accent: "#ffffff", family: "bold ML monogram" },
-  { id: "ML8", name: "Red Wing", mark: "red-wing", accent: "#ef172f", family: "speed mark" },
-  { id: "ML9", name: "Cyan Wing", mark: "cyan-wing", accent: "#13d6ff", family: "speed mark" },
-  { id: "ML10", name: "Diamond Link", mark: "diamond-link", accent: "#ffffff", family: "stage badge" },
-  { id: "ML11", name: "Bolt Link", mark: "bolt-link", accent: "#ef172f", family: "electric mark" },
-  { id: "ML12", name: "Orbit ML", mark: "orbit-ml", accent: "#13d6ff", family: "linked initials" },
-  { id: "ML13", name: "Wide Motorsport", mark: "wide-motorsport", accent: "#ef172f", family: "motorsport" },
-  { id: "ML14", name: "Hex Cut", mark: "hex-cut", accent: "#ffffff", family: "badge ML monogram" },
-  { id: "ML15", name: "Ribbon ML", mark: "ribbon-ml", accent: "#13d6ff", family: "continuous ribbon" },
-  { id: "ML16", name: "Slash Mono", mark: "slash-mono", accent: "#ef172f", family: "slash ML monogram" },
-  { id: "ML17", name: "Twin Lens", mark: "twin-lens", accent: "#ffffff", family: "round ML monogram" },
-  { id: "ML18", name: "Stage Crown", mark: "stage-crown", accent: "#ef172f", family: "stage badge" },
-  { id: "ML19", name: "Minimal Link", mark: "minimal-link", accent: "#ffffff", family: "minimal ML monogram" },
-  { id: "ML20", name: "Paint Strike", mark: "paint-strike", accent: "#13d6ff", family: "paint slash" },
+  { id: "ML01", name: "Generated Loop", asset: "assets/top-logos/ml01.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML02", name: "Blade Loop", asset: "assets/top-logos/ml02.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML03", name: "Double Ring", asset: "assets/top-logos/ml03.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML04", name: "Capsule Link", asset: "assets/top-logos/ml04.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML05", name: "Octane Link", asset: "assets/top-logos/ml05.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML06", name: "Lightning Italic", asset: "assets/top-logos/ml06.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML07", name: "Circle Strike", asset: "assets/top-logos/ml07.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML08", name: "Capsule Badge", asset: "assets/top-logos/ml08.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML09", name: "Twin Rings", asset: "assets/top-logos/ml09.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML10", name: "Bolt Infinity", asset: "assets/top-logos/ml10.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML11", name: "Paint Loop", asset: "assets/top-logos/ml11.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML12", name: "Red Bolt Rings", asset: "assets/top-logos/ml12.png", accent: "#ef172f", family: "generated concept board" },
+  { id: "ML13", name: "Red Line ML", asset: "assets/top-logos/ml13.png", accent: "#ef172f", family: "generated concept board" },
+  { id: "ML14", name: "Orbit Bolt", asset: "assets/top-logos/ml14.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML15", name: "Speed Capsule", asset: "assets/top-logos/ml15.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML16", name: "Split Slash", asset: "assets/top-logos/ml16.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML17", name: "Hex Badge", asset: "assets/top-logos/ml17.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML18", name: "North Loop", asset: "assets/top-logos/ml18.png", accent: "#ffffff", family: "generated concept board" },
+  { id: "ML19", name: "Cyan Bolt Loop", asset: "assets/top-logos/ml19.png", accent: "#13d6ff", family: "generated concept board" },
+  { id: "ML20", name: "Heavy Slash", asset: "assets/top-logos/ml20.png", accent: "#ffffff", family: "generated concept board" },
 ];
 
 const backgroundOptions = [
@@ -1194,7 +1207,7 @@ const backgroundOptions = [
 ];
 
 const state = {
-  markId: "ML1",
+  markId: "ML01",
   logoId: "A",
   backgroundId: "cyan-ink",
   animate: true,
@@ -1604,6 +1617,9 @@ function drawLoopFrame(t) {
 function markSvg(option) {
   const common = `viewBox="0 0 240 120" role="img" aria-label="${option.name} mark"`;
   const type = option.mark;
+  if (option.asset) {
+    return `<div class="logo-mark generated-logo-mark" style="--accent:${option.accent}"><img src="${option.asset}" alt="${option.name} mark" /></div>`;
+  }
   const shadow = `<path class="mark-shadow" d="M34 96h175l-13 13H19z"/>`;
   const spark = (accent = "var(--accent)") => `<path fill="${accent}" d="M29 99h162l-15 12H11z"/>`;
   const loopOutline = (width = 8, color = "currentColor", opacity = 0.82) =>
