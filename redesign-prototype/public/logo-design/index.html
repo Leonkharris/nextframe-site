@@ -235,7 +235,7 @@ p,
   min-width: 190px;
   max-width: 340px;
   margin: 0 auto 12px;
-  transform: skewX(-8deg);
+  transform: none;
 }
 
 .wordmark {
@@ -1155,18 +1155,18 @@ const logoOptions = [
 ];
 
 const markOptions = [
-  { id: "ML1", name: "Sample Red M/L", mark: "ml-red-white", accent: "#ef172f", family: "client sample red/white" },
-  { id: "ML2", name: "Razor White", mark: "ml-white-sharp", accent: "#ef172f", family: "white mark with red slash" },
-  { id: "ML3", name: "Red Wing", mark: "ml-red-wing", accent: "#ef172f", family: "speed wing" },
-  { id: "ML4", name: "Apex Red", mark: "ml-red-apex", accent: "#ef172f", family: "motorsport apex" },
-  { id: "ML5", name: "Chrome Cut", mark: "ml-chrome", accent: "#ef172f", family: "chrome slash" },
-  { id: "ML6", name: "Framed Strike", mark: "ml-box", accent: "#ef172f", family: "stage badge" },
-  { id: "ML7", name: "Cyan M/L", mark: "ml-cyan-white", accent: "#13d6ff", family: "cyan/white split" },
-  { id: "ML8", name: "Cyan Frame", mark: "ml-frame", accent: "#13d6ff", family: "neon frame" },
-  { id: "ML9", name: "Shock Bolt", mark: "ml-shock", accent: "#13d6ff", family: "electric bolt" },
-  { id: "ML10", name: "Wide Red", mark: "ml-red-wide", accent: "#ef172f", family: "wide motorsport" },
-  { id: "ML11", name: "Cyan Block", mark: "ml-cyan-block", accent: "#13d6ff", family: "block slash" },
-  { id: "ML12", name: "White Wing", mark: "ml-white-wing", accent: "#ef172f", family: "white speed wing" },
+  { id: "ML1", name: "Client Loop", mark: "loop-original", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML2", name: "Bold Loop", mark: "loop-bold", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML3", name: "Red Cut Loop", mark: "loop-red-cut", accent: "#ef172f", family: "client infinity ML" },
+  { id: "ML4", name: "Cyan Cut Loop", mark: "loop-cyan-cut", accent: "#13d6ff", family: "client infinity ML" },
+  { id: "ML5", name: "Hard Edge Loop", mark: "loop-hard", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML6", name: "Circle Loop", mark: "loop-circle", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML7", name: "Underline Loop", mark: "loop-underline", accent: "#ef172f", family: "client infinity ML" },
+  { id: "ML8", name: "Chrome Loop", mark: "loop-chrome", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML9", name: "Neon Loop", mark: "loop-neon", accent: "#13d6ff", family: "client infinity ML" },
+  { id: "ML10", name: "Compact Loop", mark: "loop-compact", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML11", name: "Stage Loop", mark: "loop-stage", accent: "#ef172f", family: "client infinity ML" },
+  { id: "ML12", name: "Mono Loop", mark: "loop-mono", accent: "#ffffff", family: "client infinity ML" },
 ];
 
 const backgroundOptions = [
@@ -1464,6 +1464,50 @@ function markSvg(option) {
   const type = option.mark;
   const shadow = `<path class="mark-shadow" d="M34 96h175l-13 13H19z"/>`;
   const spark = (accent = "var(--accent)") => `<path fill="${accent}" d="M29 99h162l-15 12H11z"/>`;
+  const loopOutline = (width = 10, color = "currentColor") =>
+    `<path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/><path d="M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const loopLetters = (width = 10, color = "currentColor") =>
+    `<path d="M57 80V43L84 66L116 43M148 43V80H185" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="square" stroke-linejoin="miter"/>`;
+  const loopDiagonal = (width = 10, color = "currentColor", opacity = 1) =>
+    `<path d="M103 78 150 39" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="square" opacity="${opacity}"/>`;
+  const loopCut = (color = "var(--accent)") =>
+    `<path fill="${color}" d="M37 85 207 38 195 53 25 99z"/>`;
+
+  const loopOriginal = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(10)}${loopLetters(10)}${loopDiagonal(8, "currentColor", 0.96)}</svg>`;
+
+  const loopBold = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(14)}${loopLetters(13)}${loopDiagonal(10)}<path d="M136 83h54" stroke="currentColor" stroke-width="7" stroke-linecap="square"/></svg>`;
+
+  const loopRedCut = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopCut("#ef172f")}<path d="M96 82 150 34" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+
+  const loopCyanCut = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopCut("#13d6ff")}<path d="M95 82 150 34" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+
+  const loopHard = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M23 61 45 29h42l33 31 33-31h42l23 32-24 31h-40l-34-31-34 31H45z" fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="miter"/><path d="M55 82V43L82 68L109 43V82M148 43V82H186" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter"/></svg>`;
+
+  const loopCircle = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M59 25a35 35 0 1 0 0 70c22 0 40-19 61-35 21-16 39-35 61-35a35 35 0 1 1 0 70c-22 0-41-19-61-35C100 44 81 25 59 25Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>${loopLetters(10)}${loopDiagonal(7)}</svg>`;
+
+  const loopUnderline = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopDiagonal(9)}<path fill="#ef172f" d="M52 98h145l-13 12H38z"/></svg>`;
+
+  const loopChrome = () =>
+    `<svg ${common} class="ml-loop-mark"><defs><linearGradient id="chrome-${option.id}" x1="0" x2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="#9aa4ad"/><stop offset=".62" stop-color="currentColor"/><stop offset="1" stop-color="#eef7ff"/></linearGradient></defs>${loopOutline(10, `url(#chrome-${option.id})`)}${loopLetters(10, `url(#chrome-${option.id})`)}${loopDiagonal(8, `url(#chrome-${option.id})`)}</svg>`;
+
+  const loopNeon = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="#13d6ff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity=".34"/>${loopOutline(9)}${loopLetters(10)}${loopDiagonal(7)}<path fill="#13d6ff" d="M42 100h154l-11 10H29z"/></svg>`;
+
+  const loopCompact = () =>
+    `<svg ${common} class="ml-loop-mark" viewBox="0 0 240 120">${loopOutline(11)}<path d="M61 79V45L84 66L109 45M146 45V79H183" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/><path d="M105 77 146 40" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+
+  const loopStage = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopDiagonal(9)}<path fill="#ef172f" d="M14 57h61l-11 12H3zm158 0h65l-13 12h-66z"/></svg>`;
+
+  const loopMono = () =>
+    `<svg ${common} class="ml-loop-mark">${loopOutline(13)}${loopLetters(14)}${loopDiagonal(10)}</svg>`;
 
   const sampleMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
     `<svg ${common} class="ml-mark ml-sample">${shadow}<path fill="${primary}" d="M18 91 51 24h36l32 35 32-35h42l-30 67h-34l16-39-27 32h-13L80 54 64 91z"/><path fill="${secondary}" d="M159 24h61l-47 67h-55l15-23h22l30-44z"/><path fill="${accent}" d="M98 98h82l-13 12H82z"/></svg>`;
@@ -1493,6 +1537,18 @@ function markSvg(option) {
     `<svg ${common} class="ml-mark ml-chrome">${shadow}<path fill="${primary}" d="M23 91 57 25h36l27 38 31-38h39l-29 66h-33l15-36-25 30h-11L83 55 67 91z"/><path fill="${secondary}" d="M160 25h58l-45 66h-53l15-23h20l29-43z"/><path fill="${accent}" d="M12 79 229 30l-20 20L0 95z"/></svg>`;
 
   const templates = {
+    "loop-original": loopOriginal(),
+    "loop-bold": loopBold(),
+    "loop-red-cut": loopRedCut(),
+    "loop-cyan-cut": loopCyanCut(),
+    "loop-hard": loopHard(),
+    "loop-circle": loopCircle(),
+    "loop-underline": loopUnderline(),
+    "loop-chrome": loopChrome(),
+    "loop-neon": loopNeon(),
+    "loop-compact": loopCompact(),
+    "loop-stage": loopStage(),
+    "loop-mono": loopMono(),
     "ml-red-white": sampleMark("#f0142f", "currentColor", "#f0142f"),
     "ml-cyan-white": sampleMark("#13d6ff", "currentColor", "#13d6ff"),
     "ml-red-wing": wingMark("#f0142f", "currentColor", "#f0142f"),
@@ -1531,7 +1587,7 @@ function markSvg(option) {
     clean: sampleMark("currentColor", "currentColor", "#13d6ff"),
   };
 
-  return `<div class="logo-mark">${templates[type]}</div>`;
+  return `<div class="logo-mark" style="--accent:${option.accent}">${templates[type]}</div>`;
 }
 
 function lockupHtml(option, mini = false, markOption = selectedMark(), showMark = true) {
