@@ -5,57 +5,52 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Cache-Control" content="no-store, no-cache, must-revalidate">
   <meta http-equiv="Pragma" content="no-cache">
-  <title>Royal Suites New Perspective Candidates | NextFrame</title>
+  <title>Royal Suites New Perspective Inventory | NextFrame</title>
   <style>
-    :root { --ink:#070809; --paper:#f2f0eb; --muted:rgba(247,243,236,.68); --dim:rgba(247,243,236,.42); --line:rgba(242,240,235,.14); --acid:#d0f100; --warn:#ffc46b; color:var(--paper); background:var(--ink); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
+    :root { color-scheme:dark; --bg:#070809; --panel:#151719; --line:rgba(255,255,255,.16); --text:#f4f1e8; --muted:rgba(244,241,232,.62); --acid:#d0f100; --warn:#ffc46b; font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; }
     * { box-sizing:border-box; }
-    body { margin:0; min-width:320px; background:radial-gradient(circle at 76% 8%,rgba(145,162,255,.18),transparent 30rem),radial-gradient(circle at 10% 12%,rgba(208,241,0,.10),transparent 24rem),linear-gradient(180deg,#070809,#0f1114 50%,#08090b); }
+    body { margin:0; background:radial-gradient(circle at 80% 0,rgba(145,162,255,.16),transparent 28rem),linear-gradient(180deg,#070809,#101215 52%,#070809); color:var(--text); }
     a { color:inherit; text-decoration:none; }
     button { font:inherit; cursor:pointer; }
-    .shell { width:min(1480px,calc(100vw - 36px)); margin:0 auto; }
-    header { position:sticky; top:0; z-index:8; backdrop-filter:blur(22px); background:rgba(7,8,9,.82); border-bottom:1px solid var(--line); }
-    .nav { min-height:78px; display:flex; align-items:center; justify-content:space-between; gap:18px; }
-    .brand { display:inline-flex; align-items:center; gap:12px; min-width:max-content; }
-    .brand img { width:42px; height:42px; object-fit:contain; border-radius:11px; border:1px solid var(--line); background:rgba(255,255,255,.08); }
-    .brand span { display:grid; gap:2px; line-height:1; }
-    .brand strong { font-size:1.06rem; letter-spacing:-.035em; }
-    .brand em { color:var(--dim); font-size:.69rem; font-style:normal; letter-spacing:.1em; text-transform:uppercase; }
-    .nav-actions { display:flex; align-items:center; justify-content:flex-end; gap:10px; flex-wrap:wrap; }
-    .set-switcher { display:inline-flex; align-items:center; gap:4px; padding:4px; border:1px solid var(--line); border-radius:999px; background:rgba(255,255,255,.055); }
-    .set-link,.nav-pill { min-height:36px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; padding:0 13px; color:var(--muted); font-size:.82rem; font-weight:840; }
-    .set-link:hover,.set-link.active { color:#111; background:var(--acid); }
-    .nav-pill { border:1px solid var(--line); background:rgba(255,255,255,.06); }
-    .hero { padding:clamp(40px,6vw,78px) 0 24px; display:grid; grid-template-columns:minmax(0,.9fr) minmax(280px,.38fr); gap:clamp(26px,5vw,64px); align-items:end; }
-    .kicker { color:var(--acid); font-size:.76rem; font-weight:840; letter-spacing:.12em; text-transform:uppercase; }
-    h1 { max-width:840px; margin:12px 0 0; font-size:clamp(42px,6.8vw,88px); line-height:.94; letter-spacing:-.06em; }
-    .hero p { max-width:720px; margin:20px 0 0; color:var(--muted); font-size:clamp(1rem,1.5vw,1.2rem); line-height:1.45; }
-    .notice { border:1px solid rgba(255,196,107,.3); border-radius:16px; padding:16px; color:rgba(255,244,224,.84); background:linear-gradient(135deg,rgba(255,196,107,.13),transparent 62%),rgba(255,255,255,.045); }
-    .notice strong { display:block; margin-bottom:6px; color:var(--warn); letter-spacing:.03em; text-transform:uppercase; font-size:.78rem; }
-    .controls { display:flex; flex-wrap:wrap; gap:8px; padding:14px 0 24px; }
-    .filter { min-height:42px; border:1px solid var(--line); border-radius:999px; padding:0 15px; background:rgba(255,255,255,.06); color:var(--muted); font-weight:780; }
-    .filter:hover,.filter.active { color:#111; background:var(--acid); border-color:rgba(208,241,0,.8); }
-    .viewer { display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,410px); gap:18px; align-items:start; padding-bottom:70px; }
-    .stage { border:1px solid var(--line); border-radius:24px; overflow:hidden; background:#050505; box-shadow:0 30px 90px rgba(0,0,0,.45); }
-    .stage-top { min-height:78px; display:flex; justify-content:space-between; align-items:center; gap:14px; padding:17px 18px; border-bottom:1px solid var(--line); background:rgba(255,255,255,.055); }
-    .stage-top h2 { margin:0; font-size:clamp(1.35rem,2.6vw,2.3rem); letter-spacing:-.045em; }
-    .stage-top p { margin:5px 0 0; color:var(--dim); }
-    .badge { min-width:max-content; border:1px solid rgba(208,241,0,.28); border-radius:999px; padding:10px 13px; color:var(--acid); background:rgba(208,241,0,.08); font-size:.82rem; font-weight:840; }
-    .image-wrap { position:relative; min-height:72vh; display:grid; place-items:center; padding:18px; background:radial-gradient(circle at 72% 10%,rgba(145,162,255,.12),transparent 22rem),#030303; }
-    .render { display:block; max-width:min(520px,100%); width:auto; max-height:78vh; border-radius:12px; box-shadow:0 28px 80px rgba(0,0,0,.55); background:#111; }
-    .arrow { position:absolute; top:50%; transform:translateY(-50%); width:52px; height:52px; border-radius:50%; border:1px solid rgba(255,255,255,.22); color:var(--paper); background:rgba(0,0,0,.52); backdrop-filter:blur(16px); font-size:28px; }
-    .arrow.prev { left:18px; } .arrow.next { right:18px; }
+    .shell { width:min(1500px,calc(100vw - 34px)); margin:0 auto; }
+    header { position:sticky; top:0; z-index:5; background:rgba(7,8,9,.86); backdrop-filter:blur(20px); border-bottom:1px solid var(--line); }
+    .nav { min-height:74px; display:flex; align-items:center; justify-content:space-between; gap:16px; }
+    .brand { display:flex; align-items:center; gap:12px; }
+    .brand img { width:42px; height:42px; object-fit:contain; border-radius:10px; border:1px solid var(--line); }
+    .brand strong { display:block; font-size:1.05rem; }
+    .brand span span { display:block; color:var(--muted); font-size:.72rem; letter-spacing:.1em; text-transform:uppercase; }
+    .nav-actions,.tabs,.filters { display:flex; gap:8px; flex-wrap:wrap; align-items:center; }
+    .pill,.tab,.filter { min-height:38px; border:1px solid var(--line); border-radius:999px; padding:0 14px; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06); color:var(--muted); font-weight:830; }
+    .tab.active,.filter.active,.pill:hover,.tab:hover,.filter:hover { background:var(--acid); color:#101010; border-color:var(--acid); }
+    .hero { padding:42px 0 22px; display:grid; grid-template-columns:minmax(0,1fr) minmax(280px,410px); gap:24px; align-items:end; }
+    .kicker { color:var(--acid); font-weight:880; font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; }
+    h1 { margin:10px 0 0; max-width:900px; font-size:clamp(38px,6vw,82px); line-height:.95; letter-spacing:-.055em; }
+    .hero p { max-width:760px; margin:18px 0 0; color:var(--muted); font-size:1.08rem; line-height:1.45; }
+    .notice { border:1px solid rgba(255,196,107,.34); border-radius:16px; padding:16px; background:linear-gradient(135deg,rgba(255,196,107,.12),transparent 64%),rgba(255,255,255,.045); color:rgba(255,245,226,.88); }
+    .notice strong { display:block; margin-bottom:6px; color:var(--warn); font-size:.78rem; letter-spacing:.08em; text-transform:uppercase; }
+    .filters { padding:12px 0 24px; }
+    .viewer { display:grid; grid-template-columns:minmax(0,1fr) minmax(300px,420px); gap:18px; align-items:start; padding-bottom:70px; }
+    .stage,.panel { border:1px solid var(--line); border-radius:22px; background:linear-gradient(135deg,rgba(255,255,255,.07),transparent 62%),rgba(255,255,255,.035); overflow:hidden; }
+    .stage-top { min-height:76px; padding:16px 18px; display:flex; gap:14px; align-items:center; justify-content:space-between; border-bottom:1px solid var(--line); }
+    .stage h2 { margin:0; font-size:clamp(1.35rem,2.5vw,2.35rem); letter-spacing:-.045em; }
+    .stage p { margin:5px 0 0; color:var(--muted); }
+    .counter { border:1px solid rgba(208,241,0,.34); border-radius:999px; padding:10px 14px; color:var(--acid); background:rgba(208,241,0,.08); font-weight:880; }
+    .image-wrap { position:relative; min-height:72vh; display:grid; place-items:center; padding:18px; background:#030303; }
+    .render { max-width:min(560px,100%); max-height:78vh; border-radius:12px; box-shadow:0 24px 80px rgba(0,0,0,.6); background:#111; }
+    .arrow { position:absolute; top:50%; transform:translateY(-50%); width:52px; height:52px; border-radius:50%; border:1px solid rgba(255,255,255,.25); background:rgba(0,0,0,.56); color:var(--text); font-size:28px; }
+    .prev { left:18px; } .next { right:18px; }
     aside { display:grid; gap:14px; }
-    .panel { border:1px solid var(--line); border-radius:18px; background:linear-gradient(135deg,rgba(255,255,255,.08),transparent 62%),rgba(255,255,255,.045); overflow:hidden; }
-    .panel h3 { margin:0; padding:16px; border-bottom:1px solid var(--line); font-size:.8rem; color:var(--dim); letter-spacing:.12em; text-transform:uppercase; }
-    .shot-list { display:grid; padding:8px; gap:8px; }
-    .shot-btn { width:100%; min-height:64px; display:grid; gap:4px; text-align:left; border:1px solid transparent; border-radius:12px; padding:10px 12px; color:var(--muted); background:transparent; }
-    .shot-btn:hover,.shot-btn.active { color:var(--paper); border-color:rgba(208,241,0,.28); background:rgba(208,241,0,.08); }
-    .shot-btn strong { font-size:.95rem; } .shot-btn span { color:var(--dim); font-size:.8rem; }
-    .reference img { display:block; width:100%; height:auto; background:#050505; }
+    .panel h3 { margin:0; padding:15px 16px; color:var(--muted); font-size:.78rem; letter-spacing:.12em; text-transform:uppercase; border-bottom:1px solid var(--line); }
+    .shot-list { max-height:46vh; overflow:auto; display:grid; gap:8px; padding:8px; }
+    .shot { min-height:62px; display:grid; gap:4px; width:100%; text-align:left; border:1px solid transparent; border-radius:12px; padding:10px 12px; color:var(--muted); background:transparent; }
+    .shot.active,.shot:hover { color:var(--text); border-color:rgba(208,241,0,.3); background:rgba(208,241,0,.08); }
+    .shot strong { font-size:.95rem; }
+    .shot span { color:var(--muted); font-size:.78rem; }
+    .reference img { width:100%; display:block; background:#050505; }
     .links { display:grid; gap:8px; padding:12px; }
-    .links a { min-height:44px; display:inline-flex; align-items:center; justify-content:center; border-radius:999px; background:var(--paper); color:#111; font-weight:820; }
+    .links a { min-height:42px; display:flex; align-items:center; justify-content:center; border-radius:999px; background:var(--text); color:#111; font-weight:850; }
     @media (max-width:1000px) { .hero,.viewer { grid-template-columns:1fr; } .image-wrap { min-height:62vh; } }
-    @media (max-width:680px) { .shell { width:min(100% - 28px,1480px); } .nav { align-items:flex-start; flex-direction:column; padding:16px 0; } .nav-actions { width:100%; justify-content:flex-start; } .set-switcher { width:100%; justify-content:space-between; } .set-link { flex:1; } .stage-top { align-items:flex-start; flex-direction:column; } .arrow { width:44px; height:44px; } .arrow.prev { left:8px; } .arrow.next { right:8px; } .image-wrap { padding:12px; } }
+    @media (max-width:680px) { .shell { width:min(100% - 26px,1500px); } .nav { align-items:flex-start; flex-direction:column; padding:14px 0; } .stage-top { align-items:flex-start; flex-direction:column; } .arrow { width:44px; height:44px; } .prev { left:8px; } .next { right:8px; } }
   </style>
 </head>
 <body>
@@ -63,16 +58,16 @@
     <div class="shell nav">
       <a class="brand" href="/">
         <img src="/Netframe-logo.png.png" alt="NextFrame">
-        <span><strong>NextFrame</strong><em>AI growth studio</em></span>
+        <span><strong>NextFrame</strong><span>AI growth studio</span></span>
       </a>
       <div class="nav-actions">
-        <nav class="set-switcher" aria-label="Rolled back render set selector">
-          <a class="set-link" href="/royal-suites-set1/">Set 1</a>
-          <a class="set-link" href="/royal-suites-set2/">Set 2</a>
-          <a class="set-link" href="/royal-suites-set3/">Set 3</a>
-          <a class="set-link active" href="/royal-suites-new-perspectives/">New</a>
+        <nav class="tabs" aria-label="Viewer selector">
+          <a class="tab" href="/royal-suites-set1/">Set 1</a>
+          <a class="tab" href="/royal-suites-set2/">Set 2</a>
+          <a class="tab" href="/royal-suites-set3/">Set 3</a>
+          <a class="tab active" href="/royal-suites-new-perspectives/">New</a>
         </nav>
-        <a class="nav-pill" href="/royal-suites/">All versions</a>
+        <a class="pill" href="/royal-suites/">All versions</a>
       </div>
     </div>
   </header>
@@ -81,36 +76,36 @@
     <section class="hero">
       <div>
         <div class="kicker">Royal Suites internal QA</div>
-        <h1>New generated perspective candidates</h1>
-        <p>This page is intentionally separate from the rolled-back client viewers. Use it to inspect the newer generated shots against their cropped spatial reference before anything is promoted back to the public sets.</p>
+        <h1>Full new generated perspective inventory</h1>
+        <p>This page is separate from the rolled-back viewers. It loads every generated perspective row from Set 1, Set 2, and Set 3 so nothing is hidden while we keep judging and replacing inaccurate shots.</p>
       </div>
       <div class="notice">
-        <strong>Not the client-approved viewer</strong>
-        The existing Set 1, Set 2, and Set 3 links are preserved above. Inaccurate candidates have been removed from this review page until they are regenerated from the cropped source.
+        <strong>Review only</strong>
+        These are not client-approved. Some images are known to be inaccurate and need regeneration from the cropped plan references.
       </div>
     </section>
 
-    <div class="controls" id="filters"></div>
+    <div class="filters" id="filters"></div>
 
     <section class="viewer">
       <article class="stage">
         <div class="stage-top">
           <div>
-            <h2 id="title"></h2>
-            <p id="meta"></p>
+            <h2 id="title">Loading</h2>
+            <p id="meta">Preparing inventory</p>
           </div>
-          <div class="badge" id="counter"></div>
+          <div class="counter" id="counter">0 / 0</div>
         </div>
         <div class="image-wrap">
-          <button class="arrow prev" id="prev" aria-label="Previous image">‹</button>
-          <img class="render" id="render" alt="Royal Suites generated perspective candidate">
-          <button class="arrow next" id="next" aria-label="Next image">›</button>
+          <button class="arrow prev" id="prev" aria-label="Previous image">&lsaquo;</button>
+          <img class="render" id="render" alt="Royal Suites generated perspective">
+          <button class="arrow next" id="next" aria-label="Next image">&rsaquo;</button>
         </div>
       </article>
 
       <aside>
         <section class="panel">
-          <h3>Candidate Shots</h3>
+          <h3>Generated Shots</h3>
           <div class="shot-list" id="shotList"></div>
         </section>
         <section class="panel reference">
@@ -130,30 +125,87 @@
   </main>
 
   <script>
-    const shots = [
-      {
-        set:"Set 3", unit:"S1", shot:"Kitchen / Pantry", status:"approved local candidate",
-        note:"Fixed to show the sofa/living zone beyond the pantry, not the bed.",
-        render:"set3/01_S1_type_s1_suite/03_kitchen_pantry_wide_view/render_9x16.png",
-        reference:"set3/01_S1_type_s1_suite/03_kitchen_pantry_wide_view/reference_card.png"
-      }
+    const sources = [
+      { set:"Set 1", route:"../royal-suites-set1/", queue:"../royal-suites-set1/generation_queue_set1_v2.csv" },
+      { set:"Set 2", route:"../royal-suites-set2/", queue:"../royal-suites-set2/generation_queue_set2_v2.csv" },
+      { set:"Set 3", route:"../royal-suites-set3/", queue:"../royal-suites-set3/generation_queue_set3_v2.csv" }
     ];
-
-    const filters = ["All", ...Array.from(new Set(shots.map(s => `${s.set} ${s.unit}`)))];
-    let activeFilter = "All";
-    let activeIndex = 0;
-
+    const hiddenJobs = new Set(["01_2d_plan_to_isometric", "06_split_blueprint_render", "07_living_miniature_diorama"]);
     const $ = id => document.getElementById(id);
+    let shots = [], filters = ["All"], activeFilter = "All", activeIndex = 0;
+
+    function parseCsv(text) {
+      const rows = [];
+      let row = [], cell = "", quoted = false;
+      for (let i = 0; i < text.length; i++) {
+        const ch = text[i], next = text[i + 1];
+        if (quoted && ch === '"' && next === '"') { cell += '"'; i++; continue; }
+        if (ch === '"') { quoted = !quoted; continue; }
+        if (!quoted && ch === ",") { row.push(cell); cell = ""; continue; }
+        if (!quoted && (ch === "\n" || ch === "\r")) {
+          if (ch === "\r" && next === "\n") i++;
+          row.push(cell);
+          if (row.some(Boolean)) rows.push(row);
+          row = [];
+          cell = "";
+          continue;
+        }
+        cell += ch;
+      }
+      if (cell || row.length) { row.push(cell); rows.push(row); }
+      const headers = rows.shift().map(header => header.replace(/^\uFEFF/, "").trim());
+      return rows.map(values => Object.fromEntries(headers.map((h, i) => [h, values[i] || ""])));
+    }
+
+    function localPath(winPath) {
+      if (!winPath) return "";
+      const normalized = String(winPath).replace(/\\/g, "/");
+      const markers = ["MODERN_SET_3/", "CURRENT_ANTIGRAVITY_PACKAGE/", "CINEMATIC_SET_2/"];
+      for (const marker of markers) {
+        const idx = normalized.lastIndexOf(marker);
+        if (idx >= 0) return normalized.slice(idx + marker.length);
+      }
+      return normalized.split("/").slice(-3).join("/");
+    }
+
+    function referencePath(row, renderPath) {
+      const explicit = localPath(row.referenceFile || row.sourceFloorPlan || row.sourceImage || "");
+      if (explicit && !explicit.endsWith("00_source_floor_plan.jpg")) return explicit;
+      return renderPath.replace(/render_9x16\.png$/i, "reference_card.png");
+    }
+
+    async function loadShots() {
+      const loaded = [];
+      for (const source of sources) {
+        const csv = await fetch(`${source.queue}?v=${Date.now()}`, { cache:"reload" }).then(response => response.text());
+        parseCsv(csv)
+          .filter(row => row.targetFile && !hiddenJobs.has(row.jobId || ""))
+          .forEach(row => {
+            const render = localPath(row.targetFile);
+            loaded.push({
+              set: source.set,
+              unit: row.unitCode || "Unit",
+              shot: (row.jobTitle || row.jobId || "Render").replace(" - Wide View", ""),
+              status: row.status || "needs review",
+              note: row.dimensions || row.unitName || "Generated perspective",
+              render: `${source.route}${render}`,
+              reference: `${source.route}${referencePath(row, render)}`
+            });
+          });
+      }
+      shots = loaded;
+      filters = ["All", ...Array.from(new Set(shots.map(shot => `${shot.set} ${shot.unit}`)))];
+    }
 
     function filteredShots() {
-      return activeFilter === "All" ? shots : shots.filter(s => `${s.set} ${s.unit}` === activeFilter);
+      return activeFilter === "All" ? shots : shots.filter(shot => `${shot.set} ${shot.unit}` === activeFilter);
     }
 
     function renderFilters() {
       $("filters").innerHTML = filters.map(label => `<button class="filter${label === activeFilter ? " active" : ""}" data-filter="${label}">${label}</button>`).join("");
-      document.querySelectorAll(".filter").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeFilter = btn.dataset.filter;
+      document.querySelectorAll(".filter").forEach(button => {
+        button.addEventListener("click", () => {
+          activeFilter = button.dataset.filter;
           activeIndex = 0;
           renderAll();
         });
@@ -161,15 +213,15 @@
     }
 
     function renderShotList(list) {
-      $("shotList").innerHTML = list.map((s, i) => `
-        <button class="shot-btn${i === activeIndex ? " active" : ""}" data-index="${i}">
-          <strong>${s.set} · ${s.unit} · ${s.shot}</strong>
-          <span>${s.status}</span>
+      $("shotList").innerHTML = list.map((shot, index) => `
+        <button class="shot${index === activeIndex ? " active" : ""}" data-index="${index}">
+          <strong>${shot.set} &middot; ${shot.unit} &middot; ${shot.shot}</strong>
+          <span>${shot.status}</span>
         </button>
       `).join("");
-      document.querySelectorAll(".shot-btn").forEach(btn => {
-        btn.addEventListener("click", () => {
-          activeIndex = Number(btn.dataset.index);
+      document.querySelectorAll(".shot").forEach(button => {
+        button.addEventListener("click", () => {
+          activeIndex = Number(button.dataset.index);
           renderAll(false);
         });
       });
@@ -178,13 +230,18 @@
     function renderAll(updateFilters = true) {
       const list = filteredShots();
       const shot = list[activeIndex] || list[0];
-      if (!shot) return;
+      if (!shot) {
+        $("title").textContent = "No shots loaded";
+        $("meta").textContent = "The queues did not return perspective rows.";
+        $("counter").textContent = "0 / 0";
+        return;
+      }
       if (updateFilters) renderFilters();
       $("title").textContent = `${shot.set} · ${shot.unit} · ${shot.shot}`;
       $("meta").textContent = `${shot.status} | ${shot.note}`;
       $("counter").textContent = `${activeIndex + 1} / ${list.length}`;
-      $("render").src = `${shot.render}?v=20260511-new-perspectives`;
-      $("reference").src = `${shot.reference}?v=20260511-new-perspectives`;
+      $("render").src = `${shot.render}?v=20260511-full-new-inventory`;
+      $("reference").src = `${shot.reference}?v=20260511-full-new-inventory`;
       renderShotList(list);
     }
 
@@ -203,7 +260,11 @@
       if (event.key === "ArrowRight") $("next").click();
     });
 
-    renderAll();
+    loadShots().then(() => renderAll()).catch(error => {
+      $("title").textContent = "Could not load shots";
+      $("meta").textContent = error.message || "Queue loading failed.";
+      $("counter").textContent = "0 / 0";
+    });
   </script>
 </body>
 </html>
