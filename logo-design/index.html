@@ -2171,8 +2171,9 @@ function drawSamplePaintLoop(ctx, t, w, h, option) {
   ctx.fillStyle = wash;
   ctx.fillRect(0, 0, w, h);
 
-  drawMeigenStroke(ctx, t, w, h, { color: "cyan", alpha: 0.2, y: 0.66, width: 0.11, phase: 2.3, angle: -0.18, drift: 0.025, speed: 0.0005 });
-  drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.18, count: 22, phase: option.id.length });
+  drawMeigenStroke(ctx, t, w, h, { color: "cyan", alpha: 0.32, y: 0.66, width: 0.13, phase: 2.3, angle: -0.18, drift: 0.04, speed: 0.0007 });
+  drawMeigenStroke(ctx, t * 0.82, w, h, { color: "white", alpha: 0.16, y: 0.5, width: 0.1, phase: 1.35, angle: -0.16, drift: 0.03, speed: 0.0006 });
+  drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.24, count: 28, phase: option.id.length });
 
   ctx.globalCompositeOperation = "source-over";
   const vignette = ctx.createRadialGradient(w * 0.5, h * 0.5, w * 0.22, w * 0.5, h * 0.52, w * 0.7);
