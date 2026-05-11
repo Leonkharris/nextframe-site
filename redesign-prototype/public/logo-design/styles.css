@@ -148,7 +148,7 @@ p,
   width: 100%;
   height: 100%;
   pointer-events: none;
-  mix-blend-mode: screen;
+  mix-blend-mode: normal;
 }
 
 .loop-detail {
@@ -157,10 +157,11 @@ p,
   z-index: 2;
   pointer-events: none;
   mix-blend-mode: screen;
+  opacity: 0.12;
 }
 
 .layer-sparks {
-  opacity: 0.58;
+  opacity: 0.18;
   background:
     radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
     radial-gradient(circle at 24% 72%, rgba(19, 214, 255, 0.95) 0 2px, transparent 3px),
@@ -173,7 +174,7 @@ p,
 }
 
 .layer-dots {
-  opacity: 0.24;
+  opacity: 0.1;
   background:
     radial-gradient(circle, rgba(19, 214, 255, 0.72) 0 1.3px, transparent 1.8px),
     radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 1px, transparent 1.6px);
@@ -183,7 +184,7 @@ p,
 }
 
 .layer-streaks {
-  opacity: 0.48;
+  opacity: 0.08;
   filter: blur(2px) drop-shadow(0 0 16px rgba(19, 214, 255, 0.5));
   background:
     linear-gradient(102deg, transparent 0 24%, rgba(19, 214, 255, 0.18) 29%, transparent 34%),
@@ -193,7 +194,7 @@ p,
 }
 
 .layer-scan {
-  opacity: 0.16;
+  opacity: 0.04;
   mix-blend-mode: overlay;
   background:
     repeating-linear-gradient(180deg, transparent 0 7px, rgba(255, 255, 255, 0.18) 8px, transparent 9px),
@@ -635,20 +636,117 @@ textarea:focus {
   stroke-linejoin: miter;
 }
 
+.bg-meigen-cyan,
+.thumb-meigen-cyan {
+  background:
+    radial-gradient(ellipse at 14% 76%, rgba(19, 214, 255, 0.72), transparent 34%),
+    linear-gradient(146deg, rgba(19, 214, 255, 0.88) 0 24%, rgba(239, 230, 204, 0.94) 38% 58%, transparent 72%),
+    radial-gradient(ellipse at 92% 62%, rgba(0, 0, 0, 0.72), transparent 34%),
+    linear-gradient(112deg, #05090b 0 34%, #101417 82%, #020303 100%);
+}
+
+.bg-meigen-cyan::before,
+.thumb-meigen-cyan::before {
+  background:
+    radial-gradient(ellipse at 16% 28%, rgba(19, 214, 255, 0.66) 0 18%, transparent 42%),
+    linear-gradient(126deg, transparent 0 18%, rgba(255, 255, 255, 0.34) 36% 49%, transparent 64%);
+  filter: blur(5px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
+}
+
+.bg-meigen-cyan::after,
+.thumb-meigen-cyan::after {
+  background:
+    radial-gradient(circle, rgba(19, 214, 255, 0.42) 0 1.4px, transparent 2.2px),
+    linear-gradient(112deg, transparent 0 38%, rgba(255, 255, 255, 0.24) 44%, transparent 52%);
+  background-size: 18px 18px, auto;
+  mask-image: linear-gradient(90deg, transparent 0 54%, black 66% 100%);
+  opacity: 0.62;
+  mix-blend-mode: screen;
+  animation: dotPulse 6.8s ease-in-out infinite;
+}
+
+.bg-meigen-cream,
+.thumb-meigen-cream {
+  background:
+    radial-gradient(ellipse at 20% 18%, rgba(19, 214, 255, 0.46), transparent 32%),
+    linear-gradient(146deg, rgba(255, 255, 255, 0.74) 0 38%, rgba(239, 230, 204, 0.98) 42% 66%, rgba(19, 214, 255, 0.74) 78% 100%),
+    radial-gradient(ellipse at 94% 78%, rgba(5, 9, 12, 0.62), transparent 36%),
+    var(--cream);
+}
+
+.bg-meigen-cream::before,
+.thumb-meigen-cream::before {
+  background:
+    radial-gradient(ellipse at 82% 72%, rgba(19, 214, 255, 0.74) 0 18%, transparent 46%),
+    radial-gradient(circle, rgba(3, 6, 7, 0.16) 0 1px, transparent 2px);
+  background-size: auto, 17px 17px;
+  filter: blur(3px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
+}
+
+.bg-meigen-dark,
+.thumb-meigen-dark {
+  background:
+    radial-gradient(ellipse at 74% 36%, rgba(19, 214, 255, 0.74), transparent 30%),
+    linear-gradient(146deg, transparent 0 36%, rgba(239, 230, 204, 0.82) 52% 74%, rgba(19, 214, 255, 0.72) 88% 100%),
+    radial-gradient(circle, rgba(19, 214, 255, 0.34) 0 1.4px, transparent 2.4px),
+    linear-gradient(110deg, #020405 0 36%, #071015 62%, #020303 100%);
+  background-size: auto, auto, 16px 16px, auto;
+}
+
+.bg-meigen-red,
+.thumb-meigen-red {
+  background:
+    linear-gradient(152deg, rgba(239, 230, 204, 0.96) 0 42%, rgba(19, 214, 255, 0.64) 58% 74%, rgba(3, 6, 7, 0.96) 86% 100%),
+    radial-gradient(ellipse at 38% 48%, rgba(239, 23, 47, 0.46), transparent 34%),
+    linear-gradient(180deg, #f4ead0, #101315 82%, #030304);
+}
+
+.bg-meigen-red::before,
+.thumb-meigen-red::before {
+  background:
+    linear-gradient(154deg, transparent 0 34%, rgba(239, 23, 47, 0.92) 42% 47%, transparent 55%),
+    radial-gradient(ellipse at 66% 42%, rgba(239, 23, 47, 0.34) 0 20%, transparent 42%);
+  filter: blur(3px) drop-shadow(0 0 16px rgba(239, 23, 47, 0.45));
+  animation: wipeSlide 8.8s ease-in-out infinite alternate;
+}
+
+.bg-meigen-halftone,
+.thumb-meigen-halftone {
+  background:
+    radial-gradient(ellipse at 70% 56%, rgba(239, 230, 204, 0.52), transparent 32%),
+    radial-gradient(circle, rgba(19, 214, 255, 0.48) 0 1.5px, transparent 2.8px),
+    linear-gradient(146deg, rgba(19, 214, 255, 0.48) 0 28%, transparent 48%),
+    linear-gradient(135deg, #061018, #020303);
+  background-size: auto, 17px 17px, auto, auto;
+  background-repeat: no-repeat, repeat, no-repeat, no-repeat;
+}
+
+.bg-meigen-white,
+.thumb-meigen-white {
+  background:
+    radial-gradient(ellipse at 82% 82%, rgba(19, 214, 255, 0.42), transparent 28%),
+    radial-gradient(circle, rgba(19, 214, 255, 0.34) 0 1.2px, transparent 2px),
+    linear-gradient(146deg, rgba(255, 255, 255, 0.96) 0 62%, rgba(239, 230, 204, 0.72) 82% 100%);
+  background-size: auto, 18px 18px, auto;
+}
+
 .bg-cyan-ink,
 .thumb-cyan-ink {
   background:
-    radial-gradient(ellipse at 20% 42%, rgba(19, 214, 255, 0.72), transparent 38%),
-    radial-gradient(ellipse at 73% 64%, rgba(239, 230, 204, 0.72), transparent 28%),
-    linear-gradient(100deg, #efe6cc 0 18%, #0a0f12 66%, #020303 100%);
+    radial-gradient(ellipse at 14% 76%, rgba(19, 214, 255, 0.72), transparent 34%),
+    linear-gradient(146deg, rgba(19, 214, 255, 0.88) 0 24%, rgba(239, 230, 204, 0.94) 38% 58%, transparent 72%),
+    radial-gradient(ellipse at 92% 62%, rgba(0, 0, 0, 0.72), transparent 34%),
+    linear-gradient(112deg, #05090b 0 34%, #101417 82%, #020303 100%);
 }
 
 .bg-cyan-ink::before,
 .thumb-cyan-ink::before {
   background:
-    radial-gradient(ellipse at 18% 37%, rgba(19, 214, 255, 0.92) 0 22%, transparent 43%),
-    linear-gradient(104deg, transparent 0 34%, rgba(19, 214, 255, 0.54) 37% 52%, transparent 58%);
-  filter: blur(8px);
+    radial-gradient(ellipse at 16% 28%, rgba(19, 214, 255, 0.66) 0 18%, transparent 42%),
+    linear-gradient(126deg, transparent 0 18%, rgba(255, 255, 255, 0.34) 36% 49%, transparent 64%);
+  filter: blur(5px);
   animation: wipeSlide 10s ease-in-out infinite alternate;
 }
 
@@ -679,34 +777,36 @@ textarea:focus {
 .bg-cream-wipe,
 .thumb-cream-wipe {
   background:
-    radial-gradient(ellipse at 24% 33%, rgba(19, 214, 255, 0.72), transparent 34%),
-    radial-gradient(ellipse at 78% 68%, rgba(5, 9, 12, 0.62), transparent 32%),
+    radial-gradient(ellipse at 20% 18%, rgba(19, 214, 255, 0.46), transparent 32%),
+    linear-gradient(146deg, rgba(255, 255, 255, 0.74) 0 38%, rgba(239, 230, 204, 0.98) 42% 66%, rgba(19, 214, 255, 0.74) 78% 100%),
+    radial-gradient(ellipse at 94% 78%, rgba(5, 9, 12, 0.62), transparent 36%),
     var(--cream);
 }
 
 .bg-cream-wipe::before,
 .thumb-cream-wipe::before {
   background:
-    radial-gradient(ellipse at 18% 24%, rgba(19, 214, 255, 0.92) 0 22%, transparent 42%),
-    linear-gradient(100deg, transparent 0 28%, rgba(19, 214, 255, 0.58) 35% 50%, transparent 58%);
-  filter: blur(6px);
+    radial-gradient(ellipse at 82% 72%, rgba(19, 214, 255, 0.74) 0 18%, transparent 46%),
+    radial-gradient(circle, rgba(3, 6, 7, 0.16) 0 1px, transparent 2px);
+  background-size: auto, 17px 17px;
+  filter: blur(3px);
   animation: wipeSlide 10s ease-in-out infinite alternate;
 }
 
 .bg-red-laser,
 .thumb-red-laser {
   background:
+    linear-gradient(152deg, rgba(239, 230, 204, 0.96) 0 42%, rgba(19, 214, 255, 0.64) 58% 74%, rgba(3, 6, 7, 0.96) 86% 100%),
     radial-gradient(ellipse at 38% 48%, rgba(239, 23, 47, 0.46), transparent 34%),
-    radial-gradient(ellipse at 72% 67%, rgba(255, 255, 255, 0.2), transparent 28%),
-    linear-gradient(180deg, #050606, #120608 58%, #030304);
+    linear-gradient(180deg, #f4ead0, #101315 82%, #030304);
 }
 
 .bg-red-laser::before,
 .thumb-red-laser::before {
   background:
-    radial-gradient(ellipse at 30% 45%, rgba(239, 23, 47, 0.74) 0 18%, transparent 38%),
-    linear-gradient(106deg, transparent 0 24%, rgba(239, 23, 47, 0.62) 31% 52%, transparent 60%);
-  filter: blur(7px) drop-shadow(0 0 16px rgba(239, 23, 47, 0.5));
+    linear-gradient(154deg, transparent 0 34%, rgba(239, 23, 47, 0.92) 42% 47%, transparent 55%),
+    radial-gradient(ellipse at 66% 42%, rgba(239, 23, 47, 0.34) 0 20%, transparent 42%);
+  filter: blur(3px) drop-shadow(0 0 16px rgba(239, 23, 47, 0.45));
   animation: wipeSlide 8.8s ease-in-out infinite alternate;
 }
 
@@ -723,10 +823,11 @@ textarea:focus {
 .bg-halftone-pulse,
 .thumb-halftone-pulse {
   background:
-    radial-gradient(circle, rgba(19, 214, 255, 0.34) 0 1px, transparent 2px),
-    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0 1px, transparent 2px),
+    radial-gradient(ellipse at 70% 56%, rgba(239, 230, 204, 0.52), transparent 32%),
+    radial-gradient(circle, rgba(19, 214, 255, 0.48) 0 1.5px, transparent 2.8px),
+    linear-gradient(146deg, rgba(19, 214, 255, 0.48) 0 28%, transparent 48%),
     linear-gradient(135deg, #061018, #020303);
-  background-size: 18px 18px, 46px 46px, auto;
+  background-size: auto, 17px 17px, auto, auto;
   animation: halftonePulse 6s ease-in-out infinite;
 }
 
@@ -944,6 +1045,134 @@ textarea:focus {
   to {
     background-position: 90px 80px, -110px 100px, 150px -120px, -170px -140px, 0 0;
   }
+}
+
+/* Preserve the original loop backgrounds as their own selectable set. */
+.bg-cyan-ink,
+.thumb-cyan-ink {
+  background:
+    radial-gradient(ellipse at 20% 42%, rgba(19, 214, 255, 0.72), transparent 38%),
+    radial-gradient(ellipse at 73% 64%, rgba(239, 230, 204, 0.72), transparent 28%),
+    linear-gradient(100deg, #efe6cc 0 18%, #0a0f12 66%, #020303 100%);
+}
+
+.bg-cyan-ink::before,
+.thumb-cyan-ink::before {
+  background:
+    radial-gradient(ellipse at 18% 37%, rgba(19, 214, 255, 0.92) 0 22%, transparent 43%),
+    linear-gradient(104deg, transparent 0 34%, rgba(19, 214, 255, 0.54) 37% 52%, transparent 58%);
+  filter: blur(8px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
+}
+
+.bg-cyan-ink::after,
+.thumb-cyan-ink::after {
+  background:
+    radial-gradient(circle, rgba(19, 214, 255, 0.42) 0 1.4px, transparent 2.2px),
+    linear-gradient(112deg, transparent 0 38%, rgba(255, 255, 255, 0.24) 44%, transparent 52%);
+  background-size: 18px 18px, auto;
+  mask-image: linear-gradient(90deg, transparent 0 54%, black 66% 100%);
+  opacity: 0.62;
+  mix-blend-mode: screen;
+  animation: dotPulse 6.8s ease-in-out infinite;
+}
+
+.bg-cream-wipe,
+.thumb-cream-wipe {
+  background:
+    radial-gradient(ellipse at 24% 33%, rgba(19, 214, 255, 0.72), transparent 34%),
+    radial-gradient(ellipse at 78% 68%, rgba(5, 9, 12, 0.62), transparent 32%),
+    var(--cream);
+}
+
+.bg-cream-wipe::before,
+.thumb-cream-wipe::before {
+  background:
+    radial-gradient(ellipse at 18% 24%, rgba(19, 214, 255, 0.92) 0 22%, transparent 42%),
+    linear-gradient(100deg, transparent 0 28%, rgba(19, 214, 255, 0.58) 35% 50%, transparent 58%);
+  filter: blur(6px);
+  animation: wipeSlide 10s ease-in-out infinite alternate;
+}
+
+.bg-red-laser,
+.thumb-red-laser {
+  background:
+    radial-gradient(ellipse at 38% 48%, rgba(239, 23, 47, 0.46), transparent 34%),
+    radial-gradient(ellipse at 72% 67%, rgba(255, 255, 255, 0.2), transparent 28%),
+    linear-gradient(180deg, #050606, #120608 58%, #030304);
+}
+
+.bg-red-laser::before,
+.thumb-red-laser::before {
+  background:
+    radial-gradient(ellipse at 30% 45%, rgba(239, 23, 47, 0.74) 0 18%, transparent 38%),
+    linear-gradient(106deg, transparent 0 24%, rgba(239, 23, 47, 0.62) 31% 52%, transparent 60%);
+  filter: blur(7px) drop-shadow(0 0 16px rgba(239, 23, 47, 0.5));
+  animation: wipeSlide 8.8s ease-in-out infinite alternate;
+}
+
+.bg-red-laser::after,
+.thumb-red-laser::after {
+  background:
+    radial-gradient(circle, rgba(239, 23, 47, 0.32) 0 1.5px, transparent 2.4px);
+  background-size: 18px 18px;
+  mask-image: linear-gradient(90deg, transparent 0 55%, black 66% 100%);
+  opacity: 0.48;
+  animation: redPulse 4.6s ease-in-out infinite alternate;
+}
+
+.bg-halftone-pulse,
+.thumb-halftone-pulse {
+  background:
+    radial-gradient(circle, rgba(19, 214, 255, 0.34) 0 1px, transparent 2px),
+    radial-gradient(circle, rgba(255, 255, 255, 0.18) 0 1px, transparent 2px),
+    linear-gradient(135deg, #061018, #020303);
+  background-size: 18px 18px, 46px 46px, auto;
+  animation: halftonePulse 6s ease-in-out infinite;
+}
+
+.stage.bg-cyan-ink .layer-sparks,
+.stage.bg-cream-wipe .layer-sparks,
+.stage.bg-red-laser .layer-sparks,
+.stage.bg-smoke-sweep .layer-sparks,
+.stage.bg-white-flash .layer-sparks,
+.stage.bg-halftone-pulse .layer-sparks,
+.stage.bg-particle-field .layer-sparks,
+.stage.bg-signal-tunnel .layer-sparks {
+  opacity: 0.58;
+}
+
+.stage.bg-cyan-ink .layer-dots,
+.stage.bg-cream-wipe .layer-dots,
+.stage.bg-red-laser .layer-dots,
+.stage.bg-smoke-sweep .layer-dots,
+.stage.bg-white-flash .layer-dots,
+.stage.bg-halftone-pulse .layer-dots,
+.stage.bg-particle-field .layer-dots,
+.stage.bg-signal-tunnel .layer-dots {
+  opacity: 0.24;
+}
+
+.stage.bg-cyan-ink .layer-streaks,
+.stage.bg-cream-wipe .layer-streaks,
+.stage.bg-red-laser .layer-streaks,
+.stage.bg-smoke-sweep .layer-streaks,
+.stage.bg-white-flash .layer-streaks,
+.stage.bg-halftone-pulse .layer-streaks,
+.stage.bg-particle-field .layer-streaks,
+.stage.bg-signal-tunnel .layer-streaks {
+  opacity: 0.48;
+}
+
+.stage.bg-cyan-ink .layer-scan,
+.stage.bg-cream-wipe .layer-scan,
+.stage.bg-red-laser .layer-scan,
+.stage.bg-smoke-sweep .layer-scan,
+.stage.bg-white-flash .layer-scan,
+.stage.bg-halftone-pulse .layer-scan,
+.stage.bg-particle-field .layer-scan,
+.stage.bg-signal-tunnel .layer-scan {
+  opacity: 0.16;
 }
 
 @keyframes wipeSlide {

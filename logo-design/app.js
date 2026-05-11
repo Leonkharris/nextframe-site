@@ -45,6 +45,12 @@ const markOptions = [
 ];
 
 const backgroundOptions = [
+  { id: "meigen-cyan", name: "Liquid Paint 01", className: "bg-meigen-cyan", thumb: "thumb-meigen-cyan" },
+  { id: "meigen-cream", name: "Liquid Paint 02", className: "bg-meigen-cream", thumb: "thumb-meigen-cream" },
+  { id: "meigen-dark", name: "Liquid Paint 03", className: "bg-meigen-dark", thumb: "thumb-meigen-dark" },
+  { id: "meigen-red", name: "Liquid Paint 04", className: "bg-meigen-red", thumb: "thumb-meigen-red" },
+  { id: "meigen-halftone", name: "Liquid Paint 05", className: "bg-meigen-halftone", thumb: "thumb-meigen-halftone" },
+  { id: "meigen-white", name: "Liquid Paint 06", className: "bg-meigen-white", thumb: "thumb-meigen-white" },
   { id: "cyan-ink", name: "Liquid Cyan Pour", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
   { id: "cream-wipe", name: "Cream Liquid Wash", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
   { id: "stage-burst", name: "Blue Paint Bloom", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
@@ -62,7 +68,7 @@ const backgroundOptions = [
 const state = {
   markId: "ML01",
   logoId: "A",
-  backgroundId: "cyan-ink",
+  backgroundId: "meigen-cyan",
   animate: true,
   darkLogo: false,
   notes: JSON.parse(localStorage.getItem("manuelLegendNotes") || "{}"),
@@ -380,7 +386,7 @@ function drawClientHalftone(ctx, t, w, h, color = "rgba(19,214,255,0.34)") {
   ctx.globalAlpha = 1;
 }
 
-function drawClientPaintLoop(ctx, t, w, h, variant = "cyan") {
+function drawLegacyPaintLoop(ctx, t, w, h, variant = "cyan") {
   const isDark = variant === "dark" || variant === "red";
   const isRed = variant === "red";
   ctx.save();
@@ -426,42 +432,312 @@ function drawClientPaintLoop(ctx, t, w, h, variant = "cyan") {
   ctx.restore();
 }
 
+function paintRgba(name, alpha) {
+  const colors = {
+    cyan: [19, 214, 255],
+    cream: [239, 230, 204],
+    white: [255, 255, 255],
+    red: [239, 23, 47],
+    black: [3, 6, 7],
+    slate: [9, 16, 19],
+  };
+  const rgb = colors[name] || colors.cyan;
+  return `rgba(${rgb[0]},${rgb[1]},${rgb[2]},${alpha})`;
+}
+
+function hash01(value) {
+  return Math.abs(Math.sin(value * 12.9898 + 78.233) * 43758.5453) % 1;
+}
+
+function drawEdgeHalftone(ctx, t, w, h, options = {}) {
+  const side = options.side || "right";
+  const color = options.color || "cyan";
+  const alpha = options.alpha || 0.34;
+  const gap = options.gap || 17;
+  const from = side === "left" ? -0.02 : side === "both" ? -0.02 : 0.58;
+  const to = side === "left" ? 0.42 : side === "both" ? 1.02 : 1.02;
+
+  ctx.save();
+  for (let y = h * 0.07; y < h * 0.94; y += gap) {
+    for (let x = w * from; x < w * to; x += gap) {
+      const normalizedX = x / w;
+      const normalizedY = y / h;
+      const inCenter = Math.abs(normalizedX - 0.5) < 0.2 && Math.abs(normalizedY - 0.5) < 0.26;
+      if (inCenter) continue;
+
+      const leftFade = side === "left" || side === "both" ? Math.max(0, 1 - normalizedX / 0.42) : 0;
+      const rightFade = side === "right" || side === "both" ? Math.max(0, (normalizedX - 0.58) / 0.42) : 0;
+      const fade = Math.max(leftFade, rightFade);
+      const pulse = 0.6 + Math.sin(t * 0.0013 + x * 0.019 + y * 0.013) * 0.4;
+      const radius = 1.15 + fade * 2.1 + pulse * 0.7;
+      ctx.globalAlpha = alpha * fade * (0.42 + pulse * 0.58);
+      ctx.fillStyle = paintRgba(color, 1);
+      ctx.beginPath();
+      ctx.arc(x + Math.sin(t * 0.00045 + y * 0.02) * 5, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawPaintMass(ctx, w, h, color, alpha, points, blur = 0, shadow = color) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = color;
+  ctx.shadowColor = shadow;
+  ctx.shadowBlur = 22;
+  if (blur) ctx.filter = `blur(${blur}px)`;
+  ctx.beginPath();
+  ctx.moveTo(points[0][0] * w, points[0][1] * h);
+  for (let i = 1; i < points.length; i += 1) {
+    const point = points[i];
+    if (point.length === 6) {
+      ctx.bezierCurveTo(point[0] * w, point[1] * h, point[2] * w, point[3] * h, point[4] * w, point[5] * h);
+    } else {
+      ctx.lineTo(point[0] * w, point[1] * h);
+    }
+  }
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawMeigenStroke(ctx, t, w, h, options = {}) {
+  const color = options.color || "cyan";
+  const alpha = options.alpha || 0.62;
+  const phase = options.phase || 0;
+  const y = options.y ?? 0.5;
+  const width = options.width || 0.2;
+  const angle = options.angle || -0.18;
+  const wave = Math.sin(t * (options.speed || 0.00042) + phase);
+  const drift = wave * (options.drift || 0.035);
+  const top = y + drift - width * 0.5;
+  const bottom = y + drift + width * 0.5;
+  const lean = angle + Math.cos(t * 0.00038 + phase) * 0.04;
+
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.fillStyle = paintRgba(color, 1);
+  ctx.shadowColor = paintRgba(color, 0.8);
+  ctx.shadowBlur = 28;
+  ctx.beginPath();
+  ctx.moveTo(-w * 0.18, h * (top + lean));
+  ctx.bezierCurveTo(w * 0.18, h * (top - 0.22), w * 0.5, h * (top + 0.12), w * 1.18, h * (top - lean));
+  ctx.lineTo(w * 1.18, h * (bottom - lean + 0.03));
+  ctx.bezierCurveTo(w * 0.72, h * (bottom + 0.24), w * 0.34, h * (bottom - 0.12), -w * 0.18, h * (bottom + lean));
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+}
+
+function drawWetVeins(ctx, t, w, h, options = {}) {
+  const color = options.color || "white";
+  const alpha = options.alpha || 0.16;
+  const phase = options.phase || 0;
+  const count = options.count || 13;
+  ctx.save();
+  ctx.strokeStyle = paintRgba(color, 1);
+  ctx.lineCap = "round";
+  ctx.lineJoin = "round";
+  ctx.shadowColor = paintRgba(color, 0.7);
+  ctx.shadowBlur = 10;
+  for (let i = 0; i < count; i += 1) {
+    const lane = i / Math.max(1, count - 1);
+    const jitter = Math.sin(t * 0.0007 + i * 1.9 + phase) * 0.035;
+    const y = h * (0.2 + lane * 0.56 + jitter);
+    const x = w * (-0.08 + hash01(i + phase) * 0.16);
+    ctx.globalAlpha = alpha * (0.45 + hash01(i * 2.7) * 0.75);
+    ctx.lineWidth = 1.2 + hash01(i * 3.3) * 3.8;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.bezierCurveTo(w * 0.24, y - h * (0.16 + jitter), w * 0.56, y + h * (0.12 - jitter), w * 1.08, y - h * 0.12);
+    ctx.stroke();
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawPaintSpatter(ctx, t, w, h, options = {}) {
+  const color = options.color || "cyan";
+  const alpha = options.alpha || 0.34;
+  const side = options.side || "right";
+  const count = options.count || 42;
+  const phase = options.phase || 0;
+
+  ctx.save();
+  ctx.fillStyle = paintRgba(color, 1);
+  ctx.shadowColor = paintRgba(color, 0.72);
+  ctx.shadowBlur = 7;
+  for (let i = 0; i < count; i += 1) {
+    const seed = i + phase * 43;
+    const edge = side === "left" ? 0.08 + hash01(seed) * 0.22 : side === "center" ? 0.28 + hash01(seed) * 0.48 : 0.63 + hash01(seed) * 0.32;
+    const band = side === "left" ? 0.15 + hash01(seed * 1.4) * 0.7 : side === "center" ? 0.16 + hash01(seed * 1.4) * 0.66 : 0.12 + hash01(seed * 1.4) * 0.76;
+    const x = w * edge + Math.sin(t * 0.0007 + seed) * 9;
+    const y = h * band + Math.cos(t * 0.00062 + seed) * 8;
+    const inCenter = Math.abs(x / w - 0.5) < 0.2 && Math.abs(y / h - 0.5) < 0.24;
+    if (inCenter) continue;
+    const radius = 1.2 + hash01(seed * 2.2) * 6.6;
+    ctx.globalAlpha = alpha * (0.22 + hash01(seed * 5.1) * 0.78);
+    ctx.beginPath();
+    ctx.ellipse(x, y, radius * (0.75 + hash01(seed * 2.8) * 0.6), radius, hash01(seed * 4.8) * Math.PI, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawLogoSafeZone(ctx, w, h, variant) {
+  const darkCenter = ["cream", "red", "white"].includes(variant);
+  ctx.save();
+  const glow = ctx.createRadialGradient(w * 0.5, h * 0.53, w * 0.04, w * 0.5, h * 0.53, w * 0.33);
+  if (darkCenter) {
+    glow.addColorStop(0, "rgba(0,0,0,0.54)");
+    glow.addColorStop(0.42, "rgba(0,0,0,0.34)");
+    glow.addColorStop(1, "rgba(0,0,0,0)");
+  } else {
+    glow.addColorStop(0, "rgba(255,255,255,0.1)");
+    glow.addColorStop(0.45, "rgba(0,0,0,0.12)");
+    glow.addColorStop(1, "rgba(0,0,0,0)");
+  }
+  ctx.fillStyle = glow;
+  ctx.fillRect(0, 0, w, h);
+  ctx.restore();
+}
+
+function drawMeigenPaintLoop(ctx, t, w, h, variant = "cyan") {
+  const flow = Math.sin(t * 0.00042);
+  const flowB = Math.cos(t * 0.00036 + 1.2);
+  const isDark = ["dark", "halftone", "signal"].includes(variant);
+
+  ctx.save();
+  ctx.globalCompositeOperation = "source-over";
+  const base = ctx.createLinearGradient(0, 0, w, h);
+  if (variant === "cream" || variant === "red" || variant === "white") {
+    base.addColorStop(0, "#f8f1da");
+    base.addColorStop(0.58, variant === "white" ? "#ffffff" : "#efe6cc");
+    base.addColorStop(1, variant === "red" ? "#111417" : "#f5efdc");
+  } else if (isDark) {
+    base.addColorStop(0, "#020405");
+    base.addColorStop(0.5, "#071015");
+    base.addColorStop(1, "#020303");
+  } else {
+    base.addColorStop(0, "#05090b");
+    base.addColorStop(0.46, "#071015");
+    base.addColorStop(0.86, "#111417");
+    base.addColorStop(1, "#020303");
+  }
+  ctx.fillStyle = base;
+  ctx.fillRect(0, 0, w, h);
+
+  if (variant === "cyan") {
+    drawLiquidBlob(ctx, w * (0.1 + flow * 0.02), h * (0.32 + flowB * 0.02), w * 0.46, h * 0.48, "rgba(19,214,255,ALPHA)", 0.72, -0.28);
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.68, [[-0.16, 0.14], [0.14, -0.04, 0.42, 0.1, 0.66, 0.3], [0.48, 0.5, 0.26, 0.64, -0.08, 0.76], [-0.18, 0.52]], 7, paintRgba("cyan", 0.8));
+    drawMeigenStroke(ctx, t, w, h, { color: "cream", alpha: 0.78, y: 0.28, width: 0.36, phase: 0.7, angle: -0.22, drift: 0.022, speed: 0.00028 });
+    drawPaintMass(ctx, w, h, paintRgba("cream", 1), 0.48, [[0.02, 0.26], [0.28, 0.08, 0.52, 0.18, 0.78, 0.22], [1.1, 0.28], [0.94, 0.42, 0.72, 0.36, 0.5, 0.46], [0.28, 0.58, 0.1, 0.5, -0.08, 0.62]], 9, paintRgba("white", 0.65));
+    drawLiquidBlob(ctx, w * (0.1 + flow * 0.02), h * (0.72 + flowB * 0.04), w * 0.42, h * 0.28, "rgba(19,214,255,ALPHA)", 0.48, -0.32);
+    drawMeigenStroke(ctx, t, w, h, { color: "cyan", alpha: 0.36, y: 0.7, width: 0.2, phase: 2.3, angle: -0.18, drift: 0.018, speed: 0.00036 });
+    drawEdgeHalftone(ctx, t, w, h, { side: "left", color: "cyan", alpha: 0.26, gap: 15 });
+    drawEdgeHalftone(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.22, gap: 17 });
+    drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.42, count: 48 });
+  } else if (variant === "cream") {
+    drawPaintMass(ctx, w, h, paintRgba("cream", 1), 0.82, [[-0.08, 0.1], [0.22, 0.02, 0.58, 0.16, 1.1, -0.02], [1.08, 0.45], [0.68, 0.64, 0.28, 0.58, -0.1, 0.8]], 0, paintRgba("white", 0.55));
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.68, [[0.56, 0.7], [0.72, 0.56, 0.9, 0.48, 1.12, 0.44], [1.1, 1.08], [0.46, 1.08], [0.4, 0.88]], 3, paintRgba("cyan", 0.7));
+    drawLiquidBlob(ctx, w * (0.16 + flow * 0.04), h * 0.18, w * 0.32, h * 0.24, "rgba(19,214,255,ALPHA)", 0.38, -0.35);
+    drawLiquidBlob(ctx, w * 0.88, h * (0.76 + flowB * 0.03), w * 0.28, h * 0.24, "rgba(3,6,7,ALPHA)", 0.46, 0.24);
+    drawEdgeHalftone(ctx, t, w, h, { side: "both", color: "slate", alpha: 0.2, gap: 16 });
+    drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.3, count: 38 });
+  } else if (variant === "dark") {
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.66, [[0.5, -0.08], [0.74, 0.0, 0.96, 0.2, 1.12, 0.16], [1.08, 0.56], [0.82, 0.48, 0.58, 0.62, 0.36, 0.52], [0.24, 0.34]], 2, paintRgba("cyan", 0.9));
+    drawPaintMass(ctx, w, h, paintRgba("cream", 1), 0.74, [[0.56, 0.18], [0.76, 0.22, 0.98, 0.32, 1.08, 0.44], [0.86, 0.74], [0.58, 0.66, 0.38, 0.5, 0.3, 0.4]], 1, paintRgba("white", 0.7));
+    drawLiquidBlob(ctx, w * (0.42 + flow * 0.04), h * (0.53 + flowB * 0.04), w * 0.34, h * 0.3, "rgba(19,214,255,ALPHA)", 0.26, 0.1);
+    drawEdgeHalftone(ctx, t, w, h, { side: "both", color: "cyan", alpha: 0.3, gap: 15 });
+    drawPaintSpatter(ctx, t, w, h, { side: "center", color: "cyan", alpha: 0.28, count: 34 });
+  } else if (variant === "red") {
+    drawPaintMass(ctx, w, h, paintRgba("cream", 1), 0.88, [[-0.08, 0.08], [0.22, 0.0, 0.56, 0.18, 1.1, -0.04], [1.08, 0.28], [0.72, 0.52, 0.36, 0.58, -0.08, 0.72]], 1, paintRgba("white", 0.7));
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.56, [[0.34, 0.68], [0.58, 0.52, 0.82, 0.44, 1.08, 0.36], [1.12, 0.78], [0.62, 0.96], [0.22, 0.9]], 3, paintRgba("cyan", 0.65));
+    drawMeigenStroke(ctx, t, w, h, { color: "red", alpha: 0.86, y: 0.36, width: 0.075, phase: 2.8, angle: -0.12, drift: 0.025 });
+    drawWetVeins(ctx, t, w, h, { color: "red", alpha: 0.13, phase: 4.6, count: 8 });
+    drawEdgeHalftone(ctx, t, w, h, { side: "left", color: "slate", alpha: 0.18, gap: 15 });
+    drawPaintSpatter(ctx, t, w, h, { side: "center", color: "red", alpha: 0.36, count: 28, phase: 3 });
+  } else if (variant === "halftone") {
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.54, [[-0.08, 0.22], [0.18, 0.08, 0.42, 0.2, 0.7, 0.34], [0.52, 0.54, 0.34, 0.72, 0.0, 0.78], [-0.14, 0.58]], 3, paintRgba("cyan", 0.8));
+    drawLiquidBlob(ctx, w * 0.62, h * 0.5, w * 0.38, h * 0.34, "rgba(239,230,204,ALPHA)", 0.48, 0.2);
+    drawEdgeHalftone(ctx, t, w, h, { side: "both", color: "cyan", alpha: 0.4, gap: 13 });
+    drawPaintSpatter(ctx, t, w, h, { side: "right", color: "slate", alpha: 0.25, count: 26 });
+  } else if (variant === "white") {
+    drawPaintMass(ctx, w, h, paintRgba("white", 1), 0.95, [[-0.08, 0.08], [0.28, -0.04, 0.68, 0.1, 1.08, 0.0], [1.08, 0.86], [0.68, 0.94, 0.22, 0.78, -0.1, 0.98]], 0, paintRgba("white", 0.7));
+    drawMeigenStroke(ctx, t, w, h, { color: "white", alpha: 0.36, y: 0.44, width: 0.22, phase: 1.8, angle: -0.08, drift: 0.02 });
+    drawLiquidBlob(ctx, w * 0.86, h * 0.78, w * 0.24, h * 0.22, "rgba(19,214,255,ALPHA)", 0.28, -0.2);
+    drawEdgeHalftone(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.26, gap: 15 });
+    drawPaintSpatter(ctx, t, w, h, { side: "right", color: "cyan", alpha: 0.22, count: 24 });
+  } else {
+    drawPaintMass(ctx, w, h, paintRgba("cyan", 1), 0.6, [[-0.12, 0.24], [0.18, 0.06, 0.52, 0.22, 1.12, 0.12], [1.08, 0.5], [0.62, 0.64, 0.3, 0.68, -0.12, 0.82]], 3, paintRgba("cyan", 0.8));
+    drawEdgeHalftone(ctx, t, w, h, { side: "both", color: "cyan", alpha: 0.28, gap: 15 });
+  }
+
+  ctx.globalCompositeOperation = "screen";
+  drawWetVeins(ctx, t, w, h, { color: variant === "red" ? "red" : "white", alpha: variant === "red" ? 0.11 : 0.16, phase: variant.length, count: 12 });
+  drawMeigenStroke(ctx, t, w, h, { color: variant === "red" ? "red" : "cyan", alpha: variant === "red" ? 0.14 : 0.18, y: 0.66, width: 0.08, phase: 5.2, angle: -0.16, drift: 0.02 });
+  ctx.globalCompositeOperation = "source-over";
+  drawLogoSafeZone(ctx, w, h, variant);
+
+  const vignette = ctx.createRadialGradient(w * 0.5, h * 0.48, w * 0.22, w * 0.5, h * 0.5, w * 0.68);
+  vignette.addColorStop(0, "rgba(0,0,0,0)");
+  vignette.addColorStop(0.72, "rgba(0,0,0,0.1)");
+  vignette.addColorStop(1, "rgba(0,0,0,0.54)");
+  ctx.fillStyle = vignette;
+  ctx.fillRect(0, 0, w, h);
+
+  ctx.restore();
+}
+
 function drawLoopFrame(t) {
   const rect = stage.getBoundingClientRect();
   const w = rect.width;
   const h = rect.height;
   loopCtx.clearRect(0, 0, w, h);
   loopCtx.save();
-  if (state.backgroundId === "cyan-ink") {
-    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
+  const meigenVariants = {
+    "meigen-cyan": "cyan",
+    "meigen-cream": "cream",
+    "meigen-dark": "dark",
+    "meigen-red": "red",
+    "meigen-halftone": "halftone",
+    "meigen-white": "white",
+  };
+  if (meigenVariants[state.backgroundId]) {
+    drawMeigenPaintLoop(loopCtx, t, w, h, meigenVariants[state.backgroundId]);
+  } else if (state.backgroundId === "cyan-ink") {
+    drawLegacyPaintLoop(loopCtx, t, w, h, "cyan");
   } else if (state.backgroundId === "cream-wipe") {
-    drawClientPaintLoop(loopCtx, t, w, h, "cream");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "cream");
   } else if (state.backgroundId === "stage-burst") {
-    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "dark");
   } else if (state.backgroundId === "red-laser") {
-    drawClientPaintLoop(loopCtx, t, w, h, "red");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "red");
   } else if (state.backgroundId === "halftone-pulse") {
-    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "dark");
     drawHalftone(loopCtx, t, w, h);
   } else if (state.backgroundId === "signal-tunnel") {
-    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "dark");
     drawClientHalftone(loopCtx, t, w, h);
   } else if (state.backgroundId === "smoke-sweep") {
-    drawClientPaintLoop(loopCtx, t, w, h, "cream");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "cream");
     drawSmoke(loopCtx, t, w, h);
   } else if (state.backgroundId === "white-flash") {
-    drawClientPaintLoop(loopCtx, t, w, h, "cream");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "cream");
   } else if (state.backgroundId === "particle-field") {
-    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "dark");
     drawParticles(loopCtx, t, w, h, 0.45);
   } else if (state.backgroundId === "blade-storm") {
-    drawClientPaintLoop(loopCtx, t, w, h, "red");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "red");
   } else if (state.backgroundId === "electric-grid") {
-    drawClientPaintLoop(loopCtx, t, w, h, "dark");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "dark");
   } else if (state.backgroundId === "slash-tunnel") {
-    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
+    drawLegacyPaintLoop(loopCtx, t, w, h, "cyan");
   } else {
-    drawClientPaintLoop(loopCtx, t, w, h, "cyan");
+    drawMeigenPaintLoop(loopCtx, t, w, h, "cyan");
   }
   loopCtx.restore();
   requestAnimationFrame(drawLoopFrame);
