@@ -243,6 +243,7 @@ function Hero({ onPlay }) {
         <div className="nav-links">
           <a href="#work">Work</a>
           <a href="#menu">Packages</a>
+          <a href="/logo-design/">Logo Design</a>
           <a href="#system">Growth Engine</a>
           <a href="#pipeline">Pipeline</a>
           <a href="#brief">Brief</a>
@@ -264,6 +265,7 @@ function Hero({ onPlay }) {
       <div className={`mobile-panel ${mobileOpen ? "open" : ""}`} id="mobile-navigation">
         <a href="#work" onClick={closeMobileMenu}>Work</a>
         <a href="#menu" onClick={closeMobileMenu}>Packages</a>
+        <a href="/logo-design/" onClick={closeMobileMenu}>Logo Design</a>
         <a href="#system" onClick={closeMobileMenu}>Growth Engine</a>
         <a href="#pipeline" onClick={closeMobileMenu}>Pipeline</a>
           <a href="#brief" onClick={closeMobileMenu}>Brief</a>
@@ -292,6 +294,11 @@ function Hero({ onPlay }) {
           <div className="service-strip" aria-label="Highlighted services">
             <a href="#custom-music-service" aria-label="Jump to Custom Music service">Custom Music - PHP 5K</a>
             <a href="#website-redesign-service" aria-label="Jump to Website Redesign service">Website Redesign - PHP 5K+</a>
+          </div>
+          <div className="logo-design-strip" aria-label="Logo design selector">
+            <a href="/logo-design/" aria-label="Open the Manuel Legend logo design selector">
+              Logo Design - Manuel Legend Selector <ArrowRight size={16} />
+            </a>
           </div>
         </div>
         <FloatingWindows onPlay={onPlay} />

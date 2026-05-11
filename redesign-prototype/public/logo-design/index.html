@@ -1,0 +1,1082 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Manuel Legend Logo + Loop Selector</title>
+    <style>
+:root {
+  color-scheme: dark;
+  --bg: #080a0c;
+  --panel: #11151a;
+  --panel-2: #171c23;
+  --line: rgba(255, 255, 255, 0.12);
+  --text: #f8f8f2;
+  --muted: #9aa4ad;
+  --cyan: #13d6ff;
+  --red: #ef172f;
+  --cream: #efe6cc;
+  --gold: #f2c35c;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background:
+    radial-gradient(circle at top left, rgba(19, 214, 255, 0.12), transparent 32rem),
+    radial-gradient(circle at bottom right, rgba(239, 23, 47, 0.14), transparent 30rem),
+    var(--bg);
+  color: var(--text);
+  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  letter-spacing: 0;
+}
+
+button,
+textarea {
+  font: inherit;
+}
+
+.app-shell {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 430px;
+  gap: 18px;
+  min-height: 100vh;
+  padding: 18px;
+}
+
+.preview-panel,
+.control-panel {
+  border: 1px solid var(--line);
+  background: rgba(9, 12, 15, 0.88);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.34);
+}
+
+.preview-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 18px;
+}
+
+.control-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+  max-height: calc(100vh - 36px);
+  padding: 18px;
+}
+
+.topbar,
+.section-heading,
+.toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+h1,
+h2,
+p {
+  margin: 0;
+}
+
+h1 {
+  font-size: 24px;
+  line-height: 1;
+  text-transform: uppercase;
+  font-style: italic;
+}
+
+h2 {
+  font-size: 14px;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+p,
+.section-heading span,
+.status-pill {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.status-pill {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+  padding: 9px 12px;
+  text-transform: uppercase;
+}
+
+.stage-wrap {
+  display: grid;
+  place-items: center;
+  flex: 1;
+  min-height: 0;
+}
+
+.stage {
+  position: relative;
+  width: min(100%, calc((100vh - 160px) * 16 / 9));
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #050607;
+  isolation: isolate;
+}
+
+.stage::before,
+.stage::after,
+.bg-thumb::before,
+.bg-thumb::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.stage-vignette {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at center, transparent 0 46%, rgba(0, 0, 0, 0.32) 75%),
+    linear-gradient(90deg, rgba(0, 0, 0, 0.42), transparent 22% 78%, rgba(0, 0, 0, 0.42));
+  z-index: 2;
+}
+
+.logo-lockup {
+  position: absolute;
+  z-index: 5;
+  top: 50%;
+  left: 50%;
+  width: min(50vw, 620px);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: white;
+  filter: drop-shadow(0 18px 18px rgba(0, 0, 0, 0.54));
+}
+
+.logo-lockup.animate {
+  animation: logoPulse 5.8s ease-in-out infinite;
+}
+
+.logo-lockup.dark-mode {
+  color: #060708;
+  filter: drop-shadow(0 12px 14px rgba(255, 255, 255, 0.24));
+}
+
+.logo-mark {
+  display: block;
+  width: 44%;
+  min-width: 170px;
+  max-width: 320px;
+  margin: 0 auto 10px;
+}
+
+.wordmark {
+  position: relative;
+  display: inline-block;
+  font-family: Impact, Haettenschweiler, "Arial Black", Inter, sans-serif;
+  font-size: clamp(48px, 6.3vw, 106px);
+  line-height: 0.78;
+  font-weight: 950;
+  font-style: italic;
+  text-transform: uppercase;
+  transform: skewX(-11deg);
+  text-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.45),
+    0 0 10px rgba(255, 255, 255, 0.22),
+    0 0 28px rgba(19, 214, 255, 0.14);
+}
+
+.wordmark span {
+  display: block;
+  position: relative;
+}
+
+.wordmark span:first-child::before,
+.wordmark span:last-child::after {
+  content: "";
+  position: absolute;
+  width: 16%;
+  height: 18%;
+  background: currentColor;
+  transform: skewX(-23deg);
+}
+
+.wordmark span:first-child::before {
+  left: -12%;
+  bottom: 7%;
+  clip-path: polygon(0 100%, 100% 35%, 88% 100%);
+}
+
+.wordmark span:last-child::after {
+  right: -15%;
+  top: 10%;
+  clip-path: polygon(0 0, 100% 0, 8% 70%);
+}
+
+.handle {
+  margin-top: 13px;
+  font-size: clamp(16px, 1.5vw, 24px);
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  text-transform: none;
+}
+
+.slash {
+  position: absolute;
+  left: -14%;
+  right: -16%;
+  top: 36%;
+  height: 34px;
+  transform: rotate(-16deg);
+  background:
+    linear-gradient(180deg, transparent 0 20%, rgba(3, 5, 7, 0.98) 21% 52%, currentColor 53% 62%, transparent 64%),
+    linear-gradient(90deg, transparent, var(--accent, #13d6ff) 10% 25%, currentColor 26% 58%, var(--accent, #13d6ff) 60% 72%, transparent);
+  clip-path: polygon(0 76%, 35% 37%, 43% 55%, 56% 18%, 62% 32%, 100% 0, 94% 24%, 65% 56%, 57% 42%, 44% 83%, 37% 65%, 6% 100%);
+  filter: drop-shadow(0 0 10px color-mix(in srgb, var(--accent, #13d6ff) 52%, transparent));
+  z-index: 3;
+}
+
+.slash::before,
+.slash::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  clip-path: inherit;
+}
+
+.slash::before {
+  transform: translateY(-8px);
+  background: linear-gradient(90deg, transparent, currentColor 18% 42%, transparent 68%);
+  opacity: 0.72;
+}
+
+.slash::after {
+  transform: translateY(8px);
+  background: linear-gradient(90deg, transparent, var(--accent, #13d6ff) 25% 72%, transparent);
+  opacity: 0.84;
+}
+
+.cut-red,
+.cut-lightning-red {
+  --accent: #ef172f;
+}
+
+.cut-cyan,
+.cut-lightning {
+  --accent: #13d6ff;
+}
+
+.cut-white {
+  --accent: #ffffff;
+}
+
+.cut-double {
+  top: 31%;
+}
+
+.cut-double::before {
+  transform: translateY(-13px);
+  opacity: 0.9;
+}
+
+.cut-double::after {
+  transform: translateY(13px);
+}
+
+.cut-jagged {
+  height: 39px;
+  clip-path: polygon(0 83%, 20% 55%, 28% 70%, 38% 29%, 47% 55%, 55% 13%, 64% 36%, 100% 3%, 94% 27%, 68% 56%, 58% 42%, 49% 93%, 38% 68%, 27% 94%, 19% 72%, 6% 100%);
+}
+
+.cut-glitch {
+  background:
+    linear-gradient(180deg, transparent 0 18%, rgba(3, 5, 7, 1) 19% 54%, currentColor 55% 63%, transparent 64%),
+    repeating-linear-gradient(90deg, transparent 0 24px, var(--accent, #13d6ff) 25px 42px, currentColor 43px 68px);
+}
+
+.cut-glitch::before {
+  transform: translate(-12px, -9px);
+}
+
+.cut-glitch::after {
+  transform: translate(13px, 9px);
+}
+
+.logo-style-b .wordmark,
+.logo-style-f .wordmark,
+.logo-style-j .wordmark,
+.logo-style-n .wordmark,
+.logo-style-r .wordmark {
+  text-shadow:
+    0 3px 0 rgba(0, 0, 0, 0.52),
+    0 0 30px color-mix(in srgb, var(--accent) 42%, transparent);
+}
+
+.logo-style-c .wordmark,
+.logo-style-g .wordmark,
+.logo-style-k .wordmark,
+.logo-style-o .wordmark,
+.logo-style-s .wordmark {
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.52);
+}
+
+.toolbar {
+  flex-wrap: wrap;
+}
+
+.ghost-btn,
+.primary-btn {
+  min-height: 38px;
+  border: 1px solid var(--line);
+  color: var(--text);
+  cursor: pointer;
+  padding: 9px 13px;
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.ghost-btn {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.ghost-btn.is-active,
+.primary-btn {
+  background: var(--text);
+  color: #07090b;
+}
+
+.logo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.logo-card,
+.bg-card {
+  border: 1px solid var(--line);
+  background: var(--panel);
+  color: var(--text);
+  cursor: pointer;
+  padding: 0;
+  text-align: left;
+  overflow: hidden;
+}
+
+.logo-card.is-selected,
+.bg-card.is-selected {
+  border-color: var(--accent, var(--cyan));
+  box-shadow: 0 0 0 1px var(--accent, var(--cyan)), 0 0 26px color-mix(in srgb, var(--accent, var(--cyan)) 24%, transparent);
+}
+
+.mini-logo {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 16 / 9;
+  background:
+    radial-gradient(circle at 50% 45%, color-mix(in srgb, var(--accent, var(--cyan)) 20%, transparent), transparent 46%),
+    linear-gradient(135deg, #060708, #171c22);
+  overflow: hidden;
+}
+
+.mini-logo .logo-lockup {
+  position: static;
+  width: 86%;
+  transform: none;
+}
+
+.mini-logo .logo-mark {
+  width: 42%;
+  min-width: 0;
+  margin-bottom: 3px;
+}
+
+.mini-logo .wordmark {
+  font-size: 20px;
+  line-height: 0.78;
+}
+
+.mini-logo .handle {
+  margin-top: 5px;
+  font-size: 7px;
+}
+
+.mini-logo .slash {
+  left: -16%;
+  right: -18%;
+  top: 34%;
+  height: 11px;
+  filter: drop-shadow(0 0 4px color-mix(in srgb, var(--accent, #13d6ff) 55%, transparent));
+}
+
+.mini-logo .slash::before {
+  transform: translateY(-3px);
+}
+
+.mini-logo .slash::after {
+  transform: translateY(3px);
+}
+
+.mini-logo .wordmark span:first-child::before,
+.mini-logo .wordmark span:last-child::after {
+  height: 15%;
+}
+
+.card-caption,
+.bg-caption {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 7px;
+  padding: 8px;
+  color: var(--muted);
+  font-size: 10px;
+  text-transform: uppercase;
+}
+
+.card-caption strong,
+.bg-caption strong {
+  color: var(--text);
+}
+
+.background-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 9px;
+}
+
+.bg-thumb {
+  position: relative;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background: #050607;
+}
+
+textarea {
+  display: block;
+  width: 100%;
+  min-height: 124px;
+  resize: vertical;
+  border: 1px solid var(--line);
+  background: var(--panel-2);
+  color: var(--text);
+  padding: 12px;
+  outline: none;
+}
+
+textarea:focus {
+  border-color: var(--cyan);
+}
+
+.selection-output {
+  margin-top: 10px;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.04);
+  color: var(--muted);
+  padding: 10px;
+  min-height: 72px;
+  white-space: pre-wrap;
+  font-size: 12px;
+}
+
+.mark-fill {
+  fill: currentColor;
+}
+
+.mark-stroke {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 13;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.mark-accent {
+  fill: var(--accent, var(--cyan));
+}
+
+.mark-accent-stroke {
+  fill: none;
+  stroke: var(--accent, var(--cyan));
+  stroke-width: 9;
+  stroke-linecap: square;
+  stroke-linejoin: miter;
+}
+
+.bg-cyan-ink,
+.thumb-cyan-ink {
+  background:
+    radial-gradient(circle at 15% 20%, rgba(19, 214, 255, 0.48), transparent 21%),
+    radial-gradient(circle at 74% 83%, rgba(19, 214, 255, 0.32), transparent 24%),
+    #06080b;
+}
+
+.bg-cyan-ink::before,
+.thumb-cyan-ink::before {
+  background:
+    radial-gradient(ellipse at 18% 28%, rgba(19, 214, 255, 0.72) 0 12%, transparent 27%),
+    radial-gradient(ellipse at 81% 70%, rgba(239, 230, 204, 0.9) 0 9%, transparent 24%),
+    linear-gradient(118deg, transparent 0 36%, rgba(19, 214, 255, 0.58) 38% 44%, transparent 47% 100%);
+  filter: blur(5px);
+  animation: driftWide 8s ease-in-out infinite alternate;
+}
+
+.bg-particle-field,
+.thumb-particle-field {
+  background:
+    radial-gradient(circle at 22% 16%, #dff9ff 0 1px, transparent 2px),
+    radial-gradient(circle at 42% 42%, #13d6ff 0 1px, transparent 2px),
+    radial-gradient(circle at 76% 30%, #e6fbff 0 2px, transparent 3px),
+    radial-gradient(circle at 62% 78%, #13d6ff 0 1px, transparent 2px),
+    #030507;
+  background-size: 90px 80px, 110px 100px, 150px 120px, 170px 140px, auto;
+  animation: particles 8s linear infinite;
+}
+
+.bg-cream-wipe,
+.thumb-cream-wipe {
+  background: var(--cream);
+}
+
+.bg-cream-wipe::before,
+.thumb-cream-wipe::before {
+  background:
+    radial-gradient(ellipse at 18% 15%, rgba(19, 214, 255, 0.92) 0 18%, transparent 34%),
+    radial-gradient(ellipse at 92% 82%, rgba(5, 9, 12, 0.88) 0 17%, transparent 32%),
+    linear-gradient(100deg, transparent 0 31%, rgba(19, 214, 255, 0.62) 34% 42%, transparent 45%);
+  animation: wipeSlide 9s ease-in-out infinite alternate;
+}
+
+.bg-red-laser,
+.thumb-red-laser {
+  background:
+    radial-gradient(ellipse at 40% 73%, rgba(255, 255, 255, 0.18), transparent 34%),
+    linear-gradient(180deg, #040406, #130507 52%, #030304);
+}
+
+.bg-red-laser::before,
+.thumb-red-laser::before {
+  background:
+    linear-gradient(102deg, transparent 0 44%, rgba(239, 23, 47, 0.95) 45% 46%, transparent 47%),
+    linear-gradient(174deg, transparent 0 60%, rgba(239, 23, 47, 0.85) 61% 62%, transparent 63%);
+  filter: drop-shadow(0 0 16px rgba(239, 23, 47, 0.8));
+  animation: laserSweep 5.8s linear infinite;
+}
+
+.bg-halftone-pulse,
+.thumb-halftone-pulse {
+  background:
+    radial-gradient(circle, rgba(19, 214, 255, 0.34) 0 1px, transparent 2px),
+    linear-gradient(135deg, #061018, #020303);
+  background-size: 18px 18px, auto;
+  animation: halftonePulse 6s ease-in-out infinite;
+}
+
+.bg-signal-tunnel,
+.thumb-signal-tunnel {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 9%, rgba(19, 214, 255, 0.18) 10% 10.5%, transparent 12%),
+    radial-gradient(ellipse at center, rgba(19, 214, 255, 0.26), transparent 60%),
+    #040609;
+}
+
+.bg-signal-tunnel::before,
+.thumb-signal-tunnel::before {
+  background:
+    linear-gradient(180deg, transparent, rgba(255, 255, 255, 0.18), transparent),
+    repeating-linear-gradient(180deg, rgba(255, 255, 255, 0.12) 0 2px, transparent 2px 42px);
+  transform: perspective(500px) rotateX(55deg) scale(1.25);
+  animation: tunnel 4.8s linear infinite;
+}
+
+.bg-smoke-sweep,
+.thumb-smoke-sweep {
+  background:
+    radial-gradient(ellipse at 28% 65%, rgba(255, 255, 255, 0.18), transparent 28%),
+    radial-gradient(ellipse at 72% 30%, rgba(19, 214, 255, 0.2), transparent 28%),
+    #050607;
+}
+
+.bg-smoke-sweep::before,
+.thumb-smoke-sweep::before {
+  background:
+    radial-gradient(ellipse at 20% 50%, rgba(255, 255, 255, 0.36), transparent 26%),
+    linear-gradient(112deg, transparent 20%, rgba(255, 255, 255, 0.18), transparent 76%);
+  filter: blur(13px);
+  animation: smoke 9s ease-in-out infinite alternate;
+}
+
+.bg-white-flash,
+.thumb-white-flash {
+  background:
+    linear-gradient(90deg, #08090a, #0c1116 50%, #08090a);
+}
+
+.bg-white-flash::before,
+.thumb-white-flash::before {
+  background:
+    linear-gradient(100deg, transparent 0 42%, rgba(255, 255, 255, 0.96) 49%, transparent 56%),
+    radial-gradient(circle at 50% 50%, rgba(19, 214, 255, 0.24), transparent 38%);
+  animation: flashReveal 7s ease-in-out infinite;
+}
+
+@keyframes logoPulse {
+  0%,
+  100% {
+    transform: translate(-50%, -50%) scale(1);
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.025);
+  }
+}
+
+@keyframes driftWide {
+  from {
+    transform: translateX(-4%) scale(1.05);
+  }
+  to {
+    transform: translateX(4%) scale(1.1);
+  }
+}
+
+@keyframes particles {
+  from {
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
+  }
+  to {
+    background-position: 90px 80px, -110px 100px, 150px -120px, -170px -140px, 0 0;
+  }
+}
+
+@keyframes wipeSlide {
+  from {
+    transform: translateX(-7%) scale(1.08);
+  }
+  to {
+    transform: translateX(7%) scale(1.1);
+  }
+}
+
+@keyframes laserSweep {
+  from {
+    transform: translateX(-24%);
+  }
+  to {
+    transform: translateX(24%);
+  }
+}
+
+@keyframes halftonePulse {
+  0%,
+  100% {
+    background-size: 18px 18px, auto;
+    filter: brightness(0.95);
+  }
+  50% {
+    background-size: 24px 24px, auto;
+    filter: brightness(1.28);
+  }
+}
+
+@keyframes tunnel {
+  from {
+    background-position: 0 0, 0 0;
+  }
+  to {
+    background-position: 0 0, 0 84px;
+  }
+}
+
+@keyframes smoke {
+  from {
+    transform: translateX(-12%) scale(1.05);
+  }
+  to {
+    transform: translateX(12%) scale(1.14);
+  }
+}
+
+@keyframes flashReveal {
+  0%,
+  100% {
+    transform: translateX(-65%);
+    opacity: 0.15;
+  }
+  45%,
+  55% {
+    transform: translateX(0%);
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1100px) {
+  .app-shell {
+    grid-template-columns: 1fr;
+  }
+
+  .control-panel {
+    max-height: none;
+  }
+
+  .stage {
+    width: 100%;
+  }
+}
+
+@media (max-width: 720px) {
+  .app-shell {
+    padding: 10px;
+  }
+
+  .preview-panel,
+  .control-panel {
+    padding: 12px;
+  }
+
+  .topbar,
+  .toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .logo-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .background-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .stage > .logo-lockup {
+    width: 68%;
+  }
+
+  .stage > .logo-lockup .logo-mark {
+    width: 36%;
+    min-width: 76px;
+    margin-bottom: 6px;
+  }
+
+  .stage > .logo-lockup .wordmark {
+    font-size: clamp(24px, 9vw, 42px);
+  }
+
+  .stage > .logo-lockup .handle {
+    margin-top: 6px;
+    font-size: clamp(10px, 3vw, 14px);
+  }
+}
+
+</style>
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="preview-panel" aria-label="16:9 live preview">
+        <div class="topbar">
+          <div>
+            <h1>Manuel Legend</h1>
+            <p>16:9 logo and loop selector</p>
+          </div>
+          <div class="status-pill" id="comboLabel">Logo A + Cyan Ink Wipe</div>
+        </div>
+
+        <div class="stage-wrap">
+          <div class="stage bg-cyan-ink" id="stage">
+            <div class="stage-vignette"></div>
+            <div class="logo-lockup logo-style-a" id="logoLockup" aria-live="polite"></div>
+          </div>
+        </div>
+
+        <div class="toolbar" aria-label="Preview controls">
+          <button type="button" class="ghost-btn is-active" id="animationToggle">Animation On</button>
+          <button type="button" class="ghost-btn" id="invertToggle">Dark Logo</button>
+          <button type="button" class="primary-btn" id="copyFeedback">Copy Feedback</button>
+          <button type="button" class="ghost-btn" id="downloadFeedback">Download JSON</button>
+        </div>
+      </section>
+
+      <aside class="control-panel" aria-label="Client selections">
+        <section>
+          <div class="section-heading">
+            <h2>Logo Designs</h2>
+            <span>20 options</span>
+          </div>
+          <div class="logo-grid" id="logoGrid"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Loop Backgrounds</h2>
+            <span>mix and match</span>
+          </div>
+          <div class="background-grid" id="backgroundGrid"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Client Notes</h2>
+            <span>saved per combo</span>
+          </div>
+          <textarea id="notes" placeholder="Example: I like Logo C with the red laser loop, but make the handle larger."></textarea>
+          <div class="selection-output" id="selectionOutput"></div>
+        </section>
+      </aside>
+    </main>
+
+    <script>
+const logoOptions = [
+  { id: "A", name: "Client Cut", style: "a", mark: "loop", accent: "#ffffff", family: "client sample", cut: "lightning" },
+  { id: "B", name: "Cyan Blade", style: "b", mark: "signal", accent: "#13d6ff", family: "client sample", cut: "cyan" },
+  { id: "C", name: "Red Strike", style: "c", mark: "chrome", accent: "#ef172f", family: "client sample", cut: "red" },
+  { id: "D", name: "Double Slash", style: "d", mark: "blade", accent: "#ffffff", family: "slash wordmark", cut: "double" },
+  { id: "E", name: "Broken Edge", style: "e", mark: "electric", accent: "#13d6ff", family: "slash wordmark", cut: "jagged" },
+  { id: "F", name: "Red Lightning", style: "f", mark: "laser", accent: "#ef172f", family: "slash wordmark", cut: "lightning-red" },
+  { id: "G", name: "Loop Slash", style: "g", mark: "loop", accent: "#13d6ff", family: "current ML", cut: "cyan" },
+  { id: "H", name: "White Scar", style: "h", mark: "wide", accent: "#ffffff", family: "client sample", cut: "white" },
+  { id: "I", name: "Apex Cut", style: "i", mark: "apex", accent: "#ef172f", family: "motorsport", cut: "red" },
+  { id: "J", name: "Glitch Blade", style: "j", mark: "split", accent: "#13d6ff", family: "glitch slash", cut: "glitch" },
+  { id: "K", name: "Heavy Strike", style: "k", mark: "heavy", accent: "#ffffff", family: "badge slash", cut: "double" },
+  { id: "L", name: "Sharp Mono", style: "l", mark: "angular", accent: "#13d6ff", family: "stage screen", cut: "jagged" },
+  { id: "M", name: "Red Motorsport", style: "m", mark: "chrome", accent: "#ef172f", family: "motorsport", cut: "lightning-red" },
+  { id: "N", name: "Blue Shock", style: "n", mark: "electric", accent: "#13d6ff", family: "electric slash", cut: "lightning" },
+  { id: "O", name: "Chrome Cut", style: "o", mark: "speed", accent: "#ffffff", family: "client sample", cut: "white" },
+  { id: "P", name: "Club Scar", style: "p", mark: "stamp", accent: "#13d6ff", family: "DJ stage", cut: "cyan" },
+  { id: "Q", name: "Infinity Rip", style: "q", mark: "signal", accent: "#13d6ff", family: "current ML", cut: "glitch" },
+  { id: "R", name: "Razor Red", style: "r", mark: "apex", accent: "#ef172f", family: "slash wordmark", cut: "red" },
+  { id: "S", name: "Stage Slash", style: "s", mark: "festival", accent: "#ffffff", family: "DJ stage", cut: "double" },
+  { id: "T", name: "Final Cut", style: "t", mark: "clean", accent: "#13d6ff", family: "client sample", cut: "lightning" },
+];
+
+const backgroundOptions = [
+  { id: "cyan-ink", name: "Cyan Ink Wipe", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
+  { id: "particle-field", name: "Particle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
+  { id: "cream-wipe", name: "Cream Blue Wipe", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
+  { id: "red-laser", name: "Red Laser Sweep", className: "bg-red-laser", thumb: "thumb-red-laser" },
+  { id: "halftone-pulse", name: "Halftone Pulse", className: "bg-halftone-pulse", thumb: "thumb-halftone-pulse" },
+  { id: "signal-tunnel", name: "Signal Tunnel", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
+  { id: "smoke-sweep", name: "Smoke Light Sweep", className: "bg-smoke-sweep", thumb: "thumb-smoke-sweep" },
+  { id: "white-flash", name: "White Flash Reveal", className: "bg-white-flash", thumb: "thumb-white-flash" },
+];
+
+const state = {
+  logoId: "A",
+  backgroundId: "cyan-ink",
+  animate: true,
+  darkLogo: false,
+  notes: JSON.parse(localStorage.getItem("manuelLegendNotes") || "{}"),
+};
+
+const stage = document.getElementById("stage");
+const logoGrid = document.getElementById("logoGrid");
+const backgroundGrid = document.getElementById("backgroundGrid");
+const comboLabel = document.getElementById("comboLabel");
+const notes = document.getElementById("notes");
+const selectionOutput = document.getElementById("selectionOutput");
+const animationToggle = document.getElementById("animationToggle");
+const invertToggle = document.getElementById("invertToggle");
+const copyFeedback = document.getElementById("copyFeedback");
+const downloadFeedback = document.getElementById("downloadFeedback");
+
+function markSvg(option) {
+  const common = `viewBox="0 0 240 120" role="img" aria-label="${option.name} mark"`;
+  const type = option.mark;
+
+  const templates = {
+    loop: `<svg ${common}><path class="mark-stroke" d="M30 62 C53 18 92 18 120 60 C148 102 187 102 210 58"/><path class="mark-stroke" d="M30 58 C54 102 92 102 120 60 C148 18 187 18 210 62"/><path class="mark-accent" d="M105 18h18v84h-18z"/></svg>`,
+    blade: `<svg ${common}><path class="mark-fill" d="M22 96 56 20h35l31 42 31-42h54L165 96h-34l22-39-31 33h-8L84 57 65 96z"/><path class="mark-accent" d="M28 104 220 16l-18 25L10 116z"/></svg>`,
+    chrome: `<svg ${common}><path class="mark-accent" d="M20 94 54 22h38l27 41 31-41h42l-31 72h-34l16-37-24 27h-10L85 57 70 94z"/><path class="mark-fill" d="M162 22h54l-52 72h-38z"/></svg>`,
+    shield: `<svg ${common}><path class="mark-accent-stroke" d="M120 14 196 38 183 91 120 112 57 91 44 38z"/><path class="mark-fill" d="M67 87V34h30l23 34 24-34h29v53h-24V61l-21 24h-16L91 61v26z"/></svg>`,
+    stack: `<svg ${common}><path class="mark-fill" d="M44 24h37l39 42 39-42h37v72h-31V57l-36 39h-18L75 57v39H44z"/><path class="mark-accent" d="M30 16h180v9H30zm0 79h180v9H30z"/></svg>`,
+    speed: `<svg ${common}><path class="mark-fill" d="M31 90 62 26h28l31 35 31-35h58l-55 64h-34l25-28-22 21h-9L91 60 78 90z"/><path class="mark-accent" d="M0 78h72l-8 13H0zm168-44h72l-12 15h-73z"/></svg>`,
+    signal: `<svg ${common}><path class="mark-stroke" d="M29 60 C51 25 82 25 119 60 C156 95 189 95 211 60"/><path class="mark-accent-stroke" d="M29 60 C51 95 82 95 119 60 C156 25 189 25 211 60"/><path class="mark-fill" d="M112 37h16v46h-16z"/></svg>`,
+    stamp: `<svg ${common}><path class="mark-stroke" d="M42 25h156v70H42z"/><path class="mark-fill" d="M67 82V38h27l26 28 26-28h27v44h-21V57l-25 25h-14L88 57v25z"/></svg>`,
+    angular: `<svg ${common}><path class="mark-fill" d="M34 94 60 25h37l24 43 25-43h58v22h-39l-33 47h-24L75 47 58 94z"/><path class="mark-accent" d="M132 94 194 25h22l-62 69z"/></svg>`,
+    laser: `<svg ${common}><path class="mark-fill" d="M27 94 58 25h36l26 40 27-40h62L166 94h-37l20-34-24 27h-11L88 58 72 94z"/><path class="mark-accent" d="M15 25h210l-10 13H5zm-5 73h206l-12 13H0z"/></svg>`,
+    crest: `<svg ${common}><path class="mark-stroke" d="M120 16 184 48v37l-64 25-64-25V48z"/><path class="mark-fill" d="M75 84V39h29l16 22 17-22h28v45h-22V63l-17 21h-12L97 63v21z"/></svg>`,
+    festival: `<svg ${common}><path class="mark-fill" d="M52 96 52 28 87 28 120 69 153 28 188 28 188 96 158 96 158 67 132 96 108 96 82 67 82 96z"/><path class="mark-accent" d="M30 16h180l-24 14H54z"/></svg>`,
+    wide: `<svg ${common}><path class="mark-fill" d="M13 88 45 32h50l26 32 27-32h79l-31 56h-42l17-29-34 29h-28L76 59 58 88z"/><path class="mark-accent" d="M24 95h192l-11 12H13z"/></svg>`,
+    split: `<svg ${common}><path class="mark-fill" d="M37 96V24h34l50 50 49-50h34v72h-29V62l-42 34h-25L66 62v34z"/><path class="mark-accent" d="M24 50h74l-14 18H10zm118 0h85l-14 18h-88z"/></svg>`,
+    premium: `<svg ${common}><path class="mark-accent-stroke" d="M120 16 201 60 120 104 39 60z"/><path class="mark-fill" d="M73 78V43h24l23 23 24-23h23v35h-18V60l-23 18h-12L91 60v18z"/></svg>`,
+    column: `<svg ${common}><path class="mark-fill" d="M68 96V24h30l22 32 22-32h30v72h-25V61l-21 35h-12L93 61v35z"/><path class="mark-stroke" d="M39 19h162M39 101h162"/></svg>`,
+    electric: `<svg ${common}><path class="mark-stroke" d="M28 61 C51 18 89 19 120 60 C151 101 190 102 212 59"/><path class="mark-stroke" d="M28 59 C51 102 89 101 120 60 C151 19 190 18 212 61"/><path class="mark-accent" d="m128 10-24 45h24l-17 55 42-66h-25z"/></svg>`,
+    apex: `<svg ${common}><path class="mark-fill" d="M31 93 67 25h30l24 36 30-36h62L164 93h-38l23-32-27 25h-10L87 59 69 93z"/><path class="mark-accent" d="M55 20h161L187 40H43zm-29 80h159l-28 18H16z"/></svg>`,
+    heavy: `<svg ${common}><path class="mark-stroke" d="M46 23h148v74H46z"/><path class="mark-fill" d="M65 84V36h31l24 29 24-29h31v48h-25V62l-23 22h-14L90 62v22z"/><path class="mark-accent" d="M31 60 52 43v34zM209 43l21 17-21 17z"/></svg>`,
+    clean: `<svg ${common}><path class="mark-fill" d="M50 91V29h34l36 39 36-39h34v62h-27V62l-34 29h-18L77 62v29z"/><path class="mark-accent" d="M47 101h146v8H47z"/></svg>`,
+  };
+
+  return `<div class="logo-mark">${templates[type]}</div>`;
+}
+
+function lockupHtml(option, mini = false) {
+  const slash = `<i class="slash cut-${option.cut}"></i>`;
+  return `
+    <div class="logo-lockup logo-style-${option.style}${mini ? "" : state.animate ? " animate" : ""}${state.darkLogo && !mini ? " dark-mode" : ""}" style="--accent:${option.accent}">
+      ${markSvg(option)}
+      <div class="wordmark">
+        <span>Manuel</span>
+        <span>Legend</span>
+        ${slash}
+      </div>
+      <div class="handle">@manuel_Legend</div>
+    </div>
+  `;
+}
+
+function selectedLogo() {
+  return logoOptions.find((option) => option.id === state.logoId) || logoOptions[0];
+}
+
+function selectedBackground() {
+  return backgroundOptions.find((option) => option.id === state.backgroundId) || backgroundOptions[0];
+}
+
+function comboKey() {
+  return `${state.logoId}__${state.backgroundId}`;
+}
+
+function renderLogoGrid() {
+  logoGrid.innerHTML = logoOptions
+    .map((option) => `
+      <button type="button" class="logo-card${option.id === state.logoId ? " is-selected" : ""}" data-logo="${option.id}" style="--accent:${option.accent}">
+        <div class="mini-logo">${lockupHtml(option, true)}</div>
+        <div class="card-caption"><strong>${option.id}</strong><span>${option.name}</span></div>
+      </button>
+    `)
+    .join("");
+}
+
+function renderBackgroundGrid() {
+  backgroundGrid.innerHTML = backgroundOptions
+    .map((option) => `
+      <button type="button" class="bg-card${option.id === state.backgroundId ? " is-selected" : ""}" data-bg="${option.id}">
+        <div class="bg-thumb ${option.thumb}"></div>
+        <div class="bg-caption"><strong>${option.name}</strong></div>
+      </button>
+    `)
+    .join("");
+}
+
+function updatePreview() {
+  const logo = selectedLogo();
+  const bg = selectedBackground();
+  stage.className = `stage ${bg.className}`;
+  document.querySelector(".stage > .logo-lockup").outerHTML = lockupHtml(logo);
+  document.querySelector(".stage > .logo-lockup").id = "logoLockup";
+  comboLabel.textContent = `Logo ${logo.id} + ${bg.name}`;
+  notes.value = state.notes[comboKey()] || "";
+  selectionOutput.textContent = outputText();
+  animationToggle.textContent = state.animate ? "Animation On" : "Animation Off";
+  animationToggle.classList.toggle("is-active", state.animate);
+  invertToggle.textContent = state.darkLogo ? "Light Logo" : "Dark Logo";
+  invertToggle.classList.toggle("is-active", state.darkLogo);
+  renderLogoGrid();
+  renderBackgroundGrid();
+}
+
+function outputText() {
+  const logo = selectedLogo();
+  const bg = selectedBackground();
+  return [
+    `Selected logo: ${logo.id} - ${logo.name}`,
+    `Selected background: ${bg.name}`,
+    `Logo family: ${logo.family}`,
+    `Notes: ${state.notes[comboKey()] || "(none yet)"}`,
+  ].join("\n");
+}
+
+function feedbackPayload() {
+  const logo = selectedLogo();
+  const bg = selectedBackground();
+  return {
+    project: "Manuel Legend",
+    format: "16:9",
+    selectedLogo: `${logo.id} - ${logo.name}`,
+    selectedBackground: bg.name,
+    logoFamily: logo.family,
+    animationPreview: state.animate,
+    darkLogoPreview: state.darkLogo,
+    notes: state.notes[comboKey()] || "",
+    allNotes: state.notes,
+  };
+}
+
+logoGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-logo]");
+  if (!button) return;
+  state.logoId = button.dataset.logo;
+  updatePreview();
+});
+
+backgroundGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-bg]");
+  if (!button) return;
+  state.backgroundId = button.dataset.bg;
+  updatePreview();
+});
+
+notes.addEventListener("input", () => {
+  state.notes[comboKey()] = notes.value.trim();
+  localStorage.setItem("manuelLegendNotes", JSON.stringify(state.notes));
+  selectionOutput.textContent = outputText();
+});
+
+animationToggle.addEventListener("click", () => {
+  state.animate = !state.animate;
+  updatePreview();
+});
+
+invertToggle.addEventListener("click", () => {
+  state.darkLogo = !state.darkLogo;
+  updatePreview();
+});
+
+copyFeedback.addEventListener("click", async () => {
+  const text = JSON.stringify(feedbackPayload(), null, 2);
+  try {
+    if (navigator.clipboard?.writeText) {
+      await navigator.clipboard.writeText(text);
+    } else {
+      throw new Error("Clipboard API unavailable");
+    }
+  } catch {
+    const helper = document.createElement("textarea");
+    helper.value = text;
+    helper.setAttribute("readonly", "");
+    helper.style.position = "fixed";
+    helper.style.left = "-9999px";
+    document.body.appendChild(helper);
+    helper.select();
+    document.execCommand("copy");
+    helper.remove();
+  }
+  copyFeedback.textContent = "Copied";
+  window.setTimeout(() => {
+    copyFeedback.textContent = "Copy Feedback";
+  }, 1200);
+});
+
+downloadFeedback.addEventListener("click", () => {
+  const blob = new Blob([JSON.stringify(feedbackPayload(), null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = `manuel-legend-selection-${state.logoId}-${state.backgroundId}.json`;
+  document.body.appendChild(anchor);
+  anchor.click();
+  anchor.remove();
+  URL.revokeObjectURL(url);
+});
+
+updatePreview();
+
+</script>
+  </body>
+</html>
