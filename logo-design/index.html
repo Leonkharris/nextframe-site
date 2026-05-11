@@ -148,16 +148,26 @@ p,
   z-index: 2;
 }
 
+.loop-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
 .loop-detail {
   position: absolute;
   inset: -8%;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
 .layer-sparks {
-  opacity: 0.82;
+  opacity: 0.58;
   background:
     radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
     radial-gradient(circle at 24% 72%, rgba(19, 214, 255, 0.95) 0 2px, transparent 3px),
@@ -170,7 +180,7 @@ p,
 }
 
 .layer-dots {
-  opacity: 0.34;
+  opacity: 0.24;
   background:
     radial-gradient(circle, rgba(19, 214, 255, 0.72) 0 1.3px, transparent 1.8px),
     radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 1px, transparent 1.6px);
@@ -180,7 +190,7 @@ p,
 }
 
 .layer-streaks {
-  opacity: 0.72;
+  opacity: 0.48;
   filter: blur(2px) drop-shadow(0 0 16px rgba(19, 214, 255, 0.5));
   background:
     linear-gradient(102deg, transparent 0 24%, rgba(19, 214, 255, 0.18) 29%, transparent 34%),
@@ -190,7 +200,7 @@ p,
 }
 
 .layer-scan {
-  opacity: 0.18;
+  opacity: 0.16;
   mix-blend-mode: overlay;
   background:
     repeating-linear-gradient(180deg, transparent 0 7px, rgba(255, 255, 255, 0.18) 8px, transparent 9px),
@@ -404,10 +414,18 @@ p,
   color: #07090b;
 }
 
+.backup-action {
+  display: none;
+}
+
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
+}
+
+#markGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .logo-card,
@@ -448,6 +466,16 @@ p,
   width: 42%;
   min-width: 0;
   margin-bottom: 3px;
+}
+
+.mini-logo.mark-only .logo-mark {
+  width: 76%;
+  max-width: 190px;
+  margin: 0;
+}
+
+.mini-logo.text-only .logo-lockup {
+  width: 92%;
 }
 
 .mini-logo .wordmark {
@@ -751,6 +779,64 @@ textarea:focus {
   animation: flashReveal 7s ease-in-out infinite;
 }
 
+.thumb-blade-storm {
+  background:
+    linear-gradient(106deg, transparent 0 24%, rgba(239, 23, 47, 0.72) 25% 28%, transparent 31% 42%, rgba(255, 255, 255, 0.22) 44% 45%, transparent 47%),
+    radial-gradient(ellipse at 72% 42%, rgba(239, 23, 47, 0.28), transparent 34%),
+    #040506;
+}
+
+.thumb-blade-storm::before {
+  background:
+    repeating-linear-gradient(164deg, transparent 0 22px, rgba(239, 23, 47, 0.7) 24px 27px, transparent 30px 72px),
+    repeating-linear-gradient(100deg, transparent 0 36px, rgba(255, 255, 255, 0.18) 38px 40px, transparent 42px 92px);
+  animation: laserSweep 4.4s linear infinite;
+}
+
+.thumb-electric-grid {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 20px, rgba(19, 214, 255, 0.32) 21px 23px, transparent 24px 42px),
+    repeating-linear-gradient(180deg, transparent 0 20px, rgba(19, 214, 255, 0.22) 21px 22px, transparent 23px 42px),
+    radial-gradient(ellipse at center, rgba(19, 214, 255, 0.32), transparent 62%),
+    #030507;
+}
+
+.thumb-electric-grid::before {
+  background:
+    linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.4) 40%, transparent 46%),
+    linear-gradient(65deg, transparent 0 48%, rgba(19, 214, 255, 0.5) 50%, transparent 55%);
+  animation: streakTravel 3.6s ease-in-out infinite alternate;
+}
+
+.thumb-stage-burst {
+  background:
+    radial-gradient(ellipse at 50% 72%, rgba(255, 255, 255, 0.34), transparent 34%),
+    radial-gradient(ellipse at 22% 24%, rgba(19, 214, 255, 0.56), transparent 28%),
+    radial-gradient(ellipse at 86% 18%, rgba(239, 23, 47, 0.32), transparent 32%),
+    #030506;
+}
+
+.thumb-stage-burst::before {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 16px, rgba(19, 214, 255, 0.28) 17px 19px, transparent 20px 38px),
+    linear-gradient(105deg, transparent 0 44%, rgba(255, 255, 255, 0.7) 50%, transparent 56%);
+  animation: flashReveal 5.5s ease-in-out infinite;
+}
+
+.thumb-slash-tunnel {
+  background:
+    radial-gradient(ellipse at center, rgba(19, 214, 255, 0.28), transparent 48%),
+    repeating-radial-gradient(ellipse at center, rgba(255, 255, 255, 0.16) 0 2px, transparent 3px 28px),
+    #030506;
+}
+
+.thumb-slash-tunnel::before {
+  background:
+    repeating-linear-gradient(132deg, transparent 0 20px, rgba(19, 214, 255, 0.56) 22px 25px, transparent 27px 60px),
+    repeating-linear-gradient(47deg, transparent 0 28px, rgba(255, 255, 255, 0.18) 30px 32px, transparent 34px 72px);
+  animation: tunnelGlow 3.2s ease-in-out infinite alternate;
+}
+
 @keyframes logoPulse {
   0%,
   100% {
@@ -982,11 +1068,12 @@ textarea:focus {
             <h1>Manuel Legend</h1>
             <p>16:9 logo and loop selector</p>
           </div>
-          <div class="status-pill" id="comboLabel">Logo A + Cyan Ink Wipe</div>
+          <div class="status-pill" id="comboLabel">ML1 + Text A + Cyan Ink Wipe</div>
         </div>
 
         <div class="stage-wrap">
           <div class="stage bg-cyan-ink" id="stage">
+            <canvas class="loop-canvas" id="loopCanvas" aria-hidden="true"></canvas>
             <div class="loop-detail layer-sparks"></div>
             <div class="loop-detail layer-dots"></div>
             <div class="loop-detail layer-streaks"></div>
@@ -999,18 +1086,26 @@ textarea:focus {
         <div class="toolbar" aria-label="Preview controls">
           <button type="button" class="ghost-btn is-active" id="animationToggle">Animation On</button>
           <button type="button" class="ghost-btn" id="invertToggle">Dark Logo</button>
-          <button type="button" class="primary-btn" id="emailFeedback">Email Selection</button>
-          <button type="button" class="ghost-btn" id="whatsappFeedback">WhatsApp Text</button>
-          <button type="button" class="primary-btn" id="copyFeedback">Copy Feedback</button>
-          <button type="button" class="ghost-btn" id="downloadFeedback">Download JSON</button>
+          <button type="button" class="primary-btn" id="emailFeedback">Send Feedback</button>
+          <button type="button" class="ghost-btn backup-action" id="whatsappFeedback">WhatsApp Text</button>
+          <button type="button" class="primary-btn backup-action" id="copyFeedback">Copy Feedback</button>
+          <button type="button" class="ghost-btn backup-action" id="downloadFeedback">Download JSON</button>
         </div>
       </section>
 
       <aside class="control-panel" aria-label="Client selections">
         <section>
           <div class="section-heading">
-            <h2>Logo Designs</h2>
-            <span>20 options</span>
+            <h2>Top ML Logos</h2>
+            <span>12 marks</span>
+          </div>
+          <div class="logo-grid" id="markGrid"></div>
+        </section>
+
+        <section>
+          <div class="section-heading">
+            <h2>Text Designs</h2>
+            <span>20 wordmarks</span>
           </div>
           <div class="logo-grid" id="logoGrid"></div>
         </section>
@@ -1018,7 +1113,7 @@ textarea:focus {
         <section>
           <div class="section-heading">
             <h2>Loop Backgrounds</h2>
-            <span>mix and match</span>
+            <span>12 loops</span>
           </div>
           <div class="background-grid" id="backgroundGrid"></div>
         </section>
@@ -1028,7 +1123,7 @@ textarea:focus {
             <h2>Client Notes</h2>
             <span>saved per combo</span>
           </div>
-          <p class="send-help">Choose a logo and loop, write notes, then use Email Selection, WhatsApp Text, Copy Feedback, or Download JSON to send the choice back.</p>
+          <p class="send-help">Choose the ML logo, text design, and loop, add notes, then click Send Feedback. The selected layers are saved for the final MP4 render.</p>
           <textarea id="notes" placeholder="Example: I like Logo C with the red laser loop, but make the handle larger."></textarea>
           <div class="selection-output" id="selectionOutput"></div>
         </section>
@@ -1059,6 +1154,21 @@ const logoOptions = [
   { id: "T", name: "Final Cut", style: "t", mark: "ml-red-white", accent: "#13d6ff", family: "client sample", cut: "lightning" },
 ];
 
+const markOptions = [
+  { id: "ML1", name: "Sample Red M/L", mark: "ml-red-white", accent: "#ef172f", family: "client sample red/white" },
+  { id: "ML2", name: "Razor White", mark: "ml-white-sharp", accent: "#ef172f", family: "white mark with red slash" },
+  { id: "ML3", name: "Red Wing", mark: "ml-red-wing", accent: "#ef172f", family: "speed wing" },
+  { id: "ML4", name: "Apex Red", mark: "ml-red-apex", accent: "#ef172f", family: "motorsport apex" },
+  { id: "ML5", name: "Chrome Cut", mark: "ml-chrome", accent: "#ef172f", family: "chrome slash" },
+  { id: "ML6", name: "Framed Strike", mark: "ml-box", accent: "#ef172f", family: "stage badge" },
+  { id: "ML7", name: "Cyan M/L", mark: "ml-cyan-white", accent: "#13d6ff", family: "cyan/white split" },
+  { id: "ML8", name: "Cyan Frame", mark: "ml-frame", accent: "#13d6ff", family: "neon frame" },
+  { id: "ML9", name: "Shock Bolt", mark: "ml-shock", accent: "#13d6ff", family: "electric bolt" },
+  { id: "ML10", name: "Wide Red", mark: "ml-red-wide", accent: "#ef172f", family: "wide motorsport" },
+  { id: "ML11", name: "Cyan Block", mark: "ml-cyan-block", accent: "#13d6ff", family: "block slash" },
+  { id: "ML12", name: "White Wing", mark: "ml-white-wing", accent: "#ef172f", family: "white speed wing" },
+];
+
 const backgroundOptions = [
   { id: "cyan-ink", name: "Cyan Ink Wipe", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
   { id: "particle-field", name: "Particle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
@@ -1068,9 +1178,14 @@ const backgroundOptions = [
   { id: "signal-tunnel", name: "Signal Tunnel", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
   { id: "smoke-sweep", name: "Smoke Light Sweep", className: "bg-smoke-sweep", thumb: "thumb-smoke-sweep" },
   { id: "white-flash", name: "White Flash Reveal", className: "bg-white-flash", thumb: "thumb-white-flash" },
+  { id: "blade-storm", name: "Blade Storm", className: "bg-red-laser", thumb: "thumb-blade-storm" },
+  { id: "electric-grid", name: "Electric Grid", className: "bg-signal-tunnel", thumb: "thumb-electric-grid" },
+  { id: "stage-burst", name: "Stage Burst", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
+  { id: "slash-tunnel", name: "Slash Tunnel", className: "bg-particle-field", thumb: "thumb-slash-tunnel" },
 ];
 
 const state = {
+  markId: "ML1",
   logoId: "A",
   backgroundId: "cyan-ink",
   animate: true,
@@ -1078,9 +1193,13 @@ const state = {
   notes: JSON.parse(localStorage.getItem("manuelLegendNotes") || "{}"),
 };
 
-const recipientEmail = "hello@next-frame.agency";
+const recipientEmail = "nextframe.ai.agency@gmail.com";
+const feedbackEndpoint = `https://formsubmit.co/ajax/${recipientEmail}`;
 
 const stage = document.getElementById("stage");
+const loopCanvas = document.getElementById("loopCanvas");
+const loopCtx = loopCanvas.getContext("2d");
+const markGrid = document.getElementById("markGrid");
 const logoGrid = document.getElementById("logoGrid");
 const backgroundGrid = document.getElementById("backgroundGrid");
 const comboLabel = document.getElementById("comboLabel");
@@ -1093,57 +1212,333 @@ const whatsappFeedback = document.getElementById("whatsappFeedback");
 const copyFeedback = document.getElementById("copyFeedback");
 const downloadFeedback = document.getElementById("downloadFeedback");
 
+const rand = (seed) => {
+  let value = seed % 2147483647;
+  return () => {
+    value = (value * 16807) % 2147483647;
+    return (value - 1) / 2147483646;
+  };
+};
+
+const random = rand(1987);
+const particles = Array.from({ length: 170 }, (_, index) => ({
+  x: random(),
+  y: random(),
+  r: 0.8 + random() * 2.6,
+  speed: 0.04 + random() * 0.22,
+  drift: -0.24 + random() * 0.48,
+  phase: random() * Math.PI * 2,
+  cyan: index % 3 === 0,
+}));
+
+function resizeLoopCanvas() {
+  const rect = stage.getBoundingClientRect();
+  const dpr = Math.min(window.devicePixelRatio || 1, 2);
+  loopCanvas.width = Math.max(1, Math.floor(rect.width * dpr));
+  loopCanvas.height = Math.max(1, Math.floor(rect.height * dpr));
+  loopCanvas.style.width = `${rect.width}px`;
+  loopCanvas.style.height = `${rect.height}px`;
+  loopCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
+
+function drawGlowLine(ctx, x1, y1, x2, y2, color, width, alpha = 1) {
+  ctx.save();
+  ctx.globalAlpha = alpha;
+  ctx.strokeStyle = color;
+  ctx.lineWidth = width * 4;
+  ctx.shadowColor = color;
+  ctx.shadowBlur = width * 5;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.lineWidth = width;
+  ctx.shadowBlur = width * 1.5;
+  ctx.stroke();
+  ctx.restore();
+}
+
+function drawParticles(ctx, t, w, h, density = 1) {
+  for (const p of particles) {
+    const x = ((p.x * w + Math.sin(t * 0.0008 + p.phase) * 34 + t * p.drift * density * 0.03) % w + w) % w;
+    const y = ((p.y * h + t * p.speed * density) % h + h) % h;
+    const flicker = 0.38 + Math.sin(t * 0.004 + p.phase) * 0.28;
+    ctx.globalAlpha = Math.max(0.12, flicker);
+    ctx.fillStyle = p.cyan ? "#13d6ff" : "#f7fbff";
+    ctx.beginPath();
+    ctx.arc(x, y, p.r * density, 0, Math.PI * 2);
+    ctx.fill();
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawHalftone(ctx, t, w, h, color = "rgba(19,214,255,0.34)") {
+  const gap = 22 + Math.sin(t * 0.0016) * 5;
+  ctx.fillStyle = color;
+  for (let y = 0; y < h; y += gap) {
+    for (let x = 0; x < w; x += gap) {
+      const cx = x + ((t * 0.018) % gap);
+      const pulse = 0.7 + Math.sin((x + y) * 0.02 + t * 0.004) * 0.5;
+      ctx.globalAlpha = 0.08 + pulse * 0.15;
+      ctx.beginPath();
+      ctx.arc(cx, y, 1.1 + pulse * 0.7, 0, Math.PI * 2);
+      ctx.fill();
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+function drawInkBlob(ctx, x, y, r, color, alpha) {
+  const gradient = ctx.createRadialGradient(x, y, 0, x, y, r);
+  gradient.addColorStop(0, color.replace("ALPHA", String(alpha)));
+  gradient.addColorStop(0.52, color.replace("ALPHA", String(alpha * 0.55)));
+  gradient.addColorStop(1, color.replace("ALPHA", "0"));
+  ctx.fillStyle = gradient;
+  ctx.beginPath();
+  ctx.arc(x, y, r, 0, Math.PI * 2);
+  ctx.fill();
+}
+
+function drawCyanInk(ctx, t, w, h) {
+  drawInkBlob(ctx, w * (0.18 + Math.sin(t * 0.0007) * 0.04), h * 0.28, w * 0.26, "rgba(19,214,255,ALPHA)", 0.72);
+  drawInkBlob(ctx, w * (0.74 + Math.cos(t * 0.0009) * 0.05), h * 0.68, w * 0.22, "rgba(239,230,204,ALPHA)", 0.58);
+  const sweep = ((t * 0.085) % (w * 1.8)) - w * 0.4;
+  drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.34, -h * 0.12, "#13d6ff", 10, 0.55);
+  drawGlowLine(ctx, sweep + w * 0.42, h * 1.04, sweep + w * 0.72, -h * 0.16, "#ffffff", 4, 0.28);
+}
+
+function drawRedLaser(ctx, t, w, h) {
+  const sweep = ((t * 0.12) % (w * 1.7)) - w * 0.36;
+  drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.22, -h * 0.2, "#ef172f", 8, 0.9);
+  drawGlowLine(ctx, -w * 0.1, h * (0.68 + Math.sin(t * 0.0012) * 0.08), w * 1.05, h * (0.48 + Math.cos(t * 0.001) * 0.05), "#ef172f", 5, 0.76);
+  drawGlowLine(ctx, w * 0.18, h * 1.12, w * 0.84, -h * 0.1, "#ffffff", 3, 0.25);
+  drawHalftone(ctx, t, w, h, "rgba(239,23,47,0.18)");
+}
+
+function drawCreamWipe(ctx, t, w, h) {
+  drawInkBlob(ctx, w * 0.22, h * (0.2 + Math.sin(t * 0.001) * 0.08), w * 0.33, "rgba(19,214,255,ALPHA)", 0.62);
+  drawInkBlob(ctx, w * 0.8, h * (0.72 + Math.cos(t * 0.0011) * 0.06), w * 0.28, "rgba(4,6,7,ALPHA)", 0.68);
+  const sweep = ((t * 0.07) % (w * 1.5)) - w * 0.2;
+  drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.17, -h * 0.12, "#13d6ff", 14, 0.36);
+}
+
+function drawTunnel(ctx, t, w, h) {
+  const centerX = w / 2;
+  const centerY = h / 2;
+  for (let i = 0; i < 26; i += 1) {
+    const offset = ((i * 46 + t * 0.08) % (w * 1.2)) - w * 0.1;
+    const alpha = 0.12 + (i % 4) * 0.035;
+    drawGlowLine(ctx, offset, 0, centerX + (offset - centerX) * 0.18, centerY, "#13d6ff", 2, alpha);
+    drawGlowLine(ctx, offset, h, centerX + (offset - centerX) * 0.18, centerY, "#13d6ff", 2, alpha);
+  }
+  drawInkBlob(ctx, centerX, centerY, w * 0.28, "rgba(19,214,255,ALPHA)", 0.22);
+}
+
+function drawSmoke(ctx, t, w, h) {
+  drawInkBlob(ctx, w * (0.28 + Math.sin(t * 0.0008) * 0.1), h * 0.62, w * 0.32, "rgba(255,255,255,ALPHA)", 0.24);
+  drawInkBlob(ctx, w * (0.7 + Math.cos(t * 0.0009) * 0.1), h * 0.35, w * 0.26, "rgba(19,214,255,ALPHA)", 0.2);
+  drawGlowLine(ctx, ((t * 0.08) % (w * 1.4)) - w * 0.2, h * 1.1, ((t * 0.08) % (w * 1.4)) + w * 0.16, -h * 0.1, "#ffffff", 7, 0.28);
+}
+
+function drawWhiteFlash(ctx, t, w, h) {
+  const sweep = ((t * 0.16) % (w * 1.6)) - w * 0.3;
+  drawGlowLine(ctx, sweep, h * 1.1, sweep + w * 0.18, -h * 0.12, "#ffffff", 13, 0.72);
+  drawGlowLine(ctx, sweep + w * 0.1, h * 1.1, sweep + w * 0.28, -h * 0.12, "#13d6ff", 5, 0.34);
+}
+
+function drawEnergyShards(ctx, t, w, h, color = "#13d6ff", count = 18, speed = 0.11) {
+  ctx.save();
+  ctx.shadowColor = color;
+  ctx.shadowBlur = 18;
+  for (let i = 0; i < count; i += 1) {
+    const lane = i / count;
+    const x = ((lane * w * 1.7 + t * speed + Math.sin(i * 2.11) * 120) % (w * 1.35)) - w * 0.18;
+    const y = (Math.sin(t * 0.0011 + i * 1.7) * 0.24 + 0.5) * h;
+    const length = 70 + ((i * 17) % 120);
+    const thickness = 2 + (i % 4);
+    ctx.globalAlpha = 0.18 + (i % 5) * 0.045;
+    ctx.fillStyle = color;
+    ctx.beginPath();
+    ctx.moveTo(x, y);
+    ctx.lineTo(x + length, y - length * 0.16);
+    ctx.lineTo(x + length + 24, y - length * 0.16 + thickness);
+    ctx.lineTo(x + 18, y + thickness * 2);
+    ctx.closePath();
+    ctx.fill();
+  }
+  ctx.restore();
+  ctx.globalAlpha = 1;
+}
+
+function drawStageBars(ctx, t, w, h, color = "#13d6ff") {
+  ctx.save();
+  ctx.globalCompositeOperation = "lighter";
+  for (let i = 0; i < 28; i += 1) {
+    const x = (i / 27) * w;
+    const height = h * (0.12 + Math.abs(Math.sin(t * 0.0027 + i * 0.74)) * 0.34);
+    const alpha = 0.08 + Math.abs(Math.sin(t * 0.0035 + i)) * 0.18;
+    const gradient = ctx.createLinearGradient(x, h, x, h - height);
+    const barColor = color.startsWith("rgb(")
+      ? color.replace("rgb", "rgba").replace(")", `,${alpha})`)
+      : color === "#ef172f"
+        ? `rgba(239,23,47,${alpha})`
+        : `rgba(19,214,255,${alpha})`;
+    gradient.addColorStop(0, "rgba(0,0,0,0)");
+    gradient.addColorStop(1, barColor);
+    ctx.fillStyle = gradient;
+    ctx.fillRect(x - 2, h - height, 4, height);
+  }
+  ctx.restore();
+}
+
+function drawSlashTunnel(ctx, t, w, h, color = "#13d6ff") {
+  const cx = w / 2;
+  const cy = h / 2;
+  for (let i = 0; i < 18; i += 1) {
+    const scale = ((i * 0.11 + t * 0.00032) % 1);
+    const width = w * (0.12 + scale * 0.9);
+    const height = h * (0.08 + scale * 0.54);
+    const alpha = (1 - scale) * 0.22;
+    drawGlowLine(ctx, cx - width * 0.5, cy + height * 0.5, cx + width * 0.5, cy - height * 0.5, color, 2 + scale * 8, alpha);
+    drawGlowLine(ctx, cx - width * 0.45, cy - height * 0.45, cx + width * 0.45, cy + height * 0.45, "#ffffff", 1 + scale * 4, alpha * 0.5);
+  }
+}
+
+function drawLoopFrame(t) {
+  const rect = stage.getBoundingClientRect();
+  const w = rect.width;
+  const h = rect.height;
+  loopCtx.clearRect(0, 0, w, h);
+  loopCtx.save();
+  loopCtx.globalCompositeOperation = "lighter";
+  if (state.backgroundId === "red-laser") {
+    drawRedLaser(loopCtx, t, w, h);
+    drawEnergyShards(loopCtx, t, w, h, "#ef172f", 22, 0.16);
+  } else if (state.backgroundId === "cream-wipe") {
+    drawCreamWipe(loopCtx, t, w, h);
+    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
+  } else if (state.backgroundId === "halftone-pulse") {
+    drawHalftone(loopCtx, t, w, h);
+    drawCyanInk(loopCtx, t, w, h);
+    drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
+  } else if (state.backgroundId === "signal-tunnel") {
+    drawTunnel(loopCtx, t, w, h);
+    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
+  } else if (state.backgroundId === "smoke-sweep") {
+    drawSmoke(loopCtx, t, w, h);
+    drawEnergyShards(loopCtx, t, w, h, "#ffffff", 14, 0.08);
+  } else if (state.backgroundId === "white-flash") {
+    drawWhiteFlash(loopCtx, t, w, h);
+    drawSlashTunnel(loopCtx, t, w, h, "#ffffff");
+  } else if (state.backgroundId === "particle-field") {
+    drawParticles(loopCtx, t, w, h, 1.35);
+    drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.18)");
+    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 16, 0.06);
+  } else if (state.backgroundId === "blade-storm") {
+    drawRedLaser(loopCtx, t, w, h);
+    drawEnergyShards(loopCtx, t, w, h, "#ef172f", 34, 0.22);
+    drawSlashTunnel(loopCtx, t, w, h, "#ef172f");
+  } else if (state.backgroundId === "electric-grid") {
+    drawTunnel(loopCtx, t, w, h);
+    drawStageBars(loopCtx, t, w, h, "rgb(19,214,255)");
+    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 24, 0.18);
+  } else if (state.backgroundId === "stage-burst") {
+    drawCyanInk(loopCtx, t, w, h);
+    drawStageBars(loopCtx, t, w, h, "rgb(239,23,47)");
+    drawWhiteFlash(loopCtx, t * 0.7, w, h);
+  } else if (state.backgroundId === "slash-tunnel") {
+    drawSlashTunnel(loopCtx, t, w, h, "#13d6ff");
+    drawEnergyShards(loopCtx, t, w, h, "#ffffff", 24, 0.13);
+    drawHalftone(loopCtx, t, w, h, "rgba(19,214,255,0.16)");
+  } else {
+    drawCyanInk(loopCtx, t, w, h);
+    drawEnergyShards(loopCtx, t, w, h, "#13d6ff", 16, 0.1);
+  }
+  drawParticles(loopCtx, t, w, h, state.backgroundId === "particle-field" ? 1.4 : 0.82);
+  loopCtx.restore();
+  requestAnimationFrame(drawLoopFrame);
+}
+
 function markSvg(option) {
   const common = `viewBox="0 0 240 120" role="img" aria-label="${option.name} mark"`;
   const type = option.mark;
+  const shadow = `<path class="mark-shadow" d="M34 96h175l-13 13H19z"/>`;
+  const spark = (accent = "var(--accent)") => `<path fill="${accent}" d="M29 99h162l-15 12H11z"/>`;
+
+  const sampleMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-sample">${shadow}<path fill="${primary}" d="M18 91 51 24h36l32 35 32-35h42l-30 67h-34l16-39-27 32h-13L80 54 64 91z"/><path fill="${secondary}" d="M159 24h61l-47 67h-55l15-23h22l30-44z"/><path fill="${accent}" d="M98 98h82l-13 12H82z"/></svg>`;
+
+  const wingMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-wing">${shadow}<path fill="${primary}" d="M7 88 42 27h45l31 30 31-30h44l-29 61h-35l15-34-25 25h-13L80 54 62 88z"/><path fill="${secondary}" d="M160 27h61l-17 21h-24l-29 40h-48l15-23h18z"/><path fill="${accent}" opacity=".95" d="M0 76h62l-10 15H0zm176-45h64l-15 17h-64z"/></svg>`;
+
+  const razorMark = (primary = "currentColor", secondary = "currentColor", accent = "#f0142f") =>
+    `<svg ${common} class="ml-mark ml-razor">${shadow}<path fill="${primary}" d="M27 91V26h34l59 42 58-42h35v65h-31V59l-48 32h-28L58 59v32z"/><path fill="${accent}" d="M8 75 229 35l-17 17L0 91z"/><path fill="${secondary}" opacity=".86" d="M168 26h45v17h-30v48h-31V57z"/></svg>`;
+
+  const boltMark = (primary = "#13d6ff", secondary = "currentColor", accent = "#f0142f") =>
+    `<svg ${common} class="ml-mark ml-bolt">${shadow}<path fill="${primary}" d="M19 92 50 25h37l32 39 32-39h39l-29 67h-34l16-37-25 31h-12L80 55 64 92z"/><path fill="${secondary}" d="M164 25h57l-43 67h-54l15-23h21l27-44z"/><path fill="${accent}" d="m122 10-20 45h24l-19 56 55-72h-28z"/></svg>`;
+
+  const bracketMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-bracket">${shadow}<path fill="${primary}" d="M35 90V28h34l50 39 49-39h34v62h-30V58l-42 32h-23L65 58v32z"/><path fill="${secondary}" d="M159 28h52v20h-22v42h-30z"/><path fill="${accent}" d="M15 18h193l-15 13H0zm21 77h193l-16 14H21z"/></svg>`;
+
+  const apexMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-apex">${shadow}<path fill="${primary}" d="M23 92 62 23h33l25 39 32-39h61l-50 69h-38l22-31-27 25h-11L86 58 68 92z"/><path fill="${secondary}" d="M160 23h58l-16 21h-22l-31 48h-49l16-25h20z"/><path fill="${accent}" d="M51 18h164l-27 19H39zm-30 81h158l-27 18H10z"/></svg>`;
+
+  const frameMark = (primary = "#13d6ff", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-frame"><path class="mark-white-stroke" d="M31 21h177l-21 78H31z"/><path fill="${primary}" d="M46 88 68 33h30l22 31 25-31h35l-22 55h-29l12-30-22 27h-10L86 58 74 88z"/><path fill="${secondary}" d="M158 33h43l-34 55h-40l13-20h16l20-35z"/><path fill="${accent}" d="M26 95h158l-13 11H13z"/></svg>`;
+
+  const wideMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
+    `<svg ${common} class="ml-mark ml-wide">${shadow}<path fill="${primary}" d="M8 89 42 31h48l30 29 30-29h80l-31 58h-43l17-30-34 30h-29L76 59 58 89z"/><path fill="${secondary}" d="M166 31h58l-37 58h-48l14-21h18l22-37z"/><path fill="${accent}" d="M20 96h198l-11 13H8z"/></svg>`;
+
+  const chromeMark = (primary = "currentColor", secondary = "currentColor", accent = "#f0142f") =>
+    `<svg ${common} class="ml-mark ml-chrome">${shadow}<path fill="${primary}" d="M23 91 57 25h36l27 38 31-38h39l-29 66h-33l15-36-25 30h-11L83 55 67 91z"/><path fill="${secondary}" d="M160 25h58l-45 66h-53l15-23h20l29-43z"/><path fill="${accent}" d="M12 79 229 30l-20 20L0 95z"/></svg>`;
 
   const templates = {
-    "ml-red-white": `<svg ${common}><path class="mark-red" d="M18 92 48 25h40l34 39 30-39h70l-54 67h-43l26-35-38 35h-20L75 56 60 92z"/><path class="mark-white" d="M138 25h84l-54 67h-48z"/><path class="mark-shadow" d="M57 92h111l-8 12H49z"/></svg>`,
-    "ml-cyan-white": `<svg ${common}><path class="mark-white" d="M20 92 52 26h39l30 38 32-38h66l-52 66h-42l23-34-35 34H93L76 58 62 92z"/><path class="mark-cyan" d="M137 25h19l-40 67H97zM181 25h38l-51 67h-28z"/></svg>`,
-    "ml-red-wing": `<svg ${common}><path class="mark-red" d="M17 91 52 25h39l30 35 30-35h28l-52 66h-31L76 59 61 91z"/><path class="mark-white" d="M150 25h72l-55 66h-45z"/><path class="mark-white" d="M190 36h36l-24 18h-29z"/></svg>`,
-    "ml-white-sharp": `<svg ${common}><path class="mark-white" d="M18 90 50 27h40l30 34 31-34h72l-55 63h-43l25-30-34 30H94L76 59 61 90z"/><path class="mark-accent" d="M39 101h160l-15 12H23z"/></svg>`,
-    "ml-blue-bolt": `<svg ${common}><path class="mark-white" d="M22 91 51 25h38l31 39 32-39h65l-52 66h-42l22-35-34 35H92L75 56 61 91z"/><path class="mark-cyan" d="m130 10-31 48h26l-20 52 62-70h-31z"/></svg>`,
-    "ml-red-bar": `<svg ${common}><path class="mark-red" d="M18 88 48 31h47l25 33 30-33h65l-48 57h-42l20-29-30 29H94L75 61 61 88z"/><path class="mark-white" d="M150 31h65l-48 57h-42z"/><path class="mark-red" d="M28 19h177l-11 13H17zm-8 72h183l-13 14H7z"/></svg>`,
-    "ml-loop-cut": `<svg ${common}><path class="mark-cyan-stroke" d="M27 61 C50 24 86 24 120 60 C154 96 190 96 213 59"/><path class="mark-white-stroke" d="M27 59 C50 96 86 96 120 60 C154 24 190 24 213 61"/><path class="mark-white" d="M111 35h18v50h-18z"/></svg>`,
-    "ml-white-wing": `<svg ${common}><path class="mark-white" d="M15 91 49 25h41l31 37 31-37h72l-54 66h-45l25-33-36 33H94L75 58 60 91z"/><path class="mark-accent" d="M31 97h177l-22 15H10z"/></svg>`,
-    "ml-red-apex": `<svg ${common}><path class="mark-red" d="M20 90 55 24h40l27 38 31-38h67l-52 66h-43l24-33-35 33H94L76 58 61 90z"/><path class="mark-white" d="M147 24h73l-52 66h-43z"/><path class="mark-red" d="M42 14h175l-25 15H31z"/></svg>`,
-    "ml-cyan-block": `<svg ${common}><path class="mark-white" d="M22 91 51 26h39l30 38 32-38h67l-52 65h-42l22-34-33 34H93L76 57 62 91z"/><path class="mark-cyan" d="M25 52h68l-8 15H17zm119 0h79l-10 15h-82z"/></svg>`,
-    "ml-box": `<svg ${common}><path class="mark-white-stroke" d="M37 24h166v72H37z"/><path class="mark-white" d="M65 82V39h31l24 26 25-26h30v43h-24V61l-24 21h-14L89 61v21z"/><path class="mark-accent" d="M204 45 230 60 204 75z"/></svg>`,
-    "ml-blue-sharp": `<svg ${common}><path class="mark-white" d="M20 91 51 25h39l29 39 33-39h67l-52 66h-43l23-34-34 34H93L75 57 61 91z"/><path class="mark-cyan" d="M154 25h65l-11 14h-42z"/></svg>`,
-    "ml-red-wide": `<svg ${common}><path class="mark-red" d="M13 87 46 31h50l24 31 30-31h78l-48 56h-46l19-28-34 28H92L73 62 57 87z"/><path class="mark-white" d="M151 31h77l-48 56h-46z"/></svg>`,
-    "ml-shock": `<svg ${common}><path class="mark-white" d="M21 91 51 25h39l30 38 32-38h66l-52 66h-42l23-34-34 34H93L75 57 61 91z"/><path class="mark-cyan" d="m132 6-27 47h25l-17 61 48-76h-25z"/></svg>`,
-    "ml-chrome": `<svg ${common}><path class="mark-white" d="M20 91 50 26h39l31 38 32-38h68l-52 65h-43l23-34-34 34H93L75 57 61 91z"/><path class="mark-shadow" d="M22 91h146l-8 11H16z"/><path class="mark-accent" d="M51 26h151l-10 12H45z"/></svg>`,
-    "ml-frame": `<svg ${common}><path class="mark-white-stroke" d="M41 25h158v70H41z"/><path class="mark-white" d="M67 82V39h30l23 28 24-28h30v43h-23V61l-24 21h-14L90 61v21z"/><path class="mark-cyan" d="M44 98h152l-12 12H32z"/></svg>`,
-    loop: `<svg ${common}><path class="mark-stroke" d="M30 62 C53 18 92 18 120 60 C148 102 187 102 210 58"/><path class="mark-stroke" d="M30 58 C54 102 92 102 120 60 C148 18 187 18 210 62"/><path class="mark-accent" d="M105 18h18v84h-18z"/></svg>`,
-    blade: `<svg ${common}><path class="mark-fill" d="M22 96 56 20h35l31 42 31-42h54L165 96h-34l22-39-31 33h-8L84 57 65 96z"/><path class="mark-accent" d="M28 104 220 16l-18 25L10 116z"/></svg>`,
-    chrome: `<svg ${common}><path class="mark-accent" d="M20 94 54 22h38l27 41 31-41h42l-31 72h-34l16-37-24 27h-10L85 57 70 94z"/><path class="mark-fill" d="M162 22h54l-52 72h-38z"/></svg>`,
-    shield: `<svg ${common}><path class="mark-accent-stroke" d="M120 14 196 38 183 91 120 112 57 91 44 38z"/><path class="mark-fill" d="M67 87V34h30l23 34 24-34h29v53h-24V61l-21 24h-16L91 61v26z"/></svg>`,
-    stack: `<svg ${common}><path class="mark-fill" d="M44 24h37l39 42 39-42h37v72h-31V57l-36 39h-18L75 57v39H44z"/><path class="mark-accent" d="M30 16h180v9H30zm0 79h180v9H30z"/></svg>`,
-    speed: `<svg ${common}><path class="mark-fill" d="M31 90 62 26h28l31 35 31-35h58l-55 64h-34l25-28-22 21h-9L91 60 78 90z"/><path class="mark-accent" d="M0 78h72l-8 13H0zm168-44h72l-12 15h-73z"/></svg>`,
-    signal: `<svg ${common}><path class="mark-stroke" d="M29 60 C51 25 82 25 119 60 C156 95 189 95 211 60"/><path class="mark-accent-stroke" d="M29 60 C51 95 82 95 119 60 C156 25 189 25 211 60"/><path class="mark-fill" d="M112 37h16v46h-16z"/></svg>`,
-    stamp: `<svg ${common}><path class="mark-stroke" d="M42 25h156v70H42z"/><path class="mark-fill" d="M67 82V38h27l26 28 26-28h27v44h-21V57l-25 25h-14L88 57v25z"/></svg>`,
-    angular: `<svg ${common}><path class="mark-fill" d="M34 94 60 25h37l24 43 25-43h58v22h-39l-33 47h-24L75 47 58 94z"/><path class="mark-accent" d="M132 94 194 25h22l-62 69z"/></svg>`,
-    laser: `<svg ${common}><path class="mark-fill" d="M27 94 58 25h36l26 40 27-40h62L166 94h-37l20-34-24 27h-11L88 58 72 94z"/><path class="mark-accent" d="M15 25h210l-10 13H5zm-5 73h206l-12 13H0z"/></svg>`,
-    crest: `<svg ${common}><path class="mark-stroke" d="M120 16 184 48v37l-64 25-64-25V48z"/><path class="mark-fill" d="M75 84V39h29l16 22 17-22h28v45h-22V63l-17 21h-12L97 63v21z"/></svg>`,
-    festival: `<svg ${common}><path class="mark-fill" d="M52 96 52 28 87 28 120 69 153 28 188 28 188 96 158 96 158 67 132 96 108 96 82 67 82 96z"/><path class="mark-accent" d="M30 16h180l-24 14H54z"/></svg>`,
-    wide: `<svg ${common}><path class="mark-fill" d="M13 88 45 32h50l26 32 27-32h79l-31 56h-42l17-29-34 29h-28L76 59 58 88z"/><path class="mark-accent" d="M24 95h192l-11 12H13z"/></svg>`,
-    split: `<svg ${common}><path class="mark-fill" d="M37 96V24h34l50 50 49-50h34v72h-29V62l-42 34h-25L66 62v34z"/><path class="mark-accent" d="M24 50h74l-14 18H10zm118 0h85l-14 18h-88z"/></svg>`,
-    premium: `<svg ${common}><path class="mark-accent-stroke" d="M120 16 201 60 120 104 39 60z"/><path class="mark-fill" d="M73 78V43h24l23 23 24-23h23v35h-18V60l-23 18h-12L91 60v18z"/></svg>`,
-    column: `<svg ${common}><path class="mark-fill" d="M68 96V24h30l22 32 22-32h30v72h-25V61l-21 35h-12L93 61v35z"/><path class="mark-stroke" d="M39 19h162M39 101h162"/></svg>`,
-    electric: `<svg ${common}><path class="mark-stroke" d="M28 61 C51 18 89 19 120 60 C151 101 190 102 212 59"/><path class="mark-stroke" d="M28 59 C51 102 89 101 120 60 C151 19 190 18 212 61"/><path class="mark-accent" d="m128 10-24 45h24l-17 55 42-66h-25z"/></svg>`,
-    apex: `<svg ${common}><path class="mark-fill" d="M31 93 67 25h30l24 36 30-36h62L164 93h-38l23-32-27 25h-10L87 59 69 93z"/><path class="mark-accent" d="M55 20h161L187 40H43zm-29 80h159l-28 18H16z"/></svg>`,
-    heavy: `<svg ${common}><path class="mark-stroke" d="M46 23h148v74H46z"/><path class="mark-fill" d="M65 84V36h31l24 29 24-29h31v48h-25V62l-23 22h-14L90 62v22z"/><path class="mark-accent" d="M31 60 52 43v34zM209 43l21 17-21 17z"/></svg>`,
-    clean: `<svg ${common}><path class="mark-fill" d="M50 91V29h34l36 39 36-39h34v62h-27V62l-34 29h-18L77 62v29z"/><path class="mark-accent" d="M47 101h146v8H47z"/></svg>`,
+    "ml-red-white": sampleMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-cyan-white": sampleMark("#13d6ff", "currentColor", "#13d6ff"),
+    "ml-red-wing": wingMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-white-sharp": razorMark("currentColor", "currentColor", "#f0142f"),
+    "ml-blue-bolt": boltMark("#13d6ff", "currentColor", "#f0142f"),
+    "ml-red-bar": bracketMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-loop-cut": wingMark("#13d6ff", "currentColor", "#13d6ff"),
+    "ml-white-wing": wingMark("currentColor", "currentColor", "#f0142f"),
+    "ml-red-apex": apexMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-cyan-block": bracketMark("#13d6ff", "currentColor", "#13d6ff"),
+    "ml-box": frameMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-blue-sharp": apexMark("#13d6ff", "currentColor", "#13d6ff"),
+    "ml-red-wide": wideMark("#f0142f", "currentColor", "#f0142f"),
+    "ml-shock": boltMark("#13d6ff", "currentColor", "#13d6ff"),
+    "ml-chrome": chromeMark("currentColor", "currentColor", "#f0142f"),
+    "ml-frame": frameMark("#13d6ff", "currentColor", "#13d6ff"),
+    loop: wingMark("#13d6ff", "currentColor", "#13d6ff"),
+    blade: wingMark("#f0142f", "currentColor", "#f0142f"),
+    chrome: chromeMark("currentColor", "currentColor", "#f0142f"),
+    shield: frameMark("#f0142f", "currentColor", "#f0142f"),
+    stack: bracketMark("currentColor", "currentColor", "#13d6ff"),
+    speed: wingMark("#f0142f", "currentColor", "#f0142f"),
+    signal: sampleMark("#13d6ff", "currentColor", "#13d6ff"),
+    stamp: frameMark("currentColor", "currentColor", "#f0142f"),
+    angular: apexMark("#f0142f", "currentColor", "#f0142f"),
+    laser: razorMark("currentColor", "currentColor", "#f0142f"),
+    crest: frameMark("#f0142f", "currentColor", "#f0142f"),
+    festival: wideMark("#13d6ff", "currentColor", "#13d6ff"),
+    wide: wideMark("#f0142f", "currentColor", "#f0142f"),
+    split: bracketMark("#13d6ff", "currentColor", "#f0142f"),
+    premium: chromeMark("currentColor", "currentColor", "#f0142f"),
+    column: sampleMark("currentColor", "currentColor", "#13d6ff"),
+    electric: boltMark("#13d6ff", "currentColor", "#f0142f"),
+    apex: apexMark("#f0142f", "currentColor", "#f0142f"),
+    heavy: frameMark("#f0142f", "currentColor", "#f0142f"),
+    clean: sampleMark("currentColor", "currentColor", "#13d6ff"),
   };
 
   return `<div class="logo-mark">${templates[type]}</div>`;
 }
 
-function lockupHtml(option, mini = false) {
+function lockupHtml(option, mini = false, markOption = selectedMark(), showMark = true) {
   const slash = `<i class="slash cut-${option.cut}"></i>`;
   return `
     <div class="logo-lockup logo-style-${option.style}${mini ? "" : state.animate ? " animate" : ""}${state.darkLogo && !mini ? " dark-mode" : ""}" style="--accent:${option.accent}">
-      ${markSvg(option)}
+      ${showMark ? markSvg(markOption) : ""}
       <div class="wordmark">
         <span>Manuel</span>
         <span>Legend</span>
@@ -1158,19 +1553,34 @@ function selectedLogo() {
   return logoOptions.find((option) => option.id === state.logoId) || logoOptions[0];
 }
 
+function selectedMark() {
+  return markOptions.find((option) => option.id === state.markId) || markOptions[0];
+}
+
 function selectedBackground() {
   return backgroundOptions.find((option) => option.id === state.backgroundId) || backgroundOptions[0];
 }
 
 function comboKey() {
-  return `${state.logoId}__${state.backgroundId}`;
+  return `${state.markId}__${state.logoId}__${state.backgroundId}`;
+}
+
+function renderMarkGrid() {
+  markGrid.innerHTML = markOptions
+    .map((option) => `
+      <button type="button" class="logo-card${option.id === state.markId ? " is-selected" : ""}" data-mark="${option.id}" style="--accent:${option.accent}">
+        <div class="mini-logo mark-only">${markSvg(option)}</div>
+        <div class="card-caption"><strong>${option.id}</strong><span>${option.name}</span></div>
+      </button>
+    `)
+    .join("");
 }
 
 function renderLogoGrid() {
   logoGrid.innerHTML = logoOptions
     .map((option) => `
       <button type="button" class="logo-card${option.id === state.logoId ? " is-selected" : ""}" data-logo="${option.id}" style="--accent:${option.accent}">
-        <div class="mini-logo">${lockupHtml(option, true)}</div>
+        <div class="mini-logo text-only">${lockupHtml(option, true, selectedMark(), false)}</div>
         <div class="card-caption"><strong>${option.id}</strong><span>${option.name}</span></div>
       </button>
     `)
@@ -1189,30 +1599,36 @@ function renderBackgroundGrid() {
 }
 
 function updatePreview() {
+  const mark = selectedMark();
   const logo = selectedLogo();
   const bg = selectedBackground();
   stage.className = `stage ${bg.className}`;
-  document.querySelector(".stage > .logo-lockup").outerHTML = lockupHtml(logo);
+  document.querySelector(".stage > .logo-lockup").outerHTML = lockupHtml(logo, false, mark, true);
   document.querySelector(".stage > .logo-lockup").id = "logoLockup";
-  comboLabel.textContent = `Logo ${logo.id} + ${bg.name}`;
+  comboLabel.textContent = `${mark.id} + Text ${logo.id} + ${bg.name}`;
   notes.value = state.notes[comboKey()] || "";
   selectionOutput.textContent = outputText();
   animationToggle.textContent = state.animate ? "Animation On" : "Animation Off";
   animationToggle.classList.toggle("is-active", state.animate);
   invertToggle.textContent = state.darkLogo ? "Light Logo" : "Dark Logo";
   invertToggle.classList.toggle("is-active", state.darkLogo);
+  renderMarkGrid();
   renderLogoGrid();
   renderBackgroundGrid();
 }
 
 function outputText() {
+  const mark = selectedMark();
   const logo = selectedLogo();
   const bg = selectedBackground();
   return [
     "MANUEL LEGEND SELECTION",
-    `Logo: ${logo.id} - ${logo.name}`,
+    `Top ML logo: ${mark.id} - ${mark.name}`,
+    `Text design: ${logo.id} - ${logo.name}`,
     `Background loop: ${bg.name}`,
-    `Logo family: ${logo.family}`,
+    `Top logo family: ${mark.family}`,
+    `Text family: ${logo.family}`,
+    `Render layers: mark=${mark.id}, text=${logo.id}, background=${bg.id}`,
     `Animation preview: ${state.animate ? "On" : "Off"}`,
     `Logo color preview: ${state.darkLogo ? "Dark" : "Light"}`,
     `Notes: ${state.notes[comboKey()] || "(none yet)"}`,
@@ -1220,16 +1636,27 @@ function outputText() {
 }
 
 function feedbackPayload() {
+  const mark = selectedMark();
   const logo = selectedLogo();
   const bg = selectedBackground();
   return {
     project: "Manuel Legend",
     format: "16:9",
-    selectedLogo: `${logo.id} - ${logo.name}`,
+    selectedTopLogo: `${mark.id} - ${mark.name}`,
+    selectedTextDesign: `${logo.id} - ${logo.name}`,
     selectedBackground: bg.name,
-    logoFamily: logo.family,
+    topLogoFamily: mark.family,
+    textFamily: logo.family,
     animationPreview: state.animate,
     darkLogoPreview: state.darkLogo,
+    renderSpec: {
+      markId: mark.id,
+      textDesignId: logo.id,
+      backgroundId: bg.id,
+      aspectRatio: "16:9",
+      targetExport: "mp4",
+      layerOrder: ["background loop", "top ML logo", "Manuel Legend wordmark", "handle"],
+    },
     notes: state.notes[comboKey()] || "",
     allNotes: state.notes,
   };
@@ -1242,6 +1669,13 @@ function feedbackText() {
 function encodedFeedbackText() {
   return encodeURIComponent(feedbackText());
 }
+
+markGrid.addEventListener("click", (event) => {
+  const button = event.target.closest("[data-mark]");
+  if (!button) return;
+  state.markId = button.dataset.mark;
+  updatePreview();
+});
 
 logoGrid.addEventListener("click", (event) => {
   const button = event.target.closest("[data-logo]");
@@ -1273,10 +1707,54 @@ invertToggle.addEventListener("click", () => {
   updatePreview();
 });
 
-emailFeedback.addEventListener("click", () => {
+emailFeedback.addEventListener("click", async () => {
+  if (emailFeedback.dataset.sending === "true") return;
+  const mark = selectedMark();
   const logo = selectedLogo();
-  const subject = encodeURIComponent(`Manuel Legend selection - Logo ${logo.id}`);
-  window.location.href = `mailto:${recipientEmail}?subject=${subject}&body=${encodedFeedbackText()}`;
+  const bg = selectedBackground();
+  const text = feedbackText();
+  const payload = feedbackPayload();
+  const formData = new FormData();
+  formData.append("_subject", `Manuel Legend feedback - ${mark.id} / Text ${logo.id} / ${bg.name}`);
+  formData.append("_template", "table");
+  formData.append("_captcha", "false");
+  formData.append("project", payload.project);
+  formData.append("top_ml_logo", payload.selectedTopLogo);
+  formData.append("text_design", payload.selectedTextDesign);
+  formData.append("background_loop", payload.selectedBackground);
+  formData.append("render_layers", JSON.stringify(payload.renderSpec));
+  formData.append("notes", payload.notes || "(none)");
+  formData.append("feedback", text);
+
+  emailFeedback.dataset.sending = "true";
+  emailFeedback.textContent = "Sending...";
+  selectionOutput.textContent = `${text}\n\nStatus: sending feedback...`;
+  try {
+    const response = await fetch(feedbackEndpoint, {
+      method: "POST",
+      headers: { Accept: "application/json" },
+      body: formData,
+    });
+    if (!response.ok) {
+      throw new Error(`Feedback send failed: ${response.status}`);
+    }
+    emailFeedback.textContent = "Feedback Sent";
+    selectionOutput.textContent = `${text}\n\nStatus: feedback sent`;
+  } catch (error) {
+    console.error(error);
+    try {
+      await navigator.clipboard?.writeText(text);
+    } catch {
+      // The visible status below is the fallback when browser permissions block direct send and clipboard.
+    }
+    emailFeedback.textContent = "Send Failed";
+    selectionOutput.textContent = `${text}\n\nStatus: direct send was blocked by the browser. The feedback was copied when possible. Try again from the live site.`;
+  } finally {
+    window.setTimeout(() => {
+      emailFeedback.dataset.sending = "false";
+      emailFeedback.textContent = "Send Feedback";
+    }, 1800);
+  }
 });
 
 whatsappFeedback.addEventListener("click", () => {
@@ -1320,6 +1798,9 @@ downloadFeedback.addEventListener("click", () => {
   URL.revokeObjectURL(url);
 });
 
+resizeLoopCanvas();
+window.addEventListener("resize", resizeLoopCanvas);
+requestAnimationFrame(drawLoopFrame);
 updatePreview();
 
 </script>

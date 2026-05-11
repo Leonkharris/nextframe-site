@@ -141,16 +141,26 @@ p,
   z-index: 2;
 }
 
+.loop-canvas {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  mix-blend-mode: screen;
+}
+
 .loop-detail {
   position: absolute;
   inset: -8%;
-  z-index: 1;
+  z-index: 2;
   pointer-events: none;
   mix-blend-mode: screen;
 }
 
 .layer-sparks {
-  opacity: 0.82;
+  opacity: 0.58;
   background:
     radial-gradient(circle at 8% 18%, rgba(255, 255, 255, 0.95) 0 2px, transparent 3px),
     radial-gradient(circle at 24% 72%, rgba(19, 214, 255, 0.95) 0 2px, transparent 3px),
@@ -163,7 +173,7 @@ p,
 }
 
 .layer-dots {
-  opacity: 0.34;
+  opacity: 0.24;
   background:
     radial-gradient(circle, rgba(19, 214, 255, 0.72) 0 1.3px, transparent 1.8px),
     radial-gradient(circle, rgba(255, 255, 255, 0.34) 0 1px, transparent 1.6px);
@@ -173,7 +183,7 @@ p,
 }
 
 .layer-streaks {
-  opacity: 0.72;
+  opacity: 0.48;
   filter: blur(2px) drop-shadow(0 0 16px rgba(19, 214, 255, 0.5));
   background:
     linear-gradient(102deg, transparent 0 24%, rgba(19, 214, 255, 0.18) 29%, transparent 34%),
@@ -183,7 +193,7 @@ p,
 }
 
 .layer-scan {
-  opacity: 0.18;
+  opacity: 0.16;
   mix-blend-mode: overlay;
   background:
     repeating-linear-gradient(180deg, transparent 0 7px, rgba(255, 255, 255, 0.18) 8px, transparent 9px),
@@ -397,10 +407,18 @@ p,
   color: #07090b;
 }
 
+.backup-action {
+  display: none;
+}
+
 .logo-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 9px;
+}
+
+#markGrid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .logo-card,
@@ -441,6 +459,16 @@ p,
   width: 42%;
   min-width: 0;
   margin-bottom: 3px;
+}
+
+.mini-logo.mark-only .logo-mark {
+  width: 76%;
+  max-width: 190px;
+  margin: 0;
+}
+
+.mini-logo.text-only .logo-lockup {
+  width: 92%;
 }
 
 .mini-logo .wordmark {
@@ -742,6 +770,64 @@ textarea:focus {
     linear-gradient(100deg, transparent 0 42%, rgba(255, 255, 255, 0.96) 49%, transparent 56%),
     radial-gradient(circle at 50% 50%, rgba(19, 214, 255, 0.24), transparent 38%);
   animation: flashReveal 7s ease-in-out infinite;
+}
+
+.thumb-blade-storm {
+  background:
+    linear-gradient(106deg, transparent 0 24%, rgba(239, 23, 47, 0.72) 25% 28%, transparent 31% 42%, rgba(255, 255, 255, 0.22) 44% 45%, transparent 47%),
+    radial-gradient(ellipse at 72% 42%, rgba(239, 23, 47, 0.28), transparent 34%),
+    #040506;
+}
+
+.thumb-blade-storm::before {
+  background:
+    repeating-linear-gradient(164deg, transparent 0 22px, rgba(239, 23, 47, 0.7) 24px 27px, transparent 30px 72px),
+    repeating-linear-gradient(100deg, transparent 0 36px, rgba(255, 255, 255, 0.18) 38px 40px, transparent 42px 92px);
+  animation: laserSweep 4.4s linear infinite;
+}
+
+.thumb-electric-grid {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 20px, rgba(19, 214, 255, 0.32) 21px 23px, transparent 24px 42px),
+    repeating-linear-gradient(180deg, transparent 0 20px, rgba(19, 214, 255, 0.22) 21px 22px, transparent 23px 42px),
+    radial-gradient(ellipse at center, rgba(19, 214, 255, 0.32), transparent 62%),
+    #030507;
+}
+
+.thumb-electric-grid::before {
+  background:
+    linear-gradient(115deg, transparent 0 35%, rgba(255, 255, 255, 0.4) 40%, transparent 46%),
+    linear-gradient(65deg, transparent 0 48%, rgba(19, 214, 255, 0.5) 50%, transparent 55%);
+  animation: streakTravel 3.6s ease-in-out infinite alternate;
+}
+
+.thumb-stage-burst {
+  background:
+    radial-gradient(ellipse at 50% 72%, rgba(255, 255, 255, 0.34), transparent 34%),
+    radial-gradient(ellipse at 22% 24%, rgba(19, 214, 255, 0.56), transparent 28%),
+    radial-gradient(ellipse at 86% 18%, rgba(239, 23, 47, 0.32), transparent 32%),
+    #030506;
+}
+
+.thumb-stage-burst::before {
+  background:
+    repeating-linear-gradient(90deg, transparent 0 16px, rgba(19, 214, 255, 0.28) 17px 19px, transparent 20px 38px),
+    linear-gradient(105deg, transparent 0 44%, rgba(255, 255, 255, 0.7) 50%, transparent 56%);
+  animation: flashReveal 5.5s ease-in-out infinite;
+}
+
+.thumb-slash-tunnel {
+  background:
+    radial-gradient(ellipse at center, rgba(19, 214, 255, 0.28), transparent 48%),
+    repeating-radial-gradient(ellipse at center, rgba(255, 255, 255, 0.16) 0 2px, transparent 3px 28px),
+    #030506;
+}
+
+.thumb-slash-tunnel::before {
+  background:
+    repeating-linear-gradient(132deg, transparent 0 20px, rgba(19, 214, 255, 0.56) 22px 25px, transparent 27px 60px),
+    repeating-linear-gradient(47deg, transparent 0 28px, rgba(255, 255, 255, 0.18) 30px 32px, transparent 34px 72px);
+  animation: tunnelGlow 3.2s ease-in-out infinite alternate;
 }
 
 @keyframes logoPulse {
