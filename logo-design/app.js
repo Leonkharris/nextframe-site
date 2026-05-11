@@ -23,31 +23,31 @@ const logoOptions = [
 
 const markOptions = [
   { id: "ML1", name: "Client Loop", mark: "loop-original", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML2", name: "Bold Loop", mark: "loop-bold", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML3", name: "Red Cut Loop", mark: "loop-red-cut", accent: "#ef172f", family: "client infinity ML" },
-  { id: "ML4", name: "Cyan Cut Loop", mark: "loop-cyan-cut", accent: "#13d6ff", family: "client infinity ML" },
-  { id: "ML5", name: "Hard Edge Loop", mark: "loop-hard", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML6", name: "Circle Loop", mark: "loop-circle", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML7", name: "Underline Loop", mark: "loop-underline", accent: "#ef172f", family: "client infinity ML" },
-  { id: "ML8", name: "Chrome Loop", mark: "loop-chrome", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML9", name: "Neon Loop", mark: "loop-neon", accent: "#13d6ff", family: "client infinity ML" },
-  { id: "ML10", name: "Compact Loop", mark: "loop-compact", accent: "#ffffff", family: "client infinity ML" },
-  { id: "ML11", name: "Stage Loop", mark: "loop-stage", accent: "#ef172f", family: "client infinity ML" },
-  { id: "ML12", name: "Mono Loop", mark: "loop-mono", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML2", name: "Heavy Loop", mark: "loop-bold", accent: "#ffffff", family: "client infinity ML" },
+  { id: "ML3", name: "Split Rings", mark: "split-rings", accent: "#ef172f", family: "linked initials" },
+  { id: "ML4", name: "Linked Capsule", mark: "linked-capsule", accent: "#13d6ff", family: "linked initials" },
+  { id: "ML5", name: "Block Italic", mark: "block-italic", accent: "#ef172f", family: "bold ML monogram" },
+  { id: "ML6", name: "Framed Badge", mark: "framed-badge", accent: "#ffffff", family: "badge ML monogram" },
+  { id: "ML7", name: "Twin Circle", mark: "twin-circle", accent: "#ef172f", family: "round ML monogram" },
+  { id: "ML8", name: "Razor Box", mark: "razor-box", accent: "#ef172f", family: "slash badge" },
+  { id: "ML9", name: "Ribbon Link", mark: "ribbon-link", accent: "#13d6ff", family: "continuous ribbon" },
+  { id: "ML10", name: "Stage Diamond", mark: "stage-diamond", accent: "#ffffff", family: "stage badge" },
+  { id: "ML11", name: "Red Slash ML", mark: "slash-ml", accent: "#ef172f", family: "slash ML monogram" },
+  { id: "ML12", name: "Clean Mono", mark: "clean-mono", accent: "#ffffff", family: "minimal ML monogram" },
 ];
 
 const backgroundOptions = [
-  { id: "cyan-ink", name: "Cyan Paint Flood", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
-  { id: "particle-field", name: "Paint Speckle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
-  { id: "cream-wipe", name: "Cream Paint Wipe", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
+  { id: "cyan-ink", name: "Liquid Cyan Pour", className: "bg-cyan-ink", thumb: "thumb-cyan-ink" },
+  { id: "cream-wipe", name: "Cream Liquid Wash", className: "bg-cream-wipe", thumb: "thumb-cream-wipe" },
+  { id: "stage-burst", name: "Blue Paint Bloom", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
   { id: "red-laser", name: "Red Ink Slash", className: "bg-red-laser", thumb: "thumb-red-laser" },
-  { id: "halftone-pulse", name: "Halftone Paint Pulse", className: "bg-halftone-pulse", thumb: "thumb-halftone-pulse" },
-  { id: "signal-tunnel", name: "Liquid Screen Grid", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
   { id: "smoke-sweep", name: "Smoke Paint Sweep", className: "bg-smoke-sweep", thumb: "thumb-smoke-sweep" },
   { id: "white-flash", name: "White Paint Reveal", className: "bg-white-flash", thumb: "thumb-white-flash" },
+  { id: "halftone-pulse", name: "Halftone Paint Pulse", className: "bg-halftone-pulse", thumb: "thumb-halftone-pulse" },
+  { id: "particle-field", name: "Paint Speckle Field", className: "bg-particle-field", thumb: "thumb-particle-field" },
   { id: "blade-storm", name: "Red Paint Storm", className: "bg-red-laser", thumb: "thumb-blade-storm" },
   { id: "electric-grid", name: "Cyan Ink Grid", className: "bg-signal-tunnel", thumb: "thumb-electric-grid" },
-  { id: "stage-burst", name: "Stage Paint Burst", className: "bg-cyan-ink", thumb: "thumb-stage-burst" },
+  { id: "signal-tunnel", name: "Liquid Screen Grid", className: "bg-signal-tunnel", thumb: "thumb-signal-tunnel" },
   { id: "slash-tunnel", name: "Ink Slash Tunnel", className: "bg-particle-field", thumb: "thumb-slash-tunnel" },
 ];
 
@@ -184,9 +184,9 @@ function drawLiquidBlob(ctx, x, y, rx, ry, color, alpha, rotation = 0) {
 }
 
 function drawPaintRibbon(ctx, t, w, h, color, alpha, phase = 0, verticalOffset = 0) {
-  const move = ((t * 0.045 + phase * 260) % (w * 1.8)) - w * 0.55;
+  const move = ((t * 0.07 + phase * 260) % (w * 1.8)) - w * 0.55;
   const y = h * (0.42 + verticalOffset + Math.sin(t * 0.001 + phase) * 0.08);
-  const thickness = h * (0.11 + Math.sin(t * 0.0017 + phase) * 0.025);
+  const thickness = h * (0.16 + Math.sin(t * 0.0017 + phase) * 0.04);
   ctx.save();
   ctx.globalAlpha = alpha;
   ctx.fillStyle = color;
@@ -231,15 +231,16 @@ function drawLiquidPaint(ctx, t, w, h, palette = "cyan") {
 
   ctx.save();
   ctx.globalCompositeOperation = "source-over";
-  drawLiquidBlob(ctx, w * (0.18 + flow * 0.05), h * (0.28 + flowB * 0.05), w * 0.3, h * 0.34, cyan, 0.52, -0.4 + flow * 0.2);
-  drawLiquidBlob(ctx, w * (0.76 + flowB * 0.04), h * (0.66 + flow * 0.06), w * 0.27, h * 0.31, palette === "cream" ? dark : warm, palette === "cream" ? 0.58 : 0.34, 0.35 + flowB * 0.25);
-  drawLiquidBlob(ctx, w * (0.52 + Math.sin(t * 0.00047) * 0.07), h * (0.5 + Math.cos(t * 0.00051) * 0.05), w * 0.42, h * 0.2, accent, 0.12, -0.22);
+  drawLiquidBlob(ctx, w * (0.18 + flow * 0.08), h * (0.28 + flowB * 0.08), w * 0.42, h * 0.48, cyan, 0.72, -0.4 + flow * 0.28);
+  drawLiquidBlob(ctx, w * (0.76 + flowB * 0.07), h * (0.66 + flow * 0.08), w * 0.36, h * 0.42, palette === "cream" ? dark : warm, palette === "cream" ? 0.66 : 0.46, 0.35 + flowB * 0.32);
+  drawLiquidBlob(ctx, w * (0.52 + Math.sin(t * 0.00047) * 0.09), h * (0.5 + Math.cos(t * 0.00051) * 0.08), w * 0.52, h * 0.28, accent, 0.22, -0.22);
+  drawLiquidBlob(ctx, w * (0.42 + Math.cos(t * 0.00062) * 0.16), h * (0.82 + Math.sin(t * 0.0008) * 0.08), w * 0.5, h * 0.18, cyan, 0.32, 0.08);
   ctx.globalCompositeOperation = "lighter";
-  drawPaintRibbon(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.18, 0.2, -0.18);
-  drawPaintRibbon(ctx, t * 0.82, w, h, palette === "red" ? "#ffffff" : "#efe6cc", 0.13, 1.4, 0.2);
-  drawPaintRibbon(ctx, t * 1.08, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.22, 2.1, 0.06);
-  drawPaintDrips(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 34);
-  drawPaintDrips(ctx, t * 0.7, w, h, "#ffffff", 18);
+  drawPaintRibbon(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.34, 0.2, -0.18);
+  drawPaintRibbon(ctx, t * 0.82, w, h, palette === "red" ? "#ffffff" : "#efe6cc", 0.24, 1.4, 0.2);
+  drawPaintRibbon(ctx, t * 1.08, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 0.38, 2.1, 0.06);
+  drawPaintDrips(ctx, t, w, h, palette === "red" ? "#ef172f" : "#13d6ff", 52);
+  drawPaintDrips(ctx, t * 0.7, w, h, "#ffffff", 28);
   ctx.restore();
 }
 
@@ -417,50 +418,83 @@ function markSvg(option) {
   const type = option.mark;
   const shadow = `<path class="mark-shadow" d="M34 96h175l-13 13H19z"/>`;
   const spark = (accent = "var(--accent)") => `<path fill="${accent}" d="M29 99h162l-15 12H11z"/>`;
-  const loopOutline = (width = 10, color = "currentColor") =>
-    `<path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/><path d="M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round"/>`;
+  const loopOutline = (width = 8, color = "currentColor", opacity = 0.82) =>
+    `<path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}"/><path d="M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" opacity="${opacity}"/>`;
   const loopLetters = (width = 10, color = "currentColor") =>
-    `<path d="M57 80V43L84 66L116 43M148 43V80H185" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="square" stroke-linejoin="miter"/>`;
+    `<g fill="${color}"><path d="M52 82V39h13l20 19 20-19h13v43h-13V58L90 76H80L65 58v24z"/><path d="M146 39h14v30h31v13h-45z"/></g>`;
   const loopDiagonal = (width = 10, color = "currentColor", opacity = 1) =>
     `<path d="M103 78 150 39" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="square" opacity="${opacity}"/>`;
   const loopCut = (color = "var(--accent)") =>
     `<path fill="${color}" d="M37 85 207 38 195 53 25 99z"/>`;
 
   const loopOriginal = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(10)}${loopLetters(10)}${loopDiagonal(8, "currentColor", 0.96)}</svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.78)}${loopDiagonal(6, "currentColor", 0.55)}${loopLetters()}</svg>`;
 
   const loopBold = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(14)}${loopLetters(13)}${loopDiagonal(10)}<path d="M136 83h54" stroke="currentColor" stroke-width="7" stroke-linecap="square"/></svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(10, "currentColor", 0.72)}${loopDiagonal(7, "currentColor", 0.45)}${loopLetters()}<path d="M136 85h54" stroke="currentColor" stroke-width="6" stroke-linecap="square"/></svg>`;
 
   const loopRedCut = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopCut("#ef172f")}<path d="M96 82 150 34" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.76)}${loopCut("#ef172f")}${loopDiagonal(5, "currentColor", 0.38)}${loopLetters()}</svg>`;
 
   const loopCyanCut = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopCut("#13d6ff")}<path d="M95 82 150 34" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.76)}${loopCut("#13d6ff")}${loopDiagonal(5, "currentColor", 0.38)}${loopLetters()}</svg>`;
 
   const loopHard = () =>
-    `<svg ${common} class="ml-loop-mark"><path d="M23 61 45 29h42l33 31 33-31h42l23 32-24 31h-40l-34-31-34 31H45z" fill="none" stroke="currentColor" stroke-width="11" stroke-linejoin="miter"/><path d="M55 82V43L82 68L109 43V82M148 43V82H186" fill="none" stroke="currentColor" stroke-width="12" stroke-linecap="square" stroke-linejoin="miter"/></svg>`;
+    `<svg ${common} class="ml-loop-mark"><path d="M23 61 45 29h42l33 31 33-31h42l23 32-24 31h-40l-34-31-34 31H45z" fill="none" stroke="currentColor" stroke-width="7" stroke-linejoin="miter" opacity=".72"/>${loopLetters()}</svg>`;
 
   const loopCircle = () =>
-    `<svg ${common} class="ml-loop-mark"><path d="M59 25a35 35 0 1 0 0 70c22 0 40-19 61-35 21-16 39-35 61-35a35 35 0 1 1 0 70c-22 0-41-19-61-35C100 44 81 25 59 25Z" fill="none" stroke="currentColor" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/>${loopLetters(10)}${loopDiagonal(7)}</svg>`;
+    `<svg ${common} class="ml-loop-mark"><path d="M59 25a35 35 0 1 0 0 70c22 0 40-19 61-35 21-16 39-35 61-35a35 35 0 1 1 0 70c-22 0-41-19-61-35C100 44 81 25 59 25Z" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" opacity=".72"/>${loopDiagonal(5, "currentColor", 0.38)}${loopLetters()}</svg>`;
 
   const loopUnderline = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopDiagonal(9)}<path fill="#ef172f" d="M52 98h145l-13 12H38z"/></svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.76)}${loopDiagonal(5, "currentColor", 0.38)}${loopLetters()}<path fill="#ef172f" d="M52 98h145l-13 12H38z"/></svg>`;
 
   const loopChrome = () =>
-    `<svg ${common} class="ml-loop-mark"><defs><linearGradient id="chrome-${option.id}" x1="0" x2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="#9aa4ad"/><stop offset=".62" stop-color="currentColor"/><stop offset="1" stop-color="#eef7ff"/></linearGradient></defs>${loopOutline(10, `url(#chrome-${option.id})`)}${loopLetters(10, `url(#chrome-${option.id})`)}${loopDiagonal(8, `url(#chrome-${option.id})`)}</svg>`;
+    `<svg ${common} class="ml-loop-mark"><defs><linearGradient id="chrome-${option.id}" x1="0" x2="1"><stop offset="0" stop-color="currentColor"/><stop offset=".45" stop-color="#9aa4ad"/><stop offset=".62" stop-color="currentColor"/><stop offset="1" stop-color="#eef7ff"/></linearGradient></defs>${loopOutline(8, `url(#chrome-${option.id})`, 0.78)}${loopDiagonal(5, `url(#chrome-${option.id})`, 0.42)}${loopLetters(10, `url(#chrome-${option.id})`)}</svg>`;
 
   const loopNeon = () =>
-    `<svg ${common} class="ml-loop-mark"><path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="#13d6ff" stroke-width="15" stroke-linecap="round" stroke-linejoin="round" opacity=".34"/>${loopOutline(9)}${loopLetters(10)}${loopDiagonal(7)}<path fill="#13d6ff" d="M42 100h154l-11 10H29z"/></svg>`;
+    `<svg ${common} class="ml-loop-mark"><path d="M118 60C98 38 78 27 58 27C38 27 24 40 24 60C24 81 39 93 60 93C82 93 99 78 118 60M122 60C141 42 158 27 180 27C201 27 216 40 216 60C216 80 202 93 182 93C160 93 141 82 122 60" fill="none" stroke="#13d6ff" stroke-width="14" stroke-linecap="round" stroke-linejoin="round" opacity=".24"/>${loopOutline(7, "currentColor", 0.8)}${loopDiagonal(5, "currentColor", 0.38)}${loopLetters()}<path fill="#13d6ff" d="M42 100h154l-11 10H29z"/></svg>`;
 
   const loopCompact = () =>
-    `<svg ${common} class="ml-loop-mark" viewBox="0 0 240 120">${loopOutline(11)}<path d="M61 79V45L84 66L109 45M146 45V79H183" fill="none" stroke="currentColor" stroke-width="11" stroke-linecap="square" stroke-linejoin="miter"/><path d="M105 77 146 40" fill="none" stroke="currentColor" stroke-width="8" stroke-linecap="square"/></svg>`;
+    `<svg ${common} class="ml-loop-mark" viewBox="0 0 240 120">${loopOutline(7, "currentColor", 0.76)}${loopDiagonal(5, "currentColor", 0.35)}${loopLetters()}</svg>`;
 
   const loopStage = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(12)}${loopLetters(13)}${loopDiagonal(9)}<path fill="#ef172f" d="M14 57h61l-11 12H3zm158 0h65l-13 12h-66z"/></svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.76)}${loopDiagonal(5, "currentColor", 0.36)}${loopLetters()}<path fill="#ef172f" d="M14 57h61l-11 12H3zm158 0h65l-13 12h-66z"/></svg>`;
 
   const loopMono = () =>
-    `<svg ${common} class="ml-loop-mark">${loopOutline(13)}${loopLetters(14)}${loopDiagonal(10)}</svg>`;
+    `<svg ${common} class="ml-loop-mark">${loopOutline(8, "currentColor", 0.78)}${loopDiagonal(5, "currentColor", 0.35)}${loopLetters()}</svg>`;
+
+  const blockLetters = (color = "currentColor") =>
+    `<g fill="${color}"><path d="M34 90 55 30h25l39 37 39-37h28l-20 60h-24l11-34-29 30h-13L82 56 70 90z"/><path d="M164 30h29l-14 39h39l-8 21h-69z"/></g>`;
+
+  const splitRings = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M61 25a35 35 0 1 0 0 70a35 35 0 1 0 0-70" fill="none" stroke="currentColor" stroke-width="8" opacity=".78"/><path d="M179 25a35 35 0 1 0 0 70a35 35 0 1 0 0-70" fill="none" stroke="currentColor" stroke-width="8" opacity=".78"/><path fill="currentColor" d="M48 79V42h12l20 19 20-19h12v37H99V60L84 76h-8L61 60v19zM149 42h14v25h31v12h-45z"/><path fill="#ef172f" d="M95 82 198 34l-14 16L82 97z"/></svg>`;
+
+  const linkedCapsule = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M30 60c0-22 14-34 38-34h33l19 20 19-20h33c24 0 38 12 38 34s-14 34-38 34h-33l-19-20-19 20H68c-24 0-38-12-38-34Z" fill="none" stroke="currentColor" stroke-width="8" opacity=".74"/><path fill="currentColor" d="M52 80V40h13l20 20 20-20h13v40h-13V58L89 76h-8L65 58v22zM148 40h14v27h30v13h-44z"/><path fill="#13d6ff" d="M108 91h84l-11 11H96z"/></svg>`;
+
+  const blockItalic = () =>
+    `<svg ${common} class="ml-loop-mark"><path class="mark-shadow" d="M34 95h176l-13 13H18z"/>${blockLetters("currentColor")}<path fill="#ef172f" d="M25 96h170l-12 12H12z"/><path fill="#ef172f" d="M172 26h47l-17 14h-35z"/></svg>`;
+
+  const framedBadge = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M32 24h176l-22 72H32z" fill="none" stroke="currentColor" stroke-width="8" opacity=".82"/><path fill="currentColor" d="M55 80V41h14l20 20 20-20h14v39h-14V59L93 76h-8L69 59v21zM150 41h15v27h31v12h-46z"/><path fill="var(--accent)" d="M42 92h145l-10 11H31z"/></svg>`;
+
+  const twinCircle = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M61 60m-37 0a37 37 0 1 0 74 0a37 37 0 1 0-74 0M179 60m-37 0a37 37 0 1 0 74 0a37 37 0 1 0-74 0" fill="none" stroke="currentColor" stroke-width="7" opacity=".78"/><path fill="currentColor" d="M43 79V42h12l20 20 20-20h12v37H95V61L80 76h-8L56 61v18zM150 42h14v25h30v12h-44z"/><path fill="#ef172f" d="M99 77 143 43l7 8-43 34z"/></svg>`;
+
+  const razorBox = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M31 29h178v62H31z" fill="none" stroke="currentColor" stroke-width="6" opacity=".75"/><path fill="currentColor" d="M45 83V37h17l24 22 24-22h17v46h-16V59L91 80H80L60 59v24zM151 37h17v30h35v16h-52z"/><path fill="#ef172f" d="M16 76 226 35l-17 18L6 91z"/></svg>`;
+
+  const ribbonLink = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M30 83c30-48 55-57 90-23s61 27 91-22" fill="none" stroke="#13d6ff" stroke-width="11" stroke-linecap="round" opacity=".72"/><path d="M30 38c30 49 57 55 90 22s61-27 91 23" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" opacity=".82"/><path fill="currentColor" d="M54 80V42h13l19 19 19-19h13v38h-13V60L90 76h-8L67 60v20zM148 42h14v26h30v12h-44z"/></svg>`;
+
+  const stageDiamond = () =>
+    `<svg ${common} class="ml-loop-mark"><path d="M120 17 212 60 120 103 28 60z" fill="none" stroke="currentColor" stroke-width="8" opacity=".72"/><path fill="currentColor" d="M57 80V41h14l49 35 49-35h15v39h-15V59l-42 28h-14L72 59v21z"/><path fill="var(--accent)" d="M139 42h43l-13 12h-31z"/></svg>`;
+
+  const slashMl = () =>
+    `<svg ${common} class="ml-loop-mark"><path fill="currentColor" d="M30 88 56 31h31l33 32 33-32h56l-42 57h-34l18-28-27 24h-12L85 60 72 88zM163 31h49l-15 20h-22l-27 37h-31l13-20h16z"/><path fill="#ef172f" d="M14 76 220 37l-17 18L4 91z"/></svg>`;
+
+  const cleanMono = () =>
+    `<svg ${common} class="ml-loop-mark"><path fill="currentColor" d="M43 84V36h16l61 38 61-38h16v48h-17V58l-52 31h-16L60 58v26z"/><path d="M31 27h178M31 94h178" stroke="currentColor" stroke-width="6" opacity=".58"/></svg>`;
 
   const sampleMark = (primary = "#f0142f", secondary = "currentColor", accent = primary) =>
     `<svg ${common} class="ml-mark ml-sample">${shadow}<path fill="${primary}" d="M18 91 51 24h36l32 35 32-35h42l-30 67h-34l16-39-27 32h-13L80 54 64 91z"/><path fill="${secondary}" d="M159 24h61l-47 67h-55l15-23h22l30-44z"/><path fill="${accent}" d="M98 98h82l-13 12H82z"/></svg>`;
@@ -502,6 +536,16 @@ function markSvg(option) {
     "loop-compact": loopCompact(),
     "loop-stage": loopStage(),
     "loop-mono": loopMono(),
+    "split-rings": splitRings(),
+    "linked-capsule": linkedCapsule(),
+    "block-italic": blockItalic(),
+    "framed-badge": framedBadge(),
+    "twin-circle": twinCircle(),
+    "razor-box": razorBox(),
+    "ribbon-link": ribbonLink(),
+    "stage-diamond": stageDiamond(),
+    "slash-ml": slashMl(),
+    "clean-mono": cleanMono(),
     "ml-red-white": sampleMark("#f0142f", "currentColor", "#f0142f"),
     "ml-cyan-white": sampleMark("#13d6ff", "currentColor", "#13d6ff"),
     "ml-red-wing": wingMark("#f0142f", "currentColor", "#f0142f"),
