@@ -22,6 +22,18 @@ const logoOptions = [
 ];
 
 const markOptions = [
+  { id: "ML21", name: "Classic Infinity", mark: "reference-loop", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML22", name: "Bold Capsule", mark: "linked-capsule", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML23", name: "Twin Lens", mark: "twin-circle", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML24", name: "Hex Cut Badge", mark: "framed-badge", accent: "#13d6ff", family: "client feedback round" },
+  { id: "ML25", name: "Clean Stage", mark: "clean-mono", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML26", name: "Diamond Link", mark: "stage-diamond", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML27", name: "Red Blade Loop", mark: "infinity-blade", accent: "#ef172f", family: "client feedback round" },
+  { id: "ML28", name: "Liquid Link", mark: "liquid-link", accent: "#13d6ff", family: "client feedback round" },
+  { id: "ML29", name: "Razor Box", mark: "razor-box", accent: "#ef172f", family: "client feedback round" },
+  { id: "ML30", name: "Motorsport Wide", mark: "wide-motorsport", accent: "#ef172f", family: "client feedback round" },
+  { id: "ML31", name: "Orbit Circle", mark: "orbit-ml", accent: "#ffffff", family: "client feedback round" },
+  { id: "ML32", name: "Neon Loop", mark: "loop-neon", accent: "#13d6ff", family: "client feedback round" },
   { id: "ML01", name: "Generated Loop", asset: "assets/top-logos/ml01.png", accent: "#ffffff", family: "generated concept board" },
   { id: "ML02", name: "Blade Loop", asset: "assets/top-logos/ml02.png", accent: "#ffffff", family: "generated concept board" },
   { id: "ML03", name: "Double Ring", asset: "assets/top-logos/ml03.png", accent: "#ffffff", family: "generated concept board" },
@@ -66,9 +78,9 @@ const backgroundOptions = [
 ];
 
 const state = {
-  markId: "ML01",
+  markId: "ML21",
   logoId: "A",
-  backgroundId: "meigen-cyan",
+  backgroundId: "cyan-ink",
   animate: true,
   darkLogo: false,
   notes: JSON.parse(localStorage.getItem("manuelLegendNotes") || "{}"),
