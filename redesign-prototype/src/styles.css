@@ -316,6 +316,13 @@ button {
   gap: 10px;
 }
 
+.logo-design-strip {
+  position: relative;
+  z-index: 21;
+  margin-top: 10px;
+  display: flex;
+}
+
 .proof-strip a {
   display: inline-flex;
   align-items: center;
@@ -346,10 +353,29 @@ button {
   transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
 }
 
+.logo-design-strip a {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  position: relative;
+  z-index: 22;
+  border: 1px solid rgba(0, 240, 255, 0.42);
+  border-radius: 999px;
+  color: var(--text);
+  padding: 11px 15px;
+  background: linear-gradient(90deg, rgba(0, 240, 255, 0.14), rgba(208, 241, 0, 0.08));
+  box-shadow: 0 0 26px rgba(0, 240, 255, 0.1);
+  font-size: 0.86rem;
+  font-weight: 850;
+  transition: border-color 180ms ease, background 180ms ease, transform 180ms ease;
+}
+
 .proof-strip a:hover,
 .proof-strip a:focus-visible,
 .service-strip a:hover,
-.service-strip a:focus-visible {
+.service-strip a:focus-visible,
+.logo-design-strip a:hover,
+.logo-design-strip a:focus-visible {
   transform: translateY(-1px);
   outline: none;
 }
@@ -365,6 +391,12 @@ button {
 .service-strip a:focus-visible {
   border-color: rgba(208, 241, 0, 0.62);
   background: rgba(208, 241, 0, 0.12);
+}
+
+.logo-design-strip a:hover,
+.logo-design-strip a:focus-visible {
+  border-color: rgba(0, 240, 255, 0.72);
+  background: rgba(0, 240, 255, 0.12);
 }
 
 .floating-stage {
