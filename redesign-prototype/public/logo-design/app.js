@@ -669,3 +669,4 @@ resizeLoopCanvas();
 window.addEventListener("resize", resizeLoopCanvas);
 requestAnimationFrame(drawLoopFrame);
 updatePreview();
+window.getManuelLegendRenderSpec = feedbackPayload;
