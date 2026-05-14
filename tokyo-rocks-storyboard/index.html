@@ -1,0 +1,1346 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Tokyo Rocks storyboard keyframes and Seedance scene plan." />
+    <title>Tokyo Rocks Storyboard</title>
+    <style>
+      :root {
+        --ink: #151311;
+        --paper: #f4efe6;
+        --paper-2: #e7ddcc;
+        --line: rgba(244, 239, 230, 0.18);
+        --muted: #b9ad99;
+        --gold: #d5aa62;
+        --gold-2: #f0d196;
+        --red: #b84435;
+        --red-2: #ef6957;
+        --violet: #7c5bd6;
+        --teal: #4fb19d;
+        --shadow: 0 18px 60px rgba(0, 0, 0, 0.34);
+        --radius: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 12% 0%, rgba(184, 68, 53, 0.24), transparent 28rem),
+          radial-gradient(circle at 82% 10%, rgba(213, 170, 98, 0.16), transparent 32rem),
+          linear-gradient(180deg, #17120f 0%, #221915 34%, #120f0d 100%);
+        color: var(--paper);
+        font-family:
+          ui-sans-serif,
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        letter-spacing: 0;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .page {
+        width: min(1480px, calc(100% - 40px));
+        margin: 0 auto;
+        padding: 34px 0 56px;
+      }
+
+      .topbar {
+        display: flex;
+        justify-content: space-between;
+        gap: 24px;
+        align-items: flex-start;
+        padding-bottom: 26px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .brand {
+        display: grid;
+        gap: 10px;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        border: 1px solid rgba(213, 170, 98, 0.62);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        color: var(--gold-2);
+        font-family: Georgia, serif;
+        font-size: 26px;
+        line-height: 1;
+      }
+
+      h1 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(42px, 8vw, 104px);
+        line-height: 0.88;
+        font-weight: 500;
+        max-width: 980px;
+      }
+
+      .deck-note {
+        max-width: 480px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+        padding-top: 8px;
+      }
+
+      .summary {
+        display: grid;
+        grid-template-columns: 1.25fr 0.75fr;
+        gap: 24px;
+        margin: 26px 0 28px;
+      }
+
+      .hero-image {
+        min-height: 410px;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        position: relative;
+        background: #070605;
+        box-shadow: var(--shadow);
+      }
+
+      .hero-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: saturate(0.98) contrast(1.06);
+      }
+
+      .hero-caption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 26px;
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.82));
+        display: flex;
+        justify-content: space-between;
+        gap: 18px;
+        align-items: flex-end;
+      }
+
+      .hero-caption strong {
+        display: block;
+        font-size: clamp(26px, 3vw, 44px);
+        line-height: 1;
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      .hero-caption span {
+        color: var(--paper-2);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .spec-panel {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 24px;
+        background: rgba(244, 239, 230, 0.06);
+        display: grid;
+        align-content: space-between;
+        gap: 24px;
+      }
+
+      .spec-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .spec {
+        border-top: 1px solid rgba(213, 170, 98, 0.36);
+        padding-top: 12px;
+      }
+
+      .spec b {
+        display: block;
+        font-size: 25px;
+        line-height: 1.05;
+        color: var(--gold-2);
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      .spec span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.06em;
+      }
+
+      .intent {
+        color: var(--paper-2);
+        line-height: 1.55;
+        font-size: 15px;
+        margin: 0;
+      }
+
+      .clip-map {
+        display: grid;
+        grid-template-columns: repeat(8, minmax(120px, 1fr));
+        gap: 8px;
+        margin: 0 0 28px;
+      }
+
+      .song-map {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        margin: 0 0 30px;
+      }
+
+      .song-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        background: rgba(244, 239, 230, 0.06);
+        padding: 16px;
+        min-height: 150px;
+      }
+
+      .song-card b {
+        display: block;
+        color: var(--gold-2);
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 10px;
+      }
+
+      .song-card strong {
+        display: block;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: 22px;
+        line-height: 1.05;
+        font-weight: 500;
+      }
+
+      .song-card span {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.35;
+      }
+
+      .clip-chip {
+        display: block;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 12px;
+        background: rgba(0, 0, 0, 0.22);
+        text-decoration: none;
+        min-height: 112px;
+      }
+
+      .clip-chip b {
+        display: block;
+        color: var(--gold-2);
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .clip-chip span {
+        display: block;
+        margin-top: 8px;
+        color: var(--paper);
+        font-size: 15px;
+        line-height: 1.22;
+      }
+
+      .clip-chip small {
+        display: block;
+        margin-top: 10px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .section-title {
+        display: flex;
+        justify-content: space-between;
+        align-items: end;
+        gap: 20px;
+        margin: 36px 0 18px;
+      }
+
+      h2 {
+        margin: 0;
+        font-family: Georgia, "Times New Roman", serif;
+        font-size: clamp(28px, 4vw, 52px);
+        line-height: 1;
+        font-weight: 500;
+      }
+
+      .section-title p {
+        margin: 0;
+        color: var(--muted);
+        max-width: 560px;
+        line-height: 1.45;
+      }
+
+      .frame-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 28px;
+        max-width: 1120px;
+        margin: 0 auto;
+      }
+
+      .frame {
+        background: rgba(244, 239, 230, 0.065);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        display: grid;
+        grid-template-rows: auto 1fr;
+      }
+
+      .frame-media {
+        aspect-ratio: 16 / 9;
+        background: #050404;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .frame-media img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .frame-media img[data-full],
+      .sequence-grid img[data-full] {
+        opacity: 0;
+      }
+
+      .frame-media.has-fullframe img[data-full],
+      .sequence-grid figure.has-fullframe img[data-full],
+      .frame-media.has-upscaled img[data-full],
+      .sequence-grid figure.has-upscaled img[data-full] {
+        opacity: 1;
+      }
+
+      .frame-media.is-fallback img[data-full],
+      .sequence-grid figure.is-fallback img[data-full] {
+        opacity: 0;
+      }
+
+      .frame-media.is-fallback,
+      .sequence-grid figure.is-fallback {
+        display: grid;
+        place-items: center;
+        background:
+          linear-gradient(135deg, rgba(184, 68, 53, 0.12), transparent 40%),
+          linear-gradient(315deg, rgba(213, 170, 98, 0.12), transparent 42%),
+          #070605;
+      }
+
+      .frame-media.is-fallback::before,
+      .sequence-grid figure.is-fallback::before {
+        content: "Pending full-frame 16:9 Nano Banana render";
+        position: absolute;
+        inset: 0;
+        display: grid;
+        place-items: center;
+        padding: 40px;
+        color: var(--paper);
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: clamp(18px, 2.4vw, 32px);
+        font-weight: 800;
+        letter-spacing: 0.02em;
+        text-align: center;
+        text-transform: uppercase;
+      }
+
+      .sequence-media {
+        aspect-ratio: auto;
+        padding: 0;
+        overflow: visible;
+        background: transparent;
+      }
+
+      .sequence-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr);
+        gap: 18px;
+        height: auto;
+      }
+
+      .sequence-grid.seq-5 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sequence-grid.seq-6 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sequence-grid.seq-8 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .sequence-grid figure {
+        aspect-ratio: 16 / 9;
+        min-width: 0;
+        min-height: 0;
+        margin: 0;
+        position: relative;
+        overflow: hidden;
+        background: #070605;
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+      }
+
+      .sequence-grid img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      .sequence-grid figcaption {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        padding: 18px 20px;
+        color: var(--paper);
+        font-size: 17px;
+        font-weight: 700;
+        background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.76));
+        z-index: 2;
+      }
+
+      .sequence-grid figure::after,
+      .frame-media::after {
+        position: absolute;
+        right: 14px;
+        top: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        border-radius: 999px;
+        padding: 6px 9px;
+        background: rgba(0, 0, 0, 0.72);
+        color: var(--paper-2);
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        pointer-events: none;
+      }
+
+      .sequence-grid figure.is-fallback::after,
+      .frame-media.is-fallback::after {
+        content: "needs high-res 16:9";
+      }
+
+      .sequence-grid figure.has-fullframe::after,
+      .frame-media.has-fullframe::after {
+        content: "full-frame 16:9";
+        color: var(--gold-2);
+      }
+
+      .frame-media .fit-contain {
+        object-fit: contain;
+        background: #080706;
+      }
+
+      .frame-no {
+        position: absolute;
+        left: 10px;
+        top: 10px;
+        min-width: 42px;
+        height: 28px;
+        padding: 0 9px;
+        display: grid;
+        place-items: center;
+        border-radius: 999px;
+        background: rgba(0, 0, 0, 0.72);
+        color: var(--gold-2);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.04em;
+      }
+
+      .frame-body {
+        padding: 16px;
+        display: grid;
+        gap: 14px;
+        align-content: start;
+      }
+
+      .frame-kicker {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        align-items: center;
+      }
+
+      .timecode {
+        color: var(--gold-2);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .clip-label {
+        color: var(--paper);
+        border: 1px solid rgba(213, 170, 98, 0.36);
+        border-radius: 999px;
+        padding: 4px 8px;
+        font-size: 11px;
+        white-space: nowrap;
+      }
+
+      .frame h3 {
+        margin: 0;
+        font-size: 24px;
+        line-height: 1.04;
+        font-family: Georgia, "Times New Roman", serif;
+        font-weight: 500;
+      }
+
+      .frame p {
+        margin: 0;
+        color: var(--paper-2);
+        font-size: 14px;
+        line-height: 1.45;
+      }
+
+      .notes {
+        display: grid;
+        gap: 8px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.38;
+      }
+
+      .notes div {
+        border-top: 1px solid rgba(244, 239, 230, 0.12);
+        padding-top: 8px;
+      }
+
+      .notes b {
+        color: var(--gold-2);
+        font-weight: 700;
+      }
+
+      .clip-band-0,
+      .clip-band-1,
+      .clip-band-2 {
+        --band: var(--gold);
+      }
+
+      .clip-band-3,
+      .clip-band-4,
+      .clip-band-5,
+      .clip-band-6 {
+        --band: var(--red);
+      }
+
+      .clip-band-7,
+      .clip-band-8,
+      .clip-band-9,
+      .clip-band-10,
+      .clip-band-11,
+      .clip-band-12 {
+        --band: var(--violet);
+      }
+
+      .clip-band-13,
+      .clip-band-14,
+      .clip-band-15,
+      .clip-band-16 {
+        --band: var(--teal);
+      }
+
+      .frame::before {
+        content: "";
+        display: block;
+        height: 4px;
+        background: var(--band, var(--gold));
+        grid-row: 1;
+      }
+
+      .edit-board {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+        margin-top: 18px;
+      }
+
+      .edit-card {
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        padding: 18px;
+        background: rgba(0, 0, 0, 0.18);
+      }
+
+      .edit-card b {
+        display: block;
+        color: var(--gold-2);
+        margin-bottom: 8px;
+        font-size: 13px;
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+      }
+
+      .edit-card p {
+        margin: 0;
+        color: var(--paper-2);
+        line-height: 1.45;
+        font-size: 14px;
+      }
+
+      .edit-card a {
+        color: var(--gold-2);
+        text-decoration-thickness: 1px;
+        text-underline-offset: 3px;
+      }
+
+      .sticky-nav {
+        position: sticky;
+        bottom: 0;
+        z-index: 10;
+        margin-top: 28px;
+        padding: 12px 0 0;
+        background: linear-gradient(180deg, transparent, rgba(18, 15, 13, 0.96) 32%);
+      }
+
+      .mini-track {
+        display: grid;
+        grid-template-columns: 0.23fr repeat(16, 3.715fr);
+        border: 1px solid var(--line);
+        border-radius: var(--radius);
+        overflow: hidden;
+        height: 44px;
+        background: rgba(0, 0, 0, 0.48);
+      }
+
+      .mini-track a {
+        display: grid;
+        place-items: center;
+        color: var(--paper);
+        text-decoration: none;
+        font-size: 11px;
+        border-right: 1px solid rgba(244, 239, 230, 0.12);
+        min-width: 0;
+      }
+
+      .mini-track a:last-child {
+        border-right: 0;
+      }
+
+      .mini-track .gold {
+        background: rgba(213, 170, 98, 0.2);
+      }
+
+      .mini-track .red {
+        background: rgba(184, 68, 53, 0.28);
+      }
+
+      .mini-track .violet {
+        background: rgba(124, 91, 214, 0.27);
+      }
+
+      .mini-track .teal {
+        background: rgba(79, 177, 157, 0.25);
+      }
+
+      @media (max-width: 1180px) {
+        .summary {
+          grid-template-columns: 1fr;
+        }
+
+        .clip-map {
+          grid-template-columns: repeat(4, minmax(0, 1fr));
+        }
+
+        .song-map {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .frame-grid {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .edit-board {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (max-width: 720px) {
+        .page {
+          width: min(100% - 24px, 1480px);
+          padding-top: 20px;
+        }
+
+        .topbar,
+        .section-title {
+          display: grid;
+        }
+
+        .hero-image {
+          min-height: 300px;
+        }
+
+        .hero-caption {
+          display: grid;
+          padding: 18px;
+        }
+
+        .spec-grid,
+        .clip-map,
+        .song-map,
+        .frame-grid,
+        .edit-board {
+          grid-template-columns: 1fr;
+        }
+
+        .frame {
+          min-height: auto;
+        }
+
+        .mini-track {
+          overflow-x: auto;
+          grid-template-columns: 46px repeat(16, 72px);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="topbar">
+        <div class="brand">
+          <div class="brand-mark">T</div>
+          <h1>Tokyo Rocks Storyboard</h1>
+        </div>
+        <p class="deck-note">
+          A beat-locked visual board for the one-minute walkthrough. Each frame uses
+          the concept deck as reference, then translates into one controlled Seedance
+          shot or edit beat.
+        </p>
+      </header>
+
+      <section class="summary" aria-label="Storyboard overview">
+        <div class="hero-image">
+          <img src="assets/keyframes/41_frame-14_14_sumo_faceoff_clean.jpeg" alt="Tokyo Rocks sumo hall hero reference"/>
+          <div class="hero-caption">
+          <div>
+              <strong>One destination. Endless experiences.</strong>
+              <span>Intro arrival -> market pulse -> grill chant -> heroic entertainment hook</span>
+            </div>
+            <span>Final cut: 00:59.68</span>
+          </div>
+        </div>
+
+        <aside class="spec-panel">
+          <div class="spec-grid">
+            <div class="spec">
+              <b>129.2</b>
+              <span>BPM</span>
+            </div>
+            <div class="spec">
+              <b>8</b>
+              <span>Seedance clips</span>
+            </div>
+            <div class="spec">
+              <b>17</b>
+              <span>Storyboard frames</span>
+            </div>
+            <div class="spec">
+              <b>16:9</b>
+              <span>Master format</span>
+            </div>
+          </div>
+          <p class="intent">
+            The first 45 seconds keep moving forward through the venue. The last 15
+            seconds slow down and widen out so the sumo hall becomes the big client
+            memory.
+          </p>
+        </aside>
+      </section>
+
+      <nav class="clip-map" aria-label="Seedance clip map">
+        <a class="clip-chip" href="#frame-01"><b>Clip 01</b><span>Intro: entrance to reception</span><small>00:00.23-00:07.66</small></a>
+        <a class="clip-chip" href="#frame-03"><b>Clip 02</b><span>First chant: market / food hall</span><small>00:07.66-00:15.09</small></a>
+        <a class="clip-chip" href="#frame-05"><b>Clip 03</b><span>Second chant: grill station</span><small>00:15.09-00:22.52</small></a>
+        <a class="clip-chip" href="#frame-07"><b>Clip 04</b><span>Craft reset: omakase / vinyl</span><small>00:22.52-00:29.95</small></a>
+        <a class="clip-chip" href="#frame-09"><b>Clip 05</b><span>Pre-hook: nightlife ignition</span><small>00:29.95-00:37.38</small></a>
+        <a class="clip-chip" href="#frame-11"><b>Clip 06</b><span>Heroic hook: entertainment</span><small>00:37.38-00:44.81</small></a>
+        <a class="clip-chip" href="#frame-13"><b>Clip 07</b><span>Heroic hook: sumo reveal</span><small>00:44.81-00:52.24</small></a>
+        <a class="clip-chip" href="#frame-15"><b>Clip 08</b><span>Heroic hook: spectacle finale</span><small>00:52.24-00:59.68</small></a>
+      </nav>
+
+      <section class="song-map" aria-label="Song structure map">
+        <div class="song-card">
+          <b>Intro</b>
+          <strong>Entrance to reception</strong>
+          <span>Use the opening breath and first bars for exterior, threshold, host/reception energy.</span>
+        </div>
+        <div class="song-card">
+          <b>First soi / sei-ya pulse</b>
+          <strong>Market and food hall fast cuts</strong>
+          <span>Flash the destination breadth: main hall, grocery, produce, sake, cafe, social tables.</span>
+        </div>
+        <div class="song-card">
+          <b>Second soi / sei-ya pulse</b>
+          <strong>Grill station and grilled food</strong>
+          <span>Robatayaki, flame, fish, steak/wagyu energy, skewers, seafood and chef action.</span>
+        </div>
+        <div class="song-card">
+          <b>Build</b>
+          <strong>Nightlife ignition</strong>
+          <span>Omakase, whisky, vinyl, bottle wall and social lounge prepare the hook.</span>
+        </div>
+        <div class="song-card">
+          <b>Heroic hook / metal guitar</b>
+          <strong>Entertainment release</strong>
+          <span>Rock bar, immersive room, anime museum, culture flash, sumo hall and final brand pullback.</span>
+        </div>
+      </section>
+
+      <section class="section-title">
+        <h2>Frame Flow</h2>
+        <p>
+          The reference still is not the final generated frame. It is the visual
+          anchor for Seedance: space, light, density, and camera intent.
+        </p>
+      </section>
+
+      <section class="frame-grid" aria-label="Timed storyboard frames">
+        <article id="frame-00" class="frame clip-band-0">
+          <div class="frame-media">
+            <img src="assets/keyframes/01_frame-00_00_cold_open_dark_brand_surface.jpeg" alt="Cold open brand reference"/>
+            <span class="frame-no">00</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:00.00-00:00.23</span><span class="clip-label">Post-only</span></div>
+            <h3>Black stone, crest, door glow</h3>
+            <p>A tiny visual inhale before the first beat. Keep it simple and do this in the edit, not Seedance.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Macro light pulse or fast fade from black.</div>
+              <div><b>Cut note:</b> Land Clip 01 on the first beat at 00:00.23.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-01" class="frame clip-band-1">
+          <div class="frame-media">
+            <img src="assets/keyframes/02_frame-01_01_soho_exterior_clean_facade.png" alt="Soho exterior arrival" />
+            <span class="frame-no">01</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:00.23-00:03.94</span><span class="clip-label">Clip 01</span></div>
+            <h3>Soho exterior arrival</h3>
+            <p>The viewer approaches Tokyo Rocks from the street. Warm interior light, black steel, greenery, hospitality energy.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Slow dolly toward facade.</div>
+              <div><b>Seedance:</b> Stable architecture, no readable invented signage.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-02" class="frame clip-band-2">
+          <div class="frame-media">
+            <img src="assets/keyframes/03_frame-02_02_threshold_clean_entry.png" alt="Tokyo Rocks threshold" />
+            <span class="frame-no">02</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:03.94-00:07.66</span><span class="clip-label">Clip 01</span></div>
+            <h3>Entrance to reception</h3>
+            <p>The entrance becomes a portal from New York into the Tokyo Rocks world: doorway, host stand, first glow of the interior.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Push through door toward reception, sign surface passes overhead.</div>
+              <div><b>Music:</b> Finish the intro setup before the first fast food-hall pulse.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-03" class="frame clip-band-3">
+          <div class="frame-media">
+            <img src="assets/keyframes/04_frame-03_03_food_hall_wide_clean.png" alt="Main food hall reveal" />
+            <span class="frame-no">03</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:07.66-00:11.37</span><span class="clip-label">Clip 02</span></div>
+            <h3>First chant: food hall opens</h3>
+            <p>The first `soi / sei-ya` pulse opens the room: two levels, food counters, sake bar, market banners, moving guests.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Wide gimbal reveal or gentle crane.</div>
+              <div><b>Accent:</b> Let the hero angle hit around 00:10.91.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-04" class="frame clip-band-4">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-6">
+              <figure>
+                <img src="assets/keyframes/05_frame-04_04a_main_food_hall_hero.png" alt="Main food hall hero insert" />
+                <figcaption>Main hall</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/06_frame-04_04b_grocery_market_aisle.png" alt="Grocery market aisle insert" />
+                <figcaption>Grocery</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/07_frame-04_04c_fresh_produce_counter.png" alt="Fresh produce counter insert" />
+                <figcaption>Produce</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/08_frame-04_04d_sake_shochu_wall.png" alt="Sake and shochu wall insert" />
+                <figcaption>Sake</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/09_frame-04_04e_cafe_lounge_daylight.png" alt="Cafe lounge daylight insert" />
+                <figcaption>Cafe</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/10_frame-04_04f_social_foodhall_table.jpeg" alt="Social food hall table insert"/>
+                <figcaption>Social table</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">04</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:11.37-00:15.09</span><span class="clip-label">Clip 02</span></div>
+            <h3>First chant: market fast cuts</h3>
+            <p>A fast run through the breadth of the venue: main hall, grocery, produce, sake wall, cafe and social dining.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Rapid clean inserts, one room-detail after another.</div>
+              <div><b>Seedance refs:</b> Use the 04 full-frame Nano Banana outputs; crop files are only prompt references.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-05" class="frame clip-band-5">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-5">
+              <figure>
+                <img src="assets/keyframes/11_frame-05_05a_live_fire_counter_wide.jpeg" alt="Wide robatayaki counter with live fire"/>
+                <figcaption>Wide fire counter</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/12_frame-05_05b_skewers_over_flame.jpeg" alt="Skewers over flame"/>
+                <figcaption>Skewers</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/13_frame-05_05c_grilled_fish_seafood_steak.jpeg" alt="Grilled fish seafood and steak reference"/>
+                <figcaption>Fish / steak</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/14_frame-05_05d_open_grill_chef_action.jpeg" alt="Open grill chef action"/>
+                <figcaption>Chef action</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/15_frame-05_05e_counter_flame_detail.jpeg" alt="Counter flame detail"/>
+                <figcaption>Flame detail</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">05</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:15.09-00:18.80</span><span class="clip-label">Clip 03</span></div>
+            <h3>Second chant: grill station</h3>
+            <p>The second `soi / sei-ya` set belongs to robatayaki: skewers, grilled fish, steak/wagyu energy, chef action, smoke and flame.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Start wide, then cut into food and flame inserts.</div>
+              <div><b>Accent:</b> Flame peak near 00:17.39.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-06" class="frame clip-band-6">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-6">
+              <figure>
+                <img src="assets/keyframes/16_frame-06_06a_sushi_counter_macro.jpeg" alt="Sushi macro insert"/>
+                <figcaption>Sushi</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/17_frame-06_06b_ramen_bowl_steam.jpeg" alt="Ramen bowl insert"/>
+                <figcaption>Ramen</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/18_frame-06_06c_grilled_skewers_fire.jpeg" alt="Grilled skewers insert"/>
+                <figcaption>Skewers</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/19_frame-06_06d_seafood_bar_shellfish.jpeg" alt="Seafood bar insert"/>
+                <figcaption>Seafood</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/20_frame-06_06e_katsu_sando_detail.png" alt="Katsu sando detail" />
+                <figcaption>Katsu sando</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/21_frame-06_06f_sake_whisky_pour.jpeg" alt="Sake and whisky pour insert"/>
+                <figcaption>Sake</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">06</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:18.80-00:22.52</span><span class="clip-label">Clip 03</span></div>
+            <h3>Grilled food highlight run</h3>
+            <p>Keep the chant moving through food: sushi, ramen, grilled skewers, shellfish, katsu sando, sake pour.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Macro details, shallow focus, short cuts.</div>
+              <div><b>Timing:</b> Treat each crop as a half-beat or one-beat insert inside this phrase.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-07" class="frame clip-band-7">
+          <div class="frame-media">
+            <img src="assets/keyframes/22_frame-07_07_omakase_counter_no_title.png" alt="Omakase counter" />
+            <span class="frame-no">07</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:22.52-00:26.23</span><span class="clip-label">Clip 04</span></div>
+            <h3>Craft reset: omakase precision</h3>
+            <p>After the grill pulse, the energy tightens: quiet counter, chef focus, refined ingredients, the intimate side of the concept.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Slow lateral move along the counter.</div>
+              <div><b>Cut note:</b> Give the viewer a breath before nightlife.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-08" class="frame clip-band-8">
+          <div class="frame-media">
+            <img src="assets/keyframes/23_frame-08_08_whisky_vinyl_lounge_clean.png" alt="Whisky and vinyl lounge" />
+            <span class="frame-no">08</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:26.23-00:29.95</span><span class="clip-label">Clip 04</span></div>
+            <h3>Craft reset: whisky and vinyl</h3>
+            <p>Sake pour becomes turntable spin. The restaurant shifts into the listening lounge before the hook opens up.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Match cut from liquid motion to record motion.</div>
+              <div><b>Palette:</b> Amber blacks, leather, bottle glow.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-09" class="frame clip-band-9">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-6">
+              <figure>
+                <img src="assets/keyframes/24_frame-09_09a_whisky_vinyl_lounge.jpeg" alt="Whisky vinyl lounge transition"/>
+                <figcaption>Vinyl lounge</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/25_frame-09_09b_bar_bottle_wall.jpeg" alt="Bar bottle wall"/>
+                <figcaption>Whisky wall</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/26_frame-09_09c_record_coffee_table.jpeg" alt="Record and coffee table"/>
+                <figcaption>Coffee / record</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/27_frame-09_09d_grocery_night_market.jpeg" alt="Grocery night market"/>
+                <figcaption>Night market</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/28_frame-09_09e_lounge_people_at_table.jpeg" alt="Lounge guests at table"/>
+                <figcaption>Social table</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/29_frame-09_09f_rock_bar_stage.jpeg" alt="Rock bar stage"/>
+                <figcaption>Rock bar</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">09</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:29.95-00:33.66</span><span class="clip-label">Clip 05</span></div>
+            <h3>Pre-hook: night mode rapid fire</h3>
+            <p>This beat tees up the hook with venue flashes: vinyl lounge, whisky wall, coffee/record, grocery, social table, then rock bar.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Build as fast inserts, not a single literal corridor.</div>
+              <div><b>Seedance refs:</b> Use the 09 full-frame Nano Banana outputs as the rapid montage pack.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-10" class="frame clip-band-10">
+          <div class="frame-media">
+            <img src="assets/keyframes/30_frame-10_10_rock_bar_stage_clean.jpeg" alt="Rock and roll bar"/>
+            <span class="frame-no">10</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:33.66-00:37.38</span><span class="clip-label">Clip 05</span></div>
+            <h3>Heroic hook starts: rock bar</h3>
+            <p>Metal guitar enters the picture: live band, red neon, packed crowd. This is the "Tokyo Rocks" name becoming literal.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Push through crowd toward stage.</div>
+              <div><b>Action:</b> Energy without chaotic shake.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-11" class="frame clip-band-11">
+          <div class="frame-media">
+            <img src="assets/keyframes/31_frame-11_11_immersive_projection_clean.png" alt="Immersive digital room" />
+            <span class="frame-no">11</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:37.38-00:41.09</span><span class="clip-label">Clip 06</span></div>
+            <h3>Heroic hook: immersive Tokyo</h3>
+            <p>Projection walls and reflective floors bloom around guests. The hook becomes entertainment and spectacle.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Match cut from stage light to projection light.</div>
+              <div><b>Accent:</b> Projection bloom around 00:37.92.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-12" class="frame clip-band-12">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-8">
+              <figure>
+                <img src="assets/keyframes/32_frame-12_12a_immersive_projection_room.jpeg" alt="Immersive projection room"/>
+                <figcaption>Projection</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/33_frame-12_12b_anime_museum_hall.jpeg" alt="Anime museum hall"/>
+                <figcaption>Museum hall</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/34_frame-12_12c_giant_anime_projection.jpeg" alt="Giant anime-inspired projection"/>
+                <figcaption>Giant art</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/35_frame-12_12d_game_screen_area.jpeg" alt="Game screen area"/>
+                <figcaption>Game room</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/36_frame-12_12e_collectibles_interactive_table.jpeg" alt="Collectibles interactive table"/>
+                <figcaption>Collectibles</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/37_frame-12_12f_cosplay_gallery.jpeg" alt="Cosplay gallery"/>
+                <figcaption>Cosplay</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/38_frame-12_12g_fantasy_projection_room.jpeg" alt="Fantasy projection room"/>
+                <figcaption>Fantasy room</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/39_frame-12_12h_geisha_kimono_gallery.png" alt="Geisha kimono gallery" />
+                <figcaption>Kimono gallery</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">12</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:41.09-00:44.81</span><span class="clip-label">Clip 06</span></div>
+            <h3>Heroic hook: anime and culture</h3>
+            <p>A quick cascade of projection room, anime museum, giant character-scale art, game zone, collectibles, cosplay, fantasy room, kimono gallery.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Rapid visual flashes, each with a distinct subject.</div>
+              <div><b>Control:</b> For final generation, describe original anime-inspired art rather than exact existing characters.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-13" class="frame clip-band-13">
+          <div class="frame-media">
+            <img src="assets/keyframes/40_frame-13_13_sumo_hall_reveal_clean.jpeg" alt="Sumo hall reveal"/>
+            <span class="frame-no">13</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:44.81-00:48.52</span><span class="clip-label">Clip 07</span></div>
+            <h3>Heroic hook: sumo reveal</h3>
+            <p>The doors open into the signature room: lanterns, audience, balcony, dining around the ring.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Forward reveal from doorway into the hall.</div>
+              <div><b>Beat:</b> This starts the final phrase.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-14" class="frame clip-band-14">
+          <div class="frame-media">
+            <img src="assets/keyframes/41_frame-14_14_sumo_faceoff_clean.jpeg" alt="Sumo wrestlers face off" />
+            <span class="frame-no">14</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:48.52-00:52.24</span><span class="clip-label">Clip 07</span></div>
+            <h3>Heroic hook: sumo face-off</h3>
+            <p>Two wrestlers crouch in the raised ring. The venue finally gives us the hero spectacle.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Low circular dolly around the ring.</div>
+              <div><b>Seedance:</b> Keep ring shape stable and audience secondary.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-15" class="frame clip-band-15">
+          <div class="frame-media sequence-media">
+            <div class="sequence-grid seq-6">
+              <figure>
+                <img src="assets/keyframes/42_frame-15_15a_wide_ring_crowd.jpeg" alt="Wide ring crowd"/>
+                <figcaption>Wide ring</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/43_frame-15_15b_wrestlers_faceoff_low.jpeg" alt="Wrestlers faceoff low angle"/>
+                <figcaption>Face-off</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/44_frame-15_15c_audience_phones_tables.jpeg" alt="Audience phones and tables"/>
+                <figcaption>Phones / tables</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/45_frame-15_15d_referee_ring_ceremony.png" alt="Referee and ring ceremony" />
+                <figcaption>Ceremony</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/46_frame-15_15e_balcony_lantern_crowd.jpeg" alt="Balcony lantern crowd"/>
+                <figcaption>Lantern crowd</figcaption>
+              </figure>
+              <figure>
+                <img src="assets/keyframes/47_frame-15_15f_dining_ring_edge.jpeg" alt="Dining ring edge"/>
+                <figcaption>Dining edge</figcaption>
+              </figure>
+            </div>
+            <span class="frame-no">15</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:52.24-00:55.95</span><span class="clip-label">Clip 08</span></div>
+            <h3>Heroic hook: food and spectacle collide</h3>
+            <p>Rapid inserts around the ring: wide crowd, wrestler face-off, diners filming, ceremony, lantern balcony, tables at the ring edge.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Intercut inserts, then reconnect to the final pullback.</div>
+              <div><b>Seedance refs:</b> Use the 15 full-frame Nano Banana outputs so it does not read as a flat poster.</div>
+            </div>
+          </div>
+        </article>
+
+        <article id="frame-16" class="frame clip-band-16">
+          <div class="frame-media">
+            <img src="assets/keyframes/48_frame-16_16_final_destination_clean.jpeg" alt="Final Tokyo Rocks brand pullback reference"/>
+            <span class="frame-no">16</span>
+          </div>
+          <div class="frame-body">
+            <div class="frame-kicker"><span class="timecode">00:55.95-00:59.68</span><span class="clip-label">Clip 08</span></div>
+            <h3>Heroic hook: final pullback</h3>
+            <p>Pull back from the ring to the full destination. Leave clean dark space for real logo and final tagline in post.</p>
+            <div class="notes">
+              <div><b>Camera:</b> Upward and backward reveal.</div>
+              <div><b>Final text:</b> Add real logo, NEW YORK CITY, and GOOD FOOD. GOOD MUSIC. GOOD PEOPLE.</div>
+            </div>
+          </div>
+        </article>
+      </section>
+
+      <section class="section-title">
+        <h2>Edit Assembly</h2>
+        <p>
+          These are the hard cut points for the Seedance renders once the variants
+          are generated.
+        </p>
+      </section>
+
+      <section class="edit-board" aria-label="Edit assembly notes">
+        <div class="edit-card">
+          <b>Music</b>
+          <p>Use Tokyo Rocks v8 from 00:00.00 to 00:59.68. Keep Seedance audio off.</p>
+        </div>
+        <div class="edit-card">
+          <b>Phrase cuts</b>
+          <p>Hit 00:15.09, 00:29.95, 00:44.81, and 00:59.68 exactly.</p>
+        </div>
+        <div class="edit-card">
+          <b>Generation</b>
+          <p>Use 8 controlled Seedance clips. Generate 2 stable variants first, then 1 kinetic/detail variant.</p>
+        </div>
+        <div class="edit-card">
+          <b>Nano Banana refs</b>
+          <p>Online package uses the finalized 16:9 storyboard keyframes. Cinematic animation prompts are packaged in <a href="assets/prompts/cinematic_animation_prompts_copy_blocks.md">copy blocks</a>.</p>
+        </div>
+        <div class="edit-card">
+          <b>Output folder</b>
+          <p>Use <a href="assets/prompts/all_keyframes_manifest.csv">the keyframe manifest</a> to match each online still to its timing, caption, source, and Seedance prompt.</p>
+        </div>
+        <div class="edit-card">
+          <b>Post text</b>
+          <p>Composite all readable Tokyo Rocks logos, Japanese signs, and final tagline in the editor.</p>
+        </div>
+      </section>
+
+      <nav class="sticky-nav" aria-label="Storyboard mini timeline">
+        <div class="mini-track">
+          <a class="gold" href="#frame-00">00</a>
+          <a class="gold" href="#frame-01">01</a>
+          <a class="gold" href="#frame-02">02</a>
+          <a class="red" href="#frame-03">03</a>
+          <a class="red" href="#frame-04">04</a>
+          <a class="red" href="#frame-05">05</a>
+          <a class="red" href="#frame-06">06</a>
+          <a class="violet" href="#frame-07">07</a>
+          <a class="violet" href="#frame-08">08</a>
+          <a class="violet" href="#frame-09">09</a>
+          <a class="violet" href="#frame-10">10</a>
+          <a class="violet" href="#frame-11">11</a>
+          <a class="violet" href="#frame-12">12</a>
+          <a class="teal" href="#frame-13">13</a>
+          <a class="teal" href="#frame-14">14</a>
+          <a class="teal" href="#frame-15">15</a>
+          <a class="teal" href="#frame-16">16</a>
+        </div>
+      </nav>
+    </main>
+    <script>
+      const assetRevision = new URLSearchParams(window.location.search).get("rev") || "finished-upscales";
+      const withAssetRevision = (src) => {
+        const separator = src.includes("?") ? "&" : "?";
+        return `${src}${separator}v=${encodeURIComponent(assetRevision)}`;
+      };
+
+      document.querySelectorAll("img[data-full]").forEach((img) => {
+        const target = img.closest("figure") || img.closest(".frame-media");
+        const fullFrameSrc = img.dataset.upscaled || img.dataset.full;
+        if (!fullFrameSrc || !target) return;
+        const versionedFullFrameSrc = withAssetRevision(fullFrameSrc);
+
+        const probe = new Image();
+        probe.onload = () => {
+          img.src = versionedFullFrameSrc;
+          target.classList.remove("is-fallback");
+          target.classList.add(img.dataset.upscaled ? "has-upscaled" : "has-fullframe");
+        };
+        probe.onerror = () => {
+          target.classList.remove("has-fullframe", "has-upscaled");
+          target.classList.add("is-fallback");
+        };
+        probe.src = versionedFullFrameSrc;
+      });
+    </script>
+  </body>
+</html>
