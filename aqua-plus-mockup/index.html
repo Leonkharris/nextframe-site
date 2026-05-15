@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AQUAPLUS Manila | Club Website Mockup</title>
+    <meta
+      name="description"
+      content="A premium website mockup for AQUAPLUS Manila, a dance and night club in Pasay."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Orbitron:wght@700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas class="laser-canvas" data-laser-canvas aria-hidden="true"></canvas>
+    <div class="spotlight" data-spotlight aria-hidden="true"></div>
+    <div class="ambient ambient-one"></div>
+    <div class="ambient ambient-two"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="AQUAPLUS Manila home">
+        <span class="brand-mark">A</span>
+        <span>
+          <strong>AQUAPLUS</strong>
+          <small>Manila</small>
+        </span>
+      </a>
+
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+
+      <nav class="nav-links" data-nav>
+        <a href="#nights">Events</a>
+        <a href="#tables">Tables</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#contact">Contact</a>
+        <a class="nav-cta" href="#reserve">Reserve</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero-section" aria-label="Aqua Plus introduction">
+        <div class="hero-media">
+          <img src="./assets/aquaplus/club-crowd-03.jpg" alt="AQUAPLUS Manila crowd and club lights" />
+          <div class="hero-overlay"></div>
+        </div>
+        <div class="poster-word" aria-hidden="true">AQUAPLUS</div>
+
+        <div class="hero-content">
+          <div class="hero-copy">
+            <p class="location-line">AQUAPLUS Manila / Dance & Night Club</p>
+            <h1><span>Dive Into</span> Freedom</h1>
+            <p class="hero-text">
+              Manila's ultimate party destination: hottest beats, coolest drinks, immersive lights, and wild nights in
+              the city. Book VIP tables, birthday nights, and guestlist access before the room fills up.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#reserve">Reserve a table</a>
+              <a class="button ghost" href="#nights">See May events</a>
+            </div>
+            <div class="social-strip" aria-label="AQUAPLUS contact links">
+              <span>#DIVEINTOFREEDOM</span>
+              <a href="tel:+639369419575">+63 936 941 9575</a>
+              <a href="https://instagram.com/aquaplusmanila">IG @aquaplusmanila</a>
+            </div>
+            <div class="club-console" data-tilt-card>
+              <div class="console-top">
+                <span>Live booking signal</span>
+                <strong>VIP queue open</strong>
+              </div>
+              <div class="waveform" aria-hidden="true">
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+                <span></span><span></span><span></span><span></span><span></span><span></span>
+              </div>
+              <div class="console-stats">
+                <span>42K followers</span>
+                <span>Roxas Blvd</span>
+                <span>Bookings and VIP</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="event-stack" aria-label="May 2026 AQUAPLUS events">
+            <div class="event-stack-title">
+              <span>May 2026</span>
+              <strong>Upcoming Events</strong>
+            </div>
+            <article class="event-ticket event-ticket-one active" data-event-ticket data-tilt-card>
+              <div>
+                <small>Guest DJ</small>
+                <h2>Gemino</h2>
+              </div>
+              <time datetime="2026-05-01"><strong>01</strong><span>Friday</span></time>
+            </article>
+            <article class="event-ticket event-ticket-two" data-event-ticket data-tilt-card>
+              <div>
+                <small>Main Room</small>
+                <h2>Linus Maestro</h2>
+              </div>
+              <time datetime="2026-05-02"><strong>02</strong><span>Saturday</span></time>
+            </article>
+            <article class="event-ticket event-ticket-three" data-event-ticket data-tilt-card>
+              <div>
+                <small>Double Header</small>
+                <h2>Jimmy Clash<br />Tricky Gullian</h2>
+              </div>
+              <time datetime="2026-05-08"><strong>08</strong><span>Friday</span></time>
+            </article>
+            <article class="event-ticket event-ticket-four" data-event-ticket data-tilt-card>
+              <div>
+                <small>International Night</small>
+                <h2>Rosh Rosh</h2>
+              </div>
+              <time datetime="2026-05-15"><strong>15</strong><span>Friday</span></time>
+            </article>
+          </aside>
+        </div>
+
+        <div class="marquee" aria-hidden="true">
+          <div class="marquee-track">
+            <span>AQUAPLUS Manila</span>
+            <span>#DiveIntoFreedom</span>
+            <span>VIP tables</span>
+            <span>Guest DJs</span>
+            <span>Roxas Boulevard</span>
+            <span>Bookings and VIP</span>
+            <span>AQUAPLUS Manila</span>
+            <span>#DiveIntoFreedom</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="video-section" aria-label="AQUAPLUS motion preview" data-reveal>
+        <div class="video-copy">
+          <p>Motion proof</p>
+          <h2>A website that feels like the club is already moving.</h2>
+          <span>
+            This reel is built from public AQUAPLUS Manila photos for the mockup. Direct Facebook videos can replace it
+            once you provide video links or files.
+          </span>
+        </div>
+        <div class="video-frame" data-tilt-card>
+          <video
+            src="./assets/aquaplus/aquaplus-motion-reel.mp4"
+            poster="./assets/aquaplus/club-crowd-02.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <div class="video-hud">
+            <span>LIVE ROOM PREVIEW</span>
+            <strong>00:15</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="intro-section" id="nights" data-reveal>
+        <div class="section-heading">
+          <p>Website goal</p>
+          <h2>Turn followers into booked tables.</h2>
+        </div>
+        <div class="intro-grid">
+          <article class="feature" data-tilt-card>
+            <span>01</span>
+            <h3>Match the real brand</h3>
+            <p>Dark navy, electric blue, sharp DJ-poster typography, and a club identity built around motion and light.</p>
+          </article>
+          <article class="feature" data-tilt-card>
+            <span>02</span>
+            <h3>Make May events obvious</h3>
+            <p>The lineup should feel like an event poster first, then convert into table bookings and guestlist requests.</p>
+          </article>
+          <article class="feature" data-tilt-card>
+            <span>03</span>
+            <h3>Push VIP bookings</h3>
+            <p>Every section gives guests a route to call, message, or submit a reservation request.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="split-section" id="tables" data-reveal>
+        <div class="split-copy">
+          <p>Bookings and VIP</p>
+          <h2>Tables, birthdays, and hosted nights without the DM confusion.</h2>
+          <p>
+            AQUAPLUS already has strong social proof. The website should turn that attention into cleaner bookings:
+            table type, date, party size, contact, then the team can confirm on phone, Instagram, Messenger, or WhatsApp.
+          </p>
+          <div class="table-options" role="tablist" aria-label="Table package options">
+            <button class="option active" type="button" data-package="lounge">VIP Table</button>
+            <button class="option" type="button" data-package="birthday">Birthday Table</button>
+            <button class="option" type="button" data-package="event">Private Event</button>
+          </div>
+          <div class="package-result" data-package-result>
+            <strong>VIP Table</strong>
+            <span>Best for 4-6 guests who want a clear spot, bottle service, and easy access to the main room.</span>
+          </div>
+        </div>
+        <div class="image-stack" aria-label="Aqua Plus table service moodboard" data-tilt-card>
+          <img class="stack-main" src="./assets/aquaplus/club-crowd-01.jpg" alt="AQUAPLUS guests at a table" />
+          <img class="stack-float" src="./assets/aquaplus/club-drinks.jpg" alt="AQUAPLUS drinks and after-hours energy" />
+        </div>
+      </section>
+
+      <section class="lineup-section" id="events" data-reveal>
+        <div class="section-heading compact">
+          <p>May 2026 lineup</p>
+          <h2>Give people a reason to choose the exact date.</h2>
+        </div>
+        <div class="lineup-grid">
+          <article class="lineup-card active" data-tilt-card>
+            <span>01 Friday</span>
+            <h3>Gemino</h3>
+            <p>Opening May with an international peak-hour club night.</p>
+          </article>
+          <article class="lineup-card" data-tilt-card>
+            <span>02 Saturday</span>
+            <h3>Linus Maestro</h3>
+            <p>Main-room EDM energy with table reservations pushed early.</p>
+          </article>
+          <article class="lineup-card" data-tilt-card>
+            <span>08 Friday</span>
+            <h3>Jimmy Clash + Tricky Gullian</h3>
+            <p>A double-name event card built for social sharing and VIP demand.</p>
+          </article>
+          <article class="lineup-card" data-tilt-card>
+            <span>15 Friday</span>
+            <h3>Rosh Rosh</h3>
+            <p>A high-impact closer for May event promotion.</p>
+          </article>
+        </div>
+      </section>
+
+      <section class="gallery-section" data-reveal>
+        <div class="gallery-copy">
+          <p>Visual system</p>
+          <h2>Make the site feel like the event posters move.</h2>
+        </div>
+        <div class="gallery-rail">
+          <figure>
+            <img src="./assets/aquaplus/club-crowd-02.jpg" alt="AQUAPLUS guests inside the club" />
+            <figcaption>Immersive light and beats</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/aquaplus/chen-bluu.jpg" alt="AQUAPLUS event poster for Chen Bluu" />
+            <figcaption>Dark blue club identity</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/aquaplus/marc-marasigan.jpg" alt="AQUAPLUS event poster for Marc Marasigan" />
+            <figcaption>Bookings and VIP</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="menu-section" id="drinks" data-reveal>
+        <div class="section-heading">
+          <p>Drinks and hosting</p>
+          <h2>Coolest drinks, easiest next step.</h2>
+        </div>
+        <div class="drink-grid">
+          <article data-tilt-card>
+            <span>Coolest Drinks</span>
+            <strong>Signature cocktails and bottle service for VIP tables</strong>
+          </article>
+          <article data-tilt-card>
+            <span>Birthday Nights</span>
+            <strong>Hosted table flow for groups and celebrations</strong>
+          </article>
+          <article data-tilt-card>
+            <span>Guestlist</span>
+            <strong>Make entry and guest management easier before arrival</strong>
+          </article>
+          <article data-tilt-card>
+            <span>Brand Events</span>
+            <strong>Private nights, sponsors, and DJ-led activations</strong>
+          </article>
+        </div>
+      </section>
+
+      <section class="reserve-section" id="reserve" data-reveal>
+        <div class="reserve-panel" data-tilt-card>
+          <div>
+            <p>Reservations</p>
+            <h2>Bookings and VIP, ready before doors open.</h2>
+            <span class="reserve-note">
+              Sample form only. This should connect to aquaplusmanila.com, Instagram DM, WhatsApp, or Messenger when the
+              real site goes live.
+            </span>
+          </div>
+          <form class="booking-form" data-booking-form>
+            <label>
+              Date
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Guests
+              <select name="guests" required>
+                <option value="">Choose party size</option>
+                <option>2-4 guests</option>
+                <option>5-8 guests</option>
+                <option>9-15 guests</option>
+                <option>Private event</option>
+              </select>
+            </label>
+            <label>
+              Night type
+              <select name="type" required>
+                <option value="">Choose experience</option>
+                <option>VIP table</option>
+                <option>Birthday table</option>
+                <option>VIP bottle service</option>
+                <option>Brand/private event</option>
+              </select>
+            </label>
+            <label>
+              Contact
+              <input type="text" name="contact" placeholder="Name, phone, or IG handle" required />
+            </label>
+            <button class="button primary full" type="submit">Request reservation</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+      <strong>AQUAPLUS Manila</strong>
+      <span>
+        Dance and night club. 57 Roxas Blvd cor. Dapitan St, Pasay Manila. Phone: 09369419575.
+        Instagram: @aquaplusmanila. Bookings and VIP: aquaplusmanila.com.
+      </span>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite" data-toast>
+      Reservation request mockup created. Connect this to Messenger or WhatsApp next.
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
