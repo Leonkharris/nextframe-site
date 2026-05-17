@@ -1055,7 +1055,10 @@ h2 {
   }
 
   .hero-stage {
-    min-height: 440px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px;
+    min-height: auto;
   }
 
   .mobile-entrance-card {
@@ -1113,34 +1116,51 @@ h2 {
 
   .hero-live-panel {
     position: relative;
+    grid-column: 1 / -1;
     width: 100%;
   }
 
   .hero-live-panel video {
-    height: 260px;
+    height: 250px;
   }
 
   .deck-card {
-    width: 44%;
+    position: relative;
+    inset: auto;
+    width: 100%;
+    transform: none;
   }
 
   .deck-card img {
-    height: 130px;
+    height: 118px;
   }
 
   .deck-card-one {
     right: auto;
-    left: 4px;
-    top: 318px;
+    left: auto;
+    top: auto;
   }
 
   .deck-card-two {
-    right: 4px;
-    top: 322px;
+    right: auto;
+    top: auto;
   }
 
   .deck-card-three {
-    right: 22px;
+    right: auto;
+  }
+
+  .deck-card figcaption {
+    display: block;
+    min-height: 58px;
+    padding: 12px;
+    font-size: 0.72rem;
+    line-height: 1.15;
+  }
+
+  .deck-card figcaption span {
+    display: block;
+    margin-bottom: 7px;
   }
 
   .floor-signal {
