@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BSK Club Manila | Website Mockup</title>
+    <meta
+      name="description"
+      content="A high-end website mockup for BSK Club Manila in Greenfield District, Mandaluyong."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas class="fx-canvas" data-fx-canvas aria-hidden="true"></canvas>
+    <div class="cursor-light" data-cursor-light aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="BSK Club Manila home">
+        <span class="brand-mark">B</span>
+        <span>
+          <strong>BSK Club</strong>
+          <small>Manila</small>
+        </span>
+      </a>
+      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" data-nav>
+        <a href="#room">Room</a>
+        <a href="#vip">VIP</a>
+        <a href="#proof">Proof</a>
+        <a class="nav-cta" href="#reserve">Reserve VIP</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <video
+          class="hero-video"
+          src="./assets/bsk/bsk-hero-loop.mp4"
+          poster="./assets/bsk/local-group-purple.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+        ></video>
+        <div class="hero-shade"></div>
+        <div class="hero-word" aria-hidden="true">BSK</div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Where the nights get louder <span>at BSK.</span></h1>
+            <span>
+              Greenfield District's late-night room for packed tables, purple light, guest DJs, and VIP nights that do
+              not slow down until the floor does.
+            </span>
+            <div class="hero-actions">
+              <a class="button primary" href="#reserve">Reserve a table</a>
+              <a class="button ghost" href="#proof">Watch the room</a>
+            </div>
+            <div class="hero-facts" aria-label="BSK Club quick details">
+              <strong>Thu-Sun</strong>
+              <strong>Opens 10 PM</strong>
+              <strong>0917 853 4464</strong>
+            </div>
+          </div>
+
+          <aside class="hero-stage" aria-label="BSK Club live video preview">
+            <div class="hero-live-panel" data-tilt-card>
+              <div class="live-topline">
+                <strong><i></i> Live video preview</strong>
+                <span>Autoplay muted</span>
+              </div>
+              <video
+                src="./assets/bsk/bsk-hero-loop.mp4"
+                poster="./assets/bsk/local-crowd-dance.jpg"
+                autoplay
+                muted
+                loop
+                playsinline
+              ></video>
+              <div class="live-caption">
+                <span>BSK Club Manila</span>
+                <strong>Greenfield nights in motion</strong>
+              </div>
+            </div>
+            <figure class="deck-card deck-card-one active" data-deck-card data-tilt-card>
+              <img src="./assets/bsk/local-vip-smile.jpg" alt="BSK Club guests smiling at a packed table" />
+              <figcaption><span>01</span> VIP tables</figcaption>
+            </figure>
+            <figure class="deck-card deck-card-two" data-deck-card data-tilt-card>
+              <img src="./assets/bsk/local-dj-booth.jpg" alt="BSK Club DJ booth and guests" />
+              <figcaption><span>02</span> Guest DJs</figcaption>
+            </figure>
+          </aside>
+        </div>
+
+        <div class="floor-signal" aria-hidden="true">
+          <span>Every Thursday to Sunday</span>
+          <div class="bars">
+            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+          </div>
+          <span>VIP line live</span>
+        </div>
+      </section>
+
+      <section class="room-section" id="room" data-reveal>
+        <div class="section-title">
+          <p>The room</p>
+          <h2>What we offer <span>inside BSK.</span></h2>
+          <a class="section-cta" href="#reserve">Reserve VIP</a>
+        </div>
+        <div class="room-grid">
+          <article data-tilt-card>
+            <video src="./assets/bsk/bsk-floor-loop.mp4" poster="./assets/bsk/local-dj-booth.jpg" autoplay muted loop playsinline></video>
+            <div>
+              <span>Main floor</span>
+              <strong>Blue light, loud screens, and the crowd already in motion.</strong>
+            </div>
+          </article>
+          <article data-tilt-card>
+            <video src="./assets/bsk/bsk-vip-loop.mp4" poster="./assets/bsk/local-vip-smile.jpg" autoplay muted loop playsinline></video>
+            <div>
+              <span>VIP moments</span>
+              <strong>Bottle service, sparks, and a table people remember.</strong>
+            </div>
+          </article>
+          <article data-tilt-card>
+            <img src="./assets/bsk/local-group-purple.jpg" alt="BSK Club friends in purple club light" />
+            <div>
+              <span>Guest energy</span>
+              <strong>Real crowd shots that make the next group want in.</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="vip-section" id="vip" data-reveal>
+        <div class="vip-copy">
+          <p>VIP booking</p>
+          <h2>Own your corner of the night.</h2>
+          <span>
+            Reserve ahead for your group, birthday, or private event. BSK sits at Sheridan, Greenfield District,
+            Mandaluyong City, with table inquiries open before doors get busy.
+          </span>
+          <div class="vip-options" role="tablist" aria-label="VIP options">
+            <button class="option active" type="button" data-package="table">VIP Table</button>
+            <button class="option" type="button" data-package="birthday">Birthday Night</button>
+            <button class="option" type="button" data-package="event">Private Event</button>
+          </div>
+          <div class="package-result" data-package-result>
+            <strong>VIP Table</strong>
+            <span>Best for groups who want a spot, bottle service, and a smooth entrance path before arrival.</span>
+          </div>
+        </div>
+        <div class="vip-media" data-tilt-card>
+          <video src="./assets/bsk/bsk-entrance-loop.mp4" poster="./assets/bsk/main-room.jpg" autoplay muted loop playsinline></video>
+          <div class="media-badge">
+            <span>Location</span>
+            <strong>Greenfield District</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="proof-section" id="proof" data-reveal>
+        <div class="proof-copy">
+          <p>Live proof</p>
+          <h2>See the night before you book it.</h2>
+        </div>
+        <div class="reel-frame" data-tilt-card>
+          <video
+            src="./assets/bsk/bsk-hero-loop.mp4"
+            poster="./assets/bsk/local-crowd-dance.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+          <div class="reel-hud">
+            <span>BSK live-floor reel</span>
+            <strong>Greenfield nights</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="booking-section" id="reserve" data-reveal>
+        <div class="booking-panel" data-tilt-card>
+          <div>
+            <p>Reservations</p>
+            <h2>Book the table before the night starts.</h2>
+            <span>
+              Send your date, group size, and contact details. The final site can route this to Messenger, Instagram DM,
+              WhatsApp, or a reservations CRM.
+            </span>
+          </div>
+          <form class="booking-form" data-booking-form>
+            <label>
+              Date
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Guests
+              <select name="guests" required>
+                <option value="">Choose party size</option>
+                <option>2-4 guests</option>
+                <option>5-8 guests</option>
+                <option>9-15 guests</option>
+                <option>Private event</option>
+              </select>
+            </label>
+            <label>
+              Night type
+              <select name="type" required>
+                <option value="">Choose experience</option>
+                <option>VIP table</option>
+                <option>Birthday night</option>
+                <option>Guestlist</option>
+                <option>Brand/private event</option>
+              </select>
+            </label>
+            <label>
+              Contact
+              <input type="text" name="contact" placeholder="Name, phone, or IG handle" required />
+            </label>
+            <button class="button primary full" type="submit">Request reservation</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <strong>BSK Club Manila</strong>
+      <span>Sheridan, Greenfield District, Mandaluyong City. Reservations: 0917 853 4464.</span>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite" data-toast>
+      Reservation request captured. Connect this to the BSK inbox next.
+    </div>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
