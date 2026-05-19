@@ -11,6 +11,9 @@ const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
 const lazyVideos = Array.from(document.querySelectorAll("[data-lazy-video]"));
 const canvas = document.querySelector("[data-laser-canvas]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+const heroReel = document.querySelector("[data-hero-reel]");
+const heroReelVideo = heroReel?.querySelector("video");
+const heroReelPlay = document.querySelector("[data-hero-reel-play]");
 
 const packages = {
   lounge: {
@@ -147,6 +150,50 @@ if ("IntersectionObserver" in window) {
   }
 } else {
   revealItems.forEach((item) => item.classList.add("visible"));
+}
+
+const attemptInlinePlay = async (video) => {
+  if (!video || prefersReducedMotion) return { ok: false };
+
+  // Mobile webviews can block autoplay even if muted; we try and then show a big tap-to-play if it fails.
+  video.muted = true;
+  video.playsInline = true;
+  video.setAttribute("playsinline", "");
+
+  try {
+    await video.play();
+    return { ok: true };
+  } catch (error) {
+    return { ok: false, error };
+  }
+};
+
+if (heroReel && heroReelVideo) {
+  attemptInlinePlay(heroReelVideo).then(({ ok }) => {
+    if (!ok) {
+      heroReel.classList.add("needs-tap");
+      heroReelVideo.setAttribute("preload", "metadata");
+    }
+  });
+
+  heroReelPlay?.addEventListener("click", async () => {
+    const result = await attemptInlinePlay(heroReelVideo);
+    if (result.ok) {
+      heroReel.classList.remove("needs-tap");
+    }
+  });
+
+  // Some webviews only allow playback after any user gesture. Use the first scroll/tap as a trigger.
+  const nudge = async () => {
+    const { ok } = await attemptInlinePlay(heroReelVideo);
+    if (ok) heroReel.classList.remove("needs-tap");
+    window.removeEventListener("touchstart", nudge);
+    window.removeEventListener("pointerdown", nudge);
+    window.removeEventListener("scroll", nudge);
+  };
+  window.addEventListener("touchstart", nudge, { passive: true, once: true });
+  window.addEventListener("pointerdown", nudge, { passive: true, once: true });
+  window.addEventListener("scroll", nudge, { passive: true, once: true });
 }
 
 if (canvas && !prefersReducedMotion) {
