@@ -8,6 +8,7 @@ const spotlight = document.querySelector("[data-spotlight]");
 const eventTickets = Array.from(document.querySelectorAll("[data-event-ticket]"));
 const tiltCards = Array.from(document.querySelectorAll("[data-tilt-card]"));
 const revealItems = Array.from(document.querySelectorAll("[data-reveal]"));
+const lazyVideos = Array.from(document.querySelectorAll("[data-lazy-video]"));
 const canvas = document.querySelector("[data-laser-canvas]");
 const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
@@ -118,6 +119,32 @@ if ("IntersectionObserver" in window) {
   );
 
   revealItems.forEach((item) => observer.observe(item));
+
+  if (lazyVideos.length) {
+    const videoObserver = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const video = entry.target;
+
+          if (entry.isIntersecting && !prefersReducedMotion) {
+            if (!video.getAttribute("src") && video.dataset.src) {
+              video.setAttribute("src", video.dataset.src);
+            }
+
+            video.play?.().catch?.(() => {});
+          } else {
+            video.pause?.();
+          }
+        });
+      },
+      { rootMargin: "220px 0px", threshold: 0.16 }
+    );
+
+    lazyVideos.forEach((video) => {
+      video.pause?.();
+      videoObserver.observe(video);
+    });
+  }
 } else {
   revealItems.forEach((item) => item.classList.add("visible"));
 }
