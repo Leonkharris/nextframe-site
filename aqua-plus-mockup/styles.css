@@ -264,7 +264,7 @@ section[id] {
   inset: 0;
   z-index: -1;
   content: "";
-  opacity: 0.72;
+  opacity: 0.48;
   background:
     linear-gradient(128deg, transparent 0 24%, rgba(63, 140, 255, 0.25) 24.2%, transparent 25.1% 100%),
     linear-gradient(112deg, transparent 0 54%, rgba(255, 255, 255, 0.26) 54.2%, transparent 55% 100%),
@@ -297,8 +297,9 @@ section[id] {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(90deg, rgba(3, 4, 9, 0.88) 0%, rgba(6, 11, 25, 0.62) 46%, rgba(6, 11, 25, 0.32) 100%),
-    linear-gradient(0deg, rgba(3, 4, 9, 0.92) 0%, rgba(3, 4, 9, 0.04) 42%, rgba(3, 4, 9, 0.42) 100%);
+    radial-gradient(circle at 68% 18%, rgba(63, 140, 255, 0.22), transparent 52%),
+    linear-gradient(90deg, rgba(3, 4, 9, 0.82) 0%, rgba(6, 11, 25, 0.54) 48%, rgba(6, 11, 25, 0.22) 100%),
+    linear-gradient(0deg, rgba(3, 4, 9, 0.9) 0%, rgba(3, 4, 9, 0.03) 44%, rgba(3, 4, 9, 0.38) 100%);
 }
 
 .hero-reel {
@@ -313,6 +314,10 @@ section[id] {
   box-shadow:
     0 22px 46px rgba(0, 0, 0, 0.55),
     0 0 0 1px rgba(63, 140, 255, 0.12) inset;
+}
+
+.hero-reel {
+  max-width: 380px;
 }
 
 .hero-reel::after {
@@ -409,13 +414,14 @@ section[id] {
 
 .hero-content {
   display: grid;
-  grid-template-columns: minmax(0, 0.92fr) minmax(420px, 0.82fr);
-  align-items: center;
+  grid-template-columns: minmax(0, 560px) minmax(0, 520px);
+  align-items: start;
+  justify-content: space-between;
   gap: 42px;
   width: min(1180px, calc(100% - 48px));
   min-height: 100vh;
   margin: 0 auto;
-  padding: 132px 0 96px;
+  padding: 118px 0 86px;
 }
 
 .hero-copy {
@@ -423,7 +429,7 @@ section[id] {
 }
 
 .hero-copy {
-  max-width: 780px;
+  max-width: 560px;
 }
 
 .location-line,
@@ -450,7 +456,7 @@ h1 {
   max-width: 880px;
   margin-bottom: 24px;
   font-family: Orbitron, Inter, sans-serif;
-  font-size: 5.9rem;
+  font-size: 5.2rem;
   line-height: 0.86;
   font-weight: 900;
   text-transform: uppercase;
@@ -643,20 +649,20 @@ h3 {
   position: relative;
   display: grid;
   gap: 10px;
-  align-self: center;
-  width: min(100%, 460px);
+  align-self: start;
+  width: min(100%, 520px);
   margin-left: auto;
-  padding-top: 16px;
+  padding-top: 40px;
   animation: stackFloat 4.8s ease-in-out infinite alternate;
 }
 
 .event-stack::before {
   position: absolute;
-  inset: -34px -16px -20px 58px;
+  inset: -18px -16px -18px 46px;
   z-index: -1;
   content: "";
-  border-right: 92px solid rgba(20, 42, 145, 0.66);
-  transform: skewY(6deg);
+  border-right: 86px solid rgba(20, 42, 145, 0.62);
+  transform: skewY(4deg);
   filter: drop-shadow(0 0 32px rgba(63, 140, 255, 0.18));
 }
 
