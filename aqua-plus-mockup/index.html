@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&family=Instrument+Serif:ital@0;1&family=Orbitron:wght@700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260519a" />
   </head>
   <body>
     <canvas class="laser-canvas" data-laser-canvas aria-hidden="true"></canvas>
@@ -48,7 +48,17 @@
     <main id="top">
       <section class="hero-section" aria-label="Aqua Plus introduction">
         <div class="hero-media">
-          <img src="./assets/aquaplus/club-crowd-03.jpg" alt="AQUAPLUS Manila crowd and club lights" />
+          <video
+            class="hero-video"
+            src="./assets/aquaplus/videos/aq-01.mp4"
+            poster="./assets/aquaplus/videos/aq-01.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            aria-label="AQUAPLUS Manila club video background"
+          ></video>
           <div class="hero-overlay"></div>
         </div>
         <div class="poster-word" aria-hidden="true">AQUAPLUS</div>
@@ -142,23 +152,65 @@
           <p>Motion proof</p>
           <h2>A website that feels like the club is already moving.</h2>
           <span>
-            This reel is built from public AQUAPLUS Manila photos for the mockup. Direct Facebook videos can replace it
-            once you provide video links or files.
+            This mockup now mounts your real AQUAPLUS videos so the hero, reels, and motion sections match what guests
+            actually see on social.
           </span>
         </div>
         <div class="video-frame" data-tilt-card>
           <video
-            src="./assets/aquaplus/aquaplus-motion-reel.mp4"
-            poster="./assets/aquaplus/club-crowd-02.jpg"
+            src="./assets/aquaplus/videos/aq-02.mp4"
+            poster="./assets/aquaplus/videos/aq-02.jpg"
             autoplay
             muted
             loop
             playsinline
+            preload="metadata"
           ></video>
           <div class="video-hud">
             <span>LIVE ROOM PREVIEW</span>
             <strong>00:15</strong>
           </div>
+        </div>
+      </section>
+
+      <section class="reel-wall-section" id="reels" data-reveal>
+        <div class="section-heading compact-heading">
+          <p>Video wall</p>
+          <h2>Clips pulled from your downloads.</h2>
+        </div>
+        <div class="reel-wall" aria-label="AQUAPLUS mounted video clips">
+          <article class="mini-reel tall" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-03.mp4" poster="./assets/aquaplus/videos/aq-03.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Entrance energy</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-04.mp4" poster="./assets/aquaplus/videos/aq-04.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Main room</span>
+          </article>
+          <article class="mini-reel tall" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-05.mp4" poster="./assets/aquaplus/videos/aq-05.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Blue lasers</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-06.mp4" poster="./assets/aquaplus/videos/aq-06.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Table service</span>
+          </article>
+          <article class="mini-reel wide" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-09.mp4" poster="./assets/aquaplus/videos/aq-09.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Stage flash</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-08.mp4" poster="./assets/aquaplus/videos/aq-08.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>DJ close</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-10.mp4" poster="./assets/aquaplus/videos/aq-10.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Light sweep</span>
+          </article>
+          <article class="mini-reel wide" data-tilt-card>
+            <video data-src="./assets/aquaplus/videos/aq-11.mp4" poster="./assets/aquaplus/videos/aq-11.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Floor pan</span>
+          </article>
         </div>
       </section>
 
@@ -342,6 +394,6 @@
       Reservation request mockup created. Connect this to Messenger or WhatsApp next.
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260519a"></script>
   </body>
 </html>
