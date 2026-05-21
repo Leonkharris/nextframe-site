@@ -6,25 +6,21 @@
     <title>+81 Bar Makati | Hidden Japanese Speakeasy</title>
     <meta
       name="description"
-      content="+81 Bar Makati: a hidden Japanese speakeasy experience with private rooms, cocktail ritual, and late-night reservations."
+      content="+81 Bar Makati is a hidden Japanese speakeasy experience in Makati Cinema Square with late-night rooms, quiet cocktails, and private reservations."
     />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@500;600;700;800&family=Noto+Serif+JP:wght@500;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260521v3" />
+    <link rel="stylesheet" href="./styles.css?v=20260521v4" />
   </head>
   <body>
-    <canvas class="atmosphere" data-atmosphere aria-hidden="true"></canvas>
     <div class="grain" aria-hidden="true"></div>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="+81 Bar Makati home">
-        <span class="brand-mark">+81</span>
-        <span class="brand-text">Makati</span>
-      </a>
+      <a class="brand" href="#top" aria-label="+81 Bar Makati home">+81</a>
       <button
         class="menu-toggle"
         type="button"
@@ -37,198 +33,149 @@
         <span></span>
       </button>
       <nav class="nav-links" id="primary-navigation" data-nav>
-        <a href="#threshold">Threshold</a>
-        <a href="#cocktails">Cocktails</a>
+        <a href="#door">Door</a>
+        <a href="#pour">Pour</a>
         <a href="#rooms">Rooms</a>
-        <a href="#reserve">Reserve</a>
+        <a href="#request">Request</a>
       </nav>
     </header>
 
     <main id="top">
-      <section class="hero section-dark">
-        <img
-          class="hero-still"
-          src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg"
-          alt="+81 Bar red booth, brass lights, and hidden bar sign"
-        />
+      <section class="entrance" aria-label="+81 Bar entrance">
         <video
-          class="hero-media"
-          src="../+81Bar-Mockup/assets/plus81/instagram/ig-01.mp4"
-          poster="../+81Bar-Mockup/assets/plus81/hero-sign.jpg"
+          class="entrance-video"
+          src="../+81Bar-Mockup/assets/plus81/plus81-neon-loop.mp4"
+          poster="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
           autoplay
           muted
           loop
           playsinline
           preload="metadata"
-          aria-label="+81 Bar ambient speakeasy video"
         ></video>
-        <div class="hero-veil" aria-hidden="true"></div>
-        <div class="hero-jp" aria-hidden="true">隠れ場</div>
+        <img
+          class="entrance-still"
+          src="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
+          alt="+81 Bar private room ceiling and red neon interior"
+        />
+        <div class="entrance-shadow" aria-hidden="true"></div>
+        <div class="entrance-mark" aria-hidden="true">隠れ場</div>
 
-        <div class="hero-content">
-          <span class="microcopy">隠れ場</span>
-          <h1>A hidden Tokyo night in Makati.</h1>
-          <p>
-            Low red light. Private rooms. Japanese pours after dark.
-          </p>
-          <div class="hero-actions">
-            <a class="access-link primary" href="#reserve">Request Access</a>
-            <a class="after-dark-link" href="#threshold">Enter after dark</a>
-          </div>
+        <div class="entrance-copy">
+          <p class="jp-line">東京の夜、マカティの奥。</p>
+          <h1>A hidden Japanese bar in Makati.</h1>
+          <p class="doorline">Low red light, private rooms, and cocktails poured quietly after dark.</p>
+          <a class="text-access" href="#request">Request the door</a>
         </div>
 
-        <div class="hero-details" aria-label="+81 Bar details">
-          <span>Open late · 5 PM - 5 AM · Makati Cinema Square</span>
-          <span>Reservations · 0962 969 2794</span>
-        </div>
-      </section>
-
-      <section class="threshold section-dark" id="threshold" data-reveal>
-        <div class="threshold-copy">
-          <span class="section-index">01 / The threshold</span>
-          <h2>The night begins at the corridor.</h2>
-          <p>A glowing passage, mirrored reflections, and the quiet shift from city noise into low red light.</p>
-        </div>
-        <div class="corridor-stage" data-parallax>
-          <img src="../+81Bar-Mockup/assets/plus81/red-booth.jpg" alt="+81 Bar glowing anime corridor" />
-          <div class="corridor-caption">
-            <span>Behind the corridor</span>
-            <strong>The city gets quieter here.</strong>
-          </div>
+        <div class="entrance-meta">
+          <span>Open 5 PM - 5 AM</span>
+          <span>Makati Cinema Square</span>
+          <span>0962 969 2794</span>
         </div>
       </section>
 
-      <section class="cocktail-ritual section-dark" id="cocktails" data-reveal>
-        <div class="ritual-media" data-parallax>
+      <section class="door-scene" id="door" data-reveal>
+        <div class="door-media">
+          <img src="../+81Bar-Mockup/assets/plus81/red-booth.jpg" alt="+81 Bar corridor entrance with reflected neon" />
+        </div>
+        <div class="door-copy">
+          <p class="tiny-label">The door</p>
+          <h2>The city falls away at the corridor.</h2>
+          <p>A narrow passage. Reflected light. The room appears slowly, then keeps the rest to itself.</p>
+        </div>
+      </section>
+
+      <section class="pour-scene" id="pour" data-reveal>
+        <div class="pour-copy">
+          <p class="tiny-label">The pour</p>
+          <h2>Poured quietly. Served late.</h2>
+          <p>Japanese whiskey, yuzu, matcha, smoke, ice, and restraint. Omakase-inspired drinks built around the hour and the table.</p>
+        </div>
+        <div class="pour-media">
           <video
             src="../+81Bar-Mockup/assets/plus81/instagram/ig-03.mp4"
-            poster="../+81Bar-Mockup/assets/plus81/instagram/ig-03.jpg"
+            poster="../+81Bar-Mockup/assets/plus81/private-room.jpg"
             autoplay
             muted
             loop
             playsinline
             preload="metadata"
             data-lazy-video
-            aria-label="+81 Bar cocktail ritual video"
           ></video>
-          <img
-            class="ritual-still"
-            src="../+81Bar-Mockup/assets/plus81/private-room.jpg"
-            alt="+81 Bar signature cocktail detail"
-          />
-        </div>
-        <div class="ritual-copy">
-          <span class="section-index">After-dark cocktail ritual</span>
-          <h2>Cocktails with ceremony, not noise.</h2>
-          <p>
-            Yuzu peel, matcha, sake, Japanese whiskey, flame, cloud, glass, and restraint — mixed for the moment before
-            midnight.
-          </p>
-          <aside class="omakase-note">
-            <span>Omakase-inspired pours</span>
-            <strong>A guided drinking experience built around mood, flavor, and the table.</strong>
-          </aside>
-          <div class="ingredient-tags" aria-label="Cocktail ingredients and rituals">
-            <span>Yuzu Highballs</span>
-            <span>Matcha Cocktails</span>
-            <span>Japanese Whiskey</span>
-            <span>Sake</span>
-            <span>Late-night Bar Chows</span>
-            <span>Flame Service</span>
-          </div>
+          <img src="../+81Bar-Mockup/assets/plus81/private-room.jpg" alt="+81 Bar signature cocktail detail" />
         </div>
       </section>
 
-      <section class="rooms section-dark" id="rooms" data-reveal>
-        <div class="rooms-intro">
-          <span class="section-index">03 / Private rooms</span>
-          <h2>Choose the room. Let the night stay private.</h2>
+      <section class="rooms-scene" id="rooms" data-reveal>
+        <div class="rooms-heading">
+          <p class="tiny-label">Private rooms</p>
+          <h2>Rooms for conversations that stay inside.</h2>
         </div>
-        <div class="room-panel red-room" data-room-panel>
-          <img src="../+81Bar-Mockup/assets/plus81/menu-poster.jpg" alt="+81 Bar red private room and neon ceiling" />
-          <div class="room-copy">
-            <span>The Red Room</span>
-            <h3>For dates, birthdays, and conversations that do not leave the table.</h3>
-            <p>Intimate tables · first drinks · quiet celebrations</p>
-            <a href="#reserve">Request this room</a>
-          </div>
-        </div>
-        <div class="room-panel mirror-room" data-room-panel>
-          <img src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg" alt="+81 Bar mirrored lounge and red neon sign" />
-          <div class="room-copy">
-            <span>The Mirror Room</span>
-            <h3>A private corner for VIP tables, small groups, and long pours.</h3>
-            <p>VIP tables · small groups · late-night pours</p>
-            <a href="#reserve">Request this room</a>
-          </div>
-        </div>
-        <div class="room-panel hidden-room" data-room-panel>
-          <img src="../+81Bar-Mockup/assets/plus81/anime-hall.jpg" alt="+81 Bar hidden corridor and private lounge" />
-          <div class="room-copy">
-            <span>The Hidden Room</span>
-            <h3>Dark enough to feel secret. Quiet enough to feel exclusive.</h3>
-            <p>Private bookings · birthdays · full-night conversations</p>
-            <a href="#reserve">Request this room</a>
-          </div>
+        <div class="room-reel" aria-label="+81 private room moods">
+          <article class="room-frame primary-room">
+            <img src="../+81Bar-Mockup/assets/plus81/menu-poster.jpg" alt="+81 Bar red room with private lounge seating" />
+            <div>
+              <span>The Red Room</span>
+              <p>Birthdays, dates, first bottles.</p>
+            </div>
+          </article>
+          <article class="room-frame">
+            <img src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg" alt="+81 Bar mirrored lounge and red sign" />
+            <div>
+              <span>The Mirror Room</span>
+              <p>Small groups, late pours.</p>
+            </div>
+          </article>
+          <article class="room-frame">
+            <img src="../+81Bar-Mockup/assets/plus81/anime-hall.jpg" alt="+81 Bar hidden hallway and private tables" />
+            <div>
+              <span>The Hidden Room</span>
+              <p>Dark enough to feel private.</p>
+            </div>
+          </article>
         </div>
       </section>
 
-      <section class="fragments section-dark" data-reveal>
-        <div class="fragments-heading">
-          <span class="section-index">04 / After midnight</span>
-          <h2>Fragments from the hidden room.</h2>
-        </div>
-        <div class="fragment-grid">
-          <figure class="fragment tall">
-            <img src="../+81Bar-Mockup/assets/plus81/anime-hall.jpg" alt="+81 Bar low red light interior" />
-            <figcaption>Low red light</figcaption>
-          </figure>
-          <figure class="fragment wide">
-            <img src="../+81Bar-Mockup/assets/plus81/red-booth.jpg" alt="+81 Bar corridor and reflections" />
-            <figcaption>Behind the corridor</figcaption>
-          </figure>
-          <figure class="fragment video-fragment">
-            <video
-              data-src="../+81Bar-Mockup/assets/plus81/instagram/ig-04.mp4"
-              poster="../+81Bar-Mockup/assets/plus81/instagram/ig-04.jpg"
-              muted
-              loop
-              playsinline
-              preload="none"
-              data-lazy-video
-            ></video>
-            <figcaption>Last pour</figcaption>
-          </figure>
-          <figure class="fragment">
-            <img src="../+81Bar-Mockup/assets/plus81/vip-room-one.jpg" alt="+81 Bar omakase-inspired table service" />
-            <figcaption>Private tables</figcaption>
-          </figure>
-          <figure class="fragment wide">
-            <img src="../+81Bar-Mockup/assets/plus81/vip-room-two.jpg" alt="+81 Bar Japanese late-night bar chows" />
-            <figcaption>Glass and smoke</figcaption>
-          </figure>
-        </div>
+      <section class="fragments" aria-label="+81 Bar atmosphere" data-reveal>
+        <figure>
+          <img src="../+81Bar-Mockup/assets/plus81/vip-room-two.jpg" alt="+81 Bar late-night Japanese table service" />
+        </figure>
+        <figure>
+          <video
+            data-src="../+81Bar-Mockup/assets/plus81/instagram/ig-04.mp4"
+            poster="../+81Bar-Mockup/assets/plus81/instagram/ig-04.jpg"
+            muted
+            loop
+            playsinline
+            preload="none"
+            data-lazy-video
+          ></video>
+        </figure>
+        <figure>
+          <img src="../+81Bar-Mockup/assets/plus81/cocktail-cloud.jpg" alt="+81 Bar cocktail smoke and glass detail" />
+        </figure>
       </section>
 
-      <section class="reservation section-dark" id="reserve" data-reveal>
-        <div class="reservation-copy">
-          <span class="section-index">05 / Private request</span>
-          <h2>Hold the room.</h2>
-          <p>Send the date, the room, and the hour. We will confirm the door.</p>
+      <section class="request-scene" id="request" data-reveal>
+        <div class="request-copy">
+          <p class="tiny-label">Access</p>
+          <h2>Request the door.</h2>
+          <p>Send the date, hour, and party size. The room will answer if it is available.</p>
         </div>
-        <form class="reservation-form" data-booking-form>
+
+        <form class="request-form" data-booking-form>
           <label>
-            Date
+            <span>Date</span>
             <input type="date" name="date" required />
           </label>
           <label>
-            Time
+            <span>Time</span>
             <input type="time" name="time" required />
           </label>
           <label>
-            Party size
+            <span>Party size</span>
             <select name="guests" required>
-              <option value="">Choose party size</option>
+              <option value="">Select</option>
               <option>2-4 guests</option>
               <option>5-8 guests</option>
               <option>9-12 guests</option>
@@ -236,44 +183,33 @@
             </select>
           </label>
           <label>
-            Preferred experience
-            <select name="experience" required>
-              <option value="">Select experience</option>
-              <option>Cocktail table</option>
-              <option>The Red Room</option>
-              <option>The Mirror Room</option>
-              <option>The Hidden Room</option>
-              <option>Full venue</option>
-            </select>
-          </label>
-          <label>
-            Name
+            <span>Name</span>
             <input type="text" name="name" autocomplete="name" required />
           </label>
           <label>
-            Contact number / email
+            <span>Contact</span>
             <input type="text" name="contact" autocomplete="email" required />
           </label>
           <label class="full-field">
-            Notes
-            <textarea name="notes" rows="4" placeholder="Occasion, preferred room, or arrival details"></textarea>
+            <span>Notes</span>
+            <textarea name="notes" rows="4" placeholder="Room, occasion, arrival details"></textarea>
           </label>
-          <button class="access-link primary form-submit" type="submit">Request Access</button>
+          <button class="request-button" type="submit">Request access</button>
         </form>
       </section>
     </main>
 
     <footer class="site-footer">
-      <strong>+81 Bar Makati</strong>
+      <span>+81 Bar Makati</span>
       <span>Makati Cinema Square, G-1 Fernando, Makati City</span>
       <span>Reservations: 0962 969 2794</span>
       <span>Open late: 5 PM - 5 AM</span>
     </footer>
 
     <div class="toast" role="status" aria-live="polite" data-toast>
-      Reservation request captured. Connect this form to the +81 inbox next.
+      Request received. The room will confirm availability.
     </div>
 
-    <script src="./script.js?v=20260521v3"></script>
+    <script src="./script.js?v=20260521v4"></script>
   </body>
 </html>
