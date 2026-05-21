@@ -17,7 +17,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 88px;
+  scroll-padding-top: 0;
   background: var(--black);
 }
 
@@ -36,11 +36,11 @@ body::before {
   pointer-events: none;
   content: "";
   background:
-    linear-gradient(90deg, rgba(239, 231, 218, 0.025) 1px, transparent 1px),
-    radial-gradient(circle at 72% 8%, rgba(125, 21, 17, 0.18), transparent 34rem),
-    radial-gradient(circle at 20% 92%, rgba(185, 141, 86, 0.07), transparent 30rem);
-  background-size: 190px 190px, auto, auto;
-  opacity: 0.58;
+    radial-gradient(circle at 72% 8%, rgba(125, 21, 17, 0.2), transparent 34rem),
+    radial-gradient(circle at 18% 92%, rgba(185, 141, 86, 0.08), transparent 30rem),
+    linear-gradient(90deg, rgba(2, 1, 1, 0.88), transparent 44%, rgba(2, 1, 1, 0.86)),
+    linear-gradient(180deg, rgba(255, 241, 210, 0.025), transparent 18rem);
+  opacity: 0.7;
 }
 
 img,
@@ -74,6 +74,10 @@ section[id] {
   scroll-margin-top: 88px;
 }
 
+#request {
+  scroll-margin-top: 0;
+}
+
 main,
 .site-header,
 .site-footer,
@@ -104,11 +108,24 @@ main,
   transform: translateX(-50%);
 }
 
+.site-header::before {
+  position: absolute;
+  top: 50%;
+  right: 74px;
+  left: 74px;
+  z-index: -1;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(185, 141, 86, 0.28), transparent);
+  opacity: 0.65;
+}
+
 .brand {
   font-family: "Cormorant Garamond", Georgia, serif;
-  font-size: 1.28rem;
+  font-size: 1.42rem;
   font-weight: 600;
   letter-spacing: -0.05em;
+  text-shadow: 0 0 34px rgba(185, 141, 86, 0.3);
 }
 
 .nav-links {
@@ -161,6 +178,18 @@ main,
   display: grid;
   min-height: 100svh;
   overflow: hidden;
+}
+
+.entrance::before {
+  position: absolute;
+  top: 24vh;
+  bottom: 9vh;
+  left: calc((100vw - min(1180px, calc(100% - 56px))) / 2);
+  z-index: 3;
+  pointer-events: none;
+  content: "";
+  width: 1px;
+  background: linear-gradient(180deg, transparent, rgba(185, 141, 86, 0.56), transparent);
 }
 
 .entrance-video,
@@ -217,7 +246,17 @@ main,
   width: min(1180px, calc(100% - 56px));
   align-self: end;
   margin: 0 auto;
-  padding: 0 0 15vh;
+  padding: 0 0 15vh 34px;
+}
+
+.entrance-copy::before {
+  position: absolute;
+  top: 0.2rem;
+  bottom: 15vh;
+  left: 0;
+  width: 1px;
+  content: "";
+  background: linear-gradient(180deg, rgba(185, 141, 86, 0.7), transparent);
 }
 
 .jp-line,
@@ -241,13 +280,13 @@ h2 {
 h1 {
   max-width: 650px;
   margin-top: 22px;
-  font-size: clamp(4rem, 8vw, 8.2rem);
-  line-height: 0.86;
+  font-size: clamp(3.6rem, 7vw, 7.2rem);
+  line-height: 0.9;
 }
 
 h2 {
-  font-size: clamp(3rem, 5.4vw, 6.2rem);
-  line-height: 0.88;
+  font-size: clamp(2.8rem, 5vw, 5.4rem);
+  line-height: 0.92;
 }
 
 p {
@@ -263,10 +302,14 @@ p {
 }
 
 .text-access {
+  position: relative;
   display: inline-flex;
+  min-height: 48px;
+  align-items: center;
   margin-top: 34px;
-  border-bottom: 1px solid rgba(185, 141, 86, 0.62);
-  padding-bottom: 7px;
+  border-top: 1px solid rgba(185, 141, 86, 0.4);
+  border-bottom: 1px solid rgba(185, 141, 86, 0.22);
+  padding: 0 64px 0 0;
   color: var(--ivory);
   font-size: 0.72rem;
   font-weight: 600;
@@ -275,9 +318,26 @@ p {
   transition: color 180ms ease, border-color 180ms ease;
 }
 
+.text-access::after {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 48px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, rgba(185, 141, 86, 0.16), rgba(185, 141, 86, 0.82));
+  transform: translateY(-50%);
+  transition: width 180ms ease, background 180ms ease;
+}
+
 .text-access:hover {
   color: var(--brass-soft);
   border-color: var(--brass-soft);
+}
+
+.text-access:hover::after {
+  width: 58px;
+  background: linear-gradient(90deg, rgba(215, 180, 122, 0.22), rgba(215, 180, 122, 0.95));
 }
 
 .entrance-meta {
@@ -490,17 +550,74 @@ p {
 }
 
 .request-scene {
+  position: relative;
   display: grid;
   grid-template-columns: minmax(0, 0.7fr) minmax(340px, 0.48fr);
   gap: clamp(48px, 9vw, 140px);
-  align-items: start;
-  padding-bottom: 12vh;
+  min-height: 100svh;
+  align-items: center;
+  padding-top: 18vh;
+  padding-bottom: 16vh;
+  isolation: isolate;
+}
+
+.request-scene::before {
+  position: absolute;
+  inset: 0 calc((100vw - 100%) / -2);
+  z-index: -2;
+  content: "";
+  background:
+    linear-gradient(90deg, rgba(2, 1, 1, 0.98) 0%, rgba(2, 1, 1, 0.78) 42%, rgba(2, 1, 1, 0.5) 100%),
+    linear-gradient(0deg, rgba(2, 1, 1, 0.98) 0%, rgba(2, 1, 1, 0.2) 50%, rgba(2, 1, 1, 0.82) 100%),
+    url("../+81Bar-Mockup/assets/plus81/hero-sign.jpg") center / cover;
+  filter: saturate(0.76) contrast(1.12);
+}
+
+.request-scene::after {
+  position: absolute;
+  top: 13vh;
+  right: calc((100vw - 100%) / -2 + 5vw);
+  z-index: -1;
+  content: "ACCESS";
+  color: rgba(239, 231, 218, 0.035);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(8rem, 16vw, 17rem);
+  letter-spacing: -0.08em;
+  line-height: 0.8;
 }
 
 .request-form {
+  position: relative;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 26px 20px;
+  gap: 18px 20px;
+  border-top: 1px solid rgba(185, 141, 86, 0.32);
+  border-bottom: 1px solid rgba(239, 231, 218, 0.1);
+  background: rgba(2, 1, 1, 0.5);
+  box-shadow:
+    0 42px 120px rgba(0, 0, 0, 0.5),
+    inset 0 1px 0 rgba(255, 245, 224, 0.035);
+  padding: 28px 0 0;
+  backdrop-filter: blur(14px);
+}
+
+.request-form::before {
+  position: absolute;
+  top: -1px;
+  right: 28px;
+  left: 28px;
+  height: 1px;
+  content: "";
+  background: linear-gradient(90deg, transparent, rgba(185, 141, 86, 0.74), transparent);
+}
+
+.request-copy {
+  border-left: 1px solid rgba(185, 141, 86, 0.34);
+  padding-left: 30px;
+}
+
+.request-copy h2 {
+  font-size: clamp(4rem, 6.4vw, 7.4rem);
 }
 
 .request-form label {
@@ -508,7 +625,7 @@ p {
   gap: 10px;
   color: rgba(239, 231, 218, 0.5);
   font-size: 0.62rem;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: 0.2em;
   text-transform: uppercase;
 }
@@ -524,15 +641,23 @@ p {
   width: 100%;
   min-height: 52px;
   border: 0;
-  border-bottom: 1px solid rgba(239, 231, 218, 0.18);
+  border-bottom: 1px solid rgba(239, 231, 218, 0.2);
   color: var(--ivory);
   background: transparent;
-  padding: 0;
+  padding: 0 2px;
   font-size: 0.9rem;
+  transition: border-color 180ms ease, background 180ms ease;
+}
+
+.request-form input:focus,
+.request-form select:focus,
+.request-form textarea:focus {
+  border-color: rgba(215, 180, 122, 0.72);
+  background: rgba(239, 231, 218, 0.025);
 }
 
 .request-form textarea {
-  min-height: 110px;
+  min-height: 74px;
   padding-top: 12px;
   resize: vertical;
 }
@@ -546,22 +671,47 @@ p {
 }
 
 .request-button {
-  min-height: 54px;
-  border: 1px solid rgba(185, 141, 86, 0.42);
+  position: relative;
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  border: 0;
+  border-top: 1px solid rgba(185, 141, 86, 0.5);
+  border-bottom: 1px solid rgba(239, 231, 218, 0.12);
   color: var(--ivory);
-  background: rgba(58, 7, 6, 0.22);
-  font-size: 0.68rem;
-  font-weight: 600;
-  letter-spacing: 0.22em;
-  text-transform: uppercase;
+  background: transparent;
+  padding: 0;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
+  font-weight: 500;
+  letter-spacing: -0.02em;
+  text-transform: none;
   cursor: pointer;
   transition: color 180ms ease, border-color 180ms ease, background 180ms ease;
 }
 
+.request-button::after {
+  display: block;
+  color: var(--brass-soft);
+  content: "Access";
+  font-family: Inter, system-ui, sans-serif;
+  font-size: 0.62rem;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  transition: color 180ms ease, transform 180ms ease;
+}
+
 .request-button:hover {
   color: var(--brass-soft);
-  border-color: var(--brass-soft);
-  background: rgba(185, 141, 86, 0.06);
+  border-top-color: var(--brass-soft);
+  background: transparent;
+}
+
+.request-button:hover::after {
+  color: var(--ivory);
+  transform: translateX(4px);
 }
 
 .site-footer {
@@ -657,11 +807,15 @@ p {
 
 @media (max-width: 760px) {
   html {
-    scroll-padding-top: 80px;
+    scroll-padding-top: 0;
   }
 
   section[id] {
     scroll-margin-top: 80px;
+  }
+
+  #request {
+    scroll-margin-top: 0;
   }
 
   .site-header {
@@ -709,7 +863,11 @@ p {
 
   .entrance-copy {
     width: min(100% - 32px, 1180px);
-    padding-bottom: 18vh;
+    padding: 0 0 18vh 20px;
+  }
+
+  .entrance-copy::before {
+    bottom: 18vh;
   }
 
   h1 {
@@ -782,6 +940,33 @@ p {
 
   .request-form {
     grid-template-columns: 1fr;
+    gap: 16px;
+    padding: 22px 20px 24px;
+  }
+
+  .request-scene {
+    min-height: 100svh;
+    padding-top: 112px;
+    padding-bottom: 96px;
+  }
+
+  .request-scene::before {
+    background:
+      linear-gradient(180deg, rgba(2, 1, 1, 0.92) 0%, rgba(2, 1, 1, 0.72) 36%, rgba(2, 1, 1, 0.9) 100%),
+      url("../+81Bar-Mockup/assets/plus81/hero-sign.jpg") center / cover;
+  }
+
+  .request-scene::after {
+    display: none;
+  }
+
+  .request-copy {
+    padding-left: 18px;
+  }
+
+  .request-button {
+    min-height: 64px;
+    font-size: 1.42rem;
   }
 
   .site-footer {
