@@ -20,6 +20,7 @@
 
 html {
   scroll-behavior: smooth;
+  scroll-padding-top: 96px;
   background: var(--black);
 }
 
@@ -75,7 +76,7 @@ textarea:focus-visible {
 }
 
 section[id] {
-  scroll-margin-top: 138px;
+  scroll-margin-top: 96px;
 }
 
 main,
@@ -428,7 +429,7 @@ p {
 .reservation {
   width: min(1160px, calc(100% - 48px));
   margin: 0 auto;
-  padding: 132px 0;
+  padding: 112px 0;
 }
 
 .threshold {
@@ -463,17 +464,17 @@ p {
 .corridor-stage {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(197, 154, 91, 0.18);
+  box-shadow: 0 42px 150px rgba(0, 0, 0, 0.78), 0 0 0 1px rgba(239, 231, 218, 0.025);
 }
 
 .corridor-stage img {
   width: 100%;
-  height: 76vh;
-  min-height: 560px;
+  height: 72vh;
+  min-height: 520px;
   object-fit: cover;
   object-position: center;
-  filter: saturate(0.9) contrast(1.04);
+  filter: brightness(0.8) saturate(0.82) contrast(1.12);
   transform: scale(1.02);
 }
 
@@ -531,8 +532,8 @@ p {
 .ritual-media {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(197, 154, 91, 0.16);
+  box-shadow: 0 42px 150px rgba(0, 0, 0, 0.78);
 }
 
 .ritual-media video {
@@ -540,6 +541,19 @@ p {
   height: 72vh;
   min-height: 560px;
   object-fit: cover;
+}
+
+.ritual-still {
+  position: absolute;
+  right: 18px;
+  bottom: 18px;
+  z-index: 2;
+  width: min(34%, 190px);
+  aspect-ratio: 3 / 4;
+  border: 1px solid rgba(197, 154, 91, 0.28);
+  object-fit: cover;
+  filter: brightness(0.86) saturate(0.82) contrast(1.08);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.62);
 }
 
 .omakase-note {
@@ -587,8 +601,8 @@ p {
   min-height: 560px;
   align-items: end;
   overflow: hidden;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow);
+  border: 1px solid rgba(197, 154, 91, 0.14);
+  box-shadow: 0 44px 150px rgba(0, 0, 0, 0.72);
 }
 
 .room-panel img {
@@ -613,7 +627,7 @@ p {
   width: min(560px, calc(100% - 44px));
   margin: 0 0 30px 30px;
   border-left: 1px solid var(--line-hot);
-  padding: 8px 0 8px 24px;
+  padding: 10px 0 10px 24px;
 }
 
 .room-copy h3 {
@@ -659,7 +673,7 @@ p {
 .fragment {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--line);
+  border: 1px solid rgba(197, 154, 91, 0.13);
   background: var(--warm-black);
 }
 
@@ -854,6 +868,14 @@ p {
 }
 
 @media (max-width: 760px) {
+  html {
+    scroll-padding-top: 82px;
+  }
+
+  section[id] {
+    scroll-margin-top: 82px;
+  }
+
   .site-header {
     top: 14px;
     right: 44px;
@@ -978,7 +1000,7 @@ p {
   .rooms,
   .fragments,
   .reservation {
-    padding: 88px 0;
+    padding: 76px 0;
   }
 
   .corridor-stage img,
@@ -987,6 +1009,12 @@ p {
     height: auto;
     min-height: 0;
     aspect-ratio: 4 / 5;
+  }
+
+  .ritual-still {
+    right: 14px;
+    bottom: 14px;
+    width: min(38%, 140px);
   }
 
   .room-panel {
