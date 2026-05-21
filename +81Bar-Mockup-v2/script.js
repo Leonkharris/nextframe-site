@@ -18,8 +18,17 @@ const setMenuState = (open) => {
   menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
 };
 
+const revealHashTarget = () => {
+  if (!window.location.hash) return;
+
+  const target = document.querySelector(window.location.hash);
+  target?.classList.add("visible");
+};
+
 window.addEventListener("scroll", setHeaderState, { passive: true });
 setHeaderState();
+revealHashTarget();
+window.addEventListener("hashchange", revealHashTarget);
 
 menuToggle?.addEventListener("click", () => {
   setMenuState(!nav?.classList.contains("open"));
