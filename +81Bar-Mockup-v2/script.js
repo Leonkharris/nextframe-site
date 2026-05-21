@@ -4,8 +4,6 @@ const nav = document.querySelector("[data-nav]");
 const toast = document.querySelector("[data-toast]");
 const revealItems = [...document.querySelectorAll("[data-reveal]")];
 const lazyVideos = [...document.querySelectorAll("[data-lazy-video]")];
-const parallaxItems = [...document.querySelectorAll("[data-parallax]")];
-const canvas = document.querySelector("[data-atmosphere]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
 const setHeaderState = () => {
@@ -80,81 +78,9 @@ if ("IntersectionObserver" in window) {
   revealItems.forEach((item) => item.classList.add("visible"));
 }
 
-const updateParallax = () => {
-  if (reducedMotion || !parallaxItems.length) return;
-
-  const center = window.innerHeight / 2;
-
-  parallaxItems.forEach((item) => {
-    const rect = item.getBoundingClientRect();
-    const itemCenter = rect.top + rect.height / 2;
-    const offset = Math.max(-18, Math.min(18, (center - itemCenter) * 0.035));
-    item.style.setProperty("--parallax-y", `${offset}px`);
-  });
-};
-
-window.addEventListener("scroll", updateParallax, { passive: true });
-window.addEventListener("resize", updateParallax, { passive: true });
-updateParallax();
-
 document.querySelector("[data-booking-form]")?.addEventListener("submit", (event) => {
   event.preventDefault();
   toast?.classList.add("show");
   window.setTimeout(() => toast?.classList.remove("show"), 3400);
   event.currentTarget.reset();
 });
-
-const drawAtmosphere = () => {
-  if (!canvas || reducedMotion) return;
-
-  const context = canvas.getContext("2d");
-  const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const motes = Array.from({ length: 28 }, () => ({
-    x: Math.random(),
-    y: Math.random(),
-    speed: 0.00045 + Math.random() * 0.0007,
-    size: 0.8 + Math.random() * 2.4,
-    hue: Math.random() > 0.62 ? 37 : 5,
-  }));
-  let width = 0;
-  let height = 0;
-  let frame = 0;
-
-  const resize = () => {
-    width = window.innerWidth;
-    height = window.innerHeight;
-    canvas.width = width * dpr;
-    canvas.height = height * dpr;
-    canvas.style.width = `${width}px`;
-    canvas.style.height = `${height}px`;
-    context.setTransform(dpr, 0, 0, dpr, 0, 0);
-  };
-
-  const tick = () => {
-    frame += 1;
-    context.clearRect(0, 0, width, height);
-
-    motes.forEach((mote) => {
-      mote.y -= mote.speed;
-      mote.x += Math.sin(frame * 0.008 + mote.y * 18) * 0.00042;
-
-      if (mote.y < -0.05) {
-        mote.y = 1.08;
-        mote.x = Math.random();
-      }
-
-      context.beginPath();
-      context.fillStyle = `hsla(${mote.hue}, 62%, 62%, 0.3)`;
-      context.arc(mote.x * width, mote.y * height, mote.size, 0, Math.PI * 2);
-      context.fill();
-    });
-
-    window.requestAnimationFrame(tick);
-  };
-
-  resize();
-  window.addEventListener("resize", resize, { passive: true });
-  tick();
-};
-
-drawAtmosphere();
