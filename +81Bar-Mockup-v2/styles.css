@@ -140,6 +140,16 @@ main,
   font-weight: 500;
   letter-spacing: 0.14rem;
   text-transform: uppercase;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(-8px);
+  transition: opacity 180ms ease, transform 180ms ease, color 180ms ease;
+}
+
+.site-header.scrolled .nav-links {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
 }
 
 .nav-links a {
@@ -159,6 +169,14 @@ main,
   color: var(--text);
   background: rgba(2, 1, 1, 0.36);
   box-shadow: inset 0 0 0 1px var(--light);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.site-header.scrolled .menu-toggle {
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .menu-toggle span {
@@ -343,6 +361,10 @@ p {
 .text-access:hover::after {
   width: 58px;
   background: linear-gradient(90deg, rgba(215, 180, 122, 0.22), rgba(215, 180, 122, 0.95));
+}
+
+.app-door .door-enter {
+  font-size: 0.78rem;
 }
 
 .entrance-meta {
@@ -554,6 +576,127 @@ p {
   filter: brightness(0.58) saturate(0.72) contrast(1.15);
 }
 
+.craft-lounge,
+.lounge-scene,
+.bottom-cta {
+  width: min(1180px, calc(100% - 64px));
+  margin: 0 auto;
+}
+
+.craft-lounge {
+  display: grid;
+  grid-template-columns: minmax(0, 0.64fr) minmax(0, 1fr) minmax(220px, 0.36fr);
+  grid-template-rows: auto auto;
+  gap: 64px 48px;
+  padding: 96px 0 128px;
+  align-items: end;
+}
+
+.craft-copy {
+  grid-column: 1 / 2;
+  grid-row: 1 / 2;
+  max-width: var(--copy);
+}
+
+.craft-copy h2 {
+  margin-top: 24px;
+}
+
+.craft-copy p:not(.tiny-label) {
+  margin-top: 32px;
+}
+
+.craft-primary {
+  position: relative;
+  grid-column: 2 / 4;
+  grid-row: 1 / 3;
+  min-height: 720px;
+  overflow: hidden;
+  background: var(--lacquer);
+  box-shadow: var(--overhead-shadow);
+}
+
+.craft-primary video,
+.craft-detail img,
+.lounge-media img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.62) saturate(0.76) contrast(1.12);
+}
+
+.craft-detail {
+  position: relative;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+  min-height: 360px;
+  margin: 0;
+  overflow: hidden;
+  box-shadow: var(--overhead-shadow);
+}
+
+.craft-note {
+  grid-column: 3 / 4;
+  grid-row: 2 / 3;
+  align-self: start;
+  padding-top: 32px;
+  box-shadow: inset 0 1px 0 rgba(185, 141, 86, 0.4);
+}
+
+.craft-note span,
+.location-copy span {
+  display: block;
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.5rem;
+  line-height: 1.05;
+}
+
+.craft-note p {
+  margin-top: 16px;
+  max-width: 32ch;
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.lounge-scene {
+  display: grid;
+  grid-template-columns: minmax(0, 0.7fr) minmax(320px, 0.45fr);
+  gap: 64px;
+  padding: 96px 0 128px;
+}
+
+.lounge-media {
+  display: grid;
+  grid-template-columns: 0.72fr 0.42fr;
+  gap: 16px;
+  min-height: 640px;
+}
+
+.lounge-media img {
+  min-height: inherit;
+}
+
+.lounge-media img:nth-child(2) {
+  align-self: end;
+  min-height: 440px;
+}
+
+.lounge-copy {
+  align-self: start;
+  max-width: var(--copy);
+  padding-top: 96px;
+}
+
+.lounge-copy h2,
+.lounge-copy p:not(.tiny-label) {
+  margin-top: 32px;
+}
+
+.lounge-scene .room-reel {
+  grid-column: 1 / -1;
+}
+
 .request-scene {
   position: relative;
   display: grid;
@@ -601,6 +744,57 @@ p {
   box-shadow: var(--overhead-shadow);
   padding: 32px 0 0;
   backdrop-filter: blur(16px);
+}
+
+.action-panel {
+  display: grid;
+  gap: 32px;
+}
+
+.accordion-form {
+  display: block;
+  padding: 32px;
+}
+
+.accordion-form details {
+  padding: 0;
+  box-shadow: inset 0 -1px 0 rgba(241, 232, 216, 0.12);
+}
+
+.accordion-form summary {
+  display: flex;
+  min-height: 64px;
+  align-items: center;
+  justify-content: space-between;
+  color: var(--text);
+  cursor: pointer;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.65rem;
+  line-height: 1;
+  list-style: none;
+}
+
+.accordion-form summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-form summary::after {
+  content: "";
+  width: 32px;
+  height: 1px;
+  background: var(--brass);
+  transition: transform 180ms ease;
+}
+
+.accordion-form details[open] summary::after {
+  transform: rotate(90deg);
+}
+
+.accordion-fields {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 24px;
+  padding: 0 0 24px;
 }
 
 .request-form::before {
@@ -651,6 +845,84 @@ p {
   transition: box-shadow 180ms ease, background 180ms ease;
 }
 
+.location-card {
+  display: grid;
+  gap: 24px;
+  background: rgba(2, 1, 1, 0.42);
+  box-shadow: var(--overhead-shadow);
+  padding: 24px;
+}
+
+.dark-map {
+  position: relative;
+  min-height: 240px;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 62% 46%, rgba(185, 141, 86, 0.16), transparent 96px),
+    linear-gradient(135deg, rgba(241, 232, 216, 0.05) 1px, transparent 1px),
+    linear-gradient(45deg, rgba(109, 23, 18, 0.22), transparent 46%),
+    #070504;
+  background-size: auto, 64px 64px, auto, auto;
+  box-shadow: inset 0 0 0 1px var(--light-soft);
+}
+
+.map-line {
+  position: absolute;
+  height: 1px;
+  background: rgba(185, 141, 86, 0.42);
+  transform-origin: left center;
+}
+
+.line-one {
+  top: 42%;
+  left: 8%;
+  width: 88%;
+  transform: rotate(-12deg);
+}
+
+.line-two {
+  top: 66%;
+  left: 18%;
+  width: 74%;
+  transform: rotate(18deg);
+}
+
+.map-pin {
+  position: absolute;
+  top: 46%;
+  left: 58%;
+  width: 16px;
+  height: 16px;
+  background: var(--brass-soft);
+  border-radius: 50%;
+  box-shadow: 0 0 48px rgba(215, 180, 122, 0.48);
+}
+
+.map-label {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  color: var(--text-soft);
+  font-size: 0.72rem;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+}
+
+.location-copy {
+  display: flex;
+  align-items: end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.location-copy a {
+  color: var(--brass-soft);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.12rem;
+  text-transform: uppercase;
+}
+
 .request-form input:focus,
 .request-form select:focus,
 .request-form textarea:focus {
@@ -675,9 +947,11 @@ p {
 .request-button {
   position: relative;
   display: flex;
+  width: 100%;
   min-height: 64px;
   align-items: center;
   justify-content: space-between;
+  gap: 24px;
   border: 0;
   box-shadow: inset 0 1px 0 rgba(185, 141, 86, 0.5), inset 0 -1px 0 rgba(241, 232, 216, 0.12);
   color: var(--text);
@@ -713,6 +987,25 @@ p {
 .request-button:hover::after {
   color: var(--text);
   transform: translateX(4px);
+}
+
+.bottom-cta {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(240px, 0.34fr);
+  gap: 48px;
+  align-items: center;
+  padding: 64px 0 96px;
+}
+
+.bottom-cta p {
+  color: var(--text);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 3rem;
+  line-height: 1;
+}
+
+.final-request {
+  width: 100%;
 }
 
 .site-footer {
@@ -787,6 +1080,28 @@ p {
   .pour-scene,
   .request-scene {
     grid-template-columns: 1fr;
+  }
+
+  .craft-lounge,
+  .lounge-scene,
+  .bottom-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .craft-copy,
+  .craft-primary,
+  .craft-detail,
+  .craft-note {
+    grid-column: auto;
+    grid-row: auto;
+  }
+
+  .craft-primary {
+    min-height: 560px;
+  }
+
+  .lounge-copy {
+    padding-top: 0;
   }
 
   .room-reel,
@@ -897,6 +1212,9 @@ p {
   .pour-scene,
   .rooms-scene,
   .request-scene,
+  .craft-lounge,
+  .lounge-scene,
+  .bottom-cta,
   .fragments,
   .site-footer {
     width: min(100% - 32px, 1180px);
@@ -904,7 +1222,12 @@ p {
 
   .door-scene,
   .pour-scene,
-  .rooms-scene,
+  .rooms-scene {
+    padding: 96px 0;
+  }
+
+  .craft-lounge,
+  .lounge-scene,
   .request-scene {
     padding: 96px 0;
   }
@@ -925,6 +1248,23 @@ p {
     grid-template-columns: 1fr;
   }
 
+  .craft-lounge {
+    gap: 48px;
+  }
+
+  .craft-primary,
+  .craft-detail,
+  .lounge-media,
+  .lounge-media img,
+  .lounge-media img:nth-child(2) {
+    min-height: 0;
+    aspect-ratio: 4 / 5;
+  }
+
+  .lounge-media {
+    grid-template-columns: 1fr;
+  }
+
   .pour-media img {
     display: none;
   }
@@ -940,9 +1280,25 @@ p {
   }
 
   .request-form {
-    grid-template-columns: 1fr;
-    gap: 16px;
     padding: 24px 24px 24px;
+  }
+
+  .accordion-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .location-copy,
+  .bottom-cta {
+    grid-template-columns: 1fr;
+  }
+
+  .location-copy {
+    display: grid;
+    align-items: start;
+  }
+
+  .bottom-cta p {
+    font-size: 2.5rem;
   }
 
   .request-scene {
