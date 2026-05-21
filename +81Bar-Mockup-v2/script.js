@@ -23,10 +23,24 @@ const revealHashTarget = () => {
   target?.classList.add("visible");
 };
 
+const alignHashTarget = () => {
+  if (!window.location.hash) return;
+
+  const target = document.querySelector(window.location.hash);
+  if (!target) return;
+
+  const align = () => window.scrollTo({ top: target.offsetTop, behavior: "auto" });
+  window.setTimeout(align, 80);
+  window.setTimeout(align, 420);
+};
+
 window.addEventListener("scroll", setHeaderState, { passive: true });
 setHeaderState();
 revealHashTarget();
+alignHashTarget();
 window.addEventListener("hashchange", revealHashTarget);
+window.addEventListener("hashchange", alignHashTarget);
+window.addEventListener("load", alignHashTarget);
 
 menuToggle?.addEventListener("click", () => {
   setMenuState(!nav?.classList.contains("open"));
