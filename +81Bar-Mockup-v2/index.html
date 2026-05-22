@@ -11,39 +11,18 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500&family=Noto+Serif+JP:wght@400;500&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260521v8" />
+    <link rel="stylesheet" href="./styles.css?v=20260522v9" />
   </head>
   <body>
     <div class="grain" aria-hidden="true"></div>
 
-    <header class="site-header" data-header>
-      <span class="brand" aria-label="+81 Bar Makati">+81</span>
-      <button
-        class="menu-toggle"
-        type="button"
-        aria-label="Open menu"
-        aria-expanded="false"
-        aria-controls="primary-navigation"
-        data-menu-toggle
-      >
-        <span></span>
-        <span></span>
-      </button>
-      <nav class="nav-links" id="primary-navigation" data-nav>
-        <a href="#craft">Craft</a>
-        <a href="#lounge">Lounge</a>
-        <a href="#location">Location</a>
-        <a href="#request">Request</a>
-      </nav>
-    </header>
-
     <main id="top">
-      <section class="entrance app-door" id="door" aria-label="+81 Bar hidden door">
+      <section class="door-canvas" id="door" aria-label="+81 Bar hidden door">
         <video
-          class="entrance-video"
+          class="door-video"
           src="../+81Bar-Mockup/assets/plus81/plus81-neon-loop.mp4"
           poster="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
           autoplay
@@ -53,34 +32,21 @@
           preload="metadata"
         ></video>
         <img
-          class="entrance-still"
+          class="door-still"
           src="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
-          alt="+81 Bar private room ceiling and red neon interior"
+          alt="+81 Bar private room ceiling and low red interior"
         />
-        <div class="entrance-shadow" aria-hidden="true"></div>
-        <div class="entrance-mark" aria-hidden="true">&#38560;&#12428;&#22580;</div>
-
-        <div class="entrance-copy">
-          <p class="jp-line">&#26481;&#20140;&#12398;&#22812;&#12289;&#12510;&#12459;&#12486;&#12451;&#12398;&#22885;&#12290;</p>
+        <div class="door-shade" aria-hidden="true"></div>
+        <p class="brand-mark">+81</p>
+        <div class="door-anchor">
+          <p class="jp-line">&#38560;&#12428;&#22580;</p>
           <h1>A hidden Japanese bar in Makati.</h1>
-          <p class="doorline">Behind the corridor, the night gets quiet before it gets late.</p>
-          <a class="text-access door-enter" href="#craft">Enter after dark</a>
-        </div>
-
-        <div class="entrance-meta">
-          <span>Open 5 PM - 5 AM</span>
-          <span>Makati Cinema Square</span>
-          <span>0962 969 2794</span>
+          <a class="access-link" href="#story">Enter after dark</a>
         </div>
       </section>
 
-      <section class="craft-lounge" id="craft" data-reveal>
-        <div class="craft-copy">
-          <p class="tiny-label">Interest</p>
-          <h2>Cocktails arrive like a quiet ritual.</h2>
-          <p>Yuzu, matcha, sake, Japanese whiskey, smoke, ice, and restraint. The drink is guided by the table, the hour, and the mood after the city disappears.</p>
-        </div>
-        <div class="craft-primary">
+      <section class="story-section shade-one" id="story" data-reveal>
+        <div class="story-media primary-media">
           <video
             src="../+81Bar-Mockup/assets/plus81/instagram/ig-03.mp4"
             poster="../+81Bar-Mockup/assets/plus81/private-room.jpg"
@@ -92,149 +58,86 @@
             data-lazy-video
           ></video>
         </div>
-        <figure class="craft-detail">
-          <img src="../+81Bar-Mockup/assets/plus81/cocktail-cloud.jpg" alt="+81 Bar cocktail smoke and glass detail" />
-        </figure>
-        <div class="craft-note">
-          <span>Omakase-inspired pours</span>
-          <p>A guided drinking experience built around flavor, privacy, and timing.</p>
-        </div>
+        <article class="story-anchor">
+          <p class="tiny-label">Cocktail ritual</p>
+          <h2>Cocktails with ceremony, not noise.</h2>
+          <p>Yuzu, matcha, sake, Japanese whiskey, smoke, ice, and restraint. Every pour is guided by the table, the hour, and the mood after the city disappears.</p>
+        </article>
       </section>
 
-      <section class="lounge-scene" id="lounge" data-reveal>
-        <div class="lounge-media">
-          <img src="../+81Bar-Mockup/assets/plus81/red-booth.jpg" alt="+81 Bar corridor entrance with reflected neon" />
-          <img src="../+81Bar-Mockup/assets/plus81/vip-room-two.jpg" alt="+81 Bar private late-night table service" />
+      <section class="story-section reverse shade-two" data-reveal>
+        <div class="story-media split-media">
+          <img src="../+81Bar-Mockup/assets/plus81/red-booth.jpg" alt="+81 Bar corridor and reflected red light" />
+          <img src="../+81Bar-Mockup/assets/plus81/vip-room-two.jpg" alt="+81 Bar private table after dark" />
         </div>
-        <div class="lounge-copy">
-          <p class="tiny-label">Desire</p>
-          <h2>Rooms for conversations that stay inside.</h2>
-          <p>Red light, mirrored corners, quiet tables, and a room that feels more private the later it gets.</p>
-        </div>
-        <div class="room-reel" aria-label="+81 private room moods">
-          <article class="room-frame">
-            <img src="../+81Bar-Mockup/assets/plus81/menu-poster.jpg" alt="+81 Bar red room with private lounge seating" />
-            <div>
-              <span>The Red Room</span>
-              <p>Birthdays, dates, first bottles.</p>
-            </div>
-          </article>
-          <article class="room-frame">
-            <img src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg" alt="+81 Bar mirrored lounge and red sign" />
-            <div>
-              <span>The Mirror Room</span>
-              <p>Small groups, late pours.</p>
-            </div>
-          </article>
-          <article class="room-frame">
-            <img src="../+81Bar-Mockup/assets/plus81/anime-hall.jpg" alt="+81 Bar hidden hallway and private tables" />
-            <div>
-              <span>The Hidden Room</span>
-              <p>Dark enough to feel private.</p>
-            </div>
-          </article>
-        </div>
+        <article class="story-anchor">
+          <p class="tiny-label">Private room</p>
+          <h2>The room gets quieter as the night gets later.</h2>
+          <p>Mirrored corners, low red light, and private tables made for dates, birthdays, long drinks, and conversations that should not leave the room.</p>
+        </article>
       </section>
 
-      <section class="request-scene" id="request" data-reveal>
-        <div class="request-copy">
-          <p class="tiny-label">Action</p>
-          <h2>Request the door.</h2>
-          <p>Send the date, hour, and party size. The room will answer if it is available.</p>
-        </div>
-
-        <div class="action-panel">
-          <form class="request-form accordion-form" data-booking-form>
-            <details open>
-              <summary>Date and party</summary>
-              <div class="accordion-fields">
-                <label>
-                  <span>Date</span>
-                  <input type="date" name="date" required />
-                </label>
-                <label>
-                  <span>Time</span>
-                  <input type="time" name="time" required />
-                </label>
-                <label>
-                  <span>Party size</span>
-                  <select name="guests" required>
-                    <option value="">Select</option>
-                    <option>2-4 guests</option>
-                    <option>5-8 guests</option>
-                    <option>9-12 guests</option>
-                    <option>Full venue</option>
-                  </select>
-                </label>
-              </div>
-            </details>
-            <details>
-              <summary>Experience</summary>
-              <div class="accordion-fields">
-                <label>
-                  <span>Preferred room</span>
-                  <select name="room">
-                    <option>Cocktail table</option>
-                    <option>The Red Room</option>
-                    <option>The Mirror Room</option>
-                    <option>The Hidden Room</option>
-                    <option>Full venue</option>
-                  </select>
-                </label>
-                <label class="full-field">
-                  <span>Notes</span>
-                  <textarea name="notes" rows="4" placeholder="Room, occasion, arrival details"></textarea>
-                </label>
-              </div>
-            </details>
-            <details>
-              <summary>Contact</summary>
-              <div class="accordion-fields">
-                <label>
-                  <span>Name</span>
-                  <input type="text" name="name" autocomplete="name" required />
-                </label>
-                <label>
-                  <span>Contact</span>
-                  <input type="text" name="contact" autocomplete="email" required />
-                </label>
-              </div>
-            </details>
-            <button class="request-button" type="submit"><span>Request a Table</span></button>
-          </form>
-
-          <aside class="location-card" id="location" aria-label="+81 location">
-            <div class="dark-map" aria-hidden="true">
-              <span class="map-line line-one"></span>
-              <span class="map-line line-two"></span>
-              <span class="map-pin"></span>
-              <span class="map-label">Makati Cinema Square</span>
-            </div>
-            <div class="location-copy">
-              <span>G-1 Fernando, Makati City</span>
-              <a href="https://maps.google.com/?q=Makati+Cinema+Square+G-1+Fernando+Makati+City" target="_blank" rel="noreferrer">Open map</a>
-            </div>
-          </aside>
-        </div>
+      <section class="image-break" data-reveal aria-label="+81 mood">
+        <img src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg" alt="+81 Bar glowing interior sign" />
+        <article class="story-anchor floating-anchor">
+          <p class="tiny-label">Makati Cinema Square</p>
+          <h2>Behind the corridor, the city disappears.</h2>
+        </article>
       </section>
 
-      <section class="bottom-cta" aria-label="Request a table">
-        <p>When the room feels right, ask for the table.</p>
-        <a class="request-button final-request" href="#request"><span>Request a Table</span></a>
+      <section class="request-stage shade-three" id="request" data-reveal>
+        <article class="request-intro">
+          <p class="tiny-label">Request</p>
+          <h2>Hold the table.</h2>
+          <p>Send the date, arrival time, and party size. The room will confirm availability.</p>
+        </article>
+
+        <form class="table-request" data-booking-form>
+          <label>
+            <span>Date</span>
+            <input type="date" name="date" required />
+          </label>
+          <label>
+            <span>Time</span>
+            <input type="time" name="time" required />
+          </label>
+          <label>
+            <span>Party size</span>
+            <select name="guests" required>
+              <option value="">Select</option>
+              <option>2-4 guests</option>
+              <option>5-8 guests</option>
+              <option>9-12 guests</option>
+              <option>Full venue</option>
+            </select>
+          </label>
+          <label>
+            <span>Name</span>
+            <input type="text" name="name" autocomplete="name" required />
+          </label>
+          <label>
+            <span>Contact</span>
+            <input type="text" name="contact" autocomplete="email" required />
+          </label>
+          <label>
+            <span>Notes</span>
+            <textarea name="notes" rows="4" placeholder="Room, occasion, arrival details"></textarea>
+          </label>
+          <button class="request-submit" type="submit">Request a Table</button>
+        </form>
       </section>
     </main>
 
-    <footer class="site-footer">
+    <footer class="quiet-footer">
       <span>+81 Bar Makati</span>
       <span>Makati Cinema Square, G-1 Fernando, Makati City</span>
-      <span>Reservations: 0962 969 2794</span>
-      <span>Open late: 5 PM - 5 AM</span>
+      <span>0962 969 2794</span>
     </footer>
 
     <div class="toast" role="status" aria-live="polite" data-toast>
       Request received. The room will confirm availability.
     </div>
 
-    <script src="./script.js?v=20260521v8"></script>
+    <script src="./script.js?v=20260522v9"></script>
   </body>
 </html>

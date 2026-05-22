@@ -1,20 +1,7 @@
-const header = document.querySelector("[data-header]");
-const menuToggle = document.querySelector("[data-menu-toggle]");
-const nav = document.querySelector("[data-nav]");
 const toast = document.querySelector("[data-toast]");
 const revealItems = [...document.querySelectorAll("[data-reveal]")];
 const lazyVideos = [...document.querySelectorAll("[data-lazy-video]")];
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-const setHeaderState = () => {
-  header?.classList.toggle("scrolled", window.scrollY > 24);
-};
-
-const setMenuState = (open) => {
-  nav?.classList.toggle("open", open);
-  menuToggle?.setAttribute("aria-expanded", String(open));
-  menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
-};
 
 const revealHashTarget = () => {
   if (!window.location.hash) return;
@@ -34,23 +21,11 @@ const alignHashTarget = () => {
   window.setTimeout(align, 420);
 };
 
-window.addEventListener("scroll", setHeaderState, { passive: true });
-setHeaderState();
 revealHashTarget();
 alignHashTarget();
 window.addEventListener("hashchange", revealHashTarget);
 window.addEventListener("hashchange", alignHashTarget);
 window.addEventListener("load", alignHashTarget);
-
-menuToggle?.addEventListener("click", () => {
-  setMenuState(!nav?.classList.contains("open"));
-});
-
-nav?.addEventListener("click", (event) => {
-  if (event.target.closest("a")) {
-    setMenuState(false);
-  }
-});
 
 if ("IntersectionObserver" in window) {
   const revealObserver = new IntersectionObserver(
