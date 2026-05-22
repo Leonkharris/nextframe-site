@@ -2,16 +2,17 @@
 
 ## Asset Mapping
 
-- `menu-poster.jpg` and `plus81-neon-loop.mp4`: hero / Tokyo-after-dark interior reveal. Premium enough for first viewport.
-- `anime-hall.jpg`: entrance story. Supports the hidden anime-shop / Japanese cyberpunk entrance idea.
-- `cocktail-cloud.jpg`: cocktails and gallery. Best for craft detail and red-table atmosphere.
-- `private-room.jpg`: cocktail support image / table setting. Use below hero, not first viewport.
-- `red-booth.jpg`: private rooms / VIP atmosphere. Strong for red lacquer and mirror mood.
-- `dj-floor.jpg`: after-midnight energy. Use after craft/private-room sections so luxury impression stays controlled.
-- `hero-sign.jpg`: gallery/signage. Strong brand signal but too direct for the first emotional beat.
-- `vip-room-one.jpg`, `vip-room-two.jpg`: gallery and private-room proof. Avoid using as hero unless client prefers room-first positioning.
-- `instagram/ig-03.mp4`: cocktail/social pour movement.
-- `instagram/ig-04.mp4`: after-midnight energy movement.
+- `assets/hidden entrence 1.mp4`: hero reel and entrance story, showing the toy-shop misdirection.
+- `assets/pretty girl entrance 1.mp4`: entrance story, showing the button / discovery moment.
+- `assets/special drinks 1.mp4`: cocktail pillar and cocktails section.
+- `assets/premium food 1.mp4`: cocktails and Japanese bites section.
+- `assets/premium food 2.mp4`: gallery support for Japanese food craft.
+- `assets/vip room.mp4`: private room pillar and gallery.
+- `assets/celebrity cameo 1 apple dy.mp4`: gallery / social proof.
+- `dj-floor.jpg` and `instagram/ig-04.mp4`: after-midnight energy.
+- `hero-sign.jpg`: subtle overlay brand signal in the hero and supporting gallery/signage.
+
+Poster JPGs were generated from the same new videos for mobile/performance loading.
 
 ## Client Confirmation Needed
 
