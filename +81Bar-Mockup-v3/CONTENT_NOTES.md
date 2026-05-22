@@ -14,6 +14,14 @@
 
 Poster JPGs were generated from the same new videos for mobile/performance loading.
 
+## 2026-05-23 Magazine Rebuild Notes
+
+- Rebuilt the page as an asymmetric 12-column editorial layout inspired by Japanese street/fashion magazine compositions.
+- Added vertical Japanese tate-gaki anchors using `writing-mode: vertical-rl`.
+- Reframed videos as floating physical editorial sheets with fixed aspect ratios and figure annotations.
+- Re-encoded local portrait videos for web delivery, removed audio, and added WebP poster frames.
+- CSS color tokens are now defined with HSL values for the dark charcoal, warm amber text, lacquer red and brass system.
+
 ## Client Confirmation Needed
 
 - Confirm current business hours before publishing hours on the live site.
