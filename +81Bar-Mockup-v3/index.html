@@ -17,10 +17,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400&family=Inter:wght@400;500;600;700&family=Noto+Serif+JP:wght@500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260522v1" />
+    <link rel="stylesheet" href="./styles.css?v=20260523mag1" />
   </head>
   <body>
     <div class="film-grain" aria-hidden="true"></div>
@@ -31,19 +31,18 @@
         <small>Bar Makati</small>
       </a>
       <nav class="nav-links" aria-label="Primary navigation">
-        <a href="#experience">Experience</a>
-        <a href="#cocktails">Cocktails</a>
-        <a href="#rooms">Private Rooms</a>
+        <a href="#entrance">Entrance</a>
+        <a href="#craft">Craft</a>
+        <a href="#rooms">Rooms</a>
         <a href="#midnight">After Midnight</a>
-        <a href="#reservations">Reservations</a>
+        <a href="#reservations">Reserve</a>
       </nav>
-      <a class="nav-reserve" href="#reservations">Reserve</a>
     </header>
 
     <main id="top">
-      <section class="hero" aria-label="+81 Bar hidden Tokyo nightlife">
+      <section class="hero issue-grid" aria-label="+81 Bar hidden Tokyo nightlife">
         <video
-          class="hero-video"
+          class="hero-canvas"
           src="../+81Bar-Mockup/assets/plus81/plus81-neon-loop.mp4"
           poster="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
           autoplay
@@ -52,27 +51,10 @@
           playsinline
           preload="metadata"
         ></video>
-        <img
-          class="hero-still"
-          src="../+81Bar-Mockup/assets/plus81/hero-sign.jpg"
-          alt="+81 Bar neon sign and hidden Japanese nightlife interior"
-        />
         <div class="hero-shade" aria-hidden="true"></div>
-        <aside class="hero-reel" aria-label="Hidden entrance reveal">
-          <video
-            src="./assets/hidden%20entrence%201.mp4"
-            poster="./assets/hidden%20entrence%201.jpg"
-            autoplay
-            muted
-            loop
-            playsinline
-            preload="metadata"
-          ></video>
-          <span>Secret entrance reel</span>
-        </aside>
-        <div class="hero-copy">
-          <p class="jp-label">&#38560;&#12428;&#23478;</p>
-          <p class="microline">Tokyo after dark · Makati</p>
+        <p class="vertical-mark hero-mark">隠れ家</p>
+        <article class="hero-copy">
+          <p class="issue-label">Tokyo after dark / Makati Cinema Square</p>
           <h1>Behind the door, Tokyo begins after dark.</h1>
           <p>
             A hidden Japanese bar in Makati for cocktails, private rooms, Japanese bites and
@@ -82,91 +64,61 @@
             <a class="primary-link" href="#reservations">Request a Table</a>
             <a class="secondary-link" href="#entrance">Discover the Entrance</a>
           </div>
-          <p class="location-line">Makati Cinema Square · Hidden after dark</p>
-        </div>
-      </section>
-
-      <section class="entrance-section" id="entrance" data-reveal>
-        <figure class="entrance-media video-duo">
+        </article>
+        <figure class="float-frame hero-frame">
           <video
             src="./assets/hidden%20entrence%201.mp4"
-            poster="./assets/hidden%20entrence%201.jpg"
+            poster="./assets/hidden%20entrence%201.webp"
+            autoplay
             muted
             loop
             playsinline
             preload="metadata"
-            data-lazy-video
           ></video>
-          <video
-            src="./assets/pretty%20girl%20entrance%201.mp4"
-            poster="./assets/pretty%20girl%20entrance%201.jpg"
-            muted
-            loop
-            playsinline
-            preload="metadata"
-            data-lazy-video
-          ></video>
+          <figcaption>FIG. 01 // HIDDEN ENTRANCE — TOY SHOP SIGNAL</figcaption>
         </figure>
-        <article class="section-copy">
-          <p class="section-label">&#20837;&#21475; / THE ENTRANCE</p>
+      </section>
+
+      <section class="spread entrance-spread issue-grid" id="entrance" data-reveal>
+        <p class="vertical-mark">入口</p>
+        <article class="narrative-block">
+          <p class="issue-label">The Entrance</p>
           <h2>Not every night begins where it seems.</h2>
           <p>
-            Hidden inside Makati Cinema Square, +81 opens into a red-lit Japanese nightlife
-            world of mirrored rooms, cocktails and late-night music.
+            Hidden inside Makati Cinema Square, +81 opens through a playful facade into a
+            red-lit Japanese nightlife room of mirrors, cocktails and late-night music.
           </p>
-          <p class="quiet-line">Find the door. Leave the city behind.</p>
         </article>
-      </section>
-
-      <section class="experience-pillars" id="experience" data-reveal>
-        <article class="pillar wide-pillar">
+        <figure class="float-frame entrance-frame-one">
           <video
-            src="./assets/special%20drinks%201.mp4"
-            poster="./assets/special%20drinks%201.jpg"
+            src="./assets/hidden%20entrence%201.mp4"
+            poster="./assets/hidden%20entrence%201.webp"
             muted
             loop
             playsinline
             preload="metadata"
             data-lazy-video
           ></video>
-          <div>
-            <span>Cocktails</span>
-            <h3>Japanese-inspired pours</h3>
-            <p>Yuzu, sake, matcha and Japanese whisky shaped for long nights under red light.</p>
-          </div>
-        </article>
-        <article class="pillar">
+          <figcaption>FIG. 02 // THE FALSE FRONT — FIND THE DOOR</figcaption>
+        </figure>
+        <figure class="float-frame entrance-frame-two">
           <video
-            src="./assets/vip%20room.mp4"
-            poster="./assets/vip%20room.jpg"
+            src="./assets/pretty%20girl%20entrance%201.mp4"
+            poster="./assets/pretty%20girl%20entrance%201.webp"
             muted
             loop
             playsinline
             preload="metadata"
             data-lazy-video
           ></video>
-          <div>
-            <span>Private Rooms</span>
-            <h3>Closed-door celebrations</h3>
-            <p>Intimate spaces for dates, birthdays and private gatherings.</p>
-          </div>
-        </article>
-        <article class="pillar">
-          <img
-            src="../+81Bar-Mockup/assets/plus81/dj-floor.jpg"
-            alt="+81 Bar DJ floor with neon red nightlife lighting"
-          />
-          <div>
-            <span>After Midnight</span>
-            <h3>Sound and neon</h3>
-            <p>DJs, flashing reflections and Tokyo nightlife energy hidden in Makati.</p>
-          </div>
-        </article>
+          <figcaption>FIG. 03 // THRESHOLD MOMENT — PRESS TO ENTER</figcaption>
+        </figure>
       </section>
 
-      <section class="cocktails-section" id="cocktails" data-reveal>
-        <div class="cocktail-copy">
-          <p class="section-label">&#19968;&#26479; / COCKTAILS &amp; BITES</p>
+      <section class="spread craft-spread issue-grid" id="craft" data-reveal>
+        <p class="vertical-mark">一杯</p>
+        <article class="narrative-block craft-copy">
+          <p class="issue-label">Cocktails & Bites</p>
           <h2>Japanese flavours, poured after dark.</h2>
           <p>
             Signature cocktails inspired by sake, yuzu, matcha and Japanese whisky, paired with
@@ -174,40 +126,56 @@
           </p>
           <!-- TODO client confirmation: connect this to the approved public menu URL when available. -->
           <a class="text-link" href="#reservations" data-menu-placeholder="true">View Menu</a>
-        </div>
-        <div class="cocktail-media">
+        </article>
+        <figure class="float-frame drink-frame">
           <video
             src="./assets/special%20drinks%201.mp4"
-            poster="./assets/special%20drinks%201.jpg"
+            poster="./assets/special%20drinks%201.webp"
             muted
-            autoplay
             loop
             playsinline
             preload="metadata"
             data-lazy-video
           ></video>
+          <figcaption>FIG. 04 // CRAFTED MIXOLOGY — TOKYO NIGHTS</figcaption>
+        </figure>
+        <figure class="float-frame food-frame">
           <video
             src="./assets/premium%20food%201.mp4"
-            poster="./assets/premium%20food%201.jpg"
+            poster="./assets/premium%20food%201.webp"
             muted
             loop
             playsinline
             preload="metadata"
             data-lazy-video
           ></video>
-        </div>
+          <figcaption>FIG. 05 // PREMIUM JAPANESE BITES — LATE SERVICE</figcaption>
+        </figure>
       </section>
 
-      <section class="rooms-section" id="rooms" data-reveal>
-        <div class="rooms-intro">
-          <p class="section-label">&#20491;&#23460; / PRIVATE ROOMS</p>
+      <section class="spread rooms-spread issue-grid" id="rooms" data-reveal>
+        <p class="vertical-mark">個室</p>
+        <figure class="float-frame room-frame">
+          <video
+            src="./assets/vip%20room.mp4"
+            poster="./assets/vip%20room.webp"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-lazy-video
+          ></video>
+          <figcaption>FIG. 06 // PRIVATE ROOM — CLOSED DOOR SETTING</figcaption>
+        </figure>
+        <article class="narrative-block rooms-copy">
+          <p class="issue-label">Private Rooms</p>
           <h2>For nights that stay between the people in the room.</h2>
           <p>
             Reserve an intimate setting for dates, birthdays, private celebrations and closed-door
             gatherings.
           </p>
-        </div>
-        <div class="room-options">
+        </article>
+        <div class="room-ledger" aria-label="+81 booking options">
           <!-- TODO client confirmation: room capacities are based on public reference material and should be approved before final launch. -->
           <article>
             <span>VIP Room 1</span>
@@ -226,54 +194,55 @@
             <p>Private nights, launches and celebrations.</p>
           </article>
         </div>
-        <a class="primary-link room-request" href="#reservations">Request a Private Room</a>
       </section>
 
-      <section class="midnight-section" id="midnight" data-reveal>
-        <video
-          src="../+81Bar-Mockup/assets/plus81/instagram/ig-04.mp4"
-          poster="../+81Bar-Mockup/assets/plus81/instagram/ig-04.jpg"
-          muted
-          loop
-          playsinline
-          preload="metadata"
-          data-lazy-video
-        ></video>
-        <article>
-          <p class="section-label">&#28145;&#22812; / AFTER MIDNIGHT</p>
+      <section class="spread midnight-spread issue-grid" id="midnight" data-reveal>
+        <p class="vertical-mark">深夜</p>
+        <article class="narrative-block midnight-copy">
+          <p class="issue-label">After Midnight</p>
           <h2>The room changes when the sound comes up.</h2>
           <p>
             After dark, +81 shifts from concealed cocktails to neon reflections, guest DJs and
             late-night Tokyo energy.
           </p>
-          <div class="midnight-actions">
+          <div class="hero-actions">
             <a class="text-link" href="https://www.instagram.com/speakingof81/" target="_blank" rel="noreferrer">See Tonight on Instagram</a>
             <a class="primary-link" href="#reservations">Reserve for Tonight</a>
           </div>
         </article>
+        <figure class="float-frame midnight-frame">
+          <video
+            src="../+81Bar-Mockup/assets/plus81/instagram/ig-04.mp4"
+            poster="../+81Bar-Mockup/assets/plus81/instagram/ig-04.jpg"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-lazy-video
+          ></video>
+          <figcaption>FIG. 07 // MAIN ROOM — SOUND AND NEON</figcaption>
+        </figure>
+        <figure class="float-frame cameo-frame">
+          <video
+            src="./assets/celebrity%20cameo%201%20apple%20dy.mp4"
+            poster="./assets/celebrity%20cameo%201%20apple%20dy.webp"
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-lazy-video
+          ></video>
+          <figcaption>FIG. 08 // GUEST SIGNAL — SOCIAL PROOF</figcaption>
+        </figure>
       </section>
 
-      <section class="gallery-section" aria-label="The world of +81" data-reveal>
-        <div class="gallery-heading">
-          <p class="section-label">THE WORLD OF +81</p>
-          <h2>A moving magazine of the night behind the door.</h2>
-        </div>
-        <div class="gallery-grid">
-          <video src="./assets/hidden%20entrence%201.mp4" poster="./assets/hidden%20entrence%201.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 hidden toy shop entrance video"></video>
-          <video src="./assets/special%20drinks%201.mp4" poster="./assets/special%20drinks%201.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 special drinks cocktail service video"></video>
-          <video src="./assets/premium%20food%202.mp4" poster="./assets/premium%20food%202.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 premium Japanese food and bar bites video"></video>
-          <video src="./assets/vip%20room.mp4" poster="./assets/vip%20room.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 private VIP room reveal video"></video>
-          <video src="./assets/pretty%20girl%20entrance%201.mp4" poster="./assets/pretty%20girl%20entrance%201.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 guest entering the hidden doorway video"></video>
-          <video src="./assets/celebrity%20cameo%201%20apple%20dy.mp4" poster="./assets/celebrity%20cameo%201%20apple%20dy.jpg" muted loop playsinline preload="metadata" data-lazy-video aria-label="+81 social proof and guest cameo video"></video>
-        </div>
-      </section>
-
-      <section class="reservation-section" id="reservations" data-reveal>
-        <div class="reservation-copy">
-          <p class="section-label">&#20104;&#32004; / RESERVATIONS</p>
+      <section class="reservation-section issue-grid" id="reservations" data-reveal>
+        <p class="vertical-mark">予約</p>
+        <article class="reservation-copy">
+          <p class="issue-label">Reservations</p>
           <h2>Request the door.</h2>
           <p>Reserve a table, private room or late-night gathering at +81 Bar Makati.</p>
-        </div>
+        </article>
 
         <form class="reservation-form" data-booking-form>
           <label>
@@ -327,6 +296,11 @@
         </address>
       </section>
     </main>
+
+    <section class="base-cta" aria-label="Bottom reservation call to action">
+      <p>End of issue / the door is still open</p>
+      <a class="primary-link" href="#reservations">Request a Table</a>
+    </section>
 
     <div class="mobile-booking-bar" data-mobile-bar>
       <a href="#reservations">Reserve</a>
