@@ -360,9 +360,9 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 60px;
-  top: 120px;
-  width: 360px;
+  right: 50px;
+  top: 110px;
+  width: 370px;
   aspect-ratio: 3 / 4;
   padding: 12px 12px 52px;
   rotate: 3deg;
@@ -376,11 +376,11 @@ textarea:focus-visible {
 }
 
 .cover-polaroid-one {
-  right: 280px;
+  right: 310px;
   left: auto;
   bottom: auto;
-  top: 400px;
-  width: 220px;
+  top: 450px;
+  width: 210px;
   rotate: -6deg;
   animation: floatFrame 7s ease-in-out 1.2s infinite;
   z-index: 8; /* Sits slightly on top of the main frame bottom-left */
@@ -390,8 +390,8 @@ textarea:focus-visible {
   right: 30px;
   left: auto;
   bottom: auto;
-  top: 460px;
-  width: 200px;
+  top: 470px;
+  width: 180px;
   rotate: 5deg;
   animation: floatFrame 8s ease-in-out 2.4s infinite;
   z-index: 9; /* Sits on top of the main frame bottom-right */
@@ -444,10 +444,10 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  right: 320px;
+  right: 330px;
   left: auto;
   bottom: auto;
-  top: 320px;
+  top: 350px;
   padding: 10px 14px;
   transform: rotate(-12deg);
   z-index: 10;
@@ -455,10 +455,10 @@ textarea:focus-visible {
 
 .cover-ticket-two {
   display: block;
-  right: 80px;
+  right: 70px;
   left: auto;
   bottom: auto;
-  top: 420px;
+  top: 430px;
   padding: 10px 14px;
   transform: rotate(14deg);
   z-index: 10;
@@ -501,10 +501,10 @@ textarea:focus-visible {
 }
 
 .tape-polaroid-one-top {
-  right: 330px;
+  right: 360px;
   left: auto;
   bottom: auto;
-  top: 385px;
+  top: 435px;
   width: 90px;
   height: 20px;
   transform: rotate(4deg);
@@ -516,7 +516,7 @@ textarea:focus-visible {
   right: 80px;
   left: auto;
   bottom: auto;
-  top: 445px;
+  top: 455px;
   width: 90px;
   height: 20px;
   transform: rotate(-4deg);
@@ -525,10 +525,10 @@ textarea:focus-visible {
 
 .tape-ticket-one {
   display: block;
-  right: 340px;
+  right: 350px;
   left: auto;
   bottom: auto;
-  top: 308px;
+  top: 338px;
   width: 70px;
   height: 18px;
   transform: rotate(-15deg);
@@ -537,10 +537,10 @@ textarea:focus-visible {
 
 .tape-ticket-two {
   display: block;
-  right: 108px;
+  right: 98px;
   left: auto;
   bottom: auto;
-  top: 408px;
+  top: 418px;
   width: 70px;
   height: 18px;
   transform: rotate(10deg);
