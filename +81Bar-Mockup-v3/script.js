@@ -71,6 +71,10 @@ if ("IntersectionObserver" in window) {
         }
 
         if (entry.isIntersecting && !reducedMotion) {
+          // Dynamically upgrade preload to auto to trigger high-priority stream buffering on scroll
+          if (video.preload === "none") {
+            video.preload = "auto";
+          }
           video.play().catch(() => {});
           return;
         }
