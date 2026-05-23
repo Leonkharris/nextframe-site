@@ -361,11 +361,12 @@ textarea:focus-visible {
 
 .cover-main-frame {
   right: 48px;
-  top: 72px;
-  width: 260px;
-  aspect-ratio: 3 / 4;
+  top: 56px;
+  width: 240px;
+  aspect-ratio: 4 / 5;
   padding: 10px 10px 46px;
-  transform: rotate(2deg);
+  --float-base: rotate(2deg);
+  animation: floatFrame 6s ease-in-out infinite;
 }
 
 .cover-polaroid {
@@ -375,19 +376,21 @@ textarea:focus-visible {
 }
 
 .cover-polaroid-one {
-  right: 340px;
+  right: 380px;
   left: auto;
   bottom: 36px;
-  width: 200px;
-  transform: rotate(-5deg);
+  width: 195px;
+  --float-base: rotate(-5deg);
+  animation: floatFrame 7s ease-in-out 1s infinite;
 }
 
 .cover-polaroid-two {
-  right: 44px;
+  right: 48px;
   left: auto;
   bottom: 52px;
-  width: 190px;
-  transform: rotate(4deg);
+  width: 185px;
+  --float-base: rotate(4deg);
+  animation: floatFrame 8s ease-in-out 2s infinite;
 }
 
 .cover-main-frame video,
@@ -960,6 +963,15 @@ p {
 
   to {
     transform: scale(1.08) translate3d(-1%, -0.6%, 0);
+  }
+}
+
+@keyframes floatFrame {
+  0%, 100% {
+    transform: var(--float-base, rotate(2deg)) translateY(0px);
+  }
+  50% {
+    transform: var(--float-base, rotate(2deg)) translateY(-8px);
   }
 }
 
