@@ -386,35 +386,34 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 180px;
-  top: 100px;
-  width: 300px;
-  aspect-ratio: 9 / 16;
-  padding: 12px 12px 52px;
-  transform: rotate(1.5deg);
+  right: 52px;
+  top: 60px;
+  width: 220px;
+  aspect-ratio: 3 / 4;
+  padding: 10px 10px 46px;
+  transform: rotate(2.5deg);
 }
 
 .cover-polaroid {
-  bottom: 26px;
   width: min(22vw, 260px);
   aspect-ratio: 4 / 5;
-  padding: 12px 12px 52px;
+  padding: 10px 10px 46px;
 }
 
 .cover-polaroid-one {
-  left: 560px;
-  right: auto;
-  bottom: 24px;
-  width: 210px;
-  transform: rotate(-7deg);
+  right: 360px;
+  left: auto;
+  bottom: 32px;
+  width: 185px;
+  transform: rotate(-6deg);
 }
 
 .cover-polaroid-two {
-  right: 24px;
+  right: 36px;
   left: auto;
-  bottom: 40px;
-  width: 190px;
-  transform: rotate(5deg);
+  bottom: 48px;
+  width: 175px;
+  transform: rotate(4.5deg);
 }
 
 .cover-main-frame video,
@@ -464,17 +463,17 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  left: 500px;
-  right: auto;
-  bottom: 64px;
+  right: 310px;
+  left: auto;
+  bottom: 290px;
   padding: 12px 16px;
   transform: rotate(-8deg);
 }
 
 .cover-ticket-two {
-  right: 120px;
+  right: 290px;
   bottom: auto;
-  top: 80px;
+  top: 72px;
   padding: 9px 14px;
   font-family: "Noto Serif JP", serif;
   transform: rotate(6deg);
@@ -509,20 +508,20 @@ textarea:focus-visible {
 
 /* Tape positions over polaroids & frames */
 .tape-main-top {
-  right: 260px;
-  top: 84px;
-  width: 140px;
-  height: 28px;
+  right: 80px;
+  top: 48px;
+  width: 120px;
+  height: 26px;
   transform: rotate(-2deg);
   clip-path: polygon(2% 10%, 98% 2%, 97% 92%, 3% 98%);
 }
 
 .tape-polaroid-one-top {
-  left: 610px;
-  right: auto;
-  bottom: 278px;
-  width: 120px;
-  height: 24px;
+  right: 390px;
+  left: auto;
+  bottom: 260px;
+  width: 110px;
+  height: 22px;
   transform: rotate(4deg);
   clip-path: polygon(1% 4%, 99% 10%, 98% 90%, 2% 95%);
 }
@@ -530,29 +529,29 @@ textarea:focus-visible {
 .tape-polaroid-two-top {
   right: 70px;
   left: auto;
-  bottom: 268px;
-  width: 110px;
+  bottom: 255px;
+  width: 100px;
   height: 22px;
   transform: rotate(-5deg);
   clip-path: polygon(3% 8%, 97% 5%, 96% 92%, 4% 88%);
 }
 
 .tape-ticket-one {
-  left: 510px;
-  right: auto;
-  bottom: 92px;
-  width: 70px;
-  height: 20px;
+  right: 320px;
+  left: auto;
+  bottom: 314px;
+  width: 65px;
+  height: 18px;
   transform: rotate(14deg);
   clip-path: polygon(1% 5%, 99% 2%, 98% 95%, 2% 90%);
 }
 
 .tape-ticket-two {
-  right: 130px;
+  right: 298px;
   bottom: auto;
-  top: 70px;
-  width: 90px;
-  height: 22px;
+  top: 62px;
+  width: 80px;
+  height: 20px;
   transform: rotate(-12deg);
   clip-path: polygon(2% 8%, 98% 5%, 96% 94%, 4% 92%);
 }
