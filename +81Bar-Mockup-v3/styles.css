@@ -360,12 +360,12 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 120px;
-  top: 48px;
-  width: 200px;
+  right: 80px;
+  top: 60px;
+  width: 220px;
   aspect-ratio: 4 / 5;
   padding: 10px 10px 46px;
-  --float-base: rotate(2deg);
+  rotate: 2deg;
   animation: floatFrame 6s ease-in-out infinite;
 }
 
@@ -376,22 +376,22 @@ textarea:focus-visible {
 }
 
 .cover-polaroid-one {
-  right: 340px;
+  right: 320px;
   left: auto;
   bottom: auto;
   top: 400px;
   width: 175px;
-  --float-base: rotate(-5deg);
+  rotate: -5deg;
   animation: floatFrame 7s ease-in-out 1s infinite;
 }
 
 .cover-polaroid-two {
-  right: 44px;
+  right: 60px;
   left: auto;
   bottom: auto;
-  top: 420px;
+  top: 440px;
   width: 165px;
-  --float-base: rotate(4deg);
+  rotate: 4deg;
   animation: floatFrame 8s ease-in-out 2s infinite;
 }
 
@@ -442,12 +442,12 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  right: 138px;
+  right: 280px;
   left: auto;
   bottom: auto;
-  top: 338px;
+  top: 280px;
   padding: 10px 14px;
-  transform: rotate(-4deg);
+  transform: rotate(-8deg);
   z-index: 6;
 }
 
@@ -483,8 +483,8 @@ textarea:focus-visible {
 
 /* Tape positions over polaroids & frames — anchored to actual targets */
 .tape-main-top {
-  right: 160px;
-  top: 36px;
+  right: 130px;
+  top: 48px;
   width: 100px;
   height: 22px;
   transform: rotate(-2deg);
@@ -492,10 +492,10 @@ textarea:focus-visible {
 }
 
 .tape-polaroid-one-top {
-  right: 370px;
+  right: 350px;
   left: auto;
   bottom: auto;
-  top: 390px;
+  top: 388px;
   width: 90px;
   height: 20px;
   transform: rotate(4deg);
@@ -569,6 +569,9 @@ h2 {
   margin-top: 24px;
   font-size: clamp(3.2rem, 5.5vw, 6.4rem);
   line-height: 0.96;
+  text-shadow: 
+    0 2px 10px hsl(0 0% 0% / 0.98),
+    0 4px 20px hsl(0 0% 0% / 0.86);
 }
 
 h3 {
@@ -833,12 +836,16 @@ p {
   box-shadow: 0 0 0 1px hsl(36 18% 82% / 0.1) inset;
   padding: 0 12px;
   font-size: 0.94rem;
+  transition: box-shadow 200ms cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              background 200ms ease;
 }
 
 .reservation-form input:focus,
 .reservation-form select:focus,
 .reservation-form textarea:focus {
-  box-shadow: 0 0 0 1px hsl(36 36% 58% / 0.74) inset;
+  box-shadow: 
+    0 0 0 1px hsl(36 36% 58% / 0.9) inset,
+    0 0 12px hsl(36 36% 58% / 0.25);
 }
 
 .reservation-form textarea {
@@ -948,13 +955,18 @@ p {
 
 [data-reveal] {
   opacity: 0;
-  transform: translateY(28px);
-  transition: opacity 700ms ease, transform 700ms ease;
+  transform: translateY(24px);
+  filter: blur(4px);
+  transition: 
+    opacity 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    transform 600ms cubic-bezier(0.16, 1, 0.3, 1),
+    filter 600ms cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 [data-reveal].visible {
   opacity: 1;
   transform: translateY(0);
+  filter: blur(0px);
 }
 
 @keyframes slowBreath {
@@ -969,10 +981,10 @@ p {
 
 @keyframes floatFrame {
   0%, 100% {
-    transform: var(--float-base, rotate(2deg)) translateY(0px);
+    translate: 0 0px;
   }
   50% {
-    transform: var(--float-base, rotate(2deg)) translateY(-8px);
+    translate: 0 -12px;
   }
 }
 
