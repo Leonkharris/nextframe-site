@@ -40,43 +40,96 @@
     </header>
 
     <main id="top">
-      <section class="hero issue-grid" aria-label="+81 Bar hidden Tokyo nightlife">
-        <video
-          class="hero-canvas"
-          src="../+81Bar-Mockup/assets/plus81/plus81-neon-loop.mp4"
-          poster="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
-          autoplay
-          muted
-          loop
-          playsinline
-          preload="metadata"
-        ></video>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <p class="vertical-mark hero-mark">隠れ家</p>
-        <article class="hero-copy">
-          <p class="issue-label">Tokyo after dark / Makati Cinema Square</p>
-          <h1>Behind the door, Tokyo begins after dark.</h1>
-          <p>
-            A hidden Japanese bar in Makati for cocktails, private rooms, Japanese bites and
-            late-night sound.
-          </p>
-          <div class="hero-actions">
-            <a class="primary-link" href="#reservations">Request a Table</a>
-            <a class="secondary-link" href="#entrance">Discover the Entrance</a>
-          </div>
-        </article>
-        <figure class="float-frame hero-frame">
+      <section class="hero-cover" aria-label="+81 Bar hidden Tokyo nightlife magazine cover">
+        <div class="cover-object">
           <video
-            src="./assets/hidden%20entrence%201.mp4"
-            poster="./assets/hidden%20entrence%201.webp"
+            class="cover-media"
+            src="../+81Bar-Mockup/assets/plus81/plus81-neon-loop.mp4"
+            poster="../+81Bar-Mockup/assets/plus81/menu-poster.jpg"
             autoplay
             muted
             loop
             playsinline
             preload="metadata"
           ></video>
-          <figcaption>FIG. 01 // HIDDEN ENTRANCE — TOY SHOP SIGNAL</figcaption>
-        </figure>
+          <div class="cover-grade" aria-hidden="true"></div>
+          <div class="cover-distress" aria-hidden="true"></div>
+
+          <p class="cover-kanji" aria-hidden="true">東京</p>
+          <p class="cover-side-copy">視線が物語る、東京の今。</p>
+          <div class="cover-barcode" aria-label="+81 cover issue code">
+            <span></span><span></span><span></span><span></span><span></span><span></span>
+            <strong>+81 / 2037</strong>
+            <span class="hanko-seal" aria-hidden="true">極秘</span>
+          </div>
+          <div class="cover-meta">
+            <span>Street Vision</span>
+            <span>Issue 081</span>
+            <span>Makati // Japan</span>
+          </div>
+
+          <article class="cover-copy">
+            <p class="issue-label">Tokyo after dark / Makati Cinema Square</p>
+            <h1>Behind the door, Tokyo begins after dark.</h1>
+            <p>
+               A hidden Japanese bar in Makati for cocktails, private rooms, Japanese bites and
+               late-night sound.
+            </p>
+            <div class="hero-actions">
+              <a class="primary-link" href="#reservations">Request a Table</a>
+              <a class="secondary-link" href="#entrance">Discover the Entrance</a>
+            </div>
+          </article>
+
+          <figure class="cover-main-frame">
+            <video
+              src="./assets/hidden%20entrence%201.mp4"
+              poster="./assets/hidden%20entrence%201.webp"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <figcaption>Secret entrance // toy shop signal</figcaption>
+          </figure>
+
+          <figure class="cover-polaroid cover-polaroid-one">
+            <video
+              src="./assets/special%20drinks%201.mp4"
+              poster="./assets/special%20drinks%201.webp"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <figcaption>Cocktails</figcaption>
+          </figure>
+
+          <figure class="cover-polaroid cover-polaroid-two">
+            <video
+              src="./assets/premium%20food%202.mp4"
+              poster="./assets/premium%20food%202.webp"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+            ></video>
+            <figcaption>Japanese bites</figcaption>
+          </figure>
+
+          <div class="cover-ticket cover-ticket-one">TOKYO // MAKATI<br />HIDDEN BAR</div>
+          <div class="cover-ticket cover-ticket-two">未来はここからはじまる</div>
+
+          <!-- Physical Tape Collage Layer -->
+          <div class="tape-strip tape-main-top" aria-hidden="true"></div>
+          <div class="tape-strip tape-polaroid-one-top" aria-hidden="true"></div>
+          <div class="tape-strip tape-polaroid-two-top" aria-hidden="true"></div>
+          <div class="tape-strip tape-ticket-one" aria-hidden="true"></div>
+          <div class="tape-strip tape-ticket-two" aria-hidden="true"></div>
+        </div>
       </section>
 
       <section class="spread entrance-spread issue-grid" id="entrance" data-reveal>
@@ -311,6 +364,24 @@
     <div class="toast" role="status" aria-live="polite" data-toast>
       Request received. The +81 team will confirm availability directly.
     </div>
+
+    <!-- SVG Distress & Edge Filters -->
+    <svg style="position: absolute; width: 0; height: 0; pointer-events: none;" width="0" height="0" version="1.1" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <!-- Stamp / Ink Bleed Filter for Text and Hanko Stamp -->
+        <filter id="rough-ink">
+          <feTurbulence type="fractalNoise" baseFrequency="0.04" numOctaves="3" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="2.5" xChannelSelector="R" yChannelSelector="G" result="displacement" />
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 0.98 0" />
+          <feBlend mode="multiply" in="SourceGraphic" in2="displacement" />
+        </filter>
+        <!-- Rough paper edge filter for polaroids/stickers/tape -->
+        <filter id="rough-edge">
+          <feTurbulence type="fractalNoise" baseFrequency="0.03" numOctaves="4" result="noise" />
+          <feDisplacementMap in="SourceGraphic" in2="noise" scale="4" xChannelSelector="R" yChannelSelector="G" />
+        </filter>
+      </defs>
+    </svg>
 
     <script src="./script.js?v=20260522v1"></script>
   </body>
