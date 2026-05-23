@@ -84,3 +84,26 @@ document.querySelector("[data-booking-form]")?.addEventListener("submit", (event
   window.setTimeout(() => toast?.classList.remove("show"), 3600);
   event.currentTarget.reset();
 });
+
+// Force play all autoplay videos on load and on first user interaction (safeguard against strict browser autoplay blocks)
+const forcePlayAutoplayVideos = () => {
+  const autoplayVideos = document.querySelectorAll("video[autoplay]");
+  autoplayVideos.forEach((video) => {
+    if (video.paused) {
+      video.play().catch(() => {});
+    }
+  });
+};
+
+window.addEventListener("load", forcePlayAutoplayVideos);
+document.addEventListener("DOMContentLoaded", forcePlayAutoplayVideos);
+
+const triggerPlayOnInteraction = () => {
+  forcePlayAutoplayVideos();
+  document.removeEventListener("click", triggerPlayOnInteraction);
+  document.removeEventListener("touchstart", triggerPlayOnInteraction);
+  document.removeEventListener("scroll", triggerPlayOnInteraction);
+};
+document.addEventListener("click", triggerPlayOnInteraction);
+document.addEventListener("touchstart", triggerPlayOnInteraction);
+document.addEventListener("scroll", triggerPlayOnInteraction, { passive: true });
