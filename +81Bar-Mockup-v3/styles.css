@@ -81,7 +81,6 @@ textarea:focus-visible {
   z-index: 100;
   pointer-events: none;
   opacity: 0.11;
-  mix-blend-mode: soft-light;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 240 240' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.86' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.38'/%3E%3C/svg%3E");
 }
 
@@ -214,7 +213,6 @@ textarea:focus-visible {
     radial-gradient(circle at 8% 12%, hsl(36 26% 91% / 0.14), transparent 38px),
     radial-gradient(circle at 92% 88%, hsl(36 26% 91% / 0.12), transparent 52px),
     repeating-linear-gradient(96deg, transparent 0 18px, hsl(36 26% 91% / 0.025) 19px 20px);
-  mix-blend-mode: overlay;
 }
 
 .cover-kanji {
@@ -854,6 +852,10 @@ p {
 }
 
 @media (max-width: 1060px) {
+  .film-grain {
+    display: none !important;
+  }
+
   :root {
     --page: min(100% - 40px, 860px);
   }
