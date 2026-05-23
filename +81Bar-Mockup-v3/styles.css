@@ -242,64 +242,7 @@ textarea:focus-visible {
   display: none;
 }
 
-.cover-barcode {
-  position: absolute;
-  z-index: 7;
-  top: 28px;
-  right: 32px;
-  display: grid;
-  width: 142px;
-  height: 74px;
-  grid-template-columns: 5px 10px 3px 14px 7px 4px;
-  gap: 7px;
-  align-content: center;
-  padding: 10px 12px 18px;
-  color: var(--ink);
-  background: hsl(36 26% 91% / 0.88);
-  box-shadow: 0 8px 24px hsl(0 0% 0% / 0.16);
-  filter: url(#rough-edge);
-}
 
-.hanko-seal {
-  position: absolute;
-  top: 50%;
-  right: -10px;
-  transform: translateY(-50%) rotate(14deg);
-  color: hsl(0 68% 44% / 0.86);
-  border: 2px solid hsl(0 68% 44% / 0.86);
-  border-radius: 50%;
-  font-family: "Noto Serif JP", serif;
-  font-size: 0.62rem;
-  font-weight: 800;
-  padding: 3px;
-  width: 28px;
-  height: 28px;
-  display: grid;
-  place-items: center;
-  line-height: 1;
-  letter-spacing: 0;
-  mix-blend-mode: multiply;
-  filter: url(#rough-ink);
-  user-select: none;
-  pointer-events: none;
-}
-
-.cover-barcode span {
-  height: 34px;
-  background: var(--ink);
-}
-
-.cover-barcode strong {
-  position: absolute;
-  right: 10px;
-  bottom: 5px;
-  left: 10px;
-  color: var(--ink);
-  font-size: 0.48rem;
-  font-weight: 700;
-  letter-spacing: 0.08rem;
-  text-align: center;
-}
 
 .cover-copy {
   position: absolute;
@@ -1070,12 +1013,7 @@ p {
     display: none;
   }
 
-  .cover-barcode {
-    top: 18px;
-    right: 18px;
-    width: 118px;
-    height: 62px;
-  }
+
 
   .cover-copy {
     left: 32px;
