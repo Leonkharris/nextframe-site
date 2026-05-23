@@ -169,7 +169,7 @@ textarea:focus-visible {
   overflow: hidden;
   isolation: isolate;
   background: var(--ink);
-  border-radius: 22px;
+  border-radius: 3px;
   box-shadow: var(--shadow-deep), 0 0 0 1px hsl(36 26% 91% / 0.04) inset;
 }
 
@@ -194,8 +194,8 @@ textarea:focus-visible {
   z-index: 1;
   background:
     radial-gradient(circle at 58% 22%, transparent 0 160px, hsl(28 12% 4% / 0.28) 310px),
-    linear-gradient(90deg, hsl(28 12% 4% / 0.92) 0%, hsl(28 12% 4% / 0.52) 42%, hsl(28 12% 4% / 0.2) 100%),
-    linear-gradient(0deg, hsl(28 12% 4% / 0.92), transparent 46%, hsl(28 12% 4% / 0.58));
+    linear-gradient(90deg, hsl(28 12% 4% / 0.96) 0%, hsl(28 12% 4% / 0.78) 38%, hsl(28 12% 4% / 0.35) 58%, hsl(28 12% 4% / 0.12) 100%),
+    linear-gradient(0deg, hsl(28 12% 4% / 0.92), transparent 40%, hsl(28 12% 4% / 0.52));
 }
 
 .cover-distress {
@@ -220,50 +220,26 @@ textarea:focus-visible {
 .cover-kanji {
   position: absolute;
   z-index: 5;
-  left: -34px;
-  top: 28px;
+  left: -28px;
+  top: 36px;
   margin: 0;
   background: linear-gradient(180deg, hsl(36 26% 91% / 0.9) 0%, hsl(36 10% 70% / 0.85) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   font-family: "Noto Serif JP", serif;
-  font-size: clamp(8rem, 17vw, 18rem);
+  font-size: clamp(7rem, 14vw, 14rem);
   font-weight: 600;
   letter-spacing: -1.3rem;
   line-height: 0.84;
   writing-mode: vertical-rl;
   text-orientation: upright;
+  opacity: 0.55;
   filter: drop-shadow(0 12px 24px hsl(0 0% 0% / 0.45)) url(#rough-ink);
 }
 
-.cover-side-copy {
-  position: absolute;
-  z-index: 6;
-  left: 70px;
-  top: 220px;
-  max-height: 280px;
-  margin: 0;
-  color: hsl(36 26% 91% / 0.82);
-  font-family: "Noto Serif JP", serif;
-  font-size: 0.78rem;
-  letter-spacing: 0.2rem;
-  writing-mode: vertical-rl;
-  text-orientation: mixed;
-}
-
+.cover-side-copy,
 .cover-meta {
-  position: absolute;
-  z-index: 6;
-  top: 28px;
-  left: 34%;
-  display: grid;
-  gap: 5px;
-  color: hsl(36 26% 91% / 0.82);
-  font-size: 0.58rem;
-  font-weight: 700;
-  letter-spacing: 0.12rem;
-  line-height: 1.2;
-  text-transform: uppercase;
+  display: none;
 }
 
 .cover-barcode {
@@ -328,15 +304,12 @@ textarea:focus-visible {
 .cover-copy {
   position: absolute;
   z-index: 12;
-  left: 160px;
-  top: 170px;
-  width: 400px;
-  background: radial-gradient(circle at center, hsl(28 12% 4% / 0.82) 0%, hsl(28 12% 4% / 0.72) 40%, transparent 80%);
-  background-size: 140% 140%;
-  background-position: center;
-  padding: 24px;
-  margin: -24px;
-  border-radius: 16px;
+  left: 120px;
+  top: 150px;
+  width: min(440px, 46%);
+  background: none;
+  padding: 0;
+  margin: 0;
   pointer-events: none;
 }
 
@@ -346,15 +319,16 @@ textarea:focus-visible {
 }
 
 .cover-copy h1 {
-  max-width: 12ch;
+  max-width: 14ch;
   margin-top: 20px;
-  font-size: clamp(2.8rem, 4.4vw, 4.5rem);
-  line-height: 0.95;
+  font-size: clamp(3.2rem, 5.2vw, 5.5rem);
+  line-height: 0.93;
   letter-spacing: -0.03em;
   color: var(--ivory);
   text-shadow: 
-    0 2px 8px hsl(0 0% 0% / 0.95),
-    0 4px 24px hsl(0 0% 0% / 0.9);
+    0 2px 12px hsl(0 0% 0% / 1),
+    0 4px 28px hsl(0 0% 0% / 0.95),
+    0 8px 40px hsl(0 0% 0% / 0.7);
 }
 
 .highlight-red {
@@ -386,34 +360,34 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 52px;
-  top: 60px;
-  width: 220px;
+  right: 48px;
+  top: 72px;
+  width: 260px;
   aspect-ratio: 3 / 4;
   padding: 10px 10px 46px;
-  transform: rotate(2.5deg);
+  transform: rotate(2deg);
 }
 
 .cover-polaroid {
   width: min(22vw, 260px);
   aspect-ratio: 4 / 5;
-  padding: 10px 10px 46px;
+  padding: 8px 8px 42px;
 }
 
 .cover-polaroid-one {
-  right: 360px;
+  right: 340px;
   left: auto;
-  bottom: 32px;
-  width: 185px;
-  transform: rotate(-6deg);
+  bottom: 36px;
+  width: 200px;
+  transform: rotate(-5deg);
 }
 
 .cover-polaroid-two {
-  right: 36px;
+  right: 44px;
   left: auto;
-  bottom: 48px;
-  width: 175px;
-  transform: rotate(4.5deg);
+  bottom: 52px;
+  width: 190px;
+  transform: rotate(4deg);
 }
 
 .cover-main-frame video,
@@ -463,21 +437,17 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  right: 310px;
+  right: 56px;
   left: auto;
-  bottom: 290px;
-  padding: 12px 16px;
-  transform: rotate(-8deg);
+  bottom: auto;
+  top: 380px;
+  padding: 10px 14px;
+  transform: rotate(-4deg);
+  z-index: 6;
 }
 
 .cover-ticket-two {
-  right: 290px;
-  bottom: auto;
-  top: 72px;
-  padding: 9px 14px;
-  font-family: "Noto Serif JP", serif;
-  transform: rotate(6deg);
-  filter: url(#rough-edge) url(#rough-ink);
+  display: none;
 }
 
 /* Physical Masking Tape Collage Layer */
@@ -506,54 +476,35 @@ textarea:focus-visible {
   );
 }
 
-/* Tape positions over polaroids & frames */
+/* Tape positions over polaroids & frames — anchored to actual targets */
 .tape-main-top {
-  right: 80px;
-  top: 48px;
-  width: 120px;
-  height: 26px;
+  right: 100px;
+  top: 60px;
+  width: 110px;
+  height: 24px;
   transform: rotate(-2deg);
   clip-path: polygon(2% 10%, 98% 2%, 97% 92%, 3% 98%);
 }
 
 .tape-polaroid-one-top {
-  right: 390px;
+  right: 380px;
   left: auto;
+  bottom: auto;
+  top: auto;
   bottom: 260px;
-  width: 110px;
+  width: 100px;
   height: 22px;
   transform: rotate(4deg);
   clip-path: polygon(1% 4%, 99% 10%, 98% 90%, 2% 95%);
 }
 
-.tape-polaroid-two-top {
-  right: 70px;
-  left: auto;
-  bottom: 255px;
-  width: 100px;
-  height: 22px;
-  transform: rotate(-5deg);
-  clip-path: polygon(3% 8%, 97% 5%, 96% 92%, 4% 88%);
+.tape-polaroid-two-top,
+.tape-ticket-two {
+  display: none;
 }
 
 .tape-ticket-one {
-  right: 320px;
-  left: auto;
-  bottom: 314px;
-  width: 65px;
-  height: 18px;
-  transform: rotate(14deg);
-  clip-path: polygon(1% 5%, 99% 2%, 98% 95%, 2% 90%);
-}
-
-.tape-ticket-two {
-  right: 298px;
-  bottom: auto;
-  top: 62px;
-  width: 80px;
-  height: 20px;
-  transform: rotate(-12deg);
-  clip-path: polygon(2% 8%, 98% 5%, 96% 94%, 4% 92%);
+  display: none;
 }
 
 .vertical-mark {
@@ -1156,7 +1107,7 @@ p {
 
   .cover-object {
     min-height: 760px;
-    border-radius: 16px;
+    border-radius: 3px;
   }
 
   .cover-kanji {
