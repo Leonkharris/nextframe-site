@@ -155,43 +155,368 @@ textarea:focus-visible {
   margin: 0 auto;
 }
 
-.hero {
-  position: relative;
+.hero-cover {
+  display: grid;
   min-height: 100svh;
-  width: 100%;
-  overflow: hidden;
-  align-items: end;
-  padding: 164px 0 96px;
+  padding: 92px 24px 48px;
+  place-items: center;
 }
 
-.hero-canvas,
-.hero-shade {
+.cover-object {
+  position: relative;
+  width: min(100%, 1180px);
+  min-height: min(780px, calc(100svh - 132px));
+  overflow: hidden;
+  isolation: isolate;
+  background: var(--ink);
+  border-radius: 22px;
+  box-shadow: var(--shadow-deep), 0 0 0 1px hsl(36 26% 91% / 0.04) inset;
+}
+
+.cover-media,
+.cover-grade,
+.cover-distress {
   position: absolute;
   inset: 0;
 }
 
-.hero-canvas {
+.cover-media {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  object-position: 58% center;
-  filter: brightness(0.48) saturate(0.82) contrast(1.12);
-  opacity: 0.74;
-  transform: scale(1.04);
+  object-position: 60% center;
+  filter: brightness(0.62) saturate(0.74) contrast(1.15);
+  transform: scale(1.06);
   animation: slowBreath 28s ease-in-out infinite alternate;
 }
 
-.hero-shade {
+.cover-grade {
   z-index: 1;
   background:
-    radial-gradient(circle at 76% 42%, hsl(0 58% 26% / 0.26), transparent 430px),
-    linear-gradient(90deg, hsl(28 12% 4% / 0.96) 0%, hsl(28 12% 4% / 0.7) 47%, hsl(28 12% 4% / 0.3) 100%),
-    linear-gradient(0deg, var(--midnight) 0%, transparent 42%, hsl(28 12% 4% / 0.56) 100%);
+    radial-gradient(circle at 58% 22%, transparent 0 160px, hsl(28 12% 4% / 0.28) 310px),
+    linear-gradient(90deg, hsl(28 12% 4% / 0.92) 0%, hsl(28 12% 4% / 0.52) 42%, hsl(28 12% 4% / 0.2) 100%),
+    linear-gradient(0deg, hsl(28 12% 4% / 0.92), transparent 46%, hsl(28 12% 4% / 0.58));
 }
 
-.hero > *:not(.hero-canvas):not(.hero-shade) {
-  position: relative;
+.cover-distress {
   z-index: 2;
+  opacity: 0.78;
+  pointer-events: none;
+  background:
+    /* Micro halftone screen dot pattern overlay */
+    radial-gradient(hsl(36 10% 8% / 0.28) 20%, transparent 20%) 0 0 / 4px 4px,
+    /* Horizontal fold crease */
+    linear-gradient(180deg, transparent 0% 48%, hsl(0 0% 0% / 0.46) 49.5%, hsl(36 26% 91% / 0.18) 50.5%, transparent 52% 100%),
+    /* Vertical fold crease */
+    linear-gradient(90deg, transparent 0% 28%, hsl(0 0% 0% / 0.38) 29.5%, hsl(36 26% 91% / 0.14) 30.5%, transparent 32% 100%),
+    /* Light scratch lines and spots */
+    linear-gradient(112deg, transparent 0 68%, hsl(36 26% 91% / 0.12) 68.3% 69.2%, transparent 69.5%),
+    radial-gradient(circle at 8% 12%, hsl(36 26% 91% / 0.14), transparent 38px),
+    radial-gradient(circle at 92% 88%, hsl(36 26% 91% / 0.12), transparent 52px),
+    repeating-linear-gradient(96deg, transparent 0 18px, hsl(36 26% 91% / 0.025) 19px 20px);
+  mix-blend-mode: overlay;
+}
+
+.cover-kanji {
+  position: absolute;
+  z-index: 5;
+  left: -34px;
+  top: 28px;
+  margin: 0;
+  background: linear-gradient(180deg, hsl(36 26% 91% / 0.9) 0%, hsl(36 10% 70% / 0.85) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-family: "Noto Serif JP", serif;
+  font-size: clamp(8rem, 17vw, 18rem);
+  font-weight: 600;
+  letter-spacing: -1.3rem;
+  line-height: 0.84;
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  filter: drop-shadow(0 12px 24px hsl(0 0% 0% / 0.45)) url(#rough-ink);
+}
+
+.cover-side-copy {
+  position: absolute;
+  z-index: 6;
+  left: 70px;
+  top: 220px;
+  max-height: 280px;
+  margin: 0;
+  color: hsl(36 26% 91% / 0.82);
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.2rem;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
+
+.cover-meta {
+  position: absolute;
+  z-index: 6;
+  top: 28px;
+  left: 34%;
+  display: grid;
+  gap: 5px;
+  color: hsl(36 26% 91% / 0.82);
+  font-size: 0.58rem;
+  font-weight: 700;
+  letter-spacing: 0.12rem;
+  line-height: 1.2;
+  text-transform: uppercase;
+}
+
+.cover-barcode {
+  position: absolute;
+  z-index: 7;
+  top: 28px;
+  right: 32px;
+  display: grid;
+  width: 142px;
+  height: 74px;
+  grid-template-columns: 5px 10px 3px 14px 7px 4px;
+  gap: 7px;
+  align-content: center;
+  padding: 10px 12px 18px;
+  color: var(--ink);
+  background: hsl(36 26% 91% / 0.88);
+  box-shadow: 0 8px 24px hsl(0 0% 0% / 0.16);
+  filter: url(#rough-edge);
+}
+
+.hanko-seal {
+  position: absolute;
+  top: 50%;
+  right: -10px;
+  transform: translateY(-50%) rotate(14deg);
+  color: hsl(0 68% 44% / 0.86);
+  border: 2px solid hsl(0 68% 44% / 0.86);
+  border-radius: 50%;
+  font-family: "Noto Serif JP", serif;
+  font-size: 0.62rem;
+  font-weight: 800;
+  padding: 3px;
+  width: 28px;
+  height: 28px;
+  display: grid;
+  place-items: center;
+  line-height: 1;
+  letter-spacing: 0;
+  mix-blend-mode: multiply;
+  filter: url(#rough-ink);
+  user-select: none;
+  pointer-events: none;
+}
+
+.cover-barcode span {
+  height: 34px;
+  background: var(--ink);
+}
+
+.cover-barcode strong {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  left: 10px;
+  color: var(--ink);
+  font-size: 0.48rem;
+  font-weight: 700;
+  letter-spacing: 0.08rem;
+  text-align: center;
+}
+
+.cover-copy {
+  position: absolute;
+  z-index: 12;
+  left: 150px;
+  top: 170px;
+  width: min(48vw, 600px);
+}
+
+.cover-copy h1 {
+  max-width: 12ch;
+  margin-top: 20px;
+  font-size: clamp(5.1rem, 7.9vw, 8.9rem);
+  line-height: 0.86;
+}
+
+.cover-copy > p:not(.issue-label) {
+  max-width: 50ch;
+  margin-top: 28px;
+}
+
+.cover-main-frame,
+.cover-polaroid {
+  position: absolute;
+  z-index: 7;
+  margin: 0;
+  overflow: hidden;
+  background: hsl(36 24% 88%);
+  box-shadow: 
+    0 24px 60px hsl(0 0% 0% / 0.46), 
+    0 2px 10px hsl(0 0% 0% / 0.22),
+    0 0 0 1px hsl(36 24% 95% / 0.6) inset;
+  filter: url(#rough-edge);
+}
+
+.cover-main-frame {
+  right: 86px;
+  top: 170px;
+  width: min(28vw, 330px);
+  aspect-ratio: 9 / 16;
+  padding: 12px 12px 52px;
+  transform: rotate(1.5deg);
+}
+
+.cover-polaroid {
+  bottom: 26px;
+  width: min(22vw, 260px);
+  aspect-ratio: 4 / 5;
+  padding: 12px 12px 52px;
+}
+
+.cover-polaroid-one {
+  left: 250px;
+  transform: rotate(-7deg);
+}
+
+.cover-polaroid-two {
+  left: 510px;
+  transform: rotate(5deg);
+}
+
+.cover-main-frame video,
+.cover-polaroid video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.72) saturate(0.8) contrast(1.15);
+}
+
+.cover-main-frame figcaption,
+.cover-polaroid figcaption {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  left: 14px;
+  color: hsl(240 38% 18% / 0.88);
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.05rem;
+  text-transform: none;
+  text-align: center;
+  transform: rotate(-1deg);
+  filter: url(#rough-ink);
+}
+
+.cover-main-frame figcaption {
+  transform: rotate(1deg);
+}
+
+.cover-ticket {
+  position: absolute;
+  z-index: 8;
+  color: var(--ink);
+  background: hsl(36 24% 88%);
+  box-shadow: 
+    0 16px 44px hsl(0 0% 0% / 0.42),
+    0 0 0 1px hsl(36 24% 95% / 0.6) inset;
+  font-size: 0.66rem;
+  font-weight: 800;
+  letter-spacing: 0.12rem;
+  line-height: 1.4;
+  text-transform: uppercase;
+  pointer-events: none;
+  filter: url(#rough-edge);
+}
+
+.cover-ticket-one {
+  left: 140px;
+  bottom: 46px;
+  padding: 12px 16px;
+  transform: rotate(2deg);
+}
+
+.cover-ticket-two {
+  right: 120px;
+  bottom: 106px;
+  padding: 9px 14px;
+  font-family: "Noto Serif JP", serif;
+  transform: rotate(-4deg);
+  filter: url(#rough-edge) url(#rough-ink);
+}
+
+/* Physical Masking Tape Collage Layer */
+.tape-strip {
+  position: absolute;
+  z-index: 15;
+  background: hsl(36 28% 88% / 0.58);
+  backdrop-filter: blur(1px);
+  box-shadow: 
+    0 1px 3px hsl(0 0% 0% / 0.12),
+    0 0 1px hsl(36 28% 95% / 0.4) inset;
+  filter: url(#rough-edge) drop-shadow(0 2px 3px hsl(0 0% 0% / 0.15));
+  mix-blend-mode: screen;
+  pointer-events: none;
+}
+
+.tape-strip::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    hsl(36 28% 92% / 0.15) 15%, 
+    hsl(36 28% 80% / 0.15) 85%, 
+    transparent 100%
+  );
+}
+
+/* Tape positions over polaroids & frames */
+.tape-main-top {
+  right: 160px;
+  top: 154px;
+  width: 140px;
+  height: 28px;
+  transform: rotate(-3deg);
+  clip-path: polygon(2% 10%, 98% 2%, 97% 92%, 3% 98%);
+}
+
+.tape-polaroid-one-top {
+  left: 290px;
+  bottom: 342px;
+  width: 120px;
+  height: 24px;
+  transform: rotate(5deg);
+  clip-path: polygon(1% 4%, 99% 10%, 98% 90%, 2% 95%);
+}
+
+.tape-polaroid-two-top {
+  left: 560px;
+  bottom: 348px;
+  width: 110px;
+  height: 22px;
+  transform: rotate(-6deg);
+  clip-path: polygon(3% 8%, 97% 5%, 96% 92%, 4% 88%);
+}
+
+.tape-ticket-one {
+  left: 170px;
+  bottom: 74px;
+  width: 70px;
+  height: 20px;
+  transform: rotate(14deg);
+  clip-path: polygon(1% 5%, 99% 2%, 98% 95%, 2% 90%);
+}
+
+.tape-ticket-two {
+  right: 180px;
+  bottom: 154px;
+  width: 90px;
+  height: 22px;
+  transform: rotate(-12deg);
+  clip-path: polygon(2% 8%, 98% 5%, 96% 94%, 4% 92%);
 }
 
 .vertical-mark {
@@ -660,9 +985,65 @@ p {
   }
 
   .hero,
+  .hero-cover,
   .spread,
   .reservation-section {
     row-gap: 40px;
+  }
+
+  .hero-cover {
+    padding: 86px 16px 40px;
+  }
+
+  .cover-object {
+    min-height: 900px;
+  }
+
+  .cover-copy {
+    left: 92px;
+    top: 150px;
+    width: min(70vw, 560px);
+  }
+
+  .cover-main-frame {
+    right: 38px;
+    top: 380px;
+    width: 260px;
+  }
+
+  .cover-polaroid-one {
+    left: 128px;
+  }
+
+  .cover-polaroid-two {
+    left: 360px;
+  }
+
+  .cover-ticket-two {
+    right: 52px;
+  }
+
+  .tape-main-top {
+    right: 90px;
+    top: 364px;
+    width: 110px;
+  }
+
+  .tape-polaroid-one-top {
+    left: 160px;
+    bottom: 270px;
+    width: 90px;
+  }
+
+  .tape-polaroid-two-top {
+    left: 400px;
+    bottom: 270px;
+    width: 90px;
+  }
+
+  .tape-ticket-two {
+    right: 90px;
+    bottom: 140px;
   }
 
   .hero-copy,
@@ -725,6 +1106,109 @@ p {
 
   .hero {
     padding: 142px 16px 72px;
+  }
+
+  .hero-cover {
+    padding: 76px 10px 32px;
+  }
+
+  .cover-object {
+    min-height: 760px;
+    border-radius: 16px;
+  }
+
+  .cover-kanji {
+    left: -18px;
+    top: 76px;
+    font-size: clamp(6.5rem, 30vw, 8.2rem);
+    letter-spacing: -0.72rem;
+  }
+
+  .cover-side-copy,
+  .cover-meta {
+    display: none;
+  }
+
+  .cover-barcode {
+    top: 18px;
+    right: 18px;
+    width: 118px;
+    height: 62px;
+  }
+
+  .cover-copy {
+    left: 32px;
+    top: 132px;
+    width: calc(100% - 64px);
+  }
+
+  .cover-copy h1 {
+    max-width: 10ch;
+    font-size: clamp(3.55rem, 16vw, 4.7rem);
+  }
+
+  .cover-copy > p:not(.issue-label) {
+    display: none;
+  }
+
+  .cover-main-frame {
+    right: 26px;
+    bottom: 28px;
+    top: auto;
+    width: 42vw;
+    min-width: 150px;
+    transform: rotate(3deg);
+  }
+
+  .cover-polaroid {
+    bottom: 28px;
+    width: 38vw;
+    min-width: 138px;
+    padding: 8px 8px 34px;
+  }
+
+  .cover-polaroid-one {
+    left: 24px;
+    transform: rotate(-7deg);
+  }
+
+  .cover-polaroid-two,
+  .cover-ticket-two {
+    display: none;
+  }
+
+  .cover-ticket-one {
+    left: 26px;
+    bottom: 190px;
+  }
+
+  .tape-main-top {
+    right: 12%;
+    bottom: 242px;
+    top: auto;
+    width: 80px;
+    height: 20px;
+    transform: rotate(6deg);
+  }
+
+  .tape-polaroid-one-top {
+    left: 10%;
+    bottom: 190px;
+    width: 70px;
+    height: 18px;
+    transform: rotate(-10deg);
+  }
+
+  .tape-polaroid-two-top,
+  .tape-ticket-two {
+    display: none;
+  }
+
+  .tape-ticket-one {
+    left: 10%;
+    bottom: 215px;
+    width: 50px;
+    height: 16px;
   }
 
   .hero-copy,
