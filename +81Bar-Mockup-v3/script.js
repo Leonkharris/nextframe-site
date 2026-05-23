@@ -62,6 +62,14 @@ if ("IntersectionObserver" in window) {
       entries.forEach((entry) => {
         const video = entry.target;
 
+        // SAFEGUARD: Never let the IntersectionObserver pause the hero cover collage videos!
+        if (video.closest(".cover-object")) {
+          if (!reducedMotion) {
+            video.play().catch(() => {});
+          }
+          return;
+        }
+
         if (entry.isIntersecting && !reducedMotion) {
           video.play().catch(() => {});
           return;
