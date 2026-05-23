@@ -89,21 +89,52 @@ document.querySelector("[data-booking-form]")?.addEventListener("submit", (event
 const forcePlayAutoplayVideos = () => {
   const autoplayVideos = document.querySelectorAll("video[autoplay]");
   autoplayVideos.forEach((video) => {
+    // Programmatically reinforce critical autoplay properties
+    video.muted = true;
+    video.defaultMuted = true;
+    video.loop = true;
+    video.setAttribute("playsinline", "");
+    video.setAttribute("muted", "");
+    
     if (video.paused) {
-      video.play().catch(() => {});
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch((error) => {
+          console.warn("Autoplay block detected, waiting for user interaction gesture.", error);
+        });
+      }
     }
   });
 };
 
-window.addEventListener("load", forcePlayAutoplayVideos);
+// Fire immediately on DOM phases
 document.addEventListener("DOMContentLoaded", forcePlayAutoplayVideos);
+window.addEventListener("load", forcePlayAutoplayVideos);
+
+// Hook individual click and touch gestures on cover videos as explicit user activation triggers
+const bindDirectVideoInteractionTriggers = () => {
+  const coverVideos = document.querySelectorAll(".cover-object video");
+  coverVideos.forEach((video) => {
+    const playVideoDirectly = () => {
+      video.muted = true;
+      video.loop = true;
+      video.play().catch(() => {});
+    };
+    video.addEventListener("click", playVideoDirectly);
+    video.addEventListener("touchstart", playVideoDirectly, { passive: true });
+    // Also trigger on figcaption taps
+    const figure = video.closest("figure");
+    figure?.addEventListener("click", playVideoDirectly);
+    figure?.addEventListener("touchstart", playVideoDirectly, { passive: true });
+  });
+};
+document.addEventListener("DOMContentLoaded", bindDirectVideoInteractionTriggers);
+window.addEventListener("load", bindDirectVideoInteractionTriggers);
 
 const triggerPlayOnInteraction = () => {
   forcePlayAutoplayVideos();
   document.removeEventListener("click", triggerPlayOnInteraction);
   document.removeEventListener("touchstart", triggerPlayOnInteraction);
-  document.removeEventListener("scroll", triggerPlayOnInteraction);
 };
 document.addEventListener("click", triggerPlayOnInteraction);
 document.addEventListener("touchstart", triggerPlayOnInteraction);
-document.addEventListener("scroll", triggerPlayOnInteraction, { passive: true });
