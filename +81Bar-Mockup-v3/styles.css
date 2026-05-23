@@ -330,20 +330,45 @@ textarea:focus-visible {
   z-index: 12;
   left: 160px;
   top: 170px;
-  width: 440px;
+  width: 400px;
+  background: radial-gradient(circle at center, hsl(28 12% 4% / 0.82) 0%, hsl(28 12% 4% / 0.72) 40%, transparent 80%);
+  background-size: 140% 140%;
+  background-position: center;
+  padding: 24px;
+  margin: -24px;
+  border-radius: 16px;
+  pointer-events: none;
+}
+
+.cover-copy a,
+.cover-copy button {
+  pointer-events: auto;
 }
 
 .cover-copy h1 {
   max-width: 12ch;
   margin-top: 20px;
-  font-size: clamp(3.2rem, 5.2vw, 5.6rem);
-  line-height: 0.9;
+  font-size: clamp(2.8rem, 4.4vw, 4.5rem);
+  line-height: 0.95;
   letter-spacing: -0.03em;
+  color: var(--ivory);
+  text-shadow: 
+    0 2px 8px hsl(0 0% 0% / 0.95),
+    0 4px 24px hsl(0 0% 0% / 0.9);
+}
+
+.highlight-red {
+  color: hsl(0 84% 54%);
+  text-shadow: 
+    0 0 12px hsl(0 84% 54% / 0.35),
+    0 2px 6px hsl(0 0% 0% / 0.95);
+  font-weight: 400;
 }
 
 .cover-copy > p:not(.issue-label) {
-  max-width: 40ch;
-  margin-top: 28px;
+  max-width: 38ch;
+  margin-top: 24px;
+  text-shadow: 0 2px 8px hsl(0 0% 0% / 0.95);
 }
 
 .cover-main-frame,
