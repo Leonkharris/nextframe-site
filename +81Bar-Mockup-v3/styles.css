@@ -360,39 +360,41 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 80px;
-  top: 60px;
-  width: 220px;
-  aspect-ratio: 4 / 5;
-  padding: 10px 10px 46px;
-  rotate: 2deg;
+  right: 60px;
+  top: 120px;
+  width: 360px;
+  aspect-ratio: 3 / 4;
+  padding: 12px 12px 52px;
+  rotate: 3deg;
   animation: floatFrame 6s ease-in-out infinite;
 }
 
 .cover-polaroid {
   width: min(22vw, 260px);
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 3 / 4;
   padding: 8px 8px 42px;
 }
 
 .cover-polaroid-one {
-  right: 320px;
+  right: 280px;
   left: auto;
   bottom: auto;
   top: 400px;
-  width: 175px;
-  rotate: -5deg;
-  animation: floatFrame 7s ease-in-out 1s infinite;
+  width: 220px;
+  rotate: -6deg;
+  animation: floatFrame 7s ease-in-out 1.2s infinite;
+  z-index: 8; /* Sits slightly on top of the main frame bottom-left */
 }
 
 .cover-polaroid-two {
-  right: 60px;
+  right: 30px;
   left: auto;
   bottom: auto;
-  top: 440px;
-  width: 165px;
-  rotate: 4deg;
-  animation: floatFrame 8s ease-in-out 2s infinite;
+  top: 460px;
+  width: 200px;
+  rotate: 5deg;
+  animation: floatFrame 8s ease-in-out 2.4s infinite;
+  z-index: 9; /* Sits on top of the main frame bottom-right */
 }
 
 .cover-main-frame video,
@@ -442,17 +444,24 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  right: 280px;
+  right: 320px;
   left: auto;
   bottom: auto;
-  top: 280px;
+  top: 320px;
   padding: 10px 14px;
-  transform: rotate(-8deg);
-  z-index: 6;
+  transform: rotate(-12deg);
+  z-index: 10;
 }
 
 .cover-ticket-two {
-  display: none;
+  display: block;
+  right: 80px;
+  left: auto;
+  bottom: auto;
+  top: 420px;
+  padding: 10px 14px;
+  transform: rotate(14deg);
+  z-index: 10;
 }
 
 /* Physical Masking Tape Collage Layer */
@@ -483,8 +492,8 @@ textarea:focus-visible {
 
 /* Tape positions over polaroids & frames — anchored to actual targets */
 .tape-main-top {
-  right: 130px;
-  top: 48px;
+  right: 140px;
+  top: 105px;
   width: 100px;
   height: 22px;
   transform: rotate(-2deg);
@@ -492,23 +501,50 @@ textarea:focus-visible {
 }
 
 .tape-polaroid-one-top {
-  right: 350px;
+  right: 330px;
   left: auto;
   bottom: auto;
-  top: 388px;
+  top: 385px;
   width: 90px;
   height: 20px;
   transform: rotate(4deg);
   clip-path: polygon(1% 4%, 99% 10%, 98% 90%, 2% 95%);
 }
 
-.tape-polaroid-two-top,
-.tape-ticket-two {
-  display: none;
+.tape-polaroid-two-top {
+  display: block;
+  right: 80px;
+  left: auto;
+  bottom: auto;
+  top: 445px;
+  width: 90px;
+  height: 20px;
+  transform: rotate(-4deg);
+  clip-path: polygon(2% 8%, 98% 4%, 96% 94%, 4% 92%);
 }
 
 .tape-ticket-one {
-  display: none;
+  display: block;
+  right: 340px;
+  left: auto;
+  bottom: auto;
+  top: 308px;
+  width: 70px;
+  height: 18px;
+  transform: rotate(-15deg);
+  clip-path: polygon(1% 12%, 99% 3%, 98% 88%, 2% 97%);
+}
+
+.tape-ticket-two {
+  display: block;
+  right: 108px;
+  left: auto;
+  bottom: auto;
+  top: 408px;
+  width: 70px;
+  height: 18px;
+  transform: rotate(10deg);
+  clip-path: polygon(3% 5%, 97% 10%, 99% 92%, 1% 90%);
 }
 
 .vertical-mark {
