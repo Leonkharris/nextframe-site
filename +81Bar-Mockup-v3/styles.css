@@ -1032,28 +1032,28 @@ p {
   }
 
   .cover-main-frame {
-    right: 26px;
+    right: 16px;
     top: auto;
-    bottom: 28px;
-    width: 42vw;
-    min-width: 150px;
+    bottom: 42px;
+    width: 45%;
+    min-width: 140px;
     animation: none;
-    transform: rotate(3deg);
+    transform: rotate(2deg);
   }
 
   .cover-polaroid {
     top: auto;
-    bottom: 28px;
-    width: 38vw;
-    min-width: 138px;
+    bottom: 42px;
+    width: 43%;
+    min-width: 130px;
     padding: 8px 8px 34px;
     animation: none;
   }
 
   .cover-polaroid-one {
-    left: 24px;
+    left: 16px;
     right: auto;
-    transform: rotate(-7deg);
+    transform: rotate(-3deg);
   }
 
   .cover-polaroid-two,
@@ -1099,7 +1099,13 @@ p {
     height: 16px;
   }
 
-  .hero-copy,
+  /* Robust Mobile Flex-Stacking resets to completely bypass desktop grid column specificity overrides */
+  .issue-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 32px !important;
+  }
+
   .narrative-block,
   .craft-copy,
   .rooms-copy,
@@ -1109,6 +1115,23 @@ p {
   .contact-actions,
   .venue-info,
   .room-ledger,
+  .float-frame {
+    grid-column: auto !important;
+    grid-row: auto !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
+
+  .narrative-block,
+  .craft-copy,
+  .rooms-copy,
+  .midnight-copy,
+  .reservation-copy {
+    order: 1 !important;
+  }
+
+  .float-frame,
   .hero-frame,
   .entrance-frame-one,
   .entrance-frame-two,
@@ -1117,7 +1140,16 @@ p {
   .room-frame,
   .midnight-frame,
   .cameo-frame {
-    grid-column: 1 / -1;
+    order: 2 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    transform: none !important;
+  }
+
+  .room-ledger,
+  .reservation-form,
+  .contact-actions {
+    order: 3 !important;
   }
 
   .hero-mark,
@@ -1137,11 +1169,11 @@ p {
   .spread,
   .reservation-section {
     min-height: auto;
-    padding: 96px 0;
+    padding: 64px 0;
   }
 
   .spread::before {
-    inset: 28px 0;
+    inset: 16px 0;
   }
 
   .hero-actions,
