@@ -328,20 +328,21 @@ textarea:focus-visible {
 .cover-copy {
   position: absolute;
   z-index: 12;
-  left: 150px;
+  left: 160px;
   top: 170px;
-  width: min(48vw, 600px);
+  width: 440px;
 }
 
 .cover-copy h1 {
   max-width: 12ch;
   margin-top: 20px;
-  font-size: clamp(5.1rem, 7.9vw, 8.9rem);
-  line-height: 0.86;
+  font-size: clamp(3.2rem, 5.2vw, 5.6rem);
+  line-height: 0.9;
+  letter-spacing: -0.03em;
 }
 
 .cover-copy > p:not(.issue-label) {
-  max-width: 50ch;
+  max-width: 40ch;
   margin-top: 28px;
 }
 
@@ -360,12 +361,12 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 86px;
-  top: 170px;
-  width: min(28vw, 330px);
+  right: 64px;
+  top: 110px;
+  width: min(28vw, 320px);
   aspect-ratio: 9 / 16;
   padding: 12px 12px 52px;
-  transform: rotate(1.5deg);
+  transform: rotate(2deg);
 }
 
 .cover-polaroid {
@@ -376,12 +377,16 @@ textarea:focus-visible {
 }
 
 .cover-polaroid-one {
-  left: 250px;
+  right: 320px;
+  left: auto;
+  bottom: 32px;
   transform: rotate(-7deg);
 }
 
 .cover-polaroid-two {
-  left: 510px;
+  right: 80px;
+  left: auto;
+  bottom: 24px;
   transform: rotate(5deg);
 }
 
@@ -432,18 +437,20 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  left: 140px;
-  bottom: 46px;
+  right: 480px;
+  left: auto;
+  bottom: 74px;
   padding: 12px 16px;
-  transform: rotate(2deg);
+  transform: rotate(3deg);
 }
 
 .cover-ticket-two {
-  right: 120px;
-  bottom: 106px;
+  right: 360px;
+  bottom: auto;
+  top: 120px;
   padding: 9px 14px;
   font-family: "Noto Serif JP", serif;
-  transform: rotate(-4deg);
+  transform: rotate(-5deg);
   filter: url(#rough-edge) url(#rough-ink);
 }
 
@@ -475,8 +482,8 @@ textarea:focus-visible {
 
 /* Tape positions over polaroids & frames */
 .tape-main-top {
-  right: 160px;
-  top: 154px;
+  right: 150px;
+  top: 94px;
   width: 140px;
   height: 28px;
   transform: rotate(-3deg);
@@ -484,8 +491,9 @@ textarea:focus-visible {
 }
 
 .tape-polaroid-one-top {
-  left: 290px;
-  bottom: 342px;
+  right: 370px;
+  left: auto;
+  bottom: 348px;
   width: 120px;
   height: 24px;
   transform: rotate(5deg);
@@ -493,8 +501,9 @@ textarea:focus-visible {
 }
 
 .tape-polaroid-two-top {
-  left: 560px;
-  bottom: 348px;
+  right: 120px;
+  left: auto;
+  bottom: 315px;
   width: 110px;
   height: 22px;
   transform: rotate(-6deg);
@@ -502,8 +511,9 @@ textarea:focus-visible {
 }
 
 .tape-ticket-one {
-  left: 170px;
-  bottom: 74px;
+  right: 490px;
+  left: auto;
+  bottom: 102px;
   width: 70px;
   height: 20px;
   transform: rotate(14deg);
@@ -511,8 +521,9 @@ textarea:focus-visible {
 }
 
 .tape-ticket-two {
-  right: 180px;
-  bottom: 154px;
+  right: 370px;
+  bottom: auto;
+  top: 110px;
   width: 90px;
   height: 22px;
   transform: rotate(-12deg);
@@ -1013,10 +1024,12 @@ p {
 
   .cover-polaroid-one {
     left: 128px;
+    right: auto;
   }
 
   .cover-polaroid-two {
     left: 360px;
+    right: auto;
   }
 
   .cover-ticket-two {
@@ -1031,12 +1044,14 @@ p {
 
   .tape-polaroid-one-top {
     left: 160px;
+    right: auto;
     bottom: 270px;
     width: 90px;
   }
 
   .tape-polaroid-two-top {
     left: 400px;
+    right: auto;
     bottom: 270px;
     width: 90px;
   }
@@ -1044,6 +1059,7 @@ p {
   .tape-ticket-two {
     right: 90px;
     bottom: 140px;
+    top: auto;
   }
 
   .hero-copy,
@@ -1169,6 +1185,7 @@ p {
 
   .cover-polaroid-one {
     left: 24px;
+    right: auto;
     transform: rotate(-7deg);
   }
 
@@ -1179,11 +1196,13 @@ p {
 
   .cover-ticket-one {
     left: 26px;
+    right: auto;
     bottom: 190px;
   }
 
   .tape-main-top {
     right: 12%;
+    left: auto;
     bottom: 242px;
     top: auto;
     width: 80px;
@@ -1193,6 +1212,7 @@ p {
 
   .tape-polaroid-one-top {
     left: 10%;
+    right: auto;
     bottom: 190px;
     width: 70px;
     height: 18px;
@@ -1206,6 +1226,7 @@ p {
 
   .tape-ticket-one {
     left: 10%;
+    right: auto;
     bottom: 215px;
     width: 50px;
     height: 16px;
