@@ -299,7 +299,6 @@ textarea:focus-visible {
     0 24px 60px hsl(0 0% 0% / 0.46), 
     0 2px 10px hsl(0 0% 0% / 0.22),
     0 0 0 1px hsl(36 24% 95% / 0.6) inset;
-  filter: url(#rough-edge);
 }
 
 .cover-main-frame {
