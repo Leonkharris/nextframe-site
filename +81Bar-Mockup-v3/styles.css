@@ -165,7 +165,7 @@ textarea:focus-visible {
 .cover-object {
   position: relative;
   width: min(100%, 1180px);
-  min-height: min(780px, calc(100svh - 132px));
+  min-height: 780px;
   overflow: hidden;
   isolation: isolate;
   background: var(--ink);
@@ -360,9 +360,9 @@ textarea:focus-visible {
 }
 
 .cover-main-frame {
-  right: 48px;
-  top: 56px;
-  width: 240px;
+  right: 120px;
+  top: 48px;
+  width: 200px;
   aspect-ratio: 4 / 5;
   padding: 10px 10px 46px;
   --float-base: rotate(2deg);
@@ -376,19 +376,21 @@ textarea:focus-visible {
 }
 
 .cover-polaroid-one {
-  right: 380px;
+  right: 340px;
   left: auto;
-  bottom: 36px;
-  width: 195px;
+  bottom: auto;
+  top: 400px;
+  width: 175px;
   --float-base: rotate(-5deg);
   animation: floatFrame 7s ease-in-out 1s infinite;
 }
 
 .cover-polaroid-two {
-  right: 48px;
+  right: 44px;
   left: auto;
-  bottom: 52px;
-  width: 185px;
+  bottom: auto;
+  top: 420px;
+  width: 165px;
   --float-base: rotate(4deg);
   animation: floatFrame 8s ease-in-out 2s infinite;
 }
@@ -440,10 +442,10 @@ textarea:focus-visible {
 }
 
 .cover-ticket-one {
-  right: 56px;
+  right: 138px;
   left: auto;
   bottom: auto;
-  top: 380px;
+  top: 338px;
   padding: 10px 14px;
   transform: rotate(-4deg);
   z-index: 6;
@@ -481,22 +483,21 @@ textarea:focus-visible {
 
 /* Tape positions over polaroids & frames — anchored to actual targets */
 .tape-main-top {
-  right: 100px;
-  top: 60px;
-  width: 110px;
-  height: 24px;
+  right: 160px;
+  top: 36px;
+  width: 100px;
+  height: 22px;
   transform: rotate(-2deg);
   clip-path: polygon(2% 10%, 98% 2%, 97% 92%, 3% 98%);
 }
 
 .tape-polaroid-one-top {
-  right: 380px;
+  right: 370px;
   left: auto;
   bottom: auto;
-  top: auto;
-  bottom: 260px;
-  width: 100px;
-  height: 22px;
+  top: 390px;
+  width: 90px;
+  height: 20px;
   transform: rotate(4deg);
   clip-path: polygon(1% 4%, 99% 10%, 98% 90%, 2% 95%);
 }
@@ -1158,18 +1159,21 @@ p {
 
   .cover-main-frame {
     right: 26px;
-    bottom: 28px;
     top: auto;
+    bottom: 28px;
     width: 42vw;
     min-width: 150px;
+    animation: none;
     transform: rotate(3deg);
   }
 
   .cover-polaroid {
+    top: auto;
     bottom: 28px;
     width: 38vw;
     min-width: 138px;
     padding: 8px 8px 34px;
+    animation: none;
   }
 
   .cover-polaroid-one {
