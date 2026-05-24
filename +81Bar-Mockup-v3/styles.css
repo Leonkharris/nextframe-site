@@ -933,6 +933,7 @@ p {
 
   .hero-copy,
   .narrative-block,
+  .entrance-spread .narrative-block,
   .craft-copy,
   .rooms-copy,
   .midnight-copy,
@@ -1034,18 +1035,18 @@ p {
   .cover-main-frame {
     right: 16px;
     top: auto;
-    bottom: 42px;
-    width: 45%;
-    min-width: 140px;
+    bottom: 120px;
+    width: 60%;
+    min-width: 190px;
     animation: none;
     transform: rotate(2deg);
+    z-index: 9; /* Sits on top of the polaroids to guarantee caption visibility */
   }
 
   .cover-polaroid {
     top: auto;
-    bottom: 42px;
-    width: 43%;
-    min-width: 130px;
+    width: 44%;
+    min-width: 138px;
     padding: 8px 8px 34px;
     animation: none;
   }
@@ -1053,10 +1054,23 @@ p {
   .cover-polaroid-one {
     left: 16px;
     right: auto;
-    transform: rotate(-3deg);
+    bottom: 24px;
+    transform: rotate(-4deg);
+    z-index: 8;
   }
 
-  .cover-polaroid-two,
+  .cover-polaroid-two {
+    display: block !important;
+    right: 16px !important;
+    left: auto !important;
+    bottom: 16px !important;
+    width: 40% !important;
+    min-width: 130px !important;
+    transform: rotate(3deg) !important;
+    z-index: 7 !important; /* Positioned behind the main frame bottom corner */
+    animation: none !important;
+  }
+
   .cover-ticket-two {
     display: none;
   }
@@ -1107,6 +1121,7 @@ p {
   }
 
   .narrative-block,
+  .entrance-spread .narrative-block,
   .craft-copy,
   .rooms-copy,
   .midnight-copy,
@@ -1124,6 +1139,7 @@ p {
   }
 
   .narrative-block,
+  .entrance-spread .narrative-block,
   .craft-copy,
   .rooms-copy,
   .midnight-copy,
