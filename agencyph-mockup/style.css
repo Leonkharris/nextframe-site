@@ -532,9 +532,9 @@ a {
 .masthead-logo {
   height: 1.28em; /* Visually dominant scale that is prominent and never smaller than adjacent capital letters */
   width: auto;
-  vertical-align: baseline; /* Forces the bottom of the 'A' image to line up perfectly with the baseline of THE and GENCY */
+  vertical-align: bottom; /* Aligns the bottom of the image box perfectly flush with the bottom of the text line */
   position: relative;
-  top: -0.05em; /* Lifted slightly up using a tiny negative offset to align the flat visual base perfectly with the serif baseline */
+  top: 0.14em; /* Push it down to sit exactly flush on the horizontal border line with adjacent letters */
   margin: 0 -0.01em;
   display: inline-block;
 }
