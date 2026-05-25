@@ -12,7 +12,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Prata&family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="./style.css?v=5.1">
+  <link rel="stylesheet" href="./style.css?v=5.2">
 </head>
 <body>
 
@@ -672,101 +672,108 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- 6. SECTION 5: PRIVÉE REGISTRATION AS AN INVITE CARD OVERLAY -->
+  <!-- 6. SECTION 5: CLIENT INQUIRY & CONTACT PORTAL -->
   <!-- ========================================================================= -->
   <section id="privee" class="privee-portal-section">
-    <div class="ghost-watermark-large font-serif">PRIVÉE</div>
-
+    <div class="ghost-watermark-large font-serif">CONNECT</div>
+ 
     <div class="magazine-running-head font-mono">
-      <span class="mag-issue">PLACEMENT DECREE APPLICATION</span>
-      <span class="mag-title">THE PRIVÉE CONFIDENTIAL GATEWAY</span>
-      <span class="mag-page">P. 05 // PRIVÉE</span>
+      <span class="mag-issue">CLIENT ENQUIRIES & SERVICES</span>
+      <span class="mag-title">THE AGENCY PH DIRECT CONTACT</span>
+      <span class="mag-page">P. 05 // CONNECT</span>
     </div>
-    
+     
     <div class="privee-card-viewport">
       <div class="privee-invitation-card">
-        
+         
         <!-- Interactive Rotating Stamp -->
         <div class="privee-stamp-overlay">
           <svg class="circular-stamp" viewBox="0 0 100 100" width="120" height="120">
             <path id="stampPath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
             <text font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="6.5" fill="#e30613" letter-spacing="2">
-              <textPath href="#stampPath">CONFIDENTIAL • APPROVED BY JESSICA • THE AGENCY PH • </textPath>
+              <textPath href="#stampPath">CLIENT INQUIRY • THE AGENCY PH • CLIENT CARE • </textPath>
             </text>
             <circle cx="50" cy="50" r="28" fill="none" stroke="#e30613" stroke-width="1" stroke-dasharray="2 2" />
-            <text x="50" y="54" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="12" fill="#e30613" text-anchor="middle" font-weight="600">Privée</text>
+            <text x="50" y="54" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="11" fill="#e30613" text-anchor="middle" font-weight="600">Connect</text>
           </svg>
         </div>
-
+ 
         <div class="card-grid-inner">
           <div class="privee-editorial-intro">
-            <span class="privee-tag font-mono">[ PLACEMENT APPLICATION ]</span>
-            <h2 class="privee-title-serif font-serif">Privée<br>Registration</h2>
+            <span class="privee-tag font-mono">[ CLIENT CARE & LISTINGS ]</span>
+            <h2 class="privee-title-serif font-serif">Inquire &<br>Connect</h2>
             <p class="privee-body-magazine font-sans">
-              Admittance to our off-market database is strictly confidential and reserved for qualified buyers and partners. By registering, you initiate a private, one-on-one consultation overseen directly by Jessica to match your portfolio with Manila's most elite unlisted estates.
+              Representing Manila's finest unlisted enclaves requires absolute diligence, discretion, and responsiveness. Whether you wish to list an off-market masterpiece, acquire your next legacy property, or initiate a consultation, Jessica and our team are here to assist you.
             </p>
             <p class="wcag-micro-copy font-sans" id="disclaimer-text">
-              Discretion is our foundation. All personal identities, inquiries, and private communications are protected by strict non-disclosure and confidentiality protocols.
+              Your privacy is our highest priority. All identities, listings, and messages are handled with strict professional confidentiality and strict non-disclosure protocols.
             </p>
           </div>
-
+ 
           <div class="privee-form-magazine">
             <form class="minimal-form-magazine" id="application-form" onsubmit="handleFormSubmission(event)">
-              
+               
               <div class="magazine-form-field">
                 <span class="field-index font-mono">01 //</span>
                 <div class="field-core">
-                  <label for="identity-input" class="field-lbl font-mono">FULL LEGAL IDENTITY</label>
+                  <label for="identity-input" class="field-lbl font-mono">YOUR IDENTITY</label>
                   <input type="text" id="identity-input" class="field-inp font-serif" placeholder="e.g., Pui Yin Ngai" required aria-describedby="disclaimer-text">
                 </div>
               </div>
-
+ 
               <div class="magazine-form-field">
                 <span class="field-index font-mono">02 //</span>
                 <div class="field-core">
-                  <label for="signal-input" class="field-lbl font-mono">DIRECT SIGNAL LINE (ENCRYPTED)</label>
-                  <input type="tel" id="signal-input" class="field-inp font-serif" placeholder="e.g., +63 917 526 9602" required aria-describedby="disclaimer-text">
+                  <label for="signal-input" class="field-lbl font-mono">DIRECT CONTACT LINE</label>
+                  <input type="text" id="signal-input" class="field-inp font-serif" placeholder="e.g., +63 917 526 9602 or contact@email.com" required aria-describedby="disclaimer-text">
                 </div>
               </div>
-
+ 
               <div class="magazine-form-field">
                 <span class="field-index font-mono">03 //</span>
                 <div class="field-core">
-                  <label for="enclave-select" class="field-lbl font-mono">TARGET ARCHITECTURAL ENCLAVE</label>
+                  <label for="enclave-select" class="field-lbl font-mono">NATURE OF INQUIRY</label>
                   <div class="select-container-mag">
                     <select id="enclave-select" class="field-sel font-serif" required>
-                      <option value="" disabled selected>Select an exclusive enclave...</option>
-                      <option value="Forbes Park">Forbes Park Estates</option>
-                      <option value="Dasmariñas Village">Dasmariñas Village Sanctuary</option>
-                      <option value="BGC Core">BGC Penthouse Enclaves</option>
-                      <option value="Off-Market General">General Off-Market Registry</option>
+                      <option value="" disabled selected>Select the nature of your inquiry...</option>
+                      <option value="Sell Listing">I have a listing — can you help me sell it?</option>
+                      <option value="Buy Property">I am looking to acquire a premium property.</option>
+                      <option value="General Inquiry">General inquiry or partnership opportunity.</option>
                     </select>
                   </div>
                 </div>
               </div>
-
+ 
+              <div class="magazine-form-field">
+                <span class="field-index font-mono">04 //</span>
+                <div class="field-core">
+                  <label for="message-input" class="field-lbl font-mono">YOUR MESSAGE</label>
+                  <textarea id="message-input" class="field-txt font-serif" placeholder="Describe your property, listing parameters, or direct inquiry details..." required></textarea>
+                </div>
+              </div>
+ 
               <button type="submit" class="btn-submit-magazine font-mono">
-                <span class="btn-submit-text">REQUEST EXCLUSIVE BRIEFING</span>
+                <span class="btn-submit-text">TRANSMIT ENQUIRY DIRECT</span>
               </button>
             </form>
-            
+             
             <!-- Success Screen -->
             <div class="form-success-message-mag" id="success-screen">
               <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <polyline points="20 6 9 17 4 12"></polyline>
               </svg>
-              <h4 class="success-title font-serif">Application Logged</h4>
+              <h4 class="success-title font-serif">Inquiry Logged</h4>
               <p class="success-desc font-sans">
-                Your spatial profile has been submitted directly to Jessica's office. Under strict confidentiality guidelines, a designated private representative will contact your signal line within 12 hours.
+                Your message has been transmitted directly to Jessica and our client care team. Under strict professional standards, we will respond to your contact details within 12 hours.
               </p>
-              <button class="btn-success-reset-mag font-mono" onclick="resetFormState()">SUBMIT NEW PROFILE</button>
+              <button class="btn-success-reset-mag font-mono" onclick="resetFormState()">SEND NEW MESSAGE</button>
             </div>
           </div>
         </div>
-
+ 
       </div>
     </div>
-    
+     
     <footer class="privee-footer-magazine font-mono">
       <span>© 2026 THE AGENCY PH. ALL RIGHTS RESERVED.</span>
       <span>ARCHITECTURAL CINEMA & PRIME PROPERTIES</span>
