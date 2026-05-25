@@ -67,56 +67,67 @@
   <!-- 2. SECTION 1: THE HERO AS A LIVE MAGAZINE COVER -->
   <!-- ========================================================================= -->
   <section id="hero" class="hero-live-cover">
-    <!-- Immersive Background Cinema B-Roll -->
-    <div class="cover-cinema-backdrop">
-      <video autoplay muted loop playsinline class="cover-video">
-        <source src="Website assets/instagram video assets/AQMr7k4fte5cbyuWCBh4KxnAD9Zh1bwCY4XK2p6e2Z5mJvqjSJYQxMv3i7odtUC_hl-i8rgw4nh9p7ZAfKwyPULQ.mp4" type="video/mp4">
-      </video>
-      <div class="cover-vignette"></div>
-    </div>
+    <!-- Subtle Grid Mesh Backing resembling premium publication paper sheet -->
+    <div class="cover-paper-grid"></div>
 
     <!-- Running Head for Physical Magazine -->
-    <div class="magazine-running-head font-mono">
+    <div class="magazine-running-head font-sans-mini">
       <span class="mag-issue">ISSUE NO. 01 // VOL. 26 // 2026 // PHP 45,000</span>
       <span class="mag-title">THE ARCHITECTURAL REGISTER</span>
       <span class="mag-page">P. 01 // INTRO</span>
     </div>
 
-    <!-- Live Cover Grid Overlay -->
-    <div class="cover-editorial-overlay">
-      <!-- Huge Masthead spanning full screen -->
-      <div class="masthead-container">
-        <h1 class="masthead-title">THE <span class="crimson-text">A</span>GENCY</h1>
-      </div>
+    <!-- Huge Centered Masthead spanning full screen -->
+    <div class="masthead-container">
+      <h1 class="masthead-title">THE <span class="crimson-text">A</span>GENCY</h1>
+    </div>
 
-      <!-- Left Margin Editorial Headlines -->
-      <div class="cover-headline-left">
+    <!-- Live Cover Grid Layout (3 Columns: Stories | Constrained Photo | Excerpt & CTA) -->
+    <div class="cover-three-column-grid">
+      <!-- Left Column: Editorial Headlines -->
+      <div class="cover-stories-left">
         <div class="headline-block">
-          <p class="headline-tag font-mono">[ CURATORIAL INSIGHT ]</p>
+          <p class="headline-tag">[ CURATORIAL INSIGHT ]</p>
           <h3 class="headline-text font-serif">JESSICA ON BRUTALIST ACQUISITIONS</h3>
           <p class="headline-sub font-sans">Inside the raw concrete enclaves defining Manila’s architectural elite.</p>
         </div>
         <div class="headline-block">
-          <p class="headline-tag font-mono">[ CONFIDENTIAL ROSTER ]</p>
+          <p class="headline-tag">[ CONFIDENTIAL ROSTER ]</p>
           <h3 class="headline-text font-serif">FORBES PARK SECRETS UNVEILED</h3>
           <p class="headline-sub font-sans">Three landmark unlisted estates exchanging hands behind closed doors.</p>
         </div>
       </div>
 
-      <!-- Right Margin Editorial Headlines & Main CTA -->
-      <div class="cover-headline-right">
-        <div class="issue-stamp-container font-mono">
-          <div>METRO MANILA REGISTER</div>
-          <div class="crimson-text font-mono">UNLISTED PORTFOLIO 2026</div>
-          <div>CURATED BY JESSICA</div>
+      <!-- Center Column: Highly Defined Constrained Glossy Aperture Box (Crisp, Not Blurry!) -->
+      <div class="cover-center-aperture">
+        <div class="cover-aperture-frame">
+          <video autoplay muted loop playsinline class="cover-video">
+            <source src="Website assets/instagram video assets/AQMr7k4fte5cbyuWCBh4KxnAD9Zh1bwCY4XK2p6e2Z5mJvqjSJYQxMv3i7odtUC_hl-i8rgw4nh9p7ZAfKwyPULQ.mp4" type="video/mp4">
+          </video>
+          <div class="cover-vignette"></div>
+          <!-- Calibration Crop Ticks inside frame -->
+          <div class="calibration-tick top-left">+</div>
+          <div class="calibration-tick top-right">+</div>
+          <div class="calibration-tick bottom-left">+</div>
+          <div class="calibration-tick bottom-right">+</div>
+          <span class="cover-frame-id font-sans-mini">SCAN_026 // EST_2026</span>
+        </div>
+      </div>
+
+      <!-- Right Column: Excerpt & Play Button -->
+      <div class="cover-stories-right">
+        <div class="issue-stamp-container">
+          <div class="stamp-lbl">METRO MANILA REGISTER</div>
+          <div class="stamp-val crimson-text">UNLISTED PORTFOLIO 2026</div>
+          <div class="stamp-curator">CURATED BY JESSICA</div>
         </div>
         
         <div class="cover-manifesto-excerpt">
-          <p class="excerpt-tag font-mono">MANIFESTO SPREAD // EXP-09</p>
+          <p class="excerpt-tag">MANIFESTO SPREAD // EXP-09</p>
           <p class="excerpt-body font-serif">“We do not move properties. We move lifestyles.”</p>
           
           <button class="btn-play-magazine" id="btn-play-showcase" onclick="openShowcaseModal()">
-            <span class="btn-text-mag font-mono">PLAY THE SHOWCASE</span>
+            <span class="btn-text-mag font-sans-mini">PLAY THE SHOWCASE</span>
             <div class="btn-arrow-box-mag">
               <svg class="btn-arrow-mag" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                 <line x1="5" y1="12" x2="19" y2="12"></line>
