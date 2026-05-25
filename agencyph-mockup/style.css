@@ -286,6 +286,15 @@ a {
   transform: rotate(180deg);
 }
 
+.brand-text .crimson-text {
+  font-size: 1.15em; /* Make the red A slightly larger to ensure it is prominent and never looks smaller than adjacent text */
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: middle;
+  position: relative;
+  top: -0.02em;
+}
+
 .nav-links {
   display: flex;
   flex-direction: column;
@@ -522,12 +531,12 @@ a {
 }
 
 .masthead-logo {
-  height: 1.05em; /* Scaled slightly larger for perfect visual alignment with Cormorant Garamond capital letters */
+  height: 1.45em; /* Raised from 1.05em to make the visual 'A' logo bold and never smaller than the adjacent text */
   width: auto;
-  vertical-align: middle; /* Extremely stable vertical alignment across all screen sizes */
+  vertical-align: middle;
   position: relative;
-  top: -0.03em; /* Micro-offset for pixel-perfect serif center alignment */
-  margin: 0 -0.02em; /* Refined visual spacing/kerning */
+  top: -0.07em; /* Adjusted top offset to keep the larger A perfectly centered with Cormorant Garamond capital letters */
+  margin: 0 -0.01em;
   display: inline-block;
 }
 
