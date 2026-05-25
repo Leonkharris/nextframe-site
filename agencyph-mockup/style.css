@@ -531,11 +531,11 @@ a {
 }
 
 .masthead-logo {
-  height: 1.45em; /* Raised from 1.05em to make the visual 'A' logo bold and never smaller than the adjacent text */
+  height: 1.28em; /* Visually dominant scale that is prominent and never smaller than adjacent capital letters */
   width: auto;
-  vertical-align: middle;
+  vertical-align: baseline; /* Forces the bottom of the 'A' image to line up perfectly with the baseline of THE and GENCY */
   position: relative;
-  top: -0.07em; /* Adjusted top offset to keep the larger A perfectly centered with Cormorant Garamond capital letters */
+  top: 0.05em; /* Micro-adjustment to align perfectly with the baseline of flat serif letters */
   margin: 0 -0.01em;
   display: inline-block;
 }

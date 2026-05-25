@@ -32,16 +32,20 @@ const setHeaderState = () => {
 window.addEventListener("scroll", setHeaderState, { passive: true });
 setHeaderState();
 
+const setMenuState = (open) => {
+  nav?.classList.toggle("open", open);
+  menuToggle?.setAttribute("aria-expanded", String(open));
+  menuToggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+};
+
 menuToggle?.addEventListener("click", () => {
-  const open = !nav.classList.contains("open");
-  nav.classList.toggle("open", open);
-  menuToggle.setAttribute("aria-expanded", String(open));
+  const open = !nav?.classList.contains("open");
+  setMenuState(open);
 });
 
 nav?.addEventListener("click", (event) => {
   if (event.target.closest("a")) {
-    nav.classList.remove("open");
-    menuToggle?.setAttribute("aria-expanded", "false");
+    setMenuState(false);
   }
 });
 
@@ -50,7 +54,11 @@ packageButtons.forEach((button) => {
     const key = button.dataset.package;
     const copy = packageCopy[key];
 
-    packageButtons.forEach((item) => item.classList.toggle("active", item === button));
+    packageButtons.forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
 
     if (copy && packageResult) {
       packageResult.innerHTML = `<strong>${copy.title}</strong><span>${copy.text}</span>`;
