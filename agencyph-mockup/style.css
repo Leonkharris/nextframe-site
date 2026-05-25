@@ -517,26 +517,18 @@ a {
   text-align: center;
 }
 
-.masthead-title {
-  font-family: var(--font-serif);
-  font-size: clamp(1.6rem, 8.2vw, 7.5rem); /* Flawless fluid responsive sizing ensures logo and text stay on a single line */
-  font-weight: 300;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  line-height: 0.85;
-  color: var(--font-white);
-  margin: 0;
-  white-space: nowrap; /* Prevents awkward line-wrapping on narrow mobile screens */
+.masthead-brand-logo {
+  height: clamp(2.2rem, 9.2vw, 8.8rem); /* Responsively matches the scale of the original text title */
+  width: auto;
+  display: inline-block;
+  vertical-align: bottom; /* Aligns perfectly flush on the horizontal border line */
+  position: relative;
+  top: 0.06em; /* Micro-pushes the logo down to sit perfectly flush with the border line */
+  transition: transform var(--transition-medium);
 }
 
-.masthead-logo {
-  height: 1.28em; /* Visually dominant scale that is prominent and never smaller than adjacent capital letters */
-  width: auto;
-  vertical-align: bottom; /* Aligns the bottom of the image box perfectly flush with the bottom of the text line */
-  position: relative;
-  top: 0.14em; /* Push it down to sit exactly flush on the horizontal border line with adjacent letters */
-  margin: 0 -0.01em;
-  display: inline-block;
+.masthead-brand-logo:hover {
+  transform: scale(1.015); /* Soft, luxurious visual response on hover */
 }
 
 /* Premium High-Fashion Small-Print Typography Upgrade */
@@ -1977,8 +1969,8 @@ a {
     gap: 2rem;
   }
   
-  .masthead-title {
-    font-size: clamp(2rem, 8.2vw, 4.8rem); /* Prevent font layout overflow on landscape mobile / tablets */
+  .masthead-brand-logo {
+    height: clamp(1.8rem, 8.2vw, 5.5rem); /* Prevent layout overflow on landscape mobile / tablets */
   }
 
   .cover-aperture-pane {
@@ -2139,8 +2131,8 @@ a {
 }
 
 @media (max-width: 576px) {
-  .masthead-title {
-    font-size: clamp(1.5rem, 8.2vw, 3.2rem); /* Dynamic clamp limits title width on ultra-narrow viewports */
+  .masthead-brand-logo {
+    height: clamp(1.4rem, 8.2vw, 3.8rem); /* Dynamic clamp limits logo height on ultra-narrow viewports */
   }
   .headline-text {
     font-size: 1.5rem;
