@@ -12,7 +12,7 @@
   
   --font-white: #ffffff;
   --font-silver: #8a8a8a;
-  --font-dim: #444444;
+  --font-dim: #333333;
   
   --accent-crimson: #e30613; /* Sampling from the Agency PH logo arrow */
   --accent-crimson-dim: rgba(227, 6, 19, 0.15);
@@ -29,7 +29,7 @@
 }
 
 /* ========================================================================= */
-/* 1. STRUCTURAL BASE & HIGH-FASHION resets */
+/* 1. STRUCTURAL BASE & HIGH-FASHION RESETS */
 /* ========================================================================= */
 * {
   box-sizing: border-box;
@@ -77,7 +77,7 @@ body::before {
     display: none !important;
   }
   body::before {
-    display: none !important; /* Hide margins on mobile to maximize viewport area */
+    display: none !important;
   }
 }
 
@@ -94,7 +94,7 @@ a {
 .font-mono {
   font-family: var(--font-mono);
   text-transform: uppercase;
-  letter-spacing: 0.2em;
+  letter-spacing: 0.25em;
 }
 
 .font-serif {
@@ -110,6 +110,10 @@ a {
   font-style: italic;
 }
 
+.crimson-text {
+  color: var(--accent-crimson) !important;
+}
+
 /* ========================================================================= */
 /* 2. THE TACTILE CUSTOM CURSOR SYSTEM */
 /* ========================================================================= */
@@ -120,7 +124,7 @@ a {
   width: 100%;
   height: 100%;
   pointer-events: none;
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .cursor-dot {
@@ -131,7 +135,7 @@ a {
   border-radius: 50%;
   transform: translate(-50%, -50%);
   transition: width 0.25s var(--transition-fast), height 0.25s var(--transition-fast), background-color 0.25s var(--transition-fast);
-  z-index: 10000;
+  z-index: 10001;
 }
 
 .cursor-circle {
@@ -149,7 +153,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 10000;
 }
 
 .cursor-arrow {
@@ -165,7 +169,6 @@ a {
 .custom-cursor.active .cursor-dot {
   width: 0px;
   height: 0px;
-  background-color: transparent;
 }
 
 .custom-cursor.active .cursor-circle {
@@ -181,7 +184,55 @@ a {
 }
 
 /* ========================================================================= */
-/* 3. NAVIGATION RAIL (Floating Page Border Edge) */
+/* 3. PHYSICAL PRINT CALIBRATION & MARGIN METRICS */
+/* ========================================================================= */
+.print-calibration-frame {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 999;
+}
+
+.crop-mark {
+  position: absolute;
+  font-family: var(--font-mono);
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.25);
+  font-weight: 300;
+}
+
+.crop-mark.top-left { top: 1.5rem; left: 1.5rem; }
+.crop-mark.top-right { top: 1.5rem; right: 1.5rem; }
+.crop-mark.bottom-left { bottom: 1.5rem; left: 1.5rem; }
+.crop-mark.bottom-right { bottom: 1.5rem; right: 1.5rem; }
+
+.side-ribbon {
+  position: absolute;
+  font-size: 9px;
+  color: var(--font-dim);
+  letter-spacing: 0.3em;
+  white-space: nowrap;
+}
+
+.side-ribbon.left {
+  left: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(-90deg);
+  transform-origin: left center;
+}
+
+.side-ribbon.right {
+  right: 1.5rem;
+  top: 50%;
+  transform: translateY(-50%) rotate(90deg);
+  transform-origin: right center;
+}
+
+/* ========================================================================= */
+/* 4. NAVIGATION RAIL (Floating Page Border Edge) */
 /* ========================================================================= */
 .navigation-rail {
   position: fixed;
@@ -192,7 +243,7 @@ a {
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-end;
-  padding: 3.5rem 0;
+  padding: 4.5rem 0;
   z-index: 100;
   mix-blend-mode: difference; /* Insures crisp dark/light pane contrast compatibility */
 }
@@ -299,11 +350,11 @@ a {
 }
 
 /* ========================================================================= */
-/* 4. RUNNING MAGAZINE BORDERS & GLOBAL MARGIN STYLES */
+/* 5. RUNNING MAGAZINE BORDERS & GLOBAL MARGIN STYLES */
 /* ========================================================================= */
 .magazine-running-head {
   position: absolute;
-  top: 2.2rem;
+  top: 3.5rem;
   left: 4.5rem;
   right: 6.5rem;
   display: flex;
@@ -317,12 +368,11 @@ a {
   pointer-events: none;
 }
 
-/* Massive Outlined Watermark Sheets */
-.ghost-watermark {
+.ghost-watermark-large {
   position: absolute;
   font-family: var(--font-serif);
-  font-size: clamp(10rem, 20vw, 25vw);
-  font-weight: 200;
+  font-size: clamp(10rem, 25vw, 30vw);
+  font-weight: 900;
   color: rgba(255, 255, 255, 0.015);
   line-height: 0.8;
   pointer-events: none;
@@ -343,6 +393,7 @@ a {
   width: 40px;
   height: 40px;
   pointer-events: none;
+  z-index: 10;
 }
 
 .editorial-crosshair::before, .editorial-crosshair::after {
@@ -366,147 +417,151 @@ a {
 }
 
 /* ========================================================================= */
-/* 5. SECTION 1: ASYMMETRIC HERO MAGAZINE SPREAD */
+/* 6. SECTION 1: THE HERO AS A LIVE MAGAZINE COVER */
 /* ========================================================================= */
-.hero-section-magazine {
+.hero-live-cover {
   min-height: 100vh;
   width: 100vw;
   background-color: var(--bg-onyx);
   position: relative;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   padding: 8rem 6.5rem 5rem 4.5rem;
   border-bottom: 2px solid var(--font-white);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
-.hero-magazine-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.25fr;
-  gap: 5rem;
-  width: 100%;
-  max-width: 1600px;
-  z-index: 10;
-  align-items: center;
-}
-
-.hero-aperture-box {
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  padding: 1rem;
-}
-
-.aperture-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 4/5;
-  overflow: hidden;
-  clip-path: polygon(0 0, 88% 0, 100% 12%, 100% 100%, 0 100%);
-  border: 1px solid var(--font-white);
-}
-
-.hero-video-loop {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: grayscale(100%) contrast(1.2) brightness(0.6);
-  transition: filter var(--transition-medium), transform var(--transition-medium);
-}
-
-.hero-aperture-box:hover .hero-video-loop {
-  filter: grayscale(15%) contrast(1.1) brightness(0.75);
-  transform: scale(1.03);
-}
-
-.video-overlay {
+.cover-cinema-backdrop {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.8) 100%);
-  pointer-events: none;
+  z-index: 1;
 }
 
-.frame-tag {
+.cover-video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%) contrast(1.35) brightness(0.38);
+}
+
+.cover-vignette {
   position: absolute;
-  top: 1rem;
-  left: 1rem;
-  font-size: 0.6rem;
-  letter-spacing: 0.25em;
-  color: var(--font-white);
-  background-color: var(--bg-onyx);
-  padding: 0.4rem 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  z-index: 5;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 90%);
 }
 
-.hero-magazine-copy {
+.cover-editorial-overlay {
+  position: relative;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto 1fr;
+  gap: 3rem;
+  margin-top: 2rem;
+  flex-grow: 1;
+}
+
+.masthead-container {
+  grid-column: 1 / span 2;
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  padding-bottom: 1.5rem;
+  margin-top: 1rem;
+}
+
+.masthead-title {
+  font-family: var(--font-serif);
+  font-size: clamp(4.5rem, 11vw, 15vw);
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  line-height: 0.8;
+  text-align: center;
+  color: var(--font-white);
+}
+
+.cover-headline-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 3.5rem;
+  padding-right: 4rem;
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.headline-block {
+  max-width: 480px;
+}
+
+.headline-tag {
+  font-size: 0.65rem;
+  color: var(--accent-crimson);
+  letter-spacing: 0.25em;
+  margin-bottom: 0.8rem;
+}
+
+.headline-text {
+  font-family: var(--font-serif);
+  font-size: clamp(1.8rem, 2.8vw, 3.2rem);
+  font-weight: 300;
+  line-height: 0.95;
+  letter-spacing: -0.01em;
+  color: var(--font-white);
+  margin-bottom: 1rem;
+}
+
+.headline-sub {
+  font-size: 0.9rem;
+  line-height: 1.6;
+  color: var(--font-silver);
+  font-weight: 300;
+}
+
+.cover-headline-right {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 100%;
-  padding-left: 3rem;
-  border-left: 1px solid rgba(255, 255, 255, 0.15);
+  align-items: flex-end;
+  text-align: right;
+  padding-left: 2rem;
 }
 
-.editorial-pre {
+.issue-stamp-container {
   font-size: 0.75rem;
-  letter-spacing: 0.3em;
-  color: var(--accent-crimson);
-  margin-bottom: 2rem;
-}
-
-/* Giant typography offsets and line-height overlays */
-.hero-title-magazine {
-  font-family: var(--font-serif);
-  font-size: clamp(3.2rem, 6.8vw, 8.5vw);
-  font-weight: 200;
-  line-height: 0.82;
-  letter-spacing: -0.04em;
-  color: var(--font-white);
-  display: flex;
-  flex-direction: column;
-  margin-top: -1.5rem;
-}
-
-.hero-title-magazine .line-1 {
-  transform: translateX(-2.5vw);
-}
-
-.hero-title-magazine .line-2 {
-  font-size: clamp(4rem, 8.2vw, 10vw);
-  font-style: italic;
-  font-weight: 300;
-  color: var(--accent-crimson);
-  transform: translateX(6vw);
-  line-height: 0.75;
-}
-
-.hero-title-magazine .line-3 {
-  transform: translateX(-1.5vw);
-}
-
-.hero-title-magazine .line-4 {
-  font-size: clamp(2.8rem, 5.8vw, 7.2vw);
-  letter-spacing: -0.01em;
-  transform: translateX(3vw);
-  margin-top: 0.4rem;
-}
-
-.hero-title-magazine .outline-serif {
-  -webkit-text-stroke: 1px var(--font-white);
-  color: transparent;
-}
-
-.hero-copy-magazine {
-  font-size: 1.05rem;
   line-height: 1.8;
   color: var(--font-silver);
-  margin: 2.8rem 0;
-  max-width: 540px; /* Constraints copy to maximum of 65 characters */
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 1.2rem 2.2rem;
+  background-color: rgba(0, 0, 0, 0.65);
+}
+
+.cover-manifesto-excerpt {
+  max-width: 460px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 2rem;
+}
+
+.excerpt-tag {
+  font-size: 0.65rem;
+  color: var(--font-silver);
+}
+
+.excerpt-body {
+  font-size: clamp(1.6rem, 2.5vw, 2.8rem);
   font-weight: 300;
+  font-style: italic;
+  line-height: 1.1;
+  color: var(--font-white);
 }
 
 .btn-play-magazine {
@@ -517,6 +572,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 100%;
   max-width: 320px;
   cursor: pointer;
   position: relative;
@@ -572,155 +628,87 @@ a {
 }
 
 /* ========================================================================= */
-/* 6. IMMERSIVE VIDEO SHOWCASE MODAL */
+/* 7. SECTION 2: CURATOR MANIFESTO DOUBLE-PAGE SPREAD */
 /* ========================================================================= */
-.showcase-modal {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background-color: rgba(0, 0, 0, 0.98);
-  z-index: 2000;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity var(--transition-medium);
-}
-
-.showcase-modal.active {
-  opacity: 1;
-  pointer-events: auto;
-}
-
-.modal-close {
-  position: absolute;
-  top: 3.5rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background: transparent;
-  border: none;
-  color: var(--font-white);
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  cursor: pointer;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  opacity: 0.6;
-  transition: opacity var(--transition-fast);
-}
-
-.modal-close:hover {
-  opacity: 1;
-  color: var(--accent-crimson);
-}
-
-.modal-viewport {
-  width: 80%;
-  max-width: 1200px;
-  aspect-ratio: 16/9;
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  background-color: #050505;
-  box-shadow: 0 20px 80px rgba(0, 0, 0, 0.9);
-}
-
-.showcase-video-player {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ========================================================================= */
-/* 7. SECTION 2: THE CURATOR MANIFESTO MAGAZINE REDESIGN */
-/* ========================================================================= */
-.manifesto-section-magazine {
+.manifesto-double-spread {
   min-height: 100vh;
   width: 100vw;
   background-color: var(--bg-onyx);
   position: relative;
   overflow: hidden;
-  padding: 9rem 6.5rem 8rem 4.5rem;
+  padding: 10rem 6.5rem 8rem 4.5rem;
   border-bottom: 2px solid var(--font-white);
+  display: flex;
+  align-items: center;
 }
 
-.magazine-grid-asymmetric {
+/* Watermark linear-gradient mesh backing */
+.manifesto-double-spread::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    linear-gradient(90deg, rgba(255,255,255,0.02) 1px, transparent 1px) 0 0 / 12.5% 100%,
+    linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px) 0 0 / 100% 10%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+.three-column-article-grid {
   display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 5.5rem;
+  grid-template-columns: 1.1fr 1fr 0.9fr;
+  gap: 4.5rem;
+  width: 100%;
   max-width: 1600px;
   margin: 0 auto;
-  align-items: center;
   z-index: 10;
   position: relative;
 }
 
-.manifesto-text-magazine {
-  max-width: 720px;
+.article-column {
+  display: flex;
+  flex-direction: column;
 }
 
-.manifesto-tag {
-  font-size: 0.75rem;
+.article-column.border-right {
+  border-right: 1px solid rgba(255, 255, 255, 0.15);
+  padding-right: 4.5rem;
+}
+
+.column-header-tag {
+  font-size: 0.65rem;
   color: var(--font-silver);
   letter-spacing: 0.25em;
-  margin-bottom: 1.8rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  padding-bottom: 0.8rem;
 }
 
-.manifesto-title-serif {
+.column-title {
   font-family: var(--font-serif);
-  font-size: clamp(3rem, 6.2vw, 7.8vw);
+  font-size: clamp(2.5rem, 5vw, 6vw);
   font-weight: 300;
   line-height: 0.85;
   letter-spacing: -0.04em;
-  color: var(--font-white);
-  margin-bottom: 3rem;
-  -webkit-text-stroke: 0.5px rgba(255, 255, 255, 0.3);
+  margin-bottom: 2rem;
 }
 
-.quote-editorial-container {
-  border-left: 2px solid var(--accent-crimson);
-  padding-left: 2.2rem;
-  margin-bottom: 3.5rem;
-}
-
-.manifesto-quote-magazine {
-  font-size: clamp(1.8rem, 3.2vw, 3.5rem);
-  line-height: 1.1;
-  font-weight: 300;
-  color: var(--font-white);
-  margin-bottom: 1.5rem;
-  letter-spacing: -0.01em;
-}
-
-.crimson-focus {
-  color: var(--accent-crimson);
-  font-style: italic;
-}
-
-.manifesto-by-magazine {
-  font-size: 0.75rem;
-  letter-spacing: 0.25em;
-  color: var(--font-silver);
-}
-
-.manifesto-body-magazine {
-  font-size: 1.05rem;
+.editorial-body {
+  font-size: 1rem;
   line-height: 1.8;
   color: var(--font-silver);
-  max-width: 580px;
   font-weight: 300;
 }
 
-/* Print editorial drop cap */
 .editorial-drop-cap {
-  font-size: 4.8rem;
+  font-size: 5.5rem;
   float: left;
-  line-height: 0.75;
+  line-height: 0.72;
   padding-right: 0.8rem;
-  padding-top: 0.2rem;
+  padding-top: 0.1rem;
   color: var(--accent-crimson);
   font-weight: 300;
 }
@@ -733,7 +721,7 @@ a {
 
 /* Dashed separator resembling high-end printed page guidelines */
 .editorial-separator {
-  margin: 3.5rem 0;
+  margin: 2.5rem 0;
   height: 1px;
   background: repeating-linear-gradient(to right, rgba(255, 255, 255, 0.15) 0, rgba(255, 255, 255, 0.15) 8px, transparent 8px, transparent 16px);
 }
@@ -741,22 +729,18 @@ a {
 /* Brand geometry vector block styles */
 .brand-geometry-container {
   display: flex;
-  gap: 2.5rem;
+  gap: 1.5rem;
   align-items: center;
-  margin-top: 2rem;
+  margin-top: 1.5rem;
 }
 
 .geometry-visual {
-  flex: 0 0 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  flex: 0 0 100px;
 }
 
 .dual-arrow-svg {
   width: 100%;
   height: auto;
-  overflow: visible;
 }
 
 .geometry-text {
@@ -766,19 +750,50 @@ a {
 .geometry-title {
   font-size: 0.75rem;
   color: var(--accent-crimson);
-  margin-bottom: 0.8rem;
-  letter-spacing: 0.22em;
+  margin-bottom: 0.5rem;
+  letter-spacing: 0.2em;
   font-weight: 700;
 }
 
 .geometry-copy {
-  font-size: 0.85rem;
-  line-height: 1.65;
+  font-size: 0.8rem;
+  line-height: 1.5;
   color: var(--font-silver);
   font-weight: 300;
 }
 
-/* Polaroid lookbook frame style */
+/* Column 2 features */
+.massive-pullquote {
+  font-size: clamp(2rem, 3.2vw, 3.8rem);
+  line-height: 1.1;
+  font-weight: 300;
+  color: var(--font-white);
+  border-left: 2px solid var(--accent-crimson);
+  padding-left: 2rem;
+  margin-bottom: 2rem;
+  letter-spacing: -0.02em;
+}
+
+.crimson-focus {
+  color: var(--accent-crimson);
+  font-style: italic;
+}
+
+.manifesto-by-magazine {
+  font-size: 0.75rem;
+  letter-spacing: 0.25em;
+  color: var(--font-silver);
+  margin-bottom: 3rem;
+}
+
+.editorial-supporting-body {
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: var(--font-silver);
+  font-weight: 300;
+}
+
+/* Polaroid frame styles */
 .lookbook-polaroid-frame {
   background-color: #0b0b0b;
   border: 1px solid rgba(255, 255, 255, 0.2);
@@ -808,7 +823,6 @@ a {
   transform: scale(1.025);
 }
 
-/* Polaroid Calibration Ticks */
 .calibration-tick {
   position: absolute;
   color: var(--accent-crimson);
@@ -850,13 +864,13 @@ a {
 }
 
 /* ========================================================================= */
-/* 8. SECTION 3: MANILA ARCHITECTURAL REGISTRY LOOKBOOK CATALOG REDESIGN */
+/* 9. SECTION 3: MANILA ARCHITECTURAL REGISTRY BLUEPRINT CATALOG SYSTEM */
 /* ========================================================================= */
-.registry-section-magazine {
+.registry-blueprint-section {
   min-height: 100vh;
   width: 100vw;
   background-color: var(--bg-onyx);
-  padding: 9rem 0 8rem 4.5rem;
+  padding: 10rem 0 8rem 4.5rem;
   border-bottom: 2px solid var(--font-white);
   position: relative;
   overflow: hidden;
@@ -914,44 +928,61 @@ a {
   transition: left 0.1s ease-out, width 0.1s ease-out;
 }
 
-/* Lookbook Double-Page Magazine Spread Layout */
+/* Horizontal Blueprint Slide Layout */
 .horizontal-scroll {
   display: flex;
   gap: 3.5rem;
   overflow-x: scroll;
   padding-right: 6.5rem;
   padding-bottom: 3.5rem;
-  scrollbar-width: none; /* Hide standard scrolls for lookbook style */
+  scrollbar-width: none;
 }
 
 .horizontal-scroll::-webkit-scrollbar {
   display: none;
 }
 
-.lookbook-catalog-spread {
-  flex: 0 0 920px; /* Expands to feel like a full magazine page spread */
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 3rem;
+.blueprint-spread {
+  flex: 0 0 950px; /* Expands to feel like a full magazine catalog sheet */
+  display: flex;
+  flex-direction: column;
   background-color: #040404;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.25);
   padding: 2.2rem;
   box-shadow: 0 30px 80px rgba(0,0,0,0.9);
   transition: border-color var(--transition-medium), transform var(--transition-medium);
-  margin-right: 1rem;
+  margin-right: 1.5rem;
 }
 
-.lookbook-catalog-spread:hover {
+.blueprint-spread:hover {
   border-color: var(--font-white);
 }
 
-.spread-visual-pane {
+.blueprint-header-metrics {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  color: var(--font-silver);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+  padding-bottom: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.blueprint-inner-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  flex-grow: 1;
+}
+
+.blueprint-visual-pane {
   position: relative;
   border: 1px solid rgba(255, 255, 255, 0.15);
   padding: 0.8rem;
 }
 
-.spread-image-wrapper {
+.blueprint-image-wrapper {
   position: relative;
   width: 100%;
   height: 100%;
@@ -968,7 +999,7 @@ a {
   transition: filter var(--transition-medium), transform var(--transition-medium);
 }
 
-.lookbook-catalog-spread:hover .card-video {
+.blueprint-spread:hover .card-video {
   filter: grayscale(10%) contrast(1.1) brightness(0.68);
   transform: scale(1.03);
 }
@@ -995,7 +1026,7 @@ a {
   z-index: 5;
 }
 
-.spread-details-pane {
+.blueprint-details-pane {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -1020,29 +1051,35 @@ a {
   margin: 1.5rem 0;
 }
 
-/* Rigid Monospace Spec Table System */
-.lookbook-spec-table {
-  border-collapse: collapse;
-  width: 100%;
+/* Rigid Monospace Blueprint spec grid */
+.blueprint-spec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-left: 1px solid rgba(255,255,255,0.15);
   margin-bottom: 2rem;
 }
 
-.lookbook-spec-table td {
-  border: 1px solid rgba(255, 255, 255, 0.15);
+.spec-grid-item {
+  border-bottom: 1px solid rgba(255,255,255,0.15);
+  border-right: 1px solid rgba(255,255,255,0.15);
   padding: 0.8rem 1rem;
-  font-size: 0.65rem;
-  letter-spacing: 0.1em;
-  line-height: 1.4;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
 }
 
-.lookbook-spec-table td:first-child {
+.spec-grid-item .label {
+  font-size: 0.55rem;
   color: var(--font-dim);
-  font-weight: 600;
-  width: 35%;
+  letter-spacing: 0.1em;
 }
 
-.lookbook-spec-table td:last-child {
+.spec-grid-item .value {
+  font-size: 0.65rem;
   color: var(--font-white);
+  letter-spacing: 0.05em;
+  font-weight: 600;
 }
 
 .spread-desc {
@@ -1074,31 +1111,57 @@ a {
 }
 
 /* ========================================================================= */
-/* 9. SECTION 4: PRIVÉE INTAKE LEDGER REDESIGN */
+/* 10. SECTION 4: PRIVÉE PORTAL AS A confINVITATION CARD OVERLAY */
 /* ========================================================================= */
-.privee-section-magazine {
+.privee-portal-section {
   min-height: 100vh;
   width: 100vw;
   background-color: var(--bg-onyx);
-  padding: 9rem 6.5rem 8rem 4.5rem;
+  padding: 10rem 6.5rem 8rem 4.5rem;
   position: relative;
   overflow: hidden;
+  display: flex;
+  align-items: center;
 }
 
-.privee-magazine-container {
+.privee-card-viewport {
   max-width: 1600px;
+  width: 100%;
   margin: 0 auto;
   z-index: 10;
   position: relative;
 }
 
-.privee-double-border-box {
-  border: 4px double rgba(255, 255, 255, 0.25); /* Double Rule Print Lines */
-  padding: 4rem;
+.privee-invitation-card {
+  border: 4px double rgba(255, 255, 255, 0.25);
+  padding: 4.5rem;
+  background-color: #020202;
+  position: relative;
+}
+
+/* Interactive Rotating circular stamp */
+.privee-stamp-overlay {
+  position: absolute;
+  top: -3.5rem;
+  right: 4.5rem;
+  z-index: 25;
+  pointer-events: auto;
+}
+
+.circular-stamp {
+  animation: rotate-stamp 25s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes rotate-stamp {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.card-grid-inner {
   display: grid;
   grid-template-columns: 0.95fr 1.05fr;
   gap: 5.5rem;
-  background-color: #020202;
 }
 
 .privee-editorial-intro {
@@ -1162,7 +1225,7 @@ a {
 .minimal-form-magazine.hidden {
   opacity: 0;
   pointer-events: none;
-  display: none; /* Controlled by JS styled transition block */
+  display: none;
 }
 
 .magazine-form-field {
@@ -1324,16 +1387,16 @@ a {
 }
 
 /* ========================================================================= */
-/* 10. HIGH-FASHION MOBILE & TABLET MEDIA QUERIES */
+/* 11. HIGH-FASHION MOBILE & TABLET MEDIA QUERIES */
 /* ========================================================================= */
 @media (max-width: 1200px) {
   .navigation-rail {
     right: 1.5rem;
   }
-  .hero-magazine-grid, .magazine-grid-asymmetric, .privee-double-border-box {
+  .hero-magazine-grid, .magazine-grid-asymmetric, .privee-double-border-box, .three-column-article-grid, .blueprint-inner-grid {
     gap: 3.5rem;
   }
-  .hero-section-magazine, .manifesto-section-magazine, .privee-section-magazine, .registry-section-magazine {
+  .hero-section-magazine, .manifesto-section-magazine, .privee-section-magazine, .registry-section-magazine, .hero-live-cover, .manifesto-double-spread, .registry-blueprint-section, .privee-portal-section {
     padding-left: 3.5rem;
     padding-right: 5.5rem;
   }
@@ -1392,61 +1455,72 @@ a {
   }
   
   /* Remove page outlines on mobile to maximize viewport space */
-  body::before {
+  body::before, .print-calibration-frame {
     display: none !important;
   }
   
   /* Sections collapse to vertical pages layout */
-  .hero-section-magazine {
+  .hero-live-cover {
     padding: 7rem 2rem 4rem 2rem;
+    height: auto;
+    min-height: 100vh;
   }
   
-  .hero-magazine-grid {
+  .cover-editorial-overlay {
     grid-template-columns: 1fr;
+    grid-template-rows: auto;
     gap: 3rem;
   }
   
-  .hero-aperture-box {
-    max-width: 500px;
-    margin: 0 auto;
+  .masthead-container {
+    grid-column: 1;
   }
   
-  .hero-magazine-copy {
+  .masthead-title {
+    font-size: 5rem;
+  }
+  
+  .cover-headline-left {
+    border-right: none;
+    padding-right: 0;
+    gap: 2.5rem;
+  }
+  
+  .cover-headline-right {
     padding-left: 0;
-    border-left: none;
+    align-items: flex-start;
+    text-align: left;
+    gap: 2.5rem;
   }
   
-  .hero-title-magazine {
-    font-size: 4rem;
+  .issue-stamp-container {
+    align-self: flex-start;
   }
   
-  .hero-title-magazine .line-1, .hero-title-magazine .line-2, .hero-title-magazine .line-3, .hero-title-magazine .line-4 {
-    transform: none !important;
+  .cover-manifesto-excerpt {
+    align-items: flex-start;
   }
   
-  .hero-title-magazine .line-2 {
-    font-size: 4.5rem;
-  }
-  
-  .hero-copy-magazine {
-    margin: 2rem 0;
-  }
-  
-  .manifesto-section-magazine {
+  .manifesto-double-spread {
     padding: 6rem 2rem;
   }
   
-  .magazine-grid-asymmetric {
+  .three-column-article-grid {
     grid-template-columns: 1fr;
     gap: 4rem;
   }
   
-  .manifesto-portrait-magazine {
+  .article-column.border-right {
+    border-right: none;
+    padding-right: 0;
+  }
+  
+  .lookbook-polaroid-frame {
     max-width: 500px;
     margin: 0 auto;
   }
   
-  .registry-section-magazine {
+  .registry-blueprint-section {
     padding: 6rem 2rem;
   }
   
@@ -1462,26 +1536,39 @@ a {
     padding-right: 0;
   }
   
-  .lookbook-catalog-spread {
+  .blueprint-spread {
     flex: 0 0 100%;
+    padding: 1.5rem;
+  }
+  
+  .blueprint-inner-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
   }
   
-  .spread-visual-pane {
+  .blueprint-visual-pane {
     max-width: 480px;
     margin: 0 auto;
     width: 100%;
   }
   
-  .privee-section-magazine {
+  .privee-portal-section {
     padding: 6rem 2rem;
   }
   
-  .privee-double-border-box {
+  .privee-invitation-card {
+    padding: 2rem;
+  }
+  
+  .privee-stamp-overlay {
+    top: -2.5rem;
+    right: 1.5rem;
+    transform: scale(0.85);
+  }
+  
+  .card-grid-inner {
     grid-template-columns: 1fr;
     gap: 4rem;
-    padding: 2rem;
   }
   
   .privee-footer-magazine {
@@ -1493,16 +1580,16 @@ a {
 }
 
 @media (max-width: 576px) {
-  .hero-title-magazine {
-    font-size: 3.2rem;
+  .masthead-title {
+    font-size: 3.5rem;
   }
-  .hero-title-magazine .line-2 {
-    font-size: 3.6rem;
+  .headline-text {
+    font-size: 1.8rem;
   }
-  .manifesto-title-serif {
-    font-size: 3.2rem;
+  .column-title {
+    font-size: 2.5rem;
   }
-  .manifesto-quote-magazine {
+  .massive-pullquote {
     font-size: 2.2rem;
   }
   .registry-h2 {
