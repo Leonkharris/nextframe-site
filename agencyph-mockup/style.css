@@ -1535,7 +1535,7 @@ a {
   margin-bottom: 0.5rem;
 }
 
-.field-inp, .field-sel {
+.field-inp, .field-sel, .field-txt {
   background-color: transparent !important;
   border: none;
   color: var(--font-white);
@@ -1544,6 +1544,20 @@ a {
   font-weight: 300;
   padding: 0;
   width: 100%;
+}
+
+textarea.field-txt {
+  min-height: 4.5rem;
+  line-height: 1.4;
+  margin-top: 0.35rem;
+  resize: vertical;
+  outline: none;
+}
+
+/* Fix browser native option white-on-white text obscuring bug in dark themes */
+.field-sel option {
+  background-color: #0c0c0c !important;
+  color: var(--font-white) !important;
 }
 
 .field-inp::placeholder {
