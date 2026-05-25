@@ -511,22 +511,23 @@ a {
 
 .masthead-title {
   font-family: var(--font-serif);
-  font-size: clamp(2.8rem, 6vw, 7.5rem); /* Majestic, high-fashion editorial serif scale */
+  font-size: clamp(1.6rem, 8.2vw, 7.5rem); /* Flawless fluid responsive sizing ensures logo and text stay on a single line */
   font-weight: 300;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   line-height: 0.85;
   color: var(--font-white);
   margin: 0;
+  white-space: nowrap; /* Prevents awkward line-wrapping on narrow mobile screens */
 }
 
 .masthead-logo {
-  height: 0.9em; /* Matches the baseline and cap-height of adjacent serif letters */
+  height: 0.88em; /* Matches the cap-height of Cormorant Garamond letters exactly */
   width: auto;
-  vertical-align: baseline;
+  vertical-align: middle; /* Extremely stable vertical alignment across all screen sizes */
   position: relative;
-  top: 0.08em; /* Perfectly offsets to match high-fashion serif alignment */
-  margin: 0 -0.04em; /* Premium kerning adjustment for elegant text integration */
+  top: -0.06em; /* Micro-offset for pixel-perfect serif center alignment */
+  margin: 0 -0.02em; /* Refined visual spacing/kerning */
   display: inline-block;
 }
 
@@ -2131,7 +2132,7 @@ a {
 
 @media (max-width: 576px) {
   .masthead-title {
-    font-size: 3rem;
+    font-size: clamp(1.5rem, 8.2vw, 3.2rem); /* Dynamic clamp limits title width on ultra-narrow viewports */
   }
   .headline-text {
     font-size: 1.5rem;
