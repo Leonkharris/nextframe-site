@@ -44,12 +44,14 @@ html {
   font-size: 16px;
   scroll-behavior: smooth;
   overflow-x: hidden;
+  overflow-y: auto; /* Ensure vertical scrolling is enabled */
 }
 
 body {
   background-color: var(--bg-onyx);
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: visible; /* Ensure vertical scrolling is visible */
   position: relative;
   /* Disable default cursor for luxury custom interaction */
   cursor: none;
@@ -136,6 +138,7 @@ a {
   transform: translate(-50%, -50%);
   transition: width 0.25s var(--transition-fast), height 0.25s var(--transition-fast), background-color 0.25s var(--transition-fast);
   z-index: 10001;
+  pointer-events: none;
 }
 
 .cursor-circle {
@@ -154,6 +157,7 @@ a {
   align-items: center;
   justify-content: center;
   z-index: 10000;
+  pointer-events: none;
 }
 
 .cursor-arrow {
