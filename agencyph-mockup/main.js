@@ -19,18 +19,51 @@ document.addEventListener('DOMContentLoaded', () => {
   initFormInteractions();
 });
 
+let currentHeroVideoIndex = Math.floor(Math.random() * HERO_VIDEOS.length);
+
 function initHeroVideo() {
   const videoEl = document.getElementById('hero-video-element');
   if (!videoEl) return;
-  const randomVideo = HERO_VIDEOS[Math.floor(Math.random() * HERO_VIDEOS.length)];
-  videoEl.src = randomVideo;
+  
+  // Set initial video from randomized index
+  videoEl.src = HERO_VIDEOS[currentHeroVideoIndex];
   videoEl.load();
+  
   const playPromise = videoEl.play();
   if (playPromise !== undefined) {
     playPromise.catch(error => {
       console.log("Ambient cover loop video playback was prevented: ", error);
     });
   }
+  
+  // Strip loop attribute to trigger standard 'ended' event
+  videoEl.removeAttribute('loop');
+  
+  // Sequence and loop through all different hero videos on end
+  videoEl.addEventListener('ended', () => {
+    currentHeroVideoIndex = (currentHeroVideoIndex + 1) % HERO_VIDEOS.length;
+    
+    // Elegant fade transition to avoid abrupt cuts between premium clips
+    videoEl.style.transition = 'opacity 0.5s ease-in-out';
+    videoEl.style.opacity = '0';
+    
+    setTimeout(() => {
+      videoEl.src = HERO_VIDEOS[currentHeroVideoIndex];
+      videoEl.load();
+      
+      const nextPlayPromise = videoEl.play();
+      if (nextPlayPromise !== undefined) {
+        nextPlayPromise.then(() => {
+          videoEl.style.opacity = '1';
+        }).catch(err => {
+          console.log("Auto-advance playback engine blocked: ", err);
+          videoEl.style.opacity = '1';
+        });
+      } else {
+        videoEl.style.opacity = '1';
+      }
+    }, 500);
+  });
 }
 
 /* ========================================================================= */
