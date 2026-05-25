@@ -6,10 +6,10 @@
   <title>THE AGENCY PH // Metro Manila Elite Real Estate Registry</title>
   <meta name="description" content="Access the most coveted, off-market architectural enclaves in Metro Manila. High-production architectural cinema meets elite property brokerage, curated exclusively by Jessica.">
   
-  <!-- Font Integrations: Cormorant Garamond (Editorial Serif), Inter (Sans-Serif), Space Mono (Monospace) -->
+  <!-- Font Integrations: Cormorant Garamond (Editorial Serif), Prata (High-Fashion Serif), Syne (Display Sans), Plus Jakarta Sans (Geometric Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Inter:wght@300;400;600&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Prata&family=Syne:wght@400;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Custom Stylesheet -->
   <link rel="stylesheet" href="./style.css">
@@ -82,48 +82,32 @@
       <h1 class="masthead-title">THE <span class="crimson-text">A</span>GENCY</h1>
     </div>
 
-    <!-- Live Cover Grid Layout (3 Columns: Stories | Constrained Photo | Excerpt & CTA) -->
-    <div class="cover-three-column-grid">
-      <!-- Left Column: Editorial Headlines -->
-      <div class="cover-stories-left">
-        <div class="headline-block">
-          <p class="headline-tag">[ CURATORIAL INSIGHT ]</p>
-          <h3 class="headline-text font-serif">JESSICA ON BRUTALIST ACQUISITIONS</h3>
-          <p class="headline-sub font-sans">Inside the raw concrete enclaves defining Manila’s architectural elite.</p>
-        </div>
-        <div class="headline-block">
-          <p class="headline-tag">[ CONFIDENTIAL ROSTER ]</p>
-          <h3 class="headline-text font-serif">FORBES PARK SECRETS UNVEILED</h3>
-          <p class="headline-sub font-sans">Three landmark unlisted estates exchanging hands behind closed doors.</p>
-        </div>
-      </div>
-
-      <!-- Center Column: Monumental 3D Brand Logo Sculpture (High-Fidelity Ray-Traced Design) -->
-      <div class="cover-center-aperture">
-        <div class="cover-aperture-frame logo-sculpture-mode">
-          <img src="Logo and designs/agency_3d_logo_hero.png" alt="THE AGENCY PH Monumental 3D Brand Logo Sculpture" class="cover-logo-graphic">
-          <div class="cover-vignette"></div>
-          <!-- Calibration Crop Ticks inside frame -->
-          <div class="calibration-tick top-left">+</div>
-          <div class="calibration-tick top-right">+</div>
-          <div class="calibration-tick bottom-left">+</div>
-          <div class="calibration-tick bottom-right">+</div>
-          <span class="cover-frame-id font-sans-mini">PLATE A-01 // BRAND SYMBOL</span>
-        </div>
-      </div>
-
-      <!-- Right Column: Excerpt & Play Button -->
-      <div class="cover-stories-right">
-        <div class="issue-stamp-container">
-          <div class="stamp-lbl">METRO MANILA REGISTER</div>
-          <div class="stamp-val crimson-text">UNLISTED PORTFOLIO 2026</div>
-          <div class="stamp-curator">CURATED BY JESSICA</div>
-        </div>
+    <!-- Live Cover Grid Layout (Asymmetric 2 Columns: Editorial Spread & 3D Logo Sculpture) -->
+    <div class="cover-two-column-grid">
+      <!-- Left Column: Editorial Curation Pane -->
+      <div class="cover-editorial-pane">
         
-        <div class="cover-manifesto-excerpt">
-          <p class="excerpt-tag">MANIFESTO SPREAD // EXP-09</p>
-          <p class="excerpt-body font-serif">“We do not move properties. We move lifestyles.”</p>
-          
+        <div class="cover-stamp-row">
+          <div class="issue-stamp-container">
+            <div class="stamp-lbl">METRO MANILA REGISTER</div>
+            <div class="stamp-val crimson-text">UNLISTED PORTFOLIO 2026</div>
+            <div class="stamp-curator">CURATED BY JESSICA</div>
+          </div>
+        </div>
+
+        <div class="cover-editorial-stories">
+          <div class="headline-block">
+            <p class="headline-tag">[ CURATORIAL INSIGHT ]</p>
+            <h3 class="headline-text font-serif">JESSICA ON BRUTALIST ACQUISITIONS</h3>
+            <p class="headline-sub font-sans">Inside the raw concrete enclaves defining Manila’s elite.</p>
+          </div>
+          <div class="headline-block">
+            <p class="excerpt-tag">MANIFESTO SPREAD // EXP-09</p>
+            <p class="excerpt-body font-serif">“We do not move properties. We move lifestyles.”</p>
+          </div>
+        </div>
+
+        <div class="cover-action-row">
           <button class="btn-play-magazine" id="btn-play-showcase" onclick="openShowcaseModal()">
             <span class="btn-text-mag font-sans-mini">PLAY THE SHOWCASE</span>
             <div class="btn-arrow-box-mag">
@@ -133,6 +117,23 @@
               </svg>
             </div>
           </button>
+        </div>
+
+      </div>
+
+      <!-- Right Column: Majestic vertical 3D Logo Sculpture Aperture Frame -->
+      <div class="cover-aperture-pane">
+        <div class="cover-center-aperture">
+          <div class="cover-aperture-frame logo-sculpture-mode">
+            <img src="Logo and designs/agency_3d_logo_hero.png" alt="THE AGENCY PH Monumental 3D Brand Logo Sculpture" class="cover-logo-graphic">
+            <div class="cover-vignette"></div>
+            <!-- Calibration Crop Ticks inside frame -->
+            <div class="calibration-tick top-left">+</div>
+            <div class="calibration-tick top-right">+</div>
+            <div class="calibration-tick bottom-left">+</div>
+            <div class="calibration-tick bottom-right">+</div>
+            <span class="cover-frame-id font-sans-mini">PLATE A-01 // BRAND SYMBOL</span>
+          </div>
         </div>
       </div>
     </div>
@@ -494,7 +495,7 @@
         <div class="privee-stamp-overlay">
           <svg class="circular-stamp" viewBox="0 0 100 100" width="120" height="120">
             <path id="stampPath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
-            <text font-family="Space Mono, monospace" font-size="7.5" fill="#e30613" letter-spacing="2">
+            <text font-family="'Plus Jakarta Sans', sans-serif" font-weight="600" font-size="6.5" fill="#e30613" letter-spacing="2">
               <textPath href="#stampPath">CONFIDENTIAL • APPROVED BY JESSICA • THE AGENCY PH • </textPath>
             </text>
             <circle cx="50" cy="50" r="28" fill="none" stroke="#e30613" stroke-width="1" stroke-dasharray="2 2" />
