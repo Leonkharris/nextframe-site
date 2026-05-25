@@ -1391,11 +1391,35 @@ a {
   min-height: 100vh;
   width: 100vw;
   background-color: var(--bg-onyx);
-  padding: 7rem 6.5rem 6.5rem 4.5rem;
+  padding: 7rem 6.5rem 4.5rem 4.5rem; /* Balanced bottom padding */
   position: relative;
   overflow: hidden;
   display: flex;
+  flex-direction: column; /* Force vertical stacking to prevent horizontal flex layout collapse on mobile */
+  justify-content: center;
   align-items: center;
+}
+
+/* Elegant integrated dry brush texture backing */
+.privee-portal-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('Logo and designs/agency_bottom_brush.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.12; /* Subtle, gorgeous textured watermark */
+  pointer-events: none;
+  z-index: 1;
+}
+
+.privee-portal-section > *:not(::before) {
+  position: relative;
+  z-index: 10;
 }
 
 .privee-card-viewport {
@@ -2060,29 +2084,44 @@ textarea.field-txt {
   }
   
   .privee-portal-section {
-    padding: 6rem 2rem;
+    padding: 5rem 1.5rem 3.5rem 1.5rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: auto !important;
+  }
+  
+  .privee-card-viewport {
+    width: 100% !important;
+    max-width: 100% !important;
   }
   
   .privee-invitation-card {
-    padding: 2rem;
+    padding: 3.5rem 1.5rem 2.5rem 1.5rem !important;
+    width: 100% !important;
+    box-sizing: border-box !important;
   }
   
   .privee-stamp-overlay {
-    top: -2.5rem;
-    right: 1.5rem;
-    transform: scale(0.85);
+    top: -2.75rem;
+    right: 1.25rem;
+    transform: scale(0.75);
+    transform-origin: top right;
   }
   
   .card-grid-inner {
-    grid-template-columns: 1fr;
-    gap: 3.5rem;
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 3rem !important;
   }
   
   .privee-footer-magazine {
-    flex-direction: column;
-    gap: 1rem;
-    align-items: flex-start;
-    margin-top: 3.5rem;
+    width: 100% !important;
+    box-sizing: border-box !important;
+    flex-direction: column !important;
+    gap: 0.8rem !important;
+    align-items: flex-start !important;
+    margin-top: 3.5rem !important;
   }
 
   /* COLLAPSE FIXED VIEWPORTS TO NATURAL SCROLL ON MOBILE */
