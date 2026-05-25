@@ -535,7 +535,7 @@ a {
   width: auto;
   vertical-align: baseline; /* Forces the bottom of the 'A' image to line up perfectly with the baseline of THE and GENCY */
   position: relative;
-  top: 0.05em; /* Micro-adjustment to align perfectly with the baseline of flat serif letters */
+  top: -0.1em; /* Shifted up using a negative offset to lift the bottom exactly flush with the flat serif baseline */
   margin: 0 -0.01em;
   display: inline-block;
 }
