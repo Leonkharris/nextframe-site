@@ -1017,6 +1017,87 @@ a {
   font-weight: 600;
 }
 
+/* Logo Sculpture Framing & High-Impact Rendering overrides */
+.logo-sculpture-mode {
+  background-color: #020202 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  border: 1px solid rgba(255, 255, 255, 0.25) !important;
+  padding: 0 !important; /* Perfect bleed of generated background asset */
+}
+
+.cover-logo-graphic {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.cover-aperture-frame:hover .cover-logo-graphic {
+  transform: scale(1.02);
+}
+
+/* Four Column grid expansions for Manifesto article double spreads */
+.three-column-article-grid {
+  grid-template-columns: 1.15fr 0.95fr 0.95fr 0.95fr !important; /* Expanded to fit 4 columns gracefully */
+  gap: 3.5rem !important;
+}
+
+/* Abstract Brand Graphic Poster Column */
+.visual-graphic-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.graphic-poster-frame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
+  background-color: #030303;
+}
+
+.poster-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+}
+
+.graphic-poster-frame:hover .poster-image {
+  transform: scale(1.025);
+}
+
+.poster-tag {
+  position: absolute;
+  bottom: 1rem;
+  left: 1rem;
+  font-size: 0.55rem;
+  letter-spacing: 0.2em;
+  color: var(--font-white);
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 0.3rem 0.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Halftone Graphic Accent Divider Banner */
+.registry-brand-accent-banner {
+  width: 100%;
+  padding-right: 6.5rem;
+  margin-top: -1rem;
+  margin-bottom: 5.5rem;
+}
+
+.accent-banner-img {
+  width: 100%;
+  height: auto;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  opacity: 0.85;
+}
+
 /* ========================================================================= */
 /* 9. SECTION 3: MANILA ARCHITECTURAL REGISTRY BLUEPRINT CATALOG SYSTEM */
 /* ========================================================================= */
@@ -1671,13 +1752,28 @@ a {
   }
   
   .three-column-article-grid {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
     gap: 4rem;
   }
   
   .article-column.border-right {
     border-right: none;
     padding-right: 0;
+  }
+
+  .visual-graphic-column {
+    max-width: 480px;
+    margin: 0 auto;
+    width: 100%;
+  }
+
+  .graphic-poster-frame {
+    aspect-ratio: 3/4;
+  }
+
+  .registry-brand-accent-banner {
+    padding-right: 0;
+    margin-bottom: 3.5rem;
   }
   
   .lookbook-polaroid-frame {
