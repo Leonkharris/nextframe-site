@@ -522,11 +522,11 @@ a {
 }
 
 .masthead-logo {
-  height: 0.88em; /* Matches the cap-height of Cormorant Garamond letters exactly */
+  height: 1.05em; /* Scaled slightly larger for perfect visual alignment with Cormorant Garamond capital letters */
   width: auto;
   vertical-align: middle; /* Extremely stable vertical alignment across all screen sizes */
   position: relative;
-  top: -0.06em; /* Micro-offset for pixel-perfect serif center alignment */
+  top: -0.03em; /* Micro-offset for pixel-perfect serif center alignment */
   margin: 0 -0.02em; /* Refined visual spacing/kerning */
   display: inline-block;
 }
@@ -1970,7 +1970,7 @@ a {
   }
   
   .masthead-title {
-    font-size: 4rem;
+    font-size: clamp(2rem, 8.2vw, 4.8rem); /* Prevent font layout overflow on landscape mobile / tablets */
   }
 
   .cover-aperture-pane {
