@@ -22,11 +22,22 @@
   <div class="custom-cursor" id="custom-cursor">
     <div class="cursor-dot"></div>
     <div class="cursor-circle">
-      <svg class="cursor-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <line x1="5" y1="12" x2="19" y2="12"></line>
-        <polyline points="12 5 19 12 12 19"></polyline>
+      <svg class="cursor-arrow" viewBox="0 0 24 24" fill="none" stroke="none" stroke-linecap="round" stroke-linejoin="round">
+        <!-- Dual Ribbon Arrowheads from Agency PH Logo -->
+        <path d="M2 10 H14 L9 5" stroke="#e30613" stroke-width="2.5"></path>
+        <path d="M8 15 H20 L15 10" stroke="#ffffff" stroke-width="2.5"></path>
       </svg>
     </div>
+  </div>
+
+  <!-- Physical Print Calibration Frame (Crop Marks in Viewport) -->
+  <div class="print-calibration-frame">
+    <div class="crop-mark top-left">+</div>
+    <div class="crop-mark top-right">+</div>
+    <div class="crop-mark bottom-left">+</div>
+    <div class="crop-mark bottom-right">+</div>
+    <div class="side-ribbon left font-mono">LATITUDE CALIBRATION // METRO MANILA REGISTER</div>
+    <div class="side-ribbon right font-mono">THE AGENCY PH © 2026 // ALL RIGHTS RESERVED</div>
   </div>
 
   <!-- ========================================================================= -->
@@ -40,9 +51,9 @@
       </a>
     </div>
     <div class="nav-links">
-      <a href="#hero" class="nav-link active" id="link-hero"><span class="nav-num">[ 01 ]</span> REGISTRY</a>
-      <a href="#manifesto" class="nav-link" id="link-manifesto"><span class="nav-num">[ 02 ]</span> MANIFESTO</a>
-      <a href="#registry" class="nav-link" id="link-registry"><span class="nav-num">[ 03 ]</span> ARCHITECTURAL Registry</a>
+      <a href="#hero" class="nav-link active" id="link-hero"><span class="nav-num">[ 01 ]</span> COVER</a>
+      <a href="#manifesto" class="nav-link" id="link-manifesto"><span class="nav-num">[ 02 ]</span> SPREAD</a>
+      <a href="#registry" class="nav-link" id="link-registry"><span class="nav-num">[ 03 ]</span> BLUEPRINTS</a>
       <a href="#privee" class="nav-link" id="link-privee"><span class="nav-num">[ 04 ]</span> PRIVÉE</a>
     </div>
     <div class="nav-contact">
@@ -53,49 +64,57 @@
   </nav>
 
   <!-- ========================================================================= -->
-  <!-- 2. SECTION 1: THE HERO EXPERIENCE (Redesigned Magazine Spread) -->
+  <!-- 2. SECTION 1: THE HERO AS A LIVE MAGAZINE COVER -->
   <!-- ========================================================================= -->
-  <section id="hero" class="hero-section-magazine">
-    <!-- Running Head for Magazine Aesthetic -->
+  <section id="hero" class="hero-live-cover">
+    <!-- Immersive Background Cinema B-Roll -->
+    <div class="cover-cinema-backdrop">
+      <video autoplay muted loop playsinline class="cover-video">
+        <source src="Website assets/instagram video assets/AQMr7k4fte5cbyuWCBh4KxnAD9Zh1bwCY4XK2p6e2Z5mJvqjSJYQxMv3i7odtUC_hl-i8rgw4nh9p7ZAfKwyPULQ.mp4" type="video/mp4">
+      </video>
+      <div class="cover-vignette"></div>
+    </div>
+
+    <!-- Running Head for Physical Magazine -->
     <div class="magazine-running-head font-mono">
-      <span class="mag-issue">VOL. 26 // ISSUE I</span>
-      <span class="mag-title">THE METRO MANILA REGISTER</span>
+      <span class="mag-issue">ISSUE NO. 01 // VOL. 26 // 2026 // PHP 45,000</span>
+      <span class="mag-title">THE ARCHITECTURAL REGISTER</span>
       <span class="mag-page">P. 01 // INTRO</span>
     </div>
 
-    <!-- Ghost Watermark Background -->
-    <div class="ghost-watermark">THE AGENCY PH</div>
-    
-    <div class="hero-magazine-grid">
-      <!-- Left Column: The Cinematic Aperture -->
-      <div class="hero-aperture-box">
-        <div class="aperture-frame">
-          <video autoplay muted loop playsinline class="hero-video-loop">
-            <source src="Website assets/instagram video assets/AQMr7k4fte5cbyuWCBh4KxnAD9Zh1bwCY4XK2p6e2Z5mJvqjSJYQxMv3i7odtUC_hl-i8rgw4nh9p7ZAfKwyPULQ.mp4" type="video/mp4">
-          </video>
-          <div class="video-overlay"></div>
-          <span class="frame-tag font-mono">[ SCAN_026 // EST_2026 ]</span>
+    <!-- Live Cover Grid Overlay -->
+    <div class="cover-editorial-overlay">
+      <!-- Huge Masthead spanning full screen -->
+      <div class="masthead-container">
+        <h1 class="masthead-title">THE <span class="crimson-text">A</span>GENCY</h1>
+      </div>
+
+      <!-- Left Margin Editorial Headlines -->
+      <div class="cover-headline-left">
+        <div class="headline-block">
+          <p class="headline-tag font-mono">[ CURATORIAL INSIGHT ]</p>
+          <h3 class="headline-text font-serif">JESSICA ON BRUTALIST ACQUISITIONS</h3>
+          <p class="headline-sub font-sans">Inside the raw concrete enclaves defining Manila’s architectural elite.</p>
+        </div>
+        <div class="headline-block">
+          <p class="headline-tag font-mono">[ CONFIDENTIAL ROSTER ]</p>
+          <h3 class="headline-text font-serif">FORBES PARK SECRETS UNVEILED</h3>
+          <p class="headline-sub font-sans">Three landmark unlisted estates exchanging hands behind closed doors.</p>
         </div>
       </div>
 
-      <!-- Right Column: Asymmetrical Typography & Content -->
-      <div class="hero-magazine-copy">
-        <div class="editorial-title-wrapper">
-          <p class="editorial-pre font-mono">ESTABLISHED 2026 // ARCHITECTURAL CURATION</p>
-          <h1 class="hero-title-magazine">
-            <span class="line-1">WE DON'T</span>
-            <span class="line-2 italic-serif">Move</span>
-            <span class="line-3">PROPERTIES.</span>
-            <span class="line-4">WE MOVE <span class="outline-serif">LIFESTYLES.</span></span>
-          </h1>
+      <!-- Right Margin Editorial Headlines & Main CTA -->
+      <div class="cover-headline-right">
+        <div class="issue-stamp-container font-mono">
+          <div>METRO MANILA REGISTER</div>
+          <div class="crimson-text font-mono">UNLISTED PORTFOLIO 2026</div>
+          <div>CURATED BY JESSICA</div>
         </div>
         
-        <div class="hero-magazine-footer">
-          <p class="hero-copy-magazine font-sans">
-            Access the most coveted, off-market enclaves in Metro Manila. High-production architectural cinema meets elite property brokerage, curated exclusively by Jessica.
-          </p>
+        <div class="cover-manifesto-excerpt">
+          <p class="excerpt-tag font-mono">MANIFESTO SPREAD // EXP-09</p>
+          <p class="excerpt-body font-serif">“We do not move properties. We move lifestyles.”</p>
           
-          <!-- Skew-Wiping Magazine CTA Button -->
           <button class="btn-play-magazine" id="btn-play-showcase" onclick="openShowcaseModal()">
             <span class="btn-text-mag font-mono">PLAY THE SHOWCASE</span>
             <div class="btn-arrow-box-mag">
@@ -108,9 +127,6 @@
         </div>
       </div>
     </div>
-    
-    <!-- Architectural Crosshair Accent -->
-    <div class="editorial-crosshair"></div>
   </section>
 
   <!-- ========================================================================= -->
@@ -128,78 +144,77 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- 4. SECTION 2: THE CURATOR MANIFESTO (Redesigned spread with Polaroid) -->
+  <!-- 4. SECTION 2: THE CURATOR MANIFESTO AS A DOUBLE-PAGE ARTICLE SPREAD -->
   <!-- ========================================================================= -->
-  <section id="manifesto" class="manifesto-section-magazine">
-    <!-- Running Head for Magazine Aesthetic -->
+  <section id="manifesto" class="manifesto-double-spread">
+    <div class="ghost-watermark-large font-serif">MANIFESTO</div>
+    
     <div class="magazine-running-head font-mono">
-      <span class="mag-issue">VOL. 26 // ISSUE I</span>
-      <span class="mag-title">THE CURATORIAL MANIFESTO</span>
-      <span class="mag-page">P. 02 // PROFILE</span>
+      <span class="mag-issue">THE CURATORIAL PHILOSOPHY</span>
+      <span class="mag-title">THE MANIFESTO REGISTER</span>
+      <span class="mag-page">P. 02 // SPREAD</span>
     </div>
 
-    <!-- Giant Ghost Watermark -->
-    <div class="ghost-watermark">CURATOR</div>
-    
-    <div class="magazine-grid-asymmetric">
-      <!-- Left Column: Elegant Drop-Cap Text Sheet -->
-      <div class="manifesto-text-magazine">
-        <p class="manifesto-tag font-mono">[ THE CURATION PHILOSOPHY ]</p>
-        <h2 class="manifesto-title-serif font-serif">THE MANIFESTO</h2>
+    <!-- Double-Page Three Asymmetrical Columns -->
+    <div class="three-column-article-grid">
+      
+      <!-- Column 1: Drop Cap Editorial Intro -->
+      <div class="article-column border-right">
+        <p class="column-header-tag font-mono">[ ARTICLE SPREAD // 01 ]</p>
+        <h2 class="column-title font-serif">THE MANIFESTO</h2>
+        <div class="editorial-body font-sans">
+          <span class="editorial-drop-cap font-serif">O</span>ur digital presence sets the market standard because luxury must be felt before it is acquired. Through bespoke media asset production and an unyielding eye for high design, we connect global investors with Manila's finest unlisted estates. Discretion is not a marketing tool; it is the structural foundation of our business model.
+        </div>
         
-        <div class="quote-editorial-container">
-          <blockquote class="manifesto-quote-magazine font-serif">
-            “Real estate isn’t about square meters; it’s about identity. Your home should be the <span class="crimson-focus">physical manifestation</span> of your taste profile.”
-          </blockquote>
-          <p class="manifesto-by-magazine font-mono">— JESSICA, Principal Curator</p>
-        </div>
-
-        <div class="manifesto-body-magazine font-sans">
-          <span class="editorial-drop-cap font-serif">O</span>ur digital presence sets the market standard because luxury must be felt before it is acquired. Through bespoke media asset production and an unyielding eye for high design, we connect global investors with Manila's finest unlisted estates.
-        </div>
-
-        <!-- Dashed Print Separator Line -->
         <div class="editorial-separator"></div>
 
-        <!-- The Brand Geometry Block (Story of the Two Arrows) -->
+        <!-- The Brand Geometry Block (The Arrow Narrative) -->
         <div class="brand-geometry-container">
           <div class="geometry-visual">
             <svg class="dual-arrow-svg" viewBox="0 0 160 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <!-- Crimson Ribbon Arrow (Client Vector) -->
               <path d="M10 65 C 40 38, 80 28, 125 28" stroke="#e30613" stroke-width="4.5" stroke-linecap="round"/>
               <path d="M115 22 L 127 28 L 115 34" stroke="#e30613" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              
-              <!-- White Ribbon Arrow (Agency Vector) -->
               <path d="M10 52 C 45 28, 85 20, 135 20" stroke="#ffffff" stroke-width="4.5" stroke-linecap="round"/>
               <path d="M125 14 L 137 20 L 125 26" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-              
-              <!-- Converging Goal Vector dotted target indicator -->
               <line x1="137" y1="20" x2="152" y2="20" stroke="#e30613" stroke-width="1.2" stroke-dasharray="2 3"/>
               <circle cx="153" cy="20" r="2.5" fill="#e30613"/>
             </svg>
           </div>
           <div class="geometry-text">
-            <h4 class="geometry-title font-mono">PROPERTIES & PARTNERSHIPS</h4>
+            <h4 class="geometry-title font-mono">THE DUAL VECTORS</h4>
             <p class="geometry-copy font-sans">
-              The signature <span class="crimson-text">A</span> symbol represents the convergence of two distinct vectors. The Crimson Ribbon tracks the **Client**—their vision, resources, and architectural legacy. The Onyx/White Ribbon tracks **Us (The Agency)**—our curation, search, and gatekeeping. Both work in perfect alignment toward a single, forward-pointing destination: the acquisition of ultimate space.
+              The signature <span class="crimson-text">A</span> symbol represents two distinct ribbons. The Crimson tracks the **Client’s legacy** and the White tracks our **Curation**. Both converge forward into ultimate space.
             </p>
           </div>
         </div>
       </div>
 
-      <!-- Right Column: The Polaroid Spec Sheet Frame -->
-      <div class="manifesto-portrait-magazine">
+      <!-- Column 2: Massive Blockquote & Editorial Voice -->
+      <div class="article-column border-right">
+        <p class="column-header-tag font-mono">[ KEYNOTE CALLOUT // 02 ]</p>
+        <blockquote class="massive-pullquote font-serif">
+          “Real estate isn’t about square meters; it’s about identity. Your home should be the <span class="crimson-focus">physical manifestation</span> of your taste profile.”
+        </blockquote>
+        <p class="manifesto-by-magazine font-mono">— JESSICA, Principal Curator</p>
+        
+        <p class="editorial-supporting-body font-sans">
+          To represent unlisted assets requires a cinematic vocabulary. We do not place standard listings; we craft editorial profiles that speak to collectors who view space as curated art.
+        </p>
+      </div>
+
+      <!-- Column 3: Curator Polaroid & Spec Sheets -->
+      <div class="article-column">
+        <p class="column-header-tag font-mono">[ VISUAL REGISTER // 03 ]</p>
+        
         <div class="lookbook-polaroid-frame">
           <div class="polaroid-image-container">
-            <img src="Website assets/Jessica photos/jessica 6.png" alt="Jessica - Principal Curator of Agency PH" class="polaroid-image">
-            <!-- Polaroid Calibration Ticks -->
+            <img src="Website assets/Jessica photos/jessica 6.png" alt="Jessica - Principal Curator" class="polaroid-image">
             <div class="calibration-tick top-left">+</div>
             <div class="calibration-tick top-right">+</div>
             <div class="calibration-tick bottom-left">+</div>
             <div class="calibration-tick bottom-right">+</div>
           </div>
           
-          <!-- Polaroid Spec Sheet -->
           <div class="polaroid-spec-grid font-mono">
             <div class="polaroid-row">
               <span class="spec-lbl">PLATE NO.</span>
@@ -214,33 +229,32 @@
               <span class="spec-val">50MM ANAMORPHIC D-45</span>
             </div>
             <div class="polaroid-row">
-              <span class="spec-lbl">LOCATION</span>
-              <span class="spec-val">METRO MANILA REGISTER</span>
+              <span class="spec-lbl">METRIC DATA</span>
+              <span class="spec-val">CONFIDENTIAL // 2026</span>
             </div>
           </div>
         </div>
       </div>
+
     </div>
   </section>
 
   <!-- ========================================================================= -->
-  <!-- 5. SECTION 3: MANILA ARCHITECTURAL REGISTRY (Redesigned Catalog sheets) -->
+  <!-- 5. SECTION 3: REGISTRY AS AN ARCHITECTURAL BLUEPRINT CATALOG SHEET -->
   <!-- ========================================================================= -->
-  <section id="registry" class="registry-section-magazine">
-    <!-- Running Head for Magazine Aesthetic -->
-    <div class="magazine-running-head font-mono">
-      <span class="mag-issue">VOL. 26 // ISSUE I</span>
-      <span class="mag-title">ARCHITECTURAL REGISTER</span>
-      <span class="mag-page">P. 03 // LOOKBOOK</span>
-    </div>
+  <section id="registry" class="registry-blueprint-section">
+    <div class="ghost-watermark-large font-serif">REGISTRY</div>
 
-    <!-- Giant Ghost Watermark -->
-    <div class="ghost-watermark">ESTATES</div>
+    <div class="magazine-running-head font-mono">
+      <span class="mag-issue">ARCHITECTURAL BLUEPRINT CATALOGUE</span>
+      <span class="mag-title">THE OFF-MARKET PORTFOLIO</span>
+      <span class="mag-page">P. 03 // BLUEPRINTS</span>
+    </div>
     
     <div class="registry-header-container">
       <div class="registry-title-box">
         <p class="registry-tag font-mono">EXCLUSIVE CATALOGUE / UNLISTED ESTATES</p>
-        <h2 class="registry-h2 font-serif">The Lookbook</h2>
+        <h2 class="registry-h2 font-serif">The Catalog</h2>
       </div>
       
       <div class="registry-scroll-guide font-mono">
@@ -251,161 +265,185 @@
       </div>
     </div>
 
-    <!-- Horizontal Endless Lookbook Scroll Container -->
+    <!-- Horizontal Blueprint Spreads -->
     <div class="horizontal-scroll" id="lookbook-scroll">
       
       <!-- Property Spread 01 -->
-      <div class="lookbook-catalog-spread" onmouseenter="startCardVideo('card-vid-1')" onmouseleave="stopCardVideo('card-vid-1')">
-        <!-- Left Column: Massive Cinematic Framed Aperture -->
-        <div class="spread-visual-pane">
-          <div class="spread-image-wrapper">
-            <video id="card-vid-1" class="card-video" muted loop playsinline>
-              <source src="Website assets/instagram video assets/AQOwBJGPQCEVzpJYBQyjJ2Ss_opUKq3Ts4KPyaalBPinIhhGyfvCR4nVA6TkhdCPNMy_jGMmbpcoqQDz1yVBPt_9BJBjm-j5zNISdyY.mp4" type="video/mp4">
-            </video>
-            <div class="card-filter"></div>
-            <span class="aperture-plate-id font-mono">PLATE // 001 // FORBES PARK</span>
-          </div>
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-1')" onmouseleave="stopCardVideo('card-vid-1')">
+        <!-- Blueprint Technical Overlays -->
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE FP-01.A // NORTH FORBES PARK</span>
+          <span class="crimson-text">14°33'N 121°02'E</span>
         </div>
-        
-        <!-- Right Column: Text & Rigid Monospace Table -->
-        <div class="spread-details-pane">
-          <div class="spread-header font-mono">
-            <span class="reg-id">REG_NO: 75269-01</span>
-            <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+
+        <div class="blueprint-inner-grid">
+          <!-- Left Column: Cinematic Video Frame -->
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-1" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQOwBJGPQCEVzpJYBQyjJ2Ss_opUKq3Ts4KPyaalBPinIhhGyfvCR4nVA6TkhdCPNMy_jGMmbpcoqQDz1yVBPt_9BJBjm-j5zNISdyY.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_FP_01 // EST_2026</span>
+            </div>
           </div>
           
-          <h3 class="spread-title font-serif">The Pavilion Residence</h3>
-          
-          <!-- Rigid Monospace Spec Table -->
-          <table class="lookbook-spec-table font-mono">
-            <tr>
-              <td>LOCATION</td>
-              <td>NORTH FORBES PARK, MANILA</td>
-            </tr>
-            <tr>
-              <td>SPACE PROFILE</td>
-              <td>7 BEDS // 8 BATHS // POOL PAVILION</td>
-            </tr>
-            <tr>
-              <td>DESIGN CLASS</td>
-              <td>ORGANIC BRUTALISM // MODERN STEEL</td>
-            </tr>
-            <tr>
-              <td>STATUS</td>
-              <td>OFF-MARKET UNLISTED REGISTERED</td>
-            </tr>
-          </table>
-          
-          <p class="spread-desc font-sans">
-            A masterfully re-engineered residential marvel hidden within Manila’s most exclusive perimeter. Designed for absolute privacy, high-volume art curation, and elite indoor-outdoor entertaining.
-          </p>
-          
-          <div class="spread-action-row">
-            <a href="#privee" class="spread-action font-mono">STREAM PROPERTY TOUR &rarr;</a>
+          <!-- Right Column: Specs Ledger Sheet -->
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-01</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">The Pavilion Residence</h3>
+            
+            <!-- Monospace Technical Catalog Grid -->
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">NORTH FORBES VILLAGE</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">7 BEDS // 8 BATHS // PAVILION</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">ORGANIC BRUTALISM // STEEL</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">BROKER ACCESS</span>
+                <span class="value">CONFIDENTIAL ROSTER ONLY</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              A masterfully re-engineered residential marvel hidden within Manila’s most exclusive perimeter. Designed for absolute privacy, high-volume art curation, and elite indoor-outdoor entertaining.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Property Spread 02 -->
-      <div class="lookbook-catalog-spread" onmouseenter="startCardVideo('card-vid-2')" onmouseleave="stopCardVideo('card-vid-2')">
-        <!-- Left Column: Massive Cinematic Framed Aperture -->
-        <div class="spread-visual-pane">
-          <div class="spread-image-wrapper">
-            <video id="card-vid-2" class="card-video" muted loop playsinline>
-              <source src="Website assets/instagram video assets/AQNiiuoDB_-8ZYt2fQfbhqCusJ4XxiZNn25iGi5b3FJ9yRQVnd9Do3vgU6WKtH3QEAu0sRm4eHVWDOXx62rmHE4A7fdIt0AgOuhRyfo.mp4" type="video/mp4">
-            </video>
-            <div class="card-filter"></div>
-            <span class="aperture-plate-id font-mono">PLATE // 002 // BGC SKYLINE</span>
-          </div>
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-2')" onmouseleave="stopCardVideo('card-vid-2')">
+        <!-- Blueprint Technical Overlays -->
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE BGC-02.B // SKY FORTRESS</span>
+          <span class="crimson-text">14°32'N 121°03'E</span>
         </div>
-        
-        <!-- Right Column: Text & Rigid Monospace Table -->
-        <div class="spread-details-pane">
-          <div class="spread-header font-mono">
-            <span class="reg-id">REG_NO: 75269-02</span>
-            <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+
+        <div class="blueprint-inner-grid">
+          <!-- Left Column: Cinematic Video Frame -->
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-2" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQNiiuoDB_-8ZYt2fQfbhqCusJ4XxiZNn25iGi5b3FJ9yRQVnd9Do3vgU6WKtH3QEAu0sRm4eHVWDOXx62rmHE4A7fdIt0AgOuhRyfo.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_BGC_02 // PENTHOUSE</span>
+            </div>
           </div>
           
-          <h3 class="spread-title font-serif">Seasons Sky Fortress</h3>
-          
-          <!-- Rigid Monospace Spec Table -->
-          <table class="lookbook-spec-table font-mono">
-            <tr>
-              <td>LOCATION</td>
-              <td>BGC PENTHOUSE ENCLAVE, MANILA</td>
-            </tr>
-            <tr>
-              <td>SPACE PROFILE</td>
-              <td>4 BEDS // SKY TERRACE // 360 PANORAMA</td>
-            </tr>
-            <tr>
-              <td>DESIGN CLASS</td>
-              <td>METROPOLITAN BRUTALISM // STEEL PANE</td>
-            </tr>
-            <tr>
-              <td>STATUS</td>
-              <td>OFF-MARKET EXCLUSIVE RESERVE</td>
-            </tr>
-          </table>
-          
-          <p class="spread-desc font-sans">
-            A soaring glass fortress floating above the skyline. Minimalist interior design structures raw concrete with polished steel accents, maximizing commanding urban views.
-          </p>
-          
-          <div class="spread-action-row">
-            <a href="#privee" class="spread-action font-mono">STREAM PROPERTY TOUR &rarr;</a>
+          <!-- Right Column: Specs Ledger Sheet -->
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-02</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">Seasons Sky Fortress</h3>
+            
+            <!-- Monospace Technical Catalog Grid -->
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">BGC SKYLINE DISTRICT</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">4 BEDS // SKY TERRACE // 360</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">METROPOLITAN BRUTALISM</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">STATUS CODE</span>
+                <span class="value">OFF-MARKET EXCLUSIVE REGISTER</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              A soaring glass fortress floating above the skyline. Minimalist interior design structures raw concrete with polished steel accents, maximizing commanding urban views.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
 
       <!-- Property Spread 03 -->
-      <div class="lookbook-catalog-spread" onmouseenter="startCardVideo('card-vid-3')" onmouseleave="stopCardVideo('card-vid-3')">
-        <!-- Left Column: Massive Cinematic Framed Aperture -->
-        <div class="spread-visual-pane">
-          <div class="spread-image-wrapper">
-            <video id="card-vid-3" class="card-video" muted loop playsinline>
-              <source src="Website assets/instagram video assets/AQPVZM7pc93ukvP3hQbMrlreuQIWUXQhfVcbYt-Lq4eRbBuYyc7kzJ0mDEC7EbByYfjymU6RNK5ufODThMepgIZaUgF15yC8dkwd5ao.mp4" type="video/mp4">
-            </video>
-            <div class="card-filter"></div>
-            <span class="aperture-plate-id font-mono">PLATE // 003 // DASMA PAVILION</span>
-          </div>
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-3')" onmouseleave="stopCardVideo('card-vid-3')">
+        <!-- Blueprint Technical Overlays -->
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE DV-03.C // DASMA SANCTUARY</span>
+          <span class="crimson-text">14°31'N 121°01'E</span>
         </div>
-        
-        <!-- Right Column: Text & Rigid Monospace Table -->
-        <div class="spread-details-pane">
-          <div class="spread-header font-mono">
-            <span class="reg-id">REG_NO: 75269-03</span>
-            <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+
+        <div class="blueprint-inner-grid">
+          <!-- Left Column: Cinematic Video Frame -->
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-3" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQPVZM7pc93ukvP3hQbMrlreuQIWUXQhfVcbYt-Lq4eRbBuYyc7kzJ0mDEC7EbByYfjymU6RNK5ufODThMepgIZaUgF15yC8dkwd5ao.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_DV_03 // EST_2026</span>
+            </div>
           </div>
           
-          <h3 class="spread-title font-serif">The Dasma Sanctuary</h3>
-          
-          <!-- Rigid Monospace Spec Table -->
-          <table class="lookbook-spec-table font-mono">
-            <tr>
-              <td>LOCATION</td>
-              <td>DASMARIÑAS VILLAGE SANCTUARY, PH</td>
-            </tr>
-            <tr>
-              <td>SPACE PROFILE</td>
-              <td>5 BEDS // SPA SUITE // 25M LAP POOL</td>
-            </tr>
-            <tr>
-              <td>DESIGN CLASS</td>
-              <td>MODERN TROPICAL // MASS GLASS</td>
-            </tr>
-            <tr>
-              <td>STATUS</td>
-              <td>CURATED PORTFOLIO REGISTER</td>
-            </tr>
-          </table>
-          
-          <p class="spread-desc font-sans">
-            An architectural statement in clean lines and organic textures. Massive floor-to-ceiling glass paneling integrates internal green courtyards with wide-volume entertainment salons.
-          </p>
-          
-          <div class="spread-action-row">
-            <a href="#privee" class="spread-action font-mono">STREAM PROPERTY TOUR &rarr;</a>
+          <!-- Right Column: Specs Ledger Sheet -->
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-03</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">The Dasma Sanctuary</h3>
+            
+            <!-- Monospace Technical Catalog Grid -->
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">DASMARIÑAS VILLAGE</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">5 BEDS // SPA // 25M LAP POOL</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">MODERN TROPICAL GLASS</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">STATUS CODE</span>
+                <span class="value">CURATED PORTFOLIO EXCLUSIVE</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              An architectural statement in clean lines and organic textures. Massive floor-to-ceiling glass paneling integrates internal green courtyards with wide-volume entertainment salons.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
           </div>
         </div>
       </div>
@@ -414,86 +452,98 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- 6. SECTION 4: PRIVÉE REGISTRATION (Redesigned ledger spread) -->
+  <!-- 6. SECTION 4: PRIVÉE REGISTRATION AS AN INVITE CARD OVERLAY -->
   <!-- ========================================================================= -->
-  <section id="privee" class="privee-section-magazine">
-    <!-- Running Head for Magazine Aesthetic -->
+  <section id="privee" class="privee-portal-section">
+    <div class="ghost-watermark-large font-serif">PRIVÉE</div>
+
     <div class="magazine-running-head font-mono">
-      <span class="mag-issue">VOL. 26 // ISSUE I</span>
-      <span class="mag-title">CONFIDENTIAL PORTAL</span>
+      <span class="mag-issue">PLACEMENT DECREE APPLICATION</span>
+      <span class="mag-title">THE PRIVÉE CONFIDENTIAL GATEWAY</span>
       <span class="mag-page">P. 04 // PRIVÉE</span>
     </div>
-
-    <!-- Giant Ghost Watermark -->
-    <div class="ghost-watermark">PRIVÉE</div>
     
-    <div class="privee-magazine-container">
-      <div class="privee-double-border-box">
+    <div class="privee-card-viewport">
+      <!-- The Floating Invitation Card -->
+      <div class="privee-invitation-card">
         
-        <!-- Left Column: Heavy Editorial Narrative -->
-        <div class="privee-editorial-intro">
-          <span class="privee-tag font-mono">[ PLACEMENT APPLICATION ]</span>
-          <h2 class="privee-title-serif font-serif">Privée<br>Registration</h2>
-          <h3 class="privee-subtitle font-sans">Request placement on the Off-Market Roster.</h3>
-          <p class="privee-body-magazine font-sans">
-            Admittance to the off-market database is restricted to qualified acquisition portfolios. By requesting access, you initiate a strict, non-disclosure curation process overseen directly by Jessica.
-          </p>
-          <p class="wcag-micro-copy font-sans" id="disclaimer-text">
-            Discretion is our structural bedrock. All personal identities, asset inquiries, and digital communications are held under strict non-disclosure security protocols.
-          </p>
+        <!-- Interactive Rotating Stamp -->
+        <div class="privee-stamp-overlay">
+          <svg class="circular-stamp" viewBox="0 0 100 100" width="120" height="120">
+            <path id="stampPath" d="M 50,50 m -37,0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" fill="none" />
+            <text font-family="Space Mono, monospace" font-size="7.5" fill="#e30613" letter-spacing="2">
+              <textPath href="#stampPath">CONFIDENTIAL • APPROVED BY JESSICA • THE AGENCY PH • </textPath>
+            </text>
+            <circle cx="50" cy="50" r="28" fill="none" stroke="#e30613" stroke-width="1" stroke-dasharray="2 2" />
+            <text x="50" y="54" font-family="'Cormorant Garamond', serif" font-style="italic" font-size="12" fill="#e30613" text-anchor="middle" font-weight="600">Privée</text>
+          </svg>
         </div>
 
-        <!-- Right Column: Rigid Ledger Style Intake Form -->
-        <div class="privee-form-magazine">
-          <form class="minimal-form-magazine" id="application-form" onsubmit="handleFormSubmission(event)">
-            
-            <div class="magazine-form-field">
-              <span class="field-index font-mono">01 //</span>
-              <div class="field-core">
-                <label for="identity-input" class="field-lbl font-mono">FULL LEGAL IDENTITY</label>
-                <input type="text" id="identity-input" class="field-inp font-serif" placeholder="e.g., Charles Philip" required aria-describedby="disclaimer-text">
-              </div>
-            </div>
+        <div class="card-grid-inner">
+          <!-- Left Column: Invitee Narrative -->
+          <div class="privee-editorial-intro">
+            <span class="privee-tag font-mono">[ PLACEMENT APPLICATION ]</span>
+            <h2 class="privee-title-serif font-serif">Privée<br>Registration</h2>
+            <p class="privee-body-magazine font-sans">
+              Admittance to the off-market database is restricted to qualified acquisition portfolios. By requesting access, you initiate a strict, non-disclosure curation process overseen directly by Jessica.
+            </p>
+            <p class="wcag-micro-copy font-sans" id="disclaimer-text">
+              Discretion is our structural bedrock. All personal identities, asset inquiries, and digital communications are held under strict non-disclosure security protocols.
+            </p>
+          </div>
 
-            <div class="magazine-form-field">
-              <span class="field-index font-mono">02 //</span>
-              <div class="field-core">
-                <label for="signal-input" class="field-lbl font-mono">DIRECT SIGNAL LINE (ENCRYPTED)</label>
-                <input type="tel" id="signal-input" class="field-inp font-serif" placeholder="e.g., +63 917 526 9602" required aria-describedby="disclaimer-text">
-              </div>
-            </div>
-
-            <div class="magazine-form-field">
-              <span class="field-index font-mono">03 //</span>
-              <div class="field-core">
-                <label for="enclave-select" class="field-lbl font-mono">TARGET ARCHITECTURAL ENCLAVE</label>
-                <div class="select-container-mag">
-                  <select id="enclave-select" class="field-sel font-serif" required>
-                    <option value="" disabled selected>Select an exclusive enclave...</option>
-                    <option value="Forbes Park">Forbes Park Estates</option>
-                    <option value="Dasmariñas Village">Dasmariñas Village Sanctuary</option>
-                    <option value="BGC Core">BGC Penthouse Enclaves</option>
-                    <option value="Off-Market General">General Off-Market Registry</option>
-                  </select>
+          <!-- Right Column: Minimal Ledger Form -->
+          <div class="privee-form-magazine">
+            <form class="minimal-form-magazine" id="application-form" onsubmit="handleFormSubmission(event)">
+              
+              <div class="magazine-form-field">
+                <span class="field-index font-mono">01 //</span>
+                <div class="field-core">
+                  <label for="identity-input" class="field-lbl font-mono">FULL LEGAL IDENTITY</label>
+                  <input type="text" id="identity-input" class="field-inp font-serif" placeholder="e.g., Charles Philip" required aria-describedby="disclaimer-text">
                 </div>
               </div>
-            </div>
 
-            <button type="submit" class="btn-submit-magazine font-mono">
-              <span class="btn-submit-text">REQUEST EXCLUSIVE BRIEFING</span>
-            </button>
-          </form>
-          
-          <!-- Custom Success Screen (Hidden by default) -->
-          <div class="form-success-message-mag" id="success-screen">
-            <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <polyline points="20 6 9 17 4 12"></polyline>
-            </svg>
-            <h4 class="success-title font-serif">Application Logged</h4>
-            <p class="success-desc font-sans">
-              Your spatial profile has been submitted directly to Jessica's office. Under strict confidentiality guidelines, a designated private representative will contact your signal line within 12 hours.
-            </p>
-            <button class="btn-success-reset-mag font-mono" onclick="resetFormState()">SUBMIT NEW PROFILE</button>
+              <div class="magazine-form-field">
+                <span class="field-index font-mono">02 //</span>
+                <div class="field-core">
+                  <label for="signal-input" class="field-lbl font-mono">DIRECT SIGNAL LINE (ENCRYPTED)</label>
+                  <input type="tel" id="signal-input" class="field-inp font-serif" placeholder="e.g., +63 917 526 9602" required aria-describedby="disclaimer-text">
+                </div>
+              </div>
+
+              <div class="magazine-form-field">
+                <span class="field-index font-mono">03 //</span>
+                <div class="field-core">
+                  <label for="enclave-select" class="field-lbl font-mono">TARGET ARCHITECTURAL ENCLAVE</label>
+                  <div class="select-container-mag">
+                    <select id="enclave-select" class="field-sel font-serif" required>
+                      <option value="" disabled selected>Select an exclusive enclave...</option>
+                      <option value="Forbes Park">Forbes Park Estates</option>
+                      <option value="Dasmariñas Village">Dasmariñas Village Sanctuary</option>
+                      <option value="BGC Core">BGC Penthouse Enclaves</option>
+                      <option value="Off-Market General">General Off-Market Registry</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" class="btn-submit-magazine font-mono">
+                <span class="btn-submit-text">REQUEST EXCLUSIVE BRIEFING</span>
+              </button>
+            </form>
+            
+            <!-- Success Screen -->
+            <div class="form-success-message-mag" id="success-screen">
+              <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+              <h4 class="success-title font-serif">Application Logged</h4>
+              <p class="success-desc font-sans">
+                Your spatial profile has been submitted directly to Jessica's office. Under strict confidentiality guidelines, a designated private representative will contact your signal line within 12 hours.
+              </p>
+              <button class="btn-success-reset-mag font-mono" onclick="resetFormState()">SUBMIT NEW PROFILE</button>
+            </div>
           </div>
         </div>
 

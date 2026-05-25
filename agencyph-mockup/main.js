@@ -50,7 +50,7 @@ function initCustomCursor() {
   requestAnimationFrame(updateCirclePosition);
 
   // Hook hover nodes trigger state transformations
-  const interactiveSelectors = 'a, button, .registry-card, .lookbook-catalog-spread, input, select, textarea, [role="button"]';
+  const interactiveSelectors = 'a, button, .registry-card, .lookbook-catalog-spread, .blueprint-spread, input, select, textarea, [role="button"]';
 
   
   function applyCursorHovers() {
