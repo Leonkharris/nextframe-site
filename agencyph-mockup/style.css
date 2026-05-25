@@ -11,8 +11,8 @@
   --bg-card-hover: #0a0a0a;
   
   --font-white: #ffffff;
-  --font-silver: #8a8a8a;
-  --font-dim: #333333;
+  --font-silver: #c0c0c0; /* Lifted to gorgeous, crisp editorial silver */
+  --font-dim: #777777;    /* Lifted to high-contrast legible charcoal */
   
   --accent-crimson: #e30613; /* Sampling from the Agency PH logo arrow */
   --accent-crimson-dim: rgba(227, 6, 19, 0.15);
@@ -97,7 +97,7 @@ a {
   font-family: var(--font-sans);
   text-transform: uppercase;
   letter-spacing: 0.18em;
-  font-size: 0.62rem;
+  font-size: 0.72rem;
   font-weight: 600;
 }
 
@@ -221,8 +221,8 @@ a {
 
 .side-ribbon {
   position: absolute;
-  font-size: 8px;
-  color: rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+  color: rgba(255, 255, 255, 0.25);
   letter-spacing: 0.25em;
   white-space: nowrap;
 }
@@ -266,9 +266,9 @@ a {
 }
 
 .brand-logo {
-  width: 32px;
+  width: 42px; /* Prominent brand mark size */
   height: auto;
-  filter: brightness(0) invert(1);
+  /* Removed filter: brightness(0) invert(1) to show original Pillow-generated transparent dark-theme logo natively */
   transition: transform var(--transition-medium);
 }
 
@@ -277,11 +277,11 @@ a {
 }
 
 .brand-text {
-  font-family: var(--font-mono);
-  font-size: 0.65rem;
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
   color: var(--font-white);
   letter-spacing: 0.25em;
-  opacity: 0.8;
+  opacity: 0.9;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
 }
@@ -293,14 +293,14 @@ a {
 }
 
 .nav-link {
-  font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  font-size: 0.8rem;
   color: var(--font-white);
   text-decoration: none;
   writing-mode: vertical-rl;
   transform: rotate(180deg);
   letter-spacing: 0.15em;
-  opacity: 0.45;
+  opacity: 0.55;
   transition: opacity var(--transition-fast), color var(--transition-fast);
 }
 
@@ -327,10 +327,10 @@ a {
 }
 
 .nav-dial {
-  font-size: 0.7rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
   color: var(--font-white);
-  opacity: 0.75;
+  opacity: 0.85;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -440,6 +440,41 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+}
+
+/* Widescreen Cinematic Background Video Loop Styles */
+.hero-video-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.hero-video-bg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(0.28) contrast(1.15) saturate(0.85); /* Deep dark cinematic grade */
+  transition: filter var(--transition-medium);
+}
+
+.hero-video-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.85) 90%);
+  z-index: 1;
+}
+
+/* Force all direct hero contents to float above background video */
+.hero-live-cover > *:not(.hero-video-container) {
+  position: relative;
+  z-index: 10;
 }
 
 /* Redesigned Magazine Cover Paper Grid Overlay */
@@ -791,7 +826,7 @@ a {
 }
 
 /* ========================================================================= */
-/* 7. SECTION 2: CURATOR MANIFESTO DOUBLE-PAGE SPREAD */
+/* 7. SECTION 3: CURATOR MANIFESTO DOUBLE-PAGE SPREAD */
 /* ========================================================================= */
 .manifesto-double-spread {
   min-height: 100vh;
@@ -818,6 +853,29 @@ a {
     linear-gradient(0deg, rgba(255,255,255,0.02) 1px, transparent 1px) 0 0 / 100% 10%;
   pointer-events: none;
   z-index: 1;
+}
+
+/* Elegant integrated Dry Brush Curation watermark backdrop */
+.manifesto-double-spread::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('Logo and designs/agency_brush_backdrop.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.05; /* Subtly incorporated background texture */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Force all manifesto content to float above the background watermark */
+.manifesto-double-spread > *:not(::after):not(::before) {
+  position: relative;
+  z-index: 10;
 }
 
 .three-column-article-grid {
@@ -1047,68 +1105,10 @@ a {
   transform: scale(1.02);
 }
 
-/* Four Column grid expansions for Manifesto article double spreads */
-.three-column-article-grid {
-  grid-template-columns: 1.15fr 0.95fr 0.95fr 0.95fr !important; /* Expanded to fit 4 columns gracefully */
-  gap: 3.5rem !important;
-}
 
-/* Abstract Brand Graphic Poster Column */
-.visual-graphic-column {
-  display: flex;
-  flex-direction: column;
-}
-
-.graphic-poster-frame {
-  position: relative;
-  width: 100%;
-  aspect-ratio: 3/4;
-  overflow: hidden;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.85);
-  background-color: #030303;
-}
-
-.poster-image {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform var(--transition-medium);
-}
-
-.graphic-poster-frame:hover .poster-image {
-  transform: scale(1.025);
-}
-
-.poster-tag {
-  position: absolute;
-  bottom: 1rem;
-  left: 1rem;
-  font-size: 0.55rem;
-  letter-spacing: 0.2em;
-  color: var(--font-white);
-  background-color: rgba(0, 0, 0, 0.8);
-  padding: 0.3rem 0.6rem;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* Halftone Graphic Accent Divider Banner */
-.registry-brand-accent-banner {
-  width: 100%;
-  padding-right: 6.5rem;
-  margin-top: -1rem;
-  margin-bottom: 5.5rem;
-}
-
-.accent-banner-img {
-  width: 100%;
-  height: auto;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  opacity: 0.85;
-}
 
 /* ========================================================================= */
-/* 9. SECTION 3: MANILA ARCHITECTURAL REGISTRY BLUEPRINT CATALOG SYSTEM */
+/* 9. SECTION 2: MANILA ARCHITECTURAL REGISTRY BLUEPRINT CATALOG SYSTEM */
 /* ========================================================================= */
 .registry-blueprint-section {
   min-height: 100vh;
@@ -1118,6 +1118,29 @@ a {
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
   position: relative;
   overflow: hidden;
+}
+
+/* Elegant integrated Halftone Curation watermark backdrop */
+.registry-blueprint-section::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('Logo and designs/agency_halftone_accent.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.06; /* Subtly incorporated background texture */
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Force all catalog elements to float above the background watermark */
+.registry-blueprint-section > *:not(::after) {
+  position: relative;
+  z-index: 10;
 }
 
 .registry-header-container {
@@ -1769,20 +1792,7 @@ a {
     padding-right: 0;
   }
 
-  .visual-graphic-column {
-    max-width: 480px;
-    margin: 0 auto;
-    width: 100%;
-  }
 
-  .graphic-poster-frame {
-    aspect-ratio: 3/4;
-  }
-
-  .registry-brand-accent-banner {
-    padding-right: 0;
-    margin-bottom: 3.5rem;
-  }
   
   .lookbook-polaroid-frame {
     max-width: 440px;
