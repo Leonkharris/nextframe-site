@@ -3,12 +3,35 @@
 /* Production-Ready Custom Behaviors
 /* ========================================================================= */
 
+const HERO_VIDEOS = [
+  'Hero videos/Beach_villa_real_estate_video_202605252048.mp4',
+  'Hero videos/Real_estate_agent_Manila_penthouse_202605252042.mp4',
+  'Hero videos/Real_estate_agent_Manila_penthouse_202605252046.mp4',
+  'Hero videos/Real_estate_agent_in_penthouse_202605252049.mp4',
+  'Hero videos/Woman_walks_by_pool_202605252044.mp4'
+];
+
 document.addEventListener('DOMContentLoaded', () => {
+  initHeroVideo();
   initCustomCursor();
   initHorizontalScrollIntercept();
   initScrollSpy();
   initFormInteractions();
 });
+
+function initHeroVideo() {
+  const videoEl = document.getElementById('hero-video-element');
+  if (!videoEl) return;
+  const randomVideo = HERO_VIDEOS[Math.floor(Math.random() * HERO_VIDEOS.length)];
+  videoEl.src = randomVideo;
+  videoEl.load();
+  const playPromise = videoEl.play();
+  if (playPromise !== undefined) {
+    playPromise.catch(error => {
+      console.log("Ambient cover loop video playback was prevented: ", error);
+    });
+  }
+}
 
 /* ========================================================================= */
 /* 1. TACTILE CUSTOM DESKTOP CURSOR ENGINE */
