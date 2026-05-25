@@ -131,15 +131,28 @@ function initHorizontalScrollIntercept() {
   lookbook.addEventListener('wheel', (e) => {
     // Only intercept if screen is desktop width
     if (window.innerWidth > 991) {
-      e.preventDefault();
-      
-      // Multiplier enhances speed and scrolling feel on high-res mice
-      const scrollSpeedMultiplier = 1.2;
-      lookbook.scrollLeft += e.deltaY * scrollSpeedMultiplier;
-      
-      updateProgressBar(lookbook, progress);
+      const maxScroll = lookbook.scrollWidth - lookbook.clientWidth;
+      if (maxScroll <= 0) return;
+
+      const scrollingDown = e.deltaY > 0;
+      const scrollingUp = e.deltaY < 0;
+      const currentScroll = lookbook.scrollLeft;
+
+      const isScrollableDown = currentScroll < maxScroll - 1.5;
+      const isScrollableUp = currentScroll > 1.5;
+
+      // Only intercept and prevent default page scroll if horizontal scroll is possible in that direction
+      if ((scrollingDown && isScrollableDown) || (scrollingUp && isScrollableUp)) {
+        e.preventDefault();
+        
+        // Multiplier enhances speed and scrolling feel on high-res mice
+        const scrollSpeedMultiplier = 1.2;
+        lookbook.scrollLeft += e.deltaY * scrollSpeedMultiplier;
+        
+        updateProgressBar(lookbook, progress);
+      }
     }
-  });
+  }, { passive: false });
 
   // Update progress bar on scroll events (covers touchpad swipes and key navigation)
   lookbook.addEventListener('scroll', () => {
