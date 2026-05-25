@@ -14,7 +14,7 @@
       href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css" />
+    <link rel="stylesheet" href="./styles.css?v=20260518b" />
   </head>
   <body>
     <canvas class="fx-canvas" data-fx-canvas aria-hidden="true"></canvas>
@@ -28,11 +28,18 @@
           <small>Manila</small>
         </span>
       </a>
-      <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        data-menu-toggle
+      >
         <span></span>
         <span></span>
       </button>
-      <nav class="nav-links" data-nav>
+      <nav class="nav-links" id="primary-navigation" data-nav>
         <a href="#room">Room</a>
         <a href="#vip">VIP</a>
         <a href="#proof">Proof</a>
@@ -151,13 +158,40 @@
             Mandaluyong City, with table inquiries open before doors get busy.
           </span>
           <div class="vip-options" role="tablist" aria-label="VIP options">
-            <button class="option active" type="button" data-package="table">VIP Table</button>
-            <button class="option" type="button" data-package="birthday">Birthday Night</button>
-            <button class="option" type="button" data-package="event">Private Event</button>
+            <button
+              class="option active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="package-result"
+              data-package="table"
+            >
+              VIP Table
+            </button>
+            <button
+              class="option"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="package-result"
+              data-package="birthday"
+            >
+              Birthday Night
+            </button>
+            <button
+              class="option"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="package-result"
+              data-package="event"
+            >
+              Private Event
+            </button>
           </div>
-          <div class="package-result" data-package-result>
+          <div class="package-result" id="package-result" role="tabpanel" tabindex="0" data-package-result>
             <strong>VIP Table</strong>
-            <span>Best for groups who want a spot, bottle service, and a smooth entrance path before arrival.</span>
+            <span>Best for groups who want a reserved spot, bottle service, and a smooth entrance path before arrival.</span>
           </div>
         </div>
         <div class="vip-media" data-tilt-card>
@@ -244,6 +278,6 @@
       Reservation request captured. Connect this to the BSK inbox next.
     </div>
 
-    <script src="./script.js"></script>
+    <script src="./script.js?v=20260518b"></script>
   </body>
 </html>
