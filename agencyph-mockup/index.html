@@ -46,14 +46,15 @@
   <nav class="navigation-rail" id="main-nav">
     <div class="nav-brand">
       <a href="#hero" class="nav-brand-link">
-        <img src="Logo and designs/agency ph.png" alt="Agency PH Logo" class="brand-logo">
+        <!-- Reference Pillow-generated pixel-perfect transparent dark-theme logo -->
+        <img src="Logo and designs/agency ph dark.png" alt="Agency PH Logo" class="brand-logo">
         <span class="brand-text">THE <span class="crimson-text">A</span>GENCY</span>
       </a>
     </div>
     <div class="nav-links">
       <a href="#hero" class="nav-link active" id="link-hero"><span class="nav-num">[ 01 ]</span> COVER</a>
-      <a href="#manifesto" class="nav-link" id="link-manifesto"><span class="nav-num">[ 02 ]</span> SPREAD</a>
-      <a href="#registry" class="nav-link" id="link-registry"><span class="nav-num">[ 03 ]</span> BLUEPRINTS</a>
+      <a href="#registry" class="nav-link" id="link-registry"><span class="nav-num">[ 02 ]</span> BLUEPRINTS</a>
+      <a href="#manifesto" class="nav-link" id="link-manifesto"><span class="nav-num">[ 03 ]</span> SPREAD</a>
       <a href="#privee" class="nav-link" id="link-privee"><span class="nav-num">[ 04 ]</span> PRIVÉE</a>
     </div>
     <div class="nav-contact">
@@ -64,9 +65,18 @@
   </nav>
 
   <!-- ========================================================================= -->
-  <!-- 2. SECTION 1: THE HERO AS A LIVE MAGAZINE COVER -->
+  <!-- 2. SECTION 1: THE HERO AS A LIVE MAGAZINE COVER OVER BACKGROUND VIDEO -->
   <!-- ========================================================================= -->
   <section id="hero" class="hero-live-cover">
+    
+    <!-- Widescreen Cinematic Background Video Loop -->
+    <div class="hero-video-container">
+      <video class="hero-video-bg" autoplay muted loop playsinline poster="Logo and designs/agency_3d_logo_hero.png">
+        <source src="Website assets/instagram video assets/AQP8wf0Qao4zsOwFWPvr8en00mtmgACkXibl7IRH-g_3Lf77y01ykTv9Rf9kSieEskz-mvGqAe5g5UXSvrHzSejj_fVhkIEfiwAZ-gw.mp4" type="video/mp4">
+      </video>
+      <div class="hero-video-overlay"></div>
+    </div>
+
     <!-- Subtle Grid Mesh Backing resembling premium publication paper sheet -->
     <div class="cover-paper-grid"></div>
 
@@ -154,7 +164,207 @@
   </div>
 
   <!-- ========================================================================= -->
-  <!-- 4. SECTION 2: THE CURATOR MANIFESTO AS A DOUBLE-PAGE ARTICLE SPREAD -->
+  <!-- 4. SECTION 2: REGISTRY AS AN ARCHITECTURAL BLUEPRINT CATALOG SHEET (MOVED UP) -->
+  <!-- ========================================================================= -->
+  <section id="registry" class="registry-blueprint-section">
+    <div class="ghost-watermark-large font-serif">REGISTRY</div>
+
+    <div class="magazine-running-head font-mono">
+      <span class="mag-issue">ARCHITECTURAL BLUEPRINT CATALOGUE</span>
+      <span class="mag-title">THE OFF-MARKET PORTFOLIO</span>
+      <span class="mag-page">P. 02 // BLUEPRINTS</span>
+    </div>
+    
+    <div class="registry-header-container">
+      <div class="registry-title-box">
+        <p class="registry-tag font-mono">EXCLUSIVE CATALOGUE / UNLISTED ESTATES</p>
+        <h2 class="registry-h2 font-serif">The Catalog</h2>
+      </div>
+      
+      <div class="registry-scroll-guide font-mono">
+        <span>HOLD SHIFT & SCROLL OR DRAG HORIZONTALLY</span>
+        <div class="scroll-line">
+          <div class="scroll-progress"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Horizontal Blueprint Spreads -->
+    <div class="horizontal-scroll" id="lookbook-scroll">
+      
+      <!-- Property Spread 01 -->
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-1')" onmouseleave="stopCardVideo('card-vid-1')">
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE FP-01.A // NORTH FORBES PARK</span>
+          <span class="crimson-text">14°33'N 121°02'E</span>
+        </div>
+
+        <div class="blueprint-inner-grid">
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-1" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQOwBJGPQCEVzpJYBQyjJ2Ss_opUKq3Ts4KPyaalBPinIhhGyfvCR4nVA6TkhdCPNMy_jGMmbpcoqQDz1yVBPt_9BJBjm-j5zNISdyY.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_FP_01 // EST_2026</span>
+            </div>
+          </div>
+          
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-01</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">The Pavilion Residence</h3>
+            
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">NORTH FORBES VILLAGE</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">7 BEDS // 8 BATHS // PAVILION</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">ORGANIC BRUTALISM // STEEL</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">BROKER ACCESS</span>
+                <span class="value">CONFIDENTIAL ROSTER ONLY</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              A masterfully re-engineered residential marvel hidden within Manila’s most exclusive perimeter. Designed for absolute privacy, high-volume art curation, and elite indoor-outdoor entertaining.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Spread 02 -->
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-2')" onmouseleave="stopCardVideo('card-vid-2')">
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE BGC-02.B // SKY FORTRESS</span>
+          <span class="crimson-text">14°32'N 121°03'E</span>
+        </div>
+
+        <div class="blueprint-inner-grid">
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-2" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQNiiuoDB_-8ZYt2fQfbhqCusJ4XxiZNn25iGi5b3FJ9yRQVnd9Do3vgU6WKtH3QEAu0sRm4eHVWDOXx62rmHE4A7fdIt0AgOuhRyfo.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_BGC_02 // PENTHOUSE</span>
+            </div>
+          </div>
+          
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-02</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">Seasons Sky Fortress</h3>
+            
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">BGC SKYLINE DISTRICT</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">4 BEDS // SKY TERRACE // 360</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">METROPOLITAN BRUTALISM</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">STATUS CODE</span>
+                <span class="value">OFF-MARKET EXCLUSIVE REGISTER</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              A soaring glass fortress floating above the skyline. Minimalist interior design structures raw concrete with polished steel accents, maximizing commanding urban views.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Property Spread 03 -->
+      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-3')" onmouseleave="stopCardVideo('card-vid-3')">
+        <div class="blueprint-header-metrics font-mono">
+          <span>PLATE DV-03.C // DASMA SANCTUARY</span>
+          <span class="crimson-text">14°31'N 121°01'E</span>
+        </div>
+
+        <div class="blueprint-inner-grid">
+          <div class="blueprint-visual-pane">
+            <div class="blueprint-image-wrapper">
+              <video id="card-vid-3" class="card-video" muted loop playsinline>
+                <source src="Website assets/instagram video assets/AQPVZM7pc93ukvP3hQbMrlreuQIWUXQhfVcbYt-Lq4eRbBuYyc7kzJ0mDEC7EbByYfjymU6RNK5ufODThMepgIZaUgF15yC8dkwd5ao.mp4" type="video/mp4">
+              </video>
+              <div class="card-filter"></div>
+              <span class="aperture-plate-id font-mono">SCAN_DV_03 // EST_2026</span>
+            </div>
+          </div>
+          
+          <div class="blueprint-details-pane">
+            <div class="spread-header font-mono">
+              <span class="reg-id">REG_NO: 75269-03</span>
+              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
+            </div>
+            
+            <h3 class="spread-title font-serif">The Dasma Sanctuary</h3>
+            
+            <div class="blueprint-spec-grid font-mono">
+              <div class="spec-grid-item">
+                <span class="label">LOCATION</span>
+                <span class="value">DASMARIÑAS VILLAGE</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">VOLUME MAP</span>
+                <span class="value">5 BEDS // SPA // 25M LAP POOL</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">DESIGN CLASS</span>
+                <span class="value">MODERN TROPICAL GLASS</span>
+              </div>
+              <div class="spec-grid-item">
+                <span class="label">STATUS CODE</span>
+                <span class="value">CURATED PORTFOLIO EXCLUSIVE</span>
+              </div>
+            </div>
+            
+            <p class="spread-desc font-sans">
+              An architectural statement in clean lines and organic textures. Massive floor-to-ceiling glass paneling integrates internal green courtyards with wide-volume entertainment salons.
+            </p>
+            
+            <div class="spread-action-row">
+              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================================================= -->
+  <!-- 5. SECTION 3: THE CURATOR MANIFESTO AS A DOUBLE-PAGE ARTICLE SPREAD (MOVED DOWN) -->
   <!-- ========================================================================= -->
   <section id="manifesto" class="manifesto-double-spread">
     <div class="ghost-watermark-large font-serif">MANIFESTO</div>
@@ -162,10 +372,10 @@
     <div class="magazine-running-head font-mono">
       <span class="mag-issue">THE CURATORIAL PHILOSOPHY</span>
       <span class="mag-title">THE MANIFESTO REGISTER</span>
-      <span class="mag-page">P. 02 // SPREAD</span>
+      <span class="mag-page">P. 03 // SPREAD</span>
     </div>
 
-    <!-- Double-Page Three Asymmetrical Columns -->
+    <!-- Double-Page Three Asymmetrical Columns (Spacious Refined Editorial 3-Column Grid) -->
     <div class="three-column-article-grid">
       
       <!-- Column 1: Drop Cap Editorial Intro -->
@@ -212,18 +422,9 @@
         </p>
       </div>
 
-      <!-- Column 3: Abstract Brand Curation Poster (High-Fashion Graphic) -->
-      <div class="article-column border-right visual-graphic-column">
-        <p class="column-header-tag font-sans-mini">[ BRAND GRAPHIC PLATE // 03 ]</p>
-        <div class="graphic-poster-frame">
-          <img src="Logo and designs/agency_brush_backdrop.png" alt="Agency PH Energetic Brand Curation Graphic" class="poster-image">
-          <span class="poster-tag font-sans-mini">EST. 2026 // DYNAMIC GRAPHIC DESIGN</span>
-        </div>
-      </div>
-
-      <!-- Column 4: Curator Polaroid & Spec Sheets -->
+      <!-- Column 3: Curator Polaroid & Spec Sheets -->
       <div class="article-column">
-        <p class="column-header-tag font-sans-mini">[ VISUAL REGISTER // 04 ]</p>
+        <p class="column-header-tag font-sans-mini">[ VISUAL REGISTER // 03 ]</p>
         
         <div class="lookbook-polaroid-frame">
           <div class="polaroid-image-container">
@@ -259,223 +460,6 @@
   </section>
 
   <!-- ========================================================================= -->
-  <!-- 5. SECTION 3: REGISTRY AS AN ARCHITECTURAL BLUEPRINT CATALOG SHEET -->
-  <!-- ========================================================================= -->
-  <section id="registry" class="registry-blueprint-section">
-    <div class="ghost-watermark-large font-serif">REGISTRY</div>
-
-    <div class="magazine-running-head font-mono">
-      <span class="mag-issue">ARCHITECTURAL BLUEPRINT CATALOGUE</span>
-      <span class="mag-title">THE OFF-MARKET PORTFOLIO</span>
-      <span class="mag-page">P. 03 // BLUEPRINTS</span>
-    </div>
-    
-    <div class="registry-header-container">
-      <div class="registry-title-box">
-        <p class="registry-tag font-mono">EXCLUSIVE CATALOGUE / UNLISTED ESTATES</p>
-        <h2 class="registry-h2 font-serif">The Catalog</h2>
-      </div>
-      
-      <div class="registry-scroll-guide font-mono">
-        <span>HOLD SHIFT & SCROLL OR DRAG HORIZONTALLY</span>
-        <div class="scroll-line">
-          <div class="scroll-progress"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Dynamic Halftone Graphic Accent Divider Banner -->
-    <div class="registry-brand-accent-banner">
-      <img src="Logo and designs/agency_halftone_accent.png" alt="Agency PH Halftone Curve Wave Graphic" class="accent-banner-img">
-    </div>
-
-    <!-- Horizontal Blueprint Spreads -->
-    <div class="horizontal-scroll" id="lookbook-scroll">
-      
-      <!-- Property Spread 01 -->
-      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-1')" onmouseleave="stopCardVideo('card-vid-1')">
-        <!-- Blueprint Technical Overlays -->
-        <div class="blueprint-header-metrics font-mono">
-          <span>PLATE FP-01.A // NORTH FORBES PARK</span>
-          <span class="crimson-text">14°33'N 121°02'E</span>
-        </div>
-
-        <div class="blueprint-inner-grid">
-          <!-- Left Column: Cinematic Video Frame -->
-          <div class="blueprint-visual-pane">
-            <div class="blueprint-image-wrapper">
-              <video id="card-vid-1" class="card-video" muted loop playsinline>
-                <source src="Website assets/instagram video assets/AQOwBJGPQCEVzpJYBQyjJ2Ss_opUKq3Ts4KPyaalBPinIhhGyfvCR4nVA6TkhdCPNMy_jGMmbpcoqQDz1yVBPt_9BJBjm-j5zNISdyY.mp4" type="video/mp4">
-              </video>
-              <div class="card-filter"></div>
-              <span class="aperture-plate-id font-mono">SCAN_FP_01 // EST_2026</span>
-            </div>
-          </div>
-          
-          <!-- Right Column: Specs Ledger Sheet -->
-          <div class="blueprint-details-pane">
-            <div class="spread-header font-mono">
-              <span class="reg-id">REG_NO: 75269-01</span>
-              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
-            </div>
-            
-            <h3 class="spread-title font-serif">The Pavilion Residence</h3>
-            
-            <!-- Monospace Technical Catalog Grid -->
-            <div class="blueprint-spec-grid font-mono">
-              <div class="spec-grid-item">
-                <span class="label">LOCATION</span>
-                <span class="value">NORTH FORBES VILLAGE</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">VOLUME MAP</span>
-                <span class="value">7 BEDS // 8 BATHS // PAVILION</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">DESIGN CLASS</span>
-                <span class="value">ORGANIC BRUTALISM // STEEL</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">BROKER ACCESS</span>
-                <span class="value">CONFIDENTIAL ROSTER ONLY</span>
-              </div>
-            </div>
-            
-            <p class="spread-desc font-sans">
-              A masterfully re-engineered residential marvel hidden within Manila’s most exclusive perimeter. Designed for absolute privacy, high-volume art curation, and elite indoor-outdoor entertaining.
-            </p>
-            
-            <div class="spread-action-row">
-              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Property Spread 02 -->
-      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-2')" onmouseleave="stopCardVideo('card-vid-2')">
-        <!-- Blueprint Technical Overlays -->
-        <div class="blueprint-header-metrics font-mono">
-          <span>PLATE BGC-02.B // SKY FORTRESS</span>
-          <span class="crimson-text">14°32'N 121°03'E</span>
-        </div>
-
-        <div class="blueprint-inner-grid">
-          <!-- Left Column: Cinematic Video Frame -->
-          <div class="blueprint-visual-pane">
-            <div class="blueprint-image-wrapper">
-              <video id="card-vid-2" class="card-video" muted loop playsinline>
-                <source src="Website assets/instagram video assets/AQNiiuoDB_-8ZYt2fQfbhqCusJ4XxiZNn25iGi5b3FJ9yRQVnd9Do3vgU6WKtH3QEAu0sRm4eHVWDOXx62rmHE4A7fdIt0AgOuhRyfo.mp4" type="video/mp4">
-              </video>
-              <div class="card-filter"></div>
-              <span class="aperture-plate-id font-mono">SCAN_BGC_02 // PENTHOUSE</span>
-            </div>
-          </div>
-          
-          <!-- Right Column: Specs Ledger Sheet -->
-          <div class="blueprint-details-pane">
-            <div class="spread-header font-mono">
-              <span class="reg-id">REG_NO: 75269-02</span>
-              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
-            </div>
-            
-            <h3 class="spread-title font-serif">Seasons Sky Fortress</h3>
-            
-            <!-- Monospace Technical Catalog Grid -->
-            <div class="blueprint-spec-grid font-mono">
-              <div class="spec-grid-item">
-                <span class="label">LOCATION</span>
-                <span class="value">BGC SKYLINE DISTRICT</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">VOLUME MAP</span>
-                <span class="value">4 BEDS // SKY TERRACE // 360</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">DESIGN CLASS</span>
-                <span class="value">METROPOLITAN BRUTALISM</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">STATUS CODE</span>
-                <span class="value">OFF-MARKET EXCLUSIVE REGISTER</span>
-              </div>
-            </div>
-            
-            <p class="spread-desc font-sans">
-              A soaring glass fortress floating above the skyline. Minimalist interior design structures raw concrete with polished steel accents, maximizing commanding urban views.
-            </p>
-            
-            <div class="spread-action-row">
-              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Property Spread 03 -->
-      <div class="blueprint-spread" onmouseenter="startCardVideo('card-vid-3')" onmouseleave="stopCardVideo('card-vid-3')">
-        <!-- Blueprint Technical Overlays -->
-        <div class="blueprint-header-metrics font-mono">
-          <span>PLATE DV-03.C // DASMA SANCTUARY</span>
-          <span class="crimson-text">14°31'N 121°01'E</span>
-        </div>
-
-        <div class="blueprint-inner-grid">
-          <!-- Left Column: Cinematic Video Frame -->
-          <div class="blueprint-visual-pane">
-            <div class="blueprint-image-wrapper">
-              <video id="card-vid-3" class="card-video" muted loop playsinline>
-                <source src="Website assets/instagram video assets/AQPVZM7pc93ukvP3hQbMrlreuQIWUXQhfVcbYt-Lq4eRbBuYyc7kzJ0mDEC7EbByYfjymU6RNK5ufODThMepgIZaUgF15yC8dkwd5ao.mp4" type="video/mp4">
-              </video>
-              <div class="card-filter"></div>
-              <span class="aperture-plate-id font-mono">SCAN_DV_03 // EST_2026</span>
-            </div>
-          </div>
-          
-          <!-- Right Column: Specs Ledger Sheet -->
-          <div class="blueprint-details-pane">
-            <div class="spread-header font-mono">
-              <span class="reg-id">REG_NO: 75269-03</span>
-              <span class="reg-conf">STRICTLY CONFIDENTIAL</span>
-            </div>
-            
-            <h3 class="spread-title font-serif">The Dasma Sanctuary</h3>
-            
-            <!-- Monospace Technical Catalog Grid -->
-            <div class="blueprint-spec-grid font-mono">
-              <div class="spec-grid-item">
-                <span class="label">LOCATION</span>
-                <span class="value">DASMARIÑAS VILLAGE</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">VOLUME MAP</span>
-                <span class="value">5 BEDS // SPA // 25M LAP POOL</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">DESIGN CLASS</span>
-                <span class="value">MODERN TROPICAL GLASS</span>
-              </div>
-              <div class="spec-grid-item">
-                <span class="label">STATUS CODE</span>
-                <span class="value">CURATED PORTFOLIO EXCLUSIVE</span>
-              </div>
-            </div>
-            
-            <p class="spread-desc font-sans">
-              An architectural statement in clean lines and organic textures. Massive floor-to-ceiling glass paneling integrates internal green courtyards with wide-volume entertainment salons.
-            </p>
-            
-            <div class="spread-action-row">
-              <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ========================================================================= -->
   <!-- 6. SECTION 4: PRIVÉE REGISTRATION AS AN INVITE CARD OVERLAY -->
   <!-- ========================================================================= -->
   <section id="privee" class="privee-portal-section">
@@ -488,7 +472,6 @@
     </div>
     
     <div class="privee-card-viewport">
-      <!-- The Floating Invitation Card -->
       <div class="privee-invitation-card">
         
         <!-- Interactive Rotating Stamp -->
@@ -504,7 +487,6 @@
         </div>
 
         <div class="card-grid-inner">
-          <!-- Left Column: Invitee Narrative -->
           <div class="privee-editorial-intro">
             <span class="privee-tag font-mono">[ PLACEMENT APPLICATION ]</span>
             <h2 class="privee-title-serif font-serif">Privée<br>Registration</h2>
@@ -516,7 +498,6 @@
             </p>
           </div>
 
-          <!-- Right Column: Minimal Ledger Form -->
           <div class="privee-form-magazine">
             <form class="minimal-form-magazine" id="application-form" onsubmit="handleFormSubmission(event)">
               
@@ -574,7 +555,6 @@
       </div>
     </div>
     
-    <!-- Footer Margin Info -->
     <footer class="privee-footer-magazine font-mono">
       <span>© 2026 THE AGENCY PH. ALL RIGHTS RESERVED.</span>
       <span>ARCHITECTURAL CINEMA & PRIME PROPERTIES</span>
