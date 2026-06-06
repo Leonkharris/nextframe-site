@@ -1,35 +1,35 @@
-const header = document.querySelector("[data-header]");
-const mobileCta = document.querySelector("[data-mobile-cta]");
-const toast = document.querySelector("[data-toast]");
-const revealItems = [...document.querySelectorAll("[data-reveal]")];
+const bookingForm = document.querySelector("[data-booking-form]");
 const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-const setChromeState = () => {
-  const pastCover = window.scrollY > window.innerHeight * 0.7;
-  header?.classList.toggle("scrolled", window.scrollY > 24);
-  mobileCta?.classList.toggle("show", pastCover);
+const buildMailto = (form) => {
+  const data = new FormData(form);
+  const lines = [
+    "Booking request for Glyzel Suyat",
+    "",
+    `Name / brand: ${data.get("name") || ""}`,
+    `Project type: ${data.get("project") || ""}`,
+    `Shoot date or range: ${data.get("date") || ""}`,
+    `Location: ${data.get("location") || ""}`,
+    `Contact: ${data.get("contact") || ""}`,
+    "",
+    "Brief:",
+    data.get("brief") || "",
+    "",
+    "Portfolio page: https://next-frame.agency/models/glyzel-suyat/",
+  ];
+
+  const subject = encodeURIComponent("Booking request for Glyzel Suyat");
+  const body = encodeURIComponent(lines.join("\n"));
+  return `mailto:suyatglyzel@gmail.com?subject=${subject}&body=${body}`;
 };
 
-window.addEventListener("scroll", setChromeState, { passive: true });
-setChromeState();
-
-if ("IntersectionObserver" in window) {
-  const revealObserver = new IntersectionObserver(
-    (entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          revealObserver.unobserve(entry.target);
-        }
-      });
-    },
-    { threshold: 0.08 },
-  );
-
-  revealItems.forEach((item) => revealObserver.observe(item));
-} else {
-  revealItems.forEach((item) => item.classList.add("visible"));
-}
+bookingForm?.addEventListener("submit", (event) => {
+  event.preventDefault();
+  if (!bookingForm.reportValidity()) return;
+  const mailto = buildMailto(bookingForm);
+  window.__lastBookingMailto = mailto;
+  window.location.href = mailto;
+});
 
 const forcePlayVideos = () => {
   if (reducedMotion) return;
@@ -45,12 +45,5 @@ const forcePlayVideos = () => {
 
 document.addEventListener("DOMContentLoaded", forcePlayVideos);
 window.addEventListener("load", forcePlayVideos);
-document.addEventListener("click", forcePlayVideos, { once: true });
 document.addEventListener("touchstart", forcePlayVideos, { once: true, passive: true });
-
-document.querySelector("[data-booking-form]")?.addEventListener("submit", (event) => {
-  event.preventDefault();
-  toast?.classList.add("show");
-  window.setTimeout(() => toast?.classList.remove("show"), 3800);
-  event.currentTarget.reset();
-});
+document.addEventListener("click", forcePlayVideos, { once: true });
