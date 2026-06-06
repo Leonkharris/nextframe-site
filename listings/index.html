@@ -1,0 +1,850 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NextFrame Listings Engine</title>
+    <meta
+      name="description"
+      content="Paste a real estate listing, generate four ad angles, edit the selected post, and queue it for Facebook and Instagram."
+    />
+    <style>
+      :root {
+        color-scheme: dark;
+        --bg: #07110f;
+        --panel: #101715;
+        --panel-2: #151d1a;
+        --line: #2b3a35;
+        --text: #f6f3e8;
+        --muted: #b6b3a8;
+        --teal: #20c7ac;
+        --gold: #f6c567;
+        --coral: #f06f57;
+        --ink: #09100e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        background:
+          radial-gradient(circle at top left, rgba(32, 199, 172, 0.18), transparent 34rem),
+          linear-gradient(135deg, #07110f 0%, #15110d 100%);
+        color: var(--text);
+        font-family:
+          Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      }
+
+      button,
+      textarea {
+        font: inherit;
+      }
+
+      .page {
+        width: min(1180px, 100%);
+        margin: 0 auto;
+        padding: 24px 16px 40px;
+      }
+
+      .top {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 18px;
+      }
+
+      .brand {
+        margin: 0;
+        color: var(--muted);
+        font-size: 0.78rem;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      h1 {
+        margin: 6px 0 0;
+        max-width: 720px;
+        font-size: clamp(2.2rem, 7vw, 4.8rem);
+        line-height: 0.94;
+        letter-spacing: 0;
+      }
+
+      .domain-link {
+        min-height: 42px;
+        padding: 11px 14px;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        color: var(--text);
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.04);
+        white-space: nowrap;
+      }
+
+      .layout {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(320px, 1.05fr);
+        gap: 16px;
+        align-items: start;
+      }
+
+      .panel {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        background: rgba(16, 23, 21, 0.92);
+        box-shadow: 0 18px 60px rgba(0, 0, 0, 0.22);
+      }
+
+      .chat {
+        padding: 16px;
+      }
+
+      .bot-line {
+        margin-bottom: 14px;
+        padding: 14px;
+        border: 1px solid rgba(32, 199, 172, 0.28);
+        border-radius: 8px;
+        background: rgba(32, 199, 172, 0.08);
+      }
+
+      .bot-line strong {
+        display: block;
+        margin-bottom: 5px;
+      }
+
+      .bot-line span {
+        color: var(--muted);
+      }
+
+      label {
+        display: block;
+        margin: 0 0 8px;
+        color: var(--muted);
+        font-size: 0.9rem;
+        font-weight: 700;
+      }
+
+      textarea {
+        width: 100%;
+        min-height: 220px;
+        resize: vertical;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 14px;
+        background: #0b1210;
+        color: var(--text);
+        outline: none;
+        line-height: 1.45;
+      }
+
+      textarea:focus {
+        border-color: var(--teal);
+        box-shadow: 0 0 0 3px rgba(32, 199, 172, 0.14);
+      }
+
+      .actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        margin-top: 12px;
+      }
+
+      .btn {
+        min-height: 44px;
+        border: 0;
+        border-radius: 8px;
+        padding: 11px 15px;
+        color: var(--ink);
+        background: var(--teal);
+        font-weight: 900;
+        cursor: pointer;
+      }
+
+      .btn.secondary {
+        border: 1px solid var(--line);
+        color: var(--text);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .btn.warning {
+        background: var(--gold);
+      }
+
+      .btn:active {
+        transform: translateY(1px);
+      }
+
+      .options {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .option {
+        width: 100%;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 10px;
+        color: var(--text);
+        text-align: left;
+        background: rgba(255, 255, 255, 0.04);
+        cursor: pointer;
+      }
+
+      .option.active {
+        border-color: var(--teal);
+        background: rgba(32, 199, 172, 0.12);
+      }
+
+      .option small {
+        display: block;
+        margin-bottom: 6px;
+        color: var(--gold);
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .option strong {
+        display: block;
+        margin-bottom: 6px;
+        font-size: 1.02rem;
+      }
+
+      .option span {
+        color: var(--muted);
+        line-height: 1.35;
+      }
+
+      .option-visual {
+        display: grid;
+        align-content: space-between;
+        gap: 12px;
+        min-height: 255px;
+        margin-bottom: 10px;
+        overflow: hidden;
+        border-radius: 8px;
+        padding: 15px;
+        color: #fff;
+      }
+
+      .option-visual.urgent {
+        background: linear-gradient(140deg, #0f172a, #14532d);
+      }
+
+      .option-visual.premium {
+        background: linear-gradient(140deg, #101114, #0f766e);
+      }
+
+      .option-visual.investment {
+        background: linear-gradient(140deg, #111827, #78350f);
+      }
+
+      .option-visual.direct {
+        background: linear-gradient(140deg, #082f49, #14b8a6);
+      }
+
+      .option-visual small {
+        width: fit-content;
+        margin: 0;
+        padding: 6px 8px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.16);
+        color: #fff;
+        font-size: 0.66rem;
+      }
+
+      .option-visual b {
+        max-width: 9ch;
+        color: #fff;
+        font-size: clamp(2.2rem, 7vw, 3.2rem);
+        line-height: 0.9;
+      }
+
+      .option-visual p {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.78);
+        font-size: 0.84rem;
+        font-weight: 800;
+      }
+
+      .option-visual div {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 7px;
+      }
+
+      .option-visual em {
+        min-height: 46px;
+        display: grid;
+        place-items: center;
+        padding: 7px;
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.12);
+        color: #fff;
+        font-size: 0.72rem;
+        font-style: normal;
+        font-weight: 900;
+        text-align: center;
+      }
+
+      .workspace {
+        display: grid;
+        gap: 16px;
+      }
+
+      .section {
+        padding: 16px;
+      }
+
+      .section h2 {
+        margin: 0 0 12px;
+        font-size: 1.08rem;
+      }
+
+      .editor {
+        min-height: 250px;
+      }
+
+      .cta-row {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 8px;
+        margin-top: 10px;
+      }
+
+      .preview-wrap {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+
+      .infographic {
+        position: relative;
+        overflow: hidden;
+        aspect-ratio: 4 / 5;
+        border-radius: 8px;
+        border: 1px solid rgba(246, 197, 103, 0.34);
+        padding: 18px;
+        background:
+          linear-gradient(150deg, rgba(9, 16, 14, 0.88), rgba(9, 16, 14, 0.66)),
+          linear-gradient(135deg, #123f38, #2a1711 56%, #31220c);
+      }
+
+      .infographic::before {
+        content: "";
+        position: absolute;
+        inset: 16px;
+        border: 1px solid rgba(246, 243, 232, 0.18);
+        border-radius: 8px;
+        pointer-events: none;
+      }
+
+      .info-content {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        min-height: 100%;
+        flex-direction: column;
+      }
+
+      .kicker {
+        width: fit-content;
+        margin-bottom: 16px;
+        padding: 7px 10px;
+        border-radius: 8px;
+        color: var(--ink);
+        background: var(--gold);
+        font-size: 0.78rem;
+        font-weight: 950;
+        text-transform: uppercase;
+      }
+
+      .info-title {
+        margin: 0;
+        font-size: clamp(2rem, 10vw, 3.8rem);
+        line-height: 0.92;
+        letter-spacing: 0;
+      }
+
+      .info-subtitle {
+        margin: 12px 0 0;
+        color: #d8d3c4;
+        font-weight: 700;
+      }
+
+      .stats {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        margin: auto 0 16px;
+        padding-top: 24px;
+      }
+
+      .stat {
+        min-height: 76px;
+        border: 1px solid rgba(246, 243, 232, 0.16);
+        border-radius: 8px;
+        padding: 10px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .stat b {
+        display: block;
+        color: var(--gold);
+        font-size: 1.05rem;
+      }
+
+      .stat span {
+        color: #d8d3c4;
+        font-size: 0.82rem;
+      }
+
+      .info-footer {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 10px;
+        padding-top: 12px;
+        border-top: 1px solid rgba(246, 243, 232, 0.18);
+        color: #efe8d2;
+        font-weight: 900;
+      }
+
+      .status {
+        min-height: 22px;
+        margin-top: 10px;
+        color: var(--gold);
+        font-size: 0.9rem;
+        font-weight: 800;
+      }
+
+      @media (max-width: 860px) {
+        .top {
+          display: block;
+        }
+
+        .domain-link {
+          display: inline-flex;
+          align-items: center;
+          margin-top: 14px;
+        }
+
+        .layout {
+          grid-template-columns: 1fr;
+        }
+
+        .options {
+          grid-template-columns: 1fr;
+        }
+
+        .page {
+          padding-top: 16px;
+        }
+
+        .infographic {
+          min-height: 430px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="page">
+      <header class="top">
+        <div>
+          <p class="brand">NextFrame PH Real Estate Engine</p>
+          <h1>Paste listing. Pick ad. Push to social.</h1>
+        </div>
+        <a class="domain-link" href="/">next-frame.agency</a>
+      </header>
+
+      <section class="layout" aria-label="Listings ad generator">
+        <div class="panel chat">
+          <div class="bot-line">
+            <strong>Chat input</strong>
+            <span>Paste the listing exactly as the agent sends it. This creates four different ad angles plus a visual brief.</span>
+          </div>
+
+          <label for="listingInput">Listing message</label>
+          <textarea id="listingInput" spellcheck="true">repriced alert
+
+FOR SALE
+- West Gallery Place
+2BR Corner Unit - Bare 18Floor
+With Storage
+92sqm with 1 parking
+45MGross
+Location - Bonifacio Global City
+Direct to owner</textarea>
+
+          <div class="actions">
+            <button class="btn" id="generateButton" type="button">Generate 4 ads</button>
+            <button class="btn secondary" id="rerollButton" type="button">Reroll angles</button>
+          </div>
+
+          <p class="status" id="status">Ready.</p>
+        </div>
+
+        <div class="workspace">
+          <section class="panel section">
+            <h2>Choose one</h2>
+            <div class="options" id="options"></div>
+          </section>
+
+          <section class="panel section">
+            <h2>Edit selected post</h2>
+            <label for="postEditor">Caption</label>
+            <textarea class="editor" id="postEditor"></textarea>
+            <div class="cta-row">
+              <label for="ctaEditor">Call to action</label>
+              <textarea id="ctaEditor" style="min-height: 76px"></textarea>
+            </div>
+            <div class="actions">
+              <button class="btn warning" id="copyButton" type="button">Copy edited post</button>
+              <button class="btn secondary" id="queueButton" type="button">Queue for FB + IG</button>
+            </div>
+          </section>
+
+          <section class="panel section">
+            <h2>Infographic preview</h2>
+            <div class="preview-wrap">
+              <article class="infographic" id="infographic" aria-label="Generated listing infographic">
+                <div class="info-content">
+                  <div class="kicker" id="visualKicker">Repriced alert</div>
+                  <h2 class="info-title" id="visualTitle">BGC 2BR Corner Unit</h2>
+                  <p class="info-subtitle" id="visualSubtitle">West Gallery Place</p>
+                  <div class="stats" id="visualStats"></div>
+                  <div class="info-footer">
+                    <span id="visualFooter">Direct to owner</span>
+                    <span>NextFrame</span>
+                  </div>
+                </div>
+              </article>
+              <button class="btn secondary" id="downloadButton" type="button">Download infographic PNG</button>
+            </div>
+          </section>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const input = document.querySelector("#listingInput");
+      const optionsEl = document.querySelector("#options");
+      const postEditor = document.querySelector("#postEditor");
+      const ctaEditor = document.querySelector("#ctaEditor");
+      const statusEl = document.querySelector("#status");
+      const visualKicker = document.querySelector("#visualKicker");
+      const visualTitle = document.querySelector("#visualTitle");
+      const visualSubtitle = document.querySelector("#visualSubtitle");
+      const visualStats = document.querySelector("#visualStats");
+      const visualFooter = document.querySelector("#visualFooter");
+
+      let currentOptions = [];
+      let selectedIndex = 0;
+      let reroll = 0;
+
+      function cleanLine(value) {
+        return value
+          .replace(/^[\s\-*.,:;]+/, "")
+          .replace(/\s+/g, " ")
+          .trim();
+      }
+
+      function parseListing(raw) {
+        const lines = raw.split(/\r?\n/).map(cleanLine).filter(Boolean);
+        const full = lines.join(" ");
+        const projectLine =
+          lines.find((line) => /gallery|place|residence|condo|tower|suite|village|park|estate/i.test(line)) ||
+          lines[0] ||
+          "Prime BGC property";
+        const priceMatch = full.match(/(?:PHP|P)?\s?(\d+(?:\.\d+)?)\s?M/i);
+        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s?sq\s?m/i);
+        const bedroomMatch = full.match(/(\d+)\s?BR/i);
+        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s?Floor/i);
+        const parkingMatch = full.match(/(\d+)\s?parking/i);
+        const locationLine = lines.find((line) => /location/i.test(line));
+        const unitLine = lines.find((line) => /BR|Corner|Bare|Furnished|Unit/i.test(line)) || "";
+
+        return {
+          project: projectLine.replace(/^FOR SALE\s*/i, ""),
+          alert: /reprice/i.test(full) ? "Repriced alert" : "Fresh listing",
+          status: /for sale/i.test(full) ? "For Sale" : "Available",
+          unit: unitLine || "Premium residence",
+          bedrooms: bedroomMatch ? `${bedroomMatch[1]}BR` : "Residence",
+          floor: floorMatch ? `${floorMatch[1]}F` : "High floor",
+          storage: /storage/i.test(full) ? "With storage" : "Storage not listed",
+          sqm: sqmMatch ? `${sqmMatch[1]} sqm` : "Size on request",
+          parking: parkingMatch ? `${parkingMatch[1]} parking` : /parking/i.test(full) ? "With parking" : "Parking on request",
+          price: priceMatch ? `PHP ${priceMatch[1]}M gross` : "Price on request",
+          location: locationLine ? cleanLine(locationLine.replace(/location/i, "")) : "Bonifacio Global City",
+          direct: /direct to owner/i.test(full) ? "Direct to owner" : "Broker review required",
+        };
+      }
+
+      function makeOptions(listing, seed) {
+        const urgency = seed % 2 === 0 ? "repriced" : "newly available";
+        return [
+          {
+            channel: "Facebook feed",
+            headline: `${listing.bedrooms} corner unit in ${listing.location}`,
+            subhead: `${listing.project} | ${listing.sqm} | ${listing.price}`,
+            body: `${listing.alert}: A ${listing.bedrooms} corner unit at ${listing.project} is now available in ${listing.location}.\n\nKey details:\n- ${listing.unit}\n- ${listing.sqm}\n- ${listing.parking}\n- ${listing.storage}\n- ${listing.price}\n- ${listing.direct}\n\nThis is for buyers who want a real BGC address with space, parking, and a direct-owner path.`,
+            cta: "Message us for the full details, viewing schedule, and direct-owner next steps.",
+            visual: {
+              tone: "urgent",
+              kicker: listing.alert,
+              title: `${listing.bedrooms} BGC Corner Unit`,
+              subtitle: listing.project,
+              stats: [
+                [listing.price, "Gross price"],
+                [listing.sqm, "Interior size"],
+                [listing.parking, "Included"],
+                [listing.floor, "Floor"],
+              ],
+              footer: listing.direct,
+            },
+          },
+          {
+            channel: "Instagram caption",
+            headline: `A cleaner BGC upgrade at ${listing.project}`,
+            subhead: `${listing.bedrooms} bare corner unit with parking`,
+            body: `If you have been waiting for a serious BGC option, this is the one to inspect.\n\n${listing.project} gives you a ${listing.bedrooms} corner layout, ${listing.sqm}, ${listing.parking}, and ${listing.storage.toLowerCase()}.\n\nThe unit is bare, which makes it easier to design properly instead of paying for someone else's taste. Current guide: ${listing.price}.`,
+            cta: "Send BGC and we will send the viewing details and availability check.",
+            visual: {
+              tone: "premium",
+              kicker: "BGC listing",
+              title: `${listing.project}`,
+              subtitle: `${listing.bedrooms} corner unit | ${listing.price}`,
+              stats: [
+                [listing.sqm, "Size"],
+                [listing.parking, "Parking"],
+                [listing.storage, "Extra"],
+                [listing.location, "Location"],
+              ],
+              footer: "Message to view",
+            },
+          },
+          {
+            channel: "Lead ad",
+            headline: `Looking for a real ${listing.location} buy?`,
+            subhead: `${listing.project}, ${listing.price}, direct-owner path`,
+            body: `For qualified buyers comparing BGC inventory: ${listing.project} has a ${urgency} ${listing.bedrooms} corner unit available.\n\nWhy it is worth checking:\n- Corner layout\n- ${listing.sqm}\n- ${listing.parking}\n- ${listing.storage}\n- ${listing.direct}\n\nThis is a direct conversation for buyers who can move quickly after due diligence.`,
+            cta: "Tap to request the full fact sheet, exact availability, and viewing window.",
+            visual: {
+              tone: "investment",
+              kicker: "Buyer match",
+              title: "Qualified BGC Buyers",
+              subtitle: `${listing.project} | ${listing.price}`,
+              stats: [
+                [listing.bedrooms, "Layout"],
+                [listing.sqm, "Area"],
+                [listing.parking, "Parking"],
+                [listing.direct, "Access"],
+              ],
+              footer: "Fact sheet available",
+            },
+          },
+          {
+            channel: "Carousel script",
+            headline: `4 things to know about this ${listing.project} listing`,
+            subhead: `Built for an IG carousel or FB album post`,
+            body: `Slide 1: ${listing.bedrooms} corner unit in ${listing.location}\nSlide 2: ${listing.sqm}, ${listing.parking}, ${listing.storage.toLowerCase()}\nSlide 3: Bare unit, so the buyer controls the finish and layout direction\nSlide 4: ${listing.price}, ${listing.direct.toLowerCase()}\n\nCaption: This ${listing.project} unit is for buyers who want the BGC location without guessing through incomplete listing details.`,
+            cta: "Comment DETAILS or message us to get the full listing sheet.",
+            visual: {
+              tone: "direct",
+              kicker: "Carousel ready",
+              title: "4 Listing Facts",
+              subtitle: `${listing.project} in ${listing.location}`,
+              stats: [
+                [listing.bedrooms, "Corner unit"],
+                [listing.sqm, "Size"],
+                [listing.price, "Price"],
+                [listing.direct, "Seller path"],
+              ],
+              footer: "Ready for FB + IG",
+            },
+          },
+        ];
+      }
+
+      function renderOptions() {
+        optionsEl.innerHTML = "";
+        currentOptions.forEach((option, index) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = `option${index === selectedIndex ? " active" : ""}`;
+          button.innerHTML = `
+            <div class="option-visual ${option.visual.tone}">
+              <small>${option.visual.kicker}</small>
+              <b>${option.visual.title}</b>
+              <p>${option.headline}</p>
+              <div>${option.visual.stats.map(([value]) => `<em>${value}</em>`).join("")}</div>
+            </div>
+            <small>${option.channel}</small>
+            <strong>${option.headline}</strong>
+            <span>${option.subhead}</span>
+          `;
+          button.addEventListener("click", () => selectOption(index));
+          optionsEl.appendChild(button);
+        });
+      }
+
+      function renderVisual(option) {
+        visualKicker.textContent = option.visual.kicker;
+        visualTitle.textContent = option.visual.title;
+        visualSubtitle.textContent = option.visual.subtitle;
+        visualFooter.textContent = option.visual.footer;
+        visualStats.innerHTML = "";
+        option.visual.stats.forEach(([value, label]) => {
+          const stat = document.createElement("div");
+          stat.className = "stat";
+          stat.innerHTML = `<b>${value}</b><span>${label}</span>`;
+          visualStats.appendChild(stat);
+        });
+      }
+
+      function selectOption(index) {
+        selectedIndex = index;
+        const option = currentOptions[selectedIndex];
+        postEditor.value = option.body;
+        ctaEditor.value = option.cta;
+        renderOptions();
+        renderVisual(option);
+        statusEl.textContent = `Selected: ${option.channel}.`;
+      }
+
+      function generate() {
+        const listing = parseListing(input.value);
+        currentOptions = makeOptions(listing, reroll);
+        selectOption(0);
+        statusEl.textContent = "Generated four visual ad creatives.";
+        window.setTimeout(() => optionsEl.scrollIntoView({ behavior: "smooth", block: "start" }), 60);
+      }
+
+      async function copyText(text, success) {
+        try {
+          await navigator.clipboard.writeText(text);
+          statusEl.textContent = success;
+        } catch (error) {
+          statusEl.textContent = "Copy failed. Select the text manually.";
+        }
+      }
+
+      function buildPostText() {
+        return `${postEditor.value.trim()}\n\n${ctaEditor.value.trim()}`.trim();
+      }
+
+      function queuePost() {
+        const option = currentOptions[selectedIndex];
+        const packet = {
+          createdAt: new Date().toISOString(),
+          platforms: ["facebook", "instagram"],
+          status: "ready_for_review",
+          selectedAngle: option.channel,
+          postText: buildPostText(),
+          infographicBrief: option.visual,
+          rule: "Final post must be reviewed by the listing owner or authorized agent before publishing.",
+        };
+        const existing = JSON.parse(localStorage.getItem("nextframeListingQueue") || "[]");
+        existing.unshift(packet);
+        localStorage.setItem("nextframeListingQueue", JSON.stringify(existing.slice(0, 25)));
+        copyText(JSON.stringify(packet, null, 2), "Queued locally and copied the FB/IG packet.");
+      }
+
+      function downloadInfographic() {
+        const option = currentOptions[selectedIndex];
+        const canvas = document.createElement("canvas");
+        canvas.width = 1080;
+        canvas.height = 1350;
+        const ctx = canvas.getContext("2d");
+        const gradient = ctx.createLinearGradient(0, 0, 1080, 1350);
+        gradient.addColorStop(0, "#123f38");
+        gradient.addColorStop(0.55, "#2a1711");
+        gradient.addColorStop(1, "#31220c");
+        ctx.fillStyle = gradient;
+        ctx.fillRect(0, 0, 1080, 1350);
+
+        ctx.strokeStyle = "rgba(246,243,232,0.24)";
+        ctx.lineWidth = 4;
+        ctx.strokeRect(64, 64, 952, 1222);
+
+        ctx.fillStyle = "#f6c567";
+        ctx.fillRect(92, 96, 330, 64);
+        ctx.fillStyle = "#09100e";
+        ctx.font = "900 30px Arial";
+        ctx.fillText(option.visual.kicker.toUpperCase(), 114, 139);
+
+        ctx.fillStyle = "#f6f3e8";
+        ctx.font = "900 92px Arial";
+        wrapCanvasText(ctx, option.visual.title, 92, 290, 900, 96);
+
+        ctx.fillStyle = "#d8d3c4";
+        ctx.font = "700 38px Arial";
+        wrapCanvasText(ctx, option.visual.subtitle, 92, 500, 900, 48);
+
+        option.visual.stats.forEach(([value, label], index) => {
+          const x = index % 2 === 0 ? 92 : 556;
+          const y = 760 + Math.floor(index / 2) * 190;
+          ctx.fillStyle = "rgba(255,255,255,0.08)";
+          ctx.fillRect(x, y, 430, 142);
+          ctx.strokeStyle = "rgba(246,243,232,0.18)";
+          ctx.strokeRect(x, y, 430, 142);
+          ctx.fillStyle = "#f6c567";
+          ctx.font = "900 42px Arial";
+          wrapCanvasText(ctx, value, x + 28, y + 58, 370, 44);
+          ctx.fillStyle = "#d8d3c4";
+          ctx.font = "600 28px Arial";
+          ctx.fillText(label, x + 28, y + 112);
+        });
+
+        ctx.strokeStyle = "rgba(246,243,232,0.24)";
+        ctx.beginPath();
+        ctx.moveTo(92, 1200);
+        ctx.lineTo(988, 1200);
+        ctx.stroke();
+        ctx.fillStyle = "#efe8d2";
+        ctx.font = "900 34px Arial";
+        ctx.fillText(option.visual.footer, 92, 1260);
+        ctx.fillText("NextFrame", 805, 1260);
+
+        const link = document.createElement("a");
+        link.download = "nextframe-listing-infographic.png";
+        link.href = canvas.toDataURL("image/png");
+        link.click();
+        statusEl.textContent = "Downloaded infographic PNG.";
+      }
+
+      function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
+        const words = String(text).split(" ");
+        let line = "";
+        for (let i = 0; i < words.length; i += 1) {
+          const test = `${line}${words[i]} `;
+          if (ctx.measureText(test).width > maxWidth && i > 0) {
+            ctx.fillText(line.trim(), x, y);
+            line = `${words[i]} `;
+            y += lineHeight;
+          } else {
+            line = test;
+          }
+        }
+        ctx.fillText(line.trim(), x, y);
+      }
+
+      document.querySelector("#generateButton").addEventListener("click", generate);
+      document.querySelector("#rerollButton").addEventListener("click", () => {
+        reroll += 1;
+        generate();
+      });
+      document.querySelector("#copyButton").addEventListener("click", () => {
+        copyText(buildPostText(), "Edited post copied.");
+      });
+      document.querySelector("#queueButton").addEventListener("click", queuePost);
+      document.querySelector("#downloadButton").addEventListener("click", downloadInfographic);
+
+      generate();
+    </script>
+  </body>
+</html>
