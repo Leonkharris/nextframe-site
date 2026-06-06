@@ -554,6 +554,108 @@ figcaption {
   object-fit: cover;
 }
 
+.instagram-edit {
+  position: relative;
+  display: grid;
+  width: var(--page);
+  grid-template-columns: minmax(260px, 0.35fr) minmax(0, 0.65fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
+  margin: 0 auto;
+  padding: clamp(88px, 11vw, 150px) 0;
+}
+
+.instagram-copy {
+  position: sticky;
+  top: 110px;
+}
+
+.instagram-copy p:not(.issue-label) {
+  max-width: 38ch;
+  color: rgba(243, 234, 220, 0.72);
+}
+
+.instagram-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.instagram-tags span {
+  border: 1px solid rgba(243, 234, 220, 0.18);
+  padding: 9px 11px;
+  color: rgba(243, 234, 220, 0.76);
+  font-size: 0.62rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.instagram-board {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  grid-auto-rows: 92px;
+  gap: 12px;
+}
+
+.ig-tile {
+  position: relative;
+  margin: 0;
+  overflow: hidden;
+  background: #0b0706;
+  box-shadow: 0 30px 94px rgba(0, 0, 0, 0.34);
+}
+
+.ig-tile img,
+.ig-tile video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.ig-anchor {
+  grid-column: 1 / 4;
+  grid-row: span 7;
+}
+
+.ig-beauty-one {
+  grid-column: 4 / 7;
+  grid-row: span 4;
+}
+
+.ig-motion {
+  grid-column: 7 / 9;
+  grid-row: span 4;
+}
+
+.ig-beauty-two {
+  grid-column: 4 / 6;
+  grid-row: span 3;
+}
+
+.ig-glam {
+  grid-column: 6 / 9;
+  grid-row: span 4;
+}
+
+.ig-candid {
+  grid-column: 1 / 3;
+  grid-row: span 3;
+}
+
+.ig-beach {
+  grid-column: 3 / 6;
+  grid-row: span 3;
+}
+
+.ig-anchor img,
+.ig-beauty-one img,
+.ig-beauty-two img,
+.ig-glam img {
+  object-position: 50% 18%;
+}
+
 .booking-section {
   display: grid;
   width: var(--page);
@@ -735,11 +837,13 @@ footer > a:last-child {
   }
 
   .campaign-spread,
+  .instagram-edit,
   .booking-section {
     grid-template-columns: 1fr;
   }
 
   .spread-copy,
+  .instagram-copy,
   .spread-hero,
   .spread-video,
   .frame-wash,
@@ -753,12 +857,20 @@ footer > a:last-child {
     position: static;
   }
 
+  .instagram-copy {
+    position: static;
+  }
+
   .campaign-spread {
     min-height: auto;
   }
 
   .motion-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .instagram-board {
+    grid-auto-rows: 84px;
   }
 }
 
@@ -868,6 +980,7 @@ footer > a:last-child {
   }
 
   .motion-strip,
+  .instagram-edit,
   .booking-section {
     padding-top: 64px;
     padding-bottom: 64px;
@@ -879,6 +992,38 @@ footer > a:last-child {
 
   .motion-grid {
     grid-template-columns: 1fr;
+  }
+
+  .instagram-board {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    grid-auto-rows: auto;
+    gap: 10px;
+  }
+
+  .instagram-copy h2 {
+    font-size: clamp(4rem, 18vw, 5rem);
+  }
+
+  .instagram-copy p:not(.issue-label) {
+    max-width: 32ch;
+  }
+
+  .ig-anchor,
+  .ig-beauty-one,
+  .ig-motion,
+  .ig-beauty-two,
+  .ig-glam {
+    grid-column: 1 / -1;
+    grid-row: auto;
+    aspect-ratio: 4 / 5;
+  }
+
+  .ig-candid,
+  .ig-beach {
+    grid-column: auto;
+    grid-row: auto;
+    aspect-ratio: 1 / 1;
   }
 
   .motion-grid figure,
