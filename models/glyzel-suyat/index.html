@@ -6,50 +6,104 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
     <meta http-equiv="Pragma" content="no-cache" />
     <meta http-equiv="Expires" content="0" />
-    <title>Glyzel Suyat | Model Portfolio</title>
+    <meta name="theme-color" content="#090706" />
+    <title>Glyzel Suyat | Beauty Campaign Profile</title>
     <meta
       name="description"
-      content="Clean model portfolio and booking page for Glyzel Ann Nathalie Suyat, Mutya ng Pilipinas Palawan."
+      content="Editorial model profile and booking page for Glyzel Ann Nathalie Suyat, Mutya ng Pilipinas Palawan."
     />
-    <meta property="og:title" content="Glyzel Suyat | Model Portfolio" />
-    <meta property="og:description" content="Beauty, pageant, fashion and commercial model portfolio." />
-    <meta property="og:image" content="./media/campaign-frames/hair-02-product.jpg" />
+    <meta property="og:title" content="Glyzel Suyat | Beauty Campaign Profile" />
+    <meta property="og:description" content="Beauty, pageant, fashion and commercial model profile." />
+    <meta property="og:image" content="./media/campaign-frames/hair-03-final.jpg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Instrument+Sans:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Instrument+Sans:wght@400;500;600;700;800&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260606_v7_split_motion" />
+    <link rel="stylesheet" href="./styles.css?v=20260606_v8_editorial_cover" />
   </head>
   <body>
-    <header class="site-header">
-      <a class="wordmark" href="#top">Glyzel Suyat</a>
-      <nav aria-label="Portfolio navigation">
+    <a class="skip-link" href="#main">Skip to profile</a>
+    <div class="film-grain" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#main" aria-label="Glyzel Suyat home">
+        <span>Glyzel</span>
+        <small>Beauty Issue</small>
+      </a>
+      <nav class="nav-links" aria-label="Profile navigation">
         <a href="#campaign">Campaign</a>
-        <a href="#work">Portfolio</a>
-        <a href="#booking">Booking</a>
+        <a href="#book">Book</a>
+        <a href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">Instagram</a>
       </nav>
     </header>
 
-    <main id="top">
-      <section class="hero">
-        <div class="hero-copy">
-          <p class="eyeline">Mutya ng Pilipinas - Palawan / Manila</p>
-          <h1>Glyzel Suyat</h1>
-          <p class="role-line">Beauty / Pageant / Commercial</p>
-          <p class="lede">
-            Beauty campaigns, pageant press, fashion shoots and commercial bookings.
-          </p>
-          <div class="hero-actions">
-            <a class="button primary" href="#booking">Start Booking Request</a>
-            <a class="button secondary" href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">
-              View Instagram
-            </a>
-          </div>
-          <dl class="stats" aria-label="Public Instagram profile summary">
+    <main id="main" tabindex="-1">
+      <section class="cover" aria-label="Glyzel Suyat beauty campaign cover">
+        <div class="cover-object">
+          <video
+            class="cover-video"
+            src="./media/beauty-motion-01.mp4"
+            poster="./media/beauty-motion-01-poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="auto"
+          ></video>
+          <div class="cover-grade" aria-hidden="true"></div>
+          <div class="cover-texture" aria-hidden="true"></div>
+
+          <p class="cover-number" aria-hidden="true">001</p>
+          <p class="cover-vertical">Palawan / Manila / Beauty</p>
+
+          <article class="cover-copy">
+            <p class="issue-label">Mutya ng Pilipinas - Palawan</p>
+            <h1>Glyzel<br />Suyat</h1>
+            <p>Beauty, pageant and commercial model profile for campaigns, press and bookings.</p>
+            <div class="cover-actions">
+              <a class="primary-link" href="#book">Booking request</a>
+              <a class="secondary-link" href="#campaign">View campaign</a>
+            </div>
+          </article>
+
+          <figure class="cover-main-frame">
+            <img
+              src="./media/studio-smile-denim.jpg"
+              alt="Glyzel Suyat studio portrait"
+              width="854"
+              height="1280"
+              fetchpriority="high"
+            />
+            <figcaption>Studio portrait // casting lead</figcaption>
+          </figure>
+
+          <figure class="cover-polaroid cover-polaroid-one">
+            <img
+              src="./media/campaign-frames/hair-03-final.jpg"
+              alt="Glyzel Suyat final glossy hair portrait"
+              width="356"
+              height="640"
+              fetchpriority="high"
+            />
+            <figcaption>Gloss</figcaption>
+          </figure>
+
+          <figure class="cover-polaroid cover-polaroid-two">
+            <img
+              src="./media/campaign-frames/hair-02-product.jpg"
+              alt="Glyzel Suyat product campaign frame"
+              width="714"
+              height="426"
+              loading="lazy"
+            />
+            <figcaption>Product</figcaption>
+          </figure>
+
+          <dl class="cover-meta" aria-label="Profile details">
             <div>
-              <dt>Instagram</dt>
+              <dt>IG</dt>
               <dd>@suyat_glyzel</dd>
             </div>
             <div>
@@ -62,168 +116,139 @@
             </div>
           </dl>
         </div>
-
-        <div class="hero-media" aria-label="Featured portfolio images">
-          <figure class="portrait-card main-portrait">
-            <img src="./media/studio-smile-denim.jpg" alt="Glyzel Suyat smiling studio portrait" />
-          </figure>
-          <figure class="portrait-card inset-portrait">
-            <img src="./media/campaign-frames/hair-02-product.jpg" alt="Glyzel Suyat beauty hair campaign product frame" />
-          </figure>
-        </div>
       </section>
 
-      <section class="campaign" id="campaign" aria-label="Beauty campaign">
-        <div class="campaign-copy">
-          <p class="eyeline">Campaign direction</p>
-          <h2>Beauty Campaign</h2>
+      <section class="campaign-spread" id="campaign" data-reveal>
+        <article class="spread-copy">
+          <p class="issue-label">Campaign treatment</p>
+          <h2>Lumiere Capillaire</h2>
           <p>
-            The generated boards have been split into individual frames and rebuilt as a hair-care campaign sequence: wash, rinse, gloss, reveal and product.
+            A hair-care visual sequence built from individual generated frames: wash, foam, rinse, gloss, movement and product reveal.
           </p>
-          <a class="button primary" href="#booking">Book beauty work</a>
+        </article>
+
+        <figure class="spread-hero">
+          <img
+            src="./media/campaign-frames/hair-03-final.jpg"
+            alt="Final glossy hair portrait frame"
+            width="356"
+            height="640"
+            loading="lazy"
+          />
+          <figcaption>FIG. 01 // FINAL GLOSS PORTRAIT</figcaption>
+        </figure>
+
+        <figure class="spread-video video-a">
+          <video
+            src="./media/beauty-motion-02.mp4"
+            poster="./media/beauty-motion-02-poster.jpg"
+            muted
+            loop
+            playsinline
+            preload="none"
+            data-lazy-video
+          ></video>
+          <figcaption>FIG. 02 // MOTION TEST</figcaption>
+        </figure>
+
+        <figure class="spread-frame frame-wash">
+          <img
+            src="./media/campaign-frames/hair-02-wash.jpg"
+            alt="Wash campaign frame"
+            width="714"
+            height="426"
+            loading="lazy"
+          />
+          <figcaption>Wash</figcaption>
+        </figure>
+
+        <figure class="spread-frame frame-move">
+          <img
+            src="./media/campaign-frames/hair-04-flip.jpg"
+            alt="Hair movement campaign frame"
+            width="356"
+            height="320"
+            loading="lazy"
+          />
+          <figcaption>Movement</figcaption>
+        </figure>
+
+        <figure class="spread-frame frame-title">
+          <img
+            src="./media/campaign-frames/hair-01-lumiere.jpg"
+            alt="Lumiere campaign title frame"
+            width="714"
+            height="426"
+            loading="lazy"
+          />
+          <figcaption>Title frame</figcaption>
+        </figure>
+      </section>
+
+      <section class="motion-strip" aria-label="Beauty campaign motion and frames" data-reveal>
+        <div class="strip-heading">
+          <p class="issue-label">Motion read</p>
+          <h2>Camera Loves Movement</h2>
         </div>
-        <div class="campaign-layout">
-          <figure class="campaign-hero-frame">
-            <img src="./media/campaign-frames/hair-03-final.jpg" alt="Glyzel Suyat final glossy hair campaign portrait" />
-            <figcaption>
-              <span>01</span>
-              Final gloss portrait
-            </figcaption>
+        <div class="motion-grid">
+          <figure>
+            <video
+              src="./media/beauty-motion-01.mp4"
+              poster="./media/beauty-motion-01-poster.jpg"
+              muted
+              loop
+              playsinline
+              preload="none"
+              data-lazy-video
+            ></video>
+            <figcaption>Shower gloss test</figcaption>
           </figure>
-
-          <div class="motion-pair" aria-label="Beauty campaign motion clips">
-            <figure>
-              <video src="./media/beauty-motion-01.mp4" poster="./media/beauty-motion-01-poster.jpg" muted loop autoplay playsinline preload="metadata"></video>
-              <figcaption>Motion test A</figcaption>
-            </figure>
-            <figure>
-              <video src="./media/beauty-motion-02.mp4" poster="./media/beauty-motion-02-poster.jpg" muted loop autoplay playsinline preload="metadata"></video>
-              <figcaption>Motion test B</figcaption>
-            </figure>
-          </div>
-
-          <div class="frame-grid" aria-label="Split campaign frames">
-            <figure class="wide">
-              <img src="./media/campaign-frames/hair-01-cliff.jpg" alt="Outdoor glossy hair reveal campaign frame" />
-              <figcaption>Outdoor reveal</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-02-wash.jpg" alt="Shampoo wash frame" />
-              <figcaption>Wash</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-03-foam.jpg" alt="Foam shower frame" />
-              <figcaption>Foam</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-03-rinse.jpg" alt="Rinse hair frame" />
-              <figcaption>Rinse</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-04-detail.jpg" alt="Wet hair detail frame" />
-              <figcaption>Texture</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-04-flip.jpg" alt="Hair flip in robe frame" />
-              <figcaption>Movement</figcaption>
-            </figure>
-            <figure>
-              <img src="./media/campaign-frames/hair-03-final.jpg" alt="Final glossy hair portrait frame" />
-              <figcaption>Final look</figcaption>
-            </figure>
-            <figure class="wide">
-              <img src="./media/campaign-frames/hair-01-lumiere.jpg" alt="Lumiere capillaire campaign title frame" />
-              <figcaption>Campaign title frame</figcaption>
-            </figure>
-          </div>
-        </div>
-      </section>
-
-      <section class="section intro-strip" aria-label="Model categories">
-        <article>
-          <span>01</span>
-          <strong>Beauty</strong>
-          <p>Hair, skin, wellness and product-led campaign visuals.</p>
-        </article>
-        <article>
-          <span>02</span>
-          <strong>Fashion</strong>
-          <p>Casual denim, commercial wardrobe and formal styling.</p>
-        </article>
-        <article>
-          <span>03</span>
-          <strong>Press</strong>
-          <p>Pageant visuals, presentation looks and appearance requests.</p>
-        </article>
-      </section>
-
-      <section class="section portfolio" id="work">
-        <div class="section-heading">
-          <p class="eyeline">Selected work</p>
-          <h2>Portfolio</h2>
-        </div>
-        <div class="gallery">
-          <figure class="gallery-card tall">
-            <img src="./media/studio-black-bodysuit.jpg" alt="Glyzel Suyat beauty portrait in denim" />
+          <figure>
+            <img
+              src="./media/campaign-frames/hair-01-cliff.jpg"
+              alt="Outdoor hair reveal frame"
+              width="714"
+              height="426"
+              loading="lazy"
+            />
+            <figcaption>Outdoor reveal</figcaption>
+          </figure>
+          <figure>
+            <img
+              src="./media/studio-black-bodysuit.jpg"
+              alt="Glyzel Suyat studio beauty portrait"
+              width="854"
+              height="1280"
+              loading="lazy"
+            />
             <figcaption>Beauty / denim</figcaption>
           </figure>
-          <figure class="gallery-card">
-            <img src="./media/studio-denim-portrait.jpg" alt="Glyzel Suyat studio portrait" />
-            <figcaption>Studio portrait</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="./media/studio-bw-bodysuit.jpg" alt="Glyzel Suyat black and white editorial portrait" />
-            <figcaption>Black and white editorial</figcaption>
-          </figure>
-          <figure class="gallery-card wide">
-            <img src="./media/campaign-frames/hair-04-robe.jpg" alt="Glyzel Suyat hair care robe campaign frame" />
-            <figcaption>Hair campaign frame</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="./media/ig-07.jpg" alt="Mutya ng Pilipinas press presentation portrait" />
-            <figcaption>Press presentation</figcaption>
-          </figure>
-          <figure class="gallery-card">
-            <img src="./media/ig-08.jpg" alt="Mutya ng Pilipinas photoshoot portrait" />
-            <figcaption>Pageant photoshoot</figcaption>
+          <figure>
+            <img
+              src="./media/studio-contact-sheet.jpg"
+              alt="Glyzel Suyat model look range contact sheet"
+              width="714"
+              height="1280"
+              loading="lazy"
+            />
+            <figcaption>Look range</figcaption>
           </figure>
         </div>
       </section>
 
-      <section class="section archive-section" id="archive">
-        <div class="reel-copy">
-          <p class="eyeline">Social archive</p>
-          <h2>Instagram archive</h2>
-          <p>
-            Portfolio review lives here. Instagram stays available for recent posts, reels and direct messages.
-          </p>
-          <a class="button secondary dark" href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">
-            Open full IG archive
-          </a>
-        </div>
-        <div class="archive-stack" aria-label="Instagram source images">
-          <img src="./media/ig-07.jpg" alt="Glyzel Suyat press presentation portrait" />
-          <img src="./media/ig-08.jpg" alt="Glyzel Suyat pageant portrait" />
-          <img src="./media/studio-contact-sheet.jpg" alt="Glyzel Suyat studio model look range" />
-        </div>
-      </section>
-
-      <section class="section booking" id="booking">
+      <section class="booking-section" id="book" data-reveal>
         <div class="booking-copy">
-          <p class="eyeline">Real booking path</p>
-          <h2>Booking request</h2>
+          <p class="issue-label">Booking path</p>
+          <h2>Request Glyzel</h2>
           <p>
-            Fill the brief and it opens a prefilled email to Glyzel's listed contact. The request goes somewhere real.
+            Beauty campaigns, studio shoots, pageant press, event appearances and commercial content. The form opens a prefilled email to her listed contact.
           </p>
-          <div class="contact-buttons">
-            <a class="button primary" href="mailto:suyatglyzel@gmail.com?subject=Booking%20request%20for%20Glyzel%20Suyat">
-              Email Glyzel
-            </a>
-            <a class="button secondary dark" href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">
-              DM on Instagram
-            </a>
+          <div class="contact-line">
+            <a href="mailto:suyatglyzel@gmail.com?subject=Booking%20request%20for%20Glyzel%20Suyat">suyatglyzel@gmail.com</a>
+            <a href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">@suyat_glyzel</a>
           </div>
         </div>
+
         <form class="booking-form" data-booking-form>
           <label>
             <span>Your name / brand</span>
@@ -242,19 +267,19 @@
           </label>
           <label>
             <span>Shoot date or range</span>
-            <input name="date" placeholder="Example: June 20 or flexible" />
+            <input name="date" placeholder="Example: June 20 or flexible…" autocomplete="off" />
           </label>
           <label>
             <span>Location</span>
-            <input name="location" placeholder="City / studio / venue" />
+            <input name="location" placeholder="City / studio / venue…" autocomplete="off" />
           </label>
           <label>
             <span>Your contact</span>
-            <input name="contact" autocomplete="email" required />
+            <input name="contact" type="email" autocomplete="email" spellcheck="false" required />
           </label>
           <label class="full">
             <span>Brief</span>
-            <textarea name="brief" rows="5" placeholder="Concept, usage, deliverables, budget range"></textarea>
+            <textarea name="brief" rows="5" placeholder="Concept, usage, deliverables, budget range…"></textarea>
           </label>
           <button type="submit">Open prefilled email</button>
         </form>
@@ -262,15 +287,18 @@
     </main>
 
     <footer>
-      <a class="wordmark" href="#top">Glyzel Suyat</a>
+      <a class="brand footer-brand" href="#main">
+        <span>Glyzel</span>
+        <small>Beauty Issue</small>
+      </a>
       <a href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">@suyat_glyzel</a>
     </footer>
 
-    <div class="mobile-booking-bar">
-      <a href="#booking">Book Glyzel</a>
+    <div class="mobile-booking-bar" data-mobile-cta>
+      <a href="#book">Book Glyzel</a>
       <a href="https://www.instagram.com/suyat_glyzel/" target="_blank" rel="noreferrer">IG</a>
     </div>
 
-    <script src="./script.js?v=20260606_v7_split_motion"></script>
+    <script src="./script.js?v=20260606_v8_editorial_cover"></script>
   </body>
 </html>
