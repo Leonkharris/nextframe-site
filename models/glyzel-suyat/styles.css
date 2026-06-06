@@ -234,7 +234,9 @@ p {
 .stats dd {
   margin: 0;
   color: var(--ink);
+  font-size: 0.9rem;
   font-weight: 800;
+  line-height: 1.24;
   overflow-wrap: anywhere;
 }
 
@@ -287,12 +289,12 @@ p {
   display: grid;
   width: 100%;
   max-width: none;
-  grid-template-columns: minmax(280px, 0.44fr) minmax(0, 1fr);
-  gap: clamp(26px, 5vw, 64px);
-  align-items: end;
+  grid-template-columns: minmax(260px, 0.34fr) minmax(0, 1fr);
+  gap: clamp(30px, 5vw, 72px);
+  align-items: start;
   padding: clamp(58px, 8vw, 104px) max(16px, calc((100vw - 1180px) / 2));
   background:
-    linear-gradient(90deg, rgba(159, 31, 37, 0.96), rgba(101, 17, 21, 0.96)),
+    linear-gradient(90deg, rgba(159, 31, 37, 0.97), rgba(101, 17, 21, 0.98)),
     var(--accent-dark);
   color: white;
 }
@@ -308,58 +310,102 @@ p {
 
 .campaign-copy {
   position: sticky;
-  bottom: 34px;
-  align-self: end;
-  padding-bottom: 12px;
+  top: 100px;
+  padding-top: 8px;
 }
 
 .campaign-copy p:not(.eyeline) {
-  max-width: 36ch;
+  max-width: 34ch;
   color: #f2ddd5;
 }
 
-.campaign-media {
+.campaign-layout {
   display: grid;
-  grid-template-columns: 1.05fr 0.95fr;
-  gap: 12px;
+  grid-template-columns: minmax(320px, 0.9fr) minmax(260px, 0.62fr);
+  gap: 14px;
+  align-items: start;
 }
 
-.campaign-card {
+.campaign-hero-frame,
+.motion-pair figure,
+.frame-grid figure {
   position: relative;
-  min-height: clamp(260px, 28vw, 440px);
   margin: 0;
   overflow: hidden;
   background: #0b0a09;
-  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.22);
+  box-shadow: 0 28px 80px rgba(0, 0, 0, 0.2);
 }
 
-.campaign-card.feature {
-  min-height: clamp(560px, 67vw, 860px);
+.campaign-hero-frame {
+  height: clamp(620px, 70vw, 920px);
   grid-row: span 2;
 }
 
-.campaign-card img {
+.campaign-hero-frame img,
+.frame-grid img,
+.motion-pair video {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.campaign-card.feature img {
-  object-position: 50% 0;
+.campaign-hero-frame img {
+  object-position: 50% 24%;
 }
 
-.campaign-card figcaption {
+.campaign-hero-frame figcaption,
+.motion-pair figcaption,
+.frame-grid figcaption {
   position: absolute;
   right: 14px;
   bottom: 14px;
   left: 14px;
-  padding: 10px 12px;
+  padding: 9px 10px;
   background: rgba(255, 255, 255, 0.9);
   color: var(--ink);
   font-size: 0.7rem;
   font-weight: 900;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+}
+
+.campaign-hero-frame figcaption span {
+  display: inline-block;
+  margin-right: 10px;
+  color: var(--accent);
+}
+
+.motion-pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.motion-pair figure {
+  aspect-ratio: 9 / 16;
+}
+
+.frame-grid {
+  display: grid;
+  grid-column: 2;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.frame-grid figure {
+  aspect-ratio: 4 / 4.6;
+}
+
+.frame-grid figure.wide {
+  grid-column: span 2;
+  aspect-ratio: 2.1 / 1;
+}
+
+.frame-grid figure:nth-child(2),
+.frame-grid figure:nth-child(3),
+.frame-grid figure:nth-child(4),
+.frame-grid figure:nth-child(7) {
+  aspect-ratio: 4 / 5.2;
 }
 
 .intro-strip {
@@ -645,13 +691,22 @@ footer > a:last-child {
     grid-column: span 1;
   }
 
-  .campaign-media {
+  .campaign-layout {
     grid-template-columns: 1fr;
   }
 
-  .campaign-card.feature {
-    min-height: 720px;
-    grid-row: span 1;
+  .campaign-hero-frame {
+    height: 680px;
+    grid-row: auto;
+  }
+
+  .frame-grid {
+    grid-column: auto;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .frame-grid figure.wide {
+    grid-column: span 3;
   }
 }
 
@@ -754,9 +809,31 @@ footer > a:last-child {
     padding-bottom: 58px;
   }
 
-  .campaign-card,
-  .campaign-card.feature {
-    min-height: 520px;
+  .campaign-layout {
+    gap: 12px;
+  }
+
+  .campaign-hero-frame {
+    height: 470px;
+  }
+
+  .motion-pair {
+    gap: 10px;
+  }
+
+  .frame-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+  }
+
+  .frame-grid figure,
+  .frame-grid figure.wide {
+    grid-column: auto;
+  }
+
+  .frame-grid figure.wide:first-child,
+  .frame-grid figure.wide:last-child {
+    grid-column: span 2;
   }
 
   .archive-stack {
