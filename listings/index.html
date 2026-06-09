@@ -1382,24 +1382,69 @@
         const utterance = new SpeechSynthesisUtterance(text);
         
         const voices = window.speechSynthesis.getVoices();
-        const femaleVoice = voices.find(v => 
-          v.lang.startsWith("en") && 
-          (v.name.includes("Google") || v.name.includes("Natural") || v.name.includes("Zira") || v.name.includes("Samantha") || v.name.includes("Hazel"))
-        ) || voices.find(v => v.lang.startsWith("en")) || voices[0];
+        
+        // Priority order for high-quality natural female voices
+        const priorityFemaleVoices = [
+          "Microsoft Jenny Online (Natural)",
+          "Microsoft Aria Online (Natural)",
+          "Microsoft Sonia Online (Natural)",
+          "Google US English",
+          "Samantha",
+          "Zira",
+          "Hazel"
+        ];
+
+        let femaleVoice = null;
+        
+        // 1. Try to match our high-quality priorities exactly (case-insensitive substring match)
+        for (const name of priorityFemaleVoices) {
+          femaleVoice = voices.find(v => 
+            v.lang.startsWith("en") && 
+            v.name.toLowerCase().includes(name.toLowerCase())
+          );
+          if (femaleVoice) break;
+        }
+        
+        // 2. Fall back to any English voice with "female", "natural", or "neural" in the name
+        if (!femaleVoice) {
+          femaleVoice = voices.find(v => 
+            v.lang.startsWith("en") && 
+            /female|natural|neural|online/i.test(v.name)
+          );
+        }
+        
+        // 3. Fall back to any English voice that is not known to be male (like David)
+        if (!femaleVoice) {
+          femaleVoice = voices.find(v => 
+            v.lang.startsWith("en") && 
+            !/david|male|guy|roy|george|ravi/i.test(v.name.toLowerCase())
+          );
+        }
+        
+        // 4. Fall back to the first available English voice
+        if (!femaleVoice) {
+          femaleVoice = voices.find(v => v.lang.startsWith("en"));
+        }
+        
+        // 5. Final fallback
+        if (!femaleVoice && voices.length > 0) {
+          femaleVoice = voices[0];
+        }
         
         if (femaleVoice) {
           utterance.voice = femaleVoice;
+          console.log("Speaking using voice:", femaleVoice.name);
         }
         
         const avatarWrap = document.querySelector(".avatar-wrap");
         utterance.onstart = () => {
-          avatarWrap.classList.add("speaking");
+          if (avatarWrap) avatarWrap.classList.add("speaking");
         };
         utterance.onend = () => {
-          avatarWrap.classList.remove("speaking");
+          if (avatarWrap) avatarWrap.classList.remove("speaking");
         };
         utterance.onerror = () => {
-          avatarWrap.classList.remove("speaking");
+          if (avatarWrap) avatarWrap.classList.remove("speaking");
         };
         
         window.speechSynthesis.speak(utterance);
@@ -1835,6 +1880,16 @@
       ctaEditor.addEventListener("input", (e) => {
         phoneCta.textContent = e.target.value;
       });
+
+      // Preload voices in browser background
+      if (window.speechSynthesis) {
+        window.speechSynthesis.getVoices();
+        if (window.speechSynthesis.onvoiceschanged !== undefined) {
+          window.speechSynthesis.onvoiceschanged = () => {
+            window.speechSynthesis.getVoices();
+          };
+        }
+      }
 
       // Initialize
       generate();
