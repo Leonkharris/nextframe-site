@@ -1483,6 +1483,23 @@
         }
       }
 
+      const POPULAR_PROJECTS = [
+        "West Gallery Place", "East Gallery Place", "High Street South", "One Serendra", "Two Serendra",
+        "The Proscenium", "Park Triangle", "Arya Residences", "Uptown Parksuites", "Florence Way",
+        "St. Moritz", "Aurelia Residences", "The Seasons Residences", "Grand Hyatt Residences"
+      ];
+
+      function extractProject(text) {
+        for (const project of POPULAR_PROJECTS) {
+          if (text.toLowerCase().includes(project.toLowerCase())) {
+            return project;
+          }
+        }
+        const atMatch = text.match(/\bat\s+([A-Z][A-Za-z0-9\s]{2,30})/);
+        if (atMatch) return atMatch[1].trim();
+        return null;
+      }
+
       function mergeListingData(target, source) {
         if (source.project && source.project !== "Prime BGC property") target.project = source.project;
         if (source.sqm && source.sqm !== "Size on request") target.sqm = source.sqm;
@@ -1503,6 +1520,17 @@
         const text = input.trim();
         let replyText = "";
         
+        // 1. Global spec corrections detection (e.g. "not a corner unit")
+        if (/not\s*a\s*corner|no\s*corner/i.test(text)) {
+          listingData.unit = listingData.unit.replace("Corner ", "");
+          // Also modify active option visual titles and templates to not say "Corner"
+          for (let opt of currentOptions) {
+            opt.visual.title = opt.visual.title.replace("Corner ", "");
+            opt.headline = opt.headline.replace("corner ", "");
+            opt.body = opt.body.replace("corner ", "");
+          }
+        }
+        
         // Looser details dump detection that handles lack of spaces (e.g. 92sqm, 18Floor, 45M)
         const hasSqm = /sq\.?\s*m|sqm/i.test(text);
         const hasFloor = /floor|fl/i.test(text);
@@ -1521,78 +1549,88 @@
           return replyText;
         }
 
+        // Handle user saying they don't know or want to skip
+        const isUserSkipping = /don't know|dont know|no idea|not sure|skip|just know/i.test(text);
+
         switch(state) {
           case 0: // Ask for type
             if (/condo/i.test(text)) {
               listingData.unit = "Condo Corner Unit";
               listingData.bedrooms = "2BR";
+              replyText = "Got it, a condo. What is the name of the project or building? (e.g. West Gallery Place, One Serendra)";
+              chatState = 1;
             } else if (/house/i.test(text)) {
               listingData.unit = "Modern House";
               listingData.bedrooms = "4BR";
-            } else {
+              replyText = "Understood, a house. In which neighborhood or village is it located? (e.g. Forbes Park, Dasmariñas Village)";
+              chatState = 1;
+            } else if (/commercial|office/i.test(text)) {
               listingData.unit = "Commercial Space";
               listingData.bedrooms = "Office";
+              replyText = "Got it, a commercial space. What is the building name or business district? (e.g. BGC, Makati CBD)";
+              chatState = 1;
+            } else {
+              listingData.unit = "Condo Corner Unit";
+              listingData.bedrooms = "2BR";
+              replyText = "No worries, let's assume it's a condo. What is the building name or project? (e.g. West Gallery Place)";
+              chatState = 1;
             }
-            replyText = `Got it, a ${listingData.unit}. Who is the developer of this property (or project name), and what year was it turned over?`;
-            chatState = 1;
             break;
             
           case 1: // Developer & Year
-            const yearMatch = text.match(/\b\d{4}\b/);
-            const devName = text.replace(/\b\d{4}\b/g, "").trim();
-            listingData.project = devName || "Premium Project";
-            if (yearMatch) {
-              listingData.storage = `Turnover year: ${yearMatch[0]}`;
+            if (isUserSkipping) {
+              listingData.project = "Premium BGC Project";
+              replyText = "No worries at all! We can work with a premium BGC project as a placeholder. Do you know the size of the unit in square meters (sqm) or the bedroom count?";
+            } else {
+              const proj = extractProject(text);
+              listingData.project = proj || cleanLine(text);
+              replyText = `Excellent, ${listingData.project}. Do you know the size of the unit in square meters (sqm) or the bedroom/parking count?`;
             }
-            replyText = "Excellent. What is the floor level, bedroom count, and the exact size in square meters (sqm)?";
             chatState = 2;
             break;
             
           case 2: // Floor, Beds, Size
-            const sqmMatch = text.match(/(\d+)\s*sq/i) || text.match(/(\d+)\s*m/i) || text.match(/(\d+)\s*sqm/i);
-            const brMatch = text.match(/(\d+)\s*BR/i) || text.match(/(\d+)\s*bedroom/i);
-            const flMatch = text.match(/(\d+)(?:st|nd|rd|th)?\s*Floor/i) || text.match(/(\d+)\s*F\b/i);
-            
-            if (sqmMatch) listingData.sqm = `${sqmMatch[1]} sqm`;
-            if (brMatch) listingData.bedrooms = `${brMatch[1]}BR`;
-            if (flMatch) {
-              const num = parseInt(flMatch[1]);
-              listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
+            if (isUserSkipping) {
+              replyText = "No problem! We'll use standard estimates (92 sqm, 2BR, 1 parking). What is the asking price gross, and is it direct to you as the owner?";
+            } else {
+              const sqmMatch = text.match(/(\d+)\s*sq/i) || text.match(/(\d+)\s*m/i) || text.match(/(\d+)\s*sqm/i);
+              const brMatch = text.match(/(\d+)\s*BR/i) || text.match(/(\d+)\s*bedroom/i);
+              const parkingMatch = text.match(/(\d+)\s*parking/i);
+              const flMatch = text.match(/(\d+)(?:st|nd|rd|th)?\s*Floor/i) || text.match(/(\d+)\s*F\b/i);
+              
+              if (sqmMatch) listingData.sqm = `${sqmMatch[1]} sqm`;
+              if (brMatch) listingData.bedrooms = `${brMatch[1]}BR`;
+              if (parkingMatch) listingData.parking = `${parkingMatch[1]} parking`;
+              if (flMatch) {
+                const num = parseInt(flMatch[1]);
+                listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
+              }
+              
+              replyText = `Got it (${listingData.sqm || "92 sqm"}, ${listingData.bedrooms || "2BR"}). What is the asking price gross, and is it direct to you as the owner?`;
             }
-            
-            replyText = "Perfect. What is the view or orientation from the main balcony/living room? (e.g. Golf course view, city skyline, facing north/south)";
             chatState = 3;
             break;
             
-          case 3: // View & Orientation
-            listingData.view = text;
-            listingData.unit = `${listingData.bedrooms} Corner Unit with ${text}`;
-            replyText = "Nice view! What are the closest landmarks or grocery stores in the neighborhood?";
+          case 3: // Price & Path
+            if (isUserSkipping) {
+              replyText = "Understood! I will use standard pricing estimates for now. I have all the details needed to create your ad angles. Review them on the right side!";
+            } else {
+              const priceMatch = text.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i);
+              if (priceMatch) {
+                listingData.price = `PHP ${priceMatch[1]}M Gross`;
+              } else {
+                listingData.price = text;
+              }
+              
+              if (/direct/i.test(text) || /owner/i.test(text)) {
+                listingData.direct = "Direct to owner";
+              } else if (/broker|agent/i.test(text)) {
+                listingData.direct = "Broker review required";
+              }
+              
+              replyText = `Perfect, asking price is ${listingData.price} (${listingData.direct.toLowerCase()}). I have generated four highly optimized ad campaigns for you on the right side! Feel free to review or tell me if you want to update any details.`;
+            }
             chatState = 4;
-            break;
-            
-          case 4: // Landmarks
-            listingData.location = `BGC (near ${text})`;
-            replyText = "That's a very convenient location. What is the asking price gross, and is it direct to the owner?";
-            chatState = 5;
-            break;
-            
-          case 5: // Price & Path
-            const priceMatch = text.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i);
-            if (priceMatch) {
-              listingData.price = `PHP ${priceMatch[1]}M Gross`;
-            } else {
-              listingData.price = text;
-            }
-            
-            if (/direct/i.test(text) || /owner/i.test(text)) {
-              listingData.direct = "Direct to owner";
-            } else {
-              listingData.direct = "Broker review required";
-            }
-            
-            replyText = "Fabulous! I have all the details needed to create a highly optimized set of listings ads. Let me draft those options for you now!";
-            chatState = 6;
             break;
             
           default:
