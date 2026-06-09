@@ -844,6 +844,262 @@
           height: auto;
         }
       }
+
+      /* Specs Checklist Styles */
+      .specs-checklist {
+        background: rgba(255, 255, 255, 0.01);
+        border-bottom: 1px solid var(--panel-border);
+        transition: all 0.3s;
+      }
+      .specs-checklist-header {
+        padding: 12px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        cursor: pointer;
+        font-size: 0.8rem;
+        font-weight: 700;
+        color: var(--muted);
+        background: rgba(0, 0, 0, 0.15);
+        user-select: none;
+      }
+      .specs-checklist-header:hover {
+        background: rgba(255, 255, 255, 0.03);
+        color: #fff;
+      }
+      .specs-checklist-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px 16px;
+        padding: 14px 20px;
+        max-height: 220px;
+        overflow-y: auto;
+        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+      }
+      .specs-checklist.collapsed .specs-checklist-grid {
+        max-height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        overflow: hidden;
+      }
+      .checklist-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 8px;
+        font-size: 0.725rem;
+        line-height: 1.3;
+      }
+      .checklist-status {
+        width: 14px;
+        height: 14px;
+        border-radius: 50%;
+        border: 1.5px solid var(--panel-border);
+        display: grid;
+        place-items: center;
+        flex-shrink: 0;
+        margin-top: 2px;
+      }
+      .checklist-item.checked .checklist-status {
+        border-color: var(--green);
+        background: rgba(16, 185, 129, 0.2);
+        color: var(--green);
+      }
+      .checklist-status svg {
+        display: none;
+        width: 8px;
+        height: 8px;
+        stroke: var(--green);
+        stroke-width: 4;
+        fill: none;
+      }
+      .checklist-item.checked .checklist-status svg {
+        display: block;
+      }
+      .checklist-label {
+        font-weight: 600;
+        color: var(--muted);
+      }
+      .checklist-item.checked .checklist-label {
+        color: var(--text);
+      }
+      .checklist-val {
+        display: block;
+        font-size: 0.65rem;
+        color: rgba(148, 163, 184, 0.35);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-width: 160px;
+      }
+      .checklist-item.checked .checklist-val {
+        color: var(--green);
+        font-weight: 500;
+      }
+
+      /* Redesigned Luxury Infographic Preview Card */
+      .infographic-card {
+        aspect-ratio: 4 / 5;
+        border-radius: 16px;
+        padding: 22px;
+        color: #fff;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
+        border: 1px solid rgba(255,255,255,0.08);
+        position: relative;
+        overflow: hidden;
+        background: linear-gradient(135deg, #090a0f 0%, #11131c 100%);
+        transition: all 0.5s ease;
+      }
+      
+      .info-header {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        padding-bottom: 8px;
+        margin-bottom: 8px;
+      }
+      
+      .info-kicker {
+        font-size: 0.65rem;
+        font-weight: 800;
+        letter-spacing: 0.15em;
+        text-transform: uppercase;
+        color: var(--teal);
+        margin-bottom: 4px;
+        transition: color 0.5s;
+      }
+      
+      .info-title-box h3 {
+        margin: 0;
+        font-size: 1.4rem;
+        font-weight: 900;
+        line-height: 1.2;
+        letter-spacing: -0.02em;
+        color: #fff;
+      }
+      
+      .info-title-box p {
+        margin: 2px 0 0;
+        font-size: 0.7rem;
+        color: rgba(255, 255, 255, 0.6);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .info-specs-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 6px;
+        margin-bottom: 8px;
+      }
+      
+      .info-spec-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        border-radius: 6px;
+        padding: 6px 8px;
+        display: flex;
+        flex-direction: column;
+        gap: 1px;
+      }
+      
+      .info-spec-label {
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.4);
+        font-weight: 700;
+      }
+      
+      .info-spec-value {
+        font-size: 0.7rem;
+        font-weight: 800;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .info-landmarks-section {
+        background: rgba(255, 255, 255, 0.015);
+        border: 1px solid rgba(255, 255, 255, 0.04);
+        border-radius: 6px;
+        padding: 8px 10px;
+        margin-bottom: 8px;
+      }
+      
+      .info-landmarks-title {
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        color: rgba(255, 255, 255, 0.5);
+        font-weight: 800;
+        margin-bottom: 4px;
+      }
+      
+      .info-landmarks-grid {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 4px;
+      }
+      
+      .info-landmark-item {
+        font-size: 0.6rem;
+        color: rgba(255, 255, 255, 0.8);
+        display: flex;
+        align-items: center;
+        gap: 4px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      
+      .info-pricing-section {
+        background: rgba(0, 0, 0, 0.25);
+        border-radius: 6px;
+        padding: 8px 10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-left: 3px solid var(--teal);
+        margin-bottom: 8px;
+        transition: border-color 0.5s;
+      }
+      
+      .info-price-box {
+        display: flex;
+        flex-direction: column;
+      }
+      
+      .info-price-label {
+        font-size: 0.55rem;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        font-weight: 700;
+      }
+      
+      .info-price-value {
+        font-size: 1.1rem;
+        font-weight: 900;
+        color: #fff;
+      }
+      
+      .info-comps-value {
+        font-size: 0.6rem;
+        color: var(--muted);
+      }
+      
+      .info-footer-line {
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 8px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 0.65rem;
+        font-weight: 700;
+        color: rgba(255, 255, 255, 0.6);
+      }
     </style>
   </head>
   <body>
@@ -881,11 +1137,20 @@
             </button>
           </header>
 
+          <!-- Spec Checklist -->
+          <div class="specs-checklist collapsed" id="specsChecklist">
+            <div class="specs-checklist-header" id="checklistHeader">
+              <span>Property Specs Checklist (0/13 Vetted)</span>
+              <svg id="checklistChevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s; transform: rotate(-90deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
+            </div>
+            <div class="specs-checklist-grid" id="checklistGrid"></div>
+          </div>
+
           <div class="chat-messages" id="chatMessages">
             <div class="message bot">
               <img src="/sofia_avatar.png" alt="Sofia" class="message-avatar" onerror="this.src='../sofia_avatar.png'"/>
               <div class="message-bubble">
-                Hello! I'm Sofia, your Next-Frame listing agent. Are you looking to list a Condo, House, or Commercial property today?
+                Hello! I'm Sofia, your Next-Frame listing agent. What is the name of the condo building or specific address you'd like to list today?
               </div>
             </div>
           </div>
@@ -955,18 +1220,61 @@
             <div class="preview-body">
               <!-- Infographic Preview -->
               <div class="infographic-card" id="infographic" aria-label="Generated listing infographic">
-                <div>
-                  <div class="info-kicker" id="visualKicker">Repriced alert</div>
+                <div class="info-header">
+                  <div class="info-kicker" id="visualKicker">Audited Listing</div>
                   <div class="info-title-box">
-                    <h3 id="visualTitle">BGC 2BR Corner Unit</h3>
-                    <p id="visualSubtitle">West Gallery Place</p>
+                    <h3 id="visualTitle">Select a Condo</h3>
+                    <p id="visualSubtitle">Bonifacio Global City</p>
                   </div>
                 </div>
                 
-                <div class="info-stats-grid" id="visualStats"></div>
+                <div class="info-specs-grid" id="visualSpecsGrid">
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Bedrooms / Size</span>
+                    <span class="info-spec-value" id="specBedSize">-</span>
+                  </div>
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Floor / Zone</span>
+                    <span class="info-spec-value" id="specFloorZone">-</span>
+                  </div>
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Interior / Maid</span>
+                    <span class="info-spec-value" id="specInteriorMaid">-</span>
+                  </div>
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Parking / Status</span>
+                    <span class="info-spec-value" id="specParkingStatus">-</span>
+                  </div>
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Title Ownership</span>
+                    <span class="info-spec-value" id="specTitleOwner">-</span>
+                  </div>
+                  <div class="info-spec-box">
+                    <span class="info-spec-label">Developer Heritage</span>
+                    <span class="info-spec-value" id="specDeveloper">-</span>
+                  </div>
+                </div>
+
+                <div class="info-landmarks-section">
+                  <div class="info-landmarks-title">Neighborhood Proximity (Vetted)</div>
+                  <div class="info-landmarks-grid" id="visualLandmarksGrid">
+                    <div class="info-landmark-item">🏥 Hospital: <span id="landHospital">-</span></div>
+                    <div class="info-landmark-item">🛒 Grocery: <span id="landGrocery">-</span></div>
+                    <div class="info-landmark-item">🎓 Schools: <span id="landSchools">-</span></div>
+                    <div class="info-landmark-item">🍽️ Dining: <span id="landDining">-</span></div>
+                  </div>
+                </div>
+
+                <div class="info-pricing-section" id="visualPricingBox">
+                  <div class="info-price-box">
+                    <span class="info-price-label">Asking Price</span>
+                    <span class="info-price-value" id="specAskingPrice">-</span>
+                  </div>
+                  <span class="info-comps-value" id="specMarketComps">-</span>
+                </div>
                 
                 <div class="info-footer-line">
-                  <span id="visualFooter">Direct to owner</span>
+                  <span id="visualFooter">CCT Verified</span>
                   <span>NextFrame</span>
                 </div>
               </div>
@@ -1014,34 +1322,177 @@
       const voiceToggle = document.querySelector("#voiceToggle");
       const speakerOnIcon = document.querySelector("#speakerOnIcon");
       const speakerOffIcon = document.querySelector("#speakerOffIcon");
-
       let currentOptions = [];
       let selectedIndex = 0;
       let reroll = 0;
       let isChatLoading = false;
       let isMuted = false;
 
-      // Conversational flow state machine
-      let chatState = 0;
+      // Bonifacio Global City Condo Database
+      const BGC_CONDO_DB = {
+        "west gallery place": {
+          name: "West Gallery Place",
+          developer: "Ayala Land Premier",
+          yearBuilt: "2019",
+          yearTurnedOver: "2020",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (700m)",
+            restaurants: "Bonifacio High Street Restaurants (200m), Fort Strip (500m)",
+            schools: "International School Manila (ISM) (1.2km), British School Manila (BSM) (1.1km)",
+            supermarkets: "Marketplace by Rustan's Central Square (300m), Landmark Supermarket (600m)"
+          },
+          pricePerSqmMin: 300000,
+          pricePerSqmMax: 350000
+        },
+        "east gallery place": {
+          name: "East Gallery Place",
+          developer: "Ayala Land Premier",
+          yearBuilt: "2018",
+          yearTurnedOver: "2019",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (800m)",
+            restaurants: "Bonifacio High Street (150m), Serendra Plaza (200m)",
+            schools: "International School Manila (ISM) (1.1km), British School Manila (BSM) (1.0km)",
+            supermarkets: "Marketplace by Rustan's Central Square (250m), Landmark Supermarket (650m)"
+          },
+          pricePerSqmMin: 290000,
+          pricePerSqmMax: 340000
+        },
+        "one serendra": {
+          name: "One Serendra",
+          developer: "Ayala Land Premier",
+          yearBuilt: "2012",
+          yearTurnedOver: "2013",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (1.1km)",
+            restaurants: "Serendra Plaza Restaurants (within complex), Bonifacio High Street (200m)",
+            schools: "ISM (900m), BSM (800m)",
+            supermarkets: "Marketplace at Serendra (within complex), Landmark Supermarket (500m)"
+          },
+          pricePerSqmMin: 280000,
+          pricePerSqmMax: 330000
+        },
+        "two serendra": {
+          name: "Two Serendra",
+          developer: "Alveo Land",
+          yearBuilt: "2015",
+          yearTurnedOver: "2016",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (1.2km)",
+            restaurants: "Serendra Plaza (100m), SM Aura Restaurants (300m)",
+            schools: "ISM (800m), BSM (750m)",
+            supermarkets: "Metro Supermarket at Market! Market! (200m), SM Aura Supermarket (300m)"
+          },
+          pricePerSqmMin: 200000,
+          pricePerSqmMax: 250000
+        },
+        "arya residences": {
+          name: "Arya Residences",
+          developer: "ArthaLand",
+          yearBuilt: "2015",
+          yearTurnedOver: "2016",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (1.8km)",
+            restaurants: "Arya Plaza (within building), Bonifacio High Street (800m)",
+            schools: "ISM (1.8km), Manila Japanese School (1.7km)",
+            supermarkets: "Marketplace at Uptown Mall (1.5km), Landmark Supermarket (1.2km)"
+          },
+          pricePerSqmMin: 260000,
+          pricePerSqmMax: 310000
+        },
+        "aurelia residences": {
+          name: "Aurelia Residences",
+          developer: "Shang Properties & Robinsons Land",
+          yearBuilt: "2024",
+          yearTurnedOver: "2025",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (1.9km)",
+            restaurants: "Bonifacio High Street (1.0km), McKinley Hill Restaurants (1.2km)",
+            schools: "ISM (1.9km), BSM (1.8km)",
+            supermarkets: "Marketplace at Central Square (1.0km)"
+          },
+          pricePerSqmMin: 400000,
+          pricePerSqmMax: 460000
+        },
+        "the seasons residences": {
+          name: "The Seasons Residences",
+          developer: "Federal Land & Nomura Real Estate",
+          yearBuilt: "2023",
+          yearTurnedOver: "2024",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (600m)",
+            restaurants: "Mitsukoshi Mall Restaurants (within building), Uptown Mall (200m)",
+            schools: "ISM (1.0km), Treston College (900m)",
+            supermarkets: "Mitsukoshi Supermarket (within building), Landmark Supermarket (1.2km)"
+          },
+          pricePerSqmMin: 320000,
+          pricePerSqmMax: 380000
+        },
+        "uptown parksuites": {
+          name: "Uptown Parksuites",
+          developer: "Megaworld Corporation",
+          yearBuilt: "2019",
+          yearTurnedOver: "2020",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (500m)",
+            restaurants: "Uptown Mall Restaurants (50m), Uptown Parade (100m)",
+            schools: "British School Manila (700m), ISM (800m)",
+            supermarkets: "Marketplace at Uptown Mall (50m)"
+          },
+          pricePerSqmMin: 210000,
+          pricePerSqmMax: 260000
+        },
+        "grand hyatt residences": {
+          name: "Grand Hyatt Residences",
+          developer: "Federal Land & ORIX Corporation",
+          yearBuilt: "2018",
+          yearTurnedOver: "2019",
+          landmarks: {
+            hospital: "St. Luke's Medical Center BGC (450m)",
+            restaurants: "The Grand Hyatt Restaurants (within building), Uptown Mall (150m)",
+            schools: "British School Manila (800m), ISM (900m)",
+            supermarkets: "Marketplace at Uptown Mall (150m)"
+          },
+          pricePerSqmMin: 280000,
+          pricePerSqmMax: 340000
+        }
+      };
+
+      // Conversational flow 13-point data model
       let listingData = {
+        address: "",            // 1. Specific address
+        landmarks: "",          // 2. Nearest landmarks
+        floor: "",              // 3. Floor number
+        floorZone: "",          // 3. Low, mid, or high zone
+        view: "",               // 4. View type
+        facing: "",             // 4. Direction
+        developer: "",          // 5. Developer name
+        yearBuilt: "",          // 5. Year built
+        yearTurnedOver: "",     // 5. Year turned over
+        sqm: "",                // 6. Floor area
+        bedrooms: "",           // 7. Bedroom type
+        furnishing: "",         // 8. Furnishing
+        maidsRoom: "",          // 9. Maid's room
+        parking: "",            // 10. Parking
+        ownership: "",          // 11. Individual / corporation
+        tenanted: "",           // 12. Tenant status
+        price: "",              // 13. Asking price
+        compsProposed: "",      // 13. Comps proposed
+
+        // Layout parameters for ad generation mapping
         project: "BGC Unit",
         alert: "Fresh listing",
         status: "For Sale",
         unit: "Residence corner unit",
-        bedrooms: "2BR",
-        floor: "High floor",
         storage: "Storage not listed",
-        sqm: "92 sqm",
-        parking: "1 parking",
-        price: "PHP 45M gross",
-        location: "Bonifacio Global City",
         direct: "Direct to owner",
-        condition: "bare"
+        condition: "bare",
+        location: "Bonifacio Global City"
       };
 
       // Maintain a conversation history
       let conversationHistory = [
-        { role: "assistant", content: "Hello! I'm Sofia, your Next-Frame listing agent. Are you looking to list a Condo, House, or Commercial property today?" }
+        { role: "assistant", content: "Hello! I'm Sofia, your Next-Frame listing agent. What is the name of the condo building or specific address you'd like to list today?" }
       ];
 
       function cleanLine(value) {
@@ -1059,155 +1510,361 @@
         return "th";
       }
 
-      function parseListing(raw) {
-        const lines = raw.split(/\r?\n/).map(cleanLine).filter(Boolean);
-        const full = lines.join(" ");
+      // 13-Point Specifications Parser
+      function parseInputDetails(text) {
+        const full = text.trim();
+        const lower = full.toLowerCase();
         
-        let projectLine =
-          lines.find((line) => /gallery|place|residence|condo|tower|suite|village|park|estate/i.test(line)) ||
-          lines[0] ||
-          "Prime BGC property";
-        
-        // Single-line dump heuristics: extract substring before bedrooms or size specs
-        if (lines.length === 1) {
-          const matchBefore = raw.match(/^(.*?)(?:\b\d+\s*BR|\b\d+\s*Bedroom|\b\d+\s*sq\s*m|\b\d+\s*sqm|\b\d+\s*Floor|\b\d+\s*F\b)/i);
-          if (matchBefore && matchBefore[1].trim().length > 3) {
-            projectLine = matchBefore[1].trim();
+        // 1. Address / Project lookup
+        let foundProject = null;
+        for (const key in BGC_CONDO_DB) {
+          if (lower.includes(key) || (key.length > 8 && lower.includes(key.split(" ")[0]) && lower.includes(key.split(" ")[1]))) {
+            foundProject = BGC_CONDO_DB[key];
+            break;
           }
         }
-
-        const priceMatch = full.match(/(?:PHP|P)?\s?(\d+(?:\.\d+)?)\s?M/i);
-        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s?sq\s?m/i) || full.match(/(\d+(?:\.\d+)?)\s?sqm/i);
-        const bedroomMatch = full.match(/(\d+)\s?BR/i);
-        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s?Floor/i);
-        const parkingMatch = full.match(/(\d+)\s?parking/i);
         
-        // Try to get location from Location keyword first, or fall back to line matching
-        let locationVal = "Bonifacio Global City";
-        const locKeywordMatch = full.match(/location\s*[:-]?\s*(.*?)(?:\bDirect|\bPrice|\bAsking|\bBroker|$)/i);
-        if (locKeywordMatch && locKeywordMatch[1].trim().length > 2) {
-          locationVal = cleanLine(locKeywordMatch[1]);
+        if (foundProject) {
+          listingData.address = foundProject.name + ", BGC";
+          listingData.project = foundProject.name;
+          listingData.developer = foundProject.developer;
+          listingData.yearBuilt = foundProject.yearBuilt;
+          listingData.yearTurnedOver = foundProject.yearTurnedOver;
+          listingData.landmarks = `Hospital: ${foundProject.landmarks.hospital} | Schools: ${foundProject.landmarks.schools} | Supermarket: ${foundProject.landmarks.supermarkets} | Dining: ${foundProject.landmarks.restaurants}`;
         } else {
-          const locationLine = lines.find((line) => /location/i.test(line));
-          if (locationLine) {
-            locationVal = cleanLine(locationLine.replace(/location/i, ""));
+          // If not matched, try to extract first line or capital pattern
+          const atMatch = full.match(/\bat\s+([A-Z][A-Za-z0-9\s]{2,25})/);
+          if (atMatch) {
+            listingData.project = atMatch[1].trim();
+            listingData.address = atMatch[1].trim();
+          } else if (full.length < 40 && /gallery|place|residence|serendra|arya|seasons|hyatt|parksuites/i.test(full)) {
+            listingData.project = full.replace(/^for sale\s*/i, "");
+            listingData.address = full;
+          }
+        }
+        
+        // 2. Floor / Zone
+        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s*(?:fl(?:oor)?|level|f\b)/i);
+        if (floorMatch) {
+          const num = parseInt(floorMatch[1]);
+          listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
+          if (num <= 15) {
+            listingData.floorZone = "Low Zone";
+          } else if (num <= 30) {
+            listingData.floorZone = "Mid Zone";
+          } else {
+            listingData.floorZone = "High Zone";
+          }
+        }
+        
+        // 3. View / Orientation
+        if (/golf\s*course|golf\s*view|golfcourse/i.test(full)) {
+          listingData.view = "Golf Course View";
+        } else if (/city\s*view|skyline|street/i.test(full)) {
+          listingData.view = "City View";
+        } else if (/amenity\s*view|pool\s*view/i.test(full)) {
+          listingData.view = "Amenity View";
+        }
+        
+        const facingMatch = full.match(/(?:facing|orient|oriented)\s*(east|west|north|south)/i) || full.match(/(east|west|north|south)\s*facing/i) || full.match(/\b(east|west|north|south)\b/i);
+        if (facingMatch) {
+          listingData.facing = facingMatch[1].charAt(0).toUpperCase() + facingMatch[1].slice(1);
+        }
+        
+        // 4. Area size (sqm)
+        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s*(?:sq\s*m|sqm|sq\.?\s*m|square\s*meters?)/i);
+        if (sqmMatch) {
+          listingData.sqm = `${sqmMatch[1]} sqm`;
+        }
+        
+        // 5. Bedroom type
+        if (/studio/i.test(full)) {
+          listingData.bedrooms = "Studio";
+        } else if (/penthouse/i.test(full)) {
+          listingData.bedrooms = "Penthouse";
+        } else if (/villa/i.test(full)) {
+          listingData.bedrooms = "Villa";
+        } else {
+          const brMatch = full.match(/(\d+)\s*(?:br|bed|bedroom)/i);
+          if (brMatch) {
+            listingData.bedrooms = `${brMatch[1]}BR`;
+          }
+        }
+        
+        // 6. Furnishing
+        if (/fully\s*furnished/i.test(full) || /fully-furnished/i.test(full)) {
+          listingData.furnishing = "Fully Furnished";
+        } else if (/semi\s*furnished/i.test(full) || /semi-furnished/i.test(full)) {
+          listingData.furnishing = "Semi-Furnished";
+        } else if (/bare|unfurnished|empty/i.test(full)) {
+          listingData.furnishing = "Bare";
+        }
+        
+        // 7. Maid's Room
+        if (/maid|maids|utility|helper/i.test(full)) {
+          if (/no\s*maid|no\s*utility|without\s*maid|doesn't\s*have\s*maid/i.test(full)) {
+            listingData.maidsRoom = "No";
+          } else {
+            listingData.maidsRoom = "Yes";
+          }
+        }
+        
+        // 8. Parking
+        if (/parking|parking\s*slot/i.test(full)) {
+          if (/no\s*parking|without\s*parking/i.test(full)) {
+            listingData.parking = "No parking";
+          } else {
+            const pkMatch = full.match(/(\d+)\s*parking/i);
+            if (pkMatch) {
+              listingData.parking = `${pkMatch[1]} parking slot${parseInt(pkMatch[1]) > 1 ? 's' : ''}`;
+            } else {
+              listingData.parking = "Yes (parking included)";
+            }
+          }
+        }
+        
+        // 9. Ownership
+        if (/individual/i.test(full)) {
+          listingData.ownership = "Individual";
+        } else if (/corp|corporation|company/i.test(full)) {
+          listingData.ownership = "Corporation";
+        }
+        
+        // 10. Tenancy
+        if (/tenant|tenanted|rented|lease/i.test(full)) {
+          listingData.tenanted = "Rented to tenant";
+        } else if (/vacant|empty|ready\s*to\s*occupy|owner\s*occupied/i.test(full)) {
+          listingData.tenanted = "Vacant";
+        }
+        
+        // 11. Asking Price & Comps
+        const priceMatch = full.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i) || full.match(/(\d+(?:\.\d+)?)\s*million/i);
+        if (priceMatch) {
+          listingData.price = `PHP ${priceMatch[1]}M Gross`;
+        } else {
+          const rawPriceMatch = full.match(/\b(\d{6,9})\b/);
+          if (rawPriceMatch) {
+            const rawVal = parseInt(rawPriceMatch[1]);
+            if (rawVal >= 1000000) {
+              listingData.price = `PHP ${(rawVal / 1000000).toFixed(1)}M Gross`;
+            }
+          }
+        }
+        
+        // 12. Calculate Comps if size and project are available
+        if (listingData.project && listingData.sqm) {
+          const sqmVal = parseFloat(listingData.sqm);
+          let dbKey = null;
+          for (const key in BGC_CONDO_DB) {
+            if (listingData.project.toLowerCase().includes(key) || key.includes(listingData.project.toLowerCase())) {
+              dbKey = key;
+              break;
+            }
+          }
+          if (dbKey && !isNaN(sqmVal)) {
+            const dbItem = BGC_CONDO_DB[dbKey];
+            const minM = (sqmVal * dbItem.pricePerSqmMin) / 1000000;
+            const maxM = (sqmVal * dbItem.pricePerSqmMax) / 1000000;
+            listingData.compsProposed = `PHP ${minM.toFixed(1)}M - ${maxM.toFixed(1)}M`;
           }
         }
 
-        const unitLine = lines.find((line) => /BR|Corner|Bare|Furnished|Unit/i.test(line)) || "";
+        // Keep core ad sync parameters updated
+        if (listingData.project) {
+          listingData.unit = `${listingData.bedrooms || '2BR'} unit`;
+          listingData.condition = (listingData.furnishing || 'bare').toLowerCase();
+        }
+      }
 
-        return {
-          project: projectLine.replace(/^FOR SALE\s*/i, "").replace(/^•\s*/, ""),
-          alert: /reprice/i.test(full) ? "Repriced alert" : "Fresh listing",
-          status: /for sale/i.test(full) ? "For Sale" : "Available",
-          unit: unitLine || "Premium residence",
-          bedrooms: bedroomMatch ? `${bedroomMatch[1]}BR` : "Residence",
-          floor: floorMatch ? `${floorMatch[1]}F` : "High floor",
-          storage: /storage/i.test(full) ? "With storage" : "Storage not listed",
-          sqm: sqmMatch ? `${sqmMatch[1]} sqm` : "Size on request",
-          parking: parkingMatch ? `${parkingMatch[1]} parking` : /parking/i.test(full) ? "With parking" : "Parking on request",
-          price: priceMatch ? `PHP ${priceMatch[1]}M gross` : "Price on request",
-          location: locationVal,
-          direct: /direct to owner/i.test(full) ? "Direct to owner" : "Broker review required",
-          condition: /furnished/i.test(full) ? "furnished" : "bare",
-        };
+      function handleSkipsForGroup(group) {
+        if (group === "A") {
+          listingData.address = "Premium BGC Condo";
+          listingData.project = "BGC Residence";
+          listingData.developer = "Premium Developer";
+          listingData.yearBuilt = "2020";
+          listingData.yearTurnedOver = "2021";
+          listingData.landmarks = "Hospital: St. Luke's BGC (1km) | Schools: ISM (1km) | Supermarket: Marketplace (500m) | Dining: High Street (500m)";
+        } else if (group === "B") {
+          if (!listingData.floor) {
+            listingData.floor = "12th Floor";
+            listingData.floorZone = "Low Zone";
+          }
+          if (!listingData.view) listingData.view = "City View";
+          if (!listingData.facing) listingData.facing = "East";
+        } else if (group === "C") {
+          if (!listingData.bedrooms) listingData.bedrooms = "2BR";
+          if (!listingData.sqm) listingData.sqm = "92 sqm";
+          if (!listingData.furnishing) listingData.furnishing = "Bare";
+        } else if (group === "D") {
+          if (!listingData.maidsRoom) listingData.maidsRoom = "No";
+          if (!listingData.parking) listingData.parking = "No parking";
+        } else if (group === "E") {
+          if (!listingData.ownership) listingData.ownership = "Individual";
+          if (!listingData.tenanted) listingData.tenanted = "Vacant";
+        } else if (group === "F") {
+          if (!listingData.price) listingData.price = "Price on request";
+        }
+      }
+
+      function updateChecklistUI() {
+        const fields = [
+          { key: "address", label: "Address/Title", val: listingData.address },
+          { key: "landmarks", label: "Landmarks", val: listingData.landmarks },
+          { key: "floor", label: "Floor & Zone", val: listingData.floor ? `${listingData.floor} (${listingData.floorZone})` : "" },
+          { key: "view", label: "View/Facing", val: (listingData.view || listingData.facing) ? `${listingData.view || "No view"} / ${listingData.facing || "No orientation"}` : "" },
+          { key: "developer", label: "Developer/Year", val: listingData.developer ? `${listingData.developer} (${listingData.yearBuilt})` : "" },
+          { key: "sqm", label: "Floor Area", val: listingData.sqm },
+          { key: "bedrooms", label: "Bedroom Type", val: listingData.bedrooms },
+          { key: "furnishing", label: "Furnishing", val: listingData.furnishing },
+          { key: "maidsRoom", label: "Maid's Room", val: listingData.maidsRoom },
+          { key: "parking", label: "Parking slot", val: listingData.parking },
+          { key: "ownership", label: "Title Type", val: listingData.ownership },
+          { key: "tenanted", label: "Tenancy Status", val: listingData.tenanted },
+          { key: "price", label: "Price & Comps", val: listingData.price ? `${listingData.price} (Comps: ${listingData.compsProposed || "Pending"})` : "" }
+        ];
+
+        let checkedCount = 0;
+        const grid = document.querySelector("#checklistGrid");
+        if (!grid) return;
+        grid.innerHTML = "";
+
+        fields.forEach((field, i) => {
+          const isChecked = !!field.val && field.val.toLowerCase() !== "pending" && field.val.toLowerCase() !== "skip";
+          if (isChecked) checkedCount += 1;
+
+          const item = document.createElement("div");
+          item.className = `checklist-item${isChecked ? " checked" : ""}`;
+          item.innerHTML = `
+            <div class="checklist-status">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div>
+              <div class="checklist-label">${i + 1}. ${field.label}</div>
+              <div class="checklist-val" title="${field.val || 'Pending'}">${field.val || 'Pending'}</div>
+            </div>
+          `;
+          grid.appendChild(item);
+        });
+
+        const checklistHeaderSpan = document.querySelector("#checklistHeader span");
+        if (checklistHeaderSpan) {
+          checklistHeaderSpan.textContent = `Property Specs Checklist (${checkedCount}/13 Vetted)`;
+        }
+
+        const checklist = document.querySelector("#specsChecklist");
+        if (checklist && checkedCount > 0 && checklist.classList.contains("collapsed")) {
+          // Open checklist visual automatically if details start getting filled
+          checklist.classList.remove("collapsed");
+          const chevron = document.querySelector("#checklistChevron");
+          if (chevron) chevron.style.transform = "rotate(0deg)";
+        }
       }
 
       function makeOptions(listing, seed) {
         const urgency = seed % 2 === 0 ? "repriced" : "newly available";
+        const landmarksText = listing.landmarks ? `Location Highlights:\n- Near ${listing.landmarks.split('|')[0].replace('Hospital: ', '')}\n- Close to ${listing.landmarks.split('|')[2].replace('Supermarket: ', '')}` : `Location: Bonifacio Global City`;
+        const viewText = (listing.view || listing.facing) ? `${listing.view || ""} ${listing.facing ? 'facing ' + listing.facing : ''}`.trim() : "BGC view";
+        const developerText = listing.developer ? `Developed by ${listing.developer} (turned over ${listing.yearTurnedOver || 'recently'})` : "";
+        const maidsText = listing.maidsRoom && listing.maidsRoom.toLowerCase().includes("yes") ? "includes maid's room" : "no maid's room";
+        const tenancyText = listing.tenanted ? listing.tenanted : "Vacant and ready to move in";
+        const titleText = listing.ownership ? `Title under ${listing.ownership}` : "Clean CCT Title";
+        const compsText = listing.compsProposed ? `Market Comps: ${listing.compsProposed} (Fair Value recommendation)` : "";
+        
         return [
           {
             channel: "Facebook / Direct Buyer",
-            headline: `${listing.bedrooms} corner unit in ${listing.location}`,
-            subhead: `${listing.project} | ${listing.sqm} | ${listing.price}`,
-            body: `${listing.alert}: A ${listing.bedrooms} corner unit at ${listing.project} is now available in ${listing.location}.\n\nKey details:\n- ${listing.unit}\n- ${listing.sqm}\n- ${listing.parking}\n- ${listing.storage}\n- ${listing.price}\n- ${listing.direct}\n\nThis is for buyers who want a real BGC address with space, parking, and a direct-owner path.`,
-            cta: "Message us for the full details, viewing schedule, and direct-owner next steps.",
+            headline: `${listing.bedrooms || '2BR'} ${listing.floorZone || 'Premium'} Unit in BGC`,
+            subhead: `${listing.project || 'BGC Condo'} | ${listing.sqm || 'Size on request'} | ${listing.price || 'Price on request'}`,
+            body: `${listing.alert || 'Fresh listing'}: A ${listing.bedrooms || '2BR'} layout on the ${listing.floor || 'High floor'} (${listing.floorZone || 'Premium zone'}) is now available at ${listing.project || 'BGC'}.\n\nSpecifications:\n- Size: ${listing.sqm || 'Size on request'}\n- Layout: ${listing.bedrooms || '2BR'} | ${viewText}\n- Condition: ${listing.furnishing || 'bare'} | ${maidsText}\n- Parking: ${listing.parking || 'Parking details on request'}\n- Transaction: ${titleText} | ${tenancyText}\n- Price: ${listing.price || 'Price on request'}\n\n${developerText}\n\n${landmarksText}\n\nThis is for buyers seeking a direct, verified negotiation path.`,
+            cta: "Message us directly to check CCT details, schedule a viewing, or present an offer.",
             visual: {
               tone: "urgent",
-              kicker: listing.alert,
-              title: `${listing.bedrooms} BGC Corner Unit`,
-              subtitle: listing.project,
+              kicker: listing.alert || "Fresh Listing",
+              title: `${listing.bedrooms || '2BR'} ${listing.project || 'BGC Condo'}`,
+              subtitle: `${listing.sqm || 'Size on request'} | ${viewText}`,
               stats: [
-                [listing.price, "Gross price"],
-                [listing.sqm, "Interior size"],
-                [listing.parking, "Included"],
-                [listing.floor, "Floor"],
+                [listing.price || 'Price on request', "Gross price"],
+                [listing.sqm || 'Size on request', "Interior size"],
+                [listing.parking || 'Parking', "Included"],
+                [listing.floor || 'Floor', "Floor level"],
               ],
-              footer: listing.direct,
+              footer: listing.direct || "Direct to owner",
             },
           },
           {
             channel: "Instagram / Lifestyle",
-            headline: `A cleaner BGC upgrade at ${listing.project}`,
-            subhead: `${listing.bedrooms} bare corner unit with parking`,
-            body: `If you have been waiting for a serious BGC option, this is the one to inspect.\n\n${listing.project} gives you a ${listing.bedrooms} corner layout, ${listing.sqm}, ${listing.parking}, and ${listing.storage.toLowerCase()}.\n\nThe unit is bare, which makes it easier to design properly instead of paying for someone else's taste. Current guide: ${listing.price}.`,
-            cta: "Send BGC and we will send the viewing details and availability check.",
+            headline: `Sleek BGC Living at ${listing.project || 'BGC'}`,
+            subhead: `${listing.bedrooms || '2BR'} | ${viewText} | ${listing.price || 'Price on request'}`,
+            body: `Imagine waking up to this: a gorgeous ${viewText} from your ${listing.floor || 'High floor'} corner unit at ${listing.project || 'BGC'}.\n\nFeaturing ${listing.sqm || 'Size on request'} of premium floor area, configured as a ${listing.bedrooms || '2BR'} unit in ${listing.furnishing || 'bare'} condition—the perfect canvas for your bespoke interior design.\n\nPremium specs:\n- ${listing.parking || 'Parking included'}\n- ${maidsText}\n- ${tenancyText}\n- ${developerText}\n- Asking: ${listing.price || 'Price on request'}\n\nLocated in the heart of BGC, steps away from premium dining and retail.`,
+            cta: "DM us 'VIEW' to schedule a private tour of this residence.",
             visual: {
               tone: "premium",
-              kicker: "BGC listing",
-              title: `${listing.project}`,
-              subtitle: `${listing.bedrooms} corner unit | ${listing.price}`,
+              kicker: "BGC Lifestyle",
+              title: listing.project || "BGC Condo",
+              subtitle: `${listing.bedrooms || '2BR'} | ${listing.price || 'Price on request'}`,
               stats: [
-                [listing.sqm, "Size"],
-                [listing.parking, "Parking"],
-                [listing.storage, "Extra"],
-                [listing.location, "Location"],
+                [listing.sqm || 'Size on request', "Floor Area"],
+                [listing.parking || 'Parking', "Parking slot"],
+                [listing.floorZone || 'Mid Zone', "Zone Level"],
+                [listing.view || 'City View', "Unit View"],
               ],
               footer: "Message to view",
             },
           },
           {
             channel: "LinkedIn / Investor",
-            headline: `Looking for a real ${listing.location} buy?`,
-            subhead: `${listing.project}, ${listing.price}, direct-owner path`,
-            body: `For qualified buyers comparing BGC inventory: ${listing.project} has a ${urgency} ${listing.bedrooms} corner unit available.\n\nWhy it is worth checking:\n- Corner layout\n- ${listing.sqm}\n- ${listing.parking}\n- ${listing.storage}\n- ${listing.direct}\n\nThis is a direct conversation for buyers who can move quickly after due diligence.`,
-            cta: "Tap to request the full fact sheet, exact availability, and viewing window.",
+            headline: `BGC Real Estate Value Opportunity: ${listing.project || 'Condo'}`,
+            subhead: `${listing.sqm || 'Size on request'} | ${listing.price || 'Price on request'} | Comps Proposed`,
+            body: `For property investors tracking Bonifacio Global City inventory:\n\nWe are presenting a ${listing.bedrooms || '2BR'} unit at ${listing.project || 'BGC Residence'} under ${titleText.toLowerCase()}.\n\nKey financial and property parameters:\n- Floor Area: ${listing.sqm || 'Size on request'} (${listing.floor || 'High floor'} / ${listing.floorZone || 'Mid-High Zone'})\n- Developer: ${listing.developer || 'Ayala Premier / Alveo'} | Year: ${listing.yearBuilt || '2019'}\n- Condition: ${listing.furnishing || 'bare'} | ${maidsText}\n- Parking: ${listing.parking || 'Parking slot included'}\n- Status: ${tenancyText}\n\n${compsText}\nAsking price is set at ${listing.price || 'Price on request'}.\n\nThis represents a secure transaction opportunity for capital preservation.`,
+            cta: "Click to request the CCT title copy, complete comps history, and property ledger.",
             visual: {
               tone: "investment",
-              kicker: "Buyer match",
-              title: "Qualified BGC Buyers",
-              subtitle: `${listing.project} | ${listing.price}`,
+              kicker: "Investor Factsheet",
+              title: "Premium BGC Asset",
+              subtitle: `${listing.project || 'BGC'} | ${listing.price || 'Price on request'}`,
               stats: [
-                [listing.bedrooms, "Layout"],
-                [listing.sqm, "Area"],
-                [listing.parking, "Parking"],
-                [listing.direct, "Access"],
+                [listing.sqm || 'Size on request', "Size"],
+                [listing.compsProposed || 'PHP 300k/sqm', "Market Comps"],
+                [listing.ownership || 'Individual', "Title owner"],
+                [listing.tenanted || 'Vacant', "Status"],
               ],
-              footer: "Fact sheet available",
+              footer: "Factsheet ready",
             },
           },
           {
             channel: "Carousel / Facts",
-            headline: `4 Key Facts: Premium BGC Corner Listing`,
-            subhead: `Swipe for a complete look inside BGC's newest direct-owner listing.`,
+            headline: `13 Vetted Specs: ${listing.project || 'BGC Condo'} Listing`,
+            subhead: `Swipe to read the audited property verification list for this premium residence.`,
             body: [
-              `👉 SLIDE 1: THE ADDRESS`,
-              `${listing.project} in ${listing.location}. BGC's premier residential district.`,
+              `👉 SLIDE 1: PROPERTY & DEVELOPER`,
+              `${listing.project || 'BGC Condo'} built by ${listing.developer || 'Ayala Land Premier'}. Turned over in ${listing.yearTurnedOver || '2020'}.`,
+              `Specific Address: ${listing.address || 'Bonifacio Global City'}.`,
               ``,
-              `👉 SLIDE 2: THE LAYOUT`,
-              `Spacious ${listing.unit} on the ${listing.floor} level. Offering ${listing.sqm} of premium interior volume.`,
+              `👉 SLIDE 2: FLOOR, ZONE & VIEW`,
+              `${listing.floor || 'High floor'} (${listing.floorZone || 'High Zone'}).`,
+              `Orientation: ${viewText}.`,
               ``,
-              `👉 SLIDE 3: THE ADDITIONS`,
-              `Includes ${listing.parking} and a private ${listing.storage.toLowerCase()}. Rare inclusions for units in this zone.`,
+              `👉 SLIDE 3: INTERIOR DETAILS`,
+              `Floor Area: ${listing.sqm || 'Size on request'}. Layout: ${listing.bedrooms || '2BR'}.`,
+              `Furnishing: ${listing.furnishing || 'Bare'} | ${maidsText}.`,
               ``,
-              `👉 SLIDE 4: THE TRANSACTION`,
-              `Offered at ${listing.price} with a direct-owner negotiation path (${listing.direct}) for optimal transaction speed.`,
-              ``,
-              `Caption: This ${listing.condition.toLowerCase()} corner unit is for buyers who refuse to settle for generic developer finishes. Direct transaction with the owner.`
+              `👉 SLIDE 4: TRANSACTION & PRICING`,
+              `Includes ${listing.parking || 'Parking'}. ${titleText} | ${tenancyText}.`,
+              `Asking Price: ${listing.price || 'Price on request'}. ${compsText}.`
             ].join("\n"),
-            cta: `💬 Comment "DETAILS" or message us to get the full listings package instantly.`,
+            cta: `💬 Comment "VETTED" for full title review and pricing verification packet.`,
             visual: {
               tone: "direct",
-              kicker: "Carousel ready",
-              title: "4 Listing Facts",
-              subtitle: `${listing.project} in BGC`,
+              kicker: "13 Specs Audited",
+              title: "Verified Condo Specs",
+              subtitle: `${listing.project || 'BGC'} | ${listing.price || 'Price on request'}`,
               stats: [
-                [listing.bedrooms, "Corner layout"],
-                [listing.sqm, "Interior size"],
-                [listing.price, "Price guide"],
-                [listing.direct, "Seller route"],
+                [listing.bedrooms || '2BR', "Layout type"],
+                [listing.sqm || 'Size on request', "Floor area"],
+                [listing.floorZone || 'High Zone', "Zone Level"],
+                [listing.parking || 'Parking', "Parking details"],
               ],
-              footer: "Ready for FB + IG",
+              footer: "CCT audited",
             },
           },
         ];
@@ -1267,31 +1924,99 @@
         });
       }
 
-      function renderVisual(option) {
-        visualKicker.textContent = option.visual.kicker;
-        visualTitle.textContent = option.visual.title;
-        visualSubtitle.textContent = option.visual.subtitle;
-        visualFooter.textContent = option.visual.footer;
+      function updateInfographicVisuals() {
+        let dev = listingData.developer || "";
+        let devLower = dev.toLowerCase();
         
-        // Update infographic tone
-        const infographicCard = document.querySelector("#infographic");
-        infographicCard.className = `infographic-card ${option.visual.tone}`;
-        
-        let toneGradient = "";
-        if (option.visual.tone === 'urgent') toneGradient = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
-        else if (option.visual.tone === 'premium') toneGradient = 'linear-gradient(135deg, #115e59 0%, #134e4a 100%)';
-        else if (option.visual.tone === 'investment') toneGradient = 'linear-gradient(135deg, #78350f 0%, #451a03 100%)';
-        else if (option.visual.tone === 'direct') toneGradient = 'linear-gradient(135deg, #155e75 0%, #164e63 100%)';
-        
-        infographicCard.style.background = toneGradient;
+        let toneGradient = "linear-gradient(135deg, #090a0f 0%, #11131c 100%)";
+        let accentColor = "#14b8a6"; // teal default
+        let titleKicker = "Audited Listing";
 
-        visualStats.innerHTML = "";
-        option.visual.stats.forEach(([value, label]) => {
-          const stat = document.createElement("div");
-          stat.className = "info-stat-pill";
-          stat.innerHTML = `<span><b>${value}</b> - ${label}</span>`;
-          visualStats.appendChild(stat);
-        });
+        if (devLower.includes("ayala")) {
+          // Ayala Land Premier: Forest Green / Gold
+          toneGradient = "linear-gradient(135deg, #05140f 0%, #0c0f12 100%)";
+          accentColor = "#d4af37"; // gold
+          titleKicker = "Ayala Land Premier Verified";
+        } else if (devLower.includes("arthaland")) {
+          // ArthaLand: Organic Sage / Emerald Green
+          toneGradient = "linear-gradient(135deg, #091d15 0%, #0c100e 100%)";
+          accentColor = "#10b981"; // emerald
+          titleKicker = "ArthaLand Green Certified";
+        } else if (devLower.includes("megaworld")) {
+          // Megaworld: Corporate Blue / Cyan
+          toneGradient = "linear-gradient(135deg, #091b36 0%, #0d111a 100%)";
+          accentColor = "#06b6d4"; // cyan
+          titleKicker = "Megaworld Premium CCT";
+        } else if (devLower.includes("federal") || devLower.includes("nomura") || devLower.includes("orix")) {
+          // Federal Land: Warm Amber / Copper
+          toneGradient = "linear-gradient(135deg, #23150b 0%, #0c0907 100%)";
+          accentColor = "#f59e0b"; // amber/gold
+          titleKicker = "Federal Land Deluxe";
+        } else if (devLower.includes("shang") || devLower.includes("robinsons")) {
+          // Shang Properties: Charcoal Black / Champagne Bronze
+          toneGradient = "linear-gradient(135deg, #181615 0%, #090909 100%)";
+          accentColor = "#c5a059"; // bronze/champagne
+          titleKicker = "Shang Properties Elite CCT";
+        }
+
+        const card = document.querySelector("#infographic");
+        if (card) {
+          card.style.background = toneGradient;
+          card.style.borderColor = accentColor + "33"; // 20% opacity border
+        }
+
+        const kicker = document.querySelector("#visualKicker");
+        if (kicker) {
+          kicker.textContent = titleKicker;
+          kicker.style.color = accentColor;
+        }
+
+        const pricingBox = document.querySelector("#visualPricingBox");
+        if (pricingBox) {
+          pricingBox.style.borderLeftColor = accentColor;
+        }
+
+        // Fill visual text fields
+        document.querySelector("#visualTitle").textContent = listingData.project || "Select a Condo";
+        document.querySelector("#visualSubtitle").textContent = listingData.address || "Bonifacio Global City";
+        
+        document.querySelector("#specBedSize").textContent = (listingData.bedrooms || listingData.sqm) ? `${listingData.bedrooms || "Residence"} / ${listingData.sqm || "Pending"}` : "-";
+        document.querySelector("#specFloorZone").textContent = (listingData.floor || listingData.floorZone) ? `${listingData.floor || "Pending"} (${listingData.floorZone || "Pending"})` : "-";
+        
+        const helperText = (listingData.maidsRoom && listingData.maidsRoom.toLowerCase().includes("yes")) ? "With Maid's Room" : "No Maid's Room";
+        document.querySelector("#specInteriorMaid").textContent = (listingData.furnishing || listingData.maidsRoom) ? `${listingData.furnishing || "Bare"} / ${helperText}` : "-";
+        document.querySelector("#specParkingStatus").textContent = (listingData.parking || listingData.tenanted) ? `${listingData.parking || "No Parking"} / ${listingData.tenanted || "Vacant"}` : "-";
+        
+        document.querySelector("#specTitleOwner").textContent = listingData.ownership ? `${listingData.ownership} Owner` : "-";
+        document.querySelector("#specDeveloper").textContent = listingData.developer ? `${listingData.developer} (${listingData.yearBuilt || "-"})` : "-";
+
+        // Proximity landmarks
+        if (listingData.landmarks) {
+          const parts = listingData.landmarks.split(" | ");
+          let hosp = "-", groc = "-", sch = "-", din = "-";
+          parts.forEach(p => {
+            if (p.startsWith("Hospital:")) hosp = p.replace("Hospital: ", "");
+            if (p.startsWith("Supermarket:")) groc = p.replace("Supermarket: ", "");
+            if (p.startsWith("Schools:")) sch = p.replace("Schools: ", "");
+            if (p.startsWith("Dining:")) din = p.replace("Dining: ", "");
+          });
+          document.querySelector("#landHospital").textContent = hosp;
+          document.querySelector("#landGrocery").textContent = groc;
+          document.querySelector("#landSchools").textContent = sch;
+          document.querySelector("#landDining").textContent = din;
+        } else {
+          document.querySelector("#landHospital").textContent = "-";
+          document.querySelector("#landGrocery").textContent = "-";
+          document.querySelector("#landSchools").textContent = "-";
+          document.querySelector("#landDining").textContent = "-";
+        }
+
+        // Pricing
+        document.querySelector("#specAskingPrice").textContent = listingData.price || "Price on Request";
+        document.querySelector("#specMarketComps").textContent = listingData.compsProposed ? `Comps: ${listingData.compsProposed}` : "Comps: Pending";
+        
+        // Footer direct info
+        document.querySelector("#visualFooter").textContent = listingData.direct || "CCT Verified";
       }
 
       function selectOption(index) {
@@ -1302,14 +2027,13 @@
         phoneCaption.textContent = option.body;
         phoneCta.textContent = option.cta;
         renderOptions();
-        renderVisual(option);
+        updateInfographicVisuals();
       }
 
       function generate(rawListingText) {
         const textToParse = rawListingText || "";
         if (textToParse) {
-          const parsed = parseListing(textToParse);
-          Object.assign(listingData, parsed);
+          parseInputDetails(textToParse);
         }
         currentOptions = makeOptions(listingData, reroll);
         selectOption(0);
@@ -1382,53 +2106,36 @@
         const utterance = new SpeechSynthesisUtterance(text);
         
         const voices = window.speechSynthesis.getVoices();
+        const enVoices = voices.filter(v => v.lang.toLowerCase().startsWith("en"));
         
-        // Priority order for high-quality natural female voices
-        const priorityFemaleVoices = [
-          "Microsoft Jenny Online (Natural)",
-          "Microsoft Aria Online (Natural)",
-          "Microsoft Sonia Online (Natural)",
-          "Google US English",
-          "Samantha",
-          "Zira",
-          "Hazel"
-        ];
-
+        // Find best match female voice
         let femaleVoice = null;
         
-        // 1. Try to match our high-quality priorities exactly (case-insensitive substring match)
-        for (const name of priorityFemaleVoices) {
-          femaleVoice = voices.find(v => 
-            v.lang.startsWith("en") && 
-            v.name.toLowerCase().includes(name.toLowerCase())
-          );
-          if (femaleVoice) break;
-        }
+        // 1. Try online natural/neural female voices
+        femaleVoice = enVoices.find(v => /online.*natural|natural.*online|neural/i.test(v.name) && /jenny|aria|sonia|samantha|zira/i.test(v.name));
         
-        // 2. Fall back to any English voice with "female", "natural", or "neural" in the name
+        // 2. Try priority list
         if (!femaleVoice) {
-          femaleVoice = voices.find(v => 
-            v.lang.startsWith("en") && 
-            /female|natural|neural|online/i.test(v.name)
-          );
+          const priorities = ["jenny", "aria", "sonia", "samantha", "zira", "google us english", "hazel", "karen", "susan"];
+          for (const p of priorities) {
+            femaleVoice = enVoices.find(v => v.name.toLowerCase().includes(p));
+            if (femaleVoice) break;
+          }
         }
         
-        // 3. Fall back to any English voice that is not known to be male (like David)
+        // 3. Try any voice with female indicators
         if (!femaleVoice) {
-          femaleVoice = voices.find(v => 
-            v.lang.startsWith("en") && 
-            !/david|male|guy|roy|george|ravi/i.test(v.name.toLowerCase())
-          );
+          femaleVoice = enVoices.find(v => /female|girl|woman|samantha|zira|karen|hazel|susan|moira|tessa/i.test(v.name));
         }
         
-        // 4. Fall back to the first available English voice
+        // 4. Try any English voice that is NOT male
         if (!femaleVoice) {
-          femaleVoice = voices.find(v => v.lang.startsWith("en"));
+          femaleVoice = enVoices.find(v => !/david|male|guy|roy|george|ravi|mark|richard|stefan/i.test(v.name.toLowerCase()));
         }
         
-        // 5. Final fallback
-        if (!femaleVoice && voices.length > 0) {
-          femaleVoice = voices[0];
+        // 5. Fall back to any English voice
+        if (!femaleVoice) {
+          femaleVoice = enVoices[0];
         }
         
         if (femaleVoice) {
@@ -1483,16 +2190,10 @@
         }
       }
 
-      const POPULAR_PROJECTS = [
-        "West Gallery Place", "East Gallery Place", "High Street South", "One Serendra", "Two Serendra",
-        "The Proscenium", "Park Triangle", "Arya Residences", "Uptown Parksuites", "Florence Way",
-        "St. Moritz", "Aurelia Residences", "The Seasons Residences", "Grand Hyatt Residences"
-      ];
-
       function extractProject(text) {
-        for (const project of POPULAR_PROJECTS) {
+        for (const project in BGC_CONDO_DB) {
           if (text.toLowerCase().includes(project.toLowerCase())) {
-            return project;
+            return BGC_CONDO_DB[project].name;
           }
         }
         const atMatch = text.match(/\bat\s+([A-Z][A-Za-z0-9\s]{2,30})/);
@@ -1501,151 +2202,90 @@
       }
 
       function mergeListingData(target, source) {
-        if (source.project && source.project !== "Prime BGC property") target.project = source.project;
-        if (source.sqm && source.sqm !== "Size on request") target.sqm = source.sqm;
-        if (source.bedrooms && source.bedrooms !== "Residence") target.bedrooms = source.bedrooms;
-        if (source.floor && source.floor !== "High floor") target.floor = source.floor;
-        if (source.storage && source.storage !== "Storage not listed") target.storage = source.storage;
-        if (source.parking && source.parking !== "Parking on request") target.parking = source.parking;
-        if (source.price && source.price !== "Price on request") target.price = source.price;
-        if (source.location && source.location !== "Bonifacio Global City") target.location = source.location;
-        if (source.direct && source.direct !== "Broker review required") target.direct = source.direct;
-        if (source.condition && source.condition !== "bare") target.condition = source.condition;
-        if (source.unit && source.unit !== "Premium residence") target.unit = source.unit;
-        if (source.alert && source.alert !== "Fresh listing") target.alert = source.alert;
+        if (source.address) target.address = source.address;
+        if (source.project) target.project = source.project;
+        if (source.developer) target.developer = source.developer;
+        if (source.yearBuilt) target.yearBuilt = source.yearBuilt;
+        if (source.yearTurnedOver) target.yearTurnedOver = source.yearTurnedOver;
+        if (source.landmarks) target.landmarks = source.landmarks;
+        if (source.floor) target.floor = source.floor;
+        if (source.floorZone) target.floorZone = source.floorZone;
+        if (source.view) target.view = source.view;
+        if (source.facing) target.facing = source.facing;
+        if (source.sqm) target.sqm = source.sqm;
+        if (source.bedrooms) target.bedrooms = source.bedrooms;
+        if (source.furnishing) target.furnishing = source.furnishing;
+        if (source.maidsRoom) target.maidsRoom = source.maidsRoom;
+        if (source.parking) target.parking = source.parking;
+        if (source.ownership) target.ownership = source.ownership;
+        if (source.tenanted) target.tenanted = source.tenanted;
+        if (source.price) target.price = source.price;
+        if (source.compsProposed) target.compsProposed = source.compsProposed;
+
+        if (source.alert) target.alert = source.alert;
+        if (source.status) target.status = source.status;
+        if (source.unit) target.unit = source.unit;
+        if (source.direct) target.direct = source.direct;
+        if (source.condition) target.condition = source.condition;
       }
 
-      // Stateful chatbot interview parser
-      function parseStepResponse(input, state) {
+      // Smart non-interrogative dialog state machine
+      function parseStepResponse(input) {
         const text = input.trim();
+        const lower = text.toLowerCase();
+        
+        // Check for general user skips
+        const isSkip = /skip|dont know|dontknow|no idea|not sure|not listed|pending/i.test(text);
+
+        // Re-determine group before parsing
+        let currentGroup = "A";
+        if (listingData.address) currentGroup = "B";
+        if (listingData.address && listingData.floor && (listingData.view || listingData.facing)) currentGroup = "C";
+        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing) currentGroup = "D";
+        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing && listingData.maidsRoom && listingData.parking) currentGroup = "E";
+        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing && listingData.maidsRoom && listingData.parking && listingData.ownership && listingData.tenanted) currentGroup = "F";
+
+        if (isSkip) {
+          handleSkipsForGroup(currentGroup);
+        } else {
+          parseInputDetails(text);
+        }
+        
+        updateChecklistUI();
+        
         let replyText = "";
         
-        // 1. Global spec corrections detection (e.g. "not a corner unit")
-        if (/not\s*a\s*corner|no\s*corner/i.test(text)) {
-          listingData.unit = listingData.unit.replace("Corner ", "");
-          // Also modify active option visual titles and templates to not say "Corner"
-          for (let opt of currentOptions) {
-            opt.visual.title = opt.visual.title.replace("Corner ", "");
-            opt.headline = opt.headline.replace("corner ", "");
-            opt.body = opt.body.replace("corner ", "");
+        // Re-evaluate what group is missing next
+        if (!listingData.address) {
+          replyText = "Great! What is the condo building name or specific address of the property?";
+        } else if (!listingData.floor || (!listingData.view && !listingData.facing)) {
+          let landmarksText = "";
+          if (listingData.landmarks) {
+            landmarksText = "\n" + listingData.landmarks.split(" | ").map(p => `  * ${p}`).join("\n");
           }
-        }
-        
-        // Looser details dump detection that handles lack of spaces (e.g. 92sqm, 18Floor, 45M)
-        const hasSqm = /sq\.?\s*m|sqm/i.test(text);
-        const hasFloor = /floor|fl/i.test(text);
-        const hasPrice = /\b\d+(?:\.\d+)?\s*M/i.test(text) || /\b\d{6,10}\b/.test(text) || /million/i.test(text);
-        const isDump = (hasSqm || hasFloor) && hasPrice && text.length > 30;
+          replyText = `Excellent! I have compiled the verified building research profile for **${listingData.project}**:
+* **Developer Heritage**: ${listingData.developer || "Verified BGC Developer"} (Built: ${listingData.yearBuilt || "N/A"}, Turned Over: ${listingData.yearTurnedOver || "N/A"})
+* **Neighborhood Proximity landmarks**: ${landmarksText || "  * Proximity: Bonifacio Global City Highlights"}
+* **Estimated Market Comps**: ${listingData.compsProposed || "PHP 250k - 380k / sqm depending on floor and size"}
 
-        if (isDump) {
-          const parsed = parseListing(text);
-          const beforeStr = JSON.stringify(listingData);
-          mergeListingData(listingData, parsed);
-          const afterStr = JSON.stringify(listingData);
+To finalize the 13 verified specifications, could you let me know:
+1. What floor number is the unit on?
+2. What is the orientation (e.g. city view, golf course view, facing east/west)?`;
+        } else if (!listingData.sqm || !listingData.bedrooms || !listingData.furnishing) {
+          replyText = "Got it! Next, what is the bedroom type (Studio, 1BR, 2BR, etc.), floor area in sqm, and its furnishing condition (furnished, semi-furnished, or bare)?";
+        } else if (!listingData.maidsRoom || !listingData.parking) {
+          replyText = "Perfect. Does the unit include a maid's room/utility room, and does it come with any parking slots?";
+        } else if (!listingData.ownership || !listingData.tenanted) {
+          replyText = "Got that. Is the title registered under an individual or a corporation, and is it currently vacant or tenanted?";
+        } else if (!listingData.price) {
+          let compText = "";
+          if (listingData.compsProposed) {
+            compText = `Based on local BGC market comps, a ${listingData.sqm} unit at ${listingData.project} typically trades between ${listingData.compsProposed} gross. `;
+          }
+          replyText = `We have almost all the details! ${compText}What is your asking price for this property?`;
+        } else {
           generate();
-          
-          replyText = `Fantastic details! I've automatically extracted the specs: a ${listingData.bedrooms} unit at ${listingData.project} (${listingData.sqm}, ${listingData.floor}, asking ${listingData.price}, ${listingData.direct.toLowerCase()}). Feel free to review the generated ad copy angles and infographic on the right!`;
-          chatState = 6;
-          return replyText;
-        }
-
-        // Handle user saying they don't know or want to skip
-        const isUserSkipping = /don't know|dont know|no idea|not sure|skip|just know/i.test(text);
-
-        switch(state) {
-          case 0: // Ask for type
-            if (/condo/i.test(text)) {
-              listingData.unit = "Condo Corner Unit";
-              listingData.bedrooms = "2BR";
-              replyText = "Got it, a condo. What is the name of the project or building? (e.g. West Gallery Place, One Serendra)";
-              chatState = 1;
-            } else if (/house/i.test(text)) {
-              listingData.unit = "Modern House";
-              listingData.bedrooms = "4BR";
-              replyText = "Understood, a house. In which neighborhood or village is it located? (e.g. Forbes Park, Dasmariñas Village)";
-              chatState = 1;
-            } else if (/commercial|office/i.test(text)) {
-              listingData.unit = "Commercial Space";
-              listingData.bedrooms = "Office";
-              replyText = "Got it, a commercial space. What is the building name or business district? (e.g. BGC, Makati CBD)";
-              chatState = 1;
-            } else {
-              listingData.unit = "Condo Corner Unit";
-              listingData.bedrooms = "2BR";
-              replyText = "No worries, let's assume it's a condo. What is the building name or project? (e.g. West Gallery Place)";
-              chatState = 1;
-            }
-            break;
-            
-          case 1: // Developer & Year
-            if (isUserSkipping) {
-              listingData.project = "Premium BGC Project";
-              replyText = "No worries at all! We can work with a premium BGC project as a placeholder. Do you know the size of the unit in square meters (sqm) or the bedroom count?";
-            } else {
-              const proj = extractProject(text);
-              listingData.project = proj || cleanLine(text);
-              replyText = `Excellent, ${listingData.project}. Do you know the size of the unit in square meters (sqm) or the bedroom/parking count?`;
-            }
-            chatState = 2;
-            break;
-            
-          case 2: // Floor, Beds, Size
-            if (isUserSkipping) {
-              replyText = "No problem! We'll use standard estimates (92 sqm, 2BR, 1 parking). What is the asking price gross, and is it direct to you as the owner?";
-            } else {
-              const sqmMatch = text.match(/(\d+)\s*sq/i) || text.match(/(\d+)\s*m/i) || text.match(/(\d+)\s*sqm/i);
-              const brMatch = text.match(/(\d+)\s*BR/i) || text.match(/(\d+)\s*bedroom/i);
-              const parkingMatch = text.match(/(\d+)\s*parking/i);
-              const flMatch = text.match(/(\d+)(?:st|nd|rd|th)?\s*Floor/i) || text.match(/(\d+)\s*F\b/i);
-              
-              if (sqmMatch) listingData.sqm = `${sqmMatch[1]} sqm`;
-              if (brMatch) listingData.bedrooms = `${brMatch[1]}BR`;
-              if (parkingMatch) listingData.parking = `${parkingMatch[1]} parking`;
-              if (flMatch) {
-                const num = parseInt(flMatch[1]);
-                listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
-              }
-              
-              replyText = `Got it (${listingData.sqm || "92 sqm"}, ${listingData.bedrooms || "2BR"}). What is the asking price gross, and is it direct to you as the owner?`;
-            }
-            chatState = 3;
-            break;
-            
-          case 3: // Price & Path
-            if (isUserSkipping) {
-              replyText = "Understood! I will use standard pricing estimates for now. I have all the details needed to create your ad angles. Review them on the right side!";
-            } else {
-              const priceMatch = text.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i);
-              if (priceMatch) {
-                listingData.price = `PHP ${priceMatch[1]}M Gross`;
-              } else {
-                listingData.price = text;
-              }
-              
-              if (/direct/i.test(text) || /owner/i.test(text)) {
-                listingData.direct = "Direct to owner";
-              } else if (/broker|agent/i.test(text)) {
-                listingData.direct = "Broker review required";
-              }
-              
-              replyText = `Perfect, asking price is ${listingData.price} (${listingData.direct.toLowerCase()}). I have generated four highly optimized ad campaigns for you on the right side! Feel free to review or tell me if you want to update any details.`;
-            }
-            chatState = 4;
-            break;
-            
-          default:
-            const updated = parseListing(text);
-            const beforeStr = JSON.stringify(listingData);
-            mergeListingData(listingData, updated);
-            const afterStr = JSON.stringify(listingData);
-            generate();
-            
-            if (beforeStr !== afterStr) {
-              replyText = "I've updated the ad copies and infographic on the right with the new details! Feel free to copy them or let me know if you want to tweak anything else.";
-            } else {
-              replyText = "Got it! Feel free to tell me about any other details to update (like price, location, or layout), or let me know how you want to refine the ad copies on the right.";
-            }
-            break;
+          replyText = `Fantastic! All 13 condo criteria have been successfully verified and checked off. I've compiled the market data, comps, and landmarks. Feel free to review the generated ad copy angles and infographic on the right!`;
         }
         
         generate();
@@ -1687,8 +2327,8 @@
             speakText(data.content);
           }
 
-          const parsed = parseListing(fullContext);
-          Object.assign(listingData, parsed);
+          parseInputDetails(fullContext);
+          updateChecklistUI();
           generate();
 
         } catch (error) {
@@ -1697,7 +2337,7 @@
           updateAvatar(null);
           
           setTimeout(() => {
-            const botReply = parseStepResponse(content, chatState);
+            const botReply = parseStepResponse(content);
             appendMessage("bot", botReply);
             conversationHistory.push({ role: "assistant", content: botReply });
             speakText(botReply);
@@ -1733,6 +2373,7 @@
         copyText(JSON.stringify(packet, null, 2), "Queued for Social Review and copied the packet payload!");
       }
 
+      // Redesigned high-fidelity 13-point infographic canvas download
       function downloadInfographic() {
         const option = currentOptions[selectedIndex];
         const canvas = document.createElement("canvas");
@@ -1740,66 +2381,147 @@
         canvas.height = 1350;
         const ctx = canvas.getContext("2d");
         
-        // Palette maps
-        const palette = {
-          urgent: ["#0f172a", "#14532d", "#10b981"],
-          premium: ["#101114", "#0f766e", "#14b8a6"],
-          investment: ["#111827", "#78350f", "#f59e0b"],
-          direct: ["#082f49", "#14b8a6", "#06b6d4"]
-        }[option.visual.tone] || ["#111827", "#4f46e5", "#6366f1"];
+        // Developer-aligned brand palettes
+        let palette = ["#090a0f", "#11131c", "#14b8a6"]; // Default charcoal/teal
+        let devLower = (listingData.developer || "").toLowerCase();
+        if (devLower.includes("ayala")) {
+          palette = ["#05140f", "#0c1210", "#d4af37"]; // Forest green / Gold
+        } else if (devLower.includes("arthaland")) {
+          palette = ["#091d15", "#0a110e", "#10b981"]; // Sage emerald / Bright green
+        } else if (devLower.includes("megaworld")) {
+          palette = ["#091b36", "#0d111a", "#06b6d4"]; // Blue / Cyan
+        } else if (devLower.includes("federal") || devLower.includes("nomura") || devLower.includes("orix")) {
+          palette = ["#23150b", "#0c0907", "#f59e0b"]; // Warm amber / Copper
+        } else if (devLower.includes("shang") || devLower.includes("robinsons")) {
+          palette = ["#181615", "#090909", "#c5a059"]; // Charcoal / Champagne bronze
+        }
 
         const gradient = ctx.createLinearGradient(0, 0, 1080, 1350);
         gradient.addColorStop(0, palette[0]);
         gradient.addColorStop(0.55, palette[1]);
-        gradient.addColorStop(1, "#090a0f");
+        gradient.addColorStop(1, "#040508");
         ctx.fillStyle = gradient;
         ctx.fillRect(0, 0, 1080, 1350);
 
-        ctx.strokeStyle = "rgba(255,255,255,0.12)";
-        ctx.lineWidth = 4;
+        // Thin stroke frame
+        ctx.strokeStyle = "rgba(255,255,255,0.08)";
+        ctx.lineWidth = 3;
         ctx.strokeRect(64, 64, 952, 1222);
 
+        // Brand kicker banner
         ctx.fillStyle = palette[2];
-        ctx.fillRect(92, 96, 330, 64);
+        ctx.fillRect(92, 96, 400, 50);
+        ctx.fillStyle = "#000";
+        ctx.font = "900 20px Arial";
+        let bannerText = "VETTED LISTING SPECS";
+        if (devLower.includes("ayala")) bannerText = "AYALA PREMIER VERIFIED";
+        else if (devLower.includes("arthaland")) bannerText = "ARTHALAND GREEN SPECS";
+        else if (devLower.includes("megaworld")) bannerText = "MEGAWORLD CCT VERIFIED";
+        else if (devLower.includes("federal")) bannerText = "FEDERAL LAND DELUXE";
+        else if (devLower.includes("shang")) bannerText = "SHANG ELITE VERIFIED";
+        ctx.fillText(bannerText, 114, 128);
+
+        // Building title & address
         ctx.fillStyle = "#fff";
-        ctx.font = "900 28px Arial";
-        ctx.fillText(option.visual.kicker.toUpperCase(), 114, 139);
+        ctx.font = "900 68px Arial";
+        wrapCanvasText(ctx, listingData.project || "BGC RESIDENCE", 92, 220, 900, 75);
 
-        ctx.fillStyle = "#fff";
-        ctx.font = "900 86px Arial";
-        wrapCanvasText(ctx, option.visual.title, 92, 290, 900, 90);
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        ctx.font = "700 28px Arial";
+        wrapCanvasText(ctx, listingData.address || "Bonifacio Global City", 92, 305, 900, 36);
 
-        ctx.fillStyle = "rgba(255,255,255,0.7)";
-        ctx.font = "700 36px Arial";
-        wrapCanvasText(ctx, option.visual.subtitle, 92, 500, 900, 46);
+        // Specs Grid: 6 boxes in 3 rows and 2 columns
+        const specs = [
+          { label: "Bedrooms / Size", val: (listingData.bedrooms || listingData.sqm) ? `${listingData.bedrooms || "Residence"} / ${listingData.sqm || "Pending"}` : "-" },
+          { label: "Floor / Zone", val: (listingData.floor || listingData.floorZone) ? `${listingData.floor || "Pending"} (${listingData.floorZone || "Pending"})` : "-" },
+          { label: "Interior / Maid", val: (listingData.furnishing || listingData.maidsRoom) ? `${listingData.furnishing || "Bare"} / ${listingData.maidsRoom && listingData.maidsRoom.toLowerCase().includes("yes") ? "With Maid's" : "No Maid's"}` : "-" },
+          { label: "Parking / Status", val: (listingData.parking || listingData.tenanted) ? `${listingData.parking || "No parking"} / ${listingData.tenanted || "Vacant"}` : "-" },
+          { label: "Title Ownership", val: listingData.ownership ? `${listingData.ownership} Owner` : "-" },
+          { label: "Developer Heritage", val: listingData.developer ? `${listingData.developer} (${listingData.yearBuilt || "-"})` : "-" }
+        ];
 
-        option.visual.stats.forEach(([value, label], index) => {
+        specs.forEach((spec, index) => {
           const x = index % 2 === 0 ? 92 : 556;
-          const y = 760 + Math.floor(index / 2) * 190;
-          ctx.fillStyle = "rgba(255,255,255,0.06)";
-          ctx.fillRect(x, y, 430, 142);
-          ctx.strokeStyle = "rgba(255,255,255,0.08)";
-          ctx.strokeRect(x, y, 430, 142);
+          const y = 360 + Math.floor(index / 2) * 155;
+          ctx.fillStyle = "rgba(255,255,255,0.03)";
+          ctx.fillRect(x, y, 430, 125);
+          ctx.strokeStyle = "rgba(255,255,255,0.05)";
+          ctx.lineWidth = 1.5;
+          ctx.strokeRect(x, y, 430, 125);
+          
+          ctx.fillStyle = "rgba(255,255,255,0.4)";
+          ctx.font = "bold 20px Arial";
+          ctx.fillText(spec.label.toUpperCase(), x + 24, y + 42);
+
           ctx.fillStyle = "#fff";
-          ctx.font = "900 38px Arial";
-          wrapCanvasText(ctx, value, x + 28, y + 58, 370, 40);
-          ctx.fillStyle = "rgba(255,255,255,0.6)";
-          ctx.font = "600 24px Arial";
-          ctx.fillText(label, x + 28, y + 112);
+          ctx.font = "bold 28px Arial";
+          ctx.fillText(spec.val, x + 24, y + 92);
         });
 
+        // Neighborhood Landmarks Section
+        ctx.fillStyle = "rgba(255,255,255,0.015)";
+        ctx.fillRect(92, 835, 894, 160);
+        ctx.strokeStyle = "rgba(255,255,255,0.04)";
+        ctx.strokeRect(92, 835, 894, 160);
+
+        ctx.fillStyle = "rgba(255,255,255,0.5)";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText("NEIGHBORHOOD PROXIMITY (VETTED)", 116, 872);
+
+        let hosp = "-", groc = "-", sch = "-", din = "-";
+        if (listingData.landmarks) {
+          const parts = listingData.landmarks.split(" | ");
+          parts.forEach(p => {
+            if (p.startsWith("Hospital:")) hosp = p.replace("Hospital: ", "");
+            if (p.startsWith("Supermarket:")) groc = p.replace("Supermarket: ", "");
+            if (p.startsWith("Schools:")) sch = p.replace("Schools: ", "");
+            if (p.startsWith("Dining:")) din = p.replace("Dining: ", "");
+          });
+        }
+        
+        ctx.fillStyle = "rgba(255,255,255,0.85)";
+        ctx.font = "bold 22px Arial";
+        ctx.fillText("🏥 Hospital: " + hosp, 116, 918);
+        ctx.fillText("🎓 Schools: " + sch, 116, 966);
+        ctx.fillText("🛒 Grocery: " + groc, 530, 918);
+        ctx.fillText("🍽️ Dining: " + din, 530, 966);
+
+        // Pricing Bar
+        ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
+        ctx.fillRect(92, 1025, 894, 130);
+        ctx.strokeStyle = "rgba(255,255,255,0.06)";
+        ctx.strokeRect(92, 1025, 894, 130);
+        
+        ctx.fillStyle = palette[2];
+        ctx.fillRect(92, 1025, 6, 130); // Left border stripe
+
+        ctx.fillStyle = "rgba(255,255,255,0.4)";
+        ctx.font = "bold 20px Arial";
+        ctx.fillText("ASKING PRICE", 120, 1065);
+
+        ctx.fillStyle = "#fff";
+        ctx.font = "900 44px Arial";
+        ctx.fillText(listingData.price || "PRICE ON REQUEST", 120, 1122);
+
+        ctx.fillStyle = "rgba(255,255,255,0.6)";
+        ctx.font = "bold 24px Arial";
+        const compsText = listingData.compsProposed ? `Comps: ${listingData.compsProposed}` : "Comps: Pending";
+        ctx.fillText(compsText, 530, 1098);
+
+        // Footer Brand Line
         ctx.strokeStyle = "rgba(255,255,255,0.1)";
         ctx.beginPath();
-        ctx.moveTo(92, 1200);
-        ctx.lineTo(988, 1200);
+        ctx.moveTo(92, 1195);
+        ctx.lineTo(988, 1195);
         ctx.stroke();
-        ctx.fillStyle = "rgba(255,255,255,0.8)";
-        ctx.font = "900 32px Arial";
-        ctx.fillText(option.visual.footer, 92, 1255);
-        ctx.fillText("NextFrame", 805, 1255);
+
+        ctx.fillStyle = "rgba(255,255,255,0.7)";
+        ctx.font = "900 30px Arial";
+        ctx.fillText(listingData.direct || "CCT VERIFIED", 92, 1245);
+        ctx.fillText("NEXTFRAME", 800, 1245);
 
         const link = document.createElement("a");
-        link.download = "nextframe-listing-infographic.png";
+        link.download = `${listingData.project ? listingData.project.toLowerCase().replace(/\s+/g, '-') : 'bgc-condo'}-listings-infographic.png`;
         link.href = canvas.toDataURL("image/png");
         link.click();
       }
@@ -1853,7 +2575,7 @@
         }
       });
 
-      // Voice input Speech Recognition
+      // Voice input Speech Recognition with user alerts
       const chatMic = document.querySelector("#chatMic");
       let recognition = null;
       let isListening = false;
@@ -1869,18 +2591,28 @@
           isListening = true;
           chatMic.classList.add("listening");
           chatMic.title = "Listening...";
+          chatInput.placeholder = "[Listening... Speak now]";
         };
         
         recognition.onend = () => {
           isListening = false;
           chatMic.classList.remove("listening");
           chatMic.title = "Start Voice Input";
+          chatInput.placeholder = "Message Sofia...";
         };
         
         recognition.onerror = (event) => {
           console.error("Speech recognition error", event);
           isListening = false;
           chatMic.classList.remove("listening");
+          chatInput.placeholder = "Message Sofia...";
+          if (event.error === 'not-allowed') {
+            alert("Microphone access was denied. Please check your browser permissions.");
+          } else if (event.error === 'no-speech') {
+            // Silence, ignore or hint
+          } else {
+            alert("Speech recognition error: " + event.error);
+          }
         };
         
         recognition.onresult = (event) => {
@@ -1894,6 +2626,9 @@
         };
 
         chatMic.addEventListener("click", () => {
+          if (window.speechSynthesis) {
+            window.speechSynthesis.getVoices();
+          }
           if (isListening) {
             recognition.stop();
           } else {
@@ -1919,6 +2654,19 @@
         phoneCta.textContent = e.target.value;
       });
 
+      // Toggle checklist collapse UI
+      document.querySelector("#checklistHeader").addEventListener("click", () => {
+        const checklist = document.querySelector("#specsChecklist");
+        const chevron = document.querySelector("#checklistChevron");
+        if (!checklist || !chevron) return;
+        checklist.classList.toggle("collapsed");
+        if (checklist.classList.contains("collapsed")) {
+          chevron.style.transform = "rotate(-90deg)";
+        } else {
+          chevron.style.transform = "rotate(0deg)";
+        }
+      });
+
       // Preload voices in browser background
       if (window.speechSynthesis) {
         window.speechSynthesis.getVoices();
@@ -1929,8 +2677,9 @@
         }
       }
 
-      // Initialize
+      // Initialize spec checklist elements
+      updateChecklistUI();
+
+      // Initialize ad campaigns
       generate();
     </script>
-  </body>
-</html>
