@@ -58,7 +58,7 @@
         align-items: center;
         justify-content: space-between;
         padding-bottom: 16px;
-        border-b: 1px solid var(--panel-border);
+        border-bottom: 1px solid var(--panel-border);
       }
 
       .brand {
@@ -99,7 +99,7 @@
 
       .layout {
         display: grid;
-        grid-template-columns: 400px 1fr 340px;
+        grid-template-columns: 420px 1fr 340px;
         gap: 24px;
         align-items: stretch;
         flex: 1;
@@ -135,7 +135,7 @@
         height: 48px;
         border-radius: 9999px;
         border: 2px solid rgba(99, 102, 241, 0.2);
-        object-cover: cover;
+        object-fit: cover;
         background: #1e293b;
       }
 
@@ -170,6 +170,7 @@
         display: flex;
         flex-direction: column;
         gap: 16px;
+        max-height: 520px;
       }
 
       .message {
@@ -192,6 +193,7 @@
         height: 32px;
         border-radius: 9999px;
         flex-shrink: 0;
+        object-fit: cover;
       }
 
       .message-bubble {
@@ -727,6 +729,76 @@
         line-height: 1.4;
       }
 
+      /* VOICEOVER AND AUDIO WAVES */
+      .voice-toggle-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--panel-border);
+        border-radius: 50%;
+        width: 36px;
+        height: 36px;
+        display: grid;
+        place-items: center;
+        color: var(--muted);
+        cursor: pointer;
+        transition: all 0.2s;
+        margin-left: auto;
+        padding: 0;
+      }
+
+      .voice-toggle-btn:hover {
+        background: rgba(255, 255, 255, 0.08);
+        color: #fff;
+        border-color: var(--indigo-light);
+      }
+
+      .audio-wave {
+        display: none;
+        position: absolute;
+        bottom: -4px;
+        left: 50%;
+        transform: translateX(-50%);
+        gap: 3px;
+        background: var(--panel);
+        padding: 4px 8px;
+        border-radius: 9999px;
+        border: 1px solid var(--panel-border);
+        z-index: 10;
+        align-items: center;
+        height: 20px;
+      }
+
+      .avatar-wrap.speaking .audio-wave {
+        display: flex;
+      }
+
+      .audio-wave .bar {
+        width: 3.5px;
+        height: 6px;
+        background: var(--green);
+        border-radius: 9999px;
+        animation: bounce-bar 0.6s infinite ease-in-out alternate;
+      }
+
+      .audio-wave .bar:nth-child(2) { animation-delay: 0.15s; }
+      .audio-wave .bar:nth-child(3) { animation-delay: 0.3s; }
+      .audio-wave .bar:nth-child(4) { animation-delay: 0.45s; }
+
+      @keyframes bounce-bar {
+        from { height: 4px; }
+        to { height: 14px; }
+      }
+
+      .avatar-wrap.speaking .avatar {
+        border-color: var(--green);
+        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
+        animation: avatar-breath 2s infinite ease-in-out;
+      }
+
+      @keyframes avatar-breath {
+        0%, 100% { transform: scale(1); }
+        50% { transform: scale(1.04); }
+      }
+
       @media (max-width: 1100px) {
         .layout {
           grid-template-columns: 1fr;
@@ -755,11 +827,21 @@
             <div class="avatar-wrap">
               <img src="/sofia_avatar.png" alt="Sofia" class="avatar" onerror="this.src='../sofia_avatar.png'"/>
               <div class="status-dot"></div>
+              <div class="audio-wave" id="audioWave">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+              </div>
             </div>
             <div class="chat-header-text">
               <h2>Sofia Rivera</h2>
               <p>Next-Frame Listing Agent</p>
             </div>
+            <button id="voiceToggle" class="voice-toggle-btn" title="Toggle Voice Response" type="button">
+              <svg id="speakerOnIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
+              <svg id="speakerOffIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
+            </button>
           </header>
 
           <div class="chat-messages" id="chatMessages">
@@ -889,23 +971,29 @@
       const visualStats = document.querySelector("#visualStats");
       const visualFooter = document.querySelector("#visualFooter");
 
-      const defaultListingText = `repriced alert
-
-FOR SALE
-- West Gallery Place
-2BR Corner Unit - Bare 18Floor
-With Storage
-92sqm with 1 parking
-45MGross
-Location - Bonifacio Global City
-Direct to owner`;
-
       let currentOptions = [];
       let selectedIndex = 0;
       let reroll = 0;
       let isChatLoading = false;
 
-      // Maintain a conversation history to send to /api/chat/listing-agent
+      // Conversational flow state machine
+      let chatState = 0;
+      let listingData = {
+        project: "BGC Unit",
+        alert: "Fresh listing",
+        status: "For Sale",
+        unit: "Residence corner unit",
+        bedrooms: "2BR",
+        floor: "High floor",
+        storage: "Storage not listed",
+        sqm: "92 sqm",
+        parking: "1 parking",
+        price: "PHP 45M gross",
+        location: "Bonifacio Global City",
+        direct: "Direct to owner"
+      };
+
+      // Maintain a conversation history
       let conversationHistory = [
         { role: "assistant", content: "Hello! I'm Sofia, your Next-Frame listing agent. Are you looking to list a Condo, House, or Commercial property today?" }
       ];
@@ -915,37 +1003,6 @@ Direct to owner`;
           .replace(/^[\s\-*.,:;]+/, "")
           .replace(/\s+/g, " ")
           .trim();
-      }
-
-      function parseListing(raw) {
-        const lines = raw.split(/\r?\n/).map(cleanLine).filter(Boolean);
-        const full = lines.join(" ");
-        const projectLine =
-          lines.find((line) => /gallery|place|residence|condo|tower|suite|village|park|estate/i.test(line)) ||
-          lines[0] ||
-          "Prime BGC property";
-        const priceMatch = full.match(/(?:PHP|P)?\s?(\d+(?:\.\d+)?)\s?M/i);
-        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s?sq\s?m/i);
-        const bedroomMatch = full.match(/(\d+)\s?BR/i);
-        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s?Floor/i);
-        const parkingMatch = full.match(/(\d+)\s?parking/i);
-        const locationLine = lines.find((line) => /location/i.test(line));
-        const unitLine = lines.find((line) => /BR|Corner|Bare|Furnished|Unit/i.test(line)) || "";
-
-        return {
-          project: projectLine.replace(/^FOR SALE\s*/i, ""),
-          alert: /reprice/i.test(full) ? "Repriced alert" : "Fresh listing",
-          status: /for sale/i.test(full) ? "For Sale" : "Available",
-          unit: unitLine || "Premium residence",
-          bedrooms: bedroomMatch ? `${bedroomMatch[1]}BR` : "Residence",
-          floor: floorMatch ? `${floorMatch[1]}F` : "High floor",
-          storage: /storage/i.test(full) ? "With storage" : "Storage not listed",
-          sqm: sqmMatch ? `${sqmMatch[1]} sqm` : "Size on request",
-          parking: parkingMatch ? `${parkingMatch[1]} parking` : /parking/i.test(full) ? "With parking" : "Parking on request",
-          price: priceMatch ? `PHP ${priceMatch[1]}M gross` : "Price on request",
-          location: locationLine ? cleanLine(locationLine.replace(/location/i, "")) : "Bonifacio Global City",
-          direct: /direct to owner/i.test(full) ? "Direct to owner" : "Broker review required",
-        };
       }
 
       function makeOptions(listing, seed) {
@@ -1013,20 +1070,34 @@ Direct to owner`;
           },
           {
             channel: "Carousel / Facts",
-            headline: `4 things to know about this ${listing.project} listing`,
-            subhead: `Built for an IG carousel or FB album post`,
-            body: `Slide 1: ${listing.bedrooms} corner unit in ${listing.location}\nSlide 2: ${listing.sqm}, ${listing.parking}, ${listing.storage.toLowerCase()}\nSlide 3: Bare unit, so the buyer controls the finish and layout direction\nSlide 4: ${listing.price}, ${listing.direct.toLowerCase()}\n\nCaption: This ${listing.project} unit is for buyers who want the BGC location without guessing through incomplete listing details.`,
-            cta: "Comment DETAILS or message us to get the full listing sheet.",
+            headline: `4 Key Facts: Premium BGC Corner Listing`,
+            subhead: `Swipe for a complete look inside BGC's newest direct-owner listing.`,
+            body: [
+              `👉 SLIDE 1: THE ADDRESS`,
+              `${listing.project} in ${listing.location}. BGC's premier residential district.`,
+              ``,
+              `👉 SLIDE 2: THE LAYOUT`,
+              `Spacious ${listing.unit} on the ${listing.floor} level. Offering ${listing.sqm} of premium interior volume.`,
+              ``,
+              `👉 SLIDE 3: THE ADDITIONS`,
+              `Includes ${listing.parking} and a private ${listing.storage.toLowerCase()}. Rare inclusions for units in this zone.`,
+              ``,
+              `👉 SLIDE 4: THE TRANSACTION`,
+              `Offered at ${listing.price} with a direct-owner negotiation path (${listing.direct}) for optimal transaction speed.`,
+              ``,
+              `Caption: This ${listing.condition.toLowerCase()} corner unit is for buyers who refuse to settle for generic developer finishes. Direct transaction with the owner.`
+            ].join("\n"),
+            cta: `💬 Comment "DETAILS" or message us to get the full listings package instantly.`,
             visual: {
               tone: "direct",
               kicker: "Carousel ready",
               title: "4 Listing Facts",
-              subtitle: `${listing.project} in ${listing.location}`,
+              subtitle: `${listing.project} in BGC`,
               stats: [
-                [listing.bedrooms, "Corner unit"],
-                [listing.sqm, "Size"],
-                [listing.price, "Price"],
-                [listing.direct, "Seller path"],
+                [listing.bedrooms, "Corner layout"],
+                [listing.sqm, "Interior size"],
+                [listing.price, "Price guide"],
+                [listing.direct, "Seller route"],
               ],
               footer: "Ready for FB + IG",
             },
@@ -1040,10 +1111,42 @@ Direct to owner`;
           const button = document.createElement("button");
           button.type = "button";
           button.className = `card-option${index === selectedIndex ? " active" : ""}`;
+          
+          let toneGradient = "";
+          if (option.visual.tone === 'urgent') toneGradient = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
+          else if (option.visual.tone === 'premium') toneGradient = 'linear-gradient(135deg, #115e59 0%, #134e4a 100%)';
+          else if (option.visual.tone === 'investment') toneGradient = 'linear-gradient(135deg, #78350f 0%, #451a03 100%)';
+          else if (option.visual.tone === 'direct') toneGradient = 'linear-gradient(135deg, #155e75 0%, #164e63 100%)';
+
           button.innerHTML = `
-            <div class="card-visual ${option.visual.tone}">
-              <small>${option.visual.kicker}</small>
-              <strong>${option.visual.title}</strong>
+            <div class="card-visual" style="
+              height: 120px;
+              padding: 16px;
+              position: relative;
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              color: #fff;
+              border-bottom: 1px solid var(--panel-border);
+              background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), ${toneGradient};
+            ">
+              <small style="
+                position: relative;
+                z-index: 2;
+                font-size: 0.65rem;
+                font-weight: 800;
+                letter-spacing: 0.1em;
+                text-transform: uppercase;
+                color: rgba(255, 255, 255, 0.7);
+                margin-bottom: 4px;
+              ">${option.visual.kicker}</small>
+              <strong style="
+                position: relative;
+                z-index: 2;
+                font-size: 1.125rem;
+                font-weight: 900;
+                line-height: 1.2;
+              ">${option.visual.title}</strong>
             </div>
             <div class="card-content">
               <span class="card-channel">${option.channel}</span>
@@ -1065,6 +1168,14 @@ Direct to owner`;
         // Update infographic tone
         const infographicCard = document.querySelector("#infographic");
         infographicCard.className = `infographic-card ${option.visual.tone}`;
+        
+        let toneGradient = "";
+        if (option.visual.tone === 'urgent') toneGradient = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
+        else if (option.visual.tone === 'premium') toneGradient = 'linear-gradient(135deg, #115e59 0%, #134e4a 100%)';
+        else if (option.visual.tone === 'investment') toneGradient = 'linear-gradient(135deg, #78350f 0%, #451a03 100%)';
+        else if (option.visual.tone === 'direct') toneGradient = 'linear-gradient(135deg, #155e75 0%, #164e63 100%)';
+        
+        infographicCard.style.background = toneGradient;
 
         visualStats.innerHTML = "";
         option.visual.stats.forEach(([value, label]) => {
@@ -1087,9 +1198,12 @@ Direct to owner`;
       }
 
       function generate(rawListingText) {
-        const textToParse = rawListingText || defaultListingText;
-        const listing = parseListing(textToParse);
-        currentOptions = makeOptions(listing, reroll);
+        const textToParse = rawListingText || "";
+        if (textToParse) {
+          const parsed = parseListing(textToParse);
+          Object.assign(listingData, parsed);
+        }
+        currentOptions = makeOptions(listingData, reroll);
         selectOption(0);
       }
 
@@ -1097,20 +1211,22 @@ Direct to owner`;
         const messageDiv = document.createElement("div");
         messageDiv.className = `message ${role}`;
         
+        const avatarWrap = document.createElement("div");
+        avatarWrap.className = "avatar-wrap";
         const img = document.createElement("img");
-        img.className = "message-avatar";
+        img.className = "avatar message-avatar";
         img.alt = role === "user" ? "User" : "Sofia";
-        // Use Sofia's avatar for bot, default placeholder for user
         img.src = role === "user" ? "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>" : "/sofia_avatar.png";
         if (role !== "user") {
           img.setAttribute("onerror", "this.src='../sofia_avatar.png'");
         }
+        avatarWrap.appendChild(img);
 
         const bubble = document.createElement("div");
         bubble.className = "message-bubble";
         bubble.textContent = content;
 
-        messageDiv.appendChild(img);
+        messageDiv.appendChild(avatarWrap);
         messageDiv.appendChild(bubble);
         chatMessages.appendChild(messageDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1121,21 +1237,24 @@ Direct to owner`;
         indicatorDiv.className = "message bot";
         indicatorDiv.id = "typingIndicator";
         
+        const avatarWrap = document.createElement("div");
+        avatarWrap.className = "avatar-wrap";
         const img = document.createElement("img");
-        img.className = "message-avatar";
+        img.className = "avatar message-avatar";
         img.alt = "Sofia";
         img.src = "/sofia_avatar.png";
         img.setAttribute("onerror", "this.src='../sofia_avatar.png'");
+        avatarWrap.appendChild(img);
 
         const bubble = document.createElement("div");
-        bubble.className = "typing-indicator";
+        bubble.className = "typing-indicator message-bubble";
         bubble.innerHTML = `
           <div class="typing-dot"></div>
           <div class="typing-dot"></div>
           <div class="typing-dot"></div>
         `;
 
-        indicatorDiv.appendChild(img);
+        indicatorDiv.appendChild(avatarWrap);
         indicatorDiv.appendChild(bubble);
         chatMessages.appendChild(indicatorDiv);
         chatMessages.scrollTop = chatMessages.scrollHeight;
@@ -1146,6 +1265,178 @@ Direct to owner`;
         if (indicator) {
           indicator.remove();
         }
+      }
+
+      function speakText(text) {
+        if (isMuted || !window.speechSynthesis) return;
+        
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        
+        const voices = window.speechSynthesis.getVoices();
+        const femaleVoice = voices.find(v => 
+          v.lang.startsWith("en") && 
+          (v.name.includes("Google") || v.name.includes("Natural") || v.name.includes("Zira") || v.name.includes("Samantha") || v.name.includes("Hazel"))
+        ) || voices.find(v => v.lang.startsWith("en")) || voices[0];
+        
+        if (femaleVoice) {
+          utterance.voice = femaleVoice;
+        }
+        
+        const avatarWrap = document.querySelector(".avatar-wrap");
+        utterance.onstart = () => {
+          avatarWrap.classList.add("speaking");
+        };
+        utterance.onend = () => {
+          avatarWrap.classList.remove("speaking");
+        };
+        utterance.onerror = () => {
+          avatarWrap.classList.remove("speaking");
+        };
+        
+        window.speechSynthesis.speak(utterance);
+      }
+
+      function updateAvatar(videoUrl) {
+        const avatarWrap = document.querySelector(".avatar-wrap");
+        const avatarImg = avatarWrap.querySelector(".avatar");
+        let avatarVideo = avatarWrap.querySelector(".avatar-video");
+        
+        if (videoUrl) {
+          if (!avatarVideo) {
+            avatarVideo = document.createElement("video");
+            avatarVideo.className = "avatar avatar-video";
+            avatarVideo.autoplay = true;
+            avatarVideo.loop = true;
+            avatarVideo.muted = true;
+            avatarVideo.playsInline = true;
+            avatarVideo.style.objectFit = "cover";
+            avatarVideo.style.position = "absolute";
+            avatarVideo.style.inset = "0";
+            avatarVideo.style.width = "48px";
+            avatarVideo.style.height = "48px";
+            avatarVideo.style.borderRadius = "9999px";
+            avatarWrap.appendChild(avatarVideo);
+          }
+          avatarVideo.src = videoUrl;
+          avatarVideo.style.display = "block";
+          avatarImg.style.display = "none";
+        } else {
+          if (avatarVideo) {
+            avatarVideo.style.display = "none";
+            avatarVideo.src = "";
+          }
+          avatarImg.style.display = "block";
+        }
+      }
+
+      // Stateful chatbot interview parser
+      function parseStepResponse(input, state) {
+        const text = input.trim();
+        let replyText = "";
+        
+        // Detect details dump at any step
+        const isDump = (
+          (text.match(/\bsqm\b/i) || text.match(/\bsq\.?\s*m\b/i) || text.match(/\bfloor\b/i)) && 
+          (text.match(/\bM\b/i) || text.match(/million/i) || text.match(/\d{2,9}\b/)) &&
+          text.length > 40
+        );
+
+        if (isDump) {
+          const parsed = parseListing(text);
+          Object.assign(listingData, parsed);
+          generate();
+          
+          replyText = `Fantastic details! I've automatically extracted the specs: a ${listingData.bedrooms} unit at ${listingData.project} (${listingData.sqm}, ${listingData.floor}, asking ${listingData.price}, ${listingData.direct.toLowerCase()}). To polish the copy, does it have a balcony view or specific orientation? And is there a tenant currently renting it?`;
+          chatState = 6;
+          return replyText;
+        }
+
+        switch(state) {
+          case 0: // Ask for type
+            if (/condo/i.test(text)) {
+              listingData.unit = "Condo Corner Unit";
+              listingData.bedrooms = "2BR";
+            } else if (/house/i.test(text)) {
+              listingData.unit = "Modern House";
+              listingData.bedrooms = "4BR";
+            } else {
+              listingData.unit = "Commercial Space";
+              listingData.bedrooms = "Office";
+            }
+            replyText = `Got it, a ${listingData.unit}. Who is the developer of this property (or project name), and what year was it turned over?`;
+            chatState = 1;
+            break;
+            
+          case 1: // Developer & Year
+            const yearMatch = text.match(/\b\d{4}\b/);
+            const devName = text.replace(/\b\d{4}\b/g, "").trim();
+            listingData.project = devName || "Premium Project";
+            if (yearMatch) {
+              listingData.storage = `Turnover year: ${yearMatch[0]}`;
+            }
+            replyText = "Excellent. What is the floor level, bedroom count, and the exact size in square meters (sqm)?";
+            chatState = 2;
+            break;
+            
+          case 2: // Floor, Beds, Size
+            const sqmMatch = text.match(/(\d+)\s*sq/i) || text.match(/(\d+)\s*m/i) || text.match(/(\d+)\s*sqm/i);
+            const brMatch = text.match(/(\d+)\s*BR/i) || text.match(/(\d+)\s*bedroom/i);
+            const flMatch = text.match(/(\d+)(?:st|nd|rd|th)?\s*Floor/i) || text.match(/(\d+)\s*F\b/i);
+            
+            if (sqmMatch) listingData.sqm = `${sqmMatch[1]} sqm`;
+            if (brMatch) listingData.bedrooms = `${brMatch[1]}BR`;
+            if (flMatch) {
+              const num = parseInt(flMatch[1]);
+              listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
+            }
+            
+            replyText = "Perfect. What is the view or orientation from the main balcony/living room? (e.g. Golf course view, city skyline, facing north/south)";
+            chatState = 3;
+            break;
+            
+          case 3: // View & Orientation
+            listingData.view = text;
+            listingData.unit = `${listingData.bedrooms} Corner Unit with ${text}`;
+            replyText = "Nice view! What are the closest landmarks or grocery stores in the neighborhood?";
+            chatState = 4;
+            break;
+            
+          case 4: // Landmarks
+            listingData.location = `BGC (near ${text})`;
+            replyText = "That's a very convenient location. What is the asking price gross, and is it direct to the owner?";
+            chatState = 5;
+            break;
+            
+          case 5: // Price & Path
+            const priceMatch = text.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i);
+            if (priceMatch) {
+              listingData.price = `PHP ${priceMatch[1]}M Gross`;
+            } else {
+              listingData.price = text;
+            }
+            
+            if (/direct/i.test(text) || /owner/i.test(text)) {
+              listingData.direct = "Direct to owner";
+            } else {
+              listingData.direct = "Broker review required";
+            }
+            
+            replyText = "Fabulous! I have all the details needed to create a highly optimized set of listings ads. Let me draft those options for you now!";
+            chatState = 6;
+            break;
+            
+          default:
+            // Extract any updates
+            const updated = parseListing(text);
+            Object.assign(listingData, updated);
+            generate();
+            replyText = "I've updated the ad copies and infographic on the right! Feel free to copy them, edit the details, or tell me if you want to change any specific specs (like price, location, or bedrooms).";
+            break;
+        }
+        
+        generate();
+        return replyText;
       }
 
       async function sendChatMessage(e) {
@@ -1161,7 +1452,6 @@ Direct to owner`;
         appendTypingIndicator();
 
         try {
-          // Attempt to call the local NextFrame API route
           const res = await fetch("/api/chat/listing-agent", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
@@ -1169,30 +1459,36 @@ Direct to owner`;
           });
 
           removeTypingIndicator();
-
-          if (!res.ok) {
-            throw new Error("API call failed");
-          }
+          if (!res.ok) throw new Error("API call failed");
 
           const data = await res.json();
           appendMessage("bot", data.content);
           conversationHistory.push(data);
 
-          // Update listings copies using all information gathered in the chat
           const fullContext = conversationHistory.map(m => m.content).join("\n");
-          generate(fullContext);
+          
+          if (data.videoUrl) {
+            updateAvatar(data.videoUrl);
+          } else {
+            updateAvatar(null);
+            speakText(data.content);
+          }
+
+          const parsed = parseListing(fullContext);
+          Object.assign(listingData, parsed);
+          generate();
 
         } catch (error) {
-          console.error("Chat API error:", error);
+          console.error("Chat API error, running local stateful interview fallback:", error);
           removeTypingIndicator();
+          updateAvatar(null);
           
-          // Fallback response if API isn't running or accessible
-          const fallbackResponse = "Thanks for the information! I've updated the ad copies on the right using your input.";
-          appendMessage("bot", fallbackResponse);
-          conversationHistory.push({ role: "assistant", content: fallbackResponse });
-          
-          const fullContext = conversationHistory.map(m => m.content).join("\n");
-          generate(fullContext);
+          setTimeout(() => {
+            const botReply = parseStepResponse(content, chatState);
+            appendMessage("bot", botReply);
+            conversationHistory.push({ role: "assistant", content: botReply });
+            speakText(botReply);
+          }, 1000);
         } finally {
           isChatLoading = false;
         }
@@ -1315,8 +1611,7 @@ Direct to owner`;
       
       document.querySelector("#rerollButton").addEventListener("click", () => {
         reroll += 1;
-        const fullContext = conversationHistory.map(m => m.content).join("\n");
-        generate(fullContext);
+        generate();
       });
 
       document.querySelector("#copyButton").addEventListener("click", () => {
@@ -1325,6 +1620,25 @@ Direct to owner`;
 
       document.querySelector("#queueButton").addEventListener("click", queuePost);
       document.querySelector("#downloadButton").addEventListener("click", downloadInfographic);
+
+      voiceToggle.addEventListener("click", () => {
+        isMuted = !isMuted;
+        if (isMuted) {
+          speakerOnIcon.style.display = "none";
+          speakerOffIcon.style.display = "block";
+          if (window.speechSynthesis) {
+            window.speechSynthesis.cancel();
+          }
+          document.querySelector(".avatar-wrap").classList.remove("speaking");
+        } else {
+          speakerOnIcon.style.display = "block";
+          speakerOffIcon.style.display = "none";
+          const lastBotMsg = [...conversationHistory].reverse().find(m => m.role === "assistant");
+          if (lastBotMsg) {
+            speakText(lastBotMsg.content);
+          }
+        }
+      });
 
       // Sync editor change to phone preview
       postEditor.addEventListener("input", (e) => {
