@@ -260,7 +260,7 @@
         background: rgba(255, 255, 255, 0.03);
         border: 1px solid var(--panel-border);
         border-radius: 9999px;
-        padding: 14px 50px 14px 20px;
+        padding: 14px 90px 14px 20px;
         color: #fff;
         font-size: 0.875rem;
         outline: none;
@@ -287,10 +287,47 @@
         place-items: center;
         cursor: pointer;
         transition: background 0.2s;
+        z-index: 2;
       }
 
       .chat-submit:hover {
         background: var(--indigo-light);
+      }
+
+      .chat-mic {
+        position: absolute;
+        right: 48px;
+        top: 6px;
+        bottom: 6px;
+        width: 36px;
+        height: 36px;
+        border-radius: 9999px;
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--panel-border);
+        color: var(--muted);
+        display: grid;
+        place-items: center;
+        cursor: pointer;
+        transition: all 0.2s;
+        z-index: 2;
+        padding: 0;
+      }
+
+      .chat-mic:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+      }
+
+      .chat-mic.listening {
+        background: #ef4444;
+        color: #fff;
+        border-color: #f87171;
+        animation: mic-pulse 1.2s infinite alternate;
+      }
+
+      @keyframes mic-pulse {
+        from { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0.4); }
+        to { transform: scale(1.08); box-shadow: 0 0 10px rgba(239, 68, 68, 0.6); }
       }
 
       /* MIDDLE COLUMN: Campaign Generator */
@@ -862,6 +899,9 @@
                 placeholder="Message Sofia..."
                 autocomplete="off"
               />
+              <button class="chat-mic" id="chatMic" type="button" title="Start Voice Input">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
+              </button>
               <button class="chat-submit" type="submit">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
               </button>
@@ -971,10 +1011,15 @@
       const visualStats = document.querySelector("#visualStats");
       const visualFooter = document.querySelector("#visualFooter");
 
+      const voiceToggle = document.querySelector("#voiceToggle");
+      const speakerOnIcon = document.querySelector("#speakerOnIcon");
+      const speakerOffIcon = document.querySelector("#speakerOffIcon");
+
       let currentOptions = [];
       let selectedIndex = 0;
       let reroll = 0;
       let isChatLoading = false;
+      let isMuted = false;
 
       // Conversational flow state machine
       let chatState = 0;
@@ -990,7 +1035,8 @@
         parking: "1 parking",
         price: "PHP 45M gross",
         location: "Bonifacio Global City",
-        direct: "Direct to owner"
+        direct: "Direct to owner",
+        condition: "bare"
       };
 
       // Maintain a conversation history
@@ -1003,6 +1049,46 @@
           .replace(/^[\s\-*.,:;]+/, "")
           .replace(/\s+/g, " ")
           .trim();
+      }
+
+      function getOrdinalSuffix(i) {
+        const j = i % 10, k = i % 100;
+        if (j === 1 && k !== 11) return "st";
+        if (j === 2 && k !== 12) return "nd";
+        if (j === 3 && k !== 13) return "rd";
+        return "th";
+      }
+
+      function parseListing(raw) {
+        const lines = raw.split(/\r?\n/).map(cleanLine).filter(Boolean);
+        const full = lines.join(" ");
+        const projectLine =
+          lines.find((line) => /gallery|place|residence|condo|tower|suite|village|park|estate/i.test(line)) ||
+          lines[0] ||
+          "Prime BGC property";
+        const priceMatch = full.match(/(?:PHP|P)?\s?(\d+(?:\.\d+)?)\s?M/i);
+        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s?sq\s?m/i) || full.match(/(\d+(?:\.\d+)?)\s?sqm/i);
+        const bedroomMatch = full.match(/(\d+)\s?BR/i);
+        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s?Floor/i);
+        const parkingMatch = full.match(/(\d+)\s?parking/i);
+        const locationLine = lines.find((line) => /location/i.test(line));
+        const unitLine = lines.find((line) => /BR|Corner|Bare|Furnished|Unit/i.test(line)) || "";
+
+        return {
+          project: projectLine.replace(/^FOR SALE\s*/i, ""),
+          alert: /reprice/i.test(full) ? "Repriced alert" : "Fresh listing",
+          status: /for sale/i.test(full) ? "For Sale" : "Available",
+          unit: unitLine || "Premium residence",
+          bedrooms: bedroomMatch ? `${bedroomMatch[1]}BR` : "Residence",
+          floor: floorMatch ? `${floorMatch[1]}F` : "High floor",
+          storage: /storage/i.test(full) ? "With storage" : "Storage not listed",
+          sqm: sqmMatch ? `${sqmMatch[1]} sqm` : "Size on request",
+          parking: parkingMatch ? `${parkingMatch[1]} parking` : /parking/i.test(full) ? "With parking" : "Parking on request",
+          price: priceMatch ? `PHP ${priceMatch[1]}M gross` : "Price on request",
+          location: locationLine ? cleanLine(locationLine.replace(/location/i, "")) : "Bonifacio Global City",
+          direct: /direct to owner/i.test(full) ? "Direct to owner" : "Broker review required",
+          condition: /furnished/i.test(full) ? "furnished" : "bare",
+        };
       }
 
       function makeOptions(listing, seed) {
@@ -1639,6 +1725,64 @@
           }
         }
       });
+
+      // Voice input Speech Recognition
+      const chatMic = document.querySelector("#chatMic");
+      let recognition = null;
+      let isListening = false;
+      
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+      if (SpeechRecognition) {
+        recognition = new SpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+        
+        recognition.onstart = () => {
+          isListening = true;
+          chatMic.classList.add("listening");
+          chatMic.title = "Listening...";
+        };
+        
+        recognition.onend = () => {
+          isListening = false;
+          chatMic.classList.remove("listening");
+          chatMic.title = "Start Voice Input";
+        };
+        
+        recognition.onerror = (event) => {
+          console.error("Speech recognition error", event);
+          isListening = false;
+          chatMic.classList.remove("listening");
+        };
+        
+        recognition.onresult = (event) => {
+          const transcript = event.results[0][0].transcript;
+          chatInput.value = transcript;
+          if (typeof chatForm.requestSubmit === 'function') {
+            chatForm.requestSubmit();
+          } else {
+            chatForm.dispatchEvent(new Event('submit'));
+          }
+        };
+
+        chatMic.addEventListener("click", () => {
+          if (isListening) {
+            recognition.stop();
+          } else {
+            if (window.speechSynthesis) {
+              window.speechSynthesis.cancel();
+            }
+            const avatarWrap = document.querySelector(".avatar-wrap");
+            if (avatarWrap) avatarWrap.classList.remove("speaking");
+            
+            recognition.start();
+          }
+        });
+      } else if (chatMic) {
+        chatMic.style.display = "none";
+        chatInput.style.paddingRight = "50px";
+      }
 
       // Sync editor change to phone preview
       postEditor.addEventListener("input", (e) => {
