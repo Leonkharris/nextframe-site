@@ -1062,20 +1062,42 @@
       function parseListing(raw) {
         const lines = raw.split(/\r?\n/).map(cleanLine).filter(Boolean);
         const full = lines.join(" ");
-        const projectLine =
+        
+        let projectLine =
           lines.find((line) => /gallery|place|residence|condo|tower|suite|village|park|estate/i.test(line)) ||
           lines[0] ||
           "Prime BGC property";
+        
+        // Single-line dump heuristics: extract substring before bedrooms or size specs
+        if (lines.length === 1) {
+          const matchBefore = raw.match(/^(.*?)(?:\b\d+\s*BR|\b\d+\s*Bedroom|\b\d+\s*sq\s*m|\b\d+\s*sqm|\b\d+\s*Floor|\b\d+\s*F\b)/i);
+          if (matchBefore && matchBefore[1].trim().length > 3) {
+            projectLine = matchBefore[1].trim();
+          }
+        }
+
         const priceMatch = full.match(/(?:PHP|P)?\s?(\d+(?:\.\d+)?)\s?M/i);
         const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s?sq\s?m/i) || full.match(/(\d+(?:\.\d+)?)\s?sqm/i);
         const bedroomMatch = full.match(/(\d+)\s?BR/i);
         const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s?Floor/i);
         const parkingMatch = full.match(/(\d+)\s?parking/i);
-        const locationLine = lines.find((line) => /location/i.test(line));
+        
+        // Try to get location from Location keyword first, or fall back to line matching
+        let locationVal = "Bonifacio Global City";
+        const locKeywordMatch = full.match(/location\s*[:-]?\s*(.*?)(?:\bDirect|\bPrice|\bAsking|\bBroker|$)/i);
+        if (locKeywordMatch && locKeywordMatch[1].trim().length > 2) {
+          locationVal = cleanLine(locKeywordMatch[1]);
+        } else {
+          const locationLine = lines.find((line) => /location/i.test(line));
+          if (locationLine) {
+            locationVal = cleanLine(locationLine.replace(/location/i, ""));
+          }
+        }
+
         const unitLine = lines.find((line) => /BR|Corner|Bare|Furnished|Unit/i.test(line)) || "";
 
         return {
-          project: projectLine.replace(/^FOR SALE\s*/i, ""),
+          project: projectLine.replace(/^FOR SALE\s*/i, "").replace(/^•\s*/, ""),
           alert: /reprice/i.test(full) ? "Repriced alert" : "Fresh listing",
           status: /for sale/i.test(full) ? "For Sale" : "Available",
           unit: unitLine || "Premium residence",
@@ -1085,7 +1107,7 @@
           sqm: sqmMatch ? `${sqmMatch[1]} sqm` : "Size on request",
           parking: parkingMatch ? `${parkingMatch[1]} parking` : /parking/i.test(full) ? "With parking" : "Parking on request",
           price: priceMatch ? `PHP ${priceMatch[1]}M gross` : "Price on request",
-          location: locationLine ? cleanLine(locationLine.replace(/location/i, "")) : "Bonifacio Global City",
+          location: locationVal,
           direct: /direct to owner/i.test(full) ? "Direct to owner" : "Broker review required",
           condition: /furnished/i.test(full) ? "furnished" : "bare",
         };
@@ -1416,24 +1438,40 @@
         }
       }
 
+      function mergeListingData(target, source) {
+        if (source.project && source.project !== "Prime BGC property") target.project = source.project;
+        if (source.sqm && source.sqm !== "Size on request") target.sqm = source.sqm;
+        if (source.bedrooms && source.bedrooms !== "Residence") target.bedrooms = source.bedrooms;
+        if (source.floor && source.floor !== "High floor") target.floor = source.floor;
+        if (source.storage && source.storage !== "Storage not listed") target.storage = source.storage;
+        if (source.parking && source.parking !== "Parking on request") target.parking = source.parking;
+        if (source.price && source.price !== "Price on request") target.price = source.price;
+        if (source.location && source.location !== "Bonifacio Global City") target.location = source.location;
+        if (source.direct && source.direct !== "Broker review required") target.direct = source.direct;
+        if (source.condition && source.condition !== "bare") target.condition = source.condition;
+        if (source.unit && source.unit !== "Premium residence") target.unit = source.unit;
+        if (source.alert && source.alert !== "Fresh listing") target.alert = source.alert;
+      }
+
       // Stateful chatbot interview parser
       function parseStepResponse(input, state) {
         const text = input.trim();
         let replyText = "";
         
-        // Detect details dump at any step
-        const isDump = (
-          (text.match(/\bsqm\b/i) || text.match(/\bsq\.?\s*m\b/i) || text.match(/\bfloor\b/i)) && 
-          (text.match(/\bM\b/i) || text.match(/million/i) || text.match(/\d{2,9}\b/)) &&
-          text.length > 40
-        );
+        // Looser details dump detection that handles lack of spaces (e.g. 92sqm, 18Floor, 45M)
+        const hasSqm = /sq\.?\s*m|sqm/i.test(text);
+        const hasFloor = /floor|fl/i.test(text);
+        const hasPrice = /\b\d+(?:\.\d+)?\s*M/i.test(text) || /\b\d{6,10}\b/.test(text) || /million/i.test(text);
+        const isDump = (hasSqm || hasFloor) && hasPrice && text.length > 30;
 
         if (isDump) {
           const parsed = parseListing(text);
-          Object.assign(listingData, parsed);
+          const beforeStr = JSON.stringify(listingData);
+          mergeListingData(listingData, parsed);
+          const afterStr = JSON.stringify(listingData);
           generate();
           
-          replyText = `Fantastic details! I've automatically extracted the specs: a ${listingData.bedrooms} unit at ${listingData.project} (${listingData.sqm}, ${listingData.floor}, asking ${listingData.price}, ${listingData.direct.toLowerCase()}). To polish the copy, does it have a balcony view or specific orientation? And is there a tenant currently renting it?`;
+          replyText = `Fantastic details! I've automatically extracted the specs: a ${listingData.bedrooms} unit at ${listingData.project} (${listingData.sqm}, ${listingData.floor}, asking ${listingData.price}, ${listingData.direct.toLowerCase()}). Feel free to review the generated ad copy angles and infographic on the right!`;
           chatState = 6;
           return replyText;
         }
@@ -1513,11 +1551,17 @@
             break;
             
           default:
-            // Extract any updates
             const updated = parseListing(text);
-            Object.assign(listingData, updated);
+            const beforeStr = JSON.stringify(listingData);
+            mergeListingData(listingData, updated);
+            const afterStr = JSON.stringify(listingData);
             generate();
-            replyText = "I've updated the ad copies and infographic on the right! Feel free to copy them, edit the details, or tell me if you want to change any specific specs (like price, location, or bedrooms).";
+            
+            if (beforeStr !== afterStr) {
+              replyText = "I've updated the ad copies and infographic on the right with the new details! Feel free to copy them or let me know if you want to tweak anything else.";
+            } else {
+              replyText = "Got it! Feel free to tell me about any other details to update (like price, location, or layout), or let me know how you want to refine the ad copies on the right.";
+            }
             break;
         }
         
