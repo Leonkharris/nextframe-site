@@ -203,7 +203,8 @@
     <h1>Listings <em>Assistant</em></h1>
   </div>
   <div class="header-actions">
-    <button class="ghost" id="download-ads" style="display:none">Download ad copies</button>
+    <button class="ghost" id="download-pdf" style="display:none">Listing pack (PDF)</button>
+    <button class="ghost" id="download-ads" style="display:none">Ad copies (.txt)</button>
     <button class="ghost" id="new-listing">New listing</button>
   </div>
 </header>
@@ -651,9 +652,11 @@ async function refreshAds() {
     if (!currentAds.length) {
       adsEl.innerHTML = '<p class="empty-note">No ad copies yet.</p>';
       $("download-ads").style.display = "none";
+      $("download-pdf").style.display = "none";
       return;
     }
     $("download-ads").style.display = "";
+    $("download-pdf").style.display = "";
     for (const ad of currentAds) {
       const card = document.createElement("div");
       card.className = "ad-card";
@@ -671,6 +674,10 @@ async function refreshAds() {
     }
   } catch { /* best-effort */ }
 }
+
+$("download-pdf").onclick = () => {
+  if (sessionId) window.open(API_BASE + "/api/pdf/" + sessionId, "_blank");
+};
 
 $("download-ads").onclick = () => {
   const text = currentAds.map(a =>
