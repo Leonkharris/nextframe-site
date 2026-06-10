@@ -290,6 +290,26 @@
       <iframe id="pdf-frame" style="display:none" title="Listing Pack preview"></iframe>
     </section>
 
+    <section class="panel">
+      <h2>Photos &amp; ad image</h2>
+      <p class="note" style="color:var(--muted);font-size:0.78rem;margin:12px 16px 10px;line-height:1.5">
+        Upload unit photos for the ad — or let Sofia suggest building photos from the web
+        (verify rights before publishing; suggested photos tag the ad “REFERENCE PHOTOS”).
+      </p>
+      <div id="photo-strip" style="display:flex;gap:8px;flex-wrap:wrap;padding:0 16px 10px"></div>
+      <div style="display:flex;gap:8px;padding:0 16px 12px;flex-wrap:wrap">
+        <button class="pill" id="photo-upload-btn">📎 Upload photos</button>
+        <button class="pill" id="photo-suggest-btn">🔍 Suggest photos</button>
+        <button class="pill accent" id="adimage-btn">✨ Generate ad image</button>
+      </div>
+      <input type="file" id="photo-input" accept="image/*" multiple style="display:none" />
+      <div id="suggest-grid" style="display:none;padding:0 16px 12px"></div>
+      <div id="adimage-wrap" style="display:none;padding:0 16px 16px">
+        <img id="adimage-img" style="width:100%;border-radius:10px;border:1px solid var(--panel-border)" alt="Generated ad" />
+        <div style="margin-top:8px"><a class="pill" id="adimage-download" href="#" style="text-decoration:none">⬇ Download ad image</a></div>
+      </div>
+    </section>
+
     <section class="panel ads-panel">
       <h2>Ad copies</h2>
       <div id="ads"><p class="empty-note" style="margin:14px">Generated after you confirm the listing.</p></div>
@@ -667,9 +687,10 @@ async function refreshListing(retried) {
       return refreshListing(true);
     }
     if (!res.ok) return;
-    const { listing, missing_core_fields, resume } = await res.json();
+    const { listing, missing_core_fields, resume, photos } = await res.json();
     lastListing = listing;
     if (resume) sessionStorage.setItem("nf_resume", resume);
+    renderPhotos(photos || []);
 
     const captured = Math.max(0, CORE_TOTAL - missing_core_fields.length);
     $("vetted-label").textContent = captured + "/" + CORE_TOTAL + " vetted";
@@ -844,6 +865,101 @@ function renderPreview(L) {
     priceEl.innerHTML = html;
   } else priceEl.style.display = "none";
 }
+
+/* ---------- photos & ad image ---------- */
+
+function renderPhotos(photos) {
+  const strip = $("photo-strip");
+  strip.innerHTML = "";
+  photos.forEach((p, idx) => {
+    if (p.removed) return;
+    const wrap = document.createElement("div");
+    wrap.style.cssText = "position:relative;width:74px;height:74px";
+    const im = document.createElement("img");
+    im.src = API_BASE + "/api/photos/" + sessionId + "/" + idx;
+    im.style.cssText = "width:74px;height:74px;object-fit:cover;border-radius:8px;border:1px solid var(--panel-border)";
+    im.title = p.source === "web" ? "Web photo (reference)" : "Uploaded photo";
+    if (p.source === "web") im.style.borderColor = "var(--amber)";
+    const x = document.createElement("button");
+    x.textContent = "×";
+    x.style.cssText = "position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;border:0;background:#000;color:#fff;cursor:pointer;font-size:12px;line-height:1";
+    x.onclick = async () => {
+      await fetch(API_BASE + "/api/photos/" + sessionId + "/remove", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ idx }),
+      });
+      refreshListing();
+    };
+    wrap.appendChild(im); wrap.appendChild(x);
+    strip.appendChild(wrap);
+  });
+}
+
+$("photo-upload-btn").onclick = () => $("photo-input").click();
+$("photo-input").addEventListener("change", async (e) => {
+  const files = [...e.target.files];
+  if (!files.length) return;
+  await ensureSession();
+  const fd = new FormData();
+  for (const f of files) fd.append("files", f);
+  $("photo-upload-btn").textContent = "Uploading…";
+  try {
+    await fetch(API_BASE + "/api/photos/" + sessionId, { method: "POST", body: fd });
+    refreshListing();
+  } catch { addNote("Upload failed — try smaller images."); }
+  $("photo-upload-btn").textContent = "📎 Upload photos";
+  e.target.value = "";
+});
+
+$("photo-suggest-btn").onclick = async () => {
+  await ensureSession();
+  const grid = $("suggest-grid");
+  grid.style.display = "";
+  grid.innerHTML = '<p class="empty-note">Searching for photos…</p>';
+  try {
+    const r = await fetch(API_BASE + "/api/photo-suggestions/" + sessionId);
+    const { suggestions, query } = await r.json();
+    grid.innerHTML = "";
+    if (!suggestions.length) {
+      grid.innerHTML = '<p class="empty-note">No photos found' + (query ? ' for "' + query + '"' : " — tell Sofia the building name first") + ".</p>";
+      return;
+    }
+    const note = document.createElement("p");
+    note.className = "empty-note";
+    note.textContent = "Tap a photo to add it (reference photos — verify rights before posting):";
+    grid.appendChild(note);
+    const row = document.createElement("div");
+    row.style.cssText = "display:flex;gap:8px;flex-wrap:wrap";
+    for (const s of suggestions) {
+      const im = document.createElement("img");
+      im.src = s.thumb;
+      im.title = s.title;
+      im.style.cssText = "width:104px;height:78px;object-fit:cover;border-radius:8px;border:1px solid var(--panel-border);cursor:pointer";
+      im.onclick = async () => {
+        im.style.opacity = "0.4";
+        const res = await fetch(API_BASE + "/api/photos/" + sessionId + "/from-url", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ url: s.url }),
+        });
+        if (res.ok) { im.style.border = "2px solid var(--emerald)"; refreshListing(); }
+        else { im.style.opacity = "1"; addNote("Couldn't fetch that one — try another."); }
+      };
+      row.appendChild(im);
+    }
+    grid.appendChild(row);
+  } catch {
+    grid.innerHTML = '<p class="empty-note">Photo search unavailable right now.</p>';
+  }
+};
+
+$("adimage-btn").onclick = async () => {
+  await ensureSession();
+  if (!Object.keys(lastListing || {}).length) { addNote("Give Sofia some listing details first."); return; }
+  const url = API_BASE + "/api/adimage/" + sessionId + "?_=" + Date.now();
+  $("adimage-img").src = url;
+  $("adimage-download").href = API_BASE + "/api/adimage/" + sessionId + "?inline=0";
+  $("adimage-wrap").style.display = "";
+};
 
 /* ---------- ads ---------- */
 
