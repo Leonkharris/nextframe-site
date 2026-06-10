@@ -1,2685 +1,723 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>NextFrame Listings Engine</title>
-    <meta
-      name="description"
-      content="Chat with Sofia to generate four ad angles, edit the selected post, and queue it for Facebook and Instagram."
-    />
-    <style>
-      :root {
-        --bg: #090a0f;
-        --panel: #11131c;
-        --panel-border: #1e2230;
-        --text: #f1f5f9;
-        --muted: #94a3b8;
-        --indigo: #4f46e5;
-        --indigo-light: #6366f1;
-        --indigo-glow: rgba(99, 102, 241, 0.15);
-        --green: #10b981;
-        --amber: #f59e0b;
-        --teal: #14b8a6;
-        --cyan: #06b6d4;
-        --emerald: #10b981;
-      }
-
-      * {
-        box-sizing: border-box;
-      }
-
-      body {
-        margin: 0;
-        min-height: 100vh;
-        background: 
-          radial-gradient(circle at top left, rgba(99, 102, 241, 0.15), transparent 40rem),
-          radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.1), transparent 40rem),
-          #090a0f;
-        color: var(--text);
-        font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-        display: flex;
-        flex-direction: column;
-      }
-
-      .page {
-        width: 100%;
-        max-width: 1400px;
-        margin: 0 auto;
-        padding: 24px;
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        flex: 1;
-      }
-
-      .top {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        padding-bottom: 16px;
-        border-bottom: 1px solid var(--panel-border);
-      }
-
-      .brand {
-        margin: 0;
-        color: var(--muted);
-        font-size: 0.75rem;
-        font-weight: 800;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-      }
-
-      h1 {
-        margin: 4px 0 0;
-        font-size: 1.75rem;
-        font-weight: 800;
-        background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-      }
-
-      .domain-link {
-        padding: 8px 16px;
-        border: 1px solid var(--panel-border);
-        border-radius: 9999px;
-        color: var(--text);
-        font-size: 0.875rem;
-        font-weight: 600;
-        text-decoration: none;
-        background: rgba(255, 255, 255, 0.03);
-        backdrop-filter: blur(8px);
-        transition: all 0.2s;
-      }
-
-      .domain-link:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--indigo-light);
-      }
-
-      .layout {
-        display: grid;
-        grid-template-columns: 420px 1fr 340px;
-        gap: 24px;
-        align-items: stretch;
-        flex: 1;
-      }
-
-      .panel {
-        background: rgba(17, 19, 28, 0.7);
-        border: 1px solid var(--panel-border);
-        border-radius: 16px;
-        backdrop-filter: blur(12px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-      }
-
-      /* CHAT INTERFACE */
-      .chat-header {
-        padding: 20px;
-        border-bottom: 1px solid var(--panel-border);
-        display: flex;
-        align-items: center;
-        gap: 16px;
-        background: rgba(255, 255, 255, 0.01);
-      }
-
-      .avatar-wrap {
-        position: relative;
-      }
-
-      .avatar {
-        width: 48px;
-        height: 48px;
-        border-radius: 9999px;
-        border: 2px solid rgba(99, 102, 241, 0.2);
-        object-fit: cover;
-        background: #1e293b;
-      }
-
-      .status-dot {
-        position: absolute;
-        bottom: 0;
-        right: 0;
-        width: 12px;
-        height: 12px;
-        background: var(--green);
-        border: 2px solid var(--panel);
-        border-radius: 9999px;
-      }
-
-      .chat-header-text h2 {
-        margin: 0;
-        font-size: 1rem;
-        font-weight: 700;
-        color: #fff;
-      }
-
-      .chat-header-text p {
-        margin: 2px 0 0;
-        font-size: 0.75rem;
-        color: var(--muted);
-      }
-
-      .chat-messages {
-        flex: 1;
-        overflow-y: auto;
-        padding: 20px;
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
-        max-height: 520px;
-      }
-
-      .message {
-        max-width: 85%;
-        display: flex;
-        gap: 10px;
-      }
-
-      .message.bot {
-        align-self: flex-start;
-      }
-
-      .message.user {
-        align-self: flex-end;
-        flex-direction: row-reverse;
-      }
-
-      .message-avatar {
-        width: 32px;
-        height: 32px;
-        border-radius: 9999px;
-        flex-shrink: 0;
-        object-fit: cover;
-      }
-
-      .message-bubble {
-        padding: 12px 16px;
-        border-radius: 16px;
-        font-size: 0.875rem;
-        line-height: 1.5;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-      }
-
-      .message.bot .message-bubble {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--panel-border);
-        color: var(--text);
-        border-top-left-radius: 4px;
-      }
-
-      .message.user .message-bubble {
-        background: var(--indigo);
-        color: #fff;
-        border-top-right-radius: 4px;
-      }
-
-      .typing-indicator {
-        display: flex;
-        gap: 4px;
-        padding: 8px 12px;
-        background: rgba(255,255,255,0.03);
-        border: 1px solid var(--panel-border);
-        border-radius: 12px;
-        align-items: center;
-        width: fit-content;
-      }
-
-      .typing-dot {
-        width: 6px;
-        height: 6px;
-        background: var(--indigo-light);
-        border-radius: 50%;
-        animation: typing 1s infinite alternate;
-      }
-
-      .typing-dot:nth-child(2) { animation-delay: 0.2s; }
-      .typing-dot:nth-child(3) { animation-delay: 0.4s; }
-
-      @keyframes typing {
-        from { transform: translateY(0); }
-        to { transform: translateY(-4px); }
-      }
-
-      .chat-input-area {
-        padding: 16px;
-        border-top: 1px solid var(--panel-border);
-        background: rgba(0, 0, 0, 0.1);
-      }
-
-      .chat-form {
-        position: relative;
-        display: flex;
-      }
-
-      .chat-input {
-        width: 100%;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--panel-border);
-        border-radius: 9999px;
-        padding: 14px 90px 14px 20px;
-        color: #fff;
-        font-size: 0.875rem;
-        outline: none;
-        transition: all 0.2s;
-      }
-
-      .chat-input:focus {
-        border-color: var(--indigo-light);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .chat-submit {
-        position: absolute;
-        right: 6px;
-        top: 6px;
-        bottom: 6px;
-        width: 36px;
-        height: 36px;
-        border-radius: 9999px;
-        background: var(--indigo);
-        border: 0;
-        color: #fff;
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        transition: background 0.2s;
-        z-index: 2;
-      }
-
-      .chat-submit:hover {
-        background: var(--indigo-light);
-      }
-
-      .chat-mic {
-        position: absolute;
-        right: 48px;
-        top: 6px;
-        bottom: 6px;
-        width: 36px;
-        height: 36px;
-        border-radius: 9999px;
-        background: rgba(255, 255, 255, 0.05);
-        border: 1px solid var(--panel-border);
-        color: var(--muted);
-        display: grid;
-        place-items: center;
-        cursor: pointer;
-        transition: all 0.2s;
-        z-index: 2;
-        padding: 0;
-      }
-
-      .chat-mic:hover {
-        background: rgba(255, 255, 255, 0.1);
-        color: #fff;
-      }
-
-      .chat-mic.listening {
-        background: #ef4444;
-        color: #fff;
-        border-color: #f87171;
-        animation: mic-pulse 1.2s infinite alternate;
-      }
-
-      @keyframes mic-pulse {
-        from { transform: scale(1); box-shadow: 0 0 0 rgba(239, 68, 68, 0.4); }
-        to { transform: scale(1.08); box-shadow: 0 0 10px rgba(239, 68, 68, 0.6); }
-      }
-
-      /* MIDDLE COLUMN: Campaign Generator */
-      .main-content {
-        display: flex;
-        flex-direction: column;
-        gap: 24px;
-        overflow-y: auto;
-        padding-right: 4px;
-      }
-
-      .section-header {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-      }
-
-      .section-title h2 {
-        margin: 0;
-        font-size: 1.5rem;
-        font-weight: 800;
-      }
-
-      .section-title p {
-        margin: 4px 0 0;
-        font-size: 0.875rem;
-        color: var(--muted);
-      }
-
-      .btn-action {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--panel-border);
-        border-radius: 8px;
-        color: var(--text);
-        padding: 8px 16px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        transition: all 0.2s;
-      }
-
-      .btn-action:hover {
-        background: rgba(255, 255, 255, 0.08);
-        border-color: var(--indigo-light);
-      }
-
-      .options-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 16px;
-      }
-
-      .card-option {
-        background: rgba(255, 255, 255, 0.02);
-        border: 1px solid var(--panel-border);
-        border-radius: 12px;
-        overflow: hidden;
-        cursor: pointer;
-        text-align: left;
-        display: flex;
-        flex-direction: column;
-        transition: all 0.2s;
-        padding: 0;
-      }
-
-      .card-option:hover {
-        border-color: rgba(99, 102, 241, 0.4);
-        background: rgba(255, 255, 255, 0.04);
-      }
-
-      .card-option.active {
-        border-color: var(--indigo);
-        box-shadow: 0 0 0 4px var(--indigo-glow);
-        background: rgba(255, 255, 255, 0.05);
-      }
-
-      .card-visual {
-        height: 120px;
-        padding: 16px;
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        justify-content: flex-end;
-        color: #fff;
-      }
-
-      .card-visual::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: linear-gradient(0deg, rgba(0,0,0,0.8) 0%, transparent 100%);
-        z-index: 1;
-      }
-
-      .card-visual.urgent { background-color: #064e3b; }
-      .card-visual.premium { background-color: #115e59; }
-      .card-visual.investment { background-color: #78350f; }
-      .card-visual.direct { background-color: #155e75; }
-
-      .card-visual small {
-        position: relative;
-        z-index: 2;
-        font-size: 0.65rem;
-        font-weight: 800;
-        letter-spacing: 0.1em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.7);
-        margin-bottom: 4px;
-      }
-
-      .card-visual strong {
-        position: relative;
-        z-index: 2;
-        font-size: 1.125rem;
-        font-weight: 900;
-        line-height: 1.2;
-      }
-
-      .card-content {
-        padding: 16px;
-        display: flex;
-        flex-direction: column;
-        gap: 6px;
-      }
-
-      .card-channel {
-        font-size: 0.65rem;
-        font-weight: 800;
-        color: var(--indigo-light);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .card-headline {
-        font-size: 0.875rem;
-        font-weight: 700;
-        color: #fff;
-        line-height: 1.4;
-      }
-
-      .card-subhead {
-        font-size: 0.75rem;
-        color: var(--muted);
-        line-height: 1.4;
-      }
-
-      .editor-panel {
-        padding: 20px;
-      }
-
-      .editor-title {
-        font-size: 1rem;
-        font-weight: 700;
-        margin-bottom: 16px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border-bottom: 1px solid var(--panel-border);
-        padding-bottom: 10px;
-      }
-
-      label {
-        font-size: 0.75rem;
-        font-weight: 600;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        margin-bottom: 6px;
-        display: block;
-      }
-
-      textarea.editor-box {
-        width: 100%;
-        height: 160px;
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--panel-border);
-        border-radius: 8px;
-        padding: 12px;
-        color: var(--text);
-        font-size: 0.875rem;
-        line-height: 1.5;
-        outline: none;
-        resize: none;
-        transition: border-color 0.2s;
-      }
-
-      textarea.editor-box:focus {
-        border-color: var(--indigo-light);
-      }
-
-      .cta-wrap {
-        margin-top: 16px;
-      }
-
-      input.editor-input {
-        width: 100%;
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--panel-border);
-        border-radius: 8px;
-        padding: 10px 12px;
-        color: var(--text);
-        font-size: 0.875rem;
-        outline: none;
-        transition: border-color 0.2s;
-      }
-
-      input.editor-input:focus {
-        border-color: var(--indigo-light);
-      }
-
-      /* RIGHT COLUMN: Preview & Actions */
-      .preview-column {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-      }
-
-      .preview-container {
-        border-radius: 12px;
-        border: 1px solid var(--panel-border);
-        background: rgba(255,255,255,0.01);
-        overflow: hidden;
-      }
-
-      .preview-header {
-        background: rgba(0, 0, 0, 0.2);
-        padding: 10px 16px;
-        border-bottom: 1px solid var(--panel-border);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-
-      .preview-header span {
-        font-size: 0.7rem;
-        font-weight: 800;
-        color: var(--muted);
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-      }
-
-      .dots-group {
-        display: flex;
-        gap: 4px;
-      }
-
-      .dot {
-        width: 6px;
-        height: 6px;
-        border-radius: 50%;
-        background: rgba(255,255,255,0.2);
-      }
-
-      .preview-body {
-        padding: 16px;
-      }
-
-      /* INFOGRAPHIC CARD PREVIEW */
-      .infographic-card {
-        aspect-ratio: 4 / 5;
-        border-radius: 12px;
-        padding: 20px;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: inset 0 0 40px rgba(0,0,0,0.4);
-      }
-
-      .infographic-card.urgent { background: linear-gradient(135deg, #064e3b 0%, #022c22 100%); }
-      .infographic-card.premium { background: linear-gradient(135deg, #115e59 0%, #134e4a 100%); }
-      .infographic-card.investment { background: linear-gradient(135deg, #78350f 0%, #451a03 100%); }
-      .infographic-card.direct { background: linear-gradient(135deg, #155e75 0%, #164e63 100%); }
-
-      .info-kicker {
-        font-size: 0.65rem;
-        font-weight: 800;
-        letter-spacing: 0.12em;
-        text-transform: uppercase;
-        color: rgba(255, 255, 255, 0.6);
-      }
-
-      .info-title-box h3 {
-        margin: 6px 0 0;
-        font-size: 1.5rem;
-        font-weight: 900;
-        line-height: 1.15;
-      }
-
-      .info-title-box p {
-        margin: 4px 0 0;
-        font-size: 0.8rem;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      .info-stats-grid {
-        display: grid;
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-        gap: 8px;
-        margin: 16px 0;
-      }
-
-      .info-stat-pill {
-        background: rgba(255,255,255,0.08);
-        border: 1px solid rgba(255,255,255,0.04);
-        padding: 8px;
-        border-radius: 6px;
-        text-align: center;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-
-      .info-stat-pill span {
-        font-size: 0.7rem;
-        font-weight: 800;
-        line-height: 1.2;
-      }
-
-      .info-footer-line {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 10px;
-        font-size: 0.7rem;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.8);
-      }
-
-      /* CAPTION PHONE PREVIEW */
-      .caption-preview-box {
-        background: rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--panel-border);
-        border-radius: 8px;
-        padding: 12px;
-        margin-top: 16px;
-      }
-
-      .caption-preview-header {
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        border-bottom: 1px solid var(--panel-border);
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-      }
-
-      .caption-preview-header .logo-fallback {
-        width: 20px;
-        height: 20px;
-        border-radius: 50%;
-        background: #334155;
-        font-size: 0.6rem;
-        display: grid;
-        place-items: center;
-        font-weight: 700;
-      }
-
-      .caption-preview-header span {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: #fff;
-      }
-
-      .caption-preview-text {
-        font-size: 0.75rem;
-        line-height: 1.45;
-        color: var(--text);
-        white-space: pre-wrap;
-        margin: 0 0 8px;
-      }
-
-      .caption-preview-cta {
-        font-size: 0.75rem;
-        font-weight: 700;
-        color: var(--indigo-light);
-        margin: 0;
-      }
-
-      /* ACTION BUTTONS */
-      .button-stack {
-        display: flex;
-        flex-direction: column;
-        gap: 10px;
-      }
-
-      .btn-primary {
-        background: var(--indigo);
-        border: 1px solid rgba(99, 102, 241, 0.2);
-        border-radius: 12px;
-        color: #fff;
-        padding: 12px;
-        font-size: 0.875rem;
-        font-weight: 700;
-        cursor: pointer;
-        transition: all 0.2s;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn-primary:hover {
-        background: var(--indigo-light);
-        transform: translateY(-1px);
-        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-      }
-
-      .btn-primary:active {
-        transform: translateY(0);
-      }
-
-      .btn-secondary {
-        background: rgba(255,255,255,0.02);
-        border: 1px solid var(--panel-border);
-        border-radius: 12px;
-        color: var(--text);
-        padding: 12px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        cursor: pointer;
-        transition: all 0.2s;
-      }
-
-      .btn-secondary:hover {
-        background: rgba(255,255,255,0.06);
-        border-color: rgba(255,255,255,0.2);
-      }
-
-      .actions-tip {
-        font-size: 0.7rem;
-        color: var(--muted);
-        text-align: center;
-        margin: 0;
-        line-height: 1.4;
-      }
-
-      /* VOICEOVER AND AUDIO WAVES */
-      .voice-toggle-btn {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--panel-border);
-        border-radius: 50%;
-        width: 36px;
-        height: 36px;
-        display: grid;
-        place-items: center;
-        color: var(--muted);
-        cursor: pointer;
-        transition: all 0.2s;
-        margin-left: auto;
-        padding: 0;
-      }
-
-      .voice-toggle-btn:hover {
-        background: rgba(255, 255, 255, 0.08);
-        color: #fff;
-        border-color: var(--indigo-light);
-      }
-
-      .audio-wave {
-        display: none;
-        position: absolute;
-        bottom: -4px;
-        left: 50%;
-        transform: translateX(-50%);
-        gap: 3px;
-        background: var(--panel);
-        padding: 4px 8px;
-        border-radius: 9999px;
-        border: 1px solid var(--panel-border);
-        z-index: 10;
-        align-items: center;
-        height: 20px;
-      }
-
-      .avatar-wrap.speaking .audio-wave {
-        display: flex;
-      }
-
-      .audio-wave .bar {
-        width: 3.5px;
-        height: 6px;
-        background: var(--green);
-        border-radius: 9999px;
-        animation: bounce-bar 0.6s infinite ease-in-out alternate;
-      }
-
-      .audio-wave .bar:nth-child(2) { animation-delay: 0.15s; }
-      .audio-wave .bar:nth-child(3) { animation-delay: 0.3s; }
-      .audio-wave .bar:nth-child(4) { animation-delay: 0.45s; }
-
-      @keyframes bounce-bar {
-        from { height: 4px; }
-        to { height: 14px; }
-      }
-
-      .avatar-wrap.speaking .avatar {
-        border-color: var(--green);
-        box-shadow: 0 0 15px rgba(16, 185, 129, 0.4);
-        animation: avatar-breath 2s infinite ease-in-out;
-      }
-
-      @keyframes avatar-breath {
-        0%, 100% { transform: scale(1); }
-        50% { transform: scale(1.04); }
-      }
-
-      @media (max-width: 1100px) {
-        .layout {
-          grid-template-columns: 1fr;
-        }
-        .panel {
-          height: auto;
-        }
-      }
-
-      /* Specs Checklist Styles */
-      .specs-checklist {
-        background: rgba(255, 255, 255, 0.01);
-        border-bottom: 1px solid var(--panel-border);
-        transition: all 0.3s;
-      }
-      .specs-checklist-header {
-        padding: 12px 20px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
-        font-size: 0.8rem;
-        font-weight: 700;
-        color: var(--muted);
-        background: rgba(0, 0, 0, 0.15);
-        user-select: none;
-      }
-      .specs-checklist-header:hover {
-        background: rgba(255, 255, 255, 0.03);
-        color: #fff;
-      }
-      .specs-checklist-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 8px 16px;
-        padding: 14px 20px;
-        max-height: 220px;
-        overflow-y: auto;
-        transition: max-height 0.3s ease-out, padding 0.3s ease-out;
-      }
-      .specs-checklist.collapsed .specs-checklist-grid {
-        max-height: 0;
-        padding-top: 0;
-        padding-bottom: 0;
-        overflow: hidden;
-      }
-      .checklist-item {
-        display: flex;
-        align-items: flex-start;
-        gap: 8px;
-        font-size: 0.725rem;
-        line-height: 1.3;
-      }
-      .checklist-status {
-        width: 14px;
-        height: 14px;
-        border-radius: 50%;
-        border: 1.5px solid var(--panel-border);
-        display: grid;
-        place-items: center;
-        flex-shrink: 0;
-        margin-top: 2px;
-      }
-      .checklist-item.checked .checklist-status {
-        border-color: var(--green);
-        background: rgba(16, 185, 129, 0.2);
-        color: var(--green);
-      }
-      .checklist-status svg {
-        display: none;
-        width: 8px;
-        height: 8px;
-        stroke: var(--green);
-        stroke-width: 4;
-        fill: none;
-      }
-      .checklist-item.checked .checklist-status svg {
-        display: block;
-      }
-      .checklist-label {
-        font-weight: 600;
-        color: var(--muted);
-      }
-      .checklist-item.checked .checklist-label {
-        color: var(--text);
-      }
-      .checklist-val {
-        display: block;
-        font-size: 0.65rem;
-        color: rgba(148, 163, 184, 0.35);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        max-width: 160px;
-      }
-      .checklist-item.checked .checklist-val {
-        color: var(--green);
-        font-weight: 500;
-      }
-
-      /* Redesigned Luxury Infographic Preview Card */
-      .infographic-card {
-        aspect-ratio: 4 / 5;
-        border-radius: 16px;
-        padding: 22px;
-        color: #fff;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        box-shadow: inset 0 0 50px rgba(0,0,0,0.5);
-        border: 1px solid rgba(255,255,255,0.08);
-        position: relative;
-        overflow: hidden;
-        background: linear-gradient(135deg, #090a0f 0%, #11131c 100%);
-        transition: all 0.5s ease;
-      }
-      
-      .info-header {
-        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-        padding-bottom: 8px;
-        margin-bottom: 8px;
-      }
-      
-      .info-kicker {
-        font-size: 0.65rem;
-        font-weight: 800;
-        letter-spacing: 0.15em;
-        text-transform: uppercase;
-        color: var(--teal);
-        margin-bottom: 4px;
-        transition: color 0.5s;
-      }
-      
-      .info-title-box h3 {
-        margin: 0;
-        font-size: 1.4rem;
-        font-weight: 900;
-        line-height: 1.2;
-        letter-spacing: -0.02em;
-        color: #fff;
-      }
-      
-      .info-title-box p {
-        margin: 2px 0 0;
-        font-size: 0.7rem;
-        color: rgba(255, 255, 255, 0.6);
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .info-specs-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 6px;
-        margin-bottom: 8px;
-      }
-      
-      .info-spec-box {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.05);
-        border-radius: 6px;
-        padding: 6px 8px;
-        display: flex;
-        flex-direction: column;
-        gap: 1px;
-      }
-      
-      .info-spec-label {
-        font-size: 0.55rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: rgba(255, 255, 255, 0.4);
-        font-weight: 700;
-      }
-      
-      .info-spec-value {
-        font-size: 0.7rem;
-        font-weight: 800;
-        color: #fff;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .info-landmarks-section {
-        background: rgba(255, 255, 255, 0.015);
-        border: 1px solid rgba(255, 255, 255, 0.04);
-        border-radius: 6px;
-        padding: 8px 10px;
-        margin-bottom: 8px;
-      }
-      
-      .info-landmarks-title {
-        font-size: 0.55rem;
-        text-transform: uppercase;
-        letter-spacing: 0.05em;
-        color: rgba(255, 255, 255, 0.5);
-        font-weight: 800;
-        margin-bottom: 4px;
-      }
-      
-      .info-landmarks-grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 4px;
-      }
-      
-      .info-landmark-item {
-        font-size: 0.6rem;
-        color: rgba(255, 255, 255, 0.8);
-        display: flex;
-        align-items: center;
-        gap: 4px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
-      
-      .info-pricing-section {
-        background: rgba(0, 0, 0, 0.25);
-        border-radius: 6px;
-        padding: 8px 10px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        border-left: 3px solid var(--teal);
-        margin-bottom: 8px;
-        transition: border-color 0.5s;
-      }
-      
-      .info-price-box {
-        display: flex;
-        flex-direction: column;
-      }
-      
-      .info-price-label {
-        font-size: 0.55rem;
-        text-transform: uppercase;
-        color: rgba(255,255,255,0.4);
-        font-weight: 700;
-      }
-      
-      .info-price-value {
-        font-size: 1.1rem;
-        font-weight: 900;
-        color: #fff;
-      }
-      
-      .info-comps-value {
-        font-size: 0.6rem;
-        color: var(--muted);
-      }
-      
-      .info-footer-line {
-        border-top: 1px solid rgba(255, 255, 255, 0.1);
-        padding-top: 8px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        font-size: 0.65rem;
-        font-weight: 700;
-        color: rgba(255, 255, 255, 0.6);
-      }
-    </style>
-  </head>
-  <body>
-    <main class="page">
-      <header class="top">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Next Frame — Listings Assistant</title>
+<meta name="description" content="Chat with Sofia to build a complete, verified property listing — research, comps, and ready-to-post ad copy." />
+<script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<style>
+  :root {
+    --bg: #0c0d10;
+    --panel: #14161b;
+    --panel2: #181b21;
+    --border: #262a33;
+    --text: #ece9e2;
+    --muted: #9a958a;
+    --accent: #c8a96a;
+    --accent-dim: rgba(200, 169, 106, 0.14);
+    --green: #7fb78a;
+    --red: #c97b6f;
+    --user-bubble: #232730;
+    --radius: 14px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex;
+    flex-direction: column;
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 14px 22px; border-bottom: 1px solid var(--border);
+    background: rgba(12,13,16,0.9); backdrop-filter: blur(8px);
+  }
+  .brand { display: flex; flex-direction: column; gap: 2px; }
+  .brand .mark {
+    font-size: 0.7rem; letter-spacing: 0.28em; color: var(--muted);
+    text-transform: uppercase; font-weight: 700;
+  }
+  .brand h1 {
+    margin: 0; font-family: Georgia, "Times New Roman", serif;
+    font-size: 1.25rem; font-weight: 500; letter-spacing: 0.01em;
+  }
+  .brand h1 em { color: var(--accent); font-style: italic; }
+  .header-actions { display: flex; gap: 10px; }
+  button.ghost {
+    background: transparent; color: var(--muted); border: 1px solid var(--border);
+    border-radius: 999px; padding: 7px 16px; font-size: 0.8rem; cursor: pointer;
+    transition: all .15s;
+  }
+  button.ghost:hover { color: var(--text); border-color: var(--accent); }
+  button.ghost.small { padding: 4px 11px; font-size: 0.85rem; }
+
+  .layout {
+    flex: 1; display: grid; grid-template-columns: 1fr 400px;
+    gap: 0; min-height: 0; max-width: 1500px; width: 100%; margin: 0 auto;
+  }
+  @media (max-width: 980px) { .layout { grid-template-columns: 1fr; } .side { display: none; } }
+
+  /* ---------- chat ---------- */
+  .chat { display: flex; flex-direction: column; min-height: 0; border-right: 1px solid var(--border); }
+  .messages { flex: 1; overflow-y: auto; padding: 26px 30px 10px; display: flex; flex-direction: column; gap: 16px; }
+  .msg { max-width: 78%; line-height: 1.55; font-size: 0.95rem; }
+  .msg.user {
+    align-self: flex-end; background: var(--user-bubble);
+    padding: 11px 16px; border-radius: var(--radius); border-bottom-right-radius: 4px;
+    white-space: pre-wrap;
+  }
+  .msg.bot { align-self: flex-start; }
+  .msg.bot .who {
+    font-size: 0.68rem; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 6px; font-weight: 700;
+  }
+  .msg.bot .body :is(p, ul, ol) { margin: 0 0 10px; }
+  .msg.bot .body :is(p, ul, ol):last-child { margin-bottom: 0; }
+  .msg.bot .body a { color: var(--accent); }
+  .msg.bot .body code { background: var(--panel2); padding: 1px 5px; border-radius: 5px; font-size: 0.85em; }
+  .msg.bot .body table { border-collapse: collapse; margin: 8px 0; font-size: 0.86rem; display: block; overflow-x: auto; }
+  .msg.bot .body th, .msg.bot .body td { border: 1px solid var(--border); padding: 6px 10px; text-align: left; }
+  .msg.bot .body th { background: var(--panel2); color: var(--muted); font-weight: 600; }
+  .msg.error { align-self: center; color: var(--red); font-size: 0.85rem; }
+
+  .status-line {
+    min-height: 22px; padding: 0 30px 4px; color: var(--muted);
+    font-size: 0.8rem; font-style: italic; display: flex; align-items: center; gap: 8px;
+  }
+  .status-line .dot {
+    width: 7px; height: 7px; border-radius: 50%; background: var(--accent);
+    animation: pulse 1.1s ease-in-out infinite;
+  }
+  @keyframes pulse { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+
+  .chips { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; }
+  .chips button {
+    background: var(--accent-dim); color: var(--accent); border: 1px solid transparent;
+    border-radius: 999px; padding: 8px 18px; font-size: 0.85rem; cursor: pointer;
+  }
+  .chips button:hover { border-color: var(--accent); }
+
+  .composer { padding: 14px 30px 20px; }
+  .composer form {
+    display: flex; gap: 10px; background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 8px 8px 8px 18px;
+  }
+  .composer form:focus-within { border-color: var(--accent); }
+  .composer textarea {
+    flex: 1; background: transparent; border: 0; outline: 0; resize: none;
+    color: var(--text); font: inherit; font-size: 0.95rem; max-height: 140px; padding: 8px 0;
+  }
+  .composer button.send {
+    background: var(--accent); color: #15130d; border: 0; border-radius: 10px;
+    padding: 0 22px; font-weight: 700; font-size: 0.9rem; cursor: pointer;
+  }
+  .composer button.send:disabled { opacity: 0.45; cursor: default; }
+
+  /* ---------- side panel ---------- */
+  .side { display: flex; flex-direction: column; min-height: 0; overflow-y: auto; background: var(--panel); }
+  .side section { padding: 20px 22px; border-bottom: 1px solid var(--border); }
+  .side h2 {
+    margin: 0 0 4px; font-family: Georgia, serif; font-weight: 500;
+    font-size: 1.02rem; letter-spacing: 0.02em;
+  }
+  .side .sub { color: var(--muted); font-size: 0.78rem; margin: 0 0 14px; }
+
+  /* Sofia */
+  .sofia-section { padding-bottom: 16px; }
+  .sofia-wrap {
+    position: relative; border-radius: 12px; overflow: hidden;
+    border: 1px solid var(--border); background: #000; aspect-ratio: 16 / 11;
+  }
+  .sofia-wrap img, .sofia-wrap video {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .sofia-wrap video { display: none; }
+  .sofia-wrap.speaking {
+    border-color: var(--accent);
+    box-shadow: 0 0 0 1px var(--accent), 0 0 22px rgba(200, 169, 106, 0.35);
+    animation: speakGlow 1.6s ease-in-out infinite;
+  }
+  @keyframes speakGlow {
+    0%, 100% { box-shadow: 0 0 0 1px var(--accent), 0 0 14px rgba(200,169,106,.25); }
+    50%      { box-shadow: 0 0 0 1px var(--accent), 0 0 26px rgba(200,169,106,.45); }
+  }
+  .sofia-meta { display: flex; align-items: center; justify-content: space-between; margin-top: 10px; }
+  .sofia-meta .name { font-family: Georgia, serif; font-size: 0.98rem; }
+  .sofia-meta .role { color: var(--muted); font-size: 0.74rem; letter-spacing: 0.06em; }
+  .sofia-status { color: var(--muted); font-size: 0.76rem; font-style: italic; margin: 8px 0 0; min-height: 16px; }
+  .sofia-status .dot {
+    display: inline-block; width: 6px; height: 6px; border-radius: 50%;
+    background: var(--accent); margin-right: 6px; animation: pulse 1.1s ease-in-out infinite;
+  }
+
+  .progress { height: 5px; background: var(--panel2); border-radius: 99px; overflow: hidden; margin-bottom: 16px; }
+  .progress div { height: 100%; background: var(--accent); width: 0%; transition: width .4s; }
+
+  .fields { display: flex; flex-direction: column; gap: 0; }
+  .group-label {
+    font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--muted); margin: 14px 0 6px; font-weight: 700;
+  }
+  .row { display: flex; justify-content: space-between; gap: 14px; padding: 6px 0; border-bottom: 1px dashed #20242c; font-size: 0.85rem; }
+  .row .k { color: var(--muted); flex-shrink: 0; }
+  .row .v { text-align: right; word-break: break-word; }
+
+  .price-card {
+    background: var(--accent-dim); border: 1px solid rgba(200,169,106,.35);
+    border-radius: 12px; padding: 14px 16px; margin-top: 14px;
+  }
+  .price-card .label { font-size: 0.7rem; letter-spacing: .15em; text-transform: uppercase; color: var(--accent); font-weight: 700; }
+  .price-card .big { font-size: 1.35rem; font-family: Georgia, serif; margin: 4px 0 2px; }
+  .price-card .range { color: var(--muted); font-size: 0.8rem; }
+  .price-card .rationale { color: var(--text); font-size: 0.8rem; margin-top: 8px; line-height: 1.5; }
+
+  .comp { border: 1px solid var(--border); border-radius: 10px; padding: 10px 12px; margin-top: 8px; font-size: 0.8rem; }
+  .comp .src { color: var(--accent); }
+  .comp a { color: var(--muted); }
+
+  .ad-card { border: 1px solid var(--border); border-radius: 12px; padding: 14px 16px; margin-top: 12px; background: var(--panel2); }
+  .ad-card .channel {
+    display: inline-block; font-size: 0.65rem; letter-spacing: .14em; text-transform: uppercase;
+    color: var(--accent); border: 1px solid rgba(200,169,106,.4); border-radius: 999px;
+    padding: 3px 10px; font-weight: 700; margin-bottom: 8px;
+  }
+  .ad-card h3 { margin: 0 0 6px; font-size: 0.95rem; font-family: Georgia, serif; font-weight: 600; }
+  .ad-card pre { white-space: pre-wrap; font: inherit; font-size: 0.83rem; color: var(--text); margin: 0 0 10px; line-height: 1.55; }
+  .ad-card .copy-btn {
+    background: transparent; border: 1px solid var(--border); color: var(--muted);
+    border-radius: 8px; padding: 5px 12px; font-size: 0.75rem; cursor: pointer;
+  }
+  .ad-card .copy-btn:hover { color: var(--text); border-color: var(--accent); }
+  .empty-note { color: #555a64; font-size: 0.82rem; font-style: italic; }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <span class="mark">Next Frame Agency</span>
+    <h1>Listings <em>Assistant</em></h1>
+  </div>
+  <div class="header-actions">
+    <button class="ghost" id="download-ads" style="display:none">Download ad copies</button>
+    <button class="ghost" id="new-listing">New listing</button>
+  </div>
+</header>
+
+<div class="layout">
+  <main class="chat">
+    <div class="messages" id="messages"></div>
+    <div class="status-line" id="status"></div>
+    <div class="composer">
+      <form id="form">
+        <textarea id="input" rows="1" placeholder="Describe the property, or answer Sofia…"></textarea>
+        <button class="send" id="send" type="submit">Send</button>
+      </form>
+    </div>
+  </main>
+
+  <aside class="side">
+    <section class="sofia-section">
+      <div class="sofia-wrap">
+        <img id="sofia-img" src="https://next-frame.agency/sofia_avatar.png" alt="Sofia — Next Frame listing agent" />
+        <video id="sofia-video" playsinline></video>
+      </div>
+      <div class="sofia-meta">
         <div>
-          <p class="brand">NextFrame PH Real Estate Engine</p>
-          <h1>Campaign Generator</h1>
+          <div class="name">Sofia</div>
+          <div class="role">NEXT FRAME LISTING AGENT</div>
         </div>
-        <a class="domain-link" href="/">next-frame.agency</a>
-      </header>
+        <button class="ghost small" id="mute-btn" title="Toggle Sofia's voice">🔊</button>
+      </div>
+      <p class="sofia-status" id="sofia-status"></p>
+    </section>
+    <section>
+      <h2>Listing record</h2>
+      <p class="sub" id="progress-label">0 of 13 core details captured</p>
+      <div class="progress"><div id="progress-bar"></div></div>
+      <div class="fields" id="fields"><p class="empty-note">Details appear here as the conversation progresses.</p></div>
+      <div id="price-area"></div>
+      <div id="comps-area"></div>
+    </section>
+    <section>
+      <h2>Ad copies</h2>
+      <p class="sub">Generated after you confirm the listing.</p>
+      <div id="ads"><p class="empty-note">No ad copies yet.</p></div>
+    </section>
+  </aside>
+</div>
 
-      <section class="layout" aria-label="Listings ad generator">
-        
-        <!-- LEFT COLUMN: Sofia NPC Chatbot -->
-        <div class="panel">
-          <header class="chat-header">
-            <div class="avatar-wrap">
-              <img src="/sofia_avatar.png" alt="Sofia" class="avatar" onerror="this.src='../sofia_avatar.png'"/>
-              <div class="status-dot"></div>
-              <div class="audio-wave" id="audioWave">
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-                <div class="bar"></div>
-              </div>
-            </div>
-            <div class="chat-header-text">
-              <h2>Sofia Rivera</h2>
-              <p>Next-Frame Listing Agent</p>
-            </div>
-            <button id="voiceToggle" class="voice-toggle-btn" title="Toggle Voice Response" type="button">
-              <svg id="speakerOnIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path></svg>
-              <svg id="speakerOffIcon" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none;"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon><line x1="23" y1="9" x2="17" y2="15"></line><line x1="17" y1="9" x2="23" y2="15"></line></svg>
-            </button>
-          </header>
+<script>
+/* ============================================================
+   API base — the same file is served by the FastAPI app (local)
+   and by GitHub Pages at next-frame.agency/listings/ (production).
+   - locally: same-origin ("")
+   - on the domain: read from api-url.json (published next to this
+     page by start-listings-live.ps1 each time the tunnel starts)
+   - override anytime with ?api=https://... (persisted in localStorage)
+   ============================================================ */
+let API_BASE = "";
+async function initApiBase() {
+  const qs = new URLSearchParams(location.search).get("api");
+  if (qs) localStorage.setItem("nf_api", qs.replace(/\/$/, ""));
+  const saved = localStorage.getItem("nf_api");
+  if (saved) { API_BASE = saved; return; }
+  if (/(^|\.)next-frame\.agency$/i.test(location.hostname)) {
+    try {
+      const r = await fetch("api-url.json?_=" + Date.now(), { cache: "no-store" });
+      if (r.ok) API_BASE = ((await r.json()).api || "").replace(/\/$/, "");
+    } catch { /* falls through to offline notice on first send */ }
+  }
+}
 
-          <!-- Spec Checklist -->
-          <div class="specs-checklist collapsed" id="specsChecklist">
-            <div class="specs-checklist-header" id="checklistHeader">
-              <span>Property Specs Checklist (0/13 Vetted)</span>
-              <svg id="checklistChevron" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="transition: transform 0.2s; transform: rotate(-90deg);"><polyline points="6 9 12 15 18 9"></polyline></svg>
-            </div>
-            <div class="specs-checklist-grid" id="checklistGrid"></div>
-          </div>
+const $ = (id) => document.getElementById(id);
+const messagesEl = $("messages"), statusEl = $("status"), inputEl = $("input"),
+      sendBtn = $("send"), formEl = $("form");
 
-          <div class="chat-messages" id="chatMessages">
-            <div class="message bot">
-              <img src="/sofia_avatar.png" alt="Sofia" class="message-avatar" onerror="this.src='../sofia_avatar.png'"/>
-              <div class="message-bubble">
-                Hello! I'm Sofia, your Next-Frame listing agent. What is the name of the condo building or specific address you'd like to list today?
-              </div>
-            </div>
-          </div>
+let sessionId = null;
+let streaming = false;
 
-          <div class="chat-input-area">
-            <form class="chat-form" id="chatForm">
-              <input
-                type="text"
-                class="chat-input"
-                id="chatInput"
-                placeholder="Message Sofia..."
-                autocomplete="off"
-              />
-              <button class="chat-mic" id="chatMic" type="button" title="Start Voice Input">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z"></path><path d="M19 10v1a7 7 0 0 1-14 0v-1"></path><line x1="12" x2="12" y1="19" y2="22"></line></svg>
-              </button>
-              <button class="chat-submit" type="submit">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
-              </button>
-            </form>
-          </div>
-        </div>
+const FIELD_GROUPS = [
+  ["Property", [
+    ["property_type", "Type"], ["address", "Address (per title)"], ["building_name", "Building"],
+    ["city", "City"], ["neighborhood", "Neighborhood"],
+  ]],
+  ["Unit", [
+    ["floor_number", "Floor"], ["building_total_floors", "Building floors"], ["floor_zone", "Zone"],
+    ["view", "View"], ["orientation", "Facing"], ["floor_area_sqm", "Floor area (sqm)"],
+    ["bedroom_type", "Bedroom type"], ["furnishing", "Furnishing"], ["maids_room", "Maid's room"],
+    ["parking_slots", "Parking slots"], ["parking_notes", "Parking notes"],
+  ]],
+  ["Building & developer", [
+    ["developer", "Developer"], ["year_built", "Year built"], ["year_turned_over", "Turned over"],
+  ]],
+  ["Legal & status", [
+    ["title_holder", "Title held by"], ["tenanted", "Tenanted"], ["tenancy_details", "Tenancy"],
+    ["status", "Listing status"],
+  ]],
+];
+const CORE_TOTAL = 13;
 
-        <!-- MIDDLE COLUMN: Ad Copy Angles & Editor -->
-        <div class="main-content">
-          <div class="section-header">
-            <div class="section-title">
-              <h2>Choose one</h2>
-              <p>Select an angle and refine the copy.</p>
-            </div>
-            <button class="btn-action" id="rerollButton" type="button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 2v6h-6M21.34 15.57a10 10 0 1 1-.57-8.38l5.67-5.67"/></svg>
-              Reroll Angles
-            </button>
-          </div>
+function fmt(v) {
+  if (typeof v === "boolean") return v ? "Yes" : "No";
+  if (typeof v === "number") return v.toLocaleString();
+  return String(v);
+}
+function php(n) { return "₱" + Number(n).toLocaleString(); }
 
-          <div class="options-grid" id="options"></div>
+function renderMarkdown(el, text) {
+  if (window.marked && window.DOMPurify) {
+    el.innerHTML = DOMPurify.sanitize(marked.parse(text));
+  } else {
+    el.textContent = text;
+  }
+}
 
-          <div class="panel editor-panel">
-            <div class="editor-title">
-              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg>
-              Edit selected post
-            </div>
-            <div>
-              <label for="postEditor">Caption</label>
-              <textarea class="editor-box" id="postEditor" spellcheck="true"></textarea>
-            </div>
-            <div class="cta-wrap">
-              <label for="ctaEditor">Call to action</label>
-              <input type="text" class="editor-input" id="ctaEditor" />
-            </div>
-          </div>
-        </div>
+function addUserMsg(text) {
+  const div = document.createElement("div");
+  div.className = "msg user";
+  div.textContent = text;
+  messagesEl.appendChild(div);
+  scrollDown();
+}
 
-        <!-- RIGHT COLUMN: Preview & Action Stack -->
-        <div class="preview-column">
-          
-          <div class="preview-container">
-            <div class="preview-header">
-              <span>Preview</span>
-              <div class="dots-group">
-                <div class="dot"></div>
-                <div class="dot"></div>
-                <div class="dot"></div>
-              </div>
-            </div>
-            <div class="preview-body">
-              <!-- Infographic Preview -->
-              <div class="infographic-card" id="infographic" aria-label="Generated listing infographic">
-                <div class="info-header">
-                  <div class="info-kicker" id="visualKicker">Audited Listing</div>
-                  <div class="info-title-box">
-                    <h3 id="visualTitle">Select a Condo</h3>
-                    <p id="visualSubtitle">Bonifacio Global City</p>
-                  </div>
-                </div>
-                
-                <div class="info-specs-grid" id="visualSpecsGrid">
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Bedrooms / Size</span>
-                    <span class="info-spec-value" id="specBedSize">-</span>
-                  </div>
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Floor / Zone</span>
-                    <span class="info-spec-value" id="specFloorZone">-</span>
-                  </div>
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Interior / Maid</span>
-                    <span class="info-spec-value" id="specInteriorMaid">-</span>
-                  </div>
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Parking / Status</span>
-                    <span class="info-spec-value" id="specParkingStatus">-</span>
-                  </div>
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Title Ownership</span>
-                    <span class="info-spec-value" id="specTitleOwner">-</span>
-                  </div>
-                  <div class="info-spec-box">
-                    <span class="info-spec-label">Developer Heritage</span>
-                    <span class="info-spec-value" id="specDeveloper">-</span>
-                  </div>
-                </div>
+function addBotMsg() {
+  const wrap = document.createElement("div");
+  wrap.className = "msg bot";
+  wrap.innerHTML = '<div class="who">Sofia · Next Frame</div><div class="body"></div>';
+  messagesEl.appendChild(wrap);
+  return wrap.querySelector(".body");
+}
 
-                <div class="info-landmarks-section">
-                  <div class="info-landmarks-title">Neighborhood Proximity (Vetted)</div>
-                  <div class="info-landmarks-grid" id="visualLandmarksGrid">
-                    <div class="info-landmark-item">🏥 Hospital: <span id="landHospital">-</span></div>
-                    <div class="info-landmark-item">🛒 Grocery: <span id="landGrocery">-</span></div>
-                    <div class="info-landmark-item">🎓 Schools: <span id="landSchools">-</span></div>
-                    <div class="info-landmark-item">🍽️ Dining: <span id="landDining">-</span></div>
-                  </div>
-                </div>
+function addError(text) {
+  const div = document.createElement("div");
+  div.className = "msg error";
+  div.textContent = text;
+  messagesEl.appendChild(div);
+  scrollDown();
+}
 
-                <div class="info-pricing-section" id="visualPricingBox">
-                  <div class="info-price-box">
-                    <span class="info-price-label">Asking Price</span>
-                    <span class="info-price-value" id="specAskingPrice">-</span>
-                  </div>
-                  <span class="info-comps-value" id="specMarketComps">-</span>
-                </div>
-                
-                <div class="info-footer-line">
-                  <span id="visualFooter">CCT Verified</span>
-                  <span>NextFrame</span>
-                </div>
-              </div>
+function setStatus(text) {
+  statusEl.innerHTML = text ? '<span class="dot"></span>' + text : "";
+}
 
-              <!-- Caption Preview -->
-              <div class="caption-preview-box">
-                <div class="caption-preview-header">
-                  <div class="logo-fallback">NF</div>
-                  <span>Next-Frame</span>
-                </div>
-                <p class="caption-preview-text" id="phoneCaption"></p>
-                <p class="caption-preview-cta" id="phoneCta"></p>
-              </div>
-            </div>
-          </div>
+function scrollDown() { messagesEl.scrollTop = messagesEl.scrollHeight; }
 
-          <div class="button-stack">
-            <button class="btn-secondary" id="downloadButton" type="button">Download infographic PNG</button>
-            <button class="btn-secondary" id="copyButton" type="button">Copy Caption</button>
-            <button class="btn-primary" id="queueButton" type="button">Push to Social Queue</button>
-            <p class="actions-tip">Push prepares the post, CTA, and infographic brief for owner review before live posting.</p>
-          </div>
+function welcome() {
+  const body = addBotMsg();
+  body.innerHTML =
+    "<p>Hi! I’m Sofia, your Next Frame listings assistant. Tell me about the property and " +
+    "I’ll build a complete, verified listing with you — researched neighborhood info, a " +
+    "market-based price check, and ready-to-post ad copy.</p>" +
+    "<p>What type of property are we listing today?</p>";
+  const chips = document.createElement("div");
+  chips.className = "chips";
+  for (const label of ["Condo", "House & Lot", "Commercial"]) {
+    const b = document.createElement("button");
+    b.textContent = label;
+    b.onclick = () => { chips.remove(); send(label); };
+    chips.appendChild(b);
+  }
+  body.appendChild(chips);
+  scrollDown();
+}
 
-        </div>
+async function ensureSession() {
+  if (sessionId) return sessionId;
+  const saved = sessionStorage.getItem("nf_session");
+  if (saved) { sessionId = saved; return sessionId; }
+  try {
+    const res = await fetch(API_BASE + "/api/session", { method: "POST" });
+    sessionId = (await res.json()).session_id;
+    sessionStorage.setItem("nf_session", sessionId);
+    return sessionId;
+  } catch {
+    throw new Error("Sofia is offline right now — the listings engine isn't reachable. Please try again later.");
+  }
+}
 
-      </section>
-    </main>
+async function send(text) {
+  if (streaming || !text.trim()) return;
+  streaming = true;
+  sendBtn.disabled = true;
+  addUserMsg(text.trim());
+  setStatus("Connecting…");
+  avatarTurnStarting();
 
-    <script>
-      const chatMessages = document.querySelector("#chatMessages");
-      const chatForm = document.querySelector("#chatForm");
-      const chatInput = document.querySelector("#chatInput");
-      const optionsEl = document.querySelector("#options");
-      const postEditor = document.querySelector("#postEditor");
-      const ctaEditor = document.querySelector("#ctaEditor");
-      const phoneCaption = document.querySelector("#phoneCaption");
-      const phoneCta = document.querySelector("#phoneCta");
-      
-      const visualKicker = document.querySelector("#visualKicker");
-      const visualTitle = document.querySelector("#visualTitle");
-      const visualSubtitle = document.querySelector("#visualSubtitle");
-      const visualStats = document.querySelector("#visualStats");
-      const visualFooter = document.querySelector("#visualFooter");
+  let bodyEl = null, buffer = "", acc = "";
+  try {
+    await ensureSession();
+    const res = await fetch(API_BASE + "/api/chat", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ session_id: sessionId, message: text.trim() }),
+    });
+    if (res.status === 404) { // server restarted — start a fresh session
+      sessionStorage.removeItem("nf_session"); sessionId = null;
+      addError("Session expired — starting a fresh one. Please resend your message.");
+      return;
+    }
+    if (!res.ok) throw new Error("Request failed (" + res.status + ")");
 
-      const voiceToggle = document.querySelector("#voiceToggle");
-      const speakerOnIcon = document.querySelector("#speakerOnIcon");
-      const speakerOffIcon = document.querySelector("#speakerOffIcon");
-      let currentOptions = [];
-      let selectedIndex = 0;
-      let reroll = 0;
-      let isChatLoading = false;
-      let isMuted = false;
-
-      // Bonifacio Global City Condo Database
-      const BGC_CONDO_DB = {
-        "west gallery place": {
-          name: "West Gallery Place",
-          developer: "Ayala Land Premier",
-          yearBuilt: "2019",
-          yearTurnedOver: "2020",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (700m)",
-            restaurants: "Bonifacio High Street Restaurants (200m), Fort Strip (500m)",
-            schools: "International School Manila (ISM) (1.2km), British School Manila (BSM) (1.1km)",
-            supermarkets: "Marketplace by Rustan's Central Square (300m), Landmark Supermarket (600m)"
-          },
-          pricePerSqmMin: 300000,
-          pricePerSqmMax: 350000
-        },
-        "east gallery place": {
-          name: "East Gallery Place",
-          developer: "Ayala Land Premier",
-          yearBuilt: "2018",
-          yearTurnedOver: "2019",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (800m)",
-            restaurants: "Bonifacio High Street (150m), Serendra Plaza (200m)",
-            schools: "International School Manila (ISM) (1.1km), British School Manila (BSM) (1.0km)",
-            supermarkets: "Marketplace by Rustan's Central Square (250m), Landmark Supermarket (650m)"
-          },
-          pricePerSqmMin: 290000,
-          pricePerSqmMax: 340000
-        },
-        "one serendra": {
-          name: "One Serendra",
-          developer: "Ayala Land Premier",
-          yearBuilt: "2012",
-          yearTurnedOver: "2013",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (1.1km)",
-            restaurants: "Serendra Plaza Restaurants (within complex), Bonifacio High Street (200m)",
-            schools: "ISM (900m), BSM (800m)",
-            supermarkets: "Marketplace at Serendra (within complex), Landmark Supermarket (500m)"
-          },
-          pricePerSqmMin: 280000,
-          pricePerSqmMax: 330000
-        },
-        "two serendra": {
-          name: "Two Serendra",
-          developer: "Alveo Land",
-          yearBuilt: "2015",
-          yearTurnedOver: "2016",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (1.2km)",
-            restaurants: "Serendra Plaza (100m), SM Aura Restaurants (300m)",
-            schools: "ISM (800m), BSM (750m)",
-            supermarkets: "Metro Supermarket at Market! Market! (200m), SM Aura Supermarket (300m)"
-          },
-          pricePerSqmMin: 200000,
-          pricePerSqmMax: 250000
-        },
-        "arya residences": {
-          name: "Arya Residences",
-          developer: "ArthaLand",
-          yearBuilt: "2015",
-          yearTurnedOver: "2016",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (1.8km)",
-            restaurants: "Arya Plaza (within building), Bonifacio High Street (800m)",
-            schools: "ISM (1.8km), Manila Japanese School (1.7km)",
-            supermarkets: "Marketplace at Uptown Mall (1.5km), Landmark Supermarket (1.2km)"
-          },
-          pricePerSqmMin: 260000,
-          pricePerSqmMax: 310000
-        },
-        "aurelia residences": {
-          name: "Aurelia Residences",
-          developer: "Shang Properties & Robinsons Land",
-          yearBuilt: "2024",
-          yearTurnedOver: "2025",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (1.9km)",
-            restaurants: "Bonifacio High Street (1.0km), McKinley Hill Restaurants (1.2km)",
-            schools: "ISM (1.9km), BSM (1.8km)",
-            supermarkets: "Marketplace at Central Square (1.0km)"
-          },
-          pricePerSqmMin: 400000,
-          pricePerSqmMax: 460000
-        },
-        "the seasons residences": {
-          name: "The Seasons Residences",
-          developer: "Federal Land & Nomura Real Estate",
-          yearBuilt: "2023",
-          yearTurnedOver: "2024",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (600m)",
-            restaurants: "Mitsukoshi Mall Restaurants (within building), Uptown Mall (200m)",
-            schools: "ISM (1.0km), Treston College (900m)",
-            supermarkets: "Mitsukoshi Supermarket (within building), Landmark Supermarket (1.2km)"
-          },
-          pricePerSqmMin: 320000,
-          pricePerSqmMax: 380000
-        },
-        "uptown parksuites": {
-          name: "Uptown Parksuites",
-          developer: "Megaworld Corporation",
-          yearBuilt: "2019",
-          yearTurnedOver: "2020",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (500m)",
-            restaurants: "Uptown Mall Restaurants (50m), Uptown Parade (100m)",
-            schools: "British School Manila (700m), ISM (800m)",
-            supermarkets: "Marketplace at Uptown Mall (50m)"
-          },
-          pricePerSqmMin: 210000,
-          pricePerSqmMax: 260000
-        },
-        "grand hyatt residences": {
-          name: "Grand Hyatt Residences",
-          developer: "Federal Land & ORIX Corporation",
-          yearBuilt: "2018",
-          yearTurnedOver: "2019",
-          landmarks: {
-            hospital: "St. Luke's Medical Center BGC (450m)",
-            restaurants: "The Grand Hyatt Restaurants (within building), Uptown Mall (150m)",
-            schools: "British School Manila (800m), ISM (900m)",
-            supermarkets: "Marketplace at Uptown Mall (150m)"
-          },
-          pricePerSqmMin: 280000,
-          pricePerSqmMax: 340000
+    const reader = res.body.getReader();
+    const decoder = new TextDecoder();
+    while (true) {
+      const { done, value } = await reader.read();
+      if (done) break;
+      buffer += decoder.decode(value, { stream: true });
+      const parts = buffer.split("\n\n");
+      buffer = parts.pop();
+      for (const part of parts) {
+        if (!part.startsWith("data: ")) continue;
+        const ev = JSON.parse(part.slice(6));
+        if (ev.type === "text") {
+          if (!bodyEl) bodyEl = addBotMsg();
+          acc += ev.text;
+          renderMarkdown(bodyEl, acc);
+          setStatus("");
+          scrollDown();
+        } else if (ev.type === "status") {
+          setStatus(ev.text);
+        } else if (ev.type === "listing_updated") {
+          refreshListing();
+        } else if (ev.type === "ads_ready") {
+          refreshAds();
+        } else if (ev.type === "error") {
+          addError(ev.text);
+        } else if (ev.type === "done") {
+          setStatus("");
         }
+      }
+    }
+    pollAvatar(Date.now() + 4 * 60 * 1000);
+  } catch (err) {
+    addError(err.message.startsWith("Sofia is offline") ? err.message : "Connection problem: " + err.message);
+  } finally {
+    setStatus("");
+    streaming = false;
+    sendBtn.disabled = false;
+    refreshListing();
+    inputEl.focus();
+  }
+}
+
+/* ---------- Sofia: talking-head video with voice fallback ---------- */
+
+let muted = localStorage.getItem("nf_muted") === "1";
+let avatarPollTimer = null;
+let lastHandledAvatarTurn = null; // set on load so we never replay old videos
+
+function updateMuteBtn() { $("mute-btn").textContent = muted ? "🔇" : "🔊"; }
+$("mute-btn").onclick = () => {
+  muted = !muted;
+  localStorage.setItem("nf_muted", muted ? "1" : "0");
+  $("sofia-video").muted = muted;
+  if (muted) {
+    speechSynthesis.cancel();
+    if (sofiaAudio) { sofiaAudio.pause(); sofiaAudio = null; }
+    document.querySelector(".sofia-wrap").classList.remove("speaking");
+  }
+  updateMuteBtn();
+};
+updateMuteBtn();
+if ("speechSynthesis" in window) speechSynthesis.getVoices(); // warm voice list
+
+function setSofiaStatus(text) {
+  $("sofia-status").innerHTML = text ? '<span class="dot"></span>' + text : "";
+}
+
+function avatarTurnStarting() {
+  clearTimeout(avatarPollTimer);
+  speechSynthesis.cancel();
+  const vid = $("sofia-video");
+  vid.pause();
+  vid.style.display = "none";
+  $("sofia-img").style.display = "block";
+  setSofiaStatus("");
+}
+
+function speakFallback(text) {
+  if (muted || !text || !("speechSynthesis" in window)) return;
+  const u = new SpeechSynthesisUtterance(text);
+  const voices = speechSynthesis.getVoices();
+  const v =
+    voices.find(v => /aria|jenny|sonia|zira|samantha|female|woman/i.test(v.name) && v.lang.startsWith("en")) ||
+    voices.find(v => v.lang.startsWith("en"));
+  if (v) u.voice = v;
+  speechSynthesis.cancel();
+  speechSynthesis.speak(u);
+}
+
+let sofiaAudio = null;
+function playSofiaAudio(url, spokenFallback) {
+  if (muted) return;
+  const wrap = document.querySelector(".sofia-wrap");
+  sofiaAudio = new Audio(url.startsWith("http") ? url : API_BASE + url);
+  sofiaAudio.onplay = () => wrap.classList.add("speaking");
+  sofiaAudio.onended = sofiaAudio.onerror = () => wrap.classList.remove("speaking");
+  sofiaAudio.play().catch(() => speakFallback(spokenFallback)); // autoplay blocked etc.
+}
+
+function playSofiaVideo(url) {
+  const img = $("sofia-img"), vid = $("sofia-video");
+  vid.src = url;
+  vid.muted = muted;
+  vid.style.display = "block";
+  img.style.display = "none";
+  vid.onended = () => { vid.style.display = "none"; img.style.display = "block"; };
+  vid.play().catch(() => { /* autoplay blocked — controls remain */ });
+}
+
+function pollAvatar(deadline) {
+  clearTimeout(avatarPollTimer);
+  if (!sessionId) return;
+  fetch(API_BASE + "/api/avatar/" + sessionId)
+    .then(r => (r.ok ? r.json() : null))
+    .then(a => {
+      if (!a) return;
+      if (lastHandledAvatarTurn === null) lastHandledAvatarTurn = a.turn; // first sync
+      if (a.status === "generating") {
+        setSofiaStatus("Sofia is recording your video reply…");
+        if (Date.now() < deadline) {
+          avatarPollTimer = setTimeout(() => pollAvatar(deadline), 3000);
+        } else {
+          setSofiaStatus("");
+          speakFallback(a.spoken);
+          lastHandledAvatarTurn = a.turn;
+        }
+        return;
+      }
+      if (a.turn === lastHandledAvatarTurn) {
+        // state not updated for the new turn yet — keep polling briefly
+        if (Date.now() < deadline) avatarPollTimer = setTimeout(() => pollAvatar(deadline), 1500);
+        return;
+      }
+      lastHandledAvatarTurn = a.turn;
+      setSofiaStatus("");
+      if (a.status === "ready" && a.url) {
+        if (a.kind === "audio") playSofiaAudio(a.url, a.spoken); // free neural voice
+        else playSofiaVideo(a.url);                              // fal.ai talking head
+      } else {
+        speakFallback(a.spoken); // failed or disabled -> browser voice
+      }
+    })
+    .catch(() => {});
+}
+
+/* ---------- side panel ---------- */
+
+async function refreshListing() {
+  if (!sessionId) return;
+  try {
+    const res = await fetch(API_BASE + "/api/listing/" + sessionId);
+    if (!res.ok) return;
+    const { listing, missing_core_fields } = await res.json();
+
+    const captured = Math.max(0, CORE_TOTAL - missing_core_fields.length);
+    $("progress-label").textContent = captured + " of " + CORE_TOTAL + " core details captured";
+    $("progress-bar").style.width = (captured / CORE_TOTAL * 100) + "%";
+
+    const fields = $("fields");
+    fields.innerHTML = "";
+    let any = false;
+    for (const [group, defs] of FIELD_GROUPS) {
+      const present = defs.filter(([k]) => listing[k] !== undefined && listing[k] !== null && listing[k] !== "");
+      if (!present.length) continue;
+      any = true;
+      const gl = document.createElement("div");
+      gl.className = "group-label"; gl.textContent = group;
+      fields.appendChild(gl);
+      for (const [k, label] of present) {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.innerHTML = '<span class="k"></span><span class="v"></span>';
+        row.querySelector(".k").textContent = label;
+        row.querySelector(".v").textContent = fmt(listing[k]);
+        fields.appendChild(row);
+      }
+    }
+    if (listing.landmarks && listing.landmarks.length) {
+      any = true;
+      const gl = document.createElement("div");
+      gl.className = "group-label"; gl.textContent = "Nearby";
+      fields.appendChild(gl);
+      for (const lm of listing.landmarks) {
+        const row = document.createElement("div");
+        row.className = "row";
+        row.innerHTML = '<span class="k"></span><span class="v"></span>';
+        row.querySelector(".k").textContent = lm.category || "place";
+        row.querySelector(".v").textContent = lm.name + (lm.distance ? " · " + lm.distance : "");
+        fields.appendChild(row);
+      }
+    }
+    if (!any) fields.innerHTML = '<p class="empty-note">Details appear here as the conversation progresses.</p>';
+
+    const priceArea = $("price-area");
+    priceArea.innerHTML = "";
+    const price = listing.asking_price_php || listing.suggested_price_php;
+    if (price) {
+      const card = document.createElement("div");
+      card.className = "price-card";
+      const isAsking = Boolean(listing.asking_price_php);
+      let html = '<div class="label">' + (isAsking ? "Asking price" : "Suggested price") + "</div>" +
+                 '<div class="big">' + php(price) + "</div>";
+      const r = listing.suggested_price_range_php;
+      if (r && r.low && r.high) html += '<div class="range">Market range ' + php(r.low) + " – " + php(r.high) + "</div>";
+      if (listing.pricing_rationale) html += '<div class="rationale"></div>';
+      card.innerHTML = html;
+      if (listing.pricing_rationale) card.querySelector(".rationale").textContent = listing.pricing_rationale;
+      priceArea.appendChild(card);
+    }
+
+    const compsArea = $("comps-area");
+    compsArea.innerHTML = "";
+    if (listing.comps && listing.comps.length) {
+      const gl = document.createElement("div");
+      gl.className = "group-label"; gl.textContent = "Comparables (" + listing.comps.length + ")";
+      compsArea.appendChild(gl);
+      for (const c of listing.comps) {
+        const d = document.createElement("div");
+        d.className = "comp";
+        let line = '<span class="src"></span> — <span class="desc"></span>';
+        if (c.price_php) line += "<br>" + php(c.price_php) + (c.price_per_sqm_php ? " · " + php(c.price_per_sqm_php) + "/sqm" : "");
+        d.innerHTML = line;
+        d.querySelector(".src").textContent = c.source || "source";
+        d.querySelector(".desc").textContent = c.description || "";
+        if (c.url) {
+          const a = document.createElement("a");
+          a.href = c.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = " ↗";
+          d.appendChild(a);
+        }
+        compsArea.appendChild(d);
+      }
+    }
+  } catch { /* panel refresh is best-effort */ }
+}
+
+let currentAds = [];
+async function refreshAds() {
+  if (!sessionId) return;
+  try {
+    const res = await fetch(API_BASE + "/api/ads/" + sessionId);
+    if (!res.ok) return;
+    const { ads } = await res.json();
+    currentAds = ads || [];
+    const adsEl = $("ads");
+    adsEl.innerHTML = "";
+    if (!currentAds.length) {
+      adsEl.innerHTML = '<p class="empty-note">No ad copies yet.</p>';
+      $("download-ads").style.display = "none";
+      return;
+    }
+    $("download-ads").style.display = "";
+    for (const ad of currentAds) {
+      const card = document.createElement("div");
+      card.className = "ad-card";
+      card.innerHTML = '<span class="channel"></span><h3></h3><pre></pre>' +
+                       '<button class="copy-btn">Copy text</button>';
+      card.querySelector(".channel").textContent = (ad.channel || "copy").replace(/_/g, " ");
+      card.querySelector("h3").textContent = ad.headline || "";
+      card.querySelector("pre").textContent = ad.body || "";
+      card.querySelector(".copy-btn").onclick = async (e) => {
+        await navigator.clipboard.writeText((ad.headline ? ad.headline + "\n\n" : "") + (ad.body || ""));
+        e.target.textContent = "Copied ✓";
+        setTimeout(() => (e.target.textContent = "Copy text"), 1500);
       };
-
-      // Conversational flow 13-point data model
-      let listingData = {
-        address: "",            // 1. Specific address
-        landmarks: "",          // 2. Nearest landmarks
-        floor: "",              // 3. Floor number
-        floorZone: "",          // 3. Low, mid, or high zone
-        view: "",               // 4. View type
-        facing: "",             // 4. Direction
-        developer: "",          // 5. Developer name
-        yearBuilt: "",          // 5. Year built
-        yearTurnedOver: "",     // 5. Year turned over
-        sqm: "",                // 6. Floor area
-        bedrooms: "",           // 7. Bedroom type
-        furnishing: "",         // 8. Furnishing
-        maidsRoom: "",          // 9. Maid's room
-        parking: "",            // 10. Parking
-        ownership: "",          // 11. Individual / corporation
-        tenanted: "",           // 12. Tenant status
-        price: "",              // 13. Asking price
-        compsProposed: "",      // 13. Comps proposed
-
-        // Layout parameters for ad generation mapping
-        project: "BGC Unit",
-        alert: "Fresh listing",
-        status: "For Sale",
-        unit: "Residence corner unit",
-        storage: "Storage not listed",
-        direct: "Direct to owner",
-        condition: "bare",
-        location: "Bonifacio Global City"
-      };
-
-      // Maintain a conversation history
-      let conversationHistory = [
-        { role: "assistant", content: "Hello! I'm Sofia, your Next-Frame listing agent. What is the name of the condo building or specific address you'd like to list today?" }
-      ];
-
-      function cleanLine(value) {
-        return value
-          .replace(/^[\s\-*.,:;]+/, "")
-          .replace(/\s+/g, " ")
-          .trim();
-      }
-
-      function getOrdinalSuffix(i) {
-        const j = i % 10, k = i % 100;
-        if (j === 1 && k !== 11) return "st";
-        if (j === 2 && k !== 12) return "nd";
-        if (j === 3 && k !== 13) return "rd";
-        return "th";
-      }
-
-      // 13-Point Specifications Parser
-      function parseInputDetails(text) {
-        const full = text.trim();
-        const lower = full.toLowerCase();
-        
-        // 1. Address / Project lookup
-        let foundProject = null;
-        for (const key in BGC_CONDO_DB) {
-          if (lower.includes(key) || (key.length > 8 && lower.includes(key.split(" ")[0]) && lower.includes(key.split(" ")[1]))) {
-            foundProject = BGC_CONDO_DB[key];
-            break;
-          }
-        }
-        
-        if (foundProject) {
-          listingData.address = foundProject.name + ", BGC";
-          listingData.project = foundProject.name;
-          listingData.developer = foundProject.developer;
-          listingData.yearBuilt = foundProject.yearBuilt;
-          listingData.yearTurnedOver = foundProject.yearTurnedOver;
-          listingData.landmarks = `Hospital: ${foundProject.landmarks.hospital} | Schools: ${foundProject.landmarks.schools} | Supermarket: ${foundProject.landmarks.supermarkets} | Dining: ${foundProject.landmarks.restaurants}`;
-        } else {
-          // If not matched, try to extract first line or capital pattern
-          const atMatch = full.match(/\bat\s+([A-Z][A-Za-z0-9\s]{2,25})/);
-          if (atMatch) {
-            listingData.project = atMatch[1].trim();
-            listingData.address = atMatch[1].trim();
-          } else if (full.length < 40 && /gallery|place|residence|serendra|arya|seasons|hyatt|parksuites/i.test(full)) {
-            listingData.project = full.replace(/^for sale\s*/i, "");
-            listingData.address = full;
-          }
-        }
-        
-        // 2. Floor / Zone
-        const floorMatch = full.match(/(\d+)(?:st|nd|rd|th)?\s*(?:fl(?:oor)?|level|f\b)/i);
-        if (floorMatch) {
-          const num = parseInt(floorMatch[1]);
-          listingData.floor = `${num}${getOrdinalSuffix(num)} Floor`;
-          if (num <= 15) {
-            listingData.floorZone = "Low Zone";
-          } else if (num <= 30) {
-            listingData.floorZone = "Mid Zone";
-          } else {
-            listingData.floorZone = "High Zone";
-          }
-        }
-        
-        // 3. View / Orientation
-        if (/golf\s*course|golf\s*view|golfcourse/i.test(full)) {
-          listingData.view = "Golf Course View";
-        } else if (/city\s*view|skyline|street/i.test(full)) {
-          listingData.view = "City View";
-        } else if (/amenity\s*view|pool\s*view/i.test(full)) {
-          listingData.view = "Amenity View";
-        }
-        
-        const facingMatch = full.match(/(?:facing|orient|oriented)\s*(east|west|north|south)/i) || full.match(/(east|west|north|south)\s*facing/i) || full.match(/\b(east|west|north|south)\b/i);
-        if (facingMatch) {
-          listingData.facing = facingMatch[1].charAt(0).toUpperCase() + facingMatch[1].slice(1);
-        }
-        
-        // 4. Area size (sqm)
-        const sqmMatch = full.match(/(\d+(?:\.\d+)?)\s*(?:sq\s*m|sqm|sq\.?\s*m|square\s*meters?)/i);
-        if (sqmMatch) {
-          listingData.sqm = `${sqmMatch[1]} sqm`;
-        }
-        
-        // 5. Bedroom type
-        if (/studio/i.test(full)) {
-          listingData.bedrooms = "Studio";
-        } else if (/penthouse/i.test(full)) {
-          listingData.bedrooms = "Penthouse";
-        } else if (/villa/i.test(full)) {
-          listingData.bedrooms = "Villa";
-        } else {
-          const brMatch = full.match(/(\d+)\s*(?:br|bed|bedroom)/i);
-          if (brMatch) {
-            listingData.bedrooms = `${brMatch[1]}BR`;
-          }
-        }
-        
-        // 6. Furnishing
-        if (/fully\s*furnished/i.test(full) || /fully-furnished/i.test(full)) {
-          listingData.furnishing = "Fully Furnished";
-        } else if (/semi\s*furnished/i.test(full) || /semi-furnished/i.test(full)) {
-          listingData.furnishing = "Semi-Furnished";
-        } else if (/bare|unfurnished|empty/i.test(full)) {
-          listingData.furnishing = "Bare";
-        }
-        
-        // 7. Maid's Room
-        if (/maid|maids|utility|helper/i.test(full)) {
-          if (/no\s*maid|no\s*utility|without\s*maid|doesn't\s*have\s*maid/i.test(full)) {
-            listingData.maidsRoom = "No";
-          } else {
-            listingData.maidsRoom = "Yes";
-          }
-        }
-        
-        // 8. Parking
-        if (/parking|parking\s*slot/i.test(full)) {
-          if (/no\s*parking|without\s*parking/i.test(full)) {
-            listingData.parking = "No parking";
-          } else {
-            const pkMatch = full.match(/(\d+)\s*parking/i);
-            if (pkMatch) {
-              listingData.parking = `${pkMatch[1]} parking slot${parseInt(pkMatch[1]) > 1 ? 's' : ''}`;
-            } else {
-              listingData.parking = "Yes (parking included)";
-            }
-          }
-        }
-        
-        // 9. Ownership
-        if (/individual/i.test(full)) {
-          listingData.ownership = "Individual";
-        } else if (/corp|corporation|company/i.test(full)) {
-          listingData.ownership = "Corporation";
-        }
-        
-        // 10. Tenancy
-        if (/tenant|tenanted|rented|lease/i.test(full)) {
-          listingData.tenanted = "Rented to tenant";
-        } else if (/vacant|empty|ready\s*to\s*occupy|owner\s*occupied/i.test(full)) {
-          listingData.tenanted = "Vacant";
-        }
-        
-        // 11. Asking Price & Comps
-        const priceMatch = full.match(/(?:PHP|P|Php)?\s*(\d+(?:\.\d+)?)\s*M\b/i) || full.match(/(\d+(?:\.\d+)?)\s*million/i);
-        if (priceMatch) {
-          listingData.price = `PHP ${priceMatch[1]}M Gross`;
-        } else {
-          const rawPriceMatch = full.match(/\b(\d{6,9})\b/);
-          if (rawPriceMatch) {
-            const rawVal = parseInt(rawPriceMatch[1]);
-            if (rawVal >= 1000000) {
-              listingData.price = `PHP ${(rawVal / 1000000).toFixed(1)}M Gross`;
-            }
-          }
-        }
-        
-        // 12. Calculate Comps if size and project are available
-        if (listingData.project && listingData.sqm) {
-          const sqmVal = parseFloat(listingData.sqm);
-          let dbKey = null;
-          for (const key in BGC_CONDO_DB) {
-            if (listingData.project.toLowerCase().includes(key) || key.includes(listingData.project.toLowerCase())) {
-              dbKey = key;
-              break;
-            }
-          }
-          if (dbKey && !isNaN(sqmVal)) {
-            const dbItem = BGC_CONDO_DB[dbKey];
-            const minM = (sqmVal * dbItem.pricePerSqmMin) / 1000000;
-            const maxM = (sqmVal * dbItem.pricePerSqmMax) / 1000000;
-            listingData.compsProposed = `PHP ${minM.toFixed(1)}M - ${maxM.toFixed(1)}M`;
-          }
-        }
-
-        // Keep core ad sync parameters updated
-        if (listingData.project) {
-          listingData.unit = `${listingData.bedrooms || '2BR'} unit`;
-          listingData.condition = (listingData.furnishing || 'bare').toLowerCase();
-        }
-      }
-
-      function handleSkipsForGroup(group) {
-        if (group === "A") {
-          listingData.address = "Premium BGC Condo";
-          listingData.project = "BGC Residence";
-          listingData.developer = "Premium Developer";
-          listingData.yearBuilt = "2020";
-          listingData.yearTurnedOver = "2021";
-          listingData.landmarks = "Hospital: St. Luke's BGC (1km) | Schools: ISM (1km) | Supermarket: Marketplace (500m) | Dining: High Street (500m)";
-        } else if (group === "B") {
-          if (!listingData.floor) {
-            listingData.floor = "12th Floor";
-            listingData.floorZone = "Low Zone";
-          }
-          if (!listingData.view) listingData.view = "City View";
-          if (!listingData.facing) listingData.facing = "East";
-        } else if (group === "C") {
-          if (!listingData.bedrooms) listingData.bedrooms = "2BR";
-          if (!listingData.sqm) listingData.sqm = "92 sqm";
-          if (!listingData.furnishing) listingData.furnishing = "Bare";
-        } else if (group === "D") {
-          if (!listingData.maidsRoom) listingData.maidsRoom = "No";
-          if (!listingData.parking) listingData.parking = "No parking";
-        } else if (group === "E") {
-          if (!listingData.ownership) listingData.ownership = "Individual";
-          if (!listingData.tenanted) listingData.tenanted = "Vacant";
-        } else if (group === "F") {
-          if (!listingData.price) listingData.price = "Price on request";
-        }
-      }
-
-      function updateChecklistUI() {
-        const fields = [
-          { key: "address", label: "Address/Title", val: listingData.address },
-          { key: "landmarks", label: "Landmarks", val: listingData.landmarks },
-          { key: "floor", label: "Floor & Zone", val: listingData.floor ? `${listingData.floor} (${listingData.floorZone})` : "" },
-          { key: "view", label: "View/Facing", val: (listingData.view || listingData.facing) ? `${listingData.view || "No view"} / ${listingData.facing || "No orientation"}` : "" },
-          { key: "developer", label: "Developer/Year", val: listingData.developer ? `${listingData.developer} (${listingData.yearBuilt})` : "" },
-          { key: "sqm", label: "Floor Area", val: listingData.sqm },
-          { key: "bedrooms", label: "Bedroom Type", val: listingData.bedrooms },
-          { key: "furnishing", label: "Furnishing", val: listingData.furnishing },
-          { key: "maidsRoom", label: "Maid's Room", val: listingData.maidsRoom },
-          { key: "parking", label: "Parking slot", val: listingData.parking },
-          { key: "ownership", label: "Title Type", val: listingData.ownership },
-          { key: "tenanted", label: "Tenancy Status", val: listingData.tenanted },
-          { key: "price", label: "Price & Comps", val: listingData.price ? `${listingData.price} (Comps: ${listingData.compsProposed || "Pending"})` : "" }
-        ];
-
-        let checkedCount = 0;
-        const grid = document.querySelector("#checklistGrid");
-        if (!grid) return;
-        grid.innerHTML = "";
-
-        fields.forEach((field, i) => {
-          const isChecked = !!field.val && field.val.toLowerCase() !== "pending" && field.val.toLowerCase() !== "skip";
-          if (isChecked) checkedCount += 1;
-
-          const item = document.createElement("div");
-          item.className = `checklist-item${isChecked ? " checked" : ""}`;
-          item.innerHTML = `
-            <div class="checklist-status">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><polyline points="20 6 9 17 4 12"></polyline></svg>
-            </div>
-            <div>
-              <div class="checklist-label">${i + 1}. ${field.label}</div>
-              <div class="checklist-val" title="${field.val || 'Pending'}">${field.val || 'Pending'}</div>
-            </div>
-          `;
-          grid.appendChild(item);
-        });
-
-        const checklistHeaderSpan = document.querySelector("#checklistHeader span");
-        if (checklistHeaderSpan) {
-          checklistHeaderSpan.textContent = `Property Specs Checklist (${checkedCount}/13 Vetted)`;
-        }
-
-        const checklist = document.querySelector("#specsChecklist");
-        if (checklist && checkedCount > 0 && checklist.classList.contains("collapsed")) {
-          // Open checklist visual automatically if details start getting filled
-          checklist.classList.remove("collapsed");
-          const chevron = document.querySelector("#checklistChevron");
-          if (chevron) chevron.style.transform = "rotate(0deg)";
-        }
-      }
-
-      function makeOptions(listing, seed) {
-        const urgency = seed % 2 === 0 ? "repriced" : "newly available";
-        const landmarksText = listing.landmarks ? `Location Highlights:\n- Near ${listing.landmarks.split('|')[0].replace('Hospital: ', '')}\n- Close to ${listing.landmarks.split('|')[2].replace('Supermarket: ', '')}` : `Location: Bonifacio Global City`;
-        const viewText = (listing.view || listing.facing) ? `${listing.view || ""} ${listing.facing ? 'facing ' + listing.facing : ''}`.trim() : "BGC view";
-        const developerText = listing.developer ? `Developed by ${listing.developer} (turned over ${listing.yearTurnedOver || 'recently'})` : "";
-        const maidsText = listing.maidsRoom && listing.maidsRoom.toLowerCase().includes("yes") ? "includes maid's room" : "no maid's room";
-        const tenancyText = listing.tenanted ? listing.tenanted : "Vacant and ready to move in";
-        const titleText = listing.ownership ? `Title under ${listing.ownership}` : "Clean CCT Title";
-        const compsText = listing.compsProposed ? `Market Comps: ${listing.compsProposed} (Fair Value recommendation)` : "";
-        
-        return [
-          {
-            channel: "Facebook / Direct Buyer",
-            headline: `${listing.bedrooms || '2BR'} ${listing.floorZone || 'Premium'} Unit in BGC`,
-            subhead: `${listing.project || 'BGC Condo'} | ${listing.sqm || 'Size on request'} | ${listing.price || 'Price on request'}`,
-            body: `${listing.alert || 'Fresh listing'}: A ${listing.bedrooms || '2BR'} layout on the ${listing.floor || 'High floor'} (${listing.floorZone || 'Premium zone'}) is now available at ${listing.project || 'BGC'}.\n\nSpecifications:\n- Size: ${listing.sqm || 'Size on request'}\n- Layout: ${listing.bedrooms || '2BR'} | ${viewText}\n- Condition: ${listing.furnishing || 'bare'} | ${maidsText}\n- Parking: ${listing.parking || 'Parking details on request'}\n- Transaction: ${titleText} | ${tenancyText}\n- Price: ${listing.price || 'Price on request'}\n\n${developerText}\n\n${landmarksText}\n\nThis is for buyers seeking a direct, verified negotiation path.`,
-            cta: "Message us directly to check CCT details, schedule a viewing, or present an offer.",
-            visual: {
-              tone: "urgent",
-              kicker: listing.alert || "Fresh Listing",
-              title: `${listing.bedrooms || '2BR'} ${listing.project || 'BGC Condo'}`,
-              subtitle: `${listing.sqm || 'Size on request'} | ${viewText}`,
-              stats: [
-                [listing.price || 'Price on request', "Gross price"],
-                [listing.sqm || 'Size on request', "Interior size"],
-                [listing.parking || 'Parking', "Included"],
-                [listing.floor || 'Floor', "Floor level"],
-              ],
-              footer: listing.direct || "Direct to owner",
-            },
-          },
-          {
-            channel: "Instagram / Lifestyle",
-            headline: `Sleek BGC Living at ${listing.project || 'BGC'}`,
-            subhead: `${listing.bedrooms || '2BR'} | ${viewText} | ${listing.price || 'Price on request'}`,
-            body: `Imagine waking up to this: a gorgeous ${viewText} from your ${listing.floor || 'High floor'} corner unit at ${listing.project || 'BGC'}.\n\nFeaturing ${listing.sqm || 'Size on request'} of premium floor area, configured as a ${listing.bedrooms || '2BR'} unit in ${listing.furnishing || 'bare'} condition—the perfect canvas for your bespoke interior design.\n\nPremium specs:\n- ${listing.parking || 'Parking included'}\n- ${maidsText}\n- ${tenancyText}\n- ${developerText}\n- Asking: ${listing.price || 'Price on request'}\n\nLocated in the heart of BGC, steps away from premium dining and retail.`,
-            cta: "DM us 'VIEW' to schedule a private tour of this residence.",
-            visual: {
-              tone: "premium",
-              kicker: "BGC Lifestyle",
-              title: listing.project || "BGC Condo",
-              subtitle: `${listing.bedrooms || '2BR'} | ${listing.price || 'Price on request'}`,
-              stats: [
-                [listing.sqm || 'Size on request', "Floor Area"],
-                [listing.parking || 'Parking', "Parking slot"],
-                [listing.floorZone || 'Mid Zone', "Zone Level"],
-                [listing.view || 'City View', "Unit View"],
-              ],
-              footer: "Message to view",
-            },
-          },
-          {
-            channel: "LinkedIn / Investor",
-            headline: `BGC Real Estate Value Opportunity: ${listing.project || 'Condo'}`,
-            subhead: `${listing.sqm || 'Size on request'} | ${listing.price || 'Price on request'} | Comps Proposed`,
-            body: `For property investors tracking Bonifacio Global City inventory:\n\nWe are presenting a ${listing.bedrooms || '2BR'} unit at ${listing.project || 'BGC Residence'} under ${titleText.toLowerCase()}.\n\nKey financial and property parameters:\n- Floor Area: ${listing.sqm || 'Size on request'} (${listing.floor || 'High floor'} / ${listing.floorZone || 'Mid-High Zone'})\n- Developer: ${listing.developer || 'Ayala Premier / Alveo'} | Year: ${listing.yearBuilt || '2019'}\n- Condition: ${listing.furnishing || 'bare'} | ${maidsText}\n- Parking: ${listing.parking || 'Parking slot included'}\n- Status: ${tenancyText}\n\n${compsText}\nAsking price is set at ${listing.price || 'Price on request'}.\n\nThis represents a secure transaction opportunity for capital preservation.`,
-            cta: "Click to request the CCT title copy, complete comps history, and property ledger.",
-            visual: {
-              tone: "investment",
-              kicker: "Investor Factsheet",
-              title: "Premium BGC Asset",
-              subtitle: `${listing.project || 'BGC'} | ${listing.price || 'Price on request'}`,
-              stats: [
-                [listing.sqm || 'Size on request', "Size"],
-                [listing.compsProposed || 'PHP 300k/sqm', "Market Comps"],
-                [listing.ownership || 'Individual', "Title owner"],
-                [listing.tenanted || 'Vacant', "Status"],
-              ],
-              footer: "Factsheet ready",
-            },
-          },
-          {
-            channel: "Carousel / Facts",
-            headline: `13 Vetted Specs: ${listing.project || 'BGC Condo'} Listing`,
-            subhead: `Swipe to read the audited property verification list for this premium residence.`,
-            body: [
-              `👉 SLIDE 1: PROPERTY & DEVELOPER`,
-              `${listing.project || 'BGC Condo'} built by ${listing.developer || 'Ayala Land Premier'}. Turned over in ${listing.yearTurnedOver || '2020'}.`,
-              `Specific Address: ${listing.address || 'Bonifacio Global City'}.`,
-              ``,
-              `👉 SLIDE 2: FLOOR, ZONE & VIEW`,
-              `${listing.floor || 'High floor'} (${listing.floorZone || 'High Zone'}).`,
-              `Orientation: ${viewText}.`,
-              ``,
-              `👉 SLIDE 3: INTERIOR DETAILS`,
-              `Floor Area: ${listing.sqm || 'Size on request'}. Layout: ${listing.bedrooms || '2BR'}.`,
-              `Furnishing: ${listing.furnishing || 'Bare'} | ${maidsText}.`,
-              ``,
-              `👉 SLIDE 4: TRANSACTION & PRICING`,
-              `Includes ${listing.parking || 'Parking'}. ${titleText} | ${tenancyText}.`,
-              `Asking Price: ${listing.price || 'Price on request'}. ${compsText}.`
-            ].join("\n"),
-            cta: `💬 Comment "VETTED" for full title review and pricing verification packet.`,
-            visual: {
-              tone: "direct",
-              kicker: "13 Specs Audited",
-              title: "Verified Condo Specs",
-              subtitle: `${listing.project || 'BGC'} | ${listing.price || 'Price on request'}`,
-              stats: [
-                [listing.bedrooms || '2BR', "Layout type"],
-                [listing.sqm || 'Size on request', "Floor area"],
-                [listing.floorZone || 'High Zone', "Zone Level"],
-                [listing.parking || 'Parking', "Parking details"],
-              ],
-              footer: "CCT audited",
-            },
-          },
-        ];
-      }
-
-      function renderOptions() {
-        optionsEl.innerHTML = "";
-        currentOptions.forEach((option, index) => {
-          const button = document.createElement("button");
-          button.type = "button";
-          button.className = `card-option${index === selectedIndex ? " active" : ""}`;
-          
-          let toneGradient = "";
-          if (option.visual.tone === 'urgent') toneGradient = 'linear-gradient(135deg, #064e3b 0%, #022c22 100%)';
-          else if (option.visual.tone === 'premium') toneGradient = 'linear-gradient(135deg, #115e59 0%, #134e4a 100%)';
-          else if (option.visual.tone === 'investment') toneGradient = 'linear-gradient(135deg, #78350f 0%, #451a03 100%)';
-          else if (option.visual.tone === 'direct') toneGradient = 'linear-gradient(135deg, #155e75 0%, #164e63 100%)';
-
-          button.innerHTML = `
-            <div class="card-visual" style="
-              height: 120px;
-              padding: 16px;
-              position: relative;
-              display: flex;
-              flex-direction: column;
-              justify-content: flex-end;
-              color: #fff;
-              border-bottom: 1px solid var(--panel-border);
-              background: linear-gradient(0deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.4) 100%), ${toneGradient};
-            ">
-              <small style="
-                position: relative;
-                z-index: 2;
-                font-size: 0.65rem;
-                font-weight: 800;
-                letter-spacing: 0.1em;
-                text-transform: uppercase;
-                color: rgba(255, 255, 255, 0.7);
-                margin-bottom: 4px;
-              ">${option.visual.kicker}</small>
-              <strong style="
-                position: relative;
-                z-index: 2;
-                font-size: 1.125rem;
-                font-weight: 900;
-                line-height: 1.2;
-              ">${option.visual.title}</strong>
-            </div>
-            <div class="card-content">
-              <span class="card-channel">${option.channel}</span>
-              <strong class="card-headline">${option.headline}</strong>
-              <p class="card-subhead">${option.subhead}</p>
-            </div>
-          `;
-          button.addEventListener("click", () => selectOption(index));
-          optionsEl.appendChild(button);
-        });
-      }
-
-      function updateInfographicVisuals() {
-        let dev = listingData.developer || "";
-        let devLower = dev.toLowerCase();
-        
-        let toneGradient = "linear-gradient(135deg, #090a0f 0%, #11131c 100%)";
-        let accentColor = "#14b8a6"; // teal default
-        let titleKicker = "Audited Listing";
-
-        if (devLower.includes("ayala")) {
-          // Ayala Land Premier: Forest Green / Gold
-          toneGradient = "linear-gradient(135deg, #05140f 0%, #0c0f12 100%)";
-          accentColor = "#d4af37"; // gold
-          titleKicker = "Ayala Land Premier Verified";
-        } else if (devLower.includes("arthaland")) {
-          // ArthaLand: Organic Sage / Emerald Green
-          toneGradient = "linear-gradient(135deg, #091d15 0%, #0c100e 100%)";
-          accentColor = "#10b981"; // emerald
-          titleKicker = "ArthaLand Green Certified";
-        } else if (devLower.includes("megaworld")) {
-          // Megaworld: Corporate Blue / Cyan
-          toneGradient = "linear-gradient(135deg, #091b36 0%, #0d111a 100%)";
-          accentColor = "#06b6d4"; // cyan
-          titleKicker = "Megaworld Premium CCT";
-        } else if (devLower.includes("federal") || devLower.includes("nomura") || devLower.includes("orix")) {
-          // Federal Land: Warm Amber / Copper
-          toneGradient = "linear-gradient(135deg, #23150b 0%, #0c0907 100%)";
-          accentColor = "#f59e0b"; // amber/gold
-          titleKicker = "Federal Land Deluxe";
-        } else if (devLower.includes("shang") || devLower.includes("robinsons")) {
-          // Shang Properties: Charcoal Black / Champagne Bronze
-          toneGradient = "linear-gradient(135deg, #181615 0%, #090909 100%)";
-          accentColor = "#c5a059"; // bronze/champagne
-          titleKicker = "Shang Properties Elite CCT";
-        }
-
-        const card = document.querySelector("#infographic");
-        if (card) {
-          card.style.background = toneGradient;
-          card.style.borderColor = accentColor + "33"; // 20% opacity border
-        }
-
-        const kicker = document.querySelector("#visualKicker");
-        if (kicker) {
-          kicker.textContent = titleKicker;
-          kicker.style.color = accentColor;
-        }
-
-        const pricingBox = document.querySelector("#visualPricingBox");
-        if (pricingBox) {
-          pricingBox.style.borderLeftColor = accentColor;
-        }
-
-        // Fill visual text fields
-        document.querySelector("#visualTitle").textContent = listingData.project || "Select a Condo";
-        document.querySelector("#visualSubtitle").textContent = listingData.address || "Bonifacio Global City";
-        
-        document.querySelector("#specBedSize").textContent = (listingData.bedrooms || listingData.sqm) ? `${listingData.bedrooms || "Residence"} / ${listingData.sqm || "Pending"}` : "-";
-        document.querySelector("#specFloorZone").textContent = (listingData.floor || listingData.floorZone) ? `${listingData.floor || "Pending"} (${listingData.floorZone || "Pending"})` : "-";
-        
-        const helperText = (listingData.maidsRoom && listingData.maidsRoom.toLowerCase().includes("yes")) ? "With Maid's Room" : "No Maid's Room";
-        document.querySelector("#specInteriorMaid").textContent = (listingData.furnishing || listingData.maidsRoom) ? `${listingData.furnishing || "Bare"} / ${helperText}` : "-";
-        document.querySelector("#specParkingStatus").textContent = (listingData.parking || listingData.tenanted) ? `${listingData.parking || "No Parking"} / ${listingData.tenanted || "Vacant"}` : "-";
-        
-        document.querySelector("#specTitleOwner").textContent = listingData.ownership ? `${listingData.ownership} Owner` : "-";
-        document.querySelector("#specDeveloper").textContent = listingData.developer ? `${listingData.developer} (${listingData.yearBuilt || "-"})` : "-";
-
-        // Proximity landmarks
-        if (listingData.landmarks) {
-          const parts = listingData.landmarks.split(" | ");
-          let hosp = "-", groc = "-", sch = "-", din = "-";
-          parts.forEach(p => {
-            if (p.startsWith("Hospital:")) hosp = p.replace("Hospital: ", "");
-            if (p.startsWith("Supermarket:")) groc = p.replace("Supermarket: ", "");
-            if (p.startsWith("Schools:")) sch = p.replace("Schools: ", "");
-            if (p.startsWith("Dining:")) din = p.replace("Dining: ", "");
-          });
-          document.querySelector("#landHospital").textContent = hosp;
-          document.querySelector("#landGrocery").textContent = groc;
-          document.querySelector("#landSchools").textContent = sch;
-          document.querySelector("#landDining").textContent = din;
-        } else {
-          document.querySelector("#landHospital").textContent = "-";
-          document.querySelector("#landGrocery").textContent = "-";
-          document.querySelector("#landSchools").textContent = "-";
-          document.querySelector("#landDining").textContent = "-";
-        }
-
-        // Pricing
-        document.querySelector("#specAskingPrice").textContent = listingData.price || "Price on Request";
-        document.querySelector("#specMarketComps").textContent = listingData.compsProposed ? `Comps: ${listingData.compsProposed}` : "Comps: Pending";
-        
-        // Footer direct info
-        document.querySelector("#visualFooter").textContent = listingData.direct || "CCT Verified";
-      }
-
-      function selectOption(index) {
-        selectedIndex = index;
-        const option = currentOptions[selectedIndex];
-        postEditor.value = option.body;
-        ctaEditor.value = option.cta;
-        phoneCaption.textContent = option.body;
-        phoneCta.textContent = option.cta;
-        renderOptions();
-        updateInfographicVisuals();
-      }
-
-      function generate(rawListingText) {
-        const textToParse = rawListingText || "";
-        if (textToParse) {
-          parseInputDetails(textToParse);
-        }
-        currentOptions = makeOptions(listingData, reroll);
-        selectOption(0);
-      }
-
-      function appendMessage(role, content) {
-        const messageDiv = document.createElement("div");
-        messageDiv.className = `message ${role}`;
-        
-        const avatarWrap = document.createElement("div");
-        avatarWrap.className = "avatar-wrap";
-        const img = document.createElement("img");
-        img.className = "avatar message-avatar";
-        img.alt = role === "user" ? "User" : "Sofia";
-        img.src = role === "user" ? "data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><path d='M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2'></path><circle cx='12' cy='7' r='4'></circle></svg>" : "/sofia_avatar.png";
-        if (role !== "user") {
-          img.setAttribute("onerror", "this.src='../sofia_avatar.png'");
-        }
-        avatarWrap.appendChild(img);
-
-        const bubble = document.createElement("div");
-        bubble.className = "message-bubble";
-        bubble.textContent = content;
-
-        messageDiv.appendChild(avatarWrap);
-        messageDiv.appendChild(bubble);
-        chatMessages.appendChild(messageDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-
-      function appendTypingIndicator() {
-        const indicatorDiv = document.createElement("div");
-        indicatorDiv.className = "message bot";
-        indicatorDiv.id = "typingIndicator";
-        
-        const avatarWrap = document.createElement("div");
-        avatarWrap.className = "avatar-wrap";
-        const img = document.createElement("img");
-        img.className = "avatar message-avatar";
-        img.alt = "Sofia";
-        img.src = "/sofia_avatar.png";
-        img.setAttribute("onerror", "this.src='../sofia_avatar.png'");
-        avatarWrap.appendChild(img);
-
-        const bubble = document.createElement("div");
-        bubble.className = "typing-indicator message-bubble";
-        bubble.innerHTML = `
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-          <div class="typing-dot"></div>
-        `;
-
-        indicatorDiv.appendChild(avatarWrap);
-        indicatorDiv.appendChild(bubble);
-        chatMessages.appendChild(indicatorDiv);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-      }
-
-      function removeTypingIndicator() {
-        const indicator = document.querySelector("#typingIndicator");
-        if (indicator) {
-          indicator.remove();
-        }
-      }
-
-      function speakText(text) {
-        if (isMuted || !window.speechSynthesis) return;
-        
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        
-        const voices = window.speechSynthesis.getVoices();
-        const enVoices = voices.filter(v => v.lang.toLowerCase().startsWith("en"));
-        
-        // Find best match female voice
-        let femaleVoice = null;
-        
-        // 1. Try online natural/neural female voices
-        femaleVoice = enVoices.find(v => /online.*natural|natural.*online|neural/i.test(v.name) && /jenny|aria|sonia|samantha|zira/i.test(v.name));
-        
-        // 2. Try priority list
-        if (!femaleVoice) {
-          const priorities = ["jenny", "aria", "sonia", "samantha", "zira", "google us english", "hazel", "karen", "susan"];
-          for (const p of priorities) {
-            femaleVoice = enVoices.find(v => v.name.toLowerCase().includes(p));
-            if (femaleVoice) break;
-          }
-        }
-        
-        // 3. Try any voice with female indicators
-        if (!femaleVoice) {
-          femaleVoice = enVoices.find(v => /female|girl|woman|samantha|zira|karen|hazel|susan|moira|tessa/i.test(v.name));
-        }
-        
-        // 4. Try any English voice that is NOT male
-        if (!femaleVoice) {
-          femaleVoice = enVoices.find(v => !/david|male|guy|roy|george|ravi|mark|richard|stefan/i.test(v.name.toLowerCase()));
-        }
-        
-        // 5. Fall back to any English voice
-        if (!femaleVoice) {
-          femaleVoice = enVoices[0];
-        }
-        
-        if (femaleVoice) {
-          utterance.voice = femaleVoice;
-          console.log("Speaking using voice:", femaleVoice.name);
-        }
-        
-        const avatarWrap = document.querySelector(".avatar-wrap");
-        utterance.onstart = () => {
-          if (avatarWrap) avatarWrap.classList.add("speaking");
-        };
-        utterance.onend = () => {
-          if (avatarWrap) avatarWrap.classList.remove("speaking");
-        };
-        utterance.onerror = () => {
-          if (avatarWrap) avatarWrap.classList.remove("speaking");
-        };
-        
-        window.speechSynthesis.speak(utterance);
-      }
-
-      function updateAvatar(videoUrl) {
-        const avatarWrap = document.querySelector(".avatar-wrap");
-        const avatarImg = avatarWrap.querySelector(".avatar");
-        let avatarVideo = avatarWrap.querySelector(".avatar-video");
-        
-        if (videoUrl) {
-          if (!avatarVideo) {
-            avatarVideo = document.createElement("video");
-            avatarVideo.className = "avatar avatar-video";
-            avatarVideo.autoplay = true;
-            avatarVideo.loop = true;
-            avatarVideo.muted = true;
-            avatarVideo.playsInline = true;
-            avatarVideo.style.objectFit = "cover";
-            avatarVideo.style.position = "absolute";
-            avatarVideo.style.inset = "0";
-            avatarVideo.style.width = "48px";
-            avatarVideo.style.height = "48px";
-            avatarVideo.style.borderRadius = "9999px";
-            avatarWrap.appendChild(avatarVideo);
-          }
-          avatarVideo.src = videoUrl;
-          avatarVideo.style.display = "block";
-          avatarImg.style.display = "none";
-        } else {
-          if (avatarVideo) {
-            avatarVideo.style.display = "none";
-            avatarVideo.src = "";
-          }
-          avatarImg.style.display = "block";
-        }
-      }
-
-      function extractProject(text) {
-        for (const project in BGC_CONDO_DB) {
-          if (text.toLowerCase().includes(project.toLowerCase())) {
-            return BGC_CONDO_DB[project].name;
-          }
-        }
-        const atMatch = text.match(/\bat\s+([A-Z][A-Za-z0-9\s]{2,30})/);
-        if (atMatch) return atMatch[1].trim();
-        return null;
-      }
-
-      function mergeListingData(target, source) {
-        if (source.address) target.address = source.address;
-        if (source.project) target.project = source.project;
-        if (source.developer) target.developer = source.developer;
-        if (source.yearBuilt) target.yearBuilt = source.yearBuilt;
-        if (source.yearTurnedOver) target.yearTurnedOver = source.yearTurnedOver;
-        if (source.landmarks) target.landmarks = source.landmarks;
-        if (source.floor) target.floor = source.floor;
-        if (source.floorZone) target.floorZone = source.floorZone;
-        if (source.view) target.view = source.view;
-        if (source.facing) target.facing = source.facing;
-        if (source.sqm) target.sqm = source.sqm;
-        if (source.bedrooms) target.bedrooms = source.bedrooms;
-        if (source.furnishing) target.furnishing = source.furnishing;
-        if (source.maidsRoom) target.maidsRoom = source.maidsRoom;
-        if (source.parking) target.parking = source.parking;
-        if (source.ownership) target.ownership = source.ownership;
-        if (source.tenanted) target.tenanted = source.tenanted;
-        if (source.price) target.price = source.price;
-        if (source.compsProposed) target.compsProposed = source.compsProposed;
-
-        if (source.alert) target.alert = source.alert;
-        if (source.status) target.status = source.status;
-        if (source.unit) target.unit = source.unit;
-        if (source.direct) target.direct = source.direct;
-        if (source.condition) target.condition = source.condition;
-      }
-
-      // Smart non-interrogative dialog state machine
-      function parseStepResponse(input) {
-        const text = input.trim();
-        const lower = text.toLowerCase();
-        
-        // Check for general user skips
-        const isSkip = /skip|dont know|dontknow|no idea|not sure|not listed|pending/i.test(text);
-
-        // Re-determine group before parsing
-        let currentGroup = "A";
-        if (listingData.address) currentGroup = "B";
-        if (listingData.address && listingData.floor && (listingData.view || listingData.facing)) currentGroup = "C";
-        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing) currentGroup = "D";
-        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing && listingData.maidsRoom && listingData.parking) currentGroup = "E";
-        if (listingData.address && listingData.floor && (listingData.view || listingData.facing) && listingData.sqm && listingData.bedrooms && listingData.furnishing && listingData.maidsRoom && listingData.parking && listingData.ownership && listingData.tenanted) currentGroup = "F";
-
-        if (isSkip) {
-          handleSkipsForGroup(currentGroup);
-        } else {
-          parseInputDetails(text);
-        }
-        
-        updateChecklistUI();
-        
-        let replyText = "";
-        
-        // Re-evaluate what group is missing next
-        if (!listingData.address) {
-          replyText = "Great! What is the condo building name or specific address of the property?";
-        } else if (!listingData.floor || (!listingData.view && !listingData.facing)) {
-          let landmarksText = "";
-          if (listingData.landmarks) {
-            landmarksText = "\n" + listingData.landmarks.split(" | ").map(p => `  * ${p}`).join("\n");
-          }
-          replyText = `Excellent! I have compiled the verified building research profile for **${listingData.project}**:
-* **Developer Heritage**: ${listingData.developer || "Verified BGC Developer"} (Built: ${listingData.yearBuilt || "N/A"}, Turned Over: ${listingData.yearTurnedOver || "N/A"})
-* **Neighborhood Proximity landmarks**: ${landmarksText || "  * Proximity: Bonifacio Global City Highlights"}
-* **Estimated Market Comps**: ${listingData.compsProposed || "PHP 250k - 380k / sqm depending on floor and size"}
-
-To finalize the 13 verified specifications, could you let me know:
-1. What floor number is the unit on?
-2. What is the orientation (e.g. city view, golf course view, facing east/west)?`;
-        } else if (!listingData.sqm || !listingData.bedrooms || !listingData.furnishing) {
-          replyText = "Got it! Next, what is the bedroom type (Studio, 1BR, 2BR, etc.), floor area in sqm, and its furnishing condition (furnished, semi-furnished, or bare)?";
-        } else if (!listingData.maidsRoom || !listingData.parking) {
-          replyText = "Perfect. Does the unit include a maid's room/utility room, and does it come with any parking slots?";
-        } else if (!listingData.ownership || !listingData.tenanted) {
-          replyText = "Got that. Is the title registered under an individual or a corporation, and is it currently vacant or tenanted?";
-        } else if (!listingData.price) {
-          let compText = "";
-          if (listingData.compsProposed) {
-            compText = `Based on local BGC market comps, a ${listingData.sqm} unit at ${listingData.project} typically trades between ${listingData.compsProposed} gross. `;
-          }
-          replyText = `We have almost all the details! ${compText}What is your asking price for this property?`;
-        } else {
-          generate();
-          replyText = `Fantastic! All 13 condo criteria have been successfully verified and checked off. I've compiled the market data, comps, and landmarks. Feel free to review the generated ad copy angles and infographic on the right!`;
-        }
-        
-        generate();
-        return replyText;
-      }
-
-      async function sendChatMessage(e) {
-        e.preventDefault();
-        const content = chatInput.value.trim();
-        if (!content || isChatLoading) return;
-
-        appendMessage("user", content);
-        chatInput.value = "";
-        
-        conversationHistory.push({ role: "user", content: content });
-        isChatLoading = true;
-        appendTypingIndicator();
-
-        try {
-          const res = await fetch("/api/chat/listing-agent", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ messages: conversationHistory })
-          });
-
-          removeTypingIndicator();
-          if (!res.ok) throw new Error("API call failed");
-
-          const data = await res.json();
-          appendMessage("bot", data.content);
-          conversationHistory.push(data);
-
-          const fullContext = conversationHistory.map(m => m.content).join("\n");
-          
-          if (data.videoUrl) {
-            updateAvatar(data.videoUrl);
-          } else {
-            updateAvatar(null);
-            speakText(data.content);
-          }
-
-          parseInputDetails(fullContext);
-          updateChecklistUI();
-          generate();
-
-        } catch (error) {
-          console.error("Chat API error, running local stateful interview fallback:", error);
-          removeTypingIndicator();
-          updateAvatar(null);
-          
-          setTimeout(() => {
-            const botReply = parseStepResponse(content);
-            appendMessage("bot", botReply);
-            conversationHistory.push({ role: "assistant", content: botReply });
-            speakText(botReply);
-          }, 1000);
-        } finally {
-          isChatLoading = false;
-        }
-      }
-
-      async function copyText(text, success) {
-        try {
-          await navigator.clipboard.writeText(text);
-          alert(success);
-        } catch (error) {
-          alert("Copy failed. Select the text manually.");
-        }
-      }
-
-      function buildPostText() {
-        return `${postEditor.value.trim()}\n\n${ctaEditor.value.trim()}`.trim();
-      }
-
-      function queuePost() {
-        const option = currentOptions[selectedIndex];
-        const packet = {
-          createdAt: new Date().toISOString(),
-          platforms: ["facebook", "instagram"],
-          status: "ready_for_review",
-          selectedAngle: option.channel,
-          postText: buildPostText(),
-          infographicBrief: option.visual,
-        };
-        copyText(JSON.stringify(packet, null, 2), "Queued for Social Review and copied the packet payload!");
-      }
-
-      // Redesigned high-fidelity 13-point infographic canvas download
-      function downloadInfographic() {
-        const option = currentOptions[selectedIndex];
-        const canvas = document.createElement("canvas");
-        canvas.width = 1080;
-        canvas.height = 1350;
-        const ctx = canvas.getContext("2d");
-        
-        // Developer-aligned brand palettes
-        let palette = ["#090a0f", "#11131c", "#14b8a6"]; // Default charcoal/teal
-        let devLower = (listingData.developer || "").toLowerCase();
-        if (devLower.includes("ayala")) {
-          palette = ["#05140f", "#0c1210", "#d4af37"]; // Forest green / Gold
-        } else if (devLower.includes("arthaland")) {
-          palette = ["#091d15", "#0a110e", "#10b981"]; // Sage emerald / Bright green
-        } else if (devLower.includes("megaworld")) {
-          palette = ["#091b36", "#0d111a", "#06b6d4"]; // Blue / Cyan
-        } else if (devLower.includes("federal") || devLower.includes("nomura") || devLower.includes("orix")) {
-          palette = ["#23150b", "#0c0907", "#f59e0b"]; // Warm amber / Copper
-        } else if (devLower.includes("shang") || devLower.includes("robinsons")) {
-          palette = ["#181615", "#090909", "#c5a059"]; // Charcoal / Champagne bronze
-        }
-
-        const gradient = ctx.createLinearGradient(0, 0, 1080, 1350);
-        gradient.addColorStop(0, palette[0]);
-        gradient.addColorStop(0.55, palette[1]);
-        gradient.addColorStop(1, "#040508");
-        ctx.fillStyle = gradient;
-        ctx.fillRect(0, 0, 1080, 1350);
-
-        // Thin stroke frame
-        ctx.strokeStyle = "rgba(255,255,255,0.08)";
-        ctx.lineWidth = 3;
-        ctx.strokeRect(64, 64, 952, 1222);
-
-        // Brand kicker banner
-        ctx.fillStyle = palette[2];
-        ctx.fillRect(92, 96, 400, 50);
-        ctx.fillStyle = "#000";
-        ctx.font = "900 20px Arial";
-        let bannerText = "VETTED LISTING SPECS";
-        if (devLower.includes("ayala")) bannerText = "AYALA PREMIER VERIFIED";
-        else if (devLower.includes("arthaland")) bannerText = "ARTHALAND GREEN SPECS";
-        else if (devLower.includes("megaworld")) bannerText = "MEGAWORLD CCT VERIFIED";
-        else if (devLower.includes("federal")) bannerText = "FEDERAL LAND DELUXE";
-        else if (devLower.includes("shang")) bannerText = "SHANG ELITE VERIFIED";
-        ctx.fillText(bannerText, 114, 128);
-
-        // Building title & address
-        ctx.fillStyle = "#fff";
-        ctx.font = "900 68px Arial";
-        wrapCanvasText(ctx, listingData.project || "BGC RESIDENCE", 92, 220, 900, 75);
-
-        ctx.fillStyle = "rgba(255,255,255,0.6)";
-        ctx.font = "700 28px Arial";
-        wrapCanvasText(ctx, listingData.address || "Bonifacio Global City", 92, 305, 900, 36);
-
-        // Specs Grid: 6 boxes in 3 rows and 2 columns
-        const specs = [
-          { label: "Bedrooms / Size", val: (listingData.bedrooms || listingData.sqm) ? `${listingData.bedrooms || "Residence"} / ${listingData.sqm || "Pending"}` : "-" },
-          { label: "Floor / Zone", val: (listingData.floor || listingData.floorZone) ? `${listingData.floor || "Pending"} (${listingData.floorZone || "Pending"})` : "-" },
-          { label: "Interior / Maid", val: (listingData.furnishing || listingData.maidsRoom) ? `${listingData.furnishing || "Bare"} / ${listingData.maidsRoom && listingData.maidsRoom.toLowerCase().includes("yes") ? "With Maid's" : "No Maid's"}` : "-" },
-          { label: "Parking / Status", val: (listingData.parking || listingData.tenanted) ? `${listingData.parking || "No parking"} / ${listingData.tenanted || "Vacant"}` : "-" },
-          { label: "Title Ownership", val: listingData.ownership ? `${listingData.ownership} Owner` : "-" },
-          { label: "Developer Heritage", val: listingData.developer ? `${listingData.developer} (${listingData.yearBuilt || "-"})` : "-" }
-        ];
-
-        specs.forEach((spec, index) => {
-          const x = index % 2 === 0 ? 92 : 556;
-          const y = 360 + Math.floor(index / 2) * 155;
-          ctx.fillStyle = "rgba(255,255,255,0.03)";
-          ctx.fillRect(x, y, 430, 125);
-          ctx.strokeStyle = "rgba(255,255,255,0.05)";
-          ctx.lineWidth = 1.5;
-          ctx.strokeRect(x, y, 430, 125);
-          
-          ctx.fillStyle = "rgba(255,255,255,0.4)";
-          ctx.font = "bold 20px Arial";
-          ctx.fillText(spec.label.toUpperCase(), x + 24, y + 42);
-
-          ctx.fillStyle = "#fff";
-          ctx.font = "bold 28px Arial";
-          ctx.fillText(spec.val, x + 24, y + 92);
-        });
-
-        // Neighborhood Landmarks Section
-        ctx.fillStyle = "rgba(255,255,255,0.015)";
-        ctx.fillRect(92, 835, 894, 160);
-        ctx.strokeStyle = "rgba(255,255,255,0.04)";
-        ctx.strokeRect(92, 835, 894, 160);
-
-        ctx.fillStyle = "rgba(255,255,255,0.5)";
-        ctx.font = "bold 20px Arial";
-        ctx.fillText("NEIGHBORHOOD PROXIMITY (VETTED)", 116, 872);
-
-        let hosp = "-", groc = "-", sch = "-", din = "-";
-        if (listingData.landmarks) {
-          const parts = listingData.landmarks.split(" | ");
-          parts.forEach(p => {
-            if (p.startsWith("Hospital:")) hosp = p.replace("Hospital: ", "");
-            if (p.startsWith("Supermarket:")) groc = p.replace("Supermarket: ", "");
-            if (p.startsWith("Schools:")) sch = p.replace("Schools: ", "");
-            if (p.startsWith("Dining:")) din = p.replace("Dining: ", "");
-          });
-        }
-        
-        ctx.fillStyle = "rgba(255,255,255,0.85)";
-        ctx.font = "bold 22px Arial";
-        ctx.fillText("🏥 Hospital: " + hosp, 116, 918);
-        ctx.fillText("🎓 Schools: " + sch, 116, 966);
-        ctx.fillText("🛒 Grocery: " + groc, 530, 918);
-        ctx.fillText("🍽️ Dining: " + din, 530, 966);
-
-        // Pricing Bar
-        ctx.fillStyle = "rgba(0, 0, 0, 0.25)";
-        ctx.fillRect(92, 1025, 894, 130);
-        ctx.strokeStyle = "rgba(255,255,255,0.06)";
-        ctx.strokeRect(92, 1025, 894, 130);
-        
-        ctx.fillStyle = palette[2];
-        ctx.fillRect(92, 1025, 6, 130); // Left border stripe
-
-        ctx.fillStyle = "rgba(255,255,255,0.4)";
-        ctx.font = "bold 20px Arial";
-        ctx.fillText("ASKING PRICE", 120, 1065);
-
-        ctx.fillStyle = "#fff";
-        ctx.font = "900 44px Arial";
-        ctx.fillText(listingData.price || "PRICE ON REQUEST", 120, 1122);
-
-        ctx.fillStyle = "rgba(255,255,255,0.6)";
-        ctx.font = "bold 24px Arial";
-        const compsText = listingData.compsProposed ? `Comps: ${listingData.compsProposed}` : "Comps: Pending";
-        ctx.fillText(compsText, 530, 1098);
-
-        // Footer Brand Line
-        ctx.strokeStyle = "rgba(255,255,255,0.1)";
-        ctx.beginPath();
-        ctx.moveTo(92, 1195);
-        ctx.lineTo(988, 1195);
-        ctx.stroke();
-
-        ctx.fillStyle = "rgba(255,255,255,0.7)";
-        ctx.font = "900 30px Arial";
-        ctx.fillText(listingData.direct || "CCT VERIFIED", 92, 1245);
-        ctx.fillText("NEXTFRAME", 800, 1245);
-
-        const link = document.createElement("a");
-        link.download = `${listingData.project ? listingData.project.toLowerCase().replace(/\s+/g, '-') : 'bgc-condo'}-listings-infographic.png`;
-        link.href = canvas.toDataURL("image/png");
-        link.click();
-      }
-
-      function wrapCanvasText(ctx, text, x, y, maxWidth, lineHeight) {
-        const words = String(text).split(" ");
-        let line = "";
-        for (let i = 0; i < words.length; i += 1) {
-          const test = `${line}${words[i]} `;
-          if (ctx.measureText(test).width > maxWidth && i > 0) {
-            ctx.fillText(line.trim(), x, y);
-            line = `${words[i]} `;
-            y += lineHeight;
-          } else {
-            line = test;
-          }
-        }
-        ctx.fillText(line.trim(), x, y);
-      }
-
-      chatForm.addEventListener("submit", sendChatMessage);
-      
-      document.querySelector("#rerollButton").addEventListener("click", () => {
-        reroll += 1;
-        generate();
-      });
-
-      document.querySelector("#copyButton").addEventListener("click", () => {
-        copyText(buildPostText(), "Caption copied to clipboard!");
-      });
-
-      document.querySelector("#queueButton").addEventListener("click", queuePost);
-      document.querySelector("#downloadButton").addEventListener("click", downloadInfographic);
-
-      voiceToggle.addEventListener("click", () => {
-        isMuted = !isMuted;
-        if (isMuted) {
-          speakerOnIcon.style.display = "none";
-          speakerOffIcon.style.display = "block";
-          if (window.speechSynthesis) {
-            window.speechSynthesis.cancel();
-          }
-          document.querySelector(".avatar-wrap").classList.remove("speaking");
-        } else {
-          speakerOnIcon.style.display = "block";
-          speakerOffIcon.style.display = "none";
-          const lastBotMsg = [...conversationHistory].reverse().find(m => m.role === "assistant");
-          if (lastBotMsg) {
-            speakText(lastBotMsg.content);
-          }
-        }
-      });
-
-      // Voice input Speech Recognition with user alerts
-      const chatMic = document.querySelector("#chatMic");
-      let recognition = null;
-      let isListening = false;
-      
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-      if (SpeechRecognition) {
-        recognition = new SpeechRecognition();
-        recognition.continuous = false;
-        recognition.interimResults = false;
-        recognition.lang = 'en-US';
-        
-        recognition.onstart = () => {
-          isListening = true;
-          chatMic.classList.add("listening");
-          chatMic.title = "Listening...";
-          chatInput.placeholder = "[Listening... Speak now]";
-        };
-        
-        recognition.onend = () => {
-          isListening = false;
-          chatMic.classList.remove("listening");
-          chatMic.title = "Start Voice Input";
-          chatInput.placeholder = "Message Sofia...";
-        };
-        
-        recognition.onerror = (event) => {
-          console.error("Speech recognition error", event);
-          isListening = false;
-          chatMic.classList.remove("listening");
-          chatInput.placeholder = "Message Sofia...";
-          if (event.error === 'not-allowed') {
-            alert("Microphone access was denied. Please check your browser permissions.");
-          } else if (event.error === 'no-speech') {
-            // Silence, ignore or hint
-          } else {
-            alert("Speech recognition error: " + event.error);
-          }
-        };
-        
-        recognition.onresult = (event) => {
-          const transcript = event.results[0][0].transcript;
-          chatInput.value = transcript;
-          if (typeof chatForm.requestSubmit === 'function') {
-            chatForm.requestSubmit();
-          } else {
-            chatForm.dispatchEvent(new Event('submit'));
-          }
-        };
-
-        chatMic.addEventListener("click", () => {
-          if (window.speechSynthesis) {
-            window.speechSynthesis.getVoices();
-          }
-          if (isListening) {
-            recognition.stop();
-          } else {
-            if (window.speechSynthesis) {
-              window.speechSynthesis.cancel();
-            }
-            const avatarWrap = document.querySelector(".avatar-wrap");
-            if (avatarWrap) avatarWrap.classList.remove("speaking");
-            
-            recognition.start();
-          }
-        });
-      } else if (chatMic) {
-        chatMic.style.display = "none";
-        chatInput.style.paddingRight = "50px";
-      }
-
-      // Sync editor change to phone preview
-      postEditor.addEventListener("input", (e) => {
-        phoneCaption.textContent = e.target.value;
-      });
-      ctaEditor.addEventListener("input", (e) => {
-        phoneCta.textContent = e.target.value;
-      });
-
-      // Toggle checklist collapse UI
-      document.querySelector("#checklistHeader").addEventListener("click", () => {
-        const checklist = document.querySelector("#specsChecklist");
-        const chevron = document.querySelector("#checklistChevron");
-        if (!checklist || !chevron) return;
-        checklist.classList.toggle("collapsed");
-        if (checklist.classList.contains("collapsed")) {
-          chevron.style.transform = "rotate(-90deg)";
-        } else {
-          chevron.style.transform = "rotate(0deg)";
-        }
-      });
-
-      // Preload voices in browser background
-      if (window.speechSynthesis) {
-        window.speechSynthesis.getVoices();
-        if (window.speechSynthesis.onvoiceschanged !== undefined) {
-          window.speechSynthesis.onvoiceschanged = () => {
-            window.speechSynthesis.getVoices();
-          };
-        }
-      }
-
-      // Initialize spec checklist elements
-      updateChecklistUI();
-
-      // Initialize ad campaigns
-      generate();
-    </script>
+      adsEl.appendChild(card);
+    }
+  } catch { /* best-effort */ }
+}
+
+$("download-ads").onclick = () => {
+  const text = currentAds.map(a =>
+    "== " + (a.channel || "copy").toUpperCase() + " ==\n" + (a.headline || "") + "\n\n" + (a.body || "")
+  ).join("\n\n----------------------------------------\n\n");
+  const blob = new Blob([text], { type: "text/plain" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "nextframe-ad-copies.txt";
+  a.click();
+  URL.revokeObjectURL(a.href);
+};
+
+$("new-listing").onclick = () => {
+  sessionStorage.removeItem("nf_session");
+  location.reload();
+};
+
+formEl.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const text = inputEl.value;
+  inputEl.value = "";
+  inputEl.style.height = "auto";
+  send(text);
+});
+inputEl.addEventListener("keydown", (e) => {
+  if (e.key === "Enter" && !e.shiftKey) {
+    e.preventDefault();
+    formEl.requestSubmit();
+  }
+});
+inputEl.addEventListener("input", () => {
+  inputEl.style.height = "auto";
+  inputEl.style.height = Math.min(inputEl.scrollHeight, 140) + "px";
+});
+
+welcome();
+initApiBase().then(() => ensureSession()).then(() => {
+  refreshListing();
+  refreshAds();
+  // Sync the avatar turn pointer without replaying an old video.
+  fetch(API_BASE + "/api/avatar/" + sessionId)
+    .then(r => (r.ok ? r.json() : null))
+    .then(a => { if (a) lastHandledAvatarTurn = a.turn; })
+    .catch(() => {});
+}).catch(err => addError(err.message));
+inputEl.focus();
+</script>
+</body>
+</html>
