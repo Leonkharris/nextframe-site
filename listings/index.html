@@ -656,10 +656,16 @@ function pollAvatar(deadline) {
 
 let lastListing = {};
 
-async function refreshListing() {
+async function refreshListing(retried) {
   if (!sessionId) return;
   try {
     const res = await fetch(API_BASE + "/api/listing/" + sessionId);
+    if (res.status === 404 && !retried) {
+      // Session truly gone (and not revivable) — swap it out and retry once.
+      sessionStorage.removeItem("nf_session"); sessionId = null;
+      await ensureSession();
+      return refreshListing(true);
+    }
     if (!res.ok) return;
     const { listing, missing_core_fields, resume } = await res.json();
     lastListing = listing;
@@ -752,9 +758,11 @@ function updatePdfCard() {
     }
   }
 }
-$("pdf-view").onclick = () => {
+$("pdf-view").onclick = async () => {
   const frame = $("pdf-frame");
   if (frame.style.display === "none") {
+    await ensureSession();           // make sure the session is alive first
+    await refreshListing();
     frame.src = API_BASE + "/api/pdf/" + sessionId + "?inline=1&_=" + Date.now();
     frame.style.display = "";
     $("pdf-view").textContent = "Hide preview";
@@ -764,7 +772,8 @@ $("pdf-view").onclick = () => {
     $("pdf-view").textContent = "Preview here";
   }
 };
-$("pdf-download").onclick = () => {
+$("pdf-download").onclick = async () => {
+  await ensureSession();
   if (sessionId) window.open(API_BASE + "/api/pdf/" + sessionId, "_blank");
 };
 
