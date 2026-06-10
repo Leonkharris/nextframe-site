@@ -60,14 +60,20 @@
   .pill:hover { background: rgba(255,255,255,0.08); border-color: var(--indigo-light); }
   .pill.accent { border-color: var(--indigo); background: var(--indigo-glow); color: #c7d2fe; }
 
-  /* ---------- layout ---------- */
+  /* ---------- layout: chat + Sofia LEFT · information + deliverables RIGHT ---------- */
   .layout {
-    flex: 1; display: grid; grid-template-columns: 400px 1fr 360px;
+    flex: 1; display: grid; grid-template-columns: 410px minmax(0, 1fr);
     gap: 20px; min-height: 0; max-width: 1500px; width: 100%;
     margin: 0 auto; padding: 20px 24px 24px;
   }
-  @media (max-width: 1200px) { .layout { grid-template-columns: 380px 1fr; } .col-preview { display: none; } }
-  @media (max-width: 860px)  { .layout { grid-template-columns: 1fr; } .col-record { display: none; } }
+  .right-col { display: flex; flex-direction: column; gap: 18px; min-height: 0; overflow-y: auto; padding-right: 2px; }
+  .right-col > * { flex-shrink: 0; }
+  /* never hide information — stack instead */
+  @media (max-width: 900px) {
+    .layout { grid-template-columns: 1fr; overflow-y: auto; }
+    .chat-panel { height: 72vh; }
+    .right-col { overflow: visible; }
+  }
 
   .panel {
     background: var(--panel); border: 1px solid var(--panel-border);
@@ -159,8 +165,14 @@
 
   .empty-note { color: #4b5563; font-size: 0.82rem; font-style: italic; }
 
-  /* ---------- right: preview + ads ---------- */
-  .col-preview { display: flex; flex-direction: column; gap: 20px; min-height: 0; overflow-y: auto; }
+  /* ---------- right: preview, record, deliverables ---------- */
+  .pill:disabled { opacity: 0.4; cursor: default; }
+  .pdf-card .note { color: var(--muted); font-size: 0.78rem; margin: 12px 16px 10px; line-height: 1.5; }
+  .pdf-card .actions { display: flex; gap: 8px; padding: 0 16px 14px; }
+  .pdf-card iframe {
+    width: calc(100% - 32px); height: 540px; margin: 0 16px 16px;
+    border: 1px solid var(--panel-border); border-radius: 10px; background: #fff;
+  }
   .preview-card {
     background: linear-gradient(160deg, rgba(16, 64, 54, 0.55), rgba(13, 18, 30, 0.9)),
                 var(--panel-solid);
@@ -211,6 +223,7 @@
   <div class="header-actions">
     <button class="pill accent" id="download-pdf" style="display:none">⬇ Listing pack (PDF)</button>
     <button class="pill" id="download-ads" style="display:none">Ad copies (.txt)</button>
+    <button class="pill" id="my-listings">My listings ✉</button>
     <button class="pill" id="new-listing">New listing</button>
     <a class="pill" href="https://next-frame.agency" style="text-decoration:none">next-frame.agency</a>
   </div>
@@ -218,7 +231,7 @@
 
 <div class="layout">
   <!-- LEFT: Sofia + conversation -->
-  <section class="panel">
+  <section class="panel chat-panel">
     <div class="sofia-head">
       <div class="sofia-wrap" id="sofia-wrap">
         <img id="sofia-img" src="https://next-frame.agency/sofia_avatar.png" alt="Sofia — Next Frame listing agent" />
@@ -243,21 +256,8 @@
     </div>
   </section>
 
-  <!-- MIDDLE: live listing record -->
-  <section class="panel col-record">
-    <div class="record-head">
-      <span class="title">Property Specs Checklist</span>
-      <span class="vetted" id="vetted-label">0/13 vetted</span>
-      <div class="progress"><div id="progress-bar"></div></div>
-    </div>
-    <div class="panel-scroll record-body">
-      <div id="fields"><p class="empty-note" style="margin-top:14px">Specs fill in automatically as you chat with Sofia — stated facts and researched facts both land here.</p></div>
-      <div id="comps-area"></div>
-    </div>
-  </section>
-
-  <!-- RIGHT: preview card + ad copies -->
-  <aside class="col-preview">
+  <!-- RIGHT: all the information + deliverables -->
+  <div class="right-col">
     <div class="preview-card" id="preview-card">
       <span class="tag" id="pv-tag">Listing Preview</span>
       <h3 id="pv-title">—</h3>
@@ -266,11 +266,34 @@
       <div class="proximity" id="pv-prox" style="display:none"></div>
       <div class="price-block" id="pv-price" style="display:none"></div>
     </div>
-    <div class="panel ads-panel">
+
+    <section class="panel">
+      <div class="record-head">
+        <span class="title">Property Specs Checklist</span>
+        <span class="vetted" id="vetted-label">0/13 vetted</span>
+        <div class="progress"><div id="progress-bar"></div></div>
+      </div>
+      <div class="record-body">
+        <div id="fields"><p class="empty-note" style="margin-top:14px">Specs fill in automatically as you chat with Sofia — stated facts and researched facts both land here.</p></div>
+        <div id="comps-area"></div>
+      </div>
+    </section>
+
+    <section class="panel pdf-card">
+      <h2>Listing Pack — client deliverable (PDF)</h2>
+      <p class="note" id="pdf-note">Fills in as the record grows. Once Sofia has captured details you can preview it here, download it, or print it for the client.</p>
+      <div class="actions">
+        <button class="pill accent" id="pdf-view" disabled>Preview here</button>
+        <button class="pill" id="pdf-download" disabled>⬇ Download PDF</button>
+      </div>
+      <iframe id="pdf-frame" style="display:none" title="Listing Pack preview"></iframe>
+    </section>
+
+    <section class="panel ads-panel">
       <h2>Ad copies</h2>
       <div id="ads"><p class="empty-note" style="margin:14px">Generated after you confirm the listing.</p></div>
-    </div>
-  </aside>
+    </section>
+  </div>
 </div>
 
 <script>
@@ -316,7 +339,8 @@ const FIELD_GROUPS = [
   ]],
   ["Legal, status & contact", [
     ["title_holder", "Title held by"], ["tenanted", "Tenanted"], ["tenancy_details", "Tenancy"],
-    ["agent_name", "Agent"], ["agent_phone", "Agent mobile"], ["status", "Listing status"],
+    ["agent_name", "Agent"], ["agent_phone", "Agent mobile"], ["agent_email", "Agent email"],
+    ["status", "Listing status"],
   ]],
 ];
 const CORE_TOTAL = 13;
@@ -655,8 +679,39 @@ async function refreshListing() {
     }
 
     renderPreview(listing);
+    updatePdfCard();
   } catch { /* best-effort */ }
 }
+
+/* ---------- Listing Pack (PDF) card ---------- */
+
+function updatePdfCard() {
+  const has = Object.keys(lastListing || {}).length > 0;
+  $("pdf-view").disabled = !has;
+  $("pdf-download").disabled = !has;
+  if (has) {
+    $("pdf-note").textContent = "Up to date with the record — preview it here or download to print for the client.";
+    const frame = $("pdf-frame");
+    if (frame.style.display !== "none") {
+      frame.src = API_BASE + "/api/pdf/" + sessionId + "?inline=1&_=" + Date.now();
+    }
+  }
+}
+$("pdf-view").onclick = () => {
+  const frame = $("pdf-frame");
+  if (frame.style.display === "none") {
+    frame.src = API_BASE + "/api/pdf/" + sessionId + "?inline=1&_=" + Date.now();
+    frame.style.display = "";
+    $("pdf-view").textContent = "Hide preview";
+  } else {
+    frame.style.display = "none";
+    frame.src = "";
+    $("pdf-view").textContent = "Preview here";
+  }
+};
+$("pdf-download").onclick = () => {
+  if (sessionId) window.open(API_BASE + "/api/pdf/" + sessionId, "_blank");
+};
 
 /* ---------- right: preview card ---------- */
 
@@ -782,6 +837,30 @@ $("new-listing").onclick = () => {
   location.reload();
 };
 
+function addNote(text) {
+  const div = document.createElement("div");
+  div.className = "msg error";
+  div.style.color = "var(--muted)";
+  div.textContent = text;
+  messagesEl.appendChild(div); scrollDown();
+}
+
+$("my-listings").onclick = async () => {
+  const em = window.prompt("Enter the email you used with Sofia — we'll send your listing links there:");
+  if (!em || !em.includes("@")) return;
+  try {
+    const r = await fetch(API_BASE + "/api/my-listings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: em }),
+    });
+    const j = await r.json();
+    addNote(j.sent ? "📩 Sent! Check " + em + " for your listing links." : (j.reason || "Could not send right now."));
+  } catch {
+    addNote("Could not reach the listings engine.");
+  }
+};
+
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
   const text = inputEl.value;
@@ -797,8 +876,34 @@ inputEl.addEventListener("input", () => {
   inputEl.style.height = Math.min(inputEl.scrollHeight, 120) + "px";
 });
 
-welcome();
-initApiBase().then(() => { initSofiaLoops(); return ensureSession(); }).then(() => {
+initApiBase().then(async () => {
+  initSofiaLoops();
+  const code = new URLSearchParams(location.search).get("resume");
+  if (code) {
+    try {
+      const r = await fetch(API_BASE + "/api/resume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resume: code }),
+      });
+      if (!r.ok) throw new Error();
+      const j = await r.json();
+      sessionId = j.session_id;
+      sessionStorage.setItem("nf_session", sessionId);
+      const body = addBotMsg();
+      body.innerHTML = "<p>Welcome back! I’ve reopened <b></b> — the full record, pricing, and ad " +
+                       "copies are loaded on the right. Tell me what to update, or ask for fresh comps.</p>";
+      body.querySelector("b").textContent = j.title || "your listing";
+      history.replaceState(null, "", location.pathname);
+    } catch {
+      addError("That resume link didn't work — it may be old. Use “My listings ✉” to get fresh links.");
+      welcome();
+    }
+  } else {
+    welcome();
+  }
+  return ensureSession();
+}).then(() => {
   refreshListing();
   refreshAds();
   fetch(API_BASE + "/api/avatar/" + sessionId)
