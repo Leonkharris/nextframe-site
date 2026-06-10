@@ -223,7 +223,8 @@
   <div class="header-actions">
     <button class="pill accent" id="download-pdf" style="display:none">⬇ Listing pack (PDF)</button>
     <button class="pill" id="download-ads" style="display:none">Ad copies (.txt)</button>
-    <button class="pill" id="my-listings">My listings ✉</button>
+    <button class="pill" id="my-listings">My listings</button>
+    <button class="pill" id="signin">Sign in / Register</button>
     <button class="pill" id="new-listing">New listing</button>
     <a class="pill" href="https://next-frame.agency" style="text-decoration:none">next-frame.agency</a>
   </div>
@@ -413,6 +414,19 @@ async function ensureSession() {
   }
 }
 
+function getAccount() {
+  try { return JSON.parse(localStorage.getItem("nf_account") || "null"); } catch { return null; }
+}
+function setAccount(a) {
+  if (a) localStorage.setItem("nf_account", JSON.stringify(a));
+  else localStorage.removeItem("nf_account");
+  updateSigninBtn();
+}
+function updateSigninBtn() {
+  const a = getAccount();
+  $("signin").textContent = a ? ("👤 " + a.email) : "Sign in / Register";
+}
+
 async function freshSession() {
   // If this browser has a finalized listing, restore it via its resume code
   // instead of starting blank.
@@ -432,7 +446,12 @@ async function freshSession() {
       sessionStorage.removeItem("nf_resume");
     } catch {}
   }
-  const res = await fetch(API_BASE + "/api/session", { method: "POST" });
+  const a = getAccount();
+  const res = await fetch(API_BASE + "/api/session", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(a ? { email: a.email, account_token: a.token } : {}),
+  });
   sessionId = (await res.json()).session_id;
   sessionStorage.setItem("nf_session", sessionId);
   return false; // fresh blank session
@@ -882,17 +901,58 @@ function addNote(text) {
   messagesEl.appendChild(div); scrollDown();
 }
 
-$("my-listings").onclick = async () => {
-  const em = window.prompt("Enter the email you used with Sofia — we'll send your listing links there:");
+$("signin").onclick = async () => {
+  const a = getAccount();
+  if (a) {
+    if (window.confirm("Signed in as " + a.email + ". Sign out?")) setAccount(null);
+    return;
+  }
+  const em = window.prompt("Enter your email — we'll send a confirmation link to register or sign in:");
   if (!em || !em.includes("@")) return;
   try {
-    const r = await fetch(API_BASE + "/api/my-listings", {
+    const r = await fetch(API_BASE + "/api/auth/request", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email: em }),
     });
-    const j = await r.json();
-    addNote(j.sent ? "📩 Sent! Check " + em + " for your listing links." : (j.reason || "Could not send right now."));
+    if (r.ok) addNote("📩 Confirmation sent to " + em + " — click the link in your inbox to finish signing in.");
+    else addNote((await r.json()).detail || "Could not send the confirmation email.");
+  } catch {
+    addNote("Could not reach the listings engine.");
+  }
+};
+
+$("my-listings").onclick = async () => {
+  const a = getAccount();
+  if (!a) { addNote("Sign in first — your listings are private to your account."); return; }
+  try {
+    const r = await fetch(API_BASE + "/api/my-listings", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: a.email, account_token: a.token }),
+    });
+    if (r.status === 401) { setAccount(null); addNote("Your sign-in expired — sign in again."); return; }
+    const { entries } = await r.json();
+    const body = addBotMsg();
+    if (!entries || !entries.length) {
+      body.textContent = "No saved listings yet on this account — finish a listing with me and it'll appear here.";
+    } else {
+      const p = document.createElement("p");
+      p.textContent = "Your saved listings:";
+      body.appendChild(p);
+      const ul = document.createElement("ul");
+      for (const e of entries.slice().reverse()) {
+        const li = document.createElement("li");
+        const link = document.createElement("a");
+        link.href = "?resume=" + encodeURIComponent(e.id + "." + e.token);
+        link.textContent = e.title || e.id;
+        li.appendChild(link);
+        li.appendChild(document.createTextNode("  · saved " + (e.saved_at || "")));
+        ul.appendChild(li);
+      }
+      body.appendChild(ul);
+    }
+    scrollDown();
   } catch {
     addNote("Could not reach the listings engine.");
   }
@@ -915,6 +975,28 @@ inputEl.addEventListener("input", () => {
 
 initApiBase().then(async () => {
   initSofiaLoops();
+  updateSigninBtn();
+  // Email confirmation link (?verify=...) — completes registration/sign-in.
+  const verifyToken = new URLSearchParams(location.search).get("verify");
+  if (verifyToken) {
+    try {
+      const r = await fetch(API_BASE + "/api/auth/verify", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ token: verifyToken }),
+      });
+      if (r.ok) {
+        const j = await r.json();
+        setAccount({ email: j.email, token: j.account_token });
+        addNote("✓ Email confirmed — you're signed in as " + j.email + ".");
+      } else {
+        addNote((await r.json()).detail || "That confirmation link is invalid or expired.");
+      }
+    } catch {
+      addNote("Could not verify right now — try the link again shortly.");
+    }
+    history.replaceState(null, "", location.pathname);
+  }
   const code = new URLSearchParams(location.search).get("resume");
   if (code) {
     try {
