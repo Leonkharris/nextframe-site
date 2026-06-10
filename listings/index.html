@@ -398,15 +398,44 @@ function welcome() {
 async function ensureSession() {
   if (sessionId) return sessionId;
   const saved = sessionStorage.getItem("nf_session");
-  if (saved) { sessionId = saved; return sessionId; }
+  if (saved) {
+    // Validate — the engine may have restarted and forgotten it.
+    try {
+      if ((await fetch(API_BASE + "/api/listing/" + saved)).ok) { sessionId = saved; return sessionId; }
+    } catch {}
+    sessionStorage.removeItem("nf_session");
+  }
   try {
-    const res = await fetch(API_BASE + "/api/session", { method: "POST" });
-    sessionId = (await res.json()).session_id;
-    sessionStorage.setItem("nf_session", sessionId);
+    await freshSession();
     return sessionId;
   } catch {
     throw new Error("Sofia is offline right now — the listings engine isn't reachable. Please try again later.");
   }
+}
+
+async function freshSession() {
+  // If this browser has a finalized listing, restore it via its resume code
+  // instead of starting blank.
+  const code = sessionStorage.getItem("nf_resume");
+  if (code) {
+    try {
+      const r = await fetch(API_BASE + "/api/resume", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ resume: code }),
+      });
+      if (r.ok) {
+        sessionId = (await r.json()).session_id;
+        sessionStorage.setItem("nf_session", sessionId);
+        return true; // fully restored
+      }
+      sessionStorage.removeItem("nf_resume");
+    } catch {}
+  }
+  const res = await fetch(API_BASE + "/api/session", { method: "POST" });
+  sessionId = (await res.json()).session_id;
+  sessionStorage.setItem("nf_session", sessionId);
+  return false; // fresh blank session
 }
 
 async function send(text) {
@@ -420,15 +449,21 @@ async function send(text) {
   let bodyEl = null, buffer = "", acc = "";
   try {
     await ensureSession();
-    const res = await fetch(API_BASE + "/api/chat", {
+    const postChat = () => fetch(API_BASE + "/api/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ session_id: sessionId, message: text.trim() }),
     });
+    let res = await postChat();
     if (res.status === 404) {
+      // Engine restarted and forgot this session — recover silently and retry.
       sessionStorage.removeItem("nf_session"); sessionId = null;
-      addError("Session expired — starting a fresh one. Please resend your message.");
-      return;
+      const restored = await freshSession();
+      if (!restored && messagesEl.children.length > 2) {
+        addNote("(The engine restarted — Sofia may have lost this chat's earlier context.)");
+      }
+      refreshListing(); refreshAds();
+      res = await postChat();
     }
     if (!res.ok) throw new Error("Request failed (" + res.status + ")");
 
@@ -607,8 +642,9 @@ async function refreshListing() {
   try {
     const res = await fetch(API_BASE + "/api/listing/" + sessionId);
     if (!res.ok) return;
-    const { listing, missing_core_fields } = await res.json();
+    const { listing, missing_core_fields, resume } = await res.json();
     lastListing = listing;
+    if (resume) sessionStorage.setItem("nf_resume", resume);
 
     const captured = Math.max(0, CORE_TOTAL - missing_core_fields.length);
     $("vetted-label").textContent = captured + "/" + CORE_TOTAL + " vetted";
@@ -834,6 +870,7 @@ $("download-ads").onclick = () => {
 };
 $("new-listing").onclick = () => {
   sessionStorage.removeItem("nf_session");
+  sessionStorage.removeItem("nf_resume");
   location.reload();
 };
 
@@ -890,6 +927,7 @@ initApiBase().then(async () => {
       const j = await r.json();
       sessionId = j.session_id;
       sessionStorage.setItem("nf_session", sessionId);
+      sessionStorage.setItem("nf_resume", code);
       const body = addBotMsg();
       body.innerHTML = "<p>Welcome back! I’ve reopened <b></b> — the full record, pricing, and ad " +
                        "copies are loaded on the right. Tell me what to update, or ask for fresh comps.</p>";
