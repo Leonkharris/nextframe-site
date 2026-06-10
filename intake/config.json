@@ -1,0 +1,4 @@
+{
+  "apiBase": "",
+  "note": "Set apiBase to the public tunnel URL of the local command center (e.g. https://xyz.trycloudflare.com). When empty or unreachable, the intake page falls back to the Messenger CTA, which lands in the same lead queue via the engagement collector."
+}

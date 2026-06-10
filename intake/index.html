@@ -1,0 +1,230 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Free AI Marketing Audit | Next-Frame.Agency</title>
+<meta name="description" content="Send Next-Frame.Agency the page, offer, or content workflow that needs cleanup. Get a free AI marketing audit within 24 hours." />
+<style>
+  :root {
+    --bg: #07090d;
+    --panel: #0e1219;
+    --line: #1d2533;
+    --text: #e8edf5;
+    --muted: #93a0b4;
+    --accent: #29e0a9;
+    --accent-dim: #0f8f6a;
+    --danger: #ff6b6b;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px 16px;
+  }
+  .card {
+    width: 100%;
+    max-width: 560px;
+    background: var(--panel);
+    border: 1px solid var(--line);
+    border-radius: 14px;
+    padding: 28px;
+  }
+  .brand {
+    font-size: 13px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 14px;
+  }
+  h1 { font-size: 26px; line-height: 1.2; margin-bottom: 10px; }
+  .sub { color: var(--muted); font-size: 15px; line-height: 1.5; margin-bottom: 20px; }
+  ul.points { list-style: none; margin-bottom: 22px; }
+  ul.points li { padding-left: 22px; position: relative; color: var(--muted); font-size: 14px; line-height: 1.7; }
+  ul.points li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); }
+  label { display: block; font-size: 13px; color: var(--muted); margin: 14px 0 6px; }
+  input, textarea {
+    width: 100%;
+    background: #0a0e14;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    color: var(--text);
+    padding: 11px 12px;
+    font-size: 15px;
+    font-family: inherit;
+  }
+  input:focus, textarea:focus { outline: none; border-color: var(--accent-dim); }
+  textarea { min-height: 96px; resize: vertical; }
+  .hp { position: absolute; left: -9999px; opacity: 0; height: 0; overflow: hidden; }
+  button {
+    width: 100%;
+    margin-top: 20px;
+    background: var(--accent);
+    color: #04261b;
+    border: none;
+    border-radius: 8px;
+    padding: 14px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+  }
+  button:disabled { opacity: 0.6; cursor: wait; }
+  .note { margin-top: 12px; font-size: 12px; color: var(--muted); text-align: center; }
+  .panel { display: none; margin-top: 18px; border-radius: 10px; padding: 16px; font-size: 14px; line-height: 1.6; }
+  .panel.ok { background: rgba(41, 224, 169, 0.08); border: 1px solid var(--accent-dim); }
+  .panel.fallback { background: rgba(255, 184, 76, 0.06); border: 1px solid #6b5524; }
+  .panel a.msgr {
+    display: inline-block;
+    margin-top: 10px;
+    background: #0084ff;
+    color: #fff;
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 18px;
+    font-weight: 600;
+  }
+  .err { color: var(--danger); font-size: 13px; margin-top: 10px; display: none; }
+</style>
+</head>
+<body>
+<main class="card">
+  <div class="brand">Next-Frame.Agency</div>
+  <h1>Get a free AI marketing audit</h1>
+  <p class="sub">Tell us about your page, offer, or content workflow. We reply within 24 hours with a concrete mini-audit — what is leaking, what to fix first, and what an AI content system would change.</p>
+  <ul class="points">
+    <li>Built for Philippine businesses — real estate, hospitality, local brands</li>
+    <li>No retainers required to get the audit. It is free, and it is useful on its own.</li>
+    <li>Run by an AI-first content system, reviewed by a human before anything ships</li>
+  </ul>
+
+  <form id="intakeForm" novalidate>
+    <label for="name">Your name *</label>
+    <input id="name" name="name" type="text" required autocomplete="name" placeholder="Maria Santos" />
+
+    <label for="contact">Email, phone, or Facebook profile link *</label>
+    <input id="contact" name="contact" type="text" required autocomplete="email" placeholder="you@business.com or 09xx xxx xxxx" />
+
+    <label for="pageUrl">Your business page or website (optional)</label>
+    <input id="pageUrl" name="pageUrl" type="url" placeholder="https://facebook.com/yourpage" />
+
+    <label for="need">What needs fixing or growing? *</label>
+    <textarea id="need" name="need" required placeholder="Example: our condo listings get likes but no inquiries, and we post manually twice a week."></textarea>
+
+    <div class="hp" aria-hidden="true">
+      <label for="companyWebsite">Company website</label>
+      <input id="companyWebsite" name="companyWebsite" type="text" tabindex="-1" autocomplete="off" />
+    </div>
+
+    <button id="submitBtn" type="submit">Request my free audit</button>
+    <div id="formErr" class="err"></div>
+    <p class="note">No spam, no obligation. Your details go straight to our lead desk.</p>
+  </form>
+
+  <div id="okPanel" class="panel ok">
+    <strong>Got it — your audit request is in.</strong><br />
+    We will reply within 24 hours. If it is urgent, message the page directly:
+    <br /><a class="msgr" id="okMsgr" href="https://m.me/61563680191093" rel="noopener">Open Messenger</a>
+  </div>
+
+  <div id="fbPanel" class="panel fallback">
+    <strong>Our intake desk is briefly offline — but you can still reach us right now.</strong><br />
+    Tap below and send your request through Messenger. Your message lands in the same lead queue.
+    <br /><a class="msgr" id="fbMsgr" href="https://m.me/61563680191093" rel="noopener">Send via Messenger</a>
+  </div>
+</main>
+
+<script>
+(function () {
+  var qs = new URLSearchParams(location.search);
+  var SOURCE = qs.get("source") || "WebsiteIntake";
+  var OFFER = qs.get("offer") || "AI audit lead magnet";
+  if (qs.get("need")) document.getElementById("need").value = qs.get("need");
+
+  // API base resolution: ?api= override -> localStorage -> same-origin config.json
+  var apiOverride = qs.get("api");
+  if (apiOverride) {
+    try { localStorage.setItem("nf_intake_api", apiOverride); } catch (e) {}
+  }
+
+  function getApiBase() {
+    if (apiOverride) return Promise.resolve(apiOverride);
+    var stored = null;
+    try { stored = localStorage.getItem("nf_intake_api"); } catch (e) {}
+    if (stored) return Promise.resolve(stored);
+    return fetch("config.json", { cache: "no-store" })
+      .then(function (r) { return r.ok ? r.json() : {}; })
+      .then(function (cfg) { return (cfg && cfg.apiBase) || ""; })
+      .catch(function () { return ""; });
+  }
+
+  var form = document.getElementById("intakeForm");
+  var btn = document.getElementById("submitBtn");
+  var err = document.getElementById("formErr");
+
+  function showPanel(id) {
+    form.style.display = "none";
+    document.getElementById(id).style.display = "block";
+  }
+
+  function buildMessengerHref() {
+    return "https://m.me/61563680191093";
+  }
+  document.getElementById("okMsgr").href = buildMessengerHref();
+  document.getElementById("fbMsgr").href = buildMessengerHref();
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    err.style.display = "none";
+
+    var name = document.getElementById("name").value.trim();
+    var contact = document.getElementById("contact").value.trim();
+    var pageUrl = document.getElementById("pageUrl").value.trim();
+    var needText = document.getElementById("need").value.trim();
+    var honeypot = document.getElementById("companyWebsite").value.trim();
+
+    if (!name || !contact || !needText) {
+      err.textContent = "Please fill in your name, contact, and what needs fixing.";
+      err.style.display = "block";
+      return;
+    }
+
+    var need = pageUrl ? needText + " | Page: " + pageUrl : needText;
+    btn.disabled = true;
+    btn.textContent = "Sending...";
+
+    getApiBase().then(function (apiBase) {
+      if (!apiBase) throw new Error("no-api");
+      var controller = new AbortController();
+      var timer = setTimeout(function () { controller.abort(); }, 8000);
+      return fetch(apiBase.replace(/\/$/, "") + "/api/leads", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name,
+          contact: contact,
+          source: SOURCE,
+          offer: OFFER,
+          need: need,
+          companyWebsite: honeypot
+        }),
+        signal: controller.signal
+      }).then(function (res) {
+        clearTimeout(timer);
+        if (!res.ok) throw new Error("bad-status");
+        return res.json();
+      });
+    }).then(function () {
+      showPanel("okPanel");
+    }).catch(function () {
+      showPanel("fbPanel");
+    });
+  });
+})();
+</script>
+</body>
+</html>
