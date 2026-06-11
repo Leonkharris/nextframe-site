@@ -216,6 +216,9 @@
     <h1>Listings Engine</h1>
   </div>
   <div class="header-actions">
+    <button class="pill" id="health-pill" title="Engine status — click for details">
+      <span id="health-dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#555;margin-right:7px;vertical-align:1px"></span><span id="health-text">checking…</span>
+    </button>
     <button class="pill accent" id="download-pdf" style="display:none">⬇ Listing pack (PDF)</button>
     <button class="pill" id="download-ads" style="display:none">Ad copies (.txt)</button>
     <button class="pill" id="my-listings">My listings</button>
@@ -1176,6 +1179,43 @@ $("float-min").onclick = openChat;
   window.addEventListener("touchend", up);
 })();
 
+/* ---------- engine health light ---------- */
+let lastHealth = null;
+function setHealthUI(color, text) {
+  $("health-dot").style.background = color;
+  $("health-text").textContent = text;
+}
+async function pollHealth() {
+  try {
+    const ctrl = new AbortController();
+    const to = setTimeout(() => ctrl.abort(), 12000);
+    const r = await fetch(API_BASE + "/api/health?_=" + Date.now(), { signal: ctrl.signal, cache: "no-store" });
+    clearTimeout(to);
+    if (!r.ok) throw new Error(r.status);
+    lastHealth = await r.json();
+    if (lastHealth.status === "ok") setHealthUI("var(--emerald)", "Sofia is live");
+    else setHealthUI("var(--amber)", "Recovering…");
+  } catch {
+    lastHealth = null;
+    setHealthUI("var(--red)", "Engine waking up…");
+    // Poke it — a request is what wakes a sleeping Space.
+    fetch(API_BASE + "/api/health").catch(() => {});
+  }
+}
+$("health-pill").onclick = () => {
+  openChat();
+  if (!lastHealth) {
+    addNote("Engine unreachable right now — it auto-restarts and usually returns within ~2 minutes. Your listing is saved.");
+    return;
+  }
+  const c = lastHealth.checks || {};
+  const fmt = (k, label) => c[k] ? label + ": " + (c[k].ok ? "OK" : "issue (" + (c[k].detail || "") + ")") + " · " + Math.round(c[k].age_s / 60) + "m ago" : label + ": no activity yet";
+  addNote("Engine: " + lastHealth.status.toUpperCase() +
+    " · up " + Math.round(lastHealth.uptime_s / 60) + "m · " + lastHealth.turns_served + " turns | " +
+    fmt("brain", "AI") + " | " + fmt("voice", "Voice") + " | " + fmt("storage", "Storage"));
+};
+setInterval(pollHealth, 60000);
+
 /* ---------- composer ---------- */
 formEl.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -1201,6 +1241,7 @@ if (localStorage.getItem("nf_chat_min") === "1") {
 initApiBase().then(async () => {
   initSofiaLoops();
   updateSigninBtn();
+  pollHealth();
   const verifyToken = new URLSearchParams(location.search).get("verify");
   if (verifyToken) {
     try {

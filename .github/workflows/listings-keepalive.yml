@@ -1,0 +1,43 @@
+name: Listings bot keepalive
+
+on:
+  schedule:
+    - cron: "*/30 * * * *"   # every 30 minutes — keeps the Space awake
+  workflow_dispatch: {}       # manual run button
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Health check
+        id: health
+        run: |
+          code=$(curl -s -m 45 -o /tmp/health.json -w "%{http_code}" \
+            "https://nextframe-ai-listings-bot.hf.space/api/health" || echo 000)
+          echo "HTTP $code"
+          cat /tmp/health.json 2>/dev/null || true
+          if [ "$code" = "200" ]; then
+            echo "Engine healthy."
+            exit 0
+          fi
+          echo "Engine unreachable (HTTP $code)."
+          exit 1
+
+      - name: Auto-restart the Space
+        if: failure()
+        env:
+          HF_TOKEN: ${{ secrets.HF_LISTINGS_TOKEN }}
+        run: |
+          if [ -z "$HF_TOKEN" ]; then
+            echo "No HF_LISTINGS_TOKEN secret set — cannot auto-restart. Add it in repo Settings > Secrets."
+            exit 1
+          fi
+          echo "Requesting Space restart..."
+          curl -s -X POST -H "Authorization: Bearer $HF_TOKEN" \
+            "https://huggingface.co/api/spaces/NextFrame-ai/listings-bot/restart"
+          echo "Waiting 120s for the rebuild..."
+          sleep 120
+          code=$(curl -s -m 45 -o /dev/null -w "%{http_code}" \
+            "https://nextframe-ai-listings-bot.hf.space/api/health" || echo 000)
+          echo "Post-restart health: HTTP $code"
+          [ "$code" = "200" ]
