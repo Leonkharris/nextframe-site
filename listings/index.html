@@ -953,7 +953,9 @@ $("photo-input").addEventListener("change", async (e) => {
   for (const f of files) fd.append("files", f);
   $("photo-upload-btn").textContent = "Uploading…";
   try {
-    await fetch(API_BASE + "/api/photos/" + sessionId, { method: "POST", body: fd });
+    const r = await fetch(API_BASE + "/api/photos/" + sessionId, { method: "POST", body: fd });
+    const j = await r.json();
+    if (j.rejected) addNote(j.rejected + " photo(s) were rejected (too large or failed the safety check).");
     refreshListing();
   } catch { addNote("Upload failed — try smaller images."); }
   $("photo-upload-btn").textContent = "📎 Upload photos";
@@ -966,10 +968,10 @@ $("photo-suggest-btn").onclick = async () => {
   grid.innerHTML = '<p class="empty-note">Searching for photos…</p>';
   try {
     const r = await fetch(API_BASE + "/api/photo-suggestions/" + sessionId);
-    const { suggestions, query } = await r.json();
+    const { suggestions, query, note } = await r.json();
     grid.innerHTML = "";
     if (!suggestions.length) {
-      grid.innerHTML = '<p class="empty-note">No photos found' + (query ? ' for "' + query + '"' : " — tell Sofia the building name first") + ".</p>";
+      grid.innerHTML = '<p class="empty-note">' + (note || ("No safe photos found" + (query ? ' for "' + query + '"' : " — tell Sofia the building name first")) + ".") + "</p>";
       return;
     }
     const note = document.createElement("p");
