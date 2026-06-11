@@ -625,7 +625,13 @@ async function send(text) {
     }
     pollAvatar(Date.now() + 4 * 60 * 1000);
   } catch (err) {
-    addError(err.message.startsWith("Sofia is offline") ? err.message : "Connection problem: " + err.message);
+    if (err.message.startsWith("Sofia is offline")) {
+      addError(err.message);
+    } else if (/fetch|network/i.test(err.message)) {
+      addError("Sofia's engine is restarting or waking up — give it a minute, then resend your message. Nothing was lost.");
+    } else {
+      addError("Connection problem: " + err.message);
+    }
   } finally {
     setStatus("");
     streaming = false;
