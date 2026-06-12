@@ -354,43 +354,59 @@ let lastListing = {};
 function php(n) { return "₱" + Number(n).toLocaleString(); }
 function ordinal(n) { const j = n % 10, k = n % 100; return n + (j===1&&k!==11?"st":j===2&&k!==12?"nd":j===3&&k!==13?"rd":"th"); }
 
-const QUESTIONS = [
-  { n: 1,  label: "Specific address — as written on the CCT/Title", short: "Address",
-    get: L => L.address || null },
-  { n: 2,  label: "Neighborhood — nearest hospital, restaurants, schools, supermarkets", short: "Neighborhood", research: true,
-    get: L => (L.landmarks && L.landmarks.length) ? L.landmarks.length + " landmarks mapped (see preview)" : null },
-  { n: 3,  label: "Floor of the unit — and its zone (low / mid / high)", short: "Floor & zone", research: true,
-    get: L => L.floor_number ? ordinal(L.floor_number) + " floor" + (L.floor_zone ? " · " + L.floor_zone + " zone" : "") : null },
-  { n: 4,  label: "View and orientation — what it faces and which direction", short: "View & facing",
-    get: L => [L.view, L.orientation].filter(Boolean).join(" · ") || null },
-  { n: 5,  label: "Developer — plus year built and year turned over", short: "Developer & years", research: true,
-    get: L => L.developer ? [L.developer, L.year_built && "built " + L.year_built, L.year_turned_over && "turned over " + L.year_turned_over].filter(Boolean).join(" · ") : null },
-  { n: 6,  label: "Floor area in sqm", short: "Floor area",
-    get: L => L.floor_area_sqm ? L.floor_area_sqm + " sqm" : null },
-  { n: 7,  label: "Bedroom type — studio / 1BR / 2BR / 3BR / penthouse / villa", short: "Bedroom type",
-    get: L => L.bedroom_type || null },
-  { n: 8,  label: "Furnishing — fully furnished, semi furnished, or bare", short: "Furnishing",
-    get: L => L.furnishing || null },
-  { n: 9,  label: "Maid's room or utility room?", short: "Maid's room",
-    get: L => L.maids_room === undefined ? null : (L.maids_room ? "Yes" : "No") },
-  { n: 10, label: "Parking — slots, tandem/separate, included?", short: "Parking",
-    get: L => L.parking_slots === undefined ? null : (L.parking_slots + " slot(s)" + (L.parking_notes ? " — " + L.parking_notes : "")) },
-  { n: 11, label: "Title under an individual or a corporation?", short: "Title holder",
-    get: L => L.title_holder || null },
-  { n: 12, label: "Currently rented to a tenant?", short: "Tenancy",
-    get: L => L.tenanted === undefined ? null : (L.tenanted ? "Yes" + (L.tenancy_details ? " — " + L.tenancy_details : "") : "No") },
-  { n: 13, label: "Asking price — yours, or Sofia proposes one from live comps", short: "Price", research: true,
-    get: L => { const p = L.asking_price_php || L.suggested_price_php;
-                return p ? php(p) + (!L.asking_price_php ? " (suggested from comps)" : "") : null; } },
-];
+let QDEFS = [];       // loaded from the engine — matches the property type
+let qdefsType = null;
+
+async function loadQuestions() {
+  if (!sessionId) return;
+  try {
+    const r = await fetch(API_BASE + "/api/questions/" + sessionId);
+    if (!r.ok) return;
+    const j = await r.json();
+    QDEFS = j.questions || [];
+    qdefsType = j.property_type;
+  } catch { /* keep whatever we have */ }
+}
+
+function fieldVal(L, f) {
+  const v = L[f];
+  if (v === undefined || v === null || v === "") return null;
+  if (Array.isArray(v)) return v.length ? v : null;
+  return v;
+}
+function fmtField(f, v) {
+  if (Array.isArray(v)) return v.length + " mapped";
+  if (typeof v === "boolean") return v ? "Yes" : "No";
+  if (f.endsWith("_php")) return php(v) + (f === "current_income_php" ? "/mo" : "");
+  if (f === "floor_number") return ordinal(v) + " floor";
+  if (f === "building_total_floors") return "of " + v;
+  if (f === "floor_zone") return v + " zone";
+  if (f.endsWith("_sqm")) return v + " sqm";
+  if (f === "frontage_m") return v + " m frontage";
+  if (f === "year_built") return "built " + v;
+  if (f === "year_turned_over") return "turned over " + v;
+  return String(v);
+}
+function qDone(L, q) { return q.done_any.some(f => fieldVal(L, f) !== null); }
+function qValue(L, q) {
+  const shown = q.fields.concat(q.done_any.filter(d => !q.fields.includes(d)));
+  const parts = [];
+  for (const f of shown) {
+    const v = fieldVal(L, f);
+    if (v !== null) parts.push(fmtField(f, v));
+  }
+  return parts.length ? parts.join(" · ") : "Provided";
+}
 
 function renderChecklist(L) {
   const wrap = $("checklist");
   wrap.innerHTML = "";
   let answered = 0;
-  for (const q of QUESTIONS) {
-    const value = q.get(L);
+  for (const q of QDEFS) {
+    const done = qDone(L, q);
+    const value = done ? qValue(L, q) : null;
     if (value) answered++;
+    const plainAsk = (q.ask || "").replace(/\*\*/g, "");
     const item = document.createElement("div");
     item.className = "q-item" + (value ? " done" : "");
     const num = document.createElement("div");
@@ -398,7 +414,7 @@ function renderChecklist(L) {
     const body = document.createElement("div");
     body.className = "q-body";
     const lab = document.createElement("div");
-    lab.className = "q-label"; lab.textContent = q.n + ". " + q.label;
+    lab.className = "q-label"; lab.textContent = q.n + ". " + plainAsk;
     const val = document.createElement("div");
     val.className = "q-value" + (value ? "" : " q-pending");
     val.textContent = value || "Not answered yet";
@@ -414,7 +430,7 @@ function renderChecklist(L) {
       if (q.research) {
         const r = document.createElement("button");
         r.className = "q-btn research"; r.textContent = "🔍 Sofia, fill this gap";
-        r.onclick = () => { openChat(); send("Please research Q" + q.n + " — " + q.label + " — for this listing and update the record."); };
+        r.onclick = () => { openChat(); send("Please research Q" + q.n + " — " + plainAsk + " — for this listing and update the record."); };
         actions.appendChild(r);
       }
     } else {
@@ -427,8 +443,9 @@ function renderChecklist(L) {
     item.appendChild(num); item.appendChild(body);
     wrap.appendChild(item);
   }
-  $("vetted-label").textContent = answered + "/13 answered";
-  $("progress-bar").style.width = (answered / 13 * 100) + "%";
+  const total = QDEFS.length || 13;
+  $("vetted-label").textContent = answered + "/" + total + " answered" + (qdefsType && qdefsType !== "condo" ? " · " + qdefsType : "");
+  $("progress-bar").style.width = (answered / total * 100) + "%";
 }
 
 function renderMore(L) {
@@ -780,6 +797,10 @@ async function refreshListing(retried) {
     const { listing, resume, photos } = await res.json();
     lastListing = listing;
     if (resume) sessionStorage.setItem("nf_resume", resume);
+    // (Re)load the question set when the property type changes or first load.
+    if (!QDEFS.length || (listing.property_type || "condo") !== qdefsType) {
+      await loadQuestions();
+    }
     renderChecklist(listing);
     renderMore(listing);
     renderComps(listing);
@@ -974,10 +995,10 @@ $("photo-suggest-btn").onclick = async () => {
       grid.innerHTML = '<p class="empty-note">' + (note || ("No safe photos found" + (query ? ' for "' + query + '"' : " — tell Sofia the building name first")) + ".") + "</p>";
       return;
     }
-    const note = document.createElement("p");
-    note.className = "empty-note";
-    note.textContent = "Tap a photo to add it (reference photos — verify rights before posting):";
-    grid.appendChild(note);
+    const noteEl = document.createElement("p");
+    noteEl.className = "empty-note";
+    noteEl.textContent = "Tap a photo to add it (reference photos — verify rights before posting):";
+    grid.appendChild(noteEl);
     const row = document.createElement("div");
     row.style.cssText = "display:flex;gap:8px;flex-wrap:wrap";
     for (const s of suggestions) {
