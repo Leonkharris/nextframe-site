@@ -247,6 +247,7 @@ function Hero({ onPlay }) {
           <a href="#system">Growth Engine</a>
           <a href="#pipeline">Pipeline</a>
           <a href="#brief">Brief</a>
+          <a href="/intake/">Free Audit</a>
         </div>
         <a className="nav-cta" href="#menu">
           Find package <ArrowRight size={16} />
@@ -268,7 +269,8 @@ function Hero({ onPlay }) {
         <a href="/logo-design/" onClick={closeMobileMenu}>Logo Design</a>
         <a href="#system" onClick={closeMobileMenu}>Growth Engine</a>
         <a href="#pipeline" onClick={closeMobileMenu}>Pipeline</a>
-          <a href="#brief" onClick={closeMobileMenu}>Brief</a>
+        <a href="#brief" onClick={closeMobileMenu}>Brief</a>
+        <a href="/intake/" onClick={closeMobileMenu}>Free Audit</a>
       </div>
 
       <div className="hero-grid">
@@ -290,6 +292,7 @@ function Hero({ onPlay }) {
             <a href="#quick-content-video" aria-label="Jump to Quick Content Video package">Quick Content Video</a>
             <a href="#hero-sales-video" aria-label="Jump to Hero Sales Video package">Hero Sales Video</a>
             <a href="#monthly-growth-engine" aria-label="Jump to Monthly Growth Engine package">Monthly Growth Engine</a>
+            <a href="/intake/" aria-label="Request a free AI marketing audit">Free AI Audit</a>
           </div>
           <div className="service-strip" aria-label="Highlighted services">
             <a href="#custom-music-service" aria-label="Jump to Custom Music service">Custom Music - PHP 5K</a>
@@ -536,7 +539,65 @@ function InternalPipeline() {
   );
 }
 
+const MESSENGER_URL = "https://m.me/61563680191093";
+
 function BriefSection() {
+  const [status, setStatus] = useState("idle");
+  const [briefText, setBriefText] = useState("");
+  const [copied, setCopied] = useState(false);
+
+  async function submitBrief(event) {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const name = String(data.get("name") || "").trim();
+    const contact = String(data.get("contact") || "").trim();
+    const business = String(data.get("business") || "").trim();
+    const level = String(data.get("level") || "").trim();
+    const need = String(data.get("need") || "").trim();
+    if (!name || !contact || !need) {
+      setStatus("error");
+      return;
+    }
+
+    const summary = [
+      level ? `Package: ${level}` : "",
+      business ? `Business: ${business}` : "",
+      `Goal: ${need}`
+    ]
+      .filter(Boolean)
+      .join(" | ");
+    setBriefText(`Hi Next-Frame — I'm ${name} (${contact}). ${summary}`);
+    setStatus("sending");
+
+    try {
+      const cfg = await fetch("/intake/config.json", { cache: "no-store" })
+        .then((res) => (res.ok ? res.json() : {}))
+        .catch(() => ({}));
+      const apiBase = (cfg && cfg.apiBase) || "";
+      if (!apiBase) throw new Error("no-api");
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 8000);
+      const res = await fetch(`${apiBase.replace(/\/$/, "")}/api/leads`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ name, contact, source: "WebsiteBrief", offer: level || "Website brief", need: summary }),
+        signal: controller.signal
+      });
+      clearTimeout(timer);
+      if (!res.ok) throw new Error("bad-status");
+      setStatus("ok");
+    } catch {
+      setStatus("fallback");
+    }
+  }
+
+  function copyBrief() {
+    navigator.clipboard
+      .writeText(briefText)
+      .then(() => setCopied(true))
+      .catch(() => setCopied(false));
+  }
+
   return (
     <section className="brief-section" id="brief">
       <div className="brief-card">
@@ -546,23 +607,49 @@ function BriefSection() {
             Share the offer, target buyer, deadline, and level you want. We will recommend the simplest build that gets
             the job done.
           </p>
+          <p className="brief-alt">
+            Not sure yet? <a href="/intake/">Start with the free AI marketing audit</a> — useful on its own, no
+            obligation.
+          </p>
         </div>
-        <form>
-          <input placeholder="Name" />
-          <input placeholder="Business / project" />
-          <select defaultValue="">
-            <option value="" disabled>What level do you need?</option>
-            <option>Quick Content Video</option>
-            <option>Hero Sales Video</option>
-            <option>Monthly Growth Engine</option>
-            <option>Custom Music - PHP 5K</option>
-            <option>Website Redesign - PHP 5K+</option>
-          </select>
-          <textarea placeholder="What do people need to do after watching?" />
-          <button type="button">
-            Send my brief <ArrowRight size={16} />
-          </button>
-        </form>
+        {status === "ok" ? (
+          <div className="brief-panel ok">
+            <strong>Got it — your brief is in.</strong>
+            <p>We reply within 24 hours. If it is urgent, message the page directly:</p>
+            <a href={MESSENGER_URL} rel="noopener">Open Messenger</a>
+          </div>
+        ) : status === "fallback" ? (
+          <div className="brief-panel fallback">
+            <strong>Our intake desk is briefly offline — send it through Messenger instead.</strong>
+            <p>Your brief is ready to paste:</p>
+            <pre>{briefText}</pre>
+            <div className="brief-panel-actions">
+              <button type="button" onClick={copyBrief}>{copied ? "Copied!" : "Copy brief"}</button>
+              <a href={MESSENGER_URL} rel="noopener">Open Messenger</a>
+            </div>
+          </div>
+        ) : (
+          <form onSubmit={submitBrief} noValidate>
+            <input name="name" placeholder="Name *" autoComplete="name" required />
+            <input name="contact" placeholder="Email, phone, or Facebook link *" autoComplete="email" required />
+            <input name="business" placeholder="Business / project" />
+            <select name="level" defaultValue="">
+              <option value="" disabled>What level do you need?</option>
+              <option>Quick Content Video</option>
+              <option>Hero Sales Video</option>
+              <option>Monthly Growth Engine</option>
+              <option>Custom Music - PHP 5K</option>
+              <option>Website Redesign - PHP 5K+</option>
+            </select>
+            <textarea name="need" placeholder="What do people need to do after watching? *" required />
+            {status === "error" && (
+              <p className="brief-error">Please fill in your name, a way to reach you, and what the video should do.</p>
+            )}
+            <button type="submit" disabled={status === "sending"}>
+              {status === "sending" ? "Sending..." : "Send my brief"} <ArrowRight size={16} />
+            </button>
+          </form>
+        )}
       </div>
     </section>
   );
