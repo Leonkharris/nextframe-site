@@ -1390,6 +1390,89 @@ button {
   color: var(--paper);
 }
 
+.brief-card button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
+
+.brief-alt {
+  font-size: 15px;
+}
+
+.brief-alt a {
+  color: #151515;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.brief-error {
+  color: #b03030;
+  font-size: 14px;
+  margin: 0;
+}
+
+.brief-panel {
+  border-radius: 18px;
+  padding: 22px;
+  display: grid;
+  gap: 12px;
+  align-content: start;
+}
+
+.brief-panel.ok {
+  background: rgba(31, 138, 96, 0.1);
+  border: 1px solid rgba(31, 138, 96, 0.45);
+}
+
+.brief-panel.fallback {
+  background: rgba(176, 120, 32, 0.08);
+  border: 1px solid rgba(176, 120, 32, 0.4);
+}
+
+.brief-panel strong {
+  font-size: 17px;
+}
+
+.brief-panel p {
+  margin-top: 0;
+}
+
+.brief-panel pre {
+  white-space: pre-wrap;
+  word-break: break-word;
+  font-family: inherit;
+  font-size: 14px;
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid var(--line-dark);
+  border-radius: 12px;
+  padding: 14px;
+  color: #151515;
+}
+
+.brief-panel a {
+  display: inline-block;
+  background: #0084ff;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 12px;
+  padding: 12px 20px;
+  font-weight: 600;
+  justify-self: start;
+}
+
+.brief-panel-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.brief-panel-actions button {
+  border-radius: 12px;
+  padding: 12px 20px;
+  min-height: 0;
+}
+
 footer {
   display: flex;
   align-items: center;
