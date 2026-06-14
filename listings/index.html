@@ -158,6 +158,16 @@
     background: rgba(12, 14, 21, 0.95); border: 1px solid var(--panel-border);
     border-radius: 16px; backdrop-filter: blur(18px);
     box-shadow: 0 20px 70px rgba(0,0,0,0.6); overflow: hidden;
+    /* Resizable: drag the bottom-right grip; drag the title bar to move. */
+    resize: both; min-width: 300px; min-height: 340px; max-width: 96vw; max-height: 94vh;
+  }
+  /* Visible resize affordance in the corner */
+  .float-chat::after {
+    content: ""; position: absolute; right: 2px; bottom: 2px; width: 14px; height: 14px;
+    pointer-events: none; opacity: 0.5;
+    background:
+      linear-gradient(135deg, transparent 6px, var(--muted) 6px, var(--muted) 7px, transparent 7px),
+      linear-gradient(135deg, transparent 10px, var(--muted) 10px, var(--muted) 11px, transparent 11px);
   }
   .drag-bar { cursor: grab; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border-bottom: 1px solid var(--panel-border); user-select: none; background: rgba(255,255,255,0.02); }
   .drag-bar:active { cursor: grabbing; }
@@ -1278,7 +1288,25 @@ $("float-min").onclick = openChat;
       el.style.top = Math.min(saved.t, window.innerHeight - 100) + "px";
       el.style.right = "auto"; el.style.bottom = "auto";
     }
+    const sz = JSON.parse(localStorage.getItem("nf_chat_size") || "null");
+    if (sz && window.innerWidth > 700) {
+      el.style.width = Math.min(sz.w, window.innerWidth * 0.96) + "px";
+      el.style.height = Math.min(sz.h, window.innerHeight * 0.94) + "px";
+    }
   } catch {}
+  // Persist the user's chosen size (CSS `resize` handle) across visits.
+  if (window.ResizeObserver) {
+    let szT;
+    new ResizeObserver(() => {
+      clearTimeout(szT);
+      szT = setTimeout(() => {
+        if (window.innerWidth > 700) {
+          localStorage.setItem("nf_chat_size",
+            JSON.stringify({ w: el.offsetWidth, h: el.offsetHeight }));
+        }
+      }, 300);
+    }).observe(el);
+  }
   function down(e) {
     if (window.innerWidth <= 700 || e.target.closest("button")) return;
     dragging = true;
