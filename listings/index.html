@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NextFrame Listings Engine</title>
 <meta name="description" content="Sofia walks the 13-point condo checklist with you — answers what you know, researches what you don't, and produces the listing pack, ad copies, and ad image." />
+<!-- PWA: installable on phone via Add to Home Screen (assets live beside this file) -->
+<link rel="manifest" href="manifest.webmanifest" />
+<meta name="theme-color" content="#0b0d12" />
+<link rel="apple-touch-icon" href="icon-180.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+<meta name="apple-mobile-web-app-title" content="NF Listings" />
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
 <style>
@@ -284,7 +292,8 @@
     <p class="kicker">NextFrame PH Real Estate Engine</p>
     <h1>Listings Engine</h1>
   </div>
-  <button class="pill accent" id="save-listing" style="margin-right:auto; margin-left:4px" title="Save this listing to your listings">💾 Save</button>
+  <button class="pill accent" id="save-listing" style="margin-left:4px" title="Save this listing to your listings">💾 Save</button>
+  <button class="pill" id="publish-listing" style="margin-right:auto" title="Publish this listing to the AgencyPH website">🌐 Publish to site</button>
   <div class="header-actions">
     <button class="pill" id="health-pill" title="Engine status — click for details">
       <span id="health-dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#555;margin-right:7px;vertical-align:1px"></span><span id="health-text">checking…</span>
@@ -293,6 +302,7 @@
     <button class="pill" id="download-ads" style="display:none">Ad copies (.txt)</button>
     <button class="pill" id="my-listings">My listings</button>
     <button class="pill" id="signin">Sign in / Register</button>
+    <button class="pill accent" id="install-app" style="display:none" title="Install this as an app on your phone">📲 Install app</button>
     <button class="pill" id="new-listing">New listing</button>
     <a class="pill" href="https://next-frame.agency" style="text-decoration:none">next-frame.agency</a>
   </div>
@@ -1269,6 +1279,67 @@ $("save-listing").onclick = async () => {
   } catch { addNote("Could not reach the listings engine."); btn.textContent = orig; }
   finally { btn.disabled = false; }
 };
+
+$("publish-listing").onclick = async () => {
+  const btn = $("publish-listing");
+  const orig = btn.textContent;
+  if (!sessionId) { addNote("Start a listing first, then publish it to the site."); return; }
+  btn.disabled = true; btn.textContent = "Publishing…";
+  try {
+    const r = await fetch(API_BASE + "/api/publish/" + sessionId, { method: "POST" });
+    const j = await r.json().catch(() => ({}));
+    if (!r.ok) {
+      addNote(j.detail || "Couldn't publish yet — add the building name or address first.");
+      btn.textContent = orig;
+    } else {
+      btn.textContent = "Published ✓";
+      addNote("🌐 Published “" + (j.title || "listing") + "” to the AgencyPH site. "
+        + "View it in the Registry: " + (j.site || "https://next-frame.agency/agencyph-mockup/#registry"));
+      setTimeout(() => { btn.textContent = orig; }, 2200);
+    }
+  } catch { addNote("Could not reach the listings engine."); btn.textContent = orig; }
+  finally { btn.disabled = false; }
+};
+/* ---------- PWA: service worker + install ---------- */
+(function () {
+  // Offline shell + faster loads. Relative path works at next-frame.agency/listings/
+  // and on the Space; fails silently if sw.js isn't present (e.g. local FastAPI).
+  if ("serviceWorker" in navigator) {
+    window.addEventListener("load", () => {
+      navigator.serviceWorker.register("sw.js").catch(() => {});
+    });
+  }
+  const btn = $("install-app");
+  let deferredPrompt = null;
+  // Android / desktop Chrome: capture the native install prompt.
+  window.addEventListener("beforeinstallprompt", (e) => {
+    e.preventDefault();
+    deferredPrompt = e;
+    if (btn) btn.style.display = "";
+  });
+  window.addEventListener("appinstalled", () => {
+    if (btn) btn.style.display = "none";
+    addNote("✅ Installed — find “NF Listings” on your home screen.");
+  });
+  if (btn) {
+    btn.onclick = async () => {
+      if (deferredPrompt) {
+        deferredPrompt.prompt();
+        await deferredPrompt.userChoice.catch(() => {});
+        deferredPrompt = null;
+        btn.style.display = "none";
+      } else {
+        addNote("To install on iPhone/iPad: tap the Share button, then “Add to Home Screen.”");
+      }
+    };
+  }
+  // iOS has no beforeinstallprompt — show the button (with manual hint) unless it's
+  // already running as an installed app.
+  const isiOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const standalone = window.matchMedia("(display-mode: standalone)").matches || window.navigator.standalone;
+  if (btn && isiOS && !standalone) btn.style.display = "";
+})();
+
 // Fix 5: inline sign-in form (no window.prompt / window.confirm)
 function showSigninForm() {
   openChat();
