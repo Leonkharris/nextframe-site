@@ -91,13 +91,16 @@
   .pill.accent:hover { background: linear-gradient(180deg, rgba(200,169,106,0.30), rgba(200,169,106,0.16)); box-shadow: 0 6px 20px -8px rgba(200,169,106,0.45); }
   .pill:disabled { opacity: 0.4; cursor: default; transform: none; }
 
-  /* ---------- full-screen dashboard ---------- */
+  /* ---------- full-screen dashboard: checklist | stacked deliverables ---------- */
   .dash {
     flex: 1; overflow-y: auto; width: 100%; max-width: 1640px; margin: 0 auto;
     padding: 20px 24px 120px;
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    display: grid; grid-template-columns: minmax(360px, 1fr) minmax(380px, 1.1fr);
     gap: 18px; align-items: start;
   }
+  /* right side is a predictable vertical stack — no masonry overlap */
+  .right-col { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+  @media (max-width: 1000px) { .dash { grid-template-columns: 1fr; } }
   .panel {
     position: relative;
     background: linear-gradient(180deg, rgba(255,255,255,0.025), transparent 120px), var(--panel);
@@ -281,6 +284,7 @@
     <p class="kicker">NextFrame PH Real Estate Engine</p>
     <h1>Listings Engine</h1>
   </div>
+  <button class="pill accent" id="save-listing" style="margin-right:auto; margin-left:4px" title="Save this listing to your listings">💾 Save</button>
   <div class="header-actions">
     <button class="pill" id="health-pill" title="Engine status — click for details">
       <span id="health-dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#555;margin-right:7px;vertical-align:1px"></span><span id="health-text">checking…</span>
@@ -296,7 +300,7 @@
 
 <main class="dash">
   <!-- THE 13 QUESTIONS — the spine of the product -->
-  <section class="panel" style="grid-row: span 2">
+  <section class="panel">
     <div class="check-head">
       <span class="title" id="checklist-title">The 13 Condo Questions</span>
       <span class="vetted" id="vetted-label">0/13 answered</span>
@@ -306,6 +310,9 @@
     <div id="comps-area"></div>
     <div id="more-details"></div>
   </section>
+
+  <!-- right column: deliverables stack -->
+  <div class="right-col">
 
   <!-- live listing preview -->
   <div class="preview-card" id="preview-card">
@@ -354,6 +361,8 @@
     <h2>Ad copies — tap one to select it</h2>
     <div id="ads"><p class="empty-note" style="margin:14px">Generated after you confirm the listing with Sofia.</p></div>
   </section>
+
+  </div><!-- /right-col -->
 </main>
 
 <!-- floating Sofia chat -->
@@ -874,7 +883,13 @@ async function refreshListing(retried) {
     if (!res.ok) return;
     const { listing, resume, photos } = await res.json();
     lastListing = listing;
-    if (resume) sessionStorage.setItem("nf_resume", resume);
+    if (resume) {
+      sessionStorage.setItem("nf_resume", resume);
+      // Auto-file persisted listings (e.g. after CONFIRM) into the device list.
+      const [rid, rtok] = resume.split(".");
+      const title = [listing.bedroom_type, listing.building_name || listing.address].filter(Boolean).join(" · ") || "Listing";
+      addDeviceListing({ id: rid, token: rtok, title, saved_at: new Date().toISOString().slice(0,16).replace("T"," ") });
+    }
     // (Re)load the question set when the property type changes or first load.
     if (!QDEFS.length || (listing.property_type || "condo") !== qdefsType) {
       await loadQuestions();
@@ -1220,6 +1235,40 @@ $("new-listing").onclick = () => {
   sessionStorage.removeItem("nf_selected_ad");
   location.reload();
 };
+
+/* ---------- device file system: listings saved on this device ---------- */
+function getDeviceListings() {
+  try { return JSON.parse(localStorage.getItem("nf_devicelistings") || "[]"); } catch { return []; }
+}
+function addDeviceListing(entry) {
+  if (!entry || !entry.id || !entry.token) return;
+  const list = getDeviceListings().filter(e => e.id !== entry.id);
+  list.push(entry);
+  localStorage.setItem("nf_devicelistings", JSON.stringify(list.slice(-200)));
+}
+
+$("save-listing").onclick = async () => {
+  const btn = $("save-listing");
+  const orig = btn.textContent;
+  if (!sessionId) { addNote("Nothing to save yet — start a listing first."); return; }
+  btn.disabled = true; btn.textContent = "Saving…";
+  try {
+    const r = await fetch(API_BASE + "/api/save/" + sessionId, { method: "POST" });
+    if (!r.ok) {
+      addNote((await r.json()).detail || "Couldn't save yet — add some details first.");
+      btn.textContent = orig;
+    } else {
+      const j = await r.json();
+      const [id, token] = j.resume.split(".");
+      addDeviceListing({ id, token, title: j.title, saved_at: j.saved_at });
+      sessionStorage.setItem("nf_resume", j.resume);
+      btn.textContent = "Saved ✓";
+      addNote("💾 Saved “" + (j.title || "listing") + "” — find it any time under “My listings”.");
+      setTimeout(() => { btn.textContent = orig; }, 1800);
+    }
+  } catch { addNote("Could not reach the listings engine."); btn.textContent = orig; }
+  finally { btn.disabled = false; }
+};
 // Fix 5: inline sign-in form (no window.prompt / window.confirm)
 function showSigninForm() {
   openChat();
@@ -1286,37 +1335,53 @@ $("signin").onclick = () => {
   showSigninForm();
 };
 $("my-listings").onclick = async () => {
+  openChat();
+  // Device file system first (works with no sign-in), merged with the account's
+  // server-side listings when signed in.
+  let entries = getDeviceListings().slice();
   const a = getAccount();
-  if (!a) { openChat(); addNote("Sign in first — your listings are private to your account."); return; }
-  try {
-    const r = await fetch(API_BASE + "/api/my-listings", {
-      method: "POST", headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email: a.email, account_token: a.token }),
-    });
-    if (r.status === 401) { setAccount(null); addNote("Your sign-in expired — sign in again."); return; }
-    const { entries } = await r.json();
-    openChat();
-    const body = addBotMsg();
-    if (!entries || !entries.length) {
-      body.textContent = "No saved listings yet on this account — finish a listing with me and it'll appear here.";
-    } else {
-      const p = document.createElement("p");
-      p.textContent = "Your saved listings:";
-      body.appendChild(p);
-      const ul = document.createElement("ul");
-      for (const e of entries.slice().reverse()) {
-        const li = document.createElement("li");
-        const link = document.createElement("a");
-        link.href = "?resume=" + encodeURIComponent(e.id + "." + e.token);
-        link.textContent = e.title || e.id;
-        li.appendChild(link);
-        li.appendChild(document.createTextNode("  · saved " + (e.saved_at || "")));
-        ul.appendChild(li);
+  if (a) {
+    try {
+      const r = await fetch(API_BASE + "/api/my-listings", {
+        method: "POST", headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email: a.email, account_token: a.token }),
+      });
+      if (r.status === 401) { setAccount(null); }
+      else if (r.ok) {
+        const ids = new Set(entries.map(e => e.id));
+        for (const e of ((await r.json()).entries || [])) if (!ids.has(e.id)) entries.push(e);
       }
-      body.appendChild(ul);
+    } catch { /* offline — device list still shows */ }
+  }
+  entries.sort((x, y) => (y.saved_at || "").localeCompare(x.saved_at || ""));
+  const body = addBotMsg();
+  if (!entries.length) {
+    body.innerHTML = "<p>No saved listings yet. Build a listing and tap <b>💾 Save</b> — it'll appear here so you can revisit it any time.</p>";
+  } else {
+    const p = document.createElement("p");
+    p.innerHTML = "<b>Your listings</b> (" + entries.length + ") — tap to reopen:";
+    body.appendChild(p);
+    const ul = document.createElement("ul");
+    ul.style.cssText = "margin:6px 0 0;padding-left:18px";
+    for (const e of entries) {
+      const li = document.createElement("li");
+      li.style.marginBottom = "5px";
+      const link = document.createElement("a");
+      link.href = "?resume=" + encodeURIComponent(e.id + "." + e.token);
+      link.textContent = e.title || e.id;
+      li.appendChild(link);
+      li.appendChild(document.createTextNode("  ·  " + (e.saved_at || "")));
+      ul.appendChild(li);
     }
-    scrollDown();
-  } catch { addNote("Could not reach the listings engine."); }
+    body.appendChild(ul);
+    if (!a) {
+      const note = document.createElement("p");
+      note.style.cssText = "color:var(--muted);font-size:0.78rem;margin-top:9px";
+      note.textContent = "Saved on this device. Sign in to reach them from any device.";
+      body.appendChild(note);
+    }
+  }
+  scrollDown();
 };
 
 /* ---------- floating chat: drag + minimize ---------- */
