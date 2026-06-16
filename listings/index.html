@@ -15,6 +15,7 @@
 <meta name="apple-mobile-web-app-title" content="NF Listings" />
 <script src="https://cdn.jsdelivr.net/npm/marked@12/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/dompurify@3/dist/purify.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <style>
   :root {
     --bg: #0b0d12;
@@ -631,6 +632,36 @@ function setAccount(a) {
 function updateSigninBtn() {
   const a = getAccount();
   $("signin").textContent = a ? ("👤 " + a.email) : "Sign in / Register";
+}
+
+/* ---------- Supabase Auth (magic-link sign-in) ---------- */
+const SUPABASE_URL = "https://kkgqgpekxcymnsttseii.supabase.co";
+const SUPABASE_KEY = "sb_publishable_99J20B9MC0l3lRjkB1ZmPA_EkixgPwt";  // publishable (public) key — safe in frontend
+let sb = null;
+function initSupabase() {
+  try {
+    if (window.supabase && SUPABASE_URL && SUPABASE_KEY) sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  } catch (e) { sb = null; }
+}
+async function initAuth() {
+  initSupabase();
+  if (!sb) return;
+  try {
+    const { data } = await sb.auth.getSession();
+    if (data && data.session && data.session.user) {
+      setAccount({ email: data.session.user.email, token: data.session.access_token });
+    }
+  } catch (e) { /* no session */ }
+  // Picks up the magic-link redirect and any later sign-in/out.
+  sb.auth.onAuthStateChange((event, session) => {
+    if (session && session.user) {
+      const prev = getAccount();
+      setAccount({ email: session.user.email, token: session.access_token });
+      if (!prev && event === "SIGNED_IN") addNote("✓ Signed in as " + session.user.email + ".");
+    } else if (event === "SIGNED_OUT") {
+      setAccount(null);
+    }
+  });
 }
 
 /* ---------- sessions ---------- */
@@ -1432,7 +1463,7 @@ function showSigninForm() {
   wrap.style.alignSelf = "flex-start";
   wrap.innerHTML =
     '<div class="body">' +
-    '<p style="margin:0 0 8px">Enter your email — we\'ll send a confirmation link to register or sign in:</p>' +
+    '<p style="margin:0 0 8px">Enter your email — we\'ll send you a one-tap magic link to sign in or register:</p>' +
     '<form id="signin-inner-form" style="display:flex;gap:6px;flex-wrap:wrap">' +
     '<input type="email" id="signin-email-input" placeholder="you@example.com" required ' +
     'style="flex:1;min-width:160px;background:var(--panel-solid);border:1px solid var(--panel-border);' +
@@ -1450,14 +1481,15 @@ function showSigninForm() {
     const em = emailInput.value.trim();
     if (!em) return;
     wrap.remove();
+    if (!sb) { addNote("Sign-in is warming up — give it a second and try again."); return; }
     try {
-      const r = await fetch(API_BASE + "/api/auth/request", {
-        method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: em }),
+      const { error } = await sb.auth.signInWithOtp({
+        email: em,
+        options: { emailRedirectTo: location.origin + location.pathname },
       });
-      if (r.ok) addNote("📩 Confirmation sent to " + em + " — click the link in your inbox to finish signing in.");
-      else addNote((await r.json()).detail || "Could not send the confirmation email.");
-    } catch { addNote("Could not reach the listings engine."); }
+      if (error) addNote("Could not send the link: " + error.message);
+      else addNote("📩 Magic link sent to " + em + " — open it from your inbox to sign in (check spam too).");
+    } catch { addNote("Could not send the sign-in link right now."); }
   };
 }
 function showSignoutConfirm(a) {
@@ -1477,7 +1509,11 @@ function showSignoutConfirm(a) {
     '</div></div>';
   messagesEl.appendChild(wrap);
   scrollDown();
-  document.getElementById("signout-yes-btn").onclick = () => { wrap.remove(); setAccount(null); };
+  document.getElementById("signout-yes-btn").onclick = async () => {
+    wrap.remove();
+    try { if (sb) await sb.auth.signOut(); } catch (e) { /* clear locally anyway */ }
+    setAccount(null);
+  };
   document.getElementById("signout-no-btn").onclick = () => wrap.remove();
 }
 $("signin").onclick = () => {
@@ -1708,6 +1744,7 @@ if (localStorage.getItem("nf_chat_min") === "1") {
 }
 initApiBase().then(async () => {
   initSofiaLoops();
+  await initAuth();        // Supabase magic-link sign-in (picks up redirect)
   updateSigninBtn();
   pollHealth();
   const verifyToken = new URLSearchParams(location.search).get("verify");
