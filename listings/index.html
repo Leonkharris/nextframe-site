@@ -432,6 +432,8 @@ const messagesEl = $("messages"), statusEl = $("status"), inputEl = $("input"),
 let sessionId = null;
 let streaming = false;
 let lastListing = {};
+let currentListingId = null;   // the saved listing's id (for publish/unpublish state)
+let listingPublished = false;  // is the current listing currently live on the site?
 
 /* ============================================================
    THE 13 CONDO QUESTIONS — the product's spine
@@ -897,9 +899,11 @@ async function refreshListing(retried) {
       sessionStorage.setItem("nf_resume", resume);
       // Auto-file persisted listings (e.g. after CONFIRM) into the device list.
       const [rid, rtok] = resume.split(".");
+      currentListingId = rid;
       const title = [listing.bedroom_type, listing.building_name || listing.address].filter(Boolean).join(" · ") || "Listing";
       addDeviceListing({ id: rid, token: rtok, title, saved_at: new Date().toISOString().slice(0,16).replace("T"," ") });
     }
+    syncPublishBtn();
     // (Re)load the question set when the property type changes or first load.
     if (!QDEFS.length || (listing.property_type || "condo") !== qdefsType) {
       await loadQuestions();
@@ -1336,25 +1340,45 @@ $("save-listing").onclick = () => {
   else showSaveEmailForm();
 };
 
+// Reflect whether THIS listing is currently live on the AgencyPH site, so the
+// button toggles between "Publish to site" and "Remove from site".
+async function syncPublishBtn() {
+  const btn = $("publish-listing");
+  if (!btn) return;
+  if (!currentListingId) { listingPublished = false; btn.textContent = "🌐 Publish to site"; return; }
+  try {
+    const r = await fetch(API_BASE + "/api/registry");
+    if (r.ok) {
+      const cards = (await r.json()).listings || [];
+      listingPublished = cards.some(c => c.id === currentListingId);
+    }
+  } catch { /* leave state as-is */ }
+  btn.textContent = listingPublished ? "🌐 Remove from site" : "🌐 Publish to site";
+}
+
 $("publish-listing").onclick = async () => {
   const btn = $("publish-listing");
-  const orig = btn.textContent;
   if (!sessionId) { addNote("Start a listing first, then publish it to the site."); return; }
-  btn.disabled = true; btn.textContent = "Publishing…";
+  const removing = listingPublished;
+  btn.disabled = true; btn.textContent = removing ? "Removing…" : "Publishing…";
   try {
-    const r = await fetch(API_BASE + "/api/publish/" + sessionId, { method: "POST" });
+    const r = await fetch(API_BASE + (removing ? "/api/unpublish/" : "/api/publish/") + sessionId, { method: "POST" });
     const j = await r.json().catch(() => ({}));
     if (!r.ok) {
-      addNote(j.detail || "Couldn't publish yet — add the building name or address first.");
-      btn.textContent = orig;
+      addNote(j.detail || (removing ? "Couldn't remove it just now — try again." : "Couldn't publish yet — add the building name or address first."));
+    } else if (removing) {
+      listingPublished = false;
+      addNote("🚫 Removed “" + (lastListing.building_name || lastListing.address || "listing") + "” from the AgencyPH site.");
     } else {
-      btn.textContent = "Published ✓";
+      listingPublished = true;
       addNote("🌐 Published “" + (j.title || "listing") + "” to the AgencyPH site. "
-        + "View it in the Registry: " + (j.site || "https://next-frame.agency/agencyph-mockup/#registry"));
-      setTimeout(() => { btn.textContent = orig; }, 2200);
+        + "View it: " + (j.site || "https://next-frame.agency/agencyph-mockup/#registry"));
     }
-  } catch { addNote("Could not reach the listings engine."); btn.textContent = orig; }
-  finally { btn.disabled = false; }
+  } catch { addNote("Could not reach the listings engine."); }
+  finally {
+    btn.disabled = false;
+    btn.textContent = listingPublished ? "🌐 Remove from site" : "🌐 Publish to site";
+  }
 };
 /* ---------- PWA: service worker + install ---------- */
 (function () {
