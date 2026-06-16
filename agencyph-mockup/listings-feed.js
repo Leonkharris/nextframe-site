@@ -73,10 +73,48 @@ function buildSpread(card, plateNo) {
         <div class="blueprint-spec-grid font-mono">${buildSpecGrid(card)}</div>
         <p class="spread-desc font-sans">${escHtml(card.description || "")}</p>
         <div class="spread-action-row">
-          <a href="#privee" class="spread-action font-mono">REQUEST BRIEFING LEDGER &rarr;</a>
+          <a href="#" class="spread-action font-mono" data-inquire>INQUIRE ABOUT THIS &rarr;</a>
         </div>
+        <form class="nf-inquire" style="display:none;flex-direction:column;gap:8px;margin-top:12px">
+          <input type="text" name="name" placeholder="Your name" required
+                 style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);border-radius:6px;padding:9px 11px;color:#f1f1f1;font:inherit;font-size:0.85rem;width:100%;box-sizing:border-box" />
+          <input type="text" name="contact" placeholder="Mobile no. or email" required
+                 style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);border-radius:6px;padding:9px 11px;color:#f1f1f1;font:inherit;font-size:0.85rem;width:100%;box-sizing:border-box" />
+          <textarea name="message" placeholder="Your message (optional)" rows="2"
+                 style="background:rgba(255,255,255,0.05);border:1px solid rgba(255,255,255,0.16);border-radius:6px;padding:9px 11px;color:#f1f1f1;font:inherit;font-size:0.85rem;width:100%;box-sizing:border-box;resize:vertical"></textarea>
+          <button type="submit"
+                 style="background:#e30613;color:#fff;border:0;border-radius:6px;padding:10px 16px;font-weight:700;cursor:pointer;font-size:0.85rem">Send inquiry</button>
+        </form>
       </div>
     </div>`;
+
+  // Lead capture: toggle the inquiry form, POST to the engine.
+  const inquireLink = el.querySelector("[data-inquire]");
+  const form = el.querySelector(".nf-inquire");
+  if (inquireLink && form) {
+    inquireLink.addEventListener("click", (e) => {
+      e.preventDefault();
+      form.style.display = form.style.display === "none" ? "flex" : "none";
+    });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = form.querySelector('[name="name"]').value.trim();
+      const contact = form.querySelector('[name="contact"]').value.trim();
+      const message = form.querySelector('[name="message"]').value.trim();
+      if (!name || !contact) return;
+      const btn = form.querySelector("button");
+      btn.disabled = true; btn.textContent = "Sending…";
+      try {
+        const r = await fetch(LISTINGS_API + "/api/lead", {
+          method: "POST", headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ listing_id: card.id, name, contact, message }),
+        });
+        if (r.ok) {
+          form.innerHTML = '<p class="font-sans" style="color:#7fe0a0;margin:4px 0;font-size:0.88rem">Thank you — the agent will reach out to you shortly.</p>';
+        } else { btn.disabled = false; btn.textContent = "Try again"; }
+      } catch (_) { btn.disabled = false; btn.textContent = "Try again"; }
+    });
+  }
   return el;
 }
 
