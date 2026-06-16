@@ -201,6 +201,25 @@
   .price-block .was { color: var(--red); text-decoration: line-through; font-size: 0.8rem; margin-right: 8px; font-weight: 600; }
   .price-block .extra { color: var(--muted); font-size: 0.74rem; margin-top: 3px; }
 
+  /* ---------- Price Intelligence (hero) ---------- */
+  .price-intel { border: 1px solid var(--gold-line); }
+  .price-intel h2 { color: var(--gold-soft); }
+  .pi-hero { padding: 16px 20px 15px; background: linear-gradient(180deg, var(--gold-dim), transparent); border-bottom: 1px solid var(--hairline); }
+  .pi-label { color: var(--gold); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; }
+  .pi-price { font-size: 2rem; font-weight: 800; color: var(--gold-soft); letter-spacing: -0.02em; margin-top: 4px; line-height: 1.05; }
+  .pi-was { color: var(--red); text-decoration: line-through; font-size: 1rem; margin-right: 10px; font-weight: 600; }
+  .pi-range { color: var(--muted); font-size: 0.82rem; margin-top: 7px; }
+  .pi-slabel { font-size: 0.62rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted); font-weight: 700; margin: 14px 18px 8px; }
+  .pi-comps { display: flex; flex-direction: column; gap: 8px; padding: 0 16px; }
+  .pi-comp { border: 1px solid var(--hairline); border-radius: var(--radius-sm); padding: 9px 12px; background: var(--recess); font-size: 0.8rem; }
+  .pi-comp-top { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .pi-src { color: var(--teal); font-weight: 700; }
+  .pi-src a { color: var(--gold-soft); text-decoration: none; }
+  .pi-cprice { color: var(--text); font-weight: 700; white-space: nowrap; }
+  .pi-cdesc { color: var(--muted); margin-top: 3px; line-height: 1.4; }
+  .pi-why p { color: var(--text); font-size: 0.82rem; line-height: 1.55; margin: 0 18px; }
+  .pi-disclaimer { color: var(--faint); font-size: 0.72rem; font-style: italic; line-height: 1.45; margin: 14px 18px 16px; padding-top: 10px; border-top: 1px dashed var(--hairline); }
+
   /* ---------- pdf / photos / ads ---------- */
   .pdf-card .note { color: var(--muted); font-size: 0.78rem; margin: 12px 16px 10px; line-height: 1.5; }
   .pdf-card .actions { display: flex; gap: 8px; padding: 0 16px 14px; }
@@ -337,6 +356,12 @@
 
   <!-- right column: deliverables stack -->
   <div class="right-col">
+
+  <!-- price intelligence (hero) -->
+  <div class="panel price-intel" id="price-intel" style="display:none">
+    <h2>💰 Price Intelligence</h2>
+    <div id="price-intel-body"></div>
+  </div>
 
   <!-- live listing preview -->
   <div class="preview-card" id="preview-card">
@@ -954,11 +979,70 @@ async function refreshListing(retried) {
     }
     renderChecklist(listing);
     renderMore(listing);
-    renderComps(listing);
+    renderPriceIntel(listing);
     renderPreview(listing);
     renderPhotos(photos || []);
     updatePdfCard();
   } catch { /* best-effort */ }
+}
+
+// Price as the hero: the number, the confidence range, the comps it's based on
+// (with sources), and the "why" — a market-backed estimate, never gospel.
+function renderPriceIntel(L) {
+  const panel = $("price-intel"), body = $("price-intel-body");
+  if (!panel || !body) return;
+  const asking = L.asking_price_php, suggested = L.suggested_price_php;
+  const price = asking || suggested;
+  const comps = L.comps || [];
+  if (!price && !comps.length) { panel.style.display = "none"; return; }
+  panel.style.display = "";
+  body.innerHTML = "";
+
+  if (price) {
+    const hero = document.createElement("div"); hero.className = "pi-hero";
+    const lab = document.createElement("div"); lab.className = "pi-label";
+    lab.textContent = asking ? "Asking price" : "Suggested price · market estimate";
+    const big = document.createElement("div"); big.className = "pi-price";
+    if (L.original_price_php) { const w = document.createElement("span"); w.className = "pi-was"; w.textContent = php(L.original_price_php); big.appendChild(w); }
+    big.appendChild(document.createTextNode(php(price)));
+    hero.appendChild(lab); hero.appendChild(big);
+    const r = L.suggested_price_range_php;
+    if (r && r.low && r.high) { const rg = document.createElement("div"); rg.className = "pi-range"; rg.textContent = "Market range " + php(r.low) + " – " + php(r.high); hero.appendChild(rg); }
+    body.appendChild(hero);
+  }
+
+  if (comps.length) {
+    const sl = document.createElement("div"); sl.className = "pi-slabel";
+    sl.textContent = "Based on " + comps.length + " comparable listing" + (comps.length > 1 ? "s" : "");
+    body.appendChild(sl);
+    const wrap = document.createElement("div"); wrap.className = "pi-comps";
+    for (const c of comps.slice(0, 6)) {
+      const d = document.createElement("div"); d.className = "pi-comp";
+      const top = document.createElement("div"); top.className = "pi-comp-top";
+      const src = document.createElement("span"); src.className = "pi-src"; src.textContent = c.source || "source";
+      if (c.url) { const a = document.createElement("a"); a.href = c.url; a.target = "_blank"; a.rel = "noopener"; a.textContent = " ↗"; src.appendChild(a); }
+      top.appendChild(src);
+      if (c.price_php) { const pr = document.createElement("span"); pr.className = "pi-cprice"; pr.textContent = php(c.price_php) + (c.price_per_sqm_php ? " · " + php(c.price_per_sqm_php) + "/sqm" : ""); top.appendChild(pr); }
+      const desc = document.createElement("div"); desc.className = "pi-cdesc"; desc.textContent = c.description || "";
+      d.appendChild(top); d.appendChild(desc);
+      wrap.appendChild(d);
+    }
+    body.appendChild(wrap);
+  }
+
+  if (L.pricing_rationale) {
+    const why = document.createElement("div"); why.className = "pi-why";
+    const wl = document.createElement("div"); wl.className = "pi-slabel"; wl.textContent = "Why this price";
+    const p = document.createElement("p"); p.textContent = L.pricing_rationale;
+    why.appendChild(wl); why.appendChild(p);
+    body.appendChild(why);
+  }
+
+  const disc = document.createElement("p"); disc.className = "pi-disclaimer";
+  disc.textContent = comps.length
+    ? "A market-backed starting estimate from live comparable listings — confirm with your client before finalizing."
+    : "Add comparable listings (or let Sofia research them) to benchmark this price.";
+  body.appendChild(disc);
 }
 
 function renderComps(listing) {
@@ -1040,21 +1124,9 @@ function renderPreview(L) {
     }
   } else prox.style.display = "none";
 
+  // Price now lives in its own hero "Price Intelligence" panel (renderPriceIntel).
   const priceEl = $("pv-price");
-  const price = L.asking_price_php || L.suggested_price_php;
-  if (price) {
-    priceEl.style.display = "";
-    let html = '<div class="l">' + (L.asking_price_php ? "Asking Price" : "Suggested Price") + "</div><div class='big'>";
-    if (L.original_price_php) html += '<span class="was">' + php(L.original_price_php) + "</span>";
-    html += php(price) + "</div>";
-    const extras = [];
-    const r = L.suggested_price_range_php;
-    if (r && r.low && r.high) extras.push("Market range " + php(r.low) + " – " + php(r.high));
-    if (L.move_in_php) extras.push("Move-in " + php(L.move_in_php));
-    extras.push((L.comps || []).length ? "Comps: " + L.comps.length : "Comps: pending");
-    html += '<div class="extra">' + extras.join(" · ") + "</div>";
-    priceEl.innerHTML = html;
-  } else priceEl.style.display = "none";
+  if (priceEl) priceEl.style.display = "none";
 }
 
 /* ---------- Listing Pack (PDF) ---------- */
