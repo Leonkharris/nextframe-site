@@ -1257,27 +1257,83 @@ function addDeviceListing(entry) {
   localStorage.setItem("nf_devicelistings", JSON.stringify(list.slice(-200)));
 }
 
-$("save-listing").onclick = async () => {
+// The email a save is tied to: a signed-in account, else a remembered save email.
+function rememberedEmail() {
+  const acc = getAccount();
+  if (acc && acc.email) return acc.email;
+  return localStorage.getItem("nf_save_email") || null;
+}
+
+async function doSave(email) {
   const btn = $("save-listing");
-  const orig = btn.textContent;
-  if (!sessionId) { addNote("Nothing to save yet — start a listing first."); return; }
+  const orig = "💾 Save";
   btn.disabled = true; btn.textContent = "Saving…";
   try {
-    const r = await fetch(API_BASE + "/api/save/" + sessionId, { method: "POST" });
+    const r = await fetch(API_BASE + "/api/save/" + sessionId, {
+      method: "POST", headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ email: email || null }),
+    });
     if (!r.ok) {
-      addNote((await r.json()).detail || "Couldn't save yet — add some details first.");
+      addNote(((await r.json().catch(() => ({}))).detail) || "Couldn't save yet — add some details first.");
       btn.textContent = orig;
     } else {
       const j = await r.json();
       const [id, token] = j.resume.split(".");
-      addDeviceListing({ id, token, title: j.title, saved_at: j.saved_at });
+      addDeviceListing({ id, token, title: j.title, saved_at: j.saved_at, email: j.email || email || null });
       sessionStorage.setItem("nf_resume", j.resume);
+      if (email) localStorage.setItem("nf_save_email", email);
       btn.textContent = "Saved ✓";
-      addNote("💾 Saved “" + (j.title || "listing") + "” — find it any time under “My listings”.");
+      addNote("💾 Saved “" + (j.title || "listing") + "”"
+        + (j.email ? " under " + j.email : " on this device")
+        + " — find it any time under “My listings”.");
       setTimeout(() => { btn.textContent = orig; }, 1800);
     }
   } catch { addNote("Could not reach the listings engine."); btn.textContent = orig; }
   finally { btn.disabled = false; }
+}
+
+// Ask for an email the first time, so the save is tied to a person (retrievable
+// on another device + visible in the office dashboard). Skippable to device-only.
+function showSaveEmailForm() {
+  openChat();
+  const existing = document.getElementById("save-email-msg");
+  if (existing) existing.remove();
+  const wrap = document.createElement("div");
+  wrap.id = "save-email-msg";
+  wrap.className = "msg bot";
+  wrap.style.alignSelf = "flex-start";
+  wrap.innerHTML =
+    '<div class="body">' +
+    '<p style="margin:0 0 8px">💾 <b>Save this listing.</b> Enter your email so you can reopen it on any device later — and so the office can find it:</p>' +
+    '<form id="save-email-inner" style="display:flex;gap:6px;flex-wrap:wrap">' +
+    '<input type="email" id="save-email-input" placeholder="you@example.com" required ' +
+    'style="flex:1;min-width:160px;background:var(--panel-solid);border:1px solid var(--panel-border);' +
+    'border-radius:8px;padding:7px 11px;color:var(--text);font:inherit;font-size:0.84rem;outline:0" />' +
+    '<button type="submit" class="pill accent" style="padding:7px 14px">Save</button>' +
+    '</form>' +
+    '<p style="margin:8px 0 0"><a href="#" id="save-skip" style="color:var(--muted);font-size:0.78rem">Skip — just save on this device</a></p>' +
+    '</div>';
+  messagesEl.appendChild(wrap);
+  scrollDown();
+  const inp = document.getElementById("save-email-input");
+  inp.focus();
+  document.getElementById("save-email-inner").onsubmit = (e) => {
+    e.preventDefault();
+    const em = inp.value.trim();
+    if (!em) return;
+    wrap.remove();
+    doSave(em);
+  };
+  document.getElementById("save-skip").onclick = (e) => {
+    e.preventDefault(); wrap.remove(); doSave(null);
+  };
+}
+
+$("save-listing").onclick = () => {
+  if (!sessionId) { addNote("Nothing to save yet — start a listing first."); return; }
+  const em = rememberedEmail();
+  if (em) doSave(em);
+  else showSaveEmailForm();
 };
 
 $("publish-listing").onclick = async () => {
