@@ -155,6 +155,20 @@ async function loadLiveRegistry() {
       ? Math.min(100, Math.max(0, (lookbook.scrollLeft / maxScroll) * 100))
       : 0) + "%";
   }
+
+  // Deep link from a shared listing (?listing=<id>): scroll to that card,
+  // highlight it, and open its inquiry form so a buyer can act immediately.
+  const wantId = new URLSearchParams(location.search).get("listing");
+  if (wantId) {
+    const target = lookbook.querySelector('.blueprint-spread[data-listing-id="' + (window.CSS && CSS.escape ? CSS.escape(wantId) : wantId) + '"]');
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+      target.style.outline = "2px solid #e30613";
+      const inq = target.querySelector("[data-inquire]");
+      const form = target.querySelector(".nf-inquire");
+      if (inq && form && form.style.display === "none") inq.click();
+    }
+  }
 }
 
 if (document.readyState === "loading") {

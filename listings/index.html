@@ -326,7 +326,8 @@
     <h1>ListPilot</h1>
   </div>
   <button class="pill accent" id="save-listing" style="margin-left:4px" title="Save this listing to your listings">💾 Save</button>
-  <button class="pill" id="publish-listing" style="margin-right:auto" title="Publish this listing to the AgencyPH website">🌐 Publish to site</button>
+  <button class="pill" id="publish-listing" title="Publish this listing to the AgencyPH website">🌐 Publish to site</button>
+  <button class="pill" id="share-listing" style="margin-right:auto" title="Share this listing to Facebook, Viber, Messenger">📤 Share</button>
   <div class="header-actions">
     <button class="pill" id="health-pill" title="Engine status — click for details">
       <span id="health-dot" style="display:inline-block;width:9px;height:9px;border-radius:50%;background:#555;margin-right:7px;vertical-align:1px"></span><span id="health-text">checking…</span>
@@ -1495,6 +1496,67 @@ $("publish-listing").onclick = async () => {
     btn.disabled = false;
     btn.textContent = listingPublished ? "🌐 Remove from site" : "🌐 Publish to site";
   }
+};
+
+// Build a clean, quality caption from confirmed facts (no slop) + the listing link.
+function buildShareCaption(L, link) {
+  const title = L.building_name || L.address || "Property";
+  const hood = [L.neighborhood, L.city].filter(Boolean).join(", ");
+  const price = L.asking_price_php || L.suggested_price_php;
+  const specline = [
+    L.floor_area_sqm ? L.floor_area_sqm + "sqm" : "",
+    L.furnishing,
+    L.parking_slots ? L.parking_slots + " parking" : "",
+  ].filter(Boolean).join(" · ");
+  let cap = "🏡 " + [L.bedroom_type, "for sale"].filter(Boolean).join(" ") + " — " + title + (hood ? ", " + hood : "") + "\n";
+  if (specline) cap += specline + "\n";
+  if (price) cap += "💰 " + php(price) + "\n";
+  cap += "View details & inquire 👉 " + link;
+  return cap;
+}
+
+function showSharePanel(caption, link) {
+  openChat();
+  const existing = document.getElementById("share-msg"); if (existing) existing.remove();
+  const enc = encodeURIComponent(caption);
+  const wrap = document.createElement("div");
+  wrap.id = "share-msg"; wrap.className = "msg bot"; wrap.style.alignSelf = "flex-start";
+  wrap.innerHTML =
+    '<div class="body">' +
+    '<p style="margin:0 0 8px">📤 <b>Share this listing.</b> Caption copied — paste it where buyers are:</p>' +
+    '<pre style="white-space:pre-wrap;background:var(--panel-solid);border:1px solid var(--panel-border);border-radius:8px;padding:9px 11px;font:inherit;font-size:0.78rem;line-height:1.5;margin:0 0 9px"></pre>' +
+    '<div class="chips">' +
+    '<a class="pill accent" target="_blank" rel="noopener" href="https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(link) + '">Facebook</a>' +
+    '<a class="pill" target="_blank" rel="noopener" href="https://wa.me/?text=' + enc + '">WhatsApp</a>' +
+    '<a class="pill" target="_blank" rel="noopener" href="viber://forward?text=' + enc + '">Viber</a>' +
+    '<button class="pill" id="share-copy" type="button">Copy again</button>' +
+    '</div>' +
+    '<p style="margin:9px 0 0;color:var(--muted);font-size:0.74rem">Tip: attach your unit photo (or the generated ad image) when posting to Marketplace.</p>' +
+    '</div>';
+  messagesEl.appendChild(wrap);
+  wrap.querySelector("pre").textContent = caption;
+  document.getElementById("share-copy").onclick = () => {
+    navigator.clipboard.writeText(caption).then(() => addNote("Copied ✓")).catch(() => {});
+  };
+  scrollDown();
+}
+
+$("share-listing").onclick = async () => {
+  if (!sessionId) { addNote("Start a listing first, then share it."); return; }
+  if (!currentListingId || !listingPublished) {
+    addNote("Publish the listing first — then you'll get a shareable link buyers can open and inquire on.");
+    return;
+  }
+  const link = "https://next-frame.agency/agencyph-mockup/?listing=" + encodeURIComponent(currentListingId);
+  const caption = buildShareCaption(lastListing || {}, link);
+  // Mobile: native share sheet (Facebook / Messenger / Viber / WhatsApp all show up).
+  if (navigator.share) {
+    try { await navigator.share({ title: "ListPilot listing", text: caption, url: link }); return; }
+    catch (e) { if (e && e.name === "AbortError") return; }
+  }
+  // Desktop: copy the caption + quick-share links.
+  try { await navigator.clipboard.writeText(caption); } catch (e) {}
+  showSharePanel(caption, link);
 };
 /* ---------- PWA: service worker + install ---------- */
 (function () {
