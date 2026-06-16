@@ -1,7 +1,7 @@
 {
-  "name": "NextFrame Listings Engine",
-  "short_name": "NF Listings",
-  "description": "Sofia walks the 13-point checklist with you, researches the gaps, and produces the listing pack, ad copies, and ad image.",
+  "name": "ListPilot — Next Frame Agency",
+  "short_name": "ListPilot",
+  "description": "ListPilot — your real-estate listing copilot. Build a complete listing, get competitive pricing, ad copies, and a printable client pack.",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
