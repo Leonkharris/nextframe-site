@@ -1,0 +1,347 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Owner Dashboard — NextFrame PH</title>
+<style>
+  :root {
+    --bg: #090a0f;
+    --panel: rgba(17, 19, 28, 0.72);
+    --panel-solid: #11131c;
+    --panel-border: #1e2230;
+    --text: #f1f5f9;
+    --muted: #94a3b8;
+    --indigo: #4f46e5;
+    --indigo-light: #6366f1;
+    --indigo-glow: rgba(99, 102, 241, 0.16);
+    --teal: #14b8a6;
+    --emerald: #10b981;
+    --amber: #f59e0b;
+    --red: #f87171;
+    --radius: 16px;
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(circle at top left, rgba(99, 102, 241, 0.15), transparent 42rem),
+      radial-gradient(circle at bottom right, rgba(20, 184, 166, 0.10), transparent 42rem),
+      var(--bg);
+    color: var(--text);
+    font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+    display: flex; flex-direction: column; min-height: 100%;
+  }
+  header {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    padding: 16px 26px 12px; border-bottom: 1px solid var(--panel-border);
+  }
+  .brand .kicker { margin: 0; color: var(--muted); font-size: 0.7rem; font-weight: 800; letter-spacing: 0.18em; text-transform: uppercase; }
+  .brand h1 {
+    margin: 3px 0 0; font-size: 1.5rem; font-weight: 800;
+    background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .header-actions { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+  .pill {
+    padding: 8px 15px; border: 1px solid var(--panel-border); border-radius: 9999px;
+    color: var(--text); font-size: 0.8rem; font-weight: 600; cursor: pointer;
+    background: rgba(255,255,255,0.03); backdrop-filter: blur(8px); transition: all .2s;
+  }
+  .pill:hover { background: rgba(255,255,255,0.08); border-color: var(--indigo-light); }
+  .pill.accent { border-color: var(--indigo); background: var(--indigo-glow); color: #c7d2fe; }
+  .pill:disabled { opacity: 0.4; cursor: default; }
+  .gate-wrap { flex: 1; display: flex; align-items: center; justify-content: center; padding: 40px 20px; }
+  .gate {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+    padding: 36px 40px; width: 100%; max-width: 400px; text-align: center;
+  }
+  .gate h2 { margin: 0 0 6px; font-size: 1.1rem; font-weight: 800; }
+  .gate p { margin: 0 0 22px; color: var(--muted); font-size: 0.83rem; line-height: 1.5; }
+  .gate .note-err { color: var(--red); font-size: 0.8rem; margin: 0 0 14px; min-height: 18px; }
+  .token-input {
+    width: 100%; padding: 11px 14px; border-radius: 10px;
+    border: 1px solid var(--panel-border); background: var(--panel-solid);
+    color: var(--text); font: inherit; font-size: 0.9rem; outline: none;
+    transition: border-color .2s; margin-bottom: 14px;
+  }
+  .token-input:focus { border-color: var(--indigo-light); }
+  .unlock-btn {
+    width: 100%; padding: 11px; border-radius: 10px;
+    border: none; cursor: pointer; font: inherit; font-size: 0.9rem; font-weight: 700;
+    background: linear-gradient(135deg, var(--indigo), var(--indigo-light)); color: #fff;
+    transition: opacity .2s;
+  }
+  .unlock-btn:hover { opacity: 0.88; }
+  .dash-wrap { flex: 1; overflow-y: auto; width: 100%; max-width: 1200px; margin: 0 auto; padding: 28px 24px 80px; }
+  .stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 14px; margin-bottom: 26px; }
+  .stat-chip {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); backdrop-filter: blur(12px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.2); padding: 18px 20px;
+  }
+  .stat-chip .sc-label { font-size: 0.62rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); margin-bottom: 8px; }
+  .stat-chip .sc-value {
+    font-size: 1.75rem; font-weight: 800; line-height: 1;
+    background: linear-gradient(135deg, #fff 0%, var(--muted) 100%);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .panel {
+    background: var(--panel); border: 1px solid var(--panel-border);
+    border-radius: var(--radius); backdrop-filter: blur(12px);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.25); overflow: hidden;
+  }
+  .panel-head {
+    display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px;
+    padding: 14px 18px 12px; border-bottom: 1px solid var(--panel-border);
+  }
+  .panel-head h2 { margin: 0; font-size: 0.72rem; font-weight: 800; letter-spacing: 0.16em; text-transform: uppercase; color: var(--muted); }
+  .search-box { max-width: 280px; width: 100%; margin: 0; padding: 8px 13px; font-size: 0.82rem; }
+  .table-scroll { overflow-x: auto; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+  th {
+    padding: 10px 14px; text-align: left; font-size: 0.65rem; font-weight: 800; letter-spacing: 0.14em;
+    text-transform: uppercase; color: var(--muted); border-bottom: 1px solid var(--panel-border);
+    background: rgba(255,255,255,0.015); white-space: nowrap;
+  }
+  td { padding: 11px 14px; border-bottom: 1px dashed #1b1f2a; vertical-align: middle; color: var(--text); }
+  tr:last-child td { border-bottom: 0; }
+  tr:hover td { background: rgba(255,255,255,0.018); }
+  .status-chip { display: inline-block; padding: 3px 10px; border-radius: 9999px; font-size: 0.68rem; font-weight: 800; letter-spacing: 0.1em; text-transform: uppercase; white-space: nowrap; }
+  .status-chip.confirmed { background: rgba(16, 185, 129, 0.12); border: 1px solid rgba(16, 185, 129, 0.35); color: var(--emerald); }
+  .status-chip.inprogress { background: rgba(245, 158, 11, 0.10); border: 1px solid rgba(245, 158, 11, 0.3); color: var(--amber); }
+  td.price-cell { font-weight: 700; white-space: nowrap; }
+  td.saved-cell { color: var(--muted); white-space: nowrap; font-size: 0.77rem; }
+  td.property-cell { max-width: 240px; font-weight: 600; }
+  td.type-cell { color: var(--muted); white-space: nowrap; }
+  td.email-cell { color: var(--text); }
+  td.email-cell.none { color: var(--muted); font-style: italic; }
+  .open-link {
+    display: inline-block; padding: 4px 11px; border: 1px solid var(--panel-border); border-radius: 8px;
+    color: var(--indigo-light); font-size: 0.72rem; font-weight: 700; text-decoration: none; white-space: nowrap;
+    transition: border-color .15s, background .15s;
+  }
+  .open-link:hover { border-color: var(--indigo-light); background: var(--indigo-glow); }
+  .empty-note { padding: 32px 20px; text-align: center; color: #4b5563; font-size: 0.85rem; font-style: italic; line-height: 1.6; }
+  .msg-overlay { padding: 48px 20px; text-align: center; color: var(--muted); font-size: 0.88rem; line-height: 1.7; }
+  .msg-overlay.err { color: var(--red); }
+  @media (max-width: 600px) { .gate { padding: 28px 22px; } .dash-wrap { padding: 20px 14px 60px; } th, td { padding: 9px 10px; } }
+</style>
+</head>
+<body>
+<header>
+  <div class="brand">
+    <p class="kicker">NextFrame PH Real Estate Engine</p>
+    <h1>Owner Dashboard</h1>
+  </div>
+  <div class="header-actions" id="header-actions"></div>
+</header>
+
+<div class="gate-wrap" id="gate-section">
+  <div class="gate">
+    <h2>Owner Access</h2>
+    <p>Enter your owner token to view every saved listing.</p>
+    <div class="note-err" id="gate-err"></div>
+    <input class="token-input" type="password" id="token-input" placeholder="Owner token" autocomplete="current-password" />
+    <button class="unlock-btn" id="unlock-btn">Unlock</button>
+  </div>
+</div>
+
+<div class="dash-wrap" id="dash-section" style="display:none">
+  <div class="stats-row" id="stats-row">
+    <div class="stat-chip"><div class="sc-label">Total Listings</div><div class="sc-value" id="stat-total">—</div></div>
+    <div class="stat-chip"><div class="sc-label">With Email</div><div class="sc-value" id="stat-agents">—</div></div>
+    <div class="stat-chip"><div class="sc-label">This Week</div><div class="sc-value" id="stat-week">—</div></div>
+  </div>
+  <div class="panel">
+    <div class="panel-head">
+      <h2>All Saved Listings</h2>
+      <input id="search-input" class="token-input search-box" placeholder="Search building / email…" />
+    </div>
+    <div id="table-area"><div class="msg-overlay" id="loading-msg">Loading listings…</div></div>
+  </div>
+</div>
+
+<script>
+/* Owner Dashboard — NextFrame PH.
+   API base: ?api= param, else api-url.json on next-frame.agency, else same origin.
+   Token gate: localStorage "nf_owner_token". */
+var API_BASE = "";
+var ALL_ITEMS = [];
+
+async function initApiBase() {
+  var qs = new URLSearchParams(location.search).get("api");
+  if (qs) localStorage.setItem("nf_api", qs.replace(/\/$/, ""));
+  var saved = localStorage.getItem("nf_api");
+  if (saved) { API_BASE = saved; return; }
+  if (/(^|\.)next-frame\.agency$/i.test(location.hostname)) {
+    try {
+      var r = await fetch("api-url.json?_=" + Date.now(), { cache: "no-store" });
+      if (r.ok) API_BASE = ((await r.json()).api || "").replace(/\/$/, "");
+    } catch (e) { /* fall back to same origin */ }
+  }
+}
+
+function el(id) { return document.getElementById(id); }
+
+function renderHeaderActions() {
+  var wrap = el("header-actions");
+  wrap.innerHTML = "";
+  var refresh = document.createElement("button");
+  refresh.className = "pill accent"; refresh.textContent = "Refresh";
+  refresh.addEventListener("click", function () { loadListings(); });
+  wrap.appendChild(refresh);
+  var signout = document.createElement("button");
+  signout.className = "pill"; signout.textContent = "Sign out";
+  signout.addEventListener("click", function () {
+    localStorage.removeItem("nf_owner_token");
+    el("dash-section").style.display = "none";
+    el("gate-section").style.display = "flex";
+    el("gate-err").textContent = ""; el("token-input").value = "";
+    el("header-actions").innerHTML = "";
+    el("stat-total").textContent = "—"; el("stat-agents").textContent = "—"; el("stat-week").textContent = "—";
+    el("table-area").innerHTML = '<div class="msg-overlay">Loading listings…</div>';
+  });
+  wrap.appendChild(signout);
+}
+
+el("unlock-btn").addEventListener("click", function () {
+  var token = el("token-input").value.trim();
+  if (!token) return;
+  localStorage.setItem("nf_owner_token", token);
+  el("gate-err").textContent = "";
+  loadListings();
+});
+el("token-input").addEventListener("keydown", function (e) {
+  if (e.key === "Enter") { e.preventDefault(); el("unlock-btn").click(); }
+});
+
+function countThisWeek(items) {
+  var cutoff = Date.now() - 7 * 24 * 60 * 60 * 1000, n = 0;
+  for (var i = 0; i < items.length; i++) {
+    var raw = items[i].saved_at; if (!raw) continue;
+    var ts = Date.parse(raw.replace(" ", "T"));
+    if (!isNaN(ts) && ts >= cutoff) n++;
+  }
+  return n;
+}
+
+function renderStats(items) {
+  el("stat-total").textContent = String(items.length);
+  var withEmail = 0;
+  for (var i = 0; i < items.length; i++) { if ((items[i].email || "").trim()) withEmail++; }
+  el("stat-agents").textContent = String(withEmail);
+  el("stat-week").textContent = String(countThisWeek(items));
+}
+
+function filtered() {
+  var q = (el("search-input").value || "").toLowerCase().trim();
+  if (!q) return ALL_ITEMS;
+  return ALL_ITEMS.filter(function (it) {
+    return [it.title, it.email, it.agent_name, it.property_type, it.saved_at]
+      .map(function (x) { return (x || "").toString().toLowerCase(); })
+      .join(" ").indexOf(q) !== -1;
+  });
+}
+
+function renderTable(items) {
+  var area = el("table-area");
+  area.innerHTML = "";
+  if (!items.length) {
+    var empty = document.createElement("div");
+    empty.className = "empty-note";
+    empty.textContent = ALL_ITEMS.length ? "No listings match that search." : "No saved listings yet — they appear here when agents save or finish a listing.";
+    area.appendChild(empty); return;
+  }
+  var scroll = document.createElement("div"); scroll.className = "table-scroll";
+  var table = document.createElement("table");
+  var thead = document.createElement("thead"), headerRow = document.createElement("tr");
+  var cols = ["Saved", "Property", "Type", "Email", "Status", "Price", "Open"];
+  for (var c = 0; c < cols.length; c++) { var th = document.createElement("th"); th.textContent = cols[c]; headerRow.appendChild(th); }
+  thead.appendChild(headerRow); table.appendChild(thead);
+  var tbody = document.createElement("tbody");
+  for (var i = 0; i < items.length; i++) {
+    var item = items[i], tr = document.createElement("tr");
+    var tdSaved = document.createElement("td"); tdSaved.className = "saved-cell"; tdSaved.textContent = item.saved_at || "—"; tr.appendChild(tdSaved);
+    var tdProp = document.createElement("td"); tdProp.className = "property-cell"; tdProp.textContent = item.title || item.property || item.address || item.building_name || "—"; tr.appendChild(tdProp);
+    var tdType = document.createElement("td"); tdType.className = "type-cell"; tdType.textContent = item.property_type || item.type || "—"; tr.appendChild(tdType);
+    var tdEmail = document.createElement("td");
+    if ((item.email || "").trim()) { tdEmail.className = "email-cell"; tdEmail.textContent = item.email; }
+    else { tdEmail.className = "email-cell none"; tdEmail.textContent = "no email"; }
+    tr.appendChild(tdEmail);
+    var tdStatus = document.createElement("td");
+    var rawStatus = (item.status || "").toLowerCase().trim();
+    var chip = document.createElement("span");
+    if (rawStatus === "confirmed") { chip.className = "status-chip confirmed"; chip.textContent = "confirmed"; }
+    else { chip.className = "status-chip inprogress"; chip.textContent = "in progress"; }
+    tdStatus.appendChild(chip); tr.appendChild(tdStatus);
+    var tdPrice = document.createElement("td"); tdPrice.className = "price-cell";
+    var priceVal = item.asking_price_php || item.suggested_price_php || item.price;
+    if (priceVal && !isNaN(Number(priceVal))) { tdPrice.textContent = "₱" + Number(priceVal).toLocaleString(); }
+    else { tdPrice.textContent = "—"; tdPrice.style.color = "var(--muted)"; }
+    tr.appendChild(tdPrice);
+    var tdOpen = document.createElement("td");
+    if (item.resume) {
+      var link = document.createElement("a");
+      link.className = "open-link";
+      link.href = "./?resume=" + encodeURIComponent(item.resume);  // sibling listings page
+      link.target = "_blank"; link.rel = "noopener"; link.textContent = "Open ↗";
+      tdOpen.appendChild(link);
+    } else { tdOpen.textContent = "—"; tdOpen.style.color = "var(--muted)"; }
+    tr.appendChild(tdOpen);
+    tbody.appendChild(tr);
+  }
+  table.appendChild(tbody); scroll.appendChild(table); area.appendChild(scroll);
+}
+
+el("search-input").addEventListener("input", function () { renderTable(filtered()); });
+
+function setLoadingMsg(text, isErr) {
+  var area = el("table-area"); area.innerHTML = "";
+  var div = document.createElement("div"); div.className = "msg-overlay" + (isErr ? " err" : ""); div.textContent = text;
+  area.appendChild(div);
+}
+
+function loadListings() {
+  var token = localStorage.getItem("nf_owner_token");
+  if (!token) return;
+  el("gate-section").style.display = "none";
+  el("dash-section").style.display = "block";
+  renderHeaderActions();
+  setLoadingMsg("Loading listings…", false);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", API_BASE + "/api/admin/listings", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.timeout = 20000;
+  xhr.onload = function () {
+    if (xhr.status === 401) {
+      localStorage.removeItem("nf_owner_token");
+      el("dash-section").style.display = "none";
+      el("gate-section").style.display = "flex";
+      el("header-actions").innerHTML = "";
+      el("gate-err").textContent = "Wrong token — please try again.";
+      el("token-input").value = ""; return;
+    }
+    if (xhr.status === 503) { setLoadingMsg("Owner access isn’t configured on the server yet.", true); return; }
+    if (xhr.status < 200 || xhr.status >= 300) { setLoadingMsg("Unexpected error (" + xhr.status + ") — try refreshing.", true); return; }
+    var data;
+    try { data = JSON.parse(xhr.responseText); } catch (e) { setLoadingMsg("Could not parse server response.", true); return; }
+    ALL_ITEMS = data.listings || data.entries || data.items || [];
+    renderStats(ALL_ITEMS);
+    renderTable(filtered());
+  };
+  xhr.onerror = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
+  xhr.ontimeout = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
+  xhr.send(JSON.stringify({ owner_token: token }));
+}
+
+initApiBase().then(function () {
+  if (localStorage.getItem("nf_owner_token")) loadListings();
+  else el("gate-section").style.display = "flex";
+});
+</script>
+</body>
+</html>
