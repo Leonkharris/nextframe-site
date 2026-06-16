@@ -158,7 +158,7 @@
   </div>
   <div class="panel">
     <div class="panel-head">
-      <h2>All Saved Listings</h2>
+      <h2 id="panel-title">All Saved Listings</h2>
       <input id="search-input" class="token-input search-box" placeholder="Search building / email…" />
     </div>
     <div id="table-area"><div class="msg-overlay" id="loading-msg">Loading listings…</div></div>
@@ -190,10 +190,14 @@ function el(id) { return document.getElementById(id); }
 function renderHeaderActions() {
   var wrap = el("header-actions");
   wrap.innerHTML = "";
-  var refresh = document.createElement("button");
-  refresh.className = "pill accent"; refresh.textContent = "Refresh";
-  refresh.addEventListener("click", function () { loadListings(); });
-  wrap.appendChild(refresh);
+  var listingsBtn = document.createElement("button");
+  listingsBtn.className = "pill accent"; listingsBtn.textContent = "Listings";
+  listingsBtn.addEventListener("click", function () { loadListings(); });
+  wrap.appendChild(listingsBtn);
+  var leadsBtn = document.createElement("button");
+  leadsBtn.className = "pill"; leadsBtn.textContent = "Leads";
+  leadsBtn.addEventListener("click", function () { loadLeads(); });
+  wrap.appendChild(leadsBtn);
   var signout = document.createElement("button");
   signout.className = "pill"; signout.textContent = "Sign out";
   signout.addEventListener("click", function () {
@@ -305,11 +309,23 @@ function setLoadingMsg(text, isErr) {
   area.appendChild(div);
 }
 
+function gateKick() {
+  localStorage.removeItem("nf_owner_token");
+  el("dash-section").style.display = "none";
+  el("gate-section").style.display = "flex";
+  el("header-actions").innerHTML = "";
+  el("gate-err").textContent = "Wrong token — please try again.";
+  el("token-input").value = "";
+}
+
 function loadListings() {
   var token = localStorage.getItem("nf_owner_token");
   if (!token) return;
   el("gate-section").style.display = "none";
   el("dash-section").style.display = "block";
+  el("panel-title").textContent = "All Saved Listings";
+  el("search-input").style.display = "";
+  el("stats-row").style.display = "";
   renderHeaderActions();
   setLoadingMsg("Loading listings…", false);
   var xhr = new XMLHttpRequest();
@@ -332,6 +348,57 @@ function loadListings() {
     ALL_ITEMS = data.listings || data.entries || data.items || [];
     renderStats(ALL_ITEMS);
     renderTable(filtered());
+  };
+  xhr.onerror = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
+  xhr.ontimeout = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
+  xhr.send(JSON.stringify({ owner_token: token }));
+}
+
+function renderLeadsTable(leads) {
+  var area = el("table-area"); area.innerHTML = "";
+  if (!leads.length) {
+    var e = document.createElement("div"); e.className = "empty-note";
+    e.textContent = "No buyer leads yet — they appear here when someone inquires on a published listing.";
+    area.appendChild(e); return;
+  }
+  var scroll = document.createElement("div"); scroll.className = "table-scroll";
+  var table = document.createElement("table");
+  var thead = document.createElement("thead"), hr = document.createElement("tr");
+  ["When", "Name", "Contact", "Listing", "Message"].forEach(function (c) { var th = document.createElement("th"); th.textContent = c; hr.appendChild(th); });
+  thead.appendChild(hr); table.appendChild(thead);
+  var tb = document.createElement("tbody");
+  leads.forEach(function (l) {
+    var tr = document.createElement("tr");
+    function td(text, cls) { var d = document.createElement("td"); if (cls) d.className = cls; d.textContent = text || "—"; tr.appendChild(d); return d; }
+    td(l.at, "saved-cell");
+    td(l.name, "property-cell");
+    td(l.contact);
+    td(l.listing_title || l.listing_id, "type-cell");
+    var m = td(l.message); m.style.maxWidth = "340px"; m.style.color = "var(--muted)";
+    tb.appendChild(tr);
+  });
+  table.appendChild(tb); scroll.appendChild(table); area.appendChild(scroll);
+}
+
+function loadLeads() {
+  var token = localStorage.getItem("nf_owner_token");
+  if (!token) return;
+  el("dash-section").style.display = "block";
+  el("panel-title").textContent = "Buyer Leads";
+  el("search-input").style.display = "none";
+  el("stats-row").style.display = "none";
+  renderHeaderActions();
+  setLoadingMsg("Loading leads…", false);
+  var xhr = new XMLHttpRequest();
+  xhr.open("POST", API_BASE + "/api/admin/leads", true);
+  xhr.setRequestHeader("Content-Type", "application/json");
+  xhr.timeout = 20000;
+  xhr.onload = function () {
+    if (xhr.status === 401) { gateKick(); return; }
+    if (xhr.status === 503) { setLoadingMsg("Owner access isn’t configured on the server yet.", true); return; }
+    if (xhr.status < 200 || xhr.status >= 300) { setLoadingMsg("Unexpected error (" + xhr.status + ").", true); return; }
+    var data; try { data = JSON.parse(xhr.responseText); } catch (e) { setLoadingMsg("Could not parse server response.", true); return; }
+    renderLeadsTable(data.leads || []);
   };
   xhr.onerror = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
   xhr.ontimeout = function () { setLoadingMsg("Engine unreachable — try again in a minute.", true); };
