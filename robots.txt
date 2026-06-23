@@ -1,0 +1,5 @@
+# robots.txt for NextFrame — https://next-frame.agency
+User-agent: *
+Allow: /
+
+Sitemap: https://next-frame.agency/sitemap.xml
