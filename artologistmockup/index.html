@@ -49,14 +49,56 @@
 
     <main id="top">
       <!-- ── HERO ───────────────────────────────────────────── -->
-      <section class="hero">
+      <section class="hero" data-hero>
+        <!-- Background motion layers -->
+        <div class="hero-bg" aria-hidden="true">
+          <div class="hero-glow hero-glow-1" data-parallax="0.025"></div>
+          <div class="hero-glow hero-glow-2" data-parallax="-0.018"></div>
+          <div class="hero-glow hero-glow-3" data-parallax="0.012"></div>
+
+          <!-- Floating poster ghosts -->
+          <div class="hero-ghosts" data-parallax="0.035">
+            <img class="ghost ghost-1" src="./assets/poster-ember.jpg" alt="" />
+            <img class="ghost ghost-2" src="./assets/poster-monnar.jpg" alt="" />
+            <img class="ghost ghost-3" src="./assets/poster-steel.jpg" alt="" />
+            <img class="ghost ghost-4" src="./assets/poster-sanclaria.jpg" alt="" />
+          </div>
+
+          <!-- Dust particles (CSS only) -->
+          <div class="hero-dust">
+            <i style="--dx:8%;--dy:18%;--dd:0s;--ds:14s;--dr:2px"></i>
+            <i style="--dx:22%;--dy:62%;--dd:1.2s;--ds:18s;--dr:1px"></i>
+            <i style="--dx:35%;--dy:30%;--dd:3.4s;--ds:22s;--dr:2px"></i>
+            <i style="--dx:48%;--dy:78%;--dd:0.8s;--ds:16s;--dr:1.5px"></i>
+            <i style="--dx:61%;--dy:14%;--dd:5.2s;--ds:20s;--dr:1px"></i>
+            <i style="--dx:74%;--dy:48%;--dd:2.1s;--ds:24s;--dr:2px"></i>
+            <i style="--dx:86%;--dy:72%;--dd:4.6s;--ds:17s;--dr:1px"></i>
+            <i style="--dx:92%;--dy:32%;--dd:6.0s;--ds:21s;--dr:1.5px"></i>
+            <i style="--dx:14%;--dy:88%;--dd:1.8s;--ds:19s;--dr:1px"></i>
+            <i style="--dx:42%;--dy:6%;--dd:3.0s;--ds:23s;--dr:2px"></i>
+            <i style="--dx:56%;--dy:92%;--dd:4.0s;--ds:15s;--dr:1px"></i>
+            <i style="--dx:68%;--dy:58%;--dd:5.6s;--ds:25s;--dr:2px"></i>
+            <i style="--dx:80%;--dy:8%;--dd:2.5s;--ds:18s;--dr:1.5px"></i>
+            <i style="--dx:4%;--dy:42%;--dd:0.5s;--ds:22s;--dr:1px"></i>
+            <i style="--dx:96%;--dy:56%;--dd:6.5s;--ds:20s;--dr:1.5px"></i>
+          </div>
+
+          <!-- Brush-stroke SVG underline (drawn on reveal) -->
+          <svg class="hero-stroke" viewBox="0 0 600 30" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M 8 20 C 80 6, 180 28, 280 14 S 460 22, 590 10"
+              fill="none" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" />
+          </svg>
+        </div>
+
         <span class="hero-eyebrow" data-reveal>
           <i></i> Est. 2013 · Manila → Santa Ana, CA
         </span>
 
         <h1 class="hero-title" data-reveal>
-          <span class="line">The</span>
-          <span class="line line-italic">Artologist.</span>
+          <span class="line"><span class="char">T</span><span class="char">h</span><span class="char">e</span></span>
+          <span class="line line-italic">
+            <span class="char">A</span><span class="char">r</span><span class="char">t</span><span class="char">o</span><span class="char">l</span><span class="char">o</span><span class="char">g</span><span class="char">i</span><span class="char">s</span><span class="char">t</span><span class="char char-dot">.</span>
+          </span>
         </h1>
 
         <p class="hero-sub" data-reveal>
@@ -64,31 +106,53 @@
           across four galleries, one workshop floor, and a quarterly magazine.
         </p>
 
+        <!-- Inline marquee strip -->
+        <div class="hero-strip" data-reveal aria-hidden="true">
+          <div class="hero-strip-track">
+            <span>Painted by hand</span><i>✦</i>
+            <span><em>Curated since 2013</em></span><i>✦</i>
+            <span>Shown in Manila + Santa Ana</span><i>✦</i>
+            <span><em>200+ artists</em></span><i>✦</i>
+            <span>4 galleries · 1 magazine</span><i>✦</i>
+            <span><em>Quarterly in print</em></span><i>✦</i>
+            <span>Painted by hand</span><i>✦</i>
+            <span><em>Curated since 2013</em></span><i>✦</i>
+            <span>Shown in Manila + Santa Ana</span><i>✦</i>
+            <span><em>200+ artists</em></span><i>✦</i>
+            <span>4 galleries · 1 magazine</span><i>✦</i>
+            <span><em>Quarterly in print</em></span><i>✦</i>
+          </div>
+        </div>
+
         <div class="hero-media">
-          <figure class="hero-card" data-reveal data-cursor-hover>
-            <img src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
-            <figcaption>
-              <span>Now showing — May 2026</span>
-              <strong>SINTA</strong>
-              <small>The Art Plaza · Shangri-La · until 24 May</small>
-            </figcaption>
+          <figure class="hero-card" data-reveal data-cursor-hover data-tilt>
+            <div class="hero-card-inner">
+              <img src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
+              <span class="hero-card-glow" aria-hidden="true"></span>
+              <figcaption>
+                <span>Now showing — May 2026</span>
+                <strong>SINTA</strong>
+                <small>The Art Plaza · Shangri-La · until 24 May</small>
+              </figcaption>
+            </div>
+            <span class="hero-card-tape" aria-hidden="true">N°23</span>
           </figure>
 
           <div class="hero-meta" data-reveal>
             <div>
-              <span class="meta-num">13</span>
+              <span class="meta-num" data-count="13">0</span>
               <span class="meta-lab">Years curating</span>
             </div>
             <div>
-              <span class="meta-num">4</span>
+              <span class="meta-num" data-count="4">0</span>
               <span class="meta-lab">Locations</span>
             </div>
             <div>
-              <span class="meta-num">200<i>+</i></span>
+              <span class="meta-num" data-count="200" data-suffix="+">0</span>
               <span class="meta-lab">Artists shown</span>
             </div>
             <div>
-              <span class="meta-num">4<i>×/yr</i></span>
+              <span class="meta-num" data-count="4" data-suffix="×/yr">0</span>
               <span class="meta-lab">Quarterly Magazine</span>
             </div>
           </div>
