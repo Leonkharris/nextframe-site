@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What Next Frame can do for The Artologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --red: #e0331c;
+        --red-deep: #b3220f;
+        --ink: #1a1612;
+        --bone: #f6efe6;
+        --paper: #ffffff;
+        --border: rgba(26, 22, 18, 0.12);
+        --serif: "Fraunces", "Times New Roman", serif;
+        --sans: "Inter", system-ui, -apple-system, sans-serif;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: var(--sans);
+        background: #2c2520;
+        color: var(--ink);
+        padding: 40px 24px;
+        min-height: 100vh;
+      }
+      .sheet {
+        max-width: 1180px;
+        margin: 0 auto;
+        background: var(--bone);
+        border-radius: 18px;
+        overflow: hidden;
+        box-shadow: 0 30px 80px -20px rgba(0,0,0,0.5);
+      }
+
+      .sheet-head {
+        background: var(--ink);
+        color: var(--bone);
+        padding: 38px 56px 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+      .sheet-head .lock { display: flex; align-items: center; gap: 16px; }
+      .sheet-head .lock img {
+        width: 48px;
+        height: 48px;
+        background: var(--red);
+        border-radius: 6px;
+        padding: 4px;
+      }
+      .sheet-head strong { font-family: var(--serif); font-size: 1.5rem; display: block; line-height: 1.1; }
+      .sheet-head small { font-size: 0.75rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--red); font-weight: 700; }
+      .sheet-head .stamp {
+        text-align: right;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(246,239,230,0.7);
+      }
+      .sheet-head .stamp strong { font-family: var(--serif); font-size: 1.05rem; color: var(--bone); margin-bottom: 4px; letter-spacing: 0; text-transform: none; }
+
+      .sheet-title {
+        padding: 56px 56px 40px;
+        background: var(--bone);
+      }
+      .sheet-title .kicker {
+        display: inline-block;
+        font-size: 0.78rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--red);
+        margin-bottom: 22px;
+      }
+      .sheet-title h1 {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: clamp(2.4rem, 4vw, 3.6rem);
+        margin: 0 0 14px;
+        letter-spacing: -0.02em;
+        line-height: 1.05;
+      }
+      .sheet-title h1 span { color: var(--red); font-style: italic; font-weight: 500; }
+      .sheet-title p {
+        font-size: 1.05rem;
+        max-width: 720px;
+        margin: 0;
+        color: rgba(26,22,18,0.72);
+      }
+
+      /* ── now → next strip ── */
+      .now-next {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        background: var(--paper);
+      }
+      .now, .next {
+        padding: 38px 56px;
+      }
+      .now {
+        background: #fff3ee;
+        border-right: 1px dashed var(--border);
+      }
+      .next {
+        background: var(--red);
+        color: var(--bone);
+      }
+      .now h3, .next h3 {
+        font-family: var(--serif);
+        font-size: 1.5rem;
+        margin: 0 0 18px;
+        letter-spacing: -0.01em;
+      }
+      .col-kicker {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 12px;
+        opacity: 0.85;
+      }
+      .now .col-kicker { color: var(--red); }
+      .next .col-kicker { color: var(--bone); }
+      .gap-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .gap-list li {
+        padding: 11px 0 11px 28px;
+        position: relative;
+        font-size: 0.95rem;
+        line-height: 1.5;
+        border-bottom: 1px solid rgba(26,22,18,0.08);
+      }
+      .next .gap-list li { border-bottom-color: rgba(246,239,230,0.18); }
+      .gap-list li:last-child { border-bottom: 0; }
+      .gap-list li::before {
+        content: "✕";
+        position: absolute;
+        left: 0; top: 11px;
+        color: var(--red);
+        font-weight: 900;
+      }
+      .next .gap-list li::before { content: "→"; color: var(--bone); }
+
+      /* ── four legs of service ── */
+      .legs {
+        padding: 56px;
+        background: var(--bone);
+      }
+      .legs h2 {
+        font-family: var(--serif);
+        font-size: 2rem;
+        margin: 0 0 8px;
+        letter-spacing: -0.02em;
+      }
+      .legs > p {
+        max-width: 680px;
+        color: rgba(26,22,18,0.65);
+        margin: 0 0 36px;
+        font-size: 1rem;
+      }
+      .legs-grid {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 18px;
+      }
+      .leg {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 26px 22px 24px;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+      }
+      .leg .num {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        font-weight: 900;
+        color: var(--red);
+        line-height: 1;
+        margin-bottom: 14px;
+      }
+      .leg h4 {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        margin: 0 0 6px;
+      }
+      .leg .their-leg {
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .leg p {
+        font-size: 0.92rem;
+        color: rgba(26,22,18,0.72);
+        margin: 0 0 18px;
+      }
+      .leg ul {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 18px;
+      }
+      .leg ul li {
+        padding: 6px 0 6px 18px;
+        position: relative;
+        font-size: 0.86rem;
+        color: rgba(26,22,18,0.78);
+      }
+      .leg ul li::before {
+        content: "▸";
+        position: absolute;
+        left: 0; top: 6px;
+        color: var(--red);
+      }
+      .leg .deliv {
+        margin-top: auto;
+        padding: 14px 16px;
+        background: var(--ink);
+        color: var(--bone);
+        border-radius: 8px;
+        font-size: 0.84rem;
+        line-height: 1.4;
+      }
+      .leg .deliv strong {
+        display: block;
+        font-size: 0.7rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--red);
+        margin-bottom: 6px;
+      }
+
+      /* ── 90-day timeline ── */
+      .timeline {
+        background: var(--ink);
+        color: var(--bone);
+        padding: 56px;
+      }
+      .timeline h2 {
+        font-family: var(--serif);
+        font-size: 2rem;
+        margin: 0 0 8px;
+        color: var(--bone);
+        letter-spacing: -0.02em;
+      }
+      .timeline > p {
+        max-width: 680px;
+        color: rgba(246,239,230,0.7);
+        margin: 0 0 36px;
+      }
+      .timeline-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 20px;
+        position: relative;
+      }
+      .timeline-grid::before {
+        content: "";
+        position: absolute;
+        top: 30px; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(to right, transparent, var(--red) 18%, var(--red) 82%, transparent);
+        z-index: 0;
+      }
+      .phase {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid rgba(255,255,255,0.1);
+        border-radius: 12px;
+        padding: 28px 24px 26px;
+        position: relative;
+        z-index: 1;
+      }
+      .phase .dot {
+        position: absolute;
+        top: 22px;
+        right: 24px;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: var(--red);
+        box-shadow: 0 0 0 4px rgba(224,51,28,0.25);
+      }
+      .phase .when {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 800;
+        margin-bottom: 10px;
+        display: block;
+      }
+      .phase h5 {
+        font-family: var(--serif);
+        font-size: 1.3rem;
+        margin: 0 0 14px;
+        color: var(--bone);
+      }
+      .phase ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+      }
+      .phase ul li {
+        padding: 6px 0 6px 18px;
+        position: relative;
+        font-size: 0.88rem;
+        color: rgba(246,239,230,0.85);
+      }
+      .phase ul li::before {
+        content: "✓";
+        position: absolute;
+        left: 0; top: 6px;
+        color: var(--red);
+        font-weight: 800;
+      }
+
+      /* ── stat strip ── */
+      .stats {
+        background: var(--red);
+        color: var(--bone);
+        padding: 36px 56px;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 36px;
+      }
+      .stat strong {
+        font-family: var(--serif);
+        font-size: 2.4rem;
+        font-weight: 900;
+        display: block;
+        line-height: 1;
+      }
+      .stat span {
+        font-size: 0.82rem;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(246,239,230,0.85);
+        margin-top: 8px;
+        display: block;
+      }
+
+      /* ── footer ── */
+      .sheet-foot {
+        background: var(--bone);
+        padding: 30px 56px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 18px;
+        border-top: 1px solid var(--border);
+      }
+      .sheet-foot strong { font-family: var(--serif); font-size: 1.1rem; display: block; }
+      .sheet-foot small { font-size: 0.82rem; color: rgba(26,22,18,0.65); }
+      .sheet-foot a { color: var(--red); text-decoration: none; font-weight: 700; }
+
+      @media (max-width: 960px) {
+        .sheet-title, .legs, .timeline, .stats, .sheet-foot, .sheet-head { padding-left: 32px; padding-right: 32px; }
+        .now, .next { padding: 32px; }
+        .now-next { grid-template-columns: 1fr; }
+        .now { border-right: 0; border-bottom: 1px dashed var(--border); }
+        .legs-grid { grid-template-columns: repeat(2, 1fr); }
+        .timeline-grid { grid-template-columns: 1fr; }
+        .timeline-grid::before { display: none; }
+        .stats { grid-template-columns: repeat(2, 1fr); }
+      }
+      @media (max-width: 600px) {
+        body { padding: 16px 8px; }
+        .legs-grid { grid-template-columns: 1fr; }
+        .stats { grid-template-columns: 1fr; }
+        .sheet-title h1 { font-size: 2rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="sheet">
+      <!-- ── header ── -->
+      <header class="sheet-head">
+        <div class="lock">
+          <img src="./logo.png" alt="Artologist" onerror="this.src='../references/logos/artologist-logo-red.png'; this.onerror=null;" />
+          <div>
+            <strong>The Artologist × Next Frame</strong>
+            <small>Pitch deliverable · 2026-06-23</small>
+          </div>
+        </div>
+        <div class="stamp">
+          <strong>Prepared for Ronald de Castro</strong>
+          Gallery Director · The Artologist
+        </div>
+      </header>
+
+      <!-- ── title ── -->
+      <section class="sheet-title">
+        <span class="kicker">What Next Frame can do for you</span>
+        <h1>Run the engine. <span>You stay the curator.</span></h1>
+        <p>
+          The Artologist is the platform Filipino artists grow on. Today, the gallery's reach is doing
+          a fraction of the work the business has earned. Here is the system we put around it.
+        </p>
+      </section>
+
+      <!-- ── now → next ── -->
+      <section class="now-next">
+        <div class="now">
+          <span class="col-kicker">Where it sits today</span>
+          <h3>The reach gap.</h3>
+          <ul class="gap-list">
+            <li>IG @the_artologist · ~2.8K followers on 4,400+ posts (algorithm has stopped serving them)</li>
+            <li>Two competing Facebook pages — audience and SEO split in half</li>
+            <li>No TikTok presence in the single highest-growth channel for art + workshop content in PH</li>
+            <li>Booky listing for the Greenhills Learning Center reads "closed" — workshop bookings leaking daily</li>
+            <li>@yahoo.com contact e-mail facing serious collectors</li>
+            <li>No e-mail capture · no repeat-buyer programme · no homepage video</li>
+          </ul>
+        </div>
+        <div class="next">
+          <span class="col-kicker">Where it ships in 90 days</span>
+          <h3>One brand. Four cities.</h3>
+          <ul class="gap-list">
+            <li>A live IG + Reels engine fed by every opening, every workshop, every commission</li>
+            <li>One unified Facebook page, properly verified, with the second one merged or retired</li>
+            <li>A TikTok channel built on the "made by an Artologist artist" thesis</li>
+            <li>Reclaimed Booky + a Google Business Profile per location with live workshop calendars</li>
+            <li>A modernised theartologist.net that sells the gallery experience, not just the artworks</li>
+            <li>A collector CRM seeded by every opening night and every magazine subscriber</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ── four legs ── -->
+      <section class="legs">
+        <h2>Four legs of the engine.</h2>
+        <p>One layer per side of your business. Each one ships a concrete deliverable in the first 90 days — nothing abstract.</p>
+        <div class="legs-grid">
+          <article class="leg">
+            <span class="num">01</span>
+            <span class="their-leg">Your Gallery</span>
+            <h4>Curatorial content engine</h4>
+            <p>Every exhibition becomes a trailer, an artist interview, an opening-night reel and a long-form magazine piece — across IG, TikTok, FB and the site.</p>
+            <ul>
+              <li>4 exhibition trailers per quarter</li>
+              <li>Artist process reels (Reels + TikTok)</li>
+              <li>Per-show landing pages with RSVP</li>
+            </ul>
+            <div class="deliv"><strong>First 90 days</strong>Trailer + landing page for Celestial Symphony and the next two openings.</div>
+          </article>
+
+          <article class="leg">
+            <span class="num">02</span>
+            <span class="their-leg">Your Workshop</span>
+            <h4>Local-search booking funnel</h4>
+            <p>The workshop arm is leaking traffic to a "closed" Booky listing. We rebuild local search and pair it with a real booking flow.</p>
+            <ul>
+              <li>Reclaim Booky · GBP per location</li>
+              <li>Workshop microsite + calendar</li>
+              <li>Weekly TikTok of finished kid work</li>
+            </ul>
+            <div class="deliv"><strong>First 90 days</strong>Workshop bookings live online for Greenhills + Manila Bay, with a measurable funnel.</div>
+          </article>
+
+          <article class="leg">
+            <span class="num">03</span>
+            <span class="their-leg">Your Supplies</span>
+            <h4>Always-on commerce ads</h4>
+            <p>Working painters and illustrators come for supplies and stay for the gallery. We turn the catalogue into a real digital storefront.</p>
+            <ul>
+              <li>Catalogue audit + product photography</li>
+              <li>2 ad sets per location (Meta + TikTok Shop)</li>
+              <li>Monthly inventory + bestseller reports</li>
+            </ul>
+            <div class="deliv"><strong>First 90 days</strong>First always-on ad set with measurable CAC and a re-order flow for repeat artists.</div>
+          </article>
+
+          <article class="leg">
+            <span class="num">04</span>
+            <span class="their-leg">Your Brand</span>
+            <h4>Identity refresh + unified channels</h4>
+            <p>The mark stays. Everything around it gets a system — typography, photography, magazine, web, e-mail — that finally matches a 13-year-old brand.</p>
+            <ul>
+              <li>Merge Facebook pages · IG grid reset</li>
+              <li>E-mail capture + Quarterly Magazine list</li>
+              <li>Monthly performance review with Ron</li>
+            </ul>
+            <div class="deliv"><strong>First 90 days</strong>The new theartologist.net live, on a domain e-mail, with the first collector list captured.</div>
+          </article>
+        </div>
+      </section>
+
+      <!-- ── 90-day timeline ── -->
+      <section class="timeline">
+        <h2>The first 90 days.</h2>
+        <p>Three phases. Each one ends with something live, not a deck.</p>
+        <div class="timeline-grid">
+          <div class="phase">
+            <span class="dot"></span>
+            <span class="when">Days 1–30 · Foundation</span>
+            <h5>Reclaim and rebuild</h5>
+            <ul>
+              <li>Reclaim Booky + Google Business Profile (4 locations)</li>
+              <li>Merge / verify Facebook pages</li>
+              <li>Photo + video shoot at Shangri-La flagship</li>
+              <li>Domain e-mail — retire @yahoo.com on collateral</li>
+              <li>Launch theartologist.net mockup → production</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <span class="dot"></span>
+            <span class="when">Days 31–60 · Engine on</span>
+            <h5>Content + funnel live</h5>
+            <ul>
+              <li>Exhibition trailer for the next opening</li>
+              <li>Workshop microsite + online booking live</li>
+              <li>First always-on Meta ad set (supplies + workshops)</li>
+              <li>Daily IG / Reels rhythm · 3 TikToks a week</li>
+              <li>E-mail capture live across the site</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <span class="dot"></span>
+            <span class="when">Days 61–90 · Measure + scale</span>
+            <h5>What worked, what scales</h5>
+            <ul>
+              <li>First collector CRM segment (300+ subscribers)</li>
+              <li>Second exhibition trailer · post-mortem of the first</li>
+              <li>TikTok Shop pilot for supplies</li>
+              <li>Quarterly Magazine integrated into the funnel</li>
+              <li>Monthly performance review with Ron — pick what scales into months 4–6</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── stat strip ── -->
+      <section class="stats">
+        <div class="stat"><strong>4</strong><span>Locations covered</span></div>
+        <div class="stat"><strong>3</strong><span>Channels rebuilt (IG, FB, TikTok)</span></div>
+        <div class="stat"><strong>90</strong><span>Days to a live engine</span></div>
+        <div class="stat"><strong>1</strong><span>Brand. One platform. One Ron.</span></div>
+      </section>
+
+      <!-- ── footer ── -->
+      <footer class="sheet-foot">
+        <div>
+          <strong>Next Frame Agency</strong>
+          <small>next-frame.agency · For The Artologist · Prepared 2026-06-23</small>
+        </div>
+        <small>Live mockup: <a href="https://next-frame.agency/artologistmockup/" target="_blank">next-frame.agency/artologistmockup</a></small>
+      </footer>
+    </div>
+  </body>
+</html>
