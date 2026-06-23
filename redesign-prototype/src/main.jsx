@@ -150,7 +150,7 @@ const ytEmbed = (id, muted = false) =>
 function BrandMark() {
   return (
     <a className="brand" href="#top" aria-label="NextFrame home">
-      <img src={MEDIA.LOGO} alt="" />
+      <img src={MEDIA.LOGO} alt="NextFrame — AI marketing agency, Makati Philippines" />
       <span>
         <strong>NextFrame</strong>
         <em>AI Video Growth</em>
