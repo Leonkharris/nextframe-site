@@ -4,318 +4,487 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>The Artologist — Gallery. Workshop. Supplies.</title>
-    <meta name="description" content="The Artologist is a 13-year-old Filipino contemporary-art platform across Greenhills, Shangri-La Plaza, Ayala Manila Bay and Santa Ana, California. Home of the young, emerging and mid-career contemporary artists." />
+    <meta name="description" content="The Artologist is a contemporary Filipino art platform across Greenhills, Shangri-La Plaza, Ayala Manila Bay and Santa Ana, California. Home of the young, emerging and mid-career contemporary artists." />
     <meta name="robots" content="noindex" />
     <link rel="icon" href="./assets/logo.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,700;9..144,900&family=Inter:wght@400;500;600;700;800&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,400;9..144,0,500;9..144,0,700;9..144,0,900;9..144,1,400;9..144,1,500&family=JetBrains+Mono:wght@400;500&family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="./styles.css?v=20260623a" />
+    <link rel="stylesheet" href="./styles.css?v=20260623c" />
   </head>
   <body>
-    <div class="mockup-banner" role="note">
-      <strong>WEBSITE MOCKUP — concept only</strong>
-      <span>Prepared for Ronald de Castro · The Artologist · by Next Frame Agency</span>
+    <div class="cursor" data-cursor aria-hidden="true"></div>
+
+    <!-- Top ticker -->
+    <div class="ticker" data-ticker>
+      <span class="ticker-dot"></span>
+      <span class="ticker-text">Now showing</span>
+      <strong>SINTA · A two-women love-letter exhibition</strong>
+      <span class="ticker-sep">/</span>
+      <span class="ticker-text">Shangri-La Plaza · Level 4</span>
+      <span class="ticker-sep">/</span>
+      <span class="ticker-text">Until 24 May 2026</span>
+      <a href="#programme" class="ticker-cta">See programme →</a>
     </div>
 
     <header class="site-header" data-header>
-      <a class="brand" href="#top" aria-label="The Artologist home">
-        <img class="brand-mark" src="./assets/logo.png" alt="Artologist logo" />
-        <span>
-          <strong>The Artologist</strong>
-          <small>Gallery · Workshop · Supplies</small>
-        </span>
+      <a class="brand" href="#top" aria-label="The Artologist home" data-cursor-hover>
+        <img class="brand-mark" src="./assets/logo.png" alt="" />
+        <span class="brand-word">The Artologist</span>
       </a>
+      <nav class="nav-links" id="primary-nav" data-nav>
+        <a href="#programme" data-cursor-hover>Programme</a>
+        <a href="#locations" data-cursor-hover>Locations</a>
+        <a href="#workshops" data-cursor-hover>Workshops</a>
+        <a href="#magazine" data-cursor-hover>Magazine</a>
+        <a href="#visit" class="nav-cta" data-cursor-hover>Visit ↗</a>
+      </nav>
       <button class="menu-toggle" type="button" aria-label="Open menu" aria-expanded="false" data-menu-toggle>
         <span></span><span></span>
       </button>
-      <nav class="nav-links" data-nav>
-        <a href="#exhibitions">Exhibitions</a>
-        <a href="#workshops">Workshops</a>
-        <a href="#locations">Locations</a>
-        <a href="#magazine">Magazine</a>
-        <a class="nav-cta" href="#visit">Plan a visit</a>
-      </nav>
     </header>
 
     <main id="top">
-      <!-- HERO -->
+      <!-- ── HERO ───────────────────────────────────────────── -->
       <section class="hero">
-        <img class="hero-poster" src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
-        <div class="hero-shade"></div>
+        <span class="hero-eyebrow" data-reveal>
+          <i></i> Est. 2013 · Manila → Santa Ana, CA
+        </span>
 
-        <div class="hero-grid">
-          <div class="hero-copy">
-            <span class="eyebrow">Since 2013 · Manila · Mandaluyong · San Juan · Santa Ana, CA</span>
-            <h1>
-              Home of the young, emerging, and mid-career
-              <span>contemporary Filipino artists.</span>
-            </h1>
-            <p>
-              Four galleries. One quarterly magazine. A workshop floor open seven days a week.
-              The Artologist is the platform Filipino artists grow on — and the place collectors come back to.
-            </p>
-            <div class="hero-actions">
-              <a class="button primary" href="#exhibitions">See what's on</a>
-              <a class="button ghost" href="#workshops">Book a workshop</a>
+        <h1 class="hero-title" data-reveal>
+          <span class="line">The</span>
+          <span class="line line-italic">Artologist.</span>
+        </h1>
+
+        <p class="hero-sub" data-reveal>
+          Home of the young, emerging and mid-career contemporary Filipino artists —
+          across four galleries, one workshop floor, and a quarterly magazine.
+        </p>
+
+        <div class="hero-media">
+          <figure class="hero-card" data-reveal data-cursor-hover>
+            <img src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
+            <figcaption>
+              <span>Now showing — May 2026</span>
+              <strong>SINTA</strong>
+              <small>The Art Plaza · Shangri-La · until 24 May</small>
+            </figcaption>
+          </figure>
+
+          <div class="hero-meta" data-reveal>
+            <div>
+              <span class="meta-num">13</span>
+              <span class="meta-lab">Years curating</span>
             </div>
-            <div class="hero-facts">
-              <div><strong>13</strong><span>Years curating</span></div>
-              <div><strong>4</strong><span>Locations</span></div>
-              <div><strong>200+</strong><span>Artists shown</span></div>
-              <div><strong>4×/yr</strong><span>Quarterly Magazine</span></div>
+            <div>
+              <span class="meta-num">4</span>
+              <span class="meta-lab">Locations</span>
+            </div>
+            <div>
+              <span class="meta-num">200<i>+</i></span>
+              <span class="meta-lab">Artists shown</span>
+            </div>
+            <div>
+              <span class="meta-num">4<i>×/yr</i></span>
+              <span class="meta-lab">Quarterly Magazine</span>
             </div>
           </div>
-
-          <aside class="hero-stage" aria-label="Now showing">
-            <figure class="hero-card hero-card-one">
-              <img src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
-              <figcaption>
-                <span>Now showing</span>
-                <strong>SINTA</strong>
-                <small>Shangri-La Plaza · The Art Plaza</small>
-              </figcaption>
-            </figure>
-            <figure class="hero-card hero-card-two">
-              <img src="./assets/poster-ember.jpg" alt="Ember exhibition poster" />
-              <figcaption>
-                <span>Opens next</span>
-                <strong>Ember</strong>
-                <small>Greenhills Learning Center</small>
-              </figcaption>
-            </figure>
-          </aside>
         </div>
+
+        <a href="#manifesto" class="scroll-cue" aria-label="Scroll" data-cursor-hover>
+          <span>Scroll</span>
+          <i></i>
+        </a>
       </section>
 
-      <!-- MARQUEE -->
+      <!-- ── MANIFESTO PULL-QUOTE ───────────────────────────── -->
+      <section id="manifesto" class="manifesto" data-reveal>
+        <small class="kicker">Manifesto · 2013 →</small>
+        <blockquote>
+          A place of <em>discovery</em>, of <em>development</em>
+          <span>through art.</span>
+        </blockquote>
+        <cite>— The Artologist, since the first room on Eisenhower St.</cite>
+      </section>
+
+      <!-- ── PROGRAMME (numbered exhibition list) ───────────── -->
+      <section id="programme" class="programme">
+        <header class="section-head" data-reveal>
+          <div>
+            <span class="kicker">/01 — Programme</span>
+            <h2>The 2026 calendar.</h2>
+          </div>
+          <p>
+            A working curatorial slate — two-women shows, mid-career retrospectives,
+            group surveys. Every opening paired with a printed catalogue and a Quarterly feature.
+          </p>
+        </header>
+
+        <ol class="exhibits">
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">01</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-sinta.png" alt="SINTA poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>SINTA</strong>
+              <span>A two-women love-letter — paint, text, memory.</span>
+            </div>
+            <div class="ex-dates">
+              <em>10 — 24 May 2026</em>
+              <small>Shangri-La · The Art Plaza</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">02</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-ember.jpg" alt="Ember poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>Ember</strong>
+              <span>Heat, surface and slow burn — a six-artist abstract collective.</span>
+            </div>
+            <div class="ex-dates">
+              <em>February 2026</em>
+              <small>Greenhills · Learning Center</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">03</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-monnar.jpg" alt="Monnar Baldemor poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>Monnar Baldemor — Solo</strong>
+              <span>Returning Artologist artist · new figurative work on canvas.</span>
+            </div>
+            <div class="ex-dates">
+              <em>October 2025</em>
+              <small>Shangri-La · The Art Plaza</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">04</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-sanclaria.jpg" alt="Sanclaria poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>Sanclaria</strong>
+              <span>Mid-career solo — landscapes pulled apart and put back together.</span>
+            </div>
+            <div class="ex-dates">
+              <em>October 2025</em>
+              <small>Ayala Malls Manila Bay</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">05</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-jack-salud.jpg" alt="Jack Salud poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>Jack Salud</strong>
+              <span>Emerging-artist debut — a quiet, confident first show.</span>
+            </div>
+            <div class="ex-dates">
+              <em>October 2025</em>
+              <small>Greenhills · Learning Center</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+
+          <li class="exhibit" data-reveal data-cursor-hover>
+            <span class="ex-num">06</span>
+            <figure class="ex-img">
+              <img src="./assets/poster-steel.jpg" alt="Steel on Stills poster" />
+            </figure>
+            <div class="ex-meta">
+              <strong>Steel on Stills</strong>
+              <span>Sculpture meets photography · a recurring Artologist favourite.</span>
+            </div>
+            <div class="ex-dates">
+              <em>April 2024</em>
+              <small>Shangri-La · The Art Plaza</small>
+            </div>
+            <span class="ex-arrow">↗</span>
+          </li>
+        </ol>
+
+        <a href="https://www.theartologist.net" class="see-archive" data-cursor-hover>
+          See the full archive — 2013 to today ↗
+        </a>
+      </section>
+
+      <!-- ── MARQUEE ────────────────────────────────────────── -->
       <section class="marquee" aria-hidden="true">
         <div class="marquee-track">
-          <span>GALLERY</span><i></i>
-          <span>WORKSHOP</span><i></i>
-          <span>SUPPLIES</span><i></i>
-          <span>COMMISSIONS</span><i></i>
-          <span>QUARTERLY MAGAZINE</span><i></i>
-          <span>EST. 2013</span><i></i>
-          <span>GALLERY</span><i></i>
-          <span>WORKSHOP</span><i></i>
-          <span>SUPPLIES</span><i></i>
-          <span>COMMISSIONS</span><i></i>
-          <span>QUARTERLY MAGAZINE</span><i></i>
-          <span>EST. 2013</span><i></i>
+          <span>Gallery</span><i>•</i>
+          <span>Workshop</span><i>•</i>
+          <span>Supplies</span><i>•</i>
+          <span>Commissions</span><i>•</i>
+          <span>Quarterly Magazine</span><i>•</i>
+          <span>Est. 2013</span><i>•</i>
+          <span>Gallery</span><i>•</i>
+          <span>Workshop</span><i>•</i>
+          <span>Supplies</span><i>•</i>
+          <span>Commissions</span><i>•</i>
+          <span>Quarterly Magazine</span><i>•</i>
+          <span>Est. 2013</span><i>•</i>
         </div>
       </section>
 
-      <!-- EXHIBITIONS -->
-      <section id="exhibitions" class="section">
-        <header class="section-head">
-          <span class="kicker">01 — Programme</span>
-          <h2>The 2026 exhibition calendar.</h2>
-          <p>A working curatorial slate — two-women shows, mid-career retrospectives, group surveys.
-            Every opening is paired with a printed catalogue and a Quarterly Magazine feature.</p>
+      <!-- ── LOCATIONS (editorial strips) ───────────────────── -->
+      <section id="locations" class="locations">
+        <header class="section-head" data-reveal>
+          <div>
+            <span class="kicker">/02 — Where we are</span>
+            <h2>Four addresses. <em>One platform.</em></h2>
+          </div>
+          <p>A curatorial flagship in Mandaluyong, a learning HQ in Greenhills, a mall-front in Manila Bay, and a US bridge in California.</p>
         </header>
 
-        <div class="exhibit-grid">
-          <article class="exhibit-card">
-            <img src="./assets/poster-sinta.png" alt="SINTA" />
-            <div>
-              <strong>SINTA</strong>
-              <span>May 2026 · Shangri-La</span>
-              <p>A love-letter group show — paint, text, and memory.</p>
-            </div>
-          </article>
-          <article class="exhibit-card">
-            <img src="./assets/poster-ember.jpg" alt="Ember" />
-            <div>
-              <strong>Ember</strong>
-              <span>Feb 2026 · Greenhills</span>
-              <p>Heat, surface and slow burn from a six-artist abstract collective.</p>
-            </div>
-          </article>
-          <article class="exhibit-card">
-            <img src="./assets/poster-monnar.jpg" alt="Monnar Baldemor" />
-            <div>
-              <strong>Monnar Baldemor — Solo</strong>
-              <span>Oct 2025 · Shangri-La</span>
-              <p>Returning Artologist artist; new figurative work on canvas.</p>
-            </div>
-          </article>
-          <article class="exhibit-card">
-            <img src="./assets/poster-sanclaria.jpg" alt="Sanclaria" />
-            <div>
-              <strong>Sanclaria</strong>
-              <span>Oct 2025 · Manila Bay</span>
-              <p>Mid-career solo — landscapes pulled apart and put back together.</p>
-            </div>
-          </article>
-          <article class="exhibit-card">
-            <img src="./assets/poster-jack-salud.jpg" alt="Jack Salud" />
-            <div>
-              <strong>Jack Salud</strong>
-              <span>Oct 2025 · Greenhills</span>
-              <p>Emerging artist debut — a quiet, confident first show.</p>
-            </div>
-          </article>
-          <article class="exhibit-card">
-            <img src="./assets/poster-steel.jpg" alt="Steel on Stills" />
-            <div>
-              <strong>Steel on Stills</strong>
-              <span>Apr 2024 · Shangri-La</span>
-              <p>Sculpture meets photography — a recurring Artologist favourite.</p>
-            </div>
-          </article>
-        </div>
+        <article class="loc loc-flagship" data-reveal data-cursor-hover>
+          <span class="loc-num">01</span>
+          <span class="loc-tag">Flagship gallery</span>
+          <h3>Shangri-La Mall<br/><em>The Art Plaza.</em></h3>
+          <div class="loc-detail">
+            <p>Level 4, Shangri-La Plaza Main Wing<br/>EDSA, Mandaluyong</p>
+            <ul>
+              <li><span>Tel</span>8696-3244</li>
+              <li><span>Cel</span>0945-511-2568</li>
+            </ul>
+          </div>
+          <small>Anchor exhibitions · openings · collector previews</small>
+        </article>
+
+        <article class="loc" data-reveal data-cursor-hover>
+          <span class="loc-num">02</span>
+          <span class="loc-tag">Workshop HQ</span>
+          <h3>Greenhills<br/><em>Learning Center.</em></h3>
+          <div class="loc-detail">
+            <p>#81 Xavier St., Unit 203<br/>Greenhills, San Juan City</p>
+            <ul>
+              <li><span>Tel</span>8634-0100</li>
+              <li><span>Cel</span>0916-567-3351</li>
+            </ul>
+          </div>
+          <small>Drawing · watercolour · oils · ceramics · kid programmes</small>
+        </article>
+
+        <article class="loc" data-reveal data-cursor-hover>
+          <span class="loc-num">03</span>
+          <span class="loc-tag">Mall-front</span>
+          <h3>Ayala Malls<br/><em>Manila Bay.</em></h3>
+          <div class="loc-detail">
+            <p>Filipino Village · Unit 2162-16<br/>Second Floor, Ayala Malls Manila Bay</p>
+            <ul>
+              <li><span>Hours</span>Mall hours, daily</li>
+            </ul>
+          </div>
+          <small>Foot-traffic exhibitions · supplies retail · short workshops</small>
+        </article>
+
+        <article class="loc" data-reveal data-cursor-hover>
+          <span class="loc-num">04</span>
+          <span class="loc-tag">USA bridge</span>
+          <h3>Santa Ana<br/><em>California.</em></h3>
+          <div class="loc-detail">
+            <p>#920 E Santa Ana Blvd<br/>Santa Ana, CA 92701</p>
+            <ul>
+              <li><span>Tel</span>(714) 845-7589</li>
+            </ul>
+          </div>
+          <small>Filipino contemporary art on the US West Coast</small>
+        </article>
       </section>
 
-      <!-- LOCATIONS -->
-      <section id="locations" class="section section-dark">
-        <header class="section-head light">
-          <span class="kicker">02 — Where we are</span>
-          <h2>Four addresses. One platform.</h2>
-          <p>Each location does a different job — a curatorial flagship in Mandaluyong, a learning HQ in Greenhills, a mall-front in Manila Bay, and a US bridge in California.</p>
-        </header>
-
-        <div class="locations-grid">
-          <article class="loc-card loc-card-flagship">
-            <span class="loc-tag">Flagship gallery</span>
-            <h3>Shangri-La Mall — The Art Plaza</h3>
-            <p>Level 4, Shangri-La Plaza Main Wing, EDSA, Mandaluyong</p>
-            <ul>
-              <li>Tel. 8696-3244</li>
-              <li>Cel. 0945-511-2568</li>
-            </ul>
-            <small>Anchor exhibitions · openings · collector previews</small>
-          </article>
-
-          <article class="loc-card">
-            <span class="loc-tag">Workshop HQ</span>
-            <h3>Greenhills — Artologist Learning Center</h3>
-            <p>#81 Xavier St., Unit 203, Greenhills, San Juan City</p>
-            <ul>
-              <li>Tel. 8634-0100</li>
-              <li>Cel. 0916-567-3351</li>
-            </ul>
-            <small>Drawing · watercolour · oils · ceramics · kid programmes</small>
-          </article>
-
-          <article class="loc-card">
-            <span class="loc-tag">Mall-front</span>
-            <h3>Ayala Malls Manila Bay — Artologist</h3>
-            <p>Filipino Village, Unit 2162-16, Second Floor, Ayala Malls Manila Bay</p>
-            <ul>
-              <li>Open daily with mall hours</li>
-            </ul>
-            <small>Foot-traffic exhibitions · supplies retail · short workshops</small>
-          </article>
-
-          <article class="loc-card">
-            <span class="loc-tag">USA</span>
-            <h3>Santa Ana, California</h3>
-            <p>#920 E Santa Ana Blvd, Santa Ana, CA 92701</p>
-            <ul>
-              <li>(714) 845-7589</li>
-            </ul>
-            <small>Filipino contemporary art on the US West Coast</small>
-          </article>
-        </div>
-      </section>
-
-      <!-- WORKSHOPS -->
-      <section id="workshops" class="section">
-        <header class="section-head">
-          <span class="kicker">03 — Learn here</span>
-          <h2>Workshops led by working artists.</h2>
+      <!-- ── WORKSHOPS (editorial list) ─────────────────────── -->
+      <section id="workshops" class="workshops">
+        <header class="section-head" data-reveal>
+          <div>
+            <span class="kicker">/03 — Learn here</span>
+            <h2>Workshops led by <em>working artists.</em></h2>
+          </div>
           <p>Eight curriculum tracks for ages 5 and up, taught by Artologist gallery artists. Studios in Greenhills and Manila Bay.</p>
         </header>
 
-        <div class="workshops-grid">
-          <div class="ws"><strong>Drawing</strong><span>All ages</span><p>Foundations to intermediate — graphite, charcoal, ink.</p></div>
-          <div class="ws"><strong>Watercolour</strong><span>5+</span><p>Colour theory, washes and brushwork — beginner to advanced.</p></div>
-          <div class="ws"><strong>Acrylic on Canvas</strong><span>5+</span><p>Landscapes, florals, seascapes, still-life, portraiture.</p></div>
-          <div class="ws"><strong>Oil on Canvas</strong><span>5+</span><p>Classical to contemporary techniques.</p></div>
-          <div class="ws"><strong>Ceramic Painting</strong><span>5+</span><p>Glaze and decorate bisque-fired functional pieces.</p></div>
-          <div class="ws"><strong>Canvas Bag Painting</strong><span>5+</span><p>Wearable art — totes and pouches.</p></div>
-          <div class="ws"><strong>Kids Craft</strong><span>5-10</span><p>Mixed-media — ceramics, wood, acrylic, canvas.</p></div>
-          <div class="ws ws-feature">
+        <ul class="ws-list">
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/01</span>
+            <strong>Drawing</strong>
+            <span class="ws-age">All ages</span>
+            <p>Foundations to intermediate — graphite, charcoal, ink.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/02</span>
+            <strong>Watercolour</strong>
+            <span class="ws-age">5+</span>
+            <p>Colour theory, washes and brushwork.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/03</span>
+            <strong>Acrylic on Canvas</strong>
+            <span class="ws-age">5+</span>
+            <p>Landscapes, florals, seascapes, still-life, portraiture.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/04</span>
+            <strong>Oil on Canvas</strong>
+            <span class="ws-age">5+</span>
+            <p>Classical to contemporary techniques.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/05</span>
+            <strong>Ceramic Painting</strong>
+            <span class="ws-age">5+</span>
+            <p>Glaze and decorate bisque-fired functional pieces.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/06</span>
+            <strong>Canvas Bag Painting</strong>
+            <span class="ws-age">5+</span>
+            <p>Wearable art — totes and pouches.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws" data-reveal data-cursor-hover>
+            <span class="ws-num">/07</span>
+            <strong>Kids Craft</strong>
+            <span class="ws-age">5-10</span>
+            <p>Mixed-media — ceramics, wood, acrylic, canvas.</p>
+            <span class="ws-cta">Reserve →</span>
+          </li>
+          <li class="ws ws-feature" data-reveal data-cursor-hover>
+            <span class="ws-num">/08</span>
             <strong>Combination Package</strong>
-            <span>₱10,500 · 6 sessions</span>
-            <p>Mix and match across any workshop track. The best entry point.</p>
-            <a class="button primary small" href="#visit">Reserve a seat</a>
-          </div>
+            <span class="ws-age">₱ 10,500 · 6 sessions</span>
+            <p>Mix and match across any workshop. The best entry point — and the most-booked.</p>
+            <span class="ws-cta ws-cta-feature">Reserve seat →</span>
+          </li>
+        </ul>
+      </section>
+
+      <!-- ── COMMISSION (full-bleed feature) ────────────────── -->
+      <section class="commission">
+        <figure class="commission-image" data-reveal>
+          <img src="./assets/poster-monnar.jpg" alt="Commissioned work" />
+          <figcaption>30 — 45 day turnaround · Manila &amp; US shipping</figcaption>
+        </figure>
+        <div class="commission-copy" data-reveal>
+          <span class="kicker">/04 — Commission</span>
+          <h2>Painted by an Artologist artist.<br/><em>For you.</em></h2>
+          <p>
+            Our signature programme. Hand-painted handbags, canvases and ceramics commissioned from our gallery roster.
+            One subject. One artist. One piece.
+          </p>
+          <ul class="commission-steps">
+            <li><strong>01</strong><span>Choose your medium — handbag, canvas, ceramic, mixed media</span></li>
+            <li><strong>02</strong><span>Choose your artist — from our 200+ shown roster</span></li>
+            <li><strong>03</strong><span>30 to 45 day delivery — Manila and US shipping</span></li>
+          </ul>
+          <a class="btn-primary" href="#visit" data-cursor-hover>Start a commission ↗</a>
         </div>
       </section>
 
-      <!-- COMMISSIONS / HANDBAG PROGRAM -->
-      <section class="section section-feature">
-        <div class="feature-grid">
-          <figure class="feature-image">
-            <img src="./assets/poster-monnar.jpg" alt="Custom commission" />
-            <figcaption>Custom work · 30-45 day turnaround</figcaption>
-          </figure>
-          <div>
-            <span class="kicker">04 — Commission</span>
-            <h2>Painted by an Artologist artist. For you.</h2>
-            <p>
-              Our signature programme: hand-painted handbags, canvases and ceramics
-              commissioned from our gallery roster. One subject, one artist, one piece.
-            </p>
-            <ul class="check-list">
-              <li>Choose your medium — handbag, canvas, ceramic, mixed media</li>
-              <li>Choose your artist — from our 200+ shown roster</li>
-              <li>30 to 45 day delivery — Manila and US shipping</li>
-            </ul>
-            <a class="button primary" href="#visit">Start a commission</a>
-          </div>
+      <!-- ── MAGAZINE ───────────────────────────────────────── -->
+      <section id="magazine" class="magazine">
+        <div class="mag-text" data-reveal>
+          <span class="kicker">/05 — Read</span>
+          <h2>The Artologist <em>Quarterly.</em></h2>
+          <p>
+            Four issues a year. Long-form interviews, studio visits and exhibition essays from our curators.
+            Printed in Manila, shipped to subscribers in PH and the US.
+          </p>
+          <a class="btn-ghost btn-ghost-red" href="#visit" data-cursor-hover>Subscribe ↗</a>
         </div>
+        <aside class="mag-issue" data-reveal data-cursor-hover>
+          <span class="mag-tag">Issue No. 23 · Out now</span>
+          <strong>"A New Contemporary."</strong>
+          <small>Ramon Orlina · Edwin Wilwayco · JunYee · Nestor Vinluan</small>
+          <div class="mag-spine"></div>
+        </aside>
       </section>
 
-      <!-- MAGAZINE -->
-      <section id="magazine" class="section section-magazine">
-        <div class="mag-grid">
-          <div>
-            <span class="kicker">05 — Read</span>
-            <h2>The Artologist Quarterly.</h2>
-            <p>
-              Four issues a year. Long-form interviews, studio visits and exhibition essays
-              from our curators. Printed in Manila, shipped to subscribers in PH and the US.
-            </p>
-            <a class="button ghost" href="#visit">Subscribe</a>
+      <!-- ── VISIT / CTA ────────────────────────────────────── -->
+      <section id="visit" class="visit">
+        <div class="visit-inner" data-reveal>
+          <span class="kicker">/06 — Visit</span>
+          <h2>Come in.<br/><em>We open at 10.</em></h2>
+          <p>
+            Walk-ins welcome at every location. Workshops by reservation.
+            Collectors — DM the gallery for an early preview of any opening.
+          </p>
+          <div class="visit-actions">
+            <a class="btn-primary" href="mailto:theartologist@yahoo.com" data-cursor-hover>Email the gallery</a>
+            <a class="btn-ghost" href="tel:+639178403585" data-cursor-hover>Call Ron · +63 917 840 3585</a>
           </div>
-          <div class="mag-issues">
-            <span>Issue No. 23 — out now</span>
-            <strong>"A New Contemporary"</strong>
-            <small>Ramon Orlina · Edwin Wilwayco · JunYee · Nestor Vinluan</small>
+          <div class="visit-socials">
+            <a href="https://www.instagram.com/the_artologist/" target="_blank" rel="noopener" data-cursor-hover>Instagram → @the_artologist</a>
+            <a href="https://www.facebook.com/artologist/" target="_blank" rel="noopener" data-cursor-hover>Facebook → The Artologist</a>
+            <a href="https://www.theartologist.net" target="_blank" rel="noopener" data-cursor-hover>theartologist.net →</a>
           </div>
-        </div>
-      </section>
-
-      <!-- VISIT / CTA -->
-      <section id="visit" class="section section-cta">
-        <h2>Come in. We open at 10.</h2>
-        <p>Walk-ins welcome at every location. Workshops by reservation. Collectors — DM the gallery for an early preview of any opening.</p>
-        <div class="cta-row">
-          <a class="button primary" href="mailto:theartologist@yahoo.com">Email the gallery</a>
-          <a class="button ghost" href="tel:+639178403585">Call Ron · +63 917 840 3585</a>
-        </div>
-        <div class="cta-socials">
-          <a href="https://www.instagram.com/the_artologist/" target="_blank" rel="noopener">Instagram · @the_artologist</a>
-          <a href="https://www.facebook.com/artologist/" target="_blank" rel="noopener">Facebook · The Artologist</a>
-          <a href="https://www.theartologist.net" target="_blank" rel="noopener">theartologist.net</a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
-      <div>
-        <strong>The Artologist</strong>
-        <small>Gallery. Workshop. Supplies. · Est. 2013 · Greenhills · Shangri-La · Manila Bay · Santa Ana, CA</small>
+      <div class="ft-grid">
+        <div class="ft-brand" data-reveal>
+          <img src="./assets/logo.png" alt="" />
+          <strong>The Artologist</strong>
+          <small>Gallery · Workshop · Supplies<br/>Est. 2013</small>
+        </div>
+
+        <nav class="ft-nav" aria-label="Footer">
+          <strong>Programme</strong>
+          <a href="#programme" data-cursor-hover>Exhibitions</a>
+          <a href="#magazine" data-cursor-hover>Quarterly Magazine</a>
+          <a href="#programme" data-cursor-hover>Archive</a>
+        </nav>
+
+        <nav class="ft-nav" aria-label="Footer">
+          <strong>Visit</strong>
+          <a href="#locations" data-cursor-hover>Shangri-La · Flagship</a>
+          <a href="#locations" data-cursor-hover>Greenhills · Workshop</a>
+          <a href="#locations" data-cursor-hover>Manila Bay</a>
+          <a href="#locations" data-cursor-hover>Santa Ana, CA</a>
+        </nav>
+
+        <div class="ft-contact">
+          <strong>Contact</strong>
+          <a href="mailto:theartologist@yahoo.com" data-cursor-hover>theartologist@yahoo.com</a>
+          <a href="tel:+639178403585" data-cursor-hover>+63 917 840 3585</a>
+          <a href="https://www.instagram.com/the_artologist/" target="_blank" rel="noopener" data-cursor-hover>Instagram ↗</a>
+          <a href="https://www.facebook.com/artologist/" target="_blank" rel="noopener" data-cursor-hover>Facebook ↗</a>
+        </div>
       </div>
-      <small class="footer-credit">Concept mockup by <a href="https://next-frame.agency" target="_blank" rel="noopener">Next Frame Agency</a></small>
+
+      <div class="ft-bottom">
+        <small>© 2013 — 2026 The Artologist · All artworks © their respective artists.</small>
+        <small class="ft-credit">Concept by <a href="https://next-frame.agency" target="_blank" rel="noopener" data-cursor-hover>Next Frame Agency</a></small>
+      </div>
     </footer>
 
-    <script src="./script.js?v=20260623a"></script>
+    <div class="mockup-banner" role="note">
+      <strong>Website Mockup — concept only</strong>
+      <span>Prepared for Ronald de Castro · The Artologist · by Next Frame</span>
+    </div>
+
+    <script src="./script.js?v=20260623c"></script>
   </body>
 </html>
