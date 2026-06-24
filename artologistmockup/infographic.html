@@ -342,6 +342,123 @@
         font-weight: 800;
       }
 
+      /* ── seven deliverables grid ── */
+      .ship {
+        padding: 60px 56px 50px;
+        background: var(--bone);
+      }
+      .ship-head {
+        margin-bottom: 32px;
+        max-width: 740px;
+      }
+      .ship-kicker {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.7rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        margin-bottom: 14px;
+        display: block;
+      }
+      .ship-head h2 {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 2.2rem;
+        line-height: 1.05;
+        letter-spacing: -0.025em;
+        margin: 0;
+      }
+      .ship-head h2 em {
+        font-style: italic;
+        font-weight: 500;
+        color: var(--red);
+      }
+      .ship-grid {
+        display: grid;
+        grid-template-columns: repeat(6, 1fr);
+        gap: 14px;
+      }
+      .ship-card {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 22px 22px 20px;
+        display: flex;
+        flex-direction: column;
+        min-height: 200px;
+        grid-column: span 2;
+        position: relative;
+      }
+      .ship-card-lg { grid-column: span 3; }
+      .ship-card-feature {
+        grid-column: span 3;
+        background: linear-gradient(135deg, #1a1612 0%, #0e0c0a 100%);
+        color: var(--bone);
+        border-color: var(--ink);
+      }
+      .ship-card-feature h3 { color: var(--bone); }
+      .ship-card-feature p { color: rgba(244, 236, 224, 0.78); }
+      .ship-card-feature .ship-n { color: var(--red); }
+      .ship-card-warm {
+        background: linear-gradient(135deg, #fff3ee 0%, #fffaf4 100%);
+        border-color: rgba(230, 57, 25, 0.15);
+      }
+      .ship-n {
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        color: rgba(26, 22, 18, 0.4);
+        font-weight: 500;
+        margin-bottom: 12px;
+      }
+      .ship-tag {
+        position: absolute;
+        top: 22px;
+        right: 22px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.6rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--red);
+        background: rgba(230, 57, 25, 0.15);
+        border: 1px solid rgba(230, 57, 25, 0.4);
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+      .ship-card h3 {
+        font-family: var(--serif);
+        font-size: 1.2rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        margin: 0 0 8px;
+        line-height: 1.15;
+      }
+      .ship-card p {
+        font-size: 0.86rem;
+        color: rgba(26, 22, 18, 0.72);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .ship-card-feature p em,
+      .ship-card-warm p em {
+        font-style: italic;
+        color: var(--red);
+      }
+      .ship-card p em { font-style: italic; color: var(--red); font-weight: 500; }
+      .ship-ship {
+        margin-top: auto;
+        padding-top: 14px;
+        font-family: "JetBrains Mono", monospace;
+        font-size: 0.66rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--red);
+      }
+      .ship-card-feature .ship-ship { color: var(--red); }
+
       /* ── already-started band ── */
       .started {
         background: linear-gradient(90deg, #0e0c0a 0%, #1a1612 100%);
@@ -555,16 +672,18 @@
       .sheet-foot a { color: var(--red); text-decoration: none; font-weight: 700; }
 
       @media (max-width: 960px) {
-        .sheet-title, .legs, .timeline, .stats, .sheet-foot, .sheet-head, .started, .price { padding-left: 32px; padding-right: 32px; }
+        .sheet-title, .legs, .timeline, .stats, .sheet-foot, .sheet-head, .started, .price, .ship { padding-left: 32px; padding-right: 32px; }
         .now, .next { padding: 32px; }
         .now-next { grid-template-columns: 1fr; }
         .now { border-right: 0; border-bottom: 1px dashed var(--border); }
         .legs-grid { grid-template-columns: repeat(2, 1fr); }
-        .timeline-grid { grid-template-columns: 1fr; }
+        .timeline-grid { grid-template-columns: repeat(2, 1fr); gap: 18px; }
         .timeline-grid::before { display: none; }
         .stats { grid-template-columns: repeat(2, 1fr); }
         .started { flex-direction: column; align-items: flex-start; gap: 14px; }
         .price-body { grid-template-columns: 1fr 1fr; }
+        .ship-grid { grid-template-columns: repeat(2, 1fr); }
+        .ship-card, .ship-card-lg, .ship-card-feature { grid-column: span 1; }
       }
       @media (max-width: 600px) {
         body { padding: 16px 8px; }
@@ -573,6 +692,8 @@
         .sheet-title h1 { font-size: 2rem; }
         .price-body { grid-template-columns: 1fr; }
         .price-head h3 { font-size: 1.4rem; }
+        .ship-grid { grid-template-columns: 1fr; }
+        .timeline-grid { grid-template-columns: 1fr; }
       }
     </style>
   </head>
@@ -584,7 +705,7 @@
           <img src="https://next-frame.agency/artologistmockup/assets/logo.png" alt="Artologist logo" loading="eager" onerror="this.onerror=null; this.src='./assets/logo.png';" />
           <div>
             <strong>The Artologist × Next Frame</strong>
-            <small>Pitch deliverable · 2026-06-23</small>
+            <small>Project brief · signed · 2026-06-24</small>
           </div>
         </div>
         <div class="stamp">
@@ -595,203 +716,178 @@
 
       <!-- ── title ── -->
       <section class="sheet-title">
-        <span class="kicker">What Next Frame can do for you</span>
+        <span class="kicker">Signed package · ₱50,000 · kicks off Mon 2026-06-29</span>
         <h1>Run the engine. <span>You stay the curator.</span></h1>
         <p>
-          You've spent 13 years building the platform Filipino artists grow on. You don't need a redesign —
-          you need your weekends back. We take the marketing, content, local search and CRM off your plate
-          so the audience online finally matches the business you actually run.
+          One project. Four weeks of build. Seven deliverables that turn 13 years of curating into a marketing
+          system that runs without you. Sites, funnel, AI inquiries, artist interviews, content plan, the works.
         </p>
       </section>
 
-      <!-- ── already-started band (council insight: trust artifact > design artifact) ── -->
+      <!-- ── what's in the package ── -->
       <section class="started">
-        <span class="started-tag">Already done · before this meeting</span>
+        <span class="started-tag">What ₱50K buys</span>
         <div class="started-body">
-          <strong>Booky listing for Greenhills Learning Center</strong>
-          <span>was marked <em>closed</em>. We fixed it this morning — workshop bookings live again as of 2026-06-24. A free sample of how this works.</span>
+          <strong>The full Artologist launch pack —</strong>
+          <span>new website · sales funnel · staging &amp; go-live · AI inquiry agent (WhatsApp + email) · content plan for upcoming exhibits · <em>3 artist-interview features</em> · 30-day marketing campaign.</span>
         </div>
-        <span class="started-status">▸ Live</span>
+        <span class="started-status">▸ Signed</span>
       </section>
 
-      <!-- ── now → next ── -->
-      <section class="now-next">
-        <div class="now">
-          <span class="col-kicker">Where it sits today</span>
-          <h3>The leak.</h3>
-          <ul class="gap-list">
-            <li><strong>@yahoo.com</strong> as the contact email facing serious collectors</li>
-            <li><strong>Two Facebook pages</strong> competing — audience and SEO split in half</li>
-            <li><strong>IG @the_artologist</strong> · ~2.8K followers on 4,400+ posts — the algorithm has stopped serving you</li>
-            <li><strong>No TikTok</strong> in the single highest-growth channel for art + workshop content in PH</li>
-            <li><strong>Booky · Greenhills</strong> read "closed" until this morning — bookings leaking daily for months</li>
-            <li><strong>No email capture</strong> · no repeat-buyer flow · no homepage video</li>
-          </ul>
-        </div>
-        <div class="next">
-          <span class="col-kicker">Where it ships in 90 days</span>
-          <h3>You curate. We run it.</h3>
-          <ul class="gap-list">
-            <li><strong>ron@theartologist.net</strong> live · Yahoo retired across all collateral · week 1</li>
-            <li><strong>One verified Facebook page</strong> · the second merged or retired · week 1</li>
-            <li><strong>IG + Reels engine</strong> fed by every opening, workshop, commission · daily rhythm</li>
-            <li><strong>TikTok channel</strong> built on the "made by an Artologist artist" thesis · 3/week</li>
-            <li><strong>Booky + Google Business Profile</strong> reclaimed per location with live workshop calendars</li>
-            <li><strong>theartologist.net</strong> rebuilt · sells the gallery experience, not just the artworks</li>
-            <li><strong>Collector CRM</strong> seeded by every opening night and Quarterly subscriber</li>
-          </ul>
-        </div>
-      </section>
-
-      <!-- ── four legs ── -->
-      <section class="legs">
-        <h2>Four legs of the engine.</h2>
-        <p>One layer per side of your business. Each one ships a concrete deliverable in the first 90 days — nothing abstract.</p>
-        <div class="legs-grid">
-          <article class="leg">
-            <span class="num">01</span>
-            <span class="their-leg">Your Gallery</span>
-            <h4>Curatorial content engine</h4>
-            <p>Every exhibition becomes a trailer, an artist interview, an opening-night reel and a long-form magazine piece — across IG, TikTok, FB and the site.</p>
-            <ul>
-              <li>4 exhibition trailers per quarter</li>
-              <li>Artist process reels (Reels + TikTok)</li>
-              <li>Per-show landing pages with RSVP</li>
-            </ul>
-            <div class="deliv"><strong>Week 1 ships</strong>Trailer + landing page for the next opening. Drafted Mon · queued Tues · live Thu.</div>
+      <!-- ── seven deliverables (replaces Now→Next; the signed package itemized) ── -->
+      <section class="ship">
+        <header class="ship-head">
+          <span class="ship-kicker">/ Inside the package</span>
+          <h2>Seven deliverables. <em>Four weeks. One handover.</em></h2>
+        </header>
+        <div class="ship-grid">
+          <article class="ship-card ship-card-lg">
+            <span class="ship-n">01</span>
+            <h3>New theartologist.net</h3>
+            <p>A site that sells the gallery experience, not just the artworks. Mobile-first, with a live exhibition calendar, every artist's roster, and the Quarterly Magazine front-and-centre.</p>
+            <span class="ship-ship">Ships week 3</span>
           </article>
-
-          <article class="leg">
-            <span class="num">02</span>
-            <span class="their-leg">Your Workshop</span>
-            <h4>Local-search booking funnel</h4>
-            <p>The workshop arm was leaking traffic to a "closed" Booky listing. We rebuild local search and pair it with a real booking flow.</p>
-            <ul>
-              <li>Booky live (already done) + GBP per location</li>
-              <li>Workshop microsite + calendar</li>
-              <li>Weekly TikTok of finished kid work</li>
-            </ul>
-            <div class="deliv"><strong>Week 1 ships</strong>Google Business Profile claimed for all 4 locations · workshop calendar drafted.</div>
+          <article class="ship-card">
+            <span class="ship-n">02</span>
+            <h3>Sales funnel</h3>
+            <p>Email capture across the site, a 5-step nurture flow for new collectors, and conversion tracking for every workshop booking and commission inquiry.</p>
+            <span class="ship-ship">Ships week 2</span>
           </article>
-
-          <article class="leg">
-            <span class="num">03</span>
-            <span class="their-leg">Your Supplies</span>
-            <h4>Always-on commerce ads</h4>
-            <p>Working painters and illustrators come for supplies and stay for the gallery. We turn the catalogue into a real digital storefront.</p>
-            <ul>
-              <li>Catalogue audit + product photography</li>
-              <li>2 ad sets per location (Meta + TikTok Shop)</li>
-              <li>Monthly inventory + bestseller reports</li>
-            </ul>
-            <div class="deliv"><strong>Week 1 ships</strong>Catalogue audit complete · ad creative drafted · launch pencilled for week 3.</div>
+          <article class="ship-card">
+            <span class="ship-n">03</span>
+            <h3>Staging + go-live</h3>
+            <p>We migrate the existing WooCommerce shop, redirect old URLs, set up domain email (<em>ron@theartologist.net</em>), and walk Ron through every screen.</p>
+            <span class="ship-ship">Ships week 4</span>
           </article>
-
-          <article class="leg">
-            <span class="num">04</span>
-            <span class="their-leg">Your Brand</span>
-            <h4>Identity refresh + unified channels</h4>
-            <p>The mark stays. Everything around it gets a system — typography, photography, magazine, web, e-mail — that finally matches a 13-year-old brand.</p>
-            <ul>
-              <li>Merge Facebook pages · IG grid reset</li>
-              <li>E-mail capture + Quarterly Magazine list</li>
-              <li>Monthly performance review with Ron</li>
-            </ul>
-            <div class="deliv"><strong>Week 1 ships</strong>ron@theartologist.net live · @yahoo.com retired from collateral · FB merge filed.</div>
+          <article class="ship-card ship-card-feature">
+            <span class="ship-n">04</span>
+            <span class="ship-tag">Hero deliverable</span>
+            <h3>AI inquiry agent</h3>
+            <p>An always-on assistant on the site, Messenger and WhatsApp that answers visitor questions in your tone of voice and routes hot leads to Ron's WhatsApp + email within 60 seconds. Trained on the gallery's 13 years of artists, exhibitions, and prices.</p>
+            <span class="ship-ship">Ships week 3</span>
+          </article>
+          <article class="ship-card">
+            <span class="ship-n">05</span>
+            <h3>Content plan</h3>
+            <p>A 90-day content calendar for the upcoming exhibits — every reel, story, post and TikTok mapped to each opening, with hooks, captions and the artists tagged.</p>
+            <span class="ship-ship">Ships week 2</span>
+          </article>
+          <article class="ship-card ship-card-warm">
+            <span class="ship-n">06</span>
+            <h3>3 artist-interview features</h3>
+            <p>Full studio-visit interviews with three Artologist artists — long-form video, IG reels, print spread for the Quarterly. First subject: <em>Pandy Aviado.</em></p>
+            <span class="ship-ship">Shoots week 1–3</span>
+          </article>
+          <article class="ship-card">
+            <span class="ship-n">07</span>
+            <h3>30-day marketing campaign</h3>
+            <p>Paid + organic launch around the new site and the next exhibition — Meta + TikTok ads, a press push, and a Reels rhythm tied to every studio-visit interview.</p>
+            <span class="ship-ship">Runs weeks 4–8</span>
           </article>
         </div>
       </section>
 
-      <!-- ── 90-day timeline (week-by-week cadence) ── -->
+      <!-- ── 8-week build + campaign timeline ── -->
       <section class="timeline">
-        <h2>The first 90 days.</h2>
-        <p>You'll see something new go live every single week. No 30-day silences. No "we're working on it."</p>
+        <h2>4 weeks build. 4 weeks campaign.</h2>
+        <p>Every week ends with something you can see, click, or post. No 30-day silences.</p>
         <div class="timeline-grid">
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Weeks 1–4 · Foundation</span>
-            <h5>Reclaim and rebuild</h5>
+            <span class="when">Week 1 · Kickoff</span>
+            <h5>Foundations + first artist shoot</h5>
             <ul>
-              <li><em>Wk 1</em> · ron@theartologist.net live · Booky live (done) · GBP claimed 4×</li>
-              <li><em>Wk 2</em> · Facebook merge filed · IG grid reset · workshop calendar online</li>
-              <li><em>Wk 3</em> · photo + video shoot at the Shangri-La flagship</li>
-              <li><em>Wk 4</em> · theartologist.net rebuilt and live · e-mail capture across site</li>
+              <li>ron@theartologist.net live · Yahoo retired</li>
+              <li>Studio-visit shoot with <em>Pandy Aviado</em></li>
+              <li>Content plan draft delivered for review</li>
+              <li>Site architecture + funnel map approved</li>
             </ul>
           </div>
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Weeks 5–8 · Engine on</span>
-            <h5>Content + funnel live</h5>
+            <span class="when">Week 2 · Build</span>
+            <h5>Site + funnel + content plan</h5>
             <ul>
-              <li><em>Wk 5</em> · first exhibition trailer ships · landing page live</li>
-              <li><em>Wk 6</em> · first always-on Meta ad set (supplies + workshops)</li>
-              <li><em>Wk 7</em> · TikTok channel launched · daily IG/Reels rhythm</li>
-              <li><em>Wk 8</em> · workshop booking online for Greenhills + Manila Bay</li>
+              <li>New theartologist.net staging environment live</li>
+              <li>Sales funnel wired up · email capture across site</li>
+              <li>Second artist interview shoot</li>
+              <li>90-day content calendar finalised</li>
             </ul>
           </div>
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Weeks 9–12 · Measure + scale</span>
-            <h5>What worked, what scales</h5>
+            <span class="when">Week 3 · Agent + polish</span>
+            <h5>AI inquiry agent + 3rd interview</h5>
             <ul>
-              <li><em>Wk 9</em> · second exhibition trailer · CAC report on the first ad set</li>
-              <li><em>Wk 10</em> · collector CRM segment live (300+ subscribers target)</li>
-              <li><em>Wk 11</em> · TikTok Shop pilot for supplies</li>
-              <li><em>Wk 12</em> · performance review with Ron · pick what scales into months 4–6</li>
+              <li>AI agent trained on 13 years of gallery context</li>
+              <li>WhatsApp + email routing wired and tested</li>
+              <li>Third artist interview shoot</li>
+              <li>Final site review with Ron</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <span class="dot"></span>
+            <span class="when">Week 4 · Go-live</span>
+            <h5>Stage, ship, train</h5>
+            <ul>
+              <li>theartologist.net cut over · old URLs redirected</li>
+              <li>AI agent live on site + Messenger + WhatsApp</li>
+              <li>Marketing campaign starts running</li>
+              <li>1-hour walkthrough with Ron · everything documented</li>
             </ul>
           </div>
         </div>
       </section>
 
-      <!-- ── price + commitment card (council insight: cadence + escape clause) ── -->
+      <!-- ── signed deal card ── -->
       <section class="price">
         <div class="price-card">
           <div class="price-head">
-            <span class="kicker">/ Pilot terms</span>
-            <h3>A 90-day pilot. <em>Month-to-month after.</em></h3>
+            <span class="kicker">/ Deal terms · signed</span>
+            <h3>₱50,000. <em>Eight weeks. One handover.</em></h3>
           </div>
           <div class="price-body">
             <div class="price-tile price-tile-main">
-              <small>Pilot fee</small>
-              <strong>₱ <span data-leon-fill>__</span><i>/month · 3 months</i></strong>
-              <span>Flat fee · all four legs · everything in the 12-week plan</span>
+              <small>Project fee</small>
+              <strong>₱ <span data-leon-fill>50,000</span><i>· one-time · all-in</i></strong>
+              <span>Everything in the 7-deliverable package · all four weeks of build · four weeks of campaign run.</span>
             </div>
             <div class="price-tile">
-              <small>After the pilot</small>
-              <strong>Month-to-month</strong>
-              <span>Continue, pause, or cancel any month. We earn it every 30 days.</span>
+              <small>Payment</small>
+              <strong>50 / 30 / 20</strong>
+              <span>50% on kickoff · 30% at site go-live · 20% at end of campaign.</span>
             </div>
             <div class="price-tile">
-              <small>Review cadence</small>
-              <strong>Every 30 days</strong>
-              <span>Documented metrics review with Ron. No surprises, no agency black box.</span>
+              <small>After the project</small>
+              <strong>Optional retainer</strong>
+              <span>If the engine earns it: continue month-to-month. No lock-in. Cancel any month.</span>
             </div>
             <div class="price-tile">
-              <small>What's not included</small>
+              <small>Not included</small>
               <strong>Ad spend · print</strong>
-              <span>Pass-through at cost — you pre-approve every peso, we never mark it up.</span>
+              <span>Pass-through at cost — Ron pre-approves every peso, we never mark it up.</span>
             </div>
           </div>
           <div class="price-foot">
-            <span>Sign this week</span>
-            <strong>→ Week 1 ships Monday 2026-06-29.</strong>
+            <span>Kickoff</span>
+            <strong>→ Monday 2026-06-29 · first artist shoot week 1.</strong>
           </div>
         </div>
       </section>
 
       <!-- ── stat strip ── -->
       <section class="stats">
-        <div class="stat"><strong>12</strong><span>Weeks · one shipment per week</span></div>
-        <div class="stat"><strong>4</strong><span>Locations covered, one brand</span></div>
-        <div class="stat"><strong>0</strong><span>Long contracts · cancel any month</span></div>
-        <div class="stat"><strong>1</strong><span>Yahoo address retired in week 1</span></div>
+        <div class="stat"><strong>7</strong><span>Deliverables in the package</span></div>
+        <div class="stat"><strong>3</strong><span>Artists interviewed on film</span></div>
+        <div class="stat"><strong>8</strong><span>Weeks build + campaign</span></div>
+        <div class="stat"><strong>60s</strong><span>To route a hot lead to Ron's WhatsApp</span></div>
       </section>
 
       <!-- ── footer ── -->
       <footer class="sheet-foot">
         <div>
           <strong>Next Frame Agency</strong>
-          <small>next-frame.agency · For The Artologist · Prepared 2026-06-23</small>
+          <small>next-frame.agency · For The Artologist · Signed 2026-06-24 · Kickoff Mon 2026-06-29</small>
         </div>
         <small>Live mockup: <a href="https://next-frame.agency/artologistmockup/" target="_blank">next-frame.agency/artologistmockup</a></small>
       </footer>
