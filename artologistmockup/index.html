@@ -22,11 +22,11 @@
     <div class="ticker" data-ticker>
       <span class="ticker-dot"></span>
       <span class="ticker-text">Now showing</span>
-      <strong>SINTA · A two-women love-letter exhibition</strong>
+      <strong>Pandy Aviado — Parthogenesis · Limited COA editions</strong>
       <span class="ticker-sep">/</span>
       <span class="ticker-text">Shangri-La Plaza · Level 4</span>
       <span class="ticker-sep">/</span>
-      <span class="ticker-text">Until 24 May 2026</span>
+      <span class="ticker-text">Visit the gallery this week</span>
       <a href="#programme" class="ticker-cta">See programme →</a>
     </div>
 
@@ -48,21 +48,42 @@
     </header>
 
     <main id="top">
-      <!-- ── HERO ───────────────────────────────────────────── -->
-      <section class="hero" data-hero>
-        <!-- Background motion layers -->
-        <div class="hero-bg" aria-hidden="true">
-          <div class="hero-glow hero-glow-1" data-parallax="0.025"></div>
-          <div class="hero-glow hero-glow-2" data-parallax="-0.018"></div>
-          <div class="hero-glow hero-glow-3" data-parallax="0.012"></div>
+      <!-- ── HERO (scroll-driven, 3-scene narrative — Dream Land style) ── -->
+      <section class="hero-scroll" data-hero-scroll>
+        <div class="hero-pin">
 
-          <!-- Floating poster ghosts -->
-          <div class="hero-ghosts" data-parallax="0.035">
-            <img class="ghost ghost-1" src="./assets/poster-ember.jpg" alt="" />
-            <img class="ghost ghost-2" src="./assets/poster-monnar.jpg" alt="" />
-            <img class="ghost ghost-3" src="./assets/poster-steel.jpg" alt="" />
-            <img class="ghost ghost-4" src="./assets/poster-sanclaria.jpg" alt="" />
+          <!-- SCENE 1 · Storefront (wide cinematic gallery exterior) -->
+          <div class="scene scene-1" aria-hidden="true">
+            <img class="scene-bg" src="./assets/real/hero-storefront.jpg" alt="" />
+            <div class="scene-veil scene-veil-1"></div>
+            <div class="scene-content scene-content-1">
+              <span class="scene-eyebrow"><i></i>Est. 2013 · Manila → Santa Ana, CA</span>
+              <h2 class="scene-line">
+                A thirteen-year<br/><em>contemporary art platform.</em>
+              </h2>
+              <span class="scene-hint">Step inside <i>↓</i></span>
+            </div>
+            <div class="scene-vignette scene-vignette-1"></div>
           </div>
+
+          <!-- SCENE 2 · The title hero (existing motion stack) -->
+          <section class="hero scene scene-2" data-hero>
+            <img class="scene-bg scene-bg-interior" src="./assets/real/interior-moody.jpg" alt="" aria-hidden="true" />
+            <div class="scene-veil scene-veil-2"></div>
+
+            <!-- Background motion layers -->
+            <div class="hero-bg" aria-hidden="true">
+              <div class="hero-glow hero-glow-1" data-parallax="0.025"></div>
+              <div class="hero-glow hero-glow-2" data-parallax="-0.018"></div>
+              <div class="hero-glow hero-glow-3" data-parallax="0.012"></div>
+
+              <!-- Floating real-artwork ghosts -->
+              <div class="hero-ghosts" data-parallax="0.035">
+                <img class="ghost ghost-1" src="./assets/real/painting-impasto.jpg" alt="" />
+                <img class="ghost ghost-2" src="./assets/real/sculpture-bronze.jpg" alt="" />
+                <img class="ghost ghost-3" src="./assets/real/wall-flowers.jpg" alt="" />
+                <img class="ghost ghost-4" src="./assets/real/sculpture-cobra.jpg" alt="" />
+              </div>
 
           <!-- Dust particles (CSS only) -->
           <div class="hero-dust">
@@ -127,12 +148,12 @@
         <div class="hero-media">
           <figure class="hero-card" data-reveal data-cursor-hover data-tilt>
             <div class="hero-card-inner">
-              <img src="./assets/poster-sinta.png" alt="SINTA exhibition poster" />
+              <img src="./assets/real/artist-pandy-portrait.jpg" alt="Pandy Aviado with his sculpture at The Artologist" />
               <span class="hero-card-glow" aria-hidden="true"></span>
               <figcaption>
-                <span>Now showing — May 2026</span>
-                <strong>SINTA</strong>
-                <small>The Art Plaza · Shangri-La · until 24 May</small>
+                <span>Featured artist — 2026</span>
+                <strong>Pandy Aviado</strong>
+                <small>Parthogenesis · Limited COA editions · Shangri-La</small>
               </figcaption>
             </div>
             <span class="hero-card-tape" aria-hidden="true">N°23</span>
@@ -158,11 +179,43 @@
           </div>
         </div>
 
-        <a href="#manifesto" class="scroll-cue" aria-label="Scroll" data-cursor-hover>
-          <span>Scroll</span>
-          <i></i>
-        </a>
-      </section>
+          </section><!-- /scene-2 -->
+
+          <!-- SCENE 3 · Floating real-life gallery cards -->
+          <div class="scene scene-3" aria-hidden="true">
+            <div class="scene-floats">
+              <figure class="float float-1" data-cursor-hover>
+                <img src="./assets/real/painting-impasto.jpg" alt="" />
+                <figcaption><strong>Bloom in Impasto</strong><span>Mid-career solo</span></figcaption>
+              </figure>
+              <figure class="float float-2" data-cursor-hover>
+                <img src="./assets/real/sculpture-bronze.jpg" alt="" />
+                <figcaption><strong>Bronze Garden</strong><span>Commission programme</span></figcaption>
+              </figure>
+              <figure class="float float-3" data-cursor-hover>
+                <img src="./assets/real/wall-flowers.jpg" alt="" />
+                <figcaption><strong>Floral Reverie</strong><span>Group show</span></figcaption>
+              </figure>
+              <figure class="float float-4" data-cursor-hover>
+                <img src="./assets/real/sculpture-cobra.jpg" alt="" />
+                <figcaption><strong>Steel on Stills</strong><span>Recurring favourite</span></figcaption>
+              </figure>
+              <figure class="float float-5" data-cursor-hover>
+                <img src="./assets/real/exhibit-embrace-sculpture.jpg" alt="" />
+                <figcaption><strong>Held</strong><span>Emerging debut</span></figcaption>
+              </figure>
+            </div>
+            <div class="scene-content scene-content-3">
+              <span class="scene-eyebrow"><i></i>Step inside</span>
+              <h2 class="scene-line">
+                Now showing,<br/><em>in real life.</em>
+              </h2>
+              <span class="scene-hint">Keep scrolling — the programme starts below</span>
+            </div>
+          </div>
+
+        </div><!-- /hero-pin -->
+      </section><!-- /hero-scroll -->
 
       <!-- ── MANIFESTO PULL-QUOTE ───────────────────────────── -->
       <section id="manifesto" class="manifesto" data-reveal>
@@ -191,14 +244,14 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">01</span>
             <figure class="ex-img">
-              <img src="./assets/poster-sinta.png" alt="SINTA poster" />
+              <img src="./assets/real/artist-pandy-portrait.jpg" alt="Pandy Aviado · Parthogenesis" />
             </figure>
             <div class="ex-meta">
-              <strong>SINTA</strong>
-              <span>A two-women love-letter — paint, text, memory.</span>
+              <strong>Pandy Aviado — Parthogenesis</strong>
+              <span>Limited COA-verified collectible series · the maestro on his sculptural reissue.</span>
             </div>
             <div class="ex-dates">
-              <em>10 — 24 May 2026</em>
+              <em>Now showing</em>
               <small>Shangri-La · The Art Plaza</small>
             </div>
             <span class="ex-arrow">↗</span>
@@ -207,15 +260,15 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">02</span>
             <figure class="ex-img">
-              <img src="./assets/poster-ember.jpg" alt="Ember poster" />
+              <img src="./assets/real/wall-flowers.jpg" alt="Floral group show at the Shangri-La gallery" />
             </figure>
             <div class="ex-meta">
-              <strong>Ember</strong>
-              <span>Heat, surface and slow burn — a six-artist abstract collective.</span>
+              <strong>Floral Reverie</strong>
+              <span>A group floral exhibition · vivid canvases, mixed-media sculpture, gallery-wide install.</span>
             </div>
             <div class="ex-dates">
-              <em>February 2026</em>
-              <small>Greenhills · Learning Center</small>
+              <em>Permanent rotation</em>
+              <small>Shangri-La · The Art Plaza</small>
             </div>
             <span class="ex-arrow">↗</span>
           </li>
@@ -223,14 +276,14 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">03</span>
             <figure class="ex-img">
-              <img src="./assets/poster-monnar.jpg" alt="Monnar Baldemor poster" />
+              <img src="./assets/real/sculpture-cobra.jpg" alt="Steampunk-inspired sculptural piece" />
             </figure>
             <div class="ex-meta">
-              <strong>Monnar Baldemor — Solo</strong>
-              <span>Returning Artologist artist · new figurative work on canvas.</span>
+              <strong>Steel on Stills</strong>
+              <span>Sculpture meets photography · the recurring Artologist favourite, restaged.</span>
             </div>
             <div class="ex-dates">
-              <em>October 2025</em>
+              <em>2024 → restaged 2026</em>
               <small>Shangri-La · The Art Plaza</small>
             </div>
             <span class="ex-arrow">↗</span>
@@ -239,11 +292,11 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">04</span>
             <figure class="ex-img">
-              <img src="./assets/poster-sanclaria.jpg" alt="Sanclaria poster" />
+              <img src="./assets/real/painting-impasto.jpg" alt="Impasto floral close-up" />
             </figure>
             <div class="ex-meta">
-              <strong>Sanclaria</strong>
-              <span>Mid-career solo — landscapes pulled apart and put back together.</span>
+              <strong>Bloom in Impasto</strong>
+              <span>Mid-career solo · heavy paint, gilt frames, a riot of texture.</span>
             </div>
             <div class="ex-dates">
               <em>October 2025</em>
@@ -255,11 +308,11 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">05</span>
             <figure class="ex-img">
-              <img src="./assets/poster-jack-salud.jpg" alt="Jack Salud poster" />
+              <img src="./assets/real/exhibit-embrace-sculpture.jpg" alt="Sculpture on lightbox plinth" />
             </figure>
             <div class="ex-meta">
-              <strong>Jack Salud</strong>
-              <span>Emerging-artist debut — a quiet, confident first show.</span>
+              <strong>Held</strong>
+              <span>Emerging-artist sculptural debut · figurative bronze and ceramic, lit from below.</span>
             </div>
             <div class="ex-dates">
               <em>October 2025</em>
@@ -271,14 +324,14 @@
           <li class="exhibit" data-reveal data-cursor-hover>
             <span class="ex-num">06</span>
             <figure class="ex-img">
-              <img src="./assets/poster-steel.jpg" alt="Steel on Stills poster" />
+              <img src="./assets/real/sculpture-bronze.jpg" alt="Bronze flower sculpture" />
             </figure>
             <div class="ex-meta">
-              <strong>Steel on Stills</strong>
-              <span>Sculpture meets photography · a recurring Artologist favourite.</span>
+              <strong>Bronze Garden</strong>
+              <span>Commissioned bronze florals · the long-running custom commission programme.</span>
             </div>
             <div class="ex-dates">
-              <em>April 2024</em>
+              <em>Ongoing</em>
               <small>Shangri-La · The Art Plaza</small>
             </div>
             <span class="ex-arrow">↗</span>
@@ -446,7 +499,7 @@
       <!-- ── COMMISSION (full-bleed feature) ────────────────── -->
       <section class="commission">
         <figure class="commission-image" data-reveal>
-          <img src="./assets/poster-monnar.jpg" alt="Commissioned work" />
+          <img src="./assets/real/sculpture-bronze.jpg" alt="Commissioned bronze sculpture work" />
           <figcaption>30 — 45 day turnaround · Manila &amp; US shipping</figcaption>
         </figure>
         <div class="commission-copy" data-reveal>

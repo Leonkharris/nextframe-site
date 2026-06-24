@@ -227,14 +227,256 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* ── HERO ───────────────────────────────────────────────── */
+/* ── HERO-SCROLL (Dream Land 3-scene pinned narrative) ───── */
+.hero-scroll {
+  position: relative;
+  height: 300vh; /* 3 viewport heights of scroll */
+  background: var(--ink);
+  --p: 0;             /* 0 → 1 progress, set by JS */
+  --scene1-o: 1;
+  --scene1-s: 1;
+  --scene2-o: 0;
+  --scene2-s: 0.94;
+  --scene3-o: 0;
+  --scene3-y: 80px;
+}
+.hero-pin {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+.scene {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: opacity, transform;
+}
+.scene-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+}
+.scene-veil {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.scene-veil-1 {
+  background:
+    linear-gradient(180deg, rgba(14,12,10,0.55) 0%, rgba(14,12,10,0.3) 40%, rgba(14,12,10,0.85) 100%),
+    linear-gradient(90deg, rgba(14,12,10,0.5) 0%, transparent 50%);
+}
+.scene-veil-2 {
+  background:
+    radial-gradient(ellipse at 50% 40%, transparent 0%, rgba(14,12,10,0.55) 70%, rgba(14,12,10,0.85) 100%);
+}
+.scene-vignette-1 {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 60%, transparent 30%, rgba(14,12,10,0.4) 100%);
+  pointer-events: none;
+  z-index: 2;
+}
+
+/* SCENE 1 — wide storefront */
+.scene-1 {
+  opacity: var(--scene1-o);
+  transform: scale(var(--scene1-s));
+  z-index: 1;
+}
+.scene-content {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 0 36px;
+  max-width: 980px;
+  color: var(--bone);
+}
+.scene-content-1 {
+  text-align: left;
+  max-width: 720px;
+  margin-left: 8%;
+}
+.scene-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 500;
+  margin-bottom: 32px;
+}
+.scene-eyebrow i {
+  width: 36px;
+  height: 1px;
+  background: var(--red);
+}
+.scene-line {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.6rem, 6vw, 5.6rem);
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  margin: 0 0 36px;
+}
+.scene-line em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--red);
+}
+.scene-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244,236,224,0.55);
+  font-weight: 500;
+}
+.scene-hint i {
+  font-style: normal;
+  color: var(--red);
+  animation: hint-bob 2s ease-in-out infinite;
+}
+@keyframes hint-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(4px); }
+}
+
+/* SCENE 2 — the title hero (existing motion lives inside) */
+.scene-2 {
+  opacity: var(--scene2-o);
+  transform: scale(var(--scene2-s));
+  z-index: 2;
+}
+.scene-bg-interior {
+  filter: saturate(0.85) brightness(0.55);
+}
+
+/* SCENE 3 — floating real-photo gallery */
+.scene-3 {
+  background: linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
+  opacity: var(--scene3-o);
+  transform: translateY(var(--scene3-y));
+  z-index: 3;
+}
+.scene-floats {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+.scene-floats .float {
+  position: absolute;
+  margin: 0;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 30px 60px -20px rgba(0,0,0,0.7), 0 0 0 1px rgba(244,236,224,0.04);
+  background: var(--ink-soft);
+  pointer-events: auto;
+}
+.scene-floats .float img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  filter: saturate(1.05);
+  transition: transform 0.6s var(--easing);
+}
+.scene-floats .float:hover img { transform: scale(1.06); }
+.scene-floats .float figcaption {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 14px 14px 12px;
+  background: linear-gradient(to top, rgba(14,12,10,0.92), transparent);
+  color: var(--bone);
+}
+.scene-floats .float figcaption strong {
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 700;
+  display: block;
+  letter-spacing: -0.01em;
+}
+.scene-floats .float figcaption span {
+  font-family: var(--mono);
+  font-size: 0.62rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-top: 4px;
+  display: block;
+}
+.float-1 { top: 10%;  left: 6%;  width: 200px; transform: rotate(-6deg); animation: float-drift-a 14s ease-in-out infinite alternate; }
+.float-2 { top: 18%;  right: 8%; width: 220px; transform: rotate(5deg);  animation: float-drift-b 16s ease-in-out infinite alternate; }
+.float-3 { top: 62%;  left: 12%; width: 180px; transform: rotate(8deg);  animation: float-drift-c 18s ease-in-out infinite alternate; }
+.float-4 { top: 66%;  right: 14%; width: 200px; transform: rotate(-4deg); animation: float-drift-d 15s ease-in-out infinite alternate; }
+.float-5 { top: 8%;   left: 48%; width: 150px; transform: rotate(3deg);  animation: float-drift-a 17s 1s ease-in-out infinite alternate; }
+@keyframes float-drift-a {
+  0%   { transform: rotate(-6deg) translateY(0); }
+  100% { transform: rotate(-3deg) translateY(-22px); }
+}
+@keyframes float-drift-b {
+  0%   { transform: rotate(5deg) translateY(0); }
+  100% { transform: rotate(8deg) translateY(18px); }
+}
+@keyframes float-drift-c {
+  0%   { transform: rotate(8deg) translateY(0); }
+  100% { transform: rotate(5deg) translateY(-16px); }
+}
+@keyframes float-drift-d {
+  0%   { transform: rotate(-4deg) translateY(0); }
+  100% { transform: rotate(-7deg) translateY(14px); }
+}
+.scene-content-3 .scene-line { font-size: clamp(3rem, 7vw, 6.5rem); }
+
+/* progress indicator — scroll bar that fills as scenes change */
+.hero-pin::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  height: 2px;
+  width: calc(var(--p) * 100%);
+  background: linear-gradient(90deg, var(--red), var(--red-deep));
+  z-index: 10;
+  transition: width 0.05s linear;
+}
+
+@media (max-width: 720px) {
+  .hero-scroll { height: 260vh; }
+  .scene-content-1 { margin-left: 0; padding: 0 22px; }
+  .scene-line { font-size: 2.6rem; }
+  .float-1 { width: 140px; left: 4%; top: 8%; }
+  .float-2 { width: 150px; right: 4%; top: 14%; }
+  .float-3 { width: 130px; left: 4%; top: 58%; }
+  .float-4 { width: 140px; right: 4%; top: 62%; }
+  .float-5 { display: none; }
+}
+
+/* ── HERO (existing scene 2) ─────────────────────────────── */
 .hero {
   position: relative;
-  min-height: calc(100vh - 50px);
+  height: 100vh;
   padding: 80px 36px 80px;
   display: flex;
   flex-direction: column;
-  background: var(--ink);
+  background: transparent;
   overflow: hidden;
   --mx: 50%;
   --my: 50%;

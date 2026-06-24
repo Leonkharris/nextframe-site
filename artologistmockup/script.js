@@ -43,6 +43,53 @@
     reveals.forEach(el => el.classList.add('is-in'));
   }
 
+  // ── hero scroll-pinned scene progress (Dream Land style) ─
+  const heroScroll = document.querySelector('[data-hero-scroll]');
+  if (heroScroll) {
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const lerp = (a, b, t) => a + (b - a) * t;
+    // Map progress in [s,e] to [0,1], outside returns clamped 0 or 1
+    const ramp = (p, s, e) => clamp((p - s) / (e - s), 0, 1);
+
+    let raf = null;
+    const update = () => {
+      const rect = heroScroll.getBoundingClientRect();
+      const total = heroScroll.offsetHeight - window.innerHeight;
+      const scrolled = clamp(-rect.top, 0, total);
+      const p = total > 0 ? scrolled / total : 0;
+
+      // Scene 1: visible 0 → 0.45, scales 1 → 1.2 (camera zoom-in)
+      const s1Fade = 1 - ramp(p, 0.30, 0.50);
+      const s1Scale = lerp(1.0, 1.22, ramp(p, 0.0, 0.55));
+
+      // Scene 2: fades in 0.30 → 0.50, holds, fades out 0.70 → 0.90
+      const s2In = ramp(p, 0.30, 0.50);
+      const s2Out = 1 - ramp(p, 0.70, 0.90);
+      const s2Fade = Math.min(s2In, s2Out);
+      const s2Scale = lerp(0.94, 1.0, ramp(p, 0.30, 0.55));
+
+      // Scene 3: fades in 0.65 → 0.92
+      const s3Fade = ramp(p, 0.65, 0.92);
+      const s3Y = lerp(80, 0, ramp(p, 0.65, 0.95));
+
+      heroScroll.style.setProperty('--p', p.toFixed(3));
+      heroScroll.style.setProperty('--scene1-o', s1Fade.toFixed(3));
+      heroScroll.style.setProperty('--scene1-s', s1Scale.toFixed(3));
+      heroScroll.style.setProperty('--scene2-o', s2Fade.toFixed(3));
+      heroScroll.style.setProperty('--scene2-s', s2Scale.toFixed(3));
+      heroScroll.style.setProperty('--scene3-o', s3Fade.toFixed(3));
+      heroScroll.style.setProperty('--scene3-y', `${s3Y.toFixed(1)}px`);
+
+      raf = null;
+    };
+    const onScroll = () => {
+      if (!raf) raf = requestAnimationFrame(update);
+    };
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll);
+    update();
+  }
+
   // ── stat counter (count-up on reveal) ───────────────────
   const counters = document.querySelectorAll('[data-count]');
   if ('IntersectionObserver' in window && counters.length) {
