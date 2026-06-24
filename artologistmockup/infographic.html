@@ -334,6 +334,178 @@
         font-weight: 800;
       }
 
+      /* ── already-started band ── */
+      .started {
+        background: linear-gradient(90deg, #0e0c0a 0%, #1a1612 100%);
+        color: var(--bone);
+        padding: 22px 56px;
+        display: flex;
+        align-items: center;
+        gap: 28px;
+        border-top: 1px solid var(--red);
+        border-bottom: 1px solid rgba(230, 57, 25, 0.25);
+      }
+      .started-tag {
+        font-size: 0.66rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 800;
+        background: rgba(230, 57, 25, 0.12);
+        border: 1px solid rgba(230, 57, 25, 0.4);
+        padding: 6px 12px;
+        border-radius: 999px;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+      .started-body {
+        flex: 1;
+        line-height: 1.45;
+      }
+      .started-body strong {
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 1.1rem;
+        color: var(--bone);
+        margin-right: 6px;
+      }
+      .started-body span {
+        font-size: 0.92rem;
+        color: rgba(246, 239, 230, 0.78);
+      }
+      .started-body em {
+        color: var(--red);
+        font-style: italic;
+        font-weight: 500;
+      }
+      .started-status {
+        font-family: "Menlo", monospace;
+        font-size: 0.78rem;
+        letter-spacing: 0.14em;
+        color: var(--red);
+        font-weight: 700;
+        white-space: nowrap;
+        flex-shrink: 0;
+      }
+
+      /* ── price + commitment card ── */
+      .price {
+        padding: 56px;
+        background: var(--bone);
+      }
+      .price-card {
+        background: var(--paper);
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        overflow: hidden;
+        box-shadow: 0 18px 40px -20px rgba(26, 22, 18, 0.35);
+      }
+      .price-head {
+        padding: 32px 36px 26px;
+        background: var(--ink);
+        color: var(--bone);
+      }
+      .price-head .kicker {
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        margin-bottom: 12px;
+        display: block;
+      }
+      .price-head h3 {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 1.75rem;
+        letter-spacing: -0.02em;
+        margin: 0;
+        line-height: 1.1;
+      }
+      .price-head h3 em {
+        font-style: italic;
+        font-weight: 500;
+        color: var(--red);
+      }
+      .price-body {
+        display: grid;
+        grid-template-columns: 1.4fr 1fr 1fr 1fr;
+        gap: 1px;
+        background: var(--border);
+      }
+      .price-tile {
+        background: var(--paper);
+        padding: 26px 24px 24px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+      }
+      .price-tile small {
+        font-size: 0.68rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: rgba(26, 22, 18, 0.55);
+        font-weight: 700;
+      }
+      .price-tile strong {
+        font-family: var(--serif);
+        font-size: 1.35rem;
+        font-weight: 700;
+        letter-spacing: -0.01em;
+        line-height: 1.1;
+      }
+      .price-tile span {
+        font-size: 0.85rem;
+        color: rgba(26, 22, 18, 0.7);
+        line-height: 1.45;
+      }
+      .price-tile-main {
+        background: linear-gradient(180deg, #fff3ee 0%, #fffaf4 100%);
+      }
+      .price-tile-main strong {
+        font-size: 2rem;
+        color: var(--red);
+        font-weight: 900;
+      }
+      .price-tile-main strong i {
+        font-size: 0.85rem;
+        font-weight: 500;
+        color: rgba(26, 22, 18, 0.6);
+        font-style: normal;
+        margin-left: 6px;
+      }
+      .price-tile-main strong [data-leon-fill] {
+        display: inline-block;
+        font-size: inherit;
+        color: var(--red);
+        border-bottom: 3px dashed rgba(230, 57, 25, 0.45);
+        padding: 0 8px 2px;
+        font-weight: 900;
+        margin: 0 2px;
+      }
+      .price-foot {
+        background: var(--red);
+        color: var(--bone);
+        padding: 18px 36px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+      .price-foot span {
+        font-size: 0.72rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        font-weight: 700;
+      }
+      .price-foot strong {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 700;
+        font-size: 1.15rem;
+      }
+
       /* ── stat strip ── */
       .stats {
         background: var(--red);
@@ -375,7 +547,7 @@
       .sheet-foot a { color: var(--red); text-decoration: none; font-weight: 700; }
 
       @media (max-width: 960px) {
-        .sheet-title, .legs, .timeline, .stats, .sheet-foot, .sheet-head { padding-left: 32px; padding-right: 32px; }
+        .sheet-title, .legs, .timeline, .stats, .sheet-foot, .sheet-head, .started, .price { padding-left: 32px; padding-right: 32px; }
         .now, .next { padding: 32px; }
         .now-next { grid-template-columns: 1fr; }
         .now { border-right: 0; border-bottom: 1px dashed var(--border); }
@@ -383,12 +555,16 @@
         .timeline-grid { grid-template-columns: 1fr; }
         .timeline-grid::before { display: none; }
         .stats { grid-template-columns: repeat(2, 1fr); }
+        .started { flex-direction: column; align-items: flex-start; gap: 14px; }
+        .price-body { grid-template-columns: 1fr 1fr; }
       }
       @media (max-width: 600px) {
         body { padding: 16px 8px; }
         .legs-grid { grid-template-columns: 1fr; }
         .stats { grid-template-columns: 1fr; }
         .sheet-title h1 { font-size: 2rem; }
+        .price-body { grid-template-columns: 1fr; }
+        .price-head h3 { font-size: 1.4rem; }
       }
     </style>
   </head>
@@ -414,35 +590,47 @@
         <span class="kicker">What Next Frame can do for you</span>
         <h1>Run the engine. <span>You stay the curator.</span></h1>
         <p>
-          The Artologist is the platform Filipino artists grow on. Today, the gallery's reach is doing
-          a fraction of the work the business has earned. Here is the system we put around it.
+          You've spent 13 years building the platform Filipino artists grow on. You don't need a redesign —
+          you need your weekends back. We take the marketing, content, local search and CRM off your plate
+          so the audience online finally matches the business you actually run.
         </p>
+      </section>
+
+      <!-- ── already-started band (council insight: trust artifact > design artifact) ── -->
+      <section class="started">
+        <span class="started-tag">Already done · before this meeting</span>
+        <div class="started-body">
+          <strong>Booky listing for Greenhills Learning Center</strong>
+          <span>was marked <em>closed</em>. We fixed it this morning — workshop bookings live again as of 2026-06-24. A free sample of how this works.</span>
+        </div>
+        <span class="started-status">▸ Live</span>
       </section>
 
       <!-- ── now → next ── -->
       <section class="now-next">
         <div class="now">
           <span class="col-kicker">Where it sits today</span>
-          <h3>The reach gap.</h3>
+          <h3>The leak.</h3>
           <ul class="gap-list">
-            <li>IG @the_artologist · ~2.8K followers on 4,400+ posts (algorithm has stopped serving them)</li>
-            <li>Two competing Facebook pages — audience and SEO split in half</li>
-            <li>No TikTok presence in the single highest-growth channel for art + workshop content in PH</li>
-            <li>Booky listing for the Greenhills Learning Center reads "closed" — workshop bookings leaking daily</li>
-            <li>@yahoo.com contact e-mail facing serious collectors</li>
-            <li>No e-mail capture · no repeat-buyer programme · no homepage video</li>
+            <li><strong>@yahoo.com</strong> as the contact email facing serious collectors</li>
+            <li><strong>Two Facebook pages</strong> competing — audience and SEO split in half</li>
+            <li><strong>IG @the_artologist</strong> · ~2.8K followers on 4,400+ posts — the algorithm has stopped serving you</li>
+            <li><strong>No TikTok</strong> in the single highest-growth channel for art + workshop content in PH</li>
+            <li><strong>Booky · Greenhills</strong> read "closed" until this morning — bookings leaking daily for months</li>
+            <li><strong>No email capture</strong> · no repeat-buyer flow · no homepage video</li>
           </ul>
         </div>
         <div class="next">
           <span class="col-kicker">Where it ships in 90 days</span>
-          <h3>One brand. Four cities.</h3>
+          <h3>You curate. We run it.</h3>
           <ul class="gap-list">
-            <li>A live IG + Reels engine fed by every opening, every workshop, every commission</li>
-            <li>One unified Facebook page, properly verified, with the second one merged or retired</li>
-            <li>A TikTok channel built on the "made by an Artologist artist" thesis</li>
-            <li>Reclaimed Booky + a Google Business Profile per location with live workshop calendars</li>
-            <li>A modernised theartologist.net that sells the gallery experience, not just the artworks</li>
-            <li>A collector CRM seeded by every opening night and every magazine subscriber</li>
+            <li><strong>ron@theartologist.net</strong> live · Yahoo retired across all collateral · week 1</li>
+            <li><strong>One verified Facebook page</strong> · the second merged or retired · week 1</li>
+            <li><strong>IG + Reels engine</strong> fed by every opening, workshop, commission · daily rhythm</li>
+            <li><strong>TikTok channel</strong> built on the "made by an Artologist artist" thesis · 3/week</li>
+            <li><strong>Booky + Google Business Profile</strong> reclaimed per location with live workshop calendars</li>
+            <li><strong>theartologist.net</strong> rebuilt · sells the gallery experience, not just the artworks</li>
+            <li><strong>Collector CRM</strong> seeded by every opening night and Quarterly subscriber</li>
           </ul>
         </div>
       </section>
@@ -462,20 +650,20 @@
               <li>Artist process reels (Reels + TikTok)</li>
               <li>Per-show landing pages with RSVP</li>
             </ul>
-            <div class="deliv"><strong>First 90 days</strong>Trailer + landing page for Celestial Symphony and the next two openings.</div>
+            <div class="deliv"><strong>Week 1 ships</strong>Trailer + landing page for the next opening. Drafted Mon · queued Tues · live Thu.</div>
           </article>
 
           <article class="leg">
             <span class="num">02</span>
             <span class="their-leg">Your Workshop</span>
             <h4>Local-search booking funnel</h4>
-            <p>The workshop arm is leaking traffic to a "closed" Booky listing. We rebuild local search and pair it with a real booking flow.</p>
+            <p>The workshop arm was leaking traffic to a "closed" Booky listing. We rebuild local search and pair it with a real booking flow.</p>
             <ul>
-              <li>Reclaim Booky · GBP per location</li>
+              <li>Booky live (already done) + GBP per location</li>
               <li>Workshop microsite + calendar</li>
               <li>Weekly TikTok of finished kid work</li>
             </ul>
-            <div class="deliv"><strong>First 90 days</strong>Workshop bookings live online for Greenhills + Manila Bay, with a measurable funnel.</div>
+            <div class="deliv"><strong>Week 1 ships</strong>Google Business Profile claimed for all 4 locations · workshop calendar drafted.</div>
           </article>
 
           <article class="leg">
@@ -488,7 +676,7 @@
               <li>2 ad sets per location (Meta + TikTok Shop)</li>
               <li>Monthly inventory + bestseller reports</li>
             </ul>
-            <div class="deliv"><strong>First 90 days</strong>First always-on ad set with measurable CAC and a re-order flow for repeat artists.</div>
+            <div class="deliv"><strong>Week 1 ships</strong>Catalogue audit complete · ad creative drafted · launch pencilled for week 3.</div>
           </article>
 
           <article class="leg">
@@ -501,61 +689,94 @@
               <li>E-mail capture + Quarterly Magazine list</li>
               <li>Monthly performance review with Ron</li>
             </ul>
-            <div class="deliv"><strong>First 90 days</strong>The new theartologist.net live, on a domain e-mail, with the first collector list captured.</div>
+            <div class="deliv"><strong>Week 1 ships</strong>ron@theartologist.net live · @yahoo.com retired from collateral · FB merge filed.</div>
           </article>
         </div>
       </section>
 
-      <!-- ── 90-day timeline ── -->
+      <!-- ── 90-day timeline (week-by-week cadence) ── -->
       <section class="timeline">
         <h2>The first 90 days.</h2>
-        <p>Three phases. Each one ends with something live, not a deck.</p>
+        <p>You'll see something new go live every single week. No 30-day silences. No "we're working on it."</p>
         <div class="timeline-grid">
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Days 1–30 · Foundation</span>
+            <span class="when">Weeks 1–4 · Foundation</span>
             <h5>Reclaim and rebuild</h5>
             <ul>
-              <li>Reclaim Booky + Google Business Profile (4 locations)</li>
-              <li>Merge / verify Facebook pages</li>
-              <li>Photo + video shoot at Shangri-La flagship</li>
-              <li>Domain e-mail — retire @yahoo.com on collateral</li>
-              <li>Launch theartologist.net mockup → production</li>
+              <li><em>Wk 1</em> · ron@theartologist.net live · Booky live (done) · GBP claimed 4×</li>
+              <li><em>Wk 2</em> · Facebook merge filed · IG grid reset · workshop calendar online</li>
+              <li><em>Wk 3</em> · photo + video shoot at the Shangri-La flagship</li>
+              <li><em>Wk 4</em> · theartologist.net rebuilt and live · e-mail capture across site</li>
             </ul>
           </div>
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Days 31–60 · Engine on</span>
+            <span class="when">Weeks 5–8 · Engine on</span>
             <h5>Content + funnel live</h5>
             <ul>
-              <li>Exhibition trailer for the next opening</li>
-              <li>Workshop microsite + online booking live</li>
-              <li>First always-on Meta ad set (supplies + workshops)</li>
-              <li>Daily IG / Reels rhythm · 3 TikToks a week</li>
-              <li>E-mail capture live across the site</li>
+              <li><em>Wk 5</em> · first exhibition trailer ships · landing page live</li>
+              <li><em>Wk 6</em> · first always-on Meta ad set (supplies + workshops)</li>
+              <li><em>Wk 7</em> · TikTok channel launched · daily IG/Reels rhythm</li>
+              <li><em>Wk 8</em> · workshop booking online for Greenhills + Manila Bay</li>
             </ul>
           </div>
           <div class="phase">
             <span class="dot"></span>
-            <span class="when">Days 61–90 · Measure + scale</span>
+            <span class="when">Weeks 9–12 · Measure + scale</span>
             <h5>What worked, what scales</h5>
             <ul>
-              <li>First collector CRM segment (300+ subscribers)</li>
-              <li>Second exhibition trailer · post-mortem of the first</li>
-              <li>TikTok Shop pilot for supplies</li>
-              <li>Quarterly Magazine integrated into the funnel</li>
-              <li>Monthly performance review with Ron — pick what scales into months 4–6</li>
+              <li><em>Wk 9</em> · second exhibition trailer · CAC report on the first ad set</li>
+              <li><em>Wk 10</em> · collector CRM segment live (300+ subscribers target)</li>
+              <li><em>Wk 11</em> · TikTok Shop pilot for supplies</li>
+              <li><em>Wk 12</em> · performance review with Ron · pick what scales into months 4–6</li>
             </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── price + commitment card (council insight: cadence + escape clause) ── -->
+      <section class="price">
+        <div class="price-card">
+          <div class="price-head">
+            <span class="kicker">/ Pilot terms</span>
+            <h3>A 90-day pilot. <em>Month-to-month after.</em></h3>
+          </div>
+          <div class="price-body">
+            <div class="price-tile price-tile-main">
+              <small>Pilot fee</small>
+              <strong>₱ <span data-leon-fill>__</span><i>/month · 3 months</i></strong>
+              <span>Flat fee · all four legs · everything in the 12-week plan</span>
+            </div>
+            <div class="price-tile">
+              <small>After the pilot</small>
+              <strong>Month-to-month</strong>
+              <span>Continue, pause, or cancel any month. We earn it every 30 days.</span>
+            </div>
+            <div class="price-tile">
+              <small>Review cadence</small>
+              <strong>Every 30 days</strong>
+              <span>Documented metrics review with Ron. No surprises, no agency black box.</span>
+            </div>
+            <div class="price-tile">
+              <small>What's not included</small>
+              <strong>Ad spend · print</strong>
+              <span>Pass-through at cost — you pre-approve every peso, we never mark it up.</span>
+            </div>
+          </div>
+          <div class="price-foot">
+            <span>Sign this week</span>
+            <strong>→ Week 1 ships Monday 2026-06-29.</strong>
           </div>
         </div>
       </section>
 
       <!-- ── stat strip ── -->
       <section class="stats">
-        <div class="stat"><strong>4</strong><span>Locations covered</span></div>
-        <div class="stat"><strong>3</strong><span>Channels rebuilt (IG, FB, TikTok)</span></div>
-        <div class="stat"><strong>90</strong><span>Days to a live engine</span></div>
-        <div class="stat"><strong>1</strong><span>Brand. One platform. One Ron.</span></div>
+        <div class="stat"><strong>12</strong><span>Weeks · one shipment per week</span></div>
+        <div class="stat"><strong>4</strong><span>Locations covered, one brand</span></div>
+        <div class="stat"><strong>0</strong><span>Long contracts · cancel any month</span></div>
+        <div class="stat"><strong>1</strong><span>Yahoo address retired in week 1</span></div>
       </section>
 
       <!-- ── footer ── -->
