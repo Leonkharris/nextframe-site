@@ -43,7 +43,7 @@
     reveals.forEach(el => el.classList.add('is-in'));
   }
 
-  // ── hero scroll-pinned scene progress (Dream Land style) ─
+  // ── hero scroll-pinned scene progress (5-phase Dream Land arc) ─
   const heroScroll = document.querySelector('[data-hero-scroll]');
   if (heroScroll) {
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
@@ -58,27 +58,54 @@
       const scrolled = clamp(-rect.top, 0, total);
       const p = total > 0 ? scrolled / total : 0;
 
-      // Scene 1: visible 0 → 0.45, scales 1 → 1.2 (camera zoom-in)
-      const s1Fade = 1 - ramp(p, 0.30, 0.50);
-      const s1Scale = lerp(1.0, 1.22, ramp(p, 0.0, 0.55));
+      // 5-phase arc:
+      //   Scene 1 (corridor vista)   visible 0.00 → 0.18, slow zoom-in
+      //   Scene 2p (doorway portal)  fades 0.16 → 0.24, holds 0.24 → 0.30, fades 0.30 → 0.36
+      //   Scene 3c (threshold cross) fades 0.34 → 0.42, holds 0.42 → 0.48, fades 0.48 → 0.54
+      //   Scene 2  (sanctum + title) fades 0.52 → 0.62, holds 0.62 → 0.78, fades 0.78 → 0.84
+      //   Scene 3  (floating cards)  fades 0.82 → 0.94
 
-      // Scene 2: fades in 0.30 → 0.50, holds, fades out 0.70 → 0.90
-      const s2In = ramp(p, 0.30, 0.50);
-      const s2Out = 1 - ramp(p, 0.70, 0.90);
+      // SCENE 1
+      const s1Fade  = 1 - ramp(p, 0.14, 0.22);
+      const s1Scale = lerp(1.0, 1.18, ramp(p, 0.0, 0.22));
+
+      // SCENE 2p (doorway portal)
+      const s2pIn   = ramp(p, 0.16, 0.24);
+      const s2pOut  = 1 - ramp(p, 0.30, 0.36);
+      const s2pFade = Math.min(s2pIn, s2pOut);
+      const s2pScale = lerp(1.05, 1.0, ramp(p, 0.16, 0.30));
+
+      // SCENE 3c (threshold cross)
+      const s3cIn   = ramp(p, 0.34, 0.42);
+      const s3cOut  = 1 - ramp(p, 0.48, 0.54);
+      const s3cFade = Math.min(s3cIn, s3cOut);
+      const s3cScale = lerp(1.04, 1.0, ramp(p, 0.34, 0.48));
+
+      // SCENE 2 — title hero (the sanctum, where the big title lands)
+      const s2In   = ramp(p, 0.52, 0.62);
+      const s2Out  = 1 - ramp(p, 0.78, 0.84);
       const s2Fade = Math.min(s2In, s2Out);
-      const s2Scale = lerp(0.94, 1.0, ramp(p, 0.30, 0.55));
+      const s2Scale = lerp(0.94, 1.0, ramp(p, 0.52, 0.66));
 
-      // Scene 3: fades in 0.65 → 0.92
-      const s3Fade = ramp(p, 0.65, 0.92);
-      const s3Y = lerp(80, 0, ramp(p, 0.65, 0.95));
+      // SCENE 3 — floating cards
+      const s3Fade = ramp(p, 0.82, 0.94);
+      const s3Y    = lerp(80, 0, ramp(p, 0.82, 0.98));
+
+      // Atmosphere overlay — peaks in phase 4 (the sanctum)
+      const atmFade = Math.min(ramp(p, 0.36, 0.56), 1 - ramp(p, 0.78, 0.86)) * 0.5;
 
       heroScroll.style.setProperty('--p', p.toFixed(3));
       heroScroll.style.setProperty('--scene1-o', s1Fade.toFixed(3));
       heroScroll.style.setProperty('--scene1-s', s1Scale.toFixed(3));
+      heroScroll.style.setProperty('--scene2p-o', s2pFade.toFixed(3));
+      heroScroll.style.setProperty('--scene2p-s', s2pScale.toFixed(3));
+      heroScroll.style.setProperty('--scene3c-o', s3cFade.toFixed(3));
+      heroScroll.style.setProperty('--scene3c-s', s3cScale.toFixed(3));
       heroScroll.style.setProperty('--scene2-o', s2Fade.toFixed(3));
       heroScroll.style.setProperty('--scene2-s', s2Scale.toFixed(3));
       heroScroll.style.setProperty('--scene3-o', s3Fade.toFixed(3));
       heroScroll.style.setProperty('--scene3-y', `${s3Y.toFixed(1)}px`);
+      heroScroll.style.setProperty('--atm-o', atmFade.toFixed(3));
 
       raf = null;
     };
