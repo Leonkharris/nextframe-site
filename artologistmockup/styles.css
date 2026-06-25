@@ -227,24 +227,128 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* ── HERO-SCROLL (Dream Land 5-scene pinned narrative) ───── */
+/* ── HERO-SCROLL · layered parallax portal (Dream Land technique) ── */
 .hero-scroll {
   position: relative;
-  height: 480vh; /* 5 phases × ~96vh each */
+  height: 420vh; /* push-through + sanctum + cards */
   background: var(--ink);
   --p: 0;
-  --scene1-o: 1;
-  --scene1-s: 1;
-  --scene2p-o: 0;
-  --scene2p-s: 1.05;
-  --scene3c-o: 0;
-  --scene3c-s: 1.04;
   --scene2-o: 0;
   --scene2-s: 0.94;
   --scene3-o: 0;
   --scene3-y: 80px;
   --atm-o: 0;
 }
+
+/* ── LAYER 1 · Background landscape (the deep gallery) ──── */
+.portal-bg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  overflow: hidden;
+}
+.portal-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: center center;
+  filter: saturate(1.05) brightness(0.92);
+  will-change: transform;
+}
+
+/* ── LAYER 2 · Opening title overlay (fades as we push through) ── */
+.portal-title {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 0 36px;
+  pointer-events: none;
+  opacity: var(--title-o, 1);
+  transform: translateY(var(--title-y, 0));
+  will-change: opacity, transform;
+}
+.portal-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--red);
+  font-weight: 600;
+  margin-bottom: 28px;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+}
+.portal-eyebrow i {
+  width: 32px;
+  height: 1px;
+  background: var(--red);
+}
+.portal-line {
+  font-family: var(--serif);
+  font-weight: 900;
+  font-size: clamp(2.8rem, 7vw, 6.6rem);
+  line-height: 0.96;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  margin: 0 0 36px;
+  max-width: 1100px;
+  text-shadow: 0 8px 60px rgba(0,0,0,0.9);
+}
+.portal-line em {
+  font-style: italic;
+  font-weight: 500;
+  color: var(--red);
+}
+.portal-hint {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 0.74rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(244,236,224,0.65);
+  font-weight: 500;
+  text-shadow: 0 4px 30px rgba(0,0,0,0.8);
+}
+.portal-hint i {
+  font-style: normal;
+  color: var(--red);
+  animation: hint-bob 2s ease-in-out infinite;
+}
+
+/* ── LAYER 3 · Foreground portal frame (camera pushes through) ── */
+.portal-fg-wrap {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  overflow: hidden;
+  pointer-events: none;
+}
+.portal-fg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform-origin: 50% 53%; /* portal arch sits slightly below image center */
+  /* the gallery's gold archway has a solid black center — we mask it transparent
+     so as it scales up, you literally see THROUGH it into the background gallery */
+  -webkit-mask-image: radial-gradient(ellipse 22% 30% at 50% 53%, transparent 0%, transparent 55%, rgba(0,0,0,0.5) 75%, black 92%);
+          mask-image: radial-gradient(ellipse 22% 30% at 50% 53%, transparent 0%, transparent 55%, rgba(0,0,0,0.5) 75%, black 92%);
+  will-change: transform, opacity;
+}
+
+/* ── LAYER 4 · Atmospheric dust beams (already defined above, just re-z) ── */
 
 /* dust overlay layer above all scene backgrounds */
 .hero-atmosphere {
@@ -428,11 +532,13 @@ a { color: inherit; text-decoration: none; }
   50% { transform: translateY(4px); }
 }
 
-/* SCENE 2 — the title hero (existing motion lives inside) */
+/* SCENE 2 — the title hero (sits on the portal-bg, just darkens it) */
 .scene-2 {
   opacity: var(--scene2-o);
   transform: scale(var(--scene2-s));
-  z-index: 2;
+  z-index: 5;
+  background: rgba(14, 12, 10, 0.78);
+  backdrop-filter: blur(2px);
 }
 .scene-bg-interior {
   filter: saturate(0.85) brightness(0.55);
@@ -443,7 +549,7 @@ a { color: inherit; text-decoration: none; }
   background: linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
   opacity: var(--scene3-o);
   transform: translateY(var(--scene3-y));
-  z-index: 3;
+  z-index: 6;
 }
 .scene-floats {
   position: absolute;

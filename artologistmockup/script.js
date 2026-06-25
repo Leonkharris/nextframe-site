@@ -43,7 +43,36 @@
     reveals.forEach(el => el.classList.add('is-in'));
   }
 
-  // ── hero scroll-pinned scene progress (5-phase Dream Land arc) ─
+  // ── GSAP portal parallax (Dream Land technique: 2-layer push-through) ──
+  if (window.gsap && window.ScrollTrigger) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    const heroScrollEl = document.querySelector('[data-hero-scroll]');
+    if (heroScrollEl) {
+      const portalTL = gsap.timeline({
+        scrollTrigger: {
+          trigger: heroScrollEl,
+          start: 'top top',
+          // Portal phase ends at ~60% of total scroll — after that the sanctum + cards take over
+          end: () => '+=' + (heroScrollEl.offsetHeight * 0.6),
+          scrub: 1
+        }
+      });
+
+      // Background: subtle 1.0 → 1.3 zoom — forces depth perception
+      portalTL.to('.portal-bg', { scale: 1.3, ease: 'none' }, 0);
+
+      // Foreground: aggressive 1.0 → 5.0 zoom + fade-out at the end
+      // The CSS mask scales with the image — as it grows, the portal hole gets
+      // bigger and bigger, revealing more of the background gallery behind.
+      portalTL.to('.portal-fg', { scale: 5.5, opacity: 0, ease: 'none' }, 0);
+
+      // Title fades + drifts upward as we push through
+      portalTL.to('.portal-title', { opacity: 0, y: -80, ease: 'power2.in' }, 0);
+    }
+  }
+
+  // ── hero scroll-pinned scene progress (sanctum + cards) ─
   const heroScroll = document.querySelector('[data-hero-scroll]');
   if (heroScroll) {
     const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
@@ -82,14 +111,15 @@
       const s3cScale = lerp(1.04, 1.0, ramp(p, 0.34, 0.48));
 
       // SCENE 2 — title hero (the sanctum, where the big title lands)
-      const s2In   = ramp(p, 0.52, 0.62);
-      const s2Out  = 1 - ramp(p, 0.78, 0.84);
+      // Appears AFTER the portal push-through completes (~60% scroll)
+      const s2In   = ramp(p, 0.58, 0.72);
+      const s2Out  = 1 - ramp(p, 0.84, 0.92);
       const s2Fade = Math.min(s2In, s2Out);
-      const s2Scale = lerp(0.94, 1.0, ramp(p, 0.52, 0.66));
+      const s2Scale = lerp(0.94, 1.0, ramp(p, 0.58, 0.72));
 
       // SCENE 3 — floating cards
-      const s3Fade = ramp(p, 0.82, 0.94);
-      const s3Y    = lerp(80, 0, ramp(p, 0.82, 0.98));
+      const s3Fade = ramp(p, 0.88, 0.98);
+      const s3Y    = lerp(80, 0, ramp(p, 0.88, 1.00));
 
       // Atmosphere overlay — peaks in phase 4 (the sanctum)
       const atmFade = Math.min(ramp(p, 0.36, 0.56), 1 - ramp(p, 0.78, 0.86)) * 0.5;
