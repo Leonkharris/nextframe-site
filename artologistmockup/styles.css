@@ -227,18 +227,86 @@ a { color: inherit; text-decoration: none; }
   transform: translateY(0);
 }
 
-/* ── HERO-SCROLL (Dream Land 3-scene pinned narrative) ───── */
+/* ── HERO-SCROLL (Dream Land 5-scene pinned narrative) ───── */
 .hero-scroll {
   position: relative;
-  height: 300vh; /* 3 viewport heights of scroll */
+  height: 480vh; /* 5 phases × ~96vh each */
   background: var(--ink);
-  --p: 0;             /* 0 → 1 progress, set by JS */
+  --p: 0;
   --scene1-o: 1;
   --scene1-s: 1;
+  --scene2p-o: 0;
+  --scene2p-s: 1.05;
+  --scene3c-o: 0;
+  --scene3c-s: 1.04;
   --scene2-o: 0;
   --scene2-s: 0.94;
   --scene3-o: 0;
   --scene3-y: 80px;
+  --atm-o: 0;
+}
+
+/* dust overlay layer above all scene backgrounds */
+.hero-atmosphere {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  mix-blend-mode: screen;
+  opacity: var(--atm-o);
+  z-index: 4;
+  pointer-events: none;
+  will-change: opacity;
+}
+
+/* SCENE 2 — portal (doorway from outside) */
+.scene-2-portal {
+  opacity: var(--scene2p-o);
+  transform: scale(var(--scene2p-s));
+  z-index: 2;
+}
+.scene-veil-2-portal {
+  background:
+    radial-gradient(ellipse at 50% 50%, transparent 0%, rgba(14,12,10,0.45) 70%, rgba(14,12,10,0.85) 100%);
+}
+.scene-content-portal,
+.scene-content-cross {
+  text-align: center;
+  max-width: 800px;
+  color: var(--bone);
+}
+.scene-mark {
+  display: inline-block;
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.2em;
+  color: var(--red);
+  font-weight: 700;
+  margin-bottom: 22px;
+}
+.scene-portal-line {
+  font-family: var(--serif);
+  font-style: italic;
+  font-weight: 500;
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  letter-spacing: -0.03em;
+  color: var(--bone);
+  margin: 0;
+  text-shadow: 0 4px 40px rgba(14,12,10,0.7);
+}
+
+/* SCENE 3 — threshold cross (interior POV) */
+.scene-3-cross {
+  opacity: var(--scene3c-o);
+  transform: scale(var(--scene3c-s));
+  z-index: 2;
+}
+.scene-veil-3-cross {
+  background:
+    linear-gradient(90deg, rgba(14,12,10,0.7) 0%, transparent 40%, rgba(14,12,10,0.45) 100%),
+    radial-gradient(ellipse at 50% 50%, transparent 30%, rgba(14,12,10,0.55) 100%);
 }
 .hero-pin {
   position: sticky;
