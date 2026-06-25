@@ -69,6 +69,11 @@
 
       // Title fades + drifts upward as we push through
       portalTL.to('.portal-title', { opacity: 0, y: -80, ease: 'power2.in' }, 0);
+
+      // Background fades to black in the last 30% of the portal phase so it
+      // doesn't bleed through the sanctum title content
+      portalTL.to('.portal-bg-wrap', { opacity: 0, ease: 'power2.in' }, 0.7);
+      portalTL.to('.hero-atmosphere', { opacity: 0, ease: 'power1.in' }, 0.7);
     }
   }
 
