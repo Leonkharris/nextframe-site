@@ -114,6 +114,9 @@
         gap: 18px;
         margin-bottom: 22px;
       }
+      .compare-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
       .panel {
         position: relative;
         border-radius: 8px;
@@ -143,6 +146,10 @@
       }
       .panel-tag-dl { background: rgba(149, 90, 184, 0.85); }
       .panel-tag-art { background: rgba(230, 57, 25, 0.85); }
+      .panel-tag-synth {
+        background: rgba(36, 130, 200, 0.85);
+        color: var(--bone);
+      }
       .panel-tag-shoot {
         background: var(--bone);
         color: var(--ink);
@@ -292,10 +299,13 @@
         box-shadow: 0 40px 100px -30px rgba(0,0,0,0.7);
       }
 
+      @media (max-width: 1000px) {
+        .compare-3 { grid-template-columns: 1fr 1fr; }
+      }
       @media (max-width: 800px) {
         body { padding: 20px 14px 50px; }
         header.head, .phase, .shotlist, footer.foot { padding-left: 28px; padding-right: 28px; }
-        .compare { grid-template-columns: 1fr; }
+        .compare, .compare-3 { grid-template-columns: 1fr; }
         .shots { grid-template-columns: 1fr; }
       }
     </style>
@@ -332,14 +342,11 @@
             </figure>
 
             <figure class="panel" style="margin:0">
-              <div class="panel-empty">
-                <strong>Shot A — needed</strong>
-                <span>Twilight Shangri-La corridor<br/>with the neon sign far down it</span>
-              </div>
-              <span class="panel-tag panel-tag-shoot">To shoot · week 1</span>
+              <img src="../assets/synth/phase1-corridor-vista.jpg" alt="AI placeholder corridor" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
               <div class="panel-caption">
-                <strong>Twilight mall corridor</strong>
-                Camera at the far end of the Shangri-La corridor, looking down it toward the gallery. The blue "THE ARTOLOGIST" neon sign is the tiny glowing focal point. Long lens compresses the depth. The mall is dim. The gallery glows.
+                <strong>AI proxy — twilight mall corridor</strong>
+                Generated stand-in (Pollinations / Flux). Captures the perspective, the dark walls vignetting a glowing focal point at the end. The actual Shangri-La corridor replaces this in week 1.
               </div>
             </figure>
           </div>
@@ -361,22 +368,31 @@
             <span class="phase-range">Scroll 0.20 → 0.45</span>
           </div>
 
-          <div class="compare">
+          <div class="compare compare-3">
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/dl-phase2-portal.jpg" alt="Dream Land phase 2" />
               <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
               <div class="panel-caption">
                 <strong>Crystalline portal</strong>
-                An ornate aperture grown from crystals, sky visible through. The frame around the opening does as much work as the opening itself.
+                An ornate aperture grown from crystals, sky visible through. The frame does as much work as the opening.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase2-doorway-portal.jpg" alt="AI doorway placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — doorway portal</strong>
+                Generated stand-in. Captures the dark mall corridor framing the bright art interior, vivid paintings glowing through glass. The actual Shangri-La doorway replaces this in week 1.
               </div>
             </figure>
 
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/hero-storefront.jpg" alt="Artologist storefront" />
-              <span class="panel-tag panel-tag-art">Placeholder · existing photo</span>
+              <span class="panel-tag panel-tag-art">Real photo · current mockup</span>
               <div class="panel-caption">
-                <strong>Storefront with neon sign</strong>
-                Works as a stand-in for now, but ideally re-shot with the camera further back so the doorway becomes a clear aperture into the gallery — dark mall corridor framing the bright glass front.
+                <strong>Real storefront with neon sign</strong>
+                The current v4 mockup uses this. Works, but the camera is too close — the doorway never reads as an aperture you pass through.
               </div>
             </figure>
           </div>
@@ -398,22 +414,31 @@
             <span class="phase-range">Scroll 0.45 → 0.65</span>
           </div>
 
-          <div class="compare">
+          <div class="compare compare-3">
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/dl-phase3-crossing.jpg" alt="Dream Land phase 3" />
               <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
               <div class="panel-caption">
                 <strong>Threshold crossing</strong>
-                Camera has moved through the portal. The crystalline wall is now a partial frame on the left edge only — the rest of the screen reveals what's inside.
+                Camera has moved through. The crystalline wall is now a partial frame on the left edge only.
               </div>
             </figure>
 
             <figure class="panel" style="margin:0">
-              <img src="./contact-sheet-assets/painting-impasto.jpg" alt="Artologist interior detail" />
-              <span class="panel-tag panel-tag-art">Placeholder · existing photo</span>
+              <img src="../assets/synth/phase3-threshold-pov.jpg" alt="AI threshold POV placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
               <div class="panel-caption">
-                <strong>Inside, looking at a painting</strong>
-                The impasto floral painting under a gallery spotlight. The frame and the wall do the same partial-vignette work as Dream Land's crystal-edge.
+                <strong>AI proxy — just past the threshold</strong>
+                Generated stand-in. Glass doorway sits as a partial frame on the left edge exactly as in Dream Land, paintings on the right wall, sculpture in middle distance. The actual interior shot replaces this in week 1.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/painting-impasto.jpg" alt="Artologist painting detail" />
+              <span class="panel-tag panel-tag-art">Real detail · could complement</span>
+              <div class="panel-caption">
+                <strong>Real spotlit painting</strong>
+                The impasto floral close-up. Doesn't capture the threshold crossing on its own but works as a cut-in during the transition.
               </div>
             </figure>
           </div>
@@ -435,22 +460,31 @@
             <span class="phase-range">Scroll 0.65 → 0.85</span>
           </div>
 
-          <div class="compare">
+          <div class="compare compare-3">
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/dl-phase4-sanctum.jpg" alt="Dream Land phase 4" />
               <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
               <div class="panel-caption">
                 <strong>Inside the crystal sanctum</strong>
-                A new world. The portal is centred and small now — we've arrived. Looking back at the same opening from inside.
+                A new world. We've arrived. Looking back at the same opening from inside.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase4-sanctum-moody.jpg" alt="AI moody sanctum placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — moody sanctum with light beams</strong>
+                Generated stand-in. Brass spotlights cutting visible beams through atmospheric haze — the smoke-pen technique pre-built. The big <em>The Artologist.</em> title lands on this frame.
               </div>
             </figure>
 
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/interior-moody.jpg" alt="Artologist interior moody" />
-              <span class="panel-tag panel-tag-art">Placeholder · existing photo</span>
+              <span class="panel-tag panel-tag-art">Real photo · current mockup</span>
               <div class="panel-caption">
-                <strong>Moody interior with depth</strong>
-                Mountain-landscape painting on the left wall, dark abstracts on the right, the room extends back. This is the "you've arrived" frame. The big <em>The Artologist.</em> title lands here.
+                <strong>Real interior</strong>
+                Current v4 mockup uses this. Real, but flatter — no atmospheric beams, no depth-of-field, no story.
               </div>
             </figure>
           </div>
@@ -509,7 +543,7 @@
             <span class="phase-range">Persistent · phases 1 → 4</span>
           </div>
 
-          <div class="compare">
+          <div class="compare compare-3">
             <figure class="panel" style="margin:0">
               <img src="./contact-sheet-assets/dl-phase1-vista.jpg" alt="Dream Land pillar" />
               <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
@@ -520,11 +554,20 @@
             </figure>
 
             <figure class="panel" style="margin:0">
-              <img src="./contact-sheet-assets/sculpture-cobra.jpg" alt="Artologist cobra sculpture" />
-              <span class="panel-tag panel-tag-art">Material · existing photo</span>
+              <img src="../assets/synth/floating-sculpture-isolated.jpg" alt="AI floating sculpture placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
               <div class="panel-caption">
-                <strong>The signature sculpture</strong>
-                The cobra-and-machinery sculpture (or Pandy Aviado's piece) photographed cleanly against a plain background, then knocked out to a transparent PNG. It floats above all five scenes — small in phase 1, growing as you scroll, becoming the centrepiece in phase 4.
+                <strong>AI proxy — bronze flower sculpture</strong>
+                Generated on pure white for clean cutout. Becomes a transparent PNG, layered above all five scenes. Small in phase 1, growing as you scroll, the centrepiece in phase 4.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/sculpture-cobra.jpg" alt="Artologist cobra sculpture" />
+              <span class="panel-tag panel-tag-art">Real photo · existing</span>
+              <div class="panel-caption">
+                <strong>Pandy Aviado's actual sculpture</strong>
+                Photographed in situ at the gallery. Once cut from its background (week 1 shoot or post-production), this replaces the AI proxy and becomes the recurring object.
               </div>
             </figure>
           </div>
