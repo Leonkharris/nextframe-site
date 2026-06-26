@@ -274,14 +274,16 @@
         background: var(--ink);
         border-bottom: 1px solid var(--border);
       }
-      .ship-card-img-wrap img {
+      .ship-card-img-wrap img,
+      .ship-card-img-wrap video {
         width: 100%;
         height: 100%;
         object-fit: cover;
         opacity: 0.9;
         transition: transform 0.4s ease;
       }
-      .ship-card:hover .ship-card-img-wrap img {
+      .ship-card:hover .ship-card-img-wrap img,
+      .ship-card:hover .ship-card-img-wrap video {
         transform: scale(1.04);
       }
       .ship-tag {
@@ -862,7 +864,7 @@
 
           <article class="ship-card">
             <div class="ship-card-img-wrap">
-              <img src="https://next-frame.agency/artologistmockup/assets/real/artist-pandy-portrait.jpg" alt="Artist Legacy Archives" />
+              <video src="https://next-frame.agency/artologistmockup/assets/real/artist-pandy-motion.mp4" autoplay loop muted playsinline></video>
             </div>
             <div class="ship-card-body">
               <span class="ship-n">06 / Leg: Gallery</span>
