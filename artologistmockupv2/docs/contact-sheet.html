@@ -1,0 +1,676 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hero Visual Direction — Dream Land → Artologist</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,ital,wght@9..144,0,500;9..144,0,700;9..144,0,900;9..144,1,500&family=JetBrains+Mono:wght@400;500;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --red: #e0331c;
+        --red-deep: #b3220f;
+        --ink: #0e0c0a;
+        --ink-soft: #1a1612;
+        --bone: #f4ece0;
+        --paper: #fefbf5;
+        --line: rgba(244,236,224,0.12);
+        --serif: "Fraunces", "Times New Roman", serif;
+        --sans: "Inter", system-ui, sans-serif;
+        --mono: "JetBrains Mono", monospace;
+      }
+      * { box-sizing: border-box; }
+      html, body { margin: 0; padding: 0; }
+      body {
+        font-family: var(--sans);
+        background: var(--ink);
+        color: var(--bone);
+        padding: 40px 28px 80px;
+      }
+      .wrap { max-width: 1240px; margin: 0 auto; }
+
+      header.head {
+        padding: 50px 56px 44px;
+        border-bottom: 1px solid var(--line);
+        background: linear-gradient(180deg, var(--ink-soft) 0%, var(--ink) 100%);
+        border-radius: 16px 16px 0 0;
+      }
+      .kicker {
+        display: inline-block;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        margin-bottom: 18px;
+        padding: 6px 14px;
+        border: 1px solid rgba(230, 57, 25, 0.4);
+        background: rgba(230, 57, 25, 0.08);
+        border-radius: 999px;
+      }
+      h1 {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: clamp(2.2rem, 4vw, 3.6rem);
+        line-height: 1;
+        letter-spacing: -0.025em;
+        margin: 0 0 14px;
+      }
+      h1 em { font-style: italic; font-weight: 500; color: var(--red); }
+      header.head p {
+        max-width: 640px;
+        font-size: 1.02rem;
+        color: rgba(244,236,224,0.7);
+        line-height: 1.55;
+        margin: 0;
+      }
+
+      .phase {
+        padding: 50px 56px;
+        border-bottom: 1px solid var(--line);
+      }
+      .phase:nth-child(even) { background: var(--ink-soft); }
+
+      .phase-head {
+        display: flex;
+        gap: 20px;
+        align-items: baseline;
+        margin-bottom: 28px;
+        flex-wrap: wrap;
+      }
+      .phase-num {
+        font-family: var(--serif);
+        font-style: italic;
+        font-weight: 500;
+        font-size: 3rem;
+        color: var(--red);
+        line-height: 1;
+      }
+      .phase-name {
+        font-family: var(--serif);
+        font-size: 1.8rem;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+        line-height: 1.1;
+      }
+      .phase-name em { font-style: italic; font-weight: 500; color: var(--red); }
+      .phase-range {
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(244,236,224,0.5);
+        padding: 4px 10px;
+        border: 1px solid var(--line);
+        border-radius: 999px;
+        margin-left: auto;
+      }
+
+      .compare {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+        margin-bottom: 22px;
+      }
+      .compare-3 {
+        grid-template-columns: 1fr 1fr 1fr;
+      }
+      .panel {
+        position: relative;
+        border-radius: 8px;
+        overflow: hidden;
+        background: var(--ink);
+        border: 1px solid var(--line);
+      }
+      .panel img {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        object-fit: cover;
+        display: block;
+      }
+      .panel-tag {
+        position: absolute;
+        top: 12px; left: 12px;
+        font-family: var(--mono);
+        font-size: 0.62rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--bone);
+        background: rgba(14,12,10,0.85);
+        padding: 5px 10px;
+        border-radius: 999px;
+        backdrop-filter: blur(8px);
+        font-weight: 700;
+      }
+      .panel-tag-dl { background: rgba(149, 90, 184, 0.85); }
+      .panel-tag-art { background: rgba(230, 57, 25, 0.85); }
+      .panel-tag-synth {
+        background: rgba(36, 130, 200, 0.85);
+        color: var(--bone);
+      }
+      .panel-tag-shoot {
+        background: var(--bone);
+        color: var(--ink);
+      }
+      .panel-caption {
+        padding: 14px 16px 16px;
+        font-size: 0.86rem;
+        color: rgba(244,236,224,0.7);
+        line-height: 1.4;
+        border-top: 1px solid var(--line);
+      }
+      .panel-caption strong {
+        display: block;
+        color: var(--bone);
+        font-family: var(--serif);
+        font-size: 1rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        letter-spacing: -0.01em;
+      }
+      .panel-empty {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        background: repeating-linear-gradient(45deg, rgba(244,236,224,0.03), rgba(244,236,224,0.03) 12px, rgba(244,236,224,0.06) 12px, rgba(244,236,224,0.06) 24px);
+        padding: 50px 30px;
+        aspect-ratio: 16 / 9;
+        border: 2px dashed rgba(244,236,224,0.18);
+      }
+      .panel-empty strong {
+        font-family: var(--serif);
+        font-size: 1.4rem;
+        margin-bottom: 8px;
+        color: var(--red);
+      }
+      .panel-empty span {
+        font-family: var(--mono);
+        font-size: 0.74rem;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: rgba(244,236,224,0.55);
+      }
+
+      .notes {
+        background: rgba(255,255,255,0.03);
+        border-left: 3px solid var(--red);
+        padding: 18px 22px;
+        font-size: 0.94rem;
+        color: rgba(244,236,224,0.78);
+        line-height: 1.55;
+      }
+      .notes strong {
+        font-family: var(--mono);
+        font-size: 0.7rem;
+        letter-spacing: 0.18em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .notes em { font-style: italic; color: var(--bone); font-weight: 500; }
+
+      /* shot list */
+      .shotlist {
+        padding: 60px 56px;
+        background: var(--ink-soft);
+      }
+      .shotlist h2 {
+        font-family: var(--serif);
+        font-size: 2.2rem;
+        margin: 0 0 8px;
+        letter-spacing: -0.025em;
+        font-weight: 900;
+      }
+      .shotlist h2 em { font-style: italic; color: var(--red); font-weight: 500; }
+      .shotlist > p {
+        font-size: 1rem;
+        color: rgba(244,236,224,0.6);
+        margin: 0 0 30px;
+        max-width: 700px;
+      }
+      .shots {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+      }
+      .shot {
+        background: rgba(255,255,255,0.04);
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 18px 20px;
+        display: grid;
+        grid-template-columns: 40px 1fr;
+        gap: 12px;
+      }
+      .shot-letter {
+        font-family: var(--serif);
+        font-weight: 900;
+        font-size: 1.6rem;
+        color: var(--red);
+        line-height: 1;
+      }
+      .shot strong {
+        font-family: var(--serif);
+        font-size: 1.05rem;
+        font-weight: 700;
+        display: block;
+        margin-bottom: 6px;
+      }
+      .shot p {
+        font-size: 0.85rem;
+        color: rgba(244,236,224,0.7);
+        line-height: 1.5;
+        margin: 0;
+      }
+      .shot-pri {
+        font-family: var(--mono);
+        font-size: 0.6rem;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        color: var(--red);
+        font-weight: 700;
+        margin-top: 10px;
+        display: block;
+      }
+      .shot-pri-rec { color: rgba(244,236,224,0.5); }
+
+      footer.foot {
+        padding: 30px 56px;
+        border-top: 1px solid var(--line);
+        background: var(--ink);
+        border-radius: 0 0 16px 16px;
+        font-family: var(--mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        color: rgba(244,236,224,0.45);
+      }
+      footer.foot strong { color: var(--bone); font-family: var(--serif); font-size: 1rem; display: block; margin-bottom: 4px; letter-spacing: -0.01em; }
+
+      .sheet {
+        background: var(--ink);
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 40px 100px -30px rgba(0,0,0,0.7);
+      }
+
+      @media (max-width: 1000px) {
+        .compare-3 { grid-template-columns: 1fr 1fr; }
+      }
+      @media (max-width: 800px) {
+        body { padding: 20px 14px 50px; }
+        header.head, .phase, .shotlist, footer.foot { padding-left: 28px; padding-right: 28px; }
+        .compare, .compare-3 { grid-template-columns: 1fr; }
+        .shots { grid-template-columns: 1fr; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="wrap">
+      <div class="sheet">
+
+        <header class="head">
+          <span class="kicker">Hero visual direction · v5</span>
+          <h1>Dream Land → <em>Artologist.</em></h1>
+          <p>The reference animation has five phases, not three. Here is the side-by-side between each Dream Land moment and the Artologist material that replaces it — plus the photo shots we need from the week-1 gallery shoot.</p>
+        </header>
+
+        <!-- PHASE 1 -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">01</span>
+            <div>
+              <div class="phase-name">Find the gallery.</div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">A wide cinematic establishing shot. The gallery is a small glowing point in the distance.</div>
+            </div>
+            <span class="phase-range">Scroll 0.00 → 0.20</span>
+          </div>
+
+          <div class="compare">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase1-vista.jpg" alt="Dream Land phase 1" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Lavender vista, floating pillar</strong>
+                A wide purple sky with a tiny Roman column hovering in the bottom right. The eye searches the frame for a focal point — and finds it small, far away.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase1-corridor-vista.jpg" alt="AI placeholder corridor" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — twilight mall corridor</strong>
+                Generated stand-in (Pollinations / Flux). Captures the perspective, the dark walls vignetting a glowing focal point at the end. The actual Shangri-La corridor replaces this in week 1.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Why this matters</strong>
+            Dream Land never shows you a logo on the first screen — it shows you a <em>place</em>. Ours has to do the same. The current mockup opens with a close-up of the storefront; we should open further back so the viewer "walks in" with the camera.
+          </div>
+        </section>
+
+        <!-- PHASE 2 -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">02</span>
+            <div>
+              <div class="phase-name">Arrive at <em>the threshold.</em></div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">The camera reaches an ornate aperture — the doorway.</div>
+            </div>
+            <span class="phase-range">Scroll 0.20 → 0.45</span>
+          </div>
+
+          <div class="compare compare-3">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase2-portal.jpg" alt="Dream Land phase 2" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Crystalline portal</strong>
+                An ornate aperture grown from crystals, sky visible through. The frame does as much work as the opening.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase2-doorway-portal.jpg" alt="AI doorway placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — doorway portal</strong>
+                Generated stand-in. Captures the dark mall corridor framing the bright art interior, vivid paintings glowing through glass. The actual Shangri-La doorway replaces this in week 1.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/hero-storefront.jpg" alt="Artologist storefront" />
+              <span class="panel-tag panel-tag-art">Real photo · current mockup</span>
+              <div class="panel-caption">
+                <strong>Real storefront with neon sign</strong>
+                The current v4 mockup uses this. Works, but the camera is too close — the doorway never reads as an aperture you pass through.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Shoot upgrade — Shot B</strong>
+            Stand 4–6 metres back from the gallery doors in the mall corridor. Wide angle. Compose so the gallery's glass storefront fills 60–70% of the frame, the dark mall walls vignette the rest. The neon sign should sit just above the centre line. This is the single most important new shot.
+          </div>
+        </section>
+
+        <!-- PHASE 3 -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">03</span>
+            <div>
+              <div class="phase-name">Cross the threshold.</div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">Camera passes through — you're inside now.</div>
+            </div>
+            <span class="phase-range">Scroll 0.45 → 0.65</span>
+          </div>
+
+          <div class="compare compare-3">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase3-crossing.jpg" alt="Dream Land phase 3" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Threshold crossing</strong>
+                Camera has moved through. The crystalline wall is now a partial frame on the left edge only.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase3-threshold-pov.jpg" alt="AI threshold POV placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — just past the threshold</strong>
+                Generated stand-in. Glass doorway sits as a partial frame on the left edge exactly as in Dream Land, paintings on the right wall, sculpture in middle distance. The actual interior shot replaces this in week 1.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/painting-impasto.jpg" alt="Artologist painting detail" />
+              <span class="panel-tag panel-tag-art">Real detail · could complement</span>
+              <div class="panel-caption">
+                <strong>Real spotlit painting</strong>
+                The impasto floral close-up. Doesn't capture the threshold crossing on its own but works as a cut-in during the transition.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Shoot upgrade — Shot C</strong>
+            Stand just inside the gallery threshold, wide-angle, looking in. Paintings line both walls; the central artwork or sculpture sits in middle distance. The threshold/glass frame should still be visible at the very left edge — that's what tells the viewer "you're inside now."
+          </div>
+        </section>
+
+        <!-- PHASE 4 -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">04</span>
+            <div>
+              <div class="phase-name">Look around <em>the sanctum.</em></div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">Settle. Atmosphere. The big title shows up here.</div>
+            </div>
+            <span class="phase-range">Scroll 0.65 → 0.85</span>
+          </div>
+
+          <div class="compare compare-3">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase4-sanctum.jpg" alt="Dream Land phase 4" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Inside the crystal sanctum</strong>
+                A new world. We've arrived. Looking back at the same opening from inside.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/phase4-sanctum-moody.jpg" alt="AI moody sanctum placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — moody sanctum with light beams</strong>
+                Generated stand-in. Brass spotlights cutting visible beams through atmospheric haze — the smoke-pen technique pre-built. The big <em>The Artologist.</em> title lands on this frame.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/interior-moody.jpg" alt="Artologist interior moody" />
+              <span class="panel-tag panel-tag-art">Real photo · current mockup</span>
+              <div class="panel-caption">
+                <strong>Real interior</strong>
+                Current v4 mockup uses this. Real, but flatter — no atmospheric beams, no depth-of-field, no story.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Shoot upgrade — Shot D</strong>
+            Mid-room. Wide. Show depth — paintings extending into the back of the gallery, brass spotlights catching dust in their beams (if you can fog the air slightly with a smoke pen, the light beams become visible — extremely cinematic).
+          </div>
+        </section>
+
+        <!-- PHASE 5 -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">05</span>
+            <div>
+              <div class="phase-name">Choose <em>your way in.</em></div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">Floating cards offer paths into the site.</div>
+            </div>
+            <span class="phase-range">Scroll 0.85 → 1.00</span>
+          </div>
+
+          <div class="compare">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase5-cards.jpg" alt="Dream Land phase 5" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Three pastel cards on a sky backdrop</strong>
+                "Silent Havens · Bespoke Quests · Vivid Deity" with the headline "FORGE BEYOND THE REAL." Three doors into the rest of the experience.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/wall-flowers.jpg" alt="Artologist artwork wall" />
+              <span class="panel-tag panel-tag-art">Material · existing photo</span>
+              <div class="panel-caption">
+                <strong>Real artwork cards</strong>
+                Pandy Aviado · Bronze Garden · Floral Reverie. Three cards = three doors into the site (artists, commissions, exhibitions). Currently five — recommend trimming to three for impact, like the reference.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Build note</strong>
+            The current Scene 3 already implements floating cards, but with five of them. Dream Land uses three. The eye can hold three options. Drop two cards, scale the remaining three larger, give each a heavier shadow and a clearer "click here" affordance.
+          </div>
+        </section>
+
+        <!-- THE PILLAR — recurring element -->
+        <section class="phase">
+          <div class="phase-head">
+            <span class="phase-num">06</span>
+            <div>
+              <div class="phase-name">The recurring <em>floating pillar.</em></div>
+              <div style="color: rgba(244,236,224,0.6); margin-top: 4px; font-size: 0.92rem;">Dream Land has one object that moves with the camera through the whole arc.</div>
+            </div>
+            <span class="phase-range">Persistent · phases 1 → 4</span>
+          </div>
+
+          <div class="compare compare-3">
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/dl-phase1-vista.jpg" alt="Dream Land pillar" />
+              <span class="panel-tag panel-tag-dl">Reference · Dream Land</span>
+              <div class="panel-caption">
+                <strong>Floating Roman column</strong>
+                The same small white pillar appears in nearly every phase — bottom-right at phase 1, distant at phase 4. It's the visual through-line.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="../assets/synth/floating-sculpture-isolated.jpg" alt="AI floating sculpture placeholder" />
+              <span class="panel-tag panel-tag-synth">AI placeholder · v5 mockup</span>
+              <div class="panel-caption">
+                <strong>AI proxy — bronze flower sculpture</strong>
+                Generated on pure white for clean cutout. Becomes a transparent PNG, layered above all five scenes. Small in phase 1, growing as you scroll, the centrepiece in phase 4.
+              </div>
+            </figure>
+
+            <figure class="panel" style="margin:0">
+              <img src="./contact-sheet-assets/sculpture-cobra.jpg" alt="Artologist cobra sculpture" />
+              <span class="panel-tag panel-tag-art">Real photo · existing</span>
+              <div class="panel-caption">
+                <strong>Pandy Aviado's actual sculpture</strong>
+                Photographed in situ at the gallery. Once cut from its background (week 1 shoot or post-production), this replaces the AI proxy and becomes the recurring object.
+              </div>
+            </figure>
+          </div>
+
+          <div class="notes">
+            <strong>Shoot upgrade — Shot E</strong>
+            One sculpture, three angles, isolated on a neutral background that can be cut cleanly in post (white seamless or plain dark grey). Lit from above and one side. The chosen angle becomes the persistent "follow object" through the whole hero — the equivalent of Dream Land's floating pillar.
+          </div>
+        </section>
+
+        <!-- SHOT LIST -->
+        <section class="shotlist">
+          <h2>The shot list for kickoff <em>week 1.</em></h2>
+          <p>One 4-hour shoot at Shangri-La + one studio visit with Pandy Aviado covers everything. Bring a wide-angle lens, a tripod, and a fog/smoke pen for the atmosphere shots.</p>
+          <div class="shots">
+            <div class="shot">
+              <span class="shot-letter">A</span>
+              <div>
+                <strong>Twilight corridor establish</strong>
+                <p>Wide cinematic shot of the Shangri-La mall corridor looking toward the gallery. The blue neon sign as a tiny focal point. Long lens for compression. Shoot at golden hour or after mall lights dim.</p>
+                <span class="shot-pri">Mandatory · phase 1</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">B</span>
+              <div>
+                <strong>Doorway threshold from outside</strong>
+                <p>Camera 4–6m back in the corridor. Wide-angle. Glass doors fill 60–70% of frame. Dark mall vignettes the rest. The single most important new shot.</p>
+                <span class="shot-pri">Mandatory · phase 2</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">C</span>
+              <div>
+                <strong>Interior from doorway POV</strong>
+                <p>Standing just inside the threshold, wide-angle. Paintings on both walls, sculpture in middle distance, floor extending back. The threshold should still be visible at the left edge.</p>
+                <span class="shot-pri">Mandatory · phase 3</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">D</span>
+              <div>
+                <strong>Moody interior establish</strong>
+                <p>Mid-room. Depth. Brass spotlights catching dust beams (use a smoke pen to make beams visible). This is the "you've arrived" frame where the big title lands.</p>
+                <span class="shot-pri">Mandatory · phase 4</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">E</span>
+              <div>
+                <strong>Signature sculpture, isolated</strong>
+                <p>One piece, three angles, clean neutral background (white seamless or plain dark grey), lit from above and one side. Cuts out cleanly to transparent PNG — the persistent floating element.</p>
+                <span class="shot-pri">Mandatory · floating pillar</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">F</span>
+              <div>
+                <strong>Spotlit painting from above</strong>
+                <p>Detail of a painting with the light pool visible, dust caught in the beam. Atmospheric overlay element.</p>
+                <span class="shot-pri shot-pri-rec">Recommended</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">G</span>
+              <div>
+                <strong>Artist at work — Pandy Aviado</strong>
+                <p>Hands working on a piece in the studio. Sells the "studio visit / artist interview" deliverable across the site.</p>
+                <span class="shot-pri shot-pri-rec">Recommended · sells the deliverable</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">H</span>
+              <div>
+                <strong>Exterior wide with mall signage</strong>
+                <p>Backup for phase 1 if the corridor doesn't work — show the gallery in its mall context.</p>
+                <span class="shot-pri shot-pri-rec">Recommended · alternative</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">I</span>
+              <div>
+                <strong>Neon sign tight crop, twilight</strong>
+                <p>The blue "THE ARTOLOGIST" neon at close range. Looped texture. Favicon. Identity element.</p>
+                <span class="shot-pri shot-pri-rec">Recommended · identity asset</span>
+              </div>
+            </div>
+            <div class="shot">
+              <span class="shot-letter">J</span>
+              <div>
+                <strong>Brass spotlight close-up</strong>
+                <p>Texture element for atmospheric overlays. Captures the gallery's actual ornament.</p>
+                <span class="shot-pri shot-pri-rec">Recommended · atmosphere</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="foot">
+          <strong>Hero Visual Direction</strong>
+          Prepared by Next Frame Agency · 2026-06-24 · Kickoff Mon 2026-06-29 · Full doc at <span style="color: var(--red)">clients/artologist/docs/HERO-VISUAL-DIRECTION.md</span>
+        </footer>
+      </div>
+    </div>
+  </body>
+</html>
