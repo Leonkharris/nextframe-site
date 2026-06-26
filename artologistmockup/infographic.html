@@ -159,10 +159,10 @@
       .comparison-card h3 {
         font-family: var(--serif);
         font-size: 1.35rem;
-        margin: 0 0 16px;
+        margin: 0 0 20px;
         display: flex;
         align-items: center;
-        gap: 8px;
+        gap: 10px;
       }
       .comparison-card-now h3 { color: var(--red-deep); }
       .comparison-card-next h3 { color: #2e5932; }
@@ -173,26 +173,35 @@
         margin: 0;
       }
       .comparison-list li {
-        padding: 12px 0 12px 28px;
+        padding: 12px 0 12px 32px;
         position: relative;
         font-size: 0.95rem;
         line-height: 1.45;
         border-bottom: 1px solid rgba(26,22,18,0.06);
       }
       .comparison-list li:last-child { border-bottom: 0; }
-      .comparison-list li::before {
+      
+      /* Icon wrappers for comparison */
+      .comparison-list li .li-icon {
         position: absolute;
-        left: 0; top: 12px;
-        font-weight: 700;
+        left: 0; top: 14px;
+        width: 18px; height: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
-      .comparison-card-now .comparison-list li::before {
-        content: "✕";
-        color: var(--red);
+      .comparison-list li svg {
+        width: 16px; height: 16px;
+        stroke-width: 2.5;
+        fill: none;
       }
-      .comparison-card-next .comparison-list li::before {
-        content: "✓";
-        color: #45754b;
+      .comparison-card-now li svg {
+        stroke: var(--red);
       }
+      .comparison-card-next li svg {
+        stroke: #45754b;
+      }
+      
       .comparison-list li strong {
         display: block;
         font-size: 0.98rem;
@@ -346,10 +355,10 @@
       .process {
         background: var(--ink);
         color: var(--bone);
-        padding: 68px 56px;
+        padding: 76px 56px 84px;
       }
       .process-head {
-        margin-bottom: 48px;
+        margin-bottom: 56px;
         max-width: 740px;
       }
       .process-kicker {
@@ -364,57 +373,115 @@
       }
       .process-head h2 {
         font-family: var(--serif);
-        font-size: 2.2rem;
+        font-size: 2.3rem;
         margin: 0 0 14px;
         letter-spacing: -0.025em;
       }
       .process-head p {
-        font-size: 1rem;
+        font-size: 1.05rem;
         line-height: 1.5;
-        color: rgba(246, 239, 230, 0.7);
+        color: rgba(246, 239, 230, 0.72);
         margin: 0;
       }
+      
+      /* Visual Infographic Pipeline Styling */
       .process-timeline {
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        gap: 20px;
+        gap: 24px;
         position: relative;
+        margin-top: 20px;
       }
       .process-timeline::before {
         content: "";
         position: absolute;
-        top: 24px; left: 0; right: 0;
-        height: 2px;
-        background: linear-gradient(to right, transparent, var(--red) 15%, var(--red) 85%, transparent);
+        top: 60px; left: 12%; right: 12%;
+        height: 3px;
+        background: rgba(246, 239, 230, 0.12);
         z-index: 0;
       }
+      .process-timeline::after {
+        content: "";
+        position: absolute;
+        top: 60px; left: 12%; width: 0%;
+        height: 3px;
+        background: var(--red);
+        z-index: 0;
+        animation: fillTimeline 2.5s ease-out forwards;
+      }
+      @keyframes fillTimeline {
+        to { width: 76%; }
+      }
+      
       .process-step {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid rgba(255, 255, 255, 0.08);
-        border-radius: 12px;
-        padding: 24px;
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid rgba(255, 255, 255, 0.06);
+        border-radius: 14px;
+        padding: 30px 24px 28px;
         position: relative;
         z-index: 1;
         display: flex;
         flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
       }
-      .process-step .num {
-        width: 48px;
-        height: 48px;
+      .process-step:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(224, 51, 28, 0.35);
+        transform: translateY(-4px);
+      }
+      
+      /* Visual SVG Icon Node */
+      .step-icon-node {
+        width: 64px; height: 64px;
         border-radius: 50%;
-        background: var(--ink);
-        border: 2px solid var(--red);
-        color: var(--bone);
-        font-family: var(--serif);
-        font-size: 1.15rem;
-        font-weight: 700;
+        background: #25201c;
+        border: 2.5px solid rgba(246, 239, 230, 0.18);
+        color: rgba(246, 239, 230, 0.6);
         display: flex;
         align-items: center;
         justify-content: center;
-        margin-bottom: 20px;
-        align-self: flex-start;
-        box-shadow: 0 0 0 4px rgba(224, 51, 28, 0.15);
+        margin-bottom: 24px;
+        position: relative;
+        z-index: 2;
+        transition: border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
       }
+      .process-step:hover .step-icon-node {
+        border-color: var(--red);
+        color: var(--paper);
+        box-shadow: 0 0 20px rgba(224, 51, 28, 0.45);
+      }
+      .step-icon-node svg {
+        width: 28px; height: 28px;
+        stroke: currentColor;
+        stroke-width: 1.5;
+        fill: none;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        transition: transform 0.3s ease;
+      }
+      .process-step:hover .step-icon-node svg {
+        transform: scale(1.1);
+      }
+      
+      /* Phase floating numeral */
+      .step-num-badge {
+        position: absolute;
+        top: -10px; right: -10px;
+        width: 24px; height: 24px;
+        border-radius: 50%;
+        background: var(--red);
+        color: var(--paper);
+        font-family: var(--serif);
+        font-weight: 700;
+        font-size: 0.8rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      }
+      
       .process-step .when {
         font-family: var(--mono);
         font-size: 0.68rem;
@@ -422,7 +489,7 @@
         text-transform: uppercase;
         color: var(--red);
         font-weight: 700;
-        margin-bottom: 8px;
+        margin-bottom: 10px;
         display: block;
       }
       .process-step h4 {
@@ -434,7 +501,7 @@
       .process-step p {
         font-size: 0.85rem;
         color: rgba(246, 239, 230, 0.75);
-        line-height: 1.45;
+        line-height: 1.5;
         margin: 0;
       }
 
@@ -659,18 +726,30 @@
             <h3>The Invisible Leaks (Now)</h3>
             <ul class="comparison-list">
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </div>
                 <strong>Workshop Bookings Leaking</strong>
                 <span>Greenhills workshop reads as "Closed" on Google and Booky, turning away parents searching for programs.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </div>
                 <strong>Collector Capture is Lost</strong>
                 <span>VIP relationships live entirely in Ron's head; there is no structured database or quiet invitation pipeline.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </div>
                 <strong>Instagram Volume, Zero Reach</strong>
                 <span>4,400 static posts, but only ~2,800 followers. The algorithm has ignored the account because video is missing.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></svg>
+                </div>
                 <strong>Brand Credibility Friction</strong>
                 <span>Running high-ticket contemporary art transactions through a @yahoo.com address signals a lack of professional systems.</span>
               </li>
@@ -680,18 +759,30 @@
             <h3>The Curatorial Engine (Next)</h3>
             <ul class="comparison-list">
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
                 <strong>Secured Workshop Gateways</strong>
                 <span>Verified search listings mapping directly to a seamless, automated booking portal that takes payments in your sleep.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
                 <strong>The Collector Circle</strong>
                 <span>A quiet, invitation-only database that allows you to offer password-protected VIP previews before collections go public.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
                 <strong>Artist Legacy Archives</strong>
                 <span>Cinematic profile films documenting the artist's studio process, formatted into high-reach Reels and TikTok edits.</span>
               </li>
               <li>
+                <div class="li-icon">
+                  <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg>
+                </div>
                 <strong>Institutional Authority</strong>
                 <span>Custom domain email (ron@theartologist.net) + a digital gallery space that feels as pristine as the physical gallery.</span>
               </li>
@@ -796,7 +887,7 @@
         </div>
       </section>
 
-      <!-- ── curatorial marketing process ── -->
+      <!-- ── curatorial marketing process (visual infographic) ── -->
       <section class="process">
         <div class="process-head">
           <span class="process-kicker">/ The Marketing Engine</span>
@@ -804,30 +895,51 @@
           <p>A systematic, repeatable 4-step workflow designed specifically for art galleries, turning every exhibition into a prestigious marketing event.</p>
         </div>
         <div class="process-timeline">
+          
           <div class="process-step">
-            <div class="num">I</div>
+            <div class="step-icon-node">
+              <div class="step-num-badge">I</div>
+              <!-- Film camera/aperture icon -->
+              <svg viewBox="0 0 24 24"><path d="M23 7a2 2 0 0 0-2.45-1.45L16 7V5a2 2 0 0 0-2-2H2a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-2l4.55 1.45A2 2 0 0 0 23 17V7zM14 19H2V5h12v14z"/></svg>
+            </div>
             <span class="when">Phase 1 · 3 Weeks Out</span>
             <h4>Studio Capture</h4>
             <p>Next Frame shoots the cinematic Artist Archive Film in the studio, capturing the soul, turpentine, and philosophy. We assemble the VIP Digital Catalog with provenance details.</p>
           </div>
+          
           <div class="process-step">
-            <div class="num">II</div>
+            <div class="step-icon-node">
+              <div class="step-num-badge">II</div>
+              <!-- Sealed wax-stamped envelope icon -->
+              <svg viewBox="0 0 24 24"><path d="M22 2H2v20h20V2zM4 4h16v3.74l-8 5.2-8-5.2V4zm16 14H4v-8.26l8 5.2 8-5.2V18z"/></svg>
+            </div>
             <span class="when">Phase 2 · 1 Week Out</span>
             <h4>The Collector Whisper</h4>
             <p>Private, password-protected previews are emailed to the VIP Collector Circle. The AI Docent pre-qualifies inquiries and books private viewing slots directly to Ron's calendar.</p>
           </div>
+          
           <div class="process-step">
-            <div class="num">III</div>
+            <div class="step-icon-node">
+              <div class="step-num-badge">III</div>
+              <!-- Spotlight/Vernissage icon -->
+              <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 0 0-10 10c0 5.52 4.48 10 10 10s10-4.48 10-10A10 10 0 0 0 12 2zm1 17.93V13h-2v6.93a8 8 0 0 1-6.93-6.93H11v-2H4.07A8 8 0 0 1 11 4.07V11h2V4.07a8 8 0 0 1 6.93 6.93H13v2h6.93a8 8 0 0 1-6.93 6.93z"/></svg>
+            </div>
             <span class="when">Phase 3 · Opening Night</span>
             <h4>The Vernissage</h4>
             <p>We launch the Cinematic Exhibition Trailer on social feeds. The Digital Gallery Space instantly updates to show the live exhibition calendar and available inventory.</p>
           </div>
+          
           <div class="process-step">
-            <div class="num">IV</div>
+            <div class="step-icon-node">
+              <div class="step-num-badge">IV</div>
+              <!-- Archive/Book icon -->
+              <svg viewBox="0 0 24 24"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20V3H6.5a2.5 2.5 0 0 0-2.5 2.5v14zM6 5h12v10H6.5A1.5 1.5 0 0 0 5 16.5V6a1 1 0 0 1 1-1z"/></svg>
+            </div>
             <span class="when">Phase 4 · Post-Show</span>
             <h4>Permanent Legacy</h4>
             <p>The Artist Film and exhibition notes reside permanently in your online archive, continuing to attract collectors and build search authority for years to come.</p>
           </div>
+          
         </div>
       </section>
 
