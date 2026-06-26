@@ -281,7 +281,7 @@
         object-fit: cover;
         object-position: top;
         opacity: 0.9;
-        transition: transform 0.4s ease;
+        transition: transform 0.4s ease, opacity 0.3s ease;
       }
       .ship-card:hover .ship-card-img-wrap img,
       .ship-card:hover .ship-card-img-wrap video {
@@ -888,7 +888,7 @@
 
           <article class="ship-card">
             <div class="ship-card-img-wrap">
-              <video src="https://next-frame.agency/artologistmockup/assets/real/artist-pandy-motion.mp4" autoplay loop muted playsinline></video>
+              <video id="legacy-film-video" src="https://next-frame.agency/artologistmockup/assets/real/artist-pandy-motion.mp4" autoplay muted playsinline></video>
             </div>
             <div class="ship-card-body">
               <span class="ship-n">06 / Leg: Gallery</span>
@@ -1048,5 +1048,32 @@
         <small>Mockup Site: <a href="https://next-frame.agency/artologistmockup/" target="_blank">next-frame.agency/artologistmockup</a></small>
       </footer>
     </div>
+    <script>
+      (function() {
+        const video = document.getElementById('legacy-film-video');
+        if (video) {
+          const sources = [
+            'https://next-frame.agency/artologistmockup/assets/real/artist-pandy-motion.mp4',
+            'https://next-frame.agency/artologistmockup/assets/real/artist-pandy-motion-2.mp4'
+          ];
+          let currentSource = 0;
+          
+          video.addEventListener('ended', function() {
+            video.style.opacity = '0';
+            setTimeout(function() {
+              currentSource = (currentSource + 1) % sources.length;
+              video.src = sources[currentSource];
+              video.load();
+              video.play().then(function() {
+                video.style.opacity = '1';
+              }).catch(function(err) {
+                console.warn("Video play failed:", err);
+                video.style.opacity = '1';
+              });
+            }, 300);
+          });
+        }
+      })();
+    </script>
   </body>
 </html>
