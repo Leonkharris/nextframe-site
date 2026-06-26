@@ -277,4 +277,36 @@
       el.addEventListener('mouseleave', () => cursor.classList.remove('is-hover'));
     });
   }
+
+  // ── alternate hero card video magazine covers ───────────
+  const heroVideo = document.querySelector('.hero-card-video');
+  if (heroVideo) {
+    const videoSources = [
+      './assets/real/artist-pandy-motion.mp4',
+      './assets/real/artist-pandy-motion-2.mp4'
+    ];
+    let currentVideoIndex = 0;
+    
+    // Disable native loop so 'ended' event fires
+    heroVideo.removeAttribute('loop');
+    heroVideo.loop = false;
+    
+    heroVideo.addEventListener('ended', () => {
+      // Fade out
+      heroVideo.style.opacity = '0';
+      
+      setTimeout(() => {
+        currentVideoIndex = (currentVideoIndex + 1) % videoSources.length;
+        heroVideo.src = videoSources[currentVideoIndex];
+        heroVideo.load();
+        heroVideo.play().then(() => {
+          // Fade in
+          heroVideo.style.opacity = '1';
+        }).catch(err => {
+          console.warn("Video playback failed on switch:", err);
+          heroVideo.style.opacity = '1';
+        });
+      }, 300); // matches the 0.3s transition duration
+    });
+  }
 })();
