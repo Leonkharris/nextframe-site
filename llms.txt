@@ -13,5 +13,12 @@
 - [AI vs Traditional Agency](https://next-frame.agency/ai-vs-traditional-agency/): Honest 2026 comparison of cost, speed, output, and control for PH small businesses.
 - [Free Resources](https://next-frame.agency/free-resources/): Free guides, scripts, and checklists for local-business growth.
 
+## Guides
+- [AI Search Is Changing How Filipino Customers Find You](https://next-frame.agency/blog/ai-search-how-customers-find-you/): More Filipinos now ask ChatGPT, Gemini, and Google AI Overviews to find businesses instead of scrolling links. Here is what changed and the concrete steps to get your business named.
+- [AI Agents for Small-Business Marketing: What They Are and How to Use Them](https://next-frame.agency/blog/ai-agents-for-your-marketing/): A plain-English guide for Philippine SMBs: what an AI agent really is, five marketing jobs it can handle, the free tools to start with, and how to stay safe.
+- [Free and Low-Cost AI Video Tools for Reels in 2026: An Honest Guide](https://next-frame.agency/blog/free-ai-video-tools-for-reels/): An honest 2026 roundup of free and low-cost AI video tools for Reels — Veo 3.1, Runway, Kling, Pika and more — plus a real workflow to turn one photo into a Reel.
+- [AI and Free Public Data for Market Research in the Philippines](https://next-frame.agency/blog/ai-market-research-free-data/): A step-by-step guide for Philippine small businesses to research customers, competitors, and demand using Google Trends, PSA OpenSTAT, Meta Business Suite, and free AI tools, all at zero cost.
+- [The 2026 AI Marketing Toolkit for Philippine Small Businesses](https://next-frame.agency/blog/ai-toolkit-2026/): A practical, honest guide to the AI tools a Philippine SMB should know across content, video, ads, DMs, SEO, and research — plus a free 7-day start plan.
+
 ## Contact
 - [Free Audit / Intake](https://next-frame.agency/intake/): Get a free AI marketing audit and custom quote within 24 hours.
