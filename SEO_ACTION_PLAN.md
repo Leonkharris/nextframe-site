@@ -3,17 +3,23 @@
 Baseline audit (claude-seo, 2026-06-30): **~53/100**. This file is the living
 checklist for the improvement → check → redeploy loop.
 
-## Scoring snapshot
-| Category | Baseline | Target |
-|---|---|---|
-| Technical SEO | 61 | 90 |
-| Performance (lab) | 78 | 90 |
-| Schema | 65 | 95 |
-| On-Page | 50 | 90 |
-| Content / E-E-A-T | 41 / 32 | 85 / 85 |
-| AI Search (GEO) | 31 | 85 |
-| Images | 45 | 85 |
-| **Overall** | **~53** | **90+** |
+## Scoring snapshot (measured across 6 deployed iterations)
+| Category | Baseline | Now | Target | Ceiling note |
+|---|---|---|---|---|
+| Technical SEO | 61 | 77 | 90 | security headers need Cloudflare |
+| Performance (lab) | 78 | 78 | 90 | homepage SPA bundle (app source) |
+| Schema | 41 | 80 | 95 | telephone + openingHours (owner) |
+| On-Page | 50 | ~76 | 90 | — |
+| Content Quality | 41 | 74 | 85 | vs-traditional still <1500w |
+| E-E-A-T | 32 | 60 | 85 | phone, client results, off-site |
+| AI Search (GEO) | 31 | 62 | 85 | YouTube, backlinks, off-site mentions |
+| Images | 45 | 45 | 85 | homepage SPA images (app source) |
+| **Overall** | **~53** | **~74** | **90+** | **90 needs off-site + real data** |
+
+**On-page ceiling reached (~74-76).** The remaining gap to 90 is NOT code:
+off-site authority (Google Business Profile + reviews, backlinks/press,
+a YouTube channel), real client results with numbers, a phone number,
+and a domain email. None can be produced by editing this repo.
 
 ---
 
