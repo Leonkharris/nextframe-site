@@ -29,7 +29,7 @@ checklist for the improvement → check → redeploy loop.
 - [x] Expand thin service pages with truthful process/FAQ content (toward 800 words)
 - [ ] Add `datePublished`/`dateModified` to remaining page schemas
 - [ ] Internal-linking pass (cross-link all service pages + footers)
-- [ ] Self-referencing `hreflang="en-PH"` on all pages
+- [x] Self-referencing `hreflang="en-PH"` on all content pages
 
 ## Phase 2 — Needs YOUR data (blocks 90)
 - [ ] **Phone number** → add `telephone` to schema + visible footer on every page
