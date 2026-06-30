@@ -33,8 +33,8 @@ checklist for the improvement → check → redeploy loop.
 
 ## Phase 2 — Needs YOUR data (blocks 90)
 - [ ] **Phone number** → add `telephone` to schema + visible footer on every page
-- [~] **About page created** (org-level `/about/`, AboutPage schema) — STILL NEEDS founder name + bio + photo, then upgrade Article `author` to a real Person
-- [ ] **≥1 real client result** (e.g. "X listings → Y inquiries in Z weeks") per service page — the single biggest E-E-A-T lever
+- [x] **Founder + About** — Leon Harris bio on `/about/`, Person JSON-LD (#leon-harris), Article `author` now = Person, homepage org `founder` ref. (Optional: add a photo.)
+- [~] **Client roster** — real "Selected work" list (Jade Supper Club, Maison Rouge, Radisson Red, Tokyo Rocks, Luxe Loop, West Gallery Place, Cork Elite, Damansara Heights) on /about + 2 service pages. STILL want ≥1 result with numbers + a logo strip/testimonial.
 - [ ] **Business email / contact** → footer + Privacy contact
 - [x] **Privacy Policy + Terms** pages — created; contact routed via /intake/ form. Add a real business email when available.
 - [ ] Google Business Profile (Makati) linked via `sameAs` + LocalBusiness
