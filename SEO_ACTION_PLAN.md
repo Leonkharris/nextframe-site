@@ -33,10 +33,10 @@ checklist for the improvement → check → redeploy loop.
 
 ## Phase 2 — Needs YOUR data (blocks 90)
 - [ ] **Phone number** → add `telephone` to schema + visible footer on every page
-- [ ] **Named founder + short bio** → `/about/` page + Article `author` = Person
+- [~] **About page created** (org-level `/about/`, AboutPage schema) — STILL NEEDS founder name + bio + photo, then upgrade Article `author` to a real Person
 - [ ] **≥1 real client result** (e.g. "X listings → Y inquiries in Z weeks") per service page — the single biggest E-E-A-T lever
 - [ ] **Business email / contact** → footer + Privacy contact
-- [ ] **Privacy Policy + Terms** pages (need contact email; PH Data Privacy Act)
+- [x] **Privacy Policy + Terms** pages — created; contact routed via /intake/ form. Add a real business email when available.
 - [ ] Google Business Profile (Makati) linked via `sameAs` + LocalBusiness
 - [ ] Decision: `noindex` the app shells `/listings/` + `/logo-design/`?
 
