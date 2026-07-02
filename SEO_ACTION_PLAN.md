@@ -61,3 +61,6 @@ and a domain email. None can be produced by editing this repo.
 
 **Realistic ceiling without Phase 2 data: ~mid-to-high 70s.** Phase 2 is what
 clears 90 — most of it is trust/E-E-A-T signals only the business owner can supply.
+
+## Loop log
+- 2026-07-02 iter1: +ai-prompts-property-listing-content, +ai-answer-messenger-inquiries (blog 17, sitemap 29); promo posts appended; IndexNow pinged
