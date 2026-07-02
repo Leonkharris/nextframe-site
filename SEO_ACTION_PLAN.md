@@ -38,7 +38,7 @@ and a domain email. None can be produced by editing this repo.
 - [x] Self-referencing `hreflang="en-PH"` on all content pages
 
 ## Phase 2 — Needs YOUR data (blocks 90)
-- [ ] **Phone number** → add `telephone` to schema + visible footer on every page
+- [x] **Phone number** — +639620789661 in Organization/LocalBusiness schema + contactPoint; visible tel: links on homepage/About/Terms/Privacy (2026-07-02)
 - [x] **Founder + About** — Leon Harris bio on `/about/`, Person JSON-LD (#leon-harris), Article `author` now = Person, homepage org `founder` ref. (Optional: add a photo.)
 - [~] **Client roster** — real "Selected work" list (Jade Supper Club, Maison Rouge, Radisson Red, Tokyo Rocks, Luxe Loop, West Gallery Place, Cork Elite, Damansara Heights) on /about + 2 service pages. STILL want ≥1 result with numbers + a logo strip/testimonial.
 - [ ] **Business email / contact** → footer + Privacy contact
