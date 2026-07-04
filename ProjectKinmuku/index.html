@@ -1,0 +1,615 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金無垢 KINMUKU — Interactive Codex</title>
+<script src="data.js"></script>
+<style>
+:root{
+  --ink:#0a0c12; --ink2:#0f121b; --panel:#151824; --panel2:#1b1f2c;
+  --gold:#c9a24b; --gold-bright:#e8cf8b; --gold-dim:#8f7638;
+  --red:#8b2f28; --red-bright:#c0453b;
+  --text:#e9e4d7; --muted:#948f82; --faint:#615d54;
+  --line:rgba(201,162,75,.16); --line2:rgba(201,162,75,.30);
+  --serif:"Songti SC","Yu Mincho","Hiragino Mincho ProN",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --cjk:"Songti SC","Yu Mincho","Hiragino Mincho ProN","Microsoft YaHei",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--ink); color:var(--text); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+body::before{ /* subtle grain + vignette */
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(201,162,75,.05), transparent 55%),
+    radial-gradient(140% 120% at 50% 120%, rgba(139,47,40,.06), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+  mix-blend-mode:screen;
+}
+#app{position:relative; z-index:1; display:grid; grid-template-columns:220px 1fr; height:100vh}
+
+/* ---------- left rail ---------- */
+#rail{
+  background:linear-gradient(180deg,var(--ink2),#0b0e15); border-right:1px solid var(--line);
+  display:flex; flex-direction:column; padding:20px 0; overflow:auto;
+}
+#brand{padding:4px 22px 20px; cursor:pointer}
+#brand .kanji{font-family:var(--cjk); font-size:34px; letter-spacing:6px; font-weight:600;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold),var(--gold-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+#brand .romaji{font-size:11px; letter-spacing:4px; color:var(--muted); margin-top:4px}
+.navitem{
+  display:flex; align-items:center; gap:12px; padding:11px 22px; cursor:pointer;
+  color:var(--muted); border-left:2px solid transparent; transition:.15s; font-size:14px;
+}
+.navitem .ico{font-family:var(--cjk); font-size:17px; color:var(--gold-dim); width:20px; text-align:center}
+.navitem .en{font-size:11px; letter-spacing:1px; opacity:.7; margin-left:auto}
+.navitem:hover{color:var(--text); background:rgba(201,162,75,.05)}
+.navitem.active{color:var(--gold-bright); border-left-color:var(--gold); background:rgba(201,162,75,.08)}
+.navitem.active .ico{color:var(--gold)}
+#rail .spacer{flex:1}
+#rail .foot{padding:14px 22px 0; font-size:10px; color:var(--faint); line-height:1.6; border-top:1px solid var(--line); margin-top:12px}
+
+/* ---------- top bar ---------- */
+#main{display:flex; flex-direction:column; min-width:0; height:100vh}
+#topbar{
+  display:flex; align-items:center; gap:16px; padding:14px 30px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(15,18,27,.9),rgba(10,12,18,.6)); backdrop-filter:blur(4px);
+}
+#crumb{font-family:var(--serif); font-size:15px; color:var(--text); letter-spacing:.5px}
+#crumb .sep{color:var(--faint); margin:0 8px}
+#crumb .cn{font-family:var(--cjk); color:var(--gold)}
+#langtoggle{margin-left:auto; display:flex; border:1px solid var(--line2); border-radius:20px; overflow:hidden}
+#langtoggle button{
+  background:transparent; color:var(--muted); border:0; padding:6px 14px; cursor:pointer;
+  font-size:12px; font-family:var(--sans); letter-spacing:1px; transition:.15s;
+}
+#langtoggle button.on{background:var(--gold); color:#1a1206; font-weight:600}
+#view{flex:1; overflow:auto; padding:34px 40px 80px; scroll-behavior:smooth}
+#view::-webkit-scrollbar,#rail::-webkit-scrollbar{width:10px}
+#view::-webkit-scrollbar-thumb,#rail::-webkit-scrollbar-thumb{background:rgba(201,162,75,.2); border-radius:6px}
+
+/* ---------- shared ---------- */
+h1.title{font-family:var(--serif); font-weight:600; font-size:30px; letter-spacing:.5px; margin-bottom:4px}
+h1.title .cn{font-family:var(--cjk); color:var(--gold-bright); margin-right:14px}
+.sub{color:var(--muted); font-size:14px; margin-bottom:26px; max-width:720px; line-height:1.6}
+.cn{font-family:var(--cjk)}
+.en{font-family:var(--sans)}
+.badge{display:inline-block; font-size:10px; letter-spacing:1px; padding:2px 8px; border-radius:10px;
+  border:1px solid var(--line2); color:var(--gold); text-transform:uppercase}
+.prop{font-size:9px; color:var(--red-bright); border:1px solid rgba(192,69,59,.4); border-radius:4px;
+  padding:1px 5px; letter-spacing:1px; vertical-align:middle; margin-left:6px}
+.section-h{font-family:var(--serif); font-size:19px; color:var(--gold-bright); margin:34px 0 14px;
+  padding-bottom:8px; border-bottom:1px solid var(--line); letter-spacing:.5px}
+.section-h .cn{color:var(--gold-bright)}
+.section-h .en{color:var(--muted); font-size:13px; font-family:var(--sans); margin-left:10px; letter-spacing:1px}
+
+/* bilingual pair rows */
+.pair{padding:9px 0; border-bottom:1px dashed rgba(201,162,75,.09); line-height:1.7}
+.pair .cn{display:block; color:#d9d3c4; font-size:15.5px}
+.pair .en{display:block; color:var(--muted); font-size:14px; margin-top:3px}
+.pair.only .en{color:#d9d3c4; font-size:15px; margin-top:0}
+.pair.p .cn,.pair.p .en{opacity:.82}
+
+/* ---------- HUB ---------- */
+.hub-hero{text-align:center; padding:30px 0 20px}
+.hub-hero .big{font-family:var(--cjk); font-size:96px; letter-spacing:16px; font-weight:600;
+  background:linear-gradient(175deg,var(--gold-bright),var(--gold) 45%,var(--gold-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;
+  text-shadow:0 0 60px rgba(201,162,75,.12); line-height:1.1}
+.hub-hero .rom{letter-spacing:12px; color:var(--muted); font-size:15px; margin-top:10px}
+.hub-hero .tag{color:var(--gold); font-family:var(--serif); font-size:17px; margin-top:22px; letter-spacing:.5px}
+.hub-hero .tagcn{color:var(--muted); font-family:var(--cjk); font-size:14px; margin-top:6px}
+.hub-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-top:40px}
+.hub-card{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; padding:22px; cursor:pointer; transition:.18s; position:relative; overflow:hidden}
+.hub-card:hover{border-color:var(--line2); transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.hub-card .ico{font-family:var(--cjk); font-size:30px; color:var(--gold); display:block; margin-bottom:14px}
+.hub-card .t{font-family:var(--serif); font-size:18px; color:var(--text)}
+.hub-card .tc{font-family:var(--cjk); color:var(--gold-bright); font-size:15px; margin-right:8px}
+.hub-card .d{color:var(--muted); font-size:12.5px; margin-top:8px; line-height:1.5}
+.hub-card .n{position:absolute; top:16px; right:18px; font-size:11px; color:var(--faint); letter-spacing:1px}
+
+/* ---------- roster ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; align-items:center}
+.chip{background:var(--panel); border:1px solid var(--line); color:var(--muted); padding:6px 13px;
+  border-radius:16px; font-size:12px; cursor:pointer; transition:.15s; letter-spacing:.3px}
+.chip:hover{color:var(--text); border-color:var(--line2)}
+.chip.on{background:var(--gold); color:#1a1206; border-color:var(--gold); font-weight:600}
+.chip .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle}
+.roster{display:grid; grid-template-columns:repeat(auto-fill,minmax(178px,1fr)); gap:18px}
+.ccard{background:linear-gradient(165deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; cursor:pointer; transition:.18s; position:relative}
+.ccard:hover{transform:translateY(-4px); border-color:var(--line2); box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.ccard.dim{opacity:.5; filter:saturate(.6)}
+.ccard .art{height:190px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden}
+.ccard .art img{width:100%; height:100%; object-fit:cover; display:block}
+.medallion{width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative}
+.medallion .seal{writing-mode:vertical-rl; font-family:var(--cjk); font-weight:600; font-size:40px;
+  color:#f4ecd8; letter-spacing:6px; padding:14px 10px; border:1.5px solid rgba(255,255,255,.25);
+  border-radius:6px; text-shadow:0 2px 12px rgba(0,0,0,.5); background:rgba(0,0,0,.14)}
+.ccard .pri{position:absolute; top:10px; left:10px; font-size:10px; letter-spacing:1px; font-weight:700;
+  background:rgba(0,0,0,.45); color:var(--gold-bright); padding:2px 7px; border-radius:6px; border:1px solid var(--line)}
+.ccard .part1{position:absolute; top:10px; right:10px; font-size:9px; letter-spacing:1px;
+  background:var(--gold); color:#1a1206; padding:2px 7px; border-radius:6px; font-weight:700}
+.ccard .meta{padding:13px 14px 15px}
+.ccard .nm{font-family:var(--cjk); font-size:18px; color:var(--text); font-weight:600}
+.ccard .rm{font-size:11px; color:var(--muted); letter-spacing:.5px; margin-top:2px}
+.ccard .sp{font-size:11px; color:var(--gold-dim); margin-top:8px; display:flex; justify-content:space-between; align-items:center}
+.ccard .atag{font-size:9px; letter-spacing:.5px; padding:2px 7px; border-radius:8px; color:#0c0c0c}
+
+/* ---------- character detail ---------- */
+.detail-head{display:flex; gap:26px; align-items:flex-start; margin-bottom:10px}
+.detail-art{width:200px; flex:0 0 200px; height:260px; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line2); position:relative}
+.detail-art img{width:100%; height:100%; object-fit:cover}
+.detail-info h1{font-family:var(--cjk); font-size:38px; font-weight:600; letter-spacing:2px; line-height:1.1}
+.detail-info .rom{font-size:16px; color:var(--muted); letter-spacing:3px; margin-top:6px}
+.detail-info .tags{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0}
+.detail-info .tags span{font-size:11px; padding:4px 10px; border-radius:12px; border:1px solid var(--line2); color:var(--gold); letter-spacing:.5px}
+.detail-info .role{color:#d9d3c4; font-size:14px; line-height:1.6; max-width:560px; font-style:italic; border-left:2px solid var(--gold-dim); padding-left:14px; margin-top:8px}
+.jump{display:flex; flex-wrap:wrap; gap:7px; margin:22px 0 10px; position:sticky; top:-34px; padding:12px 0; background:linear-gradient(180deg,var(--ink) 70%,transparent); z-index:5}
+.jump a{font-size:11px; color:var(--muted); border:1px solid var(--line); padding:5px 11px; border-radius:14px; cursor:pointer; transition:.15s}
+.jump a:hover{color:var(--gold-bright); border-color:var(--line2)}
+.quote{font-family:var(--serif); color:var(--gold-bright); font-size:17px; padding:10px 0 10px 20px;
+  border-left:2px solid var(--gold); margin:8px 0; line-height:1.5}
+.quote .en{color:var(--muted); font-size:14px; font-style:italic; font-family:var(--sans); display:block; margin-top:4px}
+.detail-nav{display:flex; justify-content:space-between; margin-top:44px; gap:14px}
+.detail-nav button{flex:1; background:var(--panel); border:1px solid var(--line); color:var(--muted);
+  padding:14px; border-radius:10px; cursor:pointer; font-family:var(--sans); transition:.15s; text-align:left}
+.detail-nav button:hover{color:var(--text); border-color:var(--line2)}
+.detail-nav button.next{text-align:right}
+.detail-nav .lbl{font-size:10px; letter-spacing:2px; color:var(--faint); display:block; margin-bottom:4px}
+.detail-nav .nm{font-family:var(--cjk); font-size:15px}
+.backbtn{display:inline-flex; align-items:center; gap:8px; color:var(--muted); cursor:pointer; font-size:13px; margin-bottom:20px; transition:.15s}
+.backbtn:hover{color:var(--gold)}
+
+/* ---------- precept ladder ---------- */
+.ladder{max-width:860px; margin:10px auto}
+.rung{display:flex; align-items:center; gap:18px; padding:16px 20px; margin:0 0 4px auto; border-radius:10px;
+  background:linear-gradient(90deg,var(--panel),var(--ink2)); border:1px solid var(--line); transition:.18s; cursor:default}
+.rung:hover{border-color:var(--line2); transform:translateX(4px)}
+.rung .num{font-family:var(--serif); font-size:30px; width:52px; height:52px; flex:0 0 52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:#1a1206;
+  background:radial-gradient(circle at 35% 30%,var(--gold-bright),var(--gold-dim)); font-weight:700}
+.rung .body .cn{font-family:var(--cjk); font-size:17px; color:var(--text)}
+.rung .body .en{font-size:13px; color:var(--muted); margin-top:3px}
+.rung .ch{margin-left:auto; font-size:11px; color:var(--gold-dim); letter-spacing:1px; white-space:nowrap}
+.summit{text-align:center; padding:26px; margin-bottom:18px}
+.summit .sun{font-family:var(--cjk); font-size:40px; letter-spacing:8px;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.summit .en{color:var(--muted); letter-spacing:4px; font-size:12px; margin-top:8px}
+
+/* ---------- episodes ---------- */
+.eps{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:18px}
+.epcard{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; padding:22px; position:relative; overflow:hidden}
+.epcard .epn{font-family:var(--serif); font-size:13px; color:var(--gold); letter-spacing:3px}
+.epcard h3{font-family:var(--cjk); font-size:21px; margin:6px 0 3px; color:var(--text)}
+.epcard .then{font-size:12px; color:var(--muted); letter-spacing:1px}
+.epcard .field{margin-top:14px}
+.epcard .field .k{font-size:10px; letter-spacing:2px; color:var(--gold-dim); text-transform:uppercase}
+.epcard .field .v{font-size:13.5px; color:#d3cdbe; line-height:1.6; margin-top:4px}
+.epcard .field .v .en{color:var(--muted); font-size:12.5px; display:block; margin-top:2px}
+.epcard::after{content:attr(data-big); position:absolute; right:-6px; bottom:-24px; font-family:var(--serif);
+  font-size:110px; color:rgba(201,162,75,.05); font-weight:700; pointer-events:none}
+
+/* timeline */
+.timeline{margin:14px 0 0; border-left:2px solid var(--line2); padding-left:24px}
+.tl{position:relative; padding:10px 0}
+.tl::before{content:""; position:absolute; left:-31px; top:16px; width:12px; height:12px; border-radius:50%;
+  background:var(--gold); box-shadow:0 0 0 4px var(--ink)}
+.tl .nm{font-family:var(--cjk); font-size:16px; color:var(--text)}
+.tl .nm .rm{font-family:var(--sans); font-size:11px; color:var(--muted); margin-left:8px}
+.tl .when{font-size:11px; color:var(--gold-dim); letter-spacing:1px}
+.tl .note{font-size:12.5px; color:var(--muted); margin-top:2px}
+
+/* ---------- story reader ---------- */
+.chlist{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px}
+.chitem{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; cursor:pointer; transition:.15s}
+.chitem:hover{border-color:var(--line2); background:var(--panel2)}
+.chitem .cn{font-family:var(--cjk); font-size:16px; color:var(--gold-bright)}
+.chitem .en{font-size:12px; color:var(--muted); margin-top:4px}
+.reader{max-width:760px; margin:0 auto}
+.reader .ln{padding:6px 0; line-height:1.85}
+.reader .ln .cn{font-family:var(--cjk); font-size:17px; color:#e4ddcc; display:block}
+.reader .ln .en{font-size:15px; color:var(--muted); display:block; margin-top:5px; line-height:1.7}
+.reader.mono .ln .cn,.reader.mono .ln .en{font-size:16.5px; color:#e4ddcc}
+.reader .rule{text-align:center; color:var(--gold-dim); padding:14px 0; font-size:18px}
+.reader .end{text-align:center; color:var(--gold); font-family:var(--serif); letter-spacing:2px; padding:20px 0; font-style:italic}
+.reader h2{font-family:var(--cjk); text-align:center; font-size:26px; color:var(--gold-bright); margin:10px 0 6px}
+.reader .h2en{text-align:center; color:var(--muted); letter-spacing:2px; font-size:13px; margin-bottom:30px}
+
+/* glossary + tables */
+.gloss{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px}
+.gitem{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.gitem .cn{font-family:var(--cjk); font-size:17px; color:var(--gold-bright)}
+.gitem .en{font-size:13.5px; color:var(--text); margin-top:3px}
+.gitem .note{font-size:11.5px; color:var(--muted); margin-top:5px; line-height:1.5}
+.svg-wrap{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:28px}
+.svg-wrap .cap{font-family:var(--serif); color:var(--gold-bright); font-size:15px; margin-bottom:14px; letter-spacing:.5px}
+@media(max-width:820px){#app{grid-template-columns:64px 1fr} #brand .romaji,.navitem .label-txt,.navitem .en{display:none} #view{padding:24px 18px}}
+</style>
+
+<div id="app">
+  <nav id="rail">
+    <div id="brand" onclick="go('#hub')">
+      <div class="kanji">金無垢</div>
+      <div class="romaji">KINMUKU · CODEX</div>
+    </div>
+    <div id="nav"></div>
+    <div class="spacer"></div>
+    <div class="foot">Interactive Codex · Part One<br>Canon by Fable · built from the<br>bilingual source bible.</div>
+  </nav>
+  <div id="main">
+    <div id="topbar">
+      <div id="crumb"></div>
+      <div id="langtoggle">
+        <button data-m="cn">中文</button>
+        <button data-m="both">雙語</button>
+        <button data-m="en">EN</button>
+      </div>
+    </div>
+    <div id="view"></div>
+  </div>
+</div>
+
+<script>
+const D = window.KINMUKU_DATA;
+let MODE = localStorage.getItem('kinmuku_mode') || 'both';
+
+const NAV = [
+  {ico:'序', hash:'#hub',        cn:'總覽',  en:'HUB'},
+  {ico:'角', hash:'#characters', cn:'角色',  en:'CAST'},
+  {ico:'界', hash:'#world',      cn:'世界',  en:'WORLD'},
+  {ico:'行', hash:'#precepts',   cn:'修行',  en:'PRECEPTS'},
+  {ico:'集', hash:'#episodes',   cn:'分集',  en:'EPISODES'},
+  {ico:'物', hash:'#story',      cn:'故事',  en:'STORY'},
+  {ico:'製', hash:'#production', cn:'製作',  en:'PRODUCTION'},
+  {ico:'詞', hash:'#glossary',   cn:'詞彙',  en:'GLOSSARY'},
+];
+
+// departure order (curation from canon Ch11–13)
+const DEPART = [
+  {id:'08', when:'Ch 11', note:'First — she no longer needs to prove she exists.'},
+  {id:'03', when:'Ch 13', note:'Leaves first among the kings; speaks the words that end the era.'},
+  {id:'04', when:'Ch 13', note:'Lowers his head — understands loyalty as knowing when to release.'},
+  {id:'05', when:'Ch 13', note:'The judge withdraws.'},
+  {id:'06', when:'Ch 13', note:'Last of the kings; one look back before dissolving into gold.'},
+  {id:'11', when:'Ch 13', note:'One morning, quietly becomes light.'},
+  {id:'02', when:'Ch 13', note:'Second-to-last; walks into the light before him, without goodbye.'},
+  {id:'01', when:'Ch 13', note:'The last — bridge-keeper of Edo for years, then Golden Stillness.'},
+];
+
+const byId = id => D.characters.find(c => c.id === id);
+const esc = s => (s||'').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+
+// render a bilingual pair per language mode
+function pair(p, cls){
+  cls = cls || '';
+  if(p.proposal) cls += ' p';
+  const cn = esc(p.cn), en = esc(p.en);
+  const prop = p.proposal ? '<span class="prop">提案 PROPOSAL</span>' : '';
+  if(MODE==='cn') return `<div class="pair only ${cls}"><span class="cn">${cn}${prop}</span></div>`;
+  if(MODE==='en') return `<div class="pair only ${cls}"><span class="en">${en||cn}${prop}</span></div>`;
+  return `<div class="pair ${cls}"><span class="cn">${cn}${prop}</span><span class="en">${en}</span></div>`;
+}
+// bilingual title text (returns inline HTML)
+function biTitle(cn, en){
+  if(MODE==='cn') return `<span class="cn">${esc(cn)}</span>`;
+  if(MODE==='en') return `<span class="en">${esc(en)}</span>`;
+  return `<span class="cn">${esc(cn)}</span><span class="en">${esc(en)}</span>`;
+}
+function sectionHead(cn,en){ return `<div class="section-h">${biTitle(cn,en)}</div>`; }
+
+function medallion(c){
+  return `<div class="medallion" style="background:radial-gradient(120% 90% at 50% 25%, ${c.color2}, ${c.color} 70%, #0c0c0c)">
+    <div class="seal">${esc(c.kanji)}</div></div>`;
+}
+function artBlock(c, cls){
+  // portrait if present else medallion; onerror swaps to medallion
+  const mid = medallion(c).replace(/"/g,'&quot;');
+  return `<div class="${cls}"><img src="assets/portraits/${c.id}.png" alt="${esc(c.romaji)}"
+     onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${mid}"></div>`;
+}
+
+/* ---------------- VIEWS ---------------- */
+function vHub(){
+  const cards = NAV.filter(n=>n.hash!=='#hub').map(n=>{
+    const desc = {
+      '#characters':'The fifteen — oni, foxes, tengu, and the reserved cast. Filter by archetype.',
+      '#world':'World rules, core themes, the Naming, and the diminishing loop toward the Immaculate Realm.',
+      '#precepts':'The eight rungs of the Practice, from "do not act to prove yourself" to "do not resent."',
+      '#episodes':'Part One mapped to eight episodes, plus the order of departures into Golden Stillness.',
+      '#story':'Read the prologue and thirteen chapters, line-aligned Chinese and English.',
+      '#production':'The six-stage character production line, folder standard, and T0–T3 status board.',
+      '#glossary':'Locked terms and names — the translation bible, at a glance.',
+    }[n.hash]||'';
+    return `<div class="hub-card" onclick="go('${n.hash}')">
+      <span class="ico">${n.ico}</span>
+      <div class="t"><span class="tc">${n.cn}</span>${n.en}</div>
+      <div class="d">${desc}</div></div>`;
+  }).join('');
+  return `<div class="hub-hero">
+      <div class="big">金無垢</div>
+      <div class="rom">K I N M U K U</div>
+      <div class="tag">${esc(D.meta.part_en)}</div>
+      <div class="tagcn">${esc(D.meta.tagline_cn)}</div>
+    </div>
+    <div class="sub" style="text-align:center;margin:22px auto 0">${esc(D.meta.tagline_en)}. When humans <em>name</em> the evil they refuse to admit onto yokai, the Night Parade carries the city's fear away — until the oni at its head stops for the first time.</div>
+    ${coreLoopSVG()}
+    <div class="hub-grid">${cards}</div>`;
+}
+
+function vCharacters(){
+  const arch = D.archetypes.map(a=>{
+    const n = D.characters.filter(c=>c.archetypeKey===a.key).length;
+    return `<div class="chip archf" data-k="${a.key}"><span class="dot" style="background:${a.color2}"></span>${a.cn} <span style="opacity:.6">${a.en} ·${n}</span></div>`;
+  }).join('');
+  const cards = D.characters.map(cardHTML).join('');
+  return `<h1 class="title">${biTitle('角色列傳','The Fifteen')}</h1>
+    <div class="sub">Click any character for their full bilingual sheet — base, appearance, arc, relationships, key lines, voice, and production checklist. <b style="color:var(--gold)">Gold badge</b> = present in Part One. Priority <b>T0–T3</b> marks production order.</div>
+    <div class="filters">
+      <div class="chip archf on" data-k="all">全部 All</div>
+      <div class="chip partf" data-k="p1">第一部 Part One</div>
+      ${arch}
+    </div>
+    <div class="roster" id="roster">${cards}</div>`;
+}
+function cardHTML(c){
+  const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+  return `<div class="ccard" data-arch="${c.archetypeKey}" data-p1="${c.active?1:0}" onclick="go('#char/${c.id}')">
+    <div class="art">${artBlockInner(c)}</div>
+    <div class="pri">${c.priority}</div>
+    ${c.active?'<div class="part1">PART I</div>':''}
+    <div class="meta">
+      <div class="nm">${esc(c.kanji)}</div>
+      <div class="rm">${esc(c.romaji)}</div>
+      <div class="sp"><span>${esc(MODE==='en'?c.species_en:c.species_cn)}</span>
+        <span class="atag" style="background:${a.color2}">${esc(a.en||'')}</span></div>
+    </div></div>`;
+}
+// medallion inside .art (no extra wrapper)
+function artBlockInner(c){ return `<img src="assets/portraits/${c.id}.png" alt="${esc(c.romaji)}"
+   onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${medallion(c).replace(/"/g,'&quot;')}">`; }
+
+function vChar(id){
+  const c = byId(id); if(!c) return vCharacters();
+  const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+  const idx = D.characters.findIndex(x=>x.id===id);
+  const prev = D.characters[(idx+14)%15], next = D.characters[(idx+1)%15];
+  const isQuotes = s => /台詞|Key Lines/.test(s.cn+s.en);
+  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='en'?s.en:s.cn)}</a>`).join('');
+  const secs = c.sections.map((s,i)=>{
+    let body;
+    if(isQuotes(s)){
+      body = s.pairs.map(p=>{
+        if(MODE==='cn') return `<div class="quote">${esc(p.cn)}</div>`;
+        if(MODE==='en') return `<div class="quote">${esc(p.en||p.cn)}</div>`;
+        return `<div class="quote">${esc(p.cn)}<span class="en">${esc(p.en)}</span></div>`;
+      }).join('');
+    } else {
+      body = s.pairs.map(p=>pair(p)).join('');
+    }
+    return `<div id="sec${i}">${sectionHead(s.cn,s.en)}${body}</div>`;
+  }).join('');
+  return `<span class="backbtn" onclick="go('#characters')">← ${MODE==='cn'?'返回角色':'Back to cast'}</span>
+    <div class="detail-head">
+      ${artBlock(c,'detail-art')}
+      <div class="detail-info">
+        <h1>${esc(c.kanji)}</h1>
+        <div class="rom">${esc(c.romaji)}</div>
+        <div class="tags">
+          <span>${esc(c.species_cn)} · ${esc(c.species_en)}</span>
+          <span style="border-color:${a.color2};color:${a.color2}">${esc(a.cn)} ${esc(a.en)}</span>
+          <span>優先 ${c.priority}</span>
+          <span>${c.active?'第一部登場 · In Part One':'保留 · Reserved'}</span>
+        </div>
+        <div class="role">${esc(c.roleline)}</div>
+      </div>
+    </div>
+    <div class="jump">${jumps}</div>
+    ${secs}
+    <div class="detail-nav">
+      <button onclick="go('#char/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.kanji)} · ${esc(prev.romaji)}</span></button>
+      <button class="next" onclick="go('#char/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.kanji)} · ${esc(next.romaji)}</span></button>
+    </div>`;
+}
+
+function docView(titleCn,titleEn,sub,sections){
+  const body = sections.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
+  return `<h1 class="title">${biTitle(titleCn,titleEn)}</h1><div class="sub">${sub}</div>${body}`;
+}
+function vWorld(){
+  return `<h1 class="title">${biTitle('世界觀與規則','The World & Its Rules')}</h1>
+    <div class="sub">Edo, c. 1780–1830. The Story Bible: what the Night Parade is, why fear becomes oni, and the loop that ends in Golden Stillness.</div>
+    ${coreLoopSVG()}
+    ${D.world.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('')}`;
+}
+function vPrecepts(){
+  const rungs = D.precepts.slice().reverse().map(p=>{
+    const chm = (p.cn.match(/（(第[^）]+)）/)||[])[1] || '';
+    const cnClean = p.cn.replace(/（第[^）]+）/,'').trim();
+    return `<div class="rung">
+      <div class="num">${p.n}</div>
+      <div class="body"><div class="cn">${esc(cnClean)}</div><div class="en">${esc(p.en)}</div></div>
+      <div class="ch">${esc(chm)}</div></div>`;
+  }).join('');
+  return `<h1 class="title">${biTitle('修行八條','The Eight Precepts')}</h1>
+    <div class="sub">Byakuren defines the Practice as "to remain in existence even when unneeded." Genki earns each precept through an encounter, climbing toward the stillness of pure gold.</div>
+    <div class="ladder">
+      <div class="summit"><div class="sun">金寂</div><div class="en">GOLDEN STILLNESS · the Immaculate Realm</div></div>
+      ${rungs}
+    </div>`;
+}
+function vEpisodes(){
+  const eps = D.episodes.filter(s=>/Episode\s*\d/.test(s.en));
+  const overview = D.episodes.find(s=>/Overview/.test(s.en));
+  const hooks = D.episodes.find(s=>/Hooks/.test(s.en));
+  const cards = eps.map((s,i)=>{
+    const fields = s.pairs.map(p=>{
+      const cn=esc(p.cn), en=esc(p.en);
+      const v = MODE==='cn'?cn : MODE==='en'?en : `${cn}<span class="en">${en}</span>`;
+      return `<div class="field"><div class="v">${v}</div></div>`;
+    }).join('');
+    return `<div class="epcard" data-big="${i+1}">
+      <div class="epn">EPISODE ${i+1}</div>${fields}</div>`;
+  }).join('');
+  const tl = DEPART.map(d=>{ const c=byId(d.id); const a=D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+    return `<div class="tl"><div class="nm">${esc(c.kanji)}<span class="rm">${esc(c.romaji)}</span> <span class="when">· ${d.when}</span></div>
+      <div class="note">${esc(d.note)}</div></div>`;}).join('');
+  return `<h1 class="title">${biTitle('分集規劃','Part One — 8 Episodes')}</h1>
+    <div class="sub">${overview?esc(MODE==='en'?overview.pairs[0].en:overview.pairs[0].cn):''}</div>
+    <div class="eps">${cards}</div>
+    ${sectionHead('金寂 · 退場順序','Departures — Golden Stillness Order')}
+    <div class="sub">Ayame is the first to lay down her weight; Genki, the last. The order the cast becomes light:</div>
+    <div class="timeline">${tl}</div>
+    ${hooks?sectionHead('未來掛鉤','Future Hooks')+hooks.pairs.map(p=>pair(p)).join(''):''}`;
+}
+function vProduction(){
+  return `<h1 class="title">${biTitle('角色製作流程','Character Production Line')}</h1>
+    <div class="sub">Every character moves down the same six-stage line. The Character Profile and Translation Bible are the source of truth; anything flagged <span class="prop">提案 PROPOSAL</span> becomes canon only after sign-off.</div>
+    ${D.pipeline.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('')}`;
+}
+function vStory(){
+  const list = D.story.map(ch=>`<div class="chitem" onclick="go('#story/${ch.id}')">
+    <div class="cn">${esc(ch.title_cn)}</div><div class="en">${esc(ch.title_en)}</div></div>`).join('');
+  return `<h1 class="title">${biTitle('第一部 · 百鬼夜行','Part One — The Night Parade')}</h1>
+    <div class="sub">Fourteen chapters, line-aligned Chinese and English. Use the 中文 / 雙語 / EN toggle to read in either language or both.</div>
+    <div class="chlist">${list}</div>`;
+}
+function vChapter(id){
+  const ch = D.story.find(c=>c.id===id); if(!ch) return vStory();
+  const idx = D.story.findIndex(c=>c.id===id);
+  const prev = D.story[idx-1], next = D.story[idx+1];
+  const lines = ch.lines.map(l=>{
+    const cn=(l.cn||'').trim(), en=(l.en||'').trim();
+    if(cn==='⸻'||en==='⸻') return `<div class="rule">⸻</div>`;
+    if(/^\(End of|（.*完）/.test(en)||/完）$/.test(cn)) return `<div class="end">${esc(MODE==='cn'?cn:en)}</div>`;
+    if(MODE==='cn') return cn?`<div class="ln"><span class="cn">${esc(cn)}</span></div>`:'';
+    if(MODE==='en') return en?`<div class="ln"><span class="en">${esc(en)}</span></div>`:'';
+    return `<div class="ln">${cn?`<span class="cn">${esc(cn)}</span>`:''}${en?`<span class="en">${esc(en)}</span>`:''}</div>`;
+  }).join('');
+  const nav = `<div class="detail-nav">
+    ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_cn)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
+    ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_cn)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;
+  return `<span class="backbtn" onclick="go('#story')">← ${MODE==='cn'?'返回目錄':'Back to chapters'}</span>
+    <div class="reader ${MODE!=='both'?'mono':''}">
+      <h2>${esc(ch.title_cn)}</h2><div class="h2en">${esc(ch.title_en)}</div>
+      ${lines}${nav}</div>`;
+}
+function vGlossary(){
+  const items = D.terms.map(t=>`<div class="gitem">
+    <div class="cn">${esc(t.cn)}</div><div class="en">${esc(t.en)}</div>
+    ${t.note?`<div class="note">${esc(t.note)}</div>`:''}</div>`).join('');
+  return `<h1 class="title">${biTitle('詞彙 · 翻譯聖經','Glossary — Translation Bible')}</h1>
+    <div class="sub">Locked terms and names. These are canonical; new terms enter the bible first, scripts second.</div>
+    <div class="gloss">${items}</div>`;
+}
+
+/* core loop infographic */
+function coreLoopSVG(){
+  return `<div class="svg-wrap"><div class="cap">核心循環 · The Diminishing Loop</div>
+  <svg viewBox="0 0 900 150" style="width:100%;height:auto" font-family="var(--sans)">
+    ${loopNode(40,'恐懼','Fear','#8b6a2a')}
+    ${loopArrow(150)}
+    ${loopNode(220,'指名','Naming','#8b2f28')}
+    ${loopArrow(330)}
+    ${loopNode(400,'夜行回收','Parade bears it','#7d5aa6')}
+    ${loopArrow(520)}
+    ${loopNode(600,'承認','Acknowledge','#3f8a6e')}
+    ${loopArrow(710)}
+    ${loopNode(790,'金寂','Golden Stillness','#c9a24b')}
+    <text x="450" y="140" fill="#948f82" font-size="11" text-anchor="middle">Each time someone admits the fear is their own, the Parade grows lighter — until it is no longer needed.</text>
+  </svg></div>`;
+}
+function loopNode(x,cn,en,col){
+  return `<g>
+    <circle cx="${x+30}" cy="55" r="30" fill="none" stroke="${col}" stroke-width="1.5"/>
+    <text x="${x+30}" y="52" fill="#e9e4d7" font-size="14" text-anchor="middle" font-family="var(--cjk)">${cn}</text>
+    <text x="${x+30}" y="100" fill="#948f82" font-size="10" text-anchor="middle">${en}</text></g>`;
+}
+function loopArrow(x){ return `<path d="M${x} 55 L${x+58} 55" stroke="#615d54" stroke-width="1.2" marker-end="url(#ar)"/>`; }
+
+/* ---------------- ROUTER ---------------- */
+function render(){
+  const h = location.hash || '#hub';
+  const [base, arg] = h.replace('#','').split('/');
+  const view = document.getElementById('view');
+  let html='', crumbCn='', crumbEn='';
+  if(base==='hub'){ html=vHub(); }
+  else if(base==='characters'){ html=vCharacters(); crumbCn='角色'; crumbEn='Cast'; }
+  else if(base==='char'){ const c=byId(arg); html=vChar(arg); crumbCn='角色'; crumbEn='Cast'; if(c){crumbCn+=' · '+c.kanji; crumbEn+=' · '+c.romaji;} }
+  else if(base==='world'){ html=vWorld(); crumbCn='世界'; crumbEn='World'; }
+  else if(base==='precepts'){ html=vPrecepts(); crumbCn='修行'; crumbEn='Precepts'; }
+  else if(base==='episodes'){ html=vEpisodes(); crumbCn='分集'; crumbEn='Episodes'; }
+  else if(base==='story' && arg){ const c=D.story.find(x=>x.id===arg); html=vChapter(arg); crumbCn='故事'; crumbEn='Story'; if(c){crumbCn+=' · '+c.title_cn;} }
+  else if(base==='story'){ html=vStory(); crumbCn='故事'; crumbEn='Story'; }
+  else if(base==='production'){ html=vProduction(); crumbCn='製作'; crumbEn='Production'; }
+  else if(base==='glossary'){ html=vGlossary(); crumbCn='詞彙'; crumbEn='Glossary'; }
+  else html=vHub();
+
+  // svg marker defs (once)
+  view.innerHTML = `<svg width="0" height="0"><defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 Z" fill="#615d54"/></marker></defs></svg>` + html;
+  view.scrollTop = 0;
+
+  // crumb
+  document.getElementById('crumb').innerHTML = (base==='hub')
+    ? `<span class="cn">金無垢</span><span class="sep">·</span>Interactive Codex`
+    : `<span class="cn">${crumbCn}</span><span class="sep">/</span><span style="color:var(--muted)">${crumbEn}</span>`;
+
+  // nav active
+  document.querySelectorAll('.navitem').forEach(n=>{
+    n.classList.toggle('active', n.dataset.base === base || (base==='char'&&n.dataset.base==='characters') || (base==='story'&&n.dataset.base==='story'));
+  });
+  wireFilters();
+}
+
+function wireFilters(){
+  const archChips = document.querySelectorAll('.archf');
+  const partChip = document.querySelector('.partf');
+  if(!archChips.length && !partChip) return;
+  let curArch='all', p1=false;
+  function apply(){
+    document.querySelectorAll('.ccard').forEach(card=>{
+      const okA = curArch==='all' || card.dataset.arch===curArch;
+      const okP = !p1 || card.dataset.p1==='1';
+      card.classList.toggle('dim', !(okA&&okP));
+      card.style.display = (okA&&okP)?'':'none';
+    });
+  }
+  archChips.forEach(ch=>ch.onclick=()=>{ curArch=ch.dataset.k; archChips.forEach(x=>x.classList.remove('on')); ch.classList.add('on'); apply(); });
+  if(partChip) partChip.onclick=()=>{ p1=!p1; partChip.classList.toggle('on',p1); apply(); };
+}
+
+function go(hash){ if(location.hash===hash) render(); else location.hash=hash; }
+
+// build nav
+document.getElementById('nav').innerHTML = NAV.map(n=>`
+  <div class="navitem" data-base="${n.hash.replace('#','')}" onclick="go('${n.hash}')">
+    <span class="ico">${n.ico}</span><span class="label-txt cn">${n.cn}</span><span class="en">${n.en}</span>
+  </div>`).join('');
+
+// lang toggle
+function setMode(m){ MODE=m; localStorage.setItem('kinmuku_mode',m);
+  document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===m)); render(); }
+document.querySelectorAll('#langtoggle button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===MODE));
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  const [base,arg]=(location.hash||'#hub').replace('#','').split('/');
+  if(base==='char'){ const i=D.characters.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft') go('#char/'+D.characters[(i+14)%15].id);
+    if(e.key==='ArrowRight') go('#char/'+D.characters[(i+1)%15].id);
+    if(e.key==='Escape') go('#characters'); }
+  if(base==='story'&&arg){ const i=D.story.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft'&&i>0) go('#story/'+D.story[i-1].id);
+    if(e.key==='ArrowRight'&&i<D.story.length-1) go('#story/'+D.story[i+1].id);
+    if(e.key==='Escape') go('#story'); }
+});
+
+window.addEventListener('hashchange', render);
+render();
+</script>
