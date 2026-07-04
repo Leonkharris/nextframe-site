@@ -394,7 +394,10 @@ function vChar(id){
     }
     return `<div id="sec${i}">${sectionHead(s.cn,s.en)}${body}</div>`;
   }).join('');
-  return `<span class="backbtn" onclick="go('#characters')">← ${MODE==='cn'?'返回角色':'Back to cast'}</span>
+  return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <span class="backbtn" style="margin-bottom:0" onclick="go('#characters')">← ${MODE==='cn'?'返回角色':'Back to cast'}</span>
+      <a class="backbtn" style="margin-bottom:0;color:var(--gold)" href="sheet.html?id=${c.id}" target="_blank">${MODE==='cn'?'製作設定表':'Production Sheet'} ↗</a>
+    </div>
     <div class="detail-head">
       ${artBlock(c,'detail-art')}
       <div class="detail-info">
