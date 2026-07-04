@@ -11,48 +11,47 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:#06070b;color:var(--text);font-family:var(--sans);padding:24px;display:flex;flex-direction:column;align-items:center}
-#sheet{width:1440px;max-width:100%;background:
-  linear-gradient(160deg,#0d1018,#090b11);
-  border:1px solid var(--line2);border-radius:10px;overflow:hidden;position:relative;
-  box-shadow:0 20px 60px rgba(0,0,0,.6)}
+#sheet{width:1440px;max-width:100%;background:linear-gradient(160deg,#0d1018,#090b11);
+  border:1px solid var(--line2);border-radius:10px;overflow:hidden;position:relative;box-shadow:0 20px 60px rgba(0,0,0,.6)}
 #sheet::before{content:"";position:absolute;inset:0;pointer-events:none;
-  background:repeating-linear-gradient(0deg,rgba(255,255,255,.010) 0 1px,transparent 1px 3px);}
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.010) 0 1px,transparent 1px 3px)}
+.cn{font-family:var(--cjk)}
 /* header */
 .hd{display:flex;align-items:stretch;border-bottom:1px solid var(--line2);background:linear-gradient(90deg,#12151f,#0b0e15)}
 .hd .brand{padding:16px 22px;border-right:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;min-width:150px}
-.hd .brand .k{font-family:var(--cjk);font-size:26px;font-weight:600;letter-spacing:3px;
-  background:linear-gradient(180deg,var(--gold-b),var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hd .brand .k{font-family:var(--cjk);font-size:26px;font-weight:600;letter-spacing:3px;background:linear-gradient(180deg,var(--gold-b),var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
 .hd .brand .r{font-size:9px;letter-spacing:3px;color:var(--muted);margin-top:2px}
 .hd .name{flex:1;padding:14px 22px;display:flex;flex-direction:column;justify-content:center}
 .hd .name .kanji{font-family:var(--cjk);font-size:30px;font-weight:600;letter-spacing:2px;line-height:1}
 .hd .name .rom{font-size:13px;color:var(--muted);letter-spacing:3px;margin-top:4px}
-.hd .fields{display:grid;grid-template-columns:repeat(4,auto);gap:0;border-left:1px solid var(--line)}
+.hd .fields{display:grid;grid-template-columns:repeat(4,auto);border-left:1px solid var(--line)}
 .hd .f{padding:10px 18px;border-left:1px solid var(--line);display:flex;flex-direction:column;justify-content:center;min-width:96px}
 .hd .f .k{font-size:8px;letter-spacing:2px;color:var(--gold-d);text-transform:uppercase}
+.hd .f .k.cn{font-family:var(--cjk);letter-spacing:1px}
 .hd .f .v{font-size:12px;color:var(--text);margin-top:3px;font-weight:600}
 /* body grid */
-.body{display:grid;grid-template-columns:300px 1fr 300px;gap:0}
+.body{display:grid;grid-template-columns:300px 1fr 300px}
 .col{padding:0;min-width:0}
 .col.mid{border-left:1px solid var(--line);border-right:1px solid var(--line)}
-.block *,.qt,.li,.summary,.anchor,.pair,.shot .txt{overflow-wrap:break-word}
 .block{padding:14px 18px;border-bottom:1px solid var(--line)}
-.block h3{font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:9px;display:flex;justify-content:space-between}
-.block h3 .cn{font-family:var(--cjk);color:var(--gold);letter-spacing:1px}
-.summary{font-size:12.5px;line-height:1.6;color:#d3cdbe}
-.summary .em{color:var(--gold-b);font-style:italic}
-/* consistency anchors */
-.anchor{font-size:11.5px;line-height:1.5;padding:5px 0;border-bottom:1px dashed rgba(201,162,75,.10);color:#d0cabb;display:flex;gap:8px}
-.anchor::before{content:"◆";color:var(--gold-d);font-size:9px;margin-top:3px}
-.anchor.prop{color:var(--muted)}
-.anchor .cn{font-family:var(--cjk);display:block;color:#e0dac9}
-.anchor .en{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
-/* palette */
+.block h3{font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:9px}
+.block h3 .cn{font-family:var(--cjk);color:var(--gold);letter-spacing:1px;float:right;text-transform:none}
+.block *,.qt,.li,.summary,.anchor,.pair,.shot .txt{overflow-wrap:break-word}
+.roleline{color:var(--gold-b);font-style:italic;font-size:13px;line-height:1.5;margin-bottom:8px}
+.summary,.para{font-size:12.5px;line-height:1.6;color:#d3cdbe}
+.para .cn{display:block} .para .en{display:block;color:var(--muted);margin-top:2px}
+.para.solo .en{color:#d3cdbe;margin-top:0}
+.anchor{font-size:11.5px;line-height:1.5;padding:5px 0;border-bottom:1px dashed rgba(201,162,75,.10);color:#d0cabb}
+.anchor .cn{display:block;color:#e0dac9} .anchor .en{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+.anchor.solo .en{color:#e0dac9;font-size:11.5px;margin-top:0}
 .pal{display:flex;gap:6px;flex-wrap:wrap}
 .sw{width:46px;text-align:center}
 .sw .chip{height:34px;border-radius:5px;border:1px solid rgba(255,255,255,.12)}
-.sw .lb{font-size:8px;color:var(--muted);margin-top:3px;letter-spacing:.3px}
+.sw .lb{font-size:8px;color:var(--muted);margin-top:3px}
 /* reference images */
 .refwrap{padding:14px 18px;border-bottom:1px solid var(--line)}
+.refwrap h3{font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:10px}
+.refwrap h3 .cn{color:var(--gold);font-family:var(--cjk);float:right;text-transform:none}
 .refgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 .refcell{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#0b0e15;position:relative;aspect-ratio:3/4}
 .refcell.wide{grid-column:1 / -1;aspect-ratio:16/7}
@@ -64,32 +63,34 @@ body{background:#06070b;color:var(--text);font-family:var(--sans);padding:24px;d
 .ph .h{font-size:9px;color:var(--faint);line-height:1.4}
 /* storyboard */
 .sb{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.shot{border:1px solid var(--line);border-radius:6px;padding:9px 11px;background:linear-gradient(160deg,#12151f,#0c0f16);position:relative}
+.shot{border:1px solid var(--line);border-radius:6px;padding:9px 11px;background:linear-gradient(160deg,#12151f,#0c0f16)}
 .shot .n{font-family:var(--serif);font-size:11px;color:var(--gold);letter-spacing:1px;font-weight:700}
 .shot .txt{font-size:11px;line-height:1.45;color:#cfc9ba;margin-top:4px}
-.shot .txt .cn{font-family:var(--cjk);display:block;color:#ded8c8}
-.shot .txt .en{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.shot .txt .cn{display:block;color:#ded8c8} .shot .txt .en{display:block;color:var(--muted);font-size:10px;margin-top:2px}
+.shot .txt.solo .en{color:#ded8c8;font-size:11px;margin-top:0}
 /* key lines */
-.qt{font-family:var(--cjk);color:var(--gold-b);font-size:13.5px;line-height:1.45;padding:7px 0 7px 12px;border-left:2px solid var(--gold-d);margin-bottom:8px}
-.qt .en{display:block;font-family:var(--sans);color:var(--muted);font-size:11px;font-style:italic;margin-top:2px}
-/* lists */
+.qt{color:var(--gold-b);font-size:13.5px;line-height:1.45;padding:7px 0 7px 12px;border-left:2px solid var(--gold-d);margin-bottom:8px}
+.qt .cn{font-family:var(--cjk)} .qt .en{display:block;color:var(--muted);font-size:11px;font-style:italic;margin-top:2px}
+.qt.solo .en{color:var(--gold-b);font-size:13px;font-style:normal;margin-top:0}
 .li{font-size:11.5px;line-height:1.5;padding:4px 0;border-bottom:1px dashed rgba(201,162,75,.09);color:#cfc9ba}
-.li .cn{font-family:var(--cjk);display:block}
-.li .en{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
-.li.prop{opacity:.8}
+.li .cn{display:block} .li .en{display:block;color:var(--muted);font-size:10.5px;margin-top:1px}
+.li.solo .en{color:#cfc9ba;font-size:11.5px;margin-top:0}
 .foot{display:flex;justify-content:space-between;align-items:center;padding:10px 22px;border-top:1px solid var(--line2);font-size:9px;color:var(--faint);letter-spacing:1px;background:#0b0e15}
 .foot .seed{color:var(--gold);border:1px solid var(--line2);padding:3px 10px;border-radius:10px}
-.toolbar{width:1440px;max-width:100%;display:flex;gap:10px;margin-bottom:14px;align-items:center}
+.toolbar{width:1440px;max-width:100%;display:flex;gap:8px;margin-bottom:14px;align-items:center;flex-wrap:wrap}
 .toolbar a,.toolbar button{font-size:12px;color:var(--muted);background:var(--panel);border:1px solid var(--line);padding:7px 13px;border-radius:8px;cursor:pointer;text-decoration:none}
 .toolbar a:hover,.toolbar button:hover{color:var(--gold-b);border-color:var(--line2)}
+.toolbar .lang{display:flex;border:1px solid var(--line2);border-radius:8px;overflow:hidden}
+.toolbar .lang a{border:0;border-radius:0;background:transparent}
+.toolbar .lang a.on{background:var(--gold);color:#1a1206;font-weight:600}
 .toolbar .nav{margin-left:auto;display:flex;gap:8px}
 @media print{body{background:#fff;padding:0}.toolbar{display:none}#sheet{box-shadow:none;border:none;width:100%}}
 </style>
 
 <div class="toolbar">
   <a href="index.html">← Codex</a>
+  <span class="lang" id="lang"></span>
   <button onclick="window.print()">⎙ Print / PDF</button>
-  <span style="font-size:11px;color:var(--faint)">SeeDance-ready production sheet · drop turnaround art into assets/sheets/</span>
   <span class="nav"><a id="prev">‹ prev</a><a id="next">next ›</a></span>
 </div>
 <div id="sheet"></div>
@@ -99,84 +100,121 @@ const D = window.KINMUKU_DATA;
 const esc = s => (s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
 const q = new URLSearchParams(location.search);
 const id = q.get('id') || '01';
+const L = (q.get('lang')||'both');            // 'en' | 'cn' | 'both'
 const c = D.characters.find(x=>x.id===id) || D.characters[0];
 const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
 const sec = kw => c.sections.find(s=>new RegExp(kw,'i').test(s.cn+' '+s.en));
 const idx = D.characters.findIndex(x=>x.id===c.id);
 const prev = D.characters[(idx+14)%15], next = D.characters[(idx+1)%15];
 
-// reference cell: image if present else placeholder
+// bilingual label: EN / CN / both
+const LB = (en,cn)=> L==='cn'?`<span class="cn">${cn}</span>` : L==='en'?en : `${en} <span class="cn">${cn}</span>`;
+// a bilingual value → spans, with .solo class in mono mode so the single language reads as primary
+function V(cn,en,cls){ cls=cls||'';
+  if(L==='cn') return `<div class="${cls} solo"><span class="cn">${esc(cn)}</span></div>`;
+  if(L==='en') return `<div class="${cls} solo"><span class="en">${esc(en||cn)}</span></div>`;
+  return `<div class="${cls}"><span class="cn">${esc(cn)}</span><span class="en">${esc(en)}</span></div>`;
+}
+const listOf = (s,cls)=> s ? s.pairs.map(p=>V(p.cn,p.en,cls)).join('') : '';
+
 function refCell(file, tag, phTitle, phHint, wide){
   const ph = `<div class="ph"><div class="big">${esc(c.kanji)}</div><div class="t">${phTitle}</div><div class="h">${phHint}</div></div>`;
   const fb = ph.replace(/"/g,'&quot;');
   return `<div class="refcell${wide?' wide':''}"><span class="tag">${tag}</span>`+
     `<img src="${file}" onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${fb}"></div>`;
 }
-// bilingual list from a section's pairs
-function pairs(s, cls){ if(!s) return ''; return s.pairs.map(p=>
-  `<div class="${cls}${p.proposal?' prop':''}"><span class="cn">${esc(p.cn)}</span><span class="en">${esc(p.en)}</span></div>`).join(''); }
 
-// STORYBOARD from Part One arc (each arc line = a shot)
+// storyboard from Part One arc
+function beatLabel(en, i){
+  const m = en.match(/^(Prologue|Chapter \d+)\s*[:—-]/);
+  if(!m) return {en:'SHOT '+(i+1), cn:'鏡'+(i+1)};
+  const w = m[1];
+  if(w==='Prologue') return {en:'PROLOGUE', cn:'序章'};
+  const num = w.replace('Chapter ','');
+  return {en:'CHAPTER '+num, cn:'第'+num+'章'};
+}
 function storyboard(){
-  const s = sec('故事線|Story Arc|Part One'); if(!s) return '<div class="summary" style="color:var(--muted)">No Part One arc on record — reserved character.</div>';
+  const s = sec('故事線|Story Arc|Part One');
+  if(!s) return `<div class="para solo"><span class="en">${L==='cn'?'保留角色，第一部未登場。':'Reserved character — absent from Part One.'}</span></div>`;
   return `<div class="sb">`+ s.pairs.map((p,i)=>{
-    const m = p.en.match(/^(Prologue|Chapter \d+)\s*[:—-]/); const beat = m?m[1].toUpperCase():('SHOT '+(i+1));
-    const cn = p.cn.replace(/^[^：:]+[：:]/,'').trim(); const en = p.en.replace(/^(Prologue|Chapter \d+)\s*[:—-]\s*/,'').trim();
-    return `<div class="shot"><div class="n">${String(i+1).padStart(2,'0')} · ${beat}</div>
-      <div class="txt"><span class="cn">${esc(cn)}</span><span class="en">${esc(en)}</span></div></div>`;
+    const b = beatLabel(p.en,i);
+    const cn = p.cn.replace(/^[^：:]+[：:]/,'').trim();
+    const en = p.en.replace(/^(Prologue|Chapter \d+)\s*[:—-]\s*/,'').trim();
+    const label = L==='cn'? `${String(i+1).padStart(2,'0')} · ${b.cn}` : L==='en'? `${String(i+1).padStart(2,'0')} · ${b.en}` : `${String(i+1).padStart(2,'0')} · ${b.en}`;
+    return `<div class="shot"><div class="n">${label}</div>${V(cn,en,'txt')}</div>`;
   }).join('') + `</div>`;
 }
 
-const palette = [
-  ['#0a0c12','sumi'], [c.color,'archetype'], [c.color2,'accent'], ['#c98a3c','lantern'], ['#c9a24b','gold 金']
-];
+// header field values per language
+const fld = (en,cn)=> L==='cn'?cn : L==='en'?en : `${en}`;
+const statusVal = L==='cn' ? (c.active?'第一部登場':'保留') : (c.active?'Part One':'Reserved');
+const palette = [['#0a0c12',['sumi','墨']],[c.color,['archetype','原型']],[c.color2,['accent','點綴']],['#c98a3c',['lantern','燈火']],['#c9a24b',['gold 金','金']]];
+const palLb = p => L==='cn'?p[1]:p[0];
+
+// summary
+const temp = sec('氣質|Temperament');
+const summary = (L!=='cn' && c.roleline ? `<div class="roleline">${esc(c.roleline)}.</div>` : '')
+  + listOf(temp,'para');
+
+const secs = {
+  etym: sec('名字|Etymology'),
+  bg:   sec('背景|Background|Symbolism'),
+  anchors: sec('外貌|Appearance'),
+  voice: sec('聲音|Voice'),
+  rel: sec('關係|Relationship'),
+  lines: sec('台詞|Key Lines'),
+  prod: sec('資產|Production|Checklist'),
+  future: sec('未來|Future|Hooks'),
+};
 
 document.getElementById('sheet').innerHTML = `
   <div class="hd">
     <div class="brand"><div class="k">金無垢</div><div class="r">KINMUKU</div></div>
-    <div class="name"><div class="kanji">${esc(c.kanji)}</div><div class="rom">${esc(c.romaji)}</div></div>
+    <div class="name"><div class="kanji">${esc(c.kanji)}</div>${L==='cn'?'':`<div class="rom">${esc(c.romaji)}</div>`}</div>
     <div class="fields">
-      <div class="f"><div class="k">Species</div><div class="v">${esc(c.species_en)}</div></div>
-      <div class="f"><div class="k">Archetype</div><div class="v" style="color:${c.color2}">${esc(a.en||'')}</div></div>
-      <div class="f"><div class="k">Priority</div><div class="v">${esc(c.priority)}</div></div>
-      <div class="f"><div class="k">Status</div><div class="v">${c.active?'Part One':'Reserved'}</div></div>
+      <div class="f"><div class="k ${L==='cn'?'cn':''}">${L==='cn'?'物種':'Species'}</div><div class="v ${L!=='en'?'cn':''}">${esc(L==='cn'?c.species_cn:c.species_en)}</div></div>
+      <div class="f"><div class="k ${L==='cn'?'cn':''}">${L==='cn'?'原型':'Archetype'}</div><div class="v ${L!=='en'?'cn':''}" style="color:${c.color2}">${esc(L==='cn'?a.cn:a.en)}</div></div>
+      <div class="f"><div class="k ${L==='cn'?'cn':''}">${L==='cn'?'優先級':'Priority'}</div><div class="v">${esc(c.priority)}</div></div>
+      <div class="f"><div class="k ${L==='cn'?'cn':''}">${L==='cn'?'狀態':'Status'}</div><div class="v ${L!=='en'?'cn':''}">${statusVal}</div></div>
     </div>
   </div>
   <div class="body">
     <div class="col">
-      <div class="block"><h3>Character Summary <span class="cn">角色概要</span></h3>
-        <div class="summary"><span class="em">${esc(c.roleline)}.</span> ${sec('氣質|Temperament')?esc(sec('氣質|Temperament').pairs.map(p=>p.en).join(' ')):''}</div></div>
-      <div class="block"><h3>Consistency Anchors <span class="cn">一致性錨點</span></h3>
-        ${(sec('外貌|Appearance')?sec('外貌|Appearance').pairs:[]).map(p=>
-          `<div class="anchor${p.proposal?' prop':''}"><div><span class="cn">${esc(p.cn)}</span><span class="en">${esc(p.en)}</span></div></div>`).join('')}</div>
-      <div class="block"><h3>Color Palette <span class="cn">色彩指定</span></h3>
-        <div class="pal">${palette.map(([hex,lb])=>`<div class="sw"><div class="chip" style="background:${hex}"></div><div class="lb">${lb}</div></div>`).join('')}</div></div>
-      <div class="block"><h3>Voice / Performance <span class="cn">聲音表演</span></h3>${pairs(sec('聲音|Voice'),'li')||'<div class="li" style="color:var(--muted)">See profile.</div>'}</div>
+      <div class="block"><h3>${LB('Character Summary','角色概要')}</h3>${summary}</div>
+      ${secs.etym?`<div class="block"><h3>${LB('Name Etymology','名字由來')}</h3>${listOf(secs.etym,'para')}</div>`:''}
+      ${secs.bg?`<div class="block"><h3>${LB('Background & Symbolism','背景與象徵')}</h3>${listOf(secs.bg,'para')}</div>`:''}
+      ${secs.anchors?`<div class="block"><h3>${LB('Consistency Anchors','一致性錨點')}</h3>${listOf(secs.anchors,'anchor')}</div>`:''}
+      <div class="block"><h3>${LB('Color Palette','色彩指定')}</h3>
+        <div class="pal">${palette.map(p=>`<div class="sw"><div class="chip" style="background:${p[0]}"></div><div class="lb ${L==='cn'?'cn':''}">${palLb(p)}</div></div>`).join('')}</div></div>
+      ${secs.voice?`<div class="block"><h3>${LB('Voice / Performance','聲音表演')}</h3>${listOf(secs.voice,'li')}</div>`:''}
     </div>
     <div class="col mid">
-      <div class="refwrap"><h3 style="font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:10px;">Character Reference Sheet <span style="color:var(--gold);font-family:var(--cjk)">角色設定</span></h3>
+      <div class="refwrap"><h3>${LB('Character Reference Sheet','角色設定')}</h3>
         <div class="refgrid">
-          ${refCell('assets/portraits/'+c.id+'.png','@Image1 · HERO','HERO CONCEPT','Generate the locked hero design',false)}
-          ${refCell('assets/sheets/'+c.id+'-turnaround.png','@Image2 · MODEL SHEET','TURNAROUND + EXPRESSIONS','Nano Banana 2 · Template A (identity-locked)',false)}
-          ${refCell('assets/sheets/'+c.id+'-env.png','@Image3 · ENVIRONMENT','ENVIRONMENT SHEET','Key Edo location plates',true)}
+          ${refCell('assets/portraits/'+c.id+'.png','@Image1 · HERO',L==='cn'?'主視覺':'HERO CONCEPT',L==='cn'?'鎖定造型':'locked hero design',false)}
+          ${refCell('assets/sheets/'+c.id+'-turnaround.png','@Image2 · MODEL SHEET',L==='cn'?'三視圖／表情':'TURNAROUND + EXPRESSIONS',L==='cn'?'Nano Banana 2 鎖定':'Nano Banana 2 · identity-locked',false)}
+          ${refCell('assets/sheets/'+c.id+'-env.png','@Image3 · ENVIRONMENT',L==='cn'?'場景設定':'ENVIRONMENT',L==='cn'?'江戶場景圖':'Key Edo location plates',true)}
         </div>
       </div>
-      <div class="refwrap" style="border-bottom:none"><h3 style="font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:10px;">Arc Storyboard <span style="color:var(--gold);font-family:var(--cjk)">分鏡故事板</span></h3>
-        ${storyboard()}</div>
+      <div class="refwrap" style="border-bottom:none"><h3>${LB('Arc Storyboard','分鏡故事板')}</h3>${storyboard()}</div>
     </div>
     <div class="col">
-      <div class="block"><h3>Key Lines <span class="cn">關鍵台詞</span></h3>
-        ${(sec('台詞|Key Lines')?sec('台詞|Key Lines').pairs:[]).slice(0,6).map(p=>
-          `<div class="qt">${esc(p.cn)}<span class="en">${esc(p.en)}</span></div>`).join('')}</div>
-      <div class="block"><h3>Relationships <span class="cn">人物關係</span></h3>${pairs(sec('關係|Relationship'),'li')}</div>
-      <div class="block"><h3>Production Checklist <span class="cn">製作資產</span></h3>${pairs(sec('資產|Production|Checklist'),'li')}</div>
+      ${secs.lines?`<div class="block"><h3>${LB('Key Lines','關鍵台詞')}</h3>${secs.lines.pairs.map(p=>V(p.cn,p.en,'qt')).join('')}</div>`:''}
+      ${secs.rel?`<div class="block"><h3>${LB('Relationships','人物關係')}</h3>${listOf(secs.rel,'li')}</div>`:''}
+      ${secs.prod?`<div class="block"><h3>${LB('Production Checklist','製作資產')}</h3>${listOf(secs.prod,'li')}</div>`:''}
+      ${secs.future?`<div class="block"><h3>${LB('Future Hooks','未來掛鉤')}</h3>${listOf(secs.future,'li')}</div>`:''}
     </div>
   </div>
-  <div class="foot"><span>金無垢 · Project Kinmuku · Character Reference Sheet · ${esc(c.id)} ${esc(c.romaji)}</span>
-    <span class="seed">SEEDANCE-READY · v1.0</span>
-    <span>Canon by Fable · next-frame.agency/ProjectKinmuku</span></div>
+  <div class="foot"><span>金無垢 · Project Kinmuku · ${esc(c.id)} ${L==='cn'?esc(c.kanji):esc(c.romaji)}</span>
+    <span class="seed">${L==='cn'?'SEEDANCE 版 · 中文':L==='en'?'SEEDANCE · ENGLISH':'SEEDANCE-READY · v1.0'}</span>
+    <span>next-frame.agency/ProjectKinmuku</span></div>
 `;
-document.getElementById('prev').href = 'sheet.html?id='+prev.id;
-document.getElementById('next').href = 'sheet.html?id='+next.id;
-document.title = c.kanji+' · Character Sheet · 金無垢';
+
+// lang toggle (preserves id)
+const langs=[['both','雙語'],['cn','中文'],['en','EN']];
+document.getElementById('lang').innerHTML = langs.map(([k,t])=>
+  `<a href="sheet.html?id=${c.id}${k==='both'?'':'&lang='+k}" class="${L===k?'on':''}">${t}</a>`).join('');
+document.getElementById('prev').href = `sheet.html?id=${prev.id}${L==='both'?'':'&lang='+L}`;
+document.getElementById('next').href = `sheet.html?id=${next.id}${L==='both'?'':'&lang='+L}`;
+document.title = `${c.kanji} · ${L==='cn'?'角色設定表':L==='en'?'Character Sheet':'Character Sheet'} · 金無垢`;
 </script>
