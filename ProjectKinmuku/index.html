@@ -480,6 +480,11 @@ function vStory(){
     <div class="cn">${esc(ch.title_cn)}</div><div class="en">${esc(ch.title_en)}</div></div>`).join('');
   return `<h1 class="title">${biTitle('第一部 · 百鬼夜行','Part One — The Night Parade')}</h1>
     <div class="sub">Fourteen chapters, line-aligned Chinese and English. Use the 中文 / 雙語 / EN toggle to read in either language or both.</div>
+    <a href="prologue.html" target="_blank" style="display:flex;align-items:center;gap:16px;text-decoration:none;margin-bottom:24px;padding:18px 22px;border:1px solid var(--line2);border-radius:12px;background:linear-gradient(120deg,rgba(201,162,75,.10),var(--panel));transition:.18s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--line2)'">
+      <span style="font-family:var(--cjk);font-size:30px;color:var(--gold)">▶</span>
+      <span><span style="font-family:var(--cjk);font-size:17px;color:var(--gold-bright)">序章 · 夜行之常</span> <span style="color:var(--muted);font-size:13px">— Prologue Storyboard</span>
+        <span style="display:block;color:var(--muted);font-size:12.5px;margin-top:4px">Watch the comic storyboard with camera angles + playable narration (中文 老者旁白 · English female)</span></span>
+      <span style="margin-left:auto;color:var(--gold);font-size:12px">OPEN ↗</span></a>
     <div class="chlist">${list}</div>`;
 }
 function vChapter(id){
