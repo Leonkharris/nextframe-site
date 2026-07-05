@@ -2,6 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>金無垢 · Character Design Sheet</title>
 <script src="data.js"></script>
+<script src="palettes.js"></script>
 <style>
 :root{
   --paper:#efeae0; --paper2:#e6dfd2; --ink:#2b2721; --ink2:#5c5347; --line:#c9bfa9;
@@ -88,8 +89,11 @@ const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
 const sec = kw => c.sections.find(s=>new RegExp(kw,'i').test(s.cn+' '+s.en));
 const enOf = s => s ? s.pairs.map(p=>p.en) : [];
 
-// palette: canon colors + any PROPOSAL color-script line
-const palette = [['#1b1b1f','SUMI'],[c.color,'BASE'],[c.color2,'ACCENT'],['#c98a3c','LANTERN'],['#c9a24b','GOLD 金']];
+// palette: extracted from the OFFICIAL character artwork (palettes.js), dark -> light
+const PAL_LABELS = ['DEEP 深','BASE 主','MID 中','LIGHT 淡','PALE 明'];
+const artPal = (window.KINMUKU_PALETTES||{})[c.id];
+const palette = artPal ? artPal.map((h,i)=>[h,PAL_LABELS[i]])
+  : [['#1b1b1f','SUMI'],[c.color,'BASE'],[c.color2,'ACCENT'],['#c98a3c','LANTERN'],['#c9a24b','GOLD 金']];
 
 function panel(file, cap, phTitle){
   const ph = `<div class="ph"><div class="big">${esc(c.kanji)}</div><div class="t">${phTitle}</div></div>`.replace(/"/g,'&quot;');

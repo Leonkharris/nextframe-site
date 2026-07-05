@@ -155,8 +155,12 @@ function storyboard(){
 // header field values per language
 const fld = (en,cn)=> L==='cn'?cn : L==='en'?en : `${en}`;
 const statusVal = L==='cn' ? (c.active?'第一部登場':'保留') : (c.active?'Part One':'Reserved');
-const palette = [['#0a0c12',['sumi','墨']],[c.color,['archetype','原型']],[c.color2,['accent','點綴']],['#c98a3c',['lantern','燈火']],['#c9a24b',['gold 金','金']]];
-const palLb = p => L==='cn'?p[1]:p[0];
+// palette: extracted from the OFFICIAL character artwork (palettes.js), dark -> light
+const PAL_LB = [['deep','深'],['base','主'],['mid','中'],['light','淡'],['pale','明']];
+const artPal = (window.KINMUKU_PALETTES||{})[c.id];
+const palette = artPal ? artPal.map((h,i)=>[h,PAL_LB[i]])
+  : [['#0a0c12',['sumi','墨']],[c.color,['archetype','原型']],[c.color2,['accent','點綴']],['#c98a3c',['lantern','燈火']],['#c9a24b',['gold 金','金']]];
+const palLb = p => L==='cn'?p[1][1]:p[1][0];
 
 // summary
 const temp = sec('氣質|Temperament');
