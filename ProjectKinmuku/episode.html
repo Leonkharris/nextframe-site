@@ -1,0 +1,145 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分集 · Episode — 金無垢</title>
+<script src="episodes_data.js"></script>
+<style>
+:root{
+  --ink:#0a0c12; --panel:#141824; --line:rgba(201,162,75,.20); --line2:rgba(201,162,75,.40);
+  --gold:#c9a24b; --gold-b:#e8cf8b; --gold-d:#8f7638; --text:#e9e4d7; --muted:#948f82; --faint:#5f5b52;
+  --cjk:"Songti SC","Yu Mincho","Hiragino Mincho ProN","Microsoft YaHei",serif;
+  --serif:"Songti SC","Yu Mincho",Georgia,serif; --sans:"Helvetica Neue",system-ui,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:var(--text);font-family:var(--sans);
+  min-height:100vh;padding:0 0 80px}
+.cn{font-family:var(--cjk)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;
+  background:linear-gradient(180deg,rgba(10,12,18,.96),rgba(10,12,18,.7));backdrop-filter:blur(6px);z-index:20}
+.top a.back{color:var(--muted);text-decoration:none;font-size:13px}
+.top a.back:hover{color:var(--gold)}
+.top .t{font-family:var(--cjk);color:var(--gold-b);font-size:16px;letter-spacing:2px;margin-left:6px}
+.hero{text-align:center;padding:48px 20px 30px}
+.hero .ep{font-family:var(--serif);color:var(--gold);letter-spacing:4px;font-size:13px}
+.hero h1{font-family:var(--cjk);font-size:44px;font-weight:600;letter-spacing:6px;margin:12px 0 6px;
+  background:linear-gradient(180deg,var(--gold-b),var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--muted);letter-spacing:2px;font-size:15px;font-family:var(--serif)}
+.hero .log{color:#d3cdbe;max-width:640px;margin:20px auto 0;line-height:1.7;font-size:14px;font-style:italic}
+/* audio players */
+.audio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:30px 0 10px}
+.aud{background:linear-gradient(160deg,var(--panel),#0c0f16);border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
+.aud .lb{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.aud .lb .ic{font-family:var(--cjk);font-size:18px;color:var(--gold)}
+.aud .lb .nm{font-size:13px;color:var(--gold-b);letter-spacing:1px}
+.aud .lb .nm small{display:block;color:var(--muted);letter-spacing:1px;font-size:10px;margin-top:1px}
+.aud audio{width:100%;height:38px;filter:sepia(.3) saturate(1.4) hue-rotate(5deg)}
+.note{text-align:center;color:var(--faint);font-size:11px;margin:6px 0 0}
+/* comic storyboard */
+.sbhead{font-family:var(--serif);color:var(--gold-b);font-size:18px;letter-spacing:1px;margin:44px 0 6px;text-align:center}
+.sbhead .cn{color:var(--gold);margin-right:10px}
+.sbsub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:26px}
+.panel{background:linear-gradient(160deg,#12151f,#0b0e15);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.panel .frame{position:relative;background:#0a0c12;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.panel .frame img{width:100%;height:auto;display:block}
+.panel .num{position:absolute;top:12px;left:14px;font-family:var(--serif);font-size:13px;letter-spacing:2px;color:var(--gold-b);
+  background:rgba(0,0,0,.55);border:1px solid var(--line);padding:3px 11px;border-radius:12px}
+.panel .cam{position:absolute;top:12px;right:14px;font-size:10px;letter-spacing:1px;color:var(--muted);
+  background:rgba(0,0,0,.5);border:1px solid var(--line);padding:3px 10px;border-radius:10px;max-width:55%;text-align:right}
+.panel .ph{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--faint)}
+.panel .ph .big{font-family:var(--serif);font-size:42px;color:var(--gold-d);opacity:.4}
+.panel .ph .t{font-size:11px;letter-spacing:2px;color:var(--muted)}
+.panel .cap{padding:15px 20px}
+.panel .cap .ti{font-family:var(--cjk);color:var(--gold-b);font-size:16px;margin-bottom:8px}
+.panel .cap .ti small{font-family:var(--sans);color:var(--muted);font-size:11px;letter-spacing:1px;margin-left:8px}
+.panel .cap .cn-t{font-family:var(--cjk);color:#e4ddcc;font-size:15px;line-height:1.7}
+.panel .cap .en-t{color:var(--muted);font-size:13.5px;line-height:1.6;font-style:italic;margin-top:6px}
+.panel .cap .jp-t{font-family:var(--cjk);color:#8d97ad;font-size:12.5px;line-height:1.7;margin-top:6px}
+.nav{display:flex;justify-content:space-between;margin-top:44px;gap:14px}
+.nav a{color:var(--gold-b);text-decoration:none;border:1px solid var(--line2);border-radius:10px;padding:12px 18px;font-size:13px;
+  background:linear-gradient(160deg,var(--panel),#0c0f16)}
+.nav a:hover{border-color:var(--gold)}
+.nav .off{visibility:hidden}
+.foot{text-align:center;color:var(--faint);font-size:11px;margin-top:40px;letter-spacing:1px}
+@media(max-width:680px){.audio{grid-template-columns:1fr}.hero h1{font-size:34px}}
+</style>
+
+<div class="top">
+  <a class="back" href="index.html#episodes">← 分集 Episodes</a>
+  <span class="t" id="toptitle"></span>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="ep" id="epno"></div>
+    <h1 id="h1cn"></h1>
+    <div class="sub" id="suben"></div>
+    <div class="log" id="logline"></div>
+  </div>
+
+  <div class="audio">
+    <div class="aud">
+      <div class="lb"><span class="ic">翁</span><span class="nm">中文旁白 · 老者<small>CHINESE NARRATION · OLD STORYTELLER</small></span></div>
+      <audio controls preload="none" id="aud_cn"></audio>
+    </div>
+    <div class="aud">
+      <div class="lb"><span class="ic">聲</span><span class="nm">English Narration · Female<small>ENGLISH NARRATION · FEMALE VOICE</small></span></div>
+      <audio controls preload="none" id="aud_en"></audio>
+    </div>
+    <div class="aud">
+      <div class="lb"><span class="ic">語</span><span class="nm">日本語ナレーション · 語り部<small>JAPANESE NARRATION · STORYTELLER</small></span></div>
+      <audio controls preload="none" id="aud_jp"></audio>
+    </div>
+  </div>
+  <div class="note">▶ Play a narration, then scroll the storyboard — the panels follow the narration beat by beat.</div>
+
+  <div class="sbhead"><span class="cn">分鏡故事板</span>Visual Storyboard</div>
+  <div class="sbsub">Twelve shots · read like a comic · each panel is one beat of the narration above</div>
+  <div id="board"></div>
+
+  <div class="nav">
+    <a id="prev" href="#">← 上一集</a>
+    <a id="next" href="#">下一集 →</a>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const EPS = window.KINMUKU_EPS || {};
+const q = new URLSearchParams(location.search);
+const ep = Math.max(1, Math.min(8, parseInt(q.get('ep')||'1',10)||1));
+const E = EPS[ep];
+const esc = s => (s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+if(!E){
+  document.getElementById('h1cn').textContent = '第'+ep+'集';
+  document.getElementById('suben').textContent = 'Episode '+ep+' — coming soon';
+  document.getElementById('logline').textContent = 'This episode package has not been generated yet.';
+}else{
+  document.title = `第${ep}集 ${E.title_cn} — 金無垢`;
+  document.getElementById('toptitle').textContent = `第${ep}集 · ${E.title_cn}`;
+  document.getElementById('epno').textContent = `EPISODE ${ep} · PART ONE`;
+  document.getElementById('h1cn').textContent = E.title_cn;
+  document.getElementById('suben').textContent = E.title_en;
+  document.getElementById('logline').textContent = E.logline || '';
+  const base = `assets/episodes/ep${ep}`;
+  for(const l of ['cn','en','jp']) document.getElementById('aud_'+l).src = `${base}/narr_${l}.mp3`;
+  document.getElementById('board').innerHTML = E.shots.map(s=>{
+    const ph = `<div class="ph"><div class="big">${s.n}</div><div class="t">PANEL RENDERING · Nano Banana 2</div></div>`.replace(/"/g,'&quot;');
+    return `<div class="panel">
+      <div class="frame">
+        <img src="${base}/panels/shot${s.n}.png" alt="Shot ${s.n}" onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${ph}">
+        <span class="num">SHOT ${s.n}</span><span class="cam">${esc(s.cam)}</span>
+      </div>
+      <div class="cap">
+        <div class="ti">${esc(s.tc)}<small>${esc(s.te)}</small></div>
+        <div class="cn-t">${esc(s.cn)}</div>
+        <div class="en-t">${esc(s.en)}</div>
+        <div class="jp-t">${esc(s.jp)}</div>
+      </div></div>`;
+  }).join('');
+  document.getElementById('foot').textContent = `金無垢 · Project Kinmuku · 第${ep}集 Storyboard · screenplay + narration by Fable · next-frame.agency/ProjectKinmuku`;
+}
+const prev = document.getElementById('prev'), next = document.getElementById('next');
+if(ep<=1){ prev.href='prologue.html'; prev.textContent='← 序章 Prologue'; } else prev.href='episode.html?ep='+(ep-1);
+if(ep>=8){ next.classList.add('off'); } else next.href='episode.html?ep='+(ep+1);
+</script>

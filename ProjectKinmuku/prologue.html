@@ -25,7 +25,7 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 .hero .sub{color:var(--muted);letter-spacing:2px;font-size:15px;font-family:var(--serif)}
 .hero .log{color:#d3cdbe;max-width:640px;margin:20px auto 0;line-height:1.7;font-size:14px;font-style:italic}
 /* audio players */
-.audio{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:30px 0 10px}
+.audio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:30px 0 10px}
 .aud{background:linear-gradient(160deg,var(--panel),#0c0f16);border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
 .aud .lb{display:flex;align-items:center;gap:8px;margin-bottom:10px}
 .aud .lb .ic{font-family:var(--cjk);font-size:18px;color:var(--gold)}
@@ -38,13 +38,13 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 .sbhead .cn{color:var(--gold);margin-right:10px}
 .sbsub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:26px}
 .panel{background:linear-gradient(160deg,#12151f,#0b0e15);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
-.panel .frame{position:relative;aspect-ratio:16/9;background:#0a0c12;display:flex;align-items:center;justify-content:center;overflow:hidden}
-.panel .frame img{width:100%;height:100%;object-fit:cover;display:block}
+.panel .frame{position:relative;background:#0a0c12;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.panel .frame img{width:100%;height:auto;display:block}
 .panel .num{position:absolute;top:12px;left:14px;font-family:var(--serif);font-size:13px;letter-spacing:2px;color:var(--gold-b);
   background:rgba(0,0,0,.55);border:1px solid var(--line);padding:3px 11px;border-radius:12px}
 .panel .cam{position:absolute;top:12px;right:14px;font-size:10px;letter-spacing:1px;color:var(--muted);
   background:rgba(0,0,0,.5);border:1px solid var(--line);padding:3px 10px;border-radius:10px;max-width:55%;text-align:right}
-.panel .ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--faint)}
+.panel .ph{width:100%;aspect-ratio:3/4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--faint)}
 .panel .ph .big{font-family:var(--serif);font-size:42px;color:var(--gold-d);opacity:.4}
 .panel .ph .t{font-size:11px;letter-spacing:2px;color:var(--muted)}
 .panel .cap{padding:15px 20px}
@@ -77,6 +77,10 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
     <div class="aud">
       <div class="lb"><span class="ic">聲</span><span class="nm">English Narration · Female<small>ENGLISH NARRATION · FEMALE VOICE</small></span></div>
       <audio controls preload="none" src="assets/prologue/prologue_en.mp3"></audio>
+    </div>
+    <div class="aud">
+      <div class="lb"><span class="ic">語</span><span class="nm">日本語ナレーション · 語り部<small>JAPANESE NARRATION · STORYTELLER</small></span></div>
+      <audio controls preload="none" src="assets/prologue/prologue_jp.mp3"></audio>
     </div>
   </div>
   <div class="note">▶ Play a narration, then scroll the storyboard — the panels follow the narration beat by beat.</div>

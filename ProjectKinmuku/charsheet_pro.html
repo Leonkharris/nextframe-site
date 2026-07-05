@@ -1,0 +1,156 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金無垢 · Character Design Sheet</title>
+<script src="data.js"></script>
+<style>
+:root{
+  --paper:#efeae0; --paper2:#e6dfd2; --ink:#2b2721; --ink2:#5c5347; --line:#c9bfa9;
+  --gold:#a9822f; --gold-d:#7c5f23; --red:#8b2f28; --panel:#f6f2e9;
+  --cjk:"Songti SC","Yu Mincho","Hiragino Mincho ProN","Microsoft YaHei",serif;
+  --serif:Georgia,"Times New Roman",serif; --sans:"Helvetica Neue",system-ui,"Segoe UI",sans-serif;
+  --mono:"Courier New",monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#33302a;color:var(--ink);font-family:var(--sans);padding:22px;display:flex;flex-direction:column;align-items:center}
+#sheet{width:1560px;max-width:100%;background:
+  radial-gradient(120% 90% at 50% 0%, #f5f1e7, var(--paper) 60%);
+  border:2px solid var(--gold-d);position:relative;box-shadow:0 24px 70px rgba(0,0,0,.5)}
+#sheet::before{content:"";position:absolute;inset:0;pointer-events:none;opacity:.5;
+  background:repeating-linear-gradient(0deg,rgba(120,95,35,.02) 0 2px,transparent 2px 5px)}
+.cjk{font-family:var(--cjk)}
+/* header */
+.hd{display:flex;align-items:flex-end;justify-content:space-between;padding:18px 26px 14px;border-bottom:2px solid var(--gold-d)}
+.hd .l{display:flex;align-items:flex-end;gap:20px}
+.hd .brand{font-family:var(--cjk);font-size:22px;font-weight:700;color:var(--gold-d);letter-spacing:3px;border-right:2px solid var(--line);padding-right:20px}
+.hd .name .k{font-family:var(--cjk);font-size:38px;font-weight:700;letter-spacing:2px;line-height:1}
+.hd .name .r{font-size:14px;color:var(--ink2);letter-spacing:5px;text-transform:uppercase;margin-top:4px}
+.hd .r-side{text-align:right;font-family:var(--mono);font-size:11px;color:var(--ink2);line-height:1.7}
+.hd .r-side b{color:var(--red)}
+.hd .tags{display:flex;gap:8px;margin-top:8px;justify-content:flex-end}
+.hd .tags span{font-size:10px;letter-spacing:1px;border:1px solid var(--gold-d);color:var(--gold-d);padding:3px 9px;border-radius:2px;text-transform:uppercase}
+/* section titling */
+.st{font-family:var(--serif);font-size:12px;font-weight:700;letter-spacing:3px;text-transform:uppercase;color:var(--gold-d);
+  border-bottom:1px solid var(--line);padding-bottom:5px;margin-bottom:12px;display:flex;justify-content:space-between}
+.st .cjk{color:var(--gold);font-size:13px;letter-spacing:1px}
+/* body grid */
+.body{display:grid;grid-template-columns:330px 1fr 360px}
+.col{padding:18px 22px}
+.col.mid{border-left:1.5px solid var(--line);border-right:1.5px solid var(--line);background:rgba(255,255,255,.25)}
+.blk{margin-bottom:24px}
+.line{font-size:12.5px;line-height:1.55;color:var(--ink);padding:4px 0;border-bottom:1px dotted var(--line)}
+.line b{color:var(--gold-d)}
+.stat{display:flex;justify-content:space-between;font-size:12px;padding:5px 0;border-bottom:1px dotted var(--line)}
+.stat .k{color:var(--ink2);text-transform:uppercase;letter-spacing:1px;font-size:10.5px}
+.stat .v{font-weight:600;text-align:right}
+.stat .v.cjk{font-family:var(--cjk)}
+.oneliner{font-family:var(--serif);font-style:italic;font-size:14px;color:var(--red);line-height:1.5;border-left:3px solid var(--gold);padding-left:12px;margin:6px 0 14px}
+.pal{display:flex;gap:0;border:1px solid var(--line)}
+.pal .sw{flex:1;height:44px;position:relative}
+.pal .sw span{position:absolute;bottom:2px;left:0;right:0;text-align:center;font-family:var(--mono);font-size:7.5px;color:#fff;text-shadow:0 1px 2px #000}
+.note{font-size:11.5px;line-height:1.5;color:var(--ink);padding:5px 0 5px 14px;position:relative}
+.note::before{content:"◆";position:absolute;left:0;top:5px;color:var(--gold);font-size:8px}
+.note.p{color:var(--ink2);font-style:italic}
+.qt{font-family:var(--cjk);font-size:15px;color:var(--gold-d);line-height:1.4;padding:6px 0 6px 12px;border-left:2px solid var(--gold);margin-bottom:8px}
+.qt small{display:block;font-family:var(--serif);font-style:italic;color:var(--ink2);font-size:11.5px;margin-top:2px}
+/* panels */
+.panel{border:1px solid var(--line);background:var(--panel);margin-bottom:16px;position:relative;overflow:hidden}
+.panel .cap{position:absolute;top:0;left:0;font-family:var(--serif);font-size:9px;font-weight:700;letter-spacing:2px;
+  background:var(--gold-d);color:var(--paper);padding:3px 10px;text-transform:uppercase;z-index:2}
+.panel img{width:100%;display:block}
+.panel .ph{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;aspect-ratio:16/10;color:#a89b80;text-align:center;padding:16px}
+.panel .ph .big{font-family:var(--cjk);font-size:30px;color:var(--line)}
+.panel .ph .t{font-size:10px;letter-spacing:1px}
+/* turnaround row: front | side | back */
+.turn{display:flex;gap:8px}
+.turn .panel{flex:1;margin-bottom:0;background:#fff}
+.turn .panel .ph{aspect-ratio:9/16}
+.foot{display:flex;justify-content:space-between;padding:10px 26px;border-top:2px solid var(--gold-d);font-family:var(--mono);font-size:10px;color:var(--ink2)}
+.foot .seed{color:var(--gold-d);font-weight:700}
+.toolbar{width:1560px;max-width:100%;display:flex;gap:8px;margin-bottom:14px}
+.toolbar a,.toolbar button{font-size:12px;color:#cbb98e;background:#3d3930;border:1px solid var(--gold-d);padding:7px 13px;cursor:pointer;text-decoration:none}
+@media print{body{background:#fff;padding:0}.toolbar{display:none}#sheet{box-shadow:none;width:100%}}
+</style>
+
+<div class="toolbar">
+  <a href="index.html">← Codex</a>
+  <button onclick="window.print()">⎙ Print / PDF</button>
+  <span style="color:#8a8069;font-size:11px;align-self:center">Character Design Sheet · drop panels into assets/design/</span>
+</div>
+<div id="sheet"></div>
+
+<script>
+const D = window.KINMUKU_DATA;
+const esc = s => (s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+const q = new URLSearchParams(location.search);
+const id = q.get('id') || '01';
+const c = D.characters.find(x=>x.id===id) || D.characters[0];
+const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+const sec = kw => c.sections.find(s=>new RegExp(kw,'i').test(s.cn+' '+s.en));
+const enOf = s => s ? s.pairs.map(p=>p.en) : [];
+
+// palette: canon colors + any PROPOSAL color-script line
+const palette = [['#1b1b1f','SUMI'],[c.color,'BASE'],[c.color2,'ACCENT'],['#c98a3c','LANTERN'],['#c9a24b','GOLD 金']];
+
+function panel(file, cap, phTitle){
+  const ph = `<div class="ph"><div class="big">${esc(c.kanji)}</div><div class="t">${phTitle}</div></div>`.replace(/"/g,'&quot;');
+  return `<div class="panel"><span class="cap">${cap}</span>`+
+    `<img src="${file}" onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${ph}"></div>`;
+}
+
+const anchors = (sec('外貌|Appearance')||{pairs:[]}).pairs;
+const voice = (sec('聲音|Voice')||{pairs:[]}).pairs;
+const lines = (sec('台詞|Key Lines')||{pairs:[]}).pairs;
+const temp = (sec('氣質|Temperament')||{pairs:[]}).pairs;
+const prod = (sec('資產|Production|Checklist')||{pairs:[]}).pairs;
+
+document.getElementById('sheet').innerHTML = `
+  <div class="hd">
+    <div class="l"><div class="brand">金無垢<br><span style="font-size:9px;letter-spacing:2px">KINMUKU</span></div>
+      <div class="name"><div class="k">${esc(c.kanji)}</div><div class="r">${esc(c.romaji)}</div></div></div>
+    <div class="r-side">
+      CHARACTER DESIGN SHEET<br>
+      NO. <b>${esc(c.id)}</b> · PRIORITY <b>${esc(c.priority)}</b> · ${c.active?'PART ONE':'RESERVED'}
+      <div class="tags"><span>${esc(c.species_en)}</span><span>${esc(a.en)}</span></div></div>
+  </div>
+  <div class="body">
+    <!-- LEFT -->
+    <div class="col">
+      <div class="blk"><div class="st">Profile <span class="cjk">角色檔案</span></div>
+        <div class="oneliner">${esc(c.roleline)}</div>
+        <div class="stat"><span class="k">Species</span><span class="v cjk">${esc(c.species_cn)} · ${esc(c.species_en)}</span></div>
+        <div class="stat"><span class="k">Archetype</span><span class="v cjk">${esc(a.cn)} · ${esc(a.en)}</span></div>
+        <div class="stat"><span class="k">Status</span><span class="v">${c.active?'In Part One':'Reserved'}</span></div>
+        ${temp.slice(0,3).map(p=>`<div class="line">${esc(p.en)}</div>`).join('')}
+      </div>
+      <div class="blk"><div class="st">Colour Palette <span class="cjk">色彩指定</span></div>
+        <div class="pal">${palette.map(p=>`<div class="sw" style="background:${p[0]}"><span>${p[1]}</span></div>`).join('')}</div></div>
+      <div class="blk"><div class="st">Voice / Performance <span class="cjk">聲音表演</span></div>
+        ${enOf(sec('聲音|Voice')).slice(0,3).map(t=>`<div class="note p">${esc(t)}</div>`).join('')}</div>
+    </div>
+    <!-- CENTER -->
+    <div class="col mid">
+      <div class="blk"><div class="st">Turnaround <span class="cjk">三視圖</span></div>
+        <div class="turn">
+          ${panel('assets/design/'+c.id+'-front.png','Front','FRONT 正面')}
+          ${panel('assets/design/'+c.id+'-side.png','Side','SIDE 側面')}
+          ${panel('assets/design/'+c.id+'-back.png','Back','BACK 背面')}
+        </div></div>
+      <div class="blk"><div class="st">Expressions <span class="cjk">表情</span></div>
+        ${panel('assets/design/'+c.id+'-expr.png','Expressions','EXPRESSION SHEET')}</div>
+    </div>
+    <!-- RIGHT -->
+    <div class="col">
+      <div class="blk"><div class="st">Action Pose <span class="cjk">動態姿勢</span></div>
+        ${panel('assets/design/'+c.id+'-action.png','Action','ACTION POSE')}</div>
+      <div class="blk"><div class="st">Consistency Anchors <span class="cjk">一致性錨點</span></div>
+        ${anchors.slice(0,6).map(p=>`<div class="note${p.proposal?' p':''}">${esc(p.en)}</div>`).join('')}</div>
+      <div class="blk"><div class="st">Key Lines <span class="cjk">關鍵台詞</span></div>
+        ${lines.slice(0,4).map(p=>`<div class="qt">${esc(p.cn)}<small>${esc(p.en)}</small></div>`).join('')}</div>
+    </div>
+  </div>
+  <div class="foot"><span>金無垢 · PROJECT KINMUKU · ${esc(c.id)} ${esc(c.romaji)}</span>
+    <span class="seed">SEEDANCE-READY DESIGN SHEET · v2</span>
+    <span>next-frame.agency/ProjectKinmuku</span></div>
+`;
+document.title = `${c.kanji} · Design Sheet · 金無垢`;
+</script>
