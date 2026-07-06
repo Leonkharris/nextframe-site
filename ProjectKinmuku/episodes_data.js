@@ -112,6 +112,57 @@ window.KINMUKU_EPS = {
     "en": "Somewhere far off came a sound like paper tearing — the lingering fear, gathering in a street-corner shadow into something with no face and no mouth, driven by one intent alone: to find something it could blame. And the Night Parade's tread still moved on in the distance, like the tide, turning back for no one.",
     "jp": "どこか遠くで、紙が裂けるような音がした。行き場を失った恐れが、街角の陰の中で、顔もなく口もない一塊へと凝り始めていた。ただひとつの執念だけを宿して――誰かを咎める何かを、探し求めて。そして百鬼夜行の足音は、なお遠くで潮のように進み続けていた。誰のためにも、振り返ることなく。"
    }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who bears the city's fear at the head of the Night Parade. He walks at the head of the procession with a slow ceremonial stride, footsteps heavy and unhurried, weight sinking through each step, shoulders and waist swaying in grave rhythm — he carries the city's named evil, so nothing about him hurries; behind a paper door a child leans one breath closer to the gap of moonlight until their gazes collide. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni at the head of the Night Parade. [Image2] Kujo Byakuren, the nine-tailed fox who keeps the precepts. His raised hand slows by half a beat and freezes mid-air, fingertips trembling as instinct fights a new doubt, then draws back down slowly like a blade being sheathed; on the roof ridge she stands utterly still, sleeves unmoving, only her cold eyes narrowing as the procession flows on without him. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "10",
+      "cn": "碧吉",
+      "en": "Aokichi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni left behind by his own parade. [Image2] Aokichi, the small kappa with the water dish, kind despite everything. Genki presses a hand faintly to his own chest, weight settling back on his heels as something unfamiliar aches; the little kappa hauls himself dripping up the riverbank, dish water tilting but never spilling, and looks up at the towering oni with honest clumsy words; far off, a formless black shadow peels off a wall like paper tearing. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   }
   ]
  },
  "2": {
@@ -226,6 +277,62 @@ window.KINMUKU_EPS = {
     "cn": "風從屋瓦之上壓下，天狗降臨，只留下一句話：那就證明，玄鬼終於明白，真正沉重的，從來不是恐懼，是選擇。",
     "en": "The wind pressed down from the tiles as the tengu descended, and left behind four words — then prove it — and Genki understood at last that the true weight was never fear, but choice.",
     "jp": "瓦の上から風が押し寄せ、天狗が舞い降りた。残された言葉はただ一つ、ならば証してみせよ。玄鬼はついに悟った。真に重いのは恐れではなく、選択であったのだと。"
+   }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who has left the parade to face fear alone. An exhausted woodblock carver's hand stops mid-stroke over a snarling oni print; black ink-shadow pools in the shop corner and climbs the wall with a slow boneless creep; Genki steps into the narrow alley with a calm measured stride and extends one open hand toward the writhing mass, palm steady because he has decided not to fear it. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "11",
+      "cn": "黒縁",
+      "en": "Kuroberi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni learning to name what he carries. [Image2] Kuroberi, the nekomata who remembers and mocks. Faint faces surface and dissolve in the black ink-smoke as Genki kneels and presses his palm flat to the cobblestones, the mist unraveling upward in thin threads; above, the cat-woman's narrow luminous eyes open in the dark and she licks a claw, tail curling along the eaves with lazy mockery as she watches him work. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     },
+     {
+      "id": "05",
+      "cn": "鞍馬烏嶽",
+      "en": "Kurama Ugaku"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who answers 'I don't know' honestly. [Image2] Kujo Byakuren, the nine-tailed fox who keeps the precepts. [Image3] Kurama Ugaku, the tengu judge of the black wings. She lands weightlessly on the moonlit street from the rooftop, wooden sandals silent, robes settling a half-beat after her body; uneasy townsmen cluster with paper lanterns, murmuring; the winged tengu descends onto the rooftop in one heavy downdraft, cloak billowing once, and levels a cold judging stare down at the oni. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
    }
   ]
  },
@@ -342,6 +449,62 @@ window.KINMUKU_EPS = {
     "en": "Genki did not swallow those cruel words; he chose instead to tear the shadow from Aokichi's body — a tearing that hurt far more than swallowing ever could, and it earned him the Fourth Precept: even in failure, no regret.",
     "jp": "玄鬼はその悪しき言葉を呑み込まなんだ。碧吉の身より、影を引き剥がすことを選んだのだ。その痛みは、呑み込むよりなお深く――そして彼は、第四の戒を得た。たとえ敗れようとも、悔いることなかれ、と。"
    }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "10",
+      "cn": "碧吉",
+      "en": "Aokichi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who stands where he is told he must not. [Image2] Aokichi, the small kappa with the water dish. The kappa crouches in the bridge's shadow cupping river water into the shallow dish on his head with careful trembling hands; then the two sit side by side at the calm bank under overcast light, neither speaking, shoulders loosening by slow degrees while the still water does the talking. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni named a monster by daylight. [Image2] Kujo Byakuren, the nine-tailed fox who keeps the precepts. Men with nets and clubs edge onto the bridge in a wary knot while Genki simply stands at its center, weight rooted through his heels, hands open at his sides; their advance falters, steps shortening, clubs lowering as their own fear turns inward and breaks; from a curved roof ridge she watches without moving, thoughtful rather than sharp. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "10",
+      "cn": "碧吉",
+      "en": "Aokichi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who tears fear off the wounded. [Image2] Aokichi, the small kappa who shields a child. Lanterns die one by one down the narrow street; flames twist up a shoji door as panicked figures flee; the little kappa throws himself over a stumbling child, dish water arcing through firelight; Genki's huge hand rips the writhing black shadow off the kappa's wounded arm in one decisive pull, the mass dissolving into scattering dark motes. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   }
   ]
  },
  "4": {
@@ -456,6 +619,72 @@ window.KINMUKU_EPS = {
     "cn": "義牙消失在夜色裡，只留下一句「我會看著你」；而遠方，百鬼夜行的步伐，第一次，不再整齊。",
     "en": "Giga vanished into the night, leaving behind only \"I will be watching you\" — and far off, for the first time, the tread of the hundred demons fell out of step.",
     "jp": "義牙は「見ていてやる」とだけ言い残し、闇へと消えた。そして遠く、百鬼夜行の足並みは、初めて乱れていた。"
+   }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "03",
+      "cn": "大江炎馬",
+      "en": "Oe Enma"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who slowed the parade. [Image2] Oe Enma, the shuten-doji king who swallows what he cannot feel. [Image3] Kujo Byakuren, the nine-tailed fox. The flame-haired demon king strides down the narrow street with roof tiles trembling under each heavy footfall, momentum rolling loose and hungry through his shoulders; he swallows the condensed sphere of shadow whole, eyes wide and utterly empty; Genki stands firm at the center of the cracked stone bridge, feet planted, refusing to be moved. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     },
+     {
+      "id": "03",
+      "cn": "大江炎馬",
+      "en": "Oe Enma"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who cannot un-see the hollowness. [Image2] Kujo Byakuren, the nine-tailed fox. [Image3] Oe Enma, the shuten-doji king. Enma walks away down the misty street with his back to them, stride slow and hollow, weight dragging through each step; Genki and Byakuren stand close on the night bridge, gazes fixed where he vanished, her sleeves stirring in the damp river wind while a hairline crack glints across the stone below their feet. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "04",
+      "cn": "茨木義牙",
+      "en": "Ibaraki Giga"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who neither retreats nor strikes. [Image2] Ibaraki Giga, the loyal fang, a warrior who only knows forward. The lean warrior explodes off the embankment with fast urgent footwork, weight snapping from back foot to front as his fist bursts stone fragments off the cracking bridge; Genki holds his ground through every blow, breath even; the warrior freezes mid-stance, fists slowly unclenching, doubt widening his eyes, then his silhouette fades backward into the swirling night mist. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
    }
   ]
  },
@@ -572,6 +801,62 @@ window.KINMUKU_EPS = {
     "en": "The night settled into stillness; she asked if she might stay. He gave no answer, only stood beside her — and that was already the answer.",
     "jp": "夜は静けさを取り戻す。彼女は問う、ここに留まってもよいかと。男は答えず、ただ傍らに立ち続けた。それこそが、既に答えだった。"
    }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "08",
+      "cn": "綾女",
+      "en": "Ayame"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who walks toward weeping instead of away. [Image2] Ayame, the hannya whose grief cracked into a mask. He follows a broken sobbing sound into the crooked wooden alley with a quiet unhurried step, shoulders low and unthreatening; the lone paper lantern at the dead end sways with no wind; she stands beneath it half-masked, loose hair trembling, shoulders shaking in a rhythm that is almost weeping. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "08",
+      "cn": "綾女",
+      "en": "Ayame"
+     },
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the hannya whose grief cracks stone and mask alike. [Image2] Akaza Genki, the oni who refuses to flinch. Her trembling hands rise before the half-mask in lantern light, terribly calm; dark water seeps down the wooden walls and hairline cracks creep outward across the stone beneath her feet; he steps close and stands his ground, breath even, weight rooted, as faint violet light gathers in the narrowing air between them. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "08",
+      "cn": "綾女",
+      "en": "Ayame"
+     },
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the woman beneath the hannya mask. [Image2] Akaza Genki, the oni who stays. She lifts the cracked mask away from her face with both hands, arms heavy as if setting down years, revealing an ordinary exhausted tear-streaked face; the mask shatters and scatters across the cracked ground and she sinks to her knees among the fragments, shoulders finally letting go; he stands silently at her side as the night sky clears to first stars. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   }
   ]
  },
  "6": {
@@ -686,6 +971,52 @@ window.KINMUKU_EPS = {
     "cn": "夜行沒有退去，只是沉回水底，遠處的步伐再度響起，沉重，卻第一次不再完全一致。",
     "en": "The Parade did not retreat, only sank beneath the water, and far off its footsteps sounded again, heavy, but for the first time no longer of one accord.",
     "jp": "夜行は退かず、ただ水底へと沈んでいった。遠くにその足音は再び響く。重く、されど初めて、一つに揃わぬままに。"
+   }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "06",
+      "cn": "鞍馬白嶺",
+      "en": "Kurama Hakurei"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who asks to be last. [Image2] Kurama Hakurei, the great tengu who carries order like snow. Lanterns along the skyline go dark one by one as Genki stands alone at the bridge's center; the white-robed tengu descends from the night sky with wings braking in one great slow beat, robes settling like snowfall, staff grounding with quiet authority; around them small yokai freeze mid-motion in shock at his sentence. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who chooses to stand between the city and its fear. His jaw sets and his eyes fix on the far horizon, hair stirred by the night wind, feet rooted to the bridge boards; beneath him the dark river surface glows with layered ghost-images — the parade he once led through the years, and townspeople turning on one another in a city with no oni left to blame. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who lets the past pass through him. The colossal featureless shadow heaves up out of the split river, water cascading off its formless mass; it engulfs him to the chest — his knees buckle half a step, then root deeper; eyes closed, face calm rather than pained, he bears it until the clinging darkness loosens and the first hint of dawn finds his open eyes; on the far shore, a line of shadowy figures walks out of step with the night. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
    }
   ]
  },
@@ -802,6 +1133,72 @@ window.KINMUKU_EPS = {
     "en": "The Parade shuddered, not because it had lost one yokai, but because its total weight, for the first time, had grown less; and Enma looked up at the sky and said, softly — so that's how it is.",
     "jp": "夜行は震えた。一体の妖を失ったからではない。その総量が、初めて減じたがゆえであった。炎馬は夜空を仰ぎ、静かに呟いた――なるほど、そういうことか。"
    }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     },
+     {
+      "id": "08",
+      "cn": "綾女",
+      "en": "Ayame"
+     },
+     {
+      "id": "11",
+      "cn": "黒縁",
+      "en": "Kuroberi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who stands at the center. [Image2] Kujo Byakuren, the nine-tailed fox. [Image3] Ayame, the unmasked hannya. [Image4] Kuroberi, the nekomata. Street lanterns die one by one as a single formless tide of fire, shadow and half-formed beasts advances with no king and no will; on the bridge Genki plants himself at the center, weight sinking, and his companions settle into stance a heartbeat after him, each guarding a different line of the span. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "02",
+      "cn": "九條白蓮",
+      "en": "Kujo Byakuren"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who chooses rather than refuses. [Image2] Kujo Byakuren, the nine-tailed fox whose voice carries over the rooftops. A night street corner boils with shouting townspeople, fingers stabbing accusations over dropped lanterns; on the bridge Genki shuts his eyes in concentration, wind moving his hair, lips just parting to speak his choice; from a distant rooftop her raised hand sends a single faint luminous thread rippling outward across the sea of tiled roofs; in a dim alley, a weathered old hand slowly lowers its wooden stick to the ground. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "08",
+      "cn": "綾女",
+      "en": "Ayame"
+     },
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the hannya with nothing left to prove. [Image2] Akaza Genki, the oni kneeling beside her. She sinks to her knees on the night bridge as a warm gold light wakes softly beneath her skin, breath easing rather than failing; she looks calmly up at him kneeling beside her, peaceful and unafraid, and then a soft column of gold light rises silently from the empty boards into the dark sky — no smoke, no shockwave — while far away the vast churning mass shudders and visibly shrinks at its edges. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   }
   ]
  },
  "8": {
@@ -916,6 +1313,72 @@ window.KINMUKU_EPS = {
     "cn": "風穿過空無一人的橋，沒有誰看見，沒有誰送別，光芒吞沒他的輪廓——那不是黑暗的盡頭，是純金無瑕的光。",
     "en": "Wind passed through the bridge with no one left to stand on it, no one to see, no one to see him off, as the light closed over his outline — not the end of darkness, but light of flawless, unblemished gold.",
     "jp": "風は誰もいない橋を吹き抜け、見る者もなく、見送る者もなく、光がその輪郭を包み込んだ――それは闇の果てにあらず、純金にして瑕なき光であった。"
+   }
+  ],
+  "scenes": [
+   {
+    "sc": "A",
+    "s0": "01",
+    "s1": "04",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "03",
+      "cn": "大江炎馬",
+      "en": "Oe Enma"
+     },
+     {
+      "id": "05",
+      "cn": "鞍馬烏嶽",
+      "en": "Kurama Ugaku"
+     },
+     {
+      "id": "04",
+      "cn": "茨木義牙",
+      "en": "Ibaraki Giga"
+     },
+     {
+      "id": "06",
+      "cn": "鞍馬白嶺",
+      "en": "Kurama Hakurei"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who accepted the weight. [Image2] Oe Enma, the shuten-doji king. [Image3] Kurama Ugaku, the tengu of the black wings. [Image4] Ibaraki Giga, the loyal fang. [Image5] Kurama Hakurei, the great tengu. Genki sits alone at the bridge's edge watching still black water, then rises as the four lords advance toward the bridge in slow formation — each step deliberate, wings and cloaks settling between strides; he meets the armored king face to face at the center, neither backing away, the night air taut but unbroken between them. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "B",
+    "s0": "05",
+    "s1": "08",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     },
+     {
+      "id": "10",
+      "cn": "碧吉",
+      "en": "Aokichi"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who is only staying. [Image2] Aokichi, the small kappa who cannot follow. Genki drops to one knee gripping the bridge railing as distant torches flicker alive along the bank, then rises with slow finality; he walks alone toward the wall of torchlight with his back to camera, the little kappa's outstretched hand slipping from his; inside the ring of fallen torches he stands motionless while the flames rise around him like a tide, bearing rather than burning. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+   },
+   {
+    "sc": "C",
+    "s0": "09",
+    "s1": "12",
+    "chars": [
+     {
+      "id": "01",
+      "cn": "赤座玄鬼",
+      "en": "Akaza Genki"
+     }
+    ],
+    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni becoming flawless gold. The fire gutters out and a dazed crowd stares through the dark at the quiet standing figure whose horns have nearly faded; he stands calm on the empty bridge, eyes closed, breath slow and settled; one by one across changing seasons the other yokai dissolve softly into rising gold light in their own quiet places; at last wind moves through an empty bridge and the far horizon opens into a boundless field of pure gold. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
    }
   ]
  }
