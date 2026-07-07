@@ -148,10 +148,10 @@ if(!E){
   const kit = sc => !sc ? '' : `<div class="kit">
       <div class="kh"><span class="cn">手動視頻生成</span>MANUAL VIDEO KIT · SCENE ${ep}-${sc.sc}（S${sc.s0}–S${sc.s1}）<span class="tag">SEEDANCE 2.0 · 15s</span></div>
       <div class="kb"><a href="${base}/boards/scene${sc.sc}.png" target="_blank"><img src="${base}/boards/scene${sc.sc}.png" alt="Storyboard ${sc.sc}" onerror="this.parentNode.parentNode.style.display='none'"></a></div>
-      <div class="kr">${sc.chars.map((c,i)=>`<div class="rf"><a href="assets/refs/${c.id}.png" target="_blank"><img src="assets/refs/${c.id}.png" alt="${esc(c.en)}"></a><div class="bind">IMAGE ${i+1}</div><div class="nm">${esc(c.cn)}</div></div>`).join('')}</div>
+      <div class="kr">${sc.chars.map((c,i)=>`<div class="rf"><a href="assets/refs_board/${c.id}.png" target="_blank" title="開啟 ${esc(c.cn)} 身份板 identity board"><img src="assets/refs/${c.id}.png" alt="${esc(c.en)}"></a><div class="bind">IMAGE ${i+1} · 身份板</div><div class="nm">${esc(c.cn)}</div></div>`).join('')}</div>
       <div class="kp"><textarea readonly>${esc(sc.prompt)}</textarea>
         <div class="row"><button onclick="copyKit(this)">⧉ COPY PROMPT</button><span class="ok">copied ✓</span></div></div>
-      <div class="kn"><b>Manual run:</b> attach identity refs above <b>in IMAGE order</b> → attach this storyboard sheet → optionally attach keyframes S${sc.s0}–S${sc.s1} as style refs → paste the prompt. Board = blocking only; refs = identity; keyframes = style; prompt stays one line.</div>
+      <div class="kn"><b>Manual run:</b> click each thumbnail to open that character's full <b>identity board</b> (turnaround + expressions) and attach those files <b>in IMAGE order</b> → attach this storyboard sheet → optionally attach keyframes S${sc.s0}–S${sc.s1} as style refs → paste the prompt. Board = blocking/camera; identity boards = faces & costumes; keyframes = style; prompt = movement & emotion.</div>
     </div>`;
   document.getElementById('board').innerHTML = E.shots.map((s,i)=>{
     const ph = `<div class="ph"><div class="big">${s.n}</div><div class="t">PANEL RENDERING · Nano Banana 2</div></div>`.replace(/"/g,'&quot;');
