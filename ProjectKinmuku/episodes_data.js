@@ -65,7 +65,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Extreme close-up: the child's eye blinks once, iris adjusting, a horned silhouette drifting inside the reflection — then a fast whip to the oni's golden eye turning toward us; moonlight flare."
+     "motion": "Extreme close-up on the child's eye pressed to the moonlit gap: the iris adjusts, lashes blink once, and inside the reflection the horned silhouette slowly turns its head toward us; the sliver of light flickers as the procession passes."
     }
    },
    {
@@ -165,7 +165,7 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "Slow vertical drift between levels: below, the oni presses a hand to his chest, head lowering; above, the woman turns and walks away along the ridge, robes trailing; mist slides between them."
+     "motion": "Slow drift upward from the oni at the street corner — a hand pressed to his chest, head lowering — up to the pale woman turning away along the roof ridge, robes trailing; night mist slides between them."
     }
    },
    {
@@ -492,7 +492,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Low-angle wide: wind tears across the rooftops; the black-winged tengu drops against the moon with one great wing-brake, cloak snapping, then launches away — his gust whipping the robes below."
+     "motion": "Low-angle wide: the black-winged tengu drops against the moon with one great wing-brake — cloak snapping, roof dust bursting outward — and his landing gust whips the robes of the two figures below."
     }
    }
   ],
@@ -660,7 +660,7 @@ window.KINMUKU_EPS = {
     "jp": "されど噂とは、真実になど頓着せぬもの。都合こそがすべてなれば――理をもって昼に指されし名は、夜の恐れよりも、なお冷たく、なお理屈立っていた。",
     "video": {
      "chars": [],
-     "motion": "Rapid montage of tight cuts: gossiping mouths moving, fingers stabbing toward the river, sleeves gesturing; faces wheel past as the daylight greys over."
+     "motion": "Tight handheld drift across a gossiping street crowd: mouths moving, fingers stabbing toward the river, sleeves gesturing; restless shuffling motion under greying light."
     }
    },
    {
@@ -930,7 +930,7 @@ window.KINMUKU_EPS = {
        "en": "Oe Enma"
       }
      ],
-     "motion": "Close: the glowing red sphere goes down his throat, jaw rolling — cut to hollow unblinking eyes — then wide as the street's whole motion dies around him, dust settling into silence."
+     "motion": "Close on the flame-haired king as he swallows the glowing red sphere whole — jaw rolling, throat working, eyes wide and utterly empty — while dust and lantern-sway die into silence around him."
     }
    },
    {
@@ -1029,7 +1029,7 @@ window.KINMUKU_EPS = {
        "en": "Ibaraki Giga"
       }
      ],
-     "motion": "Low tracking: the lean warrior strides out of the darkness fast and coiled, embankment gravel scattering from his steps — hard cut to his sharp face, eyes narrowed."
+     "motion": "Low tracking: the lean warrior strides out of the darkness fast and coiled, embankment gravel scattering from each step, eyes locked ahead, fists already tightening."
     }
    },
    {
@@ -1822,7 +1822,7 @@ window.KINMUKU_EPS = {
     "jp": "最初の圧が落ちたとき、城中の幾百もの家々が、かつて鬼へと押しつけたものを、一斉に思い出した。嫉妬、偽り、怨み、裏切り――もはや隠れる場所はなかった。",
     "video": {
      "chars": [],
-     "motion": "Rapid cross-cut through lit windows across the city: a hand stopping over a meal, a mother pulling a child close, a shutter slapping — startled face after startled face catching the far glow."
+     "motion": "Slow push toward one lit window across the dark street: inside, a mother pulls her child close and the father rises from the table, their faces catching the far firelight; other windows flicker with startled movement."
     }
    },
    {
@@ -1886,7 +1886,7 @@ window.KINMUKU_EPS = {
     "jp": "恐れはすぐには去らなかった。それでも、棒を下ろす者がいた。罵りをやめる者がいた。掟に、初めてひび割れが生じた。",
     "video": {
      "chars": [],
-     "motion": "Quiet vignettes in sequence: a weathered hand lowers its stick until it leans away and falls; a shouting mouth closes mid-word; a head bows — then the distant churning mass shudders and a visible seam of quiet cracks through it."
+     "motion": "Close on a weathered old hand slowly lowering a wooden stick until it leans away and falls; the shouting behind dies down; a head bows in the lantern light; smoke rises straight in the sudden calm."
     }
    },
    {
@@ -1961,7 +1961,7 @@ window.KINMUKU_EPS = {
        "en": "Oe Enma"
       }
      ],
-     "motion": "Wide: the vast churning mass trembles and thins at its edges, visibly shrinking — cut to the flame-haired king's upturned face against the night sky, hair drifting, his eyes tracking the golden light down the dark."
+     "motion": "Wide: the vast churning mass in the distance trembles and thins at its edges, visibly shrinking, embers and shadow flaking off it into the night, while in the foreground an upturned face watches, hair drifting."
     }
    }
   ],
@@ -2137,7 +2137,7 @@ window.KINMUKU_EPS = {
     "jp": "その後の日々、人の心は少しずつ緩みゆき、怒りの半ばで立ち止まる者あり、咎める前にためらう者あり――夜行の軽くなるたび、彼の肩はその分だけ重くなった。",
     "video": {
      "chars": [],
-     "motion": "Montage across the city: quiet lamplit interiors in motion — an argument pausing mid-word, tea steam rising and curling, a child tucked beneath a blanket, a lantern being trimmed."
+     "motion": "Slow push into one lamplit interior: an argument pauses mid-word, tea steam curling between the two, both turning slowly toward the window's distant glow."
     }
    },
    {
@@ -2263,7 +2263,7 @@ window.KINMUKU_EPS = {
     "jp": "歳月は一年また一年と過ぎ、炎馬、義牙、烏嶽、白嶺、黒縁、白蓮、みな金色の光の中へと去りゆき、ついに彼ひとりのみが橋に残り、己の選びを守り続けた。",
     "video": {
      "chars": [],
-     "motion": "Time-lapse across turning seasons: one by one, yokai dissolve upward into gold light in their own quiet places — petals, snow and leaves streaming past each rising departure, clothes and hair lifting gently."
+     "motion": "One yokai dissolves softly upward into rising gold light — clothes and hair lifting gently, petals and leaves streaming past — the light drifting up into the dark sky."
     }
    },
    {
