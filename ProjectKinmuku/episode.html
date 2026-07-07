@@ -154,11 +154,11 @@ if(!E){
     const C = sc.chars.length, bIdx = C+1, k0 = C+2;
     const shotIds = Array.from({length:4},(_,j)=>String(parseInt(sc.s0,10)+j).padStart(2,'0'));
     const prompt =
-      `Animate this 15-second scene. Follow the hand-drawn storyboard sheet [Image${bIdx}] exactly — its four time-coded panels and the BLUE character-movement and RED camera-movement arrows define the shot order, blocking, pacing and camera moves. Add smooth in-between animation and rich motion detail. `
+      `Animate this 15-second scene as ONE continuous cinematic sequence of four consecutive live-action shots in constant motion. The hand-drawn storyboard sheet [Image${bIdx}] is the shot plan ONLY — take the shot order, blocking and the BLUE/RED arrow moves from it, but NEVER show the storyboard page, its panels, borders or annotations on screen. `
       + sc.chars.map((c,i)=>`[Image${i+1}] is the identity board of ${c.en}（${c.cn}）, ${c.recap} — keep this character's face, hair, horns and costume EXACTLY as shown in every view of that board.`).join(' ')
       + ` [Image${k0}]–[Image${k0+3}] are the four painted keyframes for shots S${shotIds[0]}–S${shotIds[3]}, in order — match their exact art style, lighting, color palette and scene composition throughout. `
       + sc.body
-      + ` Do not animate storyboard annotations, arrows, panel numbers, or sketch notes.`;
+      + ` Fully painted animation with continuous fluid motion at all times: NO static frames, NO freeze-frames, NO slideshow of stills, NO motion-comic effect — in every shot the camera is executing its move and the world keeps moving (breath, cloth, hair, mist, flame, water). Do not animate storyboard annotations, arrows, panel numbers, or sketch notes.`;
     const attach =
       sc.chars.map((c,i)=>`<div class="rf wide"><a href="assets/refs_board/${c.id}.png" target="_blank" title="開啟 ${esc(c.cn)} 身份板 identity board"><img src="assets/refs_board/${c.id}.png" alt="${esc(c.en)} identity board"></a><div class="bind">IMAGE ${i+1}</div><div class="nm">${esc(c.cn)} 身份板</div></div>`).join('')
       + `<div class="rf"><a href="${base}/boards/scene${sc.sc}.png" target="_blank" title="開啟分鏡表 storyboard sheet"><img src="${base}/boards/scene${sc.sc}.png" alt="storyboard"></a><div class="bind">IMAGE ${bIdx}</div><div class="nm">分鏡表 board</div></div>`
@@ -170,7 +170,7 @@ if(!E){
       <div class="kr">${attach}</div>
       <div class="kp"><textarea readonly>${esc(prompt)}</textarea>
         <div class="row"><button onclick="copyKit(this)">⧉ COPY PROMPT</button><span class="ok">copied ✓</span></div></div>
-      <div class="kn"><b>Manual run:</b> attach all ${k0+3} files above in IMAGE order（identity boards → storyboard sheet → 4 keyframes）→ paste the prompt. Every attachment is referenced by its [ImageN] number inside the prompt, so SeeDance knows exactly what each file is.</div>
+      <div class="kn"><b>Manual run:</b> attach all ${k0+3} files above in IMAGE order（identity boards → storyboard sheet → 4 keyframes）→ paste the prompt. Every attachment is referenced by its [ImageN] number inside the prompt. <b>Tips:</b> if your tool has a Start/First-Frame slot, put keyframe S${shotIds[0]} there so the video opens inside the painted world; if there is a motion-strength / camera-motion setting, set it HIGH — the first test came out as near-still frames on default.</div>
     </div>`;
   };
   document.getElementById('board').innerHTML = E.shots.map((s,i)=>{
