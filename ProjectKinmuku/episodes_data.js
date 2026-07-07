@@ -122,10 +122,11 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who bears the city's fear at the head of the Night Parade"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who bears the city's fear at the head of the Night Parade. MOVEMENT — Genki: a slow ceremonial parade stride; footstep rhythm heavy, unhurried, evenly spaced like a temple bell; weight transfers fully from back foot to front foot before the next step begins; the body shows a restrained, almost imperceptible rise and fall; shoulders and waist swing in grave synchrony with each stride, arms low and controlled; his robe and long hair react with a slight delay, dragging one beat behind every step. The procession of shadow yokai behind him flows with a simple continuous walk; lantern flames lean and flicker naturally. EMOTION — composed, oppressive, remote: he carries the city's named evil, so nothing about him hurries; when the child's eye meets his through the gap of moonlight, a flicker of stillness enters his gaze — curiosity arriving before doctrine. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: a slow ceremonial parade stride; footstep rhythm heavy, unhurried, evenly spaced like a temple bell; weight transfers fully from back foot to front foot before the next step begins; the body shows a restrained, almost imperceptible rise and fall; shoulders and waist swing in grave synchrony with each stride, arms low and controlled; his robe and long hair react with a slight delay, dragging one beat behind every step. The procession of shadow yokai behind him flows with a simple continuous walk; lantern flames lean and flicker naturally. EMOTION — composed, oppressive, remote: he carries the city's named evil, so nothing about him hurries; when the child's eye meets his through the gap of moonlight, a flicker of stillness enters his gaze — curiosity arriving before doctrine."
    },
    {
     "sc": "B",
@@ -135,15 +136,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni at the head of the Night Parade"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox who keeps the precepts"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni at the head of the Night Parade. [Image2] Kujo Byakuren, the nine-tailed fox who keeps the precepts. MOVEMENT — Genki: his raised clawed hand rises with killing instinct then loses half a beat — fingertips tremble, the whole arm freezes mid-air; then the hand draws back down slowly and deliberately, like a blade returned to its sheath, weight sinking back through his heels as the procession's rhythm flows on without him. Byakuren: perfectly still on the roof ridge — weight centered and serene, sleeves and ink-black hair stirring only with the wind; only her cold eyes narrow and her lips part faintly. EMOTION — Genki: instinct at war with a newborn doubt; the freeze reads as thought, not fear; drawing the hand back is a decision. Byakuren: cold clinical confirmation — the error has appeared, and it interests her. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: his raised clawed hand rises with killing instinct then loses half a beat — fingertips tremble, the whole arm freezes mid-air; then the hand draws back down slowly and deliberately, like a blade returned to its sheath, weight sinking back through his heels as the procession's rhythm flows on without him. Byakuren: perfectly still on the roof ridge — weight centered and serene, sleeves and ink-black hair stirring only with the wind; only her cold eyes narrow and her lips part faintly. EMOTION — Genki: instinct at war with a newborn doubt; the freeze reads as thought, not fear; drawing the hand back is a decision. Byakuren: cold clinical confirmation — the error has appeared, and it interests her."
    },
    {
     "sc": "C",
@@ -153,15 +156,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni left behind by his own parade"
      },
      {
       "id": "10",
       "cn": "碧吉",
-      "en": "Aokichi"
+      "en": "Aokichi",
+      "recap": "the small kappa with the water dish"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni left behind by his own parade. [Image2] Aokichi, the small kappa with the water dish. MOVEMENT — Genki: stands at the street corner with a hand pressed faintly to his own chest, fingers curling slightly into the cloth; weight rocks back on his heels and his head lowers a fraction — the ache expressed through stillness, not gesture. Aokichi: hauls himself up the muddy riverbank in wet, clumsy pulls, arms working hard, weight lurching side to side; the dish on his head tilts and its water sloshes to the rim but never spills; he shakes off droplets and blinks up at the towering oni. Far behind them a formless black shadow peels off a wall like paper tearing, slow and boneless. EMOTION — arc across the scene: a hollow unfamiliar ache → clumsy honest warmth breaking the silence ('felt like you looked… left behind') → a thin thread of unease as the shadow gathers in the dark. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: stands at the street corner with a hand pressed faintly to his own chest, fingers curling slightly into the cloth; weight rocks back on his heels and his head lowers a fraction — the ache expressed through stillness, not gesture. Aokichi: hauls himself up the muddy riverbank in wet, clumsy pulls, arms working hard, weight lurching side to side; the dish on his head tilts and its water sloshes to the rim but never spills; he shakes off droplets and blinks up at the towering oni. Far behind them a formless black shadow peels off a wall like paper tearing, slow and boneless. EMOTION — arc across the scene: a hollow unfamiliar ache → clumsy honest warmth breaking the silence ('felt like you looked… left behind') → a thin thread of unease as the shadow gathers in the dark."
    }
   ]
  },
@@ -288,10 +293,11 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who left the parade to face fear alone"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who left the parade to face fear alone. MOVEMENT — Genki: enters the narrow alley with a calm, measured stride — footsteps quiet and evenly paced, weight settling softly heel to toe; he lowers his stance slightly and extends one open hand toward the writhing ink-shadow, the arm moving slowly so as not to startle it, palm steady, fingers relaxed; his sleeve slides back with a slight delay. The ink-shadow pools in the corner and climbs the wall with a slow, boneless, pulsing creep, unmoved by the lamp flame. The exhausted woodblock carver (background) sits slumped, hand frozen mid-stroke, breathing shallow. EMOTION — resolve without aggression: he has decided not to fear it; the room is thick with dread and his calm cuts through it like a lantern being carried in. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: enters the narrow alley with a calm, measured stride — footsteps quiet and evenly paced, weight settling softly heel to toe; he lowers his stance slightly and extends one open hand toward the writhing ink-shadow, the arm moving slowly so as not to startle it, palm steady, fingers relaxed; his sleeve slides back with a slight delay. The ink-shadow pools in the corner and climbs the wall with a slow, boneless, pulsing creep, unmoved by the lamp flame. The exhausted woodblock carver (background) sits slumped, hand frozen mid-stroke, breathing shallow. EMOTION — resolve without aggression: he has decided not to fear it; the room is thick with dread and his calm cuts through it like a lantern being carried in."
    },
    {
     "sc": "B",
@@ -301,15 +307,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni learning to name what he carries"
      },
      {
       "id": "11",
       "cn": "黒縁",
-      "en": "Kuroberi"
+      "en": "Kuroberi",
+      "recap": "the nekomata who remembers and mocks"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni learning to name what he carries. [Image2] Kuroberi, the nekomata who remembers and mocks. MOVEMENT — Genki: kneels in one smooth controlled descent and presses his palm flat against the cobblestones; his shoulders drop as he exhales; he holds completely still while faint faces surface and dissolve in the black smoke and the mist unravels upward in thin threads off the ground. Kuroberi: pure feline economy — her narrow luminous eyes open first in the dark, then a slow uncoiling stretch along the roof tiles; she licks one claw with idle precision, tail curling lazily along the eaves, chin tilted in mockery as she watches him work. EMOTION — Genki: focused, gentle, almost priest-like — naming a fear instead of devouring it. Kuroberi: amused superiority worn over an old loneliness; she saw him before anyone did. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: kneels in one smooth controlled descent and presses his palm flat against the cobblestones; his shoulders drop as he exhales; he holds completely still while faint faces surface and dissolve in the black smoke and the mist unravels upward in thin threads off the ground. Kuroberi: pure feline economy — her narrow luminous eyes open first in the dark, then a slow uncoiling stretch along the roof tiles; she licks one claw with idle precision, tail curling lazily along the eaves, chin tilted in mockery as she watches him work. EMOTION — Genki: focused, gentle, almost priest-like — naming a fear instead of devouring it. Kuroberi: amused superiority worn over an old loneliness; she saw him before anyone did."
    },
    {
     "sc": "C",
@@ -319,20 +327,23 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who answers honestly"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox"
      },
      {
       "id": "05",
       "cn": "鞍馬烏嶽",
-      "en": "Kurama Ugaku"
+      "en": "Kurama Ugaku",
+      "recap": "the tengu judge of the black wings"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who answers honestly. [Image2] Kujo Byakuren, the nine-tailed fox. [Image3] Kurama Ugaku, the tengu judge of the black wings. MOVEMENT — Byakuren: steps off the roof and descends weightlessly — robes and nine tails settling a half-beat after her body, wooden sandals meeting the stone without a sound, spine straight, chin level. Genki: turns to face her squarely, weight even, hands open at his sides; he answers with a small honest shake of the head, shoulders loose rather than defensive. Ugaku: drops onto the rooftop in one heavy wing-braked landing — cloak billowing once then falling dead still — and levels a cold judging stare down at the oni, arms folding. Townsmen (background): cluster uneasily with paper lanterns, murmuring, feet shuffling. EMOTION — her precise unhurried testing meets his plain 'I don't know'; above them, judgment arrives with the weight of a verdict: then prove it. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Byakuren: steps off the roof and descends weightlessly — robes and nine tails settling a half-beat after her body, wooden sandals meeting the stone without a sound, spine straight, chin level. Genki: turns to face her squarely, weight even, hands open at his sides; he answers with a small honest shake of the head, shoulders loose rather than defensive. Ugaku: drops onto the rooftop in one heavy wing-braked landing — cloak billowing once then falling dead still — and levels a cold judging stare down at the oni, arms folding. Townsmen (background): cluster uneasily with paper lanterns, murmuring, feet shuffling. EMOTION — her precise unhurried testing meets his plain 'I don't know'; above them, judgment arrives with the weight of a verdict: then prove it."
    }
   ]
  },
@@ -459,15 +470,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who stays"
      },
      {
       "id": "10",
       "cn": "碧吉",
-      "en": "Aokichi"
+      "en": "Aokichi",
+      "recap": "the small kappa with the water dish"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who stays. [Image2] Aokichi, the small kappa with the water dish. MOVEMENT — Aokichi: crouches in the bridge's shadow and cups river water in both trembling hands, lifting each pour to the shallow dish on his head with held breath and shaking arms — the care of someone protecting his own life; later his small shoulders loosen degree by degree. Genki: lowers his great frame to sit beside him in one slow patient motion, forearms resting on his knees, gaze settling on the still water; his stillness invites rather than threatens. Morning market crowd (background) flows across the bridge unaware. EMOTION — arc: parched anxiety → shy relief at not being chased off → quiet companionship, two labeled creatures letting the river do the talking. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Aokichi: crouches in the bridge's shadow and cups river water in both trembling hands, lifting each pour to the shallow dish on his head with held breath and shaking arms — the care of someone protecting his own life; later his small shoulders loosen degree by degree. Genki: lowers his great frame to sit beside him in one slow patient motion, forearms resting on his knees, gaze settling on the still water; his stillness invites rather than threatens. Morning market crowd (background) flows across the bridge unaware. EMOTION — arc: parched anxiety → shy relief at not being chased off → quiet companionship, two labeled creatures letting the river do the talking."
    },
    {
     "sc": "B",
@@ -477,15 +490,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni named a monster by daylight"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox who keeps the precepts"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni named a monster by daylight. [Image2] Kujo Byakuren, the nine-tailed fox who keeps the precepts. MOVEMENT — Genki: stands rooted at the bridge's center — feet shoulder-width, weight sunk through the heels, hands open at his sides, breathing slow enough to see; he never advances a single step. The mob: edges forward in a wary knot, steps shortening as courage thins; clubs and nets sag by degrees, then feet stumble backward over each other as the line breaks — their fear turning inward, each man seeing his own. Byakuren: on the curved roof ridge, motionless, one slow blink, hair sliding like ink — thoughtful rather than sharp. EMOTION — his patient, unmoving dignity against their collapsing bravado; nothing is fought, everything is decided. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: stands rooted at the bridge's center — feet shoulder-width, weight sunk through the heels, hands open at his sides, breathing slow enough to see; he never advances a single step. The mob: edges forward in a wary knot, steps shortening as courage thins; clubs and nets sag by degrees, then feet stumble backward over each other as the line breaks — their fear turning inward, each man seeing his own. Byakuren: on the curved roof ridge, motionless, one slow blink, hair sliding like ink — thoughtful rather than sharp. EMOTION — his patient, unmoving dignity against their collapsing bravado; nothing is fought, everything is decided."
    },
    {
     "sc": "C",
@@ -495,15 +510,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who tears fear off the wounded"
      },
      {
       "id": "10",
       "cn": "碧吉",
-      "en": "Aokichi"
+      "en": "Aokichi",
+      "recap": "the small kappa who shields a child"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who tears fear off the wounded. [Image2] Aokichi, the small kappa who shields a child. MOVEMENT — Aokichi: bursts into a sprint and throws himself over the stumbling child — a full-body dive, short legs driving, arms wrapping around the small back, the dish water arcing out through the firelight; he lands hard and curls tighter as the club comes down. Genki: crosses the street in two long strides, seizes the writhing black shadow clinging to the kappa's wounded arm and rips it away in one decisive pull — shoulder, waist and arm driving together like drawing a great bow — the mass dissolving into scattering dark motes. Flames climb the shoji door; fleeing figures pass in natural panic (background). EMOTION — arc: chaos and firelight → terror overridden by kindness → protective fury resolving into steadiness once the child is safe. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Aokichi: bursts into a sprint and throws himself over the stumbling child — a full-body dive, short legs driving, arms wrapping around the small back, the dish water arcing out through the firelight; he lands hard and curls tighter as the club comes down. Genki: crosses the street in two long strides, seizes the writhing black shadow clinging to the kappa's wounded arm and rips it away in one decisive pull — shoulder, waist and arm driving together like drawing a great bow — the mass dissolving into scattering dark motes. Flames climb the shoji door; fleeing figures pass in natural panic (background). EMOTION — arc: chaos and firelight → terror overridden by kindness → protective fury resolving into steadiness once the child is safe."
    }
   ]
  },
@@ -630,20 +647,23 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who slowed the parade"
      },
      {
       "id": "03",
       "cn": "大江炎馬",
-      "en": "Oe Enma"
+      "en": "Oe Enma",
+      "recap": "the shuten-doji king who swallows what he cannot feel"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who slowed the parade. [Image2] Oe Enma, the shuten-doji king who swallows what he cannot feel. [Image3] Kujo Byakuren, the nine-tailed fox. MOVEMENT — Enma: strides down the narrow street with rolling, loose power — each footstep lands heavy enough to tremble the roof tiles, hips leading, shoulders swaggering with hungry momentum, flame-colored hair streaming a beat behind; he tips his head back and swallows the condensed shadow-sphere whole, throat working, eyes wide and utterly empty. Genki: planted at the center of the cracked stone bridge — weight low, jaw set, unmoved by the tremors. Byakuren: statue-still at his flank, robes stirring in the pressure wind. Dazed townsfolk (background) sway on their feet. EMOTION — appetite without joy against rooted refusal: the king consumes to feel nothing; the exile stands to feel everything. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Enma: strides down the narrow street with rolling, loose power — each footstep lands heavy enough to tremble the roof tiles, hips leading, shoulders swaggering with hungry momentum, flame-colored hair streaming a beat behind; he tips his head back and swallows the condensed shadow-sphere whole, throat working, eyes wide and utterly empty. Genki: planted at the center of the cracked stone bridge — weight low, jaw set, unmoved by the tremors. Byakuren: statue-still at his flank, robes stirring in the pressure wind. Dazed townsfolk (background) sway on their feet. EMOTION — appetite without joy against rooted refusal: the king consumes to feel nothing; the exile stands to feel everything."
    },
    {
     "sc": "B",
@@ -653,20 +673,23 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who cannot un-see the hollowness"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox"
      },
      {
       "id": "03",
       "cn": "大江炎馬",
-      "en": "Oe Enma"
+      "en": "Oe Enma",
+      "recap": "the shuten-doji king"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who cannot un-see the hollowness. [Image2] Kujo Byakuren, the nine-tailed fox. [Image3] Oe Enma, the shuten-doji king. MOVEMENT — Enma: walks away down the misty street with his back to them — the same heavy stride but slower now, a drag in each step, shoulders slightly fallen; his emptiness has weight. Genki: watches him go; one hand half-rises then stops, the impulse to call out dying on his lips; his breath runs long and low. Byakuren: stands closer to Genki than before, sleeves trembling faintly in the damp river wind, her eyes on the hairline crack glinting across the stone below. EMOTION — arc: the confrontation's end → weariness recognized in another king ('not pride — exhaustion worn to the bone') → an uneasy stillness that is not yet peace. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Enma: walks away down the misty street with his back to them — the same heavy stride but slower now, a drag in each step, shoulders slightly fallen; his emptiness has weight. Genki: watches him go; one hand half-rises then stops, the impulse to call out dying on his lips; his breath runs long and low. Byakuren: stands closer to Genki than before, sleeves trembling faintly in the damp river wind, her eyes on the hairline crack glinting across the stone below. EMOTION — arc: the confrontation's end → weariness recognized in another king ('not pride — exhaustion worn to the bone') → an uneasy stillness that is not yet peace."
    },
    {
     "sc": "C",
@@ -676,15 +699,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who neither retreats nor strikes"
      },
      {
       "id": "04",
       "cn": "茨木義牙",
-      "en": "Ibaraki Giga"
+      "en": "Ibaraki Giga",
+      "recap": "the loyal fang who only knows forward"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who neither retreats nor strikes. [Image2] Ibaraki Giga, the loyal fang who only knows forward. MOVEMENT — Giga: explosive, urgent footwork — he bursts off the embankment with weight snapping from back foot to front, fist driving through with full shoulder-and-waist rotation, stone fragments bursting off the cracking bridge; he strikes again and again, breath ragged, teeth bared, each combination faster than the last. Genki: absorbs it without retreating or striking back — feet rooted, torso yielding just enough with each impact, arms staying low, calm never cracking. Then Giga freezes mid-stance: his fists unclench finger by finger, eyes widening with sudden doubt, and he backs away, his silhouette dissolving into the swirling night mist. EMOTION — arc: loyalty weaponized as fury → bewilderment at a wall that will not hate him back → a retreat that is almost respect ('you can choose'). Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Giga: explosive, urgent footwork — he bursts off the embankment with weight snapping from back foot to front, fist driving through with full shoulder-and-waist rotation, stone fragments bursting off the cracking bridge; he strikes again and again, breath ragged, teeth bared, each combination faster than the last. Genki: absorbs it without retreating or striking back — feet rooted, torso yielding just enough with each impact, arms staying low, calm never cracking. Then Giga freezes mid-stance: his fists unclench finger by finger, eyes widening with sudden doubt, and he backs away, his silhouette dissolving into the swirling night mist. EMOTION — arc: loyalty weaponized as fury → bewilderment at a wall that will not hate him back → a retreat that is almost respect ('you can choose')."
    }
   ]
  },
@@ -811,15 +836,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who walks toward weeping instead of away"
      },
      {
       "id": "08",
       "cn": "綾女",
-      "en": "Ayame"
+      "en": "Ayame",
+      "recap": "the hannya whose grief cracked into a mask"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who walks toward weeping instead of away. [Image2] Ayame, the hannya whose grief cracked into a mask. MOVEMENT — Genki: follows the broken sobbing into the crooked wooden alley — quiet, unhurried steps, weight settling softly, shoulders lowered, hands visible and open: the walk of someone approaching a wounded animal. Ayame: stands at the dead end beneath the lone paper lantern that sways with no wind; half-masked, her shoulders shake in an irregular rhythm that is almost weeping, fingers twitching at her sides, loose long hair trembling around the mask's edge. Small yokai on the bridge (background) shiver and press flat, listening. EMOTION — arc: wary, gentle approach → the wrongness of the windless swaying lantern → grief recognized before a single word is spoken. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: follows the broken sobbing into the crooked wooden alley — quiet, unhurried steps, weight settling softly, shoulders lowered, hands visible and open: the walk of someone approaching a wounded animal. Ayame: stands at the dead end beneath the lone paper lantern that sways with no wind; half-masked, her shoulders shake in an irregular rhythm that is almost weeping, fingers twitching at her sides, loose long hair trembling around the mask's edge. Small yokai on the bridge (background) shiver and press flat, listening. EMOTION — arc: wary, gentle approach → the wrongness of the windless swaying lantern → grief recognized before a single word is spoken."
    },
    {
     "sc": "B",
@@ -829,15 +856,17 @@ window.KINMUKU_EPS = {
      {
       "id": "08",
       "cn": "綾女",
-      "en": "Ayame"
+      "en": "Ayame",
+      "recap": "the hannya whose grief cracks stone and mask alike"
      },
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who refuses to flinch"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the hannya whose grief cracks stone and mask alike. [Image2] Akaza Genki, the oni who refuses to flinch. MOVEMENT — Ayame: raises trembling hands before the half-mask — fingers hovering just short of touching it — while her voice stays terribly, unnaturally calm; dark water seeps down the wooden walls and hairline cracks creep outward across the stone beneath her feet, her weight swaying as the ground answers her grief; fine cracks spider across the mask's painted surface. Genki: takes one deliberate step close and then holds his ground — breath even, weight rooted, eyes never leaving hers — as faint violet light gathers in the narrowing air between them. EMOTION — hers: a calm more frightening than screaming, despair rehearsing the word 'monster'; his: presence as an answer — not soothing her, simply refusing to leave. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Ayame: raises trembling hands before the half-mask — fingers hovering just short of touching it — while her voice stays terribly, unnaturally calm; dark water seeps down the wooden walls and hairline cracks creep outward across the stone beneath her feet, her weight swaying as the ground answers her grief; fine cracks spider across the mask's painted surface. Genki: takes one deliberate step close and then holds his ground — breath even, weight rooted, eyes never leaving hers — as faint violet light gathers in the narrowing air between them. EMOTION — hers: a calm more frightening than screaming, despair rehearsing the word 'monster'; his: presence as an answer — not soothing her, simply refusing to leave."
    },
    {
     "sc": "C",
@@ -847,15 +876,17 @@ window.KINMUKU_EPS = {
      {
       "id": "08",
       "cn": "綾女",
-      "en": "Ayame"
+      "en": "Ayame",
+      "recap": "the woman beneath the hannya mask"
      },
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who stays"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the woman beneath the hannya mask. [Image2] Akaza Genki, the oni who stays. MOVEMENT — Ayame: lifts the cracked mask away from her face with both hands — arms heavy, elbows dropping, like setting down something carried for years — revealing an ordinary, deeply exhausted, tear-streaked human face; the mask falls and shatters across the cracked ground; she sinks to her knees among the fragments, spine folding forward, shoulders finally letting go into silent weeping. Genki: stays at her side, an unmoving pillar; at most his head bows a fraction, his shadow sheltering her from the lantern light. EMOTION — arc: surrender → grief released without an audience → an emptied, honest peace as the night sky clears to first stars; his silence is the answer she asked for. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Ayame: lifts the cracked mask away from her face with both hands — arms heavy, elbows dropping, like setting down something carried for years — revealing an ordinary, deeply exhausted, tear-streaked human face; the mask falls and shatters across the cracked ground; she sinks to her knees among the fragments, spine folding forward, shoulders finally letting go into silent weeping. Genki: stays at her side, an unmoving pillar; at most his head bows a fraction, his shadow sheltering her from the lantern light. EMOTION — arc: surrender → grief released without an audience → an emptied, honest peace as the night sky clears to first stars; his silence is the answer she asked for."
    }
   ]
  },
@@ -982,15 +1013,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who asks to be last"
      },
      {
       "id": "06",
       "cn": "鞍馬白嶺",
-      "en": "Kurama Hakurei"
+      "en": "Kurama Hakurei",
+      "recap": "the great tengu who carries order like snow"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who asks to be last. [Image2] Kurama Hakurei, the great tengu who carries order like snow. MOVEMENT — Hakurei: descends from the black sky with one great slow wing-brake — snow-white robes settling like falling snow, staff planting on the bridge boards with quiet authority, spine perfectly vertical, every motion economical and absolute. Genki: receives the sentence standing — fists tightening slowly at his sides, knuckles whitening, jaw working once; he does not step back and does not look away. Around them the small yokai (background) freeze mid-motion in shock — a fox-eared boy, a masked woman, a cat-eared figure on the rooftop — small flinches only. Lanterns along the skyline go dark one by one. EMOTION — arc: order incarnate delivering extinction without malice → suppressed defiance → resolve crystallizing into the quiet request: let me be last. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Hakurei: descends from the black sky with one great slow wing-brake — snow-white robes settling like falling snow, staff planting on the bridge boards with quiet authority, spine perfectly vertical, every motion economical and absolute. Genki: receives the sentence standing — fists tightening slowly at his sides, knuckles whitening, jaw working once; he does not step back and does not look away. Around them the small yokai (background) freeze mid-motion in shock — a fox-eared boy, a masked woman, a cat-eared figure on the rooftop — small flinches only. Lanterns along the skyline go dark one by one. EMOTION — arc: order incarnate delivering extinction without malice → suppressed defiance → resolve crystallizing into the quiet request: let me be last."
    },
    {
     "sc": "B",
@@ -1000,10 +1033,11 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who chooses to stand between the city and its fear"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who chooses to stand between the city and its fear. MOVEMENT — Genki: alone at the bridge's center — feet rooted to the boards, hair and dark robe stirred continuously by the night wind; his jaw sets and his eyes fix on the far horizon; his breathing deepens, chest rising slow and full, weight utterly settled. Beneath the bridge the dark river surface glows with layered ghost-memories moving inside the water: his younger self leading the parade with the same ceremonial stride he walked for centuries, and townspeople in a city with no oni turning on one another in jerky, accusatory bursts, fractured like reflections in broken glass. EMOTION — the weight of every year he walked at the head, alchemized into choice; resolve without anger; a loneliness accepted rather than suffered. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: alone at the bridge's center — feet rooted to the boards, hair and dark robe stirred continuously by the night wind; his jaw sets and his eyes fix on the far horizon; his breathing deepens, chest rising slow and full, weight utterly settled. Beneath the bridge the dark river surface glows with layered ghost-memories moving inside the water: his younger self leading the parade with the same ceremonial stride he walked for centuries, and townspeople in a city with no oni turning on one another in jerky, accusatory bursts, fractured like reflections in broken glass. EMOTION — the weight of every year he walked at the head, alchemized into choice; resolve without anger; a loneliness accepted rather than suffered."
    },
    {
     "sc": "C",
@@ -1013,10 +1047,11 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who lets the past pass through him"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni who lets the past pass through him. MOVEMENT — the colossal featureless shadow heaves up out of the split river, water cascading off its formless mass in sheets; it engulfs Genki to the chest — his knees buckle half a step then root deeper, arms staying loose at his sides, hands open, refusing to fight it; eyes closed, face calm rather than pained, he bears it while the clinging darkness loosens thread by thread; when the first hint of dawn touches the bridge his eyes open, clear. On the far shore a thin line of shadowy figures walks across the water's edge, their footsteps out of step with the night for the first time. EMOTION — arc: overwhelming pressure → surrender that is not defeat → washed clarity; the past is allowed to pass through him instead of being carried. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — the colossal featureless shadow heaves up out of the split river, water cascading off its formless mass in sheets; it engulfs Genki to the chest — his knees buckle half a step then root deeper, arms staying loose at his sides, hands open, refusing to fight it; eyes closed, face calm rather than pained, he bears it while the clinging darkness loosens thread by thread; when the first hint of dawn touches the bridge his eyes open, clear. On the far shore a thin line of shadowy figures walks across the water's edge, their footsteps out of step with the night for the first time. EMOTION — arc: overwhelming pressure → surrender that is not defeat → washed clarity; the past is allowed to pass through him instead of being carried."
    }
   ]
  },
@@ -1143,25 +1178,29 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who stands at the center"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox"
      },
      {
       "id": "08",
       "cn": "綾女",
-      "en": "Ayame"
+      "en": "Ayame",
+      "recap": "the unmasked hannya"
      },
      {
       "id": "11",
       "cn": "黒縁",
-      "en": "Kuroberi"
+      "en": "Kuroberi",
+      "recap": "the nekomata"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who stands at the center. [Image2] Kujo Byakuren, the nine-tailed fox. [Image3] Ayame, the unmasked hannya. [Image4] Kuroberi, the nekomata. MOVEMENT — the tide: a single formless mass of fire, shifting shadow and half-formed beast silhouettes advancing down the night street with no leader and no rhythm, street lanterns dying one by one ahead of it. Genki: plants himself at the bridge's center — weight sinking through his heels, shoulders squaring, one slow exhale. His companions settle into place a staggered heartbeat after him: Byakuren serene at his right, sleeves still; Ayame's unmasked face steady, fists slowly closing; Kuroberi dropping from the eaves into a low ready crouch, tail flat, ears back. Lit windows across the city (background) each hold a stricken frozen face. EMOTION — not soldiers in formation but a found family choosing, one by one, to stand; dread pressing in against quiet, staggered devotion. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — the tide: a single formless mass of fire, shifting shadow and half-formed beast silhouettes advancing down the night street with no leader and no rhythm, street lanterns dying one by one ahead of it. Genki: plants himself at the bridge's center — weight sinking through his heels, shoulders squaring, one slow exhale. His companions settle into place a staggered heartbeat after him: Byakuren serene at his right, sleeves still; Ayame's unmasked face steady, fists slowly closing; Kuroberi dropping from the eaves into a low ready crouch, tail flat, ears back. Lit windows across the city (background) each hold a stricken frozen face. EMOTION — not soldiers in formation but a found family choosing, one by one, to stand; dread pressing in against quiet, staggered devotion."
    },
    {
     "sc": "B",
@@ -1171,15 +1210,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who chooses rather than refuses"
      },
      {
       "id": "02",
       "cn": "九條白蓮",
-      "en": "Kujo Byakuren"
+      "en": "Kujo Byakuren",
+      "recap": "the nine-tailed fox whose voice carries over the rooftops"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who chooses rather than refuses. [Image2] Kujo Byakuren, the nine-tailed fox whose voice carries over the rooftops. MOVEMENT — the street corner (background) boils with shouting townspeople, stabbing accusatory fingers, overturned baskets, dropped lanterns guttering. Genki: eyes shut in concentration on the bridge, wind moving his hair, every other muscle still; his lips just part to speak his choice. Byakuren: on a distant rooftop her arm rises in one clean unhurried arc — from her raised hand a single faint luminous thread ripples outward across the sea of tiled roofs, her sleeves lifting with the release and settling after. In a dim alley a weathered old hand slowly lowers a wooden stick to the ground; a mouth falls silent; a head bows. EMOTION — arc: hysteria feeding on itself → a voice that is not loud but reaches every house → the first crack in the order of fear, small and human. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — the street corner (background) boils with shouting townspeople, stabbing accusatory fingers, overturned baskets, dropped lanterns guttering. Genki: eyes shut in concentration on the bridge, wind moving his hair, every other muscle still; his lips just part to speak his choice. Byakuren: on a distant rooftop her arm rises in one clean unhurried arc — from her raised hand a single faint luminous thread ripples outward across the sea of tiled roofs, her sleeves lifting with the release and settling after. In a dim alley a weathered old hand slowly lowers a wooden stick to the ground; a mouth falls silent; a head bows. EMOTION — arc: hysteria feeding on itself → a voice that is not loud but reaches every house → the first crack in the order of fear, small and human."
    },
    {
     "sc": "C",
@@ -1189,15 +1230,17 @@ window.KINMUKU_EPS = {
      {
       "id": "08",
       "cn": "綾女",
-      "en": "Ayame"
+      "en": "Ayame",
+      "recap": "the hannya with nothing left to prove"
      },
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni kneeling beside her"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Ayame, the hannya with nothing left to prove. [Image2] Akaza Genki, the oni kneeling beside her. MOVEMENT — Ayame: sinks to her knees on the night bridge — not a collapse but a release, weight easing down joint by joint as a warm gold light wakes softly beneath her skin like embers under silk; her breath slows toward peace; she looks up at Genki with a calm, complete face; then a soft column of gold light rises silently from the empty boards into the dark sky — no smoke, no shockwave, only a gentle upward drift. Genki: kneels beside her on one knee, hand hovering near her shoulder without touching — grief held with dignity; after the light passes his head bows and stays bowed. Far away the vast churning mass shudders, its edges trembling and visibly shrinking. EMOTION — arc: peace freely chosen → gratitude spoken once → a farewell that weakens fear itself; loss and victory in the same breath. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Ayame: sinks to her knees on the night bridge — not a collapse but a release, weight easing down joint by joint as a warm gold light wakes softly beneath her skin like embers under silk; her breath slows toward peace; she looks up at Genki with a calm, complete face; then a soft column of gold light rises silently from the empty boards into the dark sky — no smoke, no shockwave, only a gentle upward drift. Genki: kneels beside her on one knee, hand hovering near her shoulder without touching — grief held with dignity; after the light passes his head bows and stays bowed. Far away the vast churning mass shudders, its edges trembling and visibly shrinking. EMOTION — arc: peace freely chosen → gratitude spoken once → a farewell that weakens fear itself; loss and victory in the same breath."
    }
   ]
  },
@@ -1324,30 +1367,35 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who accepted the weight"
      },
      {
       "id": "03",
       "cn": "大江炎馬",
-      "en": "Oe Enma"
+      "en": "Oe Enma",
+      "recap": "the shuten-doji king"
      },
      {
       "id": "05",
       "cn": "鞍馬烏嶽",
-      "en": "Kurama Ugaku"
+      "en": "Kurama Ugaku",
+      "recap": "the tengu of the black wings"
      },
      {
       "id": "04",
       "cn": "茨木義牙",
-      "en": "Ibaraki Giga"
+      "en": "Ibaraki Giga",
+      "recap": "the loyal fang"
      },
      {
       "id": "06",
       "cn": "鞍馬白嶺",
-      "en": "Kurama Hakurei"
+      "en": "Kurama Hakurei",
+      "recap": "the great tengu"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who accepted the weight. [Image2] Oe Enma, the shuten-doji king. [Image3] Kurama Ugaku, the tengu of the black wings. [Image4] Ibaraki Giga, the loyal fang. [Image5] Kurama Hakurei, the great tengu. MOVEMENT — Genki: sits at the bridge's edge watching the still black water, then rises in one slow unbroken motion to meet what comes. The four lords advance toward the bridge in ordered formation, fog parting at their feet: Enma's heavy rolling stride, roof-shaking but unhurried; Giga's taut, coiled steps; Ugaku aloft on slow deliberate wingbeats; Hakurei gliding as though the ground itself carries him — cloaks and wings settling between strides. At the center Genki and the armored king stop face to face, neither backing away, the night air taut but unbroken between them. EMOTION — not a battle but an acknowledgment between bearers of weight: they came to see the one who chose to stay, and he answers with level eyes. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: sits at the bridge's edge watching the still black water, then rises in one slow unbroken motion to meet what comes. The four lords advance toward the bridge in ordered formation, fog parting at their feet: Enma's heavy rolling stride, roof-shaking but unhurried; Giga's taut, coiled steps; Ugaku aloft on slow deliberate wingbeats; Hakurei gliding as though the ground itself carries him — cloaks and wings settling between strides. At the center Genki and the armored king stop face to face, neither backing away, the night air taut but unbroken between them. EMOTION — not a battle but an acknowledgment between bearers of weight: they came to see the one who chose to stay, and he answers with level eyes."
    },
    {
     "sc": "B",
@@ -1357,15 +1405,17 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni who is only staying"
      },
      {
       "id": "10",
       "cn": "碧吉",
-      "en": "Aokichi"
+      "en": "Aokichi",
+      "recap": "the small kappa who cannot follow"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main characters: [Image1] Akaza Genki, the oni who is only staying. [Image2] Aokichi, the small kappa who cannot follow. MOVEMENT — Genki: drops suddenly to one knee gripping the bridge railing — the accumulated names pressing down at last, his arm trembling once — then rises with slow finality, straightening vertebra by vertebra as distant torches flicker alive along the far bank. He walks alone toward the wall of torchlight, back to camera — the same ceremonial parade rhythm from the first night, footsteps even and unhurried, but carried now by choice; Aokichi's small outstretched hand slips from his fingers, neither of them looking down. Inside the ring of fallen torches he stands motionless, weight rooted, while the flames rise around him like a tide — his outline wavering in the heat but never bending. EMOTION — arc: the last weight landing → resolve rising with him → serene endurance: bearing, not burning. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — Genki: drops suddenly to one knee gripping the bridge railing — the accumulated names pressing down at last, his arm trembling once — then rises with slow finality, straightening vertebra by vertebra as distant torches flicker alive along the far bank. He walks alone toward the wall of torchlight, back to camera — the same ceremonial parade rhythm from the first night, footsteps even and unhurried, but carried now by choice; Aokichi's small outstretched hand slips from his fingers, neither of them looking down. Inside the ring of fallen torches he stands motionless, weight rooted, while the flames rise around him like a tide — his outline wavering in the heat but never bending. EMOTION — arc: the last weight landing → resolve rising with him → serene endurance: bearing, not burning."
    },
    {
     "sc": "C",
@@ -1375,10 +1425,11 @@ window.KINMUKU_EPS = {
      {
       "id": "01",
       "cn": "赤座玄鬼",
-      "en": "Akaza Genki"
+      "en": "Akaza Genki",
+      "recap": "the oni becoming flawless gold"
      }
     ],
-    "prompt": "Follow the storyboard structure exactly, adding smooth in-between animation and rich motion detail. Main character: [Image1] Akaza Genki, the oni becoming flawless gold. MOVEMENT — the fire gutters out; a dazed crowd stands motionless in the dark, staring at the quiet figure whose horns have nearly faded; Genki remains at the center — calm, eyes closed, breath slow and settled, wind moving his hair across softened horns as the red tint drains from his skin to a human tone; he simply breathes, shoulders at rest. Then, one by one across changing seasons, the other yokai dissolve into rising gold light in their own quiet places — each release a soft, silent upward drift, clothes and hair lifting gently as they go. At last the bridge stands empty: wind crosses the bare planks, scattered leaves tumble through, and the far horizon opens into a boundless field of pure flawless gold. EMOTION — stillness perfected: no fear left to carry, no one left to carry it — 金寂, the golden stillness the whole story walked toward. Do not animate storyboard annotations, arrows, panel numbers, or sketch notes."
+    "body": "MOVEMENT — the fire gutters out; a dazed crowd stands motionless in the dark, staring at the quiet figure whose horns have nearly faded; Genki remains at the center — calm, eyes closed, breath slow and settled, wind moving his hair across softened horns as the red tint drains from his skin to a human tone; he simply breathes, shoulders at rest. Then, one by one across changing seasons, the other yokai dissolve into rising gold light in their own quiet places — each release a soft, silent upward drift, clothes and hair lifting gently as they go. At last the bridge stands empty: wind crosses the bare planks, scattered leaves tumble through, and the far horizon opens into a boundless field of pure flawless gold. EMOTION — stillness perfected: no fear left to carry, no one left to carry it — 金寂, the golden stillness the whole story walked toward."
    }
   ]
  }
