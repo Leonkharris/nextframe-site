@@ -54,6 +54,23 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 .panel .cap .cn-t{font-family:var(--cjk);color:#e4ddcc;font-size:15px;line-height:1.7}
 .panel .cap .en-t{color:var(--muted);font-size:13.5px;line-height:1.6;font-style:italic;margin-top:6px}
 .panel .cap .jp-t{font-family:var(--cjk);color:#8d97ad;font-size:12.5px;line-height:1.7;margin-top:6px}
+/* per-shot clip card (keshi method — recommended) */
+.svc{border-top:1px dashed var(--line);margin-top:12px;padding-top:10px}
+.svc .sh{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.svc .sh .cn{font-family:var(--cjk);font-size:12px}
+.svc .sh .rec{background:linear-gradient(160deg,var(--gold-d),#6b5827);color:#f4e9c8;border-radius:6px;padding:2px 8px;font-size:9px}
+.svc .sh .tag{margin-left:auto;color:var(--faint)}
+.svc .sr{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.svc .sr .rf{text-align:center;width:88px}
+.svc .sr .rf img{width:84px;height:48px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line2);display:block;background:#faf7ef}
+.svc .sr .rf.board img{object-fit:contain}
+.svc .sr .rf .bind{font-size:8.5px;color:var(--gold);letter-spacing:1px;margin-top:3px}
+.svc .sp{display:flex;gap:8px;align-items:stretch}
+.svc .sp textarea{flex:1;min-height:58px;background:#080a10;border:1px solid var(--line);border-radius:8px;color:#cfc9ba;font-size:11.5px;line-height:1.5;padding:8px 10px;resize:vertical;font-family:var(--sans)}
+.svc .sp .col{display:flex;flex-direction:column;gap:4px;justify-content:center}
+.svc .sp button{background:linear-gradient(160deg,var(--gold-d),#6b5827);border:1px solid var(--gold);color:#f4e9c8;border-radius:8px;padding:8px 10px;font-size:10px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.svc .sp button:hover{filter:brightness(1.15)}
+.svc .sp .ok{font-size:10px;color:var(--gold-b);opacity:0;transition:opacity .3s;text-align:center}
 /* manual video kit */
 .kit{background:linear-gradient(160deg,#0f1420,#0a0d14);border:1px dashed var(--line2);border-radius:14px;margin:6px 0 34px;overflow:hidden}
 .kit .kh{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--serif);
@@ -149,6 +166,22 @@ if(!E){
   document.getElementById('logline').textContent = E.logline || '';
   const base = `assets/episodes/ep${ep}`;
   for(const l of ['cn','en','jp']) document.getElementById('aud_'+l).src = `${base}/narr_${l}.mp3`;
+  const shotCard = s => {
+    if(!s.video) return '';
+    const v = s.video;
+    const prompt = `Image-to-video from this exact start frame. ${v.motion}`
+      + (v.chars.length ? ` The character${v.chars.length>1?'s':''} stay${v.chars.length>1?'':'s'} exactly on-model as in frame-0 and the attached identity board${v.chars.length>1?'s':''}.` : '')
+      + ` Fully painted anime; continuous fluid motion with secondary motion everywhere (hair, cloth, mist, flame); never a still frame.`;
+    return `<div class="svc">
+      <div class="sh"><span class="cn">單鏡生成</span>SHOT CLIP · i2v<span class="rec">推薦 KESHI METHOD</span><span class="tag">gen 3–5s · use best 2–3s · cut on motion</span></div>
+      <div class="sr">
+        <div class="rf"><a href="${base}/panels/shot${s.n}.png" target="_blank"><img src="${base}/panels/shot${s.n}.png" alt="start frame"></a><div class="bind">START FRAME 起始幀</div></div>
+        ${v.chars.map((c,i)=>`<div class="rf board"><a href="assets/refs_board/${c.id}.png" target="_blank"><img src="assets/refs_board/${c.id}.png" alt="${esc(c.en)}"></a><div class="bind">IMAGE ${i+1} · ${esc(c.cn)}</div></div>`).join('')}
+      </div>
+      <div class="sp"><textarea readonly>${esc(prompt)}</textarea>
+        <div class="col"><button onclick="copyKit(this)">⧉ COPY</button><span class="ok">✓</span></div></div>
+    </div>`;
+  };
   const kit = sc => {
     if(!sc) return '';
     const C = sc.chars.length, bIdx = C+1, k0 = C+2;
@@ -164,7 +197,7 @@ if(!E){
       + `<div class="rf"><a href="${base}/boards/scene${sc.sc}.png" target="_blank" title="開啟分鏡表 storyboard sheet"><img src="${base}/boards/scene${sc.sc}.png" alt="storyboard"></a><div class="bind">IMAGE ${bIdx}</div><div class="nm">分鏡表 board</div></div>`
       + shotIds.map((n,j)=>`<div class="rf"><a href="${base}/panels/shot${n}.png" target="_blank" title="開啟關鍵幀 keyframe S${n}"><img src="${base}/panels/shot${n}.png" alt="keyframe S${n}"></a><div class="bind">IMAGE ${k0+j}</div><div class="nm">關鍵幀 S${n}</div></div>`).join('');
     return `<div class="kit">
-      <div class="kh"><span class="cn">手動視頻生成</span>MANUAL VIDEO KIT · SCENE ${ep}-${sc.sc}（S${sc.s0}–S${sc.s1}）<span class="tag">SEEDANCE 2.0 · 15s</span></div>
+      <div class="kh"><span class="cn">手動視頻生成</span>MANUAL VIDEO KIT · SCENE ${ep}-${sc.sc}（S${sc.s0}–S${sc.s1}）<span class="tag">FULL-SCENE 15s · EXPERIMENTAL — prefer the per-shot cards above</span></div>
       <div class="kb"><a href="${base}/boards/scene${sc.sc}.png" target="_blank"><img src="${base}/boards/scene${sc.sc}.png" alt="Storyboard ${sc.sc}" onerror="this.parentNode.parentNode.style.display='none'"></a></div>
       <div class="ka"><span class="cn">附件清單</span> ATTACH THESE FILES, IN THIS ORDER （click to open each file）</div>
       <div class="kr">${attach}</div>
@@ -185,16 +218,17 @@ if(!E){
         <div class="cn-t">${esc(s.cn)}</div>
         <div class="en-t">${esc(s.en)}</div>
         <div class="jp-t">${esc(s.jp)}</div>
+        ${shotCard(s)}
       </div></div>` + ((i+1)%4===0 ? kit((E.scenes||[])[(i+1)/4-1]) : '');
   }).join('');
   document.getElementById('foot').textContent = `金無垢 · Project Kinmuku · 第${ep}集 Storyboard · screenplay + narration by Fable · next-frame.agency/ProjectKinmuku`;
 }
 function copyKit(btn){
-  const ta = btn.closest('.kp').querySelector('textarea');
+  const ta = btn.closest('.kp, .sp').querySelector('textarea');
   ta.select(); ta.setSelectionRange(0, 999999);
-  const done = () => { const ok = btn.parentNode.querySelector('.ok'); ok.style.opacity = 1; setTimeout(()=>ok.style.opacity=0, 1600); };
-  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).then(done, ()=>{ document.execCommand('copy'); done(); });
-  else { document.execCommand('copy'); done(); }
+  try { document.execCommand('copy'); } catch(e) {}
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).catch(()=>{});
+  const ok = btn.parentNode.querySelector('.ok'); ok.style.opacity = 1; setTimeout(()=>ok.style.opacity=0, 1600);
 }
 const prev = document.getElementById('prev'), next = document.getElementById('next');
 if(ep<=1){ prev.href='prologue.html'; prev.textContent='← 序章 Prologue'; } else prev.href='episode.html?ep='+(ep-1);
