@@ -470,15 +470,21 @@ function vStory(id){
   const s = D.stories.find(x=>x.id===id); if(!s) return vStories();
   const idx = D.stories.findIndex(x=>x.id===id);
   const prev = D.stories[idx-1], next = D.stories[idx+1];
-  const shots = s.shots.map(sh=>`
-    <div class="shot">
-      <div class="sh">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
-      <div class="slug">${esc(sh.slug)}</div>
-      ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
-      <div class="vo"><span class="k">VOICEOVER</span>${
-        MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en">${esc(sh.vo_es)}</span>`
-      }</div>
-    </div>`).join('');
+  const shots = s.shots.map(sh=>{
+    const frameImg = sh.frame
+      ? `<div class="shot-frame" style="margin:12px 0 16px;border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px"><img src="${sh.frame}" style="width:100%;height:auto;display:block" /></div>`
+      : '';
+    return `
+      <div class="shot">
+        <div class="sh">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
+        <div class="slug">${esc(sh.slug)}</div>
+        ${frameImg}
+        ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
+        <div class="vo"><span class="k">VOICEOVER</span>${
+          MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en">${esc(sh.vo_es)}</span>`
+        }</div>
+      </div>`;
+  }).join('');
   const nav = `<div class="detail-nav">
     ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_en)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
     ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_en)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;

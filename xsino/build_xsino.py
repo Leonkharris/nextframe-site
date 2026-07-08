@@ -145,8 +145,13 @@ def parse_story(sid):
         m = re.match(r"##\s*SHOT:\s*(\d+)\s*｜\s*(.+)", line)
         if m:
             if cur_shot: shots.append(cur_shot)
-            cur_shot = {"n": int(m.group(1)), "slug": m.group(2).strip(),
+            nn = m.group(1)
+            cur_shot = {"n": int(nn), "slug": m.group(2).strip(),
                         "action_es": "", "action_en": "", "vo_es": "", "vo_en": ""}
+            frame_rel = f"assets/frames/{sid}/shot{nn}.png"
+            frame_full = os.path.join(os.path.dirname(__file__), "assets", "frames", sid, f"shot{nn}.png")
+            if os.path.exists(frame_full):
+                cur_shot["frame"] = frame_rel
             mode = "shot"
             continue
         sm = re.match(r"ES:\s*(.*)", line)
