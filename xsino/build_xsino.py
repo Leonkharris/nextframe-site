@@ -60,6 +60,12 @@ CURATION = {
     "10": ("anime", "T3", "#E8B84B", "#B0E0E6", "Fortuna", "Fortune"),
 }
 
+# anime-roster leads: contact-sheet # -> role label
+LEADS = {
+    "13": "Kairo · Spinner", "23": "Nyx · Gatekeeper", "36": "Vega · Wheel Keeper",
+    "43": "Fortuna · Spirit", "44": "XSINO girl · brand face",
+}
+
 PROP_ES = "【PROPUESTA】"
 PROP_EN_RE = re.compile(r"^\[PROPOSAL\]\s*")
 
@@ -169,6 +175,18 @@ def parse_story(sid):
     }
 
 
+def parse_roster():
+    idx = os.path.join(ROOT, "Xsino anime Universe", "CHARACTER_INDEX.md")
+    if not os.path.exists(idx):
+        return []
+    out = []
+    for m in re.finditer(r"^\|\s*(\d{2})\s*\|\s*([^|]+?)\s*\|\s*([^|]+?)\s*\|", read(idx), re.M):
+        n = m.group(1)
+        out.append({"n": n, "thumb": f"assets/roster/{n}.webp",
+                    "desc": m.group(3).strip(), "lead": LEADS.get(n, "")})
+    return out
+
+
 def list_ids(dirname):
     d = os.path.join(SRC, dirname)
     ids = [f[:-3] for f in os.listdir(d) if re.fullmatch(r"\d+\.md", f)]
@@ -193,12 +211,14 @@ def main():
 
     characters = [parse_character(pid) for pid in list_ids("profiles")]
     stories = [parse_story(sid) for sid in list_ids("stories")]
+    roster = parse_roster()
 
     data = {
         "meta": META,
         "pillars": pillars,
         "characters": characters,
         "stories": stories,
+        "roster": roster,
         "bible": bible,
     }
     js = "window.XSINO_DATA = " + json.dumps(data, ensure_ascii=False, separators=(",", ":")) + ";\n"
