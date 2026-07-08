@@ -211,6 +211,7 @@ h1.title .es{color:var(--gold-bright); margin-right:14px}
   padding:8px 0 8px 16px; border-left:2px solid var(--gold-dim); line-height:1.5}
 .shot .vo .en{color:var(--muted); font-size:13px; font-style:italic; font-family:var(--sans); display:block; margin-top:3px}
 .shot .vo .k{font-size:9px; letter-spacing:1.5px; color:var(--faint); display:block; margin-bottom:4px}
+.shot-frame img{width:100%; height:auto; object-fit:contain; max-height:500px; display:block; border-radius:6px}
 
 /* glossary-style docs */
 .doclist .section-h:first-child{margin-top:6px}
@@ -277,12 +278,12 @@ function pair(p, cls){
   const prop = p.proposal ? '<span class="prop">PROPUESTA · PROPOSAL</span>' : '';
   if(MODE==='es') return `<div class="pair only ${cls}"><span class="es">${es}${prop}</span></div>`;
   if(MODE==='en') return `<div class="pair only ${cls}"><span class="en">${en||es}${prop}</span></div>`;
-  return `<div class="pair ${cls}"><span class="es">${en}${prop}</span><span class="en">${es}</span></div>`;
+  return `<div class="pair ${cls}"><span class="es">${en}${prop}</span><span class="en" style="font-style:italic;opacity:0.75">${es}</span></div>`;
 }
 function biTitle(es, en){
   if(MODE==='es') return `<span class="es">${esc(es)}</span>`;
   if(MODE==='en') return `<span class="en">${esc(en)}</span>`;
-  return `<span class="es">${esc(en)}</span><span class="en">${esc(es)}</span>`;
+  return `<span class="es">${esc(en)}</span><span class="en" style="font-style:italic;opacity:0.75;font-weight:normal">${esc(es)}</span>`;
 }
 function sectionHead(es, en){ return `<div class="section-h">${biTitle(es,en)}</div>`; }
 function bilingualDiv(es, en, cls){
@@ -290,7 +291,7 @@ function bilingualDiv(es, en, cls){
   const esE = esc(es), enE = esc(en);
   if(MODE==='es') return `<div class="${cls}"><span class="es">${esE}</span></div>`;
   if(MODE==='en') return `<div class="${cls}"><span class="en">${enE||esE}</span></div>`;
-  return `<div class="${cls}"><span class="es">${enE}</span><span class="en">${esE}</span></div>`;
+  return `<div class="${cls}"><span class="es">${enE}</span><span class="en" style="font-style:italic;opacity:0.75;margin-top:4px;display:block">${esE}</span></div>`;
 }
 function sectionsHTML(sections){
   return sections.map(s=>{
@@ -481,7 +482,7 @@ function vStory(id){
         ${frameImg}
         ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
         <div class="vo"><span class="k">VOICEOVER</span>${
-          MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en">${esc(sh.vo_es)}</span>`
+          MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en" style="font-style:italic;opacity:0.75;display:block;margin-top:3px">${esc(sh.vo_es)}</span>`
         }</div>
       </div>`;
   }).join('');
