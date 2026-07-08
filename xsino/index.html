@@ -1,0 +1,591 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>XSINO — Interactive Codex</title>
+<script src="data.js"></script>
+<style>
+:root{
+  /* Real XSINO brand (pulled from xsino.io 2026-07-08): navy #040627 + lavender #B8B4F4 + IBM Plex Mono */
+  --ink:#040627; --ink2:#0a0c2e; --panel:#12143b; --panel2:#1a1c4d;
+  --accent:#A78BFA; --accent-bright:#C9B8FF; --accent-dim:#6f6ab8; --magenta:#E24D9C; --cyan:#34C6E0;
+  --gold:var(--accent); --gold-bright:var(--accent-bright); --gold-dim:var(--accent-dim); /* chrome=lavender; true gold #E8B84B lives in the ¿Y Si...? pillar accent + story luck-moment art */
+  --ember:#F87171; --ember-bright:#ff9a9a;
+  --text:#FFFAFA; --muted:#9b98c4; --faint:#565285;
+  --line:rgba(184,180,244,.16); --line2:rgba(184,180,244,.32);
+  --serif:"IBM Plex Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
+  --sans:"Segoe UI",system-ui,-apple-system,Helvetica,Arial,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,"Cascadia Code",Consolas,monospace;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--ink); color:var(--text); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(80% 55% at 12% 2%, rgba(226,77,156,.11), transparent 55%),
+    radial-gradient(80% 55% at 100% 28%, rgba(52,198,224,.09), transparent 55%),
+    radial-gradient(120% 90% at 50% -10%, rgba(167,139,250,.10), transparent 55%),
+    radial-gradient(140% 120% at 50% 120%, rgba(24,21,70,.55), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+  mix-blend-mode:screen;
+}
+#app{position:relative; z-index:1; display:grid; grid-template-columns:220px 1fr; height:100vh}
+
+/* ---------- left rail ---------- */
+#rail{
+  background:linear-gradient(180deg,var(--ink2),#03031a); border-right:1px solid var(--line);
+  display:flex; flex-direction:column; padding:20px 0; overflow:auto;
+}
+#brand{padding:4px 22px 20px; cursor:pointer}
+#brand .word{font-family:var(--mono); font-size:28px; letter-spacing:4px; font-weight:700;
+  background:linear-gradient(180deg,#ffffff,var(--accent),var(--accent-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+#brand .logo{width:138px; max-width:100%; display:block}
+#brand .sub{font-size:11px; letter-spacing:4px; color:var(--muted); margin-top:6px}
+.navitem{
+  display:flex; align-items:center; gap:12px; padding:11px 22px; cursor:pointer;
+  color:var(--muted); border-left:2px solid transparent; transition:.15s; font-size:14px;
+}
+.navitem .ico{font-size:15px; color:var(--gold-dim); width:18px; text-align:center}
+.navitem .en{font-size:10px; letter-spacing:1px; opacity:.65; margin-left:auto}
+.navitem:hover{color:var(--text); background:rgba(232,184,75,.05)}
+.navitem.active{color:var(--gold-bright); border-left-color:var(--gold); background:rgba(184,180,244,.10)}
+.navitem.active .ico{color:var(--gold)}
+#rail .spacer{flex:1}
+#rail .foot{padding:14px 22px 0; font-size:10px; color:var(--faint); line-height:1.6; border-top:1px solid var(--line); margin-top:12px}
+
+/* ---------- top bar ---------- */
+#main{display:flex; flex-direction:column; min-width:0; height:100vh}
+#topbar{
+  display:flex; align-items:center; gap:16px; padding:14px 30px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(16,20,31,.9),rgba(11,14,23,.6)); backdrop-filter:blur(4px);
+}
+#crumb{font-family:var(--serif); font-size:15px; color:var(--text); letter-spacing:.3px}
+#crumb .sep{color:var(--faint); margin:0 8px}
+#crumb .es{color:var(--gold)}
+#langtoggle{margin-left:auto; display:flex; border:1px solid var(--line2); border-radius:20px; overflow:hidden}
+#langtoggle button{
+  background:transparent; color:var(--muted); border:0; padding:6px 14px; cursor:pointer;
+  font-size:12px; font-family:var(--sans); letter-spacing:1px; transition:.15s;
+}
+#langtoggle button.on{background:var(--gold); color:#1a1206; font-weight:600}
+#view{flex:1; overflow:auto; padding:34px 40px 80px; scroll-behavior:smooth}
+#view::-webkit-scrollbar,#rail::-webkit-scrollbar{width:10px}
+#view::-webkit-scrollbar-thumb,#rail::-webkit-scrollbar-thumb{background:rgba(232,184,75,.2); border-radius:6px}
+
+/* ---------- shared ---------- */
+h1.title{font-family:var(--serif); font-weight:700; font-size:30px; letter-spacing:.3px; margin-bottom:4px}
+h1.title .es{color:var(--gold-bright); margin-right:14px}
+.sub{color:var(--muted); font-size:14px; margin-bottom:26px; max-width:720px; line-height:1.6}
+.badge{display:inline-block; font-size:10px; letter-spacing:1px; padding:2px 8px; border-radius:10px;
+  border:1px solid var(--line2); color:var(--gold); text-transform:uppercase}
+.prop{font-size:9px; color:var(--ember-bright); border:1px solid rgba(192,69,59,.4); border-radius:4px;
+  padding:1px 5px; letter-spacing:1px; vertical-align:middle; margin-left:6px}
+.section-h{font-family:var(--serif); font-size:19px; color:var(--gold-bright); margin:34px 0 14px;
+  padding-bottom:8px; border-bottom:1px solid var(--line); letter-spacing:.3px}
+.section-h .en{color:var(--muted); font-size:13px; font-family:var(--sans); margin-left:10px; letter-spacing:1px}
+
+/* bilingual pair rows */
+.pair{padding:9px 0; border-bottom:1px dashed rgba(232,184,75,.09); line-height:1.7}
+.pair .es{display:block; color:#e4ddcc; font-size:15.5px}
+.pair .en{display:block; color:var(--muted); font-size:14px; margin-top:3px; font-style:italic}
+.pair.only .en{color:#e4ddcc; font-size:15px; margin-top:0; font-style:normal}
+.pair.p .es,.pair.p .en{opacity:.82}
+
+/* ---------- HUB ---------- */
+.hub-hero{text-align:center; padding:26px 0 10px}
+.hub-hero .brandmark{font-family:var(--serif); font-size:52px; letter-spacing:10px; font-weight:700;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold),var(--gold-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+.hub-hero .tag{color:var(--gold); font-family:var(--serif); font-size:18px; margin-top:18px; letter-spacing:.3px}
+.hub-hero .tagen{color:var(--muted); font-size:14px; margin-top:6px; font-style:italic}
+.hub-hero .market{color:var(--faint); font-size:12px; margin-top:14px; letter-spacing:1px; text-transform:uppercase}
+.hub-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; margin-top:40px}
+.hub-card{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-top:3px solid var(--accent,var(--gold)); border-radius:12px; padding:22px; cursor:pointer;
+  transition:.18s; position:relative; overflow:hidden}
+.hub-card:hover{border-color:var(--line2); transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.hub-card .ico{font-size:26px; color:var(--accent,var(--gold)); display:block; margin-bottom:14px}
+.hub-card .t{font-family:var(--serif); font-size:18px; color:var(--text)}
+.hub-card .ten{font-size:12px; color:var(--muted); margin-top:2px}
+.hub-card .d{color:var(--muted); font-size:12.5px; margin-top:10px; line-height:1.5}
+
+/* ---------- pillars listing + detail ---------- */
+.pillar-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(280px,1fr)); gap:18px}
+.pillar-card{position:relative; border-radius:14px; overflow:hidden; cursor:pointer; min-height:180px;
+  border:1px solid var(--line); transition:.18s; display:flex; align-items:flex-end}
+.pillar-card:hover{transform:translateY(-3px); box-shadow:0 16px 36px rgba(0,0,0,.45)}
+.pillar-card .bg{position:absolute; inset:0; z-index:0}
+.pillar-card .bg img{width:100%; height:100%; object-fit:cover; display:block}
+.pillar-card .shade{position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,transparent 30%,rgba(8,10,15,.85))}
+.pillar-card .body{position:relative; z-index:2; padding:18px 20px}
+.pillar-card .ico{font-size:22px}
+.pillar-card .es{font-family:var(--serif); font-size:19px; display:block; margin-top:6px}
+.pillar-card .en{font-size:12px; color:var(--muted); display:block; margin-top:2px}
+.pillar-hero{position:relative; border-radius:16px; overflow:hidden; min-height:220px; margin-bottom:26px;
+  border:1px solid var(--line2); display:flex; align-items:flex-end}
+.pillar-hero .bg{position:absolute; inset:0; z-index:0}
+.pillar-hero .bg img{width:100%; height:100%; object-fit:cover; display:block}
+.pillar-hero .shade{position:absolute; inset:0; z-index:1; background:linear-gradient(180deg,transparent 20%,rgba(8,10,15,.88))}
+.pillar-hero .body{position:relative; z-index:2; padding:26px 30px}
+
+/* ---------- roster ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; align-items:center}
+.chip{background:var(--panel); border:1px solid var(--line); color:var(--muted); padding:6px 13px;
+  border-radius:16px; font-size:12px; cursor:pointer; transition:.15s; letter-spacing:.3px}
+.chip:hover{color:var(--text); border-color:var(--line2)}
+.chip.on{background:var(--gold); color:#1a1206; border-color:var(--gold); font-weight:600}
+.chip .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle}
+.roster{display:grid; grid-template-columns:repeat(auto-fill,minmax(178px,1fr)); gap:18px}
+.ccard{background:linear-gradient(165deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; cursor:pointer; transition:.18s; position:relative}
+.ccard:hover{transform:translateY(-4px); border-color:var(--line2); box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.ccard.dim{opacity:.35; filter:saturate(.5)}
+.ccard .art{height:190px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden}
+.ccard .art img{width:100%; height:100%; object-fit:cover; display:block}
+.medallion{width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative}
+.medallion .seal{font-family:var(--serif); font-weight:700; font-size:38px;
+  color:#f4ecd8; letter-spacing:2px; padding:14px 18px; border:1.5px solid rgba(255,255,255,.25);
+  border-radius:10px; text-shadow:0 2px 12px rgba(0,0,0,.5); background:rgba(0,0,0,.14)}
+.ccard .pri{position:absolute; top:10px; left:10px; font-size:10px; letter-spacing:1px; font-weight:700;
+  background:rgba(0,0,0,.45); color:var(--gold-bright); padding:2px 7px; border-radius:6px; border:1px solid var(--line)}
+.ccard .meta{padding:13px 14px 15px}
+.ccard .nm{font-family:var(--serif); font-size:17px; color:var(--text); font-weight:700}
+.ccard .al{font-size:11.5px; color:var(--muted); letter-spacing:.3px; margin-top:2px}
+.ccard .sp{font-size:11px; margin-top:8px; display:flex; justify-content:space-between; align-items:center}
+.ccard .ptag{font-size:9px; letter-spacing:.5px; padding:2px 7px; border-radius:8px; color:#0c0c0c}
+
+/* ---------- character detail ---------- */
+.detail-head{display:flex; gap:26px; align-items:flex-start; margin-bottom:10px}
+.detail-art{width:200px; flex:0 0 200px; height:260px; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line2); position:relative}
+.detail-art img{width:100%; height:100%; object-fit:cover}
+.detail-info h1{font-family:var(--serif); font-size:32px; font-weight:700; letter-spacing:.3px; line-height:1.15}
+.detail-info .al{font-size:15px; color:var(--muted); margin-top:6px}
+.detail-info .tags{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0}
+.detail-info .tags span{font-size:11px; padding:4px 10px; border-radius:12px; border:1px solid var(--line2); color:var(--gold); letter-spacing:.5px}
+.detail-info .role{color:#e4ddcc; font-size:14px; line-height:1.6; max-width:560px; font-style:italic;
+  border-left:2px solid var(--gold-dim); padding-left:14px; margin-top:8px}
+.detail-info .role .en{display:block; color:var(--muted); font-size:12.5px; margin-top:4px}
+.jump{display:flex; flex-wrap:wrap; gap:7px; margin:22px 0 10px; position:sticky; top:-34px; padding:12px 0;
+  background:linear-gradient(180deg,var(--ink) 70%,transparent); z-index:5}
+.jump a{font-size:11px; color:var(--muted); border:1px solid var(--line); padding:5px 11px; border-radius:14px; cursor:pointer; transition:.15s}
+.jump a:hover{color:var(--gold-bright); border-color:var(--line2)}
+.quote{font-family:var(--serif); color:var(--gold-bright); font-size:17px; padding:10px 0 10px 20px;
+  border-left:2px solid var(--gold); margin:8px 0; line-height:1.5}
+.quote .en{color:var(--muted); font-size:14px; font-style:italic; font-family:var(--sans); display:block; margin-top:4px}
+.detail-nav{display:flex; justify-content:space-between; margin-top:44px; gap:14px}
+.detail-nav button{flex:1; background:var(--panel); border:1px solid var(--line); color:var(--muted);
+  padding:14px; border-radius:10px; cursor:pointer; font-family:var(--sans); transition:.15s; text-align:left}
+.detail-nav button:hover{color:var(--text); border-color:var(--line2)}
+.detail-nav button.next{text-align:right}
+.detail-nav .lbl{font-size:10px; letter-spacing:2px; color:var(--faint); display:block; margin-bottom:4px}
+.detail-nav .nm{font-family:var(--serif); font-size:15px}
+.backbtn{display:inline-flex; align-items:center; gap:8px; color:var(--muted); cursor:pointer; font-size:13px; margin-bottom:20px; transition:.15s}
+.backbtn:hover{color:var(--gold)}
+
+/* ---------- stories ---------- */
+.story-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px}
+.scard{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 20px; cursor:pointer; transition:.15s}
+.scard:hover{border-color:var(--line2); background:var(--panel2); transform:translateY(-3px)}
+.scard .id{font-size:10px; letter-spacing:2px; color:var(--gold-dim)}
+.scard .es{font-family:var(--serif); font-size:18px; color:var(--gold-bright); margin-top:6px}
+.scard .en{font-size:12.5px; color:var(--muted); margin-top:2px}
+.scard .ll{font-size:12px; color:var(--muted); margin-top:10px; line-height:1.5}
+.scard .ptag{display:inline-block; margin-top:12px; font-size:9px; letter-spacing:.5px; padding:2px 8px; border-radius:8px; color:#0c0c0c}
+
+/* ---------- storyboard viewer ---------- */
+.reader{max-width:780px; margin:0 auto}
+.thesis-block{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-left:3px solid var(--gold); border-radius:10px; padding:18px 22px; margin:20px 0 30px}
+.thesis-block .k{font-size:10px; letter-spacing:2px; color:var(--gold-dim); text-transform:uppercase}
+.shot{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; padding:20px 24px; margin-bottom:16px}
+.shot .sh{font-family:var(--serif); font-size:12.5px; color:var(--gold); letter-spacing:1.5px; margin-bottom:6px}
+.shot .slug{font-size:12px; color:var(--muted); margin-bottom:14px; line-height:1.5}
+.shot .action .es{font-size:15px; color:#e4ddcc; display:block; line-height:1.6}
+.shot .action .en{font-size:13.5px; color:var(--muted); display:block; margin-top:4px; font-style:italic; line-height:1.6}
+.shot .vo{margin-top:14px; font-family:var(--serif); color:var(--gold-bright); font-size:15px;
+  padding:8px 0 8px 16px; border-left:2px solid var(--gold-dim); line-height:1.5}
+.shot .vo .en{color:var(--muted); font-size:13px; font-style:italic; font-family:var(--sans); display:block; margin-top:3px}
+.shot .vo .k{font-size:9px; letter-spacing:1.5px; color:var(--faint); display:block; margin-bottom:4px}
+
+/* glossary-style docs */
+.doclist .section-h:first-child{margin-top:6px}
+@media(max-width:820px){#app{grid-template-columns:64px 1fr} #brand .sub,.navitem .label-txt,.navitem .en{display:none} #view{padding:24px 18px} .detail-head{flex-wrap:wrap}}
+</style>
+
+<div id="app">
+  <nav id="rail">
+    <div id="brand" onclick="go('#hub')">
+      <img class="logo" src="assets/xsino_logo.png" alt="XSINO" onerror="this.style.display='none';this.nextElementSibling.style.display='block'">
+      <div class="word" style="display:none">XSINO</div>
+      <div class="sub">CODEX</div>
+    </div>
+    <div id="nav"></div>
+    <div class="spacer"></div>
+    <div class="foot">Interactive Codex · built from the<br>bilingual brand bible.<br>ES/EN toggle above.</div>
+  </nav>
+  <div id="main">
+    <div id="topbar">
+      <div id="crumb"></div>
+      <div id="langtoggle">
+        <button data-m="es">ES</button>
+        <button data-m="both">AMBOS</button>
+        <button data-m="en">EN</button>
+      </div>
+    </div>
+    <div id="view"></div>
+  </div>
+</div>
+
+<script>
+const D = window.XSINO_DATA;
+let MODE = localStorage.getItem('xsino_mode') || 'both';
+
+const NAV = [
+  {ico:'✦', hash:'#hub',        es:'Inicio',    en:'HUB'},
+  {ico:'◆', hash:'#pillars',    es:'Pilares',   en:'PILLARS'},
+  {ico:'★', hash:'#cast',       es:'Elenco',    en:'CAST'},
+  {ico:'▶', hash:'#stories',    es:'Historias', en:'STORIES'},
+  {ico:'●', hash:'#production', es:'Producción',en:'PRODUCTION'},
+  {ico:'⚙', hash:'#pipeline',   es:'Pipeline',  en:'PIPELINE'},
+];
+
+const byId = id => D.characters.find(c => c.id === id);
+const pillarOf = key => D.pillars.find(p => p.key === key) || {};
+const charsOf = key => D.characters.filter(c => c.pillar === key);
+const storiesOf = key => D.stories.filter(s => s.pillar === key);
+const esc = s => (s||'').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+
+/* ---- bilingual rendering ---- */
+function pair(p, cls){
+  cls = cls || '';
+  if(p.proposal) cls += ' p';
+  const es = esc(p.es), en = esc(p.en);
+  const prop = p.proposal ? '<span class="prop">PROPUESTA · PROPOSAL</span>' : '';
+  if(MODE==='es') return `<div class="pair only ${cls}"><span class="es">${es}${prop}</span></div>`;
+  if(MODE==='en') return `<div class="pair only ${cls}"><span class="en">${en||es}${prop}</span></div>`;
+  return `<div class="pair ${cls}"><span class="es">${es}${prop}</span><span class="en">${en}</span></div>`;
+}
+function biTitle(es, en){
+  if(MODE==='es') return `<span class="es">${esc(es)}</span>`;
+  if(MODE==='en') return `<span class="en">${esc(en)}</span>`;
+  return `<span class="es">${esc(es)}</span><span class="en">${esc(en)}</span>`;
+}
+function sectionHead(es, en){ return `<div class="section-h">${biTitle(es,en)}</div>`; }
+function bilingualDiv(es, en, cls){
+  cls = cls || '';
+  const esE = esc(es), enE = esc(en);
+  if(MODE==='es') return `<div class="${cls}"><span class="es">${esE}</span></div>`;
+  if(MODE==='en') return `<div class="${cls}"><span class="en">${enE||esE}</span></div>`;
+  return `<div class="${cls}"><span class="es">${esE}</span><span class="en">${enE}</span></div>`;
+}
+function sectionsHTML(sections){
+  return sections.map(s=>{
+    const isQuotes = /Frases Clave|Key Lines/.test(s.es+s.en);
+    const body = isQuotes
+      ? s.pairs.map(p=>{
+          if(MODE==='es') return `<div class="quote">${esc(p.es)}</div>`;
+          if(MODE==='en') return `<div class="quote">${esc(p.en||p.es)}</div>`;
+          return `<div class="quote">${esc(p.es)}<span class="en">${esc(p.en)}</span></div>`;
+        }).join('')
+      : s.pairs.map(p=>pair(p)).join('');
+    return `${sectionHead(s.es,s.en)}${body}`;
+  }).join('');
+}
+
+/* ---- portrait / medallion ---- */
+function initials(name){
+  return (name||'').trim().split(/\s+/).map(w=>w[0]||'').join('').slice(0,2).toUpperCase();
+}
+function medallion(c){
+  return `<div class="medallion" style="background:radial-gradient(120% 90% at 50% 25%, ${c.color2}, ${c.color} 70%, #0c0c0c)">
+    <div class="seal">${esc(initials(c.name))}</div></div>`;
+}
+function artBlockInner(c){
+  return `<img src="assets/portraits/${c.id}.png" alt="${esc(c.name)}"
+     onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${medallion(c).replace(/"/g,'&quot;')}">`;
+}
+function artBlock(c, cls){
+  const mid = medallion(c).replace(/"/g,'&quot;');
+  return `<div class="${cls}"><img src="assets/portraits/${c.id}.png" alt="${esc(c.name)}"
+     onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${mid}"></div>`;
+}
+function pillarBgHTML(p){
+  return `<div class="bg" style="background:linear-gradient(135deg, ${p.accent}, ${p.accent2} 55%, #0c0c14)">
+     <img src="assets/pillars/${p.key}.png" alt="" onerror="this.remove()"></div><div class="shade"></div>`;
+}
+
+/* ---------------- VIEWS ---------------- */
+function vHub(){
+  const cards = D.pillars.map(p=>`
+    <div class="hub-card" style="--accent:${p.accent}" onclick="go('#pillar/${p.key}')">
+      <span class="ico">${p.icon}</span>
+      <div class="t">${esc(p.es)}</div>
+      <div class="ten">${esc(p.en)}</div>
+      <div class="d">${p.pairs[0]?esc(MODE==='en'?p.pairs[0].en:p.pairs[0].es):''}</div>
+    </div>`).join('');
+  const brandSections = D.bible.brand.map(s=>`${sectionHead(s.es,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
+  return `<div class="hub-hero">
+      <div class="brandmark">${esc(D.meta.brand)}</div>
+      <div class="tag">${esc(D.meta.thesis_es)}</div>
+      <div class="tagen">${esc(D.meta.thesis_en)}</div>
+      <div class="market">${esc(MODE==='en'?D.meta.market_en:D.meta.market_es)}</div>
+    </div>
+    <div class="hub-grid">${cards}</div>
+    <div class="doclist">${brandSections}</div>`;
+}
+
+function vPillars(){
+  const cards = D.pillars.map(p=>`
+    <div class="pillar-card" style="border-top:3px solid ${p.accent}" onclick="go('#pillar/${p.key}')">
+      ${pillarBgHTML(p)}
+      <div class="body">
+        <span class="ico">${p.icon}</span>
+        <div style="color:${p.accent2}">${biTitle(p.es,p.en)}</div>
+      </div>
+    </div>`).join('');
+  return `<h1 class="title">${biTitle('Los Cuatro Pilares','The Four Pillars')}</h1>
+    <div class="sub">Cada pilar tiene su elenco, su paleta y su formato. Click para ver personajes e historias. — Each pillar has its own cast, palette, and format. Click to see characters and stories.</div>
+    <div class="pillar-grid">${cards}</div>`;
+}
+
+function vPillar(key){
+  const p = pillarOf(key);
+  if(!p.key) return vPillars();
+  const chars = charsOf(key).map(cardHTML).join('') || `<div class="sub">—</div>`;
+  const stories = storiesOf(key).map(storyCardHTML).join('') || `<div class="sub">—</div>`;
+  return `<span class="backbtn" onclick="go('#pillars')">← ${MODE==='en'?'Back to pillars':'Volver a pilares'}</span>
+    <div class="pillar-hero" style="border-top:3px solid ${p.accent}">
+      ${pillarBgHTML(p)}
+      <div class="body">
+        <span class="ico" style="font-size:28px;color:${p.accent2}">${p.icon}</span>
+        <h1 class="title" style="margin-top:8px">${biTitle(p.es,p.en)}</h1>
+      </div>
+    </div>
+    ${p.pairs.map(pr=>pair(pr)).join('')}
+    ${sectionHead('Elenco del Pilar','Cast in This Pillar')}
+    <div class="roster">${chars}</div>
+    ${sectionHead('Historias del Pilar','Stories in This Pillar')}
+    <div class="story-grid">${stories}</div>`;
+}
+
+function vCast(){
+  const chips = D.pillars.map(p=>{
+    const n = charsOf(p.key).length;
+    return `<div class="chip pillf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.es)} <span style="opacity:.6">${esc(p.en)} ·${n}</span></div>`;
+  }).join('');
+  const cards = D.characters.map(cardHTML).join('');
+  return `<h1 class="title">${biTitle('Elenco','The Cast')}</h1>
+    <div class="sub">Click en cualquier personaje para su ficha bilingüe completa. — Click any character for their full bilingual sheet.</div>
+    <div class="filters">
+      <div class="chip pillf on" data-k="all">Todos · All</div>
+      ${chips}
+    </div>
+    <div class="roster" id="roster">${cards}</div>`;
+}
+function cardHTML(c){
+  const p = pillarOf(c.pillar);
+  return `<div class="ccard" data-pillar="${c.pillar}" onclick="go('#char/${c.id}')">
+    <div class="art">${artBlockInner(c)}</div>
+    <div class="pri">${esc(c.priority)}</div>
+    <div class="meta">
+      <div class="nm">${esc(c.name)}</div>
+      <div class="al">${esc(MODE==='en'?c.alias_en:c.alias_es)}</div>
+      <div class="sp"><span class="ptag" style="background:${p.accent}">${esc((MODE==='en'?p.en:p.es)||'')}</span></div>
+    </div></div>`;
+}
+
+function roleOf(c){
+  const sec = c.sections.find(s=>/Rol en la Historia|Role in the Story/.test(s.es+s.en));
+  return sec && sec.pairs[0] ? sec.pairs[0] : null;
+}
+function vChar(id){
+  const c = byId(id); if(!c) return vCast();
+  const p = pillarOf(c.pillar);
+  const idx = D.characters.findIndex(x=>x.id===id);
+  const n = D.characters.length;
+  const prev = D.characters[(idx+n-1)%n], next = D.characters[(idx+1)%n];
+  const role = roleOf(c);
+  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='en'?s.en:s.es)}</a>`).join('');
+  const secs = c.sections.map((s,i)=>`<div id="sec${i}">${sectionsHTML([s])}</div>`).join('');
+  return `<span class="backbtn" onclick="go('#cast')">← ${MODE==='en'?'Back to cast':'Volver al elenco'}</span>
+    <div class="detail-head">
+      ${artBlock(c,'detail-art')}
+      <div class="detail-info">
+        <h1>${esc(c.name)}</h1>
+        <div class="al">${esc(c.alias_es)} · ${esc(c.alias_en)}</div>
+        <div class="tags">
+          <span style="border-color:${p.accent2};color:${p.accent2}">${esc(p.es)} · ${esc(p.en)}</span>
+          <span>Prioridad · Priority ${esc(c.priority)}</span>
+        </div>
+        ${role?`<div class="role">${esc(role.es)}<span class="en">${esc(role.en)}</span></div>`:''}
+      </div>
+    </div>
+    <div class="jump">${jumps}</div>
+    ${secs}
+    <div class="detail-nav">
+      <button onclick="go('#char/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.name)}</span></button>
+      <button class="next" onclick="go('#char/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.name)}</span></button>
+    </div>`;
+}
+
+function storyCardHTML(s){
+  const p = pillarOf(s.pillar);
+  return `<div class="scard" onclick="go('#story/${s.id}')">
+    <div class="id">STORY ${esc(s.id)} · <span style="color:${s.brand==='heaven'?'#E8C87A':'var(--accent-bright)'}">${s.brand==='heaven'?'HeavenOnline':'XSINO'}</span></div>
+    <div class="es">${esc(s.title_es)}</div>
+    <div class="en">${esc(s.title_en)}</div>
+    <div class="ll">${esc(MODE==='en'?s.logline.en:s.logline.es)}</div>
+    <div class="ptag" style="background:${p.accent}">${esc((MODE==='en'?p.en:p.es)||'')}</div>
+  </div>`;
+}
+function vStories(){
+  const chips = D.pillars.map(p=>{
+    const n = storiesOf(p.key).length;
+    return `<div class="chip storyf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.es)} <span style="opacity:.6">${esc(p.en)} ·${n}</span></div>`;
+  }).join('');
+  const cards = D.stories.map(storyCardHTML).join('');
+  return `<h1 class="title">${biTitle('Historias','Stories')}</h1>
+    <div class="sub">Guiones gráficos bilingües, tiro por tiro con cámara, acción y voz en off. — Bilingual storyboards, shot-by-shot with camera, action, and voiceover.</div>
+    <div class="filters">
+      <div class="chip storyf on" data-k="all">Todas · All</div>
+      ${chips}
+    </div>
+    <div class="story-grid" id="storygrid">${cards}</div>`;
+}
+function vStory(id){
+  const s = D.stories.find(x=>x.id===id); if(!s) return vStories();
+  const idx = D.stories.findIndex(x=>x.id===id);
+  const prev = D.stories[idx-1], next = D.stories[idx+1];
+  const shots = s.shots.map(sh=>`
+    <div class="shot">
+      <div class="sh">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
+      <div class="slug">${esc(sh.slug)}</div>
+      ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
+      <div class="vo"><span class="k">VOICEOVER</span>${
+        MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_es)}<span class="en">${esc(sh.vo_en)}</span>`
+      }</div>
+    </div>`).join('');
+  const nav = `<div class="detail-nav">
+    ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_es)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
+    ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_es)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;
+  return `<span class="backbtn" onclick="go('#stories')">← ${MODE==='en'?'Back to stories':'Volver a historias'}</span>
+    <div class="reader">
+      <h1 class="title">${biTitle(s.title_es,s.title_en)}</h1>
+      <div class="thesis-block">
+        <div class="k">LOGLINE</div>
+        ${pair(s.logline)}
+        <div class="k" style="margin-top:10px">THESIS</div>
+        ${pair(s.thesis)}
+      </div>
+      ${shots}
+      ${nav}
+    </div>`;
+}
+
+function docView(titleEs,titleEn,sub,sections){
+  const body = sections.map(s=>`${sectionHead(s.es,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
+  return `<h1 class="title">${biTitle(titleEs,titleEn)}</h1><div class="sub">${sub}</div>${body}`;
+}
+function vProduction(){
+  return docView('Producción','Production',
+    'Lenguaje visual: paleta, acentos por pilar, encuadre y motivos recurrentes. — Visual language: palette, per-pillar accents, framing, and recurring motifs.',
+    D.bible.visual);
+}
+function vPipeline(){
+  return docView('Flujo de Producción','Production Pipeline',
+    'El motor guion→kit: seis etapas, del guion al video, arte primero. — The script→kit engine: six stages, script to video, art first.',
+    D.bible.pipeline);
+}
+
+/* ---------------- ROUTER ---------------- */
+function render(){
+  const h = location.hash || '#hub';
+  const [base, arg] = h.replace('#','').split('/');
+  const view = document.getElementById('view');
+  let html='', crumbEs='', crumbEn='';
+  if(base==='hub'){ html=vHub(); }
+  else if(base==='pillars'){ html=vPillars(); crumbEs='Pilares'; crumbEn='Pillars'; }
+  else if(base==='pillar'){ const p=pillarOf(arg); html=vPillar(arg); crumbEs='Pilares'; crumbEn='Pillars'; if(p.key){crumbEs+=' · '+p.es; crumbEn+=' · '+p.en;} }
+  else if(base==='cast'){ html=vCast(); crumbEs='Elenco'; crumbEn='Cast'; }
+  else if(base==='char'){ const c=byId(arg); html=vChar(arg); crumbEs='Elenco'; crumbEn='Cast'; if(c){crumbEs+=' · '+c.name; crumbEn+=' · '+c.name;} }
+  else if(base==='stories' && !arg){ html=vStories(); crumbEs='Historias'; crumbEn='Stories'; }
+  else if(base==='story'){ const s=D.stories.find(x=>x.id===arg); html=vStory(arg); crumbEs='Historias'; crumbEn='Stories'; if(s){crumbEs+=' · '+s.title_es;} }
+  else if(base==='production'){ html=vProduction(); crumbEs='Producción'; crumbEn='Production'; }
+  else if(base==='pipeline'){ html=vPipeline(); crumbEs='Pipeline'; crumbEn='Pipeline'; }
+  else html=vHub();
+
+  view.innerHTML = html;
+  view.scrollTop = 0;
+
+  document.getElementById('crumb').innerHTML = (base==='hub')
+    ? `<span class="es">XSINO</span><span class="sep">·</span>Interactive Codex`
+    : `<span class="es">${crumbEs}</span><span class="sep">/</span><span style="color:var(--muted)">${crumbEn}</span>`;
+
+  document.querySelectorAll('.navitem').forEach(n=>{
+    const b = n.dataset.base;
+    n.classList.toggle('active', b===base
+      || (base==='pillar'&&b==='pillars')
+      || (base==='char'&&b==='cast')
+      || (base==='story'&&b==='stories'));
+  });
+  wireFilters();
+}
+
+function wireFilters(){
+  const pillFilters = document.querySelectorAll('.pillf');
+  const storyFilters = document.querySelectorAll('.storyf');
+  if(pillFilters.length){
+    let cur='all';
+    function apply(){
+      document.querySelectorAll('#roster .ccard').forEach(card=>{
+        const ok = cur==='all' || card.dataset.pillar===cur;
+        card.classList.toggle('dim', !ok);
+        card.style.display = ok?'':'none';
+      });
+    }
+    pillFilters.forEach(ch=>ch.onclick=()=>{ cur=ch.dataset.k; pillFilters.forEach(x=>x.classList.remove('on')); ch.classList.add('on'); apply(); });
+  }
+  if(storyFilters.length){
+    let cur='all';
+    function applyS(){
+      document.querySelectorAll('#storygrid .scard').forEach((card,i)=>{
+        const ok = cur==='all' || D.stories[i].pillar===cur;
+        card.style.display = ok?'':'none';
+      });
+    }
+    storyFilters.forEach(ch=>ch.onclick=()=>{ cur=ch.dataset.k; storyFilters.forEach(x=>x.classList.remove('on')); ch.classList.add('on'); applyS(); });
+  }
+}
+
+function go(hash){ if(location.hash===hash) render(); else location.hash=hash; }
+
+document.getElementById('nav').innerHTML = NAV.map(n=>`
+  <div class="navitem" data-base="${n.hash.replace('#','')}" onclick="go('${n.hash}')">
+    <span class="ico">${n.ico}</span><span class="label-txt es">${n.es}</span><span class="en">${n.en}</span>
+  </div>`).join('');
+
+function setMode(m){ MODE=m; localStorage.setItem('xsino_mode',m);
+  document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===m)); render(); }
+document.querySelectorAll('#langtoggle button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===MODE));
+
+document.addEventListener('keydown',e=>{
+  const [base,arg]=(location.hash||'#hub').replace('#','').split('/');
+  if(base==='char'){ const n=D.characters.length; const i=D.characters.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft') go('#char/'+D.characters[(i+n-1)%n].id);
+    if(e.key==='ArrowRight') go('#char/'+D.characters[(i+1)%n].id);
+    if(e.key==='Escape') go('#cast'); }
+  if(base==='story'&&arg){ const i=D.stories.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft'&&i>0) go('#story/'+D.stories[i-1].id);
+    if(e.key==='ArrowRight'&&i<D.stories.length-1) go('#story/'+D.stories[i+1].id);
+    if(e.key==='Escape') go('#stories'); }
+});
+
+window.addEventListener('hashchange', render);
+render();
+</script>
