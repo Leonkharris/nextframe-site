@@ -232,9 +232,9 @@ h1.title .es{color:var(--gold-bright); margin-right:14px}
     <div id="topbar">
       <div id="crumb"></div>
       <div id="langtoggle">
-        <button data-m="es">ES</button>
-        <button data-m="both">AMBOS</button>
         <button data-m="en">EN</button>
+        <button data-m="both">BOTH</button>
+        <button data-m="es">ES</button>
       </div>
     </div>
     <div id="view"></div>
@@ -268,12 +268,12 @@ function pair(p, cls){
   const prop = p.proposal ? '<span class="prop">PROPUESTA · PROPOSAL</span>' : '';
   if(MODE==='es') return `<div class="pair only ${cls}"><span class="es">${es}${prop}</span></div>`;
   if(MODE==='en') return `<div class="pair only ${cls}"><span class="en">${en||es}${prop}</span></div>`;
-  return `<div class="pair ${cls}"><span class="es">${es}${prop}</span><span class="en">${en}</span></div>`;
+  return `<div class="pair ${cls}"><span class="es">${en}${prop}</span><span class="en">${es}</span></div>`;
 }
 function biTitle(es, en){
   if(MODE==='es') return `<span class="es">${esc(es)}</span>`;
   if(MODE==='en') return `<span class="en">${esc(en)}</span>`;
-  return `<span class="es">${esc(es)}</span><span class="en">${esc(en)}</span>`;
+  return `<span class="es">${esc(en)}</span><span class="en">${esc(es)}</span>`;
 }
 function sectionHead(es, en){ return `<div class="section-h">${biTitle(es,en)}</div>`; }
 function bilingualDiv(es, en, cls){
@@ -281,7 +281,7 @@ function bilingualDiv(es, en, cls){
   const esE = esc(es), enE = esc(en);
   if(MODE==='es') return `<div class="${cls}"><span class="es">${esE}</span></div>`;
   if(MODE==='en') return `<div class="${cls}"><span class="en">${enE||esE}</span></div>`;
-  return `<div class="${cls}"><span class="es">${esE}</span><span class="en">${enE}</span></div>`;
+  return `<div class="${cls}"><span class="es">${enE}</span><span class="en">${esE}</span></div>`;
 }
 function sectionsHTML(sections){
   return sections.map(s=>{
@@ -290,7 +290,7 @@ function sectionsHTML(sections){
       ? s.pairs.map(p=>{
           if(MODE==='es') return `<div class="quote">${esc(p.es)}</div>`;
           if(MODE==='en') return `<div class="quote">${esc(p.en||p.es)}</div>`;
-          return `<div class="quote">${esc(p.es)}<span class="en">${esc(p.en)}</span></div>`;
+          return `<div class="quote">${esc(p.en)}<span class="en">${esc(p.es)}</span></div>`;
         }).join('')
       : s.pairs.map(p=>pair(p)).join('');
     return `${sectionHead(s.es,s.en)}${body}`;
@@ -324,16 +324,16 @@ function vHub(){
   const cards = D.pillars.map(p=>`
     <div class="hub-card" style="--accent:${p.accent}" onclick="go('#pillar/${p.key}')">
       <span class="ico">${p.icon}</span>
-      <div class="t">${esc(p.es)}</div>
-      <div class="ten">${esc(p.en)}</div>
-      <div class="d">${p.pairs[0]?esc(MODE==='en'?p.pairs[0].en:p.pairs[0].es):''}</div>
+      <div class="t">${esc(p.en)}</div>
+      <div class="ten">${esc(p.es)}</div>
+      <div class="d">${p.pairs[0]?esc(MODE==='es'?p.pairs[0].es:p.pairs[0].en):''}</div>
     </div>`).join('');
   const brandSections = D.bible.brand.map(s=>`${sectionHead(s.es,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
   return `<div class="hub-hero">
       <div class="brandmark">${esc(D.meta.brand)}</div>
-      <div class="tag">${esc(D.meta.thesis_es)}</div>
-      <div class="tagen">${esc(D.meta.thesis_en)}</div>
-      <div class="market">${esc(MODE==='en'?D.meta.market_en:D.meta.market_es)}</div>
+      <div class="tag">${esc(D.meta.thesis_en)}</div>
+      <div class="tagen">${esc(D.meta.thesis_es)}</div>
+      <div class="market">${esc(MODE==='es'?D.meta.market_es:D.meta.market_en)}</div>
     </div>
     <div class="hub-grid">${cards}</div>
     <div class="doclist">${brandSections}</div>`;
@@ -349,7 +349,7 @@ function vPillars(){
       </div>
     </div>`).join('');
   return `<h1 class="title">${biTitle('Los Cuatro Pilares','The Four Pillars')}</h1>
-    <div class="sub">Cada pilar tiene su elenco, su paleta y su formato. Click para ver personajes e historias. — Each pillar has its own cast, palette, and format. Click to see characters and stories.</div>
+    <div class="sub">Each pillar has its own cast, palette, and format. Click to see characters and stories. — Cada pilar tiene su elenco, su paleta y su formato. Click para ver personajes e historias.</div>
     <div class="pillar-grid">${cards}</div>`;
 }
 
@@ -358,7 +358,7 @@ function vPillar(key){
   if(!p.key) return vPillars();
   const chars = charsOf(key).map(cardHTML).join('') || `<div class="sub">—</div>`;
   const stories = storiesOf(key).map(storyCardHTML).join('') || `<div class="sub">—</div>`;
-  return `<span class="backbtn" onclick="go('#pillars')">← ${MODE==='en'?'Back to pillars':'Volver a pilares'}</span>
+  return `<span class="backbtn" onclick="go('#pillars')">← ${MODE==='es'?'Volver a pilares':'Back to pillars'}</span>
     <div class="pillar-hero" style="border-top:3px solid ${p.accent}">
       ${pillarBgHTML(p)}
       <div class="body">
@@ -376,11 +376,11 @@ function vPillar(key){
 function vCast(){
   const chips = D.pillars.map(p=>{
     const n = charsOf(p.key).length;
-    return `<div class="chip pillf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.es)} <span style="opacity:.6">${esc(p.en)} ·${n}</span></div>`;
+    return `<div class="chip pillf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.en)} <span style="opacity:.6">${esc(p.es)} ·${n}</span></div>`;
   }).join('');
   const cards = D.characters.map(cardHTML).join('');
   return `<h1 class="title">${biTitle('Elenco','The Cast')}</h1>
-    <div class="sub">Click en cualquier personaje para su ficha bilingüe completa. — Click any character for their full bilingual sheet.</div>
+    <div class="sub">Click any character for their full bilingual sheet. — Click en cualquier personaje para su ficha bilingüe completa.</div>
     <div class="filters">
       <div class="chip pillf on" data-k="all">Todos · All</div>
       ${chips}
@@ -394,8 +394,8 @@ function cardHTML(c){
     <div class="pri">${esc(c.priority)}</div>
     <div class="meta">
       <div class="nm">${esc(c.name)}</div>
-      <div class="al">${esc(MODE==='en'?c.alias_en:c.alias_es)}</div>
-      <div class="sp"><span class="ptag" style="background:${p.accent}">${esc((MODE==='en'?p.en:p.es)||'')}</span></div>
+      <div class="al">${esc(MODE==='es'?c.alias_es:c.alias_en)}</div>
+      <div class="sp"><span class="ptag" style="background:${p.accent}">${esc((MODE==='es'?p.es:p.en)||'')}</span></div>
     </div></div>`;
 }
 
@@ -410,19 +410,19 @@ function vChar(id){
   const n = D.characters.length;
   const prev = D.characters[(idx+n-1)%n], next = D.characters[(idx+1)%n];
   const role = roleOf(c);
-  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='en'?s.en:s.es)}</a>`).join('');
+  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='es'?s.es:s.en)}</a>`).join('');
   const secs = c.sections.map((s,i)=>`<div id="sec${i}">${sectionsHTML([s])}</div>`).join('');
-  return `<span class="backbtn" onclick="go('#cast')">← ${MODE==='en'?'Back to cast':'Volver al elenco'}</span>
+  return `<span class="backbtn" onclick="go('#cast')">← ${MODE==='es'?'Volver al elenco':'Back to cast'}</span>
     <div class="detail-head">
       ${artBlock(c,'detail-art')}
       <div class="detail-info">
         <h1>${esc(c.name)}</h1>
         <div class="al">${esc(c.alias_es)} · ${esc(c.alias_en)}</div>
         <div class="tags">
-          <span style="border-color:${p.accent2};color:${p.accent2}">${esc(p.es)} · ${esc(p.en)}</span>
+          <span style="border-color:${p.accent2};color:${p.accent2}">${esc(p.en)} · ${esc(p.es)}</span>
           <span>Prioridad · Priority ${esc(c.priority)}</span>
         </div>
-        ${role?`<div class="role">${esc(role.es)}<span class="en">${esc(role.en)}</span></div>`:''}
+        ${role?`<div class="role">${esc(role.en)}<span class="en">${esc(role.es)}</span></div>`:''}
       </div>
     </div>
     <div class="jump">${jumps}</div>
@@ -437,20 +437,20 @@ function storyCardHTML(s){
   const p = pillarOf(s.pillar);
   return `<div class="scard" onclick="go('#story/${s.id}')">
     <div class="id">STORY ${esc(s.id)} · <span style="color:${s.brand==='heaven'?'#E8C87A':'var(--accent-bright)'}">${s.brand==='heaven'?'HeavenOnline':'XSINO'}</span></div>
-    <div class="es">${esc(s.title_es)}</div>
-    <div class="en">${esc(s.title_en)}</div>
-    <div class="ll">${esc(MODE==='en'?s.logline.en:s.logline.es)}</div>
-    <div class="ptag" style="background:${p.accent}">${esc((MODE==='en'?p.en:p.es)||'')}</div>
+    <div class="es">${esc(s.title_en)}</div>
+    <div class="en">${esc(s.title_es)}</div>
+    <div class="ll">${esc(MODE==='es'?s.logline.es:s.logline.en)}</div>
+    <div class="ptag" style="background:${p.accent}">${esc((MODE==='es'?p.es:p.en)||'')}</div>
   </div>`;
 }
 function vStories(){
   const chips = D.pillars.map(p=>{
     const n = storiesOf(p.key).length;
-    return `<div class="chip storyf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.es)} <span style="opacity:.6">${esc(p.en)} ·${n}</span></div>`;
+    return `<div class="chip storyf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.en)} <span style="opacity:.6">${esc(p.es)} ·${n}</span></div>`;
   }).join('');
   const cards = D.stories.map(storyCardHTML).join('');
   return `<h1 class="title">${biTitle('Historias','Stories')}</h1>
-    <div class="sub">Guiones gráficos bilingües, tiro por tiro con cámara, acción y voz en off. — Bilingual storyboards, shot-by-shot with camera, action, and voiceover.</div>
+    <div class="sub">Bilingual storyboards, shot-by-shot with camera, action, and voiceover. — Guiones gráficos bilingües, tiro por tiro con cámara, acción y voz en off.</div>
     <div class="filters">
       <div class="chip storyf on" data-k="all">Todas · All</div>
       ${chips}
@@ -467,13 +467,13 @@ function vStory(id){
       <div class="slug">${esc(sh.slug)}</div>
       ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
       <div class="vo"><span class="k">VOICEOVER</span>${
-        MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_es)}<span class="en">${esc(sh.vo_en)}</span>`
+        MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en">${esc(sh.vo_es)}</span>`
       }</div>
     </div>`).join('');
   const nav = `<div class="detail-nav">
-    ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_es)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
-    ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_es)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;
-  return `<span class="backbtn" onclick="go('#stories')">← ${MODE==='en'?'Back to stories':'Volver a historias'}</span>
+    ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_en)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
+    ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_en)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;
+  return `<span class="backbtn" onclick="go('#stories')">← ${MODE==='es'?'Volver a historias':'Back to stories'}</span>
     <div class="reader">
       <h1 class="title">${biTitle(s.title_es,s.title_en)}</h1>
       <div class="thesis-block">
@@ -524,7 +524,7 @@ function render(){
 
   document.getElementById('crumb').innerHTML = (base==='hub')
     ? `<span class="es">XSINO</span><span class="sep">·</span>Interactive Codex`
-    : `<span class="es">${crumbEs}</span><span class="sep">/</span><span style="color:var(--muted)">${crumbEn}</span>`;
+    : `<span class="es">${crumbEn}</span><span class="sep">/</span><span style="color:var(--muted)">${crumbEs}</span>`;
 
   document.querySelectorAll('.navitem').forEach(n=>{
     const b = n.dataset.base;
@@ -566,7 +566,7 @@ function go(hash){ if(location.hash===hash) render(); else location.hash=hash; }
 
 document.getElementById('nav').innerHTML = NAV.map(n=>`
   <div class="navitem" data-base="${n.hash.replace('#','')}" onclick="go('${n.hash}')">
-    <span class="ico">${n.ico}</span><span class="label-txt es">${n.es}</span><span class="en">${n.en}</span>
+    <span class="ico">${n.ico}</span><span class="label-txt es">${n.en}</span><span class="en">${n.es}</span>
   </div>`).join('');
 
 function setMode(m){ MODE=m; localStorage.setItem('xsino_mode',m);
