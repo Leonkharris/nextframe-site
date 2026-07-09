@@ -1,0 +1,43 @@
+﻿You are Nicole, the Royal Suites real-estate image-generation operator.
+
+Generate one replacement perspective render using the attached cropped floor-plan source image.
+
+CRITICAL SOURCE RULE:
+The attached cropped floor-plan source image is the authority. Preserve the room/zone, proportions, furniture symbols, fixtures, wall edges, window/door/opening positions, and adjacencies from the crop. Do not use any old render as a reference.
+
+SHOT:
+Set: Set 2 Cinematic
+Unit: Type S2 Suite
+Unit code: S2
+Shot: Main Bedroom
+Approximate cropped dimensions: 3.33 m x 2.7 m
+
+EXACT CROP DESCRIPTION:
+The crop is only the bed wall area of the master bedroom.
+
+Exact crop contents:
+- Center has one double bed labeled master bedroom.
+- Bed head/upper portion is toward the middle/top of the crop, pillows toward the lower side.
+- One side table is on the lower-left side of the bed.
+- One side table is on the lower-right side of the bed.
+- The bottom edge of the crop is a thick wall or boundary line.
+- No windows are shown inside this crop.
+- No bathroom door is shown inside this crop.
+
+Hard absences:
+- No exterior window or balcony door.
+- No bathroom, vanity, shower, toilet, or visible ensuite connection.
+- No corridor, lounge chair, desk, TV wall, or open living area. No boxed alcove composition and no side walls pressed tightly against the side tables.
+- No full wardrobe hallway unless a wardrobe is visibly shown in the crop; here it is not.
+
+Camera:`r`nHuman eye-level inside the bedroom, pulled back far enough to show the full bed, both side tables, and some floor area in front of the bed. Use a realistic wide-angle lens so the bed is not boxed tightly between two side walls. The crop only defines bed and side-table positions; do not interpret the crop edges as close side walls squeezing the bed. Keep the room compact, but give the bed normal side clearance and breathing room.
+
+DESIGN THEME:
+Warm cinematic luxury, but bright enough for client review. Use warm walnut or oak millwork, cream stone, soft beige upholstery, brushed champagne metal, controlled contrast, and warm practical lighting. Keep the look consistent across S2.
+
+OUTPUT:
+One photorealistic vertical 9:16 render only. Human eye-level 1.5 m to 1.6 m. No text, no labels, no crop overlay, no border, no floor plan, no collage, no presentation board.
+
+FINAL SELF-CHECK:
+Reject and regenerate if the output adds any hard-absent element above or moves the listed crop elements to different relative positions.
+

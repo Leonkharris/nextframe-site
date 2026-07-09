@@ -1,0 +1,5 @@
+﻿unitCode,jobId,candidate,status,score,reason
+S2,02_living_dining_wide_view,"D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\02_S2_type_s2_suite\02_living_dining_wide_view\strict_crop_candidate.png",rejected,5,"Close open living/pantry relation, but still exaggerates window wall and not tight enough to crop proportions."
+S2,03_kitchen_pantry_wide_view,"D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\02_S2_type_s2_suite\03_kitchen_pantry_wide_view\strict_crop_candidate.png",rejected,6,"Best of batch, but turns straight pantry into enclosed corridor with tall cabinets; not exact crop."
+S2,04_main_bedroom_wide_view,"D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\02_S2_type_s2_suite\04_main_bedroom_wide_view\strict_crop_candidate.png",rejected,3,"Adds generated overlay text/border and does not provide a clean final render."
+S2,05_washroom_bath_wide_view,"D:\New AI Directory\Damasara Heights - Royal Suites\CINEMATIC_SET_2\02_S2_type_s2_suite\05_washroom_bath_wide_view\strict_crop_candidate.png",rejected,5,"Clean bathroom render, but toilet/vanity/shower relationship does not match crop closely enough."
