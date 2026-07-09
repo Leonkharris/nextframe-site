@@ -1,0 +1,357 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>+81 Bar Makati | Website Mockup</title>
+    <meta
+      name="description"
+      content="A cyberpunk Japanese speakeasy website mockup for +81 Bar Makati at Makati Square."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Inter:wght@500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css?v=20260519k" />
+  </head>
+  <body>
+    <canvas class="fx-canvas" data-fx-canvas aria-hidden="true"></canvas>
+    <div class="scanline" aria-hidden="true"></div>
+
+    <header class="site-header" data-header>
+      <a class="brand" href="#top" aria-label="+81 Bar Makati home">
+        <span class="brand-mark">+81</span>
+        <span>
+          <strong>+81 Bar</strong>
+          <small>Makati</small>
+        </span>
+      </a>
+      <button
+        class="menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="primary-navigation"
+        data-menu-toggle
+      >
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="primary-navigation" data-nav>
+        <a href="#video">Video</a>
+        <a href="#room">Room</a>
+        <a href="#drinks">Drinks</a>
+        <a href="#private">Private</a>
+        <a class="nav-cta" href="#reserve">Book +81</a>
+      </nav>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <video
+          class="hero-bg hero-video"
+          src="./assets/plus81/instagram/ig-03.mp4"
+          poster="./assets/plus81/instagram/ig-03.jpg"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-label="+81 Bar Instagram party video loop"
+        ></video>
+        <div class="hero-shade"></div>
+        <div class="hero-symbol" aria-hidden="true">+81</div>
+
+        <div class="hero-grid">
+          <div class="hero-copy">
+            <h1>Don't just enter. Drop into the signal.</h1>
+            <p>
+              A social-first mockup for Makati Square: real Instagram motion, table energy, private rooms, sake
+              cocktails, comic walls, and the kind of night that should move before anyone taps reserve.
+            </p>
+            <div class="hero-actions">
+              <a class="button primary" href="#reserve">Book the night</a>
+              <a class="button ghost" href="#video">Watch the room</a>
+            </div>
+            <div class="hero-facts" aria-label="+81 Bar quick details">
+              <strong>5 PM - 5 AM</strong>
+              <strong>Makati Square</strong>
+              <strong>0962 969 2794</strong>
+            </div>
+          </div>
+
+          <aside class="hero-stage" aria-label="+81 Bar venue preview">
+            <div class="signal-card main-card video-card" data-tilt-card>
+              <video
+                src="./assets/plus81/instagram/ig-01.mp4"
+                poster="./assets/plus81/instagram/ig-01.jpg"
+                autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-desktop-video
+            aria-label="+81 Bar flaming cocktail Instagram reel"
+              ></video>
+              <div class="video-chrome">
+                <span>IG reel source</span>
+                <strong>Flame service</strong>
+              </div>
+            </div>
+            <figure class="signal-card corridor-card" data-tilt-card>
+              <img src="./assets/plus81/anime-hall.jpg" alt="+81 Bar interior hallway with neon lights" />
+              <figcaption>
+                <span>Room tone</span>
+                <strong>Mirror light tunnel</strong>
+              </figcaption>
+            </figure>
+            <div class="now-card" data-tilt-card>
+              <span>Now cueing</span>
+              <strong>House / hip-hop / techno</strong>
+              <div class="wave" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            </div>
+          </aside>
+        </div>
+
+        <div class="hero-strip" aria-hidden="true">
+          <span>Japanese cocktails</span>
+          <span>Private rooms</span>
+          <span>DJ nights</span>
+          <span>Bar chows</span>
+        </div>
+      </section>
+
+      <section class="video-section" id="video" data-reveal>
+        <div class="video-copy">
+          <p>Instagram video wall</p>
+          <h2>Make the website feel like the night is already happening.</h2>
+          <span>
+            These are mounted from the videos you downloaded from their Instagram. The page now leads with actual
+            vertical reels instead of a generic motion loop, so the bar feels more current and more alive.
+          </span>
+          <div class="pulse-list" aria-label="+81 video moments">
+            <strong>Table energy</strong>
+            <strong>Flame cocktails</strong>
+            <strong>Private-room clips</strong>
+          </div>
+        </div>
+        <div class="reel-shell" data-tilt-card>
+          <video
+            src="./assets/plus81/instagram/ig-03.mp4"
+            poster="./assets/plus81/instagram/ig-03.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata"
+            data-lazy-video
+            aria-label="+81 Bar party reel video loop"
+          ></video>
+          <div class="reel-overlay">
+            <span>IG reel</span>
+            <strong>Table toast</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="reel-wall-section" data-reveal>
+        <div class="section-title compact-title">
+          <p>Reel cuts</p>
+          <h2>Five clips mounted from the download folder.</h2>
+          <a class="section-cta" href="#reserve">Reserve after dark</a>
+        </div>
+        <div class="reel-wall" aria-label="+81 Instagram video clips">
+          <article class="mini-reel tall" data-tilt-card>
+            <video data-src="./assets/plus81/instagram/ig-01.mp4" poster="./assets/plus81/instagram/ig-01.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Flame cocktail</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/plus81/instagram/ig-02.mp4" poster="./assets/plus81/instagram/ig-02.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Lounge mood</span>
+          </article>
+          <article class="mini-reel tall" data-tilt-card>
+            <video data-src="./assets/plus81/instagram/ig-03.mp4" poster="./assets/plus81/instagram/ig-03.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Table toast</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/plus81/instagram/ig-04.mp4" poster="./assets/plus81/instagram/ig-04.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Host shot</span>
+          </article>
+          <article class="mini-reel" data-tilt-card>
+            <video data-src="./assets/plus81/instagram/ig-05.mp4" poster="./assets/plus81/instagram/ig-05.jpg" muted loop playsinline preload="none" data-lazy-video></video>
+            <span>Room title</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="room-section" id="room" data-reveal>
+        <div class="section-title">
+          <p>Inside +81</p>
+          <h2>Manga walls, red booths, and mirror glow.</h2>
+          <a class="section-cta" href="#reserve">Book a table</a>
+        </div>
+        <div class="room-grid">
+          <article data-tilt-card>
+            <img src="./assets/plus81/red-booth.jpg" alt="+81 Bar manga hallway with neon panels" />
+            <div>
+              <span>Entrance path</span>
+              <strong>Comic mural hallways make the first walk-in feel like a scene reveal.</strong>
+            </div>
+          </article>
+          <article data-tilt-card>
+            <img src="./assets/plus81/hero-sign.jpg" alt="+81 Bar red booths and neon sign" />
+            <div>
+              <span>Main lounge</span>
+              <strong>Low red booths, mirrored ceilings, and a glowing +81 sign anchor the room.</strong>
+            </div>
+          </article>
+          <article data-tilt-card>
+            <img src="./assets/plus81/cocktail-cloud.jpg" alt="+81 Bar DJ performing under red light" />
+            <div>
+              <span>DJ energy</span>
+              <strong>DJs move between house, hip-hop, techno, and experimental late-night sets.</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="drinks-section" id="drinks" data-reveal>
+        <div class="drinks-media" data-tilt-card>
+          <img src="./assets/plus81/private-room.jpg" alt="+81 Bar Kinton Cloud cocktail" />
+          <div class="media-badge">
+            <span>Signature pour</span>
+            <strong>Kinton Cloud</strong>
+          </div>
+        </div>
+        <div class="drinks-copy">
+          <p>Cocktails and bar chows</p>
+          <h2>Sake, yuzu, matcha, Japanese whiskey.</h2>
+          <span>
+            The drink direction leans Japanese and theatrical: cloud-topped cocktails, familiar classics, and food that
+            turns a pre-game into the whole night.
+          </span>
+          <div class="drink-list" aria-label="+81 Bar drink notes">
+            <strong>Yuzu highballs</strong>
+            <strong>Matcha cocktails</strong>
+            <strong>Sake mixes</strong>
+            <strong>Japanese whiskey</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="private-section" id="private" data-reveal>
+        <div class="private-copy">
+          <p>Private gatherings</p>
+          <h2>Choose the room, then set the night.</h2>
+          <span>
+            Build the booking around a private room, box seats, or the full venue. The live site can route inquiries
+            straight to the +81 reservations inbox.
+          </span>
+          <div class="room-options" role="tablist" aria-label="Private room options">
+            <button
+              class="option active"
+              type="button"
+              role="tab"
+              aria-selected="true"
+              aria-controls="room-result"
+              data-room="vip1"
+            >
+              VIP Room 1
+            </button>
+            <button
+              class="option"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="room-result"
+              data-room="vip2"
+            >
+              VIP Room 2
+            </button>
+            <button
+              class="option"
+              type="button"
+              role="tab"
+              aria-selected="false"
+              aria-controls="room-result"
+              data-room="venue"
+            >
+              Full Venue
+            </button>
+          </div>
+          <div class="room-result" id="room-result" role="tabpanel" tabindex="0" data-room-result>
+            <strong>VIP Room 1</strong>
+            <span>For up to 8 guests, with early and late-night room blocks for intimate celebrations.</span>
+          </div>
+        </div>
+        <div class="private-stack">
+          <figure data-tilt-card>
+            <img src="./assets/plus81/menu-poster.jpg" alt="+81 Bar private room with blue walls and neon ceiling" />
+            <figcaption><span>01</span> Neon private lounge</figcaption>
+          </figure>
+          <figure data-tilt-card>
+            <img src="./assets/plus81/vip-room-two.jpg" alt="+81 Bar Japanese seafood platter" />
+            <figcaption><span>02</span> Japanese bar chows</figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <section class="booking-section" id="reserve" data-reveal>
+        <div class="booking-panel" data-tilt-card>
+          <div>
+            <p>Reservations</p>
+            <h2>Send the signal. Hold the room.</h2>
+            <span>
+              Use this mockup flow for room requests, DJ nights, birthdays, or brand gatherings. The final build can
+              connect to Instagram DM, Messenger, WhatsApp, or a CRM.
+            </span>
+          </div>
+          <form class="booking-form" data-booking-form>
+            <label>
+              Date
+              <input type="date" name="date" required />
+            </label>
+            <label>
+              Party size
+              <select name="guests" required>
+                <option value="">Choose guests</option>
+                <option>2-6 guests</option>
+                <option>7-10 guests</option>
+                <option>Box seats</option>
+                <option>Full venue</option>
+              </select>
+            </label>
+            <label>
+              Experience
+              <select name="type" required>
+                <option value="">Choose booking</option>
+                <option>VIP Room 1</option>
+                <option>VIP Room 2</option>
+                <option>DJ night table</option>
+                <option>Private event</option>
+              </select>
+            </label>
+            <label>
+              Contact
+              <input type="text" name="contact" placeholder="Name, phone, or IG handle" required />
+            </label>
+            <button class="button primary full" type="submit">Request booking</button>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <strong>+81 Bar Makati</strong>
+      <span>Makati Square, G-1 Fernando, Makati City. Reservations: 0962 969 2794.</span>
+    </footer>
+
+    <div class="toast" role="status" aria-live="polite" data-toast>
+      Booking request captured. Connect this to the +81 inbox next.
+    </div>
+
+    <script src="./script.js?v=20260519k"></script>
+  </body>
+</html>

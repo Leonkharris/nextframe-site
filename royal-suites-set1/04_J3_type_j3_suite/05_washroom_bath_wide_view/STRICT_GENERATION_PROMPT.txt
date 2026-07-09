@@ -1,0 +1,93 @@
+﻿You are Nicole, the Royal Suites real-estate image-generation operator.
+
+Generate one replacement perspective render using the attached source image 	arget_crop.png.
+
+CRITICAL SOURCE RULE:
+The attached crop is the authority. Preserve the room/zone, proportions, furniture symbols, fixtures, wall edges, window/door/opening positions, and adjacencies from the crop. Do not use any old render as a reference.
+
+SHOT:
+Set: Set 1 Realistic
+Unit: Type J3 Suite
+Unit code: J3
+Shot: Washroom / Bath
+Approximate cropped dimensions: 2.44 m x 2.57 m
+
+DESIGN THEME:
+Bright realistic real-estate presentation.
+Materials: neutral modern apartment finishes, light timber, matte white cabinetry, soft daylight, practical scaled furniture.
+Keep the look natural, sales-gallery realistic, and compact where the floor plan is compact.
+
+SPATIAL INSTRUCTIONS:
+ROOM CONTENT TO PRESERVE FROM CROP:
+- Render only the washroom/bath target crop.
+- Keep toilet, vanity/sink, shower, wet area, door swing, and any partition/glass line in the same relative positions as the crop.
+- If the crop shows a compact bathroom, keep it compact and functional.
+
+REJECT IF:
+- A bathtub appears unless the crop clearly shows a tub.
+- The toilet/vanity/shower swap locations.
+- The room becomes a large spa, hallway bathroom, or bedroom-connected ensuite unless the crop supports it.
+
+CAMERA:
+Vertical 9:16, human eye-level 1.5 m to 1.6 m, realistic wide-angle real-estate lens. Show the full spatial depth of the target crop without turning it into an overhead or dollhouse view.
+
+OUTPUT:
+One photorealistic vertical render only. No text, no labels, no floor plan, no collage, no presentation board.
+
+AREA BRIEF:
+# Spatial Preflight - J3 Washroom / Bath
+
+Unit: Type J3 Suite
+Shot folder: 04_J3_type_j3_suite\05_washroom_bath_wide_view
+Source floor plan: ..\..\04_J3_type_j3_suite\00_source_floor_plan.jpg
+
+## Preflight Assets
+
+- Full plan with target highlight: plan_highlight.png
+- Cropped target zone: target_crop.png
+
+## Target Area
+
+Approximate crop size from plan scale: **2.44 m x 2.57 m**.
+Approximate position within whole unit plan: **62% from left**, **33% from top**.
+
+What is inside the cropped/highlighted area:
+Master bath on right side with compact fixture arrangement and door swing preserved.
+
+## Camera Intent
+
+Eye-level inside bath, no spa enlargement.
+
+## Prompt Engineering Handoff Rules
+
+- Use target_crop.png as the primary spatial reference for this shot.
+- Use plan_highlight.png to confirm the target zone's relationship to the whole unit.
+- Do not invent walls, windows, doors, islands, balconies, corridors, or room separations not supported by the crop and full plan.
+- Use one single upright 9:16 real-estate photograph, human eye height, not top-down, not collage, not a presentation board.
+- Keep adjacent zones visible only if they are naturally visible from the crop and camera intent.
+
+## Accuracy Gate Before Generation
+
+Pass this checklist before handing off to image generation:
+
+- [ ] Target crop matches the requested shot title.
+- [ ] The prompt describes the correct room/zone and not a neighboring room.
+- [ ] Approximate room scale is preserved from the crop.
+- [ ] Door/window positions are not moved or invented.
+- [ ] Camera is eye-level unless this is explicitly an isometric plan shot.
+- [ ] No split-frame, collage, overhead, dollhouse, or rotated output is requested.
+- [ ] Any visible adjacent area is supported by the full highlighted plan.
+
+## Post-Generation Accuracy Check
+
+After generation, reject the image if:
+
+- It shows a different room or wrong unit zone.
+- It uses top-down, dollhouse, overhead, rotated, or collage composition.
+- It adds a kitchen island, glass floor, balcony, corridor, bedroom wall, or extra room not shown in the crop.
+- It moves window/door locations in a way that contradicts the highlighted plan.
+- It scores below 8/10 for floor-plan fidelity.
+
+
+FINAL SELF-CHECK:
+Reject and regenerate unless the rendered room matches the cropped floor plan area with at least 8/10 spatial fidelity.
