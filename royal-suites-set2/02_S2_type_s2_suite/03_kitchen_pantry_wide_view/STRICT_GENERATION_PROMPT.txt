@@ -1,0 +1,43 @@
+﻿You are Nicole, the Royal Suites real-estate image-generation operator.
+
+Generate one replacement perspective render using the attached cropped floor-plan source image.
+
+CRITICAL SOURCE RULE:
+The attached cropped floor-plan source image is the authority. Preserve the room/zone, proportions, furniture symbols, fixtures, wall edges, window/door/opening positions, and adjacencies from the crop. Do not use any old render as a reference.
+
+SHOT:
+Set: Set 2 Cinematic
+Unit: Type S2 Suite
+Unit code: S2
+Shot: Kitchen / Pantry
+Approximate cropped dimensions: 4.06 m x 1.52 m
+
+EXACT CROP DESCRIPTION:
+The crop is a narrow straight pantry counter, much wider than deep.
+
+Exact crop contents:
+- One straight horizontal pantry counter run.
+- Sink is left-of-center.
+- Cooktop is right-of-center.
+- A dashed/tall cabinet or appliance zone is at the far left.
+- Lower edge has openings/adjacent room edges below the counter.
+- This is a compact pantry wall, not a full kitchen room.
+
+Hard absences:
+- No kitchen island.
+- No U-shaped kitchen.
+- No tall cabinet wall across the full length unless it belongs to the straight counter run.
+- No closed corridor.
+- No bathroom door or bedroom door in the pantry itself.
+
+Camera:
+Human eye-level along the straight pantry counter so the viewer reads one compact counter run, with only a small supported glimpse of living/dining beyond if visible through the open side.
+
+DESIGN THEME:
+Warm cinematic luxury, but bright enough for client review. Use warm walnut or oak millwork, cream stone, soft beige upholstery, brushed champagne metal, controlled contrast, and warm practical lighting. Keep the look consistent across S2.
+
+OUTPUT:
+One photorealistic vertical 9:16 render only. Human eye-level 1.5 m to 1.6 m. No text, no labels, no crop overlay, no border, no floor plan, no collage, no presentation board.
+
+FINAL SELF-CHECK:
+Reject and regenerate if the output adds any hard-absent element above or moves the listed crop elements to different relative positions.

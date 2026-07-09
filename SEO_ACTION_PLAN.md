@@ -63,4 +63,5 @@ and a domain email. None can be produced by editing this repo.
 clears 90 — most of it is trust/E-E-A-T signals only the business owner can supply.
 
 ## Loop log
+- 2026-07-08 iter2: +ai-marketing-cost-philippines, +create-sops-with-ai (blog 19, sitemap 31); llms.txt Guides rebuilt to 19; promo posts appended; IndexNow pinged; both URLs live 200
 - 2026-07-02 iter1: +ai-prompts-property-listing-content, +ai-answer-messenger-inquiries (blog 17, sitemap 29); promo posts appended; IndexNow pinged

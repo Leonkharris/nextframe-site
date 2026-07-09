@@ -1,0 +1,777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>plus81-bar-makati motion audit — 2026-05-23</title>
+  <style>
+    /* --- Demo Shell Tokens (references/demo-shell.html) --- */
+    :root {
+      --bg: #ffffff;
+      --fg: #111111;
+      --border: #e5e5e5;
+      --accent: #111111;
+      --loop-dim: rgba(0, 0, 0, 0.45);
+      --card-radius: 12px;
+      --card-padding: 20px;
+      --gap: 12px;
+      --sans: system-ui, -apple-system, "Segoe UI", sans-serif;
+      --mono: ui-monospace, "SF Mono", Menlo, monospace;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #111111;
+        --fg: #f0f0f0;
+        --border: #222222;
+        --accent: #f0f0f0;
+        --loop-dim: rgba(240, 240, 240, 0.45);
+      }
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--sans);
+      margin: 0;
+      padding: 48px 24px;
+      max-width: 960px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* --- Report Layout Tokens (references/output-format.md) --- */
+    .report-hero {
+      margin-bottom: 32px;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+    }
+    .report-hero h1 {
+      font-size: 2.25rem;
+      font-weight: 700;
+      margin: 0 0 8px;
+      letter-spacing: -0.02em;
+    }
+    .report-hero__date {
+      font-family: var(--mono);
+      color: var(--loop-dim);
+      font-size: 0.9rem;
+      margin: 0 0 16px;
+    }
+    .report-hero__counts {
+      font-size: 1.05rem;
+      margin: 0 0 12px;
+      font-weight: 500;
+    }
+    .report-hero__counts a {
+      color: inherit;
+      text-decoration: none;
+      border-bottom: 1px dashed var(--border);
+      margin-right: 8px;
+    }
+    .report-hero__counts a:hover {
+      border-bottom-style: solid;
+      color: var(--fg);
+    }
+    .report-hero__primary {
+      font-family: var(--mono);
+      color: var(--loop-dim);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+    .report-assessment {
+      margin: 32px 0 48px;
+      font-size: 1.15rem;
+      line-height: 1.6;
+      font-style: italic;
+      color: var(--loop-dim);
+      border-left: 4px solid var(--border);
+      padding-left: 20px;
+    }
+
+    .perspective-section {
+      margin: 64px 0;
+      padding-top: 32px;
+      border-top: 1px solid var(--border);
+    }
+    .perspective-section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin: 0 0 20px;
+      letter-spacing: -0.01em;
+    }
+    .perspective-section__working-well {
+      background: rgba(0, 200, 80, 0.04);
+      border: 1px solid rgba(0, 200, 80, 0.15);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin-bottom: 24px;
+    }
+    .perspective-section__working-well h3 {
+      font-size: 1.05rem;
+      margin: 0 0 12px;
+      color: #00a647;
+    }
+    .perspective-section__working-well ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .perspective-section__working-well li {
+      margin-bottom: 8px;
+    }
+    .perspective-section__working-well code {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .perspective-section__issues h3 {
+      font-size: 1.2rem;
+      margin: 32px 0 16px;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 8px;
+    }
+
+    .perspective-section__opportunities {
+      background: rgba(0, 120, 240, 0.04);
+      border: 1px solid rgba(0, 120, 240, 0.15);
+      border-radius: 8px;
+      padding: 16px 20px;
+      margin: 32px 0;
+    }
+    .perspective-section__opportunities h3 {
+      font-size: 1.05rem;
+      margin: 0 0 12px;
+      color: #0070f3;
+    }
+    .perspective-section__opportunities ul {
+      margin: 0;
+      padding-left: 20px;
+    }
+    .perspective-section__opportunities li {
+      margin-bottom: 8px;
+    }
+    .perspective-section__opportunities code {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 2px 6px;
+      border-radius: 4px;
+    }
+
+    .perspective-section__quote {
+      margin-top: 32px;
+      padding: 16px 20px;
+      background: var(--border);
+      border-left: 4px solid var(--accent);
+      font-size: 0.95rem;
+      border-radius: 0 8px 8px 0;
+    }
+
+    /* --- Finding Rows --- */
+    .finding-row {
+      display: grid;
+      grid-template-columns: 1fr 360px;
+      gap: 32px;
+      align-items: start;
+      margin: 32px 0;
+      padding-bottom: 32px;
+      border-bottom: 1px dashed var(--border);
+    }
+    .finding-row:last-child {
+      border-bottom: 0;
+    }
+    .finding-row__prose {
+      display: flex;
+      flex-direction: column;
+    }
+    .finding-row__severity {
+      font-size: 0.8rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin: 0 0 8px;
+      display: inline-block;
+    }
+    .finding-row__severity.critical {
+      color: #ff3b30;
+    }
+    .finding-row__severity.important {
+      color: #ffcc00;
+    }
+    .finding-row h4 {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin: 0 0 12px;
+    }
+    .finding-row p {
+      margin: 0 0 12px;
+      color: var(--fg);
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .finding-row__location {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--loop-dim);
+      background: rgba(0,0,0,0.03);
+      padding: 4px 8px;
+      border-radius: 4px;
+      align-self: flex-start;
+      margin-top: 8px;
+    }
+
+    /* --- Demo Card Layout (references/demo-shell.html) --- */
+    .demo-card {
+      position: relative;
+      background: var(--bg);
+      color: var(--fg);
+      border: 1px solid var(--border);
+      border-radius: var(--card-radius);
+      padding: var(--card-padding);
+      max-width: 360px;
+      min-width: 280px;
+      font-family: var(--sans);
+      outline: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+    }
+    .demo-card__header {
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--fg);
+      margin-bottom: 4px;
+      padding-right: 72px;
+    }
+    .demo-card__subhead {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--loop-dim);
+      margin-bottom: var(--gap);
+    }
+    .demo-card__stage {
+      background: var(--bg);
+      border: 1px dashed var(--border);
+      border-radius: 8px;
+      padding: 24px;
+      min-height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .demo-card__loop-indicator {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      font-family: var(--mono);
+      font-size: 0.7rem;
+      color: var(--loop-dim);
+      letter-spacing: 0.02em;
+      user-select: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .demo-card__loop-indicator {
+        display: none;
+      }
+      [class*="__motion-target"] {
+        animation: none !important;
+        transition: none !important;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .finding-row {
+        grid-template-columns: 1fr;
+        gap: 24px;
+      }
+      .demo-card {
+        max-width: 100%;
+      }
+    }
+
+    /* --- Combined Recommendations Tables --- */
+    .recommendations {
+      margin: 64px 0;
+    }
+    .recommendations h2 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .recommendations table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.9rem;
+    }
+    .recommendations th,
+    .recommendations td {
+      text-align: left;
+      padding: 10px 14px;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    .recommendations th {
+      font-weight: 600;
+      background: rgba(0,0,0,0.02);
+    }
+    .recommendations td code {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+    }
+
+    /* --- Lens Reference Summary --- */
+    .reference-summary {
+      margin: 64px 0;
+      background: var(--border);
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .reference-summary h2 {
+      font-size: 1.35rem;
+      margin: 0 0 16px;
+    }
+    .reference-summary ul {
+      margin: 16px 0 0;
+      padding-left: 20px;
+    }
+    .reference-summary li {
+      margin-bottom: 8px;
+    }
+
+    /* =========================================================================
+       PER-FINDING MOTION CODES (MOTION-CODE-SLOT-{n})
+       ========================================================================= */
+
+    /* Finding 1: Modern Decomposed Float (Jhey/Jakub) */
+    @keyframes motion-1-float {
+      0%, 100% {
+        translate: 0 0px;
+      }
+      50% {
+        translate: 0 -12px;
+      }
+    }
+    .demo-card-1__motion-target {
+      animation: motion-1-float 3s ease-in-out infinite;
+      display: inline-block;
+      padding: 12px 12px 36px;
+      border-radius: 4px;
+      background: #eae3d5; /* Warm off-white paper texture */
+      box-shadow: 0 12px 32px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+      border: 1px solid #d3c7b2;
+      width: 80px;
+      aspect-ratio: 4/5;
+      position: relative;
+      rotate: -5deg;
+    }
+    .demo-card-1__motion-target::before {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 100%;
+      background: #1e1e1e; /* Video screen representation */
+      border-radius: 2px;
+    }
+    .demo-card-1__motion-target::after {
+      content: "Cocktails";
+      position: absolute;
+      bottom: 8px;
+      left: 0;
+      width: 100%;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.6rem;
+      font-weight: bold;
+      color: #443c2c;
+    }
+
+    /* Finding 2: De-cluttered Editorial Layout (Jakub/Jhey) */
+    @keyframes motion-2-enter {
+      0% {
+        opacity: 0;
+        translate: 0 24px;
+        filter: blur(4px);
+      }
+      66%, 100% {
+        opacity: 1;
+        translate: 0 0;
+        filter: blur(0px);
+      }
+    }
+    .demo-card-2__motion-target {
+      animation: motion-2-enter 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      display: flex;
+      gap: 16px;
+      justify-content: center;
+      width: 100%;
+    }
+    .demo-card-2__item {
+      background: var(--border);
+      border-radius: 4px;
+      padding: 8px;
+      width: 90px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.06);
+      text-align: center;
+      font-size: 0.7rem;
+      font-weight: 500;
+      border: 1px solid var(--border);
+    }
+
+    /* Finding 3: Deep Editorial Text Shadows (Jakub/Jhey) */
+    @keyframes motion-3-glow {
+      0%, 100% {
+        text-shadow: 0 0 0px rgba(0,0,0,0);
+        color: var(--fg);
+      }
+      50% {
+        text-shadow: 
+          0 2px 10px rgba(0, 0, 0, 0.95), 
+          0 4px 20px rgba(0, 0, 0, 0.8);
+        color: #eae3d5;
+      }
+    }
+    .demo-card-3__motion-target {
+      animation: motion-3-glow 3s ease-in-out infinite;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: var(--fg);
+      font-family: Georgia, serif;
+      letter-spacing: 0.05em;
+    }
+    .demo-card-3__red {
+      color: #ff3b30;
+    }
+
+    /* Finding 4: Tactile Input Focus Transition (Emil/Jakub) */
+    @keyframes motion-4-focus {
+      0%, 100% {
+        box-shadow: 0 0 0 1px var(--border) inset;
+        background: var(--bg);
+      }
+      50% {
+        box-shadow: 
+          0 0 0 1px #bca172 inset, 
+          0 0 12px rgba(188, 161, 114, 0.3);
+        background: var(--bg);
+      }
+    }
+    .demo-card-4__motion-target {
+      animation: motion-4-focus 3s infinite;
+      width: 150px;
+      height: 38px;
+      border-radius: 4px;
+      padding: 8px 12px;
+      background: var(--bg);
+      border: 0;
+      outline: none;
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--loop-dim);
+      display: flex;
+      align-items: center;
+    }
+
+    /* Finding 5: Staggered Focus-Blur Materialization (Jakub/Emil) */
+    @keyframes motion-5-materialize {
+      0% {
+        opacity: 0;
+        translate: 0 16px;
+        filter: blur(8px);
+      }
+      66%, 100% {
+        opacity: 1;
+        translate: 0 0;
+        filter: blur(0px);
+      }
+    }
+    .demo-card-5__motion-target {
+      animation: motion-5-materialize 3s cubic-bezier(0.16, 1, 0.3, 1) infinite;
+      padding: 16px;
+      background: var(--border);
+      border-radius: 8px;
+      width: 100%;
+      text-align: center;
+      font-family: var(--sans);
+      font-size: 0.9rem;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="report-hero">
+    <h1>+81 Bar Makati Motion Design Audit</h1>
+    <p class="report-hero__date">2026-05-23</p>
+    <p class="report-hero__counts">
+      <a href="#critical-findings">🔴 Critical: 2</a> ·
+      <a href="#important-findings">🟡 Important: 3</a> ·
+      <a href="#opportunity-findings">🟢 Opportunities: 1</a>
+    </p>
+    <p class="report-hero__primary">Primary: Jakub Krehel — Production Polish</p>
+  </header>
+
+  <!-- Overall Assessment -->
+  <section class="report-assessment">
+    <p>
+      The +81 Bar Makati website boasts an ambitious, visually striking design concept that beautifully pays tribute to high-end Japanese street fashion magazines. However, several mechanical and layout-level overlapping issues prevent it from reaching that premium "magazine cover" benchmark. Key visual assets currently clash and obscure each other, while the animations use heavy, un-decomposed transform strings that can fail to render in modern browsers. Transitioning section reveals away from template-like linear animations to focus-blur entries will elevate the visual hierarchy and match the bar's luxurious speakeasy brand.
+    </p>
+  </section>
+
+  <!-- Per-Lens Sections -->
+  
+  <!-- Jakub Section -->
+  <section class="perspective-section" id="perspective-jakub">
+    <h2>Jakub Krehel — Production Polish</h2>
+
+    <div class="perspective-section__working-well">
+      <h3>What's Working Well</h3>
+      <ul>
+        <li>✓ <strong>Respectful Reduced-Motion Media Query</strong> — Standard <code>prefers-reduced-motion</code> resets applied systematically. — <code>styles.css:1327-1336</code></li>
+        <li>✓ <strong>Header Scroll State Backing Transitions</strong> —site header background slides nicely to a blurred charcoal HSL color on scroll. — <code>styles.css:99-107</code></li>
+      </ul>
+    </div>
+
+    <div class="perspective-section__issues" id="jakub-issues">
+      <h3>Issues to Address</h3>
+
+      <!-- Finding 1 -->
+      <div class="finding-row" id="finding-1">
+        <div class="finding-row__prose">
+          <p class="finding-row__severity critical">🔴 Critical</p>
+          <h4>Monolithic Transform Overrides Floating Frames</h4>
+          <p>
+            The video frames (main frame and polaroids) use the monolithic CSS <code>transform</code> property to apply both rotation and translation loops in a single animation (<code>transform: var(--float-base) translateY(0px)</code>). Because keyframed transforms completely override inline transforms, browsers struggle to interpolate these dynamic variables smoothly. Additionally, on mobile sizes, the animation is simply killed (<code>animation: none</code>), which stops them from floating entirely. Decomposing these transforms using separate modern, independent rotate/translate properties ensures perfect responsive execution.
+          </p>
+          <p class="finding-row__location"><code>styles.css:362-395</code></p>
+        </div>
+        <article class="demo-card" tabindex="-1">
+          <div class="demo-card__loop-indicator">↻ looping</div>
+          <div class="demo-card__header">Decomposed Modern Float Animation</div>
+          <div class="demo-card__subhead">6000ms · ease-in-out</div>
+          <div class="demo-card__stage">
+            <div class="demo-card-1__motion-target"></div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Finding 3 -->
+      <div class="finding-row" id="finding-3">
+        <div class="finding-row__prose">
+          <p class="finding-row__severity important">🟡 Important</p>
+          <h4>Low Read-Contrast in Section Titles</h4>
+          <p>
+            The red and white highlight contrast (<code>.highlight-red</code>) in the spreads (Entrance, Craft, Rooms, Midnight) is beautiful but lacks text-shadow support. On textured backgrounds with SVG rough-filters, the text can read as low-contrast and muddy. Applying a deep editorial drop shadow similar to the hero heading will make the editorial text pop cleanly off the dark canvas.
+          </p>
+          <p class="finding-row__location"><code>styles.css:568-572</code></p>
+        </div>
+        <article class="demo-card" tabindex="-1">
+          <div class="demo-card__loop-indicator">↻ looping</div>
+          <div class="demo-card__header">Deep Editorial drop-shadow</div>
+          <div class="demo-card__subhead">3000ms · ease-in-out</div>
+          <div class="demo-card__stage">
+            <div class="demo-card-3__motion-target">
+              Japanese <span class="demo-card-3__red">Flavours</span>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- Finding 5 -->
+      <div class="finding-row" id="finding-5">
+        <div class="finding-row__prose">
+          <p class="finding-row__severity important">🟡 Important</p>
+          <h4>Uniform Template-Like Slide Reveals</h4>
+          <p>
+            All spreads mount on scroll using the exact same fade-up translate transition. This uniform reveal matches standard AI templates rather than a custom-tailored Japanese street magazine. Applying a focus-blur materializing curve (Jakub's enter recipe) will elevate the physical printing feel of the section reveals.
+          </p>
+          <p class="finding-row__location"><code>styles.css:949-958</code></p>
+        </div>
+        <article class="demo-card" tabindex="-1">
+          <div class="demo-card__loop-indicator">↻ looping</div>
+          <div class="demo-card__header">Focus-Blur Section Reveal</div>
+          <div class="demo-card__subhead">600ms · cubic-bezier(0.16, 1, 0.3, 1)</div>
+          <div class="demo-card__stage">
+            <div class="demo-card-5__motion-target">
+              Section Reveal
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <p class="perspective-section__quote"><strong>Through Jakub's lens:</strong> An animation is successful when it seamlessly integrates into the editorial grid. By decomposing variables and introducing focus-blur entry reveals, we achieve that luxury, high-end look.</p>
+  </section>
+
+  <!-- Jhey Section -->
+  <section class="perspective-section" id="perspective-jhey">
+    <h2>Jhey Tompkins — Experimentation &amp; Delight</h2>
+
+    <div class="perspective-section__working-well">
+      <h3>What's Working Well</h3>
+      <ul>
+        <li>✓ <strong>Collage distress layers</strong> — Distressed filter blends and custom polygon-clipped tape strips capture a convincing physical collaged feel. — <code>styles.css:459-480</code></li>
+      </ul>
+    </div>
+
+    <div class="perspective-section__issues" id="jhey-issues">
+      <h3>Issues to Address</h3>
+
+      <!-- Finding 2 -->
+      <div class="finding-row" id="finding-2">
+        <div class="finding-row__prose">
+          <p class="finding-row__severity critical">🔴 Critical</p>
+          <h4>Overlapping and Obscured Collage Elements</h4>
+          <p>
+            The second polaroid is placed right under the main frame but overlaps it heavily horizontally by 89px. The tickets and distress tape blocks also sit directly in the middle, cluttering the view and obscuring the actual bar interior videos. Setting explicit horizontal offsets and adjusting layout grids gives elements their own space to showcase their floating animations without coverage.
+          </p>
+          <p class="finding-row__location"><code>styles.css:362-426</code></p>
+        </div>
+        <article class="demo-card" tabindex="-1">
+          <div class="demo-card__loop-indicator">↻ looping</div>
+          <div class="demo-card__header">Tactile Offset Editorial Layout</div>
+          <div class="demo-card__subhead">3000ms · cubic-bezier(0.16, 1, 0.3, 1)</div>
+          <div class="demo-card__stage">
+            <div class="demo-card-2__motion-target">
+              <div class="demo-card-2__item">Main Frame</div>
+              <div class="demo-card-2__item" style="rotate: -8deg;">Polaroid 1</div>
+            </div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <div class="perspective-section__opportunities">
+      <h3>Opportunities</h3>
+      <ul>
+        <li>💡 <strong>Print-press vibrations</strong> — Add a micro-delay jitter keyframe animation on the hanko seal and barcodes on hover to simulate physical stamp ink pressure variance. — <code>index.html:63</code></li>
+      </ul>
+    </div>
+
+    <p class="perspective-section__quote"><strong>Through Jhey's lens:</strong> A collage layout is a playground of physical layers. Give each tape strip, stamp, and polaroid room to breathe and express its unique vertical float offset to make the page truly feel alive.</p>
+  </section>
+
+  <!-- Emil Section -->
+  <section class="perspective-section" id="perspective-emil">
+    <h2>Emil Kowalski — Restraint &amp; Speed</h2>
+
+    <div class="perspective-section__working-well">
+      <h3>What's Working Well</h3>
+      <ul>
+        <li>✓ <strong>Scroll video pause logic</strong> — IntersectionObserver pauses off-screen videos instantly, conserving device battery and preserving main thread rendering cycles. — <code>script.js:60-76</code></li>
+      </ul>
+    </div>
+
+    <div class="perspective-section__issues" id="emil-issues">
+      <h3>Issues to Address</h3>
+
+      <!-- Finding 4 -->
+      <div class="finding-row" id="finding-4">
+        <div class="finding-row__prose">
+          <p class="finding-row__severity important">🟡 Important</p>
+          <h4>Snapping Input Focus Transitions</h4>
+          <p>
+            The reservation booking form inputs and dropdown selectors snap their inset borders instantly upon focus. Incorporating a fast, snappy focus transition (150ms-200ms) with a golden glow provides tactile response with zero utility delay.
+          </p>
+          <p class="finding-row__location"><code>styles.css:838-842</code></p>
+        </div>
+        <article class="demo-card" tabindex="-1">
+          <div class="demo-card__loop-indicator">↻ looping</div>
+          <div class="demo-card__header">Snappy Input focus ease</div>
+          <div class="demo-card__subhead">150ms · ease-out</div>
+          <div class="demo-card__stage">
+            <div class="demo-card-4__motion-target">Focus active</div>
+          </div>
+        </article>
+      </div>
+
+    </div>
+
+    <p class="perspective-section__quote"><strong>Through Emil's lens:</strong> An animation is a speed tax. Minimize form snapping delay and use lightweight transitions on focused states to keep high-frequency inputs friction-free.</p>
+  </section>
+
+  <!-- Combined Recommendations Tables -->
+  
+  <section class="recommendations" id="critical-findings">
+    <h2>🔴 Critical (Must Fix)</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>File</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Monolithic Transform Overrides</td>
+          <td><code>styles.css:362-395</code></td>
+          <td>Decompose monolithic transforms into separate CSS properties (<code>rotate</code> on selectors, and <code>translate</code> in float keyframes) to fix browser rendering.</td>
+        </tr>
+        <tr>
+          <td>Overlapping Collage Clutter</td>
+          <td><code>styles.css:362-426</code></td>
+          <td>Increase layout offsets to stop polaroid-two from obscuring polaroid-one and main bar videos.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="recommendations" id="important-findings">
+    <h2>🟡 Important (Should Fix)</h2>
+    <table>
+      <thead>
+        <tr><th>Issue</th><th>File</th><th>Action</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Muddy Section Heading Contrast</td>
+          <td><code>styles.css:568-572</code></td>
+          <td>Add deep text shadows to all spreads' <code>h2</code> tags to make the red/white lettering contrast punch off dark gradients.</td>
+        </tr>
+        <tr>
+          <td>Snapping Input Focus Borders</td>
+          <td><code>styles.css:838-842</code></td>
+          <td>Add a <code>transition: box-shadow 150ms</code> focus ease-out animation to booking inputs.</td>
+        </tr>
+        <tr>
+          <td>Uniform Reveal Slide Reveal Spam</td>
+          <td><code>styles.css:949-958</code></td>
+          <td>Update spread scroll reveals to utilize focus-blur materializing transitions, eliminating generic slide reveals.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section class="recommendations" id="opportunity-findings">
+    <h2>🟢 Opportunities (Could Enhance)</h2>
+    <table>
+      <thead>
+        <tr><th>Enhancement</th><th>Where</th><th>Impact</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tactile Hanko Stamps Jitter</td>
+          <td><code>index.html:63</code></td>
+          <td>Adds micro-delay physical stamps vibrations on hover to capture authentic magazine physical textures.</td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- Lens Reference Summary -->
+  <section class="reference-summary">
+    <h2>Lens Reference Summary</h2>
+    <p><strong>Which lens was referenced most:</strong> Jakub Krehel — Production Polish</p>
+    <p><strong>Why:</strong> The project's main goal is editorial design authenticity and visual balance in a professional dark dark-mode speakeasy showcase site. Jakub's principles focus exactly on production polish, contrast, and subtle reveals that make grids feel alive without creating distraction.</p>
+    <p><strong>If you want to lean differently:</strong></p>
+    <ul>
+      <li>To follow Emil more strictly: Remove scroll-reveal effects entirely or reduce slide durations down to a fast 180ms, removing visual blur signals to prioritize pure speed.</li>
+      <li>To follow Jakub more strictly: Keep all springs at <code>bounce: 0</code>, transition elements smoothly with soft layout shifts, and add a subtle layout-transition to expanded VIP table selections.</li>
+      <li>To follow Jhey more strictly: Introduce curved motion paths on ticket stubs, allow minor 3D coordinate changes on frame hovers, and coordinate scroll position triggers using CSS Style Queries.</li>
+    </ul>
+  </section>
+
+</body>
+</html>

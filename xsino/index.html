@@ -473,13 +473,19 @@ function vStory(id){
   const prev = D.stories[idx-1], next = D.stories[idx+1];
   const shots = s.shots.map(sh=>{
     const frameImg = sh.frame
-      ? `<div class="shot-frame" style="margin:12px 0 16px;border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px"><img src="${sh.frame}" style="width:100%;height:auto;display:block" /></div>`
+      ? `<div class="shot-frame" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🖼️ Keyframe</div><img src="${sh.frame}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      : '';
+    const sceneboardImg = sh.sceneboard
+      ? `<div class="shot-sceneboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">📋 Scene Board Staging</div><img src="${sh.sceneboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      : '';
+    const visualBlock = (frameImg || sceneboardImg)
+      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 20px;">${sceneboardImg}${frameImg}</div>`
       : '';
     return `
       <div class="shot">
         <div class="sh">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
-        <div class="slug">${esc(sh.slug)}</div>
-        ${frameImg}
+        ${bilingualDiv(sh.slug_es, sh.slug_en, 'slug')}
+        ${visualBlock}
         ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
         <div class="vo"><span class="k">VOICEOVER</span>${
           MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en" style="font-style:italic;opacity:0.75;display:block;margin-top:3px">${esc(sh.vo_es)}</span>`
