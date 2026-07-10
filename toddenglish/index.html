@@ -429,24 +429,61 @@
     /* ================================================================
        SECTION 2 — ABOUT
        ================================================================ */
+    .bg-watermark {
+      position: absolute;
+      font-family: var(--font-heading);
+      font-size: clamp(8rem, 15vw, 22rem);
+      font-weight: 900;
+      color: rgba(197, 160, 94, 0.022);
+      pointer-events: none;
+      z-index: 0;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      user-select: none;
+      line-height: 1;
+    }
+
+    .image-frame-decor {
+      position: absolute;
+      top: 25px;
+      left: 25px;
+      width: 100%;
+      height: 100%;
+      border: 1px solid rgba(197, 160, 94, 0.22);
+      z-index: -1;
+      pointer-events: none;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
     .about {
       padding: var(--section-pad-y) 0;
       background: var(--black);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .about__grid {
       display: grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap: clamp(2rem, 6vw, 5rem);
+      grid-template-columns: repeat(12, 1fr);
       align-items: center;
+      position: relative;
+      z-index: 2;
     }
 
     .about__image {
+      grid-column: 1 / 7;
       position: relative;
+      z-index: 1;
       border: 1px solid rgba(197,160,94,0.15);
       padding: 1rem;
       background: var(--charcoal);
       box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .about__image:hover .image-frame-decor {
+      transform: translate(5px, 5px);
     }
 
     .about__image img {
@@ -647,29 +684,42 @@
     .concepts {
       padding: var(--section-pad-y) 0;
       background: var(--black);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .concept-block {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(2rem, 5vw, 4rem);
+      grid-template-columns: repeat(12, 1fr);
       align-items: center;
-      margin-top: clamp(2.5rem, 5vh, 4rem);
-    }
-
-    .concept-block--reverse {
-      grid-template-columns: 0.9fr 1.1fr;
-    }
-
-    .concept-block--reverse .concept-block__image {
-      order: 2;
+      position: relative;
+      z-index: 2;
+      margin-top: clamp(4rem, 8vh, 8rem);
     }
 
     .concept-block__image {
+      grid-column: 1 / 8;
       position: relative;
-      border: 1px solid rgba(197,160,94,0.1);
-      padding: 1rem;
+      z-index: 1;
+      border: 1px solid rgba(197, 160, 94, 0.12);
+      padding: 1.25rem;
       background: var(--charcoal);
+      box-shadow: 0 20px 45px rgba(0,0,0,0.5);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .concept-block__image:hover {
+      transform: scale(1.01);
+    }
+
+    .concept-block__image:hover .image-frame-decor {
+      transform: translate(5px, 5px);
+    }
+
+    .concept-block--reverse .concept-block__image {
+      grid-column: 6 / 13;
+      order: 2;
     }
 
     .img-placeholder {
@@ -686,7 +736,25 @@
     }
 
     .concept-block__text {
-      padding: 1rem 0;
+      grid-column: 7 / 13;
+      position: relative;
+      z-index: 3;
+      background: rgba(26, 26, 26, 0.88);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      border: 1px solid rgba(197, 160, 94, 0.15);
+      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
+      transition: transform 0.4s ease;
+    }
+
+    .concept-block__text:hover {
+      transform: translate(-3px, -3px);
+    }
+
+    .concept-block--reverse .concept-block__text {
+      grid-column: 1 / 7;
+      order: 1;
     }
 
     .concept-label {
@@ -700,24 +768,137 @@
     }
 
     /* ================================================================
+       SECTION 11 — TELEVISION & MEDIA
+       ================================================================ */
+    .media {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .media-layout {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .media-image {
+      grid-column: 1 / 7;
+      position: relative;
+      z-index: 1;
+      border: 1px solid rgba(197,160,94,0.15);
+      padding: 1rem;
+      background: var(--charcoal);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .media-image:hover {
+      transform: scale(1.01);
+    }
+
+    .media-image:hover .image-frame-decor {
+      transform: translate(5px, 5px);
+    }
+
+    .media-image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    .media-text {
+      grid-column: 6 / 13;
+      position: relative;
+      z-index: 3;
+      background: rgba(26, 26, 26, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: clamp(2.5rem, 5vw, 4.5rem);
+      border: 1px solid rgba(197, 160, 94, 0.15);
+      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+      transition: transform 0.4s ease;
+    }
+
+    .media-text:hover {
+      transform: translate(-3px, -3px);
+    }
+
+    .media-logos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+
+    .media-logo {
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      border: 1px solid rgba(255,255,255,0.04);
+      padding: 0.85rem 0.5rem;
+      text-align: center;
+      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
+      background: rgba(255, 255, 255, 0.01);
+    }
+
+    .media-logo:hover {
+      color: var(--gold);
+      border-color: var(--gold);
+      background: rgba(197, 160, 94, 0.05);
+    }
+
+    /* ================================================================
        SECTION 9 — LEGACY RESTAURANTS
        ================================================================ */
     .legacy {
       padding: var(--section-pad-y) 0;
       background: var(--charcoal);
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
     }
 
     .legacy-layout {
       display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: clamp(2rem, 5vw, 4rem);
+      grid-template-columns: repeat(12, 1fr);
+      gap: 0;
       align-items: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .legacy-text-card {
+      grid-column: 1 / 6;
+      position: relative;
+      z-index: 3;
+      background: rgba(26, 26, 26, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      padding: clamp(2rem, 4vw, 4rem);
+      border: 1px solid rgba(197, 160, 94, 0.15);
+      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
+      transition: transform 0.4s ease;
+    }
+
+    .legacy-text-card:hover {
+      transform: translate(-3px, -3px);
     }
 
     .legacy__grid {
+      grid-column: 5 / 13;
+      position: relative;
+      z-index: 1;
       display: grid;
       grid-template-columns: repeat(2, 1fr);
       gap: 1.25rem;
+      padding-left: 2rem;
     }
 
     .legacy-item {
@@ -1195,6 +1376,38 @@
     /* ================================================================
        PRINT STYLES (Luxury Digital Book Layout)
        ================================================================ */
+    @media (max-width: 1024px) {
+      .about__grid, .concept-block, .legacy-layout, .media-layout {
+        display: flex !important;
+        flex-direction: column !important;
+        gap: 1.5rem !important;
+      }
+      .about__image, .concept-block__image, .media-image {
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0.5rem !important;
+      }
+      .about__text, .concept-block__text, .media-text, .legacy-text-card {
+        width: 100% !important;
+        margin: -2rem 0 0 0 !important;
+        padding: 2rem 1.5rem !important;
+        backdrop-filter: blur(10px) !important;
+        -webkit-backdrop-filter: blur(10px) !important;
+      }
+      .legacy__grid {
+        width: 100% !important;
+        padding-left: 0 !important;
+        margin-top: 1rem !important;
+      }
+      .image-frame-decor {
+        top: 15px !important;
+        left: 15px !important;
+      }
+      .concept-block--reverse .image-frame-decor {
+        left: -15px !important;
+      }
+    }
+
     @media print {
       html, body {
         background: #0A0A0A !important;
@@ -1392,9 +1605,11 @@
      SECTION 2 — ABOUT (MEET CHEF TODD ENGLISH)
      ════════════════════════════════════════════════════════════════ -->
 <section class="about" id="about">
+  <div class="bg-watermark" style="top: 15%; left: 5%;">LEGACY</div>
   <div class="section-inner">
     <div class="about__grid">
       <div class="about__image reveal">
+        <div class="image-frame-decor"></div>
         <img src="pdf-chef-portrait-large.jpg" alt="Chef Todd English portrait" loading="eager">
       </div>
       <div class="about__text reveal reveal-delay-1">
@@ -1570,9 +1785,11 @@
      SECTION 5 — DEEP DIVE: BLUEZOO
      ════════════════════════════════════════════════════════════════ -->
 <section class="concepts" id="concept-bluezoo">
+  <div class="bg-watermark" style="top: 10%; right: -5%; transform: rotate(-3deg);">BLUEZOO</div>
   <div class="section-inner">
     <div class="concept-block reveal">
       <div class="concept-block__image">
+        <div class="image-frame-decor"></div>
         <div class="img-placeholder">
           <img src="bluezoo-snapper.png" alt="bluezoo pan-seared red snapper signature dish" loading="eager">
         </div>
@@ -1595,9 +1812,11 @@
      SECTION 6 — DEEP DIVE: JADE BY TODD ENGLISH
      ════════════════════════════════════════════════════════════════ -->
 <section class="concepts" id="concept-jade">
+  <div class="bg-watermark" style="top: 10%; left: -5%; transform: rotate(3deg);">JADE</div>
   <div class="section-inner">
     <div class="concept-block concept-block--reverse reveal">
       <div class="concept-block__image">
+        <div class="image-frame-decor"></div>
         <div class="img-placeholder">
           <img src="jade-story.jpg" alt="Jade by Todd English, Bali" loading="eager">
         </div>
@@ -1620,9 +1839,11 @@
      SECTION 7 — DEEP DIVE: THE BEAST
      ════════════════════════════════════════════════════════════════ -->
 <section class="concepts" id="concept-thebeast">
+  <div class="bg-watermark" style="top: 10%; right: -5%; transform: rotate(-2deg);">THE BEAST</div>
   <div class="section-inner">
     <div class="concept-block reveal">
       <div class="concept-block__image">
+        <div class="image-frame-decor"></div>
         <div class="img-placeholder">
           <img src="thebeast.png" alt="The Beast at AREA15" loading="eager">
         </div>
@@ -1645,9 +1866,11 @@
      SECTION 8 — DEEP DIVE: TUSCANY BY TODD ENGLISH
      ════════════════════════════════════════════════════════════════ -->
 <section class="concepts" id="concept-tuscany">
+  <div class="bg-watermark" style="top: 10%; left: -5%; transform: rotate(2deg);">TUSCANY</div>
   <div class="section-inner">
     <div class="concept-block concept-block--reverse reveal">
       <div class="concept-block__image">
+        <div class="image-frame-decor"></div>
         <div class="img-placeholder">
           <img src="deconstructed-pasta.png" alt="Tuscany deconstructed handmade tortelli infographic" loading="eager">
         </div>
@@ -1670,9 +1893,10 @@
      SECTION 9 — THE OLIVES HERITAGE & LEGACY PORTFOLIO
      ════════════════════════════════════════════════════════════════ -->
 <section class="legacy" id="legacy">
+  <div class="bg-watermark" style="top: 15%; left: 5%;">OLIVES</div>
   <div class="section-inner">
     <div class="legacy-layout">
-      <div class="reveal">
+      <div class="legacy-text-card reveal">
         <span class="label">Legacy Portfolio</span>
         <h2 class="heading-lg">The Olives Heritage</h2>
         <div class="gold-line"></div>
@@ -1724,6 +1948,7 @@
      SECTION 10 — HOSPITALITY DEVELOPMENT
      ════════════════════════════════════════════════════════════════ -->
 <section class="hospitality" id="hospitality">
+  <div class="bg-watermark" style="top: 20%; right: 5%;">CREATIVE</div>
   <div class="section-inner">
     <div class="hosp-header-layout reveal">
       <span class="label">Hospitality Development</span>
@@ -1805,12 +2030,14 @@
      SECTION 11 — TELEVISION & MEDIA
      ════════════════════════════════════════════════════════════════ -->
 <section class="media" id="media">
+  <div class="bg-watermark" style="top: 15%; right: 5%;">ON AIR</div>
   <div class="section-inner">
     <div class="media-layout">
-      <div class="about__image reveal">
+      <div class="media-image reveal">
+        <div class="image-frame-decor"></div>
         <img src="pdf-chef-emmy-large.jpg" alt="Chef Todd English Emmy nomination portrait" loading="eager">
       </div>
-      <div class="concept-block__text reveal reveal-delay-1">
+      <div class="media-text reveal reveal-delay-1">
         <span class="label">Television &amp; Media</span>
         <h2 class="heading-lg">A Pioneer of Culinary Television</h2>
         <div class="gold-line"></div>
