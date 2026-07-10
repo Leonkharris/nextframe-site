@@ -279,6 +279,49 @@
       box-shadow: -10px 0 30px rgba(0,0,0,0.9);
     }
 
+    /* Pinned Gate wireframe overlays */
+    .hero-cover-gate-overlay {
+      position: absolute;
+      top: 0;
+      width: 50%;
+      height: 100%;
+      z-index: 4;
+      pointer-events: none;
+      transition: transform 0.1s linear, opacity 0.1s linear;
+      box-sizing: border-box;
+    }
+
+    .hero-cover-gate-overlay.left {
+      left: 0;
+      border-right: 1px solid var(--gold);
+      background: linear-gradient(90deg, transparent 95%, rgba(197, 160, 94, 0.08) 95%);
+    }
+
+    .hero-cover-gate-overlay.right {
+      right: 0;
+      border-left: 1px solid var(--gold);
+      background: linear-gradient(-90deg, transparent 95%, rgba(197, 160, 94, 0.08) 95%);
+    }
+
+    .hero-backdrop-text {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      font-family: var(--font-heading);
+      font-size: clamp(12rem, 24vw, 32rem);
+      font-weight: 900;
+      color: var(--gold);
+      opacity: 0;
+      pointer-events: none;
+      z-index: 1;
+      letter-spacing: 0.05em;
+      white-space: nowrap;
+      user-select: none;
+      transition: transform 0.1s linear, opacity 0.1s linear;
+      line-height: 1;
+    }
+
     /* Centered Book Cover Logo Badge inside gates */
     .hero-cover-center-card {
       position: absolute;
@@ -1574,6 +1617,11 @@
     <div class="hero-cover-frame">
       <div class="hero-cover-panel left"></div>
       <div class="hero-cover-panel right"></div>
+      
+      <!-- Parallax Gate Shells (Overlay layers that split at different speeds) -->
+      <div class="hero-cover-gate-overlay left"></div>
+      <div class="hero-cover-gate-overlay right"></div>
+      
       <div class="hero-cover-center-card">
         <div class="hero-cover-logo">TE</div>
         <div class="hero-cover-logo-sub">Brand Book</div>
@@ -1583,6 +1631,7 @@
 
     <!-- Layer 4: Final Pinned Reveal Hero Content -->
     <div class="hero-reveal">
+      <div class="hero-backdrop-text">EST. 1989</div>
       <div class="hero-reveal-content">
         <p class="hero-reveal-subtitle">Hospitality Portfolio &amp; Press Center</p>
         <h2 class="hero-reveal-name">TODD ENGLISH</h2>
@@ -1718,8 +1767,6 @@
           <p class="port-card__location">Berawa, Canggu · Bali, Indonesia</p>
         </div>
       </div>
-
-      <!-- Asymmetrical row: Tuscany & Lula's (inverted order) -->
       <div class="port-card card-span-5 reveal reveal-delay-3">
         <img src="tuscany.png" alt="Tuscany" loading="eager">
         <div class="port-card__overlay">
@@ -2297,9 +2344,15 @@
     const bg = heroSection.querySelector(".hero-bg");
     const leftPanel = heroSection.querySelector(".hero-cover-panel.left");
     const rightPanel = heroSection.querySelector(".hero-cover-panel.right");
+    const leftOverlay = heroSection.querySelector(".hero-cover-gate-overlay.left");
+    const rightOverlay = heroSection.querySelector(".hero-cover-gate-overlay.right");
     const centerCard = heroSection.querySelector(".hero-cover-center-card");
     const coverTitle = heroSection.querySelector(".hero-cover-title");
     const revealContent = heroSection.querySelector(".hero-reveal");
+    const backdropText = heroSection.querySelector(".hero-backdrop-text");
+    const revealSubtitle = heroSection.querySelector(".hero-reveal-subtitle");
+    const revealName = heroSection.querySelector(".hero-reveal-name");
+    const revealTagline = heroSection.querySelector(".hero-reveal-tagline");
     
     window.addEventListener("scroll", () => {
       const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
@@ -2310,15 +2363,22 @@
       let progress = scrollPos / (heroHeight - viewportHeight);
       progress = Math.max(0, Math.min(1, progress));
       
-      // Background Zoom scale animation
-      const scaleVal = 1.1 - (progress * 0.1);
-      bg.style.transform = `scale(${scaleVal})`;
+      // Background Zoom scale + translate parallax
+      const scaleVal = 1.15 - (progress * 0.15);
+      const bgY = progress * 60;
+      bg.style.transform = `scale(${scaleVal}) translateY(${bgY}px)`;
       
-      // Portal Gates Split panels transform
-      // Left gate shifts left, Right gate shifts right
+      // Portal Gates Split panels transform (1.0x speed)
       const shiftPercent = progress * 100;
       leftPanel.style.transform = `translateX(-${shiftPercent}%)`;
       rightPanel.style.transform = `translateX(${shiftPercent}%)`;
+      
+      // Gate Overlays Split panels transform (1.35x speed)
+      const overlayShift = progress * 135;
+      leftOverlay.style.transform = `translateX(-${overlayShift}%)`;
+      rightOverlay.style.transform = `translateX(${overlayShift}%)`;
+      leftOverlay.style.opacity = Math.max(0, 1 - progress * 1.5);
+      rightOverlay.style.opacity = Math.max(0, 1 - progress * 1.5);
       
       // Center card splits & scales down/fades
       const cardScale = 1 - (progress * 0.15);
@@ -2329,11 +2389,26 @@
       // Cover Title fades out early
       const titleOpacity = 1 - (progress * 2.5);
       coverTitle.style.opacity = Math.max(0, titleOpacity);
-      coverTitle.style.transform = `scale(${1 - progress * 0.1})`;
+      coverTitle.style.transform = `scale(${1 - progress * 0.1}) translateY(-${progress * 40}px)`;
       
-      // Reveal Content fades in late
-      if (progress > 0.45) {
+      // Reveal Content layering parallax
+      if (progress > 0.4) {
         revealContent.classList.add("active");
+        
+        // Parallax scroll on inner elements
+        const revProgress = (progress - 0.4) / 0.6; // 0 to 1
+        
+        backdropText.style.transform = `translate(-50%, -50%) translateY(${(1 - revProgress) * 50 - revProgress * 80}px)`;
+        backdropText.style.opacity = Math.max(0, Math.min(0.04, revProgress * 0.05));
+        
+        revealSubtitle.style.transform = `translateY(${(1 - revProgress) * -15}px)`;
+        revealSubtitle.style.opacity = revProgress;
+        
+        revealName.style.transform = `scale(${0.95 + revProgress * 0.05})`;
+        revealName.style.opacity = revProgress;
+        
+        revealTagline.style.transform = `translateY(${(1 - revProgress) * 15}px)`;
+        revealTagline.style.opacity = revProgress;
       } else {
         revealContent.classList.remove("active");
       }
