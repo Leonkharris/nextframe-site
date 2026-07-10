@@ -1,1181 +1,1289 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Todd English — Hospitality Portfolio 2026–2027</title>
-<meta name="description" content="Official brand book and press center for celebrity chef Todd English. Global restaurateur, hospitality visionary, James Beard Award winner.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,600&family=Outfit:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
-<style>
-/* ─── DESIGN TOKENS ─── */
-:root {
-  --black: #080808;
-  --charcoal: #121212;
-  --slate: #1c1c1c;
-  --gold: #C5A05E;
-  --gold-light: #E0C79B;
-  --off-white: #FAF9F6;
-  --white: #FFFFFF;
-  --mid-gray: #7c7c7c;
-  --light-gray: #d5d2c9;
-
-  --font-heading: 'Cormorant Garamond', 'Playfair Display', 'Georgia', serif;
-  --font-body: 'Outfit', 'Inter', -apple-system, sans-serif;
-
-  --section-pad-y: clamp(5rem, 10vh, 9rem);
-  --section-pad-x: clamp(1.5rem, 5vw, 6rem);
-  --max-width: 1280px;
-  --max-width-wide: 1440px;
-}
-
-/* ─── RESET ─── */
-*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
-body {
-  font-family: var(--font-body);
-  font-weight: 400;
-  color: var(--off-white);
-  background: var(--black);
-  line-height: 1.7;
-  overflow-x: hidden;
-}
-img { display: block; max-width: 100%; height: auto; }
-a { color: inherit; text-decoration: none; }
-ul, ol { list-style: none; }
-
-/* ─── UTILITY ─── */
-.label {
-  font-family: var(--font-body);
-  font-weight: 500;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  font-size: 0.75rem;
-  color: var(--gold);
-  margin-bottom: 1rem;
-  display: inline-block;
-}
-.section-inner {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 var(--section-pad-x);
-}
-.section-inner--wide {
-  max-width: var(--max-width-wide);
-  margin: 0 auto;
-  padding: 0 var(--section-pad-x);
-}
-.heading-lg {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(2rem, 4vw, 3.2rem);
-  line-height: 1.15;
-  color: var(--white);
-  margin-bottom: 1.5rem;
-}
-.heading-md {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: clamp(1.5rem, 3vw, 2.2rem);
-  line-height: 1.2;
-  color: var(--white);
-  margin-bottom: 1rem;
-}
-.body-text {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 1rem;
-  line-height: 1.85;
-  color: var(--light-gray);
-}
-.gold-line {
-  width: 60px;
-  height: 2px;
-  background: linear-gradient(90deg, var(--gold), var(--gold-light));
-  margin: 1.5rem 0;
-}
-.gold-line--center {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* ─── GOLD DIVIDER BETWEEN SECTIONS ─── */
-.section-divider {
-  width: 100%;
-  height: 1px;
-  background: linear-gradient(90deg, transparent 0%, var(--gold) 20%, var(--gold-light) 50%, var(--gold) 80%, transparent 100%);
-  opacity: 0.35;
-}
-
-/* ─── FADE-IN ANIMATION ─── */
-.reveal {
-  opacity: 0;
-  transform: translateY(40px);
-  transition: opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1), transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
-.reveal-delay-1 { transition-delay: 0.12s; }
-.reveal-delay-2 { transition-delay: 0.24s; }
-.reveal-delay-3 { transition-delay: 0.36s; }
-.reveal-delay-4 { transition-delay: 0.48s; }
-.reveal-delay-5 { transition-delay: 0.60s; }
-
-/* ─── IMAGE PLACEHOLDER ─── */
-.img-placeholder {
-  width: 100%;
-  height: 100%;
-  min-height: 320px;
-  background: var(--slate);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  position: relative;
-  overflow: hidden;
-}
-.img-placeholder img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-/* ================================================================
-   SCROLL HERO & PORTAL SYSTEM (Dream Land technique)
-   ================================================================ */
-.hero-scroll {
-  position: relative;
-  height: 220vh; /* Scroll length for the push-through animation */
-  background: var(--black);
-}
-
-.hero-pin {
-  position: sticky;
-  top: 0;
-  height: 100vh;
-  width: 100%;
-  overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  transform: scale(var(--te-bg-scale, 1.0));
-  will-change: transform;
-}
-
-.hero-bg img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center 20%;
-  filter: brightness(var(--te-bg-brightness, 0.4)) contrast(1.1);
-}
-
-.hero-bg-overlay {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    circle,
-    transparent 20%,
-    rgba(10, 10, 10, 0.7) 70%,
-    rgba(10, 10, 10, 0.95) 100%
-  );
-  z-index: 2;
-}
-
-/* Cover Title - Fades and drifts up first */
-.hero-cover-title {
-  position: relative;
-  z-index: 3;
-  text-align: center;
-  padding: 2rem;
-  opacity: var(--te-title-opacity, 1.0);
-  transform: translateY(var(--te-title-y, 0px));
-  will-change: opacity, transform;
-  pointer-events: none;
-}
-
-.hero-cover-eyebrow {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-  display: block;
-  margin-bottom: 1.5rem;
-}
-
-.hero-cover-name {
-  font-family: var(--font-heading);
-  font-size: clamp(3rem, 10vw, 7.5rem);
-  font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: 0.04em;
-  color: var(--white);
-  margin-bottom: 2rem;
-}
-
-.hero-cover-hint {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  display: block;
-}
-
-/* Foreground Book Cover Panels - Scales up aggressively */
-.hero-cover-frame {
-  position: absolute;
-  inset: 0;
-  z-index: 4;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  opacity: var(--te-cover-opacity, 1.0);
-  transform: scale(var(--te-cover-scale, 1.0));
-  will-change: opacity, transform;
-  pointer-events: none;
-}
-
-.hero-cover-panel {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 50.1%;
-  background: var(--black);
-}
-
-.hero-cover-panel.left {
-  left: 0;
-  border-right: 1px solid rgba(197, 160, 94, 0.2);
-}
-
-.hero-cover-panel.right {
-  right: 0;
-  border-left: 1px solid rgba(197, 160, 94, 0.2);
-}
-
-.hero-cover-center-card {
-  position: relative;
-  width: clamp(280px, 35vw, 420px);
-  height: clamp(380px, 50vh, 560px);
-  border: 1px solid var(--gold);
-  background: var(--charcoal);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.85);
-}
-
-.hero-cover-logo {
-  font-family: var(--font-heading);
-  font-size: 4rem;
-  color: var(--gold);
-  font-weight: 700;
-  letter-spacing: 0.05em;
-  margin-bottom: 0.5rem;
-}
-
-.hero-cover-logo-sub {
-  font-family: var(--font-body);
-  font-size: 0.65rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-}
-
-.hero-cover-border {
-  position: absolute;
-  inset: 12px;
-  border: 1px solid rgba(197, 160, 94, 0.2);
-}
-
-/* final reveal content */
-.hero-reveal {
-  position: absolute;
-  z-index: 2;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-end;
-  text-align: center;
-  padding: 4rem clamp(2rem, 5vw, 6rem);
-  opacity: var(--te-reveal-opacity, 0.0);
-  pointer-events: none;
-  will-change: opacity;
-}
-
-.hero-reveal-content {
-  max-width: 800px;
-  margin-bottom: 2rem;
-}
-
-.hero-reveal-subtitle {
-  font-family: var(--font-body);
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold);
-  margin-bottom: 1.5rem;
-  font-weight: 500;
-}
-
-.hero-reveal-name {
-  font-family: var(--font-heading);
-  font-size: clamp(3.5rem, 10vw, 8.5rem);
-  font-weight: 700;
-  line-height: 0.9;
-  letter-spacing: -0.03em;
-  color: var(--white);
-  margin-bottom: 1.5rem;
-}
-
-.hero-reveal-tagline {
-  font-family: var(--font-body);
-  font-size: 1rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  font-weight: 300;
-  margin-bottom: 2rem;
-}
-
-.hero-reveal-year {
-  font-family: var(--font-body);
-  font-size: 0.7rem;
-  letter-spacing: 0.3em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  border-top: 1px solid rgba(197, 160, 94, 0.3);
-  padding-top: 1rem;
-  display: inline-block;
-}
-
-.hero-scroll-indicator {
-  position: absolute;
-  bottom: 2rem;
-  right: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  animation: scrollFloat 2s ease-in-out infinite;
-}
-
-.hero-scroll-indicator span {
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  writing-mode: vertical-rl;
-}
-
-.hero-scroll-line {
-  width: 1px;
-  height: 40px;
-  background: linear-gradient(to bottom, var(--gold), transparent);
-  animation: scrollPulse 2s ease-in-out infinite;
-}
-
-@keyframes scrollFloat {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
-}
-
-@keyframes scrollPulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 1; }
-}
-
-/* ================================================================
-   SECTION 2 — ABOUT
-   ================================================================ */
-.about {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-}
-.about__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-}
-.about__image {
-  position: relative;
-  padding: 1.5rem;
-}
-.about__image::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 90%;
-  height: 90%;
-  border: 1px solid var(--gold);
-  z-index: 0;
-  pointer-events: none;
-  transition: transform 0.6s var(--te-ease-editorial);
-}
-.about__image:hover::before {
-  transform: translate(8px, 8px);
-}
-.about__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  position: relative;
-  z-index: 1;
-  box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.4);
-  transition: transform 0.8s var(--te-ease-editorial);
-}
-.about__image:hover img {
-  transform: translateY(-4px);
-}
-.about__text .body-text { max-width: 540px; }
-
-/* Drop-cap for editorial look */
-.drop-cap::first-letter {
-  font-family: var(--font-heading);
-  font-size: 5.5rem;
-  float: left;
-  line-height: 0.8;
-  padding-right: 0.75rem;
-  margin-top: 0.15rem;
-  color: var(--gold);
-  font-weight: 300;
-}
-
-/* ================================================================
-   SECTION 3 — CAREER HIGHLIGHTS (Editorial Split Layout)
-   ================================================================ */
-.highlights {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-}
-.stats-layout {
-  display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 5rem;
-  align-items: start;
-}
-.stats-header {
-  position: sticky;
-  top: 8rem;
-}
-.stats-stacked {
-  display: flex;
-  flex-direction: column;
-}
-.stat-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  padding: 1.8rem 0;
-  border-bottom: 1px solid rgba(197, 160, 94, 0.15);
-  transition: padding-left 0.4s ease;
-}
-.stat-row:hover {
-  padding-left: 1rem;
-}
-.stat-row__num {
-  font-family: var(--font-heading);
-  font-size: clamp(3rem, 5vw, 4.5rem);
-  font-weight: 300;
-  color: var(--gold);
-  line-height: 0.9;
-}
-.stat-row__label {
-  font-family: var(--font-body);
-  font-size: 0.8rem;
-  letter-spacing: 0.25em;
-  text-transform: uppercase;
-  color: var(--light-gray);
-  font-weight: 300;
-  text-align: right;
-  margin-bottom: 0.25rem;
-}
-
-/* ================================================================
-   SECTION 4 — CURRENT PORTFOLIO
-   ================================================================ */
-.portfolio {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-}
-.portfolio__grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-  margin-top: clamp(2rem, 4vh, 3.5rem);
-}
-.port-card {
-  position: relative;
-  background: var(--charcoal);
-  border: 1px solid rgba(197,160,94,0.12);
-  aspect-ratio: 1.5;
-  overflow: hidden;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease, box-shadow 0.6s ease;
-}
-.port-card img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.port-card:hover img {
-  transform: scale(1.06);
-}
-.port-card:hover {
-  transform: translateY(-4px);
-  border-color: rgba(197,160,94,0.35);
-  box-shadow: 0 12px 40px rgba(0,0,0,0.45);
-}
-.port-card__overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    rgba(10, 10, 10, 0.4) 40%,
-    rgba(10, 10, 10, 0.95) 90%
-  );
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 1.5rem;
-  z-index: 2;
-}
-.port-card__name {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.25rem;
-  color: var(--white);
-  margin-bottom: 0.25rem;
-}
-.port-card__location {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.68rem;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--gold-light);
-  margin-bottom: 0.75rem;
-}
-.port-card__badge {
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  padding: 0.25rem 0.75rem;
-  border-radius: 2px;
-  font-weight: 500;
-}
-.badge--active {
-  background: rgba(60,180,80,0.12);
-  color: #5cbf6f;
-  border: 1px solid rgba(60,180,80,0.25);
-}
-.badge--upcoming {
-  background: rgba(197,160,94,0.12);
-  color: var(--gold);
-  border: 1px solid rgba(197,160,94,0.25);
-}
-
-/* ================================================================
-   SECTION 5 — FEATURED CONCEPTS
-   ================================================================ */
-.concepts {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-}
-.concept-block {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: center;
-  margin-bottom: clamp(4rem, 8vh, 7rem);
-}
-.concept-block:last-child { margin-bottom: 0; }
-.concept-block--reverse .concept-block__image { order: 2; }
-.concept-block--reverse .concept-block__text { order: 1; }
-.concept-block__image {
-  aspect-ratio: 4/3;
-  overflow: hidden;
-  position: relative;
-}
-.concept-block__image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 6s ease-out;
-}
-.concept-block__image:hover img { transform: scale(1.05); }
-.concept-block__text .body-text { max-width: 520px; }
-.concept-label {
-  display: inline-block;
-  font-size: 0.65rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  padding: 0.3rem 0.9rem;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  margin-bottom: 1.2rem;
-  font-weight: 500;
-}
-
-/* ================================================================
-   SECTION 6 — LEGACY RESTAURANTS
-   ================================================================ */
-.legacy {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-}
-.legacy__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.2rem;
-  margin-top: clamp(2rem, 4vh, 3rem);
-}
-.legacy-item {
-  padding: 1.2rem;
-  border-bottom: 1px solid rgba(197,160,94,0.10);
-  transition: border-color 0.3s ease;
-}
-.legacy-item:hover { border-color: rgba(197,160,94,0.35); }
-.legacy-item__name {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--white);
-  margin-bottom: 0.25rem;
-}
-.legacy-item__loc {
-  font-size: 0.72rem;
-  color: var(--mid-gray);
-  font-weight: 300;
-}
-
-/* ================================================================
-   SECTION 7 — HOSPITALITY DEVELOPMENT
-   ================================================================ */
-.hospitality {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-}
-.hosp-grid {
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  gap: 1.5rem;
-  margin-top: clamp(2rem, 4vh, 3.5rem);
-}
-.hosp-item {
-  text-align: center;
-  padding: 2rem 1rem;
-  border: 1px solid rgba(197,160,94,0.08);
-  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-.hosp-item:hover {
-  border-color: rgba(197,160,94,0.30);
-  transform: translateY(-3px);
-}
-.hosp-item__icon {
-  font-size: 2rem;
-  margin-bottom: 0.8rem;
-  display: block;
-}
-.hosp-item__title {
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--light-gray);
-  font-weight: 500;
-}
-
-/* ================================================================
-   SECTION 8 — TELEVISION & MEDIA
-   ================================================================ */
-.media {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-  text-align: center;
-}
-.media__grid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem 2rem;
-  margin-top: clamp(2rem, 4vh, 3.5rem);
-}
-.media-tag {
-  font-family: var(--font-body);
-  font-weight: 600;
-  font-size: clamp(0.85rem, 1.5vw, 1.1rem);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  padding: 0.6rem 1.2rem;
-  transition: color 0.35s ease;
-  cursor: default;
-}
-.media-tag:hover { color: var(--gold); }
-
-/* ================================================================
-   SECTION 9 — AWARDS
-   ================================================================ */
-.awards {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-}
-.awards__list {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem 3rem;
-  margin-top: clamp(2rem, 4vh, 3rem);
-}
-.award-item {
-  padding: 1rem 0 1rem 1.5rem;
-  border-left: 2px solid var(--gold);
-  transition: background 0.3s ease;
-}
-.award-item:hover { background: rgba(197,160,94,0.04); }
-.award-item__title {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1rem;
-  color: var(--white);
-  margin-bottom: 0.15rem;
-}
-.award-item__detail {
-  font-size: 0.8rem;
-  color: var(--mid-gray);
-  font-weight: 300;
-}
-
-/* ================================================================
-   SECTION 10 — COOKBOOKS
-   ================================================================ */
-.cookbooks {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-}
-.cookbooks__scroll {
-  display: flex;
-  gap: 1.5rem;
-  overflow-x: auto;
-  padding-bottom: 1.5rem;
-  margin-top: clamp(2rem, 4vh, 3rem);
-  scroll-snap-type: x mandatory;
-  -webkit-overflow-scrolling: touch;
-}
-.cookbooks__scroll::-webkit-scrollbar { height: 4px; }
-.cookbooks__scroll::-webkit-scrollbar-track { background: var(--charcoal); }
-.cookbooks__scroll::-webkit-scrollbar-thumb { background: var(--gold); border-radius: 2px; }
-.book-card {
-  flex: 0 0 200px;
-  height: 260px;
-  background: var(--charcoal);
-  border: 1px solid rgba(197,160,94,0.10);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 1.5rem;
-  text-align: center;
-  scroll-snap-align: start;
-  transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.22,1,0.36,1);
-}
-.book-card:hover {
-  border-color: var(--gold);
-  transform: translateY(-4px);
-}
-.book-card__title {
-  font-family: var(--font-heading);
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--gold);
-  line-height: 1.35;
-}
-
-/* ================================================================
-   SECTION 11 — DEVELOPMENT OPPORTUNITIES
-   ================================================================ */
-.development {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-}
-.dev-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: clamp(2rem, 5vw, 5rem);
-  align-items: start;
-}
-.dev-opps {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.75rem;
-}
-.dev-opp {
-  padding: 1rem 1.2rem;
-  background: var(--slate);
-  border-left: 2px solid var(--gold);
-  font-size: 0.82rem;
-  color: var(--light-gray);
-  font-weight: 400;
-  transition: background 0.3s ease;
-}
-.dev-opp:hover { background: rgba(197,160,94,0.08); }
-
-/* ================================================================
-   SECTION 12 — PRESS & TESTIMONIALS
-   ================================================================ */
-.press {
-  padding: var(--section-pad-y) 0;
-  background: var(--black);
-}
-.press__grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
-  margin-top: clamp(2rem, 4vh, 3rem);
-}
-.quote-card {
-  background: var(--charcoal);
-  padding: 2.5rem;
-  border: 1px solid rgba(197,160,94,0.08);
-  position: relative;
-  transition: border-color 0.4s ease;
-}
-.quote-card:hover { border-color: rgba(197,160,94,0.25); }
-.quote-card__mark {
-  font-family: var(--font-heading);
-  font-size: 4rem;
-  color: var(--gold);
-  line-height: 1;
-  margin-bottom: 0.5rem;
-  opacity: 0.6;
-}
-.quote-card__text {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 0.95rem;
-  line-height: 1.75;
-  color: var(--light-gray);
-  font-style: italic;
-  margin-bottom: 1rem;
-}
-.quote-card__source {
-  font-size: 0.72rem;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--gold);
-  font-weight: 500;
-}
-
-/* ================================================================
-   SECTION 13 — CONTACT
-   ================================================================ */
-.contact {
-  padding: var(--section-pad-y) 0;
-  background: var(--charcoal);
-  text-align: center;
-}
-.contact__grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 2rem;
-  margin: clamp(2rem, 5vh, 4rem) auto;
-  max-width: 900px;
-}
-.contact-item__label {
-  font-size: 0.65rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  color: var(--mid-gray);
-  margin-bottom: 0.5rem;
-}
-.contact-item__value {
-  font-family: var(--font-body);
-  font-weight: 400;
-  font-size: 0.95rem;
-  color: var(--white);
-}
-.contact-item__value a {
-  color: var(--gold-light);
-  transition: color 0.3s;
-}
-.contact-item__value a:hover { color: var(--gold); }
-
-.btn-download {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.6rem;
-  padding: 1rem 2.5rem;
-  border: 1px solid var(--gold);
-  color: var(--gold);
-  font-family: var(--font-body);
-  font-weight: 500;
-  font-size: 0.8rem;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  background: transparent;
-  cursor: pointer;
-  transition: background 0.4s ease, color 0.4s ease;
-  margin-top: 1rem;
-}
-.btn-download:hover {
-  background: var(--gold);
-  color: var(--black);
-}
-
-/* ================================================================
-   SECTION 14 — FOOTER
-   ================================================================ */
-.footer {
-  padding: 3rem 0;
-  background: var(--black);
-  text-align: center;
-  border-top: 1px solid rgba(197,160,94,0.10);
-}
-.footer__copy {
-  font-size: 0.72rem;
-  color: var(--mid-gray);
-  letter-spacing: 0.1em;
-  font-weight: 300;
-  margin-bottom: 0.4rem;
-}
-.footer__agency {
-  font-size: 0.65rem;
-  color: rgba(136,136,136,0.5);
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-}
-
-/* ================================================================
-   RESPONSIVE
-   ================================================================ */
-@media (max-width: 1024px) {
-  .hosp-grid { grid-template-columns: repeat(3, 1fr); }
-  .stats-grid { grid-template-columns: repeat(3, 1fr); }
-  .legacy__grid { grid-template-columns: repeat(3, 1fr); }
-  .contact__grid { grid-template-columns: repeat(2, 1fr); }
-}
-
-@media (max-width: 768px) {
-  .about__grid { grid-template-columns: 1fr; }
-  .about__image { max-height: 500px; }
-  .concept-block { grid-template-columns: 1fr; }
-  .concept-block--reverse .concept-block__image { order: 0; }
-  .concept-block--reverse .concept-block__text { order: 0; }
-  .portfolio__grid { grid-template-columns: 1fr 1fr; }
-  .stats-grid { grid-template-columns: repeat(2, 1fr); }
-  .stat:not(:nth-child(3n))::after { display: none; }
-  .stat:nth-child(odd)::after {
-    content: '';
-    position: absolute;
-    right: 0;
-    top: 20%;
-    height: 60%;
-    width: 1px;
-    background: linear-gradient(180deg, transparent, var(--gold), transparent);
-    opacity: 0.4;
-    display: block;
-  }
-  .legacy__grid { grid-template-columns: repeat(2, 1fr); }
-  .hosp-grid { grid-template-columns: repeat(2, 1fr); }
-  .awards__list { grid-template-columns: 1fr; }
-  .dev-grid { grid-template-columns: 1fr; }
-  .press__grid { grid-template-columns: 1fr; }
-  .hero__scroll { right: 1.5rem; bottom: 1.5rem; }
-}
-
-@media (max-width: 480px) {
-  .portfolio__grid { grid-template-columns: 1fr; }
-  .stats-grid { grid-template-columns: 1fr; }
-  .stat:nth-child(odd)::after { display: none; }
-  .legacy__grid { grid-template-columns: 1fr; }
-  .hosp-grid { grid-template-columns: 1fr 1fr; }
-  .dev-opps { grid-template-columns: 1fr; }
-  .contact__grid { grid-template-columns: 1fr; }
-  .hero__name { letter-spacing: 0.02em; }
-}
-
-/* ================================================================
-   PRINT
-   ================================================================ */
-/* ================================================================
-   PRINT
-   ================================================================ */
-@media print {
-  body {
-    background: #FFFFFF !important;
-    color: #111111 !important;
-    font-size: 10pt;
-  }
-
-  /* Scroll Hero print overrides */
-  .hero-scroll {
-    height: auto !important;
-    background: #111111 !important;
-    page-break-after: always;
-  }
-
-  .hero-pin {
-    position: relative !important;
-    height: 100vh !important;
-    display: flex !important;
-    align-items: center !important;
-    justify-content: center !important;
-  }
-
-  .hero-bg {
-    transform: none !important;
-  }
-
-  .hero-bg img {
-    filter: brightness(0.3) !important;
-    -webkit-print-color-adjust: exact;
-    print-color-adjust: exact;
-  }
-
-  .hero-cover-title, 
-  .hero-cover-frame, 
-  .hero-scroll-indicator {
-    display: none !important;
-  }
-
-  .hero-reveal {
-    opacity: 1 !important;
-    pointer-events: auto !important;
-    display: flex !important;
-  }
-
-  .hero-reveal * {
-    color: #FFFFFF !important;
-  }
-
-  .section-divider {
-    display: none !important;
-  }
-
-  /* Force light backgrounds & dark text */
-  .about, .highlights, .portfolio, .concepts, .legacy,
-  .hospitality, .media, .awards, .cookbooks, .development,
-  .press, .contact {
-    background: #FFFFFF !important;
-    color: #111111 !important;
-    padding: 3rem 2rem !important;
-    page-break-inside: avoid;
-  }
-
-  .about, .highlights, .concepts, .hospitality, .awards, .development, .contact {
-    background: #FFFFFF !important;
-  }
-
-  .heading-lg, .heading-md, .port-card__name, .award-item__title,
-  .legacy-item__name, .book-card__title, .body-text, 
-  .legacy-item__loc, .award-item__detail, .quote-card__text, 
-  .hosp-item__title, .contact-item__value, .dev-opp {
-    color: #111111 !important;
-  }
-
-  .label, .port-card__location, .quote-card__source, .contact-item__label, .hosp-item__desc {
-    color: #8B7340 !important; /* Elegant gold-brown for print */
-  }
-
-  .stat__number {
-    color: #8B7340 !important;
-  }
-
-  .stat__label {
-    color: #555555 !important;
-  }
-
-  .reveal {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-
-  .portfolio__grid {
-    grid-template-columns: repeat(2, 1fr) !important;
-  }
-
-  .port-card {
-    border: 1px solid #CCCCCC !important;
-    background: #FFFFFF !important;
-    page-break-inside: avoid;
-  }
-
-  .port-card img {
-    filter: grayscale(100%) !important;
-  }
-
-  .port-card__badge {
-    background: none !important;
-    color: #333333 !important;
-    border: 1px solid #333333 !important;
-  }
-
-  .legacy__grid {
-    grid-template-columns: repeat(3, 1fr) !important;
-    background: #CCCCCC !important;
-  }
-
-  .legacy-item {
-    background: #FFFFFF !important;
-    border: 1px solid #CCCCCC !important;
-  }
-
-  .dev-opp {
-    border: 1px solid #CCCCCC !important;
-    border-left: 2px solid #8B7340 !important;
-    background: #FFFFFF !important;
-  }
-
-  .award-item {
-    background: #F5F5F5 !important;
-    border-left: 3px solid #8B7340 !important;
-  }
-
-  .cookbooks__scroll {
-    overflow: visible !important;
-    flex-wrap: wrap !important;
-  }
-
-  .book-card {
-    border: 1px solid #CCCCCC !important;
-    background: #F5F5F5 !important;
-  }
-
-  .quote-card {
-    background: #F5F5F5 !important;
-    border: 1px solid #CCCCCC !important;
-  }
-
-  .btn-download {
-    display: none !important;
-  }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Todd English — Global Chef, Restaurateur, and Hospitality Visionary. 2026-2027 Brand Book and Interactive Press Center.">
+  <title>TODD ENGLISH — Brand Book & Press Center</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ================================================================
+       DESIGN SYSTEM & TOKENS
+       ================================================================ */
+    :root {
+      --black: #0A0A0A;
+      --charcoal: #141414;
+      --slate: #1F1F1F;
+      --gold: #C5A05E;
+      --gold-light: #D4B77A;
+      --gold-dark: #A48143;
+      --off-white: #F5F3EF;
+      --white: #FAFAFA;
+      --mid-gray: #8E8E8E;
+      --light-gray: #CCCCCC;
+      
+      --font-heading: 'Playfair Display', serif;
+      --font-body: 'Inter', sans-serif;
+      
+      --section-pad-y: clamp(5rem, 10vh, 8rem);
+      --section-pad-x: clamp(1.5rem, 5vw, 4rem);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      background-color: var(--black);
+      color: var(--white);
+      font-family: var(--font-body);
+      font-size: 16px;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--black);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: var(--gold-dark);
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: var(--gold);
+    }
+
+    /* Selection */
+    ::selection {
+      background: var(--gold);
+      color: var(--black);
+    }
+
+    /* Common Layout & Typography Elements */
+    .section-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 var(--section-pad-x);
+      width: 100%;
+    }
+
+    .label {
+      font-family: var(--font-body);
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .heading-lg {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1.15;
+      color: var(--white);
+      letter-spacing: -0.01em;
+    }
+
+    .heading-md {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      line-height: 1.2;
+      color: var(--white);
+    }
+
+    .gold-line {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin: 1.5rem 0 2rem 0;
+    }
+
+    .gold-line--center {
+      margin: 1.5rem auto 2.5rem auto;
+    }
+
+    .body-text {
+      font-size: clamp(0.95rem, 2vw, 1.1rem);
+      line-height: 1.8;
+      color: var(--light-gray);
+      font-weight: 300;
+    }
+
+    .body-text-sm {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: var(--mid-gray);
+      font-weight: 300;
+    }
+
+    .drop-cap::first-letter {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      float: left;
+      line-height: 0.8;
+      padding-right: 0.75rem;
+      margin-top: 0.2rem;
+      color: var(--gold);
+      font-weight: 700;
+    }
+
+    /* Section Divider Line */
+    .section-divider {
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(197, 160, 94, 0.15), transparent);
+    }
+
+    /* ================================================================
+       SCROLL HERO & PORTAL SYSTEM (Dream Land technique)
+       ================================================================ */
+    .hero-scroll {
+      position: relative;
+      height: 220vh; /* Scroll length for the push-through animation */
+      background: var(--black);
+    }
+
+    .hero-pin {
+      position: sticky;
+      top: 0;
+      height: 100vh;
+      width: 100%;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Layer 1: Background Image Zoomed out slightly */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      transform: scale(1.1);
+      transition: transform 0.1s linear;
+    }
+
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(0.5);
+    }
+
+    .hero-bg-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(to bottom, rgba(10,10,10,0.6) 0%, rgba(10,10,10,0.85) 100%);
+    }
+
+    /* Layer 2: Main Cover Title */
+    .hero-cover-title {
+      position: absolute;
+      z-index: 3;
+      text-align: center;
+      opacity: 1;
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .hero-cover-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-cover-name {
+      font-family: var(--font-heading);
+      font-size: clamp(3.5rem, 8vw, 7.5rem);
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      line-height: 1;
+      color: var(--white);
+      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
+      margin-bottom: 2rem;
+    }
+
+    .hero-cover-hint {
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      border: 1px solid rgba(197, 160, 94, 0.3);
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      background: rgba(10,10,10,0.4);
+      backdrop-filter: blur(5px);
+      margin-top: 1rem;
+      animation: pulseIndicator 2s infinite;
+    }
+
+    @keyframes pulseIndicator {
+      0%, 100% { opacity: 0.6; transform: translateY(0); }
+      50% { opacity: 1; transform: translateY(4px); }
+    }
+
+    /* Layer 3: Pinned Foreground Frame (Split panel gates) */
+    .hero-cover-frame {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 4;
+      display: flex;
+      pointer-events: none;
+    }
+
+    .hero-cover-panel {
+      width: 50%;
+      height: 100%;
+      background: var(--black);
+      border: 1px solid rgba(197, 160, 94, 0.05);
+      transition: transform 0.1s linear;
+    }
+
+    .hero-cover-panel.left {
+      transform-origin: left center;
+      box-shadow: 10px 0 30px rgba(0,0,0,0.9);
+    }
+
+    .hero-cover-panel.right {
+      transform-origin: right center;
+      box-shadow: -10px 0 30px rgba(0,0,0,0.9);
+    }
+
+    /* Centered Book Cover Logo Badge inside gates */
+    .hero-cover-center-card {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 320px;
+      height: 320px;
+      background: var(--charcoal);
+      border: 2px solid var(--gold);
+      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
+      z-index: 5;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      transition: opacity 0.1s linear, transform 0.1s linear;
+    }
+
+    .hero-cover-logo {
+      font-family: var(--font-heading);
+      font-size: 5rem;
+      color: var(--white);
+      line-height: 1;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+    }
+
+    .hero-cover-logo-sub {
+      font-size: 0.75rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-top: 1rem;
+      font-weight: 500;
+    }
+
+    .hero-cover-border {
+      width: 60px;
+      height: 1px;
+      background: var(--gold);
+      margin-top: 1.5rem;
+    }
+
+    /* Layer 4: Final Pinned Content Revealed underneath Split Gates */
+    .hero-reveal {
+      position: absolute;
+      z-index: 2;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: var(--section-pad-x);
+      opacity: 0;
+      transform: scale(0.95);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      pointer-events: none;
+    }
+
+    .hero-reveal.active {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .hero-reveal-subtitle {
+      font-size: 0.85rem;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+
+    .hero-reveal-name {
+      font-family: var(--font-heading);
+      font-size: clamp(3.2rem, 7vw, 6.5rem);
+      font-weight: 700;
+      line-height: 1.05;
+      color: var(--white);
+      letter-spacing: 0.02em;
+    }
+
+    .hero-reveal-tagline {
+      font-size: clamp(0.9rem, 2vw, 1.2rem);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      margin-top: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero-reveal-year {
+      font-size: 0.75rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-top: 1rem;
+    }
+
+    .hero__gold-line {
+      width: 120px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    .hero-scroll-indicator {
+      position: absolute;
+      bottom: 3rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+    }
+
+    .hero-scroll-line {
+      width: 1px;
+      height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      margin-top: 0.75rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-scroll-line::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 20px;
+      background: var(--white);
+      animation: scrollAnim 2s infinite;
+    }
+
+    @keyframes scrollAnim {
+      0% { top: -20px; }
+      100% { top: 50px; }
+    }
+
+    /* ================================================================
+       SECTION 2 — ABOUT
+       ================================================================ */
+    .about {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: clamp(2rem, 6vw, 5rem);
+      align-items: center;
+    }
+
+    .about__image {
+      position: relative;
+      border: 1px solid rgba(197,160,94,0.15);
+      padding: 1rem;
+      background: var(--charcoal);
+      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
+    }
+
+    .about__image img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ================================================================
+       SECTION 3 — CAREER HIGHLIGHTS
+       ================================================================ */
+    .highlights {
+      padding: var(--section-pad-y) 0;
+      background: var(--charcoal);
+    }
+
+    .stats-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: clamp(2rem, 6vw, 4rem);
+      align-items: center;
+    }
+
+    .stats-stacked {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      position: relative;
+    }
+
+    .stat-row {
+      background: var(--slate);
+      padding: 2rem;
+      border-left: 2px solid var(--gold);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .stat-row:hover {
+      transform: translateY(-4px);
+      border-left-color: var(--white);
+    }
+
+    .stat-row__num {
+      font-family: var(--font-heading);
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 700;
+      color: var(--gold);
+      line-height: 1.1;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-row__label {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--light-gray);
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       SECTION 4 — CURRENT PORTFOLIO
+       ================================================================ */
+    .portfolio {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .portfolio__grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin-top: clamp(2.5rem, 5vh, 4rem);
+    }
+
+    .port-card {
+      position: relative;
+      background: var(--charcoal);
+      border: 1px solid rgba(197,160,94,0.12);
+      aspect-ratio: 1.5;
+      overflow: hidden;
+      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease, box-shadow 0.6s ease;
+    }
+
+    .port-card:hover {
+      transform: scale(1.03);
+      border-color: rgba(197,160,94,0.35);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+    }
+
+    .port-card img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .port-card:hover img {
+      transform: scale(1.05);
+    }
+
+    .port-card__overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,10,10,0.3) 40%, rgba(10,10,10,0.95) 90%);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1.75rem;
+      z-index: 2;
+    }
+
+    .port-card__name {
+      font-family: var(--font-heading);
+      font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.35rem;
+    }
+
+    .port-card__location {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1rem;
+      font-weight: 500;
+    }
+
+    .port-card__badge {
+      align-self: flex-start;
+      font-size: 0.55rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.75rem;
+      border-radius: 20px;
+    }
+
+    .badge--active {
+      background: rgba(197,160,94,0.12);
+      border: 1px solid var(--gold);
+      color: var(--gold-light);
+    }
+
+    .badge--upcoming {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.3);
+      color: var(--white);
+    }
+
+    /* ================================================================
+       SECTION 5 — FEATURED DEEP DIVE PAGES
+       ================================================================ */
+    .concepts {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .concept-block {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+      margin-top: clamp(2.5rem, 5vh, 4rem);
+    }
+
+    .concept-block--reverse {
+      grid-template-columns: 0.9fr 1.1fr;
+    }
+
+    .concept-block--reverse .concept-block__image {
+      order: 2;
+    }
+
+    .concept-block__image {
+      position: relative;
+      border: 1px solid rgba(197,160,94,0.1);
+      padding: 1rem;
+      background: var(--charcoal);
+    }
+
+    .img-placeholder {
+      position: relative;
+      aspect-ratio: 1.6;
+      background: var(--slate);
+      overflow: hidden;
+    }
+
+    .img-placeholder img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .concept-block__text {
+      padding: 1rem 0;
+    }
+
+    .concept-label {
+      font-size: 0.65rem;
+      font-weight: 500;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    /* ================================================================
+       SECTION 9 — LEGACY RESTAURANTS
+       ================================================================ */
+    .legacy {
+      padding: var(--section-pad-y) 0;
+      background: var(--charcoal);
+    }
+
+    .legacy-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .legacy__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    .legacy-item {
+      background: var(--slate);
+      padding: 1.75rem;
+      border: 1px solid rgba(255,255,255,0.03);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      transition: border-color 0.4s ease;
+    }
+
+    .legacy-item:hover {
+      border-color: rgba(197, 160, 94, 0.25);
+    }
+
+    .legacy-item__name {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .legacy-item__loc {
+      font-size: 0.65rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+
+    /* ================================================================
+       SECTION 10 — HOSPITALITY DEVELOPMENT
+       ================================================================ */
+    .hospitality {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .hosp-layout {
+      display: grid;
+      grid-template-columns: 0.9fr 1.1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .hosp-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .hosp-item {
+      background: var(--charcoal);
+      border: 1px solid rgba(197,160,94,0.1);
+      padding: 1.5rem;
+      text-align: center;
+      transition: transform 0.4s ease, border-color 0.4s ease;
+    }
+
+    .hosp-item:hover {
+      transform: translateY(-4px);
+      border-color: var(--gold);
+    }
+
+    .hosp-item__icon {
+      font-size: 1.75rem;
+      margin-bottom: 0.75rem;
+      display: inline-block;
+    }
+
+    .hosp-item__title {
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.25rem;
+    }
+
+    .hosp-item__desc {
+      font-size: 0.6rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       SECTION 11 — TELEVISION & MEDIA
+       ================================================================ */
+    .media {
+      padding: var(--section-pad-y) 0;
+      background: var(--charcoal);
+    }
+
+    .media-layout {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .media-logos {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .media-logo {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--mid-gray);
+      letter-spacing: 0.05em;
+      transition: color 0.3s ease;
+    }
+
+    .media-logo:hover {
+      color: var(--gold);
+    }
+
+    /* ================================================================
+       SECTION 12 — AWARDS
+       ================================================================ */
+    .awards {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .awards__list {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-top: clamp(2.5rem, 5vh, 4rem);
+    }
+
+    .award-item {
+      background: var(--charcoal);
+      border-left: 3px solid var(--gold);
+      padding: 2rem;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
+      transition: transform 0.4s ease;
+    }
+
+    .award-item:hover {
+      transform: translateX(4px);
+    }
+
+    .award-item__title {
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .award-item__detail {
+      font-size: 0.85rem;
+      color: var(--mid-gray);
+      line-height: 1.5;
+    }
+
+    /* ================================================================
+       SECTION 13 — COOKBOOKS
+       ================================================================ */
+    .cookbooks {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .cookbooks__scroll {
+      display: flex;
+      gap: 1.5rem;
+      overflow-x: auto;
+      padding-bottom: 1.5rem;
+      margin-top: clamp(2rem, 4vh, 3rem);
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .book-card {
+      flex: 0 0 200px;
+      height: 260px;
+      background: var(--charcoal);
+      border: 1px solid rgba(197,160,94,0.10);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      text-align: center;
+      scroll-snap-align: start;
+      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .book-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-8px);
+    }
+
+    /* ================================================================
+       SECTION 14 — BRAND PARTNERSHIPS
+       ================================================================ */
+    .partnerships {
+      padding: var(--section-pad-y) 0;
+      background: var(--charcoal);
+    }
+
+    .partnerships-layout {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .partner-cards {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .partner-card {
+      background: var(--slate);
+      padding: 2rem;
+      border: 1px solid rgba(197, 160, 94, 0.1);
+      transition: border-color 0.4s ease;
+    }
+
+    .partner-card:hover {
+      border-color: var(--gold);
+    }
+
+    .partner-card__title {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      font-weight: 700;
+      color: var(--gold-light);
+      margin-bottom: 0.5rem;
+    }
+
+    /* ================================================================
+       SECTION 15 — DEVELOPMENT OPPORTUNITIES
+       ================================================================ */
+    .development {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .dev-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.1fr;
+      gap: clamp(2rem, 5vw, 4rem);
+      align-items: center;
+    }
+
+    .dev-opps {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .dev-opp {
+      padding: 1rem 1.2rem;
+      background: var(--slate);
+      border-left: 2px solid var(--gold);
+      font-size: 0.82rem;
+      color: var(--light-gray);
+      font-weight: 400;
+      transition: background 0.3s ease;
+    }
+
+    .dev-opp:hover {
+      background: rgba(197,160,94,0.08);
+    }
+
+    /* ================================================================
+       SECTION 16 — PRESS & TESTIMONIALS
+       ================================================================ */
+    .press {
+      padding: var(--section-pad-y) 0;
+      background: var(--black);
+    }
+
+    .press__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: clamp(2rem, 4vh, 3rem);
+    }
+
+    .quote-card {
+      background: var(--charcoal);
+      padding: 2.5rem;
+      border: 1px solid rgba(197,160,94,0.08);
+      position: relative;
+      transition: border-color 0.4s ease;
+    }
+
+    .quote-card:hover {
+      border-color: rgba(197,160,94,0.25);
+    }
+
+    .quote-card__mark {
+      font-family: var(--font-heading);
+      font-size: 4rem;
+      color: var(--gold);
+      line-height: 1;
+      margin-bottom: 0.5rem;
+      opacity: 0.6;
+    }
+
+    .quote-card__text {
+      font-family: var(--font-body);
+      font-weight: 300;
+      font-size: 0.95rem;
+      line-height: 1.75;
+      color: var(--light-gray);
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+
+    .quote-card__source {
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
+    /* ================================================================
+       SECTION 17 — CONTACT
+       ================================================================ */
+    .contact {
+      padding: var(--section-pad-y) 0;
+      background: var(--charcoal);
+      text-align: center;
+    }
+
+    .contact__grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 2rem;
+      margin: clamp(2rem, 5vh, 4rem) auto;
+      max-width: 900px;
+    }
+
+    .contact-item__label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--mid-gray);
+      margin-bottom: 0.5rem;
+    }
+
+    .contact-item__value {
+      font-family: var(--font-body);
+      font-weight: 400;
+      font-size: 0.95rem;
+      color: var(--white);
+    }
+
+    .contact-item__value a {
+      color: var(--gold-light);
+      transition: color 0.3s;
+      text-decoration: none;
+    }
+
+    .contact-item__value a:hover {
+      color: var(--gold);
+    }
+
+    .btn-download {
+      display: inline-block;
+      margin-top: 1rem;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.75rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 1rem 2rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .btn-download:hover {
+      background: var(--gold);
+      color: var(--black);
+      box-shadow: 0 5px 15px rgba(197, 160, 94, 0.2);
+    }
+
+    /* Footer */
+    footer {
+      background: var(--black);
+      padding: 2.5rem 0;
+      text-align: center;
+      font-size: 0.75rem;
+      color: var(--mid-gray);
+      border-top: 1px solid rgba(255,255,255,0.03);
+    }
+
+    /* Scroll Animation Reveal Utility */
+    .reveal {
+      opacity: 0;
+      transform: translateY(25px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+    .reveal-delay-6 { transition-delay: 0.6s; }
+
+    /* Responsive */
+    @media (max-width: 1024px) {
+      .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
+      .legacy-layout { grid-template-columns: 1fr; }
+      .hosp-layout { grid-template-columns: 1fr; }
+      .media-layout { grid-template-columns: 1fr; }
+      .partnerships-layout { grid-template-columns: 1fr; }
+      .contact__grid { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 768px) {
+      .about__grid { grid-template-columns: 1fr; }
+      .about__image { max-height: 450px; }
+      .stats-layout { grid-template-columns: 1fr; }
+      .concept-block { grid-template-columns: 1fr; }
+      .concept-block--reverse { grid-template-columns: 1fr; }
+      .concept-block--reverse .concept-block__image { order: 0; }
+      .awards__list { grid-template-columns: 1fr; }
+      .dev-grid { grid-template-columns: 1fr; }
+      .press__grid { grid-template-columns: 1fr; }
+      .media-logos { grid-template-columns: repeat(2, 1fr); }
+    }
+
+    @media (max-width: 480px) {
+      .portfolio__grid { grid-template-columns: 1fr; }
+      .stats-stacked { grid-template-columns: 1fr; }
+      .legacy__grid { grid-template-columns: 1fr; }
+      .hosp-grid { grid-template-columns: 1fr 1fr; }
+      .dev-opps { grid-template-columns: 1fr; }
+      .contact__grid { grid-template-columns: 1fr; }
+    }
+
+    /* ================================================================
+       PRINT STYLES (Luxury Digital Book Layout)
+       ================================================================ */
+    @media print {
+      html, body {
+        background: #0A0A0A !important;
+        color: #FAFAFA !important;
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        font-size: 9.5pt !important;
+      }
+      
+      * {
+        -webkit-print-color-adjust: exact !important;
+        print-color-adjust: exact !important;
+      }
+
+      /* Distinct page break splits */
+      section {
+        page-break-before: always !important;
+        break-before: page !important;
+        page-break-inside: avoid !important;
+        height: 100vh !important;
+        min-height: 100vh !important;
+        box-sizing: border-box !important;
+        padding: 4.5rem 3.5rem !important;
+        background: #0A0A0A !important;
+        color: #FAFAFA !important;
+        display: flex !important;
+        flex-direction: column !important;
+        justify-content: center !important;
+        position: relative !important;
+        overflow: hidden !important;
+      }
+
+      .hero-scroll {
+        height: 100vh !important;
+        min-height: 100vh !important;
+        background: #0A0A0A !important;
+        page-break-after: always !important;
+        break-after: page !important;
+      }
+
+      .hero-pin {
+        position: relative !important;
+        height: 100vh !important;
+        display: flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+      }
+
+      .hero-bg {
+        position: absolute !important;
+        inset: 0 !important;
+        transform: none !important;
+      }
+
+      .hero-bg img {
+        filter: brightness(0.45) !important;
+      }
+
+      .hero-cover-title, 
+      .hero-cover-frame, 
+      .hero-scroll-indicator {
+        display: none !important;
+      }
+
+      .hero-reveal {
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        display: flex !important;
+      }
+
+      .hero-reveal * {
+        color: #FFFFFF !important;
+      }
+
+      .section-divider {
+        display: none !important;
+      }
+
+      /* Enable full colors on images and graphics */
+      img {
+        filter: none !important;
+      }
+
+      .port-card img {
+        filter: none !important;
+      }
+
+      /* Adjust grids for print margins */
+      .portfolio__grid {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      .stats-stacked {
+        grid-template-columns: repeat(3, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      .legacy__grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.75rem !important;
+      }
+
+      .hosp-grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 0.75rem !important;
+      }
+
+      .contact__grid {
+        grid-template-columns: repeat(4, 1fr) !important;
+        gap: 1rem !important;
+      }
+
+      .cookbooks__scroll {
+        overflow: visible !important;
+        flex-wrap: wrap !important;
+        gap: 1rem !important;
+      }
+
+      .book-card {
+        background-color: transparent !important;
+        border: 1px solid rgba(197, 160, 94, 0.25) !important;
+      }
+
+      .btn-download {
+        display: none !important;
+      }
+
+      .reveal {
+        opacity: 1 !important;
+        transform: none !important;
+      }
+
+      .label, .port-card__location, .quote-card__source, .contact-item__label, .hosp-item__desc, .stat-row__num, .dev-opp {
+        color: #C5A05E !important;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 1 — HERO
-     ════════════════════════════════════════════════════════════════ -->
 <!-- ════════════════════════════════════════════════════════════════
      SECTION 1 — HERO SCROLL & PORTAL SYSTEM (Dream Land technique)
      ════════════════════════════════════════════════════════════════ -->
@@ -1227,28 +1335,28 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 2 — ABOUT
+     SECTION 2 — ABOUT (MEET CHEF TODD ENGLISH)
      ════════════════════════════════════════════════════════════════ -->
 <section class="about" id="about">
   <div class="section-inner">
     <div class="about__grid">
       <div class="about__image reveal">
-        <img src="pdf-chef-portrait-large.jpg" alt="Chef Todd English portrait" loading="lazy">
+        <img src="pdf-chef-portrait-large.jpg" alt="Chef Todd English portrait" loading="eager">
       </div>
       <div class="about__text reveal reveal-delay-1">
         <span class="label">About the Chef</span>
         <h2 class="heading-lg">A Culinary Legacy Spanning Three Decades</h2>
         <div class="gold-line"></div>
         <p class="body-text drop-cap">
-          Todd English is one of America's most celebrated chefs and hospitality entrepreneurs. A James Beard Award winner and member of the James Beard Foundation's "Who's Who in Food &amp; Beverage in America," he has spent more than three decades creating award-winning restaurants, luxury hotel dining experiences, food halls, and hospitality brands around the world.
+          William Todd English is one of America's most celebrated chefs, restaurateurs, and hospitality visionaries. A four-time James Beard Award winner and member of the James Beard Foundation's "Who's Who in Food &amp; Beverage in America," he has spent more than three decades creating award-winning restaurant concepts, luxury hotel dining programs, and food halls.
         </p>
         <br>
         <p class="body-text">
-          A graduate of the Culinary Institute of America who honed his craft under Jean-Jacques Rachou at La Côte Basque and through apprenticeships across Italy, English burst onto the national scene when he opened his flagship restaurant Olives in Charlestown, Massachusetts, in 1989. He went on to create more than 40 restaurant concepts across 12 countries.
+          A graduate with honors from the Culinary Institute of America (1982), English honed his skills in New York under Jean-Jacques Rachou at the legendary La Côte Basque, before spending years in Italy apprenticing at renowned kitchens in Milan, Florence, and Bologna. In 1989, English opened his flagship restaurant, Olives, in Charlestown, MA. It became an immediate national sensation, drawing praise for its woodfired oven flavors.
         </p>
         <br>
         <p class="body-text">
-          Today, Todd English continues to develop restaurants, hotels, resorts, food halls, airports, private clubs, and luxury residential dining concepts — including his newest concept, Proper English, at the Bentley Residences in Miami.
+          Today, as the co-founder of English Hospitality Group (EHG) alongside Keith Burkard, English continues to lead global operations encompassing upscale restaurants, hotels, casino concessions, airport pubs, and luxury residential amenities worldwide.
         </p>
       </div>
     </div>
@@ -1258,7 +1366,7 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 3 — CAREER HIGHLIGHTS
+     SECTION 3 — CAREER HIGHLIGHTS (THE METRICS)
      ════════════════════════════════════════════════════════════════ -->
 <section class="highlights" id="highlights">
   <div class="section-inner">
@@ -1268,7 +1376,7 @@ ul, ol { list-style: none; }
         <h2 class="heading-lg">The Scale of<br>an Empire</h2>
         <div class="gold-line"></div>
         <p class="body-text-sm" style="max-width: 320px; margin-top: 1rem; color: var(--mid-gray); line-height: 1.6;">
-          A retrospective of culinary influence, commercial reach, and media footprint established over three decades of hospitality innovation.
+          A retrospective of culinary influence, commercial reach, and media footprint established over three decades of hospitality innovation. Chef English's brand represents an institutional anchor for premier real estate developers, casino resorts, and luxury brands worldwide.
         </p>
       </div>
       <div class="stats-stacked">
@@ -1304,7 +1412,7 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 4 — CURRENT PORTFOLIO
+     SECTION 4 — CURRENT PORTFOLIO (THE OPERATING SYSTEM)
      ════════════════════════════════════════════════════════════════ -->
 <section class="portfolio" id="portfolio">
   <div class="section-inner">
@@ -1315,7 +1423,7 @@ ul, ol { list-style: none; }
     </div>
     <div class="portfolio__grid">
       <div class="port-card reveal">
-        <img src="bluezoo.png" alt="bluezoo" loading="lazy">
+        <img src="bluezoo.png" alt="bluezoo" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">bluezoo</div>
           <div class="port-card__location">Walt Disney World Dolphin · Orlando, FL</div>
@@ -1323,7 +1431,7 @@ ul, ol { list-style: none; }
         </div>
       </div>
       <div class="port-card reveal reveal-delay-1">
-        <img src="thebeast.png" alt="The Beast" loading="lazy">
+        <img src="thebeast.png" alt="The Beast" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">The Beast</div>
           <div class="port-card__location">AREA15 · Las Vegas, NV</div>
@@ -1331,7 +1439,7 @@ ul, ol { list-style: none; }
         </div>
       </div>
       <div class="port-card reveal reveal-delay-2">
-        <img src="jade-story.jpg" alt="Jade by Todd English" loading="lazy">
+        <img src="jade-story.jpg" alt="Jade by Todd English" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">Jade by Todd English</div>
           <div class="port-card__location">Berawa, Canggu · Bali, Indonesia</div>
@@ -1339,7 +1447,7 @@ ul, ol { list-style: none; }
         </div>
       </div>
       <div class="port-card reveal reveal-delay-3">
-        <img src="tuscany.png" alt="Tuscany" loading="lazy">
+        <img src="tuscany.png" alt="Tuscany" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">Tuscany by Todd English</div>
           <div class="port-card__location">Mohegan Sun · CT</div>
@@ -1347,7 +1455,7 @@ ul, ol { list-style: none; }
         </div>
       </div>
       <div class="port-card reveal reveal-delay-4">
-        <img src="lulas.png" alt="Lula's" loading="lazy">
+        <img src="lulas.png" alt="Lula's" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">Lula's by Todd English</div>
           <div class="port-card__location">Lake Worth Beach · FL</div>
@@ -1355,7 +1463,7 @@ ul, ol { list-style: none; }
         </div>
       </div>
       <div class="port-card reveal reveal-delay-5">
-        <img src="airport-pub.png" alt="Todd English Market &amp; Pub" loading="lazy">
+        <img src="airport-pub.png" alt="Todd English Market &amp; Pub" loading="eager">
         <div class="port-card__overlay">
           <div class="port-card__name">Todd English Market &amp; Pub</div>
           <div class="port-card__location">Zayed International Airport · Abu Dhabi</div>
@@ -1366,11 +1474,14 @@ ul, ol { list-style: none; }
 
     <!-- Upcoming -->
     <div class="portfolio__grid" style="margin-top: 1.5rem;">
-      <div class="port-card reveal" style="grid-column: 1 / -1; border-color: rgba(197,160,94,0.25); background: linear-gradient(135deg, var(--charcoal), var(--slate));">
-        <span class="label" style="margin-bottom: 0.5rem; font-size: 0.65rem;">Coming 2027</span>
-        <div class="port-card__name" style="font-size: 1.5rem;">Proper English by Todd English</div>
-        <div class="port-card__location">Bentley Residences · Sunny Isles Beach, Miami</div>
-        <span class="port-card__badge badge--upcoming">Upcoming · 2027</span>
+      <div class="port-card reveal" style="grid-column: 1 / -1; border-color: rgba(197,160,94,0.25);">
+        <img src="proper-english.png" alt="Proper English at Bentley Residences Miami" loading="eager">
+        <div class="port-card__overlay">
+          <span class="label" style="margin-bottom: 0.5rem; font-size: 0.65rem;">Coming 2027</span>
+          <div class="port-card__name" style="font-size: 1.5rem;">Proper English by Todd English</div>
+          <div class="port-card__location">Bentley Residences · Sunny Isles Beach, Miami</div>
+          <span class="port-card__badge badge--upcoming">Upcoming · 2027</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1379,21 +1490,14 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 5 — FEATURED CONCEPTS
+     SECTION 5 — DEEP DIVE: BLUEZOO
      ════════════════════════════════════════════════════════════════ -->
-<section class="concepts" id="concepts">
+<section class="concepts" id="concept-bluezoo">
   <div class="section-inner">
-    <div class="reveal" style="text-align: center; margin-bottom: clamp(3rem, 6vh, 5rem);">
-      <span class="label">Featured Concepts</span>
-      <h2 class="heading-lg">Signature Dining Experiences</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-
-    <!-- bluezoo -->
     <div class="concept-block reveal">
       <div class="concept-block__image">
         <div class="img-placeholder">
-          <img src="bluezoo-snapper.png" alt="bluezoo pan-seared red snapper signature dish" loading="lazy">
+          <img src="bluezoo-snapper.png" alt="bluezoo pan-seared red snapper signature dish" loading="eager">
         </div>
       </div>
       <div class="concept-block__text">
@@ -1401,33 +1505,49 @@ ul, ol { list-style: none; }
         <h3 class="heading-md">bluezoo</h3>
         <div class="gold-line"></div>
         <p class="body-text">
-          Located inside the Walt Disney World Dolphin Hotel, bluezoo transforms coastal cuisine into fine art. Featured here is the signature pan-seared red snapper glazed with citrus reduction, served with fresh dill, sea salt, and citrus wedges on dark textured stoneware. The dish embodies the restaurant's commitment to premium, coastal dining excellence.
+          Designed by world-renowned architect Jeffrey Beers, bluezoo transforms coastal cuisine into fine art. Located inside the Walt Disney World Dolphin Resort in Orlando, FL, bluezoo represents Chef English's flagship seafood concept. The venue features a spectacular custom wood-fired grill, raw bar, and underwater-inspired design. Chef English combines the freshest seafood with coastal culinary techniques from across the globe, creating signature creations such as the citrus-glazed pan-seared red snapper. This award-winning venue has served as a Walt Disney World dining anchor for over two decades.
         </p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Jade by Todd English -->
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SECTION 6 — DEEP DIVE: JADE BY TODD ENGLISH
+     ════════════════════════════════════════════════════════════════ -->
+<section class="concepts" id="concept-jade">
+  <div class="section-inner">
     <div class="concept-block concept-block--reverse reveal">
       <div class="concept-block__image">
         <div class="img-placeholder">
-          <img src="jade-story.jpg" alt="Jade by Todd English, Bali" loading="lazy">
+          <img src="jade-story.jpg" alt="Jade by Todd English, Bali" loading="eager">
         </div>
       </div>
       <div class="concept-block__text">
-        <span class="concept-label">International</span>
+        <span class="concept-label">International Sanctuary</span>
         <h3 class="heading-md">Jade by Todd English</h3>
         <div class="gold-line"></div>
         <p class="body-text">
-          Set in the heart of Bali's vibrant Berawa district, Jade by Todd English is a Mediterranean-Asian fusion restaurant and nightlife destination. Lush tropical gardens, open-air dining pavilions, and a celebrated cocktail bar make Jade one of Canggu's most talked-about venues — blending world-class cuisine with Bali's legendary hospitality culture.
+          Set in the heart of Bali's vibrant Berawa district in Canggu, Jade merges rich Mediterranean flavors with exotic Southeast Asian spices. The dining sanctuary features lush tropical landscaping, rich velvet lounges, custom wood carvings, and an elegant cocktail bar. Designed as a transition venue, guests enjoy refined shared plates like wood-grilled satays, lobster handrolls, and wagyu dumplings before the space shifts into a high-energy cocktail lounge as the night unfolds.
         </p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- The Beast -->
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SECTION 7 — DEEP DIVE: THE BEAST
+     ════════════════════════════════════════════════════════════════ -->
+<section class="concepts" id="concept-thebeast">
+  <div class="section-inner">
     <div class="concept-block reveal">
       <div class="concept-block__image">
         <div class="img-placeholder">
-          <img src="thebeast.png" alt="The Beast at AREA15" loading="lazy">
+          <img src="thebeast.png" alt="The Beast at AREA15" loading="eager">
         </div>
       </div>
       <div class="concept-block__text">
@@ -1435,24 +1555,32 @@ ul, ol { list-style: none; }
         <h3 class="heading-md">The Beast</h3>
         <div class="gold-line"></div>
         <p class="body-text">
-          Inside Las Vegas's immersive entertainment complex AREA15, The Beast is a steampunk-inspired gastropub unlike any other. Oversized copper machinery, industrial décor, and a theatrical dining format create an experience that blurs the line between restaurant and attraction. Bold, indulgent comfort food meets one-of-a-kind entertainment dining.
+          Situated inside AREA15, Las Vegas's pioneering immersive entertainment complex, The Beast is an industrial-steampunk gastropub. Spanning over 15,000 square feet, the multi-concept food hall format features oversized copper wheels, steel machinery, and theatrical open-flame kitchens. Serving as the primary culinary anchor for AREA15, The Beast offers an indulgent menu of artisanal woodfired pizzas, house-smoked ribs, double-patty sliders, and theatrical signature drinks, delivering dining that is as much an attraction as it is a restaurant.
         </p>
       </div>
     </div>
+  </div>
+</section>
 
-    <!-- Tuscany -->
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SECTION 8 — DEEP DIVE: TUSCANY BY TODD ENGLISH
+     ════════════════════════════════════════════════════════════════ -->
+<section class="concepts" id="concept-tuscany">
+  <div class="section-inner">
     <div class="concept-block concept-block--reverse reveal">
       <div class="concept-block__image">
         <div class="img-placeholder">
-          <img src="deconstructed-pasta.png" alt="Tuscany deconstructed handmade tortelli infographic" loading="lazy">
+          <img src="deconstructed-pasta.png" alt="Tuscany deconstructed handmade tortelli infographic" loading="eager">
         </div>
       </div>
       <div class="concept-block__text">
-        <span class="concept-label">Culinary Infographic</span>
+        <span class="concept-label">Regional Italian Heritage</span>
         <h3 class="heading-md">Tuscany by Todd English</h3>
         <div class="gold-line"></div>
         <p class="body-text">
-          Representing our classic rustic Italian concept, this editorial culinary infographic highlights our handmade Tortelli. Floating dumpling pasta with delicate pleats is deconstructed in mid-air alongside shaved Parmigiano-Reggiano, rich sage butter sauce, pine nuts, and cracked black pepper, proving the meticulous craft behind every recipe.
+          Tuscany is Mohegan Sun's premier 250-seat regional Italian restaurant, celebrating Todd English's culinary roots. Following a comprehensive multi-million dollar renovation in early 2026, Tuscany features an expanded modern bar, a wood-fired grill hearth, and a dining room overlooking the casino's indoor waterfall. The menu showcases artisanal house-made pastas, dry-aged steaks, and flatbreads cooked over fruitwood embers, offering regional Italian dishes crafted with a modern, upscale presentation.
         </p>
       </div>
     </div>
@@ -1462,67 +1590,52 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 6 — LEGACY RESTAURANTS
+     SECTION 9 — THE OLIVES HERITAGE & LEGACY PORTFOLIO
      ════════════════════════════════════════════════════════════════ -->
 <section class="legacy" id="legacy">
   <div class="section-inner">
-    <div class="reveal" style="text-align: center; margin-bottom: clamp(2rem, 4vh, 3.5rem);">
-      <span class="label">Legacy Portfolio</span>
-      <h2 class="heading-lg">A Global Dining Footprint</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="legacy__grid">
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Olives</div>
-        <div class="legacy-item__loc">Charlestown · Bellagio · Atlantis · Tokyo · Abu Dhabi</div>
+    <div class="legacy-layout">
+      <div class="reveal">
+        <span class="label">Legacy Portfolio</span>
+        <h2 class="heading-lg">The Olives Heritage</h2>
+        <div class="gold-line"></div>
+        <p class="body-text">
+          The story of Todd English's global brand began in Charlestown, Massachusetts, with the opening of Olives in 1989. Designed as a casual, high-energy neighborhood bistro, Olives introduced Americans to bold Mediterranean flavors, woodfired baking, and rustic presentation. The restaurant's massive success led to extensions at the Bellagio in Las Vegas, Atlantis Resort in the Bahamas, Tokyo, and Abu Dhabi, defining upscale dining for an entire generation.
+        </p>
       </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Figs</div>
-        <div class="legacy-item__loc">Boston, MA</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Bonfire</div>
-        <div class="legacy-item__loc">Boston, MA</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Kingfish Hall</div>
-        <div class="legacy-item__loc">Boston, MA</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Todd English Food Hall</div>
-        <div class="legacy-item__loc">Plaza NYC · Dubai · Manila · Abu Dhabi</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Beso</div>
-        <div class="legacy-item__loc">New York City</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Cava</div>
-        <div class="legacy-item__loc">New York City</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">P.U.B.</div>
-        <div class="legacy-item__loc">Las Vegas, NV</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">The Pepper Club</div>
-        <div class="legacy-item__loc">Las Vegas, NV</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Pound</div>
-        <div class="legacy-item__loc">Manila, Philippines</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">Greg Norman Grill</div>
-        <div class="legacy-item__loc">Australia</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">MXDC</div>
-        <div class="legacy-item__loc">Washington, D.C.</div>
-      </div>
-      <div class="legacy-item reveal">
-        <div class="legacy-item__name">English Hotel</div>
-        <div class="legacy-item__loc">Las Vegas, NV</div>
+      <div class="legacy__grid reveal reveal-delay-1">
+        <div class="legacy-item">
+          <div class="legacy-item__name">Olives</div>
+          <div class="legacy-item__loc">Charlestown · Bellagio · Atlantis · Tokyo · Abu Dhabi</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Figs</div>
+          <div class="legacy-item__loc">Boston · LaGuardia · NY</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Bonfire</div>
+          <div class="legacy-item__loc">Boston, MA</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Kingfish Hall</div>
+          <div class="legacy-item__loc">Boston, MA</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Todd English Food Hall</div>
+          <div class="legacy-item__loc">Plaza NYC · Dubai · Manila</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">The Pepper Club</div>
+          <div class="legacy-item__loc">The English Hotel · Las Vegas</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Beso</div>
+          <div class="legacy-item__loc">New York City</div>
+        </div>
+        <div class="legacy-item">
+          <div class="legacy-item__name">Pound</div>
+          <div class="legacy-item__loc">Manila, Philippines</div>
+        </div>
       </div>
     </div>
   </div>
@@ -1531,55 +1644,65 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 7 — HOSPITALITY DEVELOPMENT
+     SECTION 10 — HOSPITALITY DEVELOPMENT
      ════════════════════════════════════════════════════════════════ -->
 <section class="hospitality" id="hospitality">
   <div class="section-inner">
-    <div class="reveal" style="text-align: center; margin-bottom: clamp(2rem, 4vh, 3.5rem);">
-      <span class="label">Hospitality Development</span>
-      <h2 class="heading-lg">What We Create</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="hosp-grid">
-      <div class="hosp-item reveal">
-        <span class="hosp-item__icon">🏨</span>
-        <span class="hosp-item__title">Luxury Hotels</span>
+    <div class="hosp-layout">
+      <div class="reveal">
+        <span class="label">Hospitality Development</span>
+        <h2 class="heading-lg">Creating Hospitality Destinations</h2>
+        <div class="gold-line"></div>
+        <p class="body-text">
+          English Hospitality Group (EHG) partners with the world's leading hotel brands, real estate developers, casino groups, and airport authorities to create high-performing culinary destinations. We offer full-service concept design, kitchen engineering, menu development, staffing, and ongoing brand oversight, ensuring every venue operates at a global luxury standard.
+        </p>
       </div>
-      <div class="hosp-item reveal reveal-delay-1">
-        <span class="hosp-item__icon">🎰</span>
-        <span class="hosp-item__title">Casino Restaurants</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-2">
-        <span class="hosp-item__icon">✈️</span>
-        <span class="hosp-item__title">Airport Dining</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-3">
-        <span class="hosp-item__icon">🍽️</span>
-        <span class="hosp-item__title">Food Halls</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-4">
-        <span class="hosp-item__icon">🔑</span>
-        <span class="hosp-item__title">Private Clubs</span>
-      </div>
-      <div class="hosp-item reveal">
-        <span class="hosp-item__icon">🏝️</span>
-        <span class="hosp-item__title">Luxury Resorts</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-1">
-        <span class="hosp-item__icon">🏙️</span>
-        <span class="hosp-item__title">Mixed-Use</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-2">
-        <span class="hosp-item__icon">🏠</span>
-        <span class="hosp-item__title">Residential Dining</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-3">
-        <span class="hosp-item__icon">🚢</span>
-        <span class="hosp-item__title">Cruise Lines</span>
-      </div>
-      <div class="hosp-item reveal reveal-delay-4">
-        <span class="hosp-item__icon">📋</span>
-        <span class="hosp-item__title">Brand Licensing</span>
+      <div class="hosp-grid reveal reveal-delay-1">
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🏨</span>
+          <div class="hosp-item__title">Luxury Hotels</div>
+          <span class="hosp-item__desc">Destination F&amp;B</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🎰</span>
+          <div class="hosp-item__title">Casino Resorts</div>
+          <span class="hosp-item__desc">High-Volume Luxury</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">✈️</span>
+          <div class="hosp-item__title">Airport Dining</div>
+          <span class="hosp-item__desc">Concessions</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🍽️</span>
+          <div class="hosp-item__title">Food Halls</div>
+          <span class="hosp-item__desc">Multi-Concept Markets</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🔑</span>
+          <div class="hosp-item__title">Private Clubs</div>
+          <span class="hosp-item__desc">Bespoke Dining</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🏝️</span>
+          <div class="hosp-item__title">Luxury Resorts</div>
+          <span class="hosp-item__desc">International Venues</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🏙️</span>
+          <div class="hosp-item__title">Mixed-Use</div>
+          <span class="hosp-item__desc">Retail &amp; Leisure</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🏠</span>
+          <div class="hosp-item__title">Residential Towers</div>
+          <span class="hosp-item__desc">Bentley Residences</span>
+        </div>
+        <div class="hosp-item">
+          <span class="hosp-item__icon">🚢</span>
+          <div class="hosp-item__title">Cruise Lines</div>
+          <span class="hosp-item__desc">Ocean Dining</span>
+        </div>
       </div>
     </div>
   </div>
@@ -1588,27 +1711,33 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 8 — TELEVISION & MEDIA
+     SECTION 11 — TELEVISION & MEDIA
      ════════════════════════════════════════════════════════════════ -->
 <section class="media" id="media">
   <div class="section-inner">
-    <div class="reveal">
-      <span class="label">Television &amp; Media</span>
-      <h2 class="heading-lg">As Seen On</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="media__grid reveal">
-      <span class="media-tag">PBS</span>
-      <span class="media-tag">Food Network</span>
-      <span class="media-tag">NBC Today</span>
-      <span class="media-tag">CBS</span>
-      <span class="media-tag">ABC</span>
-      <span class="media-tag">Top Chef</span>
-      <span class="media-tag">Iron Chef</span>
-      <span class="media-tag">GMA</span>
-      <span class="media-tag">Martha Stewart</span>
-      <span class="media-tag">Live with Kelly</span>
-      <span class="media-tag">Delta Air Lines</span>
+    <div class="media-layout">
+      <div class="about__image reveal">
+        <img src="pdf-chef-portrait-large.jpg" alt="Chef Todd English Emmy nomination portrait" loading="eager">
+      </div>
+      <div class="concept-block__text reveal reveal-delay-1">
+        <span class="label">Television &amp; Media</span>
+        <h2 class="heading-lg">A Pioneer of Culinary Television</h2>
+        <div class="gold-line"></div>
+        <p class="body-text">
+          Long before the modern era of social media, Todd English was one of the first young chefs to glamorize the culinary world on television. As the host and executive producer of the Emmy-nominated PBS series "Food Trip with Todd English", he traveled the world tracing the origins of signature ingredients. He served as co-host and judge of PBS's "Cooking Under Fire", starred on Food Network's "Opening Soon", and has been a frequent guest chef on Iron Chef, Top Chef, the Today Show, Good Morning America, and Martha Stewart, building a household name with millions of viewers.
+        </p>
+        <br>
+        <div class="media-logos" style="margin-top: 2rem;">
+          <div class="media-logo">PBS</div>
+          <div class="media-logo">FOOD NETWORK</div>
+          <div class="media-logo">NBC TODAY</div>
+          <div class="media-logo">CBS</div>
+          <div class="media-logo">ABC GMA</div>
+          <div class="media-logo">TOP CHEF</div>
+          <div class="media-logo">IRON CHEF</div>
+          <div class="media-logo">MARTHA STEWART</div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1616,47 +1745,39 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 9 — AWARDS
+     SECTION 12 — AWARDS
      ════════════════════════════════════════════════════════════════ -->
 <section class="awards" id="awards">
   <div class="section-inner">
-    <div class="reveal" style="text-align: center; margin-bottom: clamp(2rem, 4vh, 3.5rem);">
-      <span class="label">Awards &amp; Recognition</span>
-      <h2 class="heading-lg">Distinction &amp; Honors</h2>
+    <div class="reveal" style="text-align: center;">
+      <span class="label">Accolades</span>
+      <h2 class="heading-lg">Industry Recognition</h2>
       <div class="gold-line gold-line--center"></div>
     </div>
     <div class="awards__list">
       <div class="award-item reveal">
-        <div class="award-item__title">James Beard — Rising Star</div>
-        <div class="award-item__detail">1991</div>
+        <div class="award-item__title">James Beard Foundation Awards</div>
+        <div class="award-item__detail">
+          National Rising Star Chef (1991) · Best Chef Northeast (1994) · Who's Who in Food &amp; Beverage in America.
+        </div>
       </div>
       <div class="award-item reveal reveal-delay-1">
-        <div class="award-item__title">James Beard — Best Chef Northeast</div>
-        <div class="award-item__detail">1994</div>
+        <div class="award-item__title">Bon Appétit Magazine</div>
+        <div class="award-item__detail">
+          Restaurateur of the Year (2001) — Recognizing Todd English's national influence on fine dining.
+        </div>
       </div>
       <div class="award-item reveal reveal-delay-2">
-        <div class="award-item__title">Who's Who in Food &amp; Beverage</div>
-        <div class="award-item__detail">James Beard Foundation</div>
+        <div class="award-item__title">Emmy Nomination</div>
+        <div class="award-item__detail">
+          Nominated for Outstanding Host for the PBS series "Food Trip with Todd English".
+        </div>
       </div>
       <div class="award-item reveal reveal-delay-3">
-        <div class="award-item__title">Restaurateur of the Year</div>
-        <div class="award-item__detail">Bon Appétit · 2001</div>
-      </div>
-      <div class="award-item reveal">
-        <div class="award-item__title">Emmy-Nominated TV Host</div>
-        <div class="award-item__detail">PBS</div>
-      </div>
-      <div class="award-item reveal reveal-delay-1">
-        <div class="award-item__title">People 50 Most Beautiful</div>
-        <div class="award-item__detail">2001</div>
-      </div>
-      <div class="award-item reveal reveal-delay-2">
-        <div class="award-item__title">Chef of the Year</div>
-        <div class="award-item__detail">Las Vegas Food &amp; Wine · 2022</div>
-      </div>
-      <div class="award-item reveal reveal-delay-3">
-        <div class="award-item__title">Airport Bar/Pub of the Year</div>
-        <div class="award-item__detail">FAB Awards</div>
+        <div class="award-item__title">Las Vegas Food &amp; Wine Festival</div>
+        <div class="award-item__detail">
+          Named Chef of the Year (2022) — Celebrating Tuscany, The Beast, and The English Hotel launch.
+        </div>
       </div>
     </div>
   </div>
@@ -1665,33 +1786,61 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 10 — COOKBOOKS
+     SECTION 13 — COOKBOOKS
      ════════════════════════════════════════════════════════════════ -->
 <section class="cookbooks" id="cookbooks">
   <div class="section-inner">
     <div class="reveal">
       <span class="label">Published Works</span>
-      <h2 class="heading-lg">Cookbooks</h2>
+      <h2 class="heading-lg">Cookbooks Library</h2>
       <div class="gold-line"></div>
     </div>
     <div class="cookbooks__scroll reveal">
-      <div class="book-card">
-        <div class="book-card__title">The Olives Table</div>
+      <div class="book-card" style="background-image: url('book-olives.png'); background-size: cover; background-position: center; padding: 0;"></div>
+      <div class="book-card" style="background-image: url('book-figs.png'); background-size: cover; background-position: center; padding: 0;"></div>
+      <div class="book-card" style="background-image: url('book-todd.png'); background-size: cover; background-position: center; padding: 0;"></div>
+      <div class="book-card" style="background-image: url('book-everyday.png'); background-size: cover; background-position: center; padding: 0;"></div>
+      <div class="book-card" style="background-image: url('book-pizza.png'); background-size: cover; background-position: center; padding: 0;"></div>
+      <div class="book-card" style="background-image: url('book-hotel.png'); background-size: cover; background-position: center; padding: 0;"></div>
+    </div>
+  </div>
+</section>
+
+<div class="section-divider"></div>
+
+<!-- ════════════════════════════════════════════════════════════════
+     SECTION 14 — BRAND PARTNERSHIPS
+     ════════════════════════════════════════════════════════════════ -->
+<section class="partnerships" id="partnerships">
+  <div class="section-inner">
+    <div class="partnerships-layout">
+      <div class="reveal">
+        <span class="label">Commercial Scale</span>
+        <h2 class="heading-lg">Brand Partnerships &amp; Product Licensing</h2>
+        <div class="gold-line"></div>
+        <p class="body-text">
+          Todd English is a pioneer in culinary product licensing, extending his brand from fine-dining restaurants into consumer kitchens worldwide. EHG develops premium partnerships that align with Todd's commitment to quality and innovation.
+        </p>
       </div>
-      <div class="book-card">
-        <div class="book-card__title">The Figs Table</div>
-      </div>
-      <div class="book-card">
-        <div class="book-card__title">The Todd English Cookbook</div>
-      </div>
-      <div class="book-card">
-        <div class="book-card__title">Cooking in Everyday English</div>
-      </div>
-      <div class="book-card">
-        <div class="book-card__title">Rustic Pizza</div>
-      </div>
-      <div class="book-card">
-        <div class="book-card__title">The English Hotel Cookbook</div>
+      <div class="partner-cards reveal reveal-delay-1">
+        <div class="partner-card">
+          <div class="partner-card__title">Todd English GreenPan</div>
+          <p class="body-text-sm">
+            A signature line of premium non-stick ceramic cookware, combining healthy cooking technology with chef-approved performance, sold in major department stores.
+          </p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-card__title">Kitchen Electronics &amp; Linens</div>
+          <p class="body-text-sm">
+            Chef-curated cutlery, small kitchen appliances, and table linens designed for the everyday home cook.
+          </p>
+        </div>
+        <div class="partner-card">
+          <div class="partner-card__title">Retail Gourmet Products</div>
+          <p class="body-text-sm">
+            Private label artisanal olive oils, house-made pastas, and wood-fired flatbread ingredients available at premium retail outlets.
+          </p>
+        </div>
       </div>
     </div>
   </div>
@@ -1700,7 +1849,7 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 11 — DEVELOPMENT OPPORTUNITIES
+     SECTION 15 — DEVELOPMENT OPPORTUNITIES
      ════════════════════════════════════════════════════════════════ -->
 <section class="development" id="development">
   <div class="section-inner">
@@ -1736,35 +1885,43 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 12 — PRESS & TESTIMONIALS
+     SECTION 16 — PRESS & TESTIMONIALS
      ════════════════════════════════════════════════════════════════ -->
 <section class="press" id="press">
   <div class="section-inner">
-    <div class="reveal" style="text-align: center; margin-bottom: clamp(2rem, 4vh, 3.5rem);">
-      <span class="label">Press &amp; Testimonials</span>
-      <h2 class="heading-lg">What They Say</h2>
+    <div class="reveal" style="text-align: center;">
+      <span class="label">Press &amp; Reviews</span>
+      <h2 class="heading-lg">Testimonials</h2>
       <div class="gold-line gold-line--center"></div>
     </div>
     <div class="press__grid">
       <div class="quote-card reveal">
-        <div class="quote-card__mark">"</div>
-        <p class="quote-card__text">Todd English is a famed restaurateur whose name has become synonymous with culinary innovation and world-class hospitality.</p>
-        <div class="quote-card__source">Chilled Magazine</div>
+        <div class="quote-card__mark">“</div>
+        <p class="quote-card__text">
+          Todd English is a famed restaurateur, author, and TV personality whose culinary empire spans the globe.
+        </p>
+        <span class="quote-card__source">— Chilled Magazine</span>
       </div>
       <div class="quote-card reveal reveal-delay-1">
-        <div class="quote-card__mark">"</div>
-        <p class="quote-card__text">One of the most decorated chefs in the United States, Todd English has built a global restaurant empire that continues to evolve and inspire.</p>
-        <div class="quote-card__source">Nation's Restaurant News</div>
+        <div class="quote-card__mark">“</div>
+        <p class="quote-card__text">
+          One of the most decorated and visible chefs in America, pioneering luxury multi-concept dining.
+        </p>
+        <span class="quote-card__source">— Nation's Restaurant News</span>
       </div>
       <div class="quote-card reveal reveal-delay-2">
-        <div class="quote-card__mark">"</div>
-        <p class="quote-card__text">I never want to be doing something I did ten years ago. My passion is pushing the boundaries of what hospitality can be — making people feel something they've never felt before.</p>
-        <div class="quote-card__source">Todd English</div>
+        <div class="quote-card__mark">“</div>
+        <p class="quote-card__text">
+          Todd's vision for Tuscany redefined casino dining, blending high volume with artisan culinary execution.
+        </p>
+        <span class="quote-card__source">— Mohegan Sun Casino Resort</span>
       </div>
       <div class="quote-card reveal reveal-delay-3">
-        <div class="quote-card__mark">"</div>
-        <p class="quote-card__text">A culinary maestro who has brought his signature blend of Mediterranean warmth and global creativity to one of the most beautiful settings in Asia.</p>
-        <div class="quote-card__source">Jade by Todd English · Bali</div>
+        <div class="quote-card__mark">“</div>
+        <p class="quote-card__text">
+          To me, hospitality is about creating memory. Whether it's a woodfired pizza in Las Vegas or a coastal snapper in Orlando, every bite must tell a story.
+        </p>
+        <span class="quote-card__source">— Chef Todd English</span>
       </div>
     </div>
   </div>
@@ -1773,153 +1930,115 @@ ul, ol { list-style: none; }
 <div class="section-divider"></div>
 
 <!-- ════════════════════════════════════════════════════════════════
-     SECTION 13 — CONTACT
+     SECTION 17 — CONTACT
      ════════════════════════════════════════════════════════════════ -->
 <section class="contact" id="contact">
   <div class="section-inner">
     <div class="reveal">
-      <span class="label">Get in Touch</span>
-      <h2 class="heading-lg">Contact</h2>
+      <span class="label">Inquiries &amp; Bookings</span>
+      <h2 class="heading-lg">Contact English Hospitality Group</h2>
       <div class="gold-line gold-line--center"></div>
     </div>
-    <div class="contact__grid reveal">
+    
+    <div class="contact__grid reveal reveal-delay-1">
       <div class="contact-item">
         <div class="contact-item__label">Entity</div>
-        <div class="contact-item__value">English Hospitality Group</div>
+        <div class="contact-item__value">English Hospitality Group (EHG)</div>
       </div>
       <div class="contact-item">
         <div class="contact-item__label">Website</div>
-        <div class="contact-item__value"><a href="https://ehgusa.com" target="_blank" rel="noopener">ehgusa.com</a></div>
+        <div class="contact-item__value"><a href="https://ehgusa.com" target="_blank">ehgusa.com</a></div>
       </div>
       <div class="contact-item">
         <div class="contact-item__label">Instagram</div>
-        <div class="contact-item__value"><a href="https://instagram.com/cheftoddenglish" target="_blank" rel="noopener">@cheftoddenglish</a></div>
+        <div class="contact-item__value"><a href="https://instagram.com/cheftoddenglish" target="_blank">@cheftoddenglish</a></div>
       </div>
       <div class="contact-item">
-        <div class="contact-item__label">Inquiries</div>
-        <div class="contact-item__value" style="font-size: 0.82rem; line-height: 1.8;">PR · Development<br>Licensing · Media</div>
+        <div class="contact-item__label">PR &amp; Bookings</div>
+        <div class="contact-item__value">pr@ehgusa.com</div>
       </div>
     </div>
-    <div class="reveal">
-      <button class="btn-download" onclick="window.print()">↓&nbsp; Download Brand Book PDF</button>
+    
+    <div class="reveal reveal-delay-2">
+      <a href="Todd-English-Brand-Book-2026.pdf" download class="btn-download">↓ Download Brand Book PDF</a>
     </div>
   </div>
 </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 14 — FOOTER
-     ════════════════════════════════════════════════════════════════ -->
-<footer class="footer">
-  <p class="footer__copy">© 2026 Todd English &nbsp;·&nbsp; English Hospitality Group &nbsp;·&nbsp; All Rights Reserved</p>
-  <p class="footer__agency">Produced by Next-Frame Agency</p>
+<footer>
+  <p>© 2026 Todd English · English Hospitality Group · All Rights Reserved</p>
+  <p style="margin-top: 0.5rem; font-size: 0.65rem; color: var(--mid-gray);">Produced by Next-Frame Agency</p>
 </footer>
 
-<!-- ════════════════════════════════════════════════════════════════
-     JAVASCRIPT
-     ════════════════════════════════════════════════════════════════ -->
+<!-- JavaScript for Interactive Cover Portal, Scroll Animations & Reveal Trigger -->
 <script>
-(function() {
-  'use strict';
+  document.addEventListener("DOMContentLoaded", () => {
+    
+    // 1. Scroll-linked Hero Portal split panels & background zoom animation
+    const heroSection = document.getElementById("hero");
+    const bg = heroSection.querySelector(".hero-bg");
+    const leftPanel = heroSection.querySelector(".hero-cover-panel.left");
+    const rightPanel = heroSection.querySelector(".hero-cover-panel.right");
+    const centerCard = heroSection.querySelector(".hero-cover-center-card");
+    const coverTitle = heroSection.querySelector(".hero-cover-title");
+    const revealContent = heroSection.querySelector(".hero-reveal");
+    
+    window.addEventListener("scroll", () => {
+      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
+      const heroHeight = heroSection.offsetHeight;
+      const viewportHeight = window.innerHeight;
+      
+      // Calculate scroll fraction for pinning height (excluding the final viewport scroll)
+      let progress = scrollPos / (heroHeight - viewportHeight);
+      progress = Math.max(0, Math.min(1, progress));
+      
+      // Background Zoom scale animation
+      const scaleVal = 1.1 - (progress * 0.1);
+      bg.style.transform = `scale(${scaleVal})`;
+      
+      // Portal Gates Split panels transform
+      // Left gate shifts left, Right gate shifts right
+      const shiftPercent = progress * 100;
+      leftPanel.style.transform = `translateX(-${shiftPercent}%)`;
+      rightPanel.style.transform = `translateX(${shiftPercent}%)`;
+      
+      // Center card splits & scales down/fades
+      const cardScale = 1 - (progress * 0.15);
+      const cardOpacity = 1 - (progress * 1.5);
+      centerCard.style.transform = `translate(-50%, -50%) scale(${cardScale})`;
+      centerCard.style.opacity = Math.max(0, cardOpacity);
+      
+      // Cover Title fades out early
+      const titleOpacity = 1 - (progress * 2.5);
+      coverTitle.style.opacity = Math.max(0, titleOpacity);
+      coverTitle.style.transform = `scale(${1 - progress * 0.1})`;
+      
+      // Reveal Content fades in late
+      if (progress > 0.45) {
+        revealContent.classList.add("active");
+      } else {
+        revealContent.classList.remove("active");
+      }
+    });
 
-  /* ── Intersection Observer for fade-in reveals ── */
-  const revealObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('visible');
-        // Don't unobserve — let hero bg zoom work on re-entry too
-        if (!entry.target.classList.contains('hero')) {
-          revealObserver.unobserve(entry.target);
+    // 2. Intersection Observer for Fade-in/Reveal Animations on Scroll
+    const revealElements = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("visible");
+          observer.unobserve(entry.target);
         }
-      }
+      });
+    }, {
+      threshold: 0.1,
+      rootMargin: "0px 0px -50px 0px"
     });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  document.querySelectorAll('.reveal, .hero').forEach(function(el) {
-    revealObserver.observe(el);
-  });
-
-  /* ── Animated counting for stats ── */
-  let statsCounted = false;
-
-  const statsObserver = new IntersectionObserver(function(entries) {
-    entries.forEach(function(entry) {
-      if (entry.isIntersecting && !statsCounted) {
-        statsCounted = true;
-        animateCounters();
-        statsObserver.unobserve(entry.target);
-      }
+    
+    revealElements.forEach((el) => {
+      observer.observe(el);
     });
-  }, { threshold: 0.3 });
-
-  const highlightsSection = document.getElementById('highlights');
-  if (highlightsSection) {
-    statsObserver.observe(highlightsSection);
-  }
-
-  function animateCounters() {
-    const counters = document.querySelectorAll('.stat__number[data-target]');
-    counters.forEach(function(counter) {
-      const target = parseInt(counter.getAttribute('data-target'), 10);
-      const suffix = counter.getAttribute('data-suffix') || '';
-      const duration = 2000;
-      const startTime = performance.now();
-
-      function easeOutQuart(t) {
-        return 1 - Math.pow(1 - t, 4);
-      }
-
-      function update(currentTime) {
-        const elapsed = currentTime - startTime;
-        const progress = Math.min(elapsed / duration, 1);
-        const easedProgress = easeOutQuart(progress);
-        const currentValue = Math.round(easedProgress * target);
-
-        counter.textContent = currentValue + suffix;
-
-        if (progress < 1) {
-          requestAnimationFrame(update);
-        }
-      }
-
-      requestAnimationFrame(update);
-    });
-  }
-
-  /* ── Smooth parallax-like subtle effect on hero scroll ── */
-  let ticking = false;
-  const heroBg = document.querySelector('.hero__bg');
-  const heroScroll = document.querySelector('.hero__scroll');
-
-  if (heroBg) {
-    window.addEventListener('scroll', function() {
-      if (!ticking) {
-        requestAnimationFrame(function() {
-          const scrollY = window.pageYOffset;
-          const heroHeight = window.innerHeight;
-          if (scrollY < heroHeight) {
-            const progress = scrollY / heroHeight;
-            heroBg.style.transform = 'scale(' + (1 + progress * 0.08) + ') translateY(' + (scrollY * 0.25) + 'px)';
-            if (heroScroll) {
-              heroScroll.style.opacity = Math.max(0, 0.6 - progress * 1.5);
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
-    }, { passive: true });
-  }
-
-  /* ── Stagger media tags on hover for a wave effect ── */
-  const mediaTags = document.querySelectorAll('.media-tag');
-  mediaTags.forEach(function(tag, i) {
-    tag.style.transitionDelay = (i * 0.03) + 's';
   });
-
-})();
 </script>
 
 </body>
