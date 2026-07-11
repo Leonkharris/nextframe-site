@@ -11,6 +11,8 @@ import os, re, json
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SRC  = os.path.join(ROOT, "99_Source_Files")
+if not os.path.exists(SRC):
+    SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "Lucifer gaming", "Xsino", "99_Source_Files"))
 OUT  = os.path.join(os.path.dirname(__file__), "data.js")
 
 # ---- curation layer (Fable) : brand meta ----
@@ -152,6 +154,11 @@ def parse_story(sid):
             frame_full = os.path.join(os.path.dirname(__file__), "assets", "frames", sid, f"shot{nn}.png")
             if os.path.exists(frame_full):
                 cur_shot["frame"] = frame_rel
+            
+            video_rel = f"assets/videos/{sid}/shot{nn}.mp4"
+            video_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"shot{nn}.mp4")
+            if os.path.exists(video_full):
+                cur_shot["video"] = video_rel
             mode = "shot"
             continue
         sm = re.match(r"ES:\s*(.*)", line)

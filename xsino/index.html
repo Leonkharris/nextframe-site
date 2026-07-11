@@ -478,8 +478,11 @@ function vStory(id){
     const sceneboardImg = sh.sceneboard
       ? `<div class="shot-sceneboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">📋 Scene Board Staging</div><img src="${sh.sceneboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
       : '';
-    const visualBlock = (frameImg || sceneboardImg)
-      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 20px;">${sceneboardImg}${frameImg}</div>`
+    const videoClip = sh.video
+      ? `<div class="shot-video" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎥 5s Video Clip</div><video src="${sh.video}" controls playsinline style="width:100%;height:auto;display:block;border-radius:6px;background:#000" /></div>`
+      : '';
+    const visualBlock = (frameImg || sceneboardImg || videoClip)
+      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 20px;">${sceneboardImg}${frameImg}${videoClip}</div>`
       : '';
     return `
       <div class="shot">
