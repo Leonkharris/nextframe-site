@@ -11,8 +11,6 @@ import os, re, json
 
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 SRC  = os.path.join(ROOT, "99_Source_Files")
-if not os.path.exists(SRC):
-    SRC = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "Lucifer gaming", "Xsino", "99_Source_Files"))
 OUT  = os.path.join(os.path.dirname(__file__), "data.js")
 
 # ---- curation layer (Fable) : brand meta ----
@@ -138,27 +136,54 @@ def parse_story(sid):
 
     logline = {"es": "", "en": ""}
     thesis = {"es": "", "en": ""}
+    oneshot = {"es": "", "en": ""}
     shots, cur_shot, mode = [], None, None
     for line in txt.splitlines():
         if re.match(r"#\s*LOGLINE", line):
             mode = "logline"; continue
         if re.match(r"#\s*THESIS", line):
             mode = "thesis"; continue
+        if re.match(r"#\s*ONESHOT-EN", line):
+            mode = "oneshot_en"; continue
+        if re.match(r"#\s*ONESHOT-ES", line):
+            mode = "oneshot_es"; continue
+        if mode == "oneshot_en" and line.strip() and not line.startswith("#"):
+            oneshot["en"] = (oneshot["en"] + " " + line.strip()).strip(); continue
+        if mode == "oneshot_es" and line.strip() and not line.startswith("#"):
+            oneshot["es"] = (oneshot["es"] + " " + line.strip()).strip(); continue
         m = re.match(r"##\s*SHOT:\s*(\d+)\s*｜\s*(.+)", line)
         if m:
             if cur_shot: shots.append(cur_shot)
             nn = m.group(1)
-            cur_shot = {"n": int(nn), "slug": m.group(2).strip(),
+            parts = [x.strip() for x in m.group(2).split("｜")]
+            slug_es = parts[0]
+            slug_en = parts[1] if len(parts) > 1 else parts[0]
+            cur_shot = {"n": int(nn), "slug_es": slug_es, "slug_en": slug_en,
                         "action_es": "", "action_en": "", "vo_es": "", "vo_en": ""}
-            frame_rel = f"assets/frames/{sid}/shot{nn}.png"
-            frame_full = os.path.join(os.path.dirname(__file__), "assets", "frames", sid, f"shot{nn}.png")
-            if os.path.exists(frame_full):
-                cur_shot["frame"] = frame_rel
-            
-            video_rel = f"assets/videos/{sid}/shot{nn}.mp4"
-            video_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"shot{nn}.mp4")
-            if os.path.exists(video_full):
-                cur_shot["video"] = video_rel
+            found_frame = None
+            found_sceneboard = None
+            for ext in [".png", ".jpg", ".jpeg", ".webp"]:
+                frame_full = os.path.join(os.path.dirname(__file__), "assets", "frames", sid, f"shot{nn}{ext}")
+                if os.path.exists(frame_full):
+                    found_frame = f"assets/frames/{sid}/shot{nn}{ext}"
+                    break
+            for ext in [".png", ".jpg", ".jpeg", ".webp"]:
+                sb_full = os.path.join(os.path.dirname(__file__), "assets", "sceneboards", sid, f"shot{nn}{ext}")
+                if os.path.exists(sb_full):
+                    found_sceneboard = f"assets/sceneboards/{sid}/shot{nn}{ext}"
+                    break
+            found_video = None
+            for ext in [".mp4", ".webm"]:
+                video_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"shot{nn}{ext}")
+                if os.path.exists(video_full):
+                    found_video = f"assets/videos/{sid}/shot{nn}{ext}"
+                    break
+            if found_frame:
+                cur_shot["frame"] = found_frame
+            if found_sceneboard:
+                cur_shot["sceneboard"] = found_sceneboard
+            if found_video:
+                cur_shot["video"] = found_video
             mode = "shot"
             continue
         sm = re.match(r"ES:\s*(.*)", line)
@@ -179,11 +204,15 @@ def parse_story(sid):
         ve = re.match(r"VO-EN:\s*(.*)", line)
         if ve and mode == "shot" and cur_shot:
             cur_shot["vo_en"] = ve.group(1).strip(); continue
+        bm = re.match(r"(MOVE-ES|MOVE-EN|EMO-ES|EMO-EN):\s*(.*)", line)
+        if bm and mode == "shot" and cur_shot:
+            cur_shot[bm.group(1).lower().replace("-", "_")] = bm.group(2).strip(); continue
     if cur_shot: shots.append(cur_shot)
 
     return {
         "id": story_id, "title_es": title_es, "title_en": title_en,
-        "pillar": pillar, "brand": brand, "logline": logline, "thesis": thesis, "shots": shots,
+        "pillar": pillar, "brand": brand, "logline": logline, "thesis": thesis,
+        "oneshot": oneshot, "shots": shots,
     }
 
 
