@@ -490,6 +490,10 @@ function vStory(id){
         ${bilingualDiv(sh.slug_es, sh.slug_en, 'slug')}
         ${visualBlock}
         ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
+        ${(sh.move_en||sh.emo_en)?`<div class="board" style="margin:10px 0 4px;padding:10px 14px;border:1px dashed var(--line2);border-radius:8px;font-size:13px;line-height:1.55">
+          ${sh.move_en?`<div><span style="font-size:9.5px;letter-spacing:1.5px;color:var(--accent-bright);text-transform:uppercase">🎬 Movement</span><br>${MODE==='es'?esc(sh.move_es||sh.move_en):esc(sh.move_en)}${MODE==='both'?`<span class="en" style="display:block;font-style:italic;opacity:.7">${esc(sh.move_es)}</span>`:''}</div>`:''}
+          ${sh.emo_en?`<div style="margin-top:6px"><span style="font-size:9.5px;letter-spacing:1.5px;color:var(--ember-bright);text-transform:uppercase">🎭 Emotion</span><br>${MODE==='es'?esc(sh.emo_es||sh.emo_en):esc(sh.emo_en)}${MODE==='both'?`<span class="en" style="display:block;font-style:italic;opacity:.7">${esc(sh.emo_es)}</span>`:''}</div>`:''}
+        </div>`:''}
         <div class="vo"><span class="k">VOICEOVER</span>${
           MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en" style="font-style:italic;opacity:0.75;display:block;margin-top:3px">${esc(sh.vo_es)}</span>`
         }</div>
@@ -508,6 +512,11 @@ function vStory(id){
         ${pair(s.thesis)}
       </div>
       ${shots}
+      ${(s.oneshot&&s.oneshot.en)?`<div class="thesis-block" style="margin-top:30px">
+        <div class="k">🎥 ONE-SHOT COMMERCIAL PROMPT — full film in a single generation (Higgsfield / Seedance)</div>
+        <div style="font-family:var(--mono);font-size:12px;line-height:1.6;margin-top:8px;white-space:pre-wrap;color:#d8d4f0">${esc(MODE==='es'?(s.oneshot.es||s.oneshot.en):s.oneshot.en)}</div>
+        ${MODE==='both'&&s.oneshot.es?`<div style="font-family:var(--mono);font-size:11.5px;line-height:1.6;margin-top:10px;white-space:pre-wrap;color:var(--muted);font-style:italic">${esc(s.oneshot.es)}</div>`:''}
+      </div>`:''}
       ${nav}
     </div>`;
 }
