@@ -1702,8 +1702,8 @@ html { background: #0a0806; }
 @media (max-width: 880px) {
   .kit-wrap { padding: 24px 0; gap: 24px; }
   .sheet {
-    transform-origin: top center;
-    transform: scale(calc(100vw / 848));
-    margin-bottom: calc((1056px * (100vw / 848)) - 1056px);
+    /* zoom reflows (unlike transform), so no margin compensation needed;
+       tan(atan2()) converts the length ratio 100vw/848px into a plain number */
+    zoom: tan(atan2(100vw, 848px));
   }
 }
