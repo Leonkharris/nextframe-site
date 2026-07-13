@@ -1,3523 +1,968 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Todd English — Global Chef, Restaurateur, and Hospitality Visionary. 2026-2027 Brand Book and Interactive Press Center.">
-  <title>TODD ENGLISH — Brand Book & Press Center</title>
-  
-  <!-- Typography -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
-  
-  <style>
-    /* ================================================================
-       DESIGN SYSTEM & TOKENS
-       ================================================================ */
-    :root {
-      --black: #0A0A0A;
-      --charcoal: #141414;
-      --slate: #1F1F1F;
-      --gold: #C5A05E;
-      --gold-light: #D4B77A;
-      --gold-dark: #A48143;
-      --off-white: #F5F3EF;
-      --white: #FAFAFA;
-      --mid-gray: #8E8E8E;
-      --light-gray: #CCCCCC;
-      
-      --font-heading: 'Playfair Display', serif;
-      --font-body: 'Inter', sans-serif;
-      
-      --section-pad-y: clamp(5rem, 10vh, 8rem);
-      --section-pad-x: clamp(1.5rem, 5vw, 4rem);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      background-color: var(--black);
-      color: var(--white);
-      font-family: var(--font-body);
-      font-size: 16px;
-    }
-
-    body {
-      overflow-x: hidden;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-      height: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--black);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: var(--gold-dark);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: var(--gold);
-    }
-
-    /* Selection */
-    ::selection {
-      background: var(--gold);
-      color: var(--black);
-    }
-
-    /* Common Layout & Typography Elements */
-    .section-inner {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 var(--section-pad-x);
-      width: 100%;
-    }
-
-    .label {
-      font-family: var(--font-body);
-      font-size: 0.7rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-
-    .heading-lg {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
-      line-height: 1.15;
-      color: var(--white);
-      letter-spacing: -0.01em;
-    }
-
-    .heading-md {
-      font-family: var(--font-heading);
-      font-weight: 700;
-      font-size: clamp(1.8rem, 4vw, 2.5rem);
-      line-height: 1.2;
-      color: var(--white);
-    }
-
-    .gold-line {
-      width: 60px;
-      height: 1px;
-      background: var(--gold);
-      margin: 1.5rem 0 2rem 0;
-    }
-
-    .gold-line--center {
-      margin: 1.5rem auto 2.5rem auto;
-    }
-
-    .body-text {
-      font-size: clamp(0.95rem, 2vw, 1.1rem);
-      line-height: 1.8;
-      color: var(--light-gray);
-      font-weight: 300;
-    }
-
-    .body-text-sm {
-      font-size: 0.9rem;
-      line-height: 1.6;
-      color: var(--mid-gray);
-      font-weight: 300;
-    }
-
-    .drop-cap::first-letter {
-      font-family: var(--font-heading);
-      font-size: 4rem;
-      float: left;
-      line-height: 0.8;
-      padding-right: 0.75rem;
-      margin-top: 0.2rem;
-      color: var(--gold);
-      font-weight: 700;
-    }
-
-    /* Section Divider Line */
-    .section-divider {
-      width: 100%;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(197, 160, 94, 0.15), transparent);
-    }
-
-    /* ================================================================
-       SCROLL HERO & PORTAL SYSTEM (Dream Land technique)
-       ================================================================ */
-    .hero-scroll {
-      position: relative;
-      height: 220vh; /* Scroll length for the push-through animation */
-      background: var(--black);
-    }
-
-    .hero-pin {
-      position: sticky;
-      top: 0;
-      height: 100vh;
-      width: 100%;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    /* Layer 1: Background Image Zoomed out slightly */
-    .hero-bg {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      transform: scale(1.1);
-      transition: transform 0.1s linear;
-    }
-
-    .hero-bg img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      filter: brightness(0.75) contrast(1.1);
-    }
-
-    .hero-bg-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(to bottom, rgba(10,10,10,0.25) 0%, rgba(10,10,10,0.55) 100%);
-    }
-
-    /* Layer 2: Main Cover Title */
-    .hero-cover-title {
-      position: absolute;
-      z-index: 3;
-      text-align: center;
-      opacity: 1;
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-cover-eyebrow {
-      font-size: 0.8rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    .hero-cover-name {
-      font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 8vw, 7.5rem);
-      font-weight: 700;
-      letter-spacing: 0.05em;
-      line-height: 1;
-      color: var(--white);
-      text-shadow: 0 4px 20px rgba(0,0,0,0.6);
-      margin-bottom: 2rem;
-    }
-
-    .hero-cover-hint {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      border: 1px solid rgba(197, 160, 94, 0.3);
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      background: rgba(10,10,10,0.4);
-      backdrop-filter: blur(5px);
-      margin-top: 1rem;
-      animation: pulseIndicator 2s infinite;
-    }
-
-    @keyframes pulseIndicator {
-      0%, 100% { opacity: 0.6; transform: translateY(0); }
-      50% { opacity: 1; transform: translateY(4px); }
-    }
-
-    /* Layer 3: Pinned Foreground Frame (Split panel gates) */
-    .hero-cover-frame {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 4;
-      display: flex;
-      pointer-events: none;
-    }
-
-    .hero-cover-panel {
-      width: 50%;
-      height: 100%;
-      background: rgba(20, 18, 14, 0.35);
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      border: 1px solid rgba(197, 160, 94, 0.25);
-      transition: transform 0.1s linear;
-      position: relative;
-      overflow: hidden;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .hero-cover-panel::after {
-      content: '';
-      position: absolute;
-      top: -50%;
-      left: -50%;
-      width: 200%;
-      height: 200%;
-      background: linear-gradient(45deg, transparent 40%, rgba(197, 160, 94, 0.06) 50%, transparent 60%);
-      animation: heroShimmer 6s ease-in-out infinite;
-      pointer-events: none;
-    }
-
-    @keyframes heroShimmer {
-      0%, 100% { transform: translateX(-100%) rotate(0deg); }
-      50% { transform: translateX(100%) rotate(0deg); }
-    }
-
-    .hero-cover-panel.left {
-      transform-origin: left center;
-      box-shadow: 10px 0 40px rgba(0,0,0,0.6);
-      border-right: 1px solid rgba(197, 160, 94, 0.3);
-    }
-
-    .hero-cover-panel.right {
-      transform-origin: right center;
-      box-shadow: -10px 0 40px rgba(0,0,0,0.6);
-      border-left: 1px solid rgba(197, 160, 94, 0.3);
-    }
-
-    /* Pinned Gate wireframe overlays */
-    .hero-cover-gate-overlay {
-      position: absolute;
-      top: 0;
-      width: 50%;
-      height: 100%;
-      z-index: 4;
-      pointer-events: none;
-      transition: transform 0.1s linear, opacity 0.1s linear;
-      box-sizing: border-box;
-    }
-
-    .hero-cover-gate-overlay.left {
-      left: 0;
-      border-right: 1px solid var(--gold);
-      background: linear-gradient(90deg, transparent 95%, rgba(197, 160, 94, 0.08) 95%);
-    }
-
-    .hero-cover-gate-overlay.right {
-      right: 0;
-      border-left: 1px solid var(--gold);
-      background: linear-gradient(-90deg, transparent 95%, rgba(197, 160, 94, 0.08) 95%);
-    }
-
-    .hero-backdrop-text {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      font-family: var(--font-heading);
-      font-size: clamp(12rem, 24vw, 32rem);
-      font-weight: 900;
-      color: var(--gold);
-      opacity: 0;
-      pointer-events: none;
-      z-index: 1;
-      letter-spacing: 0.05em;
-      white-space: nowrap;
-      user-select: none;
-      transition: transform 0.1s linear, opacity 0.1s linear;
-      line-height: 1;
-    }
-
-    /* Centered Book Cover Logo Badge inside gates */
-    .hero-cover-center-card {
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 320px;
-      height: 320px;
-      background: var(--charcoal);
-      border: 2px solid var(--gold);
-      box-shadow: 0 10px 40px rgba(0,0,0,0.8);
-      z-index: 5;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      transition: opacity 0.1s linear, transform 0.1s linear;
-    }
-
-    .hero-cover-logo {
-      font-family: var(--font-heading);
-      font-size: 5rem;
-      color: var(--white);
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: 0.05em;
-    }
-
-    .hero-cover-logo-sub {
-      font-size: 0.75rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 1rem;
-      font-weight: 500;
-    }
-
-    .hero-cover-border {
-      width: 60px;
-      height: 1px;
-      background: var(--gold);
-      margin-top: 1.5rem;
-    }
-
-    /* Layer 4: Final Pinned Content Revealed underneath Split Gates */
-    .hero-reveal {
-      position: absolute;
-      z-index: 2;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: var(--section-pad-x);
-      opacity: 0;
-      transform: scale(0.95);
-      transition: opacity 0.5s ease, transform 0.5s ease;
-      pointer-events: none;
-    }
-
-    .hero-reveal.active {
-      opacity: 1;
-      transform: scale(1);
-      pointer-events: auto;
-    }
-
-    .hero-reveal-subtitle {
-      font-size: 0.85rem;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
-    }
-
-    .hero-reveal-name {
-      font-family: var(--font-heading);
-      font-size: clamp(3.2rem, 7vw, 6.5rem);
-      font-weight: 700;
-      line-height: 1.05;
-      color: var(--white);
-      letter-spacing: 0.02em;
-    }
-
-    .hero-reveal-tagline {
-      font-size: clamp(0.9rem, 2vw, 1.2rem);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-gray);
-      margin-top: 1.5rem;
-      font-weight: 300;
-    }
-
-    .hero-reveal-year {
-      font-size: 0.75rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      margin-top: 1rem;
-    }
-
-    .hero__gold-line {
-      width: 120px;
-      height: 1px;
-      background: linear-gradient(90deg, transparent, var(--gold), transparent);
-    }
-
-    .hero-scroll-indicator {
-      position: absolute;
-      bottom: 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-    }
-
-    .hero-scroll-line {
-      width: 1px;
-      height: 50px;
-      background: linear-gradient(to bottom, var(--gold), transparent);
-      margin-top: 0.75rem;
-      position: relative;
-      overflow: hidden;
-    }
-
-    .hero-scroll-line::after {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 20px;
-      background: var(--white);
-      animation: scrollAnim 2s infinite;
-    }
-
-    @keyframes scrollAnim {
-      0% { top: -20px; }
-      100% { top: 50px; }
-    }
-
-    /* ================================================================
-       SECTION 2 — ABOUT
-       ================================================================ */
-    .bg-watermark {
-      position: absolute;
-      font-family: var(--font-heading);
-      font-size: clamp(8rem, 15vw, 22rem);
-      font-weight: 900;
-      color: rgba(197, 160, 94, 0.022);
-      pointer-events: none;
-      z-index: 0;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      white-space: nowrap;
-      user-select: none;
-      line-height: 1;
-    }
-
-    .image-frame-decor {
-      position: absolute;
-      top: 25px;
-      left: 25px;
-      width: 100%;
-      height: 100%;
-      border: 1px solid rgba(197, 160, 94, 0.22);
-      z-index: -1;
-      pointer-events: none;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .about {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .about__grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .about__image {
-      grid-column: 1 / 7;
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(197,160,94,0.15);
-      padding: 1rem;
-      background: var(--charcoal);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-    }
-
-    .about__image:hover .image-frame-decor {
-      transform: translate(5px, 5px);
-    }
-
-    .about__image img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    /* ================================================================
-       SECTION 3 — CAREER HIGHLIGHTS
-       ================================================================ */
-    .highlights {
-      padding: var(--section-pad-y) 0;
-      background: var(--charcoal);
-    }
-
-    .stats-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.5fr;
-      gap: clamp(2rem, 6vw, 4rem);
-      align-items: center;
-    }
-
-    .stats-stacked {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      position: relative;
-    }
-
-    .stat-row {
-      background: var(--slate);
-      padding: 2rem;
-      border-left: 2px solid var(--gold);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-      transition: transform 0.4s ease, border-color 0.4s ease;
-    }
-
-    .stat-row:hover {
-      transform: translateY(-4px);
-      border-left-color: var(--white);
-    }
-
-    .stat-row__num {
-      font-family: var(--font-heading);
-      font-size: clamp(2.2rem, 4vw, 3.2rem);
-      font-weight: 700;
-      color: var(--gold);
-      line-height: 1.1;
-      margin-bottom: 0.5rem;
-    }
-
-    .stat-row__label {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-gray);
-      font-weight: 500;
-    }
-
-    /* ================================================================
-       SECTION 4 — CURRENT PORTFOLIO
-       ================================================================ */
-    .portfolio {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    /* Magazine Editorial Grid Styles */
-    .portfolio__grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2rem;
-      margin-top: clamp(3rem, 6vh, 5rem);
-    }
-
-    .port-card {
-      position: relative;
-      background: var(--charcoal);
-      border: 1px solid rgba(197, 160, 94, 0.12);
-      overflow: hidden;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.6s ease, box-shadow 0.6s ease;
-      aspect-ratio: 1.6;
-    }
-
-    .port-card:hover {
-      transform: translateY(-4px);
-      border-color: rgba(197, 160, 94, 0.35);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
-    }
-
-    .port-card img {
-      position: absolute;
-      inset: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .port-card:hover img {
-      transform: scale(1.03);
-    }
-
-    .port-card__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 40%, rgba(10, 10, 10, 0.95) 95%);
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-end;
-      padding: 2.25rem 2rem;
-      z-index: 2;
-    }
-
-    .port-card__num {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.25em;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      text-transform: uppercase;
-    }
-
-    .port-card__name {
-      font-family: var(--font-heading);
-      font-size: clamp(1.3rem, 2.5vw, 1.8rem);
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.25rem;
-    }
-
-    .port-card__location {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--light-gray);
-    }
-
-    /* Asymmetric Column Spans */
-    .card-span-12 {
-      grid-column: span 12;
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 0;
-      aspect-ratio: unset;
-      min-height: 420px;
-    }
-
-    .card-span-12 img {
-      position: relative;
-      height: 100%;
-      width: 100%;
-    }
-
-    .card-span-12 .port-card__overlay {
-      position: relative;
-      background: var(--charcoal);
-      padding: 3rem 2.5rem;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: flex-start;
-      border-left: 1px solid rgba(197, 160, 94, 0.12);
-    }
-
-    .card-span-7 {
-      grid-column: span 7;
-    }
-
-    .card-span-5 {
-      grid-column: span 5;
-    }
-
-    .card-span-5-offset {
-      grid-column: span 5;
-      margin-top: 3.5rem;
-    }
-
-    .card-span-7-offset {
-      grid-column: span 7;
-      margin-top: 3.5rem;
-    }
-
-    .card-span-4 {
-      grid-column: span 4;
-      aspect-ratio: 1.15;
-    }
-
-    /* ================================================================
-       SECTION 5 — FEATURED DEEP DIVE PAGES
-       ================================================================ */
-    .concepts {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .concept-block {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      align-items: center;
-      position: relative;
-      z-index: 2;
-      margin-top: clamp(4rem, 8vh, 8rem);
-    }
-
-    .concept-block__image {
-      grid-column: 1 / 8;
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(197, 160, 94, 0.12);
-      padding: 1.25rem;
-      background: var(--charcoal);
-      box-shadow: 0 20px 45px rgba(0,0,0,0.5);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .concept-block__image:hover {
-      transform: scale(1.01);
-    }
-
-    .concept-block__image:hover .image-frame-decor {
-      transform: translate(5px, 5px);
-    }
-
-    .concept-block--reverse .concept-block__image {
-      grid-column: 6 / 13;
-      order: 2;
-    }
-
-    .img-placeholder {
-      position: relative;
-      aspect-ratio: 1.6;
-      background: var(--slate);
-      overflow: hidden;
-    }
-
-    .img-placeholder img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .concept-block__text {
-      grid-column: 7 / 13;
-      position: relative;
-      z-index: 3;
-      background: rgba(26, 26, 26, 0.88);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: clamp(2.5rem, 5vw, 4.5rem);
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      box-shadow: 0 40px 80px rgba(0, 0, 0, 0.7);
-      transition: transform 0.4s ease;
-    }
-
-    .concept-block__text:hover {
-      transform: translate(-3px, -3px);
-    }
-
-    .concept-block--reverse .concept-block__text {
-      grid-column: 1 / 7;
-      order: 1;
-    }
-
-    .concept-label {
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.75rem;
-      display: inline-block;
-    }
-
-    /* ================================================================
-       SECTION 11 — TELEVISION & MEDIA
-       ================================================================ */
-    .media {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .media-layout {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .media-image {
-      grid-column: 1 / 7;
-      position: relative;
-      z-index: 1;
-      border: 1px solid rgba(197,160,94,0.15);
-      padding: 1rem;
-      background: var(--charcoal);
-      box-shadow: 0 15px 40px rgba(0,0,0,0.5);
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .media-image:hover {
-      transform: scale(1.01);
-    }
-
-    .media-image:hover .image-frame-decor {
-      transform: translate(5px, 5px);
-    }
-
-    .media-image img {
-      width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    .media-text {
-      grid-column: 6 / 13;
-      position: relative;
-      z-index: 3;
-      background: rgba(26, 26, 26, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: clamp(2.5rem, 5vw, 4.5rem);
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      transition: transform 0.4s ease;
-    }
-
-    .media-text:hover {
-      transform: translate(-3px, -3px);
-    }
-
-    .media-logos {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-    }
-
-    .media-logo {
-      font-size: 0.68rem;
-      font-weight: 600;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      border: 1px solid rgba(255,255,255,0.04);
-      padding: 0.85rem 0.5rem;
-      text-align: center;
-      transition: color 0.4s ease, border-color 0.4s ease, background 0.4s ease;
-      background: rgba(255, 255, 255, 0.01);
-    }
-
-    .media-logo:hover {
-      color: var(--gold);
-      border-color: var(--gold);
-      background: rgba(197, 160, 94, 0.05);
-    }
-
-    /* ================================================================
-       SECTION 9 — LEGACY RESTAURANTS
-       ================================================================ */
-    .legacy {
-      padding: var(--section-pad-y) 0;
-      background: var(--charcoal);
-      position: relative;
-      overflow: hidden;
-      z-index: 1;
-    }
-
-    .legacy-layout {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 0;
-      align-items: center;
-      position: relative;
-      z-index: 2;
-    }
-
-    .legacy-text-card {
-      grid-column: 1 / 6;
-      position: relative;
-      z-index: 3;
-      background: rgba(26, 26, 26, 0.85);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      padding: clamp(2rem, 4vw, 4rem);
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      box-shadow: 0 30px 60px rgba(0, 0, 0, 0.6);
-      transition: transform 0.4s ease;
-    }
-
-    .legacy-text-card:hover {
-      transform: translate(-3px, -3px);
-    }
-
-    .legacy__grid {
-      grid-column: 5 / 13;
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.25rem;
-      padding-left: 2rem;
-    }
-
-    .legacy-item {
-      background: var(--slate);
-      padding: 1.75rem;
-      border: 1px solid rgba(255,255,255,0.03);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      transition: border-color 0.4s ease;
-    }
-
-    .legacy-item:hover {
-      border-color: rgba(197, 160, 94, 0.25);
-    }
-
-    .legacy-item__name {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .legacy-item__loc {
-      font-size: 0.65rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      line-height: 1.5;
-    }
-
-    /* ================================================================
-       SECTION 10 — HOSPITALITY DEVELOPMENT
-       ================================================================ */
-    .hospitality {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    .hosp-header-layout {
-      text-align: center;
-      max-width: 800px;
-      margin: 0 auto clamp(3rem, 6vh, 5rem);
-    }
-
-    .hosp-grid {
-      display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      gap: 1.5rem;
-      width: 100%;
-    }
-
-    .hosp-item {
-      background: var(--charcoal);
-      border: 1px solid rgba(197, 160, 94, 0.12);
-      padding: 2.5rem 1.75rem;
-      text-align: left;
-      transition: transform 0.4s ease, border-color 0.4s ease, box-shadow 0.4s ease;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .hosp-item:hover {
-      transform: translateY(-4px);
-      border-color: var(--gold);
-      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
-    }
-
-    .hosp-item__num {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 1.25rem;
-      font-weight: 300;
-    }
-
-    .hosp-item__title {
-      font-family: var(--font-body);
-      font-size: 0.8rem;
-      font-weight: 600;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-      line-height: 1.3;
-    }
-
-    .hosp-item__divider {
-      width: 30px;
-      height: 1px;
-      background: var(--gold);
-      margin-bottom: 1rem;
-    }
-
-    .hosp-item__desc {
-      font-size: 0.72rem;
-      line-height: 1.6;
-      color: var(--mid-gray);
-      margin: 0;
-      font-weight: 300;
-    }
-
-    /* ================================================================
-       SECTION 11 — TELEVISION & MEDIA
-       ================================================================ */
-    .media {
-      padding: var(--section-pad-y) 0;
-      background: var(--charcoal);
-    }
-
-    .media-layout {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: clamp(2rem, 5vw, 4rem);
-      align-items: center;
-    }
-
-    .media-logos {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem 1.5rem;
-      align-items: center;
-      justify-items: center;
-      padding: 1.5rem 0;
-    }
-
-    .media-logo {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1rem;
-      transition: opacity 0.4s ease, transform 0.4s ease;
-      opacity: 0.5;
-    }
-
-    .media-logo:hover {
-      opacity: 1;
-      transform: scale(1.05);
-    }
-
-    .media-logo img {
-      max-height: 32px;
-      max-width: 120px;
-      width: auto;
-      height: auto;
-      object-fit: contain;
-      filter: brightness(0) invert(0.6);
-      transition: filter 0.4s ease;
-    }
-
-    .media-logo:hover img {
-      filter: brightness(0) invert(1) sepia(1) saturate(3) hue-rotate(5deg) brightness(0.85);
-    }
-
-    /* ================================================================
-       SECTION 12 — AWARDS
-       ================================================================ */
-    .awards {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    .awards__list {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1.5rem;
-      margin-top: clamp(2.5rem, 5vh, 4rem);
-    }
-
-    .award-item {
-      background: var(--charcoal);
-      border-left: 3px solid var(--gold);
-      padding: 2rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.25);
-      transition: transform 0.4s ease;
-    }
-
-    .award-item:hover {
-      transform: translateX(4px);
-    }
-
-    .award-item__title {
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      font-weight: 700;
-      color: var(--white);
-      margin-bottom: 0.5rem;
-    }
-
-    .award-item__detail {
-      font-size: 0.85rem;
-      color: var(--mid-gray);
-      line-height: 1.5;
-    }
-
-    /* ================================================================
-       SECTION 13 — COOKBOOKS
-       ================================================================ */
-    .cookbooks {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    .cookbooks__scroll {
-      display: flex;
-      gap: 1.5rem;
-      overflow-x: auto;
-      padding-bottom: 1.5rem;
-      margin-top: clamp(2rem, 4vh, 3rem);
-      scroll-snap-type: x mandatory;
-      -webkit-overflow-scrolling: touch;
-    }
-
-    .book-card {
-      flex: 0 0 200px;
-      height: 260px;
-      background: var(--charcoal);
-      border: 1px solid rgba(197,160,94,0.10);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 1.5rem;
-      text-align: center;
-      scroll-snap-align: start;
-      transition: border-color 0.4s ease, transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
-    }
-
-    .book-card:hover {
-      border-color: var(--gold);
-      transform: translateY(-8px);
-    }
-
-    /* ================================================================
-       SECTION 14 — BRAND PARTNERSHIPS
-       ================================================================ */
-    .partnerships {
-      padding: var(--section-pad-y) 0;
-      background: var(--charcoal);
-    }
-
-    .partnerships-layout {
-      display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: clamp(2rem, 5vw, 4rem);
-      align-items: center;
-    }
-
-    .partner-cards {
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-
-    .partner-card {
-      background: var(--slate);
-      padding: 2rem;
-      border: 1px solid rgba(197, 160, 94, 0.1);
-      transition: border-color 0.4s ease;
-    }
-
-    .partner-card:hover {
-      border-color: var(--gold);
-    }
-
-    .partner-card__title {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      font-weight: 700;
-      color: var(--gold-light);
-      margin-bottom: 0.5rem;
-    }
-
-    /* ================================================================
-       SECTION 15 — DEVELOPMENT OPPORTUNITIES
-       ================================================================ */
-    .development {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    .dev-grid {
-      display: grid;
-      grid-template-columns: 1fr 1.1fr;
-      gap: clamp(2rem, 5vw, 4rem);
-      align-items: center;
-    }
-
-    .dev-opps {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-    }
-
-    .dev-opp {
-      padding: 1rem 1.2rem;
-      background: var(--slate);
-      border-left: 2px solid var(--gold);
-      font-size: 0.82rem;
-      color: var(--light-gray);
-      font-weight: 400;
-      transition: background 0.3s ease;
-    }
-
-    .dev-opp:hover {
-      background: rgba(197,160,94,0.08);
-    }
-
-    /* ================================================================
-       SECTION 16 — PRESS & TESTIMONIALS
-       ================================================================ */
-    .press {
-      padding: var(--section-pad-y) 0;
-      background: var(--black);
-    }
-
-    .press__grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1.5rem;
-      margin-top: clamp(2rem, 4vh, 3rem);
-    }
-
-    .quote-card {
-      background: var(--charcoal);
-      padding: 2.5rem;
-      border: 1px solid rgba(197,160,94,0.08);
-      position: relative;
-      transition: border-color 0.4s ease;
-    }
-
-    .quote-card:hover {
-      border-color: rgba(197,160,94,0.25);
-    }
-
-    .quote-card__mark {
-      font-family: var(--font-heading);
-      font-size: 4rem;
-      color: var(--gold);
-      line-height: 1;
-      margin-bottom: 0.5rem;
-      opacity: 0.6;
-    }
-
-    .quote-card__text {
-      font-family: var(--font-body);
-      font-weight: 300;
-      font-size: 0.95rem;
-      line-height: 1.75;
-      color: var(--light-gray);
-      font-style: italic;
-      margin-bottom: 1rem;
-    }
-
-    .quote-card__source {
-      font-size: 0.72rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold);
-      font-weight: 500;
-    }
-
-    /* ================================================================
-       SECTION 17 — CONTACT
-       ================================================================ */
-    .contact {
-      padding: var(--section-pad-y) 0;
-      background: var(--charcoal);
-      text-align: center;
-    }
-
-    .contact__grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 2rem;
-      margin: clamp(2rem, 5vh, 4rem) auto;
-      max-width: 900px;
-    }
-
-    .contact-item__label {
-      font-size: 0.65rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      margin-bottom: 0.5rem;
-    }
-
-    .contact-item__value {
-      font-family: var(--font-body);
-      font-weight: 400;
-      font-size: 0.95rem;
-      color: var(--white);
-    }
-
-    .contact-item__value a {
-      color: var(--gold-light);
-      transition: color 0.3s;
-      text-decoration: none;
-    }
-
-    .contact-item__value a:hover {
-      color: var(--gold);
-    }
-
-    .btn-download {
-      display: inline-block;
-      margin-top: 1rem;
-      background: transparent;
-      border: 1px solid var(--gold);
-      color: var(--gold);
-      font-family: var(--font-body);
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      padding: 1rem 2rem;
-      cursor: pointer;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      text-decoration: none;
-    }
-
-    .btn-download:hover {
-      background: var(--gold);
-      color: var(--black);
-      box-shadow: 0 5px 15px rgba(197, 160, 94, 0.2);
-    }
-
-    /* Footer */
-    footer {
-      background: var(--black);
-      padding: 2.5rem 0;
-      text-align: center;
-      font-size: 0.75rem;
-      color: var(--mid-gray);
-      border-top: 1px solid rgba(255,255,255,0.03);
-    }
-
-    /* Scroll Animation Reveal Utility */
-    .reveal {
-      opacity: 0;
-      transform: translateY(25px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .reveal-delay-1 { transition-delay: 0.1s; }
-    .reveal-delay-2 { transition-delay: 0.2s; }
-    .reveal-delay-3 { transition-delay: 0.3s; }
-    .reveal-delay-4 { transition-delay: 0.4s; }
-    .reveal-delay-5 { transition-delay: 0.5s; }
-    .reveal-delay-6 { transition-delay: 0.6s; }
-
-    /* Responsive (Screen only, keeps print on desktop grid layout) */
-    @media screen and (max-width: 1024px) {
-      .portfolio__grid { grid-template-columns: repeat(2, 1fr); }
-      .legacy-layout { grid-template-columns: 1fr; }
-      .hosp-grid { grid-template-columns: repeat(3, 1fr); }
-      .media-layout { grid-template-columns: 1fr; }
-      .partnerships-layout { grid-template-columns: 1fr; }
-      .contact__grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media screen and (max-width: 768px) {
-      .about__grid { grid-template-columns: 1fr; }
-      .about__image { max-height: 450px; }
-      .stats-layout { grid-template-columns: 1fr; }
-      .concept-block { grid-template-columns: 1fr; }
-      .concept-block--reverse { grid-template-columns: 1fr; }
-      .concept-block--reverse .concept-block__image { order: 0; }
-      .awards__list { grid-template-columns: 1fr; }
-      .dev-grid { grid-template-columns: 1fr; }
-      .press__grid { grid-template-columns: 1fr; }
-      .media-logos { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media screen and (max-width: 480px) {
-      .portfolio__grid { grid-template-columns: 1fr; }
-      .stats-stacked { grid-template-columns: 1fr; }
-      .legacy__grid { grid-template-columns: 1fr; }
-      .hosp-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 1rem !important; }
-      .dev-opps { grid-template-columns: 1fr; }
-      .contact__grid { grid-template-columns: 1fr; }
-    }
-
-    /* ================================================================
-       PRINT STYLES (Luxury Digital Book Layout)
-       ================================================================ */
-    @media screen and (max-width: 1024px) {
-      .about__grid, .concept-block, .legacy-layout, .media-layout {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: 1.5rem !important;
-      }
-      .about__image, .concept-block__image, .media-image {
-        width: 100% !important;
-        margin: 0 !important;
-        padding: 0.5rem !important;
-      }
-      .about__text, .concept-block__text, .media-text, .legacy-text-card {
-        width: 100% !important;
-        margin: -2rem 0 0 0 !important;
-        padding: 2rem 1.5rem !important;
-        backdrop-filter: blur(10px) !important;
-        -webkit-backdrop-filter: blur(10px) !important;
-      }
-      .legacy__grid {
-        width: 100% !important;
-        padding-left: 0 !important;
-        margin-top: 1rem !important;
-      }
-      .image-frame-decor {
-        top: 15px !important;
-        left: 15px !important;
-      }
-      .concept-block--reverse .image-frame-decor {
-        left: -15px !important;
-      }
-    }
-
-    @media print {
-      html, body {
-        background: #0A0A0A !important;
-        color: #FAFAFA !important;
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        font-size: 9.5pt !important;
-      }
-      
-      * {
-        -webkit-print-color-adjust: exact !important;
-        print-color-adjust: exact !important;
-      }
-
-      /* Distinct page break splits */
-      section {
-        page-break-before: always !important;
-        break-before: page !important;
-        page-break-inside: avoid !important;
-        height: auto !important;
-        min-height: 100vh !important;
-        box-sizing: border-box !important;
-        padding: 5rem 3.5rem !important;
-        background: #0A0A0A !important;
-        color: #FAFAFA !important;
-        position: relative !important;
-      }
-
-      .hero-scroll {
-        height: 100vh !important;
-        min-height: 100vh !important;
-        background: #0A0A0A !important;
-        page-break-after: always !important;
-        break-after: page !important;
-      }
-
-      .hero-pin {
-        position: relative !important;
-        height: 100vh !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-      }
-
-      .hero-bg {
-        position: absolute !important;
-        inset: 0 !important;
-        transform: none !important;
-      }
-
-      .hero-bg img {
-        filter: brightness(0.45) !important;
-      }
-
-      .hero-cover-title, 
-      .hero-cover-frame, 
-      .hero-scroll-indicator {
-        display: none !important;
-      }
-
-      .hero-reveal {
-        opacity: 1 !important;
-        pointer-events: auto !important;
-        display: flex !important;
-      }
-
-      .hero-reveal * {
-        color: #FFFFFF !important;
-      }
-
-      .section-divider {
-        display: none !important;
-      }
-
-      /* Enable full colors on images and graphics */
-      img {
-        filter: none !important;
-      }
-
-      .port-card img {
-        filter: none !important;
-      }
-
-      /* Adjust grids for print margins */
-      .portfolio__grid {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 1rem !important;
-      }
-
-      .stats-stacked {
-        grid-template-columns: repeat(3, 1fr) !important;
-        gap: 1rem !important;
-      }
-
-      .legacy__grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.75rem !important;
-      }
-
-      .hosp-grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 0.75rem !important;
-      }
-
-      .contact__grid {
-        grid-template-columns: repeat(4, 1fr) !important;
-        gap: 1rem !important;
-      }
-
-      .cookbooks__scroll {
-        overflow: visible !important;
-        flex-wrap: wrap !important;
-        gap: 1rem !important;
-      }
-
-      .book-card {
-        background-color: transparent !important;
-        border: 1px solid rgba(197, 160, 94, 0.25) !important;
-      }
-
-      .btn-download {
-        display: none !important;
-      }
-
-      .reveal {
-        opacity: 1 !important;
-        transform: none !important;
-      }
-
-      .label, .port-card__location, .quote-card__source, .contact-item__label, .hosp-item__desc, .stat-row__num, .dev-opp {
-        color: #C5A05E !important;
-      }
-    }
-    /* ================================================================
-       MAGAZINE REDESIGN OVERHAUL STYLES
-       ================================================================ */
-    .about-page-header, .concept-page-header {
-      display: flex;
-      justify-content: space-between;
-      border-bottom: 1px solid rgba(197, 160, 94, 0.15);
-      padding-bottom: 0.75rem;
-      margin-bottom: 3.5rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      color: var(--mid-gray);
-      text-transform: uppercase;
-      width: 100%;
-      box-sizing: border-box;
-      max-width: var(--site-max-width);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--site-pad-x);
-      padding-right: var(--site-pad-x);
-    }
-    .about-page-footer, .concept-page-footer {
-      display: flex;
-      justify-content: space-between;
-      border-top: 1px solid rgba(197, 160, 94, 0.15);
-      padding-top: 0.75rem;
-      margin-top: 4rem;
-      font-size: 0.65rem;
-      letter-spacing: 0.25em;
-      color: var(--mid-gray);
-      text-transform: uppercase;
-      width: 100%;
-      box-sizing: border-box;
-      max-width: var(--site-max-width);
-      margin-left: auto;
-      margin-right: auto;
-      padding-left: var(--site-pad-x);
-      padding-right: var(--site-pad-x);
-    }
-    
-    .hero-cover-gate-text {
-      font-family: var(--font-heading);
-      font-size: clamp(3.5rem, 9vw, 9rem);
-      font-weight: 700;
-      color: rgba(197, 160, 94, 0.35);
-      letter-spacing: 0.15em;
-      position: absolute;
-      white-space: nowrap;
-      transition: transform 0.1s linear, opacity 0.1s linear;
-      user-select: none;
-      z-index: 2;
-      text-shadow: 0 0 40px rgba(197, 160, 94, 0.15);
-    }
-    .hero-cover-panel.left .hero-cover-gate-text {
-      right: 3rem;
-      transform-origin: right center;
-    }
-    .hero-cover-panel.right .hero-cover-gate-text {
-      left: 3rem;
-      transform-origin: left center;
-    }
-
-    .about__grid {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 3rem 2rem;
-      align-items: flex-start;
-      position: relative;
-      z-index: 2;
-    }
-    .about__image-container {
-      grid-column: 1 / 6;
-      position: relative;
-      z-index: 1;
-    }
-    .about__image-decor {
-      position: absolute;
-      top: -20px;
-      left: -20px;
-      right: 20px;
-      bottom: 20px;
-      border: 1px solid var(--gold);
-      z-index: -1;
-      opacity: 0.35;
-    }
-    .about__text-block {
-      grid-column: 6 / 13;
-      position: relative;
-      z-index: 2;
-    }
-    .about__header-meta {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      display: block;
-    }
-    .about__title {
-      margin-bottom: 2rem;
-      position: relative;
-    }
-    .about__title::after {
-      content: '';
-      position: absolute;
-      bottom: -10px;
-      left: 0;
-      width: 80px;
-      height: 1px;
-      background: var(--gold);
-    }
-    .about__bio-cols {
-      column-count: 2;
-      column-gap: 2.5rem;
-      margin-bottom: 2.5rem;
-      text-align: justify;
-    }
-    .about__bio-cols p {
-      margin-bottom: 1.5rem;
-      text-indent: 0;
-    }
-    .about__quote-block {
-      grid-column: 1 / 13;
-      padding: 3rem 2rem;
-      border-top: 1px solid rgba(197, 160, 94, 0.15);
-      border-bottom: 1px solid rgba(197, 160, 94, 0.15);
-      text-align: center;
-      margin-top: 2rem;
-      position: relative;
-    }
-    .about__quote-text {
-      font-family: var(--font-heading);
-      font-size: clamp(1.4rem, 3.2vw, 2.2rem);
-      color: var(--gold-light);
-      line-height: 1.45;
-      font-style: italic;
-      max-width: 900px;
-      margin: 0 auto 1.5rem auto;
-    }
-    .about__quote-author {
-      font-size: 0.72rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-    }
-
-    .concept-editorial-layout {
-      display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 2.5rem;
-      align-items: center;
-      position: relative;
-    }
-    .concept-editorial__images {
-      grid-column: 1 / 8;
-      position: relative;
-      display: flex;
-      align-items: flex-end;
-    }
-    .concept-editorial__main-img {
-      width: 80%;
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      padding: 0.75rem;
-      background: var(--charcoal);
-      box-shadow: 0 15px 35px rgba(0,0,0,0.5);
-    }
-    .concept-editorial__main-img img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 1.45;
-      object-fit: cover;
-    }
-    .concept-editorial__sub-img {
-      width: 40%;
-      position: absolute;
-      right: 0;
-      bottom: -3rem;
-      z-index: 2;
-      border: 4px solid var(--black);
-      padding: 0.5rem;
-      background: var(--slate);
-      box-shadow: 0 20px 40px rgba(0,0,0,0.6);
-    }
-    .concept-editorial__sub-img img {
-      width: 100%;
-      display: block;
-      aspect-ratio: 1;
-      object-fit: cover;
-    }
-    .concept-editorial__sub-caption {
-      font-size: 0.55rem;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-top: 0.5rem;
-      text-align: center;
-    }
-    .concept-editorial__text {
-      grid-column: 8 / 13;
-      background: rgba(26, 26, 26, 0.9);
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      padding: 3rem 2.5rem;
-      box-shadow: 0 30px 60px rgba(0,0,0,0.6);
-      backdrop-filter: blur(10px);
-      position: relative;
-      z-index: 3;
-    }
-    .concept-editorial__title {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-    }
-    .concept-editorial__subtitle {
-      font-size: 0.68rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--gold-light);
-      margin-top: 0.25rem;
-      display: block;
-    }
-
-    .concept-vertical-title-container {
-      position: absolute;
-      left: -4rem;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 40px;
-      display: flex;
-      justify-content: center;
-      pointer-events: none;
-      z-index: 1;
-    }
-    .concept-vertical-title {
-      font-family: var(--font-heading);
-      font-size: 0.8rem;
-      letter-spacing: 0.4em;
-      text-transform: uppercase;
-      color: rgba(197, 160, 94, 0.45);
-      writing-mode: vertical-rl;
-      transform: rotate(180deg);
-      white-space: nowrap;
-    }
-
-    .concept-editorial-sidebar-card {
-      position: absolute;
-      right: -1rem;
-      top: -2rem;
-      background: var(--gold);
-      color: var(--black);
-      padding: 1.5rem;
-      width: 140px;
-      box-shadow: 0 15px 30px rgba(0,0,0,0.5);
-      z-index: 3;
-      border: 1px solid rgba(255,255,255,0.2);
-    }
-    .concept-editorial-sidebar-card__num {
-      font-family: var(--font-heading);
-      font-size: 2.2rem;
-      font-weight: 700;
-      line-height: 1;
-      margin-bottom: 0.25rem;
-    }
-    .concept-editorial-sidebar-card__label {
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      font-weight: 600;
-      text-transform: uppercase;
-      opacity: 0.8;
-    }
-    .concept-editorial-sidebar-card__divider {
-      height: 1px;
-      background: rgba(10,10,10,0.25);
-      margin: 0.75rem 0;
-    }
-    .concept-editorial-sidebar-card__text {
-      font-size: 0.65rem;
-      line-height: 1.4;
-      font-weight: 400;
-      opacity: 0.9;
-    }
-    /* ================================================================
-       EXTRA DEPTH PARALLAX LAYERS STYLES
-       ================================================================ */
-    .hero-viewport-frame {
-      position: absolute;
-      top: 2.5rem;
-      left: 2.5rem;
-      right: 2.5rem;
-      bottom: 2.5rem;
-      border: 1px solid rgba(197, 160, 94, 0.35);
-      pointer-events: none;
-      z-index: 5; /* In front of split gates */
-      transition: transform 0.1s linear, opacity 0.1s linear;
-      box-sizing: border-box;
-    }
-    .hero-viewport-frame::before {
-      content: '';
-      position: absolute;
-      top: 10px;
-      left: 10px;
-      right: 10px;
-      bottom: 10px;
-      border: 1px dashed rgba(197, 160, 94, 0.15);
-      pointer-events: none;
-    }
-
-    .hero-bg-grid {
-      position: absolute;
-      inset: 0;
-      background-image: radial-gradient(rgba(197, 160, 94, 0.08) 1.5px, transparent 1.5px);
-      background-size: 40px 40px;
-      z-index: 2;
-      pointer-events: none;
-      transition: transform 0.1s linear;
-    }
-
-    /* ================================================================
-       INTERACTIVE PROJECT MODAL STYLES (Kinfolk/Editorial style)
-       ================================================================ */
-    .port-card {
-      cursor: pointer;
-    }
-    
-    .project-modal {
-      position: fixed;
-      inset: 0;
-      width: 100vw;
-      height: 100vh;
-      background: rgba(10, 10, 10, 0.7);
-      backdrop-filter: blur(20px);
-      -webkit-backdrop-filter: blur(20px);
-      z-index: 9999;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .project-modal.active {
-      opacity: 1;
-      pointer-events: auto;
-    }
-    
-    .modal-container {
-      width: 90%;
-      max-width: 1200px;
-      height: 85vh;
-      background: var(--charcoal);
-      border: 1px solid rgba(197, 160, 94, 0.25);
-      box-shadow: 0 40px 100px rgba(0, 0, 0, 0.8);
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      position: relative;
-      overflow: hidden;
-      transform: translateY(40px) scale(0.98);
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .project-modal.active .modal-container {
-      transform: translateY(0) scale(1);
-    }
-    
-    .modal-close-btn {
-      position: absolute;
-      top: 1.5rem;
-      right: 1.5rem;
-      width: 40px;
-      height: 40px;
-      background: rgba(10, 10, 10, 0.5);
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      color: var(--white);
-      font-size: 1.5rem;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 10;
-      transition: all 0.3s ease;
-      border-radius: 50%;
-    }
-    
-    .modal-close-btn:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-    }
-    
-    .modal-gallery-pane {
-      position: relative;
-      height: 100%;
-      background: var(--black);
-      overflow: hidden;
-    }
-    
-    .modal-gallery-track {
-      display: flex;
-      height: 100%;
-      width: 100%;
-      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    
-    .modal-gallery-slide {
-      min-width: 100%;
-      height: 100%;
-      position: relative;
-    }
-    
-    .modal-gallery-slide img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-    
-    .modal-gallery-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      padding: 2rem;
-      background: linear-gradient(to top, rgba(10,10,10,0.9), transparent);
-      color: var(--white);
-      font-size: 0.75rem;
-      letter-spacing: 0.05em;
-      font-weight: 300;
-    }
-    
-    .gallery-nav-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 50px;
-      height: 50px;
-      background: rgba(10, 10, 10, 0.6);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      color: var(--white);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      z-index: 5;
-      font-size: 1.2rem;
-      transition: all 0.3s ease;
-    }
-    
-    .gallery-nav-btn:hover {
-      background: var(--gold);
-      color: var(--black);
-      border-color: var(--gold);
-    }
-    
-    .gallery-nav-btn.prev { left: 1rem; }
-    .gallery-nav-btn.next { right: 1rem; }
-    
-    .modal-info-pane {
-      padding: 3.5rem;
-      overflow-y: auto;
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-    
-    .modal-meta-label {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
-    }
-    
-    .modal-title {
-      font-family: var(--font-heading);
-      font-size: clamp(2rem, 3.5vw, 2.8rem);
-      font-weight: 700;
-      color: var(--white);
-      line-height: 1.1;
-      margin-bottom: 0.25rem;
-    }
-    
-    .modal-location {
-      font-size: 0.75rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      margin-bottom: 1.5rem;
-    }
-    
-    .modal-stats-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 1rem;
-      margin: 1.5rem 0 2rem 0;
-    }
-    
-    .modal-stat-box {
-      border: 1px solid rgba(197, 160, 94, 0.15);
-      padding: 1rem 1.25rem;
-      background: rgba(255, 255, 255, 0.01);
-    }
-    
-    .modal-stat-val {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      color: var(--gold-light);
-      font-weight: 700;
-      margin-bottom: 0.2rem;
-    }
-    
-    .modal-stat-lbl {
-      font-size: 0.58rem;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--mid-gray);
-      font-weight: 500;
-    }
-    
-    .modal-description {
-      font-size: 0.88rem;
-      line-height: 1.75;
-      color: var(--light-gray);
-      font-weight: 300;
-      margin-bottom: 2rem;
-    }
-    
-    .modal-highlights-title {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--white);
-      margin-bottom: 0.75rem;
-      font-weight: 600;
-    }
-    
-    .modal-highlights-list {
-      list-style: none;
-      padding-left: 0;
-      margin-bottom: 2.5rem;
-    }
-    
-    .modal-highlights-list li {
-      position: relative;
-      padding-left: 1.5rem;
-      margin-bottom: 0.5rem;
-      font-size: 0.85rem;
-      color: var(--light-gray);
-      font-weight: 300;
-    }
-    
-    .modal-highlights-list li::before {
-      content: '•';
-      color: var(--gold);
-      position: absolute;
-      left: 0.2rem;
-      font-size: 1.2rem;
-      line-height: 1;
-      top: -0.1rem;
-    }
-    
-    .modal-cta-btn {
-      align-self: flex-start;
-      margin-top: auto;
-    }
-    
-    @media screen and (max-width: 1024px) {
-      .modal-container {
-        grid-template-columns: 1fr;
-        height: 95vh;
-        width: 95%;
-      }
-      .modal-gallery-pane {
-        height: 40vh;
-      }
-      .modal-info-pane {
-        padding: 2rem;
-        height: 55vh;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todd English — Official Media Kit 2026</title>
+<meta name="description" content="Todd English official media kit — biography, active venues, honors, and partnership formats.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,800&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="press.css?v=7">
+<link rel="stylesheet" href="pdf.css" media="print">
+<script src="press.js?v=1" defer></script>
 </head>
 <body>
+<main class="kit-wrap" id="top">
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 1 — HERO SCROLL & PORTAL SYSTEM (Dream Land technique)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="hero-scroll" id="hero">
-  <div class="hero-pin">
-    
-    <!-- Layer 1: Background Image -->
-    <div class="hero-bg">
-      <img src="headshot-knife.jpg" alt="Chef Todd English — portrait with chef's knife" loading="eager">
-      <div class="hero-bg-grid"></div>
-      <div class="hero-bg-overlay"></div>
-    </div>
-
-    <!-- Layer 2: Cover Title (Initial cover text) -->
-    <div class="hero-cover-title">
-      <span class="hero-cover-eyebrow">English Hospitality Group</span>
-      <h1 class="hero-cover-name">TODD ENGLISH</h1>
-      <span class="hero-cover-hint">Scroll to Open Book ↓</span>
-    </div>
-
-    <!-- Layer 3: Pinned Foreground Book Cover Panels (Pushes through) -->
-    <div class="hero-cover-frame">
-      <div class="hero-cover-panel left">
-        <div class="hero-cover-gate-text left">TODD</div>
+  <!-- ============ PAGE 1 · COVER ============ -->
+  <section class="sheet sheet--cover" id="cover" aria-label="Cover">
+    <div class="cover-photo">
+      <img src="cooking-action.jpg" alt="Todd English seated at Jade, Bali, holding a chef's knife.">
+      <div class="cover-top">
+        <span class="cover-issue">Official Media Kit · 2026</span>
+        <span class="cover-social">Instagram · @cheftoddenglish</span>
       </div>
-      <div class="hero-cover-panel right">
-        <div class="hero-cover-gate-text right">ENGLISH</div>
+      <span class="cover-rail" aria-hidden="true">Official Media Kit · MMXXVI</span>
+      <div class="cover-seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs><path id="seal-arc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+          <g class="seal-ring">
+            <circle cx="60" cy="60" r="57" fill="none" stroke="rgba(224,207,169,0.85)" stroke-width="1"/>
+            <circle cx="60" cy="60" r="31" fill="none" stroke="rgba(224,207,169,0.6)" stroke-width="0.8"/>
+            <text font-size="10.5" fill="#e8d9b4" font-family="Inter, sans-serif" font-weight="600" letter-spacing="2">
+              <textPath href="#seal-arc" textLength="274" lengthAdjust="spacing">TODD ENGLISH &#183; EST. 1989 &#183; MEDIA KIT&#160;&#183;&#160;</textPath>
+            </text>
+          </g>
+          <text x="60" y="71" text-anchor="middle" font-family="'Playfair Display', serif" font-size="30" font-weight="600" fill="#e8d9b4">TE</text>
+        </svg>
       </div>
-      
-      <!-- Parallax Gate Shells (Overlay layers that split at different speeds) -->
-      <div class="hero-cover-gate-overlay left"></div>
-      <div class="hero-cover-gate-overlay right"></div>
-      
-      <div class="hero-cover-center-card">
-        <div class="hero-cover-logo">TE</div>
-        <div class="hero-cover-logo-sub">Brand Book</div>
-        <div class="hero-cover-border"></div>
+      <div class="cover-blocks">
+        <div class="cover-name">
+          <span class="cn-first">Todd</span>
+          <span class="cn-last">English</span>
+        </div>
+        <div class="cover-tag">
+          <p>Chef &amp; restaurateur. <strong>Five James Beard Awards</strong>, seven kitchens on three continents.</p>
+        </div>
+      </div>
+      <div class="cover-foot">
+        <span class="chip"><span class="dot"></span>The English Hospitality Group · Las Vegas</span>
+        <span class="chip"><span class="dot"></span>Media &amp; partnership inquiries via EHG</span>
       </div>
     </div>
+  </section>
 
-    <!-- Viewport Frame (Foreground camera-lens scale layer) -->
-    <div class="hero-viewport-frame"></div>
+  <!-- ============ PAGE 2 · CONTENTS ============ -->
+  <section class="sheet" id="contents" aria-labelledby="toc-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">Contents · 02/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="toc-heading">Contents</h2>
+    <p class="section-sub">Thirty pages, four parts — the chef, the working restaurants, the record, and what comes next.</p>
 
-    <!-- Layer 4: Final Pinned Reveal Hero Content -->
-    <div class="hero-reveal">
-      <div class="hero-backdrop-text">EST. 1989</div>
-      <div class="hero-reveal-content">
-        <p class="hero-reveal-subtitle">Hospitality Portfolio &amp; Press Center</p>
-        <h2 class="hero-reveal-name">TODD ENGLISH</h2>
-        <p class="hero-reveal-tagline">Global Chef &nbsp;·&nbsp; Restaurateur &nbsp;·&nbsp; Hospitality Visionary</p>
-        <div class="hero__gold-line" aria-hidden="true" style="margin: 1.5rem auto;"></div>
-        <p class="hero-reveal-year">2026–2027 Hospitality Portfolio</p>
+    <div class="toc-cols">
+      <div class="toc-part">
+        <h3><span class="toc-rn">I</span>The Chef</h3>
+        <ul>
+          <li><span>Biography</span><span class="toc-pg">04</span></li>
+          <li><span>Portrait</span><span class="toc-pg">05</span></li>
+          <li><span>Four Decades of Fire</span><span class="toc-pg">06</span></li>
+          <li><span>The Philosophy</span><span class="toc-pg">07</span></li>
+        </ul>
+        <h3><span class="toc-rn">II</span>The Active Table</h3>
+        <ul>
+          <li><span>The Venues, Verified</span><span class="toc-pg">09</span></li>
+          <li><span>bluezoo · Orlando</span><span class="toc-pg">11</span></li>
+          <li><span>The Beast · Las Vegas</span><span class="toc-pg">12</span></li>
+          <li><span>Tuscany · Mohegan Sun</span><span class="toc-pg">13</span></li>
+          <li><span>MXDC · Washington D.C.</span><span class="toc-pg">14</span></li>
+          <li><span>Jade · Bali</span><span class="toc-pg">15</span></li>
+          <li><span>From the Kitchens</span><span class="toc-pg">16</span></li>
+        </ul>
       </div>
-      <div class="hero-scroll-indicator" aria-hidden="true">
-        <span>Scroll</span>
-        <div class="hero-scroll-line"></div>
-      </div>
-    </div>
-
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 2 — ABOUT (MEET CHEF TODD ENGLISH)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="about" id="about">
-  <div class="about-page-header">
-    <span>TODD ENGLISH MEDIA KIT</span>
-    <span>02 // THE BIOGRAPHY</span>
-  </div>
-  <div class="bg-watermark" style="top: 15%; left: 5%;">LEGACY</div>
-  <div class="section-inner">
-    <div class="about__grid">
-      <div class="about__image-container reveal">
-        <div class="about__image-decor"></div>
-        <img src="headshot-kitchen.jpg" alt="Chef Todd English portrait" loading="eager" style="width: 100%; display: block; border: 1px solid rgba(197, 160, 94, 0.15);">
-      </div>
-      <div class="about__text-block reveal reveal-delay-1">
-        <span class="about__header-meta">The Legacy</span>
-        <h2 class="heading-lg about__title">A Culinary Legacy Spanning Three Decades</h2>
-        <div class="about__bio-cols">
-          <p class="body-text drop-cap" style="margin-top:0;">
-            William Todd English is one of America's most celebrated chefs, restaurateurs, and hospitality visionaries. A four-time James Beard Award winner and member of the James Beard Foundation's "Who's Who in Food &amp; Beverage in America," he has spent more than three decades creating award-winning restaurant concepts, luxury hotel dining programs, and food halls.
-          </p>
-          <p class="body-text">
-            A graduate with honors from the Culinary Institute of America (1982), English honed his skills in New York under Jean-Jacques Rachou at the legendary La Côte Basque, before spending years in Italy apprenticing at renowned kitchens in Milan, Florence, and Bologna. In 1989, English opened his flagship restaurant, Olives, in Charlestown, MA. It became an immediate national sensation, drawing praise for its woodfired oven flavors.
-          </p>
-          <p class="body-text">
-            Today, as the co-founder of English Hospitality Group (EHG) alongside Keith Burkard, English continues to lead global operations encompassing upscale restaurants, hotels, casino concessions, airport pubs, and luxury residential amenities worldwide.
-          </p>
-        </div>
-      </div>
-      <div class="about__quote-block reveal reveal-delay-2">
-        <p class="about__quote-text">“Hospitality is about creating a memory. Whether it's a woodfired flatbread or a coastal snapper, every bite must tell a story.”</p>
-        <span class="about__quote-author">— Chef Todd English</span>
-      </div>
-    </div>
-  </div>
-  <div class="about-page-footer">
-    <span>ENGLISH HOSPITALITY GROUP</span>
-    <span>PAGE 02</span>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 3 — CAREER HIGHLIGHTS (THE METRICS)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="highlights" id="highlights">
-  <div class="section-inner">
-    <div class="stats-layout">
-      <div class="stats-header reveal">
-        <span class="label">Career Highlights</span>
-        <h2 class="heading-lg">The Scale of<br>an Empire</h2>
-        <div class="gold-line"></div>
-        <p class="body-text-sm" style="max-width: 320px; margin-top: 1rem; color: var(--mid-gray); line-height: 1.6;">
-          A retrospective of culinary influence, commercial reach, and media footprint established over three decades of hospitality innovation. Chef English's brand represents an institutional anchor for premier real estate developers, casino resorts, and luxury brands worldwide.
-        </p>
-      </div>
-      <div class="stats-stacked">
-        <div class="stat-row reveal reveal-delay-1">
-          <span class="stat-row__num">35+</span>
-          <span class="stat-row__label">Years of Innovation</span>
-        </div>
-        <div class="stat-row reveal reveal-delay-2">
-          <span class="stat-row__num">40+</span>
-          <span class="stat-row__label">Restaurant Concepts</span>
-        </div>
-        <div class="stat-row reveal reveal-delay-3">
-          <span class="stat-row__num">12+</span>
-          <span class="stat-row__label">Global Markets</span>
-        </div>
-        <div class="stat-row reveal reveal-delay-4">
-          <span class="stat-row__num">4</span>
-          <span class="stat-row__label">James Beard Awards</span>
-        </div>
-        <div class="stat-row reveal reveal-delay-5">
-          <span class="stat-row__num">6</span>
-          <span class="stat-row__label">Bestselling Cookbooks</span>
-        </div>
-        <div class="stat-row reveal reveal-delay-6">
-          <span class="stat-row__num">1</span>
-          <span class="stat-row__label">Emmy Nomination</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 4 — CURRENT PORTFOLIO (THE OPERATING SYSTEM)
-     ════════════════════════════════════════════════════════════════ -->
-<section class="portfolio" id="portfolio">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="label">Current Portfolio</span>
-      <h2 class="heading-lg">Active Restaurant Concepts</h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="portfolio__grid">
-      <!-- Feature card: bluezoo -->
-      <div class="port-card card-span-12 reveal" onclick="openProjectModal('bluezoo')">
-        <img src="bluezoo.png?v=3" alt="bluezoo" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Signature Concept · 01</span>
-          <h3 class="port-card__name">bluezoo</h3>
-          <p class="port-card__location">Walt Disney World Dolphin · Orlando, FL</p>
-        </div>
-      </div>
-
-      <!-- Asymmetrical row: The Beast & Jade -->
-      <div class="port-card card-span-7 reveal reveal-delay-1" onclick="openProjectModal('thebeast')">
-        <img src="thebeast.png?v=3" alt="The Beast" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Las Vegas Dining · 02</span>
-          <h3 class="port-card__name">The Beast</h3>
-          <p class="port-card__location">AREA15 · Las Vegas, NV</p>
-        </div>
-      </div>
-      <div class="port-card card-span-5-offset reveal reveal-delay-2" onclick="openProjectModal('jade')">
-        <img src="jade-story.jpg?v=3" alt="Jade by Todd English" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Bali Beachfront · 03</span>
-          <h3 class="port-card__name">Jade by Todd English</h3>
-          <p class="port-card__location">Berawa, Canggu · Bali, Indonesia</p>
-        </div>
-      </div>
-      <div class="port-card card-span-5 reveal reveal-delay-3" onclick="openProjectModal('tuscany')">
-        <img src="tuscany.png?v=3" alt="Tuscany" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Casino Concession · 04</span>
-          <h3 class="port-card__name">Tuscany by Todd English</h3>
-          <p class="port-card__location">Mohegan Sun · CT</p>
-        </div>
-      </div>
-      <div class="port-card card-span-7-offset reveal reveal-delay-4" onclick="openProjectModal('lulas')">
-        <img src="lulas.png?v=3" alt="Lula's" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Coastal Steakhouse · 05</span>
-          <h3 class="port-card__name">Lula's by Todd English</h3>
-          <p class="port-card__location">Lake Worth Beach · FL</p>
-        </div>
-      </div>
-
-      <!-- Triptych Row: Market & Pub, MXDC, Pound -->
-      <div class="port-card card-span-4 reveal reveal-delay-5" onclick="openProjectModal('market')">
-        <img src="airport-pub.png?v=3" alt="Todd English Market &amp; Pub" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Gourmet Concessions · 06</span>
-          <h3 class="port-card__name">Todd English Market &amp; Pub</h3>
-          <p class="port-card__location">Zayed Int'l Airport · Abu Dhabi</p>
-        </div>
-      </div>
-      <div class="port-card card-span-4 reveal reveal-delay-6" onclick="openProjectModal('mxdc')">
-        <img src="mxdc.png?v=3" alt="MXDC Cocina Mexicana" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Fine Dining D.C. · 07</span>
-          <h3 class="port-card__name">MXDC Cocina Mexicana</h3>
-          <p class="port-card__location">600 14th St NW · Washington, DC</p>
-        </div>
-      </div>
-      <div class="port-card card-span-4 reveal reveal-delay-7" onclick="openProjectModal('pound')">
-        <img src="pound.png?v=3" alt="Pound x Flatterie" loading="eager">
-        <div class="port-card__overlay">
-          <span class="port-card__num">Bistro Franchising · 08</span>
-          <h3 class="port-card__name">Pound x Flatterie</h3>
-          <p class="port-card__location">Multiple SM Malls · Metro Manila, PH</p>
-        </div>
+      <div class="toc-part">
+        <h3><span class="toc-rn">III</span>The Legacy</h3>
+        <ul>
+          <li><span>From the Archive</span><span class="toc-pg">19</span></li>
+          <li><span>The House That Olives Built</span><span class="toc-pg">20</span></li>
+          <li><span>The Bookshelf</span><span class="toc-pg">21</span></li>
+          <li><span>On Camera</span><span class="toc-pg">22</span></li>
+        </ul>
+        <h3><span class="toc-rn">IV</span>What's Next</h3>
+        <ul>
+          <li><span>Hotels &amp; the Pipeline</span><span class="toc-pg">24</span></li>
+          <li><span>The English Hotel</span><span class="toc-pg">25</span></li>
+          <li><span>Bentley Residences, Miami</span><span class="toc-pg">26</span></li>
+          <li><span>Honors &amp; Press</span><span class="toc-pg">27</span></li>
+          <li><span>Reach &amp; Audience</span><span class="toc-pg">28</span></li>
+          <li><span>Press Assets</span><span class="toc-pg">29</span></li>
+          <li><span>Contact</span><span class="toc-pg">30</span></li>
+        </ul>
       </div>
     </div>
 
-    <!-- Upcoming -->
-    <div class="portfolio__grid" style="margin-top: 1.5rem;">
-      <div class="port-card reveal" style="grid-column: 1 / -1; border-color: rgba(197,160,94,0.25);" onclick="openProjectModal('proper')">
-        <img src="proper-english.png?v=3" alt="Proper English at Bentley Residences Miami" loading="eager">
-        <div class="port-card__overlay">
-          <span class="label" style="margin-bottom: 0.5rem; font-size: 0.65rem;">Coming 2027</span>
-          <div class="port-card__name" style="font-size: 1.5rem;">Proper English by Todd English</div>
-          <div class="port-card__location">Bentley Residences · Sunny Isles Beach, Miami</div>
-          <span class="port-card__badge badge--upcoming">Upcoming · 2027</span>
+    <p class="foot-note"><strong>How to use this kit:</strong> every figure, date and venue status in these pages was verified in July 2026. High-resolution versions of all photography are available for editorial use — see Press Assets, page 29.</p>
+  </section>
+
+  <!-- ============ PAGE 3 · DIVIDER — PART I ============ -->
+  <section class="sheet sheet--divider" id="part-1" aria-label="Part I — The Chef">
+    <div class="div-frame">
+      <span class="div-part">Part I</span>
+      <span class="div-num">I</span>
+      <h2 class="div-title">The Chef</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">Thirty-five years of fire — from a fifty-seat room in Charlestown to kitchens on three continents.</p>
+      <span class="div-foot">Todd English · Media Kit 2026 · 03/30</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 · BIOGRAPHY ============ -->
+  <section class="sheet" id="the-chef" aria-labelledby="bio-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">Biography · 04/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>Biography</h2>
+
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p><span class="drop">T</span>odd English started cooking at fifteen. He graduated with honors from the Culinary Institute of America, trained under Jean-Jacques Rachou at La Côte Basque, then left for Italy and came back with an idea that changed American dining: rustic Mediterranean food, cooked with fire and conviction. Olives opened in Charlestown in 1989 with fifty seats and a wood oven; within a decade it was a global name.</p>
+        <p>Five James Beard Awards followed. So did television, fifteen cookbooks' worth of ideas, restaurants on four continents, and a generation of cooks who came up through his kitchens. Bon Appétit named him Restaurateur of the Year; People put him on the 50 Most Beautiful list — the first chef who was equal parts craftsman and celebrity.</p>
+        <p>Today, English runs the plays he invented through The English Hospitality Group, founded in 2022 with partner Keith Burkard — with active restaurants from Walt Disney World to Bali, a 24/7 food hall in Abu Dhabi, and a residents-only concept rising sixty-two stories above Miami.</p>
+        <blockquote class="bio-quote">
+          <p>&ldquo;I cook the way I live — loud, generous, and a little bit reckless.&rdquo;</p>
+          <cite>Todd English</cite>
+        </blockquote>
+      </div>
+      <aside class="bio-side">
+        <img class="bio-portrait" src="headshot-kitchen.jpg" alt="Todd English cooking in chef's whites.">
+        <div class="facts-card">
+          <h4>Quick Facts</h4>
+          <ul>
+            <li><strong>Trained</strong> · Culinary Institute of America, honors</li>
+            <li><strong>Breakout</strong> · Olives, Charlestown, 1989</li>
+            <li><strong>Company</strong> · The English Hospitality Group, est. 2022</li>
+            <li><strong>Base</strong> · Las Vegas, NV</li>
+            <li><strong>Reach</strong> · USA · UAE · Indonesia · Philippines</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="stat-band">
+      <div><span class="sn">5</span><span class="sl">James Beard Awards</span></div>
+      <div><span class="sn">35+</span><span class="sl">Years Cooking</span></div>
+      <div><span class="sn">4</span><span class="sl">Continents</span></div>
+      <div><span class="sn">15</span><span class="sl">Cookbooks</span></div>
+      <div><span class="sn">1989</span><span class="sl">Olives Founded</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 · PLATE — PORTRAIT ============ -->
+  <section class="sheet sheet--plate" id="plate-portrait" aria-label="Portrait plate">
+    <img src="headshot-knife.jpg" alt="Todd English portrait with a chef's knife.">
+    <div class="plate-cap">
+      <p>&ldquo;The knife doesn't care who you are. Every morning you earn it again.&rdquo;</p>
+      <span class="plate-meta">Todd English · Portrait · 05/30</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 6 · TIMELINE ============ -->
+  <section class="sheet" id="timeline" aria-labelledby="tl-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Chef · 06/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="tl-heading">Four Decades of Fire</h2>
+
+    <div class="tl-grid">
+      <ol class="tl-list">
+        <li><span class="tl-year">1975</span><div><h4>First Kitchen</h4><p>Takes his first restaurant job at fifteen — and never leaves the line.</p></div></li>
+        <li><span class="tl-year">1982</span><div><h4>The Craft</h4><p>Graduates with honors from the Culinary Institute of America; trains under Jean-Jacques Rachou at La Côte Basque, New York.</p></div></li>
+        <li><span class="tl-year">1989</span><div><h4>Olives, Charlestown</h4><p>Opens a fifty-seat room with a wood oven. Rustic Mediterranean cooking enters the American mainstream.</p></div></li>
+        <li><span class="tl-year">1991</span><div><h4>Rising Star</h4><p>James Beard Foundation names him Rising Star Chef; Best Chef Northeast follows in 1994.</p></div></li>
+        <li><span class="tl-year">2001</span><div><h4>Iron Chef USA</h4><p>Steps into the American Kitchen Stadium — the start of a two-decade run on national television.</p></div></li>
+        <li><span class="tl-year">2003</span><div><h4>bluezoo</h4><p>Opens at the Walt Disney World Dolphin — still the resort's fine-dining anchor two decades on.</p></div></li>
+        <li><span class="tl-year">2014</span><div><h4>The Export Years</h4><p>MXDC opens in Washington; the Food Hall concept lands in Manila. The name goes global.</p></div></li>
+        <li><span class="tl-year">2022</span><div><h4>EHG Founded</h4><p>Launches The English Hospitality Group with Keith Burkard; The English Hotel opens in the Las Vegas Arts District.</p></div></li>
+        <li><span class="tl-year">2026</span><div><h4>The New Chapter</h4><p>Tuscany reborn at Mohegan Sun; Jade relaunched in Bali; Bentley Residences goes vertical in Miami.</p></div></li>
+      </ol>
+      <aside class="tl-side">
+        <img src="gallery/jade_1.jpg" alt="Portrait of Todd English.">
+        <div class="tl-card">
+          <h4>The Through-Line</h4>
+          <p>Every era has the same signature: live fire, generous plates, and rooms built to be loud. The concepts change; the cooking doesn't.</p>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 7 · PHILOSOPHY ============ -->
+  <section class="sheet" id="philosophy" aria-labelledby="philo-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Chef · 07/30</span></div>
+    <div class="page-rule"></div>
+
+    <div class="philo-block">
+      <span class="philo-mark">&ldquo;</span>
+      <p class="philo-quote" id="philo-heading">Rustic isn't a shortcut. It's the hardest kind of precision — making fire, salt and time look effortless.</p>
+      <span class="philo-cite">Todd English, on the cooking that built Olives</span>
+    </div>
+
+    <figure class="philo-photo">
+      <img src="deconstructed-pasta.png" alt="Deconstructed pasta dish, plated.">
+      <figcaption class="gal-cap"><p>The style in one plate: hand-made pasta, wood fire, nothing hidden.</p></figcaption>
+    </figure>
+
+    <div class="philo-tenets">
+      <div><span class="pn">01</span><h4>Fire First</h4><p>Wood ovens and open flame in every concept since 1989.</p></div>
+      <div><span class="pn">02</span><h4>Generosity</h4><p>Plates built for the middle of the table, rooms built for noise.</p></div>
+      <div><span class="pn">03</span><h4>Place</h4><p>Each venue cooks its own city — Orlando is not Bali is not D.C.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 8 · DIVIDER — PART II ============ -->
+  <section class="sheet sheet--divider" id="part-2" aria-label="Part II — The Active Table">
+    <div class="div-frame">
+      <span class="div-part">Part II</span>
+      <span class="div-num">II</span>
+      <h2 class="div-title">The Active Table</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">Seven kitchens, three continents, one signature. Every venue verified open, July 2026.</p>
+      <span class="div-foot">Todd English · Media Kit 2026 · 08/30</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 9 · THE ACTIVE TABLE I ============ -->
+  <section class="sheet" id="the-active-table" aria-labelledby="active-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 09/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="active-heading"><span class="script-kick">open for service</span>The Active Table</h2>
+    <p class="section-sub">Seven kitchens, three continents, one signature. Every venue below is open, verified July 2026, and cooking tonight.</p>
+
+    <div class="venues">
+      <article class="venue" id="bluezoo-heading">
+        <div class="venue-photo"><img src="gallery/venues/bluezoo-bar.jpg" alt="The bluezoo bar, glowing blue, at Walt Disney World Dolphin Resort."></div>
+        <div class="venue-copy">
+          <p class="kicker">Walt Disney World Dolphin Resort · Orlando</p>
+          <h3>bluezoo</h3>
+          <p class="vbody">Coastal cuisine under a ceiling of glass bubbles. For two decades bluezoo has been the fine-dining anchor of the Dolphin — a theatrical seafood room where fish turns on a &ldquo;dancing fish&rdquo; rotisserie and the bar glows like the bottom of a pool.</p>
+          <span class="chip">Est. 2003 · Seafood &amp; Coastal · Dinner Nightly 5–10PM</span>
+        </div>
+      </article>
+
+      <article class="venue">
+        <div class="venue-photo"><img src="gallery/venues/beast-entrance.webp" alt="Entrance to The Beast at AREA15, Las Vegas, under a crown of horns."></div>
+        <div class="venue-copy">
+          <p class="kicker">AREA15 · Las Vegas</p>
+          <h3>The Beast</h3>
+          <p class="vbody">Barbecue as spectacle. Inside AREA15's neon warehouse, The Beast serves smoked meats, towering burgers and whiskey under a crown of horns — Todd's loudest room, booked out weeks ahead.</p>
+          <span class="chip">Est. 2021 · Smokehouse &amp; Bar · Open Daily 11:30AM–10PM</span>
+        </div>
+      </article>
+
+      <article class="venue">
+        <div class="venue-photo"><img src="gallery/venues/tuscany-waterfall.jpg" alt="Tuscany dining room beneath Mohegan Sun's indoor waterfall."></div>
+        <div class="venue-copy">
+          <p class="kicker">Mohegan Sun · Connecticut</p>
+          <h3>Tuscany</h3>
+          <p class="vbody">Reborn in January 2026 after a top-to-bottom renovation, Tuscany serves hand-made pasta beneath Mohegan Sun's indoor waterfall — Wagyu Bolognese, Lobster Fra Diavolo, and an entire menu section devoted to the meatball.</p>
+          <span class="chip">Reopened Jan 2026 · Italian · Dinner, Brunch &amp; Lunch</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 10 · THE ACTIVE TABLE II ============ -->
+  <section class="sheet" id="active-two" aria-labelledby="active2-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 10/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="active2-heading">The Active Table, cont.</h2>
+
+    <div class="venues">
+      <article class="venue">
+        <div class="venue-photo"><img src="gallery/venues/mxdc-spread.jpg" alt="Wood-fired cocina spread at MXDC Cocina Mexicana."></div>
+        <div class="venue-copy">
+          <p class="kicker">Logan Circle · Washington D.C.</p>
+          <h3>MXDC Cocina Mexicana</h3>
+          <p class="vbody">Modern Mexican in the capital. Relocated to a new Logan Circle home at 1610 14th Street NW, MXDC pairs wood-fired cocina with one of D.C.'s deepest agave lists.</p>
+          <span class="chip">Est. 2014 · Modern Mexican · 1610 14th St NW</span>
+        </div>
+      </article>
+
+      <article class="venue">
+        <div class="venue-photo"><img src="gallery/venues/jade-dining.jpg" alt="Jade dining room, Canggu, Bali."></div>
+        <div class="venue-copy">
+          <p class="kicker">Canggu · Bali</p>
+          <h3>Jade</h3>
+          <p class="vbody">Todd's outpost in the East: an Italian-Mediterranean dining room and lounge in Canggu, relaunched with a new menu in January 2026 — Todd cooked the opening himself.</p>
+          <span class="chip">Relaunched Jan 2026 · Italian-Mediterranean · Berawa, Canggu</span>
+        </div>
+      </article>
+    </div>
+
+    <h2 class="section-title" id="also-open-heading" style="font-size:26px; padding-top:20px;">Also Open</h2>
+    <div class="also-grid">
+      <article class="also-card">
+        <img src="gallery/venues/market-1.jpg" alt="Todd English Market &amp; Pub at Zayed International Airport, Abu Dhabi.">
+        <div class="ac-body">
+          <p class="kicker">Zayed International Airport · Abu Dhabi</p>
+          <h4>Todd English Market &amp; Pub</h4>
+          <p>A 1,000-square-metre global food hall and pub, open around the clock in Terminal A — winner of a 2024 FAB Award for airport dining.</p>
+          <span class="chip">Open 24/7 · With Lagardère Travel Retail</span>
+        </div>
+      </article>
+      <article class="also-card">
+        <img src="gallery/venues/pound-1.jpg" alt="Pound by Todd English, Metro Manila.">
+        <div class="ac-body">
+          <p class="kicker">Metro Manila · Philippines</p>
+          <h4>Pound by Todd English</h4>
+          <p>The burger that went to Manila. Pound's smashed-patty formula runs across SM's flagship malls, operated locally with FooDee Global Concepts.</p>
+          <span class="chip">Multiple SM Locations · Manila</span>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 11 · SPOTLIGHT — BLUEZOO ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-bluezoo" aria-labelledby="spot-bz-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 11/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 01 — Walt Disney World Dolphin Resort · Orlando, Florida</p>
+    <h2 class="spot-title" id="spot-bz-heading">bluezoo</h2>
+
+    <figure class="spot-hero"><img src="bluezoo.png" alt="The bluezoo dining room with blue glass sculpture and raw bar."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>Twenty-two years in, bluezoo is still the room Orlando dresses up for. Blue glass swims overhead, the raw bar runs down the center like a marble reef, and whole fish turn slowly on the &ldquo;dancing fish&rdquo; rotisserie that has been the kitchen's signature since opening night.</p>
+        <p>It is the longest-running restaurant in the portfolio — proof that a Todd English room can anchor a flagship resort for decades, not seasons.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Established</strong>2003</li>
+          <li><strong>Cuisine</strong>Coastal seafood</li>
+          <li><strong>Signature</strong>&ldquo;Dancing fish&rdquo; rotisserie</li>
+          <li><strong>Service</strong>Dinner nightly, 5–10PM</li>
+          <li><strong>Partner</strong>Walt Disney World Dolphin</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="bluezoo-snapper.png" alt="Whole roasted snapper at bluezoo."><figcaption>The whole roasted snapper — on the menu since 2003.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 12 · SPOTLIGHT — THE BEAST ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-beast" aria-labelledby="spot-beast-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 12/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 02 — AREA15 · Las Vegas, Nevada</p>
+    <h2 class="spot-title" id="spot-beast-heading">The Beast</h2>
+
+    <figure class="spot-hero"><img src="thebeast.png" alt="The Beast dining room at AREA15 — brick, copper pipework and filament bulbs."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>Inside AREA15's neon warehouse, The Beast is barbecue staged like a show: brisket and smoked meats by the pound, burgers stacked past reason, whiskey poured under a crown of horns and a ceiling of filament bulbs.</p>
+        <p>It is the loudest room Todd has ever built — and the hardest table in the portfolio to get on a Saturday night.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Established</strong>2021</li>
+          <li><strong>Cuisine</strong>Smokehouse &amp; bar</li>
+          <li><strong>Signature</strong>Tower burgers, whiskey wall</li>
+          <li><strong>Service</strong>Daily, 11:30AM–10PM</li>
+          <li><strong>Partner</strong>AREA15</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="gallery/venues/beast-skull.webp" alt="The horned skull that crowns The Beast's bar."><figcaption>The crown of horns above the bar — the room's namesake.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 13 · SPOTLIGHT — TUSCANY ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-tuscany" aria-labelledby="spot-tus-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 13/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 03 — Mohegan Sun · Uncasville, Connecticut</p>
+    <h2 class="spot-title" id="spot-tus-heading">Tuscany</h2>
+
+    <figure class="spot-hero"><img src="gallery/venues/tuscany-bar.jpg" alt="The bar at Tuscany, Mohegan Sun."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>Reborn in January 2026 after a floor-to-ceiling renovation, Tuscany sits beneath Mohegan Sun's indoor waterfall — a dining room with its own weather. The menu is Todd's Italy: Wagyu Bolognese, Lobster Fra Diavolo, and an entire section devoted to the meatball.</p>
+        <p>Sun Wine &amp; Food Fest opened the year on its floor; the room has been booked through the season since.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Reopened</strong>January 2026</li>
+          <li><strong>Cuisine</strong>Italian</li>
+          <li><strong>Signature</strong>The meatball section</li>
+          <li><strong>Service</strong>Dinner, brunch &amp; lunch</li>
+          <li><strong>Partner</strong>Mohegan Sun</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="tuscany-pizza.jpg" alt="Wood-fired pizza at Tuscany."><figcaption>From the wood oven — the same fire that built Olives.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 14 · SPOTLIGHT — MXDC ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-mxdc" aria-labelledby="spot-mxdc-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 14/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 04 — Logan Circle · Washington, D.C.</p>
+    <h2 class="spot-title" id="spot-mxdc-heading">MXDC Cocina Mexicana</h2>
+
+    <figure class="spot-hero"><img src="mxdc.png" alt="MXDC Cocina Mexicana dining room with hammered-copper pendants."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>A decade in the capital, and newly at home in Logan Circle: MXDC moved to 1610 14th Street NW with its hammered-copper light, wood-fired cocina and one of Washington's deepest agave lists intact.</p>
+        <p>It's the portfolio's proof of adaptation — a concept that changed neighborhoods without losing its regulars, or its margarita.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Established</strong>2014</li>
+          <li><strong>Cuisine</strong>Modern Mexican</li>
+          <li><strong>Signature</strong>The agave program</li>
+          <li><strong>Address</strong>1610 14th St NW</li>
+          <li><strong>Neighborhood</strong>Logan Circle</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="gallery/venues/mxdc-cocktails.jpg" alt="Agave cocktails at MXDC."><figcaption>The agave list — mezcal, tequila and everything between.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 15 · SPOTLIGHT — JADE ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-jade" aria-labelledby="spot-jade-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 15/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 05 — Berawa, Canggu · Bali, Indonesia</p>
+    <h2 class="spot-title" id="spot-jade-heading">Jade</h2>
+
+    <figure class="spot-hero"><img src="gallery/venues/jade-exterior.jpg" alt="Jade's exterior at dusk, Canggu, Bali."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>The outpost in the East. Jade brings Todd's Italian-Mediterranean cooking to Canggu — a dining room and lounge where wood-fired plates meet Bali's golden hour, relaunched with a new menu in January 2026.</p>
+        <p>Todd flew in and cooked the relaunch himself: a statement that the farthest kitchen from Las Vegas still carries the closest signature.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Relaunched</strong>January 2026</li>
+          <li><strong>Cuisine</strong>Italian-Mediterranean</li>
+          <li><strong>Signature</strong>Charred octopus</li>
+          <li><strong>Setting</strong>Dining room &amp; lounge</li>
+          <li><strong>Location</strong>Berawa, Canggu</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="gallery/venues/jade-orchid.jpg" alt="Plated dish with orchid at Jade, Bali."><figcaption>Bali on the plate — Mediterranean technique, island produce.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 16 · FROM THE KITCHENS (gallery I) ============ -->
+  <section class="sheet" id="from-the-kitchens" aria-labelledby="gallery-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Portfolio · 16/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="gallery-heading">From the Kitchens</h2>
+    <p class="section-sub">Selected imagery from the active venues. High-resolution files of every photograph are available for editorial use.</p>
+
+    <figure class="gal-hero">
+      <img src="gallery/venues/bluezoo-dining.jpg" alt="The bluezoo dining room under its ceiling of glass bubbles.">
+      <figcaption class="gal-cap"><p>&ldquo;The plate is the argument. Everything else is decoration.&rdquo;</p></figcaption>
+    </figure>
+
+    <div class="gal-grid">
+      <figure class="gal-item">
+        <img src="gallery/venues/bluezoo-scallop.jpg" alt="Seared scallop plate at bluezoo.">
+        <figcaption>bluezoo · Orlando</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/jade-octopus.jpg" alt="Charred octopus at Jade, Bali.">
+        <figcaption>Jade · Bali</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/mxdc-paella.jpg" alt="Wood-fired paella at MXDC.">
+        <figcaption>MXDC · Washington D.C.</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/beast-burgers.webp" alt="Towering burgers at The Beast.">
+        <figcaption>The Beast · Las Vegas</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/mxdc-cocktails.jpg" alt="Agave cocktails at MXDC.">
+        <figcaption>MXDC · Agave Program</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/tuscany-dining.jpg" alt="Tuscany dining room at Mohegan Sun.">
+        <figcaption>Tuscany · Mohegan Sun</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
+  <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Portfolio · 17/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
+    <p class="section-sub">The spaces between the plates — bars, murals, storefronts and the people who run them.</p>
+
+    <figure class="gal-hero">
+      <img src="jade-story.jpg" alt="Evening service at Jade, Canggu.">
+      <figcaption class="gal-cap"><p>Rooms built to be loud — every one of them designed around the table, not the door.</p></figcaption>
+    </figure>
+
+    <div class="gal-grid">
+      <figure class="gal-item">
+        <img src="gallery/venues/market-2.jpg" alt="Todd English Market &amp; Pub, Abu Dhabi.">
+        <figcaption>Market &amp; Pub · Abu Dhabi</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/pound-2.jpg" alt="Pound by Todd English, Manila.">
+        <figcaption>Pound · Manila</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/bluezoo-bar-detail.jpg" alt="Bar detail at bluezoo.">
+        <figcaption>bluezoo · The Bar</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/jade_gallery_1.png" alt="The bar at Jade, Bali.">
+        <figcaption>Jade · The Lounge</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/mxdc-interior.jpg" alt="Dining room at MXDC, Washington D.C.">
+        <figcaption>MXDC · The Room</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="gallery/venues/beast-dining.webp" alt="Dining room at The Beast, AREA15.">
+        <figcaption>The Beast · The Room</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 18 · DIVIDER — PART III ============ -->
+  <section class="sheet sheet--divider" id="part-3" aria-label="Part III — The Legacy">
+    <div class="div-frame">
+      <span class="div-part">Part III</span>
+      <span class="div-num">III</span>
+      <h2 class="div-title">The Legacy</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">The rooms, the books, the broadcasts — thirty-five years on the record.</p>
+      <span class="div-foot">Todd English · Media Kit 2026 · 18/30</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 19 · THE LEGACY ============ -->
+  <section class="sheet sheet--dark" id="the-empire" aria-labelledby="legacy-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Legacy · 19/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="legacy-heading"><span class="script-kick">the legacy</span>From the Archive</h2>
+    <p class="section-sub">Before the empire, there was a wood oven in Charlestown. Landmark rooms from 1989–2025, now closed or passed on.</p>
+
+    <div class="legacy-grid">
+      <article class="legacy-card">
+        <img src="gallery/venues/legacy-olives.png" alt="Olives, the original restaurant in Charlestown, 1989.">
+        <div class="lc-body">
+          <span class="stamp">Archive · 1989</span>
+          <h4>Olives, Charlestown</h4>
+          <p>The fifty-seat original that made the name — grew into outposts from the Bellagio to Tokyo before the last location closed in 2023.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="gallery/venues/legacy-pub.png" alt="Todd English P.U.B. at CityCenter Las Vegas.">
+        <div class="lc-body">
+          <span class="stamp">Archive · 2011</span>
+          <h4>Todd English P.U.B.</h4>
+          <p>Gastropub concept born at CityCenter Las Vegas — a decade of service on the Strip.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="gallery/venues/legacy-foodhall.png" alt="Todd English Food Hall, SM Aura, Manila.">
+        <div class="lc-body">
+          <span class="stamp">Archive · 2014</span>
+          <h4>Food Hall, Manila</h4>
+          <p>The New York Plaza food-hall concept exported to SM Aura — its DNA absorbed into the food halls that followed.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="gallery/venues/legacy-lulas.webp" alt="Lula's, Lake Worth Beach, Florida.">
+        <div class="lc-body">
+          <span class="stamp">Archive · 2024</span>
+          <h4>Lula's, Lake Worth Beach</h4>
+          <p>A brief, bright Italian run on the Florida coast. Also from the archive: Figs (1992) and The Pepper Club (2022–25).</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="legacy-close">&ldquo;Thirty-five years of openings teach you the only thing that matters: what comes next.&rdquo;</p>
+  </section>
+
+  <!-- ============ PAGE 20 · THE OLIVES STORY ============ -->
+  <section class="sheet" id="olives-story" aria-labelledby="olives-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Legacy · 20/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="olives-heading">The House That Olives Built</h2>
+
+    <figure class="story-photo">
+      <img src="gallery/venues/legacy-olives.png" alt="Olives, Charlestown — the 1989 original.">
+      <figcaption class="gal-cap"><p>Charlestown, Massachusetts, 1989 — fifty seats, one wood oven, a line out the door.</p></figcaption>
+    </figure>
+
+    <div class="story-cols">
+      <p><span class="drop">I</span>n 1989, rustic Mediterranean food was not a category in American dining — it was a bet. Todd and Olivia English opened Olives in a Charlestown storefront with fifty seats, a wood-burning oven, and a no-reservations policy that turned the sidewalk into a nightly event. The butternut squash tortelli became a Boston legend; the room became a school.</p>
+      <p>Olives grew the way few restaurants ever have — to the Bellagio in Las Vegas, to New York, Washington, Aspen and Tokyo — and its alumni went on to run kitchens across the country. When the last location closed in 2023, the concept had outlived nearly every restaurant trend it predated.</p>
+      <p>The name is not retired. Olives Black — a three-floor evolution announced for 15 Park Row in New York — is designed to bring the flagship home. The oven, as ever, comes first.</p>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">1989</span><span class="sl">Opened</span></div>
+      <div><span class="sn">50</span><span class="sl">Original Seats</span></div>
+      <div><span class="sn">6</span><span class="sl">Cities at Peak</span></div>
+      <div><span class="sn">34</span><span class="sl">Years of Service</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 21 · THE BOOKSHELF ============ -->
+  <section class="sheet" id="bookshelf" aria-labelledby="books-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Legacy · 21/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="books-heading">The Bookshelf</h2>
+    <p class="section-sub">Fifteen titles since 1997 keep the cooking in home kitchens between openings. Selected editions below.</p>
+
+    <div class="shelf-grid">
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-olives.png" alt="The Olives Table cookbook cover."></div>
+        <figcaption>The Olives Table · 1997</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-figs.png" alt="The Figs Table cookbook cover."></div>
+        <figcaption>The Figs Table · 1998</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-everyday.png" alt="Cooking in Everyday English cookbook cover."></div>
+        <figcaption>Cooking in Everyday English</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-pizza.png" alt="Rustic Pizza cookbook cover."></div>
+        <figcaption>Rustic Pizza</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-hotel.png" alt="The English Hotel Cookbook cover."></div>
+        <figcaption>The English Hotel Cookbook</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="book-todd.png" alt="The Todd English Cookbook cover."></div>
+        <figcaption>The Todd English Cookbook</figcaption>
+      </figure>
+    </div>
+
+    <p class="foot-note"><strong>For publishers &amp; press:</strong> the full bibliography, jacket imagery and author photography are available through The English Hospitality Group. Cover editions shown are collector printings.</p>
+  </section>
+
+  <!-- ============ PAGE 22 · ON CAMERA ============ -->
+  <section class="sheet" id="on-camera" aria-labelledby="tv-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Legacy · 22/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="tv-heading">On Camera</h2>
+    <p class="section-sub">Two decades of national television — from Kitchen Stadium to public broadcasting.</p>
+
+    <figure class="tv-hero">
+      <img src="todd-emmy.jpg" alt="Todd English with an Emmy statuette on the red carpet.">
+      <figcaption class="gal-cap"><p>Todd English's Food Trip earned PBS national carriage — and Todd a red-carpet Emmy night.</p></figcaption>
+    </figure>
+
+    <div class="tv-cols">
+      <div class="tv-col">
+        <p class="kicker">2001</p>
+        <h4>Iron Chef USA</h4>
+        <p>The American Kitchen Stadium — Todd among the first US chefs to take the battle format national.</p>
+      </div>
+      <div class="tv-col">
+        <p class="kicker">PBS</p>
+        <h4>Todd English's Food Trip</h4>
+        <p>His own travel-and-cooking series, carried nationally on public television.</p>
+      </div>
+      <div class="tv-col">
+        <p class="kicker">Ongoing</p>
+        <h4>National Appearances</h4>
+        <p>A steady run of network morning shows, food media and competition guest seats since the &rsquo;90s.</p>
+      </div>
+    </div>
+
+    <div class="tv-logos">
+      <h4>As Broadcast On</h4>
+      <div class="tv-logo-row">
+        <img src="logos/iron-chef.svg" alt="Iron Chef">
+        <img src="logos/pbs.svg" alt="PBS">
+        <img src="logos/food-network.svg" alt="Food Network">
+        <img src="logos/nbc.svg" alt="NBC">
+        <img src="logos/cbs.svg" alt="CBS">
+        <img src="logos/abc.svg" alt="ABC">
+        <img src="logos/bravo.svg" alt="Bravo">
+        <img src="logos/martha-stewart.svg" alt="Martha Stewart">
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 23 · DIVIDER — PART IV ============ -->
+  <section class="sheet sheet--divider" id="part-4" aria-label="Part IV — What's Next">
+    <div class="div-frame">
+      <span class="div-part">Part IV</span>
+      <span class="div-num">IV</span>
+      <h2 class="div-title">What&rsquo;s Next</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">Hotels, towers and the pipeline — where the name goes from here.</p>
+      <span class="div-foot">Todd English · Media Kit 2026 · 23/30</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 24 · HOTELS & WHAT'S NEXT ============ -->
+  <section class="sheet" id="whats-next" aria-labelledby="next-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">What's Next · 24/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="next-heading"><span class="script-kick">the horizon</span>Hotels &amp; What's Next</h2>
+
+    <div class="hotel-row" id="the-english-hotel">
+      <img src="gallery/venues/english-pool.png" alt="Pool at The English Hotel, Las Vegas Arts District.">
+      <div>
+        <p class="kicker">Open Now · Las Vegas Arts District</p>
+        <h3>The English Hotel</h3>
+        <p class="vbody">A 74-room gallery you can sleep in. Opened 2022 as a Marriott Tribute Portfolio boutique with rotating art exhibitions and Todd's name on the door — the proof-of-concept for EHG's hotel ambitions.</p>
+        <span class="chip">Opened 2022 · Marriott Tribute Portfolio · 921 S. Main St</span>
+      </div>
+    </div>
+
+    <div class="next-list">
+      <div class="next-row">
+        <span class="nn">01</span>
+        <img src="gallery/venues/bentley-tower.jpg" alt="Bentley Residences tower, Sunny Isles Beach, Miami.">
+        <div>
+          <h4>Proper English — Bentley Residences, Miami</h4>
+          <p>Todd's first private, residents-only restaurant — the lobby-level dining room of the world's first Bentley-branded tower in Sunny Isles Beach. The tower went vertical in June 2026.</p>
+          <span class="chip">Opening 2028</span>
+        </div>
+      </div>
+      <div class="next-row no-photo">
+        <span class="nn">02</span>
+        <div>
+          <h4>Stamford Town Center Food Hall</h4>
+          <p>An 80,000-square-foot immersive food hall in development for Stamford, Connecticut — global art exhibition, multi-cuisine stations, and ghost-kitchen brands Figs Pizza and Pound Burger.</p>
+          <span class="chip">In Development</span>
+        </div>
+      </div>
+      <div class="next-row no-photo">
+        <span class="nn">03</span>
+        <div>
+          <h4>Olives Black — 15 Park Row, NYC</h4>
+          <p>A three-floor, 18,000-square-foot evolution of the flagship — restaurant, music venue and rooftop cocktail lounge in a landmark beaux-arts building facing City Hall Park.</p>
+          <span class="chip">Announced</span>
         </div>
       </div>
     </div>
-  </div>
-</section>
 
-<div class="section-divider"></div>
+    <p class="foot-note"><strong>Also in development:</strong> Resident Branding culinary program, Manila · Maison Ostrow, a kosher fine-dining concept · further English Hotels in additional markets.</p>
+  </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 5 — DEEP DIVE: BLUEZOO
-     ════════════════════════════════════════════════════════════════ -->
-<section class="concepts" id="concept-bluezoo">
-  <div class="concept-page-header">
-    <span>TODD ENGLISH PORTFOLIO</span>
-    <span>05 // FLAGSHIP CONCEPT</span>
-  </div>
-  <div class="bg-watermark" style="top: 10%; right: -5%; transform: rotate(-3deg);">BLUEZOO</div>
-  <div class="section-inner">
-    <div class="concept-editorial-layout concept-bluezoo-layout reveal">
-      <div class="concept-editorial__images">
-        <div class="concept-editorial__main-img">
-          <img src="bluezoo-snapper.png" alt="bluezoo pan-seared red snapper signature dish" loading="eager">
-        </div>
-        <div class="concept-editorial__sub-img">
-          <img src="cooking-action.jpg" alt="Chef Todd cooking" loading="eager">
-          <div class="concept-editorial__sub-caption">Chef Todd English in the kitchen</div>
-        </div>
+  <!-- ============ PAGE 25 · FEATURE — THE ENGLISH HOTEL ============ -->
+  <section class="sheet" id="feature-english" aria-labelledby="feat-eh-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">What's Next · 25/30</span></div>
+    <div class="page-rule"></div>
+    <p class="kicker feat-kick">Open Now — 921 South Main Street · Las Vegas Arts District</p>
+    <h2 class="section-title feat-title" id="feat-eh-heading">The English Hotel</h2>
+
+    <figure class="feat-hero">
+      <img src="gallery/venues/english-aerial.jpg" alt="Aerial view of The English Hotel in the Las Vegas Arts District.">
+      <figcaption class="gal-cap"><p>Seventy-four rooms in the Arts District — a gallery you can sleep in.</p></figcaption>
+    </figure>
+
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <p>The English Hotel is the thesis of The English Hospitality Group in one building: a 74-room Marriott Tribute Portfolio boutique where the art rotates like a gallery, the restaurant carries the founder's name, and the Arts District's murals start at the front door.</p>
+        <p>Opened in 2022, it is the proof-of-concept for hotels to come — hospitality designed by a chef, from the lobby out.</p>
       </div>
-      <div class="concept-editorial__text">
-        <span class="concept-label">Flagship Culinary Art</span>
-        <h3 class="concept-editorial__title">bluezoo</h3>
-        <span class="concept-editorial__subtitle">Walt Disney World Dolphin · Orlando, FL</span>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Designed by world-renowned architect Jeffrey Beers, bluezoo transforms coastal cuisine into fine art. Located inside the Walt Disney World Dolphin Resort in Orlando, FL, bluezoo represents Chef English's flagship seafood concept. The venue features a spectacular custom wood-fired grill, raw bar, and underwater-inspired design.
-        </p>
-        <p class="body-text" style="margin-top: 1rem;">
-          Chef English combines the freshest seafood with coastal culinary techniques from across the globe, creating signature creations such as the citrus-glazed pan-seared red snapper. This award-winning venue has served as a Walt Disney World dining anchor for over two decades.
-        </p>
+      <aside class="spot-facts spot-facts--light">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Opened</strong>2022</li>
+          <li><strong>Rooms</strong>74</li>
+          <li><strong>Flag</strong>Marriott Tribute Portfolio</li>
+          <li><strong>Dining</strong>The Pepper Club legacy space</li>
+          <li><strong>District</strong>Las Vegas Arts District</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="feat-strip">
+      <img src="gallery/venues/english-mural.jpg" alt="Mural on the wall of The English Hotel.">
+      <figcaption>The Arts District comes inside — commissioned murals throughout the property.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PAGE 26 · FEATURE — BENTLEY RESIDENCES ============ -->
+  <section class="sheet" id="feature-bentley" aria-labelledby="feat-br-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">What's Next · 26/30</span></div>
+    <div class="page-rule"></div>
+    <p class="kicker feat-kick">Opening 2028 — Sunny Isles Beach · Miami, Florida</p>
+    <h2 class="section-title feat-title" id="feat-br-heading">Proper English at Bentley Residences</h2>
+
+    <figure class="feat-hero">
+      <img src="gallery/venues/bentley-lobby.jpg" alt="Rendered lobby of Bentley Residences, Miami.">
+      <figcaption class="gal-cap"><p>The lobby level of the world's first Bentley-branded residential tower — and its only restaurant.</p></figcaption>
+    </figure>
+
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <p>Sixty-two stories above Sunny Isles Beach, Bentley Residences will be the first residential tower in the world to carry the marque — and Proper English will be its dining room. Private, residents-only, and designed to Bentley's standard of quiet luxury.</p>
+        <p>The tower went vertical in June 2026. For Todd, it is a first: a restaurant with no front door, cooking for two hundred families instead of the public — the most exclusive room he has ever built.</p>
+      </div>
+      <aside class="spot-facts spot-facts--light">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Opens</strong>2028</li>
+          <li><strong>Tower</strong>62 stories, Sunny Isles Beach</li>
+          <li><strong>Access</strong>Residents only</li>
+          <li><strong>Milestone</strong>Vertical, June 2026</li>
+          <li><strong>Partner</strong>Dezer Development &amp; Bentley</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="feat-strip">
+      <img src="gallery/venues/bentley-wheel.jpg" alt="Detail from Bentley Residences, Miami.">
+      <figcaption>The marque's standard, applied to hospitality — every detail to Bentley specification.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PAGE 27 · HONORS & PARTNERSHIPS ============ -->
+  <section class="sheet" id="trophy-room" aria-labelledby="honors-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">Honors · 27/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="honors-heading"><span class="script-kick">the record</span>Honors &amp; Press</h2>
+
+    <div class="honor-hero">
+      <span class="big5">5</span>
+      <span class="b5-label">James Beard Foundation Awards</span>
+    </div>
+
+    <ul class="honors-list">
+      <li>James Beard — Rising Star Chef</li>
+      <li>James Beard — Best Chef Northeast</li>
+      <li>Bon Appétit Restaurateur of the Year</li>
+      <li>People &ldquo;50 Most Beautiful&rdquo;</li>
+      <li>FAB Award 2024 — Abu Dhabi</li>
+      <li>CIA graduate, with honors</li>
+    </ul>
+
+    <p class="honor-meta"><strong>Television:</strong> Iron Chef USA · Todd English's Food Trip (PBS) · frequent national appearances. <strong>Author:</strong> The Olives Table, The Figs Table, The Olives Dessert Table. <strong>On stage in 2026:</strong> Sun Wine &amp; Food Fest (Mohegan Sun, January) · Chicago Gourmet (September 24–27).</p>
+
+    <h2 class="section-title" id="partnerships" style="font-size:26px; padding-top:18px;">Work With Todd</h2>
+    <div class="partner-cols">
+      <div class="partner-col">
+        <span class="pn">01</span>
+        <h4>Signature Restaurants</h4>
+        <p>Full-service concepts developed and licensed with resort, casino and hospitality partners — the bluezoo and Tuscany model.</p>
+      </div>
+      <div class="partner-col">
+        <span class="pn">02</span>
+        <h4>Food Halls &amp; Travel Dining</h4>
+        <p>High-traffic, multi-station formats for airports, malls and mixed-use — Abu Dhabi's 24/7 Market &amp; Pub is the template.</p>
+      </div>
+      <div class="partner-col">
+        <span class="pn">03</span>
+        <h4>Residential &amp; Hotels</h4>
+        <p>Branded amenity dining for luxury towers and boutique hotels — from The English Hotel to Proper English at Bentley Residences.</p>
       </div>
     </div>
-  </div>
-  <div class="concept-page-footer">
-    <span>ORLANDO, FLORIDA</span>
-    <span>PAGE 05</span>
-  </div>
-</section>
 
-<div class="section-divider"></div>
+    <p class="foot-note"><strong>For press:</strong> high-resolution imagery, full biography, venue fact sheets and interview requests are available through The English Hospitality Group, Las Vegas.</p>
+  </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 6 — DEEP DIVE: JADE BY TODD ENGLISH
-     ════════════════════════════════════════════════════════════════ -->
-<section class="concepts" id="concept-jade">
-  <div class="concept-page-header">
-    <span>TODD ENGLISH PORTFOLIO</span>
-    <span>06 // INTERNATIONAL SANCTUARY</span>
-  </div>
-  <div class="bg-watermark" style="top: 10%; left: -5%; transform: rotate(3deg);">JADE</div>
-  <div class="section-inner" style="position: relative;">
-    <div class="concept-vertical-title-container" aria-hidden="true">
-      <div class="concept-vertical-title">J A D E &nbsp; B A L I</div>
+  <!-- ============ PAGE 28 · REACH & AUDIENCE ============ -->
+  <section class="sheet" id="reach" aria-labelledby="reach-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">Reach · 28/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="reach-heading">Reach &amp; Audience</h2>
+
+    <div class="reach-hero">
+      <span class="bign">458K</span>
+      <span class="bl">Instagram followers on @cheftoddenglish</span>
     </div>
-    
-    <div class="concept-editorial-layout concept-jade-layout reveal">
-      <div class="concept-editorial__text" style="grid-column: 2 / 7; z-index: 3; border-color: rgba(197,160,94,0.2);">
-        <span class="concept-label">International Sanctuary</span>
-        <h3 class="concept-editorial__title">Jade by Todd English</h3>
-        <span class="concept-editorial__subtitle">Berawa · Canggu, Bali</span>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Set in the heart of Bali's vibrant Berawa district in Canggu, Jade merges rich Mediterranean flavors with exotic Southeast Asian spices. The dining sanctuary features lush tropical landscaping, rich velvet lounges, custom wood carvings, and an elegant cocktail bar.
-        </p>
-        <p class="body-text" style="margin-top: 1rem;">
-          Designed as a transition venue, guests enjoy refined shared plates like wood-grilled satays, lobster handrolls, and wagyu dumplings before the space shifts into a high-energy cocktail lounge as the night unfolds.
-        </p>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">Social</p>
+        <h4>@cheftoddenglish</h4>
+        <p>Instagram, X and Facebook under one handle — daily kitchen life, openings and appearances, direct from Todd.</p>
       </div>
-      
-      <div class="concept-editorial__images" style="grid-column: 6 / 13; flex-direction: row-reverse;">
-        <div class="concept-editorial__main-img" style="width: 85%;">
-          <img src="jade-story.jpg?v=3" alt="Jade by Todd English, Bali" loading="eager" style="aspect-ratio: 1.4;">
-        </div>
-        <div class="concept-editorial__sub-img" style="width: 35%; left: -2rem; bottom: -2rem; right: auto;">
-          <img src="jade-portrait.jpg" alt="Chef Todd English in Chilled Magazine" loading="eager">
-          <div class="concept-editorial__sub-caption">Press Profile: Chilled Magazine</div>
-        </div>
+      <div class="reach-card">
+        <p class="kicker">Television</p>
+        <h4>On Camera Since the &rsquo;90s</h4>
+        <p>Iron Chef USA, PBS's <em>Todd English's Food Trip</em>, and a steady run of national morning-show and food-media appearances.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">In Print</p>
+        <h4>Fifteen Cookbooks</h4>
+        <p>From <em>The Olives Table</em> onward — a bookshelf brand that keeps the name in home kitchens between openings.</p>
       </div>
     </div>
-  </div>
-  <div class="concept-page-footer">
-    <span>CANGGU, BALI, INDONESIA</span>
-    <span>PAGE 06</span>
-  </div>
-</section>
 
-<div class="section-divider"></div>
+    <div class="seen-in">
+      <h4>As Seen In</h4>
+      <p>Bon Appétit &nbsp;·&nbsp; People &nbsp;·&nbsp; The New York Times &nbsp;·&nbsp; The Boston Globe &nbsp;·&nbsp; PBS &nbsp;·&nbsp; Food &amp; Beverage Magazine</p>
+    </div>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 7 — DEEP DIVE: THE BEAST
-     ════════════════════════════════════════════════════════════════ -->
-<section class="concepts" id="concept-thebeast">
-  <div class="concept-page-header">
-    <span>TODD ENGLISH PORTFOLIO</span>
-    <span>07 // ENTERTAINMENT DINING</span>
-  </div>
-  <div class="bg-watermark" style="top: 10%; right: -5%; transform: rotate(-2deg);">THE BEAST</div>
-  <div class="section-inner" style="position: relative;">
-    <div class="concept-editorial-layout concept-thebeast-layout reveal">
-      <div class="concept-editorial__images" style="grid-column: 1 / 7; position: relative;">
-        <div class="concept-editorial__main-img" style="width: 85%;">
-          <img src="thebeast.png?v=3" alt="The Beast at AREA15" loading="eager" style="aspect-ratio: 1.35; filter: contrast(1.1) brightness(0.95);">
-        </div>
-        <div class="concept-editorial-sidebar-card">
-          <div class="concept-editorial-sidebar-card__num">15K</div>
-          <div class="concept-editorial-sidebar-card__label">SQUARE FEET</div>
-          <div class="concept-editorial-sidebar-card__divider"></div>
-          <div class="concept-editorial-sidebar-card__text">Industrial Food Hall Anchor inside AREA15</div>
-        </div>
-      </div>
-      <div class="concept-editorial__text" style="grid-column: 7 / 13;">
-        <span class="concept-label">Steampunk Gastropub</span>
-        <h3 class="concept-editorial__title">The Beast</h3>
-        <span class="concept-editorial__subtitle">AREA15 · Las Vegas, NV</span>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Situated inside AREA15, Las Vegas's pioneering immersive entertainment complex, The Beast is an industrial-steampunk gastropub. Spanning over 15,000 square feet, the multi-concept food hall format features oversized copper wheels, steel machinery, and theatrical open-flame kitchens.
-        </p>
-        <p class="body-text" style="margin-top: 1rem;">
-          Serving as the primary culinary anchor for AREA15, The Beast offers an indulgent menu of artisanal woodfired pizzas, house-smoked ribs, double-patty sliders, and theatrical signature drinks, delivering dining that is as much an attraction as it is a restaurant.
-        </p>
+    <figure class="reach-photo">
+      <img src="gallery/bluezoo_1.jpg" alt="The open kitchen and dining room at bluezoo, Orlando.">
+      <figcaption class="gal-cap"><p>Four decades in, the name still opens doors — and rooms.</p></figcaption>
+    </figure>
+
+    <p class="foot-note"><strong>For collaborations:</strong> social content, appearances and endorsement inquiries are handled by The English Hospitality Group. Follower figures verified July 2026.</p>
+  </section>
+
+  <!-- ============ PAGE 29 · PRESS ASSETS ============ -->
+  <section class="sheet" id="press-assets" aria-labelledby="assets-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">Press Assets · 29/30</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="assets-heading">Press Assets</h2>
+    <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
+
+    <div class="assets-grid">
+      <figure class="assets-photo">
+        <img src="chilled-magazine.jpg" alt="Todd English on the cover of Chilled Magazine.">
+        <figcaption class="gal-cap"><p>Cover story, Chilled Magazine.</p></figcaption>
+      </figure>
+      <div class="assets-list">
+        <div class="asset-row"><span class="pn">01</span><div><h4>Photography</h4><p>Portraits, venue interiors and plated dishes — every image in this kit, in print resolution.</p></div></div>
+        <div class="asset-row"><span class="pn">02</span><div><h4>Biography</h4><p>Long-form, short-form and one-line biographies, fact-checked July 2026.</p></div></div>
+        <div class="asset-row"><span class="pn">03</span><div><h4>Venue Fact Sheets</h4><p>Per-venue one-pagers — address, hours, partners, signature dishes and press contacts.</p></div></div>
+        <div class="asset-row"><span class="pn">04</span><div><h4>Interviews &amp; Appearances</h4><p>Broadcast, podcast and print interview requests, plus event and festival bookings.</p></div></div>
+        <div class="asset-row"><span class="pn">05</span><div><h4>Brand Approvals</h4><p>Logo usage, partnership announcements and co-branded creative, reviewed by EHG.</p></div></div>
       </div>
     </div>
-  </div>
-  <div class="concept-page-footer">
-    <span>LAS VEGAS, NEVADA</span>
-    <span>PAGE 07</span>
-  </div>
-</section>
 
-<div class="section-divider"></div>
+    <p class="foot-note"><strong>Usage:</strong> imagery is released for editorial coverage of Todd English and EHG venues. Commercial use requires written approval from The English Hospitality Group, Las Vegas.</p>
+  </section>
 
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 8 — DEEP DIVE: TUSCANY BY TODD ENGLISH
-     ════════════════════════════════════════════════════════════════ -->
-<section class="concepts" id="concept-tuscany">
-  <div class="concept-page-header">
-    <span>TODD ENGLISH PORTFOLIO</span>
-    <span>08 // REGIONAL ITALIAN HERITAGE</span>
-  </div>
-  <div class="bg-watermark" style="top: 10%; left: -5%; transform: rotate(2deg);">TUSCANY</div>
-  <div class="section-inner">
-    <div class="concept-editorial-layout concept-tuscany-layout reveal">
-      <div class="concept-editorial__text" style="grid-column: 1 / 6; z-index: 3;">
-        <span class="concept-label">Regional Italian Heritage</span>
-        <h3 class="concept-editorial__title">Tuscany by Todd English</h3>
-        <span class="concept-editorial__subtitle">Mohegan Sun · Uncasville, CT</span>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Tuscany is Mohegan Sun's premier 250-seat regional Italian restaurant, celebrating Todd English's culinary roots. Following a comprehensive multi-million dollar renovation in early 2026, Tuscany features an expanded modern bar, a wood-fired grill hearth, and a dining room overlooking the casino's indoor waterfall.
-        </p>
-        <p class="body-text" style="margin-top: 1rem;">
-          The menu showcases artisanal house-made pastas, dry-aged steaks, and flatbreads cooked over fruitwood embers, offering regional Italian dishes crafted with a modern, upscale presentation.
-        </p>
-      </div>
-      
-      <div class="concept-editorial__images" style="grid-column: 6 / 13;">
-        <div class="concept-editorial__main-img" style="width: 85%;">
-          <img src="deconstructed-pasta.png" alt="Tuscany deconstructed handmade tortelli infographic" loading="eager" style="aspect-ratio: 1.4;">
-        </div>
-        <div class="concept-editorial__sub-img" style="width: 35%; right: 0; bottom: -2rem; left: auto;">
-          <img src="tuscany-pizza.jpg" alt="Figs Rustic Pizza" loading="eager">
-          <div class="concept-editorial__sub-caption">Tuscan Flatbreads from the Hearth</div>
-        </div>
-      </div>
+  <!-- ============ PAGE 30 · CONTACT ============ -->
+  <section class="sheet sheet--back" id="colophon" aria-labelledby="contact-heading">
+    <div class="back-inner">
+      <img class="back-photo" src="gallery/venues/tuscany-pasta.jpg" alt="Hand-made pasta at Tuscany.">
+      <p class="kicker">Reach Out</p>
+      <h2 id="contact-heading">Todd English</h2>
+      <p class="back-line">The English Hospitality Group · Las Vegas</p>
+      <p class="back-line">Instagram @cheftoddenglish</p>
+      <p class="back-line">Media &amp; partnership inquiries via The English Hospitality Group</p>
+      <span class="back-rule"></span>
+      <p class="back-foot">Produced July 2026 · All venue information verified at time of publication · 30/30</p>
     </div>
-  </div>
-  <div class="concept-page-footer">
-    <span>UNCASVILLE, CONNECTICUT</span>
-    <span>PAGE 08</span>
-  </div>
-</section>
+  </section>
 
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 9 — THE OLIVES HERITAGE & LEGACY PORTFOLIO
-     ════════════════════════════════════════════════════════════════ -->
-<section class="legacy" id="legacy">
-  <div class="bg-watermark" style="top: 15%; left: 5%;">OLIVES</div>
-  <div class="section-inner">
-    <div class="legacy-layout">
-      <div class="legacy-text-card reveal">
-        <span class="label">Legacy Portfolio</span>
-        <h2 class="heading-lg">The Olives Heritage</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          The story of Todd English's global brand began in Charlestown, Massachusetts, with the opening of Olives in 1989. Designed as a casual, high-energy neighborhood bistro, Olives introduced Americans to bold Mediterranean flavors, woodfired baking, and rustic presentation. The restaurant's massive success led to extensions at the Bellagio in Las Vegas, Atlantis Resort in the Bahamas, Tokyo, and Abu Dhabi, defining upscale dining for an entire generation.
-        </p>
-      </div>
-      <div class="legacy__grid reveal reveal-delay-1">
-        <div class="legacy-item">
-          <div class="legacy-item__name">Olives</div>
-          <div class="legacy-item__loc">Charlestown · Bellagio · Atlantis · Tokyo · Abu Dhabi</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Figs</div>
-          <div class="legacy-item__loc">Boston · LaGuardia · NY</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Bonfire</div>
-          <div class="legacy-item__loc">Boston, MA</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Kingfish Hall</div>
-          <div class="legacy-item__loc">Boston, MA</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Todd English Food Hall</div>
-          <div class="legacy-item__loc">Plaza NYC · Dubai · Manila</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">The Pepper Club</div>
-          <div class="legacy-item__loc">The English Hotel · Las Vegas</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Beso</div>
-          <div class="legacy-item__loc">New York City</div>
-        </div>
-        <div class="legacy-item">
-          <div class="legacy-item__name">Pound</div>
-          <div class="legacy-item__loc">Manila, Philippines</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 10 — HOSPITALITY DEVELOPMENT
-     ════════════════════════════════════════════════════════════════ -->
-<section class="hospitality" id="hospitality">
-  <div class="bg-watermark" style="top: 20%; right: 5%;">CREATIVE</div>
-  <div class="section-inner">
-    <div class="hosp-header-layout reveal">
-      <span class="label">Hospitality Development</span>
-      <h2 class="heading-lg" style="margin-top: 0.5rem;">Creating Hospitality Destinations</h2>
-      <div class="gold-line" style="margin: 1.5rem auto;"></div>
-      <p class="body-text" style="max-width: 700px; margin: 0 auto;">
-        English Hospitality Group (EHG) partners with the world's leading hotel brands, real estate developers, casino groups, and airport authorities to create high-performing culinary destinations. We offer full-service concept design, kitchen engineering, menu development, staffing, and ongoing brand oversight, ensuring every venue operates at a global luxury standard.
-      </p>
-    </div>
-    
-    <div class="hosp-grid reveal reveal-delay-1">
-      <div class="hosp-item">
-        <div class="hosp-item__num">01</div>
-        <div class="hosp-item__title">Luxury Hotels</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Curating high-yield, signature culinary destinations for 5-star hotel brands worldwide.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">02</div>
-        <div class="hosp-item__title">Casino Resorts</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">High-volume, premium dining programs tailored for world-class gaming destinations.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">03</div>
-        <div class="hosp-item__title">Airport Dining</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Elevating travel hubs with chef-driven bars, pubs, and artisanal dining markets.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">04</div>
-        <div class="hosp-item__title">Food Halls</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Multi-concept culinary markets featuring immersive dining and curated local vendors.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">05</div>
-        <div class="hosp-item__title">Private Clubs</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Bespoke dining programs and members-only clubs built around culinary prestige.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">06</div>
-        <div class="hosp-item__title">Luxury Resorts</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Designing destination dining and beach clubs in premium international resort markets.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">07</div>
-        <div class="hosp-item__title">Mixed-Use</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Strategic food and beverage placement to drive retail, residential, and leisure foot traffic.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">08</div>
-        <div class="hosp-item__title">Residential Towers</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Exclusive, resident-only private dining services and curated culinary lifestyle amenities.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">09</div>
-        <div class="hosp-item__title">Cruise Lines</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Signature oceanfront dining concepts designed for global luxury cruise fleets.</p>
-      </div>
-      <div class="hosp-item">
-        <div class="hosp-item__num">10</div>
-        <div class="hosp-item__title">Brand Licensing</div>
-        <div class="hosp-item__divider"></div>
-        <p class="hosp-item__desc">Global brand partnership models, turnkey operations, and complete culinary brand oversight.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 11 — TELEVISION & MEDIA
-     ════════════════════════════════════════════════════════════════ -->
-<section class="media" id="media">
-  <div class="bg-watermark" style="top: 15%; right: 5%;">ON AIR</div>
-  <div class="section-inner">
-    <div class="media-layout">
-      <div class="media-image reveal">
-        <div class="image-frame-decor"></div>
-        <img src="todd-emmy.jpg" alt="Chef Todd English Emmy nomination portrait" loading="eager">
-      </div>
-      <div class="media-text reveal reveal-delay-1">
-        <span class="label">Television &amp; Media</span>
-        <h2 class="heading-lg">A Pioneer of Culinary Television</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Long before the modern era of social media, Todd English was one of the first young chefs to glamorize the culinary world on television. As the host and executive producer of the Emmy-nominated PBS series "Food Trip with Todd English", he traveled the world tracing the origins of signature ingredients. He served as co-host and judge of PBS's "Cooking Under Fire", starred on Food Network's "Opening Soon", and has been a frequent guest chef on Iron Chef, Top Chef, the Today Show, Good Morning America, and Martha Stewart, building a household name with millions of viewers.
-        </p>
-        <br>
-        <div class="media-logos" style="margin-top: 2rem;">
-          <div class="media-logo"><img src="logos/pbs.svg" alt="PBS" onerror="this.parentElement.textContent='PBS'"></div>
-          <div class="media-logo"><img src="logos/food-network.svg" alt="Food Network" onerror="this.parentElement.textContent='FOOD NETWORK'"></div>
-          <div class="media-logo"><img src="logos/nbc.svg" alt="NBC Today" onerror="this.parentElement.textContent='NBC TODAY'"></div>
-          <div class="media-logo"><img src="logos/cbs.svg" alt="CBS" onerror="this.parentElement.textContent='CBS'"></div>
-          <div class="media-logo"><img src="logos/abc.svg" alt="ABC Good Morning America" onerror="this.parentElement.textContent='ABC GMA'"></div>
-          <div class="media-logo"><img src="logos/bravo.svg" alt="Top Chef / Bravo" onerror="this.parentElement.textContent='TOP CHEF'"></div>
-          <div class="media-logo"><img src="logos/iron-chef.svg" alt="Iron Chef" onerror="this.parentElement.textContent='IRON CHEF'"></div>
-          <div class="media-logo"><img src="logos/martha-stewart.svg" alt="Martha Stewart" onerror="this.parentElement.textContent='MARTHA STEWART'"></div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 12 — AWARDS
-     ════════════════════════════════════════════════════════════════ -->
-<section class="awards" id="awards">
-  <div class="section-inner">
-    <div class="reveal" style="text-align: center;">
-      <span class="label">Accolades</span>
-      <h2 class="heading-lg">Industry Recognition</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="awards__list">
-      <div class="award-item reveal">
-        <div class="award-item__title">James Beard Foundation Awards</div>
-        <div class="award-item__detail">
-          National Rising Star Chef (1991) · Best Chef Northeast (1994) · Who's Who in Food &amp; Beverage in America.
-        </div>
-      </div>
-      <div class="award-item reveal reveal-delay-1">
-        <div class="award-item__title">Bon Appétit Magazine</div>
-        <div class="award-item__detail">
-          Restaurateur of the Year (2001) — Recognizing Todd English's national influence on fine dining.
-        </div>
-      </div>
-      <div class="award-item reveal reveal-delay-2">
-        <div class="award-item__title">Emmy Nomination</div>
-        <div class="award-item__detail">
-          Nominated for Outstanding Host for the PBS series "Food Trip with Todd English".
-        </div>
-      </div>
-      <div class="award-item reveal reveal-delay-3">
-        <div class="award-item__title">Las Vegas Food &amp; Wine Festival</div>
-        <div class="award-item__detail">
-          Named Chef of the Year (2022) — Celebrating Tuscany, The Beast, and The English Hotel launch.
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 13 — COOKBOOKS
-     ════════════════════════════════════════════════════════════════ -->
-<section class="cookbooks" id="cookbooks">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="label">Published Works</span>
-      <h2 class="heading-lg">Cookbooks Library</h2>
-      <div class="gold-line"></div>
-    </div>
-    <div class="cookbooks__scroll reveal">
-      <div class="book-card" style="background-image: url('book-olives.png'); background-size: cover; background-position: center; padding: 0;"></div>
-      <div class="book-card" style="background-image: url('book-figs.png'); background-size: cover; background-position: center; padding: 0;"></div>
-      <div class="book-card" style="background-image: url('book-todd.png'); background-size: cover; background-position: center; padding: 0;"></div>
-      <div class="book-card" style="background-image: url('book-everyday.png'); background-size: cover; background-position: center; padding: 0;"></div>
-      <div class="book-card" style="background-image: url('book-pizza.png'); background-size: cover; background-position: center; padding: 0;"></div>
-      <div class="book-card" style="background-image: url('book-hotel.png'); background-size: cover; background-position: center; padding: 0;"></div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 14 — BRAND PARTNERSHIPS
-     ════════════════════════════════════════════════════════════════ -->
-<section class="partnerships" id="partnerships">
-  <div class="section-inner">
-    <div class="partnerships-layout">
-      <div class="reveal">
-        <span class="label">Commercial Scale</span>
-        <h2 class="heading-lg">Brand Partnerships &amp; Product Licensing</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          Todd English is a pioneer in culinary product licensing, extending his brand from fine-dining restaurants into consumer kitchens worldwide. EHG develops premium partnerships that align with Todd's commitment to quality and innovation.
-        </p>
-      </div>
-      <div class="partner-cards reveal reveal-delay-1">
-        <div class="partner-card">
-          <div class="partner-card__title">Todd English GreenPan</div>
-          <p class="body-text-sm">
-            A signature line of premium non-stick ceramic cookware, combining healthy cooking technology with chef-approved performance, sold in major department stores.
-          </p>
-        </div>
-        <div class="partner-card">
-          <div class="partner-card__title">Kitchen Electronics &amp; Linens</div>
-          <p class="body-text-sm">
-            Chef-curated cutlery, small kitchen appliances, and table linens designed for the everyday home cook.
-          </p>
-        </div>
-        <div class="partner-card">
-          <div class="partner-card__title">Retail Gourmet Products</div>
-          <p class="body-text-sm">
-            Private label artisanal olive oils, house-made pastas, and wood-fired flatbread ingredients available at premium retail outlets.
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 15 — DEVELOPMENT OPPORTUNITIES
-     ════════════════════════════════════════════════════════════════ -->
-<section class="development" id="development">
-  <div class="section-inner">
-    <div class="dev-grid">
-      <div class="reveal">
-        <span class="label">Development Opportunities</span>
-        <h2 class="heading-lg">Partner With Todd English</h2>
-        <div class="gold-line"></div>
-        <p class="body-text">
-          English Hospitality Group partners with luxury hotels, real estate developers, casino operators, airport authorities, and lifestyle brands worldwide. From full-service restaurant development to brand licensing and consulting, we bring over three decades of culinary excellence and global brand recognition to every project.
-        </p>
-        <br>
-        <p class="body-text">
-          Whether you're developing a flagship hotel restaurant, a multi-unit food hall, a private club dining program, or a cruise line culinary experience, Todd English's team delivers concept creation, menu development, kitchen design, operational systems, and ongoing brand stewardship.
-        </p>
-      </div>
-      <div class="dev-opps reveal reveal-delay-1">
-        <div class="dev-opp">Luxury Hotel Partnerships</div>
-        <div class="dev-opp">Restaurant Development</div>
-        <div class="dev-opp">Consulting</div>
-        <div class="dev-opp">Brand Licensing</div>
-        <div class="dev-opp">Food Halls</div>
-        <div class="dev-opp">Airport Dining</div>
-        <div class="dev-opp">Private Clubs</div>
-        <div class="dev-opp">Cruise Lines</div>
-        <div class="dev-opp">International Franchising</div>
-        <div class="dev-opp">Residential Dining</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 16 — PRESS & TESTIMONIALS
-     ════════════════════════════════════════════════════════════════ -->
-<section class="press" id="press">
-  <div class="section-inner">
-    <div class="reveal" style="text-align: center;">
-      <span class="label">Press &amp; Reviews</span>
-      <h2 class="heading-lg">Testimonials</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    <div class="press__grid">
-      <div class="quote-card reveal">
-        <div class="quote-card__mark">“</div>
-        <p class="quote-card__text">
-          Todd English is a famed restaurateur, author, and TV personality whose culinary empire spans the globe.
-        </p>
-        <span class="quote-card__source">— Chilled Magazine</span>
-      </div>
-      <div class="quote-card reveal reveal-delay-1">
-        <div class="quote-card__mark">“</div>
-        <p class="quote-card__text">
-          One of the most decorated and visible chefs in America, pioneering luxury multi-concept dining.
-        </p>
-        <span class="quote-card__source">— Nation's Restaurant News</span>
-      </div>
-      <div class="quote-card reveal reveal-delay-2">
-        <div class="quote-card__mark">“</div>
-        <p class="quote-card__text">
-          Todd's vision for Tuscany redefined casino dining, blending high volume with artisan culinary execution.
-        </p>
-        <span class="quote-card__source">— Mohegan Sun Casino Resort</span>
-      </div>
-      <div class="quote-card reveal reveal-delay-3">
-        <div class="quote-card__mark">“</div>
-        <p class="quote-card__text">
-          To me, hospitality is about creating memory. Whether it's a woodfired pizza in Las Vegas or a coastal snapper in Orlando, every bite must tell a story.
-        </p>
-        <span class="quote-card__source">— Chef Todd English</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<div class="section-divider"></div>
-
-<!-- ════════════════════════════════════════════════════════════════
-     SECTION 17 — CONTACT
-     ════════════════════════════════════════════════════════════════ -->
-<section class="contact" id="contact">
-  <div class="section-inner">
-    <div class="reveal">
-      <span class="label">Inquiries &amp; Bookings</span>
-      <h2 class="heading-lg">Contact English Hospitality Group</h2>
-      <div class="gold-line gold-line--center"></div>
-    </div>
-    
-    <div class="contact__grid reveal reveal-delay-1">
-      <div class="contact-item">
-        <div class="contact-item__label">Entity</div>
-        <div class="contact-item__value">English Hospitality Group (EHG)</div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item__label">Website</div>
-        <div class="contact-item__value"><a href="https://ehgusa.com" target="_blank">ehgusa.com</a></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item__label">Instagram</div>
-        <div class="contact-item__value"><a href="https://instagram.com/cheftoddenglish" target="_blank">@cheftoddenglish</a></div>
-      </div>
-      <div class="contact-item">
-        <div class="contact-item__label">PR &amp; Bookings</div>
-        <div class="contact-item__value">pr@ehgusa.com</div>
-      </div>
-    </div>
-    
-    <div class="reveal reveal-delay-2">
-      <a href="Todd-English-Brand-Book-2026.pdf" download class="btn-download">↓ Download Brand Book PDF</a>
-    </div>
-  </div>
-</section>
-
-
-<!-- ════════════════════════════════════════════════════════════════
-     INTERACTIVE DETAILED PROJECT MODAL (Vogue/Kinfolk Editorial)
-     ════════════════════════════════════════════════════════════════ -->
-<div class="project-modal" id="projectModal" aria-hidden="true" onclick="if(event.target === this) closeProjectModal()">
-  <div class="modal-container">
-    <button class="modal-close-btn" onclick="closeProjectModal()" aria-label="Close modal">×</button>
-    
-    <!-- Left: Dynamic Image Gallery Slider -->
-    <div class="modal-gallery-pane">
-      <button class="gallery-nav-btn prev" onclick="navigateGallery(-1)" aria-label="Previous image">‹</button>
-      <button class="gallery-nav-btn next" onclick="navigateGallery(1)" aria-label="Next image">›</button>
-      
-      <div class="modal-gallery-track" id="modalGalleryTrack">
-        <!-- Slides will be injected by JavaScript -->
-      </div>
-    </div>
-    
-    <!-- Right: Editorial Concept Information -->
-    <div class="modal-info-pane">
-      <span class="modal-meta-label" id="modalMetaLabel">Concept Profile</span>
-      <h3 class="modal-title" id="modalTitle">Project Name</h3>
-      <p class="modal-location" id="modalLocation">Location</p>
-      
-      <div class="modal-stats-grid" id="modalStatsGrid">
-        <!-- Stats will be injected by JavaScript -->
-      </div>
-      
-      <div class="modal-description" id="modalDescription">
-        <!-- Paragraphs will be injected by JavaScript -->
-      </div>
-      
-      <h4 class="modal-highlights-title">Concept Highlights</h4>
-      <ul class="modal-highlights-list" id="modalHighlightsList">
-        <!-- Highlights will be injected by JavaScript -->
-      </ul>
-      
-      <a href="#" target="_blank" class="btn-download modal-cta-btn" id="modalCtaBtn">Explore Concept Site</a>
-    </div>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 Todd English · English Hospitality Group · All Rights Reserved</p>
-  <p style="margin-top: 0.5rem; font-size: 0.65rem; color: var(--mid-gray);">Produced by Next-Frame Agency</p>
-</footer>
-
-<!-- JavaScript for Interactive Cover Portal, Scroll Animations & Reveal Trigger -->
-<script>
-  document.addEventListener("DOMContentLoaded", () => {
-    
-    // 1. Scroll-linked Hero Portal split panels & background zoom animation
-    const heroSection = document.getElementById("hero");
-    const bg = heroSection.querySelector(".hero-bg");
-    const leftPanel = heroSection.querySelector(".hero-cover-panel.left");
-    const rightPanel = heroSection.querySelector(".hero-cover-panel.right");
-    const leftOverlay = heroSection.querySelector(".hero-cover-gate-overlay.left");
-    const rightOverlay = heroSection.querySelector(".hero-cover-gate-overlay.right");
-    const centerCard = heroSection.querySelector(".hero-cover-center-card");
-    const coverTitle = heroSection.querySelector(".hero-cover-title");
-    const revealContent = heroSection.querySelector(".hero-reveal");
-    const viewportFrame = heroSection.querySelector(".hero-viewport-frame");
-    const bgGrid = heroSection.querySelector(".hero-bg-grid");
-    const backdropText = heroSection.querySelector(".hero-backdrop-text");
-    const revealSubtitle = heroSection.querySelector(".hero-reveal-subtitle");
-    const revealName = heroSection.querySelector(".hero-reveal-name");
-    const revealTagline = heroSection.querySelector(".hero-reveal-tagline");
-    
-    window.addEventListener("scroll", () => {
-      const scrollPos = window.pageYOffset || document.documentElement.scrollTop;
-      const heroHeight = heroSection.offsetHeight;
-      const viewportHeight = window.innerHeight;
-      
-      // Calculate scroll fraction for pinning height (excluding the final viewport scroll)
-      let progress = scrollPos / (heroHeight - viewportHeight);
-      progress = Math.max(0, Math.min(1, progress));
-      
-      // Background Zoom scale + translate parallax
-      const scaleVal = 1.15 - (progress * 0.15);
-      const bgY = progress * 60;
-      bg.style.transform = `scale(${scaleVal}) translateY(${bgY}px)`;
-      
-      // Portal Gates Split panels transform (1.0x speed)
-      const shiftPercent = progress * 100;
-      leftPanel.style.transform = `translateX(-${shiftPercent}%)`;
-      rightPanel.style.transform = `translateX(${shiftPercent}%)`;
-      
-      // Gate Overlays Split panels transform (1.35x speed)
-      const overlayShift = progress * 135;
-      leftOverlay.style.transform = `translateX(-${overlayShift}%)`;
-      rightOverlay.style.transform = `translateX(${overlayShift}%)`;
-      leftOverlay.style.opacity = Math.max(0, 1 - progress * 1.5);
-      rightOverlay.style.opacity = Math.max(0, 1 - progress * 1.5);
-      
-      // Glass gates inner texts parallax shift & fade
-      const textShift = progress * 60;
-      const leftText = leftPanel.querySelector(".hero-cover-gate-text");
-      const rightText = rightPanel.querySelector(".hero-cover-gate-text");
-      if (leftText && rightText) {
-        leftText.style.transform = `translateX(-${textShift}px) scale(${1 - progress * 0.15})`;
-        rightText.style.transform = `translateX(${textShift}px) scale(${1 - progress * 0.15})`;
-        leftText.style.opacity = Math.max(0, 1 - progress * 1.3);
-        rightText.style.opacity = Math.max(0, 1 - progress * 1.3);
-      }
-      
-      // Viewport frame scale & fade
-      if (viewportFrame) {
-        const frameScale = 1 + (progress * 0.2);
-        const frameOpacity = 1 - (progress * 1.4);
-        viewportFrame.style.transform = `scale(${frameScale})`;
-        viewportFrame.style.opacity = Math.max(0, frameOpacity);
-      }
-
-      // Background coordinates grid Y-parallax shift
-      if (bgGrid) {
-        const gridY = progress * -50;
-        bgGrid.style.transform = `translateY(${gridY}px)`;
-      }
-
-      // Center card splits & scales down/fades
-      const cardScale = 1 - (progress * 0.15);
-      const cardOpacity = 1 - (progress * 1.5);
-      centerCard.style.transform = `translate(-50%, -50%) scale(${cardScale})`;
-      centerCard.style.opacity = Math.max(0, cardOpacity);
-      
-      // Cover Title fades out early
-      const titleOpacity = 1 - (progress * 2.5);
-      coverTitle.style.opacity = Math.max(0, titleOpacity);
-      coverTitle.style.transform = `scale(${1 - progress * 0.1}) translateY(-${progress * 40}px)`;
-      
-      // Reveal Content layering parallax
-      if (progress > 0.4) {
-        revealContent.classList.add("active");
-        
-        // Parallax scroll on inner elements
-        const revProgress = (progress - 0.4) / 0.6; // 0 to 1
-        
-        backdropText.style.transform = `translate(-50%, -50%) translateY(${(1 - revProgress) * 50 - revProgress * 80}px)`;
-        backdropText.style.opacity = Math.max(0, Math.min(0.04, revProgress * 0.05));
-        
-        revealSubtitle.style.transform = `translateY(${(1 - revProgress) * -15}px)`;
-        revealSubtitle.style.opacity = revProgress;
-        
-        revealName.style.transform = `scale(${0.95 + revProgress * 0.05})`;
-        revealName.style.opacity = revProgress;
-        
-        revealTagline.style.transform = `translateY(${(1 - revProgress) * 15}px)`;
-        revealTagline.style.opacity = revProgress;
-      } else {
-        revealContent.classList.remove("active");
-      }
-    });
-
-
-    // ================================================================
-    // INTERACTIVE MODAL & PROJECT GALLERIES LOGIC
-    // ================================================================
-    const projectData = {
-      bluezoo: {
-        category: "Signature Fine Dining · 01",
-        title: "bluezoo",
-        location: "Walt Disney World Dolphin · Orlando, FL",
-        stats: [
-          { value: "9,500 SQ FT", label: "Establishment Size" },
-          { value: "280 SEATS", label: "Capacity Limit" },
-          { value: "2004", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Designed by world-renowned architect Jeffrey Beers, bluezoo transforms coastal cuisine into fine art. Located inside the Walt Disney World Dolphin Resort in Orlando, FL, bluezoo represents Chef English's flagship seafood concept, featuring a spectacular custom wood-fired grill, raw bar, and underwater-inspired design. <br><br>Chef English combines the freshest seafood with coastal culinary techniques from across the globe, creating signature creations such as the citrus-glazed pan-seared red snapper. This award-winning venue has served as a Walt Disney World dining anchor for over two decades.`,
-        highlights: [
-          "Award-winning wood-fired coastal seafood kitchen",
-          "Jeffrey Beers custom architectural design and glowing raw bar",
-          "Citrus-glazed pan-seared red snapper signature plating",
-          "Continuous operation inside Walt Disney World Dolphin for 20+ years"
-        ],
-        gallery: [
-          { url: "bluezoo.png?v=3", caption: "The stunning Main Dining Room of bluezoo" },
-          { url: "bluezoo-snapper.png", caption: "Pan-seared Red Snapper with citrus glaze" },
-          { url: "cooking-action.jpg", caption: "Chef Todd English preparing fresh seafood" }
-        ],
-        link: "https://swandolphin.com/dining/todd-englishs-bluezoo/"
-      },
-      thebeast: {
-        category: "Las Vegas Dining · 02",
-        title: "The Beast",
-        location: "AREA15 · Las Vegas, NV",
-        stats: [
-          { value: "15,000 SQ FT", label: "Establishment Size" },
-          { value: "450 CAPACITY", label: "Capacity Limit" },
-          { value: "2021", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Situated inside AREA15, Las Vegas's pioneering immersive entertainment complex, The Beast is an industrial-steampunk gastropub. Spanning over 15,000 square feet, the multi-concept food hall format features oversized copper wheels, steel machinery, and theatrical open-flame kitchens. <br><br>Serving as the primary culinary anchor for AREA15, The Beast offers an indulgent menu of artisanal woodfired pizzas, house-smoked ribs, double-patty sliders, and theatrical signature drinks, delivering dining that is as much an attraction as it is a restaurant.`,
-        highlights: [
-          "Primary food and beverage anchor inside AREA15 Las Vegas",
-          "Steampunk gastropub aesthetic with copper wheels and open-flame kitchens",
-          "Custom fruitwood-smoked brisket and wood-fired artisanal flatbreads",
-          "Multi-station menu format optimized for high-volume entertainment crowds"
-        ],
-        gallery: [
-          { url: "thebeast.png?v=3", caption: "Post-apocalyptic steampunk dining hall of The Beast inside AREA15" },
-          { url: "gallery/thebeast_gallery_1.png?v=3", caption: "Industrial cocktail bar area featuring copper pipes and gears" },
-          { url: "gallery/thebeast_gallery_2.png?v=3", caption: "Theatrical open-flame kitchen with live cooking and Gilly alien sculpture" }
-        ],
-        link: "https://area15.com/eat-drink/the-beast/"
-      },
-      jade: {
-        category: "Bali Beachfront · 03",
-        title: "Jade by Todd English",
-        location: "Berawa, Canggu · Bali, Indonesia",
-        stats: [
-          { value: "12,000 SQ FT", label: "Establishment Size" },
-          { value: "320 CAPACITY", label: "Capacity Limit" },
-          { value: "2023", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Set in the heart of Bali's vibrant Berawa district in Canggu, Jade merges rich Mediterranean flavors with exotic Southeast Asian spices. The dining sanctuary features lush tropical landscaping, rich velvet lounges, custom wood carvings, and an elegant cocktail bar. <br><br>Designed as a transition venue, guests enjoy refined shared plates like wood-grilled satays, lobster handrolls, and wagyu dumplings before the space shifts into a high-energy cocktail lounge as the night unfolds.`,
-        highlights: [
-          "Stunning tropical beachfront sanctuary design in Canggu, Bali",
-          "Fusion Mediterranean-Asian sharing plates with local botanicals",
-          "Intimate custom sound system and velvet loungers for night transitions",
-          "Curated craft cocktails reflecting local Balinese herbs and spices"
-        ],
-        gallery: [
-          { url: "jade-story.jpg?v=3", caption: "Lush tropical bar and dining courtyard at Jade" },
-          { url: "jade-bar-portfolio.jpg", caption: "Velvet lounge seating area detail" },
-          { url: "jade-portrait.jpg", caption: "Chef Todd English at Jade restaurant Canggu" }
-        ],
-        link: "https://jadebali.com"
-      },
-      tuscany: {
-        category: "Casino Concession · 04",
-        title: "Tuscany by Todd English",
-        location: "Mohegan Sun · CT",
-        stats: [
-          { value: "250 SEATS", label: "Capacity Limit" },
-          { value: "$3.5M RENOV", label: "Completed 2026" },
-          { value: "2001 / 2026", label: "Opened / Renovated" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Tuscany is Mohegan Sun's premier 250-seat regional Italian restaurant, celebrating Todd English's culinary roots. Following a comprehensive multi-million dollar renovation in early 2026, Tuscany features an expanded modern bar, a wood-fired grill hearth, and a dining room overlooking the casino's indoor waterfall. <br><br>The menu showcases artisanal house-made pastas, dry-aged steaks, and flatbreads cooked over fruitwood embers, offering regional Italian dishes crafted with a modern, upscale presentation.`,
-        highlights: [
-          "Overlooks the casino's spectacular multi-story indoor waterfall",
-          "Fresh fruitwood-burning open hearth baking oven",
-          "Artisanal house-made pasta program featuring deconstructed tortelli",
-          "Complete early 2026 modern design renovation"
-        ],
-        gallery: [
-          { url: "tuscany.png?v=3", caption: "Overlooking the casino waterfall at Tuscany Mohegan Sun" },
-          { url: "deconstructed-pasta.png", caption: "Artisanal Deconstructed Handmade Tortelli" },
-          { url: "tuscany-pizza.jpg", caption: "Woodfired flatbreads baking in the fruitwood hearth" }
-        ],
-        link: "https://www.mohegansun.com/dining/tuscany.html"
-      },
-      lulas: {
-        category: "Coastal Steakhouse · 05",
-        title: "Lula's by Todd English",
-        location: "Lake Worth Beach · FL",
-        stats: [
-          { value: "180 SEATS", label: "Capacity Limit" },
-          { value: "OCEANFRONT", label: "Dining View" },
-          { value: "2025", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Lula's is a sophisticated coastal Italian steakhouse and raw bar overlooking the pristine shoreline of Lake Worth Beach, FL. Featuring natural oak paneling, elegant white tablecloths, and full-view window apertures, Lula's offers an airy, high-prestige dining environment. <br><br>The culinary program spotlights prime dry-aged porterhouses, local coastal raw bar towers, and custom hand-rolled pasta, marrying regional Italian heritage with Florida's fresh Atlantic seafood.`,
-        highlights: [
-          "Airy, upscale oceanfront steakhouse and raw bar on Lake Worth Beach",
-          "Hand-selected prime dry-aged beef program",
-          "Atlantic raw bar towers plated fresh at the central marble counter",
-          "Elegant coastal interior layout styled with organic oak accents"
-        ],
-        gallery: [
-          { url: "lulas.png?v=3", caption: "Sophisticated main dining room of Lula's overlooking the beach" },
-          { url: "cooking-action.jpg", caption: "Chef Todd English preparing signature stakes" }
-        ],
-        link: "https://lulaslakeworth.com"
-      },
-      market: {
-        category: "Gourmet Concessions · 06",
-        title: "Todd English Market & Pub",
-        location: "Zayed Int'l Airport · Abu Dhabi",
-        stats: [
-          { value: "400 SEATS", label: "Capacity Limit" },
-          { value: "TERMINAL A", label: "Location" },
-          { value: "2024", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Bringing high-end chef-driven cuisine to international travelers, the Todd English Market & Pub at Zayed International Airport in Abu Dhabi is a massive multi-concept layout. <br><br>One side features an open, European-inspired marketplace with separate artisanal counters for fresh pasta, wood-fired flatbreads, and gourmet grab-and-go pastries. The other side is a warm, elegant English pub offering premium craft beers and pub sliders, redefining airport dining in the Middle East.`,
-        highlights: [
-          "High-volume, gourmet airport concession at Zayed International",
-          "European-inspired specialty food hall counters",
-          "Elegantly designed classic English pub wing serving craft draft beers",
-          " Turnkey high-yield model licensed globally for major transit hubs"
-        ],
-        gallery: [
-          { url: "airport-pub.png?v=3", caption: "The classic English Pub dining wing at Abu Dhabi Airport" }
-        ],
-        link: "https://ehgusa.com"
-      },
-      mxdc: {
-        category: "Fine Dining D.C. · 07",
-        title: "MXDC Cocina Mexicana",
-        location: "600 14th St NW · Washington, DC",
-        stats: [
-          { value: "200 SEATS", label: "Capacity Limit" },
-          { value: "2-LEVELS", label: "Dining Space" },
-          { value: "2013", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Located steps from the White House in Washington, DC, MXDC Cocina Mexicana is Chef English's tribute to modern Mexican cuisine. The dramatic two-level dining room is styled with dark wood, copper paneling, and custom iron chandeliers. <br><br>The culinary program highlights high-end ribeye tacos, lobster guacamoles mixed fresh at the table, and an expansive curated collection of 100+ premium tequilas and mezcals, serving Washington's political and business elite.`,
-        highlights: [
-          "Steps from the White House in the heart of Washington, DC",
-          "Dramatic two-story architectural design with iron highlights",
-          "Premium table-side lobster guacamole preparation",
-          "Extensive custom collection of over 100+ tequilas and artisanal mezcals"
-        ],
-        gallery: [
-          { url: "mxdc.png?v=3", caption: "Modern two-level dining room layout of MXDC in Washington, DC" }
-        ],
-        link: "https://mxdcrestaurant.com"
-      },
-      pound: {
-        category: "Bistro Franchising · 08",
-        title: "Pound x Flatterie",
-        location: "Metro Manila · Philippines",
-        stats: [
-          { value: "12 STORES", label: "Store Count" },
-          { value: "SM MALLS", label: "Anchor Sites" },
-          { value: "2016", label: "Year Opened" },
-          { value: "ACTIVE", label: "Current Status" }
-        ],
-        description: `Pound x Flatterie is Todd English's successful fast-casual boutique burger and flatbread concept in the Philippines. Operating across 12 premium shopping mall locations, Pound features a retro-industrial design with marble countertops and brass accents. <br><br>The menu focuses on elevated burgers (like the signature Truffle Burger and Foie Gras Burger sliders) alongside fresh woodfired flatbreads, proving that gourmet flavors can be delivered in a high-volume, accessible format.`,
-        highlights: [
-          "Successful international franchise expansion across 12 Manila stores",
-          "Signature gourmet Truffle Burgers and Foie Gras sliders",
-          "Retro-chic dining spaces featuring black marble and brass bars",
-          "High-margin boutique fast-casual operation model"
-        ],
-        gallery: [
-          { url: "pound.png?v=3", caption: "Retro-industrial fast-casual burger boutique inside SM Mall" }
-        ],
-        link: "https://www.facebook.com/PoundxFlatterieManila/"
-      },
-      proper: {
-        category: "Residential Dining · 09",
-        title: "Proper English",
-        location: "Bentley Residences · Sunny Isles Beach, FL",
-        stats: [
-          { value: "EXCLUSIVE", label: "Resident Access" },
-          { value: "BENTLEY TOWER", label: "Location" },
-          { value: "2027", label: "Opening Date" },
-          { value: "DEVELOPMENT", label: "Current Status" }
-        ],
-        description: `Proper English is Chef English's upcoming ultra-luxury private dining concept, situated exclusively inside the Bentley Residences in Sunny Isles Beach, Miami. The resident-only private restaurant and lounge is designed to serve as the social heart of the building, offering beachside dining, in-residence catering, and an private club program. <br><br>The menu will showcase a refined selection of modern coastal cuisine, dry-aged steaks, and private reserves, offering Bentley residents a premium culinary lifestyle amenity.`,
-        highlights: [
-          "Exclusive, resident-only private culinary program inside Bentley Residences",
-          " Turnkey luxury residential brand amenity",
-          "Private beachside lounge and custom in-residence catering",
-          "Scheduled opening in 2027 in partnership with Dezer Development"
-        ],
-        gallery: [
-          { url: "proper-english.png?v=3", caption: "Bentley Residences Miami beachfront tower rendering" }
-        ],
-        link: "https://ehgusa.com"
-      }
-    };
-    
-    let currentModalProject = null;
-    let currentGalleryIndex = 0;
-    
-    window.openProjectModal = function(projectId) {
-      const data = projectData[projectId];
-      if (!data) return;
-      
-      currentModalProject = data;
-      currentGalleryIndex = 0;
-      
-      // Inject details
-      document.getElementById("modalMetaLabel").textContent = data.category;
-      document.getElementById("modalTitle").textContent = data.title;
-      document.getElementById("modalLocation").textContent = data.location;
-      document.getElementById("modalDescription").innerHTML = data.description;
-      document.getElementById("modalCtaBtn").href = data.link;
-      
-      // Inject stats
-      const statsGrid = document.getElementById("modalStatsGrid");
-      statsGrid.innerHTML = "";
-      data.stats.forEach(stat => {
-        statsGrid.innerHTML += `
-          <div class="modal-stat-box">
-            <div class="modal-stat-val">${stat.value}</div>
-            <div class="modal-stat-lbl">${stat.label}</div>
-          </div>
-        `;
-      });
-      
-      // Inject highlights
-      const highlightsList = document.getElementById("modalHighlightsList");
-      highlightsList.innerHTML = "";
-      data.highlights.forEach(h => {
-        highlightsList.innerHTML += `<li>${h}</li>`;
-      });
-      
-      // Inject gallery slides
-      const track = document.getElementById("modalGalleryTrack");
-      track.innerHTML = "";
-      data.gallery.forEach(slide => {
-        track.innerHTML += `
-          <div class="modal-gallery-slide">
-            <img src="${slide.url}" alt="${slide.caption}">
-            <div class="modal-gallery-caption">${slide.caption}</div>
-          </div>
-        `;
-      });
-      
-      // Reset gallery track width and position
-      track.style.width = `${data.gallery.length * 100}%`;
-      track.style.transform = `translateX(0)`;
-      
-      // Hide/Show navigation arrows depending on slide count
-      const prevBtn = document.querySelector(".gallery-nav-btn.prev");
-      const nextBtn = document.querySelector(".gallery-nav-btn.next");
-      if (data.gallery.length <= 1) {
-        prevBtn.style.display = "none";
-        nextBtn.style.display = "none";
-      } else {
-        prevBtn.style.display = "flex";
-        nextBtn.style.display = "flex";
-      }
-      
-      // Show modal
-      const modal = document.getElementById("projectModal");
-      modal.classList.add("active");
-      modal.setAttribute("aria-hidden", "false");
-      document.body.style.overflow = "hidden"; // disable background scroll
-    };
-    
-    window.closeProjectModal = function() {
-      const modal = document.getElementById("projectModal");
-      modal.classList.remove("active");
-      modal.setAttribute("aria-hidden", "true");
-      document.body.style.overflow = ""; // enable background scroll
-      currentModalProject = null;
-    };
-    
-    window.navigateGallery = function(direction) {
-      if (!currentModalProject) return;
-      
-      const totalSlides = currentModalProject.gallery.length;
-      currentGalleryIndex = (currentGalleryIndex + direction + totalSlides) % totalSlides;
-      
-      const track = document.getElementById("modalGalleryTrack");
-      const offset = currentGalleryIndex * (100 / totalSlides);
-      track.style.transform = `translateX(-${offset}%)`;
-    };
-    
-    // Close modal on ESC key
-    document.addEventListener("keydown", (e) => {
-      if (e.key === "Escape") {
-        closeProjectModal();
-      }
-    });
-
-    // 2. Intersection Observer for Fade-in/Reveal Animations on Scroll
-    const revealElements = document.querySelectorAll(".reveal");
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach((entry) => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("visible");
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {
-      threshold: 0.1,
-      rootMargin: "0px 0px -50px 0px"
-    });
-    
-    revealElements.forEach((el) => {
-      observer.observe(el);
-    });
-  });
-</script>
-
+</main>
 </body>
 </html>
