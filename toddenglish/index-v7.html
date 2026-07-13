@@ -22,7 +22,7 @@
 .spot-strip .prov,.feat-strip .prov{left:8px;right:auto}
 
 /* v7 — cinematic scroll hero (Artologist portal technique, screen-only) */
-.v7hero{display:none;position:relative;height:340vh;background:#0a0806;--p:0;--bgs:1;--bgo:1;--fgs:1;--fgo:1;--to:1;--ty:0px;--s2o:0;--s2s:.94;--s3o:0;--s3y:80px}
+.v7hero{display:none;position:relative;height:420vh;background:#0a0806;--p:0;--bgs:1;--bgo:1;--fgs:1;--fgo:1;--to:1;--ty:0px;--s2o:0;--s2s:.94;--s3o:0;--s3y:80px}
 html.v7hero-on .v7hero{display:block}
 @media print{.v7hero{display:none!important}}
 @media (max-width:880px){.v7hero{display:none!important}}
@@ -40,9 +40,10 @@ html.v7hero-on .v7hero{display:block}
 .v7p-bgwrap{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:var(--bgo)}
 .v7p-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--bgs));transform-origin:50% 50%;filter:brightness(.78);will-change:transform}
 .v7p-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(10,8,6,.45) 70%,rgba(10,8,6,.85) 100%)}
-.v7p-fgwrap{position:absolute;inset:0;z-index:2;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
+.v7p-fgwrap{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
+.v7prov{position:absolute;right:18px;bottom:16px;z-index:3;font:600 .56rem/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(169,169,169,.55);opacity:var(--fgo);pointer-events:none}
 .v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 22% 30% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 22% 30% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
-.v7p-title{position:absolute;inset:0;z-index:3;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
+.v7p-title{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;pointer-events:none;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
 /* scene 2 — sanctum */
 .v7s2{opacity:var(--s2o);transform:scale(var(--s2s));z-index:4;background:#0a0806;flex-direction:column;text-align:center}
 .v7glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
@@ -107,14 +108,15 @@ html.v7hero-on .v7hero{display:block}
       <img class="v7p-bg" src="gallery/venues/tuscany-waterfall.jpg" alt="">
       <div class="v7p-veil"></div>
     </div>
-    <div class="v7p-fgwrap">
-      <img class="v7p-fg" src="gallery/venues/bluezoo-room.jpg" alt="">
-    </div>
     <div class="v7p-title">
       <span class="v7eyebrow"><i></i>Est. 1989 · Boston to the World<i></i></span>
       <h2 class="v7line">Step inside the world of <em>Todd English.</em></h2>
       <span class="v7hint">Scroll to enter <i>&darr;</i></span>
     </div>
+    <div class="v7p-fgwrap">
+      <img class="v7p-fg" src="gallery/synth/portal-arch.jpg" alt="">
+    </div>
+    <span class="v7prov">Archway — AI concept render</span>
 
     <div class="v7scene v7s2">
       <div class="v7glow v7glow-1"></div><div class="v7glow v7glow-2"></div><div class="v7glow v7glow-3"></div>
@@ -1174,16 +1176,20 @@ html.v7hero-on .v7hero{display:block}
     var p = total > 0 ? clamp(-rect.top, 0, total) / total : 0;
     /* portal push-through: fg scales 1→5.5, its masked center hole grows,
        revealing the bg gallery behind, which then fades to black */
-    var fgs = lerp(1, 5.5, ramp(p, 0, 0.30));
-    var fgo = 1 - ramp(p, 0.24, 0.31);
-    var bgs = lerp(1, 1.3, ramp(p, 0, 0.34));
-    var bgo = 1 - ramp(p, 0.26, 0.35);
-    var to  = 1 - ramp(p, 0.05, 0.16);
-    var ty  = lerp(0, -80, ramp(p, 0.05, 0.18));
-    var s2o = ramp(p, 0.32, 0.44) * (1 - ramp(p, 0.62, 0.72));
-    var s2s = lerp(0.94, 1, ramp(p, 0.32, 0.46));
-    var s3o = ramp(p, 0.68, 0.80);
-    var s3y = lerp(80, 0, ramp(p, 0.68, 0.86));
+    /* portal phase = first 60% of the scroll, mirroring the artologist GSAP timeline:
+       fg arch scale 1→5.5 + linear fade, bg scale 1→1.3, title power2.in fade/drift,
+       bg-wrap fades at 70% of the portal phase */
+    var pp  = ramp(p, 0, 0.60);
+    var fgs = lerp(1, 5.5, pp);
+    var fgo = 1 - pp;
+    var bgs = lerp(1, 1.3, pp);
+    var bgo = 1 - ramp(p, 0.42, 0.60);
+    var to  = 1 - pp*pp;
+    var ty  = -80 * pp*pp;
+    var s2o = ramp(p, 0.58, 0.72) * (1 - ramp(p, 0.84, 0.92));
+    var s2s = lerp(0.94, 1, ramp(p, 0.58, 0.74));
+    var s3o = ramp(p, 0.82, 0.94);
+    var s3y = lerp(80, 0, ramp(p, 0.82, 0.94));
     var st = hero.style;
     st.setProperty('--p',   p.toFixed(4));
     st.setProperty('--fgs', fgs.toFixed(3));
@@ -1196,7 +1202,7 @@ html.v7hero-on .v7hero{display:block}
     st.setProperty('--s2s', s2s.toFixed(3));
     st.setProperty('--s3o', s3o.toFixed(3));
     st.setProperty('--s3y', s3y.toFixed(1) + 'px');
-    if (!titleIn && p > 0.40) { titleIn = true; title.classList.add('is-in'); }
+    if (!titleIn && p > 0.60) { titleIn = true; title.classList.add('is-in'); }
     raf = null;
   };
   var onScroll = function(){ if (!raf) raf = requestAnimationFrame(update); };
