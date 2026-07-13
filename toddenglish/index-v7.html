@@ -13,6 +13,14 @@
 <link rel="stylesheet" href="press.css?v=7">
 <link rel="stylesheet" href="pdf.css" media="print">
 <script src="press.js?v=1" defer></script>
+<style>
+/* v7 — image provenance labels */
+.spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
+.prov{position:absolute;top:8px;right:8px;z-index:3;font:600 8px/1 Inter,sans-serif;text-transform:uppercase;letter-spacing:.14em;padding:4px 8px;border-radius:3px;background:rgba(10,8,6,.72);color:#c9b98f;border:1px solid rgba(194,154,85,.35);pointer-events:none;white-space:nowrap}
+.prov--ai{color:#a9a9a9;border-color:rgba(169,169,169,.35)}
+.spot-hero .prov{right:64px}
+.spot-strip .prov,.feat-strip .prov{left:8px;right:auto}
+</style>
 </head>
 <body>
 <main class="kit-wrap" id="top">
@@ -328,7 +336,7 @@
     <p class="spot-no">No. 01 — Walt Disney World Dolphin Resort · Orlando, Florida</p>
     <h2 class="spot-title" id="spot-bz-heading">bluezoo</h2>
 
-    <figure class="spot-hero"><img src="bluezoo.png" alt="The bluezoo dining room with blue glass sculpture and raw bar."></figure>
+    <figure class="spot-hero"><img src="gallery/venues/bluezoo-lounge.jpg" alt="The bluezoo bar and lounge with copper pendants and the illuminated fish-school glass wall."><span class="prov">Venue Photography</span></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -347,7 +355,7 @@
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="bluezoo-snapper.png" alt="Whole roasted snapper at bluezoo."><figcaption>The whole roasted snapper — on the menu since 2003.</figcaption></figure>
+    <figure class="spot-strip"><img src="gallery/venues/bluezoo-room.jpg" alt="The bluezoo dining room with bubble chandeliers."><span class="prov">Venue Photography</span><figcaption>The dining room — bubble chandeliers over a coastal-modern floor, unchanged in spirit since 2003.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 12 · SPOTLIGHT — THE BEAST ============ -->
@@ -357,7 +365,7 @@
     <p class="spot-no">No. 02 — AREA15 · Las Vegas, Nevada</p>
     <h2 class="spot-title" id="spot-beast-heading">The Beast</h2>
 
-    <figure class="spot-hero"><img src="thebeast.png" alt="The Beast dining room at AREA15 — brick, copper pipework and filament bulbs."></figure>
+    <figure class="spot-hero"><img src="gallery/venues/beast-dining.webp" alt="The Beast dining room at AREA15."><span class="prov">Venue Photography</span></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -376,7 +384,7 @@
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="gallery/venues/beast-skull.webp" alt="The horned skull that crowns The Beast's bar."><figcaption>The crown of horns above the bar — the room's namesake.</figcaption></figure>
+    <figure class="spot-strip"><img src="gallery/venues/beast-skull.webp" alt="The horned skull that crowns The Beast's bar."><span class="prov">Venue Photography</span><figcaption>The crown of horns above the bar — the room's namesake.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 13 · SPOTLIGHT — TUSCANY ============ -->
@@ -386,7 +394,7 @@
     <p class="spot-no">No. 03 — Mohegan Sun · Uncasville, Connecticut</p>
     <h2 class="spot-title" id="spot-tus-heading">Tuscany</h2>
 
-    <figure class="spot-hero"><img src="gallery/venues/tuscany-bar.jpg" alt="The bar at Tuscany, Mohegan Sun."></figure>
+    <figure class="spot-hero"><img src="gallery/venues/tuscany-bar.jpg" alt="The bar at Tuscany, Mohegan Sun."><span class="prov">Venue Photography</span></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -405,7 +413,7 @@
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="tuscany-pizza.jpg" alt="Wood-fired pizza at Tuscany."><figcaption>From the wood oven — the same fire that built Olives.</figcaption></figure>
+    <figure class="spot-strip"><img src="gallery/venues/tuscany-pasta.jpg" alt="Fresh pasta at Tuscany, Mohegan Sun."><span class="prov">Venue Photography</span><figcaption>From the pasta station — the same hand that built Olives.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 14 · SPOTLIGHT — MXDC ============ -->
@@ -415,7 +423,7 @@
     <p class="spot-no">No. 04 — Logan Circle · Washington, D.C.</p>
     <h2 class="spot-title" id="spot-mxdc-heading">MXDC Cocina Mexicana</h2>
 
-    <figure class="spot-hero"><img src="mxdc.png" alt="MXDC Cocina Mexicana dining room with hammered-copper pendants."></figure>
+    <figure class="spot-hero"><img src="gallery/venues/mxdc-interior.jpg" alt="MXDC Cocina Mexicana dining room."><span class="prov">Venue Photography</span></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -434,7 +442,7 @@
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="gallery/venues/mxdc-cocktails.jpg" alt="Agave cocktails at MXDC."><figcaption>The agave list — mezcal, tequila and everything between.</figcaption></figure>
+    <figure class="spot-strip"><img src="gallery/venues/mxdc-cocktails.jpg" alt="Agave cocktails at MXDC."><span class="prov">Venue Photography</span><figcaption>The agave list — mezcal, tequila and everything between.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 15 · SPOTLIGHT — JADE ============ -->
@@ -444,7 +452,7 @@
     <p class="spot-no">No. 05 — Berawa, Canggu · Bali, Indonesia</p>
     <h2 class="spot-title" id="spot-jade-heading">Jade</h2>
 
-    <figure class="spot-hero"><img src="gallery/venues/jade-exterior.jpg" alt="Jade's exterior at dusk, Canggu, Bali."></figure>
+    <figure class="spot-hero"><img src="gallery/venues/jade-exterior.jpg" alt="Jade's exterior at dusk, Canggu, Bali."><span class="prov">Venue Photography</span></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -463,7 +471,7 @@
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="gallery/venues/jade-orchid.jpg" alt="Plated dish with orchid at Jade, Bali."><figcaption>Bali on the plate — Mediterranean technique, island produce.</figcaption></figure>
+    <figure class="spot-strip"><img src="gallery/venues/jade-orchid.jpg" alt="Plated dish with orchid at Jade, Bali."><span class="prov">Venue Photography</span><figcaption>Bali on the plate — Mediterranean technique, island produce.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 16 · FROM THE KITCHENS (gallery I) ============ -->
@@ -475,32 +483,39 @@
 
     <figure class="gal-hero">
       <img src="gallery/venues/bluezoo-dining.jpg" alt="The bluezoo dining room under its ceiling of glass bubbles.">
+      <span class="prov">Venue Photography</span>
       <figcaption class="gal-cap"><p>&ldquo;The plate is the argument. Everything else is decoration.&rdquo;</p></figcaption>
     </figure>
 
     <div class="gal-grid">
       <figure class="gal-item">
         <img src="gallery/venues/bluezoo-scallop.jpg" alt="Seared scallop plate at bluezoo.">
+        <span class="prov">Venue Photography</span>
         <figcaption>bluezoo · Orlando</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/jade-octopus.jpg" alt="Charred octopus at Jade, Bali.">
+        <span class="prov">Venue Photography</span>
         <figcaption>Jade · Bali</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/mxdc-paella.jpg" alt="Wood-fired paella at MXDC.">
+        <span class="prov">Venue Photography</span>
         <figcaption>MXDC · Washington D.C.</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/beast-burgers.webp" alt="Towering burgers at The Beast.">
+        <span class="prov">Venue Photography</span>
         <figcaption>The Beast · Las Vegas</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="gallery/venues/mxdc-cocktails.jpg" alt="Agave cocktails at MXDC.">
+        <img src="gallery/venues/mxdc-table.jpg" alt="Tacos and cocktails on the table at MXDC.">
+        <span class="prov">Venue Photography</span>
         <figcaption>MXDC · Agave Program</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/tuscany-dining.jpg" alt="Tuscany dining room at Mohegan Sun.">
+        <span class="prov">Venue Photography</span>
         <figcaption>Tuscany · Mohegan Sun</figcaption>
       </figure>
     </div>
@@ -514,34 +529,41 @@
     <p class="section-sub">The spaces between the plates — bars, murals, storefronts and the people who run them.</p>
 
     <figure class="gal-hero">
-      <img src="jade-story.jpg" alt="Evening service at Jade, Canggu.">
+      <img src="gallery/venues/jade-dining.jpg" alt="The dining room at Jade, Canggu.">
+      <span class="prov">Venue Photography</span>
       <figcaption class="gal-cap"><p>Rooms built to be loud — every one of them designed around the table, not the door.</p></figcaption>
     </figure>
 
     <div class="gal-grid">
       <figure class="gal-item">
         <img src="gallery/venues/market-2.jpg" alt="Todd English Market &amp; Pub, Abu Dhabi.">
+        <span class="prov">Venue Photography</span>
         <figcaption>Market &amp; Pub · Abu Dhabi</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/pound-2.jpg" alt="Pound by Todd English, Manila.">
+        <span class="prov">Venue Photography</span>
         <figcaption>Pound · Manila</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="gallery/venues/bluezoo-bar-detail.jpg" alt="Bar detail at bluezoo.">
+        <span class="prov">Venue Photography</span>
         <figcaption>bluezoo · The Bar</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="gallery/jade_gallery_1.png" alt="The bar at Jade, Bali.">
-        <figcaption>Jade · The Lounge</figcaption>
+        <img src="gallery/venues/tuscany-waterfall.jpg" alt="The indoor waterfall beside Tuscany, Mohegan Sun.">
+        <span class="prov">Venue Photography</span>
+        <figcaption>Tuscany · The Waterfall</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="gallery/venues/mxdc-interior.jpg" alt="Dining room at MXDC, Washington D.C.">
-        <figcaption>MXDC · The Room</figcaption>
+        <img src="gallery/venues/mxdc-spread.jpg" alt="A spread of dishes at MXDC, Washington D.C.">
+        <span class="prov">Venue Photography</span>
+        <figcaption>MXDC · The Table</figcaption>
       </figure>
       <figure class="gal-item">
-        <img src="gallery/venues/beast-dining.webp" alt="Dining room at The Beast, AREA15.">
-        <figcaption>The Beast · The Room</figcaption>
+        <img src="gallery/venues/beast-pizzas.webp" alt="Pizza spread at The Beast, AREA15.">
+        <span class="prov">Venue Photography</span>
+        <figcaption>The Beast · From the Kitchen</figcaption>
       </figure>
     </div>
   </section>
@@ -568,6 +590,7 @@
     <div class="legacy-grid">
       <article class="legacy-card">
         <img src="gallery/venues/legacy-olives.png" alt="Olives, the original restaurant in Charlestown, 1989.">
+        <span class="prov prov--ai">AI Concept</span>
         <div class="lc-body">
           <span class="stamp">Archive · 1989</span>
           <h4>Olives, Charlestown</h4>
@@ -576,6 +599,7 @@
       </article>
       <article class="legacy-card">
         <img src="gallery/venues/legacy-pub.png" alt="Todd English P.U.B. at CityCenter Las Vegas.">
+        <span class="prov prov--ai">AI Concept</span>
         <div class="lc-body">
           <span class="stamp">Archive · 2011</span>
           <h4>Todd English P.U.B.</h4>
@@ -584,6 +608,7 @@
       </article>
       <article class="legacy-card">
         <img src="gallery/venues/legacy-foodhall.png" alt="Todd English Food Hall, SM Aura, Manila.">
+        <span class="prov prov--ai">AI Concept</span>
         <div class="lc-body">
           <span class="stamp">Archive · 2014</span>
           <h4>Food Hall, Manila</h4>
@@ -592,6 +617,7 @@
       </article>
       <article class="legacy-card">
         <img src="gallery/venues/legacy-lulas.webp" alt="Lula's, Lake Worth Beach, Florida.">
+        <span class="prov">Venue Photography</span>
         <div class="lc-body">
           <span class="stamp">Archive · 2024</span>
           <h4>Lula's, Lake Worth Beach</h4>
@@ -611,6 +637,7 @@
 
     <figure class="story-photo">
       <img src="gallery/venues/legacy-olives.png" alt="Olives, Charlestown — the 1989 original.">
+      <span class="prov prov--ai">AI Concept</span>
       <figcaption class="gal-cap"><p>Charlestown, Massachusetts, 1989 — fifty seats, one wood oven, a line out the door.</p></figcaption>
     </figure>
 
@@ -673,7 +700,8 @@
     <p class="section-sub">Two decades of national television — from Kitchen Stadium to public broadcasting.</p>
 
     <figure class="tv-hero">
-      <img src="todd-emmy.jpg" alt="Todd English with an Emmy statuette on the red carpet.">
+      <img src="todd-emmy-hd.png" alt="Todd English with an Emmy statuette on the red carpet.">
+      <span class="prov">Archival Photo · Digitally Restored</span>
       <figcaption class="gal-cap"><p>Todd English's Food Trip earned PBS national carriage — and Todd a red-carpet Emmy night.</p></figcaption>
     </figure>
 
@@ -729,7 +757,7 @@
     <h2 class="section-title" id="next-heading"><span class="script-kick">the horizon</span>Hotels &amp; What's Next</h2>
 
     <div class="hotel-row" id="the-english-hotel">
-      <img src="gallery/venues/english-pool.png" alt="Pool at The English Hotel, Las Vegas Arts District.">
+      <figure style="margin:0;position:relative"><img src="gallery/venues/english-pool.png" alt="Pool at The English Hotel, Las Vegas Arts District."><span class="prov">Venue Photography</span></figure>
       <div>
         <p class="kicker">Open Now · Las Vegas Arts District</p>
         <h3>The English Hotel</h3>
@@ -741,23 +769,25 @@
     <div class="next-list">
       <div class="next-row">
         <span class="nn">01</span>
-        <img src="gallery/venues/bentley-tower.jpg" alt="Bentley Residences tower, Sunny Isles Beach, Miami.">
+        <figure style="margin:0;position:relative"><img src="gallery/venues/bentley-tower.jpg" alt="Bentley Residences tower, Sunny Isles Beach, Miami."><span class="prov">Rendering</span></figure>
         <div>
           <h4>Proper English — Bentley Residences, Miami</h4>
           <p>Todd's first private, residents-only restaurant — the lobby-level dining room of the world's first Bentley-branded tower in Sunny Isles Beach. The tower went vertical in June 2026.</p>
           <span class="chip">Opening 2028</span>
         </div>
       </div>
-      <div class="next-row no-photo">
+      <div class="next-row">
         <span class="nn">02</span>
+        <figure style="margin:0;position:relative"><img src="gallery/venues/stamford-towncenter.jpg" alt="Entrance of Stamford Town Center, Connecticut."><span class="prov">Site Photo</span></figure>
         <div>
           <h4>Stamford Town Center Food Hall</h4>
           <p>An 80,000-square-foot immersive food hall in development for Stamford, Connecticut — global art exhibition, multi-cuisine stations, and ghost-kitchen brands Figs Pizza and Pound Burger.</p>
           <span class="chip">In Development</span>
         </div>
       </div>
-      <div class="next-row no-photo">
+      <div class="next-row">
         <span class="nn">03</span>
+        <figure style="margin:0;position:relative"><img src="gallery/venues/parkrow-facade.jpg" alt="The landmark 15 Park Row building facing City Hall Park, New York." style="object-position:18% 22%"><span class="prov">Site Photo</span></figure>
         <div>
           <h4>Olives Black — 15 Park Row, NYC</h4>
           <p>A three-floor, 18,000-square-foot evolution of the flagship — restaurant, music venue and rooftop cocktail lounge in a landmark beaux-arts building facing City Hall Park.</p>
@@ -778,6 +808,7 @@
 
     <figure class="feat-hero">
       <img src="gallery/venues/english-aerial.jpg" alt="Aerial view of The English Hotel in the Las Vegas Arts District.">
+      <span class="prov">Venue Photography</span>
       <figcaption class="gal-cap"><p>Seventy-four rooms in the Arts District — a gallery you can sleep in.</p></figcaption>
     </figure>
 
@@ -800,6 +831,7 @@
 
     <figure class="feat-strip">
       <img src="gallery/venues/english-mural.jpg" alt="Mural on the wall of The English Hotel.">
+      <span class="prov">Venue Photography</span>
       <figcaption>The Arts District comes inside — commissioned murals throughout the property.</figcaption>
     </figure>
   </section>
@@ -813,6 +845,7 @@
 
     <figure class="feat-hero">
       <img src="gallery/venues/bentley-lobby.jpg" alt="Rendered lobby of Bentley Residences, Miami.">
+      <span class="prov prov--ai">Development Rendering</span>
       <figcaption class="gal-cap"><p>The lobby level of the world's first Bentley-branded residential tower — and its only restaurant.</p></figcaption>
     </figure>
 
@@ -835,6 +868,7 @@
 
     <figure class="feat-strip">
       <img src="gallery/venues/bentley-wheel.jpg" alt="Detail from Bentley Residences, Miami.">
+      <span class="prov prov--ai">Development Rendering</span>
       <figcaption>The marque's standard, applied to hospitality — every detail to Bentley specification.</figcaption>
     </figure>
   </section>
