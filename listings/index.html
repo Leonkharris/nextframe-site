@@ -708,12 +708,20 @@ async function initAuth() {
 /* ---------- sessions ---------- */
 async function ensureSession() {
   if (sessionId) return sessionId;
-  const saved = sessionStorage.getItem("nf_session");
+  // localStorage (not sessionStorage): on phones the OS kills the backgrounded
+  // tab/PWA while the camera, file picker, or PDF viewer is in front, and
+  // sessionStorage dies with it — the reloaded page then lost the listing.
+  // The sessionStorage read is a one-time migration for tabs open at deploy.
+  const saved = localStorage.getItem("nf_session") || sessionStorage.getItem("nf_session");
   if (saved) {
     try {
-      if ((await fetch(API_BASE + "/api/listing/" + saved)).ok) { sessionId = saved; return sessionId; }
+      if ((await fetch(API_BASE + "/api/listing/" + saved)).ok) {
+        sessionId = saved;
+        localStorage.setItem("nf_session", saved);
+        return sessionId;
+      }
     } catch {}
-    sessionStorage.removeItem("nf_session");
+    localStorage.removeItem("nf_session"); sessionStorage.removeItem("nf_session");
   }
   try {
     await freshSession();
@@ -723,7 +731,7 @@ async function ensureSession() {
   }
 }
 async function freshSession() {
-  const code = sessionStorage.getItem("nf_resume");
+  const code = localStorage.getItem("nf_resume") || sessionStorage.getItem("nf_resume");
   if (code) {
     try {
       const r = await fetch(API_BASE + "/api/resume", {
@@ -732,10 +740,10 @@ async function freshSession() {
       });
       if (r.ok) {
         sessionId = (await r.json()).session_id;
-        sessionStorage.setItem("nf_session", sessionId);
+        localStorage.setItem("nf_session", sessionId);
         return true;
       }
-      sessionStorage.removeItem("nf_resume");
+      localStorage.removeItem("nf_resume"); sessionStorage.removeItem("nf_resume");
     } catch {}
   }
   const a = getAccount();
@@ -744,7 +752,7 @@ async function freshSession() {
     body: JSON.stringify(a ? { email: a.email, account_token: a.token } : {}),
   });
   sessionId = (await res.json()).session_id;
-  sessionStorage.setItem("nf_session", sessionId);
+  localStorage.setItem("nf_session", sessionId);
   return false;
 }
 
@@ -775,7 +783,7 @@ async function send(text) {
       busyTries++;
     }
     if (res.status === 404) {
-      sessionStorage.removeItem("nf_session"); sessionId = null;
+      localStorage.removeItem("nf_session"); sessionStorage.removeItem("nf_session"); sessionId = null;
       const restored = await freshSession();
       if (!restored && messagesEl.children.length > 2) {
         addNote("(The engine restarted — Sofia may have lost this chat's earlier context.)");
@@ -960,7 +968,7 @@ async function refreshListing(retried) {
   try {
     const res = await fetch(API_BASE + "/api/listing/" + sessionId);
     if (res.status === 404 && !retried) {
-      sessionStorage.removeItem("nf_session"); sessionId = null;
+      localStorage.removeItem("nf_session"); sessionStorage.removeItem("nf_session"); sessionId = null;
       await ensureSession();
       return refreshListing(true);
     }
@@ -968,7 +976,7 @@ async function refreshListing(retried) {
     const { listing, resume, photos } = await res.json();
     lastListing = listing;
     if (resume) {
-      sessionStorage.setItem("nf_resume", resume);
+      localStorage.setItem("nf_resume", resume);
       // Auto-file persisted listings (e.g. after CONFIRM) into the device list.
       const [rid, rtok] = resume.split(".");
       currentListingId = rid;
@@ -1363,8 +1371,8 @@ $("download-ads").onclick = () => {
   URL.revokeObjectURL(a.href);
 };
 $("new-listing").onclick = () => {
-  sessionStorage.removeItem("nf_session");
-  sessionStorage.removeItem("nf_resume");
+  localStorage.removeItem("nf_session"); sessionStorage.removeItem("nf_session");
+  localStorage.removeItem("nf_resume"); sessionStorage.removeItem("nf_resume");
   sessionStorage.removeItem("nf_selected_ad");
   location.reload();
 };
@@ -1403,7 +1411,7 @@ async function doSave(email) {
       const j = await r.json();
       const [id, token] = j.resume.split(".");
       addDeviceListing({ id, token, title: j.title, saved_at: j.saved_at, email: j.email || email || null });
-      sessionStorage.setItem("nf_resume", j.resume);
+      localStorage.setItem("nf_resume", j.resume);
       if (email) localStorage.setItem("nf_save_email", email);
       btn.textContent = "Saved ✓";
       addNote("💾 Saved “" + (j.title || "listing") + "”"
@@ -1926,8 +1934,8 @@ initApiBase().then(async () => {
       if (!r.ok) throw new Error();
       const j = await r.json();
       sessionId = j.session_id;
-      sessionStorage.setItem("nf_session", sessionId);
-      sessionStorage.setItem("nf_resume", code);
+      localStorage.setItem("nf_session", sessionId);
+      localStorage.setItem("nf_resume", code);
       openChat();
       const body = addBotMsg();
       body.innerHTML = "<p>Welcome back! I’ve reopened <b></b> — the checklist, pricing, and ad " +
