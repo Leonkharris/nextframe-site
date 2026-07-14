@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XSINO — Interactive Codex</title>
-<script src="data.js?v=1"></script>
+<script src="data.js?v=2"></script>
 <style>
 :root{
   /* Real XSINO brand (pulled from xsino.io 2026-07-08): navy #040627 + lavender #B8B4F4 + IBM Plex Mono */
@@ -388,14 +388,27 @@ function vCast(){
     const n = charsOf(p.key).length;
     return `<div class="chip pillf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.en)} <span style="opacity:.6">${esc(p.es)} ·${n}</span></div>`;
   }).join('');
-  const cards = D.characters.map(cardHTML).join('');
+  const live = D.characters.filter(c=>c.pillar!=='anime');
+  const anime = D.characters.filter(c=>c.pillar==='anime');
+  const grid = list => `<div class="roster">${list.map(cardHTML).join('')}</div>`;
   return `<h1 class="title">${biTitle('Elenco','The Cast')}</h1>
-    <div class="sub">Click any character for their full bilingual sheet. — Click en cualquier personaje para su ficha bilingüe completa.</div>
+    <div class="sub">Two distinct casts: real-world commercial characters and the anime universe. Click any for their full bilingual sheet. — Dos elencos: personajes comerciales de imagen real y el universo anime. Click para la ficha completa.</div>
     <div class="filters">
       <div class="chip pillf on" data-k="all">Todos · All</div>
       ${chips}
     </div>
-    <div class="roster" id="roster">${cards}</div>`;
+    <div id="roster">
+      <div class="castgroup" data-group="live">
+        ${sectionHead('Elenco Comercial · Imagen Real','Live-Action Commercial Cast')}
+        <div class="sub" style="margin:-6px 0 10px">Personajes fotorrealistas para los spots de marca en imagen real. — Photoreal, real-world characters for the live-action brand films. · ${live.length}</div>
+        ${grid(live)}
+      </div>
+      <div class="castgroup" data-group="anime">
+        ${sectionHead('Universo Anime','Anime Universe Cast')}
+        <div class="sub" style="margin:-6px 0 10px">Elenco de estilo anime cyberpunk para el pilar animado. — Cyberpunk anime-style cast for the animated pillar. · ${anime.length}</div>
+        ${grid(anime)}
+      </div>
+    </div>`;
 }
 function cardHTML(c){
   const p = pillarOf(c.pillar);
@@ -595,6 +608,10 @@ function wireFilters(){
         const ok = cur==='all' || card.dataset.pillar===cur;
         card.classList.toggle('dim', !ok);
         card.style.display = ok?'':'none';
+      });
+      document.querySelectorAll('#roster .castgroup').forEach(g=>{
+        const any = [...g.querySelectorAll('.ccard')].some(c=>c.style.display!=='none');
+        g.style.display = any?'':'none';
       });
     }
     pillFilters.forEach(ch=>ch.onclick=()=>{ cur=ch.dataset.k; pillFilters.forEach(x=>x.classList.remove('on')); ch.classList.add('on'); apply(); });
