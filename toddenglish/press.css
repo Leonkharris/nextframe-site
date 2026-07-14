@@ -1183,6 +1183,10 @@ img { display: block; }
   border-radius: 10px;
   display: block;
 }
+/* Tall portrait plate shot — pull the crop down to the dish, not the empty tile above it */
+.spot-strip img[src*="jade-orchid"] {
+  object-position: 50% 67%;
+}
 .spot-strip figcaption {
   font-family: var(--serif);
   font-style: italic;
