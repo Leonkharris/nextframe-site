@@ -178,12 +178,20 @@ def parse_story(sid):
                 if os.path.exists(video_full):
                     found_video = f"assets/videos/{sid}/shot{nn}{ext}"
                     break
+            found_video_es = None
+            for ext in [".mp4", ".webm"]:
+                video_es_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"shot{nn}_es{ext}")
+                if os.path.exists(video_es_full):
+                    found_video_es = f"assets/videos/{sid}/shot{nn}_es{ext}"
+                    break
             if found_frame:
                 cur_shot["frame"] = found_frame
             if found_sceneboard:
                 cur_shot["sceneboard"] = found_sceneboard
             if found_video:
                 cur_shot["video"] = found_video
+            if found_video_es:
+                cur_shot["video_es"] = found_video_es
             mode = "shot"
             continue
         sm = re.match(r"ES:\s*(.*)", line)
