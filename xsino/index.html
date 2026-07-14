@@ -102,6 +102,10 @@ h1.title .es{color:var(--gold-bright); margin-right:14px}
 .hub-hero .tag{color:var(--gold); font-family:var(--serif); font-size:18px; margin-top:18px; letter-spacing:.3px}
 .hub-hero .tagen{color:var(--muted); font-size:14px; margin-top:6px; font-style:italic}
 .hub-hero .market{color:var(--faint); font-size:12px; margin-top:14px; letter-spacing:1px; text-transform:uppercase}
+.hub-hero .hero-coin{width:172px; height:auto; display:block; margin:0 auto 4px;
+  filter:drop-shadow(0 6px 22px rgba(60,130,255,.45)); animation:coinFloat 5.5s ease-in-out infinite}
+@keyframes coinFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@media(prefers-reduced-motion:reduce){.hub-hero .hero-coin{animation:none}}
 .hub-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(230px,1fr)); gap:16px; margin-top:40px}
 .hub-card{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
   border-top:3px solid var(--accent,var(--gold)); border-radius:12px; padding:22px; cursor:pointer;
@@ -340,6 +344,7 @@ function vHub(){
     </div>`).join('');
   const brandSections = D.bible.brand.map(s=>`${sectionHead(s.es,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
   return `<div class="hub-hero">
+      <img class="hero-coin" src="assets/x_coin.png" alt="X · La Moneda del Destino" onerror="this.style.display='none'">
       <div class="brandmark">${esc(D.meta.brand)}</div>
       <div class="tag">${esc(D.meta.thesis_en)}</div>
       <div class="tagen">${esc(D.meta.thesis_es)}</div>
