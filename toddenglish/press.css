@@ -862,7 +862,19 @@ img { display: block; }
   background: #1d1710;
   color: #b3a68f;
   padding: 40px;
+  position: relative;
+  overflow: hidden;
 }
+/* faded photo layer behind each part divider */
+#part-1, #part-2, #part-3, #part-4 {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+#part-1 { background-image: radial-gradient(ellipse at 50% 48%, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.60) 52%, rgba(12,9,5,0.44) 100%), url("cooking-action.jpg"); }
+#part-2 { background-image: radial-gradient(ellipse at 50% 48%, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.60) 52%, rgba(12,9,5,0.44) 100%), url("deconstructed-pasta.png"); }
+#part-3 { background-image: radial-gradient(ellipse at 50% 48%, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.60) 52%, rgba(12,9,5,0.44) 100%), url("gallery/venues/legacy-olives-real.jpg"); }
+#part-4 { background-image: radial-gradient(ellipse at 50% 48%, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.60) 52%, rgba(12,9,5,0.44) 100%), url("gallery/venues/bentley-tower.jpg"); }
 .div-frame {
   height: 100%;
   border: 1px solid rgba(194, 154, 85, 0.55);
