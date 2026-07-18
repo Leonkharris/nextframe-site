@@ -1,7 +1,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>XSINO — Interactive Codex</title>
-<script src="data.js?v=2"></script>
+<script>document.write('<script src="data.js?t=' + Date.now() + '"><\/script>');</script>
 <style>
 :root{
   /* Real XSINO brand (pulled from xsino.io 2026-07-08): navy #040627 + lavender #B8B4F4 + IBM Plex Mono */
@@ -189,6 +189,27 @@ h1.title .es{color:var(--gold-bright); margin-right:14px}
 .detail-nav .nm{font-family:var(--serif); font-size:15px}
 .backbtn{display:inline-flex; align-items:center; gap:8px; color:var(--muted); cursor:pointer; font-size:13px; margin-bottom:20px; transition:.15s}
 .backbtn:hover{color:var(--gold)}
+.jump a.jf{color:var(--accent-bright); border-color:var(--line2); font-weight:600}
+
+/* ---------- character film beats (movement + scene) ---------- */
+.film-beats{margin-top:40px; border-top:1px solid var(--line2); padding-top:24px}
+.fb-head{display:flex; align-items:center; justify-content:space-between; gap:14px; flex-wrap:wrap}
+.fb-title{font-family:var(--serif); font-size:20px; color:var(--text)}
+.fb-title .fb-film{color:var(--accent-bright); font-family:var(--sans); font-size:14px; opacity:.85}
+.fb-open{background:var(--panel); border:1px solid var(--line2); color:var(--accent-bright); font-family:var(--sans);
+  font-size:12px; padding:8px 14px; border-radius:16px; cursor:pointer; transition:.15s; white-space:nowrap}
+.fb-open:hover{color:var(--text); border-color:var(--accent-bright)}
+.fb-desc{color:var(--muted); font-size:12.5px; margin:8px 0 18px; max-width:640px}
+.fb-shots{display:flex; flex-direction:column; gap:14px}
+.fb-shot{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.fb-n{font-family:var(--mono); font-size:11px; letter-spacing:1.5px; color:var(--accent-bright); margin-bottom:8px}
+.fb-scene{font-size:13px; line-height:1.5; color:var(--text)}
+.fb-act{font-size:13px; line-height:1.5; color:var(--muted); margin-top:6px}
+.fb-board{margin-top:10px; padding:10px 14px; border:1px dashed var(--line2); border-radius:8px; font-size:12.5px; line-height:1.55; color:var(--text)}
+.fb-lbl{display:inline-block; font-size:9px; letter-spacing:1.5px; text-transform:uppercase; color:var(--muted); margin-right:7px}
+.fb-lbl.acc{color:var(--accent-bright)}
+.fb-lbl.emb{color:var(--ember-bright)}
+.fb-alt{display:block; font-style:italic; opacity:.65; margin-top:2px}
 
 /* ---------- stories ---------- */
 .story-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px}
@@ -431,6 +452,29 @@ function roleOf(c){
   const sec = c.sections.find(s=>/Rol en la Historia|Role in the Story/.test(s.es+s.en));
   return sec && sec.pairs[0] ? sec.pairs[0] : null;
 }
+function filmBeatsHTML(c){
+  if(!c.film) return '';
+  const s = D.stories.find(x=>x.id===c.film);
+  if(!s) return '';
+  const shots = s.shots.map(sh=>`
+    <div class="fb-shot">
+      <div class="fb-n">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
+      <div class="fb-scene"><span class="fb-lbl">🎬 ${MODE==='es'?'Escena':'Scene'}</span>${esc(MODE==='es'?sh.slug_es:sh.slug_en)}${MODE==='both'?`<span class="fb-alt">${esc(sh.slug_es)}</span>`:''}</div>
+      <div class="fb-act">${esc(MODE==='es'?sh.action_es:sh.action_en)}${MODE==='both'?`<span class="fb-alt">${esc(sh.action_es)}</span>`:''}</div>
+      <div class="fb-board">
+        <div><span class="fb-lbl acc">🕺 ${MODE==='es'?'Movimiento':'Movement'}</span>${esc(MODE==='es'?(sh.move_es||sh.move_en):sh.move_en)}${MODE==='both'?`<span class="fb-alt">${esc(sh.move_es)}</span>`:''}</div>
+        <div style="margin-top:6px"><span class="fb-lbl emb">🎭 ${MODE==='es'?'Emoción':'Emotion'}</span>${esc(MODE==='es'?(sh.emo_es||sh.emo_en):sh.emo_en)}${MODE==='both'?`<span class="fb-alt">${esc(sh.emo_es)}</span>`:''}</div>
+      </div>
+    </div>`).join('');
+  return `<div id="filmbeats" class="film-beats">
+    <div class="fb-head">
+      <div class="fb-title">🎬 ${MODE==='es'?'Movimiento y Escena':'Movement & Scene'} <span class="fb-film">· ${esc(MODE==='es'?s.title_es:s.title_en)}</span></div>
+      <button class="fb-open" onclick="go('#story/${s.id}')">${MODE==='es'?'Ver guión completo →':'View full storyboard →'}</button>
+    </div>
+    <div class="fb-desc">${MODE==='es'?'Gestos de movimiento e instrucciones de escena, tiro por tiro, de la película de este personaje.':'Movement gestures and scene instructions, shot by shot, from this character’s film.'}</div>
+    <div class="fb-shots">${shots}</div>
+  </div>`;
+}
 function vChar(id){
   const c = byId(id); if(!c) return vCast();
   const p = pillarOf(c.pillar);
@@ -438,7 +482,8 @@ function vChar(id){
   const n = D.characters.length;
   const prev = D.characters[(idx+n-1)%n], next = D.characters[(idx+1)%n];
   const role = roleOf(c);
-  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='es'?s.es:s.en)}</a>`).join('');
+  const filmJump = c.film ? `<a class="jf" onclick="document.getElementById('filmbeats').scrollIntoView({behavior:'smooth',block:'start'})">🎬 ${MODE==='es'?'Movimiento y Escena':'Movement & Scene'}</a>` : '';
+  const jumps = filmJump + c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='es'?s.es:s.en)}</a>`).join('');
   const secs = c.sections.map((s,i)=>`<div id="sec${i}">${sectionsHTML([s])}</div>`).join('');
   return `<span class="backbtn" onclick="go('#cast')">← ${MODE==='es'?'Volver al elenco':'Back to cast'}</span>
     <div class="detail-head">
@@ -455,6 +500,7 @@ function vChar(id){
     </div>
     <div class="jump">${jumps}</div>
     ${secs}
+    ${filmBeatsHTML(c)}
     <div class="detail-nav">
       <button onclick="go('#char/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.name)}</span></button>
       <button class="next" onclick="go('#char/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.name)}</span></button>
@@ -489,26 +535,40 @@ function vStory(id){
   const s = D.stories.find(x=>x.id===id); if(!s) return vStories();
   const idx = D.stories.findIndex(x=>x.id===id);
   const prev = D.stories[idx-1], next = D.stories[idx+1];
+  const charBoardImg = s.char_board
+    ? `<div class="shot-charboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);flex:1 1 100%;max-width:100%"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎭 ${MODE==='es'?'Ficha de Personaje · coherencia':'Character Board · coherence'}</div><img src="${s.char_board}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+    : '';
+  const shotSheetImg = s.story_board
+    ? `<div class="shot-sheet" style="margin:24px 0 8px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel,#0d0b1e)"><div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)"><span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-bright)">🎞️ ${MODE==='es'?'Guion Gráfico · la película en una hoja':'Shot Sheet · the whole film in one sheet'}</span><span style="font-size:10.5px;color:var(--text-muted)">${MODE==='es'?'plantilla OpenArt “Smart Shot” — mapa de set y cámara + guion gráfico completo':'OpenArt “Smart Shot” template — set &amp; camera map + full storyboard'}</span></div><img src="${s.story_board}" style="width:100%;height:auto;display:block" /></div>`
+    : '';
   const shots = s.shots.map(sh=>{
     const frameImg = sh.frame
       ? `<div class="shot-frame" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🖼️ Keyframe</div><img src="${sh.frame}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
       : '';
-    const sceneboardImg = sh.sceneboard
-      ? `<div class="shot-sceneboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">📋 Scene Board Staging</div><img src="${sh.sceneboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+    const moveBoardImg = sh.moveboard
+      ? `<div class="shot-moveboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:360px;flex:1 1 260px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎬 Movement Board · storyboard</div><img src="${sh.moveboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
       : '';
+    // Both clips are listed per shot when both exist: EN clip (silent) + ES clip (Spanish narration baked in).
+    // In 'es' mode show only the Spanish clip; in 'en'/'both' show whatever exists (both if both exist).
     const vPanel = (src, label) =>
-      `<div class="shot-video" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">${label}</div><video src="${src}" controls playsinline style="width:100%;height:auto;display:block;border-radius:6px;background:#000"></video></div>`;
-    const enClip = sh.video ? vPanel(sh.video, '🎥 5s Clip · EN') : '';
-    const esClip = sh.video_es ? vPanel(sh.video_es, '🎥 Clip 5s · ES') : '';
-    const videoClip = enClip + esClip;
-    const visualBlock = (frameImg || sceneboardImg || videoClip)
-      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 20px;">${sceneboardImg}${frameImg}${videoClip}</div>`
+      `<div class="shot-video" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 240px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">${label}</div><video src="${src}" controls playsinline style="width:100%;height:auto;display:block;border-radius:6px;background:#000"></video></div>`;
+    const enPanel = (sh.video && MODE!=='es') ? vPanel(sh.video, '🎥 5s Video Clip · EN') : '';
+    const esPanel = sh.video_es ? vPanel(sh.video_es, '🎥 Clip 5s · Voz en Español') : '';
+    const videoClip = enPanel + esPanel;
+    // Keep the EN + ES clips together in their own row (not wrapped among the boards)
+    // so both language clips are always visible side-by-side as a pair.
+    const clipsBlock = videoClip
+      ? `<div class="shot-clips" style="display:flex;flex-wrap:wrap;gap:16px;margin:8px 0 20px;padding-top:14px;border-top:1px solid var(--line)"><div style="flex:1 1 100%;font-size:10px;text-transform:uppercase;color:var(--accent-bright);letter-spacing:1.5px;margin-bottom:2px">🎬 Video Clips · English + Español</div>${videoClip}</div>`
+      : '';
+    const visualBlock = (charBoardImg || moveBoardImg || frameImg)
+      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 8px;">${charBoardImg}${moveBoardImg}${frameImg}</div>`
       : '';
     return `
       <div class="shot">
         <div class="sh">▶ SHOT ${String(sh.n).padStart(2,'0')}</div>
         ${bilingualDiv(sh.slug_es, sh.slug_en, 'slug')}
         ${visualBlock}
+        ${clipsBlock}
         ${bilingualDiv(sh.action_es, sh.action_en, 'action')}
         ${(sh.move_en||sh.emo_en)?`<div class="board" style="margin:10px 0 4px;padding:10px 14px;border:1px dashed var(--line2);border-radius:8px;font-size:13px;line-height:1.55">
           ${sh.move_en?`<div><span style="font-size:9.5px;letter-spacing:1.5px;color:var(--accent-bright);text-transform:uppercase">🎬 Movement</span><br>${MODE==='es'?esc(sh.move_es||sh.move_en):esc(sh.move_en)}${MODE==='both'?`<span class="en" style="display:block;font-style:italic;opacity:.7">${esc(sh.move_es)}</span>`:''}</div>`:''}
@@ -531,9 +591,11 @@ function vStory(id){
         <div class="k" style="margin-top:10px">THESIS</div>
         ${pair(s.thesis)}
       </div>
+      ${shotSheetImg}
       ${shots}
       ${(s.oneshot&&s.oneshot.en)?`<div class="thesis-block" style="margin-top:30px">
-        <div class="k">🎥 ONE-SHOT COMMERCIAL PROMPT — full film in a single generation (Higgsfield / Seedance)</div>
+        ${s.oneshot_video?`<div class="k">🎥 ONE-SHOT FILM · rendered in a single take</div><video src="${s.oneshot_video}" controls playsinline style="width:100%;max-width:420px;height:auto;display:block;border-radius:8px;background:#000;margin:10px 0 18px"></video>`:''}
+        <div class="k">📝 ONE-SHOT COMMERCIAL PROMPT — full film in a single generation (Higgsfield / Seedance)</div>
         <div style="font-family:var(--mono);font-size:12px;line-height:1.6;margin-top:8px;white-space:pre-wrap;color:#d8d4f0">${esc(MODE==='es'?(s.oneshot.es||s.oneshot.en):s.oneshot.en)}</div>
         ${MODE==='both'&&s.oneshot.es?`<div style="font-family:var(--mono);font-size:11.5px;line-height:1.6;margin-top:10px;white-space:pre-wrap;color:var(--muted);font-style:italic">${esc(s.oneshot.es)}</div>`:''}
       </div>`:''}

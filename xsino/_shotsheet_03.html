@@ -1,0 +1,273 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>XSINO Shot Sheet · Film 03</title>
+<style>
+  :root{
+    --bg:#0a0a1a; --panel:#110f28; --panel2:#171338; --line:#2a2650; --line2:#3a3568;
+    --violet:#8b5cf6; --violet-bright:#a78bfa; --magenta:#ec4899; --cyan:#22d3ee;
+    --warm:#e8a24c; --silver:#cfd6e6; --gold:#f5c542;
+    --text:#eceaf7; --muted:#9b96c4; --dim:#726ea0;
+    --mono:'Cascadia Code','Consolas',ui-monospace,monospace;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);width:1500px;
+    -webkit-font-smoothing:antialiased;background-image:radial-gradient(1200px 600px at 80% -5%,rgba(139,92,246,.10),transparent 60%),radial-gradient(900px 500px at -5% 20%,rgba(34,211,238,.06),transparent 55%);}
+  .sheet{padding:42px 48px 40px}
+  .mast{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    padding-bottom:20px;border-bottom:2px solid var(--line2);margin-bottom:26px}
+  .mast .lead{font:600 12px/1 var(--mono);letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:12px}
+  .mast h1{font-size:44px;font-weight:800;letter-spacing:-1px;line-height:.98;
+    background:linear-gradient(92deg,#fff 10%,#a78bfa 55%,#ec4899);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .mast .es{font-size:19px;font-weight:600;color:var(--dim);letter-spacing:.3px;margin-top:6px;font-style:italic}
+  .mast .meta{text-align:right;font:500 12.5px/1.9 var(--mono);color:var(--muted);white-space:nowrap}
+  .mast .meta b{color:var(--text);font-weight:700}
+  .badge{display:inline-block;font:700 10px/1 var(--mono);letter-spacing:2px;padding:6px 11px;border-radius:20px;text-transform:uppercase}
+  .b-brand{background:linear-gradient(90deg,#8b5cf6,#ec4899);color:#fff}
+  .b-pillar{border:1px solid var(--violet-bright);color:var(--violet-bright);margin-left:6px}
+  .compliance{margin-top:12px;font:500 11px/1.5 var(--sans);color:var(--dim)}
+  .compliance b{color:var(--warm)}
+  .sec{margin-top:26px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+  .sec>h2{font:800 13px/1 var(--sans);letter-spacing:2px;text-transform:uppercase;padding:13px 18px;
+    display:flex;align-items:center;gap:12px;background:var(--panel2);border-bottom:1px solid var(--line)}
+  .sec>h2 .no{font:800 12px/1 var(--mono);color:var(--bg);background:var(--violet-bright);padding:5px 9px;border-radius:6px;letter-spacing:1px}
+  .sec>h2 .sub{font-weight:500;color:var(--muted);letter-spacing:.4px;text-transform:none;font-size:12px}
+  .sec .body{padding:18px}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:14px 16px}
+  .card .lab{font:700 10px/1 var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:9px}
+  .card .big{font-size:15px;font-weight:600;line-height:1.45}
+  .card .big b{color:var(--violet-bright)}
+  .swatches{display:flex;flex-wrap:wrap;gap:9px;margin-top:2px}
+  .sw{display:flex;align-items:center;gap:7px;font:600 11px/1 var(--mono);color:var(--muted)}
+  .sw i{width:20px;height:20px;border-radius:5px;display:block;border:1px solid rgba(255,255,255,.14)}
+  .note{margin-top:11px;font:600 11px/1.4 var(--mono);color:var(--warm)}
+  .fingerprint{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 13px/1.3 var(--sans)}
+  .fingerprint .env{padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line2)}
+  .fingerprint .env small{color:var(--dim);font-weight:500}
+  .fingerprint .arr{color:var(--dim);font-size:16px}
+  .charrow{display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}
+  .charrow img{width:100%;border-radius:9px;border:1px solid var(--line2);display:block}
+  .lock{font-size:14px;line-height:1.7}
+  .lock .nm{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px}
+  .lock .role{font:600 12px/1 var(--mono);color:var(--warm);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+  .lock ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .lock li{padding-left:16px;position:relative;color:var(--muted)}
+  .lock li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+  .lock li b{color:var(--text)}
+  .warn{margin-top:14px;font-size:12px;line-height:1.55;color:var(--dim);background:rgba(232,162,76,.07);
+    border:1px solid rgba(232,162,76,.28);border-radius:8px;padding:10px 13px}
+  .warn b{color:var(--warm)}
+  /* §2 set & camera map ribbon */
+  .ribbon{display:flex;gap:12px;flex-wrap:wrap}
+  .loc{flex:1 1 210px;min-width:190px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:13px 14px 14px;position:relative;overflow:hidden}
+  .loc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--acc)}
+  .loc .lc-cuts{font:700 10px/1 var(--mono);color:var(--bg);background:var(--acc);padding:4px 8px;border-radius:5px;display:inline-block;margin-bottom:9px;letter-spacing:.5px}
+  .loc .lc-name{font:800 14px/1.2 var(--sans);color:var(--text);margin-bottom:2px}
+  .loc .lc-time{font:600 10.5px/1 var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:11px}
+  .loc .lc-moves{display:flex;flex-direction:column;gap:6px}
+  .loc .lc-move{font:600 11px/1.3 var(--mono);color:var(--muted)}
+  .loc .lc-move b{color:var(--cyan);font-weight:800}
+  .loc .lc-move .lc-sz{color:var(--violet-bright)}
+  .maplab{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font:600 11px/1.5 var(--mono);color:var(--dim)}
+  .maplab b{color:var(--cyan)}
+  /* §3 grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cut{background:var(--panel2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .cut.gold{border-color:var(--gold);box-shadow:0 0 0 1px rgba(245,197,66,.4),0 0 22px rgba(245,197,66,.14)}
+  .cut .thumb{position:relative;aspect-ratio:9/16;overflow:hidden;background:#000}
+  .cut .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .cut .tag{position:absolute;top:8px;left:8px;font:800 12px/1 var(--mono);color:#fff;
+    background:rgba(10,10,26,.82);padding:5px 8px;border-radius:6px;letter-spacing:1px;border:1px solid var(--line2)}
+  .cut .moment{position:absolute;top:8px;right:8px;font:800 9px/1 var(--mono);letter-spacing:1px;padding:5px 7px;border-radius:5px;text-transform:uppercase}
+  .m-gold{background:var(--gold);color:#0a0a1a}
+  .cut .info{padding:10px 11px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .chip{font:700 10px/1.35 var(--mono);letter-spacing:.3px;display:flex;flex-wrap:wrap;gap:5px}
+  .chip b{padding:3px 6px;border-radius:4px;background:var(--panel);border:1px solid var(--line2);color:var(--cyan);font-weight:700}
+  .chip b.mv{color:var(--magenta)} .chip b.sz{color:var(--violet-bright)}
+  .cut .vo{font-size:11.5px;line-height:1.45;color:var(--muted);font-style:italic}
+  .cut .vo::before{content:'“';color:var(--dim)} .cut .vo::after{content:'”';color:var(--dim)}
+  .arcbar{margin-top:16px;padding:13px 16px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    font:600 12px/1.5 var(--sans);color:var(--muted)}
+  .arcbar b{color:var(--violet-bright);font-family:var(--mono);font-size:11px;letter-spacing:.5px}
+  .mood{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .mood .card .big{font-size:13px;line-height:1.55;font-weight:500;color:var(--muted)}
+  .mood .card .big b{color:var(--text);font-weight:700}
+  .moodbar{grid-column:1 / -1;display:flex;height:38px;border-radius:8px;overflow:hidden;margin-top:2px;border:1px solid var(--line)}
+  .moodbar div{flex:1;display:flex;align-items:center;justify-content:center;font:700 11px/1 var(--mono);color:#0a0a1a;text-align:center;padding:0 6px}
+  .foot{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;font:500 11px/1.5 var(--mono);color:var(--dim)}
+  .foot .rails{color:var(--warm)}
+</style></head>
+<body><div class="sheet">
+
+  <div class="mast">
+    <div>
+      <div class="lead">Shot Sheet · Film 03 · OpenArt “Smart Shot” template</div>
+      <h1>EVERY DAY A NEW OPPORTUNITY</h1>
+      <div class="es">Cada Día una Oportunidad</div>
+    </div>
+    <div class="meta">
+      <span class="badge b-brand">XSINO</span><span class="badge b-pillar">Inspire</span><br>
+      <b>9:16</b> vertical · <b>~60s</b> · <b>12 cuts</b><br>
+      35mm wides / 85mm close-ups · natural grade
+      <div class="compliance"><b>21+ only</b> · never promises winning · logo only at the end</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§0</span> Shared Choices <span class="sub">— the consistency contract, decided once</span></h2>
+    <div class="body choices">
+      <div class="card"><div class="lab">Cut count · lens</div><div class="big"><b>12 cuts</b>, 5s each — cut on the finished VO line.<br><b>35mm on wides, ~85mm on close-ups</b>: room to breathe, then in on resolve.</div></div>
+      <div class="card"><div class="lab">Palette · gold quarantined</div><div class="swatches"><span class="sw"><i style="background:#0a0a1a"></i>navy</span><span class="sw"><i style="background:#8b5cf6"></i>violet</span><span class="sw"><i style="background:#ec4899"></i>magenta</span><span class="sw"><i style="background:#22d3ee"></i>cyan</span><span class="sw"><i style="background:#e8a24c"></i>warm key</span><span class="sw"><i style="background:#cfd6e6"></i>silver</span><span class="sw"><i style="background:#f5c542"></i>gold</span></div><div class="note">gold = the bench luck-moment (cuts 09–10) + logo close (cut 12)</div></div>
+      <div class="card" style="grid-column:1 / -1"><div class="lab">Environment fingerprint — the world, in order</div><div class="fingerprint"><span class="env" style="color:var(--violet)">SOCCER FIELD <small>afternoon</small></span><span class="arr">→</span><span class="env" style="color:var(--magenta)">MODERN OFFICE <small>day</small></span><span class="arr">→</span><span class="env" style="color:var(--cyan)">INTERVIEW ROOM <small>day</small></span><span class="arr">→</span><span class="env" style="color:var(--warm)">RAINY STREET <small>day</small></span><span class="arr">→</span><span class="env" style="color:var(--violet-bright)">PARK BENCH <small>sunset</small></span><span class="arr">→</span><span class="env" style="color:var(--gold)">BLACK / LOGO </span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§1</span> Character Reference <span class="sub">— identity lock · reference node = the coherence board</span></h2>
+    <div class="body charrow">
+      <img src="assets/charboards/03/board.png" alt="coherence board">
+      <div class="lock">
+        <div class="nm">Diego</div>
+        <div class="role">mid-20s · from the pitch to the interview room · XSINO canon (story 03)</div>
+        <ul><li><b>Skin / ethnicity:</b> mixed South American / Polynesian, warm brown skin, short dark hair, brown eyes, athletic build — reads clearly 21+.</li><li><b>Wardrobe A (opening):</b> worn red-and-white amateur soccer jersey, black shorts, sneakers.</li><li><b>Wardrobe B (rest of film):</b> light-blue button-down (sleeves rolled), charcoal-grey trousers, brown leather dress shoes, slim leather watch, leather notebook.</li></ul>
+        <div class="warn"><b>⚠ Consolidation note:</b> Consolidates the <b>12 existing keyframes as-is</b> — no regeneration. Watch the wardrobe switch (jersey → shirt) is the only intended change; face stays locked to the board.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§2</span> Set &amp; Camera Map <span class="sub">— every location, its cuts, and how the camera moves (from the scene headings)</span></h2>
+    <div class="body">
+      <div class="ribbon"><div class="loc" style="--acc:var(--violet)">
+      <div class="lc-cuts">CUTS 01–02</div>
+      <div class="lc-name">SOCCER FIELD</div>
+      <div class="lc-time">afternoon</div>
+      <div class="lc-moves"><div class="lc-move"><b>01</b> PUSH-IN · <span class="lc-sz">WIDE</span></div><div class="lc-move"><b>02</b> FOLLOW · <span class="lc-sz">CLOSE-UP</span></div></div>
+    </div><div class="loc" style="--acc:var(--magenta)">
+      <div class="lc-cuts">CUTS 03–04</div>
+      <div class="lc-name">MODERN OFFICE</div>
+      <div class="lc-time">day</div>
+      <div class="lc-moves"><div class="lc-move"><b>03</b> PUSH-IN · <span class="lc-sz">MEDIUM</span></div><div class="lc-move"><b>04</b> PULL-BACK · <span class="lc-sz">MEDIUM</span></div></div>
+    </div><div class="loc" style="--acc:var(--cyan)">
+      <div class="lc-cuts">CUT 05</div>
+      <div class="lc-name">INTERVIEW ROOM</div>
+      <div class="lc-time">day</div>
+      <div class="lc-moves"><div class="lc-move"><b>05</b> PUSH-IN · <span class="lc-sz">MEDIUM</span></div></div>
+    </div><div class="loc" style="--acc:var(--warm)">
+      <div class="lc-cuts">CUTS 06–08</div>
+      <div class="lc-name">RAINY STREET</div>
+      <div class="lc-time">day</div>
+      <div class="lc-moves"><div class="lc-move"><b>06</b> TRACK · <span class="lc-sz">CLOSE-UP</span></div><div class="lc-move"><b>07</b> PULL-BACK · <span class="lc-sz">WIDE</span></div><div class="lc-move"><b>08</b> TRACK · <span class="lc-sz">MEDIUM</span></div></div>
+    </div><div class="loc" style="--acc:var(--violet-bright)">
+      <div class="lc-cuts">CUTS 09–11</div>
+      <div class="lc-name">PARK BENCH</div>
+      <div class="lc-time">sunset</div>
+      <div class="lc-moves"><div class="lc-move"><b>09</b> DOLLY-IN · <span class="lc-sz">MEDIUM</span></div><div class="lc-move"><b>10</b> PUSH-IN · <span class="lc-sz">CLOSE-UP</span></div><div class="lc-move"><b>11</b> PULL-BACK · <span class="lc-sz">WIDE</span></div></div>
+    </div><div class="loc" style="--acc:var(--gold)">
+      <div class="lc-cuts">CUT 12</div>
+      <div class="lc-name">BLACK / LOGO</div>
+      <div class="lc-time">—</div>
+      <div class="lc-moves"><div class="lc-move"><b>12</b> PUSH-IN · <span class="lc-sz">LOGO</span></div></div>
+    </div></div>
+      <div class="maplab">Order follows the cut numbers in <b>§3</b>. Movements are derived directly from the story&rsquo;s MOVE lines — no invented geometry.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§3</span> Storyboard · 12 cuts <span class="sub">— explicit camera grammar: lens | dur | movement | size</span></h2>
+    <div class="body">
+      <div class="grid" id="grid"><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 01</span><img src="assets/frames/03/shot01.png" alt="cut 1"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PUSH-IN</b><b class="sz">WIDE</b></div>
+        <div class="vo">One shot. One second. And everything is decided — or not.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 02</span><img src="assets/frames/03/shot02.png" alt="cut 2"></div>
+      <div class="info">
+        <div class="chip"><b>85mm</b><b>5s</b><b class="mv">FOLLOW</b><b class="sz">CLOSE-UP</b></div>
+        <div class="vo">He didn't win. But he didn't leave defeated either.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 03</span><img src="assets/frames/03/shot03.png" alt="cut 3"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PUSH-IN</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">Another door that didn't open. Yet.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 04</span><img src="assets/frames/03/shot04.png" alt="cut 4"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PULL-BACK</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">He walked out empty-handed, dignity intact.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 05</span><img src="assets/frames/03/shot05.png" alt="cut 5"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PUSH-IN</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">We've decided to move forward with another candidate.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 06</span><img src="assets/frames/03/shot06.png" alt="cut 6"></div>
+      <div class="info">
+        <div class="chip"><b>85mm</b><b>5s</b><b class="mv">TRACK</b><b class="sz">CLOSE-UP</b></div>
+        <div class="vo">One more no. One more step.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 07</span><img src="assets/frames/03/shot07.png" alt="cut 7"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PULL-BACK</b><b class="sz">WIDE</b></div>
+        <div class="vo">Everyone ran. He stayed to enjoy it.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 08</span><img src="assets/frames/03/shot08.png" alt="cut 8"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">TRACK</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">Sometimes you have to get soaked to feel alive.</div>
+      </div>
+    </div><div class="cut gold">
+      <div class="thumb"><span class="tag">CUT 09</span><span class="moment m-gold">⏱ THE MOMENT</span><img src="assets/frames/03/shot09.png" alt="cut 9"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">DOLLY-IN</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">How come you never give up?</div>
+      </div>
+    </div><div class="cut gold">
+      <div class="thumb"><span class="tag">CUT 10</span><span class="moment m-gold">★ GOLD</span><img src="assets/frames/03/shot10.png" alt="cut 10"></div>
+      <div class="info">
+        <div class="chip"><b>85mm</b><b>5s</b><b class="mv">PUSH-IN</b><b class="sz">CLOSE-UP</b></div>
+        <div class="vo">Because one day… everything can change.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 11</span><img src="assets/frames/03/shot11.png" alt="cut 11"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PULL-BACK</b><b class="sz">WIDE</b></div>
+        <div class="vo">And in that silence, he'd already said it all.</div>
+      </div>
+    </div><div class="cut gold">
+      <div class="thumb"><span class="tag">CUT 12</span><span class="moment m-gold">★ XSINO</span><img src="assets/frames/03/shot12.png" alt="cut 12"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>5s</b><b class="mv">PUSH-IN</b><b class="sz">LOGO</b></div>
+        <div class="vo">Believe in new possibilities.</div>
+      </div>
+    </div></div>
+      <div class="arcbar"><b>ARC OF SIZE:</b> WIDE → CU → MEDIUM → MEDIUM → MEDIUM → CU → WIDE → MEDIUM → MEDIUM (bench) → CU (gold) → WIDE → LOGO — every rejection pulls back, every truth pushes in; the bench is the turn.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§4</span> Light · Mood · Style</h2>
+    <div class="body mood">
+      <div class="card"><div class="lab">Light</div><div class="big">Flat field light → clean office daylight → grey rain → warm sunset on the bench. The single gold wash lands on cuts 09–10.</div></div>
+      <div class="card"><div class="lab">Mood arc</div><div class="big">Near-miss → rejection → rejection → rain-soaked release → the honest question, and the quiet answer. Persistence, never a promise.</div></div>
+      <div class="card"><div class="lab">Sound</div><div class="big">Sparse piano building to strings; rain as texture; the bench beat drops to near-silence before the logo. Diegetic: whistle, keyboard, rain.</div></div>
+      <div class="card"><div class="lab">Style words</div><div class="big">Photoreal cinematic · 35mm / 85mm · shallow DoF · natural grade · <b>no baked-in subtitles</b>.</div></div>
+      <div class="moodbar"><div style="background:#5b5570">defeat</div><div style="background:#7a6a8a">persistence</div><div style="background:#6a8ab0">rain release</div><div style="background:#f5c542">★ XSINO</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>XSINO · Lucifer Gaming · Film 03 — EVERY DAY A NEW OPPORTUNITY · consolidated from 12 existing keyframes + coherence board · zero regeneration</span>
+    <span class="rails">21+ · responsible gaming · never promises winning · logo only at the end</span>
+  </div>
+
+</div></body></html>

@@ -58,6 +58,25 @@ CURATION = {
     "08": ("anime", "T2", "#E24D9C", "#0B0E17", "El Guardián de la Puerta", "The Gatekeeper"),
     "09": ("whatif", "T0", "#E8B84B", "#0B0E17", "La Suerte", "Luck"),
     "10": ("anime", "T3", "#E8B84B", "#B0E0E6", "Fortuna", "Fortune"),
+    "11": ("inspire", "T1", "#B4472E", "#D9A441", "El Perseverante", "The Persistent"),
+    "12": ("love", "T1", "#C97B4A", "#1F3A5F", "Media Historia", "Half the Story"),
+    "13": ("love", "T1", "#2F5D8A", "#C97B4A", "La Otra Mitad", "The Other Half"),
+    "14": ("inspire", "T1", "#5A6E4A", "#D9A441", "El Soñador", "The Dreamer"),
+    "15": ("inspire", "T1", "#6E7A4A", "#C8A24B", "El Viajero", "The Traveler"),
+    "16": ("inspire", "T3", "#9B8AB8", "#C0C0C0", "La Matriarca", "The Matriarch"),
+    "17": ("inspire", "T3", "#8A6E4A", "#C0C0C0", "El Patrón", "The Patron"),
+    "18": ("inspire", "T3", "#8A7A4A", "#B98A5E", "La Gente del Campo", "The Field Folk"),
+}
+
+# ---- character -> owning film (story id) ; supporting/orphan ids stay unmapped ----
+STORY_OF = {
+    "01": "01",              # Carlos      -> Coin of Destiny
+    "02": "02", "03": "02",  # Don Emilio, Lucía -> Grandfather
+    "06": "07",              # Kairo       -> Wheel of Destiny
+    "11": "03",              # Diego       -> Every Day a New Opportunity
+    "12": "04", "13": "04",  # Camila, Tomás -> Two Strangers
+    "14": "05",              # Mateo       -> The Dream
+    "15": "06",              # Santiago    -> The Journey
 }
 
 # anime-roster leads: contact-sheet # -> role label
@@ -117,6 +136,7 @@ def parse_character(pid):
         "pillar": pillar, "priority": priority,
         "color": color, "color2": color2,
         "alias_es": alias_es, "alias_en": alias_en,
+        "film": STORY_OF.get(pid, ""),
         "sections": parse_sections(txt),
     }
 
@@ -172,6 +192,12 @@ def parse_story(sid):
                 if os.path.exists(sb_full):
                     found_sceneboard = f"assets/sceneboards/{sid}/shot{nn}{ext}"
                     break
+            found_moveboard = None
+            for ext in [".png", ".jpg", ".jpeg", ".webp"]:
+                mb_full = os.path.join(os.path.dirname(__file__), "assets", "moveboards", sid, f"shot{nn}{ext}")
+                if os.path.exists(mb_full):
+                    found_moveboard = f"assets/moveboards/{sid}/shot{nn}{ext}"
+                    break
             found_video = None
             for ext in [".mp4", ".webm"]:
                 video_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"shot{nn}{ext}")
@@ -188,6 +214,8 @@ def parse_story(sid):
                 cur_shot["frame"] = found_frame
             if found_sceneboard:
                 cur_shot["sceneboard"] = found_sceneboard
+            if found_moveboard:
+                cur_shot["moveboard"] = found_moveboard
             if found_video:
                 cur_shot["video"] = found_video
             if found_video_es:
@@ -217,10 +245,32 @@ def parse_story(sid):
             cur_shot[bm.group(1).lower().replace("-", "_")] = bm.group(2).strip(); continue
     if cur_shot: shots.append(cur_shot)
 
+    char_board = None
+    for ext in [".png", ".jpg", ".jpeg", ".webp"]:
+        cb_full = os.path.join(os.path.dirname(__file__), "assets", "charboards", sid, f"board{ext}")
+        if os.path.exists(cb_full):
+            char_board = f"assets/charboards/{sid}/board{ext}"
+            break
+
+    story_board = None
+    for ext in [".png", ".jpg", ".jpeg", ".webp"]:
+        sb_full = os.path.join(os.path.dirname(__file__), "assets", "storyboards", sid, f"board{ext}")
+        if os.path.exists(sb_full):
+            story_board = f"assets/storyboards/{sid}/board{ext}"
+            break
+
+    oneshot_video = None
+    for ext in [".mp4", ".webm"]:
+        ov_full = os.path.join(os.path.dirname(__file__), "assets", "videos", sid, f"oneshot{ext}")
+        if os.path.exists(ov_full):
+            oneshot_video = f"assets/videos/{sid}/oneshot{ext}"
+            break
+
     return {
         "id": story_id, "title_es": title_es, "title_en": title_en,
         "pillar": pillar, "brand": brand, "logline": logline, "thesis": thesis,
-        "oneshot": oneshot, "shots": shots,
+        "oneshot": oneshot, "oneshot_video": oneshot_video, "shots": shots, "char_board": char_board,
+        "story_board": story_board,
     }
 
 
