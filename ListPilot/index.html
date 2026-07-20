@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>ListPilot — the listing team your agents don't have | Next Frame Agency</title>
+<meta name="description" content="ListPilot turns any property into a priced, market-ready listing in 10 minutes. Seven modules, one chat thread, real comparable listings you confirm. Built by Next Frame Agency for Philippine real estate." />
+<link rel="canonical" href="https://next-frame.agency/ListPilot/" />
+<meta name="robots" content="index, follow, max-image-preview:large" />
+<meta name="theme-color" content="#07090e" />
+<meta property="og:type" content="website" />
+<meta property="og:title" content="ListPilot — the listing team your agents don't have" />
+<meta property="og:description" content="Turn any property into a priced, market-ready listing in 10 minutes. Seven modules, one chat thread." />
+<meta property="og:url" content="https://next-frame.agency/ListPilot/" />
+<meta property="og:image" content="https://next-frame.agency/ListPilot/assets/og.jpg" />
+<meta property="og:image:alt" content="ListPilot — an AI listing partner for Philippine real estate" />
+<meta name="twitter:card" content="summary_large_image" />
+<link rel="apple-touch-icon" href="/listings/icon-180.png" />
+<style>
+:root{
+  --void:#07090e; --plate:#10141d; --plate-2:#161b26;
+  --gold:#c8a96a; --gold-deep:#8f7538;
+  --off:#e9e6dd; --soft:#8d8778; --dim:#5d5a52;
+  --live:#63c9d6; --confirm:#d99b4a;
+  --hair:rgba(233,230,221,.12); --hair-gold:rgba(200,169,106,.30);
+  --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
+  --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
+  color-scheme:dark;
+}
+/* The pitch commits to a single dark world on purpose — this page and the deck
+   are one object, so the theme is a design decision, not a missing mode. */
+:root[data-theme="light"],:root[data-theme="dark"]{color-scheme:dark}
+
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--void);color:var(--off);font-family:var(--sans);
+  font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased}
+img{max-width:100%;height:auto;display:block}
+a{color:var(--gold);text-decoration:none}
+a:focus-visible,button:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+h1,h2,h3{margin:0;font-weight:800;letter-spacing:-.025em;text-wrap:balance;line-height:1.06}
+p{margin:0}
+.shell{width:min(1180px,calc(100% - 48px));margin-inline:auto}
+.mono{font-family:var(--mono);font-size:11px;letter-spacing:.18em;text-transform:uppercase}
+
+/* HUD crop marks — two opposite corners, viewfinder not box. Offsets are 0 so
+   they survive overflow:hidden on the frames they sit on. */
+.hud{position:relative}
+.hud::before,.hud::after{content:"";position:absolute;width:16px;height:16px;
+  border:1px solid var(--gold);pointer-events:none;z-index:2}
+.hud::before{top:0;left:0;border-right:0;border-bottom:0}
+.hud::after{bottom:0;right:0;border-left:0;border-top:0}
+
+/* ---- masthead ---- */
+.mast{position:sticky;top:0;z-index:20;background:rgba(7,9,14,.92);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--hair)}
+.mast .shell{display:flex;align-items:center;gap:22px;height:58px}
+.lock{font-weight:800;letter-spacing:-.02em;font-size:18px;color:var(--off)}
+.lock b{color:var(--gold);font-weight:800}
+.mast nav{margin-left:auto;display:flex;align-items:center;gap:22px}
+.mast nav a{color:var(--soft);font-family:var(--mono);font-size:11px;
+  letter-spacing:.16em;text-transform:uppercase}
+.mast nav a:hover{color:var(--off)}
+.mast nav a.cta{color:var(--void);background:var(--gold);padding:8px 14px;border-radius:2px}
+.mast nav a.cta:hover{background:#dcbd7c}
+
+/* ---- hero ---- */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--hair)}
+.hero-bg{position:absolute;inset:0}
+.hero-bg img{width:100%;height:100%;object-fit:cover;opacity:.30;filter:grayscale(.3)}
+.hero-bg::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(180deg,rgba(7,9,14,.55) 0%,rgba(7,9,14,.80) 45%,var(--void) 100%)}
+.hero .shell{position:relative;z-index:1;padding:104px 0 0}
+.eyebrow{color:var(--gold);display:block;margin-bottom:26px}
+.hero h1{font-size:clamp(40px,6.6vw,80px);max-width:16ch}
+.hero h1 em{font-style:normal;color:var(--gold)}
+.hero-sub{margin-top:26px;max-width:56ch;font-size:clamp(17px,1.6vw,21px);color:#c4bfb2}
+.hero-sub b{color:var(--off);font-weight:600}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:36px}
+.btn{display:inline-flex;align-items:center;gap:10px;padding:14px 22px;border-radius:2px;
+  font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
+  border:1px solid var(--gold);color:var(--gold);background:none;cursor:pointer}
+.btn.solid{background:var(--gold);color:var(--void);font-weight:700}
+.btn:hover{background:#dcbd7c;color:var(--void)}
+.btn .dot{width:6px;height:6px;border-radius:50%;background:var(--live);
+  box-shadow:0 0 8px var(--live)}
+
+/* instrument rail */
+.gauges{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;margin:64px 0 0;
+  background:var(--hair);border:1px solid var(--hair);border-bottom:0}
+.gauge{background:var(--void);padding:20px 22px}
+.g-n{font-family:var(--mono);font-size:clamp(24px,3vw,34px);color:var(--gold);
+  letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.g-l{display:block;margin-top:6px;color:var(--dim);font-family:var(--mono);
+  font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+
+/* ---- generic section ---- */
+section{padding:96px 0}
+.sec-head{margin-bottom:44px}
+.sec-num{font-family:var(--mono);font-size:11px;letter-spacing:.2em;color:var(--gold);
+  display:inline-block;margin-bottom:16px;position:relative;padding-left:38px}
+.sec-num::before{content:"";position:absolute;left:0;top:50%;width:26px;height:1px;
+  background:var(--hair-gold)}
+.sec-head h2{font-size:clamp(28px,3.8vw,44px);max-width:22ch}
+.sec-lede{margin-top:18px;max-width:62ch;color:#b4afa2;font-size:17px}
+.sec-lede b{color:var(--off);font-weight:600}
+
+/* ---- the truth (two column) ---- */
+.truth{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
+  border:1px solid var(--hair)}
+.truth>div{background:var(--plate);padding:34px 32px}
+.truth h3{font-size:20px;margin-bottom:14px}
+.truth p{color:#b4afa2;font-size:16px}
+.truth .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);display:block;margin-bottom:18px}
+
+/* ---- cockpit ---- */
+.cockpit{border:1px solid var(--hair-gold);background:var(--plate);padding:14px}
+.cockpit-bar{display:flex;align-items:center;gap:8px;padding:0 4px 12px;
+  font-family:var(--mono);font-size:10px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dim)}
+.cockpit-bar i{width:7px;height:7px;border-radius:50%;background:var(--hair);display:block}
+.cockpit-bar span{margin-left:6px}
+.cockpit-bar b{margin-left:auto;color:var(--live);font-weight:400}
+.cap{margin-top:16px;color:var(--soft);font-size:14px;max-width:76ch}
+.cap b{color:var(--off);font-weight:600}
+
+/* ---- modules ---- */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair)}
+.mod{background:var(--plate);padding:26px 24px 30px;display:flex;flex-direction:column;gap:10px}
+.mod .code{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gold)}
+.mod h3{font-size:21px}
+.mod p{color:#a8a396;font-size:15px}
+.mod.wide{grid-column:span 2;background:var(--plate-2)}
+.mod.wide p{color:#b4afa2}
+
+/* ---- the run (diptych) ---- */
+.diptych{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.d-k{display:flex;align-items:baseline;gap:12px;margin-bottom:12px}
+.d-k b{font-family:var(--mono);font-size:13px;color:var(--gold);letter-spacing:.06em}
+.d-k span{font-family:var(--mono);font-size:10px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim)}
+.shot{overflow:hidden;border:1px solid var(--hair);background:#000}
+.runfoot{display:flex;flex-wrap:wrap;gap:34px;margin-top:34px;padding-top:26px;
+  border-top:1px solid var(--hair)}
+.runfoot div{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim)}
+.runfoot b{display:block;font-size:20px;letter-spacing:-.01em;color:var(--off);
+  margin-bottom:4px;text-transform:none}
+
+/* ---- inside the run (6-up) ---- */
+.grid6{display:grid;grid-template-columns:repeat(3,1fr);gap:24px}
+.grid6 figure{margin:0}
+.g-key{display:flex;align-items:baseline;gap:10px;margin-bottom:10px}
+.g-key b{font-family:var(--mono);font-size:11px;letter-spacing:.14em;color:var(--gold)}
+.g-key span{font-size:14px;color:var(--soft)}
+.grid6 .shot img{width:100%;height:260px;object-fit:cover;object-position:top center}
+
+/* ---- live access ---- */
+.live{border:1px solid var(--hair-gold);background:
+  linear-gradient(180deg,var(--plate-2),var(--plate))}
+.live-top{display:grid;grid-template-columns:1fr auto;gap:34px;padding:34px 32px;
+  border-bottom:1px solid var(--hair)}
+.live-url{font-family:var(--mono);font-size:clamp(14px,2vw,20px);color:var(--off);
+  word-break:break-all}
+.live-url a{color:var(--off);border-bottom:1px solid var(--hair-gold)}
+.live-note{margin-top:12px;color:var(--soft);font-size:15px;max-width:52ch}
+.live-qr{width:132px}
+.live-qr svg,.live-qr img{width:100%;height:auto;background:var(--off);padding:8px}
+.live-qr figcaption{margin-top:8px;font-family:var(--mono);font-size:9px;
+  letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-align:center}
+
+.frame-wrap{padding:32px}
+.frame-slot{position:relative;border:1px solid var(--hair);background:var(--void);
+  min-height:520px;display:flex;align-items:center;justify-content:center;text-align:center}
+.frame-slot iframe{width:100%;height:640px;border:0;display:block}
+.slot-inner{padding:40px 24px;max-width:46ch}
+.slot-inner p{color:var(--soft);font-size:15px;margin-top:14px}
+
+.reg{border-top:1px solid var(--hair)}
+.reg table{width:100%;border-collapse:collapse;font-size:14px}
+.reg th{text-align:left;font-family:var(--mono);font-size:9px;letter-spacing:.18em;
+  text-transform:uppercase;color:var(--dim);font-weight:400;padding:16px 32px;
+  border-bottom:1px solid var(--hair)}
+.reg td{padding:14px 32px;border-bottom:1px solid var(--hair);color:#b4afa2;vertical-align:top}
+.reg tr:last-child td{border-bottom:0}
+.reg .rno{font-family:var(--mono);font-size:12px;color:var(--gold);white-space:nowrap}
+.reg .rt{color:var(--off)}
+.reg-scroll{overflow-x:auto}
+.reg-stamp{padding:16px 32px;font-family:var(--mono);font-size:10px;letter-spacing:.14em;
+  text-transform:uppercase;color:var(--dim);border-top:1px solid var(--hair)}
+
+/* ---- who it's for ---- */
+.icp{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.icp article{border:1px solid var(--hair);background:var(--plate);padding:34px 32px}
+.icp .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
+  color:var(--gold);display:block;margin-bottom:18px}
+.icp h3{font-size:24px;margin-bottom:14px}
+.icp p{color:#b4afa2;font-size:16px}
+.icp ul{margin:22px 0 0;padding:0;list-style:none;display:grid;gap:10px}
+.icp li{padding-left:20px;position:relative;color:#a8a396;font-size:15px}
+.icp li::before{content:"";position:absolute;left:0;top:9px;width:7px;height:1px;
+  background:var(--gold)}
+
+/* ---- band ---- */
+.band{position:relative;height:340px;overflow:hidden;border-block:1px solid var(--hair)}
+.band img{width:100%;height:100%;object-fit:cover;opacity:.34}
+.band::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,var(--void),rgba(7,9,14,.35) 50%,var(--void))}
+
+/* ---- close ---- */
+.close{text-align:center;padding:112px 0}
+.close h2{font-size:clamp(30px,4.4vw,52px);max-width:20ch;margin-inline:auto}
+.close p{margin-top:22px;color:#b4afa2;max-width:52ch;margin-inline:auto}
+.close .btns{justify-content:center}
+
+footer{border-top:1px solid var(--hair);padding:34px 0;color:var(--dim);
+  font-family:var(--mono);font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+footer .shell{display:flex;flex-wrap:wrap;gap:18px;align-items:center}
+footer a{color:var(--soft)}
+footer .r{margin-left:auto}
+
+@media (max-width:900px){
+  .shell{width:calc(100% - 36px)}
+  section{padding:68px 0}
+  .hero .shell{padding-top:72px}
+  .gauges{grid-template-columns:1fr 1fr}
+  .mods{grid-template-columns:1fr 1fr}
+  .mod.wide{grid-column:span 2}
+  .grid6{grid-template-columns:1fr 1fr}
+  .truth,.icp,.diptych{grid-template-columns:1fr}
+  .live-top{grid-template-columns:1fr}
+  .mast nav a:not(.cta){display:none}
+}
+@media (max-width:560px){
+  .mods,.grid6{grid-template-columns:1fr}
+  .mod.wide{grid-column:auto}
+  .grid6 .shot img{height:auto}
+  .reg th,.reg td,.reg-stamp{padding-inline:20px}
+  .frame-wrap{padding:18px}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<header class="mast">
+  <div class="shell">
+    <span class="lock">List<b>Pilot</b></span>
+    <nav>
+      <a href="#suit">The suit</a>
+      <a href="#run">The run</a>
+      <a href="#live">Live access</a>
+      <a href="deck/">The deck</a>
+      <a class="cta" href="https://next-frame.agency/listings/">Open the agent</a>
+    </nav>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-bg" aria-hidden="true"><img src="assets/hero.webp" alt="" fetchpriority="high"></div>
+  <div class="shell">
+    <span class="eyebrow mono">Next Frame Agency · Philippine real estate</span>
+    <h1>The listing team your agents <em>don't have.</em></h1>
+    <p class="hero-sub">ListPilot takes a property down in plain language, reads the building,
+      prices it against <b>real comparable listings you confirm</b>, writes the copy, builds the
+      client pack and publishes the page. <b>Ten minutes, one chat thread, nothing else opened.</b></p>
+    <div class="btns">
+      <a class="btn solid" href="https://next-frame.agency/listings/"><span class="dot" aria-hidden="true"></span>Open the live agent</a>
+      <a class="btn" href="deck/">See the full breakdown</a>
+    </div>
+
+    <div class="gauges">
+      <div class="gauge"><span class="g-n">10<small style="font-size:.5em">min</small></span><span class="g-l">Property to live listing</span></div>
+      <div class="gauge"><span class="g-n">07</span><span class="g-l">Modules in the suit</span></div>
+      <div class="gauge"><span class="g-n">00</span><span class="g-l">Other apps opened</span></div>
+      <div class="gauge"><span class="g-n">01</span><span class="g-l">Agent driving it</span></div>
+    </div>
+  </div>
+</div>
+
+<section id="truth">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">01 — The market</span>
+      <h2>There is no MLS here. That is the whole opportunity.</h2>
+      <p class="sec-lede">In the Philippines nobody hands an agent the comps, the building facts
+        or the format. So the agents who win are simply the ones whose listings <b>look and price
+        like a pro's</b>. That edge has always been a matter of who you work for. ListPilot issues
+        it to everyone.</p>
+    </div>
+    <div class="truth">
+      <div>
+        <span class="k">What an agent does today</span>
+        <h3>Four hours, six tabs, one guess.</h3>
+        <p>Message the developer for specs. Scroll portals for something comparable. Rewrite a
+          caption that already sounds like everyone else's. Build the PDF by hand. Then price it
+          on feel, because nothing told them otherwise.</p>
+      </div>
+      <div>
+        <span class="k">What the same agent does with ListPilot</span>
+        <h3>Ten minutes, one thread, a number they can defend.</h3>
+        <p>Answer questions in plain language — <b>"no clue" is a valid answer</b>, that's what the
+          research module is for. The record, the price band, three ad copies and the client pack
+          assemble beside the conversation as it goes.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="cockpit" style="padding-top:0">
+  <div class="shell">
+    <figure class="cockpit hud" style="margin:0">
+      <div class="cockpit-bar" aria-hidden="true"><i></i><i></i><i></i><span>next-frame.agency/listings</span><b>Live capture</b></div>
+      <img src="assets/cockpit.webp" alt="The ListPilot cockpit — the chat panel on the left working through the checklist, the assembled listing record, price band and ad copies on the right" width="1440" height="900">
+    </figure>
+    <p class="cap">This is the actual product, photographed mid-run on one real unit. <b>No mockups
+      appear anywhere on this page or in the deck</b> — every screen is a capture of the running
+      agent, and if a frame is wrong we recapture it rather than touch it up.</p>
+  </div>
+</section>
+
+<section id="suit">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">02 — The suit</span>
+      <h2>Seven modules. Your agent is the one wearing it.</h2>
+      <p class="sec-lede">Nobody on your floor becomes a worse agent. They get a research desk, a
+        pricing desk, a copywriter, a designer and a publisher <b>attached to the person who
+        already knows the client</b> — and all of it answers in one thread.</p>
+    </div>
+    <div class="mods">
+      <div class="mod"><span class="code">M01</span><h3>Intake</h3><p>Takes the property down in plain language. Thirteen questions, and "no clue" routes to Recon instead of stalling.</p></div>
+      <div class="mod"><span class="code">M02</span><h3>Recon</h3><p>Reads the building so the agent doesn't have to — developer, turnover, amenities, the things clients ask on the viewing.</p></div>
+      <div class="mod"><span class="code">M03</span><h3>Comps</h3><p>Prices from listings that are actually live. It shows you the comparables; <b>you confirm the number.</b></p></div>
+      <div class="mod"><span class="code">M04</span><h3>Copy</h3><p>Three voices for the same property — the portal listing, the social caption, the buyer message.</p></div>
+      <div class="mod"><span class="code">M05</span><h3>Pack</h3><p>The leave-behind, formatted and emailed. The thing the agent used to build by hand at 11pm.</p></div>
+      <div class="mod"><span class="code">M06</span><h3>Media</h3><p>Ad image, shot list, presenter voice — so the listing has something to run with, not just text.</p></div>
+      <div class="mod wide"><span class="code">M07</span><h3>Publish</h3><p>A live listing page in one tap, with a registry number the agent can send to a client the same minute. Every published unit is a real page — four of them are listed further down this document.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="band" aria-hidden="true"><img src="assets/band.webp" alt=""></div>
+
+<section id="run">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">03 — One run, both ends</span>
+      <h2>Nothing was uploaded between these two frames.</h2>
+      <p class="sec-lede">Same screen, same session. The agent answered questions in a chat thread
+        and <b>the right-hand side filled itself in</b> — record, price band, copy, pack.</p>
+    </div>
+    <div class="diptych">
+      <figure style="margin:0">
+        <div class="d-k"><b>00:00</b><span>Cold start</span></div>
+        <div class="shot hud"><img src="assets/cold.webp" alt="The ListPilot screen at the start of the run — empty checklist, empty listing, nothing filled in"></div>
+      </figure>
+      <figure style="margin:0">
+        <div class="d-k"><b>09:40</b><span>Built</span></div>
+        <div class="shot hud"><img src="assets/built.webp" alt="The same screen at the end of the run — the record, the price band, the ad copies and the client pack all assembled"></div>
+      </figure>
+    </div>
+    <div class="runfoot">
+      <div><b>9 min 40 s</b>Elapsed, cold start to published</div>
+      <div><b>5</b>Messages the agent typed</div>
+      <div><b>0</b>Other apps opened</div>
+      <div><b>1</b>Number a human confirmed</div>
+    </div>
+  </div>
+</section>
+
+<section id="inside" style="padding-top:0">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">04 — Inside the run</span>
+      <h2>Every module, photographed while it was working.</h2>
+    </div>
+    <div class="grid6">
+      <figure>
+        <div class="g-key"><b>M02</b><span>Recon</span></div>
+        <div class="shot"><img src="assets/research.webp" alt="ListPilot researching the building after the agent answered 'no clue'" loading="lazy"></div>
+      </figure>
+      <figure>
+        <div class="g-key"><b>M01</b><span>Intake</span></div>
+        <div class="shot"><img src="assets/checklist.webp" alt="The intake checklist filling in as the conversation goes" loading="lazy"></div>
+      </figure>
+      <figure>
+        <div class="g-key"><b>REC</b><span>The record</span></div>
+        <div class="shot"><img src="assets/record.webp" alt="The assembled listing record" loading="lazy"></div>
+      </figure>
+      <figure>
+        <div class="g-key"><b>M03</b><span>Comps</span></div>
+        <div class="shot"><img src="assets/price.webp" alt="The price band built from real comparable listings, awaiting the agent's confirmation" loading="lazy"></div>
+      </figure>
+      <figure>
+        <div class="g-key"><b>M04</b><span>Copy</span></div>
+        <div class="shot"><img src="assets/ads.webp" alt="Three ad copies in three different voices for the same property" loading="lazy"></div>
+      </figure>
+      <figure>
+        <div class="g-key"><b>M05</b><span>Pack</span></div>
+        <div class="shot"><img src="assets/pack.webp" alt="The client pack PDF, formatted and ready to send" loading="lazy"></div>
+      </figure>
+    </div>
+    <p class="cap">And the thread itself, mid-run and finished — the panel behind every frame above.</p>
+    <div class="diptych" style="margin-top:22px">
+      <div class="shot hud"><img src="assets/chat-work.webp" alt="The ListPilot chat panel working through the checklist" loading="lazy"></div>
+      <div class="shot hud"><img src="assets/chat-done.webp" alt="The ListPilot chat panel after the agent confirms the listing" loading="lazy"></div>
+    </div>
+  </div>
+</section>
+
+<section id="live">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">05 — Live access</span>
+      <h2>Don't take the screenshots' word for it. Open it.</h2>
+      <p class="sec-lede">This isn't a prototype waiting on a build. The agent below is the same
+        one in every frame on this page, running right now, free to use.</p>
+    </div>
+
+    <div class="live">
+      <div class="live-top">
+        <div>
+          <p class="live-url"><a href="https://next-frame.agency/listings/">next-frame.agency/listings</a></p>
+          <p class="live-note">Works on a phone — it installs to the home screen. Bring one property
+            you know well and answer honestly, including the parts you don't know.</p>
+          <div class="btns" style="margin-top:24px">
+            <button class="btn solid" id="launch" type="button"><span class="dot" aria-hidden="true"></span>Launch it in this page</button>
+            <a class="btn" href="https://next-frame.agency/listings/" target="_blank" rel="noopener">Open in a new tab</a>
+          </div>
+        </div>
+        <figure class="live-qr" style="margin:0">
+          <img src="assets/qr.svg" alt="QR code to next-frame.agency/listings" width="132" height="132">
+          <figcaption>Scan to open</figcaption>
+        </figure>
+      </div>
+
+      <div class="frame-wrap">
+        <div class="frame-slot" id="slot">
+          <div class="slot-inner">
+            <span class="mono" style="color:var(--gold)">Live agent · embedded</span>
+            <p>The agent runs on a free container that sleeps when nobody's using it, so the first
+              wake takes a few seconds. Press <b>Launch</b> and it loads here.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="reg">
+        <div class="reg-scroll">
+          <table>
+            <thead><tr><th>Registry</th><th>Unit</th><th>Volume</th><th>Status</th><th>Published</th></tr></thead>
+            <tbody>
+              <tr><td class="rno">NF-3B7D32</td><td class="rt">Uptown Ritz</td><td>2BR // 78.8 SQM</td><td>For sale // ₱25.5M (est.)</td><td>2026-06-17</td></tr>
+              <tr><td class="rno">NF-95116C</td><td class="rt">West Gallery Place<br><span style="color:var(--dim);font-size:13px">Bonifacio Global City</span></td><td>2BR // 92.0 SQM // 1 parking</td><td>For sale // ₱45M</td><td>2026-06-17</td></tr>
+              <tr><td class="rno">NF-AED793</td><td class="rt">The Proscenium at Rockwell, Lorraine Tower<br><span style="color:var(--dim);font-size:13px">Makati City</span></td><td>2BR // 92.0 SQM // 1 parking</td><td>For sale // Price on request</td><td>2026-06-16</td></tr>
+              <tr><td class="rno">NF-5B20E7</td><td class="rt">The Proscenium at Rockwell</td><td>92.0 SQM // 1 parking</td><td>For sale // Price on request</td><td>2026-06-16</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="reg-stamp">Live registry · 4 published units · pulled 2026-07-19 11:29</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="who">
+  <div class="shell">
+    <div class="sec-head">
+      <span class="sec-num">06 — Who it's for</span>
+      <h2>Two ways in, and they're not the same offer.</h2>
+    </div>
+    <div class="icp">
+      <article>
+        <span class="k">Up-and-coming agents</span>
+        <h3>The listing team you can't afford — free.</h3>
+        <p>You're competing with people who have a marketing department behind them. This closes
+          that gap on the only thing the client actually sees: the listing.</p>
+        <ul>
+          <li>Free to start, nothing to install</li>
+          <li>Bring one property and you'll have a published page before the call ends</li>
+          <li>The price you send is one you can defend, because you confirmed it</li>
+        </ul>
+      </article>
+      <article>
+        <span class="k">Listing firms</span>
+        <h3>Every agent, equipped like your best one.</h3>
+        <p>The gap between your top producer and your tenth agent is mostly production, not
+          talent. This is the production, issued to the whole floor at one standard.</p>
+        <ul>
+          <li>One format across every agent, so the brand stops depending on who typed it</li>
+          <li>New agents ship a professional listing on week one</li>
+          <li>Deployed to the whole floor, not licensed seat by seat</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="close">
+  <div class="shell">
+    <h2>Issue experience. Don't hire it.</h2>
+    <p>Bring one property to the pitch. We'll build the listing in the room, on the same agent
+      linked above, and you'll have the published page before we leave.</p>
+    <div class="btns">
+      <a class="btn solid" href="deck/">Read the full breakdown</a>
+      <a class="btn" href="https://next-frame.agency/listings/">Open the agent</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="shell">
+    <span>ListPilot · Next Frame Agency</span>
+    <a href="deck/">The deck</a>
+    <a href="https://next-frame.agency/listings/">Live agent</a>
+    <a href="https://next-frame.agency/">next-frame.agency</a>
+    <span class="r">Makati · Philippines</span>
+  </div>
+</footer>
+
+<script>
+// The live agent sits on a free container that sleeps. Loading it on page view would
+// mean a pitch opens on a cold-start error, so the frame is click-to-launch.
+(function(){
+  var btn = document.getElementById("launch");
+  var slot = document.getElementById("slot");
+  if(!btn || !slot) return;
+  btn.addEventListener("click", function(){
+    slot.innerHTML = "";
+    var f = document.createElement("iframe");
+    f.src = "https://next-frame.agency/listings/";
+    f.title = "ListPilot — the live agent";
+    f.loading = "lazy";
+    slot.appendChild(f);
+    btn.disabled = true;
+    btn.textContent = "Running below";
+    btn.style.opacity = ".55";
+  });
+})();
+</script>
+</body>
+</html>
