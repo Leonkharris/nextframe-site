@@ -15,6 +15,7 @@
 <meta property="og:image" content="https://next-frame.agency/ListPilot/assets/og.jpg" />
 <meta property="og:image:alt" content="ListPilot — an AI listing partner for Philippine real estate" />
 <meta name="twitter:card" content="summary_large_image" />
+<link rel="icon" href="/listings/icon-180.png" />
 <link rel="apple-touch-icon" href="/listings/icon-180.png" />
 <style>
 :root{
@@ -222,7 +223,11 @@ section.band>.shell{position:relative;z-index:1}
   background:rgba(7,9,14,.7);padding:5px 9px;border:1px solid var(--hair)}
 .runfoot{display:flex;flex-wrap:wrap;gap:34px;padding:30px 0 0;border-top:1px solid var(--hair)}
 .runfoot div{font-family:var(--mono);font-size:11px;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--dim)}
+  text-transform:uppercase;color:#a7adba}
+/* dawn.webp is the brightest plate on the page and the stat labels land straight on the
+   lit part of the skyline — this section needs a heavier scrim than the shared one. */
+#runstats>.bg::after{background:linear-gradient(var(--void) 0%,rgba(7,9,14,.68) 26%,
+  rgba(7,9,14,.60) 62%,var(--void) 100%)}
 .runfoot b{display:block;font-size:22px;letter-spacing:-.02em;color:var(--off);
   margin-bottom:4px;text-transform:none;font-variant-numeric:tabular-nums}
 
@@ -375,8 +380,7 @@ footer .r{margin-left:auto}
     <div class="shell hero-copy">
       <span class="eyebrow mono">Next Frame Agency · Philippine real estate</span>
       <h1 class="display">The listing team your agents <em>don't have.</em></h1>
-      <p class="hero-sub">One chat thread turns a property into a priced, published listing
-        in ten minutes.</p>
+      <p class="hero-sub">One thread. A priced, published listing in ten minutes.</p>
       <div class="btns">
         <a class="btn solid" href="https://next-frame.agency/listings/"><span class="dot" aria-hidden="true"></span>Open the live agent</a>
         <a class="btn" href="#run">Watch a run</a>
@@ -414,17 +418,17 @@ footer .r{margin-left:auto}
     </div>
     <div class="gap rise">
       <div>
-        <span class="k">One listing, the usual way</span>
+        <span class="k">The usual way</span>
         <dl>
-          <div class="row"><span class="n">4</span><span class="t">hours, mostly waiting on the developer</span></div>
-          <div class="row"><span class="n">6</span><span class="t">tabs open, none of them talking</span></div>
+          <div class="row"><span class="n">4</span><span class="t">hours, waiting on the developer</span></div>
+          <div class="row"><span class="n">6</span><span class="t">tabs, none of them talking</span></div>
           <div class="row"><span class="n">1</span><span class="t">price, set on feel</span></div>
         </dl>
       </div>
       <div>
-        <span class="k">One listing, with ListPilot</span>
+        <span class="k">With ListPilot</span>
         <dl>
-          <div class="row"><span class="n">10</span><span class="t">minutes, cold start to published page</span></div>
+          <div class="row"><span class="n">10</span><span class="t">minutes, cold start to published</span></div>
           <div class="row"><span class="n">1</span><span class="t">thread — nothing else opened</span></div>
           <div class="row"><span class="n">1</span><span class="t">price, off real comparable listings you confirm</span></div>
         </dl>
@@ -439,33 +443,33 @@ footer .r{margin-left:auto}
   <div class="shell">
     <div class="sec-head rise">
       <span class="sec-num">02 — The suit</span>
-      <h2>Seven modules. Your agent is the one wearing it.</h2>
+      <h2>Seven modules. Your agent wears it.</h2>
     </div>
     <div class="rack rise">
       <div class="slot">
         <div class="thumb"><img src="assets/checklist.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M01</span><h3>Intake</h3>
-          <p>Takes the property down in plain language. "No clue" is a valid answer.</p></div>
+          <p>"No clue" is a valid answer.</p></div>
       </div>
       <div class="slot">
         <div class="thumb"><img src="assets/research.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M02</span><h3>Recon</h3>
-          <p>Reads the building so the agent doesn't have to.</p></div>
+          <p>Reads the building for you.</p></div>
       </div>
       <div class="slot">
         <div class="thumb"><img src="assets/price.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M03</span><h3>Comps</h3>
-          <p>Shows you live comparable listings. You confirm the number.</p></div>
+          <p>Real comparable listings. You confirm the number.</p></div>
       </div>
       <div class="slot">
         <div class="thumb"><img src="assets/ads.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M04</span><h3>Copy</h3>
-          <p>Three voices — portal listing, social caption, buyer message.</p></div>
+          <p>Portal, social, buyer message.</p></div>
       </div>
       <div class="slot">
         <div class="thumb"><img src="assets/pack.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M05</span><h3>Pack</h3>
-          <p>The leave-behind, formatted and emailed.</p></div>
+          <p>Leave-behind, formatted and emailed.</p></div>
       </div>
       <div class="slot m-media">
         <!-- cold.webp, not chat-work.webp: chat-work shares its top third with research.webp
@@ -478,7 +482,7 @@ footer .r{margin-left:auto}
       <div class="slot wide">
         <div class="thumb"><img src="assets/record.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M07</span><h3>Publish</h3>
-          <p>A live listing page in one tap, with a registry number the agent can send to a client the same minute.</p></div>
+          <p>A live page and a registry number, one tap.</p></div>
       </div>
     </div>
   </div>
@@ -492,7 +496,7 @@ footer .r{margin-left:auto}
         <div>
           <span class="sec-num" style="margin-bottom:26px">03 — One run</span>
           <div class="rail" id="rail">
-            <div class="step" data-i="0"><b>00:00</b><span>Cold start, nothing filled in</span></div>
+            <div class="step" data-i="0"><b>00:00</b><span>Cold start</span></div>
             <div class="step" data-i="1"><b>01:20</b><span>Intake — thirteen questions</span></div>
             <div class="step" data-i="2"><b>03:05</b><span>Recon reads the building</span></div>
             <div class="step" data-i="3"><b>05:40</b><span>Comps — the agent confirms</span></div>
@@ -502,12 +506,12 @@ footer .r{margin-left:auto}
         </div>
         <div class="screen hud">
           <div class="clock" id="clock">00:00</div>
-          <figure data-i="0"><img src="assets/cold.webp" alt="The ListPilot screen at cold start — empty checklist, empty listing"><figcaption><b>Cold start</b> · nothing uploaded, nothing pre-filled</figcaption></figure>
-          <figure data-i="1"><img src="assets/checklist.webp" alt="The intake checklist filling in as the conversation goes"><figcaption><b>M01 Intake</b> · the checklist fills as the agent talks</figcaption></figure>
-          <figure data-i="2"><img src="assets/research.webp" alt="ListPilot researching the building after the agent answered 'no clue'"><figcaption><b>M02 Recon</b> · developer, turnover, amenities</figcaption></figure>
-          <figure data-i="3"><img src="assets/price.webp" alt="The price band built from real comparable listings, awaiting confirmation"><figcaption><b>M03 Comps</b> · real live listings — the human confirms the number</figcaption></figure>
-          <figure data-i="4"><img src="assets/ads.webp" alt="Three ad copies in three different voices for the same property"><figcaption><b>M04 Copy</b> · three voices, one property</figcaption></figure>
-          <figure data-i="5"><img src="assets/built.webp" alt="The finished screen — record, price band, ad copies and client pack assembled"><figcaption><b>M07 Publish</b> · record, pack and a live page</figcaption></figure>
+          <figure data-i="0"><img src="assets/cold.webp" alt="The ListPilot screen at cold start — empty checklist, empty listing"><figcaption><b>Cold start</b></figcaption></figure>
+          <figure data-i="1"><img src="assets/checklist.webp" alt="The intake checklist filling in as the conversation goes"><figcaption><b>M01 Intake</b></figcaption></figure>
+          <figure data-i="2"><img src="assets/research.webp" alt="ListPilot researching the building after the agent answered 'no clue'"><figcaption><b>M02 Recon</b></figcaption></figure>
+          <figure data-i="3"><img src="assets/price.webp" alt="The price band built from real comparable listings, awaiting confirmation"><figcaption><b>M03 Comps</b></figcaption></figure>
+          <figure data-i="4"><img src="assets/ads.webp" alt="Three ad copies in three different voices for the same property"><figcaption><b>M04 Copy</b></figcaption></figure>
+          <figure data-i="5"><img src="assets/built.webp" alt="The finished screen — record, price band, ad copies and client pack assembled"><figcaption><b>M07 Publish</b></figcaption></figure>
         </div>
       </div>
     </div>
@@ -540,10 +544,9 @@ footer .r{margin-left:auto}
       <div class="live-top">
         <div>
           <p class="live-url"><a href="https://next-frame.agency/listings/">next-frame.agency/listings</a></p>
-          <p class="live-note">The same agent in every frame above, running right now, free to use.
-            Bring one property you know well.</p>
+          <p class="live-note">The same agent, running right now. Bring a property you know.</p>
           <div class="btns" style="margin-top:22px">
-            <button class="btn solid" id="launch" type="button"><span class="dot" aria-hidden="true"></span>Launch it in this page</button>
+            <button class="btn solid" id="launch" type="button"><span class="dot" aria-hidden="true"></span>Launch it here</button>
             <a class="btn" href="https://next-frame.agency/listings/" target="_blank" rel="noopener">Open in a new tab</a>
           </div>
         </div>
@@ -565,8 +568,7 @@ footer .r{margin-left:auto}
         <div class="frame-slot" id="slot">
           <div class="slot-inner">
             <span class="mono" style="color:var(--gold)">Live agent · embedded</span>
-            <p>It runs on a free container that sleeps when idle, so the first wake takes a few
-              seconds. Press <b>Launch</b> and it loads here.</p>
+            <p>First wake takes a few seconds.</p>
           </div>
         </div>
       </div>
@@ -597,9 +599,9 @@ footer .r{margin-left:auto}
         <span class="k">Up-and-coming agents</span>
         <h3>The listing team you can't afford — free.</h3>
         <ul>
-          <li>Nothing to install, free to start</li>
+          <li>Nothing to install. Free.</li>
           <li>A published page before the call ends</li>
-          <li>A price you can defend, because you confirmed it</li>
+          <li>A price you can defend</li>
         </ul>
       </article>
       <article>
@@ -608,8 +610,8 @@ footer .r{margin-left:auto}
         <h3>Every agent, equipped like your best one.</h3>
         <ul>
           <li>One format across the whole floor</li>
-          <li>New agents ship a professional listing on week one</li>
-          <li>Deployed to the team, not licensed seat by seat</li>
+          <li>New agents ship on week one</li>
+          <li>Deployed to the team, not per seat</li>
         </ul>
       </article>
     </div>
@@ -619,9 +621,8 @@ footer .r{margin-left:auto}
 <section class="close band">
   <div class="bg" aria-hidden="true"><img src="assets/approach.webp" alt="" loading="lazy"></div>
   <div class="shell">
-    <h2 class="display">Issue experience. <em>Don't hire it.</em></h2>
-    <p>Bring one property to the pitch. We'll build the listing in the room and you'll have the
-      published page before we leave.</p>
+    <h2 class="display">Don't hire experience. <em>Issue it.</em></h2>
+    <p>Bring one property. We'll build the listing in the room.</p>
     <div class="btns">
       <a class="btn solid" href="deck/">Read the full breakdown</a>
       <a class="btn" href="https://next-frame.agency/listings/">Open the agent</a>
