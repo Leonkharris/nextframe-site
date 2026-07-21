@@ -19,11 +19,18 @@
 <link rel="apple-touch-icon" href="/listings/icon-180.png" />
 <style>
 :root{
-  --void:#07090e; --plate:#10141d; --plate-2:#161b26;
-  --gold:#c8a96a; --gold-deep:#8f7538;
-  --off:#e9e6dd; --soft:#8d8778; --dim:#5d5a52;
-  --live:#63c9d6; --confirm:#d99b4a;
-  --hair:rgba(233,230,221,.12); --hair-gold:rgba(200,169,106,.30);
+  /* The ground stays dark, but the panels have to read as lit objects sitting on it —
+     at #10141d over #07090e a panel was a 3% step and disappeared into the photograph
+     behind it. Every surface is now a visible step up, and the two greys that carried
+     most of the small type were failing contrast outright (#5d5a52 on #10141d is 2.4:1). */
+  --void:#05070c; --plate:#141a27; --plate-2:#1e2536;
+  --gold:#f2c879; --gold-deep:#c9a25c;
+  --off:#f4f2ed; --soft:#b8b4a8; --dim:#8b8679;
+  --live:#7fdcea; --confirm:#ecac52;
+  --hair:rgba(244,242,237,.19); --hair-gold:rgba(242,200,121,.46);
+  /* Panels are outlined and lit rather than merely darker, so they separate from a
+     photographic background the way the reference ads do. */
+  --lift:0 24px 64px rgba(0,0,0,.66), 0 0 58px rgba(242,200,121,.055);
   --sans:"Helvetica Neue",Helvetica,Arial,"Segoe UI",system-ui,sans-serif;
   --mono:ui-monospace,SFMono-Regular,"SF Mono",Menlo,Consolas,monospace;
   color-scheme:dark;
@@ -79,8 +86,15 @@ p{margin:0}
   font-family:var(--mono);font-size:11px;letter-spacing:.16em;text-transform:uppercase;
   border:1px solid var(--gold);color:var(--gold);background:none;cursor:pointer;
   transition:background .18s,color .18s}
-.btn.solid{background:var(--gold);color:var(--void);font-weight:700}
-.btn:hover{background:#dcbd7c;color:var(--void)}
+/* The primary action was a flat swatch of gold. It's the one thing on the page that
+   has to look switched on, so it carries its own light. */
+.btn.solid{background:var(--gold);color:var(--void);font-weight:700;border-color:var(--gold);
+  box-shadow:0 0 0 1px rgba(242,200,121,.28),0 10px 34px rgba(242,200,121,.20)}
+.btn:hover{background:#ffdf9c;color:var(--void)}
+/* The last thing on the page is the ask, so it is set at the scale of an ask. */
+.close .btns{justify-content:center;margin-top:34px}
+.close .btn{padding:20px 34px;font-size:12.5px}
+.close .btn.solid{box-shadow:0 0 0 1px rgba(242,200,121,.34),0 16px 54px rgba(242,200,121,.28)}
 .btn .dot{width:6px;height:6px;border-radius:50%;background:var(--live);
   box-shadow:0 0 8px var(--live)}
 .btn.solid .dot{background:var(--void);box-shadow:none}
@@ -152,12 +166,12 @@ section{padding:104px 0;position:relative}
 section.band>.bg{position:absolute;inset:0;overflow:hidden;z-index:0}
 section.band>.bg img{width:100%;height:100%;object-fit:cover;opacity:.9}
 section.band>.bg::after{content:"";position:absolute;inset:0;
-  background:linear-gradient(var(--void) 0%,rgba(7,9,14,.34) 30%,rgba(7,9,14,.42) 70%,var(--void) 100%)}
+  background:linear-gradient(var(--void) 0%,rgba(5,7,12,.38) 30%,rgba(5,7,12,.46) 70%,var(--void) 100%)}
 section.band>.shell{position:relative;z-index:1}
 
 /* ---- the gap: two columns of numbers, no essay ---- */
 .gap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
-  border:1px solid var(--hair)}
+  border:1px solid var(--hair-gold);box-shadow:var(--lift)}
 .gap>div{background:var(--plate);padding:34px 32px}
 .gap>div+div{background:var(--plate-2)}
 .gap .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
@@ -165,26 +179,32 @@ section.band>.shell{position:relative;z-index:1}
 .gap>div+div .k{color:var(--gold)}
 .gap dl{margin:0;display:grid;gap:20px}
 .gap .row{display:flex;align-items:baseline;gap:14px}
+/* Subordinate, not unreadable — these were --dim on a dark plate over a photograph,
+   which is the one thing on the page you genuinely could not see. Size carries the
+   hierarchy now; the colour only has to stay out of the gold's way. */
 .gap .n{font-family:var(--mono);font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;
-  color:var(--dim);font-variant-numeric:tabular-nums;min-width:2.6ch}
+  color:var(--soft);font-variant-numeric:tabular-nums;min-width:2.6ch}
 /* Both columns at one size read as a balanced ledger. The comparison is the argument,
    so the ListPilot side is set nearly twice as large and the old way shrinks under it. */
-.gap>div+div .n{color:var(--gold);font-size:clamp(52px,7vw,80px);line-height:.9}
-.gap .t{font-size:16px;color:#b4afa2}
+.gap>div+div .n{color:var(--gold);font-size:clamp(52px,7vw,80px);line-height:.9;
+  text-shadow:0 0 34px rgba(242,200,121,.34)}
+.gap .t{font-size:16px;color:#cbc6ba}
 .gap>div+div .t{color:var(--off)}
 
 /* ---- the suit: a loadout rack ---- */
 .rack{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
-  border:1px solid var(--hair)}
+  border:1px solid var(--hair-gold);box-shadow:var(--lift)}
 .slot{background:var(--plate);padding:0;display:flex;flex-direction:column;
   transition:background .2s}
 .slot:hover{background:var(--plate-2)}
 .slot .thumb{height:132px;overflow:hidden;border-bottom:1px solid var(--hair);background:#000}
 /* Crop below the top: the chat captures share an identical header, so a top-anchored
    crop made two different modules look like the same screenshot. */
+/* These are the pictures — held at .72 they were a texture behind the card rather
+   than something you could actually look at. */
 .slot .thumb img{width:100%;height:100%;object-fit:cover;object-position:50% 42%;
-  opacity:.72;transition:opacity .25s,transform .4s}
-.slot:hover .thumb img{opacity:.85;transform:scale(1.04)}
+  opacity:.94;transition:opacity .25s,transform .4s}
+.slot:hover .thumb img{opacity:1;transform:scale(1.04)}
 /* cold.webp is a whole-workspace capture; zoom to the photos/ad-image panel so
    this thumb shows the media module instead of generic app chrome. */
 .slot.m-media .thumb img{object-position:50% 33%;transform:scale(2.2);transform-origin:73% 33%}
@@ -195,7 +215,7 @@ section.band>.shell{position:relative;z-index:1}
 .slot .code{font-family:var(--mono);font-size:clamp(30px,3vw,42px);letter-spacing:-.03em;
   line-height:.85;color:var(--gold-deep)}
 .slot h3{font-size:19px;letter-spacing:-.02em}
-.slot p{color:#9d998c;font-size:14px;line-height:1.45}
+.slot p{color:#c2beb2;font-size:14px;line-height:1.45}
 .slot.wide{grid-column:span 2;background:var(--plate-2)}
 
 /* ---- the run: scrubbed demo ---- */
@@ -212,7 +232,7 @@ section.band>.shell{position:relative;z-index:1}
 .step[data-on] b{color:var(--gold)}
 .step[data-on] span{color:var(--off)}
 .screen{position:relative;border:1px solid var(--hair-gold);background:#000;
-  height:100%;overflow:hidden}
+  height:100%;overflow:hidden;box-shadow:var(--lift)}
 .screen figure{position:absolute;inset:0;margin:0;opacity:0;transition:opacity .45s ease}
 .screen figure[data-on]{opacity:1}
 /* contain, not cover — these are the product captures being used as proof, so a
@@ -239,12 +259,12 @@ section.band>.shell{position:relative;z-index:1}
 /* ---- live access ---- */
 /* bedroom.webp is a night interior, not a lit skyline — it needs a thinner scrim than
    the other plates to register at all. */
-#live>.bg::after{background:linear-gradient(var(--void) 0%,rgba(7,9,14,.16) 26%,
-  rgba(7,9,14,.30) 72%,var(--void) 100%)}
+#live>.bg::after{background:linear-gradient(var(--void) 0%,rgba(5,7,12,.34) 26%,
+  rgba(5,7,12,.46) 72%,var(--void) 100%)}
 /* Translucent, so the room behind this section carries through the panel instead of
    surviving only in the page gutters. */
-.live{border:1px solid var(--hair-gold);backdrop-filter:blur(2px);
-  background:linear-gradient(180deg,rgba(22,27,38,.82),rgba(16,20,29,.90))}
+.live{border:1px solid var(--hair-gold);backdrop-filter:blur(2px);box-shadow:var(--lift);
+  background:linear-gradient(180deg,rgba(30,37,54,.88),rgba(20,26,39,.94))}
 /* The agent you'd actually be talking to, cropped out of a real capture of the
    panel — the same face that appears in the module frames above. */
 /* The agent is the product's face — it was losing the row to a 124px QR code. */
@@ -282,7 +302,7 @@ section.band>.shell{position:relative;z-index:1}
 .reg-head{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim);margin-bottom:18px}
 .chips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.chip{border:1px solid var(--hair);padding:16px 16px 18px;background:rgba(7,9,14,.4)}
+.chip{border:1px solid var(--hair-gold);padding:16px 16px 18px;background:rgba(5,7,12,.62)}
 .chip .no{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.08em}
 .chip .u{display:block;margin-top:8px;font-size:15px;color:var(--off);letter-spacing:-.01em}
 .chip .m{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;
@@ -293,7 +313,7 @@ section.band>.shell{position:relative;z-index:1}
    firm's card is the larger one and the solo-agent card is the way in beside it. */
 .icp{display:grid;grid-template-columns:1fr 1.34fr;gap:24px;align-items:stretch}
 .icp article{border:1px solid var(--hair);background:var(--plate);padding:32px;
-  position:relative;overflow:hidden}
+  position:relative;overflow:hidden;box-shadow:var(--lift)}
 .icp article:last-child{padding:46px 42px;border-color:var(--hair-gold)}
 .icp article:last-child h3{font-size:30px}
 /* Each card carries the world it's addressed to. The gradient is heaviest where the
