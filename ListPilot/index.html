@@ -3,14 +3,14 @@
 <head>
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>ListPilot — the listing team your agents don't have | Next Frame Agency</title>
-<meta name="description" content="ListPilot turns any property into a priced, market-ready listing in 10 minutes. Seven modules, one chat thread, real comparable listings you confirm. Built by Next Frame Agency for Philippine real estate." />
+<title>ListPilot — power armor for your sales team | Next Frame Agency</title>
+<meta name="description" content="Supercharge your sales team: ListPilot is power armor your agents wear. Any property to a priced, market-ready listing in 10 minutes — seven plates, one chat thread, real comparable listings you confirm. Built by Next Frame Agency for Philippine real estate." />
 <link rel="canonical" href="https://next-frame.agency/ListPilot/" />
 <meta name="robots" content="index, follow, max-image-preview:large" />
 <meta name="theme-color" content="#07090e" />
 <meta property="og:type" content="website" />
-<meta property="og:title" content="ListPilot — the listing team your agents don't have" />
-<meta property="og:description" content="Turn any property into a priced, market-ready listing in 10 minutes. Seven modules, one chat thread." />
+<meta property="og:title" content="Supercharge your sales team. Give them power armor." />
+<meta property="og:description" content="ListPilot: seven plates your agent wears. Any property to a priced, market-ready listing in 10 minutes, in one chat thread." />
 <meta property="og:url" content="https://next-frame.agency/ListPilot/" />
 <meta property="og:image" content="https://next-frame.agency/ListPilot/assets/og.jpg" />
 <meta property="og:image:alt" content="ListPilot — an AI listing partner for Philippine real estate" />
@@ -175,20 +175,30 @@ section.band>.shell{position:relative;z-index:1}
    the gold is allowed to actually glow. */
 .caps{padding:74px 0 8px}
 .caps .sec-num{display:block;margin-bottom:24px}
-.capgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.cap{display:flex;align-items:center;gap:14px;padding:18px;background:var(--plate);
-  border:1px solid var(--hair-gold);box-shadow:var(--lift)}
+/* A ruled ledger, not eight tiles. Rules and alignment carry the structure so this
+   band sits on the page instead of stacking another row of boxes onto it. */
+.capgrid{display:grid;grid-template-columns:repeat(4,1fr);
+  border-top:1px solid var(--gold);border-bottom:1px solid var(--hair)}
+.cap{display:flex;align-items:center;gap:13px;padding:19px 24px;
+  border-left:1px solid var(--hair)}
+.cap:nth-child(4n+1){border-left:0;padding-left:0}
+.cap:nth-child(n+5){border-top:1px solid var(--hair)}
 .cap svg{width:22px;height:22px;flex:none;stroke:var(--gold);fill:none;stroke-width:1.6;
   stroke-linecap:round;stroke-linejoin:round;
   filter:drop-shadow(0 0 9px rgba(242,200,121,.5))}
 .cap span{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;
   color:var(--off);line-height:1.25}
 
-/* ---- the gap: two columns of numbers, no essay ---- */
-.gap{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--hair);
-  border:1px solid var(--hair-gold);box-shadow:var(--lift)}
-.gap>div{background:var(--plate);padding:34px 32px}
-.gap>div+div{background:var(--plate-2)}
+/* ---- the gap: two columns of numbers, no essay ----
+   One ground, one rule down the middle — a spread, not two boxes side by side.
+   The plate has to stay because this sits on a photograph and the numbers were
+   drowning in it, but it reads as a single field now instead of a container of
+   containers. The right column is the argument, so it gets the weight. */
+.gap{display:grid;grid-template-columns:1fr 1fr;
+  background:linear-gradient(180deg,rgba(20,26,39,.96),rgba(14,19,29,.97));
+  border-top:1px solid var(--gold);box-shadow:var(--lift)}
+.gap>div{padding:38px 40px 42px}
+.gap>div+div{border-left:1px solid var(--hair)}
 .gap .k{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim);display:block;margin-bottom:26px}
 .gap>div+div .k{color:var(--gold)}
@@ -206,13 +216,25 @@ section.band>.shell{position:relative;z-index:1}
 .gap .t{font-size:16px;color:#cbc6ba}
 .gap>div+div .t{color:var(--off)}
 
-/* ---- the suit: a loadout rack ---- */
-.rack{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--hair);
-  border:1px solid var(--hair-gold);box-shadow:var(--lift)}
-.slot{background:var(--plate);padding:0;display:flex;flex-direction:column;
-  transition:background .2s}
-.slot:hover{background:var(--plate-2)}
-.slot .thumb{height:132px;overflow:hidden;border-bottom:1px solid var(--hair);background:#000}
+/* ---- the armor: a plate rack ----
+   Six columns, three uneven rows — 3+3 / 2+2+2 / 3+3. The plates are cut to different
+   widths and their images to different depths, the way a spread varies its pictures,
+   so the eye moves through the suit instead of scanning a tile grid. One continuous
+   ground under the whole rack, divided by hairlines: no box inside a box. */
+.rack{display:grid;grid-template-columns:repeat(6,1fr);
+  background:linear-gradient(180deg,rgba(20,26,39,.95),rgba(13,18,28,.97));
+  border-top:1px solid var(--gold);box-shadow:var(--lift)}
+.slot{padding:0;display:flex;flex-direction:column;transition:background .2s;
+  border-left:1px solid var(--hair);border-top:1px solid var(--hair)}
+.slot:hover{background:rgba(30,37,54,.7)}
+/* row openers carry no left rule, and the first row none on top */
+.slot:nth-child(1),.slot:nth-child(3),.slot:nth-child(6){border-left:0}
+.slot:nth-child(1),.slot:nth-child(2){border-top:0;grid-column:span 3}
+.slot:nth-child(3),.slot:nth-child(4),.slot:nth-child(5){grid-column:span 2}
+.slot:nth-child(6),.slot:nth-child(7){grid-column:span 3}
+.slot .thumb{height:216px;overflow:hidden;background:#000}
+.slot:nth-child(n+3):nth-child(-n+5) .thumb{height:124px}
+.slot:nth-child(n+6) .thumb{height:178px}
 /* Crop below the top: the chat captures share an identical header, so a top-anchored
    crop made two different modules look like the same screenshot. */
 /* These are the pictures — held at .72 they were a texture behind the card rather
@@ -224,14 +246,15 @@ section.band>.shell{position:relative;z-index:1}
    this thumb shows the media module instead of generic app chrome. */
 .slot.m-media .thumb img{object-position:50% 33%;transform:scale(2.2);transform-origin:73% 33%}
 .slot.m-media:hover .thumb img{transform:scale(2.29)}
-.slot .body{padding:18px 20px 24px;display:flex;flex-direction:column;gap:7px;flex:1}
-/* The module number is the composition, not a label — set large and deep so it structures
-   the card the way a plate number structures an instrument, without shouting over the name. */
-.slot .code{font-family:var(--mono);font-size:clamp(30px,3vw,42px);letter-spacing:-.03em;
-  line-height:.85;color:var(--gold-deep)}
-.slot h3{font-size:19px;letter-spacing:-.02em}
-.slot p{color:#c2beb2;font-size:14px;line-height:1.45}
-.slot.wide{grid-column:span 2;background:var(--plate-2)}
+/* The plate number hangs in its own column beside the name, the way a spread hangs a
+   figure number beside its caption — it structures the entry instead of stacking one
+   more line on top of it. */
+.slot .body{padding:20px 24px 26px;flex:1;display:grid;grid-template-columns:auto 1fr;
+  column-gap:15px;row-gap:6px;align-content:start}
+.slot .code{grid-row:1/span 2;font-family:var(--mono);font-size:clamp(26px,2.5vw,36px);
+  letter-spacing:-.03em;line-height:.78;color:var(--gold-deep)}
+.slot h3{grid-column:2;font-size:19px;letter-spacing:-.02em;line-height:1.05}
+.slot p{grid-column:2;color:#c2beb2;font-size:14px;line-height:1.45}
 
 /* ---- the run: scrubbed demo ---- */
 .run-stage{display:block;padding-top:78px}
@@ -316,8 +339,10 @@ section.band>.shell{position:relative;z-index:1}
 .reg{border-top:1px solid var(--hair);padding:26px 32px}
 .reg-head{font-family:var(--mono);font-size:10px;letter-spacing:.18em;text-transform:uppercase;
   color:var(--dim);margin-bottom:18px}
-.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
-.chip{border:1px solid var(--hair-gold);padding:16px 16px 18px;background:rgba(5,7,12,.62)}
+/* Four ruled columns, not four boxes — the gold rule above each entry does the work
+   a border was doing, and the whitespace between them does the rest. */
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:26px 38px}
+.chip{border-top:1px solid var(--gold);padding:15px 0 0}
 .chip .no{font-family:var(--mono);font-size:11px;color:var(--gold);letter-spacing:.08em}
 .chip .u{display:block;margin-top:8px;font-size:15px;color:var(--off);letter-spacing:-.01em}
 .chip .m{display:block;margin-top:6px;font-family:var(--mono);font-size:10px;
@@ -329,17 +354,18 @@ section.band>.shell{position:relative;z-index:1}
 .proof{padding:94px 0 0;text-align:left}
 .proof .reg{border-top:0;padding:0}
 .proof .reg-head{font-size:11px;color:var(--soft);margin-bottom:22px}
-.proof .chip{background:var(--plate);box-shadow:var(--lift)}
+.proof .chip .m{color:var(--soft)}
 /* the proof row already opened the closing beat, so the ask doesn't need its full run-up */
 .proof+.close{padding-top:126px}
 
 /* ---- who ---- */
 /* Two equal boxes read as two equal options. The pitch is aimed at the firm, so the
    firm's card is the larger one and the solo-agent card is the way in beside it. */
-.icp{display:grid;grid-template-columns:1fr 1.34fr;gap:24px;align-items:stretch}
-.icp article{border:1px solid var(--hair);background:var(--plate);padding:32px;
-  position:relative;overflow:hidden;box-shadow:var(--lift)}
-.icp article:last-child{padding:46px 42px;border-color:var(--hair-gold)}
+.icp{display:grid;grid-template-columns:1fr 1.34fr;align-items:stretch;
+  border-top:1px solid var(--gold);box-shadow:var(--lift)}
+.icp article{background:var(--plate);padding:34px 36px;position:relative;overflow:hidden}
+.icp article+article{border-left:1px solid var(--hair)}
+.icp article:last-child{padding:48px 44px}
 .icp article:last-child h3{font-size:30px}
 /* Each card carries the world it's addressed to. The gradient is heaviest where the
    text sits, so the photograph never competes with the copy. */
@@ -383,10 +409,20 @@ footer .r{margin-left:auto}
 @media (max-width:900px){
   .shell{width:calc(100% - 36px)}
   section{padding:76px 0}
+  /* the six-column spread collapses to a two-up; the nth-child spans and the varied
+     picture depths that carry it on a wide screen would only fragment it here */
   .rack{grid-template-columns:repeat(2,1fr)}
-  .slot.wide{grid-column:span 2}
+  .rack .slot{grid-column:auto;border-left:1px solid var(--hair);border-top:1px solid var(--hair)}
+  .rack .slot:nth-child(odd){border-left:0}
+  .rack .slot:nth-child(-n+2){border-top:0}
+  .rack .slot .thumb{height:152px}
   .gap,.icp,.live-top{grid-template-columns:1fr}
+  .gap>div+div{border-left:0;border-top:1px solid var(--hair)}
+  .icp article+article{border-left:0;border-top:1px solid var(--hair)}
   .chips,.capgrid{grid-template-columns:1fr 1fr}
+  .cap:nth-child(4n+1){border-left:1px solid var(--hair);padding-left:24px}
+  .cap:nth-child(odd){border-left:0;padding-left:0}
+  .cap:nth-child(n+3){border-top:1px solid var(--hair)}
   .caps{padding:54px 0 4px}
   .mast nav a:not(.cta){display:none}
   .f-card{position:relative;right:auto;bottom:auto;width:100%;margin-top:30px;
@@ -403,7 +439,9 @@ footer .r{margin-left:auto}
 }
 @media (max-width:560px){
   .rack,.chips{grid-template-columns:1fr}
-  .slot.wide{grid-column:auto}
+  .rack .slot{border-left:0}
+  .rack .slot:nth-child(2){border-top:1px solid var(--hair)}
+  .rack .slot .thumb{height:186px}
   .reg,.live-top,.frame-wrap{padding:20px}
   .runfoot{gap:22px}
 }
@@ -420,7 +458,7 @@ footer .r{margin-left:auto}
   <div class="shell">
     <span class="lock">List<b>Pilot</b></span>
     <nav>
-      <a href="#suit">The suit</a>
+      <a href="#suit">The armor</a>
       <a href="#run">The run</a>
       <a href="#live">Live access</a>
       <a href="deck/">The deck</a>
@@ -438,8 +476,8 @@ footer .r{margin-left:auto}
 
     <div class="shell hero-copy">
       <span class="eyebrow mono">Next Frame Agency · Philippine real estate</span>
-      <h1 class="display">The listing team your agents <em>don't have.</em></h1>
-      <p class="hero-sub">One thread. A priced, published listing in ten minutes.</p>
+      <h1 class="display">Supercharge your sales team. <em>Give them power armor.</em></h1>
+      <p class="hero-sub">Seven plates your agent puts on. One thread, a priced and published listing in ten minutes.</p>
       <div class="btns">
         <a class="btn solid" href="https://next-frame.agency/listings/"><span class="dot" aria-hidden="true"></span>Open the live agent</a>
         <a class="btn" href="#run">Watch a run</a>
@@ -468,7 +506,7 @@ footer .r{margin-left:auto}
 <!-- ============ AT A GLANCE ============ -->
 <section class="caps">
   <div class="shell">
-    <span class="sec-num rise">What it hands you</span>
+    <span class="sec-num rise">Standard issue — what the suit hands your agent</span>
     <div class="capgrid rise">
       <div class="cap"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="18" height="18"/><path d="M7.5 12.4l3 3 6-6.4"/></svg><span>Gaps filled</span></div>
       <div class="cap"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M6.5 21V12M12 21V5M17.5 21V15"/></svg><span>Real comps</span></div>
@@ -518,8 +556,8 @@ footer .r{margin-left:auto}
   <div class="bg" aria-hidden="true"><img src="assets/glass.webp" alt="" loading="lazy"></div>
   <div class="shell">
     <div class="sec-head rise">
-      <span class="sec-num">02 — The suit</span>
-      <h2>Seven modules. Your agent wears it.</h2>
+      <span class="sec-num">02 — The armor</span>
+      <h2>Seven plates. Every agent on your floor wears the same suit.</h2>
     </div>
     <div class="rack rise">
       <div class="slot">
@@ -555,7 +593,7 @@ footer .r{margin-left:auto}
         <div class="body"><span class="code">M06</span><h3>Media</h3>
           <p>Ad image, shot list, presenter voice.</p></div>
       </div>
-      <div class="slot wide">
+      <div class="slot">
         <div class="thumb"><img src="assets/record.webp" alt="" loading="lazy" aria-hidden="true"></div>
         <div class="body"><span class="code">M07</span><h3>Publish</h3>
           <p>A live page and a registry number, one tap.</p></div>
