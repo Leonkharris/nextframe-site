@@ -54,10 +54,20 @@ html{background:#050b09}
 .legacy-card .stamp{border-color:#2f5546}
 .legacy-card p,.sheet--divider,.div-line,.sheet--dark .section-sub,
 .spot-copy p,.spot-strip figcaption{color:#a7bab0}
-/* At 128px the tiles are a 1.74 letterbox and the plates read squashed. The stock 3:2
-   sits them properly; the hero gives back the height the third row needs. */
-#from-the-kitchen .gal-hero img,#rooms-details .gal-hero img{height:272px}
-#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:148px}
+/* Every photograph on this kit is 16:9. The stock boxes are far wider than that, so
+   object-fit:cover was throwing away up to half of each composition side-to-side and
+   the results read as squashed. Each band below is pushed back toward 16:9, stopping
+   at whatever its tightest sheet can hold inside the 1056px page. */
+#from-the-kitchen .gal-hero img,#rooms-details .gal-hero img{height:358px}
+#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:125px}
+.spot-hero img{height:351px}
+.spot-strip img{height:199px}
+.feat-hero img{height:369px}
+.feat-strip img{height:217px}
+.reach-photo img{height:396px}
+.legacy-card img{height:191px}
+.story-photo img{height:396px}
+.tv-hero img{height:396px}
 /* part dividers — Jade rooms behind the smoke */
 #part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/entry-onyx.jpg")}
 #part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/banquette-run.jpg")}
@@ -83,7 +93,7 @@ html{background:#050b09}
 /* menu strip of dish photography */
 .menu-strip{position:absolute;left:0;right:0;bottom:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 56px}
 .menu-strip figure{position:relative;margin:0;border-radius:4px;overflow:hidden;background:#0d1c17}
-.menu-strip img{width:100%;aspect-ratio:4/3;object-fit:cover}
+.menu-strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#f3ead9;font:600 8px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
 
 /* ---------- investor sheets ---------- */
@@ -209,7 +219,11 @@ html.v7hero-on .v7hero{display:block}
    sized from the image's own rect, so no sheet layout is touched and print is unaffected. */
 .jv{position:absolute;z-index:2;object-fit:cover;background:#0c1712;opacity:0;transition:opacity .34s ease;pointer-events:none}
 .jv.is-on{opacity:1}
-.jv-badge{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,16,13,.62);border:1px solid rgba(194,154,85,.55);color:#e0cfa9;font-size:8px;line-height:1;padding-left:2px;pointer-events:none;transition:opacity .25s ease}
+.jv-badge{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,16,13,.62);border:1px solid rgba(194,154,85,.55);color:#e0cfa9;font-size:8px;line-height:1;padding-left:2px;pointer-events:none;opacity:0;transition:opacity .25s ease}
+/* At rest the badge is a 22px dot with nothing anchoring it, and on a page where only
+   some photographs are wired it just reads as debris. Show it on the photo you are
+   actually pointing at — which is the same gesture that starts the clip. */
+.kit-wrap *:hover > .jv-badge{opacity:1}
 .jv-badge.is-hidden{opacity:0}
 
 /* ---------- preview film — screen only ---------- */
