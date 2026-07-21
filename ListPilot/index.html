@@ -596,10 +596,10 @@ section.band>.shell{position:relative;z-index:1}
 /* ---- who ---- */
 /* Two equal boxes read as two equal options. The pitch is aimed at the firm, so the
    firm's card is the larger one and the solo-agent card is the way in beside it. */
-.icp{display:grid;grid-template-columns:1fr 1.34fr;align-items:stretch;
-  border-top:1px solid var(--gold);box-shadow:var(--lift)}
-.icp article{background:var(--plate);padding:34px 36px;position:relative;overflow:hidden}
-.icp article+article{border-left:1px solid var(--hair)}
+.icp{display:grid;grid-template-columns:1fr 1.34fr;align-items:stretch;gap:26px;
+  border-top:1px solid var(--gold);padding-top:30px}
+.icp article{background:var(--plate);padding:34px 36px;position:relative;overflow:hidden;
+  box-shadow:0 18px 44px rgba(0,0,0,.58), inset 0 0 0 1px var(--hair)}
 .icp article:last-child{padding:48px 44px}
 .icp article:last-child h3{font-size:30px}
 /* Each card carries the world it's addressed to. The gradient is heaviest where the
@@ -671,7 +671,7 @@ footer .r{margin-left:auto}
   .rack .slot .thumb{height:152px}
   .gap,.icp,.live-top{grid-template-columns:1fr}
   .gap>div+div{border-left:0;border-top:1px solid var(--hair)}
-  .icp article+article{border-left:0;border-top:1px solid var(--hair)}
+  .icp{gap:18px}
   .chips,.capgrid,.shots{grid-template-columns:1fr 1fr}
   .shots{gap:16px;margin-bottom:48px}
   .shot .fr img{height:140px}
@@ -1258,7 +1258,7 @@ footer .r{margin-left:auto}
        update both together if that changes. The replies line is deliberately conditional:
        this page has no client inbox, and a pitch that invents one loses the broker the
        moment they check. */
-    var LEAD = "Four listings are already live on the record, ready for your review. " +
+    var LEAD = "Four live listings are already on the record, ready for your review. " +
                "On your own floor I would also have last night's replies, and who is ready " +
                "for a call. Shall I spin up today's agenda, and get your listings ready for " +
                "the next appointment?";
@@ -1270,7 +1270,7 @@ footer .r{margin-left:auto}
     var SCRIPT = [
       "There is no MLS in this market. So we build the record instead — thirteen questions in, a priced, market-ready listing out.",
       "Your team does not need more software. It needs power armor. Everything below this line is the suit.",
-      "Thirteen questions. Real comparables you confirm. A live page, a client PDF, three ad copies — ten minutes, cold start to live.",
+      "Thirteen questions. Real comparables you confirm. A live page, a client PDF, three ad copies — ten minutes, cold start to live listing.",
       "Every unit on your floor, on the record, in one link. Scroll and I will walk you through the run."
     ];
     /* idx -1 is the lead, and it falls straight out of the clip naming below: b0 for the
