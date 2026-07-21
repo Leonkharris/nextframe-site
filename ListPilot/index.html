@@ -69,9 +69,12 @@ p{margin:0}
 .display em{font-style:normal;color:var(--gold);text-shadow:0 0 44px rgba(224,169,63,.5)}
 /* SUPERCHARGE is the loudest word on the page, so it is set as the loudest thing on
    the page: bigger than the sentence under it, poured full of gold, lit from behind.
-   It was a small handwritten script here and read as a caption instead of a command. */
-.display .shout{display:block;font-weight:900;letter-spacing:-.055em;line-height:.82;
-  font-size:clamp(48px,11.6vw,164px);color:var(--gold);margin-bottom:.02em;
+   It was a small handwritten script here and read as a caption instead of a command.
+   The size below is set to survive the widest fallback face with room to spare — the
+   fitter in the script then opens it back up to the exact width of the column, so the
+   word sets flush to both margins the way a masthead does. */
+.display .shout{display:block;white-space:nowrap;font-weight:900;letter-spacing:-.055em;
+  line-height:.82;font-size:clamp(32px,9.4vw,132px);color:var(--gold);margin-bottom:.02em;
   filter:drop-shadow(0 0 46px rgba(224,169,63,.34))}
 @supports ((-webkit-background-clip:text) or (background-clip:text)){
   .display .shout{background:linear-gradient(174deg,#fff6e4 0%,var(--gold) 44%,var(--gold-hot) 100%);
@@ -192,8 +195,11 @@ p{margin:0}
    The arc reactor off Leon's mission-control screen, wired to the same scroll value the
    flight already computes — so it is a real gauge reading a real number, not a spinner.
    It sits top-right of the stage, clear of the headline on the left and the cockpit card
-   at the bottom, and it stands down entirely on narrow screens where there is no room. */
-.core{position:absolute;z-index:4;top:72px;right:max(24px,calc(50vw - 620px));
+   at the bottom, and it stands down entirely on narrow screens where there is no room.
+   Its height is set by the dial: once the headline was set flush to the full column the
+   word's tops arrived seven pixels under this panel and its backlight smeared the last
+   row through the glass, so the dial came in and the whole plate moved up. */
+.core{position:absolute;z-index:4;top:64px;right:max(24px,calc(50vw - 620px));
   width:268px;padding:12px 14px 11px;border:1px solid var(--hair-gold);
   background:rgba(10,13,20,.62);backdrop-filter:blur(7px)}
 .core .ttl{display:flex;align-items:center;gap:9px;font-family:var(--mono);font-size:9px;
@@ -204,7 +210,7 @@ p{margin:0}
 /* Laid out sideways rather than stacked: a tall panel would reach down into the
    cockpit capture, and an instrument that covers its own subject is worse than none. */
 .core .wrap{display:flex;align-items:center;gap:14px;margin-top:10px}
-.core .dial{position:relative;width:92px;flex:none}
+.core .dial{position:relative;width:70px;flex:none}
 .core svg{display:block;width:100%;height:auto;transform:rotate(-90deg)}
 .core .trk{fill:none;stroke:rgba(242,200,121,.16);stroke-width:5}
 .core .trk2{fill:none;stroke:rgba(127,220,234,.14);stroke-width:1}
@@ -259,11 +265,31 @@ html.js .boot{display:grid;position:fixed;inset:0;z-index:60;place-content:cente
   display:flex;align-items:center;justify-content:center;gap:9px}
 .boot .b4 i{width:5px;height:5px;border-radius:50%;background:var(--live);
   box-shadow:0 0 8px var(--live);animation:pulse 1.4s ease-in-out infinite}
+/* the voice control. The veil itself ignores the pointer so a stray click lands on the
+   page, so this one control has to take it back. Three bars stand in for the speaker:
+   flat when he is silent, moving while he talks. */
+.boot .snd{pointer-events:auto;margin-top:20px;display:inline-flex;align-items:center;gap:10px;
+  padding:9px 15px;background:rgba(20,26,39,.6);border:1px solid var(--hair);border-radius:2px;
+  font-family:var(--mono);font-size:9px;letter-spacing:.24em;text-transform:uppercase;
+  color:var(--dim);cursor:pointer;transition:color .3s ease,border-color .3s ease}
+.boot .snd:hover,.boot .snd:focus-visible{color:var(--live);border-color:var(--hair-live)}
+.boot .snd b{display:flex;align-items:flex-end;gap:2px;height:9px}
+.boot .snd b i{display:block;width:2px;height:3px;background:currentColor}
+.boot .snd[data-on]{color:var(--live);border-color:var(--hair-live)}
+.boot .snd[data-on] b i{animation:eq .9s ease-in-out infinite}
+.boot .snd[data-on] b i:nth-child(2){animation-delay:.15s}
+.boot .snd[data-on] b i:nth-child(3){animation-delay:.3s}
+@keyframes eq{0%,100%{height:3px}50%{height:9px}}
 
 /* ---- click to enlarge ----
    Every real product capture opens. The zoom mark is the affordance; the whole frame is
-   the target, and it is reachable from the keyboard because it is a button in all but tag. */
-.zoomable{cursor:zoom-in;position:relative}
+   the target, and it is reachable from the keyboard because it is a button in all but tag.
+   A blanket position:relative here would clobber anything that already places itself,
+   and it did: it knocked the flight card out of absolute, made it a flex sibling of the
+   hero column and squeezed the headline's left gutter to nothing. Only the plain frames
+   need a containing block for the badge, so only they get one. */
+.zoomable{cursor:zoom-in}
+.scr.zoomable,.fr.zoomable{position:relative}
 .zoomable::after{content:"⤢";position:absolute;right:8px;bottom:8px;z-index:5;
   width:26px;height:26px;display:grid;place-items:center;font-size:13px;
   color:var(--void);background:var(--gold);opacity:0;transition:opacity .2s;
@@ -495,7 +521,9 @@ section.band>.shell{position:relative;z-index:1}
 /* The agent you'd actually be talking to, cropped out of a real capture of the
    panel — the same face that appears in the module frames above. */
 /* The agent is the product's face — it was losing the row to a 124px QR code. */
-.who-card{width:320px;border:1px solid var(--hair-gold);background:var(--plate-2)}
+/* 320px flat was wider than a small phone's column and hung the whole page 39px off
+   the right edge; it may be 320 when there is 320 to have. */
+.who-card{width:min(320px,100%);border:1px solid var(--hair-gold);background:var(--plate-2)}
 .who-card .face{height:224px;overflow:hidden;background:#000;border-bottom:1px solid var(--hair)}
 /* The panel's video tile is wider than this box, so a plain cover crop drags the
    chat text below it into frame. Scale into the tile and clip. */
@@ -701,6 +729,8 @@ footer .r{margin-left:auto}
     <p class="b2b" id="boot-msg"></p>
     <div class="b3"><b id="boot-clock">--:--:--</b><span id="boot-date"></span></div>
     <div class="b4"><i></i>Seven plates online · agent warm</div>
+    <button class="snd" id="boot-snd" type="button" aria-pressed="false">
+      <b><i></i><i></i><i></i></b><span id="boot-snd-t">Voice off</span></button>
     <div class="b5">Scroll, tap or press any key to continue</div>
   </div>
 </div>
@@ -1166,6 +1196,33 @@ footer .r{margin-left:auto}
     if(z){ ev.preventDefault(); openLb(z); }
   });
 
+  /* ---------- SUPERCHARGE, set flush ----------
+     A single word this large is at the mercy of whatever face the machine actually has,
+     and Helvetica ran it 11% past the column — the E fell off the right edge. So the
+     stylesheet sizes it small enough for the widest fallback and this measures the real
+     ink and opens it back out to the exact width of the column. Runs before the
+     reduced-motion gate: a still page still has to fit. */
+  var shout = document.querySelector(".display .shout");
+  if(shout && document.createRange){
+    var fitting = false;
+    var fit = function(){
+      if(fitting) return; fitting = true;
+      shout.style.fontSize = "";
+      var box = shout.getBoundingClientRect().width;
+      var r = document.createRange(); r.selectNodeContents(shout);
+      var ink = r.getBoundingClientRect().width;
+      if(ink > 8 && box > 8){
+        var base = parseFloat(getComputedStyle(shout).fontSize);
+        shout.style.fontSize = (base * (box * .995 / ink)).toFixed(2) + "px";
+      }
+      fitting = false;
+    };
+    fit();
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(fit);
+    var ft = null;
+    addEventListener("resize", function(){ clearTimeout(ft); ft = setTimeout(fit, 120); });
+  }
+
   if(reduce) return;
 
   /* ---------- Jarvis says hello ----------
@@ -1193,7 +1250,8 @@ footer .r{margin-left:auto}
     var beat = setInterval(tick, 1000);
 
     var now = new Date(), h = now.getHours();
-    var say = "Good " + (h < 12 ? "morning" : h < 18 ? "afternoon" : "evening") + ", agent.";
+    var part = h < 12 ? "morning" : h < 18 ? "afternoon" : "evening";
+    var say = "Good " + part + ", agent.";
 
     /* What Jarvis says next. Four briefings, one job each: name the market gap, name the
        promise, name the deliverables, name the record. The clock picks one so the page
@@ -1205,9 +1263,37 @@ footer .r{margin-left:auto}
       "Thirteen questions. Real comparables you confirm. A live page, a client PDF, three ad copies — ten minutes, cold start to live.",
       "Every unit on your floor, on the record, in one link. Scroll and I will walk you through the run."
     ];
-    var msg = SCRIPT[now.getMinutes() % SCRIPT.length];
+    var idx = now.getMinutes() % SCRIPT.length;
+    var msg = SCRIPT[idx];
 
-    var t1 = null, t2 = null, hold = null;
+    /* ---------- and Jarvis says it out loud ----------
+       The same two beats, spoken: one clip for the greeting the clock picked, one for the
+       briefing. No browser will start sound on a cold landing, so we ask, and if we are
+       refused the control says "tap for voice" and one tap arms it. Only an explicit tap
+       is remembered — a refusal is the browser's opinion, not the visitor's. */
+    var auG = new Audio("assets/vo/g-" + part + ".m4a"),
+        auB = new Audio("assets/vo/b" + (idx + 1) + ".m4a"),
+        snd = document.getElementById("boot-snd"),
+        sndT = document.getElementById("boot-snd-t"),
+        voice = false;
+    auG.preload = auB.preload = "auto";
+
+    function mark(on, remember){
+      voice = on;
+      if(on) snd.setAttribute("data-on",""); else snd.removeAttribute("data-on");
+      snd.setAttribute("aria-pressed", on ? "true" : "false");
+      sndT.textContent = on ? "Voice on" : "Tap for voice";
+      if(on){ clearTimeout(cap); cap = setTimeout(dismiss, 24000); }
+      if(remember){ try{ localStorage.setItem("lp-voice", on ? "1" : "0"); }catch(e){} }
+    }
+    function play(a){
+      try{ a.currentTime = 0; }catch(e){}
+      var p = a.play();
+      if(p && p.catch) p.catch(function(){ mark(false); });
+      return p;
+    }
+
+    var t1 = null, t2 = null, hold = null, cap = null;
     function type(el, text, speed, done){
       var i = 0;
       return setInterval(function(){
@@ -1215,27 +1301,65 @@ footer .r{margin-left:auto}
         if(i >= text.length){ clearInterval(el === line ? t1 : t2); if(done) done(); }
       }, speed);
     }
+    /* When he is speaking the words should land with him, so the briefing is typed at
+       whatever pace the clip actually runs at, and only falls back to the silent pace. */
+    function pace(){
+      var p = voice && auB.duration ? auB.duration * 1000 * .84 / msg.length : 0;
+      return p > 19 ? Math.min(p, 80) : 19;
+    }
+    function brief(){
+      if(dismissed || t2) return;
+      if(voice) play(auB);
+      t2 = type(msgEl, msg, pace(), function(){
+        boot.setAttribute("data-skip","");
+        if(!(voice && !auB.paused)) hold = setTimeout(dismiss, 1200);
+      });
+    }
+    auB.addEventListener("ended", function(){ hold = setTimeout(dismiss, 1000); });
+
     t1 = type(line, say, 42, function(){
       line.classList.add("said");
-      setTimeout(function(){
-        if(dismissed) return;
-        t2 = type(msgEl, msg, 19, function(){
-          boot.setAttribute("data-skip","");
-          hold = setTimeout(dismiss, 1200);
-        });
-      }, 360);
+      if(voice && !auG.paused) auG.addEventListener("ended", function(){
+        setTimeout(brief, 240);
+      }, {once:true});
+      else setTimeout(brief, 360);
     });
 
     var dismissed = false;
     function dismiss(){
       if(dismissed) return; dismissed = true;
-      clearInterval(t1); clearInterval(t2); clearTimeout(hold);
+      clearInterval(t1); clearInterval(t2); clearTimeout(hold); clearTimeout(cap);
+      auG.pause(); auB.pause();
       line.textContent = say; msgEl.textContent = msg;
       boot.setAttribute("data-off","");
       setTimeout(function(){ boot.remove(); clearInterval(beat); }, 800);
     }
+
+    /* The veil dismisses on any input, so the one control inside it has to keep its own
+       events to itself — otherwise arming the voice would close the thing speaking. */
+    snd.addEventListener("touchstart", function(e){ e.stopPropagation(); }, {passive:true});
+    snd.addEventListener("keydown", function(e){ e.stopPropagation(); });
+    snd.addEventListener("click", function(e){
+      e.stopPropagation();
+      if(voice){ auG.pause(); auB.pause(); mark(false, true); return; }
+      mark(true, true);
+      play(t2 ? auB : auG);
+    });
+
+    var muted = false;
+    try{ muted = localStorage.getItem("lp-voice") === "0"; }catch(e){}
+    if(!muted){
+      var opening = play(auG);
+      /* play() guards the promise it was handed, but .then() hands back a new one — without
+         its own rejection arm the refusal we fully expect lands in the console as an
+         unhandled rejection. The refusal is already answered inside play(); this just
+         stops the derived promise from complaining about it a second time. */
+      if(opening && opening.then) opening.then(function(){ mark(true); }, function(){});
+      else mark(true);
+    }
+
     setTimeout(function(){ if(!dismissed) boot.setAttribute("data-skip",""); }, 1400);
-    setTimeout(dismiss, 8000);
+    cap = setTimeout(dismiss, 8000);
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
     addEventListener("keydown", dismiss, {once:true});
