@@ -51,6 +51,12 @@ html{background:#050b09}
 .venue-copy h3,.also-card h4,.reach-hero .bl,.reach-card h4,.hotel-row h3,.next-row h4,
 .honor-hero .b5-label,.partner-col h4,.toc-part h3,.tl-list h4,.philo-quote,
 .philo-tenets h4,.tv-col h4,.asset-row h4{color:#f2ede1}
+.legacy-card{background:#14261f;border-color:#25453a}
+.legacy-card .stamp{border-color:#2f5546}
+.legacy-card p,.sheet--divider,.div-line,.sheet--dark .section-sub,
+.spot-copy p,.spot-strip figcaption{color:#a7bab0}
+/* Three gallery rows do not fit at the stock 148px tile height on a fixed 1056px page. */
+#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:128px}
 /* part dividers — Jade rooms behind the smoke */
 #part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/entry-onyx.jpg")}
 #part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/banquette-run.jpg")}
@@ -431,7 +437,18 @@ html.v7hero-on .v7hero{display:block}
           <h4>Three Acts</h4>
           <p>Dinner, music, late. Every element of the house — lighting, menu, staffing, sound — is built to hand the night from one act to the next without a seam.</p>
         </div>
+        <div class="tl-card">
+          <h4>Booking the Night</h4>
+          <p>Two seatings, 6PM and 10PM. The first is booked for dinner, the second for the music — the same room, priced and paced differently. Walk-ins are taken at the bar until the kitchen closes.</p>
+        </div>
       </aside>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">2</span><span class="sl">Seatings a Night</span></div>
+      <div><span class="sn">45</span><span class="sl">Minute Sets</span></div>
+      <div><span class="sn">8</span><span class="sl">Hours, Doors to Close</span></div>
+      <div><span class="sn">2AM</span><span class="sl">Last Call</span></div>
     </div>
   </section>
 
@@ -455,6 +472,9 @@ html.v7hero-on .v7hero{display:block}
       <div><span class="pn">01</span><h4>Fire First</h4><p>A wood oven at the centre of the kitchen. Char, smoke and salt before anything else.</p></div>
       <div><span class="pn">02</span><h4>One Long Night</h4><p>No turn-and-burn. The room is designed to be held, not flipped — three acts, one table.</p></div>
       <div><span class="pn">03</span><h4>Manila First</h4><p>Philippine seafood, Philippine produce, Philippine musicians. The technique travels; the sourcing does not.</p></div>
+      <div><span class="pn">04</span><h4>The Room Is the Dish</h4><p>Light, sound and spacing are plated as carefully as the food. A table is a seat in a theatre, not a slot in a service.</p></div>
+      <div><span class="pn">05</span><h4>Finished at the Table</h4><p>Whole fish carved, pasta finished, drinks stirred in front of you. If it can be done in the room, it is not done in the kitchen.</p></div>
+      <div><span class="pn">06</span><h4>No Velvet Rope</h4><p>Dress how you like. The only entry requirement is that you intend to stay for the whole night.</p></div>
     </div>
   </section>
 
@@ -1007,6 +1027,21 @@ html.v7hero-on .v7hero{display:block}
         <span class="prov prov--ai">AI Render</span>
         <figcaption>Chocolate &amp; Barako</figcaption>
       </figure>
+      <figure class="gal-item">
+        <img src="img/fd-lapu-lapu.jpg" alt="Whole lapu-lapu roasted in the wood oven, carved at the table.">
+        <span class="prov prov--ai">AI Render</span>
+        <figcaption>Wood-Oven Lapu-Lapu</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-tagliatelle.jpg" alt="Hand-cut tagliatelle finished tableside with alba truffle.">
+        <span class="prov prov--ai">AI Render</span>
+        <figcaption>Tagliatelle · Gu&eacute;ridon</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-souffle.jpg" alt="Calamansi souffle straight from the oven.">
+        <span class="prov prov--ai">AI Render</span>
+        <figcaption>Calamansi Souffl&eacute;</figcaption>
+      </figure>
     </div>
   </section>
 
@@ -1053,6 +1088,21 @@ html.v7hero-on .v7hero{display:block}
         <img src="img/powder-room.jpg" alt="The powder room in emerald and brass.">
         <span class="prov">Venue Render</span>
         <figcaption>The Powder Room</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/mezzanine.jpg" alt="The mezzanine overlooking the Grand Room.">
+        <span class="prov">Venue Render</span>
+        <figcaption>The Mezzanine</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/proscenium.jpg" alt="The proscenium arch framing the stage.">
+        <span class="prov">Venue Render</span>
+        <figcaption>The Proscenium</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/spiral-stair.jpg" alt="The brass spiral stair linking floor and mezzanine.">
+        <span class="prov">Venue Render</span>
+        <figcaption>The Spiral Stair</figcaption>
       </figure>
     </div>
   </section>
@@ -1112,6 +1162,13 @@ html.v7hero-on .v7hero{display:block}
     </div>
 
     <p class="legacy-close">&ldquo;Every surface in the room is one of four things. The discipline is what makes it feel expensive.&rdquo;</p>
+
+    <div class="story-band">
+      <div><span class="sn">1</span><span class="sl">Velvet Dye Lot</span></div>
+      <div><span class="sn">9m</span><span class="sl">Atrium Height</span></div>
+      <div><span class="sn">2400K</span><span class="sl">Fixed Warmth</span></div>
+      <div><span class="sn">18mo</span><span class="sl">Build Time</span></div>
+    </div>
   </section>
 
   <!-- ============ PAGE 20 · THE CHEF PARTNER ============ -->
@@ -1136,6 +1193,12 @@ html.v7hero-on .v7hero{display:block}
       <div><span class="sn">1989</span><span class="sl">Olives Founded</span></div>
       <div><span class="sn">35+</span><span class="sl">Years Cooking</span></div>
       <div><span class="sn">4</span><span class="sl">Continents</span></div>
+    </div>
+
+    <div class="philo-tenets">
+      <div><span class="pn">01</span><h4>The Wood Oven</h4><p>Built into the centre of the Jade pass, not hidden behind it. Flatbread, whole fish and the short rib all pass through the fire.</p></div>
+      <div><span class="pn">02</span><h4>The Gu&eacute;ridon</h4><p>The rolling table he brought back from France — pasta finished, fish carved, sauces mounted in front of the guest.</p></div>
+      <div><span class="pn">03</span><h4>Manila&rsquo;s Larder</h4><p>The grammar is his; the ingredients are not. Lapu-lapu, calamansi, Batangas barako and Philippine oysters replace the Mediterranean originals.</p></div>
     </div>
   </section>
 
