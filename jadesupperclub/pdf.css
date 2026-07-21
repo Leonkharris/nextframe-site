@@ -1,0 +1,45 @@
+/* Print stylesheet — sheet-paged press kit.
+   Screen sheets are 816×1056px = 8.5×11in @96dpi, so print is 1:1.
+   Do NOT add img filters/opacity or gradient-over-image (Chromium magenta bug). */
+
+@page {
+  size: 8.5in 11in;
+  margin: 0;
+}
+
+* {
+  -webkit-print-color-adjust: exact !important;
+  print-color-adjust: exact !important;
+}
+
+html, body {
+  background: #ffffff !important;
+}
+
+.kit-wrap {
+  display: block;
+  padding: 0;
+  gap: 0;
+}
+
+.sheet {
+  width: 8.5in;
+  height: 11in;
+  margin: 0;
+  box-shadow: none;
+  border-radius: 0;
+  page-break-after: always;
+  break-after: page;
+  overflow: hidden;
+}
+
+.sheet:last-child {
+  page-break-after: auto;
+  break-after: auto;
+}
+
+/* Neutralize the mobile scale transform if it ever applies in print */
+.sheet {
+  transform: none !important;
+  margin-bottom: 0 !important;
+}
