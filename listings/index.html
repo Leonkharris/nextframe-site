@@ -1022,7 +1022,9 @@ function renderPriceIntel(L, zonal, costs) {
   const asking = L.asking_price_php, suggested = L.suggested_price_php;
   const price = asking || suggested;
   const comps = L.comps || [];
-  if (!price && !comps.length) { panel.style.display = "none"; return; }
+  // The BIR zonal value earns the panel on its own: an unpriced listing is
+  // exactly when an agent is working out what to ask for.
+  if (!price && !comps.length && !(zonal && zonal.rate)) { panel.style.display = "none"; return; }
   panel.style.display = "";
   body.innerHTML = "";
 
@@ -1078,7 +1080,8 @@ function renderPriceIntel(L, zonal, costs) {
 // What the sale actually costs, on screen — the same figures the Listing Pack
 // prints, so an agent can answer a buyer without opening the PDF.
 function renderCosts(body, zonal, costs) {
-  if (!costs) return;
+  const hasZonal = !!(zonal && zonal.rate);
+  if (!costs && !hasZonal) return;
 
   function row(parent, label, value, cls) {
     const r = document.createElement("div"); r.className = "row" + (cls ? " " + cls : "");
@@ -1089,10 +1092,10 @@ function renderCosts(body, zonal, costs) {
   }
 
   const sl = document.createElement("div"); sl.className = "pi-slabel";
-  sl.textContent = "Estimated taxes & closing costs";
+  sl.textContent = costs ? "Estimated taxes & closing costs" : "BIR reference value";
   body.appendChild(sl);
 
-  if (zonal && zonal.rate) {
+  if (hasZonal) {
     const z = document.createElement("div"); z.className = "pi-zonal";
     row(z, "BIR zonal value", php(zonal.rate) + " / sqm" +
         (zonal.area ? " × " + zonal.area + " sqm" : ""));
@@ -1102,6 +1105,14 @@ function renderCosts(body, zonal, costs) {
       .filter(Boolean).join(" · ");
     z.appendChild(src);
     body.appendChild(z);
+  }
+
+  if (!costs) {
+    const note = document.createElement("p"); note.className = "pi-disclaimer";
+    note.textContent = "This is what the BIR values the unit at. Add an asking price and " +
+      "the full tax and closing-cost breakdown appears here.";
+    body.appendChild(note);
+    return;
   }
 
   const grid = document.createElement("div"); grid.className = "pi-costs";
