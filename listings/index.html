@@ -224,7 +224,9 @@
   .pi-zonal .row { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
   .pi-zonal b { color: var(--gold-soft); }
   .pi-zonal .src { color: var(--muted); font-size: 0.72rem; margin-top: 3px; line-height: 1.4; }
-  .pi-costs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+  /* start, not stretch: the seller side is usually one line, and a card stretched
+     to match the buyer's four leaves a cavern of empty space. */
+  .pi-costs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; align-items: start; }
   @media (max-width: 520px) { .pi-costs { grid-template-columns: 1fr; } }
   .pi-cost { border: 1px solid var(--hairline); border-radius: var(--radius-sm); padding: 9px 12px; background: var(--recess); font-size: 0.8rem; }
   .pi-cost h4 { color: var(--gold); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin: 0 0 6px; }
