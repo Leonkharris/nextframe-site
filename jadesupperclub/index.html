@@ -14,11 +14,8 @@
 <link rel="stylesheet" href="pdf.css" media="print">
 <script src="press.js?v=1" defer></script>
 <style>
-/* v7 — image provenance labels */
+/* photo containers establish a positioning context for injected clips + captions */
 .spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
-.prov{position:absolute;top:8px;right:8px;z-index:3;font:600 8px/1 Inter,sans-serif;text-transform:uppercase;letter-spacing:.14em;padding:4px 8px;border-radius:3px;background:rgba(6,14,11,.72);color:#c9b98f;border:1px solid rgba(194,154,85,.35);pointer-events:none;white-space:nowrap}
-.spot-hero .prov{right:64px}
-.spot-strip .prov,.feat-strip .prov{left:8px;right:auto}
 
 /* ---------- JADE EDITION — palette shift: emerald + brass ---------- */
 :root{
@@ -103,8 +100,8 @@ html{background:#050b09}
 .menu-strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#f3ead9;font:600 8px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
 /* A clip sits at z-index 2, so the captions printed ON the photograph — rather than under
-   it — vanished the moment one played. The provenance chips already ride at 3; put these
-   on the same layer so a plate keeps its name while its clip runs. */
+   it — vanished the moment one played; put them at z-index 3, above the clip, so a plate
+   keeps its name while its clip runs. */
 .menu-strip figcaption,.gal-cap{z-index:3}
 
 /* ---------- investor sheets ---------- */
@@ -140,7 +137,6 @@ html.v7hero-on .v7hero{display:block}
 .v7p-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--bgs));transform-origin:50% 50%;filter:brightness(.78);will-change:transform}
 .v7p-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(5,14,11,.45) 70%,rgba(5,14,11,.85) 100%)}
 .v7p-fgwrap{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
-.v7prov{position:absolute;right:18px;bottom:16px;z-index:3;font:600 .56rem/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(169,169,169,.55);opacity:var(--fgo);pointer-events:none}
 .v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
 .v7p-title{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;pointer-events:none;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
 /* the title reads THROUGH the portal, so it has to fit the opening — anything wider
@@ -271,7 +267,6 @@ html.v7hero-on .v7hero{display:block}
     <div class="v7p-fgwrap">
       <img class="v7p-fg" src="img/hallway-portal.jpg" alt="">
     </div>
-    <span class="v7prov">Entry corridor — design render</span>
 
     <div class="v7scene v7s2">
       <div class="v7glow v7glow-1"></div><div class="v7glow v7glow-2"></div><div class="v7glow v7glow-3"></div>
@@ -834,7 +829,7 @@ html.v7hero-on .v7hero{display:block}
     <p class="spot-no">No. 01 — The Brass Counter · Front of House</p>
     <h2 class="spot-title" id="bar-heading">Jade Bar</h2>
 
-    <figure class="spot-hero"><img src="img/bar-main.jpg" alt="The main bar at Jade Supper Club — brass back-bar and green marble counter."><span class="prov">Venue Render</span></figure>
+    <figure class="spot-hero"><img src="img/bar-main.jpg" alt="The main bar at Jade Supper Club — brass back-bar and green marble counter."></figure>
 
     <div class="menu-cols">
       <div>
@@ -991,7 +986,7 @@ html.v7hero-on .v7hero{display:block}
       <figure><img src="img/dr-sake-service.jpg" alt="Chilled sake carafes and porcelain cups."><figcaption>Sake Service</figcaption></figure>
       <figure><img src="img/dr-jade-spritz.jpg" alt="The Jade Spritz, backlit."><figcaption>Jade Spritz</figcaption></figure>
       <figure><img src="img/dr-black-pearl.jpg" alt="Black Pearl mezcal cocktail with sesame rim."><figcaption>Black Pearl</figcaption></figure>
-      <figure><img src="img/glassware.jpg" alt="Crystal glassware on the Jade back bar."><span class="prov">Venue Render</span><figcaption>The Glassware</figcaption></figure>
+      <figure><img src="img/glassware.jpg" alt="Crystal glassware on the Jade back bar."><figcaption>The Glassware</figcaption></figure>
     </div>
   </section>
 
@@ -1002,7 +997,7 @@ html.v7hero-on .v7hero{display:block}
     <p class="spot-no">No. 03 — The Pass · Open to the Grand Room</p>
     <h2 class="spot-title" id="spot-kitchen-heading">The Wood Oven</h2>
 
-    <figure class="spot-hero"><img src="img/chef-hands-real.jpg" alt="A chef finishing a plate at the Jade pass."><span class="prov">Venue Photography</span></figure>
+    <figure class="spot-hero"><img src="img/chef-hands-real.jpg" alt="A chef finishing a plate at the Jade pass."></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -1021,7 +1016,7 @@ html.v7hero-on .v7hero{display:block}
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="img/fd-gueridon-real.jpg" alt="Tableside guéridon service at Jade Supper Club."><span class="prov">Venue Photography</span><figcaption>Guéridon service — the duck, the cacio e pepe and the soufflé are all finished at the table.</figcaption></figure>
+    <figure class="spot-strip"><img src="img/fd-gueridon-real.jpg" alt="Tableside guéridon service at Jade Supper Club."><figcaption>Guéridon service — the duck, the cacio e pepe and the soufflé are all finished at the table.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 14 · SPOTLIGHT — THE STAGE ============ -->
@@ -1031,7 +1026,7 @@ html.v7hero-on .v7hero{display:block}
     <p class="spot-no">No. 04 — The Proscenium · Far End of the Grand Room</p>
     <h2 class="spot-title" id="spot-stage-heading">The Stage</h2>
 
-    <figure class="spot-hero"><img src="img/proscenium.jpg" alt="The curtained proscenium stage at the end of the Grand Room."><span class="prov">Venue Render</span></figure>
+    <figure class="spot-hero"><img src="img/proscenium.jpg" alt="The curtained proscenium stage at the end of the Grand Room."></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -1050,7 +1045,7 @@ html.v7hero-on .v7hero{display:block}
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="img/stage-guests.jpg" alt="A full house watching the first set at Jade."><span class="prov">Venue Render</span><figcaption>Nine o'clock — the curtain opens and the room turns to face it.</figcaption></figure>
+    <figure class="spot-strip"><img src="img/stage-guests.jpg" alt="A full house watching the first set at Jade."><figcaption>Nine o'clock — the curtain opens and the room turns to face it.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 15 · SPOTLIGHT — THE SPIRAL ============ -->
@@ -1060,7 +1055,7 @@ html.v7hero-on .v7hero{display:block}
     <p class="spot-no">No. 05 — The Brass Spiral · Grand Room to Mezzanine</p>
     <h2 class="spot-title" id="spot-spiral-heading">The Spiral &amp; The Mezzanine</h2>
 
-    <figure class="spot-hero"><img src="img/spiral-stair.jpg" alt="The polished brass spiral staircase and glowing brass wall panels."><span class="prov">Venue Render</span></figure>
+    <figure class="spot-hero"><img src="img/spiral-stair.jpg" alt="The polished brass spiral staircase and glowing brass wall panels."></figure>
 
     <div class="spot-grid">
       <div class="spot-copy">
@@ -1079,7 +1074,7 @@ html.v7hero-on .v7hero{display:block}
       </aside>
     </div>
 
-    <figure class="spot-strip"><img src="img/mezzanine-guests.jpg" alt="Guests along the mezzanine rail above the Grand Room."><span class="prov">Venue Render</span><figcaption>The rail — twenty-four seats above the room, and the best view of the stage in the house.</figcaption></figure>
+    <figure class="spot-strip"><img src="img/mezzanine-guests.jpg" alt="Guests along the mezzanine rail above the Grand Room."><figcaption>The rail — twenty-four seats above the room, and the best view of the stage in the house.</figcaption></figure>
   </section>
 
   <!-- ============ PAGE 16 · FROM THE KITCHEN (gallery I) ============ -->
@@ -1091,14 +1086,12 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="gal-hero">
       <img src="img/fd-beef-real.jpg" alt="A sliced beef course plated at Jade Supper Club.">
-      <span class="prov">Venue Photography</span>
       <figcaption class="gal-cap"><p>&ldquo;Fire, salt, time. If you can taste the technique, we have overcooked it.&rdquo;</p></figcaption>
     </figure>
 
     <div class="gal-grid">
       <figure class="gal-item">
         <img src="img/fd-oyster-real.jpg" alt="Oysters on crushed ice at the Jade ice bar.">
-        <span class="prov">Venue Photography</span>
         <figcaption>Oyster Tower · The Ice Bar</figcaption>
       </figure>
       <figure class="gal-item">
@@ -1137,54 +1130,44 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="gal-hero">
       <img src="img/dining-brass.jpg" alt="The Grand Room at Jade Supper Club, laid for service.">
-      <span class="prov">Venue Render</span>
       <figcaption class="gal-cap"><p>The Grand Room, laid and lit an hour before doors — the only quiet it gets.</p></figcaption>
     </figure>
 
     <div class="gal-grid">
       <figure class="gal-item">
         <img src="img/hostess-podium.jpg" alt="The hostess podium in the entry corridor.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Corridor · Arrival</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/back-bar.jpg" alt="The brass back bar at Jade.">
-        <span class="prov">Venue Render</span>
         <figcaption>Jade Bar · The Back Bar</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/atrium.jpg" alt="The atrium volume above the Grand Room.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Atrium</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/salon-art.jpg" alt="The Salon private dining room.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Salon · Private Dining</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/cellar-wall.jpg" alt="The cellar wall of sake and wine.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Cellar</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/powder-room.jpg" alt="The powder room in emerald and brass.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Powder Room</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/mezzanine.jpg" alt="The mezzanine overlooking the Grand Room.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Mezzanine</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/proscenium.jpg" alt="The proscenium arch framing the stage.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Proscenium</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/spiral-stair.jpg" alt="The brass spiral stair linking floor and mezzanine.">
-        <span class="prov">Venue Render</span>
         <figcaption>The Spiral Stair</figcaption>
       </figure>
     </div>
@@ -1331,7 +1314,6 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="tv-hero">
       <img src="img/stage-guests.jpg" alt="The first set of the night at Jade Supper Club.">
-      <span class="prov">Venue Render</span>
       <figcaption class="gal-cap"><p>Nine o'clock and eleven o'clock — the two moments the whole room is pointed the same way.</p></figcaption>
     </figure>
 
@@ -1375,7 +1357,7 @@ html.v7hero-on .v7hero{display:block}
     <h2 class="section-title" id="events-heading"><span class="script-kick">the invitation</span>Private Dining &amp; Events</h2>
 
     <div class="hotel-row" id="the-salon">
-      <figure style="margin:0;position:relative"><img src="img/salon-guests.jpg" alt="A private dinner in the Salon at Jade Supper Club."><span class="prov">Venue Render</span></figure>
+      <figure style="margin:0;position:relative"><img src="img/salon-guests.jpg" alt="A private dinner in the Salon at Jade Supper Club."></figure>
       <div>
         <p class="kicker">Bookable Now · Eighteen Seats</p>
         <h3>The Salon</h3>
@@ -1387,7 +1369,7 @@ html.v7hero-on .v7hero{display:block}
     <div class="next-list">
       <div class="next-row">
         <span class="nn">01</span>
-        <figure style="margin:0;position:relative"><img src="img/mezzanine.jpg" alt="The mezzanine level at Jade Supper Club."><span class="prov">Venue Render</span></figure>
+        <figure style="margin:0;position:relative"><img src="img/mezzanine.jpg" alt="The mezzanine level at Jade Supper Club."></figure>
         <div>
           <h4>The Mezzanine — Semi-Private</h4>
           <p>Twenty-four seats on the rail above the Grand Room, closable as a group space. The best sightline to the stage in the house; the standing area behind it holds forty more.</p>
@@ -1396,7 +1378,7 @@ html.v7hero-on .v7hero{display:block}
       </div>
       <div class="next-row">
         <span class="nn">02</span>
-        <figure style="margin:0;position:relative"><img src="img/grand-guests.jpg" alt="The full Grand Room during service."><span class="prov">Venue Render</span></figure>
+        <figure style="margin:0;position:relative"><img src="img/grand-guests.jpg" alt="The full Grand Room during service."></figure>
         <div>
           <h4>Full Buyout — The Whole House</h4>
           <p>Every room, the stage, the bar and the kitchen for one night. Seventy-seven seated across all seven bookable areas, with standing room on the mezzanine rail and along the bar, and the music programme built to the brief.</p>
@@ -1405,7 +1387,7 @@ html.v7hero-on .v7hero{display:block}
       </div>
       <div class="next-row">
         <span class="nn">03</span>
-        <figure style="margin:0;position:relative"><img src="img/proscenium.jpg" alt="The proscenium stage set for a showcase."><span class="prov">Venue Render</span></figure>
+        <figure style="margin:0;position:relative"><img src="img/proscenium.jpg" alt="The proscenium stage set for a showcase."></figure>
         <div>
           <h4>Monday Takeovers</h4>
           <p>The one night the house is dark is the one night it is yours: album launches, label showcases, brand dinners and film nights on a working proscenium with a full sound and lighting rig.</p>
@@ -1426,7 +1408,6 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="feat-hero">
       <img src="img/salon-art.jpg" alt="The Salon private dining room at Jade Supper Club.">
-      <span class="prov">Venue Render</span>
       <figcaption class="gal-cap"><p>One table, eighteen chairs, and a door — the quietest room in a house built to be loud.</p></figcaption>
     </figure>
 
@@ -1449,7 +1430,6 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="feat-strip">
       <img src="img/salon-guests.jpg" alt="A private dinner underway in the Salon.">
-      <span class="prov">Venue Render</span>
       <figcaption>A closed room inside an open one — the door shuts, the night does not stop.</figcaption>
     </figure>
   </section>
@@ -1463,7 +1443,6 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="feat-hero">
       <img src="img/stair-guests.jpg" alt="Guests on the brass spiral staircase late in the night.">
-      <span class="prov">Venue Render</span>
       <figcaption class="gal-cap"><p>After midnight the dining room becomes a different venue — same brass, two stops darker.</p></figcaption>
     </figure>
 
@@ -1486,7 +1465,6 @@ html.v7hero-on .v7hero{display:block}
 
     <figure class="feat-strip">
       <img src="img/room-guests.jpg" alt="The Grand Room late at night, cleared to standing.">
-      <span class="prov">Venue Render</span>
       <figcaption>One in the morning — the dining room, standing, with the brass turned down.</figcaption>
     </figure>
   </section>
