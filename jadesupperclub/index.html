@@ -2027,12 +2027,25 @@ html.v7hero-on .v7hero{display:block}
     return el;
   }
 
+  /* Sheets carry a fractional zoom under 880px. getBoundingClientRect() reports viewport
+     pixels, but left/top/width/height set on a child are read back in the host's own
+     scale, so the two disagree and the clip lands short of the photograph. */
+  function zoomOf(el){
+    var z = 1;
+    for (var n = el; n && n.nodeType === 1; n = n.parentElement){
+      var v = parseFloat(getComputedStyle(n).zoom);
+      if (v && v !== 1) z *= v;
+    }
+    return z || 1;
+  }
+
   function box(el, im, h){
+    var z = zoomOf(h);
     var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
-    el.style.left   = (b.left - a.left) + 'px';
-    el.style.top    = (b.top  - a.top)  + 'px';
-    el.style.width  = b.width  + 'px';
-    el.style.height = b.height + 'px';
+    el.style.left   = (b.left - a.left) / z + 'px';
+    el.style.top    = (b.top  - a.top)  / z + 'px';
+    el.style.width  = b.width  / z + 'px';
+    el.style.height = b.height / z + 'px';
   }
 
   function wire(im, name){
@@ -2044,9 +2057,10 @@ html.v7hero-on .v7hero{display:block}
     h.appendChild(badge);
 
     function fit(){
+      var z = zoomOf(h);
       var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
-      badge.style.left = (b.left - a.left + 8) + 'px';
-      badge.style.top  = (b.top - a.top + b.height - 30) + 'px';
+      badge.style.left = ((b.left - a.left) / z + 8) + 'px';
+      badge.style.top  = ((b.top - a.top + b.height) / z - 30) + 'px';
       if (vid) box(vid, im, h);
     }
 
