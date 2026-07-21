@@ -68,6 +68,13 @@ html{background:#050b09}
 .legacy-card img{height:191px}
 .story-photo img{height:396px}
 .tv-hero img{height:396px}
+/* The cellar ran the same 16:9 photographs contained inside a 220x250 panel, so each one
+   rendered 182x102 — 34% of its tile, the rest empty. Two columns instead of three gives
+   each photo the full width of its card at its native ratio, and the extra row takes up
+   the dead band this sheet was already carrying above the foot-note. */
+.shelf-grid{grid-template-columns:repeat(2,1fr)}
+.shelf-tile{height:auto;padding:0;overflow:hidden}
+.shelf-tile img{width:100%;height:auto;max-width:none;max-height:none;aspect-ratio:16/9;object-fit:cover;box-shadow:none}
 /* part dividers — Jade rooms behind the smoke */
 #part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/entry-onyx.jpg")}
 #part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/banquette-run.jpg")}
@@ -95,6 +102,10 @@ html{background:#050b09}
 .menu-strip figure{position:relative;margin:0;border-radius:4px;overflow:hidden;background:#0d1c17}
 .menu-strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
 .menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#f3ead9;font:600 8px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+/* A clip sits at z-index 2, so the captions printed ON the photograph — rather than under
+   it — vanished the moment one played. The provenance chips already ride at 3; put these
+   on the same layer so a plate keeps its name while its clip runs. */
+.menu-strip figcaption,.gal-cap{z-index:3}
 
 /* ---------- investor sheets ---------- */
 .fin-tbl{width:calc(100% - 112px);margin:22px 56px 0;border-collapse:collapse}
