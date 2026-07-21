@@ -165,9 +165,11 @@ section.band>.shell{position:relative;z-index:1}
 .gap>div+div .k{color:var(--gold)}
 .gap dl{margin:0;display:grid;gap:20px}
 .gap .row{display:flex;align-items:baseline;gap:14px}
-.gap .n{font-family:var(--mono);font-size:clamp(30px,4vw,46px);letter-spacing:-.03em;
+.gap .n{font-family:var(--mono);font-size:clamp(26px,3.4vw,38px);letter-spacing:-.03em;
   color:var(--dim);font-variant-numeric:tabular-nums;min-width:2.6ch}
-.gap>div+div .n{color:var(--gold)}
+/* Both columns at one size read as a balanced ledger. The comparison is the argument,
+   so the ListPilot side is set nearly twice as large and the old way shrinks under it. */
+.gap>div+div .n{color:var(--gold);font-size:clamp(52px,7vw,80px);line-height:.9}
 .gap .t{font-size:16px;color:#b4afa2}
 .gap>div+div .t{color:var(--off)}
 
@@ -187,8 +189,11 @@ section.band>.shell{position:relative;z-index:1}
    this thumb shows the media module instead of generic app chrome. */
 .slot.m-media .thumb img{object-position:50% 33%;transform:scale(2.2);transform-origin:73% 33%}
 .slot.m-media:hover .thumb img{transform:scale(2.29)}
-.slot .body{padding:20px 20px 24px;display:flex;flex-direction:column;gap:8px;flex:1}
-.slot .code{font-family:var(--mono);font-size:11px;letter-spacing:.16em;color:var(--gold)}
+.slot .body{padding:18px 20px 24px;display:flex;flex-direction:column;gap:7px;flex:1}
+/* The module number is the composition, not a label — set large and deep so it structures
+   the card the way a plate number structures an instrument, without shouting over the name. */
+.slot .code{font-family:var(--mono);font-size:clamp(30px,3vw,42px);letter-spacing:-.03em;
+  line-height:.85;color:var(--gold-deep)}
 .slot h3{font-size:19px;letter-spacing:-.02em}
 .slot p{color:#9d998c;font-size:14px;line-height:1.45}
 .slot.wide{grid-column:span 2;background:var(--plate-2)}
@@ -242,14 +247,15 @@ section.band>.shell{position:relative;z-index:1}
   background:linear-gradient(180deg,rgba(22,27,38,.82),rgba(16,20,29,.90))}
 /* The agent you'd actually be talking to, cropped out of a real capture of the
    panel — the same face that appears in the module frames above. */
-.who-card{width:196px;border:1px solid var(--hair);background:var(--plate-2)}
-.who-card .face{height:126px;overflow:hidden;background:#000;border-bottom:1px solid var(--hair)}
+/* The agent is the product's face — it was losing the row to a 124px QR code. */
+.who-card{width:320px;border:1px solid var(--hair-gold);background:var(--plate-2)}
+.who-card .face{height:224px;overflow:hidden;background:#000;border-bottom:1px solid var(--hair)}
 /* The panel's video tile is wider than this box, so a plain cover crop drags the
    chat text below it into frame. Scale into the tile and clip. */
 .who-card .face img{width:100%;height:100%;object-fit:cover;object-position:50% 12%;
   transform:scale(1.55);transform-origin:50% 26%}
 .who-card .meta{padding:14px 16px 16px}
-.who-card .nm{font-size:15px;letter-spacing:-.01em;display:flex;align-items:center;gap:7px}
+.who-card .nm{font-size:21px;letter-spacing:-.02em;display:flex;align-items:center;gap:8px}
 .who-card .nm::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--live)}
 .who-card .rl{margin-top:6px;font-family:var(--mono);font-size:10px;letter-spacing:.13em;
   text-transform:uppercase;color:var(--gold)}
@@ -260,7 +266,7 @@ section.band>.shell{position:relative;z-index:1}
   word-break:break-all}
 .live-url a{color:var(--off);border-bottom:1px solid var(--hair-gold)}
 .live-note{margin-top:12px;color:var(--soft);font-size:15px;max-width:44ch}
-.live-qr{width:124px}
+.live-qr{width:86px;align-self:end;padding-bottom:2px}
 .live-qr img{width:100%;height:auto;background:var(--off);padding:8px}
 .live-qr figcaption{margin-top:8px;font-family:var(--mono);font-size:9px;
   letter-spacing:.16em;text-transform:uppercase;color:var(--dim);text-align:center}
@@ -283,9 +289,13 @@ section.band>.shell{position:relative;z-index:1}
   letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
 
 /* ---- who ---- */
-.icp{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+/* Two equal boxes read as two equal options. The pitch is aimed at the firm, so the
+   firm's card is the larger one and the solo-agent card is the way in beside it. */
+.icp{display:grid;grid-template-columns:1fr 1.34fr;gap:24px;align-items:stretch}
 .icp article{border:1px solid var(--hair);background:var(--plate);padding:32px;
   position:relative;overflow:hidden}
+.icp article:last-child{padding:46px 42px;border-color:var(--hair-gold)}
+.icp article:last-child h3{font-size:30px}
 /* Each card carries the world it's addressed to. The gradient is heaviest where the
    text sits, so the photograph never competes with the copy. */
 .icp .ph{position:absolute;inset:0;z-index:0}
@@ -302,7 +312,10 @@ section.band>.shell{position:relative;z-index:1}
   background:var(--gold)}
 
 /* ---- close ---- */
-.close{text-align:center;padding:130px 0}
+/* Five sections at an identical 104px march is metronomic — the close gets the long
+   run-up so the last headline arrives after a silence instead of on the beat. */
+#who{padding-bottom:54px}
+.close{text-align:center;padding:200px 0 150px}
 .close h2{max-width:15ch;margin-inline:auto}
 .close p{margin-top:24px;color:#b4afa2;max-width:46ch;margin-inline:auto}
 .close .btns{justify-content:center;margin-top:34px}
@@ -718,6 +731,7 @@ footer .r{margin-left:auto}
       var out = ramp(p, .10, .58);          // skyline pushes in and dissolves
       var into = ramp(p, .34, .72);         // through the glass
       var lock = ramp(p, .52, .88);         // the cockpit flies in and locks
+      var hand = ramp(p, .42, .72);         // the headline clears before the cockpit lands
 
       sky.style.transform = "scale(" + (1 + p * .34).toFixed(4) + ")";
       sky.style.opacity   = (1 - out * .92).toFixed(3);
@@ -726,11 +740,11 @@ footer .r{margin-left:auto}
       card.style.opacity  = lock.toFixed(3);
       card.style.transform = "translateY(" + ((1 - lock) * 9).toFixed(2) + "vh) scale(" +
                              (.94 + lock * .06).toFixed(4) + ")";
-      // The headline has been read by the time the cockpit locks, so it hands off and
-      // settles back into the plate instead of fighting the card for the same pixels.
-      copy.style.opacity  = (1 - lock * .8).toFixed(3);
-      copy.style.transform = "translateY(" + (-lock * 5).toFixed(2) + "vh) scale(" +
-                             (1 - lock * .05).toFixed(4) + ")";
+      // The headline has been read by the time the cockpit locks, so it hands off. It has
+      // to reach zero — held at .2 it ghosted under the incoming card and read as mud.
+      copy.style.opacity  = (1 - hand).toFixed(3);
+      copy.style.transform = "translateY(" + (-hand * 5).toFixed(2) + "vh) scale(" +
+                             (1 - hand * .05).toFixed(4) + ")";
 
       R.alt.textContent   = Math.round(240 - p * 232);
       R.unit.textContent  = p > .38 ? "92.0 sqm" : "—";
