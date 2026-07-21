@@ -219,6 +219,21 @@
   .pi-cprice { color: var(--text); font-weight: 700; white-space: nowrap; }
   .pi-cdesc { color: var(--muted); margin-top: 3px; line-height: 1.4; }
   .pi-why p { color: var(--text); font-size: 0.82rem; line-height: 1.55; margin: 0 18px; }
+  /* Taxes & closing costs — the same figures the Listing Pack prints. */
+  .pi-zonal { margin: 0 16px 8px; padding: 9px 12px; border: 1px solid var(--gold-line); border-radius: var(--radius-sm); background: var(--gold-dim); font-size: 0.8rem; }
+  .pi-zonal .row { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .pi-zonal b { color: var(--gold-soft); }
+  .pi-zonal .src { color: var(--muted); font-size: 0.72rem; margin-top: 3px; line-height: 1.4; }
+  .pi-costs { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 0 16px; }
+  @media (max-width: 520px) { .pi-costs { grid-template-columns: 1fr; } }
+  .pi-cost { border: 1px solid var(--hairline); border-radius: var(--radius-sm); padding: 9px 12px; background: var(--recess); font-size: 0.8rem; }
+  .pi-cost h4 { color: var(--gold); font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; margin: 0 0 6px; }
+  .pi-cost .row { display: flex; justify-content: space-between; gap: 8px; align-items: baseline; color: var(--muted); line-height: 1.7; }
+  .pi-cost .row b { color: var(--text); white-space: nowrap; }
+  .pi-cost .total { border-top: 1px solid var(--hairline); margin-top: 5px; padding-top: 5px; }
+  .pi-bottom { margin: 8px 16px 0; padding: 9px 12px; border-radius: var(--radius-sm); background: var(--recess); font-size: 0.82rem; }
+  .pi-bottom .row { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; color: var(--muted); line-height: 1.8; }
+  .pi-bottom .row b { color: var(--gold-soft); white-space: nowrap; }
   .pi-disclaimer { color: var(--faint); font-size: 0.72rem; font-style: italic; line-height: 1.45; margin: 14px 18px 16px; padding-top: 10px; border-top: 1px dashed var(--hairline); }
 
   /* ---------- pdf / photos / ads ---------- */
@@ -973,7 +988,7 @@ async function refreshListing(retried) {
       return refreshListing(true);
     }
     if (!res.ok) return;
-    const { listing, resume, photos } = await res.json();
+    const { listing, resume, photos, zonal, costs } = await res.json();
     lastListing = listing;
     if (resume) {
       localStorage.setItem("nf_resume", resume);
@@ -990,7 +1005,7 @@ async function refreshListing(retried) {
     }
     renderChecklist(listing);
     renderMore(listing);
-    renderPriceIntel(listing);
+    renderPriceIntel(listing, zonal, costs);
     renderPreview(listing);
     renderPhotos(photos || []);
     updatePdfCard();
@@ -999,7 +1014,7 @@ async function refreshListing(retried) {
 
 // Price as the hero: the number, the confidence range, the comps it's based on
 // (with sources), and the "why" — a market-backed estimate, never gospel.
-function renderPriceIntel(L) {
+function renderPriceIntel(L, zonal, costs) {
   const panel = $("price-intel"), body = $("price-intel-body");
   if (!panel || !body) return;
   const asking = L.asking_price_php, suggested = L.suggested_price_php;
@@ -1021,6 +1036,8 @@ function renderPriceIntel(L) {
     if (r && r.low && r.high) { const rg = document.createElement("div"); rg.className = "pi-range"; rg.textContent = "Market range " + php(r.low) + " – " + php(r.high); hero.appendChild(rg); }
     body.appendChild(hero);
   }
+
+  renderCosts(body, zonal, costs);
 
   if (comps.length) {
     const sl = document.createElement("div"); sl.className = "pi-slabel";
@@ -1054,6 +1071,61 @@ function renderPriceIntel(L) {
     ? "A market-backed starting estimate from live comparable listings — confirm with your client before finalizing."
     : "Add comparable listings (or let Sofia research them) to benchmark this price.";
   body.appendChild(disc);
+}
+
+// What the sale actually costs, on screen — the same figures the Listing Pack
+// prints, so an agent can answer a buyer without opening the PDF.
+function renderCosts(body, zonal, costs) {
+  if (!costs) return;
+
+  function row(parent, label, value, cls) {
+    const r = document.createElement("div"); r.className = "row" + (cls ? " " + cls : "");
+    const l = document.createElement("span"); l.textContent = label;
+    const v = document.createElement("b"); v.textContent = value;
+    r.appendChild(l); r.appendChild(v); parent.appendChild(r);
+    return r;
+  }
+
+  const sl = document.createElement("div"); sl.className = "pi-slabel";
+  sl.textContent = "Estimated taxes & closing costs";
+  body.appendChild(sl);
+
+  if (zonal && zonal.rate) {
+    const z = document.createElement("div"); z.className = "pi-zonal";
+    row(z, "BIR zonal value", php(zonal.rate) + " / sqm" +
+        (zonal.area ? " × " + zonal.area + " sqm" : ""));
+    if (zonal.amount) row(z, "", php(zonal.amount));
+    const src = document.createElement("div"); src.className = "src";
+    src.textContent = [zonal.match, zonal.city, zonal.do && "Dept. Order " + zonal.do]
+      .filter(Boolean).join(" · ");
+    z.appendChild(src);
+    body.appendChild(z);
+  }
+
+  const grid = document.createElement("div"); grid.className = "pi-costs";
+  for (const side of [["Buyer typically pays", costs.buyer, costs.buyer_total],
+                      ["Seller typically pays", costs.seller, costs.seller_total]]) {
+    const box = document.createElement("div"); box.className = "pi-cost";
+    const h = document.createElement("h4"); h.textContent = side[0]; box.appendChild(h);
+    for (const item of side[1]) row(box, item.name + " · " + item.rate, php(item.amount));
+    if (side[1].length > 1) row(box, "Total", php(side[2]), "total");
+    grid.appendChild(box);
+  }
+  body.appendChild(grid);
+
+  const bottom = document.createElement("div"); bottom.className = "pi-bottom";
+  row(bottom, "Buyer's estimated cash needed", php(costs.buyer_cash_total));
+  row(bottom, "Seller's estimated net proceeds", php(costs.seller_net));
+  body.appendChild(bottom);
+
+  const note = document.createElement("p"); note.className = "pi-disclaimer";
+  note.textContent = "Estimates on standard BIR and Local Government Code rates. The BIR assesses on the " +
+    "HIGHEST of the selling price, the BIR zonal value, and the city assessor's fair market value" +
+    (costs.base_source === "BIR zonal value"
+      ? " — these figures use the zonal value, which is higher than the asking price here."
+      : ".") +
+    " Who pays what is negotiable. Confirm final figures with a licensed broker, lawyer, or the BIR.";
+  body.appendChild(note);
 }
 
 function renderComps(listing) {
