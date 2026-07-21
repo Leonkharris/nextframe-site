@@ -239,6 +239,18 @@ html.js .boot{display:grid;position:fixed;inset:0;z-index:60;place-content:cente
 .boot .b2::after{content:"";display:inline-block;width:.5ch;height:.86em;margin-left:.1em;
   background:var(--gold);vertical-align:-.08em;animation:caret .9s steps(1) infinite}
 @keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
+/* the caret follows the speaker: it leaves the greeting the moment the briefing starts */
+.boot .b2.said::after{display:none}
+.boot .b2.said + .b2b::after{content:"";display:inline-block;width:.55ch;height:.95em;
+  margin-left:.14em;background:var(--live);vertical-align:-.16em;
+  animation:caret .9s steps(1) infinite}
+.boot .b2b{margin-top:14px;font-family:var(--mono);font-size:clamp(11px,1.5vw,13px);
+  line-height:1.85;letter-spacing:.06em;color:var(--soft);min-height:3.7em;
+  max-width:52ch;margin-inline:auto}
+.boot .b2b b{color:var(--gold);font-weight:400}
+.boot .b5{margin-top:26px;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity .5s ease}
+.boot[data-skip] .b5{opacity:1}
 .boot .b3{margin-top:16px;font-family:var(--mono);font-size:11px;letter-spacing:.2em;
   text-transform:uppercase;color:var(--soft);font-variant-numeric:tabular-nums}
 .boot .b3 span{color:var(--dim);margin-left:12px}
@@ -686,8 +698,10 @@ footer .r{margin-left:auto}
   <div class="boot-in">
     <div class="b1">J.A.R.V.I.S <i>· LISTPILOT</i></div>
     <p class="b2" id="boot-line"></p>
+    <p class="b2b" id="boot-msg"></p>
     <div class="b3"><b id="boot-clock">--:--:--</b><span id="boot-date"></span></div>
     <div class="b4"><i></i>Seven plates online · agent warm</div>
+    <div class="b5">Scroll, tap or press any key to continue</div>
   </div>
 </div>
 
@@ -1155,12 +1169,15 @@ footer .r{margin-left:auto}
   if(reduce) return;
 
   /* ---------- Jarvis says hello ----------
-       A three-second boot the moment the page loads: the greeting reads the visitor's own
-       clock, so a Manila broker opening this at 9pm is told good evening. It lives only
-       inside the JS branch, so nobody who asked for less motion ever meets it. */
+       A short scripted boot the moment the page loads. Two beats: a greeting that reads
+       the visitor's own clock, so a Manila broker opening this at 9pm is told good
+       evening, then one line of briefing drawn from a small script so a second visit is
+       not word-for-word the first. It lives only inside the JS branch, so nobody who
+       asked for less motion ever meets it, and any input at all skips straight past. */
   var boot = document.getElementById("boot");
   if(boot){
     var line = document.getElementById("boot-line"),
+        msgEl = document.getElementById("boot-msg"),
         bClock = document.getElementById("boot-clock"),
         bDate = document.getElementById("boot-date");
     var DAYS = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
@@ -1174,21 +1191,51 @@ footer .r{margin-left:auto}
     }
     tick();
     var beat = setInterval(tick, 1000);
-    var h = new Date().getHours();
+
+    var now = new Date(), h = now.getHours();
     var say = "Good " + (h < 12 ? "morning" : h < 18 ? "afternoon" : "evening") + ", agent.";
-    var i = 0;
-    var typer = setInterval(function(){
-      line.textContent = say.slice(0, ++i);
-      if(i >= say.length) clearInterval(typer);
-    }, 42);
+
+    /* What Jarvis says next. Four briefings, one job each: name the market gap, name the
+       promise, name the deliverables, name the record. The clock picks one so the page
+       does not read the same twice, and every line here is something the page can prove
+       further down — no claim in this script goes unbacked. */
+    var SCRIPT = [
+      "There is no MLS in this market. So we build the record instead — thirteen questions in, a priced, market-ready listing out.",
+      "Your team does not need more software. It needs power armor. Everything below this line is the suit.",
+      "Thirteen questions. Real comparables you confirm. A live page, a client PDF, three ad copies — ten minutes, cold start to live.",
+      "Every unit on your floor, on the record, in one link. Scroll and I will walk you through the run."
+    ];
+    var msg = SCRIPT[now.getMinutes() % SCRIPT.length];
+
+    var t1 = null, t2 = null, hold = null;
+    function type(el, text, speed, done){
+      var i = 0;
+      return setInterval(function(){
+        el.textContent = text.slice(0, ++i);
+        if(i >= text.length){ clearInterval(el === line ? t1 : t2); if(done) done(); }
+      }, speed);
+    }
+    t1 = type(line, say, 42, function(){
+      line.classList.add("said");
+      setTimeout(function(){
+        if(dismissed) return;
+        t2 = type(msgEl, msg, 19, function(){
+          boot.setAttribute("data-skip","");
+          hold = setTimeout(dismiss, 1200);
+        });
+      }, 360);
+    });
+
     var dismissed = false;
     function dismiss(){
       if(dismissed) return; dismissed = true;
-      clearInterval(typer); line.textContent = say;
+      clearInterval(t1); clearInterval(t2); clearTimeout(hold);
+      line.textContent = say; msgEl.textContent = msg;
       boot.setAttribute("data-off","");
       setTimeout(function(){ boot.remove(); clearInterval(beat); }, 800);
     }
-    setTimeout(dismiss, 3000);
+    setTimeout(function(){ if(!dismissed) boot.setAttribute("data-skip",""); }, 1400);
+    setTimeout(dismiss, 8000);
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
     addEventListener("keydown", dismiss, {once:true});
