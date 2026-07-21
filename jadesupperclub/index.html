@@ -196,6 +196,28 @@ html.v7hero-on .v7hero{display:block}
   .v7float.f3,.v7float.f5{display:none}
 }
 @media (prefers-reduced-motion:reduce){.v7hero{display:none!important}}
+
+/* ---------- motion: hover or click swaps a photo for its clip, screen only ----------
+   The <video> is injected at runtime into the photo's nearest positioned ancestor and
+   sized from the image's own rect, so no sheet layout is touched and print is unaffected. */
+.jv{position:absolute;z-index:2;object-fit:cover;background:#0c1712;opacity:0;transition:opacity .34s ease;pointer-events:none}
+.jv.is-on{opacity:1}
+.jv-badge{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,16,13,.62);border:1px solid rgba(194,154,85,.55);color:#e0cfa9;font-size:8px;line-height:1;padding-left:2px;pointer-events:none;transition:opacity .25s ease}
+.jv-badge.is-hidden{opacity:0}
+
+/* ---------- preview film — screen only ---------- */
+.jfilm{background:#050e0b;padding:94px 24px 100px;text-align:center;border-top:1px solid rgba(194,154,85,.16);border-bottom:1px solid rgba(194,154,85,.16)}
+.jfilm-in{max-width:1080px;margin:0 auto}
+.jfilm-h{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#f3ead9;margin:0 0 34px}
+.jfilm-h em{font-style:italic;font-weight:500;color:#c29a55}
+.jfilm-frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0c1712;border:1px solid rgba(194,154,85,.28);box-shadow:0 30px 90px rgba(0,0,0,.7);cursor:pointer}
+.jfilm-frame img,.jfilm-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.jfilm-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:88px;height:88px;border-radius:50%;border:1px solid rgba(224,207,169,.7);background:rgba(6,16,13,.46);color:#e8d9b4;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease}
+.jfilm-frame:hover .jfilm-play{background:rgba(6,16,13,.68);transform:translate(-50%,-50%) scale(1.06)}
+.jfilm-play svg{width:26px;height:26px;margin-left:4px;fill:currentColor}
+.jfilm-cap{margin:20px auto 0;max-width:660px;font:400 .78rem/1.7 Inter,sans-serif;color:#8fa79b}
+@media (max-width:640px){.jfilm{padding:60px 16px 68px}.jfilm-play{width:62px;height:62px}.jfilm-play svg{width:20px;height:20px}}
+@media print{.jfilm,.jv,.jv-badge{display:none!important}}
 </style>
 </head>
 <body>
@@ -279,6 +301,21 @@ html.v7hero-on .v7hero{display:block}
 
   </div>
 </div>
+
+<!-- ============ PREVIEW FILM · screen only, sits between the hero and page 1 ============ -->
+<section class="jfilm" id="film" aria-label="Preview film">
+  <div class="jfilm-in">
+    <span class="v7eyebrow"><i></i>The preview<i></i></span>
+    <h2 class="jfilm-h">A walk through <em>Jade.</em></h2>
+    <div class="jfilm-frame" data-jfilm>
+      <img src="v/jade-preview-poster.jpg" alt="Preview film &mdash; the arched stage and green velvet drapery at Jade Supper Club.">
+      <button class="jfilm-play" type="button" aria-label="Play the preview film">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+    <p class="jfilm-cap">1:11 &middot; Sound on. Interiors are pre-construction design visualisations &mdash; hover or tap any photograph in the pages below to see it move.</p>
+  </div>
+</section>
 
 <main class="kit-wrap" id="top">
 
@@ -1955,6 +1992,122 @@ html.v7hero-on .v7hero{display:block}
   window.addEventListener('scroll', onScroll, {passive:true});
   window.addEventListener('resize', onScroll);
   frame();
+})();
+</script>
+
+<script>
+/* ---- preview film: the poster swaps to the player on click ---- */
+(function(){
+  var f = document.querySelector('[data-jfilm]');
+  if (!f) return;
+  f.addEventListener('click', function(){
+    if (f.querySelector('video')) return;
+    var v = document.createElement('video');
+    v.src = 'v/jade-preview.mp4';
+    v.poster = 'v/jade-preview-poster.jpg';
+    v.controls = true; v.autoplay = true; v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    f.textContent = '';
+    f.appendChild(v);
+    f.style.cursor = 'default';
+  });
+})();
+
+/* ---- photographs that move: hover plays, click pins ----
+   Fifteen of the stills have a matching clip in v/, named after the still itself.
+   The <video> is built on demand (nothing downloads until asked), dropped into the
+   photograph's nearest positioned ancestor and sized from the image's own rect, so
+   no sheet layout is disturbed and the print pages are unaffected. */
+(function(){
+  var CLIPS = ['entry-onyx','dining-brass','proscenium','bar-main','banquette-run',
+               'spiral-stair','back-bar','cellar-wall','glassware','mezzanine',
+               'powder-room','salon-art','fd-oyster-real','fd-handroll-real','chef-hands-real'];
+  var fits = [];
+
+  function host(im){
+    var el = im.parentElement;
+    while (el && el !== document.body){
+      if (getComputedStyle(el).position !== 'static') return el;
+      el = el.parentElement;
+    }
+    el = im.parentElement;
+    el.style.position = 'relative';
+    return el;
+  }
+
+  function box(el, im, h){
+    var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
+    el.style.left   = (b.left - a.left) + 'px';
+    el.style.top    = (b.top  - a.top)  + 'px';
+    el.style.width  = b.width  + 'px';
+    el.style.height = b.height + 'px';
+  }
+
+  function wire(im, name){
+    var h = host(im), vid = null, pinned = false;
+
+    var badge = document.createElement('span');
+    badge.className = 'jv-badge';
+    badge.innerHTML = '&#9654;';
+    h.appendChild(badge);
+
+    function fit(){
+      var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
+      badge.style.left = (b.left - a.left + 8) + 'px';
+      badge.style.top  = (b.top - a.top + b.height - 30) + 'px';
+      if (vid) box(vid, im, h);
+    }
+
+    function play(){
+      if (!vid){
+        vid = document.createElement('video');
+        vid.className = 'jv';
+        vid.muted = true; vid.loop = true; vid.playsInline = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('preload', 'none');
+        vid.style.borderRadius = getComputedStyle(im).borderRadius;
+        vid.src = 'v/' + name + '.mp4';
+        /* only reveal once frames are genuinely running, never on a stalled load */
+        vid.addEventListener('playing', function(){
+          vid.classList.add('is-on');
+          badge.classList.add('is-hidden');
+        });
+        h.appendChild(vid);
+      }
+      box(vid, im, h);
+      var p = vid.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+
+    function stop(){
+      if (!vid) return;
+      vid.classList.remove('is-on');
+      badge.classList.remove('is-hidden');
+      vid.pause();
+    }
+
+    im.style.cursor = 'pointer';
+    im.addEventListener('mouseenter', function(){ if (!pinned) play(); });
+    im.addEventListener('mouseleave', function(){ if (!pinned) stop(); });
+    im.addEventListener('click', function(e){
+      e.preventDefault();
+      pinned = !pinned;
+      if (pinned) play(); else stop();
+    });
+
+    fits.push(fit);
+    fit();
+  }
+
+  [].forEach.call(document.querySelectorAll('.kit-wrap img'), function(im){
+    var m = /img\/([^\/]+)\.jpg/.exec(im.getAttribute('src') || '');
+    if (m && CLIPS.indexOf(m[1]) > -1) wire(im, m[1]);
+  });
+
+  if (!fits.length) return;
+  function refit(){ for (var i = 0; i < fits.length; i++) fits[i](); }
+  window.addEventListener('resize', refit);
+  window.addEventListener('load', refit);
 })();
 </script>
 
