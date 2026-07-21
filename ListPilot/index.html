@@ -240,6 +240,10 @@ html.js .boot{display:grid;position:fixed;inset:0;z-index:60;place-content:cente
   pointer-events:none;transition:opacity .7s ease}
 .boot[data-off]{opacity:0}
 .boot-in{padding:34px 42px;text-align:center;max-width:min(680px,90vw)}
+/* Jarvis's face: a cyan reactor drawn on canvas so the ring stays crisp and the glow is
+   real at any size. It breathes on its own and blinks off the actual voice below. */
+.boot .orb{display:block;margin:2px auto 14px;width:clamp(88px,12vw,120px);
+  height:clamp(88px,12vw,120px)}
 .boot .b1{display:flex;align-items:center;justify-content:center;gap:12px;
   font-family:var(--mono);font-size:11px;letter-spacing:.42em;text-transform:uppercase;
   color:var(--live)}
@@ -728,6 +732,7 @@ footer .r{margin-left:auto}
      it never takes a click, and it only exists at all once JS has confirmed itself. -->
 <div class="boot" id="boot" aria-hidden="true">
   <div class="boot-in">
+    <canvas class="orb" id="boot-orb" aria-hidden="true"></canvas>
     <div class="b1">J.A.R.V.I.S <i>· LISTPILOT</i></div>
     <p class="b2" id="boot-line"></p>
     <p class="b2b" id="boot-msg"></p>
@@ -1301,6 +1306,143 @@ footer .r{margin-left:auto}
     var muted = false;
     try{ muted = localStorage.getItem("lp-voice") === "0"; }catch(e){}
 
+    /* ---------- and Jarvis has a face ----------
+       The reactor is the one Jarvis signal the greeting was missing: a cyan dial that
+       breathes on its own and comes alive off the real voice. When a clip is armed we tap
+       its own waveform with an analyser and drive the core glow and the outer ring off the
+       amplitude, so it blinks with him syllable for syllable rather than looping a fake.
+       A browser only hands over that waveform once the visitor has armed the voice — and
+       routing a clip through a suspended graph would mute the very sound we are drawing —
+       so we never wire on a cold load. Until the tap, and whenever the voice is off, a
+       speech-shaped envelope carries it while a clip plays and a slow breath when none does.
+       Canvas keeps the ring crisp and the glow real at any size; it never takes a click,
+       and like the rest of the veil nobody who asked for less motion ever meets it. */
+    var orbStop = null, gestured = false, react = null;
+    (function(){
+      var cv = document.getElementById("boot-orb");
+      if(!cv || !cv.getContext) return;
+      var cx = cv.getContext("2d");
+      var DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+      var cs = getComputedStyle(document.documentElement);
+      var CYAN = (cs.getPropertyValue("--live") || "#7fdcea").trim(),
+          CYDIM = (cs.getPropertyValue("--live-dim") || "#6aa9b5").trim(),
+          GOLD = (cs.getPropertyValue("--gold") || "#f2c879").trim();
+      function rgba(h, a){
+        h = h.replace("#",""); if(h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+        var n = parseInt(h, 16);
+        return "rgba(" + ((n>>16)&255) + "," + ((n>>8)&255) + "," + (n&255) + "," +
+               Math.max(0, Math.min(1, a)).toFixed(3) + ")";
+      }
+      /* The voice graph. createMediaElementSource reroutes a clip's sound through us, so it
+         is only ever safe once the context is actually running — redirecting the output into
+         a suspended graph would silence the very voice we are visualising. A cold load never
+         wires; only the gesture that arms the voice resumes the context, and play() hands us
+         each clip after that. Each element can be sourced once ever, hence the guard set. */
+      var actx = null, analyser = null, tdata = null, sunk = false, live = false,
+          wired = (typeof WeakSet === "function") ? new WeakSet() : null;
+      function init(){
+        if(actx) return actx;
+        try{
+          var AC = window.AudioContext || window.webkitAudioContext;
+          if(!AC) return null;
+          actx = new AC();
+          analyser = actx.createAnalyser();
+          analyser.fftSize = 1024; analyser.smoothingTimeConstant = 0.6;
+          tdata = new Uint8Array(analyser.fftSize);
+        }catch(e){ actx = null; }
+        return actx;
+      }
+      function wire(el){
+        if(!analyser || !actx || actx.state !== "running") return;
+        if(wired && wired.has(el)) return;
+        try{
+          actx.createMediaElementSource(el).connect(analyser);
+          if(!sunk){ analyser.connect(actx.destination); sunk = true; }
+          if(wired) wired.add(el);
+          live = true;
+        }catch(e){}
+      }
+      react = function(el){
+        if(!init()) return;
+        if(actx.state === "running") wire(el);
+        else{ try{ actx.resume().then(function(){ wire(el); }, function(){}); }catch(e){} }
+      };
+      function amp(){
+        if(!live || !analyser || actx.state !== "running") return -1;
+        analyser.getByteTimeDomainData(tdata);
+        var s = 0, i = 0; for(; i < tdata.length; i++){ var v = (tdata[i] - 128) / 128; s += v * v; }
+        return Math.min(1, Math.sqrt(s / tdata.length) * 3.4);
+      }
+      function talking(){ return (!auG.paused && !auG.ended) || (!auB.paused && !auB.ended); }
+      function fit(){
+        var w = Math.round(cv.clientWidth * DPR), hh = Math.round(cv.clientHeight * DPR);
+        if(w && hh && (cv.width !== w || cv.height !== hh)){ cv.width = w; cv.height = hh; }
+      }
+      var env = 0, cur = 0, rot = 0, raf = 0, last = 0;
+      /* A speech-shaped stand-in for the real waveform: three detuned sines rectified into an
+         irregular rise and fall, so the fallback reads as a voice, not a metronome. */
+      function envelope(dt){
+        env += dt * (2.6 + 1.1 * Math.sin(env * 0.6));
+        var s = Math.abs(Math.sin(env*3.1) + 0.6*Math.sin(env*5.7+1.1) + 0.4*Math.sin(env*1.9+2.3)) / 2;
+        return Math.min(1, s * 0.86 + 0.1);
+      }
+      function draw(a, rt){
+        fit();
+        var W = cv.width, H = cv.height, R = Math.min(W, H) / 2;
+        cx.clearRect(0, 0, W, H);
+        cx.save(); cx.translate(W/2, H/2);
+        var rOut = R * 0.86, N = 48, i = 0;
+        cx.save(); cx.rotate(rt * 0.6);
+        for(; i < N; i++){
+          var ang = i / N * Math.PI * 2, major = i % 6 === 0, len = (major ? 0.13 : 0.07) * R;
+          cx.beginPath();
+          cx.moveTo(Math.cos(ang)*(rOut-len), Math.sin(ang)*(rOut-len));
+          cx.lineTo(Math.cos(ang)*rOut, Math.sin(ang)*rOut);
+          cx.strokeStyle = major ? CYAN : CYDIM;
+          cx.globalAlpha = major ? 0.55 : 0.26;
+          cx.lineWidth = (major ? 1.5 : 1) * DPR;
+          cx.stroke();
+        }
+        cx.restore(); cx.globalAlpha = 1;
+        cx.save(); cx.rotate(-rt * 1.35);
+        cx.beginPath(); cx.arc(0, 0, rOut*0.99, -0.55, 0.12);
+        cx.strokeStyle = CYAN; cx.globalAlpha = 0.5; cx.lineWidth = 1.5 * DPR;
+        cx.shadowColor = CYAN; cx.shadowBlur = 8 * DPR; cx.stroke();
+        cx.restore(); cx.shadowBlur = 0; cx.globalAlpha = 1;
+        cx.beginPath(); cx.arc(0, 0, R*0.6, 0, Math.PI*2);
+        cx.strokeStyle = CYDIM; cx.globalAlpha = 0.32; cx.lineWidth = 1 * DPR; cx.stroke();
+        cx.globalAlpha = 1;
+        cx.beginPath(); cx.arc(0, 0, R*(0.44 + a*0.14), 0, Math.PI*2);
+        cx.strokeStyle = CYAN; cx.globalAlpha = 0.5 + a*0.45;
+        cx.lineWidth = (1.4 + a*2.8) * DPR;
+        cx.shadowColor = CYAN; cx.shadowBlur = (6 + a*22) * DPR; cx.stroke();
+        cx.shadowBlur = 0; cx.globalAlpha = 1;
+        var cr = R*(0.30 + a*0.10);
+        var g = cx.createRadialGradient(0, 0, 0, 0, 0, cr);
+        g.addColorStop(0, rgba(GOLD, 0.5 + a*0.4));
+        g.addColorStop(0.35, rgba(CYAN, 0.5 + a*0.4));
+        g.addColorStop(1, rgba(CYAN, 0));
+        cx.fillStyle = g; cx.beginPath(); cx.arc(0, 0, cr, 0, Math.PI*2); cx.fill();
+        cx.beginPath(); cx.arc(0, 0, (2.2 + a*2.6) * DPR, 0, Math.PI*2);
+        cx.fillStyle = rgba(GOLD, 0.82 + a*0.18);
+        cx.shadowColor = GOLD; cx.shadowBlur = (8 + a*16) * DPR; cx.fill();
+        cx.shadowBlur = 0;
+        cx.restore();
+      }
+      function frame(ts){
+        raf = requestAnimationFrame(frame);
+        var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016; last = ts;
+        var on = talking(), target;
+        if(on){ var a = amp(); target = a >= 0 ? Math.max(a, 0.12) : envelope(dt); }
+        else target = 0.10 + 0.05 * Math.sin(ts / 1400);
+        cur += (target - cur) * (on ? 0.35 : 0.08);
+        rot += dt * (on ? 0.5 : 0.18);
+        draw(cur, rot);
+      }
+      raf = requestAnimationFrame(frame);
+      orbStop = function(){ if(raf) cancelAnimationFrame(raf); raf = 0; try{ if(actx) actx.close(); }catch(e){} };
+    })();
+
     function mark(on, remember){
       voice = on;
       if(on) snd.setAttribute("data-on",""); else snd.removeAttribute("data-on");
@@ -1319,6 +1461,9 @@ footer .r{margin-left:auto}
     function voiced(){ return !muted && !blocked; }
     function play(a){
       try{ a.currentTime = 0; }catch(e){}
+      /* Once the visitor has armed the voice, hand the clip to the reactor so it draws off
+         the real waveform. Before that gesture there is nothing to wire and nothing to draw. */
+      if(gestured && react) react(a);
       var p = a.play();
       if(p && p.catch) p.catch(function(){ blocked = true; mark(false); });
       return p;
@@ -1382,7 +1527,7 @@ footer .r{margin-left:auto}
       auG.pause(); auB.pause();
       line.textContent = say; msgEl.textContent = msg;
       boot.setAttribute("data-off","");
-      setTimeout(function(){ boot.remove(); clearInterval(beat); }, 800);
+      setTimeout(function(){ boot.remove(); clearInterval(beat); if(orbStop) orbStop(); }, 800);
     }
 
     /* The veil dismisses on any input, so the one control inside it has to keep its own
@@ -1391,6 +1536,7 @@ footer .r{margin-left:auto}
     snd.addEventListener("keydown", function(e){ e.stopPropagation(); });
     snd.addEventListener("click", function(e){
       e.stopPropagation();
+      gestured = true;
       if(voice){ auG.pause(); auB.pause(); muted = true; mark(false, true); return; }
       /* A tap overrules both refusals — the visitor's from an earlier visit and the
          browser's from this one — so everything downstream paces itself for a voice. */
