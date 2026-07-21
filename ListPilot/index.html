@@ -1294,25 +1294,41 @@ footer .r{margin-left:auto}
         sndT = document.getElementById("boot-snd-t"),
         voice = false;
     auG.preload = auB.preload = "auto";
+    /* Read the visitor's standing answer up front — everything below needs to know whether
+       we are running the voiced sequence or the silent one, and it cannot wait for a play()
+       promise to settle to find out. */
+    var muted = false;
+    try{ muted = localStorage.getItem("lp-voice") === "0"; }catch(e){}
 
     function mark(on, remember){
       voice = on;
       if(on) snd.setAttribute("data-on",""); else snd.removeAttribute("data-on");
       snd.setAttribute("aria-pressed", on ? "true" : "false");
       sndT.textContent = on ? "Voice on" : "Tap for voice";
-      /* pure backstop — the briefing's "ended" handler is what normally clears the veil,
-         and the lead briefing runs longer than the old 24s ceiling allowed for. */
-      if(on){ clearTimeout(cap); cap = setTimeout(dismiss, 40000); }
+      /* Whichever way the voice just went, the backstop underneath it has to match: a
+         spoken briefing needs room to finish, a silent one only needs reading time. */
+      clearTimeout(cap);
+      cap = setTimeout(dismiss, on ? 40000 : silent());
       if(remember){ try{ localStorage.setItem("lp-voice", on ? "1" : "0"); }catch(e){} }
     }
+    /* Whether we are running the voiced sequence at all: the visitor's own refusal and the
+       browser's are different things, but they both end in silence and the words have to be
+       paced for it. */
+    var blocked = false;
+    function voiced(){ return !muted && !blocked; }
     function play(a){
       try{ a.currentTime = 0; }catch(e){}
       var p = a.play();
-      if(p && p.catch) p.catch(function(){ mark(false); });
+      if(p && p.catch) p.catch(function(){ blocked = true; mark(false); });
       return p;
     }
 
     var t1 = null, t2 = null, hold = null, cap = null;
+    /* The backstop has to outlast the thing it is backing up. With no voice the briefing
+       types at 19ms a character, so a flat ceiling would guillotine the longer lead line
+       the moment it finished — derive it from the words instead. When there is a voice the
+       clip's own "ended" is what clears the veil, and this is only a net beneath it. */
+    function silent(){ return 6000 + msg.length * 19; }
     function type(el, text, speed, done){
       var i = 0;
       return setInterval(function(){
@@ -1323,22 +1339,36 @@ footer .r{margin-left:auto}
     /* When he is speaking the words should land with him, so the briefing is typed at
        whatever pace the clip actually runs at, and only falls back to the silent pace. */
     function pace(){
-      var p = voice && auB.duration ? auB.duration * 1000 * .84 / msg.length : 0;
+      var p = voiced() && auB.duration ? auB.duration * 1000 * .84 / msg.length : 0;
       return p > 19 ? Math.min(p, 80) : 19;
     }
     function brief(){
       if(dismissed || t2) return;
-      if(voice) play(auB);
-      t2 = type(msgEl, msg, pace(), function(){
-        boot.setAttribute("data-skip","");
-        if(!(voice && !auB.paused)) hold = setTimeout(dismiss, 1200);
-      });
+      if(voiced()) play(auB);
+      /* On a cold connection the clip's metadata can still be in flight here. Typing now
+         would pace the words against a duration we do not have, race the voice by a factor
+         of three, and drop the veil over a sentence Jarvis is halfway through saying — so
+         give the clip a moment to declare its length, but never more than a moment. */
+      if(voiced() && !auB.duration && !auB.error){
+        var late = setTimeout(run, 2200);
+        auB.addEventListener("loadedmetadata", function(){ clearTimeout(late); run(); }, {once:true});
+      } else run();
+      function run(){
+        if(dismissed || t2) return;
+        t2 = type(msgEl, msg, pace(), function(){
+          boot.setAttribute("data-skip","");
+          if(auB.paused) hold = setTimeout(dismiss, 1200);
+        });
+      }
     }
     auB.addEventListener("ended", function(){ hold = setTimeout(dismiss, 1000); });
 
     t1 = type(line, say, 42, function(){
       line.classList.add("said");
-      if(voice && !auG.paused) auG.addEventListener("ended", function(){
+      /* paused flips false the instant play() is called, long before the promise that
+         sets `voice` settles — so this, not `voice`, is what tells us a greeting is
+         actually on its way and the briefing should wait its turn. */
+      if(!auG.paused) auG.addEventListener("ended", function(){
         setTimeout(brief, 240);
       }, {once:true});
       else setTimeout(brief, 360);
@@ -1360,13 +1390,14 @@ footer .r{margin-left:auto}
     snd.addEventListener("keydown", function(e){ e.stopPropagation(); });
     snd.addEventListener("click", function(e){
       e.stopPropagation();
-      if(voice){ auG.pause(); auB.pause(); mark(false, true); return; }
+      if(voice){ auG.pause(); auB.pause(); muted = true; mark(false, true); return; }
+      /* A tap overrules both refusals — the visitor's from an earlier visit and the
+         browser's from this one — so everything downstream paces itself for a voice. */
+      muted = blocked = false;
       mark(true, true);
       play(t2 ? auB : auG);
     });
 
-    var muted = false;
-    try{ muted = localStorage.getItem("lp-voice") === "0"; }catch(e){}
     if(!muted){
       var opening = play(auG);
       /* play() guards the promise it was handed, but .then() hands back a new one — without
@@ -1378,10 +1409,7 @@ footer .r{margin-left:auto}
     }
 
     setTimeout(function(){ if(!dismissed) boot.setAttribute("data-skip",""); }, 1400);
-    /* The silent backstop has to outlast the thing it is backing up: with no voice the
-       briefing types at 19ms a character, so a flat ceiling would guillotine the longer
-       lead line the moment it finished. Derive it from the words instead. */
-    cap = setTimeout(dismiss, 6000 + msg.length * 19);
+    cap = setTimeout(dismiss, muted ? silent() : 40000);
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
     addEventListener("keydown", dismiss, {once:true});
