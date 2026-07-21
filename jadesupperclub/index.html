@@ -172,6 +172,11 @@ html.v7hero-on .v7hero{display:block}
 @keyframes v7flc{0%{transform:rotate(8deg) translateY(0)}100%{transform:rotate(5deg) translateY(-16px)}}
 @keyframes v7fld{0%{transform:rotate(-4deg) translateY(0)}100%{transform:rotate(-7deg) translateY(14px)}}
 .v7s3-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 36px}
+/* centre scrim — the cards crowd the headline, so darken the middle and knock them back */
+.v7s3::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 50%,rgba(5,14,11,.92) 0%,rgba(5,14,11,.84) 45%,rgba(5,14,11,.40) 75%,rgba(5,14,11,0) 100%)}
+.v7s3 .v7line{text-shadow:0 2px 12px rgba(5,14,11,.95),0 10px 46px rgba(5,14,11,.92)}
+.v7s3 .v7eyebrow,.v7s3 .v7hint{text-shadow:0 1px 9px rgba(5,14,11,.95)}
+.v7s3 .v7hint{color:rgba(243,234,217,.88)}
 /* mobile — portrait-tuned portal */
 @media (max-width:880px){
   .v7hero{height:340vh}
@@ -267,8 +272,8 @@ html.v7hero-on .v7hero{display:block}
       </div>
       <div class="v7s3-content">
         <span class="v7eyebrow"><i></i>The rooms, one by one<i></i></span>
-        <h2 class="v7line">The kit awaits, <em>below.</em></h2>
-        <span class="v7hint">Keep scrolling &mdash; 30 pages <i>&darr;</i></span>
+        <h2 class="v7line">The Jade experience <em>awaits.</em></h2>
+        <span class="v7hint">Keep scrolling &mdash; 38 pages <i>&darr;</i></span>
       </div>
     </div>
 
