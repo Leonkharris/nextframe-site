@@ -235,13 +235,16 @@ html.js .boot{display:grid;position:fixed;inset:0;z-index:60;place-content:cente
   background:radial-gradient(1200px 700px at 50% 42%,rgba(11,16,25,.97),var(--void) 78%);
   pointer-events:none;transition:opacity .7s ease}
 .boot[data-off]{opacity:0}
-.boot-in{padding:34px 42px;text-align:center;max-width:min(560px,88vw)}
+.boot-in{padding:34px 42px;text-align:center;max-width:min(680px,90vw)}
 .boot .b1{display:flex;align-items:center;justify-content:center;gap:12px;
   font-family:var(--mono);font-size:11px;letter-spacing:.42em;text-transform:uppercase;
   color:var(--live)}
 .boot .b1 i{font-style:normal;letter-spacing:.16em;font-size:9px;color:var(--live-dim)}
-.boot .b2{margin-top:20px;font-size:clamp(24px,5.2vw,44px);font-weight:800;letter-spacing:-.04em;
-  text-transform:uppercase;color:var(--gold);min-height:1.1em;line-height:1.1}
+/* the greeting is the salutation, not the substance — sized so it still lands as a
+   full-width gold statement without burying the briefing underneath it */
+.boot .b2{margin-top:20px;font-size:clamp(22px,3.6vw,34px);font-weight:800;letter-spacing:-.04em;
+  text-transform:uppercase;color:var(--gold);min-height:1.1em;line-height:1.12;
+  text-wrap:balance}
 .boot .b2::after{content:"";display:inline-block;width:.5ch;height:.86em;margin-left:.1em;
   background:var(--gold);vertical-align:-.08em;animation:caret .9s steps(1) infinite}
 @keyframes caret{0%,49%{opacity:1}50%,100%{opacity:0}}
@@ -250,9 +253,9 @@ html.js .boot{display:grid;position:fixed;inset:0;z-index:60;place-content:cente
 .boot .b2.said + .b2b::after{content:"";display:inline-block;width:.55ch;height:.95em;
   margin-left:.14em;background:var(--live);vertical-align:-.16em;
   animation:caret .9s steps(1) infinite}
-.boot .b2b{margin-top:14px;font-family:var(--mono);font-size:clamp(11px,1.5vw,13px);
-  line-height:1.85;letter-spacing:.06em;color:var(--soft);min-height:5.6em;
-  max-width:52ch;margin-inline:auto}
+.boot .b2b{margin-top:16px;font-family:var(--mono);font-size:clamp(12px,1.7vw,14.5px);
+  line-height:1.8;letter-spacing:.05em;color:var(--soft);min-height:5.6em;
+  max-width:56ch;margin-inline:auto}
 .boot .b2b b{color:var(--gold);font-weight:400}
 .boot .b5{margin-top:26px;font-family:var(--mono);font-size:8.5px;letter-spacing:.24em;
   text-transform:uppercase;color:var(--dim);opacity:0;transition:opacity .5s ease}
@@ -1251,20 +1254,34 @@ footer .r{margin-left:auto}
 
     var now = new Date(), h = now.getHours();
     var part = h < 12 ? "morning" : h < 18 ? "afternoon" : "evening";
-    var say = "Good " + part + ", agent.";
+    var say = "Good " + part + ", agent. I'm ready to assist with your next listing.";
 
-    /* What Jarvis says next. Four briefings, one job each: name the market gap, name the
-       promise, name the deliverables, name the record. The clock picks one so the page
-       does not read the same twice, and every line here is something the page can prove
-       further down — no claim in this script goes unbacked. */
+    /* The opening briefing — what Jarvis leads with on a first landing. Four is the real
+       number of listings on the public record (the deck lists all four by registry number);
+       update both together if that changes. The replies line is deliberately conditional:
+       this page has no client inbox, and a pitch that invents one loses the broker the
+       moment they check. */
+    var LEAD = "Four listings are already live on the record, ready for your review. " +
+               "On your own floor I would also have last night's replies, and who is ready " +
+               "for a call. Shall I spin up today's agenda, and get your listings ready for " +
+               "the next appointment?";
+
+    /* Come back a second time and Jarvis says something else. Four briefings, one job each:
+       name the market gap, name the promise, name the deliverables, name the record. The
+       clock picks one, and every line here is something the page can prove further down —
+       no claim in this script goes unbacked. */
     var SCRIPT = [
       "There is no MLS in this market. So we build the record instead — thirteen questions in, a priced, market-ready listing out.",
       "Your team does not need more software. It needs power armor. Everything below this line is the suit.",
       "Thirteen questions. Real comparables you confirm. A live page, a client PDF, three ad copies — ten minutes, cold start to live.",
       "Every unit on your floor, on the record, in one link. Scroll and I will walk you through the run."
     ];
-    var idx = now.getMinutes() % SCRIPT.length;
-    var msg = SCRIPT[idx];
+    /* idx -1 is the lead, and it falls straight out of the clip naming below: b0 for the
+       first landing, b1..b4 for every one after it. */
+    var seen = false;
+    try{ seen = localStorage.getItem("lp-seen") === "1"; localStorage.setItem("lp-seen", "1"); }catch(e){}
+    var idx = seen ? now.getMinutes() % SCRIPT.length : -1;
+    var msg = idx < 0 ? LEAD : SCRIPT[idx];
 
     /* ---------- and Jarvis says it out loud ----------
        The same two beats, spoken: one clip for the greeting the clock picked, one for the
@@ -1283,7 +1300,9 @@ footer .r{margin-left:auto}
       if(on) snd.setAttribute("data-on",""); else snd.removeAttribute("data-on");
       snd.setAttribute("aria-pressed", on ? "true" : "false");
       sndT.textContent = on ? "Voice on" : "Tap for voice";
-      if(on){ clearTimeout(cap); cap = setTimeout(dismiss, 24000); }
+      /* pure backstop — the briefing's "ended" handler is what normally clears the veil,
+         and the lead briefing runs longer than the old 24s ceiling allowed for. */
+      if(on){ clearTimeout(cap); cap = setTimeout(dismiss, 40000); }
       if(remember){ try{ localStorage.setItem("lp-voice", on ? "1" : "0"); }catch(e){} }
     }
     function play(a){
@@ -1359,7 +1378,10 @@ footer .r{margin-left:auto}
     }
 
     setTimeout(function(){ if(!dismissed) boot.setAttribute("data-skip",""); }, 1400);
-    cap = setTimeout(dismiss, 8000);
+    /* The silent backstop has to outlast the thing it is backing up: with no voice the
+       briefing types at 19ms a character, so a flat ceiling would guillotine the longer
+       lead line the moment it finished. Derive it from the words instead. */
+    cap = setTimeout(dismiss, 6000 + msg.length * 19);
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
     addEventListener("keydown", dismiss, {once:true});
