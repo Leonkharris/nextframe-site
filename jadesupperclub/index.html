@@ -55,8 +55,10 @@ html{background:#050b09}
 .legacy-card .stamp{border-color:#2f5546}
 .legacy-card p,.sheet--divider,.div-line,.sheet--dark .section-sub,
 .spot-copy p,.spot-strip figcaption{color:#a7bab0}
-/* Three gallery rows do not fit at the stock 148px tile height on a fixed 1056px page. */
-#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:128px}
+/* At 128px the tiles are a 1.74 letterbox and the plates read squashed. The stock 3:2
+   sits them properly; the hero gives back the height the third row needs. */
+#from-the-kitchen .gal-hero img,#rooms-details .gal-hero img{height:272px}
+#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:148px}
 /* part dividers — Jade rooms behind the smoke */
 #part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/entry-onyx.jpg")}
 #part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/banquette-run.jpg")}
@@ -213,7 +215,8 @@ html.v7hero-on .v7hero{display:block}
 
 /* ---------- preview film — screen only ---------- */
 .jfilm{background:#050e0b;padding:94px 24px 100px;text-align:center;border-top:1px solid rgba(194,154,85,.16);border-bottom:1px solid rgba(194,154,85,.16)}
-.jfilm-in{max-width:1080px;margin:0 auto}
+/* the film is a 1280x720 master — held to 760px it plays sharp instead of soft */
+.jfilm-in{max-width:760px;margin:0 auto}
 .jfilm-h{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#f3ead9;margin:0 0 34px}
 .jfilm-h em{font-style:italic;font-weight:500;color:#c29a55}
 .jfilm-frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0c1712;border:1px solid rgba(194,154,85,.28);box-shadow:0 30px 90px rgba(0,0,0,.7);cursor:pointer}
@@ -2106,6 +2109,8 @@ html.v7hero-on .v7hero{display:block}
   }
 
   [].forEach.call(document.querySelectorAll('.kit-wrap img'), function(im){
+    /* the cover stays a still — the clip is far too soft blown up to a full page */
+    if (im.closest('.cover-photo')) return;
     var m = /img\/([^\/]+)\.jpg/.exec(im.getAttribute('src') || '');
     if (m && CLIPS.indexOf(m[1]) > -1) wire(im, m[1]);
   });
