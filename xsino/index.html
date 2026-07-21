@@ -599,6 +599,12 @@ function vStory(id){
         <div style="font-family:var(--mono);font-size:12px;line-height:1.6;margin-top:8px;white-space:pre-wrap;color:#d8d4f0">${esc(MODE==='es'?(s.oneshot.es||s.oneshot.en):s.oneshot.en)}</div>
         ${MODE==='both'&&s.oneshot.es?`<div style="font-family:var(--mono);font-size:11.5px;line-height:1.6;margin-top:10px;white-space:pre-wrap;color:var(--muted);font-style:italic">${esc(s.oneshot.es)}</div>`:''}
       </div>`:''}
+      ${(s.takes&&s.takes.length)?`<div class="thesis-block" style="margin-top:30px">
+        <div class="k">🎞️ THE 15-SECOND CUT · ${s.takes.length} long takes, one per beat</div>
+        <div style="display:flex;flex-wrap:wrap;gap:16px;margin-top:12px">
+          ${s.takes.map(t=>`<div style="flex:1 1 240px;max-width:280px"><div style="font-size:10px;text-transform:uppercase;color:var(--accent-bright);letter-spacing:1.5px;margin-bottom:6px">Take ${t.n} · ${esc(t.label)}</div><video src="${t.src}" controls playsinline style="width:100%;height:auto;display:block;border-radius:6px;background:#000"></video></div>`).join('')}
+        </div>
+      </div>`:''}
       ${nav}
     </div>`;
 }

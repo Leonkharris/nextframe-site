@@ -266,10 +266,26 @@ def parse_story(sid):
             oneshot_video = f"assets/videos/{sid}/oneshot{ext}"
             break
 
+    # the 15s x 5 cut: five long takes that tell the whole story in five beats, mounted as
+    # take<n>_<beat_slug>.mp4 so the beat name travels with the file and needs no second source.
+    takes = []
+    vdir = os.path.join(os.path.dirname(__file__), "assets", "videos", sid)
+    if os.path.isdir(vdir):
+        for fn in sorted(os.listdir(vdir)):
+            tm = re.match(r"take(\d+)_(.+)\.(?:mp4|webm)$", fn)
+            if tm:
+                takes.append({
+                    "n": int(tm.group(1)),
+                    "label": tm.group(2).replace("_", " ").title(),
+                    "src": f"assets/videos/{sid}/{fn}",
+                })
+        takes.sort(key=lambda t: t["n"])
+
     return {
         "id": story_id, "title_es": title_es, "title_en": title_en,
         "pillar": pillar, "brand": brand, "logline": logline, "thesis": thesis,
-        "oneshot": oneshot, "oneshot_video": oneshot_video, "shots": shots, "char_board": char_board,
+        "oneshot": oneshot, "oneshot_video": oneshot_video, "takes": takes,
+        "shots": shots, "char_board": char_board,
         "story_board": story_board,
     }
 
