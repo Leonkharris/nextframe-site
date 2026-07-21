@@ -105,7 +105,11 @@ p{margin:0}
   background:repeating-linear-gradient(0deg,rgba(7,9,14,.34) 0 1px,transparent 1px 3px)}
 
 /* ---- masthead ---- */
-.mast{position:fixed;top:0;left:0;right:0;z-index:40;background:rgba(7,9,14,.72);
+/* The boot veil is opaque and sits at 60. The masthead rides above it so the deck link
+   and the demo button stay readable and clickable from the first frame — a visitor who
+   arrives looking for the deck should not have to sit through the briefing to find it.
+   Still under the lightbox at 80, which is the one thing that must cover everything. */
+.mast{position:fixed;top:0;left:0;right:0;z-index:70;background:rgba(7,9,14,.72);
   backdrop-filter:blur(12px);border-bottom:1px solid var(--hair)}
 .mast .shell{display:flex;align-items:center;gap:22px;height:56px}
 .lock{font-weight:800;letter-spacing:-.02em;font-size:18px;color:var(--off)}
@@ -1410,6 +1414,10 @@ footer .r{margin-left:auto}
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
     addEventListener("keydown", dismiss, {once:true});
+    /* The masthead sits above the veil, so using it has to take the veil down with it.
+       Otherwise an in-page anchor scrolls away underneath something still opaque. */
+    var mast = document.querySelector(".mast");
+    if(mast) mast.addEventListener("click", dismiss);
   }
 
   /* ---------- one scroll handler drives everything ---------- */
