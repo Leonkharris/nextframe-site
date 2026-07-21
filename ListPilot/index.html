@@ -437,17 +437,17 @@ section.band>.shell{position:relative;z-index:1}
 /* ---- the armor: a plate rack ----
    Six columns, three uneven rows — 3+3 / 2+2+2 / 3+3. The plates are cut to different
    widths and their images to different depths, the way a spread varies its pictures,
-   so the eye moves through the suit instead of scanning a tile grid. One continuous
-   ground under the whole rack, divided by hairlines: no box inside a box. */
-.rack{display:grid;grid-template-columns:repeat(6,1fr);
+   so the eye moves through the suit instead of scanning a tile grid. The plates stand
+   apart on the page ground rather than sharing one slab — a hairline is not enough
+   separation when every plate opens with a screenshot, because the screenshots run
+   straight into each other and read as one broken image. The gutter does the dividing. */
+.rack{display:grid;grid-template-columns:repeat(6,1fr);gap:26px;
+  border-top:1px solid var(--gold);padding-top:30px}
+.slot{padding:0;display:flex;flex-direction:column;transition:background .2s,transform .2s;
   background:linear-gradient(180deg,rgba(20,26,39,.95),rgba(13,18,28,.97));
-  border-top:1px solid var(--gold);box-shadow:var(--lift)}
-.slot{padding:0;display:flex;flex-direction:column;transition:background .2s;
-  border-left:1px solid var(--hair);border-top:1px solid var(--hair)}
-.slot:hover{background:rgba(30,37,54,.7)}
-/* row openers carry no left rule, and the first row none on top */
-.slot:nth-child(1),.slot:nth-child(3),.slot:nth-child(6){border-left:0}
-.slot:nth-child(1),.slot:nth-child(2){border-top:0;grid-column:span 3}
+  box-shadow:0 18px 44px rgba(0,0,0,.58), inset 0 0 0 1px var(--hair)}
+.slot:hover{background:rgba(30,37,54,.7);transform:translateY(-3px)}
+.slot:nth-child(1),.slot:nth-child(2){grid-column:span 3}
 .slot:nth-child(3),.slot:nth-child(4),.slot:nth-child(5){grid-column:span 2}
 .slot:nth-child(6),.slot:nth-child(7){grid-column:span 3}
 .slot .thumb{height:216px;overflow:hidden;background:#000}
@@ -666,10 +666,8 @@ footer .r{margin-left:auto}
   section{padding:76px 0}
   /* the six-column spread collapses to a two-up; the nth-child spans and the varied
      picture depths that carry it on a wide screen would only fragment it here */
-  .rack{grid-template-columns:repeat(2,1fr)}
-  .rack .slot{grid-column:auto;border-left:1px solid var(--hair);border-top:1px solid var(--hair)}
-  .rack .slot:nth-child(odd){border-left:0}
-  .rack .slot:nth-child(-n+2){border-top:0}
+  .rack{grid-template-columns:repeat(2,1fr);gap:18px}
+  .rack .slot{grid-column:auto}
   .rack .slot .thumb{height:152px}
   .gap,.icp,.live-top{grid-template-columns:1fr}
   .gap>div+div{border-left:0;border-top:1px solid var(--hair)}
@@ -700,8 +698,7 @@ footer .r{margin-left:auto}
 }
 @media (max-width:560px){
   .rack,.chips{grid-template-columns:1fr}
-  .rack .slot{border-left:0}
-  .rack .slot:nth-child(2){border-top:1px solid var(--hair)}
+  .rack{gap:16px}
   .rack .slot .thumb{height:186px}
   .reg,.live-top,.frame-wrap{padding:20px}
   .runfoot{gap:22px}
