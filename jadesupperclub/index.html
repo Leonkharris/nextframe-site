@@ -85,6 +85,20 @@ html{background:#050b09}
 .menu-strip img{width:100%;aspect-ratio:4/3;object-fit:cover}
 .menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#f3ead9;font:600 8px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
 
+/* ---------- investor sheets ---------- */
+.fin-tbl{width:calc(100% - 112px);margin:22px 56px 0;border-collapse:collapse}
+.fin-tbl caption{caption-side:top;text-align:left;font:600 9px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 0 9px}
+.fin-tbl th,.fin-tbl td{padding:6px 7px;text-align:right;font-size:10.5px;color:#a7bab0;border-bottom:1px solid rgba(194,154,85,.16);white-space:nowrap}
+.fin-tbl th:first-child,.fin-tbl td:first-child{text-align:left;padding-left:0;font-weight:600;color:#cfded6}
+.fin-tbl thead th{font:700 8.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:8px}
+.fin-tbl tr.tot td{font-family:var(--serif);font-size:12.5px;font-weight:800;color:#f2ede1;border-bottom:1px solid rgba(194,154,85,.42)}
+.fin-tbl tbody tr:last-child td{border-bottom:0}
+/* reserved tiles — construction photography drops in as each phase is shot */
+.ph-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;height:132px;border-radius:10px;background:#0f1d18;border:1px dashed rgba(194,154,85,.34)}
+.ph-tile span{font:600 8.5px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.ph-tile em{font-family:var(--serif);font-style:italic;font-size:12.5px;color:#8aa096}
+#part-5{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/grand-room.jpg")}
+
 /* v7 — cinematic scroll hero (Artologist portal technique, screen-only) */
 .v7hero{display:none;position:relative;height:420vh;background:#050e0b;--p:0;--bgs:1;--bgo:1;--fgs:1;--fgo:1;--to:1;--ty:0px;--s2o:0;--s2s:.94;--s3o:0;--s3y:80px}
 html.v7hero-on .v7hero{display:block}
@@ -229,7 +243,7 @@ html.v7hero-on .v7hero{display:block}
         </h1>
         <p class="v7sub">Dinner, then music, then the long part of the night. An emerald-and-brass supper club in Bonifacio Global City &mdash; with a kitchen led in partnership with chef Todd English.</p>
         <div class="v7meta">
-          <div><span class="v7num">262</span><span class="v7lab">Seats</span></div>
+          <div><span class="v7num">77</span><span class="v7lab">Seats</span></div>
           <div><span class="v7num">6</span><span class="v7lab">Rooms</span></div>
           <div><span class="v7num">2<span style="font-size:1.1rem">AM</span></span><span class="v7lab">Last Call</span></div>
           <div><span class="v7num">7</span><span class="v7lab">Nights a Week</span></div>
@@ -301,10 +315,10 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 2 · CONTENTS ============ -->
   <section class="sheet" id="contents" aria-labelledby="toc-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Contents · 02/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Contents · 02/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="toc-heading">Contents</h2>
-    <p class="section-sub">Thirty pages, four parts — the house, the table, the craft behind the room, and the invitation.</p>
+    <p class="section-sub">Thirty-eight pages, five parts — the house, the table, the craft behind the room, the invitation, and the investment.</p>
 
     <div class="toc-cols">
       <div class="toc-part">
@@ -327,8 +341,6 @@ html.v7hero-on .v7hero{display:block}
           <li><span>From the Kitchen</span><span class="toc-pg">16</span></li>
           <li><span>Rooms &amp; Details</span><span class="toc-pg">17</span></li>
         </ul>
-      </div>
-      <div class="toc-part">
         <h3><span class="toc-rn">III</span>The Craft</h3>
         <ul>
           <li><span>Making the Room</span><span class="toc-pg">19</span></li>
@@ -336,6 +348,8 @@ html.v7hero-on .v7hero{display:block}
           <li><span>The Cellar</span><span class="toc-pg">21</span></li>
           <li><span>The Music Programme</span><span class="toc-pg">22</span></li>
         </ul>
+      </div>
+      <div class="toc-part">
         <h3><span class="toc-rn">IV</span>The Invitation</h3>
         <ul>
           <li><span>Private Dining &amp; Events</span><span class="toc-pg">24</span></li>
@@ -343,13 +357,23 @@ html.v7hero-on .v7hero{display:block}
           <li><span>The Late Room</span><span class="toc-pg">26</span></li>
           <li><span>Credentials &amp; Partnerships</span><span class="toc-pg">27</span></li>
           <li><span>The Room, by the Numbers</span><span class="toc-pg">28</span></li>
-          <li><span>Press Assets</span><span class="toc-pg">29</span></li>
-          <li><span>Contact</span><span class="toc-pg">30</span></li>
+        </ul>
+        <h3><span class="toc-rn">V</span>The Investment</h3>
+        <ul>
+          <li><span>The Road to October</span><span class="toc-pg">30</span></li>
+          <li><span>The Build, Phase by Phase</span><span class="toc-pg">31</span></li>
+          <li><span>The Opportunity</span><span class="toc-pg">32</span></li>
+          <li><span>Where the ₱40 Million Goes</span><span class="toc-pg">33</span></li>
+          <li><span>Five-Year Forecast</span><span class="toc-pg">34</span></li>
+          <li><span>The Return</span><span class="toc-pg">35</span></li>
+          <li><span>How the Room Earns</span><span class="toc-pg">36</span></li>
+          <li><span>Press Assets</span><span class="toc-pg">37</span></li>
+          <li><span>Contact</span><span class="toc-pg">38</span></li>
         </ul>
       </div>
     </div>
 
-    <p class="foot-note"><strong>How to use this kit:</strong> every room, menu section and price in these pages reflects the house as of July 2026. High-resolution versions of all photography — and the full printed menu — are available for editorial use; see Press Assets, page 29.</p>
+    <p class="foot-note"><strong>How to use this kit:</strong> every room, menu section and price in these pages reflects the house as of July 2026. High-resolution versions of all photography — and the full printed menu — are available for editorial use; see Press Assets, page 37.</p>
   </section>
 
   <!-- ============ PAGE 3 · DIVIDER — PART I ============ -->
@@ -360,13 +384,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The House</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">A green velvet corridor, a lit slab of onyx, and a room that does not tell you what time it is.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 03/30</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 03/38</span>
     </div>
   </section>
 
   <!-- ============ PAGE 4 · THE STORY OF JADE ============ -->
   <section class="sheet" id="the-house" aria-labelledby="bio-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 04/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 04/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>Jade Supper Club</h2>
 
@@ -396,7 +420,7 @@ html.v7hero-on .v7hero{display:block}
     </div>
 
     <div class="stat-band">
-      <div><span class="sn">262</span><span class="sl">Total Seats</span></div>
+      <div><span class="sn">77</span><span class="sl">Total Seats</span></div>
       <div><span class="sn">6</span><span class="sl">Rooms</span></div>
       <div><span class="sn">2</span><span class="sl">Sets Nightly</span></div>
       <div><span class="sn">2AM</span><span class="sl">Last Call</span></div>
@@ -409,13 +433,13 @@ html.v7hero-on .v7hero{display:block}
     <img src="img/grand-guests.jpg" alt="The Grand Room at Jade Supper Club, full at dinner service.">
     <div class="plate-cap">
       <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
-      <span class="plate-meta">Jade Supper Club · The Grand Room · 05/30</span>
+      <span class="plate-meta">Jade Supper Club · The Grand Room · 05/38</span>
     </div>
   </section>
 
   <!-- ============ PAGE 6 · AN EVENING AT JADE ============ -->
   <section class="sheet" id="an-evening" aria-labelledby="tl-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 06/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 06/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="tl-heading">An Evening at Jade</h2>
 
@@ -454,7 +478,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 7 · PHILOSOPHY ============ -->
   <section class="sheet" id="philosophy" aria-labelledby="philo-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 07/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 07/38</span></div>
     <div class="page-rule"></div>
 
     <div class="philo-block">
@@ -486,13 +510,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Table</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">The wood oven, the ice bar and the brass counter — the full menu, as printed.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 08/30</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 08/38</span>
     </div>
   </section>
 
   <!-- ============ PAGE 9 · MENU I ============ -->
   <section class="sheet" id="menu-one" aria-labelledby="menu1-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 09/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 09/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="menu1-heading"><span class="script-kick">the menu</span>Raw, Wood &amp; Fire</h2>
 
@@ -615,7 +639,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 10 · MENU II ============ -->
   <section class="sheet" id="menu-two" aria-labelledby="menu2-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 10/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 10/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="menu2-heading">Pasta, Fire &amp; Dessert</h2>
 
@@ -730,7 +754,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 11 · JADE BAR — SIGNATURE COCKTAILS ============ -->
   <section class="sheet sheet--dark sheet--spot" id="jade-bar" aria-labelledby="bar-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 11/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 11/38</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 01 — The Brass Counter · Front of House</p>
     <h2 class="spot-title" id="bar-heading">Jade Bar</h2>
@@ -792,7 +816,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 12 · SAKE, CHAMPAGNE & BAR BITES ============ -->
   <section class="sheet sheet--dark sheet--spot" id="sake-champagne" aria-labelledby="sake-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 12/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 12/38</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 02 — The Cold Room · Sake, Champagne &amp; Late Bites</p>
     <h2 class="spot-title" id="sake-heading">Sake &amp; Champagne</h2>
@@ -898,7 +922,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 13 · SPOTLIGHT — THE WOOD OVEN ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-kitchen" aria-labelledby="spot-kitchen-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 13/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 13/38</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 03 — The Pass · Open to the Grand Room</p>
     <h2 class="spot-title" id="spot-kitchen-heading">The Wood Oven</h2>
@@ -927,7 +951,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 14 · SPOTLIGHT — THE STAGE ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-stage" aria-labelledby="spot-stage-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 14/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 14/38</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 04 — The Proscenium · Far End of the Grand Room</p>
     <h2 class="spot-title" id="spot-stage-heading">The Stage</h2>
@@ -956,7 +980,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 15 · SPOTLIGHT — THE SPIRAL ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-spiral" aria-labelledby="spot-spiral-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 15/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 15/38</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 05 — The Brass Spiral · Grand Room to Mezzanine</p>
     <h2 class="spot-title" id="spot-spiral-heading">The Spiral &amp; The Mezzanine</h2>
@@ -985,7 +1009,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 16 · FROM THE KITCHEN (gallery I) ============ -->
   <section class="sheet" id="from-the-kitchen" aria-labelledby="gallery-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 16/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 16/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery-heading">From the Kitchen</h2>
     <p class="section-sub">Selected plates from the current menu. High-resolution files of every photograph are available for editorial use.</p>
@@ -1047,7 +1071,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
   <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 17/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 17/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
     <p class="section-sub">Six rooms, one material palette — emerald, brass, onyx and velvet, from the corridor to the cellar.</p>
@@ -1115,13 +1139,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Craft</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">The materials, the chef partner, the cellar and the music — everything behind the room.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 18/30</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 18/38</span>
     </div>
   </section>
 
   <!-- ============ PAGE 19 · MAKING THE ROOM ============ -->
   <section class="sheet sheet--dark" id="making-the-room" aria-labelledby="craft-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 19/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 19/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="craft-heading"><span class="script-kick">the craft</span>Making the Room</h2>
     <p class="section-sub">Four materials, used everywhere and mixed nowhere else. This is the whole palette.</p>
@@ -1173,7 +1197,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 20 · THE CHEF PARTNER ============ -->
   <section class="sheet" id="chef-partner" aria-labelledby="todd-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 20/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 20/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="todd-heading">The Chef Partner</h2>
 
@@ -1183,9 +1207,8 @@ html.v7hero-on .v7hero{display:block}
     </figure>
 
     <div class="story-cols">
-      <p><span class="drop">T</span>odd English began cooking at fifteen, graduated with honors from the Culinary Institute of America, and trained under Jean-Jacques Rachou at La Côte Basque before leaving for Italy. He came back with an idea that changed American dining: rustic Mediterranean food, cooked with fire and conviction. Olives opened in Charlestown in 1989 with fifty seats and a wood oven. Five James Beard Awards followed, along with fifteen cookbooks, two decades on national television, and restaurants on four continents.</p>
-      <p>His work in the Philippines is not new — Pound by Todd English has run across SM's flagship malls for years — but Jade is the first fine-dining room here to carry his hand on the menu. The wood oven, the flatbread, the whole-fish service and the guéridon are all his grammar, rewritten for Manila's produce and Manila's hours.</p>
-      <p>Jade's kitchen is run day to day by its own resident brigade. Chef English sets the menu, returns for each seasonal change, and cooked the opening service himself.</p>
+      <p><span class="drop">T</span>odd English trained under Jean-Jacques Rachou at La Côte Basque, then left for Italy and came back with rustic Mediterranean food cooked over fire. Olives opened in Charlestown in 1989 with fifty seats and a wood oven. Five James Beard Awards followed, along with fifteen cookbooks and restaurants on four continents.</p>
+      <p>Jade is the first fine-dining room in the Philippines to carry his hand on the menu. The wood oven, the whole-fish service and the guéridon are his grammar, rewritten for Manila's produce. The kitchen is run day to day by its own resident brigade; Chef English sets the menu, returns for each seasonal change, and cooks the opening service himself.</p>
     </div>
 
     <div class="story-band">
@@ -1200,11 +1223,12 @@ html.v7hero-on .v7hero{display:block}
       <div><span class="pn">02</span><h4>The Gu&eacute;ridon</h4><p>The rolling table he brought back from France — pasta finished, fish carved, sauces mounted in front of the guest.</p></div>
       <div><span class="pn">03</span><h4>Manila&rsquo;s Larder</h4><p>The grammar is his; the ingredients are not. Lapu-lapu, calamansi, Batangas barako and Philippine oysters replace the Mediterranean originals.</p></div>
     </div>
+    <p class="foot-note"><strong>The partnership, in the model:</strong> chef travel is budgeted at ₱300,000 a year for the seasonal menu changes and the opening service. The resident brigade — a head chef, a sous chef, a sushi chef and eight line cooks — carries the room every other night of the year.</p>
   </section>
 
   <!-- ============ PAGE 21 · THE CELLAR ============ -->
   <section class="sheet" id="the-cellar" aria-labelledby="cellar-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 21/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 21/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="cellar-heading">The Cellar</h2>
     <p class="section-sub">A cold room built for sake first and wine second — the reverse of every other list in the city.</p>
@@ -1241,7 +1265,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 22 · THE MUSIC PROGRAMME ============ -->
   <section class="sheet" id="music" aria-labelledby="music-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 22/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 22/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="music-heading">The Music Programme</h2>
     <p class="section-sub">Two sets a night, seven nights a week — programmed Filipino-first, and loud enough to matter.</p>
@@ -1281,13 +1305,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Invitation</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">Private dining, buyouts, the late room — and how to get in touch.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 23/30</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 23/38</span>
     </div>
   </section>
 
   <!-- ============ PAGE 24 · PRIVATE DINING & EVENTS ============ -->
   <section class="sheet" id="private-dining" aria-labelledby="events-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 24/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 24/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="events-heading"><span class="script-kick">the invitation</span>Private Dining &amp; Events</h2>
 
@@ -1316,8 +1340,8 @@ html.v7hero-on .v7hero{display:block}
         <figure style="margin:0;position:relative"><img src="img/grand-guests.jpg" alt="The full Grand Room during service."><span class="prov">Venue Render</span></figure>
         <div>
           <h4>Full Buyout — The Whole House</h4>
-          <p>Every room, the stage, the bar and the kitchen for one night. 262 seated or 400 standing across six spaces, with the music programme built to the brief.</p>
-          <span class="chip">262 seated · 400 standing</span>
+          <p>Every room, the stage, the bar and the kitchen for one night. Seventy-seven seated across all seven bookable areas, with standing room on the mezzanine rail and along the bar, and the music programme built to the brief.</p>
+          <span class="chip">77 seated · whole house</span>
         </div>
       </div>
       <div class="next-row">
@@ -1336,7 +1360,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 25 · FEATURE — THE SALON ============ -->
   <section class="sheet" id="feature-salon" aria-labelledby="feat-salon-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 25/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 25/38</span></div>
     <div class="page-rule"></div>
     <p class="kicker feat-kick">Bookable Now — Off the Grand Room · Eighteen Seats</p>
     <h2 class="section-title feat-title" id="feat-salon-heading">The Salon</h2>
@@ -1373,7 +1397,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 26 · FEATURE — THE LATE ROOM ============ -->
   <section class="sheet" id="feature-late" aria-labelledby="feat-late-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 26/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 26/38</span></div>
     <div class="page-rule"></div>
     <p class="kicker feat-kick">Midnight to 2AM — The Bar, The Spiral &amp; The Mezzanine</p>
     <h2 class="section-title feat-title" id="feat-late-heading">The Late Room</h2>
@@ -1410,7 +1434,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 27 · CREDENTIALS & PARTNERSHIPS ============ -->
   <section class="sheet" id="credentials" aria-labelledby="cred-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Credentials · 27/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Credentials · 27/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="cred-heading"><span class="script-kick">the record</span>Credentials &amp; Partnerships</h2>
 
@@ -1445,7 +1469,7 @@ html.v7hero-on .v7hero{display:block}
       <div class="partner-col">
         <span class="pn">03</span>
         <h4>Content &amp; Editorial</h4>
-        <p>Shoot access to all six rooms outside service hours, in-house capture for partners, and the full asset library on page 29.</p>
+        <p>Shoot access to all six rooms outside service hours, in-house capture for partners, and the full asset library on page 37.</p>
       </div>
     </div>
 
@@ -1454,30 +1478,30 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 28 · THE ROOM, BY THE NUMBERS ============ -->
   <section class="sheet" id="numbers" aria-labelledby="numbers-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Room · 28/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Room · 28/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="numbers-heading">The Room, by the Numbers</h2>
 
     <div class="reach-hero">
-      <span class="bign">262</span>
-      <span class="bl">seated across six rooms — 400 standing on a full buyout</span>
+      <span class="bign">77</span>
+      <span class="bl">seated across seven bookable areas, on 180 square metres</span>
     </div>
 
     <div class="reach-cards">
       <div class="reach-card">
-        <p class="kicker">The Grand Room</p>
-        <h4>180 Seated</h4>
-        <p>Banquette run, centre tables and the chef's table at the pass. Two seatings a night, 6PM and 10PM.</p>
+        <p class="kicker">The Dining Room</p>
+        <h4>28 at the Table</h4>
+        <p>Centre tables and the chef's table at the pass, at ₱4,000 a head. Two seatings a night, 6PM and 10PM.</p>
       </div>
       <div class="reach-card">
-        <p class="kicker">Jade Bar</p>
-        <h4>40 at the Counter</h4>
-        <p>Walk-in only until 10PM, then bar list. The last room in the house to close, at 2AM.</p>
+        <p class="kicker">The Banquettes</p>
+        <h4>Four Booths, 28–32</h4>
+        <p>Two at six and two at eight to ten, each on a minimum spend. The run that faces the stage.</p>
       </div>
       <div class="reach-card">
-        <p class="kicker">Above &amp; Aside</p>
-        <h4>24 + 18</h4>
-        <p>Twenty-four on the mezzanine rail, eighteen behind the Salon door. Both bookable as private space.</p>
+        <p class="kicker">Counter &amp; Private</p>
+        <h4>Omakase + Salon</h4>
+        <p>Four to five at the sushi counter; six to twelve behind the Salon door. The bar counter is walk-in and unreserved.</p>
       </div>
     </div>
 
@@ -1494,9 +1518,353 @@ html.v7hero-on .v7hero{display:block}
     <p class="foot-note"><strong>For planners:</strong> room dimensions, floor plans, rigging points, power and load-in details are available as a capacity pack on request. Figures current as of July 2026.</p>
   </section>
 
-  <!-- ============ PAGE 29 · PRESS ASSETS ============ -->
+  <!-- ============ PAGE 29 · DIVIDER — PART V ============ -->
+  <section class="sheet sheet--divider" id="part-5" aria-label="Part V — The Investment">
+    <div class="div-frame">
+      <span class="div-part">Part V</span>
+      <span class="div-num">V</span>
+      <h2 class="div-title">The Investment</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">A ₱40 million build, a ₱13 million ticket, and a room designed to earn its keep from the first Saturday.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 29/38</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 30 · ROAD TO OCTOBER ============ -->
+  <section class="sheet" id="road-to-october" aria-labelledby="road-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 30/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="road-heading">The Road to October</h2>
+
+    <div class="tl-grid">
+      <ol class="tl-list">
+        <li><span class="tl-year">Now</span><div><h4>The Shell, Signed</h4><p>Three months of advance rent and three months of security deposit — ₱3,373,966 — are placed with the landlord. Design is set with BA8 Concepts, Jerikson Construction is on site, and the mezzanine is with the structural engineer for sign-off.</p></div></li>
+        <li><span class="tl-year">Aug</span><div><h4>Permits &amp; Long Leads</h4><p>Permits and licences at ₱400,000 are lodged, and the point-of-sale goes in for BIR accreditation — a fixed three-to-four-week clock that gates opening day more tightly than the build does. Fire suppression, smoke detection and air conditioning are coordinated with building management.</p></div></li>
+        <li><span class="tl-year">Sep</span><div><h4>Systems &amp; the Kitchen</h4><p>Automated lighting, exhaust and ducting, CCTV and biometrics. The cold line, the hot line and the Josper charcoal oven are delivered and wired. Custom furniture installation begins, and the bar's ice cap goes in.</p></div></li>
+        <li><span class="tl-year">Oct</span><div><h4>Staff, Stock, Rehearsal</h4><p>Kitchenware, bar and glassware at ₱1,100,000. Hiring closes on the forty-four-strong opening roster and one month of paid training begins at ₱1,135,960. Menu R&amp;D runs against ₱6,000,000 of opening stock. Plants and soft finishes land last.</p></div></li>
+        <li><span class="tl-year">Open</span><div><h4>Doors</h4><p>Friends and family, then press, then full service — Tuesday to Sunday, two seatings at 6PM and 10PM, bar until 2AM.</p></div></li>
+        <li><span class="tl-year">Yr 1</span><div><h4>The First Twelve Months</h4><p>Year One is modelled at ₱76.9M in the base case and ₱130.7M in the high case, against a 72% gross margin.</p></div></li>
+      </ol>
+      <aside class="tl-side">
+        <img src="img/atrium.jpg" alt="The Jade atrium during fit-out.">
+        <div class="tl-card">
+          <h4>Already Committed</h4>
+          <p>₱3,373,966 is with the landlord, design and construction are contracted, and the mezzanine is engineered. The remaining spend is scheduled against the weeks above rather than drawn in a lump.</p>
+        </div>
+        <div class="tl-card">
+          <h4>The Long Poles</h4>
+          <p>Three items set the date, not the budget: BIR accreditation of the POS, landlord sign-off on fire suppression and air conditioning, and the month of paid training that must finish before doors.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">Oct</span><span class="sl">Target Opening</span></div>
+      <div><span class="sn">10</span><span class="sl">Weeks to Doors</span></div>
+      <div><span class="sn">₱40.1M</span><span class="sl">Total Project Cost</span></div>
+      <div><span class="sn">44</span><span class="sl">Opening Roster</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 31 · CONSTRUCTION PROGRESS (PLACEHOLDER) ============ -->
+  <section class="sheet" id="construction" aria-labelledby="const-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 31/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="const-heading">The Build, Phase by Phase</h2>
+    <p class="section-sub">Nine phases from shell to handover. Site photography drops into these frames as each phase is shot — the schedule and the captions are live; only the images are pending.</p>
+
+    <div class="gal-grid">
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 01</span><em>Shell &amp; Demolition</em></div><figcaption>July · Complete</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 02</span><em>Structure &amp; Mezzanine</em></div><figcaption>July · In Progress</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 03</span><em>Mechanical &amp; Electrical</em></div><figcaption>August · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 04</span><em>Fire &amp; Life Safety</em></div><figcaption>August · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 05</span><em>Kitchen Rough-In</em></div><figcaption>August · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 06</span><em>Bar &amp; Ice Cap</em></div><figcaption>September · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 07</span><em>Millwork &amp; Furniture</em></div><figcaption>September · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 08</span><em>Lighting &amp; Sound</em></div><figcaption>September · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 09</span><em>Finishes &amp; Handover</em></div><figcaption>October · Scheduled</figcaption></figure>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">9</span><span class="sl">Build Phases</span></div>
+      <div><span class="sn">₱17.2M</span><span class="sl">Leasehold Works</span></div>
+      <div><span class="sn">180</span><span class="sl">Square Metres</span></div>
+      <div><span class="sn">10 yr</span><span class="sl">Depreciation Life</span></div>
+    </div>
+
+    <p class="foot-note"><strong>Site access:</strong> walkthroughs are arranged for prospective investors on request, and a dated photo set is issued at the close of each phase.</p>
+  </section>
+
+  <!-- ============ PAGE 32 · THE OPPORTUNITY ============ -->
+  <section class="sheet" id="the-opportunity" aria-labelledby="opp-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 32/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="opp-heading">The Opportunity</h2>
+    <p class="section-sub">The same five-year model, run twice — once on conservative trade, once on the room performing to the capacity it was built for.</p>
+
+    <div class="reach-hero">
+      <span class="bign">₱13M</span>
+      <span class="bl">for an 18% share of Jade Supper Club Manila</span>
+    </div>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">The Ticket</p>
+        <h4>₱13,000,000</h4>
+        <p>An 18% holding in the operating company, drawn against a total project cost of ₱40,083,352.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Policy</p>
+        <h4>90% Distributed</h4>
+        <p>Ninety per cent of net profit is paid out annually. The remaining tenth is retained against ongoing capex, budgeted at 2% of revenue.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Horizon</p>
+        <h4>Five Years</h4>
+        <p>Modelled to Year Five on a ten-year leasehold life, with the base case paying back in 3.6 years and the high case in 1.7.</p>
+      </div>
+    </div>
+
+    <table class="fin-tbl">
+      <caption>The Two Cases, Side by Side</caption>
+      <thead><tr><th></th><th>Base Case</th><th>High Case</th></tr></thead>
+      <tbody>
+        <tr><td>Year 1 Revenue</td><td>₱76,928,570</td><td>₱130,714,280</td></tr>
+        <tr><td>Year 5 Revenue</td><td>₱126,119,774</td><td>₱218,531,270</td></tr>
+        <tr><td>Year 1 Gross Margin</td><td>72.1%</td><td>72.4%</td></tr>
+        <tr><td>Year 1 EBITDA</td><td>₱26,367,504</td><td>₱62,547,772</td></tr>
+        <tr><td>Year 1 EBITDA Margin</td><td>34.3%</td><td>47.9%</td></tr>
+        <tr><td>Year 1 Net Profit</td><td>₱17,178,614</td><td>₱43,952,013</td></tr>
+        <tr><td>Year 5 Net Profit</td><td>₱33,553,232</td><td>₱80,110,688</td></tr>
+        <tr><td>Five-Year Distributions, 18% Holder</td><td>₱20,477,536</td><td>₱49,709,054</td></tr>
+        <tr><td>Cumulative Return on ₱13M</td><td>57.5%</td><td>282.4%</td></tr>
+        <tr><td>Payback Period</td><td>3.58 years</td><td>1.72 years</td></tr>
+        <tr class="tot"><td>Internal Rate of Return</td><td>15.23%</td><td>60.30%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="foot-note"><strong>A note on the two cases.</strong> The base case assumes the house turns roughly one full cover a night across a six-day week. The high case assumes nightlife revenue matching dining rather than trailing it. Neither assumes a price increase. Full model available under NDA.</p>
+  </section>
+
+  <!-- ============ PAGE 33 · THE ₱40 MILLION BUILD ============ -->
+  <section class="sheet" id="the-build" aria-labelledby="build-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 33/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="build-heading">Where the ₱40 Million Goes</h2>
+
+    <div class="menu-cols">
+      <div>
+        <div class="menu-sec">
+          <h3>Construction &amp; Fit-Out <span>₱17,195,251</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Construction</span><span class="mi-price">₱8,363,180</span></div><span class="mi-desc">Jerikson Construction — full shell fit-out</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Custom Furniture</span><span class="mi-price">₱4,000,000</span></div><span class="mi-desc">Fashion Interiors — banquettes, tables, millwork</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Air Conditioning</span><span class="mi-price">₱2,500,000</span></div><span class="mi-desc">Plant, ducting and controls</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Design, Structure &amp; Cladding</span><span class="mi-price">₱824,000</span></div><span class="mi-desc">BA8 Concepts, mezzanine engineering, wall fabrics</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Marblo Ice-Cap Bar</span><span class="mi-price">₱818,071</span></div><span class="mi-desc">The lit slab and its chilled rail</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Fire &amp; Life Safety</span><span class="mi-price">₱690,000</span></div><span class="mi-desc">Suppression and smoke detection</span></div>
+        </div>
+
+        <div class="menu-sec">
+          <h3>Kitchen, Bar &amp; Systems <span>₱7,168,175</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Lighting, Architectural &amp; Automated</span><span class="mi-price">₱2,200,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Ovens, Hot Line &amp; Bar Refrigeration</span><span class="mi-price">₱1,010,430</span></div><span class="mi-desc">Including the Josper charcoal oven</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Speakers &amp; DJ Kit</span><span class="mi-price">₱1,000,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">POS, Booking &amp; Security</span><span class="mi-price">₱890,000</span></div><span class="mi-desc">BIR-accredited terminals, CCTV, biometrics</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Cold Line &amp; Dishwashing</span><span class="mi-price">₱789,580</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Exhaust &amp; Ducting</span><span class="mi-price">₱750,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Small Wares &amp; Contingency</span><span class="mi-price">₱528,165</span></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-sec">
+          <h3>Pre-Opening &amp; Capital <span>₱15,719,926</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Opening Stock &amp; R&amp;D</span><span class="mi-price">₱6,000,000</span></div><span class="mi-desc">Cellar, bar and larder at open</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Advance Rent, Three Months</span><span class="mi-price">₱1,686,983</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Security Deposit, Three Months</span><span class="mi-price">₱1,686,983</span></div><span class="mi-desc">Refundable — held on the balance sheet</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Consulting, Legal &amp; Accounting</span><span class="mi-price">₱1,700,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital Reserve</span><span class="mi-price">₱1,500,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Training &amp; Payroll, One Month</span><span class="mi-price">₱1,135,960</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Kitchenware, Bar &amp; Glassware</span><span class="mi-price">₱1,100,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Chef Travel, Plants &amp; Packaging</span><span class="mi-price">₱475,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Permits, Licences &amp; Insurance</span><span class="mi-price">₱435,000</span></div></div>
+        </div>
+
+        <div class="menu-sec">
+          <h3>How It Is Classified <span>₱40,083,352</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Capital Expenditure</span><span class="mi-price">60.8%</span></div><span class="mi-desc">₱24,363,426 — depreciated over ten years on the leasehold and five on equipment</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital</span><span class="mi-price">18.7%</span></div><span class="mi-desc">₱7,500,000 — stock and cash, recovered through trading</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Pre-Opening Expense</span><span class="mi-price">16.3%</span></div><span class="mi-desc">₱6,532,943 — expensed, not capitalised</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Refundable Asset</span><span class="mi-price">4.2%</span></div><span class="mi-desc">₱1,686,983 — the deposit, returned at lease end</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>Depreciation:</strong> ₱3,153,160 a year — ₱1,719,525 on ₱17,195,251 of leasehold improvements over ten years, ₱1,433,635 on ₱7,168,175 of equipment over five. Net book value at the end of Year Five is ₱8,597,625. Ongoing improvement capex is budgeted at 2% of revenue.</p>
+  </section>
+
+  <!-- ============ PAGE 34 · FIVE-YEAR FORECAST ============ -->
+  <section class="sheet" id="forecast" aria-labelledby="fcst-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 34/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="fcst-heading">Five-Year Forecast</h2>
+    <p class="section-sub">In millions of pesos. Two rooms, two revenue lines — dinner service and the late half of the night — modelled separately and summed.</p>
+
+    <table class="fin-tbl">
+      <caption>Base Case</caption>
+      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
+      <tbody>
+        <tr><td>Dining</td><td>42.3</td><td>50.8</td><td>58.4</td><td>64.2</td><td>69.4</td></tr>
+        <tr><td>Nightlife</td><td>34.6</td><td>41.5</td><td>47.8</td><td>52.5</td><td>56.8</td></tr>
+        <tr class="tot"><td>Total Revenue</td><td>76.9</td><td>92.3</td><td>106.2</td><td>116.8</td><td>126.1</td></tr>
+        <tr><td>Revenue Growth</td><td>—</td><td>+20.0%</td><td>+15.0%</td><td>+10.0%</td><td>+8.0%</td></tr>
+        <tr><td>Cost of Sales</td><td>21.4</td><td>25.7</td><td>29.6</td><td>32.5</td><td>35.1</td></tr>
+        <tr><td>Gross Margin</td><td>55.5</td><td>66.6</td><td>76.6</td><td>84.2</td><td>91.0</td></tr>
+        <tr><td>Operating Expenses</td><td>29.1</td><td>36.7</td><td>38.5</td><td>40.5</td><td>42.5</td></tr>
+        <tr><td>EBITDA</td><td>26.4</td><td>29.9</td><td>38.0</td><td>43.8</td><td>48.5</td></tr>
+        <tr><td>EBITDA Margin</td><td>34.3%</td><td>32.4%</td><td>35.8%</td><td>37.5%</td><td>38.5%</td></tr>
+        <tr class="tot"><td>Net Profit</td><td>17.2</td><td>19.8</td><td>25.8</td><td>30.1</td><td>33.6</td></tr>
+        <tr><td>Net Margin</td><td>22.3%</td><td>21.4%</td><td>24.3%</td><td>25.7%</td><td>26.6%</td></tr>
+      </tbody>
+    </table>
+
+    <table class="fin-tbl">
+      <caption>High Case</caption>
+      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
+      <tbody>
+        <tr><td>Dining</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
+        <tr><td>Nightlife</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
+        <tr class="tot"><td>Total Revenue</td><td>130.7</td><td>154.2</td><td>177.4</td><td>198.7</td><td>218.5</td></tr>
+        <tr><td>Revenue Growth</td><td>—</td><td>+18.0%</td><td>+15.0%</td><td>+12.0%</td><td>+10.0%</td></tr>
+        <tr><td>Cost of Sales</td><td>36.1</td><td>42.6</td><td>49.0</td><td>54.8</td><td>60.3</td></tr>
+        <tr><td>Gross Margin</td><td>94.6</td><td>111.7</td><td>128.4</td><td>143.8</td><td>158.2</td></tr>
+        <tr><td>Operating Expenses</td><td>32.1</td><td>40.4</td><td>42.5</td><td>44.6</td><td>46.8</td></tr>
+        <tr><td>EBITDA</td><td>62.5</td><td>71.2</td><td>86.0</td><td>99.3</td><td>111.4</td></tr>
+        <tr><td>EBITDA Margin</td><td>47.8%</td><td>46.2%</td><td>48.5%</td><td>50.0%</td><td>51.0%</td></tr>
+        <tr class="tot"><td>Net Profit</td><td>44.0</td><td>50.4</td><td>61.3</td><td>71.1</td><td>80.1</td></tr>
+        <tr><td>Net Margin</td><td>33.6%</td><td>32.7%</td><td>34.6%</td><td>35.8%</td><td>36.7%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="foot-note">Cost of sales runs at 27.9% in the base case and 27.6% in the high, for a gross margin of roughly 72% in both. Corporation tax is taken at 26%. Depreciation of ₱3,153,160 a year is charged below EBITDA; the model carries no debt and no interest.</p>
+  </section>
+
+  <!-- ============ PAGE 35 · THE RETURN ============ -->
+  <section class="sheet" id="the-return" aria-labelledby="return-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 35/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="return-heading">The Return on ₱13 Million</h2>
+    <p class="section-sub">An 18% holding, distributions paid annually out of net profit. Both cases below are drawn from the same model as the forecast on the previous page.</p>
+
+    <table class="fin-tbl">
+      <caption>Base Case — 18% Holder</caption>
+      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>18% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
+      <tbody>
+        <tr><td>Year 0</td><td>—</td><td>—</td><td>(13,000,000)</td><td>—</td><td>(13,000,000)</td></tr>
+        <tr><td>Year 1</td><td>17.2M</td><td>15.5M</td><td>2,782,936</td><td>21.4%</td><td>(10,217,064)</td></tr>
+        <tr><td>Year 2</td><td>19.8M</td><td>17.8M</td><td>3,205,605</td><td>24.7%</td><td>(7,011,459)</td></tr>
+        <tr><td>Year 3</td><td>25.8M</td><td>23.2M</td><td>4,183,133</td><td>32.2%</td><td>(2,828,326)</td></tr>
+        <tr><td>Year 4</td><td>30.1M</td><td>27.1M</td><td>4,870,239</td><td>37.5%</td><td>2,041,913</td></tr>
+        <tr><td>Year 5</td><td>33.6M</td><td>30.2M</td><td>5,435,624</td><td>41.8%</td><td>7,477,536</td></tr>
+        <tr class="tot"><td>Five Years</td><td></td><td></td><td>20,477,536</td><td>57.5%</td><td>7,477,536</td></tr>
+      </tbody>
+    </table>
+
+    <table class="fin-tbl">
+      <caption>High Case — 18% Holder</caption>
+      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>18% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
+      <tbody>
+        <tr><td>Year 0</td><td>—</td><td>—</td><td>(13,000,000)</td><td>—</td><td>(13,000,000)</td></tr>
+        <tr><td>Year 1</td><td>44.0M</td><td>39.6M</td><td>7,120,226</td><td>54.8%</td><td>(5,879,774)</td></tr>
+        <tr><td>Year 2</td><td>50.4M</td><td>45.3M</td><td>8,162,157</td><td>62.8%</td><td>2,282,383</td></tr>
+        <tr><td>Year 3</td><td>61.3M</td><td>55.2M</td><td>9,927,887</td><td>76.4%</td><td>12,210,270</td></tr>
+        <tr><td>Year 4</td><td>71.1M</td><td>64.0M</td><td>11,520,852</td><td>88.6%</td><td>23,731,122</td></tr>
+        <tr><td>Year 5</td><td>80.1M</td><td>72.1M</td><td>12,977,932</td><td>99.8%</td><td>36,709,054</td></tr>
+        <tr class="tot"><td>Five Years</td><td></td><td></td><td>49,709,054</td><td>282.4%</td><td>36,709,054</td></tr>
+      </tbody>
+    </table>
+
+    <div class="story-band">
+      <div><span class="sn">3.58</span><span class="sl">Years to Payback · Base</span></div>
+      <div><span class="sn">15.2%</span><span class="sl">IRR · Base</span></div>
+      <div><span class="sn">1.72</span><span class="sl">Years to Payback · High</span></div>
+      <div><span class="sn">60.3%</span><span class="sl">IRR · High</span></div>
+    </div>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">Distribution Policy</p>
+        <h4>90% of Net Profit</h4>
+        <p>Paid annually. The remaining tenth is retained for ongoing improvement capex, budgeted at 2% of revenue.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Cumulative Return</p>
+        <h4>57.5% · Base</h4>
+        <p>₱20,477,536 returned on ₱13,000,000 over five years, with the holding intact at the end of it.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Cumulative Return</p>
+        <h4>282.4% · High</h4>
+        <p>₱49,709,054 on the same ₱13,000,000, if the room trades closer to a full house on a Friday and Saturday.</p>
+      </div>
+    </div>
+
+    <p class="foot-note">Figures in parentheses are cash out. Distribution is 90% of net profit, paid annually. The base case crosses into positive cumulative cash during Year Four; the high case crosses during Year Two.</p>
+  </section>
+
+  <!-- ============ PAGE 36 · UNIT ECONOMICS ============ -->
+  <section class="sheet" id="unit-economics" aria-labelledby="unit-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 36/38</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="unit-heading">How the Room Earns</h2>
+    <p class="section-sub">Every area in the house is sold on a minimum spend rather than a cover charge. Filled once, the room takes ₱262,000 in a night.</p>
+
+    <table class="fin-tbl">
+      <caption>One Full Cover of the House</caption>
+      <thead><tr><th></th><th>Seats</th><th>Minimum Spend</th></tr></thead>
+      <tbody>
+        <tr><td>Private Dining Room</td><td>6–12</td><td>₱50,000</td></tr>
+        <tr><td>Omakase Counter</td><td>4–5</td><td>₱30,000</td></tr>
+        <tr><td>Banquette Three</td><td>8–10</td><td>₱20,000</td></tr>
+        <tr><td>Banquette Four</td><td>8–10</td><td>₱20,000</td></tr>
+        <tr><td>Banquette One</td><td>6</td><td>₱15,000</td></tr>
+        <tr><td>Banquette Two</td><td>6</td><td>₱15,000</td></tr>
+        <tr><td>Dining Room, ₱4,000 a head</td><td>28</td><td>₱112,000</td></tr>
+        <tr class="tot"><td>One Cover</td><td>77</td><td>₱262,000</td></tr>
+      </tbody>
+    </table>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">What the Base Case Asks</p>
+        <h4>₱246,565 a Night</h4>
+        <p>Year One revenue over 312 trading nights is one full cover of the house — before the second seating, before the bar, before a single buyout.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Gross Margin</p>
+        <h4>72%</h4>
+        <p>Cost of sales at 27.9%. A supper club sells a room and a night, not only plates — which is what holds the margin above a restaurant's.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Payroll</p>
+        <h4>44 at Open</h4>
+        <p>₱1,362,100 a month across kitchen, floor and bar, rising to 48 in the high case. The largest single line in operating expense.</p>
+      </div>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">312</span><span class="sl">Trading Nights a Year</span></div>
+      <div><span class="sn">₱262,000</span><span class="sl">One Full Cover</span></div>
+      <div><span class="sn">94%</span><span class="sl">What the Base Case Needs</span></div>
+      <div><span class="sn">₱2.43M</span><span class="sl">Operating Cost a Month</span></div>
+    </div>
+
+    <p class="foot-note"><strong>The rest of the operating line:</strong> rent at ₱4.5 million in Year One on 180 sqm, a 5% revenue share, ₱600,000 a month for talent — DJs and live sets — ₱205,000 in professional services, ₱198,000 in staff benefits, ₱50,000 in marketing, and roughly ₱219,000 in utilities, internet and storage.</p>
+  </section>
+
+  <!-- ============ PAGE 37 · PRESS ASSETS ============ -->
   <section class="sheet" id="press-assets" aria-labelledby="assets-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Press Assets · 29/30</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Press Assets · 37/38</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="assets-heading">Press Assets</h2>
     <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
@@ -1528,7 +1896,7 @@ html.v7hero-on .v7hero{display:block}
       <p class="back-line">Tuesday–Sunday · Doors 6PM · Bar until 2AM</p>
       <p class="back-line">Reservations, private dining &amp; press inquiries via the house</p>
       <span class="back-rule"></span>
-      <p class="back-foot">Produced July 2026 · All rooms, menus and capacities current at time of publication · 30/30</p>
+      <p class="back-foot">Produced July 2026 · All rooms, menus and capacities current at time of publication · 38/38</p>
     </div>
   </section>
 
