@@ -119,8 +119,13 @@ html.v7hero-on .v7hero{display:block}
 .v7p-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(5,14,11,.45) 70%,rgba(5,14,11,.85) 100%)}
 .v7p-fgwrap{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
 .v7prov{position:absolute;right:18px;bottom:16px;z-index:3;font:600 .56rem/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:rgba(169,169,169,.55);opacity:var(--fgo);pointer-events:none}
-.v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 22% 30% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 22% 30% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
+.v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
 .v7p-title{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;pointer-events:none;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
+/* the title reads THROUGH the portal, so it has to fit the opening — anything wider
+   than the mask aperture is covered by the drapes and the words break apart */
+.v7p-title .v7eyebrow{font-size:.62rem;letter-spacing:.16em;gap:9px;margin-bottom:20px}
+.v7p-title .v7eyebrow i{width:22px}
+.v7p-title .v7line{font-size:clamp(1.9rem,3.1vw,3.05rem);line-height:1.06;max-width:min(30vw,440px);margin:0 auto 26px}
 /* scene 2 — sanctum */
 .v7s2{opacity:var(--s2o);transform:scale(var(--s2s));z-index:4;background:#050e0b;flex-direction:column;text-align:center}
 .v7glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
@@ -181,9 +186,10 @@ html.v7hero-on .v7hero{display:block}
 @media (max-width:880px){
   .v7hero{height:340vh}
   .v7p-fg{-webkit-mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%);mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%)}
-  .v7eyebrow{font-size:.54rem;letter-spacing:.13em;gap:7px;margin-bottom:18px}
-  .v7eyebrow i{width:14px}
-  .v7line{font-size:clamp(1.45rem,5.6vw,1.95rem);max-width:210px;margin:0 auto 18px;line-height:1.12}
+  /* selector lists so the portrait tuning still outranks the portal-fit rules above */
+  .v7eyebrow,.v7p-title .v7eyebrow{font-size:.54rem;letter-spacing:.13em;gap:7px;margin-bottom:18px}
+  .v7eyebrow i,.v7p-title .v7eyebrow i{width:14px}
+  .v7line,.v7p-title .v7line{font-size:clamp(1.45rem,5.6vw,1.95rem);max-width:210px;margin:0 auto 18px;line-height:1.12}
   .v7hint{font-size:.62rem;letter-spacing:.12em}
   .v7title .v7l{font-size:clamp(2.4rem,10vw,3.4rem)}
   .v7title .v7l-it{font-size:clamp(3rem,13vw,4.4rem)}
