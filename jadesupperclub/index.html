@@ -117,6 +117,10 @@ html{background:#050b09}
 #the-return .fin-tbl{margin-top:13px}
 #the-return .fin-tbl th,#the-return .fin-tbl td{padding-top:5px;padding-bottom:5px}
 #the-return .foot-note{position:static;margin:12px 56px 0}
+/* chef-partner (20/38): the foot-note was pinned absolute and overlapped the 01/02/03 tenets.
+   Flow it in-line and trim the chef photo so the whole stack clears the sheet foot. */
+#chef-partner .story-photo img{height:340px}
+#chef-partner .foot-note{position:static;margin:11px 56px 0}
 /* reserved tiles — construction photography drops in as each phase is shot */
 .ph-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;height:132px;border-radius:10px;background:#0f1d18;border:1px dashed rgba(194,154,85,.34)}
 .ph-tile span{font:600 8.5px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
@@ -506,7 +510,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 5 · PLATE — THE GRAND ROOM ============ -->
   <section class="sheet sheet--plate" id="plate-room" aria-label="The Grand Room">
-    <img src="img/grand-room-hero.jpg" alt="The Grand Room at Jade Supper Club, full at dinner service.">
+    <img src="img/grand-guests.jpg" alt="The Grand Room at Jade Supper Club, full at dinner service.">
     <div class="plate-cap">
       <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
       <span class="plate-meta">Jade Supper Club · The Grand Room · 05/38</span>
