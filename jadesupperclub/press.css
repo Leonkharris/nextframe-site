@@ -1704,7 +1704,7 @@ html { background: #0a0806; }
   from { opacity: 0; }
   to { opacity: 1; }
 }
-/* sheet reveal only where the mobile scale() transform isn't in play */
+/* sheet reveal is desktop-only; on phones the sheets are always visible and zoom-scaled */
 @media screen and (min-width: 881px) {
   html.js-anim .sheet:not(.sheet--cover) {
     opacity: 0;
@@ -1718,8 +1718,11 @@ html { background: #0a0806; }
 @media (max-width: 880px) {
   .kit-wrap { padding: 24px 0; gap: 24px; }
   .sheet {
-    /* zoom reflows (unlike transform), so no margin compensation needed;
-       tan(atan2()) converts the length ratio 100vw/848px into a plain number */
-    zoom: tan(atan2(100vw, 848px));
+    /* The kit is fixed 816px print pages; on phones each sheet shrinks to fit. WebKit
+       mis-evaluates the old tan(atan2()) ratio to a garbage value and fell back to
+       zoom:1, so the 816px sheet spilled off both edges. A plain length division
+       resolves 100vw/848px to the ratio on every current engine, and zoom reflows so
+       the sheets still stack 24px apart with no horizontal scroll. */
+    zoom: calc(100vw / 848px);
   }
 }
