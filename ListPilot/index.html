@@ -203,6 +203,16 @@ p{margin:0}
    Its height is set by the dial: once the headline was set flush to the full column the
    word's tops arrived seven pixels under this panel and its backlight smeared the last
    row through the glass, so the dial came in and the whole plate moved up. */
+/* The reactor takes the left as the headline clears it — same left gutter the cockpit
+   mirrors on the right. It starts hidden under `.js` so the scroll scrub reveals it in
+   step with the handoff; without JS (reduced-motion) it just sits there, lit. */
+.hero-orb{position:absolute;z-index:3;left:max(24px,calc(50vw - 620px));
+  top:50%;transform:translateY(-50%);
+  width:clamp(160px,20vw,280px);height:clamp(160px,20vw,280px);
+  pointer-events:none;display:none}
+/* animation-only: without the scrub the headline never hands off, so the orb stays out
+   entirely (no ghost gap) and the still page keeps its left column */
+.js .hero-orb{display:block;opacity:0}
 .core{position:absolute;z-index:4;top:64px;right:max(24px,calc(50vw - 620px));
   width:268px;padding:12px 14px 11px;border:1px solid var(--hair-gold);
   background:rgba(10,13,20,.62);backdrop-filter:blur(7px)}
@@ -696,6 +706,10 @@ footer .r{margin-left:auto}
     width:min(1240px,calc(100% - 36px));box-shadow:none}
   .stage{display:block;height:auto;min-height:100svh;padding:96px 0 40px;position:relative}
   .hero-copy{padding-bottom:20px}
+  /* stacked flow: the reactor sits between the headline and the capture, centred, so the
+     pilot still leads the run without an absolute gutter to hang from */
+  .hero-orb{position:relative;left:auto;top:auto;transform:none;margin:22px auto 4px;
+    width:clamp(148px,44vw,200px);height:clamp(148px,44vw,200px)}
   .cue{display:none}
   .run-grid{grid-template-columns:1fr;height:auto;gap:20px}
   .rail{grid-template-columns:1fr}
@@ -773,6 +787,12 @@ footer .r{margin-left:auto}
         <a class="btn" href="#run">Watch a run</a>
       </div>
     </div>
+
+    <!-- The greeting's reactor doesn't leave when the veil does — it flies the suit. It
+         rises on the left exactly as the headline hands off, mirroring the cockpit that
+         locks on the right, so the run always has a pilot. Idle only: a flight has no
+         audio to read, so this one just breathes. -->
+    <canvas class="hero-orb" id="hero-orb" aria-hidden="true"></canvas>
 
     <figure class="f-card hud zoomable">
       <div class="bar" aria-hidden="true"><i></i><i></i><i></i><span>next-frame.agency/listings</span><b>Live capture</b></div>
@@ -1572,6 +1592,7 @@ footer .r{margin-left:auto}
   var inter = flight && flight.querySelector(".f-int");
   var card  = flight && flight.querySelector(".f-card");
   var copy  = flight && flight.querySelector(".hero-copy");
+  var orbEl = flight && flight.querySelector(".hero-orb");
   var R = {alt:e("r-alt"), unit:e("r-unit"), comps:e("r-comps"), rec:e("r-rec"), st:e("r-state")};
   // r=47 → 2πr = 295.31, the whole ring in one number
   var ARC = e("arc"), APCT = e("arc-pct"), RING = 295.31;
@@ -1613,6 +1634,7 @@ footer .r{margin-left:auto}
       copy.style.cssText = "";
       inter.style.opacity = .55;
       card.style.opacity = 1; card.style.transform = "none";
+      if(orbEl) orbEl.style.opacity = 1;
     }
     if(runAct && isNarrow && lastStep < 0) setStep(0);
 
@@ -1635,6 +1657,8 @@ footer .r{margin-left:auto}
       copy.style.opacity  = (1 - hand).toFixed(3);
       copy.style.transform = "translateY(" + (-hand * 5).toFixed(2) + "vh) scale(" +
                              (1 - hand * .05).toFixed(4) + ")";
+      // the reactor takes over the space the headline leaves — same ramp, opposite sign
+      if(orbEl) orbEl.style.opacity = hand.toFixed(3);
 
       R.alt.textContent   = Math.round(240 - p * 232);
       R.unit.textContent  = p > .38 ? "92.0 sqm" : "—";
@@ -1678,6 +1702,89 @@ footer .r{margin-left:auto}
   addEventListener("scroll", frame, {passive:true});
   addEventListener("resize", frame);
   frame();
+
+  /* The greeting's reactor, kept alive for the flight: the same instrument, idle only —
+     a flight carries no sound to read, so it just breathes. Own scope, own canvas; the
+     scrub above fades it in on the left as the headline hands off. Reduced motion never
+     reaches here (this script has already returned), and it stands down off-screen. */
+  (function(){
+    var cv = document.getElementById("hero-orb");
+    if(!cv || !cv.getContext) return;
+    var cx = cv.getContext("2d");
+    var DPR = Math.max(1, Math.min(2, window.devicePixelRatio || 1));
+    var cs = getComputedStyle(document.documentElement);
+    var CYAN = (cs.getPropertyValue("--live") || "#7fdcea").trim(),
+        CYDIM = (cs.getPropertyValue("--live-dim") || "#6aa9b5").trim(),
+        GOLD = (cs.getPropertyValue("--gold") || "#f2c879").trim();
+    function rgba(h, a){
+      h = h.replace("#",""); if(h.length === 3) h = h[0]+h[0]+h[1]+h[1]+h[2]+h[2];
+      var n = parseInt(h, 16);
+      return "rgba(" + ((n>>16)&255) + "," + ((n>>8)&255) + "," + (n&255) + "," +
+             Math.max(0, Math.min(1, a)).toFixed(3) + ")";
+    }
+    function fit(){
+      var w = Math.round(cv.clientWidth * DPR), hh = Math.round(cv.clientHeight * DPR);
+      if(w && hh && (cv.width !== w || cv.height !== hh)){ cv.width = w; cv.height = hh; }
+    }
+    function draw(a, rt){
+      fit();
+      var W = cv.width, H = cv.height, R = Math.min(W, H) / 2;
+      cx.clearRect(0, 0, W, H);
+      cx.save(); cx.translate(W/2, H/2);
+      var rOut = R * 0.86, N = 48, i = 0;
+      cx.save(); cx.rotate(rt * 0.6);
+      for(; i < N; i++){
+        var ang = i / N * Math.PI * 2, major = i % 6 === 0, len = (major ? 0.13 : 0.07) * R;
+        cx.beginPath();
+        cx.moveTo(Math.cos(ang)*(rOut-len), Math.sin(ang)*(rOut-len));
+        cx.lineTo(Math.cos(ang)*rOut, Math.sin(ang)*rOut);
+        cx.strokeStyle = major ? CYAN : CYDIM;
+        cx.globalAlpha = major ? 0.55 : 0.26;
+        cx.lineWidth = (major ? 1.5 : 1) * DPR;
+        cx.stroke();
+      }
+      cx.restore(); cx.globalAlpha = 1;
+      cx.save(); cx.rotate(-rt * 1.35);
+      cx.beginPath(); cx.arc(0, 0, rOut*0.99, -0.55, 0.12);
+      cx.strokeStyle = CYAN; cx.globalAlpha = 0.5; cx.lineWidth = 1.5 * DPR;
+      cx.shadowColor = CYAN; cx.shadowBlur = 8 * DPR; cx.stroke();
+      cx.restore(); cx.shadowBlur = 0; cx.globalAlpha = 1;
+      cx.beginPath(); cx.arc(0, 0, R*0.6, 0, Math.PI*2);
+      cx.strokeStyle = CYDIM; cx.globalAlpha = 0.32; cx.lineWidth = 1 * DPR; cx.stroke();
+      cx.globalAlpha = 1;
+      cx.beginPath(); cx.arc(0, 0, R*(0.44 + a*0.14), 0, Math.PI*2);
+      cx.strokeStyle = CYAN; cx.globalAlpha = 0.5 + a*0.45;
+      cx.lineWidth = (1.4 + a*2.8) * DPR;
+      cx.shadowColor = CYAN; cx.shadowBlur = (6 + a*22) * DPR; cx.stroke();
+      cx.shadowBlur = 0; cx.globalAlpha = 1;
+      var cr = R*(0.30 + a*0.10);
+      var g = cx.createRadialGradient(0, 0, 0, 0, 0, cr);
+      g.addColorStop(0, rgba(GOLD, 0.5 + a*0.4));
+      g.addColorStop(0.35, rgba(CYAN, 0.5 + a*0.4));
+      g.addColorStop(1, rgba(CYAN, 0));
+      cx.fillStyle = g; cx.beginPath(); cx.arc(0, 0, cr, 0, Math.PI*2); cx.fill();
+      cx.beginPath(); cx.arc(0, 0, (2.2 + a*2.6) * DPR, 0, Math.PI*2);
+      cx.fillStyle = rgba(GOLD, 0.82 + a*0.18);
+      cx.shadowColor = GOLD; cx.shadowBlur = (8 + a*16) * DPR; cx.fill();
+      cx.shadowBlur = 0;
+      cx.restore();
+    }
+    var cur = 0.10, rot = 0, raf = 0, last = 0;
+    function tick(ts){
+      raf = requestAnimationFrame(tick);
+      var dt = last ? Math.min(0.05, (ts - last) / 1000) : 0.016; last = ts;
+      var target = 0.10 + 0.05 * Math.sin(ts / 1400);   // idle breath — nothing to react to
+      cur += (target - cur) * 0.08;
+      rot += dt * 0.18;
+      draw(cur, rot);
+    }
+    function run(){ if(!raf){ last = 0; raf = requestAnimationFrame(tick); } }
+    function stop(){ if(raf){ cancelAnimationFrame(raf); raf = 0; } }
+    draw(cur, rot);                       // lit at once, so it's already glowing when revealed
+    if(typeof IntersectionObserver === "function"){
+      new IntersectionObserver(function(es){ if(es[0].isIntersecting) run(); else stop(); }, {threshold:0}).observe(cv);
+    } else run();
+  })();
 })();
 </script>
 </body>
