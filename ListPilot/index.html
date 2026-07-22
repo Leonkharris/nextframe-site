@@ -203,12 +203,14 @@ p{margin:0}
    Its height is set by the dial: once the headline was set flush to the full column the
    word's tops arrived seven pixels under this panel and its backlight smeared the last
    row through the glass, so the dial came in and the whole plate moved up. */
-/* The reactor takes the left as the headline clears it — same left gutter the cockpit
-   mirrors on the right. It starts hidden under `.js` so the scroll scrub reveals it in
-   step with the handoff; without JS (reduced-motion) it just sits there, lit. */
-.hero-orb{position:absolute;z-index:3;left:max(24px,calc(50vw - 620px));
+/* The reactor takes the left as the headline clears it. It sits centred in the left half,
+   not hard against the gutter — pinned to the far edge it read as stranded, with a dead
+   void between it and the cockpit; pulled inward and enlarged it counterweights the card.
+   It starts hidden under `.js` so the scroll scrub reveals it in step with the handoff;
+   without JS (reduced-motion) it just sits there, lit. */
+.hero-orb{position:absolute;z-index:3;left:max(24px,calc(50vw - 470px));
   top:50%;transform:translateY(-50%);
-  width:clamp(160px,20vw,280px);height:clamp(160px,20vw,280px);
+  width:clamp(200px,25vw,350px);height:clamp(200px,25vw,350px);
   pointer-events:none;display:none}
 /* animation-only: without the scrub the headline never hands off, so the orb stays out
    entirely (no ghost gap) and the still page keeps its left column */
