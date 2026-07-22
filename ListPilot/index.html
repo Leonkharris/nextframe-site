@@ -1554,6 +1554,10 @@ footer .r{margin-left:auto}
        events to itself — otherwise arming the voice would close the thing speaking. */
     snd.addEventListener("touchstart", function(e){ e.stopPropagation(); }, {passive:true});
     snd.addEventListener("keydown", function(e){ e.stopPropagation(); });
+    /* The control is now one of many things a click can land on, so it also has to keep its
+       own pointerdown — otherwise pressing the button would arm the voice via the veil and
+       then the button's own click would read that as "already on" and switch it back off. */
+    snd.addEventListener("pointerdown", function(e){ e.stopPropagation(); });
     snd.addEventListener("click", function(e){
       e.stopPropagation();
       gestured = true;
@@ -1577,9 +1581,25 @@ footer .r{margin-left:auto}
 
     setTimeout(function(){ if(!dismissed) boot.setAttribute("data-skip",""); }, 1400);
     cap = setTimeout(dismiss, muted ? silent() : 40000);
+    /* Jarvis speaks on his own. A browser won't start sound on a cold load, so the first
+       real interaction anywhere — a click or a key — arms the voice in place instead of
+       skipping the veil; the control stays the explicit on/off and turning it off is
+       remembered. Scrolling, or a tap on a phone, still means "move on". */
+    function engage(e){
+      if(dismissed) return;
+      var touch = e && e.type === "pointerdown" && e.pointerType && e.pointerType !== "mouse";
+      if(!muted && !voice && !touch){
+        gestured = true; muted = blocked = false;
+        mark(true);
+        play(t2 ? auB : auG);
+        return;                       // this input woke him — the veil stays to speak
+      }
+      dismiss();
+    }
+    addEventListener("pointerdown", engage);
+    addEventListener("keydown", engage);
     addEventListener("wheel", dismiss, {passive:true, once:true});
     addEventListener("touchstart", dismiss, {passive:true, once:true});
-    addEventListener("keydown", dismiss, {once:true});
     /* The masthead sits above the veil, so using it has to take the veil down with it.
        Otherwise an in-page anchor scrolls away underneath something still opaque. */
     var mast = document.querySelector(".mast");
