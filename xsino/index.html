@@ -535,18 +535,40 @@ function vStory(id){
   const s = D.stories.find(x=>x.id===id); if(!s) return vStories();
   const idx = D.stories.findIndex(x=>x.id===id);
   const prev = D.stories[idx-1], next = D.stories[idx+1];
-  const charBoardImg = s.char_board
-    ? `<div class="shot-charboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);flex:1 1 100%;max-width:100%"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎭 ${MODE==='es'?'Ficha de Personaje · coherencia':'Character Board · coherence'}</div><img src="${s.char_board}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
-    : '';
+  // Foundation reference strip (items 1-3): character / motion / emotion boards, shown once at the
+  // top of the story so they read as the coherence pack you attach to every shot you generate.
+  const boardTile = (src,num,emoji,le,ls)=>{
+    const label = `${num} ${emoji} ${MODE==='es'?ls:le}`;
+    if(src) return `<div style="flex:1 1 280px;min-width:240px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel,#0d0b1e)"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);padding:8px 12px;letter-spacing:1px;border-bottom:1px solid var(--line)">${label}</div><a href="${src}" target="_blank" rel="noopener" title="${MODE==='es'?'abrir a resolución completa':'open full-res'}"><img src="${src}" style="width:100%;height:auto;display:block;cursor:zoom-in" /></a></div>`;
+    return `<div style="flex:1 1 280px;min-width:240px;border:1px dashed var(--line2);border-radius:10px;display:flex;flex-direction:column"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);padding:8px 12px;letter-spacing:1px;border-bottom:1px dashed var(--line2)">${label}</div><div style="padding:30px 12px;text-align:center;color:var(--text-muted);font-size:11px;opacity:.55">${MODE==='es'?'pendiente':'pending'}</div></div>`;
+  };
+  const foundationBoards = `<div class="foundation-boards" style="margin:22px 0 8px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel,#0d0b1e)">
+    <div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)">
+      <span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-bright)">🎬 ${MODE==='es'?'Material de Referencia · fundamentos':'Reference Material · foundation'}</span>
+      <span style="font-size:10.5px;color:var(--text-muted)">${MODE==='es'?'adjunta estas fichas al generar cada plano':'attach these to every shot you generate'}</span>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;padding:16px">
+      ${boardTile(s.char_board,'①','🎭','Character Board · coherence','Ficha de Personaje · coherencia')}
+      ${boardTile(s.motion_board,'②','🎬','Motion Board · camera &amp; movement','Tablero de Movimiento · cámara')}
+      ${boardTile(s.emotion_board,'③','🎭','Emotion Board · beats','Tablero Emocional · beats')}
+    </div>
+  </div>`;
   const shotSheetImg = s.story_board
     ? `<div class="shot-sheet" style="margin:24px 0 8px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel,#0d0b1e)"><div style="display:flex;align-items:baseline;gap:8px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)"><span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-bright)">🎞️ ${MODE==='es'?'Guion Gráfico · la película en una hoja':'Shot Sheet · the whole film in one sheet'}</span><span style="font-size:10.5px;color:var(--text-muted)">${MODE==='es'?'plantilla OpenArt “Smart Shot” — mapa de set y cámara + guion gráfico completo':'OpenArt “Smart Shot” template — set &amp; camera map + full storyboard'}</span></div><img src="${s.story_board}" style="width:100%;height:auto;display:block" /></div>`
     : '';
   const shots = s.shots.map(sh=>{
     const frameImg = sh.frame
-      ? `<div class="shot-frame" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🖼️ Keyframe</div><img src="${sh.frame}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      ? `<div class="shot-frame" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 200px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">④ 🖼️ ${MODE==='es'?'Fotograma clave':'Keyframe'}</div><img src="${sh.frame}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      : '';
+    const sceneBoardImg = sh.sceneboard
+      ? `<div class="shot-sceneboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:360px;flex:1 1 260px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎞️ ${MODE==='es'?'Panel de guion':'Storyboard Panel'}</div><img src="${sh.sceneboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
       : '';
     const moveBoardImg = sh.moveboard
-      ? `<div class="shot-moveboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:360px;flex:1 1 260px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎬 Movement Board · storyboard</div><img src="${sh.moveboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      ? `<div class="shot-moveboard" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:360px;flex:1 1 260px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">🎬 ${MODE==='es'?'Panel de movimiento':'Movement Panel'}</div><img src="${sh.moveboard}" style="width:100%;height:auto;display:block;border-radius:6px" /></div>`
+      : '';
+    const isMRVid = sh.motion_ref && /\.(mp4|webm)$/i.test(sh.motion_ref);
+    const motionRefBlock = sh.motion_ref
+      ? `<div class="shot-motionref" style="border-radius:8px;overflow:hidden;border:1px solid var(--line);max-width:280px;flex:1 1 220px"><div style="font-size:10px;text-transform:uppercase;color:var(--text-muted);margin-bottom:6px;letter-spacing:1px">⑤ 🎯 ${MODE==='es'?'Referencia de movimiento':'Motion Reference'}</div>${isMRVid?`<video src="${sh.motion_ref}" controls playsinline style="width:100%;height:auto;display:block;border-radius:6px;background:#000"></video>`:`<img src="${sh.motion_ref}" style="width:100%;height:auto;display:block;border-radius:6px" />`}</div>`
       : '';
     // Both clips are listed per shot when both exist: EN clip (silent) + ES clip (Spanish narration baked in).
     // In 'es' mode show only the Spanish clip; in 'en'/'both' show whatever exists (both if both exist).
@@ -560,8 +582,26 @@ function vStory(id){
     const clipsBlock = videoClip
       ? `<div class="shot-clips" style="display:flex;flex-wrap:wrap;gap:16px;margin:8px 0 20px;padding-top:14px;border-top:1px solid var(--line)"><div style="flex:1 1 100%;font-size:10px;text-transform:uppercase;color:var(--accent-bright);letter-spacing:1.5px;margin-bottom:2px">🎬 Video Clips · English + Español</div>${videoClip}</div>`
       : '';
-    const visualBlock = (charBoardImg || moveBoardImg || frameImg)
-      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 8px;">${charBoardImg}${moveBoardImg}${frameImg}</div>`
+    const visualBlock = (frameImg || sceneBoardImg || moveBoardImg || motionRefBlock)
+      ? `<div class="shot-visuals" style="display:flex;flex-wrap:wrap;gap:16px;margin:16px 0 8px;">${frameImg}${sceneBoardImg}${moveBoardImg}${motionRefBlock}</div>`
+      : '';
+    const g = sh.gen || {};
+    const gPrompt   = MODE==='es' ? (g.prompt_es||g.prompt_en||'') : (g.prompt_en||g.prompt_es||'');
+    const gDialog   = MODE==='es' ? (g.dialog_es||g.dialog_en||'') : (g.dialog_en||g.dialog_es||'');
+    const gOnscreen = MODE==='es' ? (g.onscreen_es||g.onscreen_en||'') : (g.onscreen_en||g.onscreen_es||'');
+    const genCard = gPrompt
+      ? `<div class="gp-card" style="margin:14px 0 4px;border:1px solid var(--accent-bright);border-radius:10px;overflow:hidden;background:linear-gradient(180deg,rgba(90,70,200,.10),transparent)">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:9px 14px;border-bottom:1px solid var(--line)">
+            <span style="font-size:10.5px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-bright)">⑥ ${MODE==='es'?'Prompt de generación':'Generation Prompt'}</span>
+            ${g.time?`<span style="font-size:10px;color:var(--text-muted);border:1px solid var(--line);border-radius:20px;padding:2px 9px">⏱ ${esc(g.time)}</span>`:''}
+            <button class="gp-copy" onclick="copyPre(this)" style="margin-left:auto;font-size:10.5px;cursor:pointer;background:var(--accent-bright);color:#0a0a1a;border:none;border-radius:6px;padding:4px 12px;font-weight:600">⧉ ${MODE==='es'?'Copiar':'Copy'}</button>
+          </div>
+          <div style="padding:12px 14px">
+            ${gDialog?`<div style="margin-bottom:8px;font-size:12.5px;line-height:1.5"><span style="font-size:9.5px;letter-spacing:1.5px;color:var(--accent-bright);text-transform:uppercase">💬 ${MODE==='es'?'Diálogo':'Dialog'}</span><br>${esc(gDialog)}</div>`:''}
+            ${gOnscreen?`<div style="margin-bottom:8px;font-size:12.5px;line-height:1.5"><span style="font-size:9.5px;letter-spacing:1.5px;color:var(--ember-bright);text-transform:uppercase">🅰 ${MODE==='es'?'Texto en pantalla':'On-screen Text'}</span><br>${esc(gOnscreen)}</div>`:''}
+            <pre class="gp-text" style="white-space:pre-wrap;word-break:break-word;font-family:var(--mono);font-size:11.5px;line-height:1.55;margin:0;color:#d8d4f0;max-height:230px;overflow:auto;background:rgba(0,0,0,.25);border-radius:6px;padding:10px 12px">${esc(gPrompt)}</pre>
+          </div>
+        </div>`
       : '';
     return `
       <div class="shot">
@@ -577,6 +617,7 @@ function vStory(id){
         <div class="vo"><span class="k">VOICEOVER</span>${
           MODE==='es'?esc(sh.vo_es):MODE==='en'?esc(sh.vo_en||sh.vo_es):`${esc(sh.vo_en)}<span class="en" style="font-style:italic;opacity:0.75;display:block;margin-top:3px">${esc(sh.vo_es)}</span>`
         }</div>
+        ${genCard}
       </div>`;
   }).join('');
   const nav = `<div class="detail-nav">
@@ -591,6 +632,7 @@ function vStory(id){
         <div class="k" style="margin-top:10px">THESIS</div>
         ${pair(s.thesis)}
       </div>
+      ${foundationBoards}
       ${shotSheetImg}
       ${shots}
       ${(s.oneshot&&s.oneshot.en)?`<div class="thesis-block" style="margin-top:30px">
@@ -609,6 +651,22 @@ function vStory(id){
     </div>`;
 }
 
+function copyPre(btn){
+  var card = btn.closest('.gp-card'); if(!card) return;
+  var pre = card.querySelector('.gp-text'); if(!pre) return;
+  var txt = pre.innerText;
+  var done = function(){ var o = btn.textContent; btn.textContent = '✓'; setTimeout(function(){ btn.textContent = o; }, 1200); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(txt).then(done, function(){ fallbackCopy(txt, done); });
+  } else { fallbackCopy(txt, done); }
+}
+function fallbackCopy(txt, cb){
+  var ta = document.createElement('textarea');
+  ta.value = txt; ta.style.position = 'fixed'; ta.style.opacity = '0';
+  document.body.appendChild(ta); ta.focus(); ta.select();
+  try { document.execCommand('copy'); } catch(e){}
+  document.body.removeChild(ta); if(cb) cb();
+}
 function docView(titleEs,titleEn,sub,sections){
   const body = sections.map(s=>`${sectionHead(s.es,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
   return `<h1 class="title">${biTitle(titleEs,titleEn)}</h1><div class="sub">${sub}</div>${body}`;
