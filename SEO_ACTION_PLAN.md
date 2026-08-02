@@ -63,6 +63,7 @@ and a domain email. None can be produced by editing this repo.
 clears 90 — most of it is trust/E-E-A-T signals only the business owner can supply.
 
 ## Loop log
+- 2026-07-29 iter4: +competitor-monitoring-tools-small-business, +how-to-choose-marketing-agency-philippines (blog 23, sitemap 37); llms.txt Guides rebuilt to 23; promo posts appended; IndexNow pinged 200; both URLs live 200. Backlog queue now empty — refill next run.
 - 2026-07-22 iter3: +google-business-profile-philippines, +ai-product-photos-menus-listings (blog 21, sitemap 35); promo posts appended; IndexNow pinged; both URLs live 200
 - 2026-07-08 iter2: +ai-marketing-cost-philippines, +create-sops-with-ai (blog 19, sitemap 31); llms.txt Guides rebuilt to 19; promo posts appended; IndexNow pinged; both URLs live 200
 - 2026-07-02 iter1: +ai-prompts-property-listing-content, +ai-answer-messenger-inquiries (blog 17, sitemap 29); promo posts appended; IndexNow pinged
