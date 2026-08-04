@@ -1,0 +1,1772 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Jade Supper Club Manila — Official Media Kit 2026</title>
+<meta name="description" content="Jade Supper Club, Bonifacio Global City, Manila — official media kit. The rooms, the bar, the stage, and private dining. Chef partner Todd English; bar partner Roman Mutzner.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,800&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="press.css?v=10">
+<link rel="stylesheet" href="pdf.css" media="print">
+<script src="press.js?v=1" defer></script>
+<style>
+/* photo containers establish a positioning context for injected clips + captions */
+.spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
+
+/* ---------- JADE EDITION — palette shift: emerald + brass ---------- */
+:root{
+  --ink:#10201a;
+  --espresso:#1b4133;
+  --clay:#3a7861;
+  --gold:#c29a55;
+  --cream:#f8f6ef;
+  --panel:#e7eee9;
+  --panel-cool:#e4ebe7;
+}
+/* press.css ends with a warm black/gold dark theme whose colours are literal hex,
+   not variables — so the :root shift above cannot reach it. Re-point those exact
+   fills at the emerald equivalents. Brass (gold hairlines, #e0cfa9) is kept. */
+html{background:#050b09}
+.sheet{background:#0c1712;box-shadow:0 18px 50px rgba(0,0,0,.72)}
+.sheet--dark{background:#0a1410}
+.sheet--divider,.sheet--back,.stat-band{background:#06100d}
+.chip,.facts-card,.also-card,.reach-card,.seen-in,.hotel-row,.partner-col,
+.foot-note,.tl-card,.spot-facts--light,.story-band,.shelf-tile{background:#14261f}
+.spot-facts{background:#14261f;border-color:#25453a}
+.spot-facts li{color:#a7bab0;border-top-color:rgba(194,154,85,.20)}
+.section-sub,.cover-tag p,.bio-text p,.facts-card li,.venue-copy p.vbody,.also-card p,
+.reach-card p,.hotel-row p.vbody,.next-row p,.honors-list li,.honor-meta,.partner-col p,
+.back-inner .back-line,.foot-note,.toc-part li,.tl-list p,.tl-card p,.philo-tenets p,
+.spot-facts--light li,.story-cols p,.story-band .sl,.shelf-item figcaption,.tv-col p,
+.feat-copy p,.feat-strip figcaption,.asset-row p{color:#a7bab0}
+.page-head .ph-brand,.section-title,.cover-tag p strong,.facts-card li strong,
+.venue-copy h3,.also-card h4,.reach-hero .bl,.reach-card h4,.hotel-row h3,.next-row h4,
+.honor-hero .b5-label,.partner-col h4,.toc-part h3,.tl-list h4,.philo-quote,
+.philo-tenets h4,.tv-col h4,.asset-row h4{color:#f2ede1}
+.legacy-card{background:#14261f;border-color:#25453a}
+.legacy-card .stamp{border-color:#2f5546}
+.legacy-card p,.sheet--divider,.div-line,.sheet--dark .section-sub,
+.spot-copy p,.spot-strip figcaption{color:#a7bab0}
+/* Every photograph on this kit is 16:9. The stock boxes are far wider than that, so
+   object-fit:cover was throwing away up to half of each composition side-to-side and
+   the results read as squashed. Each band below is pushed back toward 16:9, stopping
+   at whatever its tightest sheet can hold inside the 1056px page. */
+#from-the-kitchen .gal-hero img,#rooms-details .gal-hero img{height:358px}
+#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:125px}
+.spot-hero img{height:351px}
+.spot-strip img{height:199px}
+.feat-hero img{height:369px}
+.feat-strip img{height:217px}
+.reach-photo img{height:396px}
+.legacy-card img{height:191px}
+.story-photo img{height:396px}
+.tv-hero img{height:396px}
+/* The cellar ran the same 16:9 photographs contained inside a 220x250 panel, so each one
+   rendered 182x102 — 34% of its tile, the rest empty. Two columns instead of three gives
+   each photo the full width of its card at its native ratio, and the extra row takes up
+   the dead band this sheet was already carrying above the foot-note. */
+.shelf-grid{grid-template-columns:repeat(2,1fr)}
+.shelf-tile{height:auto;padding:0;overflow:hidden}
+.shelf-tile img{width:100%;height:auto;max-width:none;max-height:none;aspect-ratio:16/9;object-fit:cover;box-shadow:none}
+/* part dividers — Jade rooms behind the smoke */
+#part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/entry-onyx.jpg")}
+#part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/banquette-run.jpg")}
+#part-3{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/spiral-stair.jpg")}
+#part-4{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/salon-art.jpg")}
+
+/* ---------- menu sheets ---------- */
+.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;padding:22px 56px 0}
+.menu-sec{margin-bottom:22px}
+.menu-sec h3{font-family:var(--serif);font-size:16px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#f2ede1;margin:0 0 4px;padding-bottom:7px;border-bottom:2px solid var(--gold);display:flex;align-items:baseline;justify-content:space-between;gap:10px}
+.menu-sec h3 span{font-family:var(--sans);font-size:8.5px;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
+.menu-item{padding:7px 0 6px;border-bottom:1px dotted rgba(194,154,85,.22)}
+.menu-item:last-child{border-bottom:0}
+.mi-top{display:flex;align-items:baseline;gap:8px}
+.mi-name{font-family:var(--serif);font-size:12.5px;font-weight:700;color:#f0e8d6;white-space:nowrap}
+.mi-top::after{content:"";order:2;flex:1;border-bottom:1px dotted rgba(194,154,85,.30);transform:translateY(-3px)}
+.mi-price{order:3;font-family:var(--serif);font-size:12px;font-weight:700;color:var(--gold);white-space:nowrap}
+.mi-desc{display:block;margin-top:2px;font-size:9.5px;line-height:1.5;color:#a7bab0;letter-spacing:.01em}
+/* The sheet is a fixed 1056px page, so the photo strip and note are anchored to the
+   foot rather than left to float after the columns — otherwise short menus leave a
+   dead band at the bottom of the page. .sheet is position:relative. */
+.menu-note{position:absolute;left:0;right:0;bottom:30px;margin:0;padding:0 56px;font-size:10px;line-height:1.6;color:#a7bab0;text-align:center;font-style:italic}
+/* menu strip of dish photography */
+.menu-strip{position:absolute;left:0;right:0;bottom:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 56px}
+.menu-strip figure{position:relative;margin:0;border-radius:4px;overflow:hidden;background:#0d1c17}
+.menu-strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
+.menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#f3ead9;font:600 8px/1.2 Inter,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+/* A clip sits at z-index 2, so the captions printed ON the photograph — rather than under
+   it — vanished the moment one played; put them at z-index 3, above the clip, so a plate
+   keeps its name while its clip runs. */
+.menu-strip figcaption,.gal-cap{z-index:3}
+
+/* ---------- investor sheets ---------- */
+.fin-tbl{width:calc(100% - 112px);margin:22px 56px 0;border-collapse:collapse}
+.fin-tbl caption{caption-side:top;text-align:left;font:600 9px/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 0 9px}
+.fin-tbl th,.fin-tbl td{padding:6px 7px;text-align:right;font-size:10.5px;color:#a7bab0;border-bottom:1px solid rgba(194,154,85,.16);white-space:nowrap}
+.fin-tbl th:first-child,.fin-tbl td:first-child{text-align:left;padding-left:0;font-weight:600;color:#cfded6}
+.fin-tbl thead th{font:700 8.5px/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:8px}
+.fin-tbl tr.tot td{font-family:var(--serif);font-size:12.5px;font-weight:800;color:#f2ede1;border-bottom:1px solid rgba(194,154,85,.42)}
+.fin-tbl tbody tr:last-child td{border-bottom:0}
+/* the-return (32/35): dense sheet — two full tables + band + cards. Flow the foot-note in-line
+   (instead of pinning it absolute) so it can't overlap the cards, and mildly tighten the tables. */
+#the-return .fin-tbl{margin-top:13px}
+#the-return .fin-tbl th,#the-return .fin-tbl td{padding-top:5px;padding-bottom:5px}
+#the-return .foot-note{position:static;margin:12px 56px 0}
+/* chef-partner (16/35): the foot-note was pinned absolute and overlapped the 01/02/03 tenets.
+   Flow it in-line and trim the chef photo so the whole stack clears the sheet foot. */
+#chef-partner .story-photo img{height:340px}
+#chef-partner .foot-note{position:static;margin:11px 56px 0}
+/* bar-partner (17/35): Roman's portrait hero beside a reused spot-facts honours panel; a 2-up
+   action strip is pinned to the foot. This portrait frame is the one deliberately portrait frame
+   in the kit — object-position keeps his face inside the cover-crop. */
+#bar-partner .bar-hero{display:grid;grid-template-columns:300px 1fr;gap:26px;padding:16px 56px 0;align-items:start}
+#bar-partner .bar-portrait{margin:0}
+#bar-partner .bar-portrait img{width:100%;height:392px;object-fit:cover;object-position:50% 20%;border-radius:10px}
+#bar-partner .bar-copy .spot-facts{margin-top:14px}
+#bar-partner .bar-strip{position:absolute;left:0;right:0;bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 56px}
+#bar-partner .bar-strip figure{margin:0}
+#bar-partner .bar-strip img{width:100%;height:150px;object-fit:cover;object-position:50% 45%;border-radius:8px}
+#bar-partner .bar-strip figcaption{margin-top:6px;font:500 9.5px/1.35 Inter,sans-serif;color:#8aa096}
+/* construction (28/35): eight real phases — 4 across, 2 down, no empty cell */
+#construction .gal-grid{grid-template-columns:repeat(4,1fr)}
+/* reserved tiles — construction photography drops in as each phase is shot */
+.ph-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;height:132px;border-radius:10px;background:#0f1d18;border:1px dashed rgba(194,154,85,.34)}
+.ph-tile span{font:600 8.5px/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.ph-tile em{font-family:var(--serif);font-style:italic;font-size:12.5px;color:#8aa096}
+#part-5{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("img/grand-room.jpg")}
+
+/* v7 — cinematic scroll hero (Artologist portal technique, screen-only) */
+.v7hero{display:none;position:relative;height:420vh;background:#050e0b;--p:0;--bgs:1;--bgo:1;--fgs:1;--fgo:1;--to:1;--ty:0px;--s2o:0;--s2s:.94;--s3o:0;--s3y:80px}
+html.v7hero-on .v7hero{display:block}
+@media print{.v7hero{display:none!important}}
+.v7pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#050e0b}
+.v7pin::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:calc(var(--p)*100%);background:linear-gradient(90deg,#c29a55,#3a7861);z-index:12}
+.v7scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:opacity,transform}
+.v7eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 .72rem/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c29a55;margin-bottom:26px}
+.v7eyebrow i{width:36px;height:1px;background:#c29a55}
+.v7line{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(2.8rem,6.5vw,6rem);line-height:.98;letter-spacing:-.02em;color:#f3ead9;margin:0 0 32px;text-shadow:0 8px 60px rgba(0,0,0,.9)}
+.v7line em{font-style:italic;font-weight:500;color:#c29a55}
+.v7hint{display:inline-flex;align-items:center;gap:10px;font:500 .74rem/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,234,217,.6)}
+.v7hint i{font-style:normal;color:#c29a55;animation:v7bob 2s ease-in-out infinite}
+@keyframes v7bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
+/* scene 1 — layered portal push-through */
+.v7p-bgwrap{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:var(--bgo)}
+.v7p-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--bgs));transform-origin:50% 50%;filter:brightness(.78);will-change:transform}
+.v7p-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(5,14,11,.45) 70%,rgba(5,14,11,.85) 100%)}
+.v7p-fgwrap{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
+.v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
+.v7p-title{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;pointer-events:none;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
+/* the title reads THROUGH the portal, so it has to fit the opening — anything wider
+   than the mask aperture is covered by the drapes and the words break apart */
+.v7p-title .v7eyebrow{font-size:.62rem;letter-spacing:.16em;gap:9px;margin-bottom:20px}
+.v7p-title .v7eyebrow i{width:22px}
+.v7p-title .v7line{font-size:clamp(1.9rem,3.1vw,3.05rem);line-height:1.06;max-width:min(30vw,440px);margin:0 auto 26px}
+/* scene 2 — sanctum */
+.v7s2{opacity:var(--s2o);transform:scale(var(--s2s));z-index:4;background:#050e0b;flex-direction:column;text-align:center}
+.v7glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
+.v7glow-1{width:520px;height:520px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(194,154,85,.16),transparent 70%);animation:v7drifta 16s ease-in-out infinite alternate}
+.v7glow-2{width:460px;height:460px;right:-120px;top:30%;background:radial-gradient(circle,rgba(58,120,97,.20),transparent 70%);animation:v7driftb 20s ease-in-out infinite alternate}
+.v7glow-3{width:420px;height:420px;left:32%;bottom:-160px;background:radial-gradient(circle,rgba(224,207,169,.08),transparent 70%);animation:v7drifta 24s 2s ease-in-out infinite alternate}
+@keyframes v7drifta{to{transform:translate(40px,26px)}}
+@keyframes v7driftb{to{transform:translate(-34px,-22px)}}
+.v7ghosts{position:absolute;inset:0;pointer-events:none}
+.v7ghost{position:absolute;width:210px;aspect-ratio:4/5;object-fit:cover;border-radius:4px;opacity:.13;filter:saturate(.55) brightness(.6) blur(1px)}
+.v7ghost.g1{left:5%;top:12%;transform:rotate(-7deg)}
+.v7ghost.g2{right:6%;top:16%;transform:rotate(6deg)}
+.v7ghost.g3{left:10%;bottom:14%;transform:rotate(5deg)}
+.v7ghost.g4{right:9%;bottom:12%;transform:rotate(-5deg)}
+.v7dust{position:absolute;inset:0;pointer-events:none}
+.v7dust i{position:absolute;left:var(--dx);top:var(--dy);width:var(--dr);height:var(--dr);border-radius:50%;background:rgba(224,207,169,.85);opacity:0;animation:v7dust var(--ds) linear var(--dd) infinite}
+@keyframes v7dust{0%{transform:translateY(0);opacity:0}12%{opacity:.65}85%{opacity:.12}100%{transform:translateY(-130px);opacity:0}}
+.v7s2-content{position:relative;z-index:2;padding:0 36px}
+.v7title{margin:0 0 26px;line-height:.9}
+.v7title .v7l{display:block;font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(3.4rem,7.5vw,6.8rem);letter-spacing:.12em;color:#f3ead9;text-transform:uppercase}
+.v7title .v7l-it{font-family:"Great Vibes",cursive;font-weight:400;font-size:clamp(4.2rem,9vw,8.4rem);letter-spacing:0;text-transform:none;color:#c29a55;margin-top:8px}
+.v7title .c{display:inline-block;opacity:0;transform:translateY(.55em) rotate(4deg);transition:opacity .5s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
+.v7title.is-in .c{opacity:1;transform:none}
+.v7sub{max-width:640px;margin:0 auto;font:400 1rem/1.7 Inter,sans-serif;color:#a9baaf}
+.v7meta{display:flex;justify-content:center;gap:58px;margin-top:46px}
+.v7meta .v7num{display:block;font-family:"Playfair Display",serif;font-weight:800;font-size:2.1rem;color:#f3ead9}
+.v7meta .v7lab{display:block;margin-top:7px;font:600 .62rem/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#c29a55}
+.v7strip{position:absolute;left:0;right:0;bottom:0;z-index:2;overflow:hidden;border-top:1px solid rgba(194,154,85,.28);border-bottom:1px solid rgba(194,154,85,.28);padding:15px 0;background:rgba(5,14,11,.5)}
+.v7strip-track{display:flex;align-items:center;gap:38px;width:max-content;white-space:nowrap;animation:v7marquee 30s linear infinite}
+.v7strip-track span{font:600 .7rem/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#c9b98f}
+.v7strip-track span em{font-family:"Playfair Display",serif;font-style:italic;font-weight:600;text-transform:none;letter-spacing:.02em;font-size:.92rem;color:#e0cfa9}
+.v7strip-track i{font-style:normal;color:#c29a55}
+@keyframes v7marquee{to{transform:translateX(-50%)}}
+/* scene 3 — floating room cards */
+.v7s3{opacity:var(--s3o);transform:translateY(var(--s3y));z-index:5;background:linear-gradient(180deg,#0b1a15,#050e0b)}
+.v7floats{position:absolute;inset:0;pointer-events:none}
+.v7float{position:absolute;margin:0;border-radius:5px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.75),0 0 0 1px rgba(194,154,85,.14);background:#0b1a15}
+.v7float img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
+.v7float figcaption{position:absolute;inset:auto 0 0 0;padding:13px 13px 11px;background:linear-gradient(to top,rgba(5,14,11,.94),transparent);color:#f3ead9}
+.v7float figcaption strong{display:block;font-family:"Playfair Display",serif;font-size:.95rem;font-weight:700}
+.v7float figcaption span{display:block;margin-top:4px;font:600 .58rem/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#c29a55}
+.v7float.f1{top:10%;left:6%;width:200px;animation:v7fla 14s ease-in-out infinite alternate}
+.v7float.f2{top:16%;right:7%;width:220px;animation:v7flb 16s ease-in-out infinite alternate}
+.v7float.f3{top:62%;left:11%;width:185px;animation:v7flc 18s ease-in-out infinite alternate}
+.v7float.f4{top:64%;right:13%;width:200px;animation:v7fld 15s ease-in-out infinite alternate}
+.v7float.f5{top:7%;left:47%;width:155px;animation:v7fla 17s 1s ease-in-out infinite alternate}
+@keyframes v7fla{0%{transform:rotate(-6deg) translateY(0)}100%{transform:rotate(-3deg) translateY(-22px)}}
+@keyframes v7flb{0%{transform:rotate(5deg) translateY(0)}100%{transform:rotate(8deg) translateY(18px)}}
+@keyframes v7flc{0%{transform:rotate(8deg) translateY(0)}100%{transform:rotate(5deg) translateY(-16px)}}
+@keyframes v7fld{0%{transform:rotate(-4deg) translateY(0)}100%{transform:rotate(-7deg) translateY(14px)}}
+.v7s3-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 36px}
+/* centre scrim — the cards crowd the headline, so darken the middle and knock them back */
+.v7s3::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 50%,rgba(5,14,11,.92) 0%,rgba(5,14,11,.84) 45%,rgba(5,14,11,.40) 75%,rgba(5,14,11,0) 100%)}
+.v7s3 .v7line{text-shadow:0 2px 12px rgba(5,14,11,.95),0 10px 46px rgba(5,14,11,.92)}
+.v7s3 .v7eyebrow,.v7s3 .v7hint{text-shadow:0 1px 9px rgba(5,14,11,.95)}
+.v7s3 .v7hint{color:rgba(243,234,217,.88)}
+/* mobile — portrait-tuned portal */
+@media (max-width:880px){
+  .v7hero{height:340vh}
+  .v7p-fg{-webkit-mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%);mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%)}
+  /* selector lists so the portrait tuning still outranks the portal-fit rules above */
+  .v7eyebrow,.v7p-title .v7eyebrow{font-size:.54rem;letter-spacing:.13em;gap:7px;margin-bottom:18px}
+  .v7eyebrow i,.v7p-title .v7eyebrow i{width:14px}
+  .v7line,.v7p-title .v7line{font-size:clamp(1.45rem,5.6vw,1.95rem);max-width:210px;margin:0 auto 18px;line-height:1.12}
+  .v7hint{font-size:.62rem;letter-spacing:.12em}
+  .v7title .v7l{font-size:clamp(2.4rem,10vw,3.4rem)}
+  .v7title .v7l-it{font-size:clamp(3rem,13vw,4.4rem)}
+  .v7sub{font-size:.9rem;padding:0 6px}
+  .v7meta{gap:28px;margin-top:32px}
+  .v7meta .v7num{font-size:1.7rem}
+  .v7float.f1{width:44vw;left:3%}
+  .v7float.f2{width:44vw;right:3%}
+  .v7float.f4{width:46vw;top:65%;left:6%;right:auto}
+  .v7float.f3,.v7float.f5{display:none}
+}
+@media (prefers-reduced-motion:reduce){.v7hero{display:none!important}}
+
+/* ---------- motion: hover or click swaps a photo for its clip, screen only ----------
+   The <video> is injected at runtime into the photo's nearest positioned ancestor and
+   sized from the image's own rect, so no sheet layout is touched and print is unaffected. */
+.jv{position:absolute;z-index:2;object-fit:cover;background:#0c1712;opacity:0;transition:opacity .34s ease;pointer-events:none}
+.jv.is-on{opacity:1}
+.jv-badge{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,16,13,.62);border:1px solid rgba(194,154,85,.55);color:#e0cfa9;font-size:8px;line-height:1;padding-left:2px;pointer-events:none;opacity:0;transition:opacity .25s ease}
+/* At rest the badge is a 22px dot with nothing anchoring it, and on a page where only
+   some photographs are wired it just reads as debris. Show it on the photo you are
+   actually pointing at — which is the same gesture that starts the clip. */
+.kit-wrap *:hover > .jv-badge{opacity:1}
+.jv-badge.is-hidden{opacity:0}
+
+/* ---------- preview film — screen only ---------- */
+.jfilm{background:#050e0b;padding:94px 24px 100px;text-align:center;border-top:1px solid rgba(194,154,85,.16);border-bottom:1px solid rgba(194,154,85,.16)}
+/* the film is a 1280x720 master — held to 760px it plays sharp instead of soft */
+.jfilm-in{max-width:760px;margin:0 auto}
+.jfilm-h{font-family:"Playfair Display",serif;font-weight:900;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#f3ead9;margin:0 0 34px}
+.jfilm-h em{font-style:italic;font-weight:500;color:#c29a55}
+.jfilm-frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#0c1712;border:1px solid rgba(194,154,85,.28);box-shadow:0 30px 90px rgba(0,0,0,.7);cursor:pointer}
+.jfilm-frame img,.jfilm-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.jfilm-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:88px;height:88px;border-radius:50%;border:1px solid rgba(224,207,169,.7);background:rgba(6,16,13,.46);color:#e8d9b4;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease}
+.jfilm-frame:hover .jfilm-play{background:rgba(6,16,13,.68);transform:translate(-50%,-50%) scale(1.06)}
+.jfilm-play svg{width:26px;height:26px;margin-left:4px;fill:currentColor}
+.jfilm-cap{margin:20px auto 0;max-width:660px;font:400 .78rem/1.7 Inter,sans-serif;color:#8fa79b}
+@media (max-width:640px){.jfilm{padding:60px 16px 68px}.jfilm-play{width:62px;height:62px}.jfilm-play svg{width:20px;height:20px}}
+@media print{.jfilm,.jv,.jv-badge{display:none!important}}
+</style>
+</head>
+<body>
+
+<!-- v7 cinematic scroll hero — screen only, never rendered under webdriver/print -->
+<div class="v7hero" data-v7hero aria-hidden="true">
+  <div class="v7pin">
+
+    <div class="v7p-bgwrap">
+      <img class="v7p-bg" src="img/grand-room.jpg" alt="">
+      <div class="v7p-veil"></div>
+    </div>
+    <div class="v7p-title">
+      <span class="v7eyebrow"><i></i>Bonifacio Global City &middot; Manila<i></i></span>
+      <h2 class="v7line">Past the green velvet, there is <em>another city.</em></h2>
+      <span class="v7hint">Scroll to enter <i>&darr;</i></span>
+    </div>
+    <div class="v7p-fgwrap">
+      <img class="v7p-fg" src="img/hallway-portal.jpg" alt="">
+    </div>
+
+    <div class="v7scene v7s2">
+      <div class="v7glow v7glow-1"></div><div class="v7glow v7glow-2"></div><div class="v7glow v7glow-3"></div>
+      <div class="v7ghosts">
+        <img class="v7ghost g1" src="img/bar-main.jpg" alt="">
+        <img class="v7ghost g2" src="img/proscenium.jpg" alt="">
+        <img class="v7ghost g3" src="img/spiral-stair.jpg" alt="">
+        <img class="v7ghost g4" src="img/banquette-run.jpg" alt="">
+      </div>
+      <div class="v7dust">
+        <i style="--dx:12%;--dy:70%;--dr:3px;--ds:9s;--dd:0s"></i>
+        <i style="--dx:22%;--dy:85%;--dr:2px;--ds:12s;--dd:1.4s"></i>
+        <i style="--dx:31%;--dy:60%;--dr:2px;--ds:10s;--dd:3s"></i>
+        <i style="--dx:44%;--dy:88%;--dr:3px;--ds:13s;--dd:.7s"></i>
+        <i style="--dx:52%;--dy:74%;--dr:2px;--ds:9.5s;--dd:2.2s"></i>
+        <i style="--dx:61%;--dy:82%;--dr:2px;--ds:11s;--dd:4.1s"></i>
+        <i style="--dx:69%;--dy:66%;--dr:3px;--ds:12.5s;--dd:1s"></i>
+        <i style="--dx:78%;--dy:86%;--dr:2px;--ds:10.5s;--dd:2.8s"></i>
+        <i style="--dx:86%;--dy:72%;--dr:2px;--ds:9s;--dd:.4s"></i>
+        <i style="--dx:37%;--dy:78%;--dr:2px;--ds:14s;--dd:5s"></i>
+        <i style="--dx:57%;--dy:90%;--dr:3px;--ds:11.5s;--dd:3.6s"></i>
+        <i style="--dx:91%;--dy:80%;--dr:2px;--ds:13.5s;--dd:1.8s"></i>
+      </div>
+      <div class="v7s2-content">
+        <span class="v7eyebrow"><i></i>Official Media Kit &middot; MMXXVI<i></i></span>
+        <h1 class="v7title" data-v7title>
+          <span class="v7l"><span class="c" style="--d:.08s">J</span><span class="c" style="--d:.16s">A</span><span class="c" style="--d:.24s">D</span><span class="c" style="--d:.32s">E</span></span>
+          <span class="v7l v7l-it"><span class="c" style="--d:.46s">S</span><span class="c" style="--d:.52s">u</span><span class="c" style="--d:.58s">p</span><span class="c" style="--d:.64s">p</span><span class="c" style="--d:.70s">e</span><span class="c" style="--d:.76s">r</span><span class="c" style="--d:.82s">&nbsp;</span><span class="c" style="--d:.86s">C</span><span class="c" style="--d:.92s">l</span><span class="c" style="--d:.98s">u</span><span class="c" style="--d:1.04s">b</span></span>
+        </h1>
+        <p class="v7sub">Dinner, then music, then the long part of the night. An emerald-and-brass supper club in Bonifacio Global City &mdash; with a kitchen led in partnership with chef Todd English.</p>
+        <div class="v7meta">
+          <div><span class="v7num">77</span><span class="v7lab">Seats</span></div>
+          <div><span class="v7num">6</span><span class="v7lab">Rooms</span></div>
+          <div><span class="v7num">2<span style="font-size:1.1rem">AM</span></span><span class="v7lab">Last Call</span></div>
+          <div><span class="v7num">7</span><span class="v7lab">Nights a Week</span></div>
+        </div>
+      </div>
+      <div class="v7strip" aria-hidden="true">
+        <div class="v7strip-track">
+          <span><em>Jade</em> Supper Club</span><i>&#10022;</i><span>Bonifacio Global City</span><i>&#10022;</i><span>Dinner &middot; Music &middot; Late Bar</span><i>&#10022;</i><span>Chef Partner <em>Todd English</em></span><i>&#10022;</i><span>Open Til 2AM</span><i>&#10022;</i><span>Official Media Kit</span><i>&#10022;</i>
+          <span><em>Jade</em> Supper Club</span><i>&#10022;</i><span>Bonifacio Global City</span><i>&#10022;</i><span>Dinner &middot; Music &middot; Late Bar</span><i>&#10022;</i><span>Chef Partner <em>Todd English</em></span><i>&#10022;</i><span>Open Til 2AM</span><i>&#10022;</i><span>Official Media Kit</span><i>&#10022;</i>
+        </div>
+      </div>
+    </div>
+
+    <div class="v7scene v7s3">
+      <div class="v7floats">
+        <figure class="v7float f1"><img src="img/bar-coupe-real.jpg" alt=""><figcaption><strong>Jade Bar</strong><span>The Coupe</span></figcaption></figure>
+        <figure class="v7float f2"><img src="img/stage-guests.jpg" alt=""><figcaption><strong>The Stage</strong><span>Two Sets Nightly</span></figcaption></figure>
+        <figure class="v7float f3"><img src="img/fd-oyster-real.jpg" alt=""><figcaption><strong>Raw &amp; Chilled</strong><span>The Ice Bar</span></figcaption></figure>
+        <figure class="v7float f4"><img src="img/spiral-stair.jpg" alt=""><figcaption><strong>The Spiral</strong><span>To the Mezzanine</span></figcaption></figure>
+        <figure class="v7float f5"><img src="img/cellar-wall.jpg" alt=""><figcaption><strong>The Cellar</strong><span>Sake &amp; Wine</span></figcaption></figure>
+      </div>
+      <div class="v7s3-content">
+        <span class="v7eyebrow"><i></i>The rooms, one by one<i></i></span>
+        <h2 class="v7line">The Jade experience <em>awaits.</em></h2>
+        <span class="v7hint">Keep scrolling &mdash; 35 pages <i>&darr;</i></span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ============ PREVIEW FILM · screen only, sits between the hero and page 1 ============ -->
+<section class="jfilm" id="film" aria-label="Preview film">
+  <div class="jfilm-in">
+    <span class="v7eyebrow"><i></i>The preview<i></i></span>
+    <h2 class="jfilm-h">A walk through <em>Jade.</em></h2>
+    <div class="jfilm-frame" data-jfilm>
+      <img src="v/jade-preview-poster.jpg" alt="Preview film &mdash; the arched stage and green velvet drapery at Jade Supper Club.">
+      <button class="jfilm-play" type="button" aria-label="Play the preview film">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
+      </button>
+    </div>
+    <p class="jfilm-cap">1:11 &middot; Sound on. Interiors are pre-construction design visualisations &mdash; hover or tap any photograph in the pages below to see it move.</p>
+  </div>
+</section>
+
+<main class="kit-wrap" id="top">
+
+  <!-- ============ PAGE 1 · COVER ============ -->
+  <section class="sheet sheet--cover" id="cover" aria-label="Cover">
+    <div class="cover-photo">
+      <img src="img/entry-onyx.jpg" alt="The entry corridor at Jade Supper Club — green velvet drapery and a backlit jade onyx slab.">
+    </div>
+    <div class="cover-ink">
+      <span class="cover-rail" aria-hidden="true">Official Media Kit · MMXXVI</span>
+      <div class="cover-seal" aria-hidden="true">
+        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+          <defs><path id="seal-arc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
+          <circle cx="60" cy="60" r="59" fill="rgba(7,15,11,0.6)"/>
+          <g class="seal-ring">
+            <circle cx="60" cy="60" r="57" fill="none" stroke="rgba(224,207,169,0.85)" stroke-width="1"/>
+            <circle cx="60" cy="60" r="31" fill="none" stroke="rgba(224,207,169,0.6)" stroke-width="0.8"/>
+            <text font-size="10" fill="#e8d9b4" font-family="Inter, sans-serif" font-weight="600" letter-spacing="2">
+              <textPath href="#seal-arc" textLength="274" lengthAdjust="spacing">JADE SUPPER CLUB &#183; MANILA &#183; MMXXVI&#160;&#183;&#160;</textPath>
+            </text>
+          </g>
+          <text x="60" y="71" text-anchor="middle" font-family="'Playfair Display', serif" font-size="30" font-weight="600" fill="#e8d9b4">JS</text>
+        </svg>
+      </div>
+      <div class="cover-blocks">
+        <div class="cover-name">
+          <span class="cn-first">Jade</span>
+          <span class="cn-last">Supper Club</span>
+        </div>
+        <div class="cover-tag">
+          <p>Dinner, music and the long part of the night. <strong>Bonifacio Global City, Manila</strong> — with chef partner Todd English.</p>
+        </div>
+      </div>
+      <div class="cover-foot">
+        <span class="chip"><span class="dot"></span>Tuesday–Sunday · 6PM til 2AM</span>
+        <span class="chip"><span class="dot"></span>Press &amp; partnership inquiries via Jade Manila</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 2 · CONTENTS ============ -->
+  <section class="sheet" id="contents" aria-labelledby="toc-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Contents · 02/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="toc-heading">Contents</h2>
+    <p class="section-sub">Thirty-five pages, five parts — the house, the table, the craft behind the room, the invitation, and the investment.</p>
+
+    <div class="toc-cols">
+      <div class="toc-part">
+        <h3><span class="toc-rn">I</span>The House</h3>
+        <ul>
+          <li><span>The Story of Jade</span><span class="toc-pg">04</span></li>
+          <li><span>The Grand Room</span><span class="toc-pg">05</span></li>
+          <li><span>An Evening at Jade</span><span class="toc-pg">06</span></li>
+          <li><span>The Philosophy</span><span class="toc-pg">07</span></li>
+        </ul>
+        <h3><span class="toc-rn">II</span>The Table</h3>
+        <ul>
+          <li><span>The Wood Oven</span><span class="toc-pg">09</span></li>
+          <li><span>The Stage</span><span class="toc-pg">10</span></li>
+          <li><span>The Spiral &amp; The Mezzanine</span><span class="toc-pg">11</span></li>
+          <li><span>From the Kitchen</span><span class="toc-pg">12</span></li>
+          <li><span>Rooms &amp; Details</span><span class="toc-pg">13</span></li>
+        </ul>
+        <h3><span class="toc-rn">III</span>The Craft</h3>
+        <ul>
+          <li><span>Making the Room</span><span class="toc-pg">15</span></li>
+          <li><span>The Chef Partner · Todd English</span><span class="toc-pg">16</span></li>
+          <li><span>The Bar Partner · Roman Mutzner</span><span class="toc-pg">17</span></li>
+          <li><span>The Cellar</span><span class="toc-pg">18</span></li>
+          <li><span>The Music Programme</span><span class="toc-pg">19</span></li>
+        </ul>
+      </div>
+      <div class="toc-part">
+        <h3><span class="toc-rn">IV</span>The Invitation</h3>
+        <ul>
+          <li><span>Private Dining &amp; Events</span><span class="toc-pg">21</span></li>
+          <li><span>The Salon</span><span class="toc-pg">22</span></li>
+          <li><span>The Late Room</span><span class="toc-pg">23</span></li>
+          <li><span>Credentials &amp; Partnerships</span><span class="toc-pg">24</span></li>
+          <li><span>The Room, by the Numbers</span><span class="toc-pg">25</span></li>
+        </ul>
+        <h3><span class="toc-rn">V</span>The Investment</h3>
+        <ul>
+          <li><span>The Road to October</span><span class="toc-pg">27</span></li>
+          <li><span>The Build, Phase by Phase</span><span class="toc-pg">28</span></li>
+          <li><span>The Opportunity</span><span class="toc-pg">29</span></li>
+          <li><span>Where the ₱40 Million Goes</span><span class="toc-pg">30</span></li>
+          <li><span>Five-Year Forecast</span><span class="toc-pg">31</span></li>
+          <li><span>The Return</span><span class="toc-pg">32</span></li>
+          <li><span>How the Room Earns</span><span class="toc-pg">33</span></li>
+          <li><span>Press Assets</span><span class="toc-pg">34</span></li>
+          <li><span>Contact</span><span class="toc-pg">35</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 34.</p>
+  </section>
+
+  <!-- ============ PAGE 3 · DIVIDER — PART I ============ -->
+  <section class="sheet sheet--divider" id="part-1" aria-label="Part I — The House">
+    <div class="div-frame">
+      <span class="div-part">Part I</span>
+      <span class="div-num">I</span>
+      <h2 class="div-title">The House</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">A green velvet corridor, a lit slab of onyx, and a room that does not tell you what time it is.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 03/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 · THE STORY OF JADE ============ -->
+  <section class="sheet" id="the-house" aria-labelledby="bio-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 04/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>Jade Supper Club</h2>
+
+    <div class="bio-grid">
+      <div class="bio-text">
+        <p><span class="drop">M</span>anila has always known how to stay up late. What it did not have was one room that could hold the whole night — dinner worth dressing for, a band worth staying for, and a bar that is still pouring when the kitchen has gone quiet. Jade was built to be that room.</p>
+        <p>It begins as a corridor. Green velvet on both sides, brass underfoot, and at the end a single slab of backlit jade onyx that glows like a held breath. You do not see the dining room until you are inside it — and then it opens: a double-height space in deep emerald and warm brass, banquettes running the long wall, a proscenium stage at the far end, and a spiral staircase in polished brass climbing to a mezzanine that looks down on all of it.</p>
+        <p>The cooking is fire-led and Manila-anchored: a wood oven at the centre of the kitchen, an ice bar for the raw list, Philippine seafood and Japanese precision meeting Mediterranean technique. The food is developed in partnership with chef Todd English, whose five James Beard Awards and thirty-five years of wood-fired cooking sit behind the pass — his first fine-dining room in the Philippines.</p>
+        <blockquote class="bio-quote">
+          <p>&ldquo;A supper club is not a restaurant with a band. It is one evening, written in three acts, and the food is only the first.&rdquo;</p>
+          <cite>Jade Supper Club</cite>
+        </blockquote>
+      </div>
+      <aside class="bio-side">
+        <img class="bio-portrait" src="img/entry-onyx.jpg" alt="The velvet entry corridor and backlit jade onyx slab at Jade Supper Club.">
+        <div class="facts-card">
+          <h4>Quick Facts</h4>
+          <ul>
+            <li><strong>Concept</strong> · Supper club — dinner, live music, late bar</li>
+            <li><strong>Location</strong> · Bonifacio Global City, Taguig</li>
+            <li><strong>Kitchen</strong> · Wood-fired, in partnership with Todd English</li>
+            <li><strong>Service</strong> · Tuesday–Sunday, 6PM–2AM</li>
+            <li><strong>Rooms</strong> · Grand Room · Bar · Stage · Mezzanine · Salon · Cellar</li>
+          </ul>
+        </div>
+      </aside>
+    </div>
+
+    <div class="stat-band">
+      <div><span class="sn">77</span><span class="sl">Total Seats</span></div>
+      <div><span class="sn">6</span><span class="sl">Rooms</span></div>
+      <div><span class="sn">2</span><span class="sl">Sets Nightly</span></div>
+      <div><span class="sn">2AM</span><span class="sl">Last Call</span></div>
+      <div><span class="sn">7</span><span class="sl">Nights a Week</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 5 · PLATE — THE GRAND ROOM ============ -->
+  <section class="sheet sheet--plate" id="plate-room" aria-label="The Grand Room">
+    <img src="img/grand-guests.jpg" alt="The Grand Room at Jade Supper Club, full at dinner service.">
+    <div class="plate-cap">
+      <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
+      <span class="plate-meta">Jade Supper Club · The Grand Room · 05/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 6 · AN EVENING AT JADE ============ -->
+  <section class="sheet" id="an-evening" aria-labelledby="tl-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 06/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="tl-heading">An Evening at Jade</h2>
+
+    <div class="tl-grid">
+      <ol class="tl-list">
+        <li><span class="tl-year">6:00</span><div><h4>Doors</h4><p>The corridor lights come up. First seating in the Grand Room; the ice bar is dressed and the oven is at temperature.</p></div></li>
+        <li><span class="tl-year">6:30</span><div><h4>The Ice Bar</h4><p>Oysters, crudo and hand rolls off the raw list. A pianist plays the room quietly — no vocal yet.</p></div></li>
+        <li><span class="tl-year">8:00</span><div><h4>Peak Service</h4><p>The wood oven runs flat out. Whole lapu-lapu, dry-aged ribeye and the flatbread that started it all.</p></div></li>
+        <li><span class="tl-year">9:00</span><div><h4>First Set</h4><p>The proscenium curtain opens. Forty-five minutes — jazz-leaning, with a vocalist, mixed live for the whole floor.</p></div></li>
+        <li><span class="tl-year">10:00</span><div><h4>Second Seating</h4><p>The room turns. Later tables arrive dressed for the music rather than the menu; the bar takes over the front.</p></div></li>
+        <li><span class="tl-year">11:00</span><div><h4>Second Set</h4><p>Louder, later, closer to the floor. The mezzanine fills; the spiral staircase becomes the best seat in the house.</p></div></li>
+        <li><span class="tl-year">12:00</span><div><h4>The Kitchen Closes</h4><p>Last order from the full menu. Bar bites — the Jade Dragon, Midnight in Manila — run until the end.</p></div></li>
+        <li><span class="tl-year">1:00</span><div><h4>The Late Room</h4><p>Lights down two stops. Resident DJ, sake carafes, and the part of the night the regulars come for.</p></div></li>
+        <li><span class="tl-year">2:00</span><div><h4>Last Call</h4><p>The brass panels dim one at a time. The corridor is the last thing you see, exactly as it was the first.</p></div></li>
+      </ol>
+      <aside class="tl-side">
+        <img src="img/stage-guests.jpg" alt="The stage at Jade during the first set of the night.">
+        <div class="tl-card">
+          <h4>Three Acts</h4>
+          <p>Dinner, music, late. Every element of the house — lighting, menu, staffing, sound — is built to hand the night from one act to the next without a seam.</p>
+        </div>
+        <div class="tl-card">
+          <h4>Booking the Night</h4>
+          <p>Two seatings, 6PM and 10PM. The first is booked for dinner, the second for the music — the same room, priced and paced differently. Walk-ins are taken at the bar until the kitchen closes.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">2</span><span class="sl">Seatings a Night</span></div>
+      <div><span class="sn">45</span><span class="sl">Minute Sets</span></div>
+      <div><span class="sn">8</span><span class="sl">Hours, Doors to Close</span></div>
+      <div><span class="sn">2AM</span><span class="sl">Last Call</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 7 · PHILOSOPHY ============ -->
+  <section class="sheet" id="philosophy" aria-labelledby="philo-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 07/35</span></div>
+    <div class="page-rule"></div>
+
+    <div class="philo-block">
+      <span class="philo-mark">&ldquo;</span>
+      <p class="philo-quote" id="philo-heading">Luxury is not the marble. It is the fact that nobody has asked you to leave.</p>
+      <span class="philo-cite">The house rule at Jade Supper Club</span>
+    </div>
+
+    <figure class="philo-photo">
+      <img src="img/banquette-guests.jpg" alt="Guests along the emerald velvet banquette run at Jade Supper Club.">
+      <figcaption class="gal-cap"><p>The banquette run — the long wall of the Grand Room, built for parties that grow as the night does.</p></figcaption>
+    </figure>
+
+    <div class="philo-tenets">
+      <div><span class="pn">01</span><h4>Fire First</h4><p>A wood oven at the centre of the kitchen. Char, smoke and salt before anything else.</p></div>
+      <div><span class="pn">02</span><h4>One Long Night</h4><p>No turn-and-burn. The room is designed to be held, not flipped — three acts, one table.</p></div>
+      <div><span class="pn">03</span><h4>Manila First</h4><p>Philippine seafood, Philippine produce, Philippine musicians. The technique travels; the sourcing does not.</p></div>
+      <div><span class="pn">04</span><h4>The Room Is the Dish</h4><p>Light, sound and spacing are plated as carefully as the food. A table is a seat in a theatre, not a slot in a service.</p></div>
+      <div><span class="pn">05</span><h4>Finished at the Table</h4><p>Whole fish carved, pasta finished, drinks stirred in front of you. If it can be done in the room, it is not done in the kitchen.</p></div>
+      <div><span class="pn">06</span><h4>No Velvet Rope</h4><p>Dress how you like. The only entry requirement is that you intend to stay for the whole night.</p></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 8 · DIVIDER — PART II ============ -->
+  <section class="sheet sheet--divider" id="part-2" aria-label="Part II — The Table">
+    <div class="div-frame">
+      <span class="div-part">Part II</span>
+      <span class="div-num">II</span>
+      <h2 class="div-title">The Table</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">The wood oven, the ice bar and the brass counter — the room where the food is made.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 08/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 13 · SPOTLIGHT — THE WOOD OVEN ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-kitchen" aria-labelledby="spot-kitchen-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 09/35</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 03 — The Pass · Open to the Grand Room</p>
+    <h2 class="spot-title" id="spot-kitchen-heading">The Wood Oven</h2>
+
+    <figure class="spot-hero"><img src="img/chef-hands-real.jpg" alt="A chef finishing a plate at the Jade pass."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>Everything at Jade is organised around one piece of equipment. The oven runs at 400°C from four in the afternoon until midnight and never fully cools — bread in the early evening, whole fish and dry-aged beef at peak, focaccia for the bar when the dining room has gone.</p>
+        <p>The technique is chef English's: fire, salt, time, and nothing hidden behind a sauce. The sourcing is Manila's — lapu-lapu from Palawan boats, Cebu oysters, Ilocos garlic, Batangas coffee in the dessert. Japanese precision sits on top of it: the ice bar, the sake list, the uni.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Centrepiece</strong>Wood-fired oven, 400°C</li>
+          <li><strong>Cuisine</strong>Fire-led · Filipino-Japanese-Mediterranean</li>
+          <li><strong>Signature</strong>Whole ember-roasted lapu-lapu</li>
+          <li><strong>Service</strong>Dinner service 6PM–midnight</li>
+          <li><strong>Chef Partner</strong>Todd English</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="img/fd-gueridon-real.jpg" alt="Tableside guéridon service at Jade Supper Club."><figcaption>Guéridon service — the duck, the cacio e pepe and the soufflé are all finished at the table.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 14 · SPOTLIGHT — THE STAGE ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-stage" aria-labelledby="spot-stage-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 10/35</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 04 — The Proscenium · Far End of the Grand Room</p>
+    <h2 class="spot-title" id="spot-stage-heading">The Stage</h2>
+
+    <figure class="spot-hero"><img src="img/proscenium.jpg" alt="The curtained proscenium stage at the end of the Grand Room."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>A full proscenium with a working curtain, sightlines from every banquette, and a room tuned so that a vocalist can be heard at the back without a table having to stop talking. Two sets a night — 9PM and 11PM — jazz-leaning early, looser and later after midnight.</p>
+        <p>The programme is Filipino-first: resident trio, rotating vocalists, and a monthly guest night that pulls from Manila's session players. The stage is also the reason the room works for takeovers — it is built for a set, not for background music.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Sets</strong>Nightly, 9PM &amp; 11PM</li>
+          <li><strong>Format</strong>Resident trio + rotating vocalist</li>
+          <li><strong>Sound</strong>Distributed system, tuned for conversation</li>
+          <li><strong>Guest Night</strong>First Friday, monthly</li>
+          <li><strong>Sightlines</strong>Every seat in the Grand Room</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="img/stage-guests.jpg" alt="A full house watching the first set at Jade."><figcaption>Nine o'clock — the curtain opens and the room turns to face it.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 15 · SPOTLIGHT — THE SPIRAL ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-spiral" aria-labelledby="spot-spiral-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 11/35</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 05 — The Brass Spiral · Grand Room to Mezzanine</p>
+    <h2 class="spot-title" id="spot-spiral-heading">The Spiral &amp; The Mezzanine</h2>
+
+    <figure class="spot-hero"><img src="img/spiral-stair.jpg" alt="The polished brass spiral staircase and glowing brass wall panels."></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>The single most photographed object in the house: a polished brass spiral rising through the double-height volume against a wall of backlit brass panels. It is structural, but it is also the room's clock — you can read how late it is by how many people are standing on it.</p>
+        <p>At the top, the mezzanine: twenty-four seats on the rail, looking down the length of the Grand Room to the stage. It books first and it books furthest ahead.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Material</strong>Polished brass, jade onyx treads</li>
+          <li><strong>Mezzanine</strong>24 seats on the rail</li>
+          <li><strong>View</strong>Full length of the Grand Room</li>
+          <li><strong>Booking</strong>Rail seats, two weeks ahead</li>
+          <li><strong>Best At</strong>11PM, second set</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="img/mezzanine-guests.jpg" alt="Guests along the mezzanine rail above the Grand Room."><figcaption>The rail — twenty-four seats above the room, and the best view of the stage in the house.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 16 · FROM THE KITCHEN (gallery I) ============ -->
+  <section class="sheet" id="from-the-kitchen" aria-labelledby="gallery-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 12/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="gallery-heading">From the Kitchen</h2>
+    <p class="section-sub">Plates from the Jade kitchen. High-resolution files of every photograph are available for editorial use.</p>
+
+    <figure class="gal-hero">
+      <img src="img/fd-beef-real.jpg" alt="A sliced beef course plated at Jade Supper Club.">
+      <figcaption class="gal-cap"><p>&ldquo;Fire, salt, time. If you can taste the technique, we have overcooked it.&rdquo;</p></figcaption>
+    </figure>
+
+    <div class="gal-grid">
+      <figure class="gal-item">
+        <img src="img/fd-oyster-real.jpg" alt="Oysters on crushed ice at the Jade ice bar.">
+        <figcaption>Oyster Tower · The Ice Bar</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-uni-toast.jpg" alt="Hokkaido uni on brown butter brioche.">        <figcaption>Hokkaido Uni Toast</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-caviar.jpg" alt="Kaluga caviar service with blini.">        <figcaption>Kaluga Caviar Service</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-octopus.jpg" alt="Charred octopus with salsa verde.">        <figcaption>Charred Octopus</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-wagyu.jpg" alt="A5 Miyazaki wagyu seared on hot stone.">        <figcaption>A5 Miyazaki Wagyu</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-chocolate.jpg" alt="Chocolate dome with Batangas coffee cream.">        <figcaption>Chocolate &amp; Barako</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-lapu-lapu.jpg" alt="Whole lapu-lapu roasted in the wood oven, carved at the table.">        <figcaption>Wood-Oven Lapu-Lapu</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-tagliatelle.jpg" alt="Hand-cut tagliatelle finished tableside with alba truffle.">        <figcaption>Tagliatelle · Gu&eacute;ridon</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/fd-souffle.jpg" alt="Calamansi souffle straight from the oven.">        <figcaption>Calamansi Souffl&eacute;</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
+  <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 13/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
+    <p class="section-sub">Six rooms, one material palette — emerald, brass, onyx and velvet, from the corridor to the cellar.</p>
+
+    <figure class="gal-hero">
+      <img src="img/dining-brass.jpg" alt="The Grand Room at Jade Supper Club, laid for service.">
+      <figcaption class="gal-cap"><p>The Grand Room, laid and lit an hour before doors — the only quiet it gets.</p></figcaption>
+    </figure>
+
+    <div class="gal-grid">
+      <figure class="gal-item">
+        <img src="img/hostess-podium.jpg" alt="The hostess podium in the entry corridor.">
+        <figcaption>The Corridor · Arrival</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/back-bar.jpg" alt="The brass back bar at Jade.">
+        <figcaption>Jade Bar · The Back Bar</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/atrium.jpg" alt="The atrium volume above the Grand Room.">
+        <figcaption>The Atrium</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/salon-art.jpg" alt="The Salon private dining room.">
+        <figcaption>The Salon · Private Dining</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/cellar-wall.jpg" alt="The cellar wall of sake and wine.">
+        <figcaption>The Cellar</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/powder-room.jpg" alt="The powder room in emerald and brass.">
+        <figcaption>The Powder Room</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/mezzanine.jpg" alt="The mezzanine overlooking the Grand Room.">
+        <figcaption>The Mezzanine</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/proscenium.jpg" alt="The proscenium arch framing the stage.">
+        <figcaption>The Proscenium</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/spiral-stair.jpg" alt="The brass spiral stair linking floor and mezzanine.">
+        <figcaption>The Spiral Stair</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 18 · DIVIDER — PART III ============ -->
+  <section class="sheet sheet--divider" id="part-3" aria-label="Part III — The Craft">
+    <div class="div-frame">
+      <span class="div-part">Part III</span>
+      <span class="div-num">III</span>
+      <h2 class="div-title">The Craft</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">The materials, the chef partner, the bar, the cellar and the music — everything behind the room.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 14/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 19 · MAKING THE ROOM ============ -->
+  <section class="sheet sheet--dark" id="making-the-room" aria-labelledby="craft-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 15/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="craft-heading"><span class="script-kick">the craft</span>Making the Room</h2>
+    <p class="section-sub">Four materials, used everywhere and mixed nowhere else. This is the whole palette.</p>
+
+    <div class="legacy-grid">
+      <article class="legacy-card">
+        <img src="img/entry-onyx.jpg" alt="Backlit jade onyx slab in the entry corridor.">
+        <div class="lc-body">
+          <span class="stamp">Material · 01</span>
+          <h4>Backlit Jade Onyx</h4>
+          <p>The single slab at the end of the corridor, lit from behind so the veining reads. It reappears as the bar counter and the stair treads — nowhere else.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="img/spiral-stair.jpg" alt="Glowing brass wall panels behind the spiral staircase.">
+        <div class="lc-body">
+          <span class="stamp">Material · 02</span>
+          <h4>Glowing Brass</h4>
+          <p>Ribbed brass panels, backlit at a fixed warmth, run the full height of the atrium. They are the room's only light source above eye level.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="img/banquette-run.jpg" alt="Emerald velvet banquettes along the long wall.">
+        <div class="lc-body">
+          <span class="stamp">Material · 03</span>
+          <h4>Emerald Velvet</h4>
+          <p>Deep cool green — never warm, never yellow. Banquettes, drapery, the corridor walls and the stage curtain, all cut from one dye lot.</p>
+        </div>
+      </article>
+      <article class="legacy-card">
+        <img src="img/grand-room.jpg" alt="Polished black stone floor reflecting the Grand Room.">
+        <div class="lc-body">
+          <span class="stamp">Material · 04</span>
+          <h4>Polished Black Stone</h4>
+          <p>The floor. It reflects the brass and doubles the height of the room — the reason photographs of Jade always look taller than the space is.</p>
+        </div>
+      </article>
+    </div>
+
+    <p class="legacy-close">&ldquo;Every surface in the room is one of four things. The discipline is what makes it feel expensive.&rdquo;</p>
+
+    <div class="story-band">
+      <div><span class="sn">1</span><span class="sl">Velvet Dye Lot</span></div>
+      <div><span class="sn">9m</span><span class="sl">Atrium Height</span></div>
+      <div><span class="sn">2400K</span><span class="sl">Fixed Warmth</span></div>
+      <div><span class="sn">18mo</span><span class="sl">Build Time</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 20 · THE CHEF PARTNER ============ -->
+  <section class="sheet" id="chef-partner" aria-labelledby="todd-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 16/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="todd-heading">The Chef Partner</h2>
+
+    <figure class="story-photo">
+      <img src="img/chef-hands-real.jpg" alt="Finishing a plate at the Jade pass.">
+      <figcaption class="gal-cap"><p>The food at Jade is built in partnership with chef Todd English — his first fine-dining room in the Philippines.</p></figcaption>
+    </figure>
+
+    <div class="story-cols">
+      <p><span class="drop">T</span>odd English trained under Jean-Jacques Rachou at La Côte Basque, then cooked through Italy and returned with rustic Mediterranean food over live fire. Olives opened in Charlestown in 1989 and grew into a group of restaurants across four continents — five James Beard Awards, fifteen cookbooks and years of national television behind them.</p>
+      <p>At Jade he is not a lent name but the house's anchor: he shapes the food, returns for every seasonal change and cooks the opening service himself. In a city where fine dining trades on imported chefs, his is the single biggest draw the room carries — the reason Jade opens with a national profile instead of spending years building one.</p>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">5</span><span class="sl">James Beard Awards</span></div>
+      <div><span class="sn">1989</span><span class="sl">Olives Founded</span></div>
+      <div><span class="sn">15</span><span class="sl">Cookbooks</span></div>
+      <div><span class="sn">4</span><span class="sl">Continents</span></div>
+    </div>
+
+    <div class="philo-tenets">
+      <div><span class="pn">01</span><h4>The Wood Oven</h4><p>Built into the centre of the Jade pass, not hidden behind it. Flatbread, whole fish and the short rib all pass through the fire.</p></div>
+      <div><span class="pn">02</span><h4>The Gu&eacute;ridon</h4><p>The rolling table he brought back from France — pasta finished, fish carved, sauces mounted in front of the guest.</p></div>
+      <div><span class="pn">03</span><h4>Manila&rsquo;s Larder</h4><p>The grammar is his; the ingredients are not. Lapu-lapu, calamansi, Batangas barako and Philippine oysters replace the Mediterranean originals.</p></div>
+    </div>
+    <p class="foot-note"><strong>The partnership, in the model:</strong> chef travel is budgeted at ₱300,000 a year for the seasonal menu changes and the opening service. The resident brigade — a head chef, a sous chef, a sushi chef and eight line cooks — carries the room every other night of the year.</p>
+  </section>
+
+  <!-- ============ PAGE 17 · THE BAR PARTNER — ROMAN MUTZNER ============ -->
+  <section class="sheet" id="bar-partner" aria-labelledby="roman-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 17/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="roman-heading">The Bar Partner</h2>
+    <p class="section-sub">The newest addition to the house — and one of the most decorated bartenders in Europe — shaping the Jade bar.</p>
+
+    <div class="bar-hero">
+      <figure class="bar-portrait">
+        <img src="img/roman-portrait.jpg" alt="Roman Mutzner, bar partner at Jade Supper Club.">
+      </figure>
+      <div class="bar-copy">
+        <p><span class="drop">R</span>oman Mutzner is the newest name on the Jade team and the man behind the bar. A Swiss bartender from St. Gallen, he is one of the most decorated competitors of his generation &mdash; 2026 Switzerland Champion at Diageo World Class, the industry&rsquo;s most demanding global contest, and a serial national titleholder across spirits, liqueurs and gin.</p>
+        <p>He founded R. Mutzner Barfactory in 2022 and first came to Manila on an MBA exchange in 2024. At Jade he designs the bar from the ice programme up &mdash; a cocktail list built to stand level with the kitchen, and the reason the room pours until 2AM.</p>
+        <aside class="spot-facts spot-facts--light">
+          <h4>Career Highlights</h4>
+          <ul>
+            <li><strong>2026</strong>Diageo World Class &mdash; Switzerland Champion</li>
+            <li><strong>2025</strong>Graham&rsquo;s Blend Series &mdash; Global Champion</li>
+            <li><strong>2025</strong>Bol&rsquo;s Liqueurs &amp; Hendrick&rsquo;s Gin &mdash; Swiss Champion</li>
+            <li><strong>2024</strong>European Bartender Cup &mdash; Top 3</li>
+            <li><strong>2022</strong>Founder, R. Mutzner Barfactory</li>
+          </ul>
+        </aside>
+      </div>
+    </div>
+
+    <div class="bar-strip">
+      <figure><img src="img/roman-cocktail.jpg" alt="Roman Mutzner presenting a signature cocktail."><figcaption>Competition service &mdash; a signature serve.</figcaption></figure>
+      <figure><img src="img/roman-flair.jpg" alt="Roman Mutzner working behind the bar."><figcaption>Behind the bar at full tilt.</figcaption></figure>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 21 · THE CELLAR ============ -->
+  <section class="sheet" id="the-cellar" aria-labelledby="cellar-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 18/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="cellar-heading">The Cellar</h2>
+    <p class="section-sub">A cold room built for sake first and wine second — the reverse of every other list in the city.</p>
+
+    <div class="shelf-grid">
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/cellar-wall.jpg" alt="The cellar wall at Jade Supper Club."></div>
+        <figcaption>The Cold Room · 4°C</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/dr-sake-service.jpg" alt="Chilled sake carafes and porcelain cups."></div>
+        <figcaption>Sake Service · Carafe</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/glassware.jpg" alt="Crystal glassware at Jade."></div>
+        <figcaption>Crystal · By the Glass</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/dr-champagne-pour.jpg" alt="Champagne poured into a vintage coupe."></div>
+        <figcaption>Champagne · The Coupe</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/back-bar.jpg" alt="The brass back bar and bottle wall."></div>
+        <figcaption>The Bottle Wall</figcaption>
+      </figure>
+      <figure class="shelf-item">
+        <div class="shelf-tile"><img src="img/dr-cocktail-lineup.jpg" alt="Four signature cocktails lined up on the bar."></div>
+        <figcaption>The Signature Four</figcaption>
+      </figure>
+    </div>
+
+    <p class="foot-note"><strong>For sommeliers &amp; press:</strong> the full sake list — including allocated daiginjo and single-cask whisky held off-menu — is available on request, along with tasting notes from the cellar team. Corkage is ₱2,500 per bottle, two bottles maximum.</p>
+  </section>
+
+  <!-- ============ PAGE 22 · THE MUSIC PROGRAMME ============ -->
+  <section class="sheet" id="music" aria-labelledby="music-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 19/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="music-heading">The Music Programme</h2>
+    <p class="section-sub">Two sets a night, seven nights a week — programmed Filipino-first, and loud enough to matter.</p>
+
+    <figure class="tv-hero">
+      <img src="img/stage-guests.jpg" alt="The first set of the night at Jade Supper Club.">
+      <figcaption class="gal-cap"><p>Nine o'clock and eleven o'clock — the two moments the whole room is pointed the same way.</p></figcaption>
+    </figure>
+
+    <div class="tv-cols">
+      <div class="tv-col">
+        <p class="kicker">9:00 PM</p>
+        <h4>The First Set</h4>
+        <p>Forty-five minutes, jazz-leaning, resident trio with a vocalist. Mixed for a room that is still eating.</p>
+      </div>
+      <div class="tv-col">
+        <p class="kicker">11:00 PM</p>
+        <h4>The Second Set</h4>
+        <p>Later, looser, closer to the floor — soul, bossa, and the occasional standard taken sideways.</p>
+      </div>
+      <div class="tv-col">
+        <p class="kicker">First Friday</p>
+        <h4>Guest Night</h4>
+        <p>A monthly seat handed to Manila's session players and touring vocalists. One night, one set, no repeat.</p>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>For bookers &amp; artists:</strong> Jade programmes its own stage and does not take pay-to-play. Artist submissions, technical riders and stage plots go through the venue directly. The room is available for label showcases and album launches on Monday, the one night the house is dark.</p>
+  </section>
+
+  <!-- ============ PAGE 23 · DIVIDER — PART IV ============ -->
+  <section class="sheet sheet--divider" id="part-4" aria-label="Part IV — The Invitation">
+    <div class="div-frame">
+      <span class="div-part">Part IV</span>
+      <span class="div-num">IV</span>
+      <h2 class="div-title">The Invitation</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">Private dining, buyouts, the late room — and how to get in touch.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 20/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 24 · PRIVATE DINING & EVENTS ============ -->
+  <section class="sheet" id="private-dining" aria-labelledby="events-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 21/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="events-heading"><span class="script-kick">the invitation</span>Private Dining &amp; Events</h2>
+
+    <div class="hotel-row" id="the-salon">
+      <figure style="margin:0;position:relative"><img src="img/salon-guests.jpg" alt="A private dinner in the Salon at Jade Supper Club."></figure>
+      <div>
+        <p class="kicker">Bookable Now · Eighteen Seats</p>
+        <h3>The Salon</h3>
+        <p class="vbody">A closed room off the Grand Room — one table for eighteen, its own service team, and a door that shuts. The full menu, the tasting, or something written for the occasion. Sound from the stage carries in at half volume, by design.</p>
+        <span class="chip">18 seats · Own service team · Full menu or bespoke</span>
+      </div>
+    </div>
+
+    <div class="next-list">
+      <div class="next-row">
+        <span class="nn">01</span>
+        <figure style="margin:0;position:relative"><img src="img/mezzanine.jpg" alt="The mezzanine level at Jade Supper Club."></figure>
+        <div>
+          <h4>The Mezzanine — Semi-Private</h4>
+          <p>Twenty-four seats on the rail above the Grand Room, closable as a group space. The best sightline to the stage in the house; the standing area behind it holds forty more.</p>
+          <span class="chip">24 seated · 64 standing</span>
+        </div>
+      </div>
+      <div class="next-row">
+        <span class="nn">02</span>
+        <figure style="margin:0;position:relative"><img src="img/grand-guests.jpg" alt="The full Grand Room during service."></figure>
+        <div>
+          <h4>Full Buyout — The Whole House</h4>
+          <p>Every room, the stage, the bar and the kitchen for one night. Seventy-seven seated across all seven bookable areas, with standing room on the mezzanine rail and along the bar, and the music programme built to the brief.</p>
+          <span class="chip">77 seated · whole house</span>
+        </div>
+      </div>
+      <div class="next-row">
+        <span class="nn">03</span>
+        <figure style="margin:0;position:relative"><img src="img/proscenium.jpg" alt="The proscenium stage set for a showcase."></figure>
+        <div>
+          <h4>Monday Takeovers</h4>
+          <p>The one night the house is dark is the one night it is yours: album launches, label showcases, brand dinners and film nights on a working proscenium with a full sound and lighting rig.</p>
+          <span class="chip">Mondays only</span>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>Also available:</strong> chef's table at the pass, six seats · corporate long-table service in the Grand Room · pre-theatre seating from 6PM · in-house photography and content capture for partners, on request.</p>
+  </section>
+
+  <!-- ============ PAGE 25 · FEATURE — THE SALON ============ -->
+  <section class="sheet" id="feature-salon" aria-labelledby="feat-salon-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 22/35</span></div>
+    <div class="page-rule"></div>
+    <p class="kicker feat-kick">Bookable Now — Off the Grand Room · Eighteen Seats</p>
+    <h2 class="section-title feat-title" id="feat-salon-heading">The Salon</h2>
+
+    <figure class="feat-hero">
+      <img src="img/salon-art.jpg" alt="The Salon private dining room at Jade Supper Club.">
+      <figcaption class="gal-cap"><p>One table, eighteen chairs, and a door — the quietest room in a house built to be loud.</p></figcaption>
+    </figure>
+
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <p>The Salon is the house's argument that privacy and atmosphere are not opposites. It sits directly off the Grand Room, sharing its palette and its acoustics — the stage carries in at half volume, so a dinner here still feels like it is happening inside the night rather than beside it.</p>
+        <p>Service is dedicated: its own captain, its own sommelier, its own pass. Menus are written per booking — the printed carte, the seven-course tasting, or something built around whatever the boats brought in that morning.</p>
+      </div>
+      <aside class="spot-facts spot-facts--light">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Seats</strong>18 at one table</li>
+          <li><strong>Service</strong>Dedicated captain &amp; sommelier</li>
+          <li><strong>Menu</strong>Carte, tasting or bespoke</li>
+          <li><strong>Sound</strong>Stage audio at half volume</li>
+          <li><strong>Availability</strong>Tuesday–Sunday</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="feat-strip">
+      <img src="img/salon-guests.jpg" alt="A private dinner underway in the Salon.">
+      <figcaption>A closed room inside an open one — the door shuts, the night does not stop.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PAGE 26 · FEATURE — THE LATE ROOM ============ -->
+  <section class="sheet" id="feature-late" aria-labelledby="feat-late-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 23/35</span></div>
+    <div class="page-rule"></div>
+    <p class="kicker feat-kick">Midnight to 2AM — The Bar, The Spiral &amp; The Mezzanine</p>
+    <h2 class="section-title feat-title" id="feat-late-heading">The Late Room</h2>
+
+    <figure class="feat-hero">
+      <img src="img/stair-guests.jpg" alt="Guests on the brass spiral staircase late in the night.">
+      <figcaption class="gal-cap"><p>After midnight the dining room becomes a different venue — same brass, two stops darker.</p></figcaption>
+    </figure>
+
+    <div class="feat-grid">
+      <div class="feat-copy">
+        <p>At midnight the kitchen closes the carte and the house changes shape. Lights drop two stops, the tables along the banquette run are cleared to standing, the resident DJ takes the stage, and the bar becomes the centre of gravity. The only food is bar bites — the Jade Dragon, Midnight in Manila, focaccia straight out of the cooling oven.</p>
+        <p>It is the part of the night the regulars book for, and the reason Jade is a supper club rather than a restaurant: nobody is asked to leave until two.</p>
+      </div>
+      <aside class="spot-facts spot-facts--light">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Hours</strong>Midnight – 2AM</li>
+          <li><strong>Music</strong>Resident DJ, nightly</li>
+          <li><strong>Kitchen</strong>Bar bites only</li>
+          <li><strong>Capacity</strong>Standing, all floors</li>
+          <li><strong>Entry</strong>Dining guests &amp; bar list</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="feat-strip">
+      <img src="img/room-guests.jpg" alt="The Grand Room late at night, cleared to standing.">
+      <figcaption>One in the morning — the dining room, standing, with the brass turned down.</figcaption>
+    </figure>
+  </section>
+
+  <!-- ============ PAGE 27 · CREDENTIALS & PARTNERSHIPS ============ -->
+  <section class="sheet" id="credentials" aria-labelledby="cred-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Credentials · 24/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="cred-heading"><span class="script-kick">the record</span>Credentials &amp; Partnerships</h2>
+
+    <div class="honor-hero">
+      <span class="big5">5</span>
+      <span class="b5-label">James Beard Awards behind the menu — chef partner Todd English</span>
+    </div>
+
+    <ul class="honors-list">
+      <li>Chef partner · Todd English</li>
+      <li>James Beard — Rising Star Chef</li>
+      <li>James Beard — Best Chef Northeast</li>
+      <li>Bon Appétit Restaurateur of the Year</li>
+      <li>Olives, est. 1989 — the wood-oven lineage</li>
+      <li>Resident brigade trained in-house, Manila</li>
+    </ul>
+
+    <p class="honor-meta"><strong>The kitchen:</strong> menu developed with chef Todd English; run nightly by Jade's resident brigade. <strong>The stage:</strong> programmed in-house, Filipino-first, two sets nightly. <strong>The sourcing:</strong> Palawan and Cebu seafood, Ilocos garlic, Batangas coffee, Hokkaido and Miyazaki imports for the raw and fire lists.</p>
+
+    <h2 class="section-title" id="partnerships" style="font-size:26px; padding-top:18px;">Work With Jade</h2>
+    <div class="partner-cols">
+      <div class="partner-col">
+        <span class="pn">01</span>
+        <h4>Brand Dinners &amp; Launches</h4>
+        <p>The Salon, the Mezzanine or the full house — with a menu written to the brief and the stage programmed around it.</p>
+      </div>
+      <div class="partner-col">
+        <span class="pn">02</span>
+        <h4>Music &amp; Label Nights</h4>
+        <p>A working proscenium with a full rig, dark Mondays, and a room already trained to face the stage. No pay-to-play.</p>
+      </div>
+      <div class="partner-col">
+        <span class="pn">03</span>
+        <h4>Content &amp; Editorial</h4>
+        <p>Shoot access to all six rooms outside service hours, in-house capture for partners, and the full asset library on page 37.</p>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>For press:</strong> high-resolution imagery, room dimensions, capacity sheets and interview requests are available directly from Jade Supper Club, Bonifacio Global City.</p>
+  </section>
+
+  <!-- ============ PAGE 28 · THE ROOM, BY THE NUMBERS ============ -->
+  <section class="sheet" id="numbers" aria-labelledby="numbers-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Room · 25/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="numbers-heading">The Room, by the Numbers</h2>
+
+    <div class="reach-hero">
+      <span class="bign">77</span>
+      <span class="bl">seated across seven bookable areas, on 180 square metres</span>
+    </div>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">The Dining Room</p>
+        <h4>28 at the Table</h4>
+        <p>Centre tables and the chef's table at the pass, at ₱4,000 a head. Two seatings a night, 6PM and 10PM.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Banquettes</p>
+        <h4>Four Booths, 28–32</h4>
+        <p>Two at six and two at eight to ten, each on a minimum spend. The run that faces the stage.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Counter &amp; Private</p>
+        <h4>Omakase + Salon</h4>
+        <p>Four to five at the sushi counter; six to twelve behind the Salon door. The bar counter is walk-in and unreserved.</p>
+      </div>
+    </div>
+
+    <div class="seen-in">
+      <h4>Service Hours</h4>
+      <p>Tuesday–Sunday &nbsp;·&nbsp; Doors 6PM &nbsp;·&nbsp; Kitchen until midnight &nbsp;·&nbsp; Bar until 2AM &nbsp;·&nbsp; Sets at 9PM &amp; 11PM &nbsp;·&nbsp; Dark Mondays</p>
+    </div>
+
+    <figure class="reach-photo">
+      <img src="img/room-guests.jpg" alt="The Grand Room at Jade Supper Club during full service.">
+      <figcaption class="gal-cap"><p>Full house, second set — the room the whole building was designed around.</p></figcaption>
+    </figure>
+
+    <p class="foot-note"><strong>For planners:</strong> room dimensions, floor plans, rigging points, power and load-in details are available as a capacity pack on request. Figures current as of July 2026.</p>
+  </section>
+
+  <!-- ============ PAGE 29 · DIVIDER — PART V ============ -->
+  <section class="sheet sheet--divider" id="part-5" aria-label="Part V — The Investment">
+    <div class="div-frame">
+      <span class="div-part">Part V</span>
+      <span class="div-num">V</span>
+      <h2 class="div-title">The Investment</h2>
+      <span class="div-orn">✦</span>
+      <p class="div-line">A ₱40 million build, a ₱13 million ticket, and a room designed to earn its keep from the first Saturday.</p>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 26/35</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 30 · ROAD TO OCTOBER ============ -->
+  <section class="sheet" id="road-to-october" aria-labelledby="road-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 27/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="road-heading">The Road to October</h2>
+
+    <div class="tl-grid">
+      <ol class="tl-list">
+        <li><span class="tl-year">Now</span><div><h4>On Site</h4><p>Three months of advance rent and three months of security deposit — ₱3,373,966 — are placed with the landlord. Design is set with BA8 Concepts, and Jerikson Construction is on site: the first four build phases — structure and mezzanine, finishes, plumbing and electrical rough-in — are all under way.</p></div></li>
+        <li><span class="tl-year">Aug</span><div><h4>Permits &amp; Long Leads</h4><p>Permits and licences at ₱400,000 are lodged, and the point-of-sale goes in for BIR accreditation — a fixed three-to-four-week clock that gates opening day more tightly than the build does. Fire suppression, smoke detection and air conditioning are coordinated with building management.</p></div></li>
+        <li><span class="tl-year">Sep</span><div><h4>Systems &amp; the Kitchen</h4><p>Automated lighting, exhaust and ducting, CCTV and biometrics. The cold line, the hot line and the Josper charcoal oven are delivered and wired. Custom furniture installation begins, and the bar's ice cap goes in.</p></div></li>
+        <li><span class="tl-year">Oct</span><div><h4>Staff, Stock, Rehearsal</h4><p>Kitchenware, bar and glassware at ₱1,100,000. Hiring closes on the forty-four-strong opening roster and one month of paid training begins at ₱1,135,960. Menu R&amp;D runs against ₱6,000,000 of opening stock. Plants and soft finishes land last.</p></div></li>
+        <li><span class="tl-year">Open</span><div><h4>Doors</h4><p>Friends and family from 30 October, then press, then full service — Tuesday to Sunday, two seatings at 6PM and 10PM, bar until 2AM.</p></div></li>
+        <li><span class="tl-year">Yr 1</span><div><h4>The First Twelve Months</h4><p>Year One is modelled at ₱76.9M in the base case and ₱130.7M in the high case, against a 72% gross margin.</p></div></li>
+      </ol>
+      <aside class="tl-side">
+        <img src="img/atrium.jpg" alt="The Jade atrium during fit-out.">
+        <div class="tl-card">
+          <h4>Already Committed</h4>
+          <p>₱3,373,966 is with the landlord, design and construction are contracted, and the mezzanine is engineered. The remaining spend is scheduled against the weeks above rather than drawn in a lump.</p>
+        </div>
+        <div class="tl-card">
+          <h4>The Long Poles</h4>
+          <p>Three items set the date, not the budget: BIR accreditation of the POS, landlord sign-off on fire suppression and air conditioning, and the month of paid training that must finish before doors.</p>
+        </div>
+      </aside>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">Oct 30</span><span class="sl">Target Opening</span></div>
+      <div><span class="sn">12</span><span class="sl">Weeks to Doors</span></div>
+      <div><span class="sn">₱40.1M</span><span class="sl">Total Project Cost</span></div>
+      <div><span class="sn">44</span><span class="sl">Opening Roster</span></div>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 31 · CONSTRUCTION PROGRESS (PLACEHOLDER) ============ -->
+  <section class="sheet" id="construction" aria-labelledby="const-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 28/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="const-heading">The Build, Phase by Phase</h2>
+    <p class="section-sub">Eight phases from framing to handover, tracking to a 30 October completion. Site photography drops into these frames as each phase is shot — the schedule and the captions are live; only the images are pending.</p>
+
+    <div class="gal-grid">
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 01</span><em>Structure &amp; Mezzanine</em></div><figcaption>Aug–Sep · In Progress</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 02</span><em>Architecture &amp; Special Finishes</em></div><figcaption>Aug–Oct · In Progress</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 03</span><em>Plumbing, Sanitary &amp; Waterproofing</em></div><figcaption>Jul–Oct · In Progress</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 04</span><em>Electrical Roughing-In</em></div><figcaption>Jul–Aug · In Progress</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 05</span><em>Electrical Fit-Out &amp; Energisation</em></div><figcaption>Sep–Oct · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 06</span><em>Mechanical, Fire &amp; Auxiliary</em></div><figcaption>Aug–Sep · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 07</span><em>Equipment, Furniture &amp; Branding</em></div><figcaption>October · Scheduled</figcaption></figure>
+      <figure class="gal-item"><div class="ph-tile"><span>Phase 08</span><em>Final Inspection &amp; Handover</em></div><figcaption>October · Scheduled</figcaption></figure>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">8</span><span class="sl">Build Phases</span></div>
+      <div><span class="sn">₱17.2M</span><span class="sl">Leasehold Works</span></div>
+      <div><span class="sn">180</span><span class="sl">Square Metres</span></div>
+      <div><span class="sn">10 yr</span><span class="sl">Depreciation Life</span></div>
+    </div>
+
+    <p class="foot-note"><strong>Site access:</strong> walkthroughs are arranged for prospective investors on request, and a dated photo set is issued at the close of each phase.</p>
+  </section>
+
+  <!-- ============ PAGE 32 · THE OPPORTUNITY ============ -->
+  <section class="sheet" id="the-opportunity" aria-labelledby="opp-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 29/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="opp-heading">The Opportunity</h2>
+    <p class="section-sub">The same five-year model, run twice — once on conservative trade, once on the room performing to the capacity it was built for.</p>
+
+    <div class="reach-hero">
+      <span class="bign">₱13M</span>
+      <span class="bl">for an 18% share of Jade Supper Club Manila</span>
+    </div>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">The Ticket</p>
+        <h4>₱13,000,000</h4>
+        <p>An 18% holding in the operating company, drawn against a total project cost of ₱40,083,352.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Policy</p>
+        <h4>90% Distributed</h4>
+        <p>Ninety per cent of net profit is paid out annually. The remaining tenth is retained against ongoing capex, budgeted at 2% of revenue.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Horizon</p>
+        <h4>Five Years</h4>
+        <p>Modelled to Year Five on a ten-year leasehold life, with the base case paying back in 3.6 years and the high case in 1.7.</p>
+      </div>
+    </div>
+
+    <table class="fin-tbl">
+      <caption>The Two Cases, Side by Side</caption>
+      <thead><tr><th></th><th>Base Case</th><th>High Case</th></tr></thead>
+      <tbody>
+        <tr><td>Year 1 Revenue</td><td>₱76,928,570</td><td>₱130,714,280</td></tr>
+        <tr><td>Year 5 Revenue</td><td>₱126,119,774</td><td>₱218,531,270</td></tr>
+        <tr><td>Year 1 Gross Margin</td><td>72.1%</td><td>72.4%</td></tr>
+        <tr><td>Year 1 EBITDA</td><td>₱26,367,504</td><td>₱62,547,772</td></tr>
+        <tr><td>Year 1 EBITDA Margin</td><td>34.3%</td><td>47.9%</td></tr>
+        <tr><td>Year 1 Net Profit</td><td>₱17,178,614</td><td>₱43,952,013</td></tr>
+        <tr><td>Year 5 Net Profit</td><td>₱33,553,232</td><td>₱80,110,688</td></tr>
+        <tr><td>Five-Year Distributions, 18% Holder</td><td>₱20,477,536</td><td>₱49,709,054</td></tr>
+        <tr><td>Cumulative Return on ₱13M</td><td>57.5%</td><td>282.4%</td></tr>
+        <tr><td>Payback Period</td><td>3.58 years</td><td>1.72 years</td></tr>
+        <tr class="tot"><td>Internal Rate of Return</td><td>15.23%</td><td>60.30%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="foot-note"><strong>A note on the two cases.</strong> The base case assumes the house turns roughly one full cover a night across a six-day week. The high case assumes nightlife revenue matching dining rather than trailing it. Neither assumes a price increase. Full model available under NDA.</p>
+  </section>
+
+  <!-- ============ PAGE 33 · THE ₱40 MILLION BUILD ============ -->
+  <section class="sheet" id="the-build" aria-labelledby="build-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 30/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="build-heading">Where the ₱40 Million Goes</h2>
+
+    <div class="menu-cols">
+      <div>
+        <div class="menu-sec">
+          <h3>Construction &amp; Fit-Out <span>₱17,195,251</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Construction</span><span class="mi-price">₱8,363,180</span></div><span class="mi-desc">Jerikson Construction — full shell fit-out</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Custom Furniture</span><span class="mi-price">₱4,000,000</span></div><span class="mi-desc">Fashion Interiors — banquettes, tables, millwork</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Air Conditioning</span><span class="mi-price">₱2,500,000</span></div><span class="mi-desc">Plant, ducting and controls</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Design, Structure &amp; Cladding</span><span class="mi-price">₱824,000</span></div><span class="mi-desc">BA8 Concepts, mezzanine engineering, wall fabrics</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Marblo Ice-Cap Bar</span><span class="mi-price">₱818,071</span></div><span class="mi-desc">The lit slab and its chilled rail</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Fire &amp; Life Safety</span><span class="mi-price">₱690,000</span></div><span class="mi-desc">Suppression and smoke detection</span></div>
+        </div>
+
+        <div class="menu-sec">
+          <h3>Kitchen, Bar &amp; Systems <span>₱7,168,175</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Lighting, Architectural &amp; Automated</span><span class="mi-price">₱2,200,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Ovens, Hot Line &amp; Bar Refrigeration</span><span class="mi-price">₱1,010,430</span></div><span class="mi-desc">Including the Josper charcoal oven</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Speakers &amp; DJ Kit</span><span class="mi-price">₱1,000,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">POS, Booking &amp; Security</span><span class="mi-price">₱890,000</span></div><span class="mi-desc">BIR-accredited terminals, CCTV, biometrics</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Cold Line &amp; Dishwashing</span><span class="mi-price">₱789,580</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Exhaust &amp; Ducting</span><span class="mi-price">₱750,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Small Wares &amp; Contingency</span><span class="mi-price">₱528,165</span></div></div>
+        </div>
+      </div>
+
+      <div>
+        <div class="menu-sec">
+          <h3>Pre-Opening &amp; Capital <span>₱15,719,926</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Opening Stock &amp; R&amp;D</span><span class="mi-price">₱6,000,000</span></div><span class="mi-desc">Cellar, bar and larder at open</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Advance Rent, Three Months</span><span class="mi-price">₱1,686,983</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Security Deposit, Three Months</span><span class="mi-price">₱1,686,983</span></div><span class="mi-desc">Refundable — held on the balance sheet</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Consulting, Legal &amp; Accounting</span><span class="mi-price">₱1,700,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital Reserve</span><span class="mi-price">₱1,500,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Training &amp; Payroll, One Month</span><span class="mi-price">₱1,135,960</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Kitchenware, Bar &amp; Glassware</span><span class="mi-price">₱1,100,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Chef Travel, Plants &amp; Packaging</span><span class="mi-price">₱475,000</span></div></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Permits, Licences &amp; Insurance</span><span class="mi-price">₱435,000</span></div></div>
+        </div>
+
+        <div class="menu-sec">
+          <h3>How It Is Classified <span>₱40,083,352</span></h3>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Capital Expenditure</span><span class="mi-price">60.8%</span></div><span class="mi-desc">₱24,363,426 — depreciated over ten years on the leasehold and five on equipment</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital</span><span class="mi-price">18.7%</span></div><span class="mi-desc">₱7,500,000 — stock and cash, recovered through trading</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Pre-Opening Expense</span><span class="mi-price">16.3%</span></div><span class="mi-desc">₱6,532,943 — expensed, not capitalised</span></div>
+          <div class="menu-item"><div class="mi-top"><span class="mi-name">Refundable Asset</span><span class="mi-price">4.2%</span></div><span class="mi-desc">₱1,686,983 — the deposit, returned at lease end</span></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>Depreciation:</strong> ₱3,153,160 a year — ₱1,719,525 on ₱17,195,251 of leasehold improvements over ten years, ₱1,433,635 on ₱7,168,175 of equipment over five. Net book value at the end of Year Five is ₱8,597,625. Ongoing improvement capex is budgeted at 2% of revenue.</p>
+  </section>
+
+  <!-- ============ PAGE 34 · FIVE-YEAR FORECAST ============ -->
+  <section class="sheet" id="forecast" aria-labelledby="fcst-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 31/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="fcst-heading">Five-Year Forecast</h2>
+    <p class="section-sub">In millions of pesos. Two rooms, two revenue lines — dinner service and the late half of the night — modelled separately and summed.</p>
+
+    <table class="fin-tbl">
+      <caption>Base Case</caption>
+      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
+      <tbody>
+        <tr><td>Dining</td><td>42.3</td><td>50.8</td><td>58.4</td><td>64.2</td><td>69.4</td></tr>
+        <tr><td>Nightlife</td><td>34.6</td><td>41.5</td><td>47.8</td><td>52.5</td><td>56.8</td></tr>
+        <tr class="tot"><td>Total Revenue</td><td>76.9</td><td>92.3</td><td>106.2</td><td>116.8</td><td>126.1</td></tr>
+        <tr><td>Revenue Growth</td><td>—</td><td>+20.0%</td><td>+15.0%</td><td>+10.0%</td><td>+8.0%</td></tr>
+        <tr><td>Cost of Sales</td><td>21.4</td><td>25.7</td><td>29.6</td><td>32.5</td><td>35.1</td></tr>
+        <tr><td>Gross Margin</td><td>55.5</td><td>66.6</td><td>76.6</td><td>84.2</td><td>91.0</td></tr>
+        <tr><td>Operating Expenses</td><td>29.1</td><td>36.7</td><td>38.5</td><td>40.5</td><td>42.5</td></tr>
+        <tr><td>EBITDA</td><td>26.4</td><td>29.9</td><td>38.0</td><td>43.8</td><td>48.5</td></tr>
+        <tr><td>EBITDA Margin</td><td>34.3%</td><td>32.4%</td><td>35.8%</td><td>37.5%</td><td>38.5%</td></tr>
+        <tr class="tot"><td>Net Profit</td><td>17.2</td><td>19.8</td><td>25.8</td><td>30.1</td><td>33.6</td></tr>
+        <tr><td>Net Margin</td><td>22.3%</td><td>21.4%</td><td>24.3%</td><td>25.7%</td><td>26.6%</td></tr>
+      </tbody>
+    </table>
+
+    <table class="fin-tbl">
+      <caption>High Case</caption>
+      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
+      <tbody>
+        <tr><td>Dining</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
+        <tr><td>Nightlife</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
+        <tr class="tot"><td>Total Revenue</td><td>130.7</td><td>154.2</td><td>177.4</td><td>198.7</td><td>218.5</td></tr>
+        <tr><td>Revenue Growth</td><td>—</td><td>+18.0%</td><td>+15.0%</td><td>+12.0%</td><td>+10.0%</td></tr>
+        <tr><td>Cost of Sales</td><td>36.1</td><td>42.6</td><td>49.0</td><td>54.8</td><td>60.3</td></tr>
+        <tr><td>Gross Margin</td><td>94.6</td><td>111.7</td><td>128.4</td><td>143.8</td><td>158.2</td></tr>
+        <tr><td>Operating Expenses</td><td>32.1</td><td>40.4</td><td>42.5</td><td>44.6</td><td>46.8</td></tr>
+        <tr><td>EBITDA</td><td>62.5</td><td>71.2</td><td>86.0</td><td>99.3</td><td>111.4</td></tr>
+        <tr><td>EBITDA Margin</td><td>47.8%</td><td>46.2%</td><td>48.5%</td><td>50.0%</td><td>51.0%</td></tr>
+        <tr class="tot"><td>Net Profit</td><td>44.0</td><td>50.4</td><td>61.3</td><td>71.1</td><td>80.1</td></tr>
+        <tr><td>Net Margin</td><td>33.6%</td><td>32.7%</td><td>34.6%</td><td>35.8%</td><td>36.7%</td></tr>
+      </tbody>
+    </table>
+
+    <p class="foot-note">Cost of sales runs at 27.9% in the base case and 27.6% in the high, for a gross margin of roughly 72% in both. Corporation tax is taken at 26%. Depreciation of ₱3,153,160 a year is charged below EBITDA; the model carries no debt and no interest.</p>
+  </section>
+
+  <!-- ============ PAGE 35 · THE RETURN ============ -->
+  <section class="sheet" id="the-return" aria-labelledby="return-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 32/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="return-heading">The Return on ₱13 Million</h2>
+    <p class="section-sub">An 18% holding, distributions paid annually out of net profit. Both cases below are drawn from the same model as the forecast on the previous page.</p>
+
+    <table class="fin-tbl">
+      <caption>Base Case — 18% Holder</caption>
+      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>18% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
+      <tbody>
+        <tr><td>Year 0</td><td>—</td><td>—</td><td>(13,000,000)</td><td>—</td><td>(13,000,000)</td></tr>
+        <tr><td>Year 1</td><td>17.2M</td><td>15.5M</td><td>2,782,936</td><td>21.4%</td><td>(10,217,064)</td></tr>
+        <tr><td>Year 2</td><td>19.8M</td><td>17.8M</td><td>3,205,605</td><td>24.7%</td><td>(7,011,459)</td></tr>
+        <tr><td>Year 3</td><td>25.8M</td><td>23.2M</td><td>4,183,133</td><td>32.2%</td><td>(2,828,326)</td></tr>
+        <tr><td>Year 4</td><td>30.1M</td><td>27.1M</td><td>4,870,239</td><td>37.5%</td><td>2,041,913</td></tr>
+        <tr><td>Year 5</td><td>33.6M</td><td>30.2M</td><td>5,435,624</td><td>41.8%</td><td>7,477,536</td></tr>
+        <tr class="tot"><td>Five Years</td><td></td><td></td><td>20,477,536</td><td>57.5%</td><td>7,477,536</td></tr>
+      </tbody>
+    </table>
+
+    <table class="fin-tbl">
+      <caption>High Case — 18% Holder</caption>
+      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>18% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
+      <tbody>
+        <tr><td>Year 0</td><td>—</td><td>—</td><td>(13,000,000)</td><td>—</td><td>(13,000,000)</td></tr>
+        <tr><td>Year 1</td><td>44.0M</td><td>39.6M</td><td>7,120,226</td><td>54.8%</td><td>(5,879,774)</td></tr>
+        <tr><td>Year 2</td><td>50.4M</td><td>45.3M</td><td>8,162,157</td><td>62.8%</td><td>2,282,383</td></tr>
+        <tr><td>Year 3</td><td>61.3M</td><td>55.2M</td><td>9,927,887</td><td>76.4%</td><td>12,210,270</td></tr>
+        <tr><td>Year 4</td><td>71.1M</td><td>64.0M</td><td>11,520,852</td><td>88.6%</td><td>23,731,122</td></tr>
+        <tr><td>Year 5</td><td>80.1M</td><td>72.1M</td><td>12,977,932</td><td>99.8%</td><td>36,709,054</td></tr>
+        <tr class="tot"><td>Five Years</td><td></td><td></td><td>49,709,054</td><td>282.4%</td><td>36,709,054</td></tr>
+      </tbody>
+    </table>
+
+    <div class="story-band">
+      <div><span class="sn">3.58</span><span class="sl">Years to Payback · Base</span></div>
+      <div><span class="sn">15.2%</span><span class="sl">IRR · Base</span></div>
+      <div><span class="sn">1.72</span><span class="sl">Years to Payback · High</span></div>
+      <div><span class="sn">60.3%</span><span class="sl">IRR · High</span></div>
+    </div>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">Distribution Policy</p>
+        <h4>90% of Net Profit</h4>
+        <p>Paid annually. The remaining tenth is retained for ongoing improvement capex, budgeted at 2% of revenue.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Cumulative Return</p>
+        <h4>57.5% · Base</h4>
+        <p>₱20,477,536 returned on ₱13,000,000 over five years, with the holding intact at the end of it.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Cumulative Return</p>
+        <h4>282.4% · High</h4>
+        <p>₱49,709,054 on the same ₱13,000,000, if the room trades closer to a full house on a Friday and Saturday.</p>
+      </div>
+    </div>
+
+    <p class="foot-note">Figures in parentheses are cash out. Distribution is 90% of net profit, paid annually. The base case crosses into positive cumulative cash during Year Four; the high case crosses during Year Two.</p>
+  </section>
+
+  <!-- ============ PAGE 36 · UNIT ECONOMICS ============ -->
+  <section class="sheet" id="unit-economics" aria-labelledby="unit-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 33/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="unit-heading">How the Room Earns</h2>
+    <p class="section-sub">Every area in the house is sold on a minimum spend rather than a cover charge. Filled once, the room takes ₱262,000 in a night.</p>
+
+    <table class="fin-tbl">
+      <caption>One Full Cover of the House</caption>
+      <thead><tr><th></th><th>Seats</th><th>Minimum Spend</th></tr></thead>
+      <tbody>
+        <tr><td>Private Dining Room</td><td>6–12</td><td>₱50,000</td></tr>
+        <tr><td>Omakase Counter</td><td>4–5</td><td>₱30,000</td></tr>
+        <tr><td>Banquette Three</td><td>8–10</td><td>₱20,000</td></tr>
+        <tr><td>Banquette Four</td><td>8–10</td><td>₱20,000</td></tr>
+        <tr><td>Banquette One</td><td>6</td><td>₱15,000</td></tr>
+        <tr><td>Banquette Two</td><td>6</td><td>₱15,000</td></tr>
+        <tr><td>Dining Room, ₱4,000 a head</td><td>28</td><td>₱112,000</td></tr>
+        <tr class="tot"><td>One Cover</td><td>77</td><td>₱262,000</td></tr>
+      </tbody>
+    </table>
+
+    <div class="reach-cards">
+      <div class="reach-card">
+        <p class="kicker">What the Base Case Asks</p>
+        <h4>₱246,565 a Night</h4>
+        <p>Year One revenue over 312 trading nights is one full cover of the house — before the second seating, before the bar, before a single buyout.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">Gross Margin</p>
+        <h4>72%</h4>
+        <p>Cost of sales at 27.9%. A supper club sells a room and a night, not only plates — which is what holds the margin above a restaurant's.</p>
+      </div>
+      <div class="reach-card">
+        <p class="kicker">The Payroll</p>
+        <h4>44 at Open</h4>
+        <p>₱1,362,100 a month across kitchen, floor and bar, rising to 48 in the high case. The largest single line in operating expense.</p>
+      </div>
+    </div>
+
+    <div class="story-band">
+      <div><span class="sn">312</span><span class="sl">Trading Nights a Year</span></div>
+      <div><span class="sn">₱262,000</span><span class="sl">One Full Cover</span></div>
+      <div><span class="sn">94%</span><span class="sl">What the Base Case Needs</span></div>
+      <div><span class="sn">₱2.43M</span><span class="sl">Operating Cost a Month</span></div>
+    </div>
+
+    <p class="foot-note"><strong>The rest of the operating line:</strong> rent at ₱4.5 million in Year One on 180 sqm, a 5% revenue share, ₱600,000 a month for talent — DJs and live sets — ₱205,000 in professional services, ₱198,000 in staff benefits, ₱50,000 in marketing, and roughly ₱219,000 in utilities, internet and storage.</p>
+  </section>
+
+  <!-- ============ PAGE 37 · PRESS ASSETS ============ -->
+  <section class="sheet" id="press-assets" aria-labelledby="assets-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Press Assets · 34/35</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="assets-heading">Press Assets</h2>
+    <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
+
+    <div class="assets-grid">
+      <figure class="assets-photo">
+        <img src="img/hallway-portal.jpg" alt="The green velvet entry corridor leading to the backlit onyx portal.">
+        <figcaption class="gal-cap"><p>The corridor — the house's signature image.</p></figcaption>
+      </figure>
+      <div class="assets-list">
+        <div class="asset-row"><span class="pn">01</span><div><h4>Photography</h4><p>All six rooms, the bar, the stage and the food from the kitchen — in print resolution.</p></div></div>
+        <div class="asset-row"><span class="pn">02</span><div><h4>The Team</h4><p>Chef partner Todd English and bar partner Roman Mutzner — biographies, credits and portrait photography.</p></div></div>
+        <div class="asset-row"><span class="pn">03</span><div><h4>Capacity Pack</h4><p>Floor plans, room dimensions, rigging points, power and load-in for every bookable space.</p></div></div>
+        <div class="asset-row"><span class="pn">04</span><div><h4>Interviews &amp; Access</h4><p>Kitchen and cellar interviews, chef-partner requests, and shoot access outside service hours.</p></div></div>
+        <div class="asset-row"><span class="pn">05</span><div><h4>Brand Approvals</h4><p>Logo usage, partnership announcements and co-branded creative, reviewed by the house.</p></div></div>
+      </div>
+    </div>
+
+    <p class="foot-note"><strong>Usage &amp; provenance:</strong> imagery is released for editorial coverage of Jade Supper Club. Interiors and food imagery are pre-opening design visualisations rather than documentary photography. Commercial use requires written approval from the house.</p>
+  </section>
+
+  <!-- ============ PAGE 30 · CONTACT ============ -->
+  <section class="sheet sheet--back" id="colophon" aria-labelledby="contact-heading">
+    <div class="back-inner">
+      <img class="back-photo" src="img/entry-onyx.jpg" alt="The backlit jade onyx slab at the end of the entry corridor.">
+      <p class="kicker">Reach Out</p>
+      <h2 id="contact-heading">Jade Supper Club</h2>
+      <p class="back-line">Bonifacio Global City · Taguig · Metro Manila</p>
+      <p class="back-line">Tuesday–Sunday · Doors 6PM · Bar until 2AM</p>
+      <p class="back-line">Reservations, private dining &amp; press inquiries via the house</p>
+      <span class="back-rule"></span>
+      <p class="back-foot">Produced July 2026 · All rooms, menus and capacities current at time of publication · 35/35</p>
+    </div>
+  </section>
+
+</main>
+
+<script>
+/* v7 hero scroll driver — enabled only for real, wide, motion-OK browsers */
+(function(){
+  var hero = document.querySelector('[data-v7hero]');
+  if (!hero) return;
+  if (navigator.webdriver) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  document.documentElement.classList.add('v7hero-on');
+
+  var title = hero.querySelector('[data-v7title]');
+  var ticking = false;
+
+  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
+  function ramp(v,a,b){ return clamp((v-a)/(b-a),0,1); }
+  function lerp(a,b,t){ return a+(b-a)*t; }
+
+  function frame(){
+    ticking = false;
+    var rect  = hero.getBoundingClientRect();
+    var total = hero.offsetHeight - window.innerHeight;
+    if (total <= 0) return;
+    var p  = clamp(-rect.top, 0, total) / total;
+    var pp = ramp(p, 0, 0.60);
+
+    var s = hero.style;
+    s.setProperty('--p',   p.toFixed(4));
+    s.setProperty('--fgs', lerp(1, 5.5, pp).toFixed(3));
+    s.setProperty('--fgo', (1 - pp).toFixed(3));
+    s.setProperty('--bgs', lerp(1, 1.3, pp).toFixed(3));
+    s.setProperty('--bgo', (1 - ramp(p, .42, .60)).toFixed(3));
+    s.setProperty('--to',  (1 - pp*pp).toFixed(3));
+    s.setProperty('--ty',  (-80 * pp * pp).toFixed(1) + 'px');
+    s.setProperty('--s2o', (ramp(p,.58,.72) * (1 - ramp(p,.84,.92))).toFixed(3));
+    s.setProperty('--s2s', lerp(.94, 1, ramp(p,.58,.74)).toFixed(3));
+    s.setProperty('--s3o', ramp(p,.82,.94).toFixed(3));
+    s.setProperty('--s3y', lerp(80, 0, ramp(p,.82,.94)).toFixed(1) + 'px');
+
+    if (title && p > 0.60) title.classList.add('is-in');
+  }
+
+  function onScroll(){
+    if (!ticking){ ticking = true; requestAnimationFrame(frame); }
+  }
+
+  window.addEventListener('scroll', onScroll, {passive:true});
+  window.addEventListener('resize', onScroll);
+  frame();
+})();
+</script>
+
+<script>
+/* ---- preview film: the poster swaps to the player on click ---- */
+(function(){
+  var f = document.querySelector('[data-jfilm]');
+  if (!f) return;
+  f.addEventListener('click', function(){
+    if (f.querySelector('video')) return;
+    var v = document.createElement('video');
+    v.src = 'v/jade-preview.mp4';
+    v.poster = 'v/jade-preview-poster.jpg';
+    v.controls = true; v.autoplay = true; v.playsInline = true;
+    v.setAttribute('playsinline', '');
+    f.textContent = '';
+    f.appendChild(v);
+    f.style.cursor = 'default';
+  });
+})();
+
+/* ---- photographs that move: hover plays, click pins ----
+   Fifteen of the stills have a matching clip in v/, named after the still itself.
+   The <video> is built on demand (nothing downloads until asked), dropped into the
+   photograph's nearest positioned ancestor and sized from the image's own rect, so
+   no sheet layout is disturbed and the print pages are unaffected. */
+(function(){
+  var CLIPS = ['entry-onyx','dining-brass','proscenium','bar-main','banquette-run',
+               'spiral-stair','back-bar','cellar-wall','glassware','mezzanine',
+               'powder-room','salon-art','fd-oyster-real','fd-handroll-real','chef-hands-real'];
+  var fits = [];
+
+  function host(im){
+    var el = im.parentElement;
+    while (el && el !== document.body){
+      if (getComputedStyle(el).position !== 'static') return el;
+      el = el.parentElement;
+    }
+    el = im.parentElement;
+    el.style.position = 'relative';
+    return el;
+  }
+
+  /* Sheets carry a fractional zoom under 880px. getBoundingClientRect() reports viewport
+     pixels, but left/top/width/height set on a child are read back in the host's own
+     scale, so the two disagree and the clip lands short of the photograph. */
+  function zoomOf(el){
+    var z = 1;
+    for (var n = el; n && n.nodeType === 1; n = n.parentElement){
+      var v = parseFloat(getComputedStyle(n).zoom);
+      if (v && v !== 1) z *= v;
+    }
+    return z || 1;
+  }
+
+  function box(el, im, h){
+    var z = zoomOf(h);
+    var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
+    el.style.left   = (b.left - a.left) / z + 'px';
+    el.style.top    = (b.top  - a.top)  / z + 'px';
+    el.style.width  = b.width  / z + 'px';
+    el.style.height = b.height / z + 'px';
+  }
+
+  function wire(im, name){
+    var h = host(im), vid = null, pinned = false;
+
+    var badge = document.createElement('span');
+    badge.className = 'jv-badge';
+    badge.innerHTML = '&#9654;';
+    h.appendChild(badge);
+
+    function fit(){
+      var z = zoomOf(h);
+      var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
+      badge.style.left = ((b.left - a.left) / z + 8) + 'px';
+      badge.style.top  = ((b.top - a.top + b.height) / z - 30) + 'px';
+      if (vid) box(vid, im, h);
+    }
+
+    function play(){
+      if (!vid){
+        vid = document.createElement('video');
+        vid.className = 'jv';
+        vid.muted = true; vid.loop = true; vid.playsInline = true;
+        vid.setAttribute('playsinline', '');
+        vid.setAttribute('preload', 'none');
+        vid.style.borderRadius = getComputedStyle(im).borderRadius;
+        vid.src = 'v/' + name + '.mp4';
+        /* only reveal once frames are genuinely running, never on a stalled load */
+        vid.addEventListener('playing', function(){
+          vid.classList.add('is-on');
+          badge.classList.add('is-hidden');
+        });
+        h.appendChild(vid);
+      }
+      box(vid, im, h);
+      var p = vid.play();
+      if (p && p.catch) p.catch(function(){});
+    }
+
+    function stop(){
+      if (!vid) return;
+      vid.classList.remove('is-on');
+      badge.classList.remove('is-hidden');
+      vid.pause();
+    }
+
+    im.style.cursor = 'pointer';
+    im.addEventListener('mouseenter', function(){ if (!pinned) play(); });
+    im.addEventListener('mouseleave', function(){ if (!pinned) stop(); });
+    im.addEventListener('click', function(e){
+      e.preventDefault();
+      pinned = !pinned;
+      if (pinned) play(); else stop();
+    });
+
+    fits.push(fit);
+    fit();
+  }
+
+  [].forEach.call(document.querySelectorAll('.kit-wrap img'), function(im){
+    /* the cover stays a still — the clip is far too soft blown up to a full page */
+    if (im.closest('.cover-photo')) return;
+    var m = /img\/([^\/]+)\.jpg/.exec(im.getAttribute('src') || '');
+    if (m && CLIPS.indexOf(m[1]) > -1) wire(im, m[1]);
+  });
+
+  if (!fits.length) return;
+  function refit(){ for (var i = 0; i < fits.length; i++) fits[i](); }
+  window.addEventListener('resize', refit);
+  window.addEventListener('load', refit);
+})();
+</script>
+
+</body>
+</html>
