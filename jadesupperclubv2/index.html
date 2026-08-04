@@ -117,21 +117,27 @@ html{background:#050b09}
 #the-return .fin-tbl{margin-top:13px}
 #the-return .fin-tbl th,#the-return .fin-tbl td{padding-top:5px;padding-bottom:5px}
 #the-return .foot-note{position:static;margin:12px 56px 0}
-/* chef-partner (16/35): the foot-note was pinned absolute and overlapped the 01/02/03 tenets.
-   Flow it in-line and trim the chef photo so the whole stack clears the sheet foot. */
-#chef-partner .story-photo img{height:340px}
-#chef-partner .foot-note{position:static;margin:11px 56px 0}
-/* bar-partner (17/35): Roman's portrait hero beside a reused spot-facts honours panel; a 2-up
-   action strip is pinned to the foot. This portrait frame is the one deliberately portrait frame
-   in the kit — object-position keeps his face inside the cover-crop. */
-#bar-partner .bar-hero{display:grid;grid-template-columns:300px 1fr;gap:26px;padding:16px 56px 0;align-items:start}
-#bar-partner .bar-portrait{margin:0}
-#bar-partner .bar-portrait img{width:100%;height:392px;object-fit:cover;object-position:50% 20%;border-radius:10px}
-#bar-partner .bar-copy .spot-facts{margin-top:14px}
-#bar-partner .bar-strip{position:absolute;left:0;right:0;bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 56px}
-#bar-partner .bar-strip figure{margin:0}
-#bar-partner .bar-strip img{width:100%;height:150px;object-fit:cover;object-position:50% 45%;border-radius:8px}
-#bar-partner .bar-strip figcaption{margin-top:6px;font:500 9.5px/1.35 Inter,sans-serif;color:#8aa096}
+/* chef-partner (16/36) + bar-partner (18/36): shared portrait-hero + 2-up action strip.
+   Roman's sheet is the reference; Todd Sheet 1 reuses the same classes. The Todd-specific
+   object-position overrides follow the shared rules so they win on equal specificity. */
+#bar-partner .bar-hero,#chef-partner .bar-hero{display:grid;grid-template-columns:300px 1fr;gap:26px;padding:16px 56px 0;align-items:start}
+#bar-partner .bar-portrait,#chef-partner .bar-portrait{margin:0}
+#bar-partner .bar-portrait img,#chef-partner .bar-portrait img{width:100%;height:392px;object-fit:cover;object-position:50% 20%;border-radius:10px}
+#bar-partner .bar-copy .spot-facts,#chef-partner .bar-copy .spot-facts{margin-top:14px}
+#bar-partner .bar-strip,#chef-partner .bar-strip{position:absolute;left:0;right:0;bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 56px}
+#bar-partner .bar-strip figure,#chef-partner .bar-strip figure{margin:0}
+#bar-partner .bar-strip img,#chef-partner .bar-strip img{width:100%;height:150px;object-fit:cover;object-position:50% 45%;border-radius:8px}
+#bar-partner .bar-strip figcaption,#chef-partner .bar-strip figcaption{margin-top:6px;font:500 9.5px/1.35 Inter,sans-serif;color:#8aa096}
+#chef-partner .bar-portrait img{object-position:50% 16%}
+#chef-partner .bar-strip figure:nth-child(1) img{object-position:50% 6%}
+#chef-partner .bar-strip figure:nth-child(2) img{object-position:50% 2%}
+/* chef-kitchen (17/36): the second Todd sheet — tenets + a six-cover cookbook shelf + budget note. */
+#chef-kitchen .philo-tenets{margin-top:16px}
+#chef-kitchen .foot-note{position:static;margin:14px 56px 0}
+#chef-kitchen .book-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px 22px;padding:0 56px;margin-top:20px}
+#chef-kitchen .book-grid figure{margin:0;display:flex;flex-direction:column;align-items:center}
+#chef-kitchen .book-grid img{width:auto;max-width:100%;height:198px;object-fit:contain;border-radius:4px;filter:drop-shadow(0 6px 16px rgba(0,0,0,.42))}
+#chef-kitchen .book-grid figcaption{margin-top:9px;text-align:center;font:600 9.5px/1.3 Inter,sans-serif;letter-spacing:.02em;color:#9db3a8}
 /* construction (28/35): eight real phases — 4 across, 2 down, no empty cell */
 #construction .gal-grid{grid-template-columns:repeat(4,1fr)}
 /* reserved tiles — construction photography drops in as each phase is shot */
@@ -345,7 +351,7 @@ html.v7hero-on .v7hero{display:block}
       <div class="v7s3-content">
         <span class="v7eyebrow"><i></i>The rooms, one by one<i></i></span>
         <h2 class="v7line">The Jade experience <em>awaits.</em></h2>
-        <span class="v7hint">Keep scrolling &mdash; 35 pages <i>&darr;</i></span>
+        <span class="v7hint">Keep scrolling &mdash; 36 pages <i>&darr;</i></span>
       </div>
     </div>
 
@@ -408,10 +414,10 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 2 · CONTENTS ============ -->
   <section class="sheet" id="contents" aria-labelledby="toc-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Contents · 02/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Contents · 02/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="toc-heading">Contents</h2>
-    <p class="section-sub">Thirty-five pages, five parts — the house, the table, the craft behind the room, the invitation, and the investment.</p>
+    <p class="section-sub">Thirty-six pages, five parts — the house, the table, the craft behind the room, the invitation, and the investment.</p>
 
     <div class="toc-cols">
       <div class="toc-part">
@@ -434,36 +440,37 @@ html.v7hero-on .v7hero{display:block}
         <ul>
           <li><span>Making the Room</span><span class="toc-pg">15</span></li>
           <li><span>The Chef Partner · Todd English</span><span class="toc-pg">16</span></li>
-          <li><span>The Bar Partner · Roman Mutzner</span><span class="toc-pg">17</span></li>
-          <li><span>The Cellar</span><span class="toc-pg">18</span></li>
-          <li><span>The Music Programme</span><span class="toc-pg">19</span></li>
+          <li><span>The English Kitchen</span><span class="toc-pg">17</span></li>
+          <li><span>The Bar Partner · Roman Mutzner</span><span class="toc-pg">18</span></li>
+          <li><span>The Cellar</span><span class="toc-pg">19</span></li>
+          <li><span>The Music Programme</span><span class="toc-pg">20</span></li>
         </ul>
       </div>
       <div class="toc-part">
         <h3><span class="toc-rn">IV</span>The Invitation</h3>
         <ul>
-          <li><span>Private Dining &amp; Events</span><span class="toc-pg">21</span></li>
-          <li><span>The Salon</span><span class="toc-pg">22</span></li>
-          <li><span>The Late Room</span><span class="toc-pg">23</span></li>
-          <li><span>Credentials &amp; Partnerships</span><span class="toc-pg">24</span></li>
-          <li><span>The Room, by the Numbers</span><span class="toc-pg">25</span></li>
+          <li><span>Private Dining &amp; Events</span><span class="toc-pg">22</span></li>
+          <li><span>The Salon</span><span class="toc-pg">23</span></li>
+          <li><span>The Late Room</span><span class="toc-pg">24</span></li>
+          <li><span>Credentials &amp; Partnerships</span><span class="toc-pg">25</span></li>
+          <li><span>The Room, by the Numbers</span><span class="toc-pg">26</span></li>
         </ul>
         <h3><span class="toc-rn">V</span>The Investment</h3>
         <ul>
-          <li><span>The Road to October</span><span class="toc-pg">27</span></li>
-          <li><span>The Build, Phase by Phase</span><span class="toc-pg">28</span></li>
-          <li><span>The Opportunity</span><span class="toc-pg">29</span></li>
-          <li><span>Where the ₱40 Million Goes</span><span class="toc-pg">30</span></li>
-          <li><span>Five-Year Forecast</span><span class="toc-pg">31</span></li>
-          <li><span>The Return</span><span class="toc-pg">32</span></li>
-          <li><span>How the Room Earns</span><span class="toc-pg">33</span></li>
-          <li><span>Press Assets</span><span class="toc-pg">34</span></li>
-          <li><span>Contact</span><span class="toc-pg">35</span></li>
+          <li><span>The Road to October</span><span class="toc-pg">28</span></li>
+          <li><span>The Build, Phase by Phase</span><span class="toc-pg">29</span></li>
+          <li><span>The Opportunity</span><span class="toc-pg">30</span></li>
+          <li><span>Where the ₱40 Million Goes</span><span class="toc-pg">31</span></li>
+          <li><span>Five-Year Forecast</span><span class="toc-pg">32</span></li>
+          <li><span>The Return</span><span class="toc-pg">33</span></li>
+          <li><span>How the Room Earns</span><span class="toc-pg">34</span></li>
+          <li><span>Press Assets</span><span class="toc-pg">35</span></li>
+          <li><span>Contact</span><span class="toc-pg">36</span></li>
         </ul>
       </div>
     </div>
 
-    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 34.</p>
+    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 35.</p>
   </section>
 
   <!-- ============ PAGE 3 · DIVIDER — PART I ============ -->
@@ -474,13 +481,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The House</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">A green velvet corridor, a lit slab of onyx, and a room that does not tell you what time it is.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 03/35</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 03/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 4 · THE STORY OF JADE ============ -->
   <section class="sheet" id="the-house" aria-labelledby="bio-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 04/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 04/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>Jade Supper Club</h2>
 
@@ -523,13 +530,13 @@ html.v7hero-on .v7hero{display:block}
     <img src="img/grand-guests.jpg" alt="The Grand Room at Jade Supper Club, full at dinner service.">
     <div class="plate-cap">
       <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
-      <span class="plate-meta">Jade Supper Club · The Grand Room · 05/35</span>
+      <span class="plate-meta">Jade Supper Club · The Grand Room · 05/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 6 · AN EVENING AT JADE ============ -->
   <section class="sheet" id="an-evening" aria-labelledby="tl-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 06/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 06/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="tl-heading">An Evening at Jade</h2>
 
@@ -568,7 +575,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 7 · PHILOSOPHY ============ -->
   <section class="sheet" id="philosophy" aria-labelledby="philo-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 07/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The House · 07/36</span></div>
     <div class="page-rule"></div>
 
     <div class="philo-block">
@@ -600,13 +607,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Table</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">The wood oven, the ice bar and the brass counter — the room where the food is made.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 08/35</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 08/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 13 · SPOTLIGHT — THE WOOD OVEN ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-kitchen" aria-labelledby="spot-kitchen-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 09/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 09/36</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 03 — The Pass · Open to the Grand Room</p>
     <h2 class="spot-title" id="spot-kitchen-heading">The Wood Oven</h2>
@@ -635,7 +642,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 14 · SPOTLIGHT — THE STAGE ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-stage" aria-labelledby="spot-stage-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 10/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 10/36</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 04 — The Proscenium · Far End of the Grand Room</p>
     <h2 class="spot-title" id="spot-stage-heading">The Stage</h2>
@@ -664,7 +671,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 15 · SPOTLIGHT — THE SPIRAL ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-spiral" aria-labelledby="spot-spiral-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 11/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 11/36</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 05 — The Brass Spiral · Grand Room to Mezzanine</p>
     <h2 class="spot-title" id="spot-spiral-heading">The Spiral &amp; The Mezzanine</h2>
@@ -693,7 +700,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 16 · FROM THE KITCHEN (gallery I) ============ -->
   <section class="sheet" id="from-the-kitchen" aria-labelledby="gallery-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 12/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 12/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery-heading">From the Kitchen</h2>
     <p class="section-sub">Plates from the Jade kitchen. High-resolution files of every photograph are available for editorial use.</p>
@@ -737,7 +744,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
   <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 13/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Table · 13/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
     <p class="section-sub">Six rooms, one material palette — emerald, brass, onyx and velvet, from the corridor to the cellar.</p>
@@ -795,13 +802,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Craft</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">The materials, the chef partner, the bar, the cellar and the music — everything behind the room.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 14/35</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 14/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 19 · MAKING THE ROOM ============ -->
   <section class="sheet sheet--dark" id="making-the-room" aria-labelledby="craft-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 15/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 15/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="craft-heading"><span class="script-kick">the craft</span>Making the Room</h2>
     <p class="section-sub">Four materials, used everywhere and mixed nowhere else. This is the whole palette.</p>
@@ -851,40 +858,67 @@ html.v7hero-on .v7hero{display:block}
     </div>
   </section>
 
-  <!-- ============ PAGE 20 · THE CHEF PARTNER ============ -->
+  <!-- ============ PAGE 16 · THE CHEF PARTNER — TODD ENGLISH ============ -->
   <section class="sheet" id="chef-partner" aria-labelledby="todd-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 16/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 16/36</span></div>
     <div class="page-rule"></div>
-    <h2 class="section-title" id="todd-heading">The Chef Partner</h2>
+    <h2 class="section-title" id="todd-heading">Todd English</h2>
+    <p class="section-sub">The Chef Partner &mdash; five James Beard Awards, fifteen cookbooks, and his first fine-dining room in the Philippines.</p>
 
-    <figure class="story-photo">
-      <img src="img/chef-hands-real.jpg" alt="Finishing a plate at the Jade pass.">
-      <figcaption class="gal-cap"><p>The food at Jade is built in partnership with chef Todd English — his first fine-dining room in the Philippines.</p></figcaption>
-    </figure>
-
-    <div class="story-cols">
-      <p><span class="drop">T</span>odd English trained under Jean-Jacques Rachou at La Côte Basque, then cooked through Italy and returned with rustic Mediterranean food over live fire. Olives opened in Charlestown in 1989 and grew into a group of restaurants across four continents — five James Beard Awards, fifteen cookbooks and years of national television behind them.</p>
-      <p>At Jade he is not a lent name but the house's anchor: he shapes the food, returns for every seasonal change and cooks the opening service himself. In a city where fine dining trades on imported chefs, his is the single biggest draw the room carries — the reason Jade opens with a national profile instead of spending years building one.</p>
+    <div class="bar-hero">
+      <figure class="bar-portrait">
+        <img src="img/todd-portrait.jpg" alt="Chef Todd English, culinary partner at Jade Supper Club.">
+      </figure>
+      <div class="bar-copy">
+        <p><span class="drop">T</span>odd English trained under Jean-Jacques Rachou at La C&ocirc;te Basque, then cooked through Italy and came home with rustic Mediterranean food over live fire. He opened Olives in Charlestown in 1989 and built it into a group of restaurants across four continents &mdash; five James Beard Awards, fifteen cookbooks and years of national television behind him.</p>
+        <p>At Jade he is not a lent name but the house&rsquo;s anchor: he shapes the food, returns for every seasonal change and cooks the opening service himself. In a city where fine dining trades on imported chefs, his is the single biggest draw the room carries &mdash; the reason Jade opens with a national profile instead of building one over years.</p>
+        <aside class="spot-facts spot-facts--light">
+          <h4>Career Highlights</h4>
+          <ul>
+            <li><strong>1989</strong>Olives, Charlestown &mdash; the wood-oven room that made his name</li>
+            <li><strong>1991</strong>James Beard Rising Star Chef of the Year</li>
+            <li><strong>2001</strong>Iron Chef USA &mdash; national television</li>
+            <li><strong>2003</strong>bluezoo at the Walt Disney World Dolphin</li>
+            <li><strong>2022</strong>Founder, The English Hospitality Group</li>
+          </ul>
+        </aside>
+      </div>
     </div>
 
-    <div class="story-band">
-      <div><span class="sn">5</span><span class="sl">James Beard Awards</span></div>
-      <div><span class="sn">1989</span><span class="sl">Olives Founded</span></div>
-      <div><span class="sn">15</span><span class="sl">Cookbooks</span></div>
-      <div><span class="sn">4</span><span class="sl">Continents</span></div>
+    <div class="bar-strip">
+      <figure><img src="img/todd-kitchen.jpg" alt="Todd English cooking in chef whites."><figcaption>At the pass &mdash; live-fire cooking.</figcaption></figure>
+      <figure><img src="img/todd-emmy.jpg" alt="Todd English at a television awards evening."><figcaption>Years of national television.</figcaption></figure>
     </div>
+  </section>
+
+  <!-- ============ PAGE 17 · THE CHEF PARTNER — THE ENGLISH KITCHEN ============ -->
+  <section class="sheet" id="chef-kitchen" aria-labelledby="kitchen-heading">
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 17/36</span></div>
+    <div class="page-rule"></div>
+    <h2 class="section-title" id="kitchen-heading">The English Kitchen</h2>
+    <p class="section-sub">How Todd English builds the food at Jade &mdash; the fire, the tableside theatre, the Manila larder, and the shelf of cookbooks behind it all.</p>
 
     <div class="philo-tenets">
       <div><span class="pn">01</span><h4>The Wood Oven</h4><p>Built into the centre of the Jade pass, not hidden behind it. Flatbread, whole fish and the short rib all pass through the fire.</p></div>
-      <div><span class="pn">02</span><h4>The Gu&eacute;ridon</h4><p>The rolling table he brought back from France — pasta finished, fish carved, sauces mounted in front of the guest.</p></div>
+      <div><span class="pn">02</span><h4>The Gu&eacute;ridon</h4><p>The rolling table he brought back from France &mdash; pasta finished, fish carved, sauces mounted in front of the guest.</p></div>
       <div><span class="pn">03</span><h4>Manila&rsquo;s Larder</h4><p>The grammar is his; the ingredients are not. Lapu-lapu, calamansi, Batangas barako and Philippine oysters replace the Mediterranean originals.</p></div>
     </div>
-    <p class="foot-note"><strong>The partnership, in the model:</strong> chef travel is budgeted at ₱300,000 a year for the seasonal menu changes and the opening service. The resident brigade — a head chef, a sous chef, a sushi chef and eight line cooks — carries the room every other night of the year.</p>
+
+    <div class="book-grid">
+      <figure><img src="img/book-olives.png" alt="The Olives Table cookbook cover."><figcaption>The Olives Table</figcaption></figure>
+      <figure><img src="img/book-figs.png" alt="The Figs Table cookbook cover."><figcaption>The Figs Table</figcaption></figure>
+      <figure><img src="img/book-everyday.png" alt="Cooking in Everyday English cookbook cover."><figcaption>Cooking in Everyday English</figcaption></figure>
+      <figure><img src="img/book-pizza.png" alt="Todd English's Rustic Pizza cookbook cover."><figcaption>Rustic Pizza</figcaption></figure>
+      <figure><img src="img/book-hotel.png" alt="The Olives Dessert Table cookbook cover."><figcaption>The Olives Dessert Table</figcaption></figure>
+      <figure><img src="img/book-todd.png" alt="The Air Fryer Cookbook cover."><figcaption>The Air Fryer Cookbook</figcaption></figure>
+    </div>
+
+    <p class="foot-note"><strong>The partnership, in the model:</strong> chef travel is budgeted at ₱300,000 a year for the seasonal menu changes and the opening service. The resident brigade &mdash; a head chef, a sous chef, a sushi chef and eight line cooks &mdash; carries the room every other night of the year.</p>
   </section>
 
   <!-- ============ PAGE 17 · THE BAR PARTNER — ROMAN MUTZNER ============ -->
   <section class="sheet" id="bar-partner" aria-labelledby="roman-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 17/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 18/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="roman-heading">The Bar Partner</h2>
     <p class="section-sub">The newest addition to the house — and one of the most decorated bartenders in Europe — shaping the Jade bar.</p>
@@ -917,7 +951,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 21 · THE CELLAR ============ -->
   <section class="sheet" id="the-cellar" aria-labelledby="cellar-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 18/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 19/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="cellar-heading">The Cellar</h2>
     <p class="section-sub">A cold room built for sake first and wine second — the reverse of every other list in the city.</p>
@@ -954,7 +988,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 22 · THE MUSIC PROGRAMME ============ -->
   <section class="sheet" id="music" aria-labelledby="music-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 19/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Craft · 20/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="music-heading">The Music Programme</h2>
     <p class="section-sub">Two sets a night, seven nights a week — programmed Filipino-first, and loud enough to matter.</p>
@@ -993,13 +1027,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Invitation</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">Private dining, buyouts, the late room — and how to get in touch.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 20/35</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 21/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 24 · PRIVATE DINING & EVENTS ============ -->
   <section class="sheet" id="private-dining" aria-labelledby="events-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 21/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 22/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="events-heading"><span class="script-kick">the invitation</span>Private Dining &amp; Events</h2>
 
@@ -1048,7 +1082,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 25 · FEATURE — THE SALON ============ -->
   <section class="sheet" id="feature-salon" aria-labelledby="feat-salon-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 22/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 23/36</span></div>
     <div class="page-rule"></div>
     <p class="kicker feat-kick">Bookable Now — Off the Grand Room · Eighteen Seats</p>
     <h2 class="section-title feat-title" id="feat-salon-heading">The Salon</h2>
@@ -1083,7 +1117,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 26 · FEATURE — THE LATE ROOM ============ -->
   <section class="sheet" id="feature-late" aria-labelledby="feat-late-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 23/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Invitation · 24/36</span></div>
     <div class="page-rule"></div>
     <p class="kicker feat-kick">Midnight to 2AM — The Bar, The Spiral &amp; The Mezzanine</p>
     <h2 class="section-title feat-title" id="feat-late-heading">The Late Room</h2>
@@ -1118,7 +1152,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 27 · CREDENTIALS & PARTNERSHIPS ============ -->
   <section class="sheet" id="credentials" aria-labelledby="cred-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Credentials · 24/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Credentials · 25/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="cred-heading"><span class="script-kick">the record</span>Credentials &amp; Partnerships</h2>
 
@@ -1153,7 +1187,7 @@ html.v7hero-on .v7hero{display:block}
       <div class="partner-col">
         <span class="pn">03</span>
         <h4>Content &amp; Editorial</h4>
-        <p>Shoot access to all six rooms outside service hours, in-house capture for partners, and the full asset library on page 37.</p>
+        <p>Shoot access to all six rooms outside service hours, in-house capture for partners, and the full asset library on page 35.</p>
       </div>
     </div>
 
@@ -1162,7 +1196,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 28 · THE ROOM, BY THE NUMBERS ============ -->
   <section class="sheet" id="numbers" aria-labelledby="numbers-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Room · 25/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Room · 26/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="numbers-heading">The Room, by the Numbers</h2>
 
@@ -1210,13 +1244,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Investment</h2>
       <span class="div-orn">✦</span>
       <p class="div-line">A ₱40 million build, a ₱13 million ticket, and a room designed to earn its keep from the first Saturday.</p>
-      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 26/35</span>
+      <span class="div-foot">Jade Supper Club · Media Kit 2026 · 27/36</span>
     </div>
   </section>
 
   <!-- ============ PAGE 30 · ROAD TO OCTOBER ============ -->
   <section class="sheet" id="road-to-october" aria-labelledby="road-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 27/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 28/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="road-heading">The Road to October</h2>
 
@@ -1252,7 +1286,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 31 · CONSTRUCTION PROGRESS (PLACEHOLDER) ============ -->
   <section class="sheet" id="construction" aria-labelledby="const-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 28/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 29/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="const-heading">The Build, Phase by Phase</h2>
     <p class="section-sub">Eight phases from framing to handover, tracking to a 30 October completion. Site photography drops into these frames as each phase is shot — the schedule and the captions are live; only the images are pending.</p>
@@ -1280,7 +1314,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 32 · THE OPPORTUNITY ============ -->
   <section class="sheet" id="the-opportunity" aria-labelledby="opp-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 29/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 30/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="opp-heading">The Opportunity</h2>
     <p class="section-sub">The same five-year model, run twice — once on conservative trade, once on the room performing to the capacity it was built for.</p>
@@ -1331,7 +1365,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 33 · THE ₱40 MILLION BUILD ============ -->
   <section class="sheet" id="the-build" aria-labelledby="build-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 30/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 31/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="build-heading">Where the ₱40 Million Goes</h2>
 
@@ -1388,7 +1422,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 34 · FIVE-YEAR FORECAST ============ -->
   <section class="sheet" id="forecast" aria-labelledby="fcst-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 31/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 32/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="fcst-heading">Five-Year Forecast</h2>
     <p class="section-sub">In millions of pesos. Two rooms, two revenue lines — dinner service and the late half of the night — modelled separately and summed.</p>
@@ -1434,7 +1468,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 35 · THE RETURN ============ -->
   <section class="sheet" id="the-return" aria-labelledby="return-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 32/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 33/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="return-heading">The Return on ₱13 Million</h2>
     <p class="section-sub">An 18% holding, distributions paid annually out of net profit. Both cases below are drawn from the same model as the forecast on the previous page.</p>
@@ -1497,7 +1531,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 36 · UNIT ECONOMICS ============ -->
   <section class="sheet" id="unit-economics" aria-labelledby="unit-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 33/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">The Investment · 34/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="unit-heading">How the Room Earns</h2>
     <p class="section-sub">Every area in the house is sold on a minimum spend rather than a cover charge. Filled once, the room takes ₱262,000 in a night.</p>
@@ -1547,7 +1581,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 37 · PRESS ASSETS ============ -->
   <section class="sheet" id="press-assets" aria-labelledby="assets-heading">
-    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Press Assets · 34/35</span></div>
+    <div class="page-head"><span class="ph-brand">Jade Supper Club · Manila</span><span class="ph-no">Press Assets · 35/36</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="assets-heading">Press Assets</h2>
     <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
@@ -1579,7 +1613,7 @@ html.v7hero-on .v7hero{display:block}
       <p class="back-line">Tuesday–Sunday · Doors 6PM · Bar until 2AM</p>
       <p class="back-line">Reservations, private dining &amp; press inquiries via the house</p>
       <span class="back-rule"></span>
-      <p class="back-foot">Produced July 2026 · All rooms, menus and capacities current at time of publication · 35/35</p>
+      <p class="back-foot">Produced July 2026 · All rooms, menus and capacities current at time of publication · 36/36</p>
     </div>
   </section>
 
