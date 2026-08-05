@@ -37,6 +37,8 @@
 - [AI Product Photography for Small Business: Menus & Listings](https://next-frame.agency/blog/ai-product-photos-menus-listings/): A zero-to-low-cost, honest AI product photography workflow for PH SMBs selling on Shopee, Lazada, and Facebook, using real tools and real pricing.
 - [Competitor Monitoring for Small Businesses: A Free, Legal 30-Minute Routine](https://next-frame.agency/blog/competitor-monitoring-tools-small-business/): A free, legal 30-minute weekly routine for Philippine small businesses: track competitor prices, ads and reviews using Google Alerts, Meta Ad Library and Google reviews.
 - [Hiring a Web or Marketing Provider? 7 Checks Before You Pay](https://next-frame.agency/blog/how-to-choose-marketing-agency-philippines/): A buyer-side guide for Philippine business owners: 7 checks before paying a web designer or marketing agency — ownership, deliverables, exit terms, red flags.
+- [How to Write Shopee and Lazada Listings With AI](https://next-frame.agency/blog/sell-on-shopee-lazada-with-ai/): Views but no orders on Shopee or Lazada? How to find the words buyers actually type, write titles that rank, and use free AI tools without getting flagged.
+- [What's Safe to Paste Into AI: A Data Privacy Guide for Philippine Businesses](https://next-frame.agency/blog/ai-data-privacy-small-business/): A plain-English guide for PH small business owners: what the Data Privacy Act (RA 10173) actually requires, plus a RED/AMBER/GREEN list of what's safe to paste into ChatGPT, Gemini, or Copilot.
 
 
 ## Contact
