@@ -1,0 +1,59 @@
+<meta charset="utf-8">
+<title>身份板 Identity Board — 金無垢</title>
+<style>
+:root{--ink:#1c1a15;--gold:#8f7638;--gold-b:#c9a24b;--line:#d8cfba;--paper:#faf7ef}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:#33302a;display:flex;justify-content:center;align-items:flex-start;padding:20px;font-family:"Segoe UI",system-ui,sans-serif}
+.cjk{font-family:"Yu Mincho","Songti SC","Microsoft YaHei",serif}
+#board{width:1680px;background:var(--paper);border:2px solid var(--ink);color:var(--ink)}
+.hd{display:flex;align-items:baseline;gap:18px;padding:20px 28px;border-bottom:2px solid var(--ink)}
+.hd .logo{font-size:15px;letter-spacing:4px;color:var(--gold)}
+.hd .nm{font-size:40px;font-weight:600;letter-spacing:6px}
+.hd .ro{font-size:15px;letter-spacing:3px;color:#6b6353;text-transform:uppercase}
+.hd .tag{margin-left:auto;font-size:12px;letter-spacing:3px;color:var(--gold);border:1px solid var(--gold-b);padding:5px 14px}
+.row{display:flex;border-bottom:2px solid var(--ink)}
+.cell{flex:1;border-right:1.5px solid var(--line);display:flex;flex-direction:column}
+.cell:last-child{border-right:none}
+.cell .lb{font-size:11px;letter-spacing:3px;color:var(--paper);background:var(--gold);padding:5px 12px;display:flex;justify-content:space-between}
+.cell .lb .c{font-size:12px}
+.cell .im{height:660px;background:#fff;display:flex;align-items:center;justify-content:center;overflow:hidden}
+.cell .im img{max-width:100%;max-height:100%;object-fit:contain}
+.ex .im{height:410px;padding:10px 0}
+.ex .im img{width:96%;max-height:100%;object-fit:contain}
+.ex .cell{flex:1}
+.ft{display:flex;justify-content:space-between;padding:10px 28px;font-size:10px;letter-spacing:2px;color:#8a8171}
+</style>
+<div id="board">
+  <div class="hd">
+    <span class="logo cjk">金無垢</span>
+    <span class="nm cjk" id="nmcn"></span>
+    <span class="ro" id="nmen"></span>
+    <span class="tag cjk">身份板 IDENTITY BOARD</span>
+  </div>
+  <div class="row">
+    <div class="cell"><div class="lb"><span>FRONT · OFFICIAL</span><span class="c cjk">正面</span></div><div class="im"><img id="v-front"></div></div>
+    <div class="cell"><div class="lb"><span>SIDE</span><span class="c cjk">側面</span></div><div class="im"><img id="v-side"></div></div>
+    <div class="cell"><div class="lb"><span>BACK</span><span class="c cjk">背面</span></div><div class="im"><img id="v-back"></div></div>
+    <div class="cell"><div class="lb"><span>ACTION</span><span class="c cjk">動態</span></div><div class="im"><img id="v-action"></div></div>
+  </div>
+  <div class="row ex">
+    <div class="cell"><div class="lb"><span>EXPRESSIONS — neutral · serious · smile · angry · surprised</span><span class="c cjk">表情</span></div><div class="im"><img id="v-expr"></div></div>
+  </div>
+  <div class="ft"><span>PROJECT KINMUKU · CHARACTER IDENTITY REFERENCE — attach this single image to bind the character</span><span id="ftid"></span></div>
+</div>
+<script>
+const NAMES={
+ '01':['赤座玄鬼','Akaza Genki'],'02':['九條白蓮','Kujo Byakuren'],'03':['大江炎馬','Oe Enma'],
+ '04':['茨木義牙','Ibaraki Giga'],'05':['鞍馬烏嶽','Kurama Ugaku'],'06':['鞍馬白嶺','Kurama Hakurei'],
+ '07':['霜月澄','Shimotsuki Sumi'],'08':['綾女','Ayame'],'09':['白妙','Shirotae'],
+ '10':['碧吉','Aokichi'],'11':['黒縁','Kuroberi'],'12':['紅緒','Benio'],
+ '13':['玉藻静香','Tamamo Shizuka'],'14':['峰','Mine'],'15':['黒潮','Kuroshio']};
+const id=(new URLSearchParams(location.search).get('id')||'01').padStart(2,'0');
+const n=NAMES[id]||['',''];
+document.getElementById('nmcn').textContent=n[0];
+document.getElementById('nmen').textContent=n[1];
+document.getElementById('ftid').textContent='NO. '+id+' · '+n[1].toUpperCase();
+document.title=`身份板 ${n[0]} — 金無垢`;
+document.getElementById('v-front').src=`assets/refs/${id}.png`;
+for(const v of ['side','back','action','expr']) document.getElementById('v-'+v).src=`assets/design/${id}-${v}.png`;
+</script>

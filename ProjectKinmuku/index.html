@@ -1,0 +1,999 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>金無垢 KINMUKU — Interactive Codex</title>
+<script src="data.js"></script>
+<script src="demo_kit.js"></script>
+<script src="gallery_data.js"></script>
+<script src="manga_data.js"></script>
+<style>
+:root{
+  --ink:#0a0c12; --ink2:#0f121b; --panel:#151824; --panel2:#1b1f2c;
+  --gold:#c9a24b; --gold-bright:#e8cf8b; --gold-dim:#8f7638;
+  --red:#8b2f28; --red-bright:#c0453b;
+  --text:#e9e4d7; --muted:#948f82; --faint:#615d54;
+  --line:rgba(201,162,75,.16); --line2:rgba(201,162,75,.30);
+  --serif:"Songti SC","Yu Mincho","Hiragino Mincho ProN",Georgia,"Times New Roman",serif;
+  --sans:"Helvetica Neue",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --cjk:"Songti SC","Yu Mincho","Hiragino Mincho ProN","Microsoft YaHei",serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  background:var(--ink); color:var(--text); font-family:var(--sans);
+  -webkit-font-smoothing:antialiased; overflow:hidden;
+}
+body::before{ /* subtle grain + vignette */
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background:
+    radial-gradient(120% 90% at 50% -10%, rgba(201,162,75,.05), transparent 55%),
+    radial-gradient(140% 120% at 50% 120%, rgba(139,47,40,.06), transparent 60%),
+    repeating-linear-gradient(0deg, rgba(255,255,255,.012) 0 1px, transparent 1px 3px);
+  mix-blend-mode:screen;
+}
+#app{position:relative; z-index:1; display:grid; grid-template-columns:220px 1fr; height:100vh}
+
+/* ---------- left rail ---------- */
+#rail{
+  background:linear-gradient(180deg,var(--ink2),#0b0e15); border-right:1px solid var(--line);
+  display:flex; flex-direction:column; padding:20px 0; overflow:auto;
+}
+#brand{padding:4px 22px 20px; cursor:pointer}
+#brand .kanji{font-family:var(--cjk); font-size:34px; letter-spacing:6px; font-weight:600;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold),var(--gold-dim));
+  -webkit-background-clip:text; background-clip:text; color:transparent;}
+#brand .romaji{font-size:11px; letter-spacing:4px; color:var(--muted); margin-top:4px}
+.navitem{
+  display:flex; align-items:center; gap:12px; padding:11px 22px; cursor:pointer;
+  color:var(--muted); border-left:2px solid transparent; transition:.15s; font-size:14px;
+}
+.navitem .ico{font-family:var(--cjk); font-size:17px; color:var(--gold-dim); width:20px; text-align:center}
+.navitem .en{font-size:11px; letter-spacing:1px; opacity:.7; margin-left:auto}
+.navitem:hover{color:var(--text); background:rgba(201,162,75,.05)}
+.navitem.active{color:var(--gold-bright); border-left-color:var(--gold); background:rgba(201,162,75,.08)}
+.navitem.active .ico{color:var(--gold)}
+#rail .spacer{flex:1}
+#rail .foot{padding:14px 22px 0; font-size:10px; color:var(--faint); line-height:1.6; border-top:1px solid var(--line); margin-top:12px}
+
+/* ---------- top bar ---------- */
+#main{display:flex; flex-direction:column; min-width:0; height:100vh}
+#topbar{
+  display:flex; align-items:center; gap:16px; padding:14px 30px; border-bottom:1px solid var(--line);
+  background:linear-gradient(180deg,rgba(15,18,27,.9),rgba(10,12,18,.6)); backdrop-filter:blur(4px);
+}
+#crumb{font-family:var(--serif); font-size:15px; color:var(--text); letter-spacing:.5px}
+#crumb .sep{color:var(--faint); margin:0 8px}
+#crumb .cn{font-family:var(--cjk); color:var(--gold)}
+#langtoggle{margin-left:auto; display:flex; border:1px solid var(--line2); border-radius:20px; overflow:hidden}
+#langtoggle button{
+  background:transparent; color:var(--muted); border:0; padding:6px 14px; cursor:pointer;
+  font-size:12px; font-family:var(--sans); letter-spacing:1px; transition:.15s;
+}
+#langtoggle button.on{background:var(--gold); color:#1a1206; font-weight:600}
+#view{flex:1; overflow:auto; padding:34px 40px 80px; scroll-behavior:smooth}
+#view::-webkit-scrollbar,#rail::-webkit-scrollbar{width:10px}
+#view::-webkit-scrollbar-thumb,#rail::-webkit-scrollbar-thumb{background:rgba(201,162,75,.2); border-radius:6px}
+
+/* ---------- shared ---------- */
+h1.title{font-family:var(--serif); font-weight:600; font-size:30px; letter-spacing:.5px; margin-bottom:4px}
+h1.title .cn{font-family:var(--cjk); color:var(--gold-bright); margin-right:14px}
+.sub{color:var(--muted); font-size:14px; margin-bottom:26px; max-width:720px; line-height:1.6}
+.cn{font-family:var(--cjk)}
+.en{font-family:var(--sans)}
+.badge{display:inline-block; font-size:10px; letter-spacing:1px; padding:2px 8px; border-radius:10px;
+  border:1px solid var(--line2); color:var(--gold); text-transform:uppercase}
+.prop{font-size:9px; color:var(--red-bright); border:1px solid rgba(192,69,59,.4); border-radius:4px;
+  padding:1px 5px; letter-spacing:1px; vertical-align:middle; margin-left:6px}
+.section-h{font-family:var(--serif); font-size:19px; color:var(--gold-bright); margin:34px 0 14px;
+  padding-bottom:8px; border-bottom:1px solid var(--line); letter-spacing:.5px}
+.section-h .cn{color:var(--gold-bright)}
+.section-h .en{color:var(--muted); font-size:13px; font-family:var(--sans); margin-left:10px; letter-spacing:1px}
+
+/* bilingual pair rows */
+.pair{padding:9px 0; border-bottom:1px dashed rgba(201,162,75,.09); line-height:1.7}
+.pair .cn{display:block; color:#d9d3c4; font-size:15.5px}
+.pair .en{display:block; color:var(--muted); font-size:14px; margin-top:3px}
+.pair.only .en{color:#d9d3c4; font-size:15px; margin-top:0}
+.pair.p .cn,.pair.p .en{opacity:.82}
+
+/* ---------- HUB ---------- */
+.hub-hero{text-align:center; padding:20px 0 20px}
+.hub-cover{position:relative; max-width:760px; margin:0 auto 6px; border-radius:16px; overflow:hidden;
+  border:1px solid var(--line2); box-shadow:0 24px 64px rgba(0,0,0,.55)}
+.hub-cover img{width:100%; display:block}
+.hub-cover::after{content:""; position:absolute; inset:0; pointer-events:none;
+  background:linear-gradient(180deg,transparent 82%,rgba(8,10,15,.32))}
+.hub-hero .rom{letter-spacing:12px; color:var(--muted); font-size:15px; margin-top:10px}
+.hub-hero .tag{color:var(--gold); font-family:var(--serif); font-size:17px; margin-top:22px; letter-spacing:.5px}
+.hub-hero .tagcn{color:var(--muted); font-family:var(--cjk); font-size:14px; margin-top:6px}
+.hub-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(220px,1fr)); gap:16px; margin-top:40px}
+.hub-card{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; padding:22px; cursor:pointer; transition:.18s; position:relative; overflow:hidden}
+.hub-card:hover{border-color:var(--line2); transform:translateY(-3px); box-shadow:0 12px 30px rgba(0,0,0,.4)}
+.hub-card .ico{font-family:var(--cjk); font-size:30px; color:var(--gold); display:block; margin-bottom:14px}
+.hub-card .t{font-family:var(--serif); font-size:18px; color:var(--text)}
+.hub-card .tc{font-family:var(--cjk); color:var(--gold-bright); font-size:15px; margin-right:8px}
+.hub-card .d{color:var(--muted); font-size:12.5px; margin-top:8px; line-height:1.5}
+.hub-card .n{position:absolute; top:16px; right:18px; font-size:11px; color:var(--faint); letter-spacing:1px}
+
+/* ---------- roster ---------- */
+.filters{display:flex; flex-wrap:wrap; gap:8px; margin-bottom:24px; align-items:center}
+.chip{background:var(--panel); border:1px solid var(--line); color:var(--muted); padding:6px 13px;
+  border-radius:16px; font-size:12px; cursor:pointer; transition:.15s; letter-spacing:.3px}
+.chip:hover{color:var(--text); border-color:var(--line2)}
+.chip.on{background:var(--gold); color:#1a1206; border-color:var(--gold); font-weight:600}
+.chip .dot{display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px; vertical-align:middle}
+.roster{display:grid; grid-template-columns:repeat(auto-fill,minmax(178px,1fr)); gap:18px}
+.ccard{background:linear-gradient(165deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; overflow:hidden; cursor:pointer; transition:.18s; position:relative}
+.ccard:hover{transform:translateY(-4px); border-color:var(--line2); box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.ccard.dim{opacity:.5; filter:saturate(.6)}
+.ccard .art{height:190px; position:relative; display:flex; align-items:center; justify-content:center; overflow:hidden}
+.ccard .art img{width:100%; height:100%; object-fit:cover; display:block}
+.medallion{width:100%; height:100%; display:flex; align-items:center; justify-content:center; position:relative}
+.medallion .seal{writing-mode:vertical-rl; font-family:var(--cjk); font-weight:600; font-size:40px;
+  color:#f4ecd8; letter-spacing:6px; padding:14px 10px; border:1.5px solid rgba(255,255,255,.25);
+  border-radius:6px; text-shadow:0 2px 12px rgba(0,0,0,.5); background:rgba(0,0,0,.14)}
+.ccard .pri{position:absolute; top:10px; left:10px; font-size:10px; letter-spacing:1px; font-weight:700;
+  background:rgba(0,0,0,.45); color:var(--gold-bright); padding:2px 7px; border-radius:6px; border:1px solid var(--line)}
+.ccard .part1{position:absolute; top:10px; right:10px; font-size:9px; letter-spacing:1px;
+  background:var(--gold); color:#1a1206; padding:2px 7px; border-radius:6px; font-weight:700}
+.ccard .bd{position:absolute; bottom:10px; left:10px; font-size:9px; letter-spacing:1px;
+  background:rgba(0,0,0,.5); color:var(--muted); padding:2px 7px; border-radius:6px; border:1px solid var(--line2)}
+.ccard .meta{padding:13px 14px 15px}
+.ccard .nm{font-family:var(--cjk); font-size:18px; color:var(--text); font-weight:600}
+.ccard .rm{font-size:11px; color:var(--muted); letter-spacing:.5px; margin-top:2px}
+.ccard .sp{font-size:11px; color:var(--gold-dim); margin-top:8px; display:flex; justify-content:space-between; align-items:center}
+.ccard .atag{font-size:9px; letter-spacing:.5px; padding:2px 7px; border-radius:8px; color:#0c0c0c}
+
+/* ---------- character detail ---------- */
+.detail-head{display:flex; gap:26px; align-items:flex-start; margin-bottom:10px}
+.detail-art{width:200px; flex:0 0 200px; height:260px; border-radius:12px; overflow:hidden;
+  border:1px solid var(--line2); position:relative}
+.detail-art img{width:100%; height:100%; object-fit:cover}
+.detail-info h1{font-family:var(--cjk); font-size:38px; font-weight:600; letter-spacing:2px; line-height:1.1}
+.detail-info .rom{font-size:16px; color:var(--muted); letter-spacing:3px; margin-top:6px}
+.detail-info .tags{display:flex; flex-wrap:wrap; gap:8px; margin:16px 0}
+.detail-info .tags span{font-size:11px; padding:4px 10px; border-radius:12px; border:1px solid var(--line2); color:var(--gold); letter-spacing:.5px}
+.detail-info .role{color:#d9d3c4; font-size:14px; line-height:1.6; max-width:560px; font-style:italic; border-left:2px solid var(--gold-dim); padding-left:14px; margin-top:8px}
+.jump{display:flex; flex-wrap:wrap; gap:7px; margin:22px 0 10px; position:sticky; top:-34px; padding:12px 0; background:linear-gradient(180deg,var(--ink) 70%,transparent); z-index:5}
+.jump a{font-size:11px; color:var(--muted); border:1px solid var(--line); padding:5px 11px; border-radius:14px; cursor:pointer; transition:.15s}
+.jump a:hover{color:var(--gold-bright); border-color:var(--line2)}
+.quote{font-family:var(--serif); color:var(--gold-bright); font-size:17px; padding:10px 0 10px 20px;
+  border-left:2px solid var(--gold); margin:8px 0; line-height:1.5}
+.quote .en{color:var(--muted); font-size:14px; font-style:italic; font-family:var(--sans); display:block; margin-top:4px}
+.detail-nav{display:flex; justify-content:space-between; margin-top:44px; gap:14px}
+.detail-nav button{flex:1; background:var(--panel); border:1px solid var(--line); color:var(--muted);
+  padding:14px; border-radius:10px; cursor:pointer; font-family:var(--sans); transition:.15s; text-align:left}
+.detail-nav button:hover{color:var(--text); border-color:var(--line2)}
+.detail-nav button.next{text-align:right}
+.detail-nav .lbl{font-size:10px; letter-spacing:2px; color:var(--faint); display:block; margin-bottom:4px}
+.detail-nav .nm{font-family:var(--cjk); font-size:15px}
+.backbtn{display:inline-flex; align-items:center; gap:8px; color:var(--muted); cursor:pointer; font-size:13px; margin-bottom:20px; transition:.15s}
+.backbtn:hover{color:var(--gold)}
+
+/* ---------- precept ladder ---------- */
+.ladder{max-width:860px; margin:10px auto}
+.rung{display:flex; align-items:center; gap:18px; padding:16px 20px; margin:0 0 4px auto; border-radius:10px;
+  background:linear-gradient(90deg,var(--panel),var(--ink2)); border:1px solid var(--line); transition:.18s; cursor:default}
+.rung:hover{border-color:var(--line2); transform:translateX(4px)}
+.rung .num{font-family:var(--serif); font-size:30px; width:52px; height:52px; flex:0 0 52px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; color:#1a1206;
+  background:radial-gradient(circle at 35% 30%,var(--gold-bright),var(--gold-dim)); font-weight:700}
+.rung .body .cn{font-family:var(--cjk); font-size:17px; color:var(--text)}
+.rung .body .en{font-size:13px; color:var(--muted); margin-top:3px}
+.rung .ch{margin-left:auto; font-size:11px; color:var(--gold-dim); letter-spacing:1px; white-space:nowrap}
+.summit{text-align:center; padding:26px; margin-bottom:18px}
+.summit .sun{font-family:var(--cjk); font-size:40px; letter-spacing:8px;
+  background:linear-gradient(180deg,var(--gold-bright),var(--gold-dim)); -webkit-background-clip:text; background-clip:text; color:transparent}
+.summit .en{color:var(--muted); letter-spacing:4px; font-size:12px; margin-top:8px}
+
+/* ---------- episodes ---------- */
+.eps{display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:18px}
+.epcard{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line);
+  border-radius:12px; padding:22px; position:relative; overflow:hidden}
+.epcard .epn{font-family:var(--serif); font-size:13px; color:var(--gold); letter-spacing:3px}
+.epcard h3{font-family:var(--cjk); font-size:21px; margin:6px 0 3px; color:var(--text)}
+.epcard .then{font-size:12px; color:var(--muted); letter-spacing:1px}
+.epcard .field{margin-top:14px}
+.epcard .field .k{font-size:10px; letter-spacing:2px; color:var(--gold-dim); text-transform:uppercase}
+.epcard .field .v{font-size:13.5px; color:#d3cdbe; line-height:1.6; margin-top:4px}
+.epcard .field .v .en{color:var(--muted); font-size:12.5px; display:block; margin-top:2px}
+.epcard::after{content:attr(data-big); position:absolute; right:-6px; bottom:-24px; font-family:var(--serif);
+  font-size:110px; color:rgba(201,162,75,.05); font-weight:700; pointer-events:none}
+
+/* timeline */
+.timeline{margin:14px 0 0; border-left:2px solid var(--line2); padding-left:24px}
+.tl{position:relative; padding:10px 0}
+.tl::before{content:""; position:absolute; left:-31px; top:16px; width:12px; height:12px; border-radius:50%;
+  background:var(--gold); box-shadow:0 0 0 4px var(--ink)}
+.tl .nm{font-family:var(--cjk); font-size:16px; color:var(--text)}
+.tl .nm .rm{font-family:var(--sans); font-size:11px; color:var(--muted); margin-left:8px}
+.tl .when{font-size:11px; color:var(--gold-dim); letter-spacing:1px}
+.tl .note{font-size:12.5px; color:var(--muted); margin-top:2px}
+
+/* ---------- story reader ---------- */
+.chlist{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:12px}
+.chitem{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:16px 18px; cursor:pointer; transition:.15s}
+.chitem:hover{border-color:var(--line2); background:var(--panel2)}
+.chitem .cn{font-family:var(--cjk); font-size:16px; color:var(--gold-bright)}
+.chitem .en{font-size:12px; color:var(--muted); margin-top:4px}
+.reader{max-width:760px; margin:0 auto}
+.reader .ln{padding:6px 0; line-height:1.85}
+.reader .ln .cn{font-family:var(--cjk); font-size:17px; color:#e4ddcc; display:block}
+.reader .ln .en{font-size:15px; color:var(--muted); display:block; margin-top:5px; line-height:1.7}
+.reader.mono .ln .cn,.reader.mono .ln .en{font-size:16.5px; color:#e4ddcc}
+.reader .rule{text-align:center; color:var(--gold-dim); padding:14px 0; font-size:18px}
+.reader .end{text-align:center; color:var(--gold); font-family:var(--serif); letter-spacing:2px; padding:20px 0; font-style:italic}
+.reader h2{font-family:var(--cjk); text-align:center; font-size:26px; color:var(--gold-bright); margin:10px 0 6px}
+.reader .h2en{text-align:center; color:var(--muted); letter-spacing:2px; font-size:13px; margin-bottom:30px}
+
+/* glossary + tables */
+.gloss{display:grid; grid-template-columns:repeat(auto-fill,minmax(300px,1fr)); gap:12px}
+.gitem{background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.gitem .cn{font-family:var(--cjk); font-size:17px; color:var(--gold-bright)}
+.gitem .en{font-size:13.5px; color:var(--text); margin-top:3px}
+.gitem .note{font-size:11.5px; color:var(--muted); margin-top:5px; line-height:1.5}
+.svg-wrap{background:linear-gradient(160deg,var(--panel),var(--ink2)); border:1px solid var(--line); border-radius:12px; padding:22px; margin-bottom:28px}
+.svg-wrap .cap{font-family:var(--serif); color:var(--gold-bright); font-size:15px; margin-bottom:14px; letter-spacing:.5px}
+@media(max-width:820px){#app{grid-template-columns:64px 1fr} #brand .romaji,.navitem .label-txt,.navitem .en{display:none} #view{padding:24px 18px}}
+</style>
+
+<div id="app">
+  <nav id="rail">
+    <div id="brand" onclick="go('#hub')">
+      <div class="kanji">金無垢</div>
+      <div class="romaji">KINMUKU · CODEX</div>
+    </div>
+    <div id="nav"></div>
+    <div class="spacer"></div>
+    <div class="foot">Interactive Codex · Part One<br>Canon by Fable · built from the<br>bilingual source bible.</div>
+  </nav>
+  <div id="main">
+    <div id="topbar">
+      <div id="crumb"></div>
+      <div id="langtoggle">
+        <button data-m="cn">中文</button>
+        <button data-m="both">雙語</button>
+        <button data-m="en">EN</button>
+      </div>
+    </div>
+    <div id="view"></div>
+  </div>
+</div>
+
+<script>
+const D = window.KINMUKU_DATA;
+let MODE = localStorage.getItem('kinmuku_mode') || 'both';
+
+const NAV = [
+  {ico:'序', hash:'#hub',        cn:'總覽',  en:'HUB'},
+  {ico:'角', hash:'#characters', cn:'角色',  en:'CAST'},
+  {ico:'界', hash:'#world',      cn:'世界',  en:'WORLD'},
+  {ico:'行', hash:'#precepts',   cn:'修行',  en:'PRECEPTS'},
+  {ico:'集', hash:'#episodes',   cn:'分集',  en:'EPISODES'},
+  {ico:'物', hash:'#story',      cn:'故事',  en:'STORY'},
+  {ico:'製', hash:'#production', cn:'製作',  en:'PRODUCTION'},
+  {ico:'詞', hash:'#glossary',   cn:'詞彙',  en:'GLOSSARY'},
+  {ico:'映', hash:'#demo',       cn:'示範',  en:'DEMO'},
+  {ico:'畫', hash:'#gallery',    cn:'畫集',  en:'ART'},
+  {ico:'漫', hash:'#manga',      cn:'漫畫',  en:'MANGA'},
+];
+
+// departure order (curation from canon Ch11–13)
+const DEPART = [
+  {id:'08', when:'Ch 11', note:'First — she no longer needs to prove she exists.'},
+  {id:'03', when:'Ch 13', note:'Leaves first among the kings; speaks the words that end the era.'},
+  {id:'04', when:'Ch 13', note:'Lowers his head — understands loyalty as knowing when to release.'},
+  {id:'05', when:'Ch 13', note:'The judge withdraws.'},
+  {id:'06', when:'Ch 13', note:'Last of the kings; one look back before dissolving into gold.'},
+  {id:'11', when:'Ch 13', note:'One morning, quietly becomes light.'},
+  {id:'02', when:'Ch 13', note:'Second-to-last; walks into the light before him, without goodbye.'},
+  {id:'01', when:'Ch 13', note:'The last — bridge-keeper of Edo for years, then Golden Stillness.'},
+];
+
+const byId = id => D.characters.find(c => c.id === id);
+const esc = s => (s||'').replace(/[&<>]/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+
+// render a bilingual pair per language mode
+function pair(p, cls){
+  cls = cls || '';
+  if(p.proposal) cls += ' p';
+  const cn = esc(p.cn), en = esc(p.en);
+  const prop = p.proposal ? '<span class="prop">提案 PROPOSAL</span>' : '';
+  if(MODE==='cn') return `<div class="pair only ${cls}"><span class="cn">${cn}${prop}</span></div>`;
+  if(MODE==='en') return `<div class="pair only ${cls}"><span class="en">${en||cn}${prop}</span></div>`;
+  return `<div class="pair ${cls}"><span class="cn">${cn}${prop}</span><span class="en">${en}</span></div>`;
+}
+// bilingual title text (returns inline HTML)
+function biTitle(cn, en){
+  if(MODE==='cn') return `<span class="cn">${esc(cn)}</span>`;
+  if(MODE==='en') return `<span class="en">${esc(en)}</span>`;
+  return `<span class="cn">${esc(cn)}</span><span class="en">${esc(en)}</span>`;
+}
+function sectionHead(cn,en){ return `<div class="section-h">${biTitle(cn,en)}</div>`; }
+
+function medallion(c){
+  return `<div class="medallion" style="background:radial-gradient(120% 90% at 50% 25%, ${c.color2}, ${c.color} 70%, #0c0c0c)">
+    <div class="seal">${esc(c.kanji)}</div></div>`;
+}
+// Which face represents this character anywhere in the codex.
+//
+// The cast grid and the detail head are the first thing anyone opens, and until 2026-07-29 both showed
+// assets/portraits/<id>.png — the 7/27 pre-v3 portraits, i.e. the OLD art direction. The v3 boards were
+// mounted further down the page, so the whole codex read as "only the art page changed" while every
+// face on the cast page was still the art we replaced. The board hero is the current face; the old
+// portrait stays as the fallback for a character that has no board yet.
+function heroSrc(c){
+  const b = boardOf(c);
+  return b ? `${window.KINMUKU_GALLERY.boardDir}/${b.key}/panels/${b.key}_hero.jpg`
+           : `assets/portraits/${c.id}.png`;
+}
+function artBlock(c, cls){
+  // board hero if the character has a board, else the old portrait; onerror swaps to medallion
+  const mid = medallion(c).replace(/"/g,'&quot;');
+  return `<div class="${cls}"><img src="${heroSrc(c)}" alt="${esc(c.romaji)}"
+     onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${mid}"></div>`;
+}
+
+/* ---------------- VIEWS ---------------- */
+function vHub(){
+  const cards = NAV.filter(n=>n.hash!=='#hub').map(n=>{
+    const desc = {
+      '#characters':'The fifteen — oni, foxes, tengu, and the reserved cast. Filter by archetype.',
+      '#world':'World rules, core themes, the Naming, and the diminishing loop toward the Immaculate Realm.',
+      '#precepts':'The eight rungs of the Practice, from "do not act to prove yourself" to "do not resent."',
+      '#episodes':'Part One mapped to eight episodes, plus the order of departures into Golden Stillness.',
+      '#story':'Read the prologue and thirteen chapters, line-aligned Chinese and English.',
+      '#production':'The six-stage character production line, folder standard, and T0–T3 status board.',
+      '#glossary':'Locked terms and names — the translation bible, at a glance.',
+      '#demo':'Eight flagship demo clips — Seedance 2.0 at 1080p, each generated from the locked board stack: character board, motion board, keyframe.',
+    }[n.hash]||'';
+    return `<div class="hub-card" onclick="go('${n.hash}')">
+      <span class="ico">${n.ico}</span>
+      <div class="t"><span class="tc">${n.cn}</span>${n.en}</div>
+      <div class="d">${desc}</div></div>`;
+  }).join('');
+  return `<div class="hub-cover"><img src="assets/cover.png" alt="金無垢 KINMUKU ONLINE"
+        onerror="this.closest('.hub-cover').remove()"></div>
+    <div class="hub-hero">
+      <div class="tag">${esc(D.meta.part_en)}</div>
+      <div class="tagcn">${esc(D.meta.tagline_cn)}</div>
+    </div>
+    <div class="sub" style="text-align:center;margin:22px auto 0">${esc(D.meta.tagline_en)}. When humans <em>name</em> the evil they refuse to admit onto yokai, the Night Parade carries the city's fear away — until the oni at its head stops for the first time.</div>
+    ${coreLoopSVG()}
+    <div class="hub-grid">${cards}</div>`;
+}
+
+function vCharacters(){
+  const arch = D.archetypes.map(a=>{
+    const n = D.characters.filter(c=>c.archetypeKey===a.key).length;
+    return `<div class="chip archf" data-k="${a.key}"><span class="dot" style="background:${a.color2}"></span>${a.cn} <span style="opacity:.6">${a.en} ·${n}</span></div>`;
+  }).join('');
+  const cards = D.characters.map(cardHTML).join('');
+  return `<h1 class="title">${biTitle('角色列傳','The Fifteen')}</h1>
+    <div class="sub">Click any character for their full bilingual sheet — the v3 character board (turnaround, expressions, head, details, wardrobe) sits at the top, followed by base, appearance, arc, relationships, key lines, voice, and production checklist. <b>BOARD</b> = all five panels built and gated; all fifteen now carry one. <b style="color:var(--gold)">Gold badge</b> = present in Part One. Priority <b>T0–T3</b> marks production order.</div>
+    <div class="filters">
+      <div class="chip archf on" data-k="all">全部 All</div>
+      <div class="chip partf" data-k="p1">第一部 Part One</div>
+      ${arch}
+    </div>
+    <div class="roster" id="roster">${cards}</div>`;
+}
+function cardHTML(c){
+  const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+  return `<div class="ccard" data-arch="${c.archetypeKey}" data-p1="${c.active?1:0}" onclick="go('#char/${c.id}')">
+    <div class="art">${artBlockInner(c)}</div>
+    <div class="pri">${c.priority}</div>
+    ${c.active?'<div class="part1">PART I</div>':''}
+    ${boardOf(c)?'<div class="bd">BOARD</div>':''}
+    <div class="meta">
+      <div class="nm">${esc(c.kanji)}</div>
+      <div class="rm">${esc(c.romaji)}</div>
+      <div class="sp"><span>${esc(MODE==='en'?c.species_en:c.species_cn)}</span>
+        <span class="atag" style="background:${a.color2}">${esc(a.en||'')}</span></div>
+    </div></div>`;
+}
+// medallion inside .art (no extra wrapper)
+function artBlockInner(c){ return `<img src="${heroSrc(c)}" alt="${esc(c.romaji)}"
+   onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${medallion(c).replace(/"/g,'&quot;')}">`; }
+
+// Board block on the per-character sheet. The v3 boards were only reachable from the ART view, so
+// from the cast page the codex looked untouched — the boards existed and nothing pointed at them.
+// ART already links board -> canon entry (#char/<id>); this is the missing return leg.
+function boardOf(c){
+  const G = window.KINMUKU_GALLERY;
+  return (G && (G.boards||[]).find(b=>b.id===c.id && !b.pending)) || null;
+}
+function charBoardBlock(c){
+  const b = boardOf(c);
+  if(!b) return '';
+  const dir = `${window.KINMUKU_GALLERY.boardDir}/${b.key}`;
+  return `<div style="margin-top:4px">
+    ${sectionHead('設定板','Character Board')}
+    <div style="display:flex;gap:14px;align-items:flex-start;flex-wrap:wrap;margin:-6px 0 13px">
+      <div style="flex:1;min-width:240px;font-size:11.5px;color:var(--muted);line-height:1.65">${esc(b.note)}</div>
+      <div style="display:flex;gap:8px;flex:0 0 auto">
+        <a href="${dir}/board_${b.key}.html" target="_blank"
+          style="font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--gold);text-decoration:none;border:1px solid var(--line2);border-radius:5px;padding:5px 11px">OPEN BOARD ↗</a>
+        <span class="galthumb" data-full="${dir}/board_${b.key}.jpg"
+          data-cap="${esc(b.romaji+' — full character board')}"
+          style="font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--muted);border:1px solid var(--line);border-radius:5px;padding:5px 11px;cursor:zoom-in">ONE SHEET</span>
+      </div>
+    </div>
+    <div style="display:flex;gap:7px">${panelStrip(b)}</div>
+  </div>`;
+}
+
+function vChar(id){
+  const c = byId(id); if(!c) return vCharacters();
+  const a = D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+  const idx = D.characters.findIndex(x=>x.id===id);
+  const prev = D.characters[(idx+14)%15], next = D.characters[(idx+1)%15];
+  const isQuotes = s => /台詞|Key Lines/.test(s.cn+s.en);
+  const jumps = c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='en'?s.en:s.cn)}</a>`).join('');
+  const secs = c.sections.map((s,i)=>{
+    let body;
+    if(isQuotes(s)){
+      body = s.pairs.map(p=>{
+        if(MODE==='cn') return `<div class="quote">${esc(p.cn)}</div>`;
+        if(MODE==='en') return `<div class="quote">${esc(p.en||p.cn)}</div>`;
+        return `<div class="quote">${esc(p.cn)}<span class="en">${esc(p.en)}</span></div>`;
+      }).join('');
+    } else {
+      body = s.pairs.map(p=>pair(p)).join('');
+    }
+    return `<div id="sec${i}">${sectionHead(s.cn,s.en)}${body}</div>`;
+  }).join('');
+  return `<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+      <span class="backbtn" style="margin-bottom:0" onclick="go('#characters')">← ${MODE==='cn'?'返回角色':'Back to cast'}</span>
+      <span style="display:flex;gap:10px">
+        <a class="backbtn" style="margin-bottom:0;color:var(--gold)" href="charsheet_pro.html?id=${c.id}" target="_blank">${MODE==='cn'?'角色設定表':'Design Sheet'} ↗</a>
+        <a class="backbtn" style="margin-bottom:0;color:var(--gold)" href="sheet.html?id=${c.id}" target="_blank">${MODE==='cn'?'製作設定表':'Production Sheet'} ↗</a>
+      </span>
+    </div>
+    <div class="detail-head">
+      ${artBlock(c,'detail-art')}
+      <div class="detail-info">
+        <h1>${esc(c.kanji)}</h1>
+        <div class="rom">${esc(c.romaji)}</div>
+        <div class="tags">
+          <span>${esc(c.species_cn)} · ${esc(c.species_en)}</span>
+          <span style="border-color:${a.color2};color:${a.color2}">${esc(a.cn)} ${esc(a.en)}</span>
+          <span>優先 ${c.priority}</span>
+          <span>${c.active?'第一部登場 · In Part One':'保留 · Reserved'}</span>
+        </div>
+        <div class="role">${esc(c.roleline)}</div>
+      </div>
+    </div>
+    ${charBoardBlock(c)}
+    <div class="jump">${jumps}</div>
+    ${secs}
+    <div class="detail-nav">
+      <button onclick="go('#char/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.kanji)} · ${esc(prev.romaji)}</span></button>
+      <button class="next" onclick="go('#char/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.kanji)} · ${esc(next.romaji)}</span></button>
+    </div>`;
+}
+
+function docView(titleCn,titleEn,sub,sections){
+  const body = sections.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('');
+  return `<h1 class="title">${biTitle(titleCn,titleEn)}</h1><div class="sub">${sub}</div>${body}`;
+}
+function vWorld(){
+  return `<h1 class="title">${biTitle('世界觀與規則','The World & Its Rules')}</h1>
+    <div class="sub">Edo, c. 1780–1830. The Story Bible: what the Night Parade is, why fear becomes oni, and the loop that ends in Golden Stillness.</div>
+    ${coreLoopSVG()}
+    ${D.world.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('')}`;
+}
+function vPrecepts(){
+  const rungs = D.precepts.slice().reverse().map(p=>{
+    const chm = (p.cn.match(/（(第[^）]+)）/)||[])[1] || '';
+    const cnClean = p.cn.replace(/（第[^）]+）/,'').trim();
+    return `<div class="rung">
+      <div class="num">${p.n}</div>
+      <div class="body"><div class="cn">${esc(cnClean)}</div><div class="en">${esc(p.en)}</div></div>
+      <div class="ch">${esc(chm)}</div></div>`;
+  }).join('');
+  return `<h1 class="title">${biTitle('修行八條','The Eight Precepts')}</h1>
+    <div class="sub">Byakuren defines the Practice as "to remain in existence even when unneeded." Genki earns each precept through an encounter, climbing toward the stillness of pure gold.</div>
+    <div class="ladder">
+      <div class="summit"><div class="sun">金寂</div><div class="en">GOLDEN STILLNESS · the Immaculate Realm</div></div>
+      ${rungs}
+    </div>`;
+}
+function vEpisodes(){
+  const eps = D.episodes.filter(s=>/Episode\s*\d/.test(s.en));
+  const overview = D.episodes.find(s=>/Overview/.test(s.en));
+  const hooks = D.episodes.find(s=>/Hooks/.test(s.en));
+  const cards = eps.map((s,i)=>{
+    const fields = s.pairs.map(p=>{
+      const cn=esc(p.cn), en=esc(p.en);
+      const v = MODE==='cn'?cn : MODE==='en'?en : `${cn}<span class="en">${en}</span>`;
+      return `<div class="field"><div class="v">${v}</div></div>`;
+    }).join('');
+    return `<div class="epcard" data-big="${i+1}">
+      <div class="epn">EPISODE ${i+1}</div>${fields}
+      <a href="episode.html?ep=${i+1}" target="_blank" style="display:inline-block;margin-top:10px;color:var(--gold-bright);text-decoration:none;font-size:12.5px;letter-spacing:1px;border:1px solid var(--line2);border-radius:8px;padding:7px 12px">▶ 分鏡 · Storyboard &amp; Narration</a></div>`;
+  }).join('');
+  const tl = DEPART.map(d=>{ const c=byId(d.id); const a=D.archetypes.find(x=>x.key===c.archetypeKey)||{};
+    return `<div class="tl"><div class="nm">${esc(c.kanji)}<span class="rm">${esc(c.romaji)}</span> <span class="when">· ${d.when}</span></div>
+      <div class="note">${esc(d.note)}</div></div>`;}).join('');
+  return `<h1 class="title">${biTitle('分集規劃','Part One — 8 Episodes')}</h1>
+    <div class="sub">${overview?esc(MODE==='en'?overview.pairs[0].en:overview.pairs[0].cn):''}</div>
+    <a href="storyboard.html" target="_blank" style="display:flex;align-items:center;gap:16px;text-decoration:none;margin-bottom:24px;padding:18px 22px;border:1px solid var(--line2);border-radius:12px;background:linear-gradient(120deg,rgba(201,162,75,.12),var(--panel));transition:.18s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--line2)'">
+      <span style="font-family:var(--cjk);font-size:30px;color:var(--gold)">分</span>
+      <span><span style="font-family:var(--cjk);font-size:17px;color:var(--gold-bright)">分鏡生成台</span> <span style="color:var(--muted);font-size:13px">— Storyboard Generation Deck</span>
+        <span style="display:block;color:var(--muted);font-size:12.5px;margin-top:4px">The whole story cut into <b style="color:var(--gold)">24 fifteen-second segments</b> — each with its v3 storyboard keyframe, character &amp; motion boards, and a copy-ready Higgsfield prompt</span></span>
+      <span style="margin-left:auto;color:var(--gold);font-size:12px">OPEN ↗</span></a>
+    <div class="eps">${cards}</div>
+    ${sectionHead('金寂 · 退場順序','Departures — Golden Stillness Order')}
+    <div class="sub">Ayame is the first to lay down her weight; Genki, the last. The order the cast becomes light:</div>
+    <div class="timeline">${tl}</div>
+    ${hooks?sectionHead('未來掛鉤','Future Hooks')+hooks.pairs.map(p=>pair(p)).join(''):''}`;
+}
+function vProduction(){
+  return `<h1 class="title">${biTitle('角色製作流程','Character Production Line')}</h1>
+    <div class="sub">Every character moves down the same six-stage line. The Character Profile and Translation Bible are the source of truth; anything flagged <span class="prop">提案 PROPOSAL</span> becomes canon only after sign-off.</div>
+    ${D.pipeline.map(s=>`${sectionHead(s.cn,s.en)}${s.pairs.map(p=>pair(p)).join('')}`).join('')}`;
+}
+function vStory(){
+  const list = D.story.map(ch=>`<div class="chitem" onclick="go('#story/${ch.id}')">
+    <div class="cn">${esc(ch.title_cn)}</div><div class="en">${esc(ch.title_en)}</div></div>`).join('');
+  return `<h1 class="title">${biTitle('第一部 · 百鬼夜行','Part One — The Night Parade')}</h1>
+    <div class="sub">Fourteen chapters, line-aligned Chinese and English. Use the 中文 / 雙語 / EN toggle to read in either language or both.</div>
+    <a href="prologue.html" target="_blank" style="display:flex;align-items:center;gap:16px;text-decoration:none;margin-bottom:24px;padding:18px 22px;border:1px solid var(--line2);border-radius:12px;background:linear-gradient(120deg,rgba(201,162,75,.10),var(--panel));transition:.18s" onmouseover="this.style.borderColor='var(--gold)'" onmouseout="this.style.borderColor='var(--line2)'">
+      <span style="font-family:var(--cjk);font-size:30px;color:var(--gold)">▶</span>
+      <span><span style="font-family:var(--cjk);font-size:17px;color:var(--gold-bright)">序章 · 夜行之常</span> <span style="color:var(--muted);font-size:13px">— Prologue Storyboard</span>
+        <span style="display:block;color:var(--muted);font-size:12.5px;margin-top:4px">Watch the comic storyboard with camera angles + playable narration (中文 老者旁白 · English female)</span></span>
+      <span style="margin-left:auto;color:var(--gold);font-size:12px">OPEN ↗</span></a>
+    <div class="chlist">${list}</div>`;
+}
+function vChapter(id){
+  const ch = D.story.find(c=>c.id===id); if(!ch) return vStory();
+  const idx = D.story.findIndex(c=>c.id===id);
+  const prev = D.story[idx-1], next = D.story[idx+1];
+  const lines = ch.lines.map(l=>{
+    const cn=(l.cn||'').trim(), en=(l.en||'').trim();
+    if(cn==='⸻'||en==='⸻') return `<div class="rule">⸻</div>`;
+    if(/^\(End of|（.*完）/.test(en)||/完）$/.test(cn)) return `<div class="end">${esc(MODE==='cn'?cn:en)}</div>`;
+    if(MODE==='cn') return cn?`<div class="ln"><span class="cn">${esc(cn)}</span></div>`:'';
+    if(MODE==='en') return en?`<div class="ln"><span class="en">${esc(en)}</span></div>`:'';
+    return `<div class="ln">${cn?`<span class="cn">${esc(cn)}</span>`:''}${en?`<span class="en">${esc(en)}</span>`:''}</div>`;
+  }).join('');
+  const nav = `<div class="detail-nav">
+    ${prev?`<button onclick="go('#story/${prev.id}')"><span class="lbl">← PREV</span><span class="nm">${esc(prev.title_cn)}</span></button>`:'<button disabled style="opacity:.3">—</button>'}
+    ${next?`<button class="next" onclick="go('#story/${next.id}')"><span class="lbl">NEXT →</span><span class="nm">${esc(next.title_cn)}</span></button>`:'<button class="next" disabled style="opacity:.3">—</button>'}</div>`;
+  return `<span class="backbtn" onclick="go('#story')">← ${MODE==='cn'?'返回目錄':'Back to chapters'}</span>
+    <div class="reader ${MODE!=='both'?'mono':''}">
+      <h2>${esc(ch.title_cn)}</h2><div class="h2en">${esc(ch.title_en)}</div>
+      ${lines}${nav}</div>`;
+}
+function vGlossary(){
+  const items = D.terms.map(t=>`<div class="gitem">
+    <div class="cn">${esc(t.cn)}</div><div class="en">${esc(t.en)}</div>
+    ${t.note?`<div class="note">${esc(t.note)}</div>`:''}</div>`).join('');
+  return `<h1 class="title">${biTitle('詞彙 · 翻譯聖經','Glossary — Translation Bible')}</h1>
+    <div class="sub">Locked terms and names. These are canonical; new terms enter the bible first, scripts second.</div>
+    <div class="gloss">${items}</div>`;
+}
+
+/* core loop infographic */
+function coreLoopSVG(){
+  return `<div class="svg-wrap"><div class="cap">核心循環 · The Diminishing Loop</div>
+  <svg viewBox="0 0 900 150" style="width:100%;height:auto" font-family="var(--sans)">
+    ${loopNode(40,'恐懼','Fear','#8b6a2a')}
+    ${loopArrow(150)}
+    ${loopNode(220,'指名','Naming','#8b2f28')}
+    ${loopArrow(330)}
+    ${loopNode(400,'夜行回收','Parade bears it','#7d5aa6')}
+    ${loopArrow(520)}
+    ${loopNode(600,'承認','Acknowledge','#3f8a6e')}
+    ${loopArrow(710)}
+    ${loopNode(790,'金寂','Golden Stillness','#c9a24b')}
+    <text x="450" y="140" fill="#948f82" font-size="11" text-anchor="middle">Each time someone admits the fear is their own, the Parade grows lighter — until it is no longer needed.</text>
+  </svg></div>`;
+}
+function loopNode(x,cn,en,col){
+  return `<g>
+    <circle cx="${x+30}" cy="55" r="30" fill="none" stroke="${col}" stroke-width="1.5"/>
+    <text x="${x+30}" y="52" fill="#e9e4d7" font-size="14" text-anchor="middle" font-family="var(--cjk)">${cn}</text>
+    <text x="${x+30}" y="100" fill="#948f82" font-size="10" text-anchor="middle">${en}</text></g>`;
+}
+function loopArrow(x){ return `<path d="M${x} 55 L${x+58} 55" stroke="#615d54" stroke-width="1.2" marker-end="url(#ar)"/>`; }
+
+function kitTile(n, label, href, kind){
+  // kind: 'img' | 'video' | 'na'
+  if(kind==='na') return `<div style="border:1px solid var(--line);border-radius:8px;background:var(--ink2);display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:104px;padding:8px">
+      <div style="font-size:22px;color:var(--faint);line-height:1">—</div>
+      <div style="font-size:10px;color:var(--faint);text-align:center;margin-top:6px">${n} · ${label}<br>n/a</div></div>`;
+  const media = kind==='video'
+    ? `<video preload="none" controls src="${href}" style="width:100%;height:104px;object-fit:cover;display:block;background:#000;border-radius:8px 8px 0 0"></video>`
+    : `<a href="${href}" target="_blank" rel="noopener" title="Open full size"><img src="${href}" loading="lazy" style="width:100%;height:104px;object-fit:cover;display:block;background:#000;border-radius:8px 8px 0 0"></a>`;
+  const cap = kind==='video'
+    ? `<span style="color:var(--muted)">${n} · ${label}</span>`
+    : `<a href="${href}" target="_blank" rel="noopener" style="color:var(--gold);text-decoration:none">${n} · ${label} ↗</a>`;
+  return `<div style="border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--ink2)">
+      ${media}<div style="font-size:10.5px;padding:6px 8px;line-height:1.3">${cap}</div></div>`;
+}
+function kitCard(r){
+  const K = 'assets/demo/kit/';
+  const tiles = [
+    kitTile(1,'Character board', K+r.char, 'img'),
+    kitTile(2,'Motion board',   K+r.motion,'img'),
+    kitTile(3,'Emotion board',  K+r.emo,  'img'),
+    kitTile(4,'Keyframe', r.keyframe?K+r.keyframe:'', r.keyframe?'img':'na'),
+    kitTile(5,'Motion ref', K+r.motionref,'video'),
+  ].join('');
+  return `<div style="background:var(--panel);border:1px solid var(--line);border-radius:12px;overflow:hidden;margin-bottom:26px">
+    <div style="padding:14px 18px;border-bottom:1px solid var(--line);display:flex;align-items:baseline;gap:12px">
+      <span style="font-family:var(--cjk);font-size:11px;color:var(--gold-dim);border:1px solid var(--line2);border-radius:5px;padding:2px 8px">SHOT ${r.id}</span>
+      ${biTitle(r.cn,r.en)}
+    </div>
+    <div style="display:grid;grid-template-columns:1.15fr 1fr;gap:20px;padding:18px">
+      <div>
+        <video controls preload="metadata" src="assets/demo/${r.video}" style="width:100%;display:block;background:#000;aspect-ratio:16/9;border-radius:8px;border:1px solid var(--line)"></video>
+        <div style="font-size:11px;color:var(--faint);margin-top:6px">Final take · Seedance 2.0 · 1080p · 8s — <code style="color:var(--muted)">assets/demo/${r.video}</code></div>
+      </div>
+      <div>
+        <div style="font-size:11px;color:var(--gold-dim);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px">Reference stack (click to open)</div>
+        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:10px">${tiles}</div>
+        <div style="font-size:10.5px;color:var(--faint);margin-top:8px">5 · Motion ref: ${esc(r.motionrefNote)}</div>
+      </div>
+    </div>
+    <div style="padding:0 18px 18px">
+      <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:8px">
+        <div style="font-size:11px;color:var(--gold-dim);letter-spacing:.08em;text-transform:uppercase">6 · Generation prompt</div>
+        <button onclick="kitCopy(this,'${r.id}')" style="cursor:pointer;background:var(--ink2);color:var(--gold);border:1px solid var(--line2);border-radius:6px;padding:5px 12px;font-size:12px;font-family:var(--sans)">Copy prompt</button>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:6px 18px;font-size:11px;color:var(--muted);margin-bottom:8px">
+        <span><b style="color:var(--text)">Dialogue:</b> ${esc(r.dialogue)}</span>
+        <span><b style="color:var(--text)">On-screen text:</b> ${esc(r.onscreen)}</span>
+        <span><b style="color:var(--text)">Timestamps:</b> ${esc(r.timestamps)}</span>
+      </div>
+      <pre style="white-space:pre-wrap;word-break:break-word;background:var(--ink);border:1px solid var(--line);border-radius:8px;padding:14px;font-size:12px;line-height:1.55;color:var(--text);max-height:260px;overflow:auto;font-family:ui-monospace,Menlo,Consolas,monospace">${esc(r.prompt)}</pre>
+      <div style="font-size:10.5px;color:var(--faint);margin-top:6px">Prompt file: <code>out/v5/prompts/${r.promptFile}</code></div>
+    </div>
+  </div>`;
+}
+function vDemo(){
+  const kit = window.KINMUKU_DEMO_KIT || [];
+  if(!kit.length){
+    return `<h1 class="title">${biTitle('旗艦示範','Flagship Demo')}</h1>
+      <div class="sub" style="color:var(--red-bright)">demo_kit.js failed to load — check the &lt;script&gt; tag.</div>`;
+  }
+  const cards = kit.map(kitCard).join('');
+  return `<h1 class="title">${biTitle('旗艦示範','Flagship Demo')}</h1>
+    <div class="sub">Akaza Genki — Seedance 2.0, 1080p, 8-second single takes. Every shot below carries its full manual-generation kit: the six locked ingredients (character board · motion board · emotion board · keyframe · motion reference · timestamped prompt) needed to regenerate it by hand. Katana stays sheathed; pure Edo, no modern bleed.</div>
+    ${sectionHead('分鏡生成套件','Per-Shot Generation Kits')}
+    <div style="margin-top:16px">${cards}</div>`;
+}
+function fallbackCopy(t, done){
+  const ta=document.createElement('textarea'); ta.value=t; ta.style.position='fixed'; ta.style.opacity='0';
+  document.body.appendChild(ta); ta.select();
+  try{ document.execCommand('copy'); }catch(e){}
+  document.body.removeChild(ta); if(done) done();
+}
+function kitCopy(btn, id){
+  const rec = (window.KINMUKU_DEMO_KIT||[]).find(r=>r.id===id);
+  if(!rec) return;
+  const done = ()=>{ const o=btn.textContent; btn.textContent='✓ Copied'; setTimeout(()=>{btn.textContent=o;},1600); };
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(rec.prompt).then(done, ()=>fallbackCopy(rec.prompt,done));
+  } else fallbackCopy(rec.prompt, done);
+}
+
+/* ---------------- 畫集 GALLERY ---------------- */
+function galOpen(full, cap){
+  let lb = document.getElementById('lightbox');
+  if(!lb){
+    lb = document.createElement('div');
+    lb.id = 'lightbox';
+    lb.style.cssText = 'position:fixed;inset:0;z-index:99;background:rgba(6,7,11,.95);display:none;align-items:center;justify-content:center;flex-direction:column;gap:12px;padding:26px;cursor:zoom-out';
+    lb.onclick = galClose;
+    lb.innerHTML = '<img id="lbimg" alt="" style="max-width:100%;max-height:calc(100% - 34px);object-fit:contain;border:1px solid var(--line2);border-radius:6px"><div id="lbcap" style="font-family:var(--sans);font-size:11px;letter-spacing:.09em;color:var(--muted);text-transform:uppercase"></div>';
+    document.body.appendChild(lb);
+  }
+  document.getElementById('lbimg').src = full;
+  document.getElementById('lbcap').textContent = cap || '';
+  lb.style.display = 'flex';
+}
+function galClose(){
+  const lb = document.getElementById('lightbox');
+  if(lb){ lb.style.display='none'; document.getElementById('lbimg').src=''; }
+}
+document.addEventListener('click', e=>{
+  const t = e.target;
+  if(t && t.classList && t.classList.contains('galthumb')) galOpen(t.dataset.full, t.dataset.cap);
+});
+document.addEventListener('keydown', e=>{ if(e.key==='Escape') galClose(); });
+
+// The five-panel thumb strip. Shared with the per-character sheet (charBoardBlock), which is what
+// makes a board reachable from the cast page instead of only from ART.
+function panelStrip(b){
+  const G = window.KINMUKU_GALLERY, dir = `${G.boardDir}/${b.key}`;
+  return G.panels.map(p=>`<div style="flex:1 1 0;min-width:0;text-align:center">
+      <img class="galthumb" loading="lazy" alt="${esc(p.en)}" src="${dir}/panels/${p.k}.jpg"
+        data-full="${dir}/panels/${p.k}.jpg" data-cap="${esc(b.romaji+' — '+p.en)}"
+        style="width:100%;aspect-ratio:16/9;object-fit:cover;border:1px solid var(--line);border-radius:5px;cursor:zoom-in;background:var(--ink);display:block">
+      <div style="font-size:9.5px;color:var(--faint);margin-top:4px;letter-spacing:.05em">${MODE==='en'?p.en:p.cn}</div>
+    </div>`).join('');
+}
+function galBoardCard(b){
+  const G = window.KINMUKU_GALLERY, dir = `${G.boardDir}/${b.key}`;
+  // Reserved (active:false) characters are listed in id order with no art, the same way
+  // an ungated keyframe gets a dashed PENDING tile. Leaving them out of the array made a
+  // complete gallery look incomplete — 15 in the cast, 9 in the art, no explanation.
+  if(b.pending) return `<div style="border:1px dashed var(--line2);border-radius:12px;background:var(--ink2);padding:16px 18px;margin-bottom:16px;display:flex;gap:16px;align-items:center">
+    <div style="width:128px;height:128px;flex:0 0 auto;border:1px dashed var(--line2);border-radius:8px;display:flex;align-items:center;justify-content:center;font-family:var(--cjk);font-size:34px;color:var(--faint)">${b.kanji.slice(0,1)}</div>
+    <div style="flex:1;min-width:0">
+      <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+        <span style="font-family:var(--cjk);font-size:19px;color:var(--muted)">${b.kanji}</span>
+        <span style="font-family:var(--serif);font-size:14px;color:var(--muted)">${esc(b.romaji)}</span>
+        <span style="font-size:10px;color:var(--faint);letter-spacing:.1em">NO.${b.id}</span>
+        <span style="margin-left:auto;font-family:var(--sans);font-size:9.5px;letter-spacing:.13em;color:var(--faint)">BOARD PENDING</span>
+      </div>
+      <div style="font-size:11.5px;color:var(--faint);line-height:1.65;margin-top:8px">${esc(b.note)}</div>
+      <a href="#char/${b.id}" style="display:inline-block;margin-top:9px;font-size:10.5px;color:var(--gold-dim);text-decoration:none">→ canon entry</a>
+    </div></div>`;
+  const strip = panelStrip(b);
+  return `<div style="border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:16px 18px 15px;margin-bottom:16px">
+    <div style="display:flex;gap:16px;align-items:flex-start">
+      <img class="galthumb" loading="lazy" alt="${esc(b.romaji)}" src="${dir}/panels/${b.key}_hero.jpg"
+        data-full="${dir}/board_${b.key}.jpg" data-cap="${esc(b.romaji+' — full character board')}"
+        style="width:128px;height:128px;object-fit:cover;object-position:top;border:1px solid var(--line2);border-radius:8px;cursor:zoom-in;flex:0 0 auto;background:var(--ink)">
+      <div style="flex:1;min-width:0">
+        <div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap">
+          <span style="font-family:var(--cjk);font-size:19px;color:var(--gold-bright)">${b.kanji}</span>
+          <span style="font-family:var(--serif);font-size:14px;color:var(--text)">${esc(b.romaji)}</span>
+          <span style="font-size:10px;color:var(--faint);letter-spacing:.1em">NO.${b.id}</span>
+          <a href="${dir}/board_${b.key}.html" target="_blank"
+            style="margin-left:auto;font-family:var(--sans);font-size:10.5px;letter-spacing:.06em;color:var(--gold);text-decoration:none;border:1px solid var(--line2);border-radius:5px;padding:4px 11px">OPEN BOARD ↗</a>
+        </div>
+        <div style="font-size:11.5px;color:var(--muted);line-height:1.65;margin-top:8px">${esc(b.note)}</div>
+        <a href="#char/${b.id}" style="display:inline-block;margin-top:9px;font-size:10.5px;color:var(--gold-dim);text-decoration:none">→ canon entry</a>
+      </div>
+    </div>
+    <div style="display:flex;gap:7px;margin-top:14px">${strip}</div>
+  </div>`;
+}
+function galKeyCard(k){
+  const G = window.KINMUKU_GALLERY, tag = `EP${k.ep}·S${k.sc}`;
+  if(!k.win) return `<div style="border:1px dashed var(--line2);border-radius:10px;background:var(--ink2);padding:15px;display:flex;flex-direction:column;justify-content:center;min-height:152px">
+      <div style="font-family:var(--sans);font-size:9.5px;letter-spacing:.13em;color:var(--faint)">${tag} · PENDING</div>
+      <div style="font-family:var(--serif);font-size:13.5px;color:var(--muted);margin-top:6px">${esc(k.title)}</div>
+      <div style="font-size:10.5px;color:var(--faint);line-height:1.55;margin-top:7px">${esc(k.note)}</div>
+    </div>`;
+  return `<div style="border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)">
+    <img class="galthumb" loading="lazy" alt="${esc(k.title)}" src="${G.keyDir}/${k.win}"
+      data-full="${G.keyDir}/${k.win}" data-cap="${esc(tag+' — '+k.title)}"
+      style="width:100%;aspect-ratio:16/9;object-fit:cover;display:block;cursor:zoom-in;background:var(--ink)">
+    <div style="padding:11px 13px 13px">
+      <div style="display:flex;align-items:center;gap:9px">
+        <span style="font-family:var(--sans);font-size:9.5px;letter-spacing:.13em;color:var(--gold-dim)">${tag}</span>
+        <span style="font-size:9.5px;color:var(--faint)">${k.fires} fire${k.fires>1?'s':''} · ${esc(k.who)}</span>
+      </div>
+      <div style="font-family:var(--serif);font-size:13.5px;color:var(--gold-bright);margin-top:5px">${esc(k.title)}</div>
+      <div style="font-size:10.5px;color:var(--muted);line-height:1.55;margin-top:6px">${esc(k.note)}</div>
+    </div>
+  </div>`;
+}
+function vGallery(){
+  const G = window.KINMUKU_GALLERY;
+  if(!G) return `<h1 class="title">${biTitle('畫集','Art Gallery')}</h1>
+    <div class="sub" style="color:var(--red-bright)">gallery_data.js failed to load — check the &lt;script&gt; tag.</div>`;
+  const done = G.keyframes.filter(k=>k.win).length;
+  const eps = G.episodes.map(e=>{
+    const shots = G.keyframes.filter(k=>k.ep===e.ep);
+    const n = shots.filter(k=>k.win).length;
+    return `<div style="margin-top:24px">
+      <div style="display:flex;align-items:baseline;gap:11px;margin-bottom:10px">
+        <span style="font-family:var(--cjk);font-size:14px;color:var(--gold)">${e.cn}</span>
+        <span style="font-family:var(--serif);font-size:13px;color:var(--text)">${esc(e.title)}</span>
+        <span style="font-size:10px;color:${n===3?'var(--gold-dim)':'var(--faint)'};letter-spacing:.09em">${n}/3</span>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:12px">${shots.map(galKeyCard).join('')}</div>
+    </div>`;
+  }).join('');
+  return `<h1 class="title">${biTitle('畫集','Art Gallery')}</h1>
+    <div class="sub">Everything built on the v3 art direction — soft dreamy atmospheric glow, bloom, painterly finish. The nine boards below hold identity; every scene keyframe is seeded from its own character's board chip and gated against the v3 colour bible before it is kept. Click any image to enlarge.</div>
+    ${sectionHead('角色設定板','Character Boards')}
+    <div style="font-size:11px;color:var(--faint);line-height:1.6;margin:-6px 0 15px">${G.boards.length} / ${G.boards.length} complete · each board carries turnaround · expressions · head detail · macro details · wardrobe flat-lay. <b style="color:var(--muted)">OPEN BOARD ↗</b> loads the standalone sheet; the portrait opens the full assembled board.</div>
+    ${G.boards.map(galBoardCard).join('')}
+    ${sectionHead('場景關鍵幀','Scene Keyframes')}
+    <div style="font-size:11px;color:var(--faint);line-height:1.6;margin:-6px 0 2px">${done} / ${G.keyframes.length} gated · 8 episodes × 3 scenes · fired one at a time on the Nano Banana 2 lane and rerolled until the style bar is met. Pending shots show their planned beat.</div>
+    ${eps}
+    <div style="height:44px"></div>`;
+}
+
+/* ---------------- MANGA ---------------- */
+// Printed pages, not a scroll of stills: white sheet, black gutters, tiered rows of
+// bordered panels, balloons with tails. Plates come from inked/ (ffmpeg-crushed to
+// black-and-white) — a colour film still never reads as manga no matter the layout.
+// English only for now. Text stays live HTML so panels.json remains the script.
+const PAGE_W = 780, PAGE_H = 1104, PAD = 22, GUT = 11;
+const SHEET_W = PAGE_W - PAD*2, SHEET_H = PAGE_H - PAD*2 - 16;   // 16 = page-number strip
+// row width x row height, per panel size. n = how many share the tier.
+const TIER = {full:{n:1,h:430}, wide:{n:1,h:252}, half:{n:2,h:336}, inset:{n:3,h:218}};
+// Crops are pulled off a sibling frame; without a push-in five of them render as the
+// same picture. A panel that wants a specific spot sets src.focus ("30% 65%").
+const MANGA_Z = {full:1.06, wide:1.14, half:1.46, inset:1.9};
+const LETTER = `'Wild Words','CC Wild Words','Comic Sans MS','Segoe UI',sans-serif`;
+const mPending = p => p.pending;  // render-script.mjs stats panels/<id>.png — plate on disk or not.
+
+function mBalloon(b, i){
+  // panels.json carries no speaker coordinates and never more than 2 balloons, so
+  // first sits top-left tailing down-right, second bottom-right tailing up-left.
+  // ponytail: add x/y + tail angle to panels.json the day a panel actually needs it.
+  const top = i === 0;
+  const at = top ? 'top:9px;left:9px' : 'bottom:9px;right:9px';
+  const txt = `font-family:${LETTER};font-size:12.5px;line-height:1.3;color:#000;text-align:center`;
+
+  if(b.type === 'sfx') return `<div style="position:absolute;${at};max-width:52%;font-family:${LETTER};font-size:29px;font-style:italic;font-weight:700;color:#fff;-webkit-text-stroke:2.5px #000;paint-order:stroke;letter-spacing:.02em;transform:rotate(${top?-6:5}deg);pointer-events:none">${esc(b.en)}</div>`;
+
+  if(b.type === 'caption') return `<div style="position:absolute;${at};max-width:56%;background:#fff;border:2px solid #000;padding:6px 9px;font-family:${LETTER};font-size:11.5px;line-height:1.32;color:#000">${esc(b.en)}</div>`;
+
+  // speech / thought / whisper share the bubble; the border and tail carry the difference
+  const edge = b.type === 'thought' ? '2px dashed #000'
+             : b.type === 'whisper' ? '2px dotted #000' : '2.5px solid #000';
+  const tail = b.type === 'thought'
+    ? `<span style="position:absolute;${top?'bottom:-13px;left:22%':'top:-13px;right:22%'};width:10px;height:10px;border-radius:50%;background:#fff;border:2px solid #000"></span>
+       <span style="position:absolute;${top?'bottom:-24px;left:16%':'top:-24px;right:16%'};width:6px;height:6px;border-radius:50%;background:#fff;border:2px solid #000"></span>`
+    : `<span style="position:absolute;${top?'bottom:-10px;left:26%':'top:-10px;right:26%'};width:16px;height:16px;background:#fff;border-right:${edge};border-bottom:${edge};transform:rotate(${top?45:-135}deg);margin:${top?'0 0 0 -8px':'0 -8px 0 0'}"></span>`;
+
+  return `<div style="position:absolute;${at};max-width:50%;background:#fff;border:${edge};border-radius:46% 46% 46% 46%/34%;padding:11px 15px 12px;${txt}${b.type==='whisper'?';font-size:11px':''}">
+    ${esc(b.en)}${tail}</div>`;
+}
+
+function mPanel(p, h){
+  const src = p.src.clip || p.src.of;
+  const focus = p.src.focus || 'center';
+  // Only clip-crops share a source frame and need the push-in. A crop of another
+  // PANEL (src.of) is cut on disk already — zooming it again eats the subject.
+  const z = p.src.mode === 'crop' && p.src.clip ? (MANGA_Z[p.size] || 1.3) : 1;
+  const art = mPending(p)
+    ? `<div style="position:absolute;inset:0;display:flex;flex-direction:column;gap:6px;align-items:center;justify-content:center;background:repeating-linear-gradient(45deg,#fff,#fff 7px,#ececec 7px,#ececec 14px);padding:0 30px;text-align:center">
+        <div style="font-family:${LETTER};font-size:11px;letter-spacing:.16em;color:#666">ART PENDING</div>
+        <div style="font-family:${LETTER};font-size:10.5px;color:#8a8a8a;line-height:1.5">${esc(p.src.why || 'crops off '+p.src.of)}</div>
+      </div>`
+    : `<img src="${KM_PLATES}${p.id}.png" alt="${esc(p.id)}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:${focus};transform:scale(${z});transform-origin:${focus}">`;
+  return `<div style="position:relative;flex:1;height:${h}px;overflow:hidden;border:2.5px solid #000;background:#fff" title="${esc(`${p.id} · ${src} · ${p.src.pick || p.src.why || ''}`)}">${art}
+    ${p.balloons.map(mBalloon).join('')}</div>`;
+}
+
+// panels -> tiers (a row of same-size panels) -> pages (tiers stacked to a full sheet)
+function mLayout(panels){
+  const tiers = [];
+  for(let i = 0; i < panels.length; ){
+    const s = panels[i].size, cfg = TIER[s] || TIER.wide, row = [panels[i++]];
+    while(row.length < cfg.n && panels[i] && panels[i].size === s) row.push(panels[i++]);
+    tiers.push({h: cfg.h, n: cfg.n, row});
+  }
+  const pages = [];
+  let cur = [], h = 0;
+  for(const t of tiers){
+    if(cur.length && h + t.h + GUT > SHEET_H){ pages.push(cur); cur = []; h = 0; }
+    cur.push(t); h += t.h + (cur.length > 1 ? GUT : 0);
+  }
+  if(cur.length) pages.push(cur);
+  return pages;
+}
+
+let KM_PLATES = '';
+function vManga(){
+  const M = window.KINMUKU_MANGA;
+  if(!M) return `<h1 class="title">${biTitle('漫畫','Manga')}</h1>
+    <div class="sub" style="color:var(--red-bright)">manga_data.js failed to load — run <code>node render-script.mjs ep01</code> in 13_漫畫_Manga.</div>`;
+  KM_PLATES = M.plates;
+  const pending = M.panels.filter(mPending).length;
+  const notes = (M.episode.clip_notes||[]).map(n=>`<li style="margin-bottom:5px">${esc(n)}</li>`).join('');
+
+  const sheets = mLayout(M.panels).map((pg, n) => {
+    // a manga page is a fixed sheet, so stretch the tiers to fill it rather than
+    // leaving a ragged bottom. Capped so a near-empty last page doesn't grotesque out.
+    const used = pg.reduce((a,t) => a + t.h, 0) + GUT*(pg.length-1);
+    const k = Math.min(SHEET_H / used, 1.3);
+    const rows = pg.map((t, r) => {
+      // A lone inset used to stretch across the whole sheet: 736x218 is a 3.4:1 slot,
+      // and object-fit:cover on a 16:9 plate then ate 60% of the height — an ECU on a
+      // face rendered as a shoulder. Hold a solo panel near its plate's aspect and let
+      // the rest of the row be gutter, alternating sides so it reads as a beat.
+      const solo = t.row.length === 1 && t.n > 1;
+      const box = solo ? `width:${Math.min(SHEET_W, Math.round(t.h*k*1.72))}px;${r%2 ? 'margin-left:auto' : ''};` : '';
+      return `<div style="display:flex;gap:${GUT}px;margin-bottom:${GUT}px;${box}">${t.row.map(p => mPanel(p, Math.round(t.h*k))).join('')}</div>`;
+    }).join('');
+    return `<div class="mangaPage" style="width:${PAGE_W}px;background:#fff;padding:${PAD}px;margin:0 auto 26px;box-shadow:0 6px 26px rgba(0,0,0,.55)">${rows}
+      <div style="font-family:${LETTER};font-size:11px;color:#000;text-align:${n%2?'right':'left'};padding-top:2px">${n+1}</div></div>`;
+  }).join('');
+
+  return `<h1 class="title">${biTitle('漫畫','Manga')}</h1>
+    <div class="sub">${esc(M.episode.title_en)} — ${M.panels.length} panels, ${M.panels.length-pending} inked from the v3 clips, ${pending} still waiting on art. Text is live HTML over the plate, so the script stays editable — edit <code>13_漫畫_Manga/ep01/panels.json.bak</code> (the source — <code>panels.json</code> is generated and gets overwritten), then re-run <code>cut-panels.mjs</code> and <code>render-script.mjs</code>.</div>
+    ${notes ? `<details style="max-width:${PAGE_W}px;margin:16px auto 0;border:1px solid var(--line);background:var(--panel);padding:11px 15px">
+      <summary style="cursor:pointer;font-size:11px;letter-spacing:.13em;color:var(--gold-dim)">OPEN CANON QUESTIONS</summary>
+      <ul style="margin:9px 0 2px;padding-left:17px;font-size:11.5px;color:var(--muted);line-height:1.6">${notes}</ul></details>` : ''}
+    <div id="mangaStrip" style="margin:20px auto 0">${sheets}</div>
+    <div style="height:44px"></div>`;
+}
+
+/* ---------------- ROUTER ---------------- */
+function render(){
+  const h = location.hash || '#hub';
+  const [base, arg] = h.replace('#','').split('/');
+  const view = document.getElementById('view');
+  let html='', crumbCn='', crumbEn='';
+  if(base==='hub'){ html=vHub(); }
+  else if(base==='characters'){ html=vCharacters(); crumbCn='角色'; crumbEn='Cast'; }
+  else if(base==='char'){ const c=byId(arg); html=vChar(arg); crumbCn='角色'; crumbEn='Cast'; if(c){crumbCn+=' · '+c.kanji; crumbEn+=' · '+c.romaji;} }
+  else if(base==='world'){ html=vWorld(); crumbCn='世界'; crumbEn='World'; }
+  else if(base==='precepts'){ html=vPrecepts(); crumbCn='修行'; crumbEn='Precepts'; }
+  else if(base==='episodes'){ html=vEpisodes(); crumbCn='分集'; crumbEn='Episodes'; }
+  else if(base==='story' && arg){ const c=D.story.find(x=>x.id===arg); html=vChapter(arg); crumbCn='故事'; crumbEn='Story'; if(c){crumbCn+=' · '+c.title_cn;} }
+  else if(base==='story'){ html=vStory(); crumbCn='故事'; crumbEn='Story'; }
+  else if(base==='production'){ html=vProduction(); crumbCn='製作'; crumbEn='Production'; }
+  else if(base==='glossary'){ html=vGlossary(); crumbCn='詞彙'; crumbEn='Glossary'; }
+  else if(base==='demo'){ html=vDemo(); crumbCn='示範'; crumbEn='Demo'; }
+  else if(base==='gallery'){ html=vGallery(); crumbCn='畫集'; crumbEn='Art'; }
+  else if(base==='manga'){ html=vManga(); crumbCn='漫畫'; crumbEn='Manga'; }
+  else html=vHub();
+
+  // svg marker defs (once)
+  view.innerHTML = `<svg width="0" height="0"><defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="3" orient="auto"><path d="M0 0 L7 3 L0 6 Z" fill="#615d54"/></marker></defs></svg>` + html;
+  view.scrollTop = 0;
+
+  // crumb
+  document.getElementById('crumb').innerHTML = (base==='hub')
+    ? `<span class="cn">金無垢</span><span class="sep">·</span>Interactive Codex`
+    : `<span class="cn">${crumbCn}</span><span class="sep">/</span><span style="color:var(--muted)">${crumbEn}</span>`;
+
+  // nav active
+  document.querySelectorAll('.navitem').forEach(n=>{
+    n.classList.toggle('active', n.dataset.base === base || (base==='char'&&n.dataset.base==='characters') || (base==='story'&&n.dataset.base==='story'));
+  });
+  wireFilters();
+}
+
+function wireFilters(){
+  const archChips = document.querySelectorAll('.archf');
+  const partChip = document.querySelector('.partf');
+  if(!archChips.length && !partChip) return;
+  let curArch='all', p1=false;
+  function apply(){
+    document.querySelectorAll('.ccard').forEach(card=>{
+      const okA = curArch==='all' || card.dataset.arch===curArch;
+      const okP = !p1 || card.dataset.p1==='1';
+      card.classList.toggle('dim', !(okA&&okP));
+      card.style.display = (okA&&okP)?'':'none';
+    });
+  }
+  archChips.forEach(ch=>ch.onclick=()=>{ curArch=ch.dataset.k; archChips.forEach(x=>x.classList.remove('on')); ch.classList.add('on'); apply(); });
+  if(partChip) partChip.onclick=()=>{ p1=!p1; partChip.classList.toggle('on',p1); apply(); };
+}
+
+function go(hash){ if(location.hash===hash) render(); else location.hash=hash; }
+
+// build nav
+document.getElementById('nav').innerHTML = NAV.map(n=>`
+  <div class="navitem" data-base="${n.hash.replace('#','')}" onclick="go('${n.hash}')">
+    <span class="ico">${n.ico}</span><span class="label-txt cn">${n.cn}</span><span class="en">${n.en}</span>
+  </div>`).join('');
+
+// lang toggle
+function setMode(m){ MODE=m; localStorage.setItem('kinmuku_mode',m);
+  document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===m)); render(); }
+document.querySelectorAll('#langtoggle button').forEach(b=>b.onclick=()=>setMode(b.dataset.m));
+document.querySelectorAll('#langtoggle button').forEach(b=>b.classList.toggle('on',b.dataset.m===MODE));
+
+// keyboard
+document.addEventListener('keydown',e=>{
+  const [base,arg]=(location.hash||'#hub').replace('#','').split('/');
+  if(base==='char'){ const i=D.characters.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft') go('#char/'+D.characters[(i+14)%15].id);
+    if(e.key==='ArrowRight') go('#char/'+D.characters[(i+1)%15].id);
+    if(e.key==='Escape') go('#characters'); }
+  if(base==='story'&&arg){ const i=D.story.findIndex(c=>c.id===arg);
+    if(e.key==='ArrowLeft'&&i>0) go('#story/'+D.story[i-1].id);
+    if(e.key==='ArrowRight'&&i<D.story.length-1) go('#story/'+D.story[i+1].id);
+    if(e.key==='Escape') go('#story'); }
+});
+
+window.addEventListener('hashchange', render);
+render();
+</script>

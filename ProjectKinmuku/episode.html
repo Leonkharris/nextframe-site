@@ -1,0 +1,343 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>分集 · Episode — 金無垢</title>
+<script src="episodes_data.js"></script>
+<script src="clips_data.js"></script>
+<style>
+:root{
+  --ink:#0a0c12; --panel:#141824; --line:rgba(201,162,75,.20); --line2:rgba(201,162,75,.40);
+  --gold:#c9a24b; --gold-b:#e8cf8b; --gold-d:#8f7638; --text:#e9e4d7; --muted:#948f82; --faint:#5f5b52;
+  --cjk:"Songti SC","Yu Mincho","Hiragino Mincho ProN","Microsoft YaHei",serif;
+  --serif:"Songti SC","Yu Mincho",Georgia,serif; --sans:"Helvetica Neue",system-ui,"Segoe UI",sans-serif;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:var(--text);font-family:var(--sans);
+  min-height:100vh;padding:0 0 80px}
+.cn{font-family:var(--cjk)}
+.wrap{max-width:900px;margin:0 auto;padding:0 20px}
+.top{display:flex;align-items:center;gap:14px;padding:16px 20px;border-bottom:1px solid var(--line);position:sticky;top:0;
+  background:linear-gradient(180deg,rgba(10,12,18,.96),rgba(10,12,18,.7));backdrop-filter:blur(6px);z-index:20}
+.top a.back{color:var(--muted);text-decoration:none;font-size:13px}
+.top a.back:hover{color:var(--gold)}
+.top .t{font-family:var(--cjk);color:var(--gold-b);font-size:16px;letter-spacing:2px;margin-left:6px}
+.hero{text-align:center;padding:48px 20px 30px}
+.hero .ep{font-family:var(--serif);color:var(--gold);letter-spacing:4px;font-size:13px}
+.hero h1{font-family:var(--cjk);font-size:44px;font-weight:600;letter-spacing:6px;margin:12px 0 6px;
+  background:linear-gradient(180deg,var(--gold-b),var(--gold-d));-webkit-background-clip:text;background-clip:text;color:transparent}
+.hero .sub{color:var(--muted);letter-spacing:2px;font-size:15px;font-family:var(--serif)}
+.hero .log{color:#d3cdbe;max-width:640px;margin:20px auto 0;line-height:1.7;font-size:14px;font-style:italic}
+/* audio players */
+.audio{display:grid;grid-template-columns:1fr 1fr 1fr;gap:14px;margin:30px 0 10px}
+.aud{background:linear-gradient(160deg,var(--panel),#0c0f16);border:1px solid var(--line2);border-radius:12px;padding:16px 18px}
+.aud .lb{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.aud .lb .ic{font-family:var(--cjk);font-size:18px;color:var(--gold)}
+.aud .lb .nm{font-size:13px;color:var(--gold-b);letter-spacing:1px}
+.aud .lb .nm small{display:block;color:var(--muted);letter-spacing:1px;font-size:10px;margin-top:1px}
+.aud audio{width:100%;height:38px;filter:sepia(.3) saturate(1.4) hue-rotate(5deg)}
+.note{text-align:center;color:var(--faint);font-size:11px;margin:6px 0 0}
+/* comic storyboard */
+.sbhead{font-family:var(--serif);color:var(--gold-b);font-size:18px;letter-spacing:1px;margin:44px 0 6px;text-align:center}
+.sbhead .cn{color:var(--gold);margin-right:10px}
+.sbsub{text-align:center;color:var(--muted);font-size:12.5px;margin-bottom:26px}
+.panel{background:linear-gradient(160deg,#12151f,#0b0e15);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-bottom:22px;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.panel .frame{position:relative;background:#0a0c12;overflow:hidden;display:flex;align-items:center;justify-content:center}
+.panel .frame img{width:100%;height:auto;display:block}
+.panel .num{position:absolute;top:12px;left:14px;font-family:var(--serif);font-size:13px;letter-spacing:2px;color:var(--gold-b);
+  background:rgba(0,0,0,.55);border:1px solid var(--line);padding:3px 11px;border-radius:12px}
+.panel .cam{position:absolute;top:12px;right:14px;font-size:10px;letter-spacing:1px;color:var(--muted);
+  background:rgba(0,0,0,.5);border:1px solid var(--line);padding:3px 10px;border-radius:10px;max-width:55%;text-align:right}
+.panel .ph{width:100%;aspect-ratio:16/9;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;color:var(--faint)}
+.panel .ph .big{font-family:var(--serif);font-size:42px;color:var(--gold-d);opacity:.4}
+.panel .ph .t{font-size:11px;letter-spacing:2px;color:var(--muted)}
+.panel .cap{padding:15px 20px}
+.panel .cap .ti{font-family:var(--cjk);color:var(--gold-b);font-size:16px;margin-bottom:8px}
+.panel .cap .ti small{font-family:var(--sans);color:var(--muted);font-size:11px;letter-spacing:1px;margin-left:8px}
+/* JP is the dialogue; EN + ZH are subtitles under it (Leon, 2026-08-03) */
+.panel .cap .jp-t{font-family:var(--cjk);color:#e4ddcc;font-size:15px;line-height:1.7}
+.panel .cap .en-t{color:var(--muted);font-size:13.5px;line-height:1.6;font-style:italic;margin-top:6px}
+.panel .cap .cn-t{font-family:var(--cjk);color:#8d97ad;font-size:12.5px;line-height:1.7;margin-top:6px}
+/* per-shot clip card (keshi method — recommended) */
+.svc{border-top:1px dashed var(--line);margin-top:12px;padding-top:10px}
+.svc .sh{display:flex;align-items:center;gap:8px;font-size:10px;letter-spacing:2px;color:var(--gold);margin-bottom:8px}
+.svc .sh .cn{font-family:var(--cjk);font-size:12px}
+.svc .sh .rec{background:linear-gradient(160deg,var(--gold-d),#6b5827);color:#f4e9c8;border-radius:6px;padding:2px 8px;font-size:9px}
+.svc .sh .tag{margin-left:auto;color:var(--faint)}
+.svc .sr{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.svc .sr .rf{text-align:center;width:88px}
+.svc .sr .rf img{width:84px;height:48px;object-fit:cover;object-position:top;border-radius:6px;border:1px solid var(--line2);display:block;background:#faf7ef}
+.svc .sr .rf.board img{object-fit:contain}
+.svc .sr .rf .bind{font-size:8.5px;color:var(--gold);letter-spacing:1px;margin-top:3px}
+.svc .sp{display:flex;gap:8px;align-items:stretch}
+.svc .sp textarea{flex:1;min-height:58px;background:#080a10;border:1px solid var(--line);border-radius:8px;color:#cfc9ba;font-size:11.5px;line-height:1.5;padding:8px 10px;resize:vertical;font-family:var(--sans)}
+.svc .sp .col{display:flex;flex-direction:column;gap:4px;justify-content:center}
+.svc .sp button{background:linear-gradient(160deg,var(--gold-d),#6b5827);border:1px solid var(--gold);color:#f4e9c8;border-radius:8px;padding:8px 10px;font-size:10px;letter-spacing:1px;cursor:pointer;white-space:nowrap}
+.svc .sp button:hover{filter:brightness(1.15)}
+.svc .sp .ok{font-size:10px;color:var(--gold-b);opacity:0;transition:opacity .3s;text-align:center}
+/* the delivered clip — only rendered for shots listed in clips_data.js */
+.svc .clip{margin:2px 0 10px}
+.svc .clip video{width:100%;max-width:560px;border-radius:8px;border:1px solid var(--gold-d);background:#05070c;display:block}
+.svc .clip .cx{font-size:10px;color:var(--gold-b);letter-spacing:1px;margin-top:4px}
+.svc .clip .cx .cn{font-family:var(--cjk);color:var(--gold);margin-right:4px}
+/* per-shot motion reference (ingredient 5) */
+.svc .mref{display:flex;gap:10px;align-items:flex-start;margin:2px 0 9px}
+.svc .mref video{width:128px;height:72px;object-fit:cover;border-radius:6px;border:1px solid var(--line2);background:#05070c;display:block;flex:0 0 auto}
+.svc .mref .mx{font-size:10px;line-height:1.55;color:var(--muted)}
+.svc .mref .mx b{color:var(--gold-b);font-weight:600;letter-spacing:1px;font-size:10.5px}
+.svc .mref .mx .cn{font-family:var(--cjk);color:var(--gold);margin-right:4px}
+.svc .mref .mx .cam{color:var(--faint);font-style:italic}
+/* manual video kit */
+.kit{background:linear-gradient(160deg,#0f1420,#0a0d14);border:1px dashed var(--line2);border-radius:14px;margin:6px 0 34px;overflow:hidden}
+.kit .kh{display:flex;align-items:center;gap:10px;padding:12px 18px;border-bottom:1px solid var(--line);font-family:var(--serif);
+  color:var(--gold-b);font-size:13px;letter-spacing:2px}
+.kit .kh .cn{font-family:var(--cjk);color:var(--gold);font-size:15px}
+.kit .kh .tag{margin-left:auto;font-size:10px;color:var(--faint);letter-spacing:1px}
+.kit .kb img{width:100%;display:block;background:#fff}
+.kit .ka{padding:12px 18px 0;font-size:10.5px;letter-spacing:2px;color:var(--gold)}
+.kit .ka .cn{font-family:var(--cjk);font-size:13px;margin-right:8px}
+.kit .kr{display:flex;gap:10px;flex-wrap:wrap;padding:10px 18px 4px}
+.kit .kr .rf{text-align:center;width:74px}
+.kit .kr .rf.wide{width:110px}
+.kit .kr .rf img{width:64px;height:64px;object-fit:cover;object-position:top;border-radius:8px;border:1px solid var(--line2);display:block;margin:0 auto}
+.kit .kr .rf.wide img{width:104px;object-fit:contain;background:#faf7ef}
+.kit .kr .rf .bind{font-size:9px;color:var(--gold);letter-spacing:1px;margin-top:4px}
+.kit .kr .rf .nm{font-family:var(--cjk);font-size:10.5px;color:var(--muted);margin-top:1px}
+.kit .kp{padding:12px 18px 6px}
+.kit .kp textarea{width:100%;min-height:96px;background:#080a10;border:1px solid var(--line);border-radius:8px;color:#cfc9ba;
+  font-size:12px;line-height:1.55;padding:10px 12px;resize:vertical;font-family:var(--sans)}
+.kit .kp .row{display:flex;align-items:center;gap:10px;margin-top:8px}
+.kit .kp button{background:linear-gradient(160deg,var(--gold-d),#6b5827);border:1px solid var(--gold);color:#f4e9c8;
+  border-radius:8px;padding:8px 16px;font-size:11px;letter-spacing:2px;cursor:pointer}
+.kit .kp button:hover{filter:brightness(1.15)}
+.kit .kp .ok{font-size:11px;color:var(--gold-b);opacity:0;transition:opacity .3s}
+.kit .kn{padding:6px 18px 14px;color:var(--faint);font-size:10.5px;letter-spacing:.5px;line-height:1.6}
+.kit .kn b{color:var(--muted);font-weight:600}
+.nav{display:flex;justify-content:space-between;margin-top:44px;gap:14px}
+.nav a{color:var(--gold-b);text-decoration:none;border:1px solid var(--line2);border-radius:10px;padding:12px 18px;font-size:13px;
+  background:linear-gradient(160deg,var(--panel),#0c0f16)}
+.nav a:hover{border-color:var(--gold)}
+.nav .off{visibility:hidden}
+.foot{text-align:center;color:var(--faint);font-size:11px;margin-top:40px;letter-spacing:1px}
+@media(max-width:680px){.audio{grid-template-columns:1fr}.hero h1{font-size:34px}}
+</style>
+
+<div class="top">
+  <a class="back" href="index.html#episodes">← 分集 Episodes</a>
+  <span class="t" id="toptitle"></span>
+</div>
+
+<div class="wrap">
+  <div class="hero">
+    <div class="ep" id="epno"></div>
+    <h1 id="h1cn"></h1>
+    <div class="sub" id="suben"></div>
+    <div class="log" id="logline"></div>
+  </div>
+
+  <div class="audio">
+    <div class="aud">
+      <div class="lb"><span class="ic">翁</span><span class="nm">中文旁白 · 老者<small>CHINESE NARRATION · OLD STORYTELLER</small></span></div>
+      <audio controls preload="none" id="aud_cn"></audio>
+    </div>
+    <div class="aud">
+      <div class="lb"><span class="ic">聲</span><span class="nm">English Narration · Female<small>ENGLISH NARRATION · FEMALE VOICE</small></span></div>
+      <audio controls preload="none" id="aud_en"></audio>
+    </div>
+    <div class="aud">
+      <div class="lb"><span class="ic">語</span><span class="nm">日本語ナレーション · 語り部<small>JAPANESE NARRATION · STORYTELLER</small></span></div>
+      <audio controls preload="none" id="aud_jp"></audio>
+    </div>
+  </div>
+  <div class="note">▶ Play a narration, then scroll the storyboard — the panels follow the narration beat by beat.</div>
+
+  <div class="sbhead"><span class="cn">分鏡故事板</span>Visual Storyboard</div>
+  <div class="sbsub">Twelve shots · read like a comic · each panel is one beat of the narration above</div>
+  <div id="board"></div>
+
+  <div class="nav">
+    <a id="prev" href="#">← 上一集</a>
+    <a id="next" href="#">下一集 →</a>
+  </div>
+
+  <div class="foot" id="foot"></div>
+</div>
+
+<script>
+const EPS = window.KINMUKU_EPS || {};
+const q = new URLSearchParams(location.search);
+const ep = Math.max(1, Math.min(8, parseInt(q.get('ep')||'1',10)||1));
+const E = EPS[ep];
+const esc = s => (s||'').replace(/[&<>]/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[m]));
+if(!E){
+  document.getElementById('h1cn').textContent = '第'+ep+'集';
+  document.getElementById('suben').textContent = 'Episode '+ep+' — coming soon';
+  document.getElementById('logline').textContent = 'This episode package has not been generated yet.';
+}else{
+  document.title = `第${ep}集 ${E.title_cn} — 金無垢`;
+  document.getElementById('toptitle').textContent = `第${ep}集 · ${E.title_cn}`;
+  document.getElementById('epno').textContent = `EPISODE ${ep} · PART ONE`;
+  document.getElementById('h1cn').textContent = E.title_cn;
+  document.getElementById('suben').textContent = E.title_en;
+  document.getElementById('logline').textContent = E.logline || '';
+  const base = `assets/episodes/ep${ep}`;
+  for(const l of ['cn','en','jp']) document.getElementById('aud_'+l).src = `${base}/narr_${l}.mp3`;
+  // ---- ingredient 5: motion reference. Each shot's English `cam` note is mapped to one of
+  // 11 grey-box camera-move clips (assets/motionref/*.mp4). First-match-wins; static default.
+  // Each `d` describes the move in DEPTH, not on one axis. A single-axis note ("glides in",
+  // "gentle creep") gets read as a Ken Burns pan over a painting — the frame stays flat and the
+  // clip is dead on arrival. Naming which plane moves fastest is what turns a painted 2D
+  // keyframe into a dimensional shot, the same trick as a multiplane camera in cel animation.
+  const MREF = {
+    push_in:      {cn:'推鏡',   en:'PUSH-IN / DOLLY-IN',      d:'camera drives forward into the scene, foreground elements swelling and sweeping out past the edges of frame while the far background barely shifts'},
+    pull_out:     {cn:'拉鏡',   en:'PULL-BACK / REVERSE DOLLY', d:'camera withdraws, fresh foreground sliding in at the edges as the world opens out behind the subject'},
+    track_side:   {cn:'橫移跟拍', en:'LATERAL TRACK',           d:'camera travels sideways on one constant screen direction, near objects streaking past the lens while the far background slides slowly the opposite way'},
+    follow_behind:{cn:'背後跟隨', en:'FOLLOW FROM BEHIND',      d:'camera trails just behind the subject, walls and lanterns sweeping past on both sides of frame'},
+    orbit:        {cn:'環繞',   en:'ORBIT',                   d:'camera arcs around the subject so the background wheels behind them and near elements swing across the lens'},
+    tilt_up:      {cn:'上仰',   en:'TILT UP / CRANE UP',      d:'camera cranes upward, foreground eaves and lantern strings dropping down through frame as the sky opens above'},
+    high_down:    {cn:'高角俯視', en:'HIGH ANGLE / LOOK-DOWN',  d:'elevated camera looking down and drifting, the ground plane sliding beneath while near rooflines pass through the top of frame'},
+    aerial_drift: {cn:'空拍飄移', en:'AERIAL DRIFT',            d:'high drift over the scene, rooftops and lantern lines passing beneath at speed while the far horizon holds steady'},
+    handheld:     {cn:'手持晃動', en:'HANDHELD',               d:'loose, breathing, energised frame — micro-corrections and weight shifts, alive and never mechanical'},
+    slow_drift:   {cn:'緩飄',   en:'SLOW DRIFT',              d:'slow floating creep with the planes pulling apart — a hair of drift on the subject, much more on the foreground, almost none on the far background'},
+    static_hold:  {cn:'定鏡',   en:'STATIC HOLD',             d:'camera locked so the DEPTH carries the shot — mist, embers and lantern glow travelling through the frame front to back, cloth and hair alive, the background layer creeping against the held edge'},
+  };
+  const MRULES = [
+    ['handheld',     ['handheld','shaky','jostl','frantic','shakes with','shaking with','camera jitters']],
+    ['aerial_drift', ['aerial','drone',"bird's-eye",'birds-eye',"bird's eye",'from above the city',"god's-eye"]],
+    ['orbit',        ['orbit','circling','circle around','circles around','arc around','sweep around','revolv']],
+    ['tilt_up',      ['tilt up','tilts up','tilt-up','upward tilt','pan up','cranes up','crane up','up a wall','reveal upward','reveal pan up','boom up']],
+    ['high_down',    ['high angle','high-angle','overhead','looking down']],
+    ['follow_behind',['from behind','walking away','walks away','follows behind','following from behind','retreating back','over the shoulder','over-the-shoulder']],
+    ['pull_out',     ['pull-back','pull back','pulls back','pulling back','pull-out','pulls out','pulling out','reverse dolly','receding shot','dolly back','pulling away','crane back','zoom out','zooms out']],
+    // Keywords must name a CAMERA, never a body. Bare 'tighten' matched "the mother's hands tighten
+    // around the child" and turned a slow drift into a dolly-in; bare 'drifting' matched "hair
+    // drifting". A keyword that a character can perform is a mis-map waiting to happen.
+    ['push_in',      ['push-in','push in','pushes in','pushing in','camera push','dolly-in','dolly in','dolly forward','dolly toward','dolly-forward','zoom in','zooms in','zoom on','slow zoom','closes around','closes in','closing in','forward into','tighten on','tightens on','tightening on','frame tightens','creep in','move in on']],
+    ['track_side',   ['tracking shot','tracking','dolly alongside','alongside','lateral','pan across','pans across','pan left','pan right','glide past','whip pan','track ']],
+    ['slow_drift',   ['slow drift','drift toward','drifts toward','drifting toward','drift upward','drifts upward','camera drift','drifting camera']],
+    // Last, and opt-IN only. A locked camera is a real directorial choice, but it must be CHOSEN.
+    // It used to be what you got by saying nothing (see the fallback below) — Leon, 2026-08-02:
+    // "its so one-dimensional and very boring… this was a great shot and then it was instantly
+    // turned into something super boring". Listed last so any explicit move keyword outranks it.
+    ['static_hold',  ['locked off','locked-off','locked camera','camera is locked','camera holds','static frame','static shot','fixed frame','tripod']],
+  ];
+  // Either field can supply the move: plenty of shots carry it in `motion` ("Slow drift toward the
+  // glowing gap") while `cam` says nothing about a camera, and vice versa. Shots that named it in
+  // neither fell through to
+  // STATIC HOLD, and the prompt then read "slow drift" and "camera locked" at once — a word on both
+  // sides, so the model picks, and it picks flat. Fall back to the motion text before defaulting.
+  const matchArchetype = src => {
+    const t = (src||'').toLowerCase();
+    for(const [name,kws] of MRULES){ for(const kw of kws){ if(t.includes(kw)) return name; } }
+    return null;
+  };
+  // MOTION OUTRANKS CAM. `motion` is the i2v sentence, hand-authored per shot, and its words go
+  // into the prompt verbatim; `cam` is the storyboard's general framing note. When they disagree
+  // the prompt ends up naming two different camera moves in one breath — the same coin-flip as a
+  // word on both sides of NEGATIVE:. Ranking cam first is what kept shot02 on LATERAL TRACK after
+  // its motion was rewritten as a reverse dolly, and made shot06 read "locked" over "the camera
+  // pushes slowly toward his back".
+  // Fallback is SLOW DRIFT, not STATIC HOLD. "Nobody wrote down a camera" is not the same
+  // statement as "the camera does not move", and defaulting to locked turned 5 of ep1's 12
+  // shots into slideshows over a painted keyframe. Slow drift is the least committal move that
+  // still pulls the planes apart, so silence now costs a shot nothing.
+  const motionArchetype = (cam, motion) => matchArchetype(motion) || matchArchetype(cam) || 'slow_drift';
+  const shotCard = s => {
+    if(!s.video) return '';
+    const v = s.video;
+    const mv = motionArchetype(s.cam, v.motion), M = MREF[mv];
+    const prompt = `Image-to-video from this exact start frame. ${v.motion}`
+      // PERFORMANCE. `motion` only says what MOVES — cloth, mist, a body walking from A to B. With
+      // nothing else the model animates furniture: technically in motion, dramatically dead. `act` is
+      // the director's note per shot (authored in 08_分鏡劇本_Storyboards/shot_motion_prompts.json) —
+      // what the character is DOING and what is on their face while the camera does its job. It goes
+      // second, right after the scene, so the performance outranks every craft clause below it.
+      + (v.act ? ` PERFORMANCE — direct the acting, not the scenery. ${v.act} The emotion must be legible on the face and in the body, and it must develop across the shot rather than hold one pose.` : '')
+      + (v.chars.length ? ` The character${v.chars.length>1?'s':''} stay${v.chars.length>1?'':'s'} exactly on-model as in frame-0 and the attached identity board${v.chars.length>1?'s':''}.` : '')
+      + ` Camera movement — ${M.en}: ${M.d}; match the attached grey-box motion-reference clip's camera trajectory (this sets the MOVEMENT only, not the content).`
+      + ` Fully painted anime; continuous fluid motion with secondary motion everywhere (hair, cloth, mist, flame); never a still frame.`
+      // DEPTH + BEAT. Locking the camera down stops the flip but kills the shot — a uniform drift over
+      // a gorgeous painted keyframe reads as a slideshow. The two things that make an anime shot feel
+      // three-dimensional are parallax between planes and one accent it builds to. Both belong in the
+      // shared tail so all 11 archetypes get them, not just the ones whose descriptor happens to say so.
+      + ` DEPTH — move so the planes separate into real parallax: foreground nearest the lens travels`
+      + ` fastest, the subject holds the mid-ground, the far background creeps slowest; drifting mist,`
+      + ` embers and lantern glow pass BOTH in front of and behind the subject so the frame reads as`
+      + ` layered space, never a flat pan across a painting.`
+      + ` BEAT — the shot has to go somewhere across its run: ease in, build, and land on one clear`
+      + ` accent in the last third (a step closer, a head turn, a flare of light, a gust through hair`
+      + ` and cloth) — never one uniform speed and one uniform state from first frame to last.`
+      // ONE TAKE. ep1 shot02 walked Genki screen-left for 3s then screen-right for the rest, katana
+      // swapping hips — the model had re-framed to a wider angle and mirrored him. Nothing in the prompt
+      // forbade it, so "travels sideways" was free to pick a new direction halfway. Constrain identity
+      // and screen direction only: shot size must be free to change *continuously*, since that is the
+      // dolly move itself. An earlier version banned shot-size change outright and flattened every clip.
+      + ` ONE TAKE — no cut and no jump to a new angle, and the subject never mirrors or reverses:`
+      + ` facing, direction of travel and which hip the sword sits on stay the same from first frame to`
+      + ` last. Shot size may change continuously through the move; it must never jump.`;
+    return `<div class="svc">
+      <div class="sh"><span class="cn">單鏡生成</span>SHOT CLIP · i2v<span class="rec">推薦 KESHI METHOD</span><span class="tag">gen 3–5s · use best 2–3s · cut on motion</span></div>
+      ${((window.KINMUKU_CLIPS||{})[ep]||[]).includes(s.n) ? `<div class="clip"><video src="${base}/clips/shot${s.n}.mp4" controls loop muted playsinline preload="metadata"></video>
+        <div class="cx"><span class="cn">已生成</span>GENERATED CLIP · Flow i2v off the v3 keyframe below</div></div>` : ''}
+      <div class="sr">
+        <div class="rf"><a href="${base}/panels/shot${s.n}.png" target="_blank"><img src="${base}/panels/shot${s.n}.png" alt="start frame"></a><div class="bind">START FRAME 起始幀</div></div>
+        ${v.chars.map((c,i)=>`<div class="rf board"><a href="assets/refs_board/${c.id}.png" target="_blank"><img src="assets/refs_board/${c.id}.png" alt="${esc(c.en)}"></a><div class="bind">IMAGE ${i+1} · ${esc(c.cn)}</div></div>`).join('')}
+      </div>
+      <div class="mref">
+        <a href="assets/motionref/${mv}.mp4" target="_blank" title="開啟動態參考 open motion reference"><video src="assets/motionref/${mv}.mp4" autoplay loop muted playsinline></video></a>
+        <div class="mx"><b><span class="cn">${M.cn}</span>MOTION REF · ${M.en}</b><br>${esc(M.d)} — grey-box camera move only; feed as the video / camera-motion reference so the generation inherits this trajectory.<br><span class="cam">cam: ${esc(s.cam)}</span></div>
+      </div>
+      <div class="sp"><textarea readonly>${esc(prompt)}</textarea>
+        <div class="col"><button onclick="copyKit(this)">⧉ COPY</button><span class="ok">✓</span></div></div>
+    </div>`;
+  };
+  const kit = sc => {
+    if(!sc) return '';
+    const C = sc.chars.length, bIdx = C+1, k0 = C+2;
+    const shotIds = Array.from({length:4},(_,j)=>String(parseInt(sc.s0,10)+j).padStart(2,'0'));
+    const prompt =
+      `Animate this 15-second scene as ONE continuous cinematic sequence of four consecutive live-action shots in constant motion. The hand-drawn storyboard sheet [Image${bIdx}] is the shot plan ONLY — take the shot order, blocking and the BLUE/RED arrow moves from it, but NEVER show the storyboard page, its panels, borders or annotations on screen. `
+      + sc.chars.map((c,i)=>`[Image${i+1}] is the identity board of ${c.en}（${c.cn}）, ${c.recap} — keep this character's face, hair, horns and costume EXACTLY as shown in every view of that board.`).join(' ')
+      + ` [Image${k0}]–[Image${k0+3}] are the four painted keyframes for shots S${shotIds[0]}–S${shotIds[3]}, in order — match their exact art style, lighting, color palette and scene composition throughout. `
+      + sc.body
+      + ` Fully painted animation with continuous fluid motion at all times: NO static frames, NO freeze-frames, NO slideshow of stills, NO motion-comic effect — in every shot the camera is executing its move and the world keeps moving (breath, cloth, hair, mist, flame, water). Do not animate storyboard annotations, arrows, panel numbers, or sketch notes.`;
+    const attach =
+      sc.chars.map((c,i)=>`<div class="rf wide"><a href="assets/refs_board/${c.id}.png" target="_blank" title="開啟 ${esc(c.cn)} 身份板 identity board"><img src="assets/refs_board/${c.id}.png" alt="${esc(c.en)} identity board"></a><div class="bind">IMAGE ${i+1}</div><div class="nm">${esc(c.cn)} 身份板</div></div>`).join('')
+      + `<div class="rf"><a href="${base}/boards/scene${sc.sc}.png" target="_blank" title="開啟分鏡表 storyboard sheet"><img src="${base}/boards/scene${sc.sc}.png" alt="storyboard"></a><div class="bind">IMAGE ${bIdx}</div><div class="nm">分鏡表 board</div></div>`
+      + shotIds.map((n,j)=>`<div class="rf"><a href="${base}/panels/shot${n}.png" target="_blank" title="開啟關鍵幀 keyframe S${n}"><img src="${base}/panels/shot${n}.png" alt="keyframe S${n}"></a><div class="bind">IMAGE ${k0+j}</div><div class="nm">關鍵幀 S${n}</div></div>`).join('');
+    return `<div class="kit">
+      <div class="kh"><span class="cn">手動視頻生成</span>MANUAL VIDEO KIT · SCENE ${ep}-${sc.sc}（S${sc.s0}–S${sc.s1}）<span class="tag">FULL-SCENE 15s · EXPERIMENTAL — prefer the per-shot cards above</span></div>
+      <div class="kb"><a href="${base}/boards/scene${sc.sc}.png" target="_blank"><img src="${base}/boards/scene${sc.sc}.png" alt="Storyboard ${sc.sc}" onerror="this.parentNode.parentNode.style.display='none'"></a></div>
+      <div class="ka"><span class="cn">附件清單</span> ATTACH THESE FILES, IN THIS ORDER （click to open each file）</div>
+      <div class="kr">${attach}</div>
+      <div class="kp"><textarea readonly>${esc(prompt)}</textarea>
+        <div class="row"><button onclick="copyKit(this)">⧉ COPY PROMPT</button><span class="ok">copied ✓</span></div></div>
+      <div class="kn"><b>Manual run:</b> attach all ${k0+3} files above in IMAGE order（identity boards → storyboard sheet → 4 keyframes）→ paste the prompt. Every attachment is referenced by its [ImageN] number inside the prompt. <b>Tips:</b> if your tool has a Start/First-Frame slot, put keyframe S${shotIds[0]} there so the video opens inside the painted world; if there is a motion-strength / camera-motion setting, set it HIGH — the first test came out as near-still frames on default.</div>
+    </div>`;
+  };
+  document.getElementById('board').innerHTML = E.shots.map((s,i)=>{
+    const ph = `<div class="ph"><div class="big">${s.n}</div><div class="t">PANEL RENDERING · Nano Banana 2</div></div>`.replace(/"/g,'&quot;');
+    return `<div class="panel">
+      <div class="frame">
+        <img src="${base}/panels/shot${s.n}.png" alt="Shot ${s.n}" onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${ph}">
+        <span class="num">SHOT ${s.n}</span><span class="cam">${esc(s.cam)}</span>
+      </div>
+      <div class="cap">
+        <div class="ti">${esc(s.tc)}<small>${esc(s.te)}</small></div>
+        <div class="jp-t">${esc(s.jp)}</div>
+        <div class="en-t">${esc(s.en)}</div>
+        <div class="cn-t">${esc(s.cn)}</div>
+        ${shotCard(s)}
+      </div></div>` + ((i+1)%4===0 ? kit((E.scenes||[])[(i+1)/4-1]) : '');
+  }).join('');
+  document.getElementById('foot').textContent = `金無垢 · Project Kinmuku · 第${ep}集 Storyboard · screenplay + narration by Fable · next-frame.agency/ProjectKinmuku`;
+}
+function copyKit(btn){
+  const ta = btn.closest('.kp, .sp').querySelector('textarea');
+  ta.select(); ta.setSelectionRange(0, 999999);
+  try { document.execCommand('copy'); } catch(e) {}
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(ta.value).catch(()=>{});
+  const ok = btn.parentNode.querySelector('.ok'); ok.style.opacity = 1; setTimeout(()=>ok.style.opacity=0, 1600);
+}
+const prev = document.getElementById('prev'), next = document.getElementById('next');
+if(ep<=1){ prev.href='prologue.html'; prev.textContent='← 序章 Prologue'; } else prev.href='episode.html?ep='+(ep-1);
+if(ep>=8){ next.classList.add('off'); } else next.href='episode.html?ep='+(ep+1);
+</script>
