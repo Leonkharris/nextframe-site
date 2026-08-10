@@ -1,0 +1,283 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8">
+<title>HEAVEN ONLINE Shot Sheet · Film 06</title>
+<style>
+  :root{
+    --bg:#0a0912; --panel:#14111f; --panel2:#1b1730; --line:#2e2846; --line2:#40395e;
+    --violet:#c9a84e; --violet-bright:#f0d27a; --magenta:#e0a866; --cyan:#9db8d6;
+    --warm:#e8a24c; --silver:#e6ddc9; --gold:#f5c542;
+    --text:#f3eede; --muted:#ada593; --dim:#7d7663;
+    --mono:'Cascadia Code','Consolas',ui-monospace,monospace;
+    --sans:'Segoe UI',system-ui,-apple-system,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{background:var(--bg);color:var(--text);font-family:var(--sans);width:1500px;
+    -webkit-font-smoothing:antialiased;background-image:radial-gradient(1200px 600px at 80% -5%,rgba(245,197,66,.10),transparent 60%),radial-gradient(900px 500px at -5% 20%,rgba(157,184,214,.06),transparent 55%);}
+  .sheet{padding:42px 48px 40px}
+  .mast{display:flex;justify-content:space-between;align-items:flex-end;gap:24px;
+    padding-bottom:20px;border-bottom:2px solid var(--line2);margin-bottom:26px}
+  .mast .lead{font:600 12px/1 var(--mono);letter-spacing:4px;color:var(--cyan);text-transform:uppercase;margin-bottom:12px}
+  .mast h1{font-size:44px;font-weight:800;letter-spacing:-1px;line-height:.98;
+    background:linear-gradient(92deg,#fff 10%,#f0d27a 55%,#e8a24c);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+  .mast .es{font-size:19px;font-weight:600;color:var(--dim);letter-spacing:.3px;margin-top:6px;font-style:italic}
+  .mast .meta{text-align:right;font:500 12.5px/1.9 var(--mono);color:var(--muted);white-space:nowrap}
+  .mast .meta b{color:var(--text);font-weight:700}
+  .badge{display:inline-block;font:700 10px/1 var(--mono);letter-spacing:2px;padding:6px 11px;border-radius:20px;text-transform:uppercase}
+  .b-brand{background:linear-gradient(90deg,#c9a84e,#f5c542);color:#1a1408}
+  .b-pillar{border:1px solid var(--violet-bright);color:var(--violet-bright);margin-left:6px}
+  .compliance{margin-top:12px;font:500 11px/1.5 var(--sans);color:var(--dim)}
+  .compliance b{color:var(--warm)}
+  .sec{margin-top:26px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+  .sec>h2{font:800 13px/1 var(--sans);letter-spacing:2px;text-transform:uppercase;padding:13px 18px;
+    display:flex;align-items:center;gap:12px;background:var(--panel2);border-bottom:1px solid var(--line)}
+  .sec>h2 .no{font:800 12px/1 var(--mono);color:var(--bg);background:var(--violet-bright);padding:5px 9px;border-radius:6px;letter-spacing:1px}
+  .sec>h2 .sub{font-weight:500;color:var(--muted);letter-spacing:.4px;text-transform:none;font-size:12px}
+  .sec .body{padding:18px}
+  .choices{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .card{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:14px 16px}
+  .card .lab{font:700 10px/1 var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--cyan);margin-bottom:9px}
+  .card .big{font-size:15px;font-weight:600;line-height:1.45}
+  .card .big b{color:var(--violet-bright)}
+  .swatches{display:flex;flex-wrap:wrap;gap:9px;margin-top:2px}
+  .sw{display:flex;align-items:center;gap:7px;font:600 11px/1 var(--mono);color:var(--muted)}
+  .sw i{width:20px;height:20px;border-radius:5px;display:block;border:1px solid rgba(255,255,255,.14)}
+  .note{margin-top:11px;font:600 11px/1.4 var(--mono);color:var(--warm)}
+  .fingerprint{display:flex;flex-wrap:wrap;align-items:center;gap:8px;font:700 13px/1.3 var(--sans)}
+  .fingerprint .env{padding:7px 12px;border-radius:7px;background:var(--panel);border:1px solid var(--line2)}
+  .fingerprint .env small{color:var(--dim);font-weight:500}
+  .fingerprint .arr{color:var(--dim);font-size:16px}
+  .charrow{display:grid;grid-template-columns:420px 1fr;gap:20px;align-items:start}
+  .charrow img{width:100%;border-radius:9px;border:1px solid var(--line2);display:block}
+  .lock{font-size:14px;line-height:1.7}
+  .lock .nm{font-size:22px;font-weight:800;color:#fff;margin-bottom:4px}
+  .lock .role{font:600 12px/1 var(--mono);color:var(--warm);letter-spacing:1px;text-transform:uppercase;margin-bottom:14px}
+  .lock ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .lock li{padding-left:16px;position:relative;color:var(--muted)}
+  .lock li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:50%;background:var(--violet)}
+  .lock li b{color:var(--text)}
+  .warn{margin-top:14px;font-size:12px;line-height:1.55;color:var(--dim);background:rgba(232,162,76,.07);
+    border:1px solid rgba(232,162,76,.28);border-radius:8px;padding:10px 13px}
+  .warn b{color:var(--warm)}
+  /* §2 set & camera map ribbon */
+  .ribbon{display:flex;gap:12px;flex-wrap:wrap}
+  .loc{flex:1 1 210px;min-width:190px;background:var(--panel2);border:1px solid var(--line);border-radius:10px;
+    padding:13px 14px 14px;position:relative;overflow:hidden}
+  .loc::before{content:'';position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--acc)}
+  .loc .lc-cuts{font:700 10px/1 var(--mono);color:var(--bg);background:var(--acc);padding:4px 8px;border-radius:5px;display:inline-block;margin-bottom:9px;letter-spacing:.5px}
+  .loc .lc-name{font:800 14px/1.2 var(--sans);color:var(--text);margin-bottom:2px}
+  .loc .lc-time{font:600 10.5px/1 var(--mono);color:var(--dim);text-transform:uppercase;letter-spacing:.5px;margin-bottom:11px}
+  .loc .lc-moves{display:flex;flex-direction:column;gap:6px}
+  .loc .lc-move{font:600 11px/1.3 var(--mono);color:var(--muted)}
+  .loc .lc-move b{color:var(--cyan);font-weight:800}
+  .loc .lc-move .lc-sz{color:var(--violet-bright)}
+  .maplab{margin-top:14px;padding-top:13px;border-top:1px solid var(--line);font:600 11px/1.5 var(--mono);color:var(--dim)}
+  .maplab b{color:var(--cyan)}
+  /* §3 grid */
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .cut{background:var(--panel2);border:1px solid var(--line);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+  .cut.gold{border-color:var(--gold);box-shadow:0 0 0 1px rgba(245,197,66,.4),0 0 22px rgba(245,197,66,.14)}
+  .cut .thumb{position:relative;aspect-ratio:9/16;overflow:hidden;background:#000}
+  .cut .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+  .cut .tag{position:absolute;top:8px;left:8px;font:800 12px/1 var(--mono);color:#fff;
+    background:rgba(10,10,26,.82);padding:5px 8px;border-radius:6px;letter-spacing:1px;border:1px solid var(--line2)}
+  .cut .moment{position:absolute;top:8px;right:8px;font:800 9px/1 var(--mono);letter-spacing:1px;padding:5px 7px;border-radius:5px;text-transform:uppercase}
+  .m-gold{background:var(--gold);color:#0a0a1a}
+  .cut .info{padding:10px 11px 12px;display:flex;flex-direction:column;gap:7px;flex:1}
+  .chip{font:700 10px/1.35 var(--mono);letter-spacing:.3px;display:flex;flex-wrap:wrap;gap:5px}
+  .chip b{padding:3px 6px;border-radius:4px;background:var(--panel);border:1px solid var(--line2);color:var(--cyan);font-weight:700}
+  .chip b.mv{color:var(--magenta)} .chip b.sz{color:var(--violet-bright)}
+  .cut .vo{font-size:11.5px;line-height:1.45;color:var(--muted);font-style:italic}
+  .cut .vo::before{content:'“';color:var(--dim)} .cut .vo::after{content:'”';color:var(--dim)}
+  .arcbar{margin-top:16px;padding:13px 16px;background:var(--panel2);border:1px solid var(--line);border-radius:9px;
+    font:600 12px/1.5 var(--sans);color:var(--muted)}
+  .arcbar b{color:var(--violet-bright);font-family:var(--mono);font-size:11px;letter-spacing:.5px}
+  .mood{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+  .mood .card .big{font-size:13px;line-height:1.55;font-weight:500;color:var(--muted)}
+  .mood .card .big b{color:var(--text);font-weight:700}
+  .moodbar{grid-column:1 / -1;display:flex;height:38px;border-radius:8px;overflow:hidden;margin-top:2px;border:1px solid var(--line)}
+  .moodbar div{flex:1;display:flex;align-items:center;justify-content:center;font:700 11px/1 var(--mono);color:#0a0a1a;text-align:center;padding:0 6px}
+  .foot{margin-top:24px;padding-top:16px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:16px;font:500 11px/1.5 var(--mono);color:var(--dim)}
+  .foot .rails{color:var(--warm)}
+</style></head>
+<body><div class="sheet">
+
+  <div class="mast">
+    <div>
+      <div class="lead">Shot Sheet · Film 06 · OpenArt “Smart Shot” template</div>
+      <h1>THE JOURNEY</h1>
+      <div class="es">El Viaje</div>
+    </div>
+    <div class="meta">
+      <span class="badge b-brand">HEAVEN ONLINE</span><span class="badge b-pillar">Inspire</span><br>
+      <b>9:16</b> vertical · <b>~38s</b> · <b>12 cuts</b><br>
+      35mm landscapes / 85mm close-ups · natural grade
+      <div class="compliance"><b>21+ only</b> · never promises winning · logo only at the end</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§0</span> Shared Choices <span class="sub">— the consistency contract, decided once</span></h2>
+    <div class="body choices">
+      <div class="card"><div class="lab">Cut count · lens</div><div class="big"><b>12 cuts</b>, 3–4s each — cut on the finished VO line.<br><b>35mm on the landscapes, ~85mm on the two close-ups</b>: the lone figure kept small in wide frames.</div></div>
+      <div class="card"><div class="lab">Palette · gold quarantined</div><div class="swatches"><span class="sw"><i style="background:#0a0912"></i>celestial</span><span class="sw"><i style="background:#f5c542"></i>gold</span><span class="sw"><i style="background:#f0d27a"></i>starlight</span><span class="sw"><i style="background:#9db8d6"></i>moonlight</span><span class="sw"><i style="background:#e8a24c"></i>warm key</span><span class="sw"><i style="background:#e6ddc9"></i>cream</span></div><div class="note">gold = the summit light (cut 09, no treasure in frame) + HeavenOnline logo (cut 12)</div></div>
+      <div class="card" style="grid-column:1 / -1"><div class="lab">Environment fingerprint — the world, in order</div><div class="fingerprint"><span class="env" style="color:var(--violet)">VALLEY EDGE <small>before dawn</small></span><span class="arr">→</span><span class="env" style="color:var(--cyan)">MOUNTAIN TRAIL <small>dawn</small></span><span class="arr">→</span><span class="env" style="color:var(--warm)">DESERT <small>noon</small></span><span class="arr">→</span><span class="env" style="color:var(--violet-bright)">ROPE BRIDGE <small>day</small></span><span class="arr">→</span><span class="env" style="color:var(--magenta)">FOGGY FOREST <small>fog</small></span><span class="arr">→</span><span class="env" style="color:var(--violet)">STORM RIDGE <small>storm</small></span><span class="arr">→</span><span class="env" style="color:var(--cyan)">SUMMIT <small>dawn</small></span><span class="arr">→</span><span class="env" style="color:var(--gold)">BLACK / LOGO </span></div></div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§1</span> Character Reference <span class="sub">— identity lock · reference node = the coherence board</span></h2>
+    <div class="body charrow">
+      <img src="assets/charboards/06/board.png" alt="coherence board">
+      <div class="lock">
+        <div class="nm">The Traveller</div>
+        <div class="role">a lone traveller across eight landscapes · HeavenOnline canon (story 06)</div>
+        <ul><li><b>Look:</b> a single wanderer in rugged outdoor clothing with a pack and weathered boots — read clearly 21+.</li><li><b>Framing rule:</b> often turned to the landscape; <b>the journey, not the face, is the subject</b> — the reward is the walking.</li><li><b>Reference node:</b> the coherence board (left) is the lock for the two close-up frames (08 stumble, 10 summit).</li></ul>
+        <div class="warn"><b>⚠ Consolidation note:</b> Consolidates the <b>12 existing keyframes as-is</b> — no regeneration. Full per-look canon lives in story 06; the board is the identity lock.</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§2</span> Set &amp; Camera Map <span class="sub">— every location, its cuts, and how the camera moves (from the scene headings)</span></h2>
+    <div class="body">
+      <div class="ribbon"><div class="loc" style="--acc:var(--violet)">
+      <div class="lc-cuts">CUT 01</div>
+      <div class="lc-name">VALLEY EDGE</div>
+      <div class="lc-time">before dawn</div>
+      <div class="lc-moves"><div class="lc-move"><b>01</b> STATIC · <span class="lc-sz">WIDE</span></div></div>
+    </div><div class="loc" style="--acc:var(--cyan)">
+      <div class="lc-cuts">CUTS 02–03</div>
+      <div class="lc-name">MOUNTAIN TRAIL</div>
+      <div class="lc-time">dawn</div>
+      <div class="lc-moves"><div class="lc-move"><b>02</b> TRACK · <span class="lc-sz">MEDIUM</span></div><div class="lc-move"><b>03</b> TRACK · <span class="lc-sz">WIDE</span></div></div>
+    </div><div class="loc" style="--acc:var(--warm)">
+      <div class="lc-cuts">CUT 04</div>
+      <div class="lc-name">DESERT</div>
+      <div class="lc-time">noon</div>
+      <div class="lc-moves"><div class="lc-move"><b>04</b> CRANE · <span class="lc-sz">WIDE</span></div></div>
+    </div><div class="loc" style="--acc:var(--violet-bright)">
+      <div class="lc-cuts">CUT 05</div>
+      <div class="lc-name">ROPE BRIDGE</div>
+      <div class="lc-time">day</div>
+      <div class="lc-moves"><div class="lc-move"><b>05</b> STATIC · <span class="lc-sz">MEDIUM</span></div></div>
+    </div><div class="loc" style="--acc:var(--magenta)">
+      <div class="lc-cuts">CUT 06</div>
+      <div class="lc-name">FOGGY FOREST</div>
+      <div class="lc-time">fog</div>
+      <div class="lc-moves"><div class="lc-move"><b>06</b> TRACK · <span class="lc-sz">MEDIUM</span></div></div>
+    </div><div class="loc" style="--acc:var(--violet)">
+      <div class="lc-cuts">CUTS 07–08</div>
+      <div class="lc-name">STORM RIDGE</div>
+      <div class="lc-time">storm</div>
+      <div class="lc-moves"><div class="lc-move"><b>07</b> HANDHELD · <span class="lc-sz">WIDE</span></div><div class="lc-move"><b>08</b> LOW ANGLE · <span class="lc-sz">CLOSE-UP</span></div></div>
+    </div><div class="loc" style="--acc:var(--cyan)">
+      <div class="lc-cuts">CUTS 09–11</div>
+      <div class="lc-name">SUMMIT</div>
+      <div class="lc-time">dawn</div>
+      <div class="lc-moves"><div class="lc-move"><b>09</b> CRANE · <span class="lc-sz">WIDE</span></div><div class="lc-move"><b>10</b> STATIC · <span class="lc-sz">CLOSE-UP</span></div><div class="lc-move"><b>11</b> PULL-BACK · <span class="lc-sz">WIDE</span></div></div>
+    </div><div class="loc" style="--acc:var(--gold)">
+      <div class="lc-cuts">CUT 12</div>
+      <div class="lc-name">BLACK / LOGO</div>
+      <div class="lc-time">—</div>
+      <div class="lc-moves"><div class="lc-move"><b>12</b> PUSH-IN · <span class="lc-sz">LOGO</span></div></div>
+    </div></div>
+      <div class="maplab">Order follows the cut numbers in <b>§3</b>. Movements are derived directly from the story&rsquo;s MOVE lines — no invented geometry.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§3</span> Storyboard · 12 cuts <span class="sub">— explicit camera grammar: lens | dur | movement | size</span></h2>
+    <div class="body">
+      <div class="grid" id="grid"><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 01</span><img src="assets/frames/06/shot01.png" alt="cut 1"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">STATIC</b><b class="sz">WIDE</b></div>
+        <div class="vo">Before every journey, one last moment of stillness.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 02</span><img src="assets/frames/06/shot02.png" alt="cut 2"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">TRACK</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">He didn't hesitate. He just walked.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 03</span><img src="assets/frames/06/shot03.png" alt="cut 3"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">TRACK</b><b class="sz">WIDE</b></div>
+        <div class="vo">Every trail cost him something. Every sunrise gave it back.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 04</span><img src="assets/frames/06/shot04.png" alt="cut 4"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">CRANE</b><b class="sz">WIDE</b></div>
+        <div class="vo">The desert doesn't forgive — nor stop those who cross it.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 05</span><img src="assets/frames/06/shot05.png" alt="cut 5"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">STATIC</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">One wrong step, and the river would decide for him.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 06</span><img src="assets/frames/06/shot06.png" alt="cut 6"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>3s</b><b class="mv">TRACK</b><b class="sz">MEDIUM</b></div>
+        <div class="vo">The mist showed only the next step.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 07</span><img src="assets/frames/06/shot07.png" alt="cut 7"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>4s</b><b class="mv">HANDHELD</b><b class="sz">WIDE</b></div>
+        <div class="vo">Every storm asked if it was worth it. He kept walking.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 08</span><img src="assets/frames/06/shot08.png" alt="cut 8"></div>
+      <div class="info">
+        <div class="chip"><b>85mm</b><b>3s</b><b class="mv">LOW ANGLE</b><b class="sz">CLOSE-UP</b></div>
+        <div class="vo">He stumbled. He didn't stay down.</div>
+      </div>
+    </div><div class="cut gold">
+      <div class="thumb"><span class="tag">CUT 09</span><span class="moment m-gold">⏱ THE MOMENT</span><img src="assets/frames/06/shot09.png" alt="cut 9"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>4s</b><b class="mv">CRANE</b><b class="sz">WIDE</b></div>
+        <div class="vo">There was no treasure waiting up there.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 10</span><img src="assets/frames/06/shot10.png" alt="cut 10"></div>
+      <div class="info">
+        <div class="chip"><b>85mm</b><b>3s</b><b class="mv">STATIC</b><b class="sz">CLOSE-UP</b></div>
+        <div class="vo">For the first time, he needed nothing else.</div>
+      </div>
+    </div><div class="cut ">
+      <div class="thumb"><span class="tag">CUT 11</span><img src="assets/frames/06/shot11.png" alt="cut 11"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>4s</b><b class="mv">PULL-BACK</b><b class="sz">WIDE</b></div>
+        <div class="vo">The reward was never the summit — it was every step.</div>
+      </div>
+    </div><div class="cut gold">
+      <div class="thumb"><span class="tag">CUT 12</span><span class="moment m-gold">★ HEAVEN</span><img src="assets/frames/06/shot12.png" alt="cut 12"></div>
+      <div class="info">
+        <div class="chip"><b>35mm</b><b>2s</b><b class="mv">PUSH-IN</b><b class="sz">LOGO</b></div>
+        <div class="vo">Every journey begins with a choice.</div>
+      </div>
+    </div></div>
+      <div class="arcbar"><b>ARC OF SIZE:</b> WIDE throughout the journey, dropping to CU only at the stumble (08) and the summit (10) — the landscape dwarfs him until the reward is simply standing there.</div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <h2><span class="no">§4</span> Light · Mood · Style</h2>
+    <div class="body mood">
+      <div class="card"><div class="lab">Light</div><div class="big">Cold blue pre-dawn → hard desert noon → grey storm → warm gold summit dawn. The single gold wash is the summit light (09), no treasure in frame.</div></div>
+      <div class="card"><div class="lab">Mood arc</div><div class="big">Stillness before the choice → cost and doubt across eight landscapes → the summit, where he needs nothing else. The reward is the walking.</div></div>
+      <div class="card"><div class="lab">Sound</div><div class="big">Sparse ambient pads + wind; percussion rising through the storm; a clean sustained note at the summit. Diegetic: footsteps, wind, river, breath.</div></div>
+      <div class="card"><div class="lab">Style words</div><div class="big">Photoreal cinematic · 35mm landscapes / 85mm close-ups · natural grade · lone figure in wide frames · <b>no baked-in subtitles</b>.</div></div>
+      <div class="moodbar"><div style="background:#4a5a6a">stillness</div><div style="background:#7a6a5a">struggle</div><div style="background:#d8b878">summit</div><div style="background:#f5c542">★ HEAVEN</div></div>
+    </div>
+  </div>
+
+  <div class="foot">
+    <span>HeavenOnline · Lucifer Gaming · Film 06 — THE JOURNEY · consolidated from 12 existing keyframes + coherence board · zero regeneration</span>
+    <span class="rails">21+ · responsible gaming · never promises winning · logo only at the end</span>
+  </div>
+
+</div></body></html>
