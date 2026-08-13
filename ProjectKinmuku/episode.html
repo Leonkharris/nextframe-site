@@ -276,7 +276,7 @@ if(!E){
     return `<div class="svc">
       <div class="sh"><span class="cn">單鏡生成</span>SHOT CLIP · i2v<span class="rec">推薦 KESHI METHOD</span><span class="tag">gen 3–5s · use best 2–3s · cut on motion</span></div>
       ${((window.KINMUKU_CLIPS||{})[ep]||[]).includes(s.n) ? `<div class="clip"><video src="${base}/clips/shot${s.n}.mp4" controls loop muted playsinline preload="metadata"></video>
-        <div class="cx"><span class="cn">已生成</span>GENERATED CLIP · Flow i2v off the v3 keyframe below</div></div>` : ''}
+        <div class="cx"><span class="cn">已生成</span>GENERATED CLIP · Artlist Seedance</div></div>` : ''}
       <div class="sr">
         <div class="rf"><a href="${base}/panels/shot${s.n}.png" target="_blank"><img src="${base}/panels/shot${s.n}.png" alt="start frame"></a><div class="bind">START FRAME 起始幀</div></div>
         ${v.chars.map((c,i)=>`<div class="rf board"><a href="assets/refs_board/${c.id}.png" target="_blank"><img src="assets/refs_board/${c.id}.png" alt="${esc(c.en)}"></a><div class="bind">IMAGE ${i+1} · ${esc(c.cn)}</div></div>`).join('')}
