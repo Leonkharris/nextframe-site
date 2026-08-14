@@ -119,7 +119,8 @@ SID_OUT = {
     "07": "07_the_wheel_of_destiny",
 }
 # total runtime of each film's cut (seconds) — fallback when the oneshot has no beat markers.
-SID_CUT = {"01": 30, "02": 38, "03": 60, "04": 37, "05": 35, "06": 38, "07": 40}
+SID_CUT = {"01": 30, "02": 38, "03": 60, "04": 37, "05": 35, "06": 38, "07": 40,
+           "08": 30, "09": 40, "10": 40, "11": 40}
 
 # neutral style/quality tail used only when the authored seedance prompt file is absent.
 GEN_STYLE_EN = "ultra-realistic cinematic film, mood-appropriate lighting and color grade, shallow depth of field, subtle film grain, authentic and emotional"
@@ -448,16 +449,19 @@ def parse_roster():
         # thumb = the light .webp that is already live (the _hi.jpg 404s on the CDN).
         # hi = the full-res sheet for click-to-enlarge, falling back to .webp if absent.
         hi = hi if os.path.exists(os.path.join(here, hi)) else webp
-        # board = full multi-view golden character board, if one exists for this design.
-        # Drop assets/roster/{n}_board.webp (or .png/.jpg) in and it auto-mounts on rebuild.
-        board = ""
-        for ext in (".webp", ".png", ".jpg", ".jpeg"):
-            cand = f"assets/roster/{n}_board{ext}"
-            if os.path.exists(os.path.join(here, cand)):
-                board = cand
-                break
+        # Two style lanes. board = 3D-realistic golden board (assets/roster/NN_board.*);
+        # board_arcane = Arcane painterly-3D board (assets/roster/NN_board_arcane.*).
+        # Drop either file in and it auto-mounts on rebuild; the codex shows Arcane first.
+        def _board(suffix):
+            for ext in (".webp", ".png", ".jpg", ".jpeg"):
+                cand = f"assets/roster/{n}_board{suffix}{ext}"
+                if os.path.exists(os.path.join(here, cand)):
+                    return cand
+            return ""
+        board = _board("")
+        board_arcane = _board("_arcane")
         out.append({"n": n, "name": NAMES.get(n, ""), "thumb": webp, "hi": hi,
-                    "board": board,
+                    "board": board, "board_arcane": board_arcane,
                     "desc": m.group(3).strip(), "lead": LEADS.get(n, "")})
     return out
 

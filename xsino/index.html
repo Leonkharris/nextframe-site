@@ -511,7 +511,12 @@ function vChar(id){
   const prev = D.characters[(idx+n-1)%n], next = D.characters[(idx+1)%n];
   const role = roleOf(c);
   const filmJump = c.film ? `<a class="jf" onclick="document.getElementById('filmbeats').scrollIntoView({behavior:'smooth',block:'start'})">🎬 ${MODE==='es'?'Movimiento y Escena':'Movement & Scene'}</a>` : '';
-  const jumps = filmJump + c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='es'?s.es:s.en)}</a>`).join('');
+  const boardLbl = MODE==='es'?'Ficha de Personaje':'Character Board';
+  const boardBlock = c.board
+    ? `<div id="charboard" style="margin:22px 0 8px;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)"><div style="display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;padding:12px 16px;border-bottom:1px solid var(--line)"><span style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent-bright)">🎭 ${boardLbl}</span><span style="font-size:10.5px;color:var(--muted)">${MODE==='es'?'adjúntala a cada plano que generes de este personaje':'attach this to every shot you generate of this character'}</span><a href="${c.board}" target="_blank" rel="noopener" style="margin-left:auto;font-size:10.5px;color:var(--accent-bright);text-decoration:none">${MODE==='es'?'resolución completa ↗':'full-res ↗'}</a></div><div style="max-height:72vh;overflow:auto"><a href="${c.board}" target="_blank" rel="noopener"><img src="${c.board}" alt="${esc(c.name)} character board" style="width:100%;height:auto;display:block;cursor:zoom-in"/></a></div></div>`
+    : `<div id="charboard" style="margin:22px 0 8px;border:1px dashed var(--line2);border-radius:10px;background:var(--panel)"><div style="font-size:11px;letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);padding:12px 16px;border-bottom:1px dashed var(--line2)">🎭 ${boardLbl}</div><div style="padding:30px 16px;text-align:center;color:var(--muted);font-size:11px;opacity:.6">${MODE==='es'?'pendiente':'pending'}</div></div>`;
+  const boardJump = `<a class="jf" onclick="document.getElementById('charboard').scrollIntoView({behavior:'smooth',block:'start'})">🎭 ${boardLbl}</a>`;
+  const jumps = boardJump + filmJump + c.sections.map((s,i)=>`<a onclick="document.getElementById('sec${i}').scrollIntoView({behavior:'smooth',block:'start'})">${esc(MODE==='es'?s.es:s.en)}</a>`).join('');
   const secs = c.sections.map((s,i)=>`<div id="sec${i}">${sectionsHTML([s])}</div>`).join('');
   return `<span class="backbtn" onclick="go('#cast')">← ${MODE==='es'?'Volver al elenco':'Back to cast'}</span>
     <div class="detail-head">
@@ -527,6 +532,7 @@ function vChar(id){
       </div>
     </div>
     <div class="jump">${jumps}</div>
+    ${boardBlock}
     ${secs}
     ${filmBeatsHTML(c)}
     <div class="detail-nav">
