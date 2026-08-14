@@ -1833,13 +1833,13 @@ window.KINMUKU_SEGMENTS = [
    },
    {
     "n": "07",
-    "cam": "Overhead shot looking down into black water, images surfacing like ripples of memory rather than reflection",
+    "cam": "Overhead shot looking straight down into black water, an older night glowing up through the rippling current",
     "tc": "水中舊影",
     "te": "Memories in the Water",
     "cn": "橋下水面浮現出畫面，不是倒影，而是過去：無數次他走在最前，完成那道古老的流程。",
     "en": "Beneath the bridge the water rose in images, not reflections but memory: countless times he had walked at the front, completing the old rite.",
     "jp": "橋の下、水面に映るは影にあらず、記憶であった。幾度となく先頭を歩み、古き儀式を果たしてきた日々。",
-    "motion": "Overhead into black water: memory-images surface and glide in layers — a young oni striding at a parade's head, lantern rows, years flowing past like slow current — ripples of memory, not reflection."
+    "motion": "Overhead into black water, one unbroken surface of slow current filling the frame: an older night glows up through the water itself — a young oni striding at a parade's head, lantern rows trailing behind him — rippling apart and re-forming as the current travels, years passing like the drift of the water."
    },
    {
     "n": "08",
@@ -1853,7 +1853,7 @@ window.KINMUKU_SEGMENTS = [
    }
   ],
   "motionBoard": {
-   "choreography": "four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water: memory-images surface and glide in layers like paintings under slow current — his younger self striding at the head of the parade, lantern rows, years flowing past — ripples of memory rather than reflection. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water.",
+   "choreography": "four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water, one unbroken surface of slow current filling the frame: an older night glows up through the water itself — his younger self striding at the head of the parade, lantern rows, years flowing past — rippling apart and re-forming as the current travels. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water.",
    "characterMotion": "主角 Genki: living stillness under load — continuous breath, wind-work in hair and robe, the slow hardening of the gaze; below, his memory-self walks the old ceremonial stride without pause.",
    "emotion": "centuries of weight alchemized into a choice; loneliness accepted rather than suffered.",
    "livingWorld": "pressing mist, creaking boards, flowing memory-water, churning spray.",
@@ -1868,7 +1868,7 @@ window.KINMUKU_SEGMENTS = [
     },
     {
      "n": "07",
-     "cam": "Overhead shot looking down into black water, images surfacing like ripples of memory rather than reflection"
+     "cam": "Overhead shot looking straight down into black water, an older night glowing up through the rippling current"
     },
     {
      "n": "08",
@@ -1877,7 +1877,7 @@ window.KINMUKU_SEGMENTS = [
    ],
    "staging": "Location: Let Me Be Last — single location across all 4 shots, no whiplash. Color-code: Akaza Genki=CRIMSON. Weight: 主角 (lead) gets the full GEW action chain; 配角 minimal ambient action; background = natural motion only."
   },
-  "prompt": "High-polish 2.5D cel-shaded anime, crisp inked lineart, glossy cel shading with gold accent linework, strong cinematic rim light, gentle bloom, saturated character-coded palette, Edo-period Japanese fantasy, mythic beautiful-monster tone. 16:9.\n\nCHOREOGRAPHY — four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water: memory-images surface and glide in layers like paintings under slow current — his younger self striding at the head of the parade, lantern rows, years flowing past — ripples of memory rather than reflection. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water. CHARACTER MOTION — 主角 Genki: living stillness under load — continuous breath, wind-work in hair and robe, the slow hardening of the gaze; below, his memory-self walks the old ceremonial stride without pause. EMOTION — centuries of weight alchemized into a choice; loneliness accepted rather than suffered. LIVING WORLD — pressing mist, creaking boards, flowing memory-water, churning spray.\n\nCAST — 主角 Akaza Genki the Oni in CRIMSON (#8b2f28).\n\nNEGATIVE: modern objects, phones, glasses, cars, plastic, contemporary clothing, neon, text, watermark, logo, extra fingers, deformed hands, drawn/unsheathed sword, photoreal skin, 3D render look, low-detail background, static slideshow, still frame."
+  "prompt": "High-polish 2.5D cel-shaded anime, crisp inked lineart, glossy cel shading with gold accent linework, strong cinematic rim light, gentle bloom, saturated character-coded palette, Edo-period Japanese fantasy, mythic beautiful-monster tone. 16:9.\n\nCHOREOGRAPHY — four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water, one unbroken surface of slow current filling the frame: an older night glows up through the water itself — his younger self striding at the head of the parade, lantern rows, years flowing past — rippling apart and re-forming as the current travels. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water. CHARACTER MOTION — 主角 Genki: living stillness under load — continuous breath, wind-work in hair and robe, the slow hardening of the gaze; below, his memory-self walks the old ceremonial stride without pause. EMOTION — centuries of weight alchemized into a choice; loneliness accepted rather than suffered. LIVING WORLD — pressing mist, creaking boards, flowing memory-water, churning spray.\n\nCAST — 主角 Akaza Genki the Oni in CRIMSON (#8b2f28).\n\nNEGATIVE: modern objects, phones, glasses, cars, plastic, contemporary clothing, neon, text, watermark, logo, extra fingers, deformed hands, drawn/unsheathed sword, photoreal skin, 3D render look, low-detail background, static slideshow, still frame."
  },
  {
   "id": "6C",

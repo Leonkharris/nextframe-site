@@ -1661,7 +1661,7 @@ window.KINMUKU_EPS = {
    },
    {
     "n": "07",
-    "cam": "Overhead shot looking down into black water, images surfacing like ripples of memory rather than reflection",
+    "cam": "Overhead shot looking straight down into black water, an older night glowing up through the rippling current",
     "tc": "水中舊影",
     "te": "Memories in the Water",
     "cn": "橋下水面浮現出畫面，不是倒影，而是過去：無數次他走在最前，完成那道古老的流程。",
@@ -1675,8 +1675,8 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Overhead into black water: memory-images surface and glide in layers — a young oni striding at a parade's head, lantern rows, years flowing past like slow current — ripples of memory, not reflection.",
-     "act": "The figure in the water is performing a duty, not leading anything — spine straight, stride even and practiced, the face doing nothing at all, the eyes fixed on a point he stopped needing to look at lifetimes ago. Let the successive layers wear him down as they surface: in the earliest there is still a fraction of attention in how he carries his head, and by the last there is none, the same walk emptied out. Play habit and never pride, and never once let him turn to look at the people naming him as he passes."
+     "motion": "Overhead into black water, one unbroken surface of slow current filling the frame: an older night glows up through the water itself — a young oni striding at a parade's head, lantern rows trailing behind him — rippling apart and re-forming as the current travels, years passing like the drift of the water.",
+     "act": "The figure in the water is performing a duty, not leading anything — spine straight, stride even and practiced, the face doing nothing at all, the eyes fixed on a point he stopped needing to look at lifetimes ago. Let the successive passes wear him down as they surface: in the earliest there is still a fraction of attention in how he carries his head, and by the last there is none, the same walk emptied out. Play habit and never pride, and never once let him turn to look at the people naming him as he passes."
     }
    },
    {
@@ -1801,7 +1801,7 @@ window.KINMUKU_EPS = {
       "recap": "the oni who chooses to stand between the city and its fear"
      }
     ],
-    "body": "CHOREOGRAPHY — four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water: memory-images surface and glide in layers like paintings under slow current — his younger self striding at the head of the parade, lantern rows, years flowing past — ripples of memory rather than reflection. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water. CHARACTER MOTION — 主角 Genki: living stillness under load — continuous breath, wind-work in hair and robe, the slow hardening of the gaze; below, his memory-self walks the old ceremonial stride without pause. EMOTION — centuries of weight alchemized into a choice; loneliness accepted rather than suffered. LIVING WORLD — pressing mist, creaking boards, flowing memory-water, churning spray."
+    "body": "CHOREOGRAPHY — four consecutive live-action shots, every second in motion: Shot 1 — close on Genki's face: wind streams his hair sideways across his horns, his eyes lift and FIX on the far horizon, breath deepening, jaw tightening by degrees — resolve assembling in real time. Shot 2 — static wide with a living frame: alone at the bridge's center, an unseen pressure bows the mist inward around him from all sides, the boards creak, his robe presses flat against him and releases like a slow heartbeat. Shot 3 — overhead into the black water, one unbroken surface of slow current filling the frame: an older night glows up through the water itself — his younger self striding at the head of the parade, lantern rows, years flowing past — rippling apart and re-forming as the current travels. Shot 4 — the surface churns violent: accusing faces flash and fracture across the ripples, reforming and shattering, spray flicking up into the lens as a city with no oni tears at itself in the water. CHARACTER MOTION — 主角 Genki: living stillness under load — continuous breath, wind-work in hair and robe, the slow hardening of the gaze; below, his memory-self walks the old ceremonial stride without pause. EMOTION — centuries of weight alchemized into a choice; loneliness accepted rather than suffered. LIVING WORLD — pressing mist, creaking boards, flowing memory-water, churning spray."
    },
    {
     "sc": "C",
