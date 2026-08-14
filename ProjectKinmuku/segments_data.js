@@ -1833,7 +1833,7 @@ window.KINMUKU_SEGMENTS = [
    },
    {
     "n": "07",
-    "cam": "Overhead shot looking straight down into black water, an older night glowing up through the rippling current",
+    "cam": "Rear view down the stone causeway as he walks toward the moon, an older night glowing up mirrored in the black water below",
     "tc": "水中舊影",
     "te": "Memories in the Water",
     "cn": "橋下水面浮現出畫面，不是倒影，而是過去：無數次他走在最前，完成那道古老的流程。",
@@ -1868,7 +1868,7 @@ window.KINMUKU_SEGMENTS = [
     },
     {
      "n": "07",
-     "cam": "Overhead shot looking straight down into black water, an older night glowing up through the rippling current"
+     "cam": "Rear view down the stone causeway as he walks toward the moon, an older night glowing up mirrored in the black water below"
     },
     {
      "n": "08",
