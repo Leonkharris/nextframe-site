@@ -2151,7 +2151,7 @@ window.KINMUKU_EPS = {
    },
    {
     "n": "02",
-    "cam": "Low wide shot, four yokai lords approaching in ordered formation, fog at their feet",
+    "cam": "Low wide shot, four yokai lords halted in ordered ranks, fog at their feet",
     "tc": "王的會面",
     "te": "The Kings' Meeting",
     "cn": "第四夜，腳步聲不再像潮水，而是整齊地走來——王們親自前來，不是壓境，是會面，是立約。",
@@ -2185,8 +2185,8 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Low wide: the four lords advance through parting fog in ordered formation — heavy roll, coiled steps, slow wingbeats aloft, frictionless glide — cloaks and wings settling between strides; the oni rises in one unbroken motion to meet them.",
-     "act": "No hostility from anyone — direct a delegation that has already agreed among itself and dislikes what it agreed to. The one at the front comes with his chin level and his eyes fixed, the face of authority carrying an errand it does not enjoy; behind him one holds his jaw clenched and will not look up, and the one riding above keeps a cold appraising watchfulness. He rises braced for an attack, and the bracing goes out of his shoulders as he reads their faces and understands they have come to ask instead — end on him standing easy and grave, already consenting to something before it is spoken."
+     "motion": "Low wide, the camera tracks laterally along the bridge on one constant screen direction: the five figures hold their ground in ordered ranks, arrived and already waiting, each of them the same shape and the same height on the last frame as on the first. The bridge and the night carry the movement, and it lands out of step: the low fog rolls along the deck and parts at their feet, the flame inside the nearest hanging lantern gutters and steadies a beat later, the paper lanterns further along the rail glow brighter one after another in a run down the line, and last of all the sky lanterns slide across the face of the moon while single embers rise between them.",
+     "act": "No hostility from anyone — direct a delegation that has already agreed among itself and dislikes what it agreed to. The one at the front stands squared with his chin level, the bearing of authority carrying an errand it does not enjoy; behind him one stands with his head inclined, and the winged one holds a cold appraising stillness from where he already hangs above them. Genki wears his red oni mask across his eyes, and he is already on his feet and already past his bracing — standing easy and grave, weight settled, a man who has understood they came to ask and has consented to something before it is spoken."
     }
    },
    {
