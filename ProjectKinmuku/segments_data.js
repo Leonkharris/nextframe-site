@@ -43,7 +43,7 @@ window.KINMUKU_SEGMENTS = [
    },
    {
     "n": "02",
-    "cam": "Low-angle tracking shot alongside the towering oni, column receding behind him",
+    "cam": "Low-angle tracking shot alongside Genki the oni, column receding behind him",
     "tc": "玄鬼領行",
     "te": "Genki at the Head",
     "cn": "那走在最前端的鬼，名喚赤座玄鬼，身形如門，肩寬背直，久站在那個位置，早已忘了「想動」是什麼感覺。他身後的隊伍延展如河，那是江戶人不肯承認的恐懼，借著妖怪的樣子，暫時站了起來。",
@@ -84,7 +84,7 @@ window.KINMUKU_SEGMENTS = [
     },
     {
      "n": "02",
-     "cam": "Low-angle tracking shot alongside the towering oni, column receding behind him"
+     "cam": "Low-angle tracking shot alongside Genki the oni, column receding behind him"
     },
     {
      "n": "03",
@@ -289,7 +289,7 @@ window.KINMUKU_SEGMENTS = [
     "cn": "他找不到別的詞，只說了最誠實也最不堪的一句：「覺得你很像……被丟下了。」空氣冷了一分。玄鬼的指尖動了動，終究沒有把這句話掐斷——第一個跟隨者，就這樣出現了。",
     "en": "He found no better words, only the truest and most unbecoming ones: \"Felt like you looked… left behind.\" The air turned a shade colder. Genki's fingers twitched, and yet he did not cut the words off — and so the first follower had appeared.",
     "jp": "他に言葉が見つからず、彼はもっとも正直で、もっとも情けないひと言を口にした。「置き去りにされた……ように見えたんだ」と。空気がひとつ冷えた。玄鬼の指先が動いたが、その言葉を遮ることはしなかった。かくして、最初の従者が現れたのであった。",
-    "motion": "Close two-shot: the dripping kappa looks up and speaks, water running off his chin; the towering oni turns slowly and looks down, breath fogging in the cooling air."
+    "motion": "Close two-shot: the dripping kappa looks up and speaks, water running off his chin; Genki the oni turns slowly and looks down, breath fogging in the cooling air."
    },
    {
     "n": "12",

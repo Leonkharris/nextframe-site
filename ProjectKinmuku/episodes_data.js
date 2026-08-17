@@ -20,7 +20,7 @@ window.KINMUKU_EPS = {
    },
    {
     "n": "02",
-    "cam": "Low-angle tracking shot alongside the towering oni, column receding behind him",
+    "cam": "Low-angle tracking shot alongside Genki the oni, column receding behind him",
     "tc": "玄鬼領行",
     "te": "Genki at the Head",
     "cn": "那走在最前端的鬼，名喚赤座玄鬼，身形如門，肩寬背直，久站在那個位置，早已忘了「想動」是什麼感覺。他身後的隊伍延展如河，那是江戶人不肯承認的恐懼，借著妖怪的樣子，暫時站了起來。",
@@ -174,7 +174,7 @@ window.KINMUKU_EPS = {
       }
      ],
      "motion": "Slow drift upward from the oni at the street corner — a hand pressed to his chest, head lowering — up to the pale woman turning away along the roof ridge, robes trailing; night mist slides between them.",
-     "act": "Two separate performances in one frame, neither looking at the other. Below, Genki presses a flat hand to his chest and his head lowers — a giant finding an injury with no wound, confused rather than hurt. Above, Byakuren turns to leave and, for a fraction of a second before she goes, her gaze holds on him one beat too long: the first crack in a face that has never had one."
+     "act": "Two separate performances in one frame, neither looking at the other. Below, Genki presses a flat hand to his chest and his head lowers — a big man finding an injury with no wound, confused rather than hurt. Above, Byakuren turns to leave and, for a fraction of a second before she goes, her gaze holds on him one beat too long: the first crack in a face that has never had one."
     }
    },
    {
@@ -218,7 +218,7 @@ window.KINMUKU_EPS = {
        "en": "Aokichi"
       }
      ],
-     "motion": "Close two-shot: the camera pushes in slowly between them, the kappa's wet shoulder passing out of frame in the near foreground as the gap closes; the dripping kappa lifts his face and speaks, water running off his chin; the towering oni turns his head down toward him, breath fogging in the cooling air.",
+     "motion": "Close two-shot: the camera pushes in slowly between them, the kappa's wet shoulder passing out of frame in the near foreground as the gap closes; the dripping kappa lifts his face and speaks, water running off his chin; Genki the oni turns his head down toward him, breath fogging in the cooling air.",
      "act": "The kappa says the wrong true thing. Aokichi looks up, swallows once, squares his small body and speaks anyway — chin lifted, terrified and completely sincere. Genki turns his head down slowly and the reaction is not anger: the fingers twitch once and stop, and the eyes change. A held look between them that neither breaks while the air goes cold."
     }
    },

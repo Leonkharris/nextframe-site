@@ -21,7 +21,7 @@ window.KINMUKU_GALLERY = {
     {key:'giga',     id:'04', kanji:'茨木義牙',   romaji:'Ibaraki Giga',  note:'Hannya mask worn pushed up on the head. Mismatched horns — reddish right, purple left.'},
     {key:'ugaku',    id:'05', kanji:'鞍馬烏嶽',   romaji:'Kurama Ugaku',  note:'Tengu. The judge.'},
     {key:'hakurei',  id:'06', kanji:'鞍馬白嶺',   romaji:'Kurama Hakurei',note:'Last of the kings; dissolves into gold.'},
-    {key:'sumi',     id:'07', kanji:'霜月澄',     romaji:'Shimotsuki Sumi',note:'雪女 Yuki-onna. Towering giant — never shrunk to human height. BOTH irises teal; the red is eyeliner, not pigment.'},
+    {key:'sumi',     id:'07', kanji:'霜月澄',     romaji:'Shimotsuki Sumi',note:'雪女 Yuki-onna. 170 cm, normal height — she stands eye-level with the cast. BOTH irises teal; the red is eyeliner, not pigment.'},
     {key:'ayame',    id:'08', kanji:'綾女',       romaji:'Ayame',         note:'Fire oni woman — orange flame, red horns, gold eyes. NO mask, and never violet. First to reach Golden Stillness.'},
     {key:'shirotae', id:'09', kanji:'白妙',       romaji:'Shirotae',      note:'骨女 Hone-onna · The violence of never being seen. Part Two.'},
     {key:'aokichi',  id:'10', kanji:'碧吉',       romaji:'Aokichi',       note:'Kappa. Green hair, shell, riverbank.'},
