@@ -323,10 +323,16 @@ function medallion(c){
 // mounted further down the page, so the whole codex read as "only the art page changed" while every
 // face on the cast page was still the art we replaced. The board hero is the current face; the old
 // portrait stays as the fallback for a character that has no board yet.
+//
+// That fallback said assets/portraits/ until 2026-08-17, which was a guaranteed 404 on the live site:
+// the deployed portrait tree is assets/refs/ (see deploy-to-site.sh "== portraits =="), and
+// assets/portraits/ is a byte-identical local duplicate that no deploy step has ever copied. It never
+// fired — all 15 characters have boards — so it degraded via onerror to the medallion instead of
+// showing the miss. Repointed at the path that actually ships.
 function heroSrc(c){
   const b = boardOf(c);
   return b ? `${window.KINMUKU_GALLERY.boardDir}/${b.key}/panels/${b.key}_hero.jpg`
-           : `assets/portraits/${c.id}.png`;
+           : `assets/refs/${c.id}.png`;
 }
 function artBlock(c, cls){
   // board hero if the character has a board, else the old portrait; onerror swaps to medallion

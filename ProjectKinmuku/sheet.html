@@ -53,15 +53,6 @@ body{background:#06070b;color:var(--text);font-family:var(--sans);padding:24px;d
 .refwrap{padding:14px 18px;border-bottom:1px solid var(--line)}
 .refwrap h3{font-size:10px;letter-spacing:2px;color:var(--gold-b);text-transform:uppercase;margin-bottom:10px}
 .refwrap h3 .cn{color:var(--gold);font-family:var(--cjk);float:right;text-transform:none}
-.refgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
-.refcell{border:1px solid var(--line);border-radius:6px;overflow:hidden;background:#0b0e15;position:relative;aspect-ratio:3/4}
-.refcell.wide{grid-column:1 / -1;aspect-ratio:16/7}
-.refcell img{width:100%;height:100%;object-fit:cover;display:block}
-.refcell .tag{position:absolute;top:6px;left:6px;font-size:8px;letter-spacing:1px;background:rgba(0,0,0,.6);color:var(--gold-b);padding:2px 7px;border-radius:4px;border:1px solid var(--line)}
-.ph{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;text-align:center;padding:12px;color:var(--faint)}
-.ph .big{font-family:var(--cjk);font-size:26px;color:var(--gold-d);opacity:.5}
-.ph .t{font-size:10px;letter-spacing:1px;color:var(--muted)}
-.ph .h{font-size:9px;color:var(--faint);line-height:1.4}
 /* v3 character board strip — panels live in gallery_data.js, same source the codex ART view reads */
 .bstrip{display:flex;gap:7px}
 .bstrip a{flex:1 1 0;min-width:0;text-align:center;text-decoration:none}
@@ -135,12 +126,12 @@ function V(cn,en,cls){ cls=cls||'';
 }
 const listOf = (s,cls)=> s ? s.pairs.map(p=>V(p.cn,p.en,cls)).join('') : '';
 
-function refCell(file, tag, phTitle, phHint, wide){
-  const ph = `<div class="ph"><div class="big">${esc(c.kanji)}</div><div class="t">${phTitle}</div><div class="h">${phHint}</div></div>`;
-  const fb = ph.replace(/"/g,'&quot;');
-  return `<div class="refcell${wide?' wide':''}"><span class="tag">${tag}</span>`+
-    `<img src="${file}" onerror="this.outerHTML=this.getAttribute('data-fb')" data-fb="${fb}"></div>`;
-}
+// The "Character Reference Sheet" refgrid that used to sit above boardBlock() is gone (2026-08-17).
+// Three slots, none of them earning their place: @Image1 pointed at assets/portraits/NN.png, a
+// byte-identical duplicate of the deployed assets/refs/NN.png; @Image2's turnaround is the same
+// picture boardBlock() already mounts as a v3 panel; and assets/sheets/NN-env.png has never existed
+// in any tree, so @Image3 rendered its kanji placeholder for all 15 characters forever. Deleting it
+// is what kept 30 redundant files out of the deploy.
 
 // v3 character board. This page is what vChar links to as "Production Sheet ↗", so with the board
 // living only in the codex ART view the sheet read as untouched. Same manifest the ART view reads —
@@ -229,13 +220,6 @@ document.getElementById('sheet').innerHTML = `
       ${secs.voice?`<div class="block"><h3>${LB('Voice / Performance','聲音表演')}</h3>${listOf(secs.voice,'li')}</div>`:''}
     </div>
     <div class="col mid">
-      <div class="refwrap"><h3>${LB('Character Reference Sheet','角色設定')}</h3>
-        <div class="refgrid">
-          ${refCell('assets/portraits/'+c.id+'.png','@Image1 · HERO',L==='cn'?'主視覺':'HERO CONCEPT',L==='cn'?'鎖定造型':'locked hero design',false)}
-          ${refCell('assets/sheets/'+c.id+'-turnaround.png','@Image2 · MODEL SHEET',L==='cn'?'三視圖／表情':'TURNAROUND + EXPRESSIONS',L==='cn'?'Nano Banana 2 鎖定':'Nano Banana 2 · identity-locked',false)}
-          ${refCell('assets/sheets/'+c.id+'-env.png','@Image3 · ENVIRONMENT',L==='cn'?'場景設定':'ENVIRONMENT',L==='cn'?'江戶場景圖':'Key Edo location plates',true)}
-        </div>
-      </div>
       ${boardBlock()}
       <div class="refwrap" style="border-bottom:none"><h3>${LB('Arc Storyboard','分鏡故事板')}</h3>${storyboard()}</div>
     </div>
