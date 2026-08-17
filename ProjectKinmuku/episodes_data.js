@@ -128,8 +128,8 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "High angle past the fox-woman's shoulder on the roof ridge; her sleeves and nine tails stream slowly in the night wind as the column crawls on below; hair sliding like poured ink.",
-     "act": "Byakuren does almost nothing, and that is the performance. Sleeves and nine tails move because the wind moves them, never because she does. Only the eyes travel, tracking the column below unhurried, appraising it like a scholar re-reading a page she already knows. Absolute composure — cold, patient, entirely unmoved."
+     "motion": "High angle past the fox-woman's shoulder on the roof ridge; her nine tails stream slowly in the night wind as the column crawls on below, sleeves hanging straight and heavy; hair sliding like poured ink.",
+     "act": "Byakuren does almost nothing, and that is the performance. Her sleeves hang straight and heavy; only the nine tails answer the wind. Only the eyes travel, tracking the column below unhurried, appraising it like a scholar re-reading a page she already knows. Absolute composure — cold, patient, entirely unmoved."
     }
    },
    {
@@ -173,7 +173,7 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "Slow drift upward from the oni at the street corner — a hand pressed to his chest, head lowering — up to the pale woman turning away along the roof ridge, robes trailing; night mist slides between them.",
+     "motion": "Slow drift upward from the oni at the street corner — a hand pressed to his chest, head lowering — up to the pale woman turning away along the roof ridge, hair trailing like poured ink; robes hanging straight; night mist slides between them.",
      "act": "Two separate performances in one frame, neither looking at the other. Below, Genki presses a flat hand to his chest and his head lowers — a big man finding an injury with no wound, confused rather than hurt. Above, Byakuren turns to leave and, for a fraction of a second before she goes, her gaze holds on him one beat too long: the first crack in a face that has never had one."
     }
    },
@@ -451,7 +451,7 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "Wide symmetrical: the fox-woman steps off the ridge and falls feather-slow into frame center, robes and nine tails billowing then settling; sandals touch stone in silence; mist parts in rings.",
+     "motion": "Wide symmetrical: the fox-woman steps off the ridge and falls feather-slow into frame center, nine tails billowing then settling; robes hanging straight and heavy; sandals touch stone in silence; mist parts in rings.",
      "act": "She arrives with the verdict already reached — the face doing nothing on the way down, no bracing for the stone, the eyes on him before her feet have any right to be. Composure this total is work rather than nature, and the work should be faintly legible in how carefully nothing moves. Once she is down, hold a beat longer than the moment needs and let interest surface for the first time: the eyes stop weighing him and simply look, and she has decided he is worth her time."
     }
    },
@@ -747,7 +747,7 @@ window.KINMUKU_EPS = {
        "en": "Kuroberi"
       }
      ],
-     "motion": "High angle from the ridge: the fox-woman's silhouette watches in the foreground, sleeves streaming, as the mob scatters below; on the opposite eave a black cat tail flicks and slides out of frame.",
+     "motion": "High angle from the ridge: the fox-woman's silhouette watches in the foreground, sleeves hanging straight; hair sliding like poured ink, as the mob scatters below; on the opposite eave a black cat tail flicks and slides out of frame.",
      "act": "Byakuren begins in her habit — the eyes narrowed and weighing what happened below like a line she means to correct, the face itself giving nothing away. Then the verdict changes on her: the edge goes out of the gaze, the lips part slightly and close again on a word she does not say, and one corner of the mouth concedes something she would deny aloud. Across the way the small one watches her instead of the street, restless and unwilling to be caught at it, and looks away first."
     }
    },
@@ -1869,7 +1869,7 @@ window.KINMUKU_EPS = {
        "en": "Kuroberi"
       }
      ],
-     "motion": "Wide on the bridge: the line settles in staggered heartbeats — the oni sinking his weight at center, the fox gliding serene to his right, the oni woman planting herself at his left, the nekomata dropping into a low crouch on the railing — cloth, tails and hair streaming in the rising wind.",
+     "motion": "Wide on the bridge: the line settles in staggered heartbeats — the oni sinking his weight at center, the fox gliding serene to his right, the oni woman planting herself at his left, the nekomata dropping into a low crouch on the railing — tails and hair streaming in the rising wind, the fox's sleeves hanging straight.",
      "act": "Four separate fears resolving into one shared steadiness. He breathes out once and puts his own dread somewhere behind the eyes where none of them will have to see it; beside him one keeps her face smooth as still water while her fingertips press white into her palm, one sets her teeth and lifts her chin as though daring the night to start, and the crouched one holds an animal alertness, ready to bolt and choosing not to. End with a look passing down the line and each face hardening a little as it arrives."
     }
    },
@@ -1951,7 +1951,7 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "Aerial over the entire city: from the fox-woman's rising hand a single luminous thread ripples outward across the sea of tiled roofs, ridge after ridge lighting and dimming as it passes; her sleeves lift and settle a beat late.",
+     "motion": "Aerial over the entire city: from the fox-woman's rising hand a single luminous thread ripples outward across the sea of tiled roofs, ridge after ridge lighting and dimming as it passes; her sleeves hang straight; her hair lifting a beat late.",
      "act": "Nothing in her strains — direct the restraint, not the effort. Begin with the eyes lowered and the mouth composed, the breath drawn deep and held a moment too long, the whole of her gathering into one steady point; then as the words leave her the shoulders drop by a hair and the lids lift, her gaze going out across the roofs with something almost tender in it, an old grief she has decided not to show. Land on her still and listening for whether it took, one small swallow the only thing that gives her away."
     }
    },
