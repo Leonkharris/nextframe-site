@@ -34,8 +34,8 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Low and close, the camera walking backwards down the lantern street ahead of the oni as he strides at the parade's head - reverse dolly, pulling back at his exact pace so he holds his height in frame while the street streams past the lens; the near lantern at the edge of frame swells, blooms out of focus and sweeps out past the camera; robes and hair stream one beat behind his heavy steps; behind him the shadow column resolves further out of the fog with every step, more of it legible than before; lantern light slides across his horns; slight motion blur.",
-     "act": "Genki marches with no will in it — a body performing a duty it stopped questioning centuries ago. Heavy metronomic strides, shoulders dead level, jaw set, eyes forward and half-lidded with no expression whatsoever; he never glances back at the column and never at the camera. Play emptiness carried at full height: enormous, tireless, hollow. The last beat is physical, not a look - one heavier step lands, the mist shudders forward past him and his hair and sleeves lift and settle, and he does not react to any of it."
+     "motion": "Low and close, the camera walking backwards down the lantern street ahead of the oni as he strides at the parade's head - reverse dolly, pulling back at his exact pace so he holds his height in frame while the street streams past the lens; the near lantern at the edge of frame swells, blooms out of focus and sweeps out past the camera; his hair streams one beat behind his heavy steps; his robes hang heavy and straight; behind him the shadow column resolves further out of the fog with every step, more of it legible than before; lantern light slides across his horns; slight motion blur.",
+     "act": "Genki marches with no will in it — a body performing a duty it stopped questioning centuries ago. Heavy metronomic strides, shoulders dead level, jaw set, eyes forward and half-lidded with no expression whatsoever; he never glances back at the column and never at the camera. Play emptiness carried at full height: enormous, tireless, hollow. The last beat is physical, not a look - one heavier step lands, the mist shudders forward past him and his hair lifts and settles; his sleeves hang heavy and straight; he does not react to any of it."
     }
    },
    {
@@ -88,7 +88,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Macro: the camera circles around the raised clawed hand, moonlight raking along the claw edge as the angle changes and the lantern-lit street wheels slowly out of focus behind it; the hand trembles mid-strike, then slowly descends like a blade being sheathed; the sleeve flows down after it.",
+     "motion": "Macro: the camera circles around the raised clawed hand, moonlight raking along the claw edge as the angle changes and the lantern-lit street wheels slowly out of focus behind it; the hand trembles mid-strike, then slowly descends like a blade being sheathed; the sleeve hangs straight and heavy as the hand descends.",
      "act": "A killing motion loses its conviction in mid-air. The clawed hand is up and fully committed, then it stalls and trembles — a body being contradicted by something it has no word for — and comes down slow and controlled, the way a blade is sheathed, not the way a strike is dropped. Restraint, not weakness. The whole shot is one decision being made."
     }
    },
@@ -108,7 +108,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Wide: the shadow procession keeps flowing around the bend while the lone oni stands against the current, robe and hair streaming in their passing wind; the camera pushes slowly toward his back.",
+     "motion": "Wide: the shadow procession keeps flowing around the bend while the lone oni stands against the current, hair streaming in their passing wind; his robe hangs heavy and straight; the camera pushes slowly toward his back.",
      "act": "Genki stands and lets the parade leave him. The column streams past on both sides and he does not turn to follow; shoulders lower a fraction, head tilts down, the hand at his side closes. Read from behind: a figure who has just chosen and understands that nobody noticed. Abandonment played as stillness against motion."
     }
    },
@@ -515,7 +515,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Low-angle wide: the black-winged tengu drops against the moon with one great wing-brake — cloak snapping, roof dust bursting outward — and his landing gust whips the robes of the two figures below.",
+     "motion": "Low-angle wide: the black-winged tengu drops against the moon with one great wing-brake — roof dust bursting outward, his cloak hanging heavy — and his landing gust tears grit across the tiles and lifts the hair of the two figures below; their robes hang straight and heavy.",
      "act": "Ugaku brings no anger with him, which is worse: the face set to the flat attention of an inspection, the eyes finding Genki and holding there with neither hostility nor warmth. Let the edge arrive only near the end — a slight narrowing, the mouth thinning — a judge answered honestly who did not like the answer. Below him Genki neither shields himself nor gives ground: the chin stays tipped up into the pressure, the breath goes shallow, the eyes never drop, and he ends steadier than when it landed."
     }
    }
@@ -708,7 +708,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Wide on the bridge with focus racking: armed men edge forward in a wary knot, nets sagging, clubs wavering — the oni stands centered, robe and hair streaming in the river wind, giving not one step.",
+     "motion": "Wide on the bridge with focus racking: armed men edge forward in a wary knot, nets sagging, clubs wavering — the oni stands centered and gives not one step, hair streaming in the river wind; his robe hangs heavy and straight.",
      "act": "Start from complete neutrality: no threat held anywhere in the body, the hands open and loose at his sides, the eyes level and unhurried, a presence and not a stance. When the first man across the way finally sees him, let it land as something he did not want — the eyes lower a fraction, the mouth presses thin, the breath goes shallow and slow. He ends more still than he began, deliberately keeping his hands empty, and it visibly costs him to be looked at."
     }
    },
@@ -929,7 +929,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Push-in on the oni as the ground-tremor grows: dust jumps off the railings, hanging lanterns swing harder and harder, his robe whips — he plants his stance and holds.",
+     "motion": "Push-in on the oni as the ground-tremor grows: dust jumps off the railings, hanging lanterns swing harder and harder, his hair trembles with it; his robe hangs heavy and straight — he plants his stance and holds.",
      "act": "First he listens with his whole body: the head tipped a fraction, the eyes slipping out of focus as he measures by feel alone the size of what is coming. Recognition lands next and it is no surprise — the eyes sharpen and steady, the jaw closes, the fingers curl shut once and stay shut, the breath deepened on purpose rather than caught. He never once looks away up the street; the fear is there and it changes nothing."
     }
    },
@@ -1985,7 +1985,7 @@ window.KINMUKU_EPS = {
        "en": "Ayame"
       }
      ],
-     "motion": "Slow motion, camera low and tight: she sinks to her knees, hair floating up with the fall, robes settling after her; warm gold light blooms beneath her skin in spreading pulses.",
+     "motion": "Slow motion, camera low and tight: she sinks to her knees, hair floating up with the fall; her robes hang straight and heavy; warm gold light blooms beneath her skin in spreading pulses.",
      "act": "Nothing here is agony — direct a body that has braced for a lifetime finally being told it may stop. She goes down with the flinch still in her, shoulders hitched up and jaw clamped against a pain she expects and does not receive; then confusion crosses her, brows lifting, mouth slackening, the breath coming out shakily as she begins to understand what is happening. By the end the tension has left her neck and hands entirely and she is looking at something none of them can see, half-smiling, astonished at how simple it turned out to be."
     }
    },
