@@ -323,8 +323,8 @@ window.KINMUKU_EPS = {
     "jp": "日本橋の東、灯りはまだ消えず。若き版木師は鬼の顔を彫り慣れた手つきで刻んでいたが、今宵、その手がふと止まった。鬼とは、まことにこのような姿であったかと。",
     "video": {
      "chars": [],
-     "motion": "Dolly-in on the carver's hand working mid-stroke, wood chips lifting — the blade freezes and trembles in place; lamp flame flickers across the half-carved oni print.",
-     "act": "Shinnosuke's face carries practiced boredom into sudden doubt. His eyes lift from the block toward something far off, brow tightening, breath catching in his throat as the old certainty drains out of him; his mouth almost shapes the question before he swallows it back. A bored craftsman curdling into a man afraid of his own hands."
+     "motion": "Dolly-in on the carver's hand working mid-stroke, wood chips lifting — the blade stalls and trembles against the grain; lamp flame flickers across the half-carved oni print.",
+     "act": "The doubt lives entirely in the hand. The stroke runs confident and practised, then the knuckles whiten, the wrist stalls mid-cut and the blade edge shivers against the grain; the fingers loosen by a fraction, resettle, and grip harder than before. The tremor climbs into the forearm and the hand lifts a little clear of the block, hovering, unwilling to commit the next cut, then lowers and lays the blade flat on the wood. Frame the hand, the blade and the half-carved block throughout — a craftsman's certainty draining out through his fingers."
     }
    },
    {
@@ -358,7 +358,7 @@ window.KINMUKU_EPS = {
       }
      ],
      "motion": "Low tracking at hand height following the oni's open palm as he steps steadily toward the living shadow; his sleeve sways; the shadow recoils and regathers as the hand nears.",
-     "act": "Begin with the weariness of recognition — the eyes settling on the dark without a flicker of surprise, one long breath going out through the nose, the shoulders coming down under something already too familiar. Then let the decision live in the hand and not the face: the fingers deliberately spread and stay spread, offered flat, refusing to close into a fist when closing is what the body is asking for. He ends certain and not comforted by it, the mouth level, no threat left in him and no mercy either."
+     "act": "Play the whole decision in the hand and the walk. He advances at a steady unhurried pace and the stride never breaks; the open palm rides forward ahead of him, the fingers spreading wider as the shadow recoils, then the thumb drifting in and the fingers beginning to curl toward a fist before he deliberately opens them again and pushes the flat palm further forward. The sleeve drags and swings with each step, the forearm level. Offered, not threatened — and it visibly costs him to keep it open."
     }
    },
    {
@@ -371,8 +371,8 @@ window.KINMUKU_EPS = {
     "jp": "闇の中には幾つもの声が混じり合い、同じ言葉を繰り返し呟いていた。名を与えよ、咎める何かを与えよ、鬼を与えよと。",
     "video": {
      "chars": [],
-     "motion": "Extreme close-up inside the ink-smoke: faint faces surface, mouth silent words and dissolve; the whole mass rotates like slow smoke; tendrils curl toward the lens.",
-     "act": "Inside the ink-smoke, a chorus with no self yet takes turns wearing one. A half-formed mouth tries envy, loses it, tries shame, loses that too, then flares briefly into anger before dissolving back into the swirl — each feeling tested and dropped before it can be believed. Pure want with nothing to carry it, still begging to be told what it is."
+     "motion": "Extreme close-up inside the ink-smoke: dense black tendrils turn through each other in slow turbulent eddies, thin threads shearing off the thick ones; the single face held in the folds is remade continuously by the flow around it, its edges eaten away and re-formed out of the same current; embers drift through and tendrils curl past the lens. The framing stays inside the smoke on this one face for the whole shot.",
+     "act": "One face, one want, never finished. The open mouth strains wider as if to force the word out and the brow gathers with the effort; the smoke eats the shape from its edges inward before it can arrive, and the same current builds it back a little changed so it can strain again. The features keep reaching and keep dissolving and never once settle. Pure want with nothing to carry it, still begging to be told what it is."
     }
    },
    {
@@ -411,8 +411,8 @@ window.KINMUKU_EPS = {
        "en": "Kuroberi"
       }
      ],
-     "motion": "Continuous pan up the dark wall to two luminous cat eyes opening, pupils dilating; the nekomata's outline uncoils and stretches along the roof tiles.",
-     "act": "She has been there a long time, so the opening eyes must not read as waking: the attention is flat and already fixed, unhurried, the stillness of something that watched the whole thing and never once needed to move. Then amusement arrives in stages — the lids narrowing, the mouth going crooked on one side, a slow breath let out as though at a joke she has been saving. For half a beat something older shows underneath it and is not funny at all, and she puts the smile back over it before it can be read."
+     "motion": "Slow drift held close on the nekomata's face and shoulders against the cracked wall, roof tiles and moonlight behind her, at the same distance from the first frame to the last: the gold eyes narrow and the pupils draw down to slits, the gloved hand with red nails turns slowly near her jaw, a strand of black hair slides across her cheek, and both raised tails curl and uncurl behind her shoulders. Petals and embers drift through the air between her and the lens.",
+     "act": "She has been watching a long time, so nothing may read as waking or as arriving: the attention is already fixed and unhurried. Play all of it in the face and the shoulders — the lids narrowing, the smile pulling crooked on one side, the chin dipping a few degrees so she looks up through her lashes, one shoulder rolling forward and easing back while a tail curls up behind it. For half a beat something older shows underneath the amusement and is not funny at all, and she puts the smile back over it before it can be read."
     }
    },
    {
@@ -451,8 +451,8 @@ window.KINMUKU_EPS = {
        "en": "Kujo Byakuren"
       }
      ],
-     "motion": "Wide symmetrical: the fox-woman steps off the ridge and falls feather-slow into frame center, nine tails billowing then settling; robes hanging straight and heavy; sandals touch stone in silence; mist parts in rings.",
-     "act": "She arrives with the verdict already reached — the face doing nothing on the way down, no bracing for the stone, the eyes on him before her feet have any right to be. Composure this total is work rather than nature, and the work should be faintly legible in how carefully nothing moves. Once she is down, hold a beat longer than the moment needs and let interest surface for the first time: the eyes stop weighing him and simply look, and she has decided he is worth her time."
+     "motion": "Locked wide on the fox-woman hovering a hand's width above the wet stones, the gate and the moon behind her, her size in frame unchanged from the first frame to the last: she settles slowly downward until her toes meet the stone, the nine tails fanning wide on the way down and folding closed as she arrives, the mist coiling under her parting and rolling outward across the plaza; petals and embers drift past.",
+     "act": "Composure this total is work, and the work is in how exactly nothing is allowed to swing. She comes down without gathering herself, the spine vertical, the arms quiet inside the long sleeves, and takes her own weight on the stone with no rebound and no bend in the knee. Then the head turns a few degrees toward him and settles, the shoulders drop a fraction as the tails come to rest, and the small smile stays exactly where it was. She has decided he is worth her time."
     }
    },
    {
@@ -490,8 +490,8 @@ window.KINMUKU_EPS = {
     "jp": "遠くで、提灯を手にした人々が家を出た。恐れは方向を探し始め、方向とは常に、それを担う名を求めるものであった。",
     "video": {
      "chars": [],
-     "motion": "Tracking along the dark street: lantern lights bob out of doorways one after another, townsfolk shuffling into uneasy clusters, shadows wheeling across the walls.",
-     "act": "Uneasy murmurs pass man to man before hardening into one voice. Eyes dart sideways for permission to be afraid out loud, shoulders stay hunched and uncertain, until a single jaw sets and the crowd's noise snaps from murmur into agreement, hands tightening on lantern poles. Diffuse dread sharpening, man by man, into something that wants a name to blame."
+     "motion": "Slow track down the lantern-lit street alongside the townsfolk and at their level: the near man swings his lantern on his own rhythm while the woman behind him carries hers steady, and the ones further back bob at their own separate speeds; each lantern throws its own shadow across the shopfront wall and the shadows swing at different rates; mist rolls low over the wet stone and embers drift up through the lantern light.",
+     "act": "Play it on the near man, and let the others stay busy behind him on their own beats. He is already leaning forward, so the fear is in the small things: the eyes widen and flick sideways toward the woman behind him, the free hand opens and closes, the mouth works on a word he does not say, the shoulders hunch tighter and then square as his jaw sets. He stops being afraid and starts wanting someone to blame, and it happens in his face without him ever straightening up."
     }
    },
    {
@@ -624,8 +624,8 @@ window.KINMUKU_EPS = {
        "en": "Aokichi"
       }
      ],
-     "motion": "Push-in on the kappa's head-dish: trembling hands pour cupped river water, the low waterline climbing; beads run down his brow; the bridge-arch shadow wavers above.",
-     "act": "Play stubbornness first, not distress: eyes down on the work, jaw set, the shoulders hunched into it like a chore he has decided not to feel. Midway the cost surfaces — the breath shortens and catches, and the eyes flick up toward the street above him and hold one beat too long, frightened of it. Then he drops his gaze and sets his mouth harder than before, a small creature choosing to keep paying."
+     "motion": "Push-in on the kappa's head-dish: two webbed hands cupped together, held close to the rim and shaking faintly, tipping river water in — the low waterline climbing; beads run down his brow; the bridge-arch shadow wavers above. Both hands keep the same shape and the same fingers from the first frame to the last.",
+     "act": "Play stubbornness first, not distress, and play it in the hands and the set of the shoulders. Head down over the work, jaw set, the shoulders hunched into it like a chore he has decided not to feel. Midway the cost surfaces — the breath shortens, the cupped hands falter and spill a little down his brow before he steadies them and tips the rest in. Then the shoulders come back up and the mouth sets harder than before, a small creature choosing to keep paying."
     }
    },
    {
@@ -747,8 +747,8 @@ window.KINMUKU_EPS = {
        "en": "Kuroberi"
       }
      ],
-     "motion": "High angle from the ridge: the fox-woman's silhouette watches in the foreground, sleeves hanging straight; hair sliding like poured ink, as the mob scatters below; on the opposite eave a black cat tail flicks and slides out of frame.",
-     "act": "Byakuren begins in her habit — the eyes narrowed and weighing what happened below like a line she means to correct, the face itself giving nothing away. Then the verdict changes on her: the edge goes out of the gaze, the lips part slightly and close again on a word she does not say, and one corner of the mouth concedes something she would deny aloud. Across the way the small one watches her instead of the street, restless and unwilling to be caught at it, and looks away first."
+     "motion": "High angle from the ridge, the camera craning slowly down and forward over the tiles: the fox-woman's silhouette watches in the foreground, sleeves hanging straight, hair sliding like poured ink, as the mob scatters below; on the opposite eave a black cat tail flicks and slides out of frame.",
+     "act": "Byakuren watches in silhouette, so play her in posture and hair rather than expression. She begins perfectly upright and unmoving, the head angled down at the street with the flat attention of someone marking a line she means to correct. Then the verdict changes on her: the chin lifts a fraction, the shoulders come down out of their set, one hand inside the sleeve opens and closes once, and the head turns slowly away from the street. Across the way the small one is watching her instead of the scene below, tail flicking, restless — and turns away first."
     }
    },
    {
@@ -994,8 +994,8 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Slow tracking on the king's broad back walking away through layered mist, heels dragging, hair swinging low; the young oni holds the foreground, breath and robe still moving.",
-     "act": "Enma's back carries the whole thing: the shoulders set low and unhurried, no triumph anywhere in the carriage, a labourer at the end of a task he has done too many times to feel. Genki takes the sentence standing — the face blank at first, then the throat moves, the eyes drop away from the retreating king, and the mouth pulls tight. He brings his eyes back up before the moment ends, and what is in them by then is not humiliation but resolve."
+     "motion": "Slow reverse dolly down the street ahead of the two of them as they walk toward the lens through the mist, both figures the same size in frame from the first frame to the last: the king's heavy embroidered kimono swings with each stride and the flames in his hands sway, the young oni's hakama and sleeves moving at his own separate pace beside him, lanterns sliding past on both walls.",
+     "act": "The sentence has already been passed, so play the aftermath in the walk. Enma's pace never quickens and never slows, the shoulders set low and rolling, the head level, no triumph anywhere in the carriage — a labourer at the end of a task he has done too many times to feel. Genki walks it beside him and takes it standing: the throat moves, the head drops a few degrees, the shoulders tighten and then square, and he lifts his head and faces forward again before the shot ends. What is in him by then is not humiliation but resolve."
     }
    },
    {

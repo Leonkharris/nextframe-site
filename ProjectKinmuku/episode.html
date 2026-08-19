@@ -250,7 +250,7 @@ if(!E){
       // the director's note per shot (authored in 08_分鏡劇本_Storyboards/shot_motion_prompts.json) —
       // what the character is DOING and what is on their face while the camera does its job. It goes
       // second, right after the scene, so the performance outranks every craft clause below it.
-      + (v.act ? ` PERFORMANCE — direct the acting, not the scenery. ${v.act} The emotion must be legible on the face and in the body, and it must develop across the shot rather than hold one pose.` : '')
+      + (v.act ? ` PERFORMANCE — direct the acting, not the scenery. ${v.act} The emotion must be legible in whatever this framing actually holds — face, hands, posture or gait — and it must develop across the shot rather than hold one pose.` : '')
       + (v.chars.length ? ` The character${v.chars.length>1?'s':''} stay${v.chars.length>1?'':'s'} exactly on-model as in frame-0 and the attached identity board${v.chars.length>1?'s':''}.` : '')
       + ` Camera movement — ${M.en}: ${M.d}; match the attached grey-box motion-reference clip's camera trajectory (this sets the MOVEMENT only, not the content).`
       + ` Fully painted anime; continuous fluid motion with secondary motion everywhere (hair, cloth, mist, flame); never a still frame.`
