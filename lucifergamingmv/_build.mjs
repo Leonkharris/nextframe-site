@@ -9,6 +9,9 @@ const OUT = import.meta.dirname;
 const shotlist = JSON.parse(fs.readFileSync(`${MV}/docs/shotlist.json`, "utf8"));
 const sections = JSON.parse(fs.readFileSync(`${MV}/docs/sections.json`, "utf8"));
 const jobs = JSON.parse(fs.readFileSync(`${MV}/docs/i2v-jobs.json`, "utf8"));
+// A panel with no i2v clip is no longer a held plate: it cuts to a different picture every beat.
+// Same file the assembler reads, so the page can never claim a build the cut does not have.
+const montage = JSON.parse(fs.readFileSync(`${MV}/docs/montage.json`, "utf8"));
 const byId = new Map(jobs.map((j) => [j.id, j]));
 
 const copyDir = (src, dst, files) => {
@@ -28,8 +31,11 @@ copyDir(`${MV}/boards/clips`, `${OUT}/clips`, live);
 const liveIds = new Set(live.map((f) => f.replace(".mp4", "")));
 
 fs.copyFileSync(`${MV}/boards/MOTION-PASS.mp4`, `${OUT}/MOTION-PASS.mp4`);
-fs.copyFileSync(`${MV}/boards/SIX-FACES.jpg`, `${OUT}/SIX-FACES.jpg`);
-fs.copyFileSync(`${MV}/boards/CHARBOARD-ARCHITECT_768.jpg`, `${OUT}/CHARBOARD-ARCHITECT.jpg`);
+// The six one-off faces as they now render. Replaces the old SIX-FACES/CHARBOARD pair: the film no
+// longer has a recurring protagonist to board, so a character sheet would be documenting a decision
+// that was reversed.
+fs.copyFileSync(`${MV}/boards/SIX-CAST.jpg`, `${OUT}/SIX-CAST.jpg`);
+fs.copyFileSync(`${MV}/boards/MONTAGE-SAMPLE.jpg`, `${OUT}/MONTAGE-SAMPLE.jpg`);
 
 const shots = shotlist.shots.map((s) => {
   const pid = id(s.n);
@@ -38,7 +44,8 @@ const shots = shotlist.shots.map((s) => {
     id: pid, n: s.n, section: s.section, bar: s.bar, bars: s.bars,
     start: s.start, end: s.end, dur: s.dur,
     cast: s.cast, lens: s.lens, movement: s.movement, size: s.size, desc: s.desc,
-    status: s.comp ? "gfx" : liveIds.has(pid) ? "live" : "plate",
+    status: s.comp ? "gfx" : liveIds.has(pid) ? "live" : montage[pid]?.length ? "montage" : "plate",
+    slices: montage[pid]?.length ?? null,
     render: job?.render ?? null,
     prompt: job?.prompt ?? null,
     thumb: thumbs.includes(pid + ".jpg") ? pid + ".jpg" : null,
@@ -46,16 +53,18 @@ const shots = shotlist.shots.map((s) => {
 });
 
 const done = shots.filter((s) => s.status === "live").length;
+const nMont = shots.filter((s) => s.status === "montage").length;
 const meta = {
   bpm: sections.bpm, bar_sec: sections.bar_sec, beat_sec: sections.beat_sec,
   origin: sections.origin, total_bars: sections.total_bars,
   time_signature: sections.time_signature,
   aspect: shotlist.aspect, panels: shotlist.panels, cast_counts: shotlist.cast_counts,
-  jobs: jobs.length, done, remaining: jobs.length - done,
+  jobs: jobs.length, done, remaining: jobs.length - done, montage: nMont,
+  slices: Object.values(montage).reduce((n, v) => n + v.length, 0),
   cut: { dur: 201.374, w: 1280, h: 720, fps: 24, frames: 4833, gaps: 0 },
 };
 
 fs.writeFileSync(`${OUT}/data.js`,
   "window.MV = " + JSON.stringify({ meta, sections: sections.sections, shots }) + ";\n");
 
-console.log(`${shots.length} panels | ${done} live | ${thumbs.length} thumbs | ${live.length} clips copied`);
+console.log(`${shots.length} panels | ${done} live | ${nMont} montage | ${thumbs.length} thumbs | ${live.length} clips copied`);

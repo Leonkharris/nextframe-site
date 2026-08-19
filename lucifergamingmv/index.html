@@ -10,7 +10,7 @@
   :root{
     --bg:#0b0b0f; --panel:#121218; --panel2:#17171f; --line:#26262f;
     --ink:#e9e9ef; --dim:#8b8b99; --faint:#5a5a68;
-    --ember:#ff6a1a; --ember2:#ffb057; --live:#39d98a; --wall:#ff4d4d; --gfx:#7b8cff;
+    --ember:#ff6a1a; --ember2:#ffb057; --live:#39d98a; --wall:#ff4d4d; --gfx:#7b8cff; --mont:#ffc247;
   }
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--ink);
@@ -45,7 +45,7 @@
 
   .bar{height:10px;border-radius:99px;background:var(--panel2);overflow:hidden;display:flex}
   .bar i{display:block;height:100%}
-  .bar .b-live{background:var(--live)} .bar .b-gfx{background:var(--gfx)}
+  .bar .b-live{background:var(--live)} .bar .b-mont{background:var(--mont)} .bar .b-gfx{background:var(--gfx)}
 
   table{width:100%;border-collapse:collapse;font-size:13.5px}
   th,td{text-align:left;padding:9px 12px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -79,6 +79,7 @@
   .t-live{background:rgba(57,217,138,.9);color:#04170d}
   .t-plate{background:rgba(0,0,0,.6);color:var(--ember2);border:1px solid rgba(255,176,87,.45)}
   .t-gfx{background:rgba(123,140,255,.9);color:#080c26}
+  .t-montage{background:rgba(255,194,71,.9);color:#241701}
   .card .meta{padding:9px 11px 11px}
   .card .meta .row{display:flex;justify-content:space-between;gap:8px;font-size:11px;color:var(--faint)}
   .card .meta p{margin:5px 0 0;font-size:12.5px;color:var(--dim);line-height:1.42;
@@ -125,7 +126,7 @@
     <h1>Lucifer Gaming — Music Video</h1>
     <p class="lede">A 79-bar, 3:21 music video cut to the track's own tempo grid. 64 panels, 59 of them
       image-to-video shots. Every frame is generated. This page is the live state of the build — what is
-      shot, what is still a held plate, and exactly what is blocking the rest.</p>
+      shot, what is carrying the slot on a beat montage, and exactly what is blocking the rest.</p>
     <div class="updated mono">Last rebuilt from the working tree · <span id="stamp"></span></div>
   </div>
   <div class="stats wrap" style="max-width:1180px">
@@ -141,14 +142,15 @@
 
 <section>
   <div class="shead"><span class="n">01</span><h2>The current cut</h2></div>
-  <p class="sub">Full-length assembly, rebuilt every time a batch lands. Live shots sit in their slots;
-    the other 54 slots hold their approved still plate so the edit stays timing-accurate end to end.</p>
+  <p class="sub">Full-length assembly, rebuilt every time a batch lands. Live shots sit in their slots.
+    Every slot without one now cuts to a different picture on every beat — 0.64 s a card, each card
+    with its own push or pull — so nothing in the cut is a frozen frame except the five title panels.</p>
   <video controls preload="metadata" poster="thumbs/p01.jpg" src="MOTION-PASS.mp4"></video>
   <table style="margin-top:18px">
     <tr><td class="k">Container</td><td class="mono" id="cut-spec">—</td></tr>
     <tr><td class="k">Gaps / black frames</td><td class="mono">0 — every slot filled, audio locked to the bar grid</td></tr>
-    <tr><td class="k">Honest status</td><td>Not deliverable. It reads as a stills cut until all 59 shots are real
-      motion. That is the bar, and it has not moved.</td></tr>
+    <tr><td class="k">Honest status</td><td>Not deliverable. <b id="cut-mix">—</b>. The montage slots move and
+      cut on the beat, but generated motion is still the bar and 19 slots have not cleared it.</td></tr>
   </table>
 </section>
 
@@ -184,6 +186,7 @@
   <div class="tools" style="margin-top:18px">
     <button data-f="all" aria-pressed="true">All 64</button>
     <button data-f="live">Live clips</button>
+    <button data-f="montage">Beat montage</button>
     <button data-f="plate">Plate only</button>
     <button data-f="gfx">GFX composite</button>
   </div>
@@ -226,14 +229,17 @@
     </div>
     <div class="box">
       <span class="pill p-wall">Walled</span>
-      <h4>Artlist Seedance — the "unlimited" lane</h4>
-      <p>Unlimited now reads <span class="mono">disabled</span>, not merely unchecked, and the button has
-        become "Get More Credits". The allowance is spent — signing in again would change nothing.</p>
+      <h4>Artlist Seedance — the free lane</h4>
+      <p>This lane delivered: Seedance 2.0 Mini at 480p/16:9 is genuinely free and produced most of the
+        clips in the cut. It is down for a different reason now — the session cookie expired
+        <span class="mono">2026-08-19 16:56</span> and all three Artlist profiles are signed out. Signing
+        in is a human click, never the agent's. 19 shots are queued and fire the moment it is back.</p>
     </div>
     <div class="box">
       <span class="pill p-wall">Walled</span>
       <h4>Higgsfield</h4>
-      <p>All credits used; the driver port is down. Not a route to 49 shots.</p>
+      <p>Its unlimited pool reads <span class="mono">available: false</span>, so every generation here
+        would spend credits. Paid spend has never been authorised on this project, so this is not a route.</p>
     </div>
     <div class="box">
       <span class="pill p-off">Ruled out</span>
@@ -242,26 +248,29 @@
         Called off — the look is not worth the throughput.</p>
     </div>
   </div>
-  <div class="note">Refill throughput is the whole remaining question. At the observed Flow burst rate the
-    49 outstanding shots are roughly <b>eight more refill cycles</b>. Resuming is one command and it
-    auto-skips everything already on disk, so no capacity is ever spent twice.</div>
+  <div class="note">The remaining work is <b>19 shots on a free lane</b>, not a spend. Two queues are
+    written and waiting (13 panels at 4 s, 6 at 5 s); resuming is one command and it auto-skips
+    everything already on disk, so no capacity is ever spent twice. Each clip that lands silently
+    replaces its montage — the assembler always prefers real footage.</div>
 </section>
 
 <section>
   <div class="shead"><span class="n">06</span><h2>Open decisions</h2></div>
   <div class="figs">
     <figure>
-      <img src="SIX-FACES.jpg" alt="Six re-drawn Architect face plates" />
-      <figcaption><b style="color:var(--ink)">Face-match gate — needs a pick.</b> Six Architect close-ups
-        were re-drawn after the plates came back drifting off the character board. Free-lane rerolling runs
-        unattended, but the face itself is a human call. Nothing downstream of the Architect panels should
-        move until one of these is chosen.</figcaption>
+      <img src="SIX-CAST.jpg" alt="The six one-off faces in the film" />
+      <figcaption><b style="color:var(--ink)">The recast — settled.</b> The film used to be carried by one
+        recurring protagonist, which made the whole thing his story and made face coherence the hardest
+        problem on the board. It is now six one-off faces — Filipina 41, Indian 33, West African 45, Korean
+        28, Mexican 52, Polish 37 — each appearing once. Nobody recurs, so nobody needs a character board,
+        and the coherence gate that was blocking 16 panels no longer exists.</figcaption>
     </figure>
     <figure>
-      <img src="CHARBOARD-ARCHITECT.jpg" alt="Architect character board" />
-      <figcaption><b style="color:var(--ink)">The reference every plate is judged against.</b> The Architect
-        is the only recurring face — 16 of 64 panels. Coherence across those 16 is what separates a music
-        video from a slideshow of a stranger.</figcaption>
+      <img src="MONTAGE-SAMPLE.jpg" alt="One montage panel's cards, in cut order" />
+      <figcaption><b style="color:var(--ink)">What a montage slot actually plays.</b> One panel, four
+        cards, one per beat — a different picture each time, each with its own push or pull. Measured, not
+        eyeballed: the weakest cut in the film changes the frame by twice the threshold at which two
+        pictures count as the same picture.</figcaption>
     </figure>
   </div>
   <div class="cols" style="margin-top:22px">
@@ -303,6 +312,8 @@ document.getElementById("s-panels").textContent = M.panels;
 document.getElementById("s-dur").textContent = secs(M.cut.dur);
 document.getElementById("s-bpm").textContent = M.bpm;
 document.getElementById("p6").textContent = M.done + " of " + M.jobs;
+document.getElementById("cut-mix").textContent =
+  `${M.done} generated clips, ${M.montage} beat montages (${M.slices} cards), ${M.panels - M.done - M.montage} GFX composites`;
 document.getElementById("cut-spec").textContent =
   `${M.cut.w}×${M.cut.h} @ ${M.cut.fps}fps · ${M.cut.frames} frames · ${M.cut.dur}s · music embedded`;
 
@@ -322,9 +333,10 @@ document.getElementById("timeline").innerHTML = SEC.map(s => {
   return `<div style="flex:${s.dur};--p:${p}%" title="${s.name} — ${s.dur.toFixed(1)}s, ${Math.round(p)}% shot">${s.name}</div>`;
 }).join("");
 
-const nLive = S.filter(s=>s.status==="live").length, nGfx = S.filter(s=>s.status==="gfx").length;
+const nLive = S.filter(s=>s.status==="live").length, nGfx = S.filter(s=>s.status==="gfx").length,
+      nMont = S.filter(s=>s.status==="montage").length;
 document.getElementById("progress").innerHTML =
-  `<i class="b-live" style="width:${nLive/M.panels*100}%"></i><i class="b-gfx" style="width:${nGfx/M.panels*100}%"></i>`;
+  `<i class="b-live" style="width:${nLive/M.panels*100}%"></i><i class="b-mont" style="width:${nMont/M.panels*100}%"></i><i class="b-gfx" style="width:${nGfx/M.panels*100}%"></i>`;
 
 const grid = document.getElementById("grid");
 const render = (f) => {
@@ -334,7 +346,7 @@ const render = (f) => {
         ${s.status === "live"
           ? `<video src="clips/${s.id}.mp4" muted loop playsinline preload="none" poster="thumbs/${s.id}.jpg"></video>`
           : `<img loading="lazy" src="thumbs/${s.id}.jpg" alt="${s.id}" />`}
-        <span class="tag t-${s.status}">${s.status === "gfx" ? "GFX" : s.status}</span>
+        <span class="tag t-${s.status}">${s.status === "gfx" ? "GFX" : s.status === "montage" ? s.slices + "-cut" : s.status}</span>
       </div>
       <div class="meta">
         <div class="row"><span class="pid">${s.id}</span><span class="mono">${s.cast} · ${s.size}</span></div>
