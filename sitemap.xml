@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://next-frame.agency/blog/</loc>
-    <lastmod>2026-08-05</lastmod>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -231,6 +231,18 @@
   <url>
     <loc>https://next-frame.agency/blog/ai-data-privacy-small-business/</loc>
     <lastmod>2026-08-05</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://next-frame.agency/blog/ai-social-media-content-calendar/</loc>
+    <lastmod>2026-08-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://next-frame.agency/blog/facebook-tiktok-ads-small-budget/</loc>
+    <lastmod>2026-08-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
