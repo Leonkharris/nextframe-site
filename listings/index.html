@@ -1585,6 +1585,7 @@ $("publish-listing").onclick = async () => {
       listingPublished = true;
       addNote("🌐 Published “" + (j.title || "listing") + "” to the AgencyPH site. "
         + "View it: " + (j.site || "https://next-frame.agency/agencyph-mockup/#registry"));
+      if (j.fb && j.fb.ok && j.fb.url) addNote("📘 Also posted to the Next-Frame Facebook page: " + j.fb.url);
     }
   } catch { addNote("Could not reach the listings engine."); }
   finally {
