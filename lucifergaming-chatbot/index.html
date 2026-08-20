@@ -327,21 +327,46 @@ const STOP = new Set(('the,and,for,with,that,this,what,when,where,which,who,why,
 
 const stem = (w) => { const t = w.replace(/(est|ing|ed|es|s)$/, ''); return t.length >= 3 ? t : w; };
 
+// Searchable text of an entry. NOT JSON.stringify(e) — that dragged id/type/audience/needs_internal
+// into the haystack, so "b2b", "faq" and boilerplate flag text scored as content words.
+const textOf = (e) => [e.q, Array.isArray(e.a) ? e.a.join(' ') : e.a, e.category, e.escalate, e.note]
+  .filter(Boolean).join(' ').toLowerCase();
+
+// Inverse document frequency over the KB. Without it every word weighed the same, so a broad
+// question ("what services do you offer?") was won by whichever LONG entry happened to repeat
+// common words — B2B-GS-01 lost all 3 of its own paraphrases to licensing entries. Cached per
+// entries array; the console's ⟳ reload swaps the array, which invalidates it.
+const idfCache = new WeakMap();
+function idfOf(entries) {
+  let m = idfCache.get(entries);
+  if (m) return m;
+  const df = new Map();
+  for (const e of entries) {
+    for (const t of new Set((textOf(e).match(/[a-zà-ÿ]{3,}/g) || []).map(stem))) df.set(t, (df.get(t) || 0) + 1);
+  }
+  m = { df, n: entries.length };
+  idfCache.set(entries, m);
+  return m;
+}
+
 // data: { kb: {entries}, markets: [...] }
 function demoAnswer(data, question, audience) {
   const qlow = question.toLowerCase();
   const raw = qlow.match(/[a-zà-ÿ]{3,}/g) || [];
   const words = raw.filter((w) => !STOP.has(w));
   const mentioned = data.markets.filter((m) => qlow.includes(m.slug) || qlow.includes(m.country.toLowerCase().split(' ')[0]));
+  const idf = idfOf(data.kb.entries);
+  const weight = (t) => Math.log(1 + idf.n / (1 + (idf.df.get(t) || 0)));
   const score = (e) => {
-    const hay = JSON.stringify(e).toLowerCase();
+    const hay = textOf(e);
     const qfield = String(e.q || '').toLowerCase();
     let s = 0, hits = 0;
     for (const w of words) {
       const t = stem(w);
-      // a hit in the entry's own question is worth 3× a hit buried in the body
-      if (qfield.includes(w) || qfield.includes(t)) { s += 3; hits++; }
-      else if (hay.includes(w) || hay.includes(t)) { s += 1; hits++; }
+      // a hit in the entry's own question is worth 3× a hit buried in the body, and a rare
+      // word is worth more than a word half the KB contains
+      if (qfield.includes(w) || qfield.includes(t)) { s += 3 * weight(t); hits++; }
+      else if (hay.includes(w) || hay.includes(t)) { s += weight(t); hits++; }
     }
     // an entry covering every content word beats a partial match on a common word
     if (words.length > 1 && hits === words.length) s += 3;
@@ -352,6 +377,16 @@ function demoAnswer(data, question, audience) {
       const names = [m.slug, m.country.toLowerCase().split(' ')[0]];
       if (names.some((n) => qfield.includes(n))) s += 6;
       else if (names.some((n) => hay.includes(n))) s += 3;
+    }
+    // ...and an entry whose own question names a DIFFERENT country is answering someone else's
+    // question. Without this, Guatemala's scenario entry won "Client wants to launch in Brazil"
+    // purely on the shared "client wants to launch" phrasing.
+    if (mentioned.length) {
+      for (const m of data.markets) {
+        if (mentioned.includes(m)) continue;
+        const names = [m.slug, m.country.toLowerCase().split(' ')[0]];
+        if (names.some((n) => qfield.includes(n))) { s -= 6; break; }
+      }
     }
     return s;
   };
