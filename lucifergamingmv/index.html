@@ -144,7 +144,8 @@
   <div class="shead"><span class="n">01</span><h2>The current cut</h2></div>
   <p class="sub">Full-length assembly, rebuilt every time a batch lands. Live shots sit in their slots.
     Every slot without one now cuts to a different picture on every beat — 0.64 s a card, each card
-    with its own push or pull — so nothing in the cut is a frozen frame except the five title panels.</p>
+    with its own push or pull. The five title panels were the last held frames in the film; they are
+    animated in ffmpeg now, so the cut contains no frozen frame at all.</p>
   <video controls preload="metadata" poster="thumbs/p01.jpg" src="MOTION-PASS.mp4"></video>
   <table style="margin-top:18px">
     <tr><td class="k">Container</td><td class="mono" id="cut-spec">—</td></tr>
@@ -202,9 +203,9 @@
       <tr><td class="k">2 · Tempo lock</td><td>BPM, bar origin, 79-bar grid</td><td style="color:var(--live)">Done</td></tr>
       <tr><td class="k">3 · Section map</td><td>15 sections by energy + drum density</td><td style="color:var(--live)">Done</td></tr>
       <tr><td class="k">4 · Storyboard</td><td>64 panels — cast, lens, size, movement</td><td style="color:var(--live)">Done</td></tr>
-      <tr><td class="k">5 · Characters &amp; plates</td><td>Architect character board, 64 keyframe plates</td><td style="color:var(--live)">Done</td></tr>
+      <tr><td class="k">5 · Cast &amp; plates</td><td>Six one-off faces, 64 keyframe plates</td><td style="color:var(--live)">Done</td></tr>
       <tr><td class="k">6 · Image-to-video</td><td>59 clips from their approved plates</td><td style="color:var(--ember)"><b id="p6">—</b> — capacity blocked</td></tr>
-      <tr><td class="k">7 · GFX composite</td><td>5 title/logo panels built in ffmpeg</td><td style="color:var(--dim)">Waiting on 6</td></tr>
+      <tr><td class="k">7 · GFX composite</td><td>5 title/logo panels built in ffmpeg — and animated there too</td><td style="color:var(--live)">Done</td></tr>
       <tr><td class="k">8 · Final assembly</td><td>Graded master, 16:9 1280×720 @ 24</td><td style="color:var(--dim)">Waiting on 6</td></tr>
     </tbody>
   </table>
@@ -272,13 +273,25 @@
         eyeballed: the weakest cut in the film changes the frame by twice the threshold at which two
         pictures count as the same picture.</figcaption>
     </figure>
+    <figure>
+      <img src="GFX-MOTION.jpg" alt="The flame panel and the wordmark card sampled across time" />
+      <figcaption><b style="color:var(--ink)">The last five held frames — settled.</b> The title panels
+        were never generation targets, so no lane was ever going to hand them motion. Top row, p08 sampled
+        across five seconds: the drawn plume is displacement-mapped per pixel, so the fire licks and its
+        reflection shimmers while the glass sheet, its edges and the burner disc stay nailed down —
+        warping those is what makes a synthetic move read as a wobbling lens. Bottom row, p38 across one
+        breath: the card has no flame to displace, so the heat moves instead — the bloom's alpha swells
+        and recedes around artwork that never shifts a pixel. A wordmark that drifts stops being a
+        wordmark.</figcaption>
+    </figure>
   </div>
   <div class="cols" style="margin-top:22px">
-    <div class="box"><h4>1 · Pick the Architect face</h4><p>Free, unblocks 16 panels' worth of re-plating.</p></div>
-    <div class="box"><h4>2 · Credit top-up, or wait out the refills</h4><p>Paid spend has never been
+    <div class="box"><h4>1 · Credit top-up, or wait out the refills</h4><p>Paid spend has never been
       authorised on this project. Waiting is free; it just takes cycles.</p></div>
-    <div class="box"><h4>3 · Nothing else is waiting on input</h4><p>Every other stage is either finished
-      or purely downstream of shot generation.</p></div>
+    <div class="box"><h4>2 · Re-sign the Artlist session</h4><p>The free lane produced most of the cut and
+      is down only on an expired cookie. 19 queued jobs go out the moment it is back.</p></div>
+    <div class="box"><h4>3 · Nothing else is waiting on input</h4><p>The cast question is closed and the
+      GFX panels are finished. Every other stage is purely downstream of shot generation.</p></div>
   </div>
 </section>
 
@@ -313,7 +326,7 @@ document.getElementById("s-dur").textContent = secs(M.cut.dur);
 document.getElementById("s-bpm").textContent = M.bpm;
 document.getElementById("p6").textContent = M.done + " of " + M.jobs;
 document.getElementById("cut-mix").textContent =
-  `${M.done} generated clips, ${M.montage} beat montages (${M.slices} cards), ${M.panels - M.done - M.montage} GFX composites`;
+  `${M.done} generated clips, ${M.montage} beat montages (${M.slices} cards), ${M.panels - M.done - M.montage} animated GFX composites, 0 held frames`;
 document.getElementById("cut-spec").textContent =
   `${M.cut.w}×${M.cut.h} @ ${M.cut.fps}fps · ${M.cut.frames} frames · ${M.cut.dur}s · music embedded`;
 
@@ -343,7 +356,7 @@ const render = (f) => {
   grid.innerHTML = S.filter(s => f === "all" || s.status === f).map(s => `
     <div class="card" data-id="${s.id}">
       <div class="frame">
-        ${s.status === "live"
+        ${s.clip
           ? `<video src="clips/${s.id}.mp4" muted loop playsinline preload="none" poster="thumbs/${s.id}.jpg"></video>`
           : `<img loading="lazy" src="thumbs/${s.id}.jpg" alt="${s.id}" />`}
         <span class="tag t-${s.status}">${s.status === "gfx" ? "GFX" : s.status === "montage" ? s.slices + "-cut" : s.status}</span>
@@ -377,7 +390,7 @@ const dlg = document.getElementById("dlg");
 grid.addEventListener("click", e => {
   const card = e.target.closest(".card"); if (!card) return;
   const s = S.find(x => x.id === card.dataset.id);
-  document.getElementById("dlg-media").innerHTML = s.status === "live"
+  document.getElementById("dlg-media").innerHTML = s.clip
     ? `<video controls autoplay loop src="clips/${s.id}.mp4" style="border-radius:12px 12px 0 0"></video>`
     : `<img src="thumbs/${s.id}.jpg" style="width:100%;display:block;border-radius:12px 12px 0 0" alt="" />`;
   document.getElementById("d-title").textContent = `${s.id} — ${s.cast} · ${s.size}`;
@@ -386,7 +399,8 @@ grid.addEventListener("click", e => {
   document.getElementById("d-kv").innerHTML = [
     ["Lens", s.lens], ["Movement", s.movement], ["Slot length", s.dur.toFixed(2) + " s"],
     ["Render length", s.render ? s.render + " s" : "n/a — ffmpeg composite"],
-    ["Status", s.status === "live" ? "Clip on disk" : s.status === "gfx" ? "GFX composite, built at assembly" : "Plate approved, clip not generated"],
+    ["Status", s.status === "gfx" ? "GFX composite — mark laid over a plate, animated in post"
+      : s.status === "live" ? "Clip on disk" : "Plate approved, clip not generated"],
   ].map(([k,v]) => `<dt>${k}</dt><dd>${v}</dd>`).join("");
   document.getElementById("d-desc").textContent = s.desc;
   const p = document.getElementById("d-prompt");

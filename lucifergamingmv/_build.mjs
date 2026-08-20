@@ -36,6 +36,8 @@ fs.copyFileSync(`${MV}/boards/MOTION-PASS.mp4`, `${OUT}/MOTION-PASS.mp4`);
 // that was reversed.
 fs.copyFileSync(`${MV}/boards/SIX-CAST.jpg`, `${OUT}/SIX-CAST.jpg`);
 fs.copyFileSync(`${MV}/boards/MONTAGE-SAMPLE.jpg`, `${OUT}/MONTAGE-SAMPLE.jpg`);
+// Proof the five title panels move: p08 across five seconds, p38 across one breath.
+fs.copyFileSync(`${MV}/boards/GFX-MOTION.jpg`, `${OUT}/GFX-MOTION.jpg`);
 
 const shots = shotlist.shots.map((s) => {
   const pid = id(s.n);
@@ -45,6 +47,11 @@ const shots = shotlist.shots.map((s) => {
     start: s.start, end: s.end, dur: s.dur,
     cast: s.cast, lens: s.lens, movement: s.movement, size: s.size, desc: s.desc,
     status: s.comp ? "gfx" : liveIds.has(pid) ? "live" : montage[pid]?.length ? "montage" : "plate",
+    // status says how the panel was MADE; clip says whether there is footage on disk to play.
+    // The two came apart when the GFX panels got motion: they are still composites, not generated
+    // shots, so they must not count toward the i2v lane -- but the page was reading status to decide
+    // what to render, and so kept showing a thumbnail for five panels that now move.
+    clip: liveIds.has(pid),
     slices: montage[pid]?.length ?? null,
     render: job?.render ?? null,
     prompt: job?.prompt ?? null,
@@ -67,4 +74,4 @@ const meta = {
 fs.writeFileSync(`${OUT}/data.js`,
   "window.MV = " + JSON.stringify({ meta, sections: sections.sections, shots }) + ";\n");
 
-console.log(`${shots.length} panels | ${done} live | ${nMont} montage | ${thumbs.length} thumbs | ${live.length} clips copied`);
+console.log(`${shots.length} panels | ${done} live | ${nMont} montage | ${shots.filter((s) => s.clip).length} with footage | ${thumbs.length} thumbs | ${live.length} clips copied`);
