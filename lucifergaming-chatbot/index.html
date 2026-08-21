@@ -428,9 +428,18 @@ function demoAnswer(data, question, audience) {
     '\n\n▸ WHAT WE CAN DO — ' + m.country.toUpperCase() + '\n' + m.alternatives.headline + '\n' +
     m.alternatives.options.map((o) => '• ' + o.do + ' — ' + o.detail).join('\n') +
     '\nNext step: ' + m.alternatives.next_step).join('');
+  // "Regulatory answers carry their date" (system-prompt.md) — third parity gap. Live mode is told to
+  // stamp anything time-sensitive; demo mode returned raw KB text with no date at all, so an agent
+  // reading a market's status had no idea how old it was. Only fires when a market is actually named,
+  // because that's the only place a verified date exists to report — never a date we made up.
+  const verified = [...new Set(mentioned.map((m) => m.verified).filter(Boolean))];
+  const dateline = verified.length
+    ? '\n\n⌛ Regulatory status verified ' + verified.join(' / ') +
+      ' — licensing team confirms current status before you quote it.'
+    : '';
   return '⚙ DEMO MODE (no API key — this is the raw KB entry, not a drafted reply)\n\n' +
     '**' + best.q + '**\n\n' + bodyText +
-    (best.escalate ? '\n\nEscalate to: ' + best.escalate : '') + alts +
+    (best.escalate ? '\n\nEscalate to: ' + best.escalate : '') + alts + dateline +
     '\n\n[[sources: ' + srcs.join(', ') + ']]';
 }
 
