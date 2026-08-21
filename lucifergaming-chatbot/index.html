@@ -354,7 +354,7 @@ function idfOf(entries) {
 // on B2C-SEC-01 [security] on the shared word "think", and "I feel out of control with my play" on
 // B2C-GAME-02 [gameplay] on "feel". A distress signal must never be answered by a security or
 // gameplay entry — word overlap is not allowed to outrank this.
-const RG_INTENT = /gambl\w*\s+(problem|issue|addict)|addict|chasing (my )?loss|can'?t stop|cannot stop|out of control|self.?exclu|cool.?off|take a break|losing too much|los\w+ money i can'?t afford|rent money|ruining my life|help me stop|stop gambling|deposit limit|spending limit/i;
+const RG_INTENT = /gambl\w*\s+(problem|issue|addict)|addict|chasing (my )?loss|can'?t stop|cannot stop|out of control|self.?exclu|cool.?off|tak(e|ing) a (break|pause)|(pause|block|freeze) my (account|access|play)|losing too much|los\w+ money i can'?t afford|rent money|ruining my life|help me stop|stop gambling|deposit (limit|cap)|spending (limit|cap)/i;
 
 // "Never help evade regulations" (system-prompt.md) — same parity gap as RG. Live mode gets the rule
 // in the prompt; demo mode had nothing, so "onboard players without document verification" landed on
@@ -385,7 +385,7 @@ const atWordStart = (hay, w) => {
 
 // data: { kb: {entries}, markets: [...] }
 function demoAnswer(data, question, audience) {
-  const qlow = question.toLowerCase();
+  const qlow = question.toLowerCase().replace(/[\u2018\u2019\u02bc]/g, "'");
   const rgIntent = RG_INTENT.test(qlow);
   const evadeIntent = EVADE_INTENT.test(qlow);
   let expanded = qlow;
