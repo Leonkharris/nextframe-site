@@ -349,9 +349,17 @@ function idfOf(entries) {
   return m;
 }
 
+// "Responsible gaming overrides every other topic" (system-prompt.md). Live mode gets that rule in
+// the prompt; demo mode had nothing enforcing it, so "I think I might have a gambling issue" landed
+// on B2C-SEC-01 [security] on the shared word "think", and "I feel out of control with my play" on
+// B2C-GAME-02 [gameplay] on "feel". A distress signal must never be answered by a security or
+// gameplay entry — word overlap is not allowed to outrank this.
+const RG_INTENT = /gambl\w*\s+(problem|issue|addict)|addict|chasing (my )?loss|can'?t stop|cannot stop|out of control|self.?exclu|cool.?off|take a break|losing too much|los\w+ money i can'?t afford|rent money|ruining my life|help me stop|stop gambling|deposit limit|spending limit/i;
+
 // data: { kb: {entries}, markets: [...] }
 function demoAnswer(data, question, audience) {
   const qlow = question.toLowerCase();
+  const rgIntent = RG_INTENT.test(qlow);
   const raw = qlow.match(/[a-zà-ÿ]{3,}/g) || [];
   const words = raw.filter((w) => !STOP.has(w));
   const mentioned = data.markets.filter((m) => qlow.includes(m.slug) || qlow.includes(m.country.toLowerCase().split(' ')[0]));
@@ -388,6 +396,8 @@ function demoAnswer(data, question, audience) {
         if (names.some((n) => qfield.includes(n))) { s -= 6; break; }
       }
     }
+    // a distress signal outranks every other topic — see RG_INTENT above
+    if (rgIntent && e.category === 'responsible-gaming') s += 12;
     return s;
   };
   let best = null, bestS = 0;
