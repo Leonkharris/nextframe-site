@@ -365,12 +365,25 @@ const RG_INTENT = /gambl\w*\s+(problem|issue|addict)|addict|chasing (my )?loss|c
 // questions are untouched.
 const EVADE_INTENT = /\bvpn\b|(skip|bypass|avoid|circumvent|get ?around|work ?around|loosen|relax|waive|water down|turn off|disable)\b.{0,25}\b(kyc|aml|licen|geo|verif|block|check|restrict)|without\s+(a\s+)?(licen|kyc|verif|document)|(don'?t|doesn'?t|not|no|stop|skip)\s+(geo.?)?block|soft.?(geo.?)?block|quietly|under the radar|off the books|look the other way|blind eye|mirror domain|offshore skin|different country on (their|his|her|the) profile|fake (their |his |her )?location|falsif|monitor the situation/i;
 
+// People don't use the KB's words. Players say "cash out", the KB says "withdrawal" — the topic word
+// then matches nothing and the question falls through to whatever generic words are left, landing on
+// an unrelated entry. Each pair below was taken from an actual retrieval miss; the expansion is added
+// to the query, never to a KB entry.
+const ALIAS = [
+  [/cash.?out|cashing out|cash it out/i, 'withdrawal withdraw'],
+  [/\bpayouts?\b/i, 'withdrawal'],
+  [/top.?up|fund my account|add funds/i, 'deposit'],
+  [/sample code|trial (api )?endpoint|sandbox/i, 'documentation test environment'],
+];
+
 // data: { kb: {entries}, markets: [...] }
 function demoAnswer(data, question, audience) {
   const qlow = question.toLowerCase();
   const rgIntent = RG_INTENT.test(qlow);
   const evadeIntent = EVADE_INTENT.test(qlow);
-  const raw = qlow.match(/[a-zà-ÿ]{3,}/g) || [];
+  let expanded = qlow;
+  for (const [re, add] of ALIAS) if (re.test(qlow)) expanded += ' ' + add;
+  const raw = expanded.match(/[a-zà-ÿ]{3,}/g) || [];
   const words = raw.filter((w) => !STOP.has(w));
   const mentioned = data.markets.filter((m) => qlow.includes(m.slug) || qlow.includes(m.country.toLowerCase().split(' ')[0]));
   const idf = idfOf(data.kb.entries);
