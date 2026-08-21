@@ -323,7 +323,7 @@ const LG_KB_PAYLOAD = {"demo":true,"model":"demo","version":"0.2","updated":"202
 const STOP = new Set(('the,and,for,with,that,this,what,when,where,which,who,why,how,can,could,should,would,' +
   'you,your,our,are,was,were,has,have,been,being,from,they,their,them,there,then,than,but,not,all,any,' +
   'get,got,its,one,out,off,per,via,much,many,more,most,some,does,did,about,into,over,under,just,' +
-  'still,right,now,these,those,say,says,said').split(','));
+  'still,right,now,these,those,say,says,said,need,work').split(','));
 
 const stem = (w) => { const t = w.replace(/(est|ing|ed|es|s)$/, ''); return t.length >= 3 ? t : w; };
 
@@ -376,6 +376,13 @@ const ALIAS = [
   [/sample code|trial (api )?endpoint|sandbox/i, 'documentation test environment'],
 ];
 
+const reCache = new Map();
+const atWordStart = (hay, w) => {
+  let re = reCache.get(w);
+  if (!re) { re = new RegExp('\\b' + w); reCache.set(w, re); }
+  return re.test(hay);
+};
+
 // data: { kb: {entries}, markets: [...] }
 function demoAnswer(data, question, audience) {
   const qlow = question.toLowerCase();
@@ -387,7 +394,17 @@ function demoAnswer(data, question, audience) {
   const words = raw.filter((w) => !STOP.has(w));
   const mentioned = data.markets.filter((m) => qlow.includes(m.slug) || qlow.includes(m.country.toLowerCase().split(' ')[0]));
   const idf = idfOf(data.kb.entries);
-  const weight = (t) => Math.log(1 + idf.n / (1 + (idf.df.get(t) || 0)));
+  const hays = data.kb.entries.map(textOf);
+  const wcache = new Map();
+  const weight = (t) => {
+    let v = wcache.get(t);
+    if (v === undefined) {
+      let d = 0; for (const h of hays) if (atWordStart(h, t)) d++;
+      v = Math.log(1 + idf.n / (1 + d));
+      wcache.set(t, v);
+    }
+    return v;
+  };
   const score = (e) => {
     const hay = textOf(e);
     const qfield = String(e.q || '').toLowerCase();
