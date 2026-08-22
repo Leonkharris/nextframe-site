@@ -26,9 +26,15 @@ const thumbs = fs.readdirSync(`${MV}/boards/_thumbs`).filter((f) => f.endsWith("
 copyDir(`${MV}/boards/_thumbs`, `${OUT}/thumbs`, thumbs);
 
 // Only real deliverable clips -- the PORTRAIT reject and the attach-fail PNGs stay behind.
-const live = fs.readdirSync(`${MV}/boards/clips`).filter((f) => /^p\d\d\.mp4$/.test(f)).sort();
+const clipRe = /^p\d\d\.mp4$/;
+const live = fs.readdirSync(`${MV}/boards/clips`).filter((f) => clipRe.test(f)).sort();
 copyDir(`${MV}/boards/clips`, `${OUT}/clips`, live);
-const liveIds = new Set(live.map((f) => f.replace(".mp4", "")));
+// A clip in _stale/ is queued for a re-fire, not rejected -- keep shipping it until a better
+// take lands. Exact name only, so the renamed alternates (p06-campfire.mp4) stay behind.
+const staled = fs.readdirSync(`${MV}/boards/clips/_stale`)
+  .filter((f) => clipRe.test(f) && !live.includes(f)).sort();
+copyDir(`${MV}/boards/clips/_stale`, `${OUT}/clips`, staled);
+const liveIds = new Set([...live, ...staled].map((f) => f.replace(".mp4", "")));
 
 fs.copyFileSync(`${MV}/boards/MOTION-PASS.mp4`, `${OUT}/MOTION-PASS.mp4`);
 // The six one-off faces as they now render. Replaces the old SIX-FACES/CHARBOARD pair: the film no
