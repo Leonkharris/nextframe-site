@@ -36,9 +36,27 @@ jobs:
       - name: Install runtime deps
         run: pip install --quiet huggingface_hub requests
 
-      - name: Fetch the deployed Space's app/ (canonical, no drift)
+      # Secrets pasted from a Windows/PowerShell file can carry a UTF-8 BOM or a
+      # trailing newline; that lands inside the "Authorization: Bearer <tok>"
+      # header and makes httpx/requests raise UnicodeEncodeError. Strip it once
+      # here and expose the clean values (masked) to every later step.
+      - name: Sanitize token secrets (strip BOM/whitespace)
         env:
-          HF_TOKEN: ${{ secrets.HF_LISTINGS_TOKEN }}
+          RAW_HF: ${{ secrets.HF_LISTINGS_TOKEN }}
+          RAW_FB: ${{ secrets.NEXTFRAME_FB_PAGE_TOKEN }}
+        run: |
+          python - <<'PY'
+          import os
+          def clean(v): return (v or "").strip().replace("\ufeff", "")
+          for src, dst in (("RAW_HF", "HF_TOKEN"), ("RAW_FB", "NEXTFRAME_FB_PAGE_TOKEN")):
+              val = clean(os.environ.get(src, ""))
+              if val:
+                  print(f"::add-mask::{val}")   # keep the cleaned token out of logs
+              with open(os.environ["GITHUB_ENV"], "a", encoding="utf-8") as f:
+                  f.write(f"{dst}={val}\n")
+          PY
+
+      - name: Fetch the deployed Space's app/ (canonical, no drift)
         run: |
           python - <<'PY'
           from huggingface_hub import snapshot_download
@@ -50,9 +68,6 @@ jobs:
           PY
 
       - name: Post the oldest published listing to the FB page
-        env:
-          HF_TOKEN: ${{ secrets.HF_LISTINGS_TOKEN }}
-          NEXTFRAME_FB_PAGE_TOKEN: ${{ secrets.NEXTFRAME_FB_PAGE_TOKEN }}
         run: |
           if [ -z "$NEXTFRAME_FB_PAGE_TOKEN" ]; then
             echo "Dormant: NEXTFRAME_FB_PAGE_TOKEN secret not set — nothing posted."
