@@ -413,7 +413,10 @@ function demoAnswer(data, question, audience) {
       const t = stem(w);
       // a hit in the entry's own question is worth 3× a hit buried in the body, and a rare
       // word is worth more than a word half the KB contains
-      if (qfield.includes(w) || qfield.includes(t)) { s += 3 * weight(t); hits++; }
+      // word-START, not substring: "integrated" was scoring a full 3× hit for the query word
+      // "rate" (integ-RATE-d), which let B2B-GAME-03 steal a payout-rate question. The body hit
+      // below stays a plain substring test — tightening it too broke a compliance guardrail.
+      if (atWordStart(qfield, w) || atWordStart(qfield, t)) { s += 3 * weight(t); hits++; }
       else if (hay.includes(w) || hay.includes(t)) { s += weight(t); hits++; }
     }
     // an entry covering every content word beats a partial match on a common word
