@@ -429,11 +429,15 @@ function demoAnswer(data, question, audience) {
     // ...and an entry whose own question names a DIFFERENT country is answering someone else's
     // question. Without this, Guatemala's scenario entry won "Client wants to launch in Brazil"
     // purely on the shared "client wants to launch" phrasing.
-    if (mentioned.length) {
-      for (const m of data.markets) {
-        if (mentioned.includes(m)) continue;
-        const names = [m.slug, m.country.toLowerCase().split(' ')[0]];
-        if (names.some((n) => qfield.includes(n))) { s -= 6; break; }
+    for (const m of data.markets) {
+      if (mentioned.includes(m)) continue;
+      const names = [m.slug, m.country.toLowerCase().split(' ')[0]];
+      if (names.some((n) => qfield.includes(n))) {
+        // when the query names NO country, only penalise an entry whose q is little more than
+        // the country name itself ("What about Malaysia?"). A topical q still deserves to compete.
+        const bare = (qfield.match(/[a-zà-ÿ]{3,}/g) || []).filter((w) => !STOP.has(w)).length <= 2;
+        if (mentioned.length || bare) s -= 6;
+        break;
       }
     }
     // a distress signal outranks every other topic — see RG_INTENT above
