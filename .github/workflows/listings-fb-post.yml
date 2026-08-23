@@ -1,0 +1,62 @@
+name: Listings -> FB page post
+
+# Posts the oldest published-but-unposted ListPilot listing to the Next Frame
+# Agency Facebook page from GitHub's CLEAN egress. The HF Space that runs the
+# listings bot is behind an SNI egress firewall that blackholes graph.facebook.com,
+# so the FB post can never originate there — it has to run from a clean host.
+# This job reuses the Space's OWN app/ code (storage/registry/fb_publish),
+# snapshotted fresh each run so it never drifts from what's deployed, and drains
+# ONE listing per run (the poster enforces page-wide <=1/day anti-burst).
+#
+# DORMANT until the repo secret NEXTFRAME_FB_PAGE_TOKEN (a long-lived Page token)
+# is set — without it the run is a green no-op. HF_LISTINGS_TOKEN (store auth) is
+# already present for the keepalive workflow.
+
+on:
+  workflow_dispatch: {}                 # on-demand: Run button / gh workflow run / API
+  repository_dispatch:                  # fired by the Space on Publish (increment 2)
+    types: [listing-published]
+  schedule:
+    - cron: "17 */6 * * *"              # safety-net drain; anti-burst keeps it <=1/day
+
+concurrency:
+  group: listings-fb-post               # never two posters racing the same ledger
+  cancel-in-progress: false
+
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install runtime deps
+        run: pip install --quiet huggingface_hub requests
+
+      - name: Fetch the deployed Space's app/ (canonical, no drift)
+        env:
+          HF_TOKEN: ${{ secrets.HF_LISTINGS_TOKEN }}
+        run: |
+          python - <<'PY'
+          from huggingface_hub import snapshot_download
+          snapshot_download(
+              "NextFrame-ai/listings-bot", repo_type="space",
+              allow_patterns=["app/*"], local_dir="listings-poster",
+          )
+          print("app/ snapshotted into listings-poster/")
+          PY
+
+      - name: Post the oldest published listing to the FB page
+        env:
+          HF_TOKEN: ${{ secrets.HF_LISTINGS_TOKEN }}
+          NEXTFRAME_FB_PAGE_TOKEN: ${{ secrets.NEXTFRAME_FB_PAGE_TOKEN }}
+        run: |
+          if [ -z "$NEXTFRAME_FB_PAGE_TOKEN" ]; then
+            echo "Dormant: NEXTFRAME_FB_PAGE_TOKEN secret not set — nothing posted."
+            echo "Add a long-lived Page token as a repo secret to activate."
+            exit 0
+          fi
+          python listings-poster/scripts/fb_post_local.py --via=graph
