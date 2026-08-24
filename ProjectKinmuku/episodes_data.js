@@ -1869,7 +1869,7 @@ window.KINMUKU_EPS = {
        "en": "Kuroberi"
       }
      ],
-     "motion": "Wide on the bridge: the line settles in staggered heartbeats — the oni sinking his weight at center, the fox gliding serene to his right, the oni woman planting herself at his left, the nekomata dropping into a low crouch on the railing — tails and hair streaming in the rising wind, the fox's sleeves hanging straight.",
+     "motion": "Wide on the bridge: the oni sinks his weight at center and his shoulders drop; the fox glides in at his right and her nine tails fan wide; the oni woman plants her feet at his left and her fists close; the nekomata drops from the railing into a low crouch; the wind rises and lifts every tail and hairline at once, the fox's sleeves hanging straight.",
      "act": "Four separate fears resolving into one shared steadiness. He breathes out once and puts his own dread somewhere behind the eyes where none of them will have to see it; beside him one keeps her face smooth as still water while her fingertips press white into her palm, one sets her teeth and lifts her chin as though daring the night to start, and the crouched one holds an animal alertness, ready to bolt and choosing not to. End with a look passing down the line and each face hardening a little as it arrives."
     }
    },
@@ -1931,7 +1931,7 @@ window.KINMUKU_EPS = {
        "en": "Akaza Genki"
       }
      ],
-     "motion": "Tight on the oni with no cuts: eyes closed, wind working through his hair — the lips part, the choice is spoken — and the eyes open with quiet resolve.",
+     "motion": "Tight on the oni with no cuts: wind combs hard through his hair; his brow draws tight and his breath shortens; his lips part and close on one word; the brow smooths and the jaw unlocks; his eyes lift open, yellow and steady, and fix past the camera.",
      "act": "Start him mid-argument with himself: the brow drawn tight, the breath shallow and uneven at the mouth, the old habit of swallowing everything pulling hard at him while his hands want to close and he does not let them. Then the argument finishes and it all lets go at once — the brow smooths, the jaw unlocks, the breath goes long and even, and there is no anger left in him at all, only the flatness of a man who has chosen and will not revisit it. The calm must not read as peace; read it as a door closing quietly behind him."
     }
    },
