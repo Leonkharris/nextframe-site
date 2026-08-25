@@ -474,9 +474,19 @@ function demoAnswer(data, question, audience) {
     ? '\n\n⌛ Regulatory status verified ' + verified.join(' / ') +
       ' — licensing team confirms current status before you quote it.'
     : '';
+  // Every comparable product gates on a confidence cutoff and defers below it — we always returned
+  // the best match however weak it scored (COMPETITOR_RESEARCH.md §7 gap 1). Measured over the 234
+  // eval questions: a top score under 10 covers 53% of the mis-routes for a 14% over-flag on correct
+  // ones. Real signal, but the HIT/MISS distributions overlap far too much to WITHHOLD an answer on,
+  // so this warns and still answers. Never on a guardrail hit: those are routed by intent (+12), not
+  // word overlap, so the score says nothing about them — and a hedged refusal is worse than none.
+  const lowConf = bestS < 10 && !rgIntent && !evadeIntent
+    ? '\n\n⚠ LOW CONFIDENCE — your wording and this entry have little in common. Treat it as a ' +
+      'starting point, read the source entry before you use it, and escalate rather than quote it.'
+    : '';
   return '⚙ DEMO MODE (no API key — this is the raw KB entry, not a drafted reply)\n\n' +
     '**' + best.q + '**\n\n' + bodyText +
-    (best.escalate ? '\n\nEscalate to: ' + best.escalate : '') + alts + dateline +
+    (best.escalate ? '\n\nEscalate to: ' + best.escalate : '') + alts + dateline + lowConf +
     '\n\n[[sources: ' + srcs.join(', ') + ']]';
 }
 
@@ -568,6 +578,10 @@ window.fetch = (url, opt) => {
         <button id="send" title="Send">▸</button>
       </div>
       <div class="hint">ENTER to send · SHIFT+ENTER newline · CTRL+V pastes screenshots · click an answer to re-open its sources</div>
+      <!-- AI-nature + accuracy disclosure. Emerging state law requires it and chatbot output counts
+           as a company representation (COMPETITOR_RESEARCH.md §4) — an agent pasting this to a
+           client is speaking for Lucifer Gaming. -->
+      <div class="hint">⬦ AI-generated from the internal knowledge base — verify before you send it to a client. Not legal, financial, or compliance advice.</div>
     </div>
   </section>
 
