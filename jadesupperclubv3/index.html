@@ -10,9 +10,23 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;0,6..96,600;0,6..96,700;0,6..96,800;0,6..96,900;1,6..96,400;1,6..96,600;1,6..96,800&family=Jost:wght@300;400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="press.css?v=10">
+<link rel="stylesheet" href="press.css?v=11">
 <link rel="stylesheet" href="pdf.css" media="print">
 <script src="press.js?v=1" defer></script>
+<script>
+/* Fixed 816px print sheets fit a phone by zoom (press.css, <=880px). The CSS ratio is
+   a Values-4 length division that older WebKit/Blink drop, leaving zoom:1 and 220px of
+   every sheet stranded off the left edge with no way to scroll back. Set it here, in
+   the head, so it lands before first paint on every engine. */
+(function(){
+  function fit(){
+    document.documentElement.style.setProperty(
+      '--sheet-zoom', innerWidth <= 880 ? (innerWidth / 848).toFixed(4) : '1');
+  }
+  fit();
+  addEventListener('resize', fit, {passive:true});
+})();
+</script>
 <style>
 /* photo containers establish a positioning context for injected clips + captions */
 .spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
