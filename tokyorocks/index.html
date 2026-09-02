@@ -105,15 +105,31 @@ section{position:relative}
 .frame figcaption{position:absolute;inset:auto 0 0 0;padding:44px 18px 14px;background:linear-gradient(to top,rgba(6,5,5,.95),transparent);
   font:600 .62rem/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-lt)}
 @media(max-width:860px){.story{grid-template-columns:1fr}}
-/* founder lead band on the concept section */
-.frame.lead{aspect-ratio:1024/416}
-.frame.lead img{object-position:50% 40%}
-.frame.lead figcaption{top:0;bottom:0;right:auto;width:56%;display:flex;flex-direction:column;justify-content:center;
-  padding:0 0 0 clamp(16px,2.4vw,30px);
-  background:linear-gradient(to right,rgba(6,5,5,.92) 46%,rgba(6,5,5,.55) 78%,transparent 100%);
-  font:800 clamp(1rem,1.9vw,1.5rem)/1.15 Archivo,sans-serif;letter-spacing:.01em;text-transform:none;color:var(--cream)}
-.frame.lead figcaption i{display:block;margin-top:10px;font:600 .62rem/1 Inter,sans-serif;font-style:normal;
+/* concept — the founder sits IN the background, dissolving out of the dark */
+.bio{position:relative;overflow:hidden;display:flex;align-items:center;
+  min-height:clamp(600px,80vh,860px);padding:clamp(64px,9vw,120px) var(--pad)}
+.bio .por{position:absolute;top:0;right:0;height:100%;width:54%;object-fit:cover;object-position:56% 26%}
+/* the ramp must start INSIDE the photo, or its left edge shows as a seam */
+.bio .fade{position:absolute;inset:0;background:
+  linear-gradient(to right,var(--ink) 0%,var(--ink) 44%,rgba(10,9,8,.97) 53%,rgba(10,9,8,.66) 65%,rgba(10,9,8,.2) 79%,rgba(10,9,8,.08) 92%,rgba(10,9,8,.32) 100%),
+  linear-gradient(to bottom,rgba(10,9,8,.5) 0%,transparent 14%,transparent 74%,rgba(10,9,8,.78) 100%)}
+.bio .inner{position:relative;z-index:3;max-width:660px}
+.bio .jpline{margin-top:26px;font-size:clamp(1.05rem,1.9vw,1.5rem);color:var(--gold);letter-spacing:.04em}
+.bio .creed{margin-top:30px;font:700 clamp(1rem,1.7vw,1.35rem)/1.65 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
+.bio .byline{position:absolute;right:var(--pad);bottom:clamp(26px,4vw,52px);z-index:4;text-align:right;
+  font:800 clamp(1.05rem,1.9vw,1.5rem)/1.1 Archivo,sans-serif;color:var(--cream)}
+.bio .byline i{display:block;margin-top:9px;font:600 .62rem/1 Inter,sans-serif;font-style:normal;
   letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
+@media(max-width:860px){
+  /* stack: photo becomes a top band that dissolves down into the copy */
+  /* one variable drives photo height, copy offset and byline, so they cannot collide */
+  .bio{--ph:clamp(300px,66vw,430px);min-height:0;display:block;padding-top:calc(var(--ph) + 30px)}
+  .bio .por{width:100%;height:var(--ph);object-position:56% 20%}
+  .bio .fade{background:
+    linear-gradient(to bottom,rgba(10,9,8,.32) 0%,rgba(10,9,8,.18) 26%,rgba(10,9,8,.86) 54%,var(--ink) 66%)}
+  .bio .inner{max-width:none}
+  .bio .byline{top:calc(var(--ph) - 82px);bottom:auto;right:var(--pad);text-align:right}
+}
 
 /* ── stats ──────────────────────────────────────────────── */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:clamp(20px,3vw,44px);margin-top:clamp(34px,4vw,56px)}
@@ -334,24 +350,19 @@ footer .by a:hover{color:var(--gold)}
 </header>
 
 <!-- ══ CONCEPT ═══════════════════════════════════════════ -->
-<section class="wrap" id="concept">
-  <div class="story">
-    <div class="rv">
-      <figure class="frame lead"><img src="img/todd-lead.jpg" alt="Chef Todd English" loading="lazy">
-        <figcaption>Todd English<i>CEO &amp; Founder</i></figcaption></figure>
-      <span class="kicker" style="display:block;margin-top:30px">The concept</span>
-      <h2 class="big" style="margin-top:18px">You walk in off a New York street — and suddenly, <span>you're in Tokyo.</span></h2>
-      <div class="rule"></div>
-      <p class="lede">Not the polished version. The real one. Layered. Electric. Alive.</p>
-      <p class="lede" style="margin-top:18px">Tokyo Rocks is a modern Japanese food hall and immersive entertainment destination inspired by the energy, nightlife, food culture, music and sensory experiences of Tokyo — a multi-dimensional cultural destination, not a single restaurant.</p>
-      <p class="jp jpline">東京が、ニューヨークで生きている。</p>
-      <p class="creed">Good food.<br>Good music.<br>Good people.</p>
-    </div>
-    <figure class="frame rv" style="aspect-ratio:4/5">
-      <img src="img/w-threshold.jpg" alt="The Tokyo Rocks entrance at night" loading="lazy">
-      <figcaption>Entrance · SoHo, New York City</figcaption>
-    </figure>
+<section class="bio" id="concept">
+  <img class="por" src="img/todd-bg.jpg" alt="Chef Todd English" loading="lazy">
+  <div class="fade"></div>
+  <div class="inner rv">
+    <span class="kicker">The concept</span>
+    <h2 class="big" style="margin-top:18px">You walk in off a New York street — and suddenly, <span>you're in Tokyo.</span></h2>
+    <div class="rule"></div>
+    <p class="lede">Not the polished version. The real one. Layered. Electric. Alive.</p>
+    <p class="lede" style="margin-top:18px">Tokyo Rocks is a modern Japanese food hall and immersive entertainment destination inspired by the energy, nightlife, food culture, music and sensory experiences of Tokyo — a multi-dimensional cultural destination, not a single restaurant.</p>
+    <p class="jp jpline">東京が、ニューヨークで生きている。</p>
+    <p class="creed">Good food.<br>Good music.<br>Good people.</p>
   </div>
+  <div class="byline">Todd English<i>CEO &amp; Founder</i></div>
 </section>
 
 <!-- ══ AT A GLANCE ═══════════════════════════════════════ -->

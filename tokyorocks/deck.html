@@ -92,13 +92,17 @@ h1.st em{font-style:normal;color:var(--gold)}
 .figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:16pt 14pt 9pt;
   background:linear-gradient(to top,rgba(6,5,5,.94),transparent);
   font:600 7pt/1 Inter,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-lt)}
-/* slide 02 — founder lead band: face sits right, caption uses the empty panel at left */
-.figure.lead{height:176pt;border-color:var(--line2)}
-.figure.lead img{object-position:50% 40%}
-.figure.lead figcaption{top:0;bottom:0;right:auto;width:56%;display:flex;flex-direction:column;justify-content:center;
-  padding:0 0 0 20pt;background:linear-gradient(to right,rgba(6,5,5,.92) 46%,rgba(6,5,5,.55) 78%,transparent 100%);
-  font:800 13pt/1.15 Archivo,sans-serif;letter-spacing:.02em;text-transform:none;color:var(--cream)}
-.figure.lead figcaption i{display:block;margin-top:8pt;font:600 7.4pt/1 Inter,sans-serif;font-style:normal;
+/* slide 02 — the founder sits IN the background, dissolving out of the dark on the right */
+.slide.bio{padding:0}
+.slide.bio .por{position:absolute;top:0;right:0;height:100%;width:54%;object-fit:cover;object-position:56% 26%}
+/* the ramp must start INSIDE the photo, or its left edge shows as a seam */
+.slide.bio .fade{position:absolute;inset:0;background:
+  linear-gradient(to right,var(--ink) 0%,var(--ink) 47%,rgba(10,9,8,.97) 55%,rgba(10,9,8,.66) 66%,rgba(10,9,8,.2) 79%,rgba(10,9,8,.08) 92%,rgba(10,9,8,.3) 100%),
+  linear-gradient(to bottom,rgba(10,9,8,.5) 0%,transparent 15%,transparent 76%,rgba(10,9,8,.75) 100%)}
+.slide.bio .inner{position:absolute;inset:0;padding:38pt 46pt 34pt;display:flex;flex-direction:column;justify-content:center}
+.slide.bio .byline{position:absolute;right:46pt;bottom:50pt;text-align:right;z-index:4;
+  font:800 15pt/1.1 Archivo,sans-serif;letter-spacing:.01em;color:var(--cream)}
+.slide.bio .byline i{display:block;margin-top:8pt;font:600 7.4pt/1 Inter,sans-serif;font-style:normal;
   letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 
 /* ── stats ───────────────────────────────────────────────── */
@@ -250,25 +254,20 @@ ul.tick.g li::before{background:var(--gold)}
 </section>
 
 <!-- ══ 02 THE STORY ══════════════════════════════════════════ -->
-<section class="slide">
-  <div class="split wide">
-    <div>
-      <figure class="figure lead"><img src="img/todd-lead.jpg" alt="Chef Todd English">
-        <figcaption>Todd English<i>CEO &amp; Founder</i></figcaption></figure>
-      <span class="eyebrow" style="margin-top:22pt">The concept</span>
-      <h1 class="st" style="margin-top:11pt">You walk in off a New York street — and suddenly, <em>you're in Tokyo.</em></h1>
-      <div class="rule"></div>
-      <p class="sub" style="max-width:none">Not the polished version. The real one. Layered. Electric. Alive.</p>
-      <p class="sub" style="max-width:none;color:#CFC4B3">Tokyo Rocks is a modern Japanese food hall and immersive entertainment destination inspired by the energy, nightlife, food culture, music and sensory experiences of Tokyo — a multi-dimensional cultural destination, not a single restaurant.</p>
-      <p class="jp" style="margin-top:16pt;font-size:12.5pt;color:var(--gold);letter-spacing:.04em">東京が、ニューヨークで生きている。</p>
-      <p style="margin-top:20pt;font:700 9.6pt/1.7 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--cream)">
-        Good food.<br>Good music.<br>Good people.</p>
-    </div>
-    <figure class="figure" style="height:404pt">
-      <img src="img/threshold.jpg" alt="Tokyo Rocks entrance">
-      <figcaption>Entrance · SoHo, New York City</figcaption>
-    </figure>
+<section class="slide bio">
+  <img class="por" src="img/todd-bg.jpg" alt="Chef Todd English">
+  <div class="fade"></div>
+  <div class="inner">
+    <span class="eyebrow">The concept</span>
+    <h1 class="st" style="margin-top:11pt;max-width:470pt">You walk in off a New York street — and suddenly, <em>you're in Tokyo.</em></h1>
+    <div class="rule"></div>
+    <p class="sub" style="max-width:440pt">Not the polished version. The real one. Layered. Electric. Alive.</p>
+    <p class="sub" style="max-width:440pt;color:#CFC4B3">Tokyo Rocks is a modern Japanese food hall and immersive entertainment destination inspired by the energy, nightlife, food culture, music and sensory experiences of Tokyo — a multi-dimensional cultural destination, not a single restaurant.</p>
+    <p class="jp" style="margin-top:16pt;font-size:12.5pt;color:var(--gold);letter-spacing:.04em">東京が、ニューヨークで生きている。</p>
+    <p style="margin-top:20pt;font:700 9.6pt/1.7 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--cream)">
+      Good food.<br>Good music.<br>Good people.</p>
   </div>
+  <div class="byline">Todd English<i>CEO &amp; Founder</i></div>
   <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">02</span></div>
 </section>
 
