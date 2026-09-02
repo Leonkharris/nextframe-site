@@ -1,0 +1,739 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Tokyo Rocks — New York Flagship — Investor Deck</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&family=Shippori+Mincho:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+/* ─────────────────────────────────────────────────────────────
+   TOKYO ROCKS — investor deck. 16:9, 960pt × 540pt per slide.
+   ───────────────────────────────────────────────────────────── */
+:root{
+  --ink:#0A0908; --ink2:#100E0D; --panel:#171413; --panel2:#1E1917;
+  --line:rgba(243,234,217,.13); --line2:rgba(243,234,217,.24);
+  --red:#C8202B; --red-deep:#7E1219; --red-dim:#4A0E13;
+  --gold:#C6A15B; --gold-lt:#E0C68F;
+  --cream:#F3EAD9; --muted:#968A7B; --dim:#6E655B;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+@page{size:13.333in 7.5in;margin:0}
+html,body{background:#050505}
+body{font-family:Inter,system-ui,sans-serif;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+.slide{
+  position:relative;width:960pt;height:540pt;overflow:hidden;
+  background:var(--ink);color:var(--cream);
+  page-break-after:always;break-after:page;
+  padding:38pt 46pt 34pt;
+}
+.slide:last-child{page-break-after:auto;break-after:auto}
+@media screen{
+  body{padding:24px;display:flex;flex-direction:column;align-items:center;gap:22px}
+  .slide{box-shadow:0 18px 60px rgba(0,0,0,.65);outline:1px solid #222}
+}
+
+/* top hairline */
+.slide::before{content:"";position:absolute;top:0;left:0;right:0;height:3pt;background:var(--red);z-index:5}
+
+/* ── furniture ───────────────────────────────────────────── */
+.eyebrow{font:600 7.5pt/1 Inter,sans-serif;letter-spacing:.22em;text-transform:uppercase;color:var(--red);display:block}
+.eyebrow.g{color:var(--gold)}
+.foot{position:absolute;left:46pt;right:46pt;bottom:20pt;display:flex;justify-content:space-between;align-items:baseline;
+  font:400 6.6pt/1 Inter,sans-serif;letter-spacing:.06em;color:var(--dim);z-index:6}
+.foot .pg{font:700 8pt/1 Archivo,sans-serif;letter-spacing:.05em;color:var(--muted)}
+h1.st{font-family:Archivo,sans-serif;font-weight:800;font-size:25pt;line-height:1.1;letter-spacing:-.018em;color:var(--cream);max-width:730pt;text-wrap:balance}
+h1.st em{font-style:normal;color:var(--gold)}
+.sub{margin-top:9pt;font:400 10pt/1.55 Inter,sans-serif;color:var(--muted);max-width:600pt}
+.rule{width:44pt;height:2.5pt;background:var(--red);margin:11pt 0 0}
+
+/* ── generic blocks ──────────────────────────────────────── */
+.card{background:var(--panel);border:.75pt solid var(--line);border-radius:3pt;padding:22pt 20pt;min-height:206pt;display:flex;flex-direction:column}
+.card.hot{background:linear-gradient(158deg,#8A161D,#5C0D13);border-color:rgba(243,234,217,.2)}
+.card h3{font:700 9.5pt/1.15 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.card.hot h3{color:#fff}
+.card p{margin-top:7pt;font:400 8.6pt/1.5 Inter,sans-serif;color:#CBC0AF}
+.card.hot p{color:rgba(255,255,255,.9)}
+.num{font:900 20pt/1 Archivo,sans-serif;color:rgba(243,234,217,.16);letter-spacing:-.02em;margin-bottom:auto}
+.card.hot .num{color:rgba(255,255,255,.34)}
+.note{font:500 8.4pt/1.5 Inter,sans-serif;color:var(--gold);text-align:center}
+.disc{font:400 7.4pt/1.5 Inter,sans-serif;color:var(--dim);text-align:center}
+.jp{font-family:"Shippori Mincho",serif;font-weight:500}
+.dilig .card{min-height:142pt;padding:18pt 17pt}
+.dilig .card .num{font-size:17pt}
+.pill{font:600 7.4pt/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#D6CBB9;border:.75pt solid var(--line2);border-radius:2pt;padding:7pt 10pt;background:var(--panel)}
+
+/* ── cover ───────────────────────────────────────────────── */
+.cover{padding:0}
+.cover img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cover .scrim{position:absolute;inset:0;background:
+  linear-gradient(100deg,rgba(6,5,5,.96) 0%,rgba(6,5,5,.91) 36%,rgba(6,5,5,.46) 64%,rgba(6,5,5,.68) 100%)}
+.cover .vign{position:absolute;inset:0;background:radial-gradient(ellipse at 62% 45%,transparent 30%,rgba(5,4,4,.7) 100%)}
+.cover .inner{position:absolute;inset:0;padding:52pt 46pt 34pt;display:flex;flex-direction:column;justify-content:center}
+.cover .logo{width:268pt;display:block;margin-bottom:26pt}
+.cover h1{font-family:Archivo,sans-serif;font-weight:900;font-size:50pt;line-height:.94;letter-spacing:-.028em;color:#fff}
+.cover h1 span{display:block;color:var(--gold)}
+.cover .tag{margin-top:16pt;font:500 11.5pt/1.5 Inter,sans-serif;color:#E4DACA;max-width:400pt}
+.cover .raise{margin-top:26pt;align-self:flex-start;display:inline-flex;align-items:stretch;border:1pt solid rgba(200,32,43,.75);border-radius:3pt;overflow:hidden;background:rgba(74,14,19,.5)}
+.cover .raise div{padding:11pt 20pt}
+.cover .raise div+div{border-left:1pt solid rgba(243,234,217,.16)}
+.cover .raise b{display:block;font:900 21pt/1 Archivo,sans-serif;color:#fff;letter-spacing:-.02em}
+.cover .raise small{display:block;margin-top:5pt;font:600 6.8pt/1 Inter,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-lt)}
+.cover .by{position:absolute;left:46pt;bottom:34pt;font:600 8.2pt/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:#CFC4B3}
+.cover .by i{font-style:normal;color:var(--red)}
+.cover .conf{position:absolute;right:46pt;bottom:34pt;font:400 7pt/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--dim)}
+
+/* ── split (image + copy) ────────────────────────────────── */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:34pt;height:100%;align-items:center}
+.split.wide{grid-template-columns:1.08fr 1fr}
+.figure{position:relative;border-radius:3pt;overflow:hidden;border:.75pt solid var(--line2)}
+.figure img{display:block;width:100%;height:100%;object-fit:cover}
+.figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:16pt 14pt 9pt;
+  background:linear-gradient(to top,rgba(6,5,5,.94),transparent);
+  font:600 7pt/1 Inter,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-lt)}
+
+/* ── stats ───────────────────────────────────────────────── */
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16pt;margin-top:34pt}
+.stat{border:.75pt solid var(--line);border-radius:3pt;background:var(--panel);padding:24pt 20pt 22pt;min-height:206pt;display:flex;flex-direction:column;justify-content:center}
+.stat b{display:block;font:900 54pt/1 Archivo,sans-serif;letter-spacing:-.04em;color:#fff}
+.stat i{display:block;width:38pt;height:3pt;margin:16pt 0 12pt;border-radius:2pt}
+.stat span{display:block;font:500 8.8pt/1.45 Inter,sans-serif;color:var(--muted)}
+.stats2{display:grid;grid-template-columns:repeat(3,1fr);gap:16pt;margin-top:16pt}
+.stats2 div{border:.75pt solid var(--line);border-radius:3pt;background:var(--panel);padding:20pt 20pt;min-height:116pt;display:flex;flex-direction:column;justify-content:center}
+.stats2 span{display:block;font:600 7pt/1 Inter,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.stats2 b{display:block;margin-top:8pt;font:800 19pt/1 Archivo,sans-serif;color:var(--gold);letter-spacing:-.02em}
+.stats2 b.sm{font-size:13pt;color:var(--cream)}
+
+/* ── rows / lists ────────────────────────────────────────── */
+.rows{margin-top:24pt}
+.row{display:grid;grid-template-columns:132pt 1fr;gap:20pt;padding:17pt 0;border-top:.75pt solid var(--line);align-items:baseline}
+.row:last-child{border-bottom:.75pt solid var(--line)}
+.row dt{font:700 9pt/1.2 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--red)}
+.row dd{font:400 9.2pt/1.5 Inter,sans-serif;color:#D6CBB9}
+ul.tick{list-style:none;margin-top:12pt}
+ul.tick li{position:relative;padding-left:15pt;margin-bottom:15pt;font:400 9.4pt/1.55 Inter,sans-serif;color:#D2C7B6}
+ul.tick li::before{content:"";position:absolute;left:0;top:5.5pt;width:5pt;height:5pt;border-radius:50%;background:var(--red)}
+ul.tick.g li::before{background:var(--gold)}
+
+/* ── engines / ecosystem tiles ───────────────────────────── */
+.engines{display:grid;grid-template-columns:repeat(5,1fr);gap:13pt;margin-top:30pt;min-height:344pt}
+.engine{border:.75pt solid var(--line);border-radius:3pt;overflow:hidden;background:var(--panel);display:flex;flex-direction:column}
+.engine img{width:100%;height:172pt;object-fit:cover}
+.engine .body{padding:16pt 14pt 17pt;flex:1;display:flex;flex-direction:column}
+.engine h3{font:800 10pt/1 Archivo,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold)}
+.engine p{margin-top:8pt;font:400 8pt/1.45 Inter,sans-serif;color:#C2B7A6;flex:1}
+.engine .n{margin-top:10pt;font:900 12pt/1 Archivo,sans-serif;color:rgba(243,234,217,.2)}
+.engine.hot{background:linear-gradient(170deg,#8A161D,#540C11);border-color:rgba(243,234,217,.22)}
+.engine.hot h3{color:#fff}.engine.hot p{color:rgba(255,255,255,.88)}.engine.hot .n{color:rgba(255,255,255,.4)}
+
+.eco{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:122pt;gap:11pt;margin-top:26pt}
+.eco figure{position:relative;border-radius:3pt;overflow:hidden;border:.75pt solid var(--line)}
+.eco img{width:100%;height:100%;object-fit:cover}
+.eco figcaption{position:absolute;inset:auto 0 0 0;padding:20pt 9pt 8pt;background:linear-gradient(to top,rgba(6,5,5,.95),transparent);
+  font:700 6.9pt/1.25 Archivo,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:#F0E7D7}
+.eco figcaption em{display:block;font:500 5.9pt/1.3 Inter,sans-serif;font-style:normal;letter-spacing:.09em;color:var(--gold);margin-top:3pt}
+
+/* ── venue slides ────────────────────────────────────────── */
+.venue{display:grid;grid-template-columns:1.35fr 1fr;gap:30pt;height:100%;align-items:center}
+.venue .stack{display:grid;grid-template-rows:1fr 1fr;gap:11pt;height:376pt}
+.venue .big{height:376pt}
+.venue h2{font-family:Archivo,sans-serif;font-weight:900;font-size:27pt;line-height:1.06;letter-spacing:-.022em;color:var(--cream);margin-top:9pt}
+.venue h2 span{color:var(--gold)}
+.venue .lede{margin-top:12pt;font:400 9.6pt/1.6 Inter,sans-serif;color:#CFC4B3}
+.venue .kv{margin-top:16pt;padding-top:13pt;border-top:.75pt solid var(--line);display:grid;grid-template-columns:1fr 1fr;gap:9pt 16pt}
+.venue .kv div{font:500 8pt/1.35 Inter,sans-serif;color:var(--muted)}
+.venue .kv b{display:block;font:700 7.4pt/1 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--red);margin-bottom:4pt}
+
+/* full-bleed feature */
+.feature{padding:0}
+.feature img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.feature .scrim{position:absolute;inset:0;background:linear-gradient(84deg,rgba(6,5,5,.95) 0%,rgba(6,5,5,.85) 42%,rgba(6,5,5,.26) 78%,rgba(6,5,5,.54) 100%)}
+.feature .inner{position:absolute;inset:0;padding:44pt 46pt 40pt;display:flex;flex-direction:column;justify-content:center;max-width:520pt}
+.feature h2{font-family:Archivo,sans-serif;font-weight:900;font-size:34pt;line-height:1.02;letter-spacing:-.026em;color:#fff;margin-top:12pt}
+.feature h2 span{color:var(--gold)}
+.feature p{margin-top:14pt;font:400 10pt/1.6 Inter,sans-serif;color:#DCD1C0;max-width:430pt}
+.feature .chips{margin-top:20pt;display:flex;flex-wrap:wrap;gap:7pt}
+.feature .chips span{font:600 7pt/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--gold-lt);
+  border:.75pt solid rgba(198,161,91,.45);border-radius:2pt;padding:6pt 9pt;background:rgba(10,8,7,.5)}
+
+/* ── daypart ─────────────────────────────────────────────── */
+.clock{margin-top:22pt;border-top:.75pt solid var(--line)}
+.clock .hdr{display:grid;grid-template-columns:118pt 1fr;gap:14pt;padding:9pt 0 7pt;border-bottom:.75pt solid var(--line)}
+.clock .hdr .scale{display:grid;grid-template-columns:repeat(6,1fr);font:600 6.6pt/1 Inter,sans-serif;letter-spacing:.13em;color:var(--muted);text-transform:uppercase}
+.clock .lane{display:grid;grid-template-columns:118pt 1fr;gap:14pt;align-items:center;padding:9.5pt 0;border-bottom:.75pt solid rgba(243,234,217,.07)}
+.clock .lane b{font:600 7.6pt/1.2 Inter,sans-serif;letter-spacing:.07em;color:#CFC4B3}
+.clock .track{position:relative;height:15pt;background:rgba(243,234,217,.05);border-radius:2pt}
+.clock .bar{position:absolute;top:0;bottom:0;border-radius:2pt;
+  font:700 6.2pt/13pt Inter,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:rgba(255,255,255,.92);padding-left:7pt;line-height:15pt;overflow:hidden;white-space:nowrap}
+.b-day{background:linear-gradient(90deg,#B08A44,#8A6A32)}
+.b-eve{background:linear-gradient(90deg,#B4232E,#7E1219)}
+.b-night{background:linear-gradient(90deg,#5C2A78,#38194C)}
+.b-all{background:linear-gradient(90deg,#8A6A32,#B4232E 55%,#5C2A78)}
+
+/* ── two-box structure ───────────────────────────────────── */
+.boxes{display:grid;grid-template-columns:1fr 1fr;gap:22pt;margin-top:30pt;min-height:308pt;align-items:stretch}
+.box{border:.75pt solid var(--line2);border-radius:3pt;padding:24pt 22pt;background:var(--panel);display:flex;flex-direction:column}
+.box .lab{font:700 8.4pt/1 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--red)}
+.box.gold .lab{color:var(--gold)}
+.box h3{margin-top:10pt;font:800 14pt/1.2 Archivo,sans-serif;letter-spacing:-.01em;color:var(--cream)}
+.box ul{list-style:none;margin-top:14pt;flex:1;display:flex;flex-direction:column;justify-content:space-evenly}
+.box li{position:relative;padding-left:14pt;margin:0;font:400 9.2pt/1.5 Inter,sans-serif;color:#CBC0AF}
+.box li::before{content:"";position:absolute;left:0;top:5pt;width:5pt;height:5pt;border-radius:50%;background:var(--red)}
+.box.gold li::before{background:var(--gold)}
+
+/* ── steps ───────────────────────────────────────────────── */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:15pt;margin-top:30pt}
+.step{border-top:2.5pt solid var(--red);padding-top:18pt}
+.step:last-child{border-top-color:var(--gold)}
+.step b{font:900 30pt/1 Archivo,sans-serif;color:var(--red);letter-spacing:-.03em}
+.step:last-child b{color:var(--gold)}
+.step h3{margin-top:9pt;font:800 10.5pt/1.15 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--cream)}
+.step p{margin-top:9pt;font:400 8.8pt/1.6 Inter,sans-serif;color:var(--muted)}
+.cta{margin-top:38pt;background:linear-gradient(97deg,#8A161D,#570D12);border-radius:3pt;padding:32pt 28pt;
+  display:flex;align-items:center;gap:20pt}
+.cta b{font:700 8.4pt/1 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-lt);white-space:nowrap}
+.cta span{font:500 10pt/1.4 Inter,sans-serif;color:#fff}
+
+/* ── milestone cards ─────────────────────────────────────── */
+.mile{display:grid;grid-template-columns:repeat(4,1fr);gap:14pt;margin-top:32pt;min-height:300pt}
+.mile .m{border:.75pt solid var(--line);border-radius:3pt;padding:22pt 18pt;background:var(--panel);position:relative;display:flex;flex-direction:column}
+.mile .m:first-child{background:linear-gradient(165deg,#8A161D,#550C11);border-color:rgba(243,234,217,.22)}
+.mile .m b{font:900 22pt/1 Archivo,sans-serif;color:rgba(243,234,217,.2);margin-bottom:auto}
+.mile .m:first-child b{color:rgba(255,255,255,.42)}
+.mile .m h3{margin-top:9pt;font:800 9.6pt/1.15 Archivo,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:var(--gold)}
+.mile .m:first-child h3{color:#fff}
+.mile .m p{margin-top:9pt;font:400 8.6pt/1.55 Inter,sans-serif;color:#C2B7A6}
+.mile .m:first-child p{color:rgba(255,255,255,.9)}
+
+/* ── closing ─────────────────────────────────────────────── */
+.close{padding:0}
+.close img.bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.close .scrim{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 46%,rgba(6,5,5,.55) 0%,rgba(6,5,5,.93) 72%)}
+.close .inner{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:46pt}
+.close .logo{width:230pt;margin-bottom:26pt}
+.close h1{font-family:Archivo,sans-serif;font-weight:900;font-size:33pt;line-height:1.06;letter-spacing:-.025em;color:#fff}
+.close h1 span{color:var(--gold)}
+.close .sub2{margin-top:15pt;font-family:"Shippori Mincho",serif;font-weight:500;font-size:13pt;color:var(--gold-lt);letter-spacing:.02em}
+.close .contact{margin-top:30pt;border:.75pt solid var(--line2);border-radius:3pt;padding:16pt 30pt;background:rgba(12,10,9,.72)}
+.close .contact b{display:block;font:700 7pt/1 Archivo,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:var(--red)}
+.close .contact span{display:block;margin-top:10pt;font:500 10.5pt/1.5 Inter,sans-serif;color:var(--cream)}
+.close .legal{position:absolute;left:0;right:0;bottom:26pt;text-align:center;font:400 6.8pt/1.5 Inter,sans-serif;color:var(--dim);padding:0 90pt}
+</style>
+</head>
+<body>
+
+<!-- ══ 01 COVER ══════════════════════════════════════════════ -->
+<section class="slide cover">
+  <img class="bg" src="img/cover.jpg" alt="">
+  <div class="scrim"></div><div class="vign"></div>
+  <div class="inner">
+    <img class="logo" src="img/logo-dark.png" alt="Tokyo Rocks">
+    <h1>New York<br><span>Flagship</span></h1>
+    <p class="tag">Japanese soul. Rock-and-roll energy.<br>A scalable hospitality platform.</p>
+    <div class="raise">
+      <div><b>$18M</b><small>Proposed raise</small></div>
+      <div><b>30%</b><small>NEWCO ownership</small></div>
+      <div><b>SoHo</b><small>New York City</small></div>
+    </div>
+  </div>
+  <div class="by">Todd English <i>·</i> CEO &amp; Founder</div>
+  <div class="conf">Investment Opportunity · Confidential</div>
+</section>
+
+<!-- ══ 02 THE STORY ══════════════════════════════════════════ -->
+<section class="slide">
+  <div class="split wide">
+    <div>
+      <span class="eyebrow">The concept</span>
+      <h1 class="st" style="margin-top:11pt">You walk in off a New York street — and suddenly, <em>you're in Tokyo.</em></h1>
+      <div class="rule"></div>
+      <p class="sub" style="max-width:none">Not the polished version. The real one. Layered. Electric. Alive.</p>
+      <p class="sub" style="max-width:none;color:#CFC4B3">Tokyo Rocks is a modern Japanese food hall and immersive entertainment destination inspired by the energy, nightlife, food culture, music and sensory experiences of Tokyo — a multi-dimensional cultural destination, not a single restaurant.</p>
+      <p class="jp" style="margin-top:16pt;font-size:12.5pt;color:var(--gold);letter-spacing:.04em">東京が、ニューヨークで生きている。</p>
+      <p style="margin-top:20pt;font:700 9.6pt/1.7 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--cream)">
+        Good food.<br>Good music.<br>Good people.</p>
+    </div>
+    <figure class="figure" style="height:404pt">
+      <img src="img/threshold.jpg" alt="Tokyo Rocks entrance">
+      <figcaption>Entrance · SoHo, New York City</figcaption>
+    </figure>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">02</span></div>
+</section>
+
+<!-- ══ 03 AT A GLANCE ════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">The opportunity at a glance</h1>
+  <div class="stats">
+    <div class="stat"><b>$18M</b><i style="background:var(--red)"></i><span>Proposed equity raise</span></div>
+    <div class="stat"><b>30%</b><i style="background:var(--gold)"></i><span>Investor ownership in NEWCO</span></div>
+    <div class="stat"><b>70%</b><i style="background:#4E8C5A"></i><span>Founder ownership</span></div>
+    <div class="stat"><b>25K</b><i style="background:#3D6E9C"></i><span>Target square feet</span></div>
+  </div>
+  <div class="stats2">
+    <div><span>Proposed post-money valuation</span><b>$60M</b></div>
+    <div><span>Implied pre-money valuation</span><b>$42M</b></div>
+    <div><span>Entity</span><b class="sm">Delaware C-Corporation</b></div>
+  </div>
+  <p class="note" style="position:absolute;left:46pt;right:46pt;bottom:52pt">Valuation math reflects $18M for 30%; final capitalization and security terms remain subject to investor diligence.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">03</span></div>
+</section>
+
+<!-- ══ 04 WHY IT WORKS ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="split wide" style="align-items:stretch;padding-top:4pt">
+    <div style="display:flex;flex-direction:column;justify-content:center">
+      <span class="eyebrow">The thesis</span>
+      <h1 class="st" style="margin-top:11pt;font-size:23pt">One address. Twelve reasons to come back.</h1>
+      <div class="rule"></div>
+      <dl class="rows" style="margin-top:18pt">
+        <div class="row"><dt>Location</dt><dd>Prime SoHo, New York City — the highest-density crossover of resident spend and global tourism.</dd></div>
+        <div class="row"><dt>Dayparts</dt><dd>Daytime café and market revenue through to late-night bar and music revenue in one lease.</dd></div>
+        <div class="row"><dt>Depth</dt><dd>Multiple distinct experiences under one roof, each with its own reason to visit.</dd></div>
+        <div class="row"><dt>Distribution</dt><dd>Built to be filmed — every room is a social-media surface that markets the venue for free.</dd></div>
+        <div class="row"><dt>Frequency</dt><dd>A repeat-visit destination rather than a one-occasion restaurant.</dd></div>
+        <div class="row"><dt>Audience</dt><dd>Designed for locals and tourists at the same time, weekday and weekend.</dd></div>
+      </dl>
+    </div>
+    <figure class="figure" style="height:100%">
+      <img src="img/foodhall.jpg" alt="Tokyo Rocks food hall">
+      <figcaption>The food hall · Ground floor</figcaption>
+    </figure>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">04</span></div>
+</section>
+
+<!-- ══ 05 REVENUE ENGINES ════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">One destination, five complementary revenue engines</h1>
+  <div class="engines">
+    <div class="engine"><img src="img/e-sushi.jpg" alt=""><div class="body"><h3>Culinary</h3><p>Sushi, ramen, izakaya, tempura, wagyu and seasonal chef-driven stations</p><div class="n">01</div></div></div>
+    <div class="engine"><img src="img/e-sake.jpg" alt=""><div class="body"><h3>Beverage</h3><p>Japanese whisky, sake and high-margin craft cocktails</p><div class="n">02</div></div></div>
+    <div class="engine hot"><img src="img/e-rockbar.jpg" alt=""><div class="body"><h3>Music</h3><p>Live room, ticketed shows, artist activations and nightlife</p><div class="n">03</div></div></div>
+    <div class="engine"><img src="img/e-immersive.jpg" alt=""><div class="body"><h3>Culture</h3><p>Anime, retail, pop-ups and interactive Japanese experiences</p><div class="n">04</div></div></div>
+    <div class="engine"><img src="img/e-omakase.jpg" alt=""><div class="body"><h3>Events</h3><p>Private dining, brand launches, classes and full-venue buyouts</p><div class="n">05</div></div></div>
+  </div>
+  <p class="disc" style="position:absolute;left:46pt;right:46pt;bottom:50pt">Retail, ticketed experiences and private events are revenue lines the model must size independently of food and beverage.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">05</span></div>
+</section>
+
+<!-- ══ 06 THE ECOSYSTEM ══════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">The ecosystem: twelve worlds inside one address</h1>
+  <div class="eco">
+    <figure><img src="img/t-foodhall.jpg" alt=""><figcaption>Food Hall<em>Ground floor</em></figcaption></figure>
+    <figure><img src="img/t-market.jpg" alt=""><figcaption>Grocery &amp; Market<em>Retail</em></figcaption></figure>
+    <figure><img src="img/t-robata.jpg" alt=""><figcaption>Robatayaki Grill<em>2nd floor</em></figcaption></figure>
+    <figure><img src="img/t-omakase.jpg" alt=""><figcaption>Omakase Bar<em>Reservation</em></figcaption></figure>
+    <figure><img src="img/t-sake.jpg" alt=""><figcaption>Sake Library<em>2nd floor</em></figcaption></figure>
+    <figure><img src="img/t-cafe.jpg" alt=""><figcaption>Café &amp; Lounge<em>All day</em></figcaption></figure>
+    <figure><img src="img/t-lounge.jpg" alt=""><figcaption>Whisky &amp; Vinyl<em>Evening</em></figcaption></figure>
+    <figure><img src="img/t-rockbar.jpg" alt=""><figcaption>Rock &amp; Roll Bar<em>Late night</em></figcaption></figure>
+    <figure><img src="img/t-immersive.jpg" alt=""><figcaption>Immersive Tokyo<em>Ticketed</em></figcaption></figure>
+    <figure><img src="img/t-anime.jpg" alt=""><figcaption>Pop-Culture Museum<em>Ticketed</em></figcaption></figure>
+    <figure><img src="img/t-kimono.jpg" alt=""><figcaption>Kimono Experience<em>Ticketed</em></figcaption></figure>
+    <figure><img src="img/t-sumo.jpg" alt=""><figcaption>Sumo Hall<em>Signature</em></figcaption></figure>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">06</span></div>
+</section>
+
+<!-- ══ 07 FOOD HALL & MARKET ═════════════════════════════════ -->
+<section class="slide">
+  <div class="venue">
+    <div class="stack">
+      <figure class="figure"><img src="img/foodhall.jpg" alt=""><figcaption>Food hall · Yakitori, takoyaki, sushi &amp; sashimi counters</figcaption></figure>
+      <figure class="figure"><img src="img/market.jpg" alt=""><figcaption>Tokyo Rocks Grocery · Market hall</figcaption></figure>
+    </div>
+    <div>
+      <span class="eyebrow">Inside Tokyo Rocks · 01</span>
+      <h2>The food hall <span>and market</span></h2>
+      <p class="lede">A market-style Japanese food hall built for movement and discovery — open kitchens, counters and stalls around a central floor, with a full retail grocery and sake wall running alongside it.</p>
+      <div class="kv">
+        <div><b>Counters</b>Sushi &amp; seafood, ramen &amp; noodles, robata skewers, katsu sando</div>
+        <div><b>Retail</b>Japanese groceries, sake &amp; shochu, artisanal goods, coffee &amp; tea</div>
+        <div><b>Format</b>Fast-casual through to fine dining in one room</div>
+        <div><b>Trading</b>All-day, 11am to 11pm, plus late-night</div>
+      </div>
+      <p style="margin-top:18pt;font:600 9pt/1.5 Inter,sans-serif;color:var(--gold)">"Eataly meets Tokyo nightlife."</p>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">07</span></div>
+</section>
+
+<!-- ══ 08 FIRE & CRAFT ═══════════════════════════════════════ -->
+<section class="slide">
+  <div class="venue">
+    <div class="stack">
+      <figure class="figure"><img src="img/robata.jpg" alt=""><figcaption>Robatayaki Grill · 2nd floor</figcaption></figure>
+      <figure class="figure"><img src="img/omakase.jpg" alt=""><figcaption>Omakase Bar · Precision, seasonality, experience</figcaption></figure>
+    </div>
+    <div>
+      <span class="eyebrow">Inside Tokyo Rocks · 02</span>
+      <h2>Fire <span>and craft</span></h2>
+      <p class="lede">The second floor is the room people come back for. An open robatayaki grill is the visual and social heart of the venue; hidden alongside it, an intimate omakase counter delivers the quiet, high-check counterpoint.</p>
+      <div class="kv">
+        <div><b>Robatayaki</b>Open-flame cooking, wagyu, black cod, king salmon, scallop, Japanese vegetables</div>
+        <div><b>Omakase</b>Intimate counter, seasonal, chef-led</div>
+        <div><b>Also on two</b>Sake Library and private dining room</div>
+        <div><b>Pairing</b>Sake, Japanese whisky and cocktails</div>
+      </div>
+      <p class="jp" style="margin-top:18pt;font-size:12pt;color:var(--gold)">炉端焼き　<span style="font-family:Inter,sans-serif;font-size:8.6pt;letter-spacing:.16em;color:var(--muted)">LIVE FIRE. EVERY DISH. EVERY MOMENT.</span></p>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">08</span></div>
+</section>
+
+<!-- ══ 09 AFTER DARK ═════════════════════════════════════════ -->
+<section class="slide">
+  <div class="venue">
+    <div class="stack">
+      <figure class="figure"><img src="img/lounge.jpg" alt=""><figcaption>Whisky &amp; Vinyl Lounge</figcaption></figure>
+      <figure class="figure"><img src="img/rockbar.jpg" alt=""><figcaption>Tokyo Rocks Rock &amp; Roll Bar</figcaption></figure>
+    </div>
+    <div>
+      <span class="eyebrow">Inside Tokyo Rocks · 03</span>
+      <h2>After <span>dark</span></h2>
+      <p class="lede">By night another door opens. A vinyl-and-whisky listening lounge holds the room at low light and high margin; below it, a hidden rock bar inspired by the underground clubs of Shibuya and Shinjuku takes the night to close.</p>
+      <div class="kv">
+        <div><b>Listening lounge</b>300+ whiskies, artisanal sake, curated vinyl</div>
+        <div><b>Rock bar</b>Live bands, vinyl DJs, late-night dining</div>
+        <div><b>Margin</b>Beverage-led, low cost of goods</div>
+        <div><b>Programming</b>Ticketed shows and artist activations</div>
+      </div>
+      <p style="margin-top:18pt;font:700 9.4pt/1 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--cream)">Live loud　<span class="jp" style="font-size:10pt;letter-spacing:.05em;color:var(--red)">大きな音で生きる</span></p>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">09</span></div>
+</section>
+
+<!-- ══ 10 IMMERSIVE & CULTURE ════════════════════════════════ -->
+<section class="slide">
+  <div class="venue">
+    <div class="stack">
+      <figure class="figure"><img src="img/immersive.jpg" alt=""><figcaption>Digital Immersive Tokyo · 360° projection</figcaption></figure>
+      <figure class="figure"><img src="img/kimono.jpg" alt=""><figcaption>Kimono &amp; Japanese Dress Experience</figcaption></figure>
+    </div>
+    <div>
+      <span class="eyebrow">Inside Tokyo Rocks · 04</span>
+      <h2>Immersive <span>and cultural</span></h2>
+      <p class="lede">The ticketed layer. Three culture-led experiences that trade independently of the kitchen, draw a family and daytime audience, and convert directly into retail and food spend on the way out.</p>
+      <div class="kv">
+        <div><b>Immersive Tokyo</b>360° projection, interactive floors, sound and light</div>
+        <div><b>Pop-culture museum</b>Anime art, exhibits, collectibles and retail</div>
+        <div><b>Kimono experience</b>Museum exhibition, dressing and photography</div>
+        <div><b>Revenue</b>Admissions, retail and private hire</div>
+      </div>
+      <p class="disc" style="margin-top:18pt;text-align:left">Any use of third-party anime or character IP requires a separate licence; the museum programme should be underwritten on original and licensed-in content.</p>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">10</span></div>
+</section>
+
+<!-- ══ 11 SUMO HALL ══════════════════════════════════════════ -->
+<section class="slide feature">
+  <img class="bg" src="img/sumo.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="inner">
+    <span class="eyebrow">Inside Tokyo Rocks · 05 · The signature</span>
+    <h2>The <span>Sumo Hall</span></h2>
+    <p>A dramatic ring at the centre of the second floor with live exhibition matches, taiko drums, ceremonial entrances and sake service — the room that makes Tokyo Rocks impossible to compare to another restaurant, and the single most defensible reason to buy a ticket.</p>
+    <div class="chips">
+      <span>Live sumo exhibitions</span><span>Taiko drums</span><span>Sake service</span><span>Elevated dining</span><span>Private events &amp; buyouts</span>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">11</span></div>
+</section>
+
+<!-- ══ 12 DAY TO NIGHT ═══════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">One lease, trading from morning coffee to last call</h1>
+  <p class="sub">Most restaurants monetise two or three hours a day. Tokyo Rocks is designed so a different room carries each part of the clock.</p>
+  <div class="clock">
+    <div class="hdr"><span style="font:600 6.6pt/1 Inter,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)">Space</span>
+      <div class="scale"><span>11am</span><span>2pm</span><span>5pm</span><span>8pm</span><span>11pm</span><span>Late</span></div></div>
+    <div class="lane"><b>Café &amp; Lounge</b><div class="track"><div class="bar b-day" style="left:0;width:50%">Coffee · matcha · light bites</div></div></div>
+    <div class="lane"><b>Grocery &amp; Market</b><div class="track"><div class="bar b-day" style="left:0;width:66%">Retail</div></div></div>
+    <div class="lane"><b>Food Hall</b><div class="track"><div class="bar b-all" style="left:0;width:88%">Lunch · dinner · late-night counters</div></div></div>
+    <div class="lane"><b>Culture &amp; Immersive</b><div class="track"><div class="bar b-day" style="left:0;width:58%">Ticketed admissions</div></div></div>
+    <div class="lane"><b>Omakase Bar</b><div class="track"><div class="bar b-eve" style="left:42%;width:38%">Seatings</div></div></div>
+    <div class="lane"><b>Robatayaki Grill</b><div class="track"><div class="bar b-eve" style="left:34%;width:52%">Dinner service</div></div></div>
+    <div class="lane"><b>Sumo Hall</b><div class="track"><div class="bar b-eve" style="left:46%;width:38%">Exhibitions &amp; buyouts</div></div></div>
+    <div class="lane"><b>Whisky &amp; Vinyl</b><div class="track"><div class="bar b-night" style="left:56%;width:38%">Listening lounge</div></div></div>
+    <div class="lane"><b>Rock &amp; Roll Bar</b><div class="track"><div class="bar b-night" style="left:66%;width:34%">Live music · late</div></div></div>
+  </div>
+  <p class="disc" style="position:absolute;left:46pt;right:46pt;bottom:48pt">Illustrative operating concept based on the stated 11am–11pm trading window and late-night licence — not a revenue forecast. Actual dayparts to be set in the operating plan.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">12</span></div>
+</section>
+
+<!-- ══ 13 SCALE ══════════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">A flagship designed to scale beyond its four walls</h1>
+  <div style="display:grid;grid-template-columns:1fr 1.5pt 1.25fr;gap:34pt;margin-top:30pt;align-items:stretch;min-height:368pt">
+    <div>
+      <span class="eyebrow">New York flagship</span>
+      <p style="margin-top:13pt;font:600 15pt/1.4 Archivo,sans-serif;letter-spacing:-.012em;color:var(--cream)">A high-visibility proof point for operating performance, press, partnerships and consumer demand.</p>
+      <figure class="figure" style="margin-top:24pt;height:196pt"><img src="img/exterior.jpg" alt=""><figcaption>SoHo, New York City</figcaption></figure>
+    </div>
+    <div style="background:var(--red);align-self:stretch;width:1.5pt"></div>
+    <div>
+      <dl class="rows" style="margin-top:0">
+        <div class="row"><dt style="color:var(--gold)">Global licensing</dt><dd>Hotels, resorts, airports and destination developments</dd></div>
+        <div class="row"><dt style="color:var(--gold)">Consumer products</dt><dd>Chef-curated retail, merchandise and branded food products</dd></div>
+        <div class="row"><dt style="color:var(--gold)">Media + music</dt><dd>Broadcast content, live performance and creator collaborations</dd></div>
+        <div class="row"><dt style="color:var(--gold)">Future locations</dt><dd>A repeatable operating and design playbook for expansion</dd></div>
+      </dl>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">13</span></div>
+</section>
+
+<!-- ══ 14 PARTNERSHIPS ═══════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Strategic partnerships can deepen both economics and cultural credibility</h1>
+  <div class="boxes" style="min-height:248pt">
+    <div class="box">
+      <div class="lab">Beverage platform</div>
+      <p style="margin-top:11pt;font:400 7.6pt/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Target relationships</p>
+      <h3 style="margin-top:7pt">Suntory · Asahi <em style="font:600 7.6pt/1 Inter,sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--red);vertical-align:middle;border:.75pt solid rgba(200,32,43,.6);border-radius:2pt;padding:4pt 7pt;margin-left:6pt;white-space:nowrap">Prospective — unconfirmed</em></h3>
+      <ul><li>Japanese whisky, beer, RTD and non-alcoholic programs</li><li>Sponsorship, product launches and co-marketing</li></ul>
+    </div>
+    <div class="box gold">
+      <div class="lab">Music + culture</div>
+      <p style="margin-top:11pt;font:400 7.6pt/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;color:var(--muted)">Target relationship</p>
+      <h3 style="margin-top:7pt">HYBE <em style="font:600 7.6pt/1 Inter,sans-serif;font-style:normal;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);vertical-align:middle;border:.75pt solid rgba(198,161,91,.6);border-radius:2pt;padding:4pt 7pt;margin-left:6pt;white-space:nowrap">Prospective — unconfirmed</em></h3>
+      <ul><li>Artist activations, fan events and programming</li><li>Content, digital reach and global cultural relevance</li></ul>
+    </div>
+  </div>
+  <p class="note" style="position:absolute;left:46pt;right:46pt;bottom:52pt">These are prospective strategic partners; no affiliation is represented unless confirmed by executed agreement.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">14</span></div>
+</section>
+
+<!-- ══ 15 TODD ENGLISH ═══════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Todd English brings brand power and operating pattern recognition</h1>
+  <div style="display:grid;grid-template-columns:268pt 1fr;gap:36pt;margin-top:24pt;align-items:start">
+    <figure class="figure" style="height:352pt"><img src="img/todd-english.jpg" alt="Chef Todd English"><figcaption>Chef Todd English</figcaption></figure>
+    <div>
+      <span class="eyebrow">CEO &amp; Founder · Chef · Restaurateur · Author · Television personality</span>
+      <h2 style="margin-top:11pt;font:900 32pt/1 Archivo,sans-serif;letter-spacing:-.028em;color:var(--cream)">Todd English</h2>
+      <p style="margin-top:15pt;font:400 10.4pt/1.6 Inter,sans-serif;color:#D6CBB9">A James Beard Award-winning chef and hospitality entrepreneur, Todd English has spent more than four decades creating restaurant brands, food halls and high-volume dining experiences across the United States and international markets.</p>
+      <p style="margin-top:12pt;font:400 9.6pt/1.6 Inter,sans-serif;color:var(--muted)">His portfolio has included Olives, Figs, bluezoo and the Todd English Food Hall at The Plaza in New York, alongside global hotel, resort, casino, retail and media partnerships.</p>
+      <div style="margin-top:20pt;padding-top:15pt;border-top:.75pt solid var(--line)">
+        <span class="eyebrow g">Selected portfolio</span>
+        <div style="margin-top:11pt;display:flex;flex-wrap:wrap;gap:7pt">
+          <span class="pill">Olives</span><span class="pill">Figs</span><span class="pill">bluezoo</span>
+          <span class="pill">Todd English Food Hall · The Plaza, New York</span>
+        </div>
+      </div>
+      <p style="margin-top:20pt;padding-top:15pt;border-top:.75pt solid var(--line);font:500 9.2pt/1.6 Inter,sans-serif;color:var(--gold)">
+        <b style="font:700 7.4pt/1 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:8pt">Investor value</b>
+        Concept creation · culinary direction · brand reach · media visibility · developer relationships</p>
+    </div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">15</span></div>
+</section>
+
+<!-- ══ 16 OWNERSHIP STRUCTURE ════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">The ownership structure separates operations from global IP</h1>
+  <div class="boxes">
+    <div class="box">
+      <div class="lab">NEWCO</div>
+      <h3>Delaware operating company</h3>
+      <ul>
+        <li>Holds the New York lease and operating assets</li>
+        <li>Raises $18M for 30% investor ownership</li>
+        <li>Operates the venue and distributes cash flow</li>
+      </ul>
+    </div>
+    <div class="box gold">
+      <div class="lab">BRANDCO</div>
+      <h3>Global intellectual-property company</h3>
+      <ul>
+        <li>Owned by Todd English, CEO &amp; Founder</li>
+        <li>Owns Tokyo Rocks trademarks, brand and IP</li>
+        <li>Licenses defined rights to NEWCO</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note" style="position:absolute;left:46pt;right:46pt;bottom:52pt">Investor diligence must define the license term, royalty, exclusivity, termination rights and change-of-control treatment.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">16</span></div>
+</section>
+
+<!-- ══ 17 INVESTOR TERMS ═════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Proposed investor terms: meaningful ownership with protected governance</h1>
+  <dl class="rows">
+    <div class="row"><dt>Security</dt><dd style="color:var(--gold)">Preferred equity in NEWCO; exact class and rights to be negotiated</dd></div>
+    <div class="row"><dt>Ownership</dt><dd>30% fully diluted at closing, subject to final cap table</dd></div>
+    <div class="row"><dt>Governance</dt><dd>Board seat or observer right; reserved matters for major decisions</dd></div>
+    <div class="row"><dt>Information</dt><dd>Monthly KPI reporting; quarterly financials; annual budget approval</dd></div>
+    <div class="row"><dt>Distributions</dt><dd>Tax distributions first; remaining cash per agreed waterfall</dd></div>
+    <div class="row"><dt>Exit rights</dt><dd>Tag-along, drag-along, transfer and change-of-control provisions</dd></div>
+  </dl>
+  <p class="disc" style="position:absolute;left:46pt;right:46pt;bottom:50pt">Illustrative term framework — not a securities offering and not a substitute for definitive documentation.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">17</span></div>
+</section>
+
+<!-- ══ 18 MILESTONES ═════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Capital is released against defined development milestones</h1>
+  <div class="mile">
+    <div class="m"><b>1</b><h3>Site + design</h3><p>Lease control, concept design, baseline budget</p></div>
+    <div class="m"><b>2</b><h3>Permits + GMP</h3><p>Permits, guaranteed maximum price, schedule</p></div>
+    <div class="m"><b>3</b><h3>Build + commission</h3><p>Construction draws, equipment, recruitment</p></div>
+    <div class="m"><b>4</b><h3>Open + stabilize</h3><p>Pre-opening, launch marketing, working capital</p></div>
+  </div>
+  <p class="note" style="position:absolute;left:46pt;right:46pt;bottom:52pt">A third-party construction monitor and board-approved draw process should govern all material disbursements.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">18</span></div>
+</section>
+
+<!-- ══ 19 SOURCES AND USES ═══════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Sources and uses must be reconciled before closing</h1>
+  <div class="boxes" style="margin-top:28pt">
+    <div class="box">
+      <div class="lab">Sources</div>
+      <ul style="margin-top:14pt">
+        <li>Investor equity: <b style="color:var(--cream)">$18M</b></li>
+        <li>Sponsor / strategic capital: to be confirmed</li>
+        <li>Senior construction or equipment debt: to be confirmed</li>
+        <li>Landlord contribution / tenant allowance: site dependent</li>
+      </ul>
+    </div>
+    <div class="box gold">
+      <div class="lab">Uses</div>
+      <ul style="margin-top:14pt">
+        <li>Leasehold improvements and fit-out</li>
+        <li>Kitchen, bar, entertainment and technology equipment</li>
+        <li>Pre-opening payroll, training and launch marketing</li>
+        <li>Working capital, contingency and financing costs</li>
+      </ul>
+    </div>
+  </div>
+  <div style="position:absolute;left:46pt;right:46pt;bottom:46pt;border:.75pt solid var(--line2);border-radius:3pt;padding:13pt 18pt;background:var(--panel)">
+    <p style="font:500 8.8pt/1.5 Inter,sans-serif;color:var(--cream);text-align:center">
+      <b style="color:var(--gold)">Required closing deliverable:</b> line-item development budget, monthly cash flow, contingency policy and committed funding sources.</p>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">19</span></div>
+</section>
+
+<!-- ══ 20 DEBT GUARDRAILS ════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Debt can accelerate returns — but must not endanger the flagship</h1>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:28pt;margin-top:30pt;min-height:308pt;align-items:stretch">
+    <div>
+      <span class="eyebrow">Recommended credit guardrails</span>
+      <ul class="tick">
+        <li>No uncommitted funding gap at construction start</li>
+        <li>Debt sized to conservative cash flow — not headline revenue</li>
+        <li>Board approval for new debt, liens and guarantees</li>
+        <li>Interest reserve and minimum liquidity covenant</li>
+        <li>No cross-collateralization of global BRANDCO IP</li>
+      </ul>
+    </div>
+    <div class="box gold">
+      <div class="lab">Investor diligence</div>
+      <p style="margin-top:10pt;font:600 9pt/1.3 Inter,sans-serif;color:var(--muted)">Debt schedule must show</p>
+      <ul>
+        <li>Lender, principal, rate and maturity</li>
+        <li>Amortization and balloon exposure</li>
+        <li>Covenants, guarantees and collateral</li>
+        <li>Base / downside debt-service coverage</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note" style="position:absolute;left:46pt;right:46pt;bottom:52pt">Current deck does not disclose a debt amount or lender commitment.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">20</span></div>
+</section>
+
+<!-- ══ 21 FINANCIAL MODEL ════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">The financial model must prove resilience — not just upside</h1>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20pt;margin-top:34pt">
+    <div class="card"><h3>Base case</h3><p>Opening date, stabilized sales, margins and cash yield</p></div>
+    <div class="card hot"><h3>Downside</h3><p>Construction delay, lower traffic, margin pressure and slower ramp</p></div>
+    <div class="card"><h3>Break-even</h3><p>Monthly revenue required to cover fixed costs and debt service</p></div>
+  </div>
+  <div style="margin-top:40pt;padding-top:32pt;border-top:.75pt solid var(--line)">
+    <p style="font:600 7.4pt/1 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--red);text-align:center">Core outputs</p>
+    <p style="margin-top:12pt;font:500 9.6pt/1.7 Inter,sans-serif;color:#D6CBB9;text-align:center">
+      Five-year P&amp;L &nbsp;·&nbsp; Cash flow &nbsp;·&nbsp; Working capital &nbsp;·&nbsp; Capex schedule<br>
+      Investor IRR / MOIC &nbsp;·&nbsp; DSCR &nbsp;·&nbsp; Sensitivity table</p>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">21</span></div>
+</section>
+
+<!-- ══ 22 DILIGENCE ══════════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">Diligence priorities before an investor can underwrite the opportunity</h1>
+  <div class="dilig" style="display:grid;grid-template-columns:repeat(3,1fr);gap:15pt;margin-top:28pt">
+    <div class="card"><div class="num">01</div><h3 style="margin-top:9pt;color:var(--red)">Site</h3><p>LOI / lease, rent, landlord work, delivery condition</p></div>
+    <div class="card"><div class="num">02</div><h3 style="margin-top:9pt;color:var(--red)">Budget</h3><p>Line-item capex, contingency, GMP and equipment quotes</p></div>
+    <div class="card"><div class="num">03</div><h3 style="margin-top:9pt;color:var(--red)">Model</h3><p>Five-year monthly forecast, break-even, returns and sensitivities</p></div>
+    <div class="card"><div class="num">04</div><h3 style="margin-top:9pt;color:var(--gold)">Legal</h3><p>Delaware documents, cap table, IP license and securities counsel</p></div>
+    <div class="card"><div class="num">05</div><h3 style="margin-top:9pt;color:var(--gold)">Team</h3><p>Operator, development manager, GC, architect and opening leadership</p></div>
+    <div class="card"><div class="num">06</div><h3 style="margin-top:9pt;color:var(--gold)">Partners</h3><p>Documented status of beverage, music and sponsorship discussions</p></div>
+  </div>
+  <p class="disc" style="position:absolute;left:46pt;right:46pt;bottom:50pt">Materials are released to a named investor under NDA; see the closing path on the following slide.</p>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">22</span></div>
+</section>
+
+<!-- ══ 23 PATH TO CLOSING ════════════════════════════════════ -->
+<section class="slide">
+  <span class="eyebrow">Tokyo Rocks | Confidential</span>
+  <h1 class="st" style="margin-top:11pt">The next step is a controlled path from interest to closing</h1>
+  <div class="steps">
+    <div class="step"><b>01</b><h3>NDA</h3><p>Release site, model and budget materials</p></div>
+    <div class="step"><b>02</b><h3>Diligence</h3><p>Validate lease, capex, operating plan and structure</p></div>
+    <div class="step"><b>03</b><h3>Term sheet</h3><p>Agree valuation, governance, waterfall and funding conditions</p></div>
+    <div class="step"><b>04</b><h3>Closing</h3><p>Execute documents and fund against milestones</p></div>
+  </div>
+  <div class="cta">
+    <b>Decision request</b>
+    <span>Confirm diligence access and schedule an investor working session.</span>
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16pt;margin-top:22pt">
+    <div class="stats2" style="margin:0;display:block"><div style="min-height:78pt">
+      <span>Contact</span><b class="sm" style="font-size:11pt">Todd English · CEO &amp; Founder</b></div></div>
+    <div class="stats2" style="margin:0;display:block"><div style="min-height:78pt">
+      <span>Email</span><b class="sm" style="font-size:11pt">tenglish@toddenglish.com</b></div></div>
+    <div class="stats2" style="margin:0;display:block"><div style="min-height:78pt">
+      <span>Materials released under</span><b class="sm" style="font-size:11pt">Mutual NDA</b></div></div>
+  </div>
+  <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">23</span></div>
+</section>
+
+<!-- ══ 24 CLOSING ════════════════════════════════════════════ -->
+<section class="slide close">
+  <img class="bg" src="img/finale.jpg" alt="">
+  <div class="scrim"></div>
+  <div class="inner">
+    <img class="logo" src="img/logo-dark.png" alt="Tokyo Rocks">
+    <h1>Build the New York flagship.<br><span>Launch the global platform.</span></h1>
+    <p class="sub2">Where Japanese soul meets rock-and-roll energy.</p>
+    <div class="contact">
+      <b>Contact</b>
+      <span>Todd English &nbsp;|&nbsp; CEO &amp; Founder &nbsp;|&nbsp; tenglish@toddenglish.com</span>
+    </div>
+  </div>
+  <p class="legal">Confidential discussion material. Proposed terms are non-binding and subject to diligence, legal review and definitive agreements.</p>
+</section>
+
+</body>
+</html>
