@@ -381,6 +381,49 @@ tbody tr{animation:rowIn .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:ca
   .game::after,.brand-card::after{display:none}
   tbody tr{animation:none}
 }
+
+/* ---------- Rotunda carousel: the camera sits inside a cylinder of photos ----------
+   Geometry: stage is pushed to --rot-d, each panel sits on a ring of radius --rot-r.
+   The eye (--rot-p) lands INSIDE that ring, so the wall curves around the viewport and
+   the panels nearest the edges are the closest ones. Panels fade out well before they
+   reach the eye plane (|angle| > --rot-cut) so nothing ever blows up through the camera. */
+.rotunda{position:relative;height:clamp(330px,38vw,470px);overflow:hidden;
+  border-radius:var(--r);border:1px solid var(--line);
+  background:radial-gradient(120% 90% at 50% 118%,rgba(90,107,255,.18),transparent 68%),
+             linear-gradient(180deg,var(--deep),var(--void));
+  perspective:var(--rot-p,1144px);perspective-origin:50% 50%;
+  --rot-w:220px; --rot-r:740px; --rot-d:700px; --rot-p:1144px;
+  touch-action:pan-y;cursor:grab;user-select:none;-webkit-user-select:none}
+.rotunda:active{cursor:grabbing}
+.rotunda:focus-visible{outline:2px solid var(--volt-2);outline-offset:3px}
+
+.rot-stage{position:absolute;inset:0;transform-style:preserve-3d;
+  transform:translateZ(var(--rot-d)) rotateY(var(--rot-spin,0deg))}
+
+.rot-panel{position:absolute;left:50%;top:50%;margin:0;z-index:1;
+  width:var(--rot-w);height:calc(var(--rot-w) * 4 / 3);
+  transform:translate(-50%,-50%) rotateY(var(--a,0deg)) translateZ(calc(var(--rot-r) * -1));
+  border-radius:12px;overflow:hidden;border:1px solid var(--line-hot);
+  background:var(--deck);box-shadow:0 20px 46px rgba(0,0,0,.6);
+  opacity:0;visibility:hidden;will-change:opacity}
+.rot-panel img{display:block;width:100%;height:74%;object-fit:cover}
+.rot-panel figcaption{padding:9px 11px}
+.rot-panel b{display:block;font-size:12.5px;font-weight:600;line-height:1.25;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rot-panel small{display:block;color:var(--dim);font:400 10px var(--mono);margin-top:3px}
+
+/* frame edges dissolve so panels leave the viewport instead of being guillotined */
+.rotunda::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
+  background:linear-gradient(90deg,var(--void),transparent 21%,transparent 79%,var(--void))}
+.rot-hint{position:absolute;left:50%;bottom:13px;translate:-50% 0;z-index:4;
+  font:600 9.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;
+  color:var(--dim);pointer-events:none}
+
+@media (max-width:900px){
+  .rotunda{height:clamp(270px,62vw,370px);
+    --rot-w:132px; --rot-r:470px; --rot-d:520px; --rot-p:820px}
+  .rot-panel b{font-size:11px}
+}
 </style>
 
 <div class="sky"></div><div class="orb a"></div><div class="orb b"></div>
@@ -618,7 +661,7 @@ tbody tr{animation:rowIn .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:ca
       </div>
     </section>
 
-    <!-- Origin Kit "Rotunda Carousel" mounts here; see the note at the end of <script>. -->
+    <!-- Rotunda carousel renders into this section from <script>; swap in Origin Kit's own component when a key is available. -->
     <section class="sec" id="rotunda-mount"></section>
 
     <section class="sec">
@@ -891,6 +934,127 @@ if(!matchMedia('(prefers-reduced-motion: reduce)').matches){
 const list=document.getElementById('tickerList');
 list.innerHTML+=list.innerHTML;
 
+
+/* ---------- Rotunda carousel ----------
+   Stand-in for Origin Kit's `rotunda-carousel`, which is gated behind an API key
+   (see the note at the end of this script). Same idea — camera inside a cylinder of
+   photos, drag sweeps the curved wall past you, release coasts on inertia — built on
+   CSS 3D instead of WebGL so it stays dependency-free in this single-file mockup.
+   It borrows the game grid's own artwork at runtime, so it adds no bytes to the page.
+   Runs before the reveal observer below so its .sec-head gets picked up like any other. */
+(function () {
+  const mount = document.getElementById('rotunda-mount');
+  const tiles = [...document.querySelectorAll('#games > .game')];
+  if (!mount || !tiles.length) return;
+
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  mount.innerHTML =
+    '<div class="sec-head"><h2>Inside the vault</h2>' +
+      '<span class="more">Drag to spin &rarr;</span></div>' +
+    '<div class="rotunda" tabindex="0" role="group" ' +
+         'aria-label="Featured games, arranged on a cylinder. Drag, or use the left and right arrow keys, to spin.">' +
+      '<div class="rot-stage"></div>' +
+      '<span class="rot-hint">drag &middot; or &larr; &rarr;</span>' +
+    '</div>';
+
+  const view = mount.querySelector('.rotunda');
+  const stage = mount.querySelector('.rot-stage');
+  const N = tiles.length;
+  const STEP = 360 / N;
+
+  const panels = tiles.map((tile, i) => {
+    const fig = document.createElement('figure');
+    fig.className = 'rot-panel';
+    fig.style.setProperty('--a', (i * STEP) + 'deg');
+
+    const img = document.createElement('img');
+    img.alt = '';
+    img.src = tile.querySelector('img').src;          // same data: URI, already decoded
+
+    const cap = document.createElement('figcaption');
+    const name = document.createElement('b');
+    name.textContent = tile.querySelector('.meta b').textContent;
+    const prov = document.createElement('small');
+    prov.textContent = tile.querySelector('.meta small').textContent;
+    cap.append(name, prov);
+
+    fig.append(img, cap);
+    stage.appendChild(fig);
+    return fig;
+  });
+
+  const DRIFT = reduced ? 0 : 0.05;   // idle rotation, deg per frame
+  const CUT = 74;                     // hide past this half-angle (eye plane is at ~127deg)
+  const RAMP = 26;                    // fade band leading up to CUT
+  let spin = 0, vel = 0, dragging = false, hover = false, lastX = 0, lastT = 0, raf = 0;
+
+  function paint() {
+    stage.style.setProperty('--rot-spin', spin.toFixed(2) + 'deg');
+    for (let i = 0; i < N; i++) {
+      const phi = Math.abs(((i * STEP + spin) % 360 + 540) % 360 - 180);
+      const o = phi >= CUT ? 0 : phi <= CUT - RAMP ? 1 : (CUT - phi) / RAMP;
+      const p = panels[i];
+      p.style.opacity = o.toFixed(3);
+      p.style.visibility = o === 0 ? 'hidden' : 'visible';
+    }
+  }
+
+  function tick() {
+    if (!dragging) {
+      if (Math.abs(vel) > 0.01) { spin += vel; vel *= 0.945; }
+      else { vel = 0; if (!hover) spin += DRIFT; }
+    }
+    paint();
+    if (!dragging && vel === 0 && (reduced || hover)) { raf = 0; return; }  // nothing to animate
+    raf = requestAnimationFrame(tick);
+  }
+  const start = () => { if (!raf) raf = requestAnimationFrame(tick); };
+  const stop = () => { if (raf) { cancelAnimationFrame(raf); raf = 0; } };
+
+  view.addEventListener('pointerdown', e => {
+    dragging = true; vel = 0; lastX = e.clientX; lastT = performance.now();
+    try { view.setPointerCapture(e.pointerId); } catch (_) {}
+    start();
+  });
+  view.addEventListener('pointermove', e => {
+    if (!dragging) return;
+    const now = performance.now();
+    const d = (e.clientX - lastX) * 0.16;
+    const dt = Math.max(now - lastT, 1);
+    lastX = e.clientX; lastT = now;
+    spin += d;
+    vel = Math.max(-7, Math.min(7, d * 16 / dt));   // normalise px/ms to deg/frame
+    paint();
+  });
+  const release = e => {
+    if (!dragging) return;
+    dragging = false;
+    try { view.releasePointerCapture(e.pointerId); } catch (_) {}
+    if (reduced) vel = 0;
+    start();
+  };
+  view.addEventListener('pointerup', release);
+  view.addEventListener('pointercancel', release);
+
+  view.addEventListener('pointerenter', () => { hover = true; });
+  view.addEventListener('pointerleave', () => { hover = false; start(); });
+
+  view.addEventListener('keydown', e => {
+    if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
+    e.preventDefault();
+    vel = 0;
+    spin += e.key === 'ArrowRight' ? -STEP : STEP;
+    paint(); start();
+  });
+
+  paint();
+  if ('IntersectionObserver' in window) {
+    new IntersectionObserver(es => { es[0].isIntersecting ? start() : stop(); },
+      {threshold: 0}).observe(view);
+  } else { start(); }
+})();
+
 /* ---------- v0.6 motion ---------- */
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
@@ -926,15 +1090,16 @@ if (!REDUCED && matchMedia('(hover:hover)').matches) {
   });
 }
 
-/* ---------- Origin Kit mount point ----------
-   The "Rotunda Carousel" belongs here. Do NOT hand-write a substitute — Leon's
-   instruction is to wire it in exactly as the Origin Kit MCP returns it.
+/* ---------- Origin Kit: swap target ----------
+   The carousel above is a CSS-3D STAND-IN, written only because Origin Kit's own
+   `rotunda-carousel` is gated behind an API key. It is meant to be REPLACED, not
+   extended: delete the stand-in block and drop the real component in its place.
    Unblock: mint a key at Originkit -> Profile -> API Keys, then run
      claude mcp add originkit https://mcp.originkit.dev/mcp --transport http \
        --header "Authorization: Bearer <key>" --scope user
    then `originkit: get rotunda-carousel` and mount into #rotunda-mount
-   (empty <section class="sec" id="rotunda-mount"> sits above the Studios row).
-   Registry says: kind=component, dependencies=[], registryDependencies=[] — it
+   (<section class="sec" id="rotunda-mount"> above the Studios row).
+   Registry says: kind=component, dependencies=[], registryDependencies=[] - it
    drops into this vanilla page with no build step.
 -------------------------------------------------- */
 </script>
