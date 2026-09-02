@@ -30,9 +30,18 @@ body{font-family:Inter,system-ui,sans-serif;-webkit-print-color-adjust:exact;pri
 }
 .slide:last-child{page-break-after:auto;break-after:auto}
 @media screen{
-  body{padding:24px;display:flex;flex-direction:column;align-items:center;gap:22px}
-  .slide{box-shadow:0 18px 60px rgba(0,0,0,.65);outline:1px solid #222}
+  /* on screen the slides scale to fit the viewport; print is untouched */
+  body{padding:20px 16px 40px;display:flex;flex-direction:column;align-items:center;gap:20px}
+  .slide{box-shadow:0 18px 60px rgba(0,0,0,.65);outline:1px solid #222;zoom:var(--z,1)}
+  .deckbar{position:sticky;top:0;z-index:99;width:100%;max-width:1280px;display:flex;flex-wrap:wrap;gap:12px;
+    align-items:center;justify-content:space-between;padding:12px 4px 14px;background:#050505}
+  .deckbar b{font:700 .72rem/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--muted)}
+  .deckbar a{text-decoration:none;font:600 .68rem/1 Inter,sans-serif;letter-spacing:.15em;text-transform:uppercase;
+    color:var(--cream);border:1px solid var(--red);background:rgba(200,32,43,.14);padding:10px 15px;border-radius:3px}
+  .deckbar a:hover{background:var(--red)}
+  .deckbar a+a{border-color:var(--line2);background:transparent}
 }
+@media print{ .deckbar{display:none} }
 
 /* top hairline */
 .slide::before{content:"";position:absolute;top:0;left:0;right:0;height:3pt;background:var(--red);z-index:5}
@@ -235,6 +244,11 @@ ul.tick.g li::before{background:var(--gold)}
 </style>
 </head>
 <body>
+<div class="deckbar">
+  <b>Tokyo Rocks — New York Flagship · 24 slides</b>
+  <span><a href="Tokyo_Rocks_NYC_Investor_Deck.pdf" target="_blank" rel="noopener">Download PDF</a>
+  <a href="./">Back to the media kit</a></span>
+</div>
 
 <!-- ══ 01 COVER ══════════════════════════════════════════════ -->
 <section class="slide cover">
@@ -751,5 +765,15 @@ ul.tick.g li::before{background:var(--gold)}
   <p class="legal">Confidential discussion material. Proposed terms are non-binding and subject to diligence, legal review and definitive agreements.</p>
 </section>
 
+<script>
+// screen only: scale the fixed 1280px slides down to whatever the viewport allows
+(function(){
+  function fit(){
+    var z = Math.min(1, (document.documentElement.clientWidth - 34) / 1280);
+    document.documentElement.style.setProperty('--z', z);
+  }
+  fit(); addEventListener('resize', fit);
+})();
+</script>
 </body>
 </html>
