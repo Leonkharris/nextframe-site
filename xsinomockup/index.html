@@ -397,20 +397,32 @@ tbody tr{animation:rowIn .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:ca
 .rotunda:active{cursor:grabbing}
 .rotunda:focus-visible{outline:2px solid var(--volt-2);outline-offset:3px}
 
-.rot-stage{position:absolute;inset:0;transform-style:preserve-3d;
+.rot-stage{position:absolute;left:50%;top:50%;width:0;height:0;transform-style:preserve-3d;
   transform:translateZ(var(--rot-d)) rotateY(var(--rot-spin,0deg))}
 
-.rot-panel{position:absolute;left:50%;top:50%;margin:0;z-index:1;
+.rot-panel{position:absolute;left:0;top:0;margin:0;z-index:1;
   width:var(--rot-w);height:calc(var(--rot-w) * 4 / 3);
   transform:translate(-50%,-50%) rotateY(var(--a,0deg)) translateZ(calc(var(--rot-r) * -1));
   border-radius:12px;overflow:hidden;border:1px solid var(--line-hot);
   background:var(--deck);box-shadow:0 20px 46px rgba(0,0,0,.6);
-  opacity:0;visibility:hidden;will-change:opacity}
+  opacity:0;visibility:hidden;will-change:opacity;
+  cursor:pointer;text-decoration:none;color:var(--text)}
+.rotunda:active .rot-panel{cursor:grabbing}
+.rot-panel:focus-visible{outline:2px solid var(--volt-2);outline-offset:3px}
 .rot-panel img{display:block;width:100%;height:74%;object-fit:cover}
-.rot-panel figcaption{padding:9px 11px}
+.rot-panel .rot-cap{display:block;padding:9px 11px}
 .rot-panel b{display:block;font-size:12.5px;font-weight:600;line-height:1.25;
   white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .rot-panel small{display:block;color:var(--dim);font:400 10px var(--mono);margin-top:3px}
+
+/* the centred panel is the actionable one, so it says so */
+.rot-panel.is-front{border-color:var(--volt-2);
+  box-shadow:0 24px 54px rgba(0,0,0,.64),0 0 0 1px var(--volt-2)}
+.rot-play{position:absolute;left:50%;top:37%;translate:-50% -50%;z-index:2;
+  width:46px;height:46px;border-radius:50%;display:grid;place-items:center;
+  background:rgba(90,107,255,.92);box-shadow:0 8px 26px rgba(0,0,0,.55);
+  opacity:0;scale:.78;transition:opacity .28s,scale .28s;pointer-events:none}
+.rot-panel:hover .rot-play,.rot-panel.is-front .rot-play{opacity:1;scale:1}
 
 /* frame edges dissolve so panels leave the viewport instead of being guillotined */
 .rotunda::after{content:"";position:absolute;inset:0;z-index:3;pointer-events:none;
@@ -419,10 +431,16 @@ tbody tr{animation:rowIn .5s cubic-bezier(.22,.61,.36,1) both;animation-delay:ca
   font:600 9.5px var(--mono);letter-spacing:.22em;text-transform:uppercase;
   color:var(--dim);pointer-events:none}
 
+/* the lobby tile a carousel click sends you to gets one pulse so you can find it */
+.rot-ping{animation:rotPing 1.15s ease-out 1}
+@keyframes rotPing{from{box-shadow:0 0 0 0 rgba(139,124,255,.8)}
+                   to{box-shadow:0 0 0 24px rgba(139,124,255,0)}}
+
 @media (max-width:900px){
   .rotunda{height:clamp(270px,62vw,370px);
     --rot-w:132px; --rot-r:470px; --rot-d:520px; --rot-p:820px}
   .rot-panel b{font-size:11px}
+  .rot-play{width:36px;height:36px}
 }
 </style>
 
@@ -937,10 +955,16 @@ list.innerHTML+=list.innerHTML;
 
 /* ---------- Rotunda carousel ----------
    Stand-in for Origin Kit's `rotunda-carousel`, which is gated behind an API key
-   (see the note at the end of this script). Same idea — camera inside a cylinder of
-   photos, drag sweeps the curved wall past you, release coasts on inertia — built on
+   (see the note at the end of this script). Same idea - camera inside a cylinder of
+   photos, drag sweeps the curved wall past you, release coasts on inertia - built on
    CSS 3D instead of WebGL so it stays dependency-free in this single-file mockup.
    It borrows the game grid's own artwork at runtime, so it adds no bytes to the page.
+
+   Panels are real links. Click one that is off to the side and it rotates to the
+   front; click the front one and it takes you to that game in the lobby below and
+   pulses its tile. Pointer capture is deliberately NOT taken until the pointer has
+   actually moved, so a tap stays a native click instead of being eaten by the drag.
+
    Runs before the reveal observer below so its .sec-head gets picked up like any other. */
 (function () {
   const mount = document.getElementById('rotunda-mount');
@@ -951,91 +975,134 @@ list.innerHTML+=list.innerHTML;
 
   mount.innerHTML =
     '<div class="sec-head"><h2>Inside the vault</h2>' +
-      '<span class="more">Drag to spin &rarr;</span></div>' +
+      '<span class="more">Drag, or click a game &rarr;</span></div>' +
     '<div class="rotunda" tabindex="0" role="group" ' +
-         'aria-label="Featured games, arranged on a cylinder. Drag, or use the left and right arrow keys, to spin.">' +
+         'aria-label="Featured games on a cylinder. Drag or use the arrow keys to spin, ' +
+         'then click a game to open it in the lobby.">' +
       '<div class="rot-stage"></div>' +
-      '<span class="rot-hint">drag &middot; or &larr; &rarr;</span>' +
+      '<span class="rot-hint">drag &middot; click a game</span>' +
     '</div>';
 
   const view = mount.querySelector('.rotunda');
   const stage = mount.querySelector('.rot-stage');
   const N = tiles.length;
   const STEP = 360 / N;
+  const PLAY = '<span class="rot-play"><svg width="18" height="18" viewBox="0 0 24 24" ' +
+               'fill="#fff" aria-hidden="true"><path d="M7 4l13 8-13 8z"/></svg></span>';
 
   const panels = tiles.map((tile, i) => {
-    const fig = document.createElement('figure');
-    fig.className = 'rot-panel';
-    fig.style.setProperty('--a', (i * STEP) + 'deg');
+    const a = document.createElement('a');
+    a.className = 'rot-panel';
+    a.href = '#games';                       // meaningful fallback if the JS ever fails
+    a.style.setProperty('--a', (i * STEP) + 'deg');
 
     const img = document.createElement('img');
     img.alt = '';
-    img.src = tile.querySelector('img').src;          // same data: URI, already decoded
+    img.src = tile.querySelector('img').src;  // same data: URI, already decoded
 
-    const cap = document.createElement('figcaption');
+    const cap = document.createElement('span');
+    cap.className = 'rot-cap';
     const name = document.createElement('b');
     name.textContent = tile.querySelector('.meta b').textContent;
     const prov = document.createElement('small');
     prov.textContent = tile.querySelector('.meta small').textContent;
     cap.append(name, prov);
 
-    fig.append(img, cap);
-    stage.appendChild(fig);
-    return fig;
+    a.append(img, cap);
+    a.insertAdjacentHTML('beforeend', PLAY);
+    a.setAttribute('aria-label', name.textContent + ', ' + prov.textContent);
+    stage.appendChild(a);
+    return a;
   });
 
   const DRIFT = reduced ? 0 : 0.05;   // idle rotation, deg per frame
   const CUT = 74;                     // hide past this half-angle (eye plane is at ~127deg)
   const RAMP = 26;                    // fade band leading up to CUT
-  let spin = 0, vel = 0, dragging = false, hover = false, lastX = 0, lastT = 0, raf = 0;
+  let spin = 0, vel = 0, target = null, front = -1;
+  let dragging = false, hover = false, captured = false;
+  let lastX = 0, lastT = 0, moved = 0, raf = 0;
+
+  const signedPhi = i => ((i * STEP + spin) % 360 + 540) % 360 - 180;
 
   function paint() {
     stage.style.setProperty('--rot-spin', spin.toFixed(2) + 'deg');
+    let best = 0, bestPhi = 999;
     for (let i = 0; i < N; i++) {
-      const phi = Math.abs(((i * STEP + spin) % 360 + 540) % 360 - 180);
+      const phi = Math.abs(signedPhi(i));
+      if (phi < bestPhi) { bestPhi = phi; best = i; }
       const o = phi >= CUT ? 0 : phi <= CUT - RAMP ? 1 : (CUT - phi) / RAMP;
       const p = panels[i];
       p.style.opacity = o.toFixed(3);
       p.style.visibility = o === 0 ? 'hidden' : 'visible';
     }
+    if (best !== front) {
+      if (panels[front]) panels[front].classList.remove('is-front');
+      panels[best].classList.add('is-front');
+      front = best;
+    }
   }
 
   function tick() {
     if (!dragging) {
-      if (Math.abs(vel) > 0.01) { spin += vel; vel *= 0.945; }
+      if (target !== null) {                       // easing a clicked panel to the front
+        const d = target - spin;
+        if (Math.abs(d) < 0.15) { spin = target; target = null; }
+        else spin += d * (reduced ? 1 : 0.14);
+      } else if (Math.abs(vel) > 0.01) { spin += vel; vel *= 0.945; }
       else { vel = 0; if (!hover) spin += DRIFT; }
     }
     paint();
-    if (!dragging && vel === 0 && (reduced || hover)) { raf = 0; return; }  // nothing to animate
+    if (!dragging && target === null && vel === 0 && (reduced || hover)) { raf = 0; return; }
     raf = requestAnimationFrame(tick);
   }
   const start = () => { if (!raf) raf = requestAnimationFrame(tick); };
   const stop = () => { if (raf) { cancelAnimationFrame(raf); raf = 0; } };
 
   view.addEventListener('pointerdown', e => {
-    dragging = true; vel = 0; lastX = e.clientX; lastT = performance.now();
-    try { view.setPointerCapture(e.pointerId); } catch (_) {}
+    dragging = true; vel = 0; target = null; moved = 0; captured = false;
+    lastX = e.clientX; lastT = performance.now();
     start();
   });
   view.addEventListener('pointermove', e => {
     if (!dragging) return;
     const now = performance.now();
-    const d = (e.clientX - lastX) * 0.16;
+    const raw = e.clientX - lastX;
+    moved += Math.abs(raw);
+    if (!captured && moved > 4) {                  // only now is it a drag, not a tap
+      try { view.setPointerCapture(e.pointerId); } catch (_) {}
+      captured = true;
+    }
+    const d = raw * 0.16;
     const dt = Math.max(now - lastT, 1);
     lastX = e.clientX; lastT = now;
     spin += d;
-    vel = Math.max(-7, Math.min(7, d * 16 / dt));   // normalise px/ms to deg/frame
+    vel = Math.max(-7, Math.min(7, d * 16 / dt));  // normalise px/ms to deg/frame
     paint();
   });
   const release = e => {
     if (!dragging) return;
     dragging = false;
-    try { view.releasePointerCapture(e.pointerId); } catch (_) {}
+    if (captured) { try { view.releasePointerCapture(e.pointerId); } catch (_) {} }
     if (reduced) vel = 0;
     start();
   };
   view.addEventListener('pointerup', release);
   view.addEventListener('pointercancel', release);
+
+  view.addEventListener('click', e => {
+    const p = e.target.closest ? e.target.closest('.rot-panel') : null;
+    if (!p) return;
+    e.preventDefault();                            // never let href="#games" jump on its own
+    if (moved > 6) return;                         // that was a drag, not a click
+    const i = panels.indexOf(p);
+    if (i < 0) return;
+    if (i !== front) { target = spin - signedPhi(i); vel = 0; start(); return; }
+    const tile = tiles[i];                         // already centred: go to it in the lobby
+    tile.scrollIntoView({block: 'center', behavior: reduced ? 'auto' : 'smooth'});
+    tile.classList.remove('rot-ping');
+    void tile.offsetWidth;                         // restart the animation
+    tile.classList.add('rot-ping');
+  });
 
   view.addEventListener('pointerenter', () => { hover = true; });
   view.addEventListener('pointerleave', () => { hover = false; start(); });
@@ -1043,7 +1110,7 @@ list.innerHTML+=list.innerHTML;
   view.addEventListener('keydown', e => {
     if (e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') return;
     e.preventDefault();
-    vel = 0;
+    vel = 0; target = null;
     spin += e.key === 'ArrowRight' ? -STEP : STEP;
     paint(); start();
   });
@@ -1054,7 +1121,6 @@ list.innerHTML+=list.innerHTML;
       {threshold: 0}).observe(view);
   } else { start(); }
 })();
-
 /* ---------- v0.6 motion ---------- */
 const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
