@@ -98,8 +98,10 @@ h1.st em{font-style:normal;color:var(--gold)}
 .slide.bio .fade{position:absolute;inset:0;z-index:1;background:
   linear-gradient(to right,rgba(10,9,8,.55) 0%,rgba(10,9,8,.60) 28%,rgba(10,9,8,.80) 40%,var(--ink) 50%,var(--ink) 100%),
   linear-gradient(to bottom,var(--ink) 0%,rgba(10,9,8,.28) 12%,rgba(10,9,8,.24) 74%,var(--ink) 97%)}
-.slide.bio .split{position:relative;z-index:2}
-.slide.bio .byline{position:absolute;left:46pt;bottom:48pt;z-index:3;
+.slide.bio .split{position:relative;z-index:2;align-items:start}
+.slide.bio .split > div:first-child{padding-top:148pt}   /* clears his eyeline */
+.slide.bio .split > figure{align-self:center}
+.slide.bio .byline{position:absolute;left:298pt;top:150pt;z-index:3;
   font:800 13pt/1.1 Archivo,sans-serif;letter-spacing:.01em;color:var(--cream)}
 .slide.bio .byline i{display:block;margin-top:7pt;font:600 7.2pt/1 Inter,sans-serif;font-style:normal;
   letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}

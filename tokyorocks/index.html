@@ -30,7 +30,7 @@ a{color:inherit}
 ::selection{background:var(--red);color:#fff}
 
 /* ── type scale ─────────────────────────────────────────── */
-.kicker{font:600 clamp(.6rem,1.1vw,.7rem)/1 Inter,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
+.kicker{font:600 clamp(.67rem,1.1vw,.7rem)/1 Inter,sans-serif;letter-spacing:.28em;text-transform:uppercase;color:var(--red)}
 .kicker.g{color:var(--gold)}
 h2.big{font-family:Archivo,sans-serif;font-weight:900;font-size:clamp(1.9rem,4.6vw,3.9rem);line-height:1.02;letter-spacing:-.028em;color:var(--cream)}
 h2.big span{color:var(--gold)}
@@ -85,7 +85,7 @@ section{position:relative}
 .hero .raise div{padding:14px clamp(16px,2.2vw,28px)}
 .hero .raise div+div{border-left:1px solid rgba(243,234,217,.16)}
 .hero .raise b{display:block;font:900 clamp(1.3rem,2.4vw,1.85rem)/1 Archivo,sans-serif;color:#fff;letter-spacing:-.02em}
-.hero .raise small{display:block;margin-top:7px;font:600 .58rem/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt)}
+.hero .raise small{display:block;margin-top:7px;font:600 .66rem/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt)}
 .hero .cue{position:absolute;left:50%;bottom:26px;transform:translateX(-50%);z-index:4;display:flex;flex-direction:column;align-items:center;gap:9px;
   font:600 .58rem/1 Inter,sans-serif;letter-spacing:.24em;text-transform:uppercase;color:rgba(243,234,217,.5)}
 .hero .cue i{width:1px;height:34px;background:linear-gradient(to bottom,var(--gold),transparent);animation:drop 2.1s ease-in-out infinite}
@@ -103,7 +103,7 @@ section{position:relative}
 .frame{position:relative;border:1px solid var(--line2);border-radius:4px;overflow:hidden}
 .frame img{width:100%;height:100%;object-fit:cover}
 .frame figcaption{position:absolute;inset:auto 0 0 0;padding:44px 18px 14px;background:linear-gradient(to top,rgba(6,5,5,.95),transparent);
-  font:600 .62rem/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-lt)}
+  font:600 .68rem/1 Inter,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--gold-lt)}
 @media(max-width:860px){.story{grid-template-columns:1fr}}
 /* concept — the founder sits BEHIND the copy on the left, entrance photo stays right */
 .bio{position:relative;overflow:hidden}
@@ -111,16 +111,24 @@ section{position:relative}
 .bio .fade{position:absolute;inset:0;z-index:1;background:
   linear-gradient(to right,rgba(10,9,8,.55) 0%,rgba(10,9,8,.60) 28%,rgba(10,9,8,.80) 40%,var(--ink) 50%,var(--ink) 100%),
   linear-gradient(to bottom,var(--ink) 0%,rgba(10,9,8,.28) 12%,rgba(10,9,8,.24) 74%,var(--ink) 97%)}
-.bio .story{position:relative;z-index:2}
+.bio .story{position:relative;z-index:2;align-items:start}
+.bio .story > div:first-child{padding-top:clamp(150px,19vw,250px)}  /* clears his eyeline */
+.bio .story > figure{align-self:center}
 .bio .jpline{margin-top:26px;font-size:clamp(1.05rem,1.9vw,1.5rem);color:var(--gold);letter-spacing:.04em}
 .bio .creed{margin-top:30px;font:700 clamp(1rem,1.7vw,1.35rem)/1.65 Archivo,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--cream)}
-.bio .byline{margin-top:clamp(30px,4vw,46px);font:800 clamp(1.05rem,1.9vw,1.4rem)/1.1 Archivo,sans-serif;color:var(--cream)}
-.bio .byline i{display:block;margin-top:9px;font:600 .62rem/1 Inter,sans-serif;font-style:normal;
+.bio .byline{position:absolute;z-index:3;top:clamp(96px,13.5vw,186px);left:clamp(200px,29vw,420px);
+  font:800 clamp(1.05rem,1.9vw,1.4rem)/1.1 Archivo,sans-serif;color:var(--cream)}
+.bio .byline i{display:block;margin-top:9px;font:600 .68rem/1 Inter,sans-serif;font-style:normal;
   letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 @media(max-width:860px){
   /* stacked: he sits behind the kicker and headline, then dissolves before the body copy */
-  .bio .por{width:100%;height:clamp(360px,92vw,540px)}
+  /* stacked: he is a top band. One variable drives band height, copy offset and label,
+     so the kicker can never ride up into the photo. */
+  .bio{--ph:clamp(340px,88vw,500px)}
+  .bio .por{width:100%;height:var(--ph)}
   .bio .fade{background:linear-gradient(to bottom,rgba(10,9,8,.5) 0%,rgba(10,9,8,.38) 26%,rgba(10,9,8,.9) 62%,var(--ink) 78%)}
+  .bio .story > div:first-child{padding-top:calc(var(--ph) - 40px)}
+  .bio .byline{top:calc(var(--ph) - 104px);left:auto;right:var(--pad);text-align:right}
 }
 
 /* ── stats ──────────────────────────────────────────────── */
@@ -167,7 +175,7 @@ section{position:relative}
 .eco figure:hover img{transform:scale(1.06);filter:brightness(.92)}
 .eco figcaption{position:absolute;inset:auto 0 0 0;padding:38px 14px 13px;background:linear-gradient(to top,rgba(6,5,5,.96),transparent);
   font:700 .74rem/1.25 Archivo,sans-serif;letter-spacing:.11em;text-transform:uppercase;color:#F0E7D7;pointer-events:none}
-.eco figcaption em{display:block;margin-top:5px;font:500 .58rem/1.3 Inter,sans-serif;font-style:normal;letter-spacing:.16em;color:var(--gold)}
+.eco figcaption em{display:block;margin-top:5px;font:500 .64rem/1.3 Inter,sans-serif;font-style:normal;letter-spacing:.16em;color:var(--gold)}
 @media(max-width:960px){.eco{grid-template-columns:repeat(3,1fr)}}
 @media(max-width:640px){.eco{grid-template-columns:repeat(2,1fr);gap:9px}}
 
@@ -178,7 +186,7 @@ section{position:relative}
 .gal img{width:100%;height:100%;object-fit:cover;filter:brightness(.88);transition:transform .7s cubic-bezier(.2,.7,.2,1),filter .5s}
 .gal figure:hover img{transform:scale(1.05);filter:brightness(1)}
 .gal figcaption{position:absolute;inset:auto 0 0 0;padding:34px 14px 12px;background:linear-gradient(to top,rgba(6,5,5,.94),transparent);
-  font:600 .62rem/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);pointer-events:none}
+  font:600 .68rem/1 Inter,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold-lt);pointer-events:none}
 @media(max-width:960px){.gal{grid-template-columns:repeat(2,1fr)}.gal .g-wide{grid-column:span 2;aspect-ratio:16/7}}
 @media(max-width:560px){.gal{grid-template-columns:1fr;gap:9px}.gal .g-wide{grid-column:span 1;aspect-ratio:16/9}}
 
@@ -268,6 +276,7 @@ section{position:relative}
 .mile .m p{margin-top:11px;font:400 .85rem/1.55 Inter,sans-serif;color:#C2B7A6}
 .mile .m:first-child p{color:rgba(255,255,255,.9)}
 @media(max-width:860px){.mile{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.mile,.steps{grid-template-columns:1fr}}
 
 /* ── founder ────────────────────────────────────────────── */
 .founder{display:grid;grid-template-columns:340px 1fr;gap:clamp(28px,4.5vw,66px);align-items:start;margin-top:clamp(30px,3.6vw,48px)}
@@ -295,7 +304,7 @@ section{position:relative}
 .close h2 span{color:var(--gold)}
 .close .sub{margin-top:20px;font-family:"Shippori Mincho",serif;font-weight:500;font-size:clamp(1rem,1.8vw,1.35rem);color:var(--gold-lt)}
 .close .contact{margin-top:clamp(30px,4vw,48px);border:1px solid var(--line2);border-radius:4px;padding:clamp(22px,2.6vw,32px) clamp(26px,4vw,56px);background:rgba(12,10,9,.7)}
-.close .contact b{display:block;font:700 .64rem/1 Archivo,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--red)}
+.close .contact b{display:block;font:700 .7rem/1 Archivo,sans-serif;letter-spacing:.26em;text-transform:uppercase;color:var(--red)}
 .close .contact a{display:block;margin-top:14px;font:500 clamp(.95rem,1.4vw,1.12rem)/1.6 Inter,sans-serif;color:var(--cream);text-decoration:none}
 .close .contact a:hover{color:var(--gold)}
 .close .acts{margin-top:clamp(26px,3vw,38px);display:flex;flex-wrap:wrap;gap:12px;justify-content:center}
@@ -305,6 +314,13 @@ footer p{font:400 .72rem/1.7 Inter,sans-serif;color:var(--dim);max-width:78ch;ma
 footer .by{margin-top:14px;font:600 .62rem/1 Inter,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#4E463D}
 footer .by a{color:var(--muted);text-decoration:none}
 footer .by a:hover{color:var(--gold)}
+@media(max-width:560px){
+  /* 2x2 instead of an uneven 1-1-2 wrap */
+  .hero .raise{display:grid;grid-template-columns:1fr 1fr;width:100%}
+  .hero .raise div{border-left:0;border-top:1px solid rgba(243,234,217,.16)}
+  .hero .raise div:nth-child(2n){border-left:1px solid rgba(243,234,217,.16)}
+  .hero .raise div:nth-child(-n+2){border-top:0}
+}
 </style>
 </head>
 <body>
