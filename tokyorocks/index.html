@@ -282,6 +282,19 @@ section{position:relative}
 /* ── founder ────────────────────────────────────────────── */
 .founder{display:grid;grid-template-columns:340px 1fr;gap:clamp(28px,4.5vw,66px);align-items:start;margin-top:clamp(30px,3.6vw,48px)}
 @media(max-width:820px){.founder{grid-template-columns:1fr;max-width:560px}}
+/* founder — cookbooks / television / honors showcase */
+.showcase{display:grid;grid-template-columns:1.65fr .95fr 1fr;gap:clamp(24px,3.4vw,48px);
+  margin-top:clamp(34px,4vw,54px);padding-top:clamp(24px,2.8vw,34px);border-top:1px solid var(--line)}
+.sc-books{display:flex;flex-wrap:wrap;gap:9px;margin-top:16px}
+.sc-books img{height:clamp(78px,8vw,102px);width:auto;border-radius:3px;border:1px solid var(--line2)}
+.sc-logos{display:flex;flex-wrap:wrap;align-items:center;gap:16px 22px;margin-top:18px}
+.sc-logos img{height:clamp(22px,2.4vw,30px);width:auto;opacity:.9;filter:brightness(0) invert(1)}
+.sc-tv{margin-top:16px;font:400 .86rem/1.7 Inter,sans-serif;color:var(--muted)}
+.sc-tv b{font-weight:600;color:#CBC0AF}
+.sc-awards{list-style:none;margin-top:16px}
+.sc-awards li{font:400 .88rem/1.5 Inter,sans-serif;color:#CBC0AF;margin-bottom:9px}
+.sc-awards li b{font:900 1.05rem/1 Archivo,sans-serif;color:var(--gold);margin-right:5px}
+@media(max-width:900px){.showcase{grid-template-columns:1fr;gap:32px}}
 
 /* ── feature band ───────────────────────────────────────── */
 .band{position:relative;min-height:clamp(420px,62vh,720px);display:flex;align-items:center;overflow:hidden}
@@ -364,7 +377,7 @@ footer .by a:hover{color:var(--gold)}
   <div class="fade"></div>
   <div class="nameplate rv">
     <div class="byline">Todd English<i>CEO &amp; Founder</i></div>
-    <p class="creed">Good food.<br>Good music.<br>Good people.</p>
+    <p class="creed">Good food.<br>Good music.<br>Great people.</p>
   </div>
   <div class="story">
     <div class="rv">
@@ -718,15 +731,35 @@ footer .by a:hover{color:var(--gold)}
         <p class="lede" style="margin-top:20px">A James Beard Award-winning chef and hospitality entrepreneur, Todd English has spent more than four decades creating restaurant brands, food halls and high-volume dining experiences across the United States and international markets.</p>
         <p class="small" style="margin-top:16px">His portfolio has included Olives, Figs, bluezoo and the Todd English Food Hall at The Plaza in New York, alongside global hotel, resort, casino, retail and media partnerships.</p>
         <div style="margin-top:26px;padding-top:22px;border-top:1px solid var(--line)">
-          <span class="kicker g">Selected portfolio</span>
-          <div class="chips" style="margin-top:14px">
-            <span>Olives</span><span>Figs</span><span>bluezoo</span><span>Todd English Food Hall · The Plaza, New York</span>
-          </div>
-        </div>
-        <div style="margin-top:26px;padding-top:22px;border-top:1px solid var(--line)">
           <span class="kicker">Investor value</span>
           <p style="margin-top:12px;font:500 .98rem/1.7 Inter,sans-serif;color:var(--gold)">Concept creation · culinary direction · brand reach · media visibility · developer relationships</p>
         </div>
+      </div>
+    </div>
+    <div class="showcase rv">
+      <div>
+        <span class="kicker g">Cookbooks · fifteen titles since 1997</span>
+        <div class="sc-books">
+          <img src="img/te-olives.jpg" alt="The Olives Table" loading="lazy"><img src="img/te-figs.jpg" alt="The Figs Table" loading="lazy">
+          <img src="img/te-everyday.jpg" alt="Cooking in Everyday English" loading="lazy"><img src="img/te-pizza.jpg" alt="Rustic Pizza" loading="lazy">
+          <img src="img/te-dessert.jpg" alt="The Olives Dessert Table" loading="lazy">
+        </div>
+      </div>
+      <div>
+        <span class="kicker g">Television</span>
+        <div class="sc-logos">
+          <img src="img/logos/pbs.svg" alt="PBS"><img src="img/logos/nbc.svg" alt="NBC"><img src="img/logos/cbs.svg" alt="CBS">
+        </div>
+        <p class="sc-tv"><b>Iron Chef USA</b><br>Todd English&rsquo;s Food Trip (PBS)<br>Frequent national television appearances</p>
+      </div>
+      <div>
+        <span class="kicker g">Honors</span>
+        <ul class="sc-awards">
+          <li><b>5</b> James Beard Foundation Awards</li>
+          <li>Bon App&eacute;tit Restaurateur of the Year</li>
+          <li>People &ldquo;50 Most Beautiful&rdquo;</li>
+          <li>FAB Award 2024, Abu Dhabi</li>
+        </ul>
       </div>
     </div>
   </div>

@@ -71,6 +71,17 @@ h1.st em{font-style:normal;color:var(--gold)}
 .jp{font-family:"Shippori Mincho",serif;font-weight:500}
 .dilig .card{min-height:142pt;padding:18pt 17pt}
 .dilig .card .num{font-size:17pt}
+/* founder slide — awards / cookbooks / television showcase */
+.showcase{display:grid;grid-template-columns:1.4fr 1fr 1.05fr;gap:24pt;margin-top:16pt;padding-top:14pt;border-top:.75pt solid var(--line)}
+.sc-books{display:flex;gap:7pt;margin-top:10pt}
+.sc-books img{height:62pt;width:auto;border-radius:2pt;border:.75pt solid var(--line2)}
+.sc-logos{display:flex;flex-wrap:wrap;align-items:center;gap:11pt 15pt;margin-top:11pt;max-width:180pt}
+.sc-logos img{height:21pt;width:auto;opacity:.9;filter:brightness(0) invert(1)}
+.sc-tv{margin-top:12pt;font:400 8pt/1.6 Inter,sans-serif;color:var(--muted)}
+.sc-tv b{font-weight:600;color:#CBC0AF}
+.sc-awards{list-style:none;margin-top:10pt}
+.sc-awards li{font:400 8.2pt/1.5 Inter,sans-serif;color:#CBC0AF;margin-bottom:5pt}
+.sc-awards li b{font:900 10pt/1 Archivo,sans-serif;color:var(--gold);margin-right:3pt}
 .pill{font:600 7.4pt/1 Inter,sans-serif;letter-spacing:.13em;text-transform:uppercase;color:#D6CBB9;border:.75pt solid var(--line2);border-radius:2pt;padding:7pt 10pt;background:var(--panel)}
 
 /* ── cover ───────────────────────────────────────────────── */
@@ -280,7 +291,7 @@ ul.tick.g li::before{background:var(--gold)}
   <div class="fade"></div>
   <div class="nameplate">
     <div class="byline">Todd English<i>CEO &amp; Founder</i></div>
-    <p class="creed">Good food.<br>Good music.<br>Good people.</p>
+    <p class="creed">Good food.<br>Good music.<br>Great people.</p>
   </div>
   <div class="split wide">
     <div>
@@ -556,23 +567,43 @@ ul.tick.g li::before{background:var(--gold)}
 <section class="slide">
   <span class="eyebrow">Tokyo Rocks | Confidential</span>
   <h1 class="st" style="margin-top:11pt">Todd English brings brand power and operating pattern recognition</h1>
-  <div style="display:grid;grid-template-columns:268pt 1fr;gap:36pt;margin-top:24pt;align-items:start">
-    <figure class="figure" style="height:352pt"><img src="img/todd-english.jpg" alt="Chef Todd English"><figcaption>Chef Todd English</figcaption></figure>
+  <div style="display:grid;grid-template-columns:236pt 1fr;gap:32pt;margin-top:20pt;align-items:start">
+    <figure class="figure" style="height:246pt"><img src="img/todd-english.jpg" alt="Chef Todd English"><figcaption>Chef Todd English</figcaption></figure>
     <div>
       <span class="eyebrow">CEO &amp; Founder · Chef · Restaurateur · Author · Television personality</span>
       <h2 style="margin-top:11pt;font:900 32pt/1 Archivo,sans-serif;letter-spacing:-.028em;color:var(--cream)">Todd English</h2>
       <p style="margin-top:15pt;font:400 10.4pt/1.6 Inter,sans-serif;color:#D6CBB9">A James Beard Award-winning chef and hospitality entrepreneur, Todd English has spent more than four decades creating restaurant brands, food halls and high-volume dining experiences across the United States and international markets.</p>
       <p style="margin-top:12pt;font:400 9.6pt/1.6 Inter,sans-serif;color:var(--muted)">His portfolio has included Olives, Figs, bluezoo and the Todd English Food Hall at The Plaza in New York, alongside global hotel, resort, casino, retail and media partnerships.</p>
-      <div style="margin-top:20pt;padding-top:15pt;border-top:.75pt solid var(--line)">
-        <span class="eyebrow g">Selected portfolio</span>
-        <div style="margin-top:11pt;display:flex;flex-wrap:wrap;gap:7pt">
-          <span class="pill">Olives</span><span class="pill">Figs</span><span class="pill">bluezoo</span>
-          <span class="pill">Todd English Food Hall · The Plaza, New York</span>
-        </div>
-      </div>
-      <p style="margin-top:20pt;padding-top:15pt;border-top:.75pt solid var(--line);font:500 9.2pt/1.6 Inter,sans-serif;color:var(--gold)">
-        <b style="font:700 7.4pt/1 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:8pt">Investor value</b>
+      <p style="margin-top:16pt;padding-top:13pt;border-top:.75pt solid var(--line);font:500 9pt/1.55 Inter,sans-serif;color:var(--gold)">
+        <b style="font:700 7.4pt/1 Archivo,sans-serif;letter-spacing:.19em;text-transform:uppercase;color:var(--red);display:block;margin-bottom:7pt">Investor value</b>
         Concept creation · culinary direction · brand reach · media visibility · developer relationships</p>
+    </div>
+  </div>
+  <div class="showcase">
+    <div>
+      <span class="eyebrow g">Cookbooks · fifteen titles since 1997</span>
+      <div class="sc-books">
+        <img src="img/te-olives.jpg" alt="The Olives Table"><img src="img/te-figs.jpg" alt="The Figs Table">
+        <img src="img/te-everyday.jpg" alt="Cooking in Everyday English"><img src="img/te-pizza.jpg" alt="Rustic Pizza">
+        <img src="img/te-dessert.jpg" alt="The Olives Dessert Table">
+      </div>
+    </div>
+    <div>
+      <span class="eyebrow g">Television</span>
+      <div class="sc-logos">
+        <img src="img/logos/pbs.svg" alt="PBS"><img src="img/logos/nbc.svg" alt="NBC">
+        <img src="img/logos/cbs.svg" alt="CBS">
+      </div>
+      <p class="sc-tv"><b>Iron Chef USA</b><br>Todd English&rsquo;s Food Trip (PBS)<br>Frequent national television appearances</p>
+    </div>
+    <div>
+      <span class="eyebrow g">Honors</span>
+      <ul class="sc-awards">
+        <li><b>5</b> James Beard Foundation Awards</li>
+        <li>Bon App&eacute;tit Restaurateur of the Year</li>
+        <li>People &ldquo;50 Most Beautiful&rdquo;</li>
+        <li>FAB Award 2024, Abu Dhabi</li>
+      </ul>
     </div>
   </div>
   <div class="foot"><span>© 2026 Tokyo Rocks Food Hall. Confidential and subject to definitive agreements.</span><span class="pg">15</span></div>
