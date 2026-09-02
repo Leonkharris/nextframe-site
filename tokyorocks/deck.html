@@ -92,6 +92,14 @@ h1.st em{font-style:normal;color:var(--gold)}
 .figure figcaption{position:absolute;left:0;right:0;bottom:0;padding:16pt 14pt 9pt;
   background:linear-gradient(to top,rgba(6,5,5,.94),transparent);
   font:600 7pt/1 Inter,sans-serif;letter-spacing:.17em;text-transform:uppercase;color:var(--gold-lt)}
+/* slide 02 — founder lead band: face sits right, caption uses the empty panel at left */
+.figure.lead{height:176pt;border-color:var(--line2)}
+.figure.lead img{object-position:50% 40%}
+.figure.lead figcaption{top:0;bottom:0;right:auto;width:56%;display:flex;flex-direction:column;justify-content:center;
+  padding:0 0 0 20pt;background:linear-gradient(to right,rgba(6,5,5,.92) 46%,rgba(6,5,5,.55) 78%,transparent 100%);
+  font:800 13pt/1.15 Archivo,sans-serif;letter-spacing:.02em;text-transform:none;color:var(--cream)}
+.figure.lead figcaption i{display:block;margin-top:8pt;font:600 7.4pt/1 Inter,sans-serif;font-style:normal;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--gold)}
 
 /* ── stats ───────────────────────────────────────────────── */
 .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16pt;margin-top:34pt}
@@ -245,7 +253,9 @@ ul.tick.g li::before{background:var(--gold)}
 <section class="slide">
   <div class="split wide">
     <div>
-      <span class="eyebrow">The concept</span>
+      <figure class="figure lead"><img src="img/todd-lead.jpg" alt="Chef Todd English">
+        <figcaption>Todd English<i>CEO &amp; Founder</i></figcaption></figure>
+      <span class="eyebrow" style="margin-top:22pt">The concept</span>
       <h1 class="st" style="margin-top:11pt">You walk in off a New York street — and suddenly, <em>you're in Tokyo.</em></h1>
       <div class="rule"></div>
       <p class="sub" style="max-width:none">Not the polished version. The real one. Layered. Electric. Alive.</p>
