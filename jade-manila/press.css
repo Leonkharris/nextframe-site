@@ -163,6 +163,7 @@ img { display: block; }
   align-items: stretch;
 }
 .cover-name {
+  text-align: center;
   background: var(--espresso);
   border-radius: 16px;
   padding: 30px 34px 32px;
@@ -178,16 +179,17 @@ img { display: block; }
   text-transform: uppercase;
   letter-spacing: 0.04em;
 }
-.cover-name .cn-chef,
 .cover-name .cn-city {
   display: block;
   font-family: var(--sans);
   font-weight: 600;
   text-transform: uppercase;
   color: #f3ead9;
+  font-size: 18px;
+  letter-spacing: 0.3em;
+  margin-top: 8px;
+  text-indent: 0.15em;
 }
-.cover-name .cn-chef { font-size: 13px; letter-spacing: 0.34em; margin-top: 14px; }
-.cover-name .cn-city { font-size: 16px; letter-spacing: 0.5em; margin-top: 6px; }
 .cover-tag {
   background: var(--panel-cool);
   border-radius: 16px;

@@ -9,10 +9,14 @@ hero CSS lives in the **inline `<style>` inside index.html**, not press.css — 
 
 ## Key decisions (2026-09-07)
 - **Rebranded off "Jade Supper Club".** Source of truth = `D:\New AI Directory\Jade supper club\Jade Logo Deck Final.pdf` (9 pages, not 329 — the file metadata lies).
-- **Logo lockup = `JADE / BY TODD ENGLISH / MANILA`**, stacked. Didone serif over tracked
+- **Logo lockup = `JADE / MANILA`** (page-1 primary), stacked and CENTRED. Didone serif over tracked
   small-caps sans. The deck defines **no script face and no green/gold wordmark** — colour is
   binary black-on-light / white-on-dark. Deck uses cream `#f3ead9` on the dark ground.
   (The green/gold looks in the PDF are foil + laser *finishes* in mockups, not brand colours.)
+  2026-09-07 correction: an earlier build used the 3-line `BY TODD ENGLISH` variant with loose
+  tracking, built from a written description instead of the artwork. Page 1 is the primary and it is
+  two lines. Proportions now matched to the art: MANILA ~0.28x JADE font-size, ~0.52x its width,
+  centred, sitting tight beneath. The 3-line variants are still official (page 9) if ever wanted.
 - **"Supper club" dropped entirely** — as the name *and* as the concept/positioning. The deck no
   longer uses the term anywhere; copy now leans on "dinner, music, late bar" and names Jade directly.
 - **Cigar Lounge** (formerly "The Salon · Private Dining") uses render **jade-11** (wine-cabinet

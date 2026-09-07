@@ -2,6 +2,15 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-09-07 (later) — Logo corrected to the page-1 primary
+
+- Lockup `JADE / BY TODD ENGLISH / MANILA` -> **`JADE / MANILA`**, matching page 1 of the logo deck.
+- Proportions matched to the actual artwork rather than a description of it: MANILA at 0.28x JADE
+  font-size, tracking tuned to ~0.52x its width, gap tightened to sit as one block, and the sub-line
+  **centred** under JADE (cover card is now text-align:center). Optical centres within 2px.
+- Root cause of the miss: the first pass was implemented from a written summary of the logo deck.
+  The PDF was never rendered and looked at. It is now (PyMuPDF -> PNG; poppler is not installed).
+
 ## 2026-09-07 — Rebrand to Jade Manila + slide changes
 
 **Branding**
