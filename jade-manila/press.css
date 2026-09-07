@@ -1674,15 +1674,15 @@ html { background: #0a0806; }
 .section-title { position: relative; }
 .script-kick {
   position: absolute;
-  top: -3px;
+  top: 2px;
   left: 58px;
-  font-family: 'Great Vibes', cursive;
-  font-weight: 400;
-  font-size: 31px;
+  font-family: var(--sans);
+  font-weight: 600;
+  font-size: 12px;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.3em;
   color: var(--gold);
-  text-transform: none;
+  text-transform: uppercase;
 }
 
 .cover-rail {
@@ -1778,3 +1778,7 @@ html { background: #0a0806; }
     zoom: var(--sheet-zoom, calc(100vw / 848px));
   }
 }
+
+/* brand wordmark: the real vector logo from the logo deck, not a font imitation */
+.cover-name .cn-logo { display:block; width:100%; max-width:230px; height:auto; margin:0 auto; }
+#contact-heading .contact-logo { display:block; width:min(58vw,320px); height:auto; margin:0 auto; }

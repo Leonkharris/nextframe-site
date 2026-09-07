@@ -2,6 +2,21 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-09-07 (later still) — Real logo artwork, not a font imitation
+
+- **Root fix:** the wordmark was being re-created in Bodoni Moda + Jost. It is now the ACTUAL vector
+  art, extracted from page 1 of the logo deck with PyMuPDF (11 paths, no raster, ~4KB) and cropped to
+  the logo bbox -> `img/jade-manila-logo.svg`. The real "J" descends below the baseline with a hook;
+  no web font reproduces that, which is why every CSS attempt drifted.
+- Applied to ALL THREE wordmark spots: hero title, Page-1 cover card, and the contact heading.
+  The text lockup classes (.v7l, .v7l-city, .cn-first, .cn-city) are retired.
+- **Re-font:** dropped Great Vibes entirely — the brand deck contains no script face. The one
+  remaining script element ("the story" eyebrow) is now the brand's tracked sans caps, and the font
+  is no longer downloaded.
+- Verified: the PDF has NO embedded fonts and NO text layer (all glyphs are outlines), so the brand
+  typeface NAMES are not recoverable from the file. Deck keeps Bodoni Moda (Didone, same family as
+  the logo serif) + Jost (geometric, same family as MANILA) — matched by character, not by name.
+
 ## 2026-09-07 (later) — Logo corrected to the page-1 primary
 
 - Lockup `JADE / BY TODD ENGLISH / MANILA` -> **`JADE / MANILA`**, matching page 1 of the logo deck.
