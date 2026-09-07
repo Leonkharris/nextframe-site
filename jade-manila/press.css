@@ -168,16 +168,26 @@ img { display: block; }
   padding: 30px 34px 32px;
   flex: 0 0 330px;
 }
-.cover-name .cn-first,
-.cover-name .cn-last {
+.cover-name .cn-first {
   display: block;
   font-family: var(--serif);
   font-weight: 800;
   font-size: 64px;
   line-height: 1.02;
   color: #fff;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
 }
-.cover-name .cn-last { color: #e8cfa4; }
+.cover-name .cn-chef,
+.cover-name .cn-city {
+  display: block;
+  font-family: var(--sans);
+  font-weight: 600;
+  text-transform: uppercase;
+  color: #f3ead9;
+}
+.cover-name .cn-chef { font-size: 13px; letter-spacing: 0.34em; margin-top: 14px; }
+.cover-name .cn-city { font-size: 16px; letter-spacing: 0.5em; margin-top: 6px; }
 .cover-tag {
   background: var(--panel-cool);
   border-radius: 16px;
@@ -1518,7 +1528,6 @@ html { background: #0a0806; }
 /* cover */
 .cover-issue { color: #a9e0cf; background: rgba(20, 16, 11, 0.85); }
 .cover-name { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(84, 199, 154, 0.5); }
-.cover-name .cn-last { color: var(--gold); }
 .cover-tag { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(84, 199, 154, 0.3); }
 .cover-tag p { color: #b9ac93; }
 .cover-tag p strong { color: #f3ead9; }
