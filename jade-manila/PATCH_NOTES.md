@@ -2,6 +2,38 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-09-08 (later) — Gallery accuracy + page overflow
+
+**Mislabelled gallery tiles** (client spotted two, an audit of all ten found a third)
+- The Cellar showed an arched dining niche -> `cellar-wall.jpg` (wine racked on green marble).
+- The Spiral Stair showed a banquette room with **no stair in frame** -> `spiral-stair.jpg`.
+- The Chef's Counter photo is banquettes against a botanical mural. The deck's copy never
+  describes a chef's counter — the only "counter" is *The Onyx Counter*, the Jade Bar's own
+  subtitle, and Quick Facts lists Grand Room / Bar / Stage / Mezzanine / Cigar Lounge / Cellar.
+  Renamed the tile **The Mural Wall** rather than generate a room that may not exist. If the venue
+  does have one, generate on the brand-plate lane and rename back.
+- Both correct images already existed in `img/`, simply never wired up. Audit the whole set, not
+  the one tile that was reported.
+
+**Page overflow — three sheets were silently clipping**
+- `from-the-kitchen` lost **65px** off its bottom row (nobody had noticed), `rooms-details` 3px,
+  `the-return` 4px. All 23 sheets now measure zero overflow.
+- Cause chain: my longer "The Cigar Lounge · Cigars & Nightcaps" caption wrapped to two lines and
+  pushed the grid past the page; the menu standfirst did the same.
+
+**Preview film**
+- Caption claimed "1:11" for a 43.7s film -> now `0:44`. It does carry an AAC stereo track, so
+  "Sound on" is accurate. Frame-sampled it: no old branding anywhere, so it survives the rebrand.
+
+### Three layout traps in this deck — read before editing
+1. **`.sheet` is a fixed 1056px page with `overflow:hidden`.** Add a line of copy and it clips
+   silently — nothing errors, content just disappears off the bottom. Measure after any text change.
+2. **`press.css?v=N` must be bumped** or stylesheet edits never reach the browser. It sat at v=11
+   all session, so an earlier CSS fix appeared to do nothing.
+3. **The gallery heights live in the inline `<style>` in index.html**, which overrides `press.css`
+   (`.gal-hero img{height:318px}`, `.gal-item img{height:120px}`, `.gal-grid` is 4 columns).
+   Editing press.css for these is a no-op.
+
 ## 2026-09-08 — Menu, timeline, cost figures
 
 **Menu (page 10)**

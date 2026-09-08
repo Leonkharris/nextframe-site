@@ -65,3 +65,13 @@ Hero-teaser floats and the cover are outside this system, so those swaps are fre
 - Typefaces remain unresolved: the logo deck is fully outlined (no font names anywhere), and quantitative
   glyph matching against 23 Google fonts scored 0.39 at best where a true match scores 1.00. It is a
   licensed commercial face. Clean 600-DPI crops for WhatTheFont were handed to the client.
+
+## Layout traps (learned the hard way, 2026-09-08)
+
+- `.sheet` is a **fixed 1056px page with `overflow:hidden`** — extra copy clips silently, no error.
+  Three sheets were clipping before this was caught; the menu page was losing 65px.
+- **Bump `press.css?v=N`** in index.html whenever press.css changes, or the browser serves the old file.
+- Gallery image heights are set in the **inline `<style>` in index.html**, not press.css — the inline
+  rules win, so editing press.css for those does nothing.
+- Gallery tiles had photos that did not match their captions. Audit **all** tiles when one is reported;
+  the correct images were already sitting unused in `img/`.
