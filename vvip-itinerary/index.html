@@ -126,7 +126,11 @@ a{color:inherit}
    overlay caption bars on the photograph. */
 .thumbs{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(.5rem,1.4vw,1.1rem)}
 .thumbs figure{margin:0;display:flex;flex-direction:column}
-.thumbs img{width:100%;aspect-ratio:1/1.16;object-fit:cover;display:block;filter:saturate(1.1) contrast(1.05)}
+.thumbs img{width:100%;aspect-ratio:1/1.16;object-fit:cover;display:block;
+  /* A tall portrait cropped to a near-square keeps the MIDDLE by default, which throws
+     the faces away — the one thing these frames are in the deck for. Bias the crop to
+     the top third so heads stay in. */
+  object-position:center 20%;filter:saturate(1.1) contrast(1.05)}
 .thumbs figcaption{
   color:var(--red);font-weight:800;font-size:clamp(.62rem,1.05vw,.95rem);
   letter-spacing:.01em;text-transform:uppercase;line-height:1.15;
@@ -392,7 +396,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   display:flex;flex-direction:column;overflow:hidden;
   transition:transform .4s cubic-bezier(.22,.61,.36,1),box-shadow .4s}
 .vcard:hover{transform:translateY(-5px);box-shadow:0 16px 34px rgba(0,0,0,.17)}
-.vcard img,.vcard-noimg{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}
+.vcard img,.vcard-noimg{width:100%;aspect-ratio:4/3;object-fit:cover;object-position:center 38%;display:block}
 .vcard-noimg{background:var(--cream-3)}
 .vcard h4{margin:.7rem .8rem .25rem;font-size:clamp(.9rem,1.1vw,1.02rem);line-height:1.2;font-weight:800}
 .vcard-meta{margin:0 .8rem .55rem;font-size:.78rem;line-height:1.35;color:var(--ink-2);flex:1}
@@ -455,7 +459,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 .inset{position:relative;margin:clamp(1rem,2vw,1.6rem) 0 0;width:min(30rem,100%)}
 .inset::before{content:"";position:absolute;left:-.75rem;top:.75rem;right:.75rem;bottom:-.75rem;
   background:var(--red);z-index:0;transition:transform .5s cubic-bezier(.22,.61,.36,1)}
-.inset img{position:relative;z-index:1;width:100%;aspect-ratio:3/2;object-fit:cover;
+.inset img{position:relative;z-index:1;width:100%;aspect-ratio:3/2;object-fit:cover;object-position:center 30%;
   border:0;box-shadow:0 14px 34px rgba(0,0,0,.22)}
 .inset:hover::before{transform:translate(-.35rem,.35rem)}
 .slide--photo .inset::before{background:var(--cream)}
@@ -480,7 +484,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 .castgrid{position:relative;z-index:1;display:grid;
   grid-template-columns:repeat(auto-fit,minmax(14rem,1fr));gap:2px}
 .castgrid figure{margin:0;position:relative;overflow:hidden;background:var(--red-2)}
-.castgrid img{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;
+.castgrid img{width:100%;aspect-ratio:2/3;object-fit:cover;object-position:center 26%;display:block;
   transition:transform .6s cubic-bezier(.22,.61,.36,1),filter .6s}
 .castgrid figure:hover img{transform:scale(1.05);filter:saturate(1.15)}
 .castgrid figcaption{position:absolute;left:0;right:0;bottom:0;padding:.5rem .7rem;
@@ -1112,7 +1116,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <script>
 (function () {
   "use strict";
-  var NOTIFY = "";
+  var NOTIFY = "nextframe.ai.agency@gmail.com";
   var DAYS = [["1","21 Sep"],["2","22 Sep"],["3","23 Sep"],["4","24 Sep"],["5","25 Sep"],["6","26 Sep"],["7","27 Sep"],["8","28 Sep"],["9","29 Sep"],["10","30 Sep"]];
   var chips = document.getElementById("day-chips");
   DAYS.forEach(function (d) {
