@@ -571,6 +571,21 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   font-weight:600;font-size:.68rem;opacity:.7;letter-spacing:0;margin-top:.05rem}
 .ao-price{text-align:right;line-height:1.15}
 
+/* == TIER VARIANTS =========================================================
+   On the days where the packages genuinely diverge, say so on the page
+   rather than leaving a client reading a week they are not buying. ====== */
+.variant{position:relative;z-index:2;margin-top:auto;padding:.7rem .9rem;
+  border-left:3px solid var(--red);background:rgba(0,0,0,.05);
+  display:grid;gap:.35rem;max-width:62ch}
+.variant p{margin:0;font-size:.82rem;line-height:1.45}
+.variant b{display:block;font-size:.62rem;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--red);margin-bottom:.1rem}
+.slide--photo .variant,.slide--red .variant{background:rgba(0,0,0,.4);border-left-color:var(--cream)}
+.slide--photo .variant b,.slide--red .variant b{color:var(--cream)}
+.split .variant{width:46%}
+.split--flip .variant{margin-left:52%;width:46%}
+@media (max-width:52rem){.split .variant,.split--flip .variant{width:100%;margin-left:0}}
+
 </style>
 
 <!-- ── COVER ─────────────────────────────────────────────────────────────── -->
@@ -595,6 +610,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <ul class="bul"><li>Airside meet at NAIA</li><li>Private car to the hotel</li><li>Suite check-in, floor butler</li><li>In-suite massage, 90 minutes</li><li>Dinner at the hotel. No fixed time.</li></ul>
     <p class="note">Night one is deliberately empty.</p>
   </div>
+  
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -608,6 +624,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <ul class="bul"><li>Late breakfast</li><li>Car yours from noon</li><li>Intramuros, or Greenbelt and Rockwell</li><li>Chef's-table dinner, private room</li><li>Nightcap in BGC. Driver waits.</li></ul>
     <p class="note">Manila traffic decides the evening, so dinner is booked late.</p>
   </div>
+  
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -625,6 +642,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <h2 class="feat-title">The Villa Party Experience</h2>
     <div class="feat-figs"><div class="feat-fig"><img src="img/a7d2062e7ca919ce.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/cffe5ea73a500eac.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/20f7f6689cbef6f7.png" alt="" loading="lazy"></div></div>
   </div>
+  <div class="variant"><p><b>The Signature</b>On The Signature this is the first of two villa nights rather than the only one — the second comes on the coast.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -642,6 +660,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     </div>
     <div aria-hidden="true"></div>
   </div>
+  <div class="variant"><p><b>The Signature</b>The Signature does not fly. This day you drive south to the Batangas coast instead — two and a half hours, and the afternoon is still yours.</p><p><b>The Platinum</b>On The Platinum you go earlier and stay longer: five island nights, so nothing here is rushed.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -655,6 +674,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <ul class="bul"><li>Private charter from mid-morning</li><li>Puka, Crystal Cove, the north end</li><li>Lunch on the water</li><li>Back for sunset</li><li>Our own stretch of beach</li></ul>
     <p class="note">Green season. If the wind turns we move to the sheltered side.</p>
   </div>
+  <div class="variant"><p><b>The Signature</b>On The Signature this is a coast day: a private boat off Batangas with lunch aboard, back to the villa for the evening.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -672,6 +692,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <h2 class="feat-title">Island Pool Party Experience</h2>
     <div class="feat-figs"><div class="feat-fig"><img src="img/0648aeeced33133d.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/1702d40ed50e9956.png" alt="" loading="lazy"></div></div>
   </div>
+  <div class="variant"><p><b>The Signature</b>The Signature stages this night in the villa rather than on the island — same rig, same bar, same no-closing-time.</p><p><b>The Platinum</b>On The Platinum this is the second of two staged nights, both built where you are staying.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -685,6 +706,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <ul class="bul"><li>No alarm</li><li>Last morning on the beach</li><li>Afternoon flight to Manila</li><li>Back into the hotel</li><li>Quiet dinner, early night</li></ul>
     <p class="note">The empty day is what makes the finale land.</p>
   </div>
+  <div class="variant"><p><b>The Signature</b>Nothing to fly back from on The Signature — the drive up from the coast is short and the evening is still in play.</p><p><b>The Platinum</b>The Platinum is still on the island. The last morning there is a beach morning, not a departure.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -702,6 +724,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     </div>
     <div aria-hidden="true"></div>
   </div>
+  
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -719,6 +742,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <h2 class="feat-title">Grand Finale Experience</h2>
     <div class="feat-figs"><div class="feat-fig"><img src="img/9ed4dd7053d9530b.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/99e96030a43a03c4.png" alt="" loading="lazy"></div></div>
   </div>
+  
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
@@ -736,6 +760,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     </div>
     <div class="cut cut--float"><img src="img/c9224d20be1f55c8.png" alt="" loading="lazy"></div>
   </div>
+  
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 
