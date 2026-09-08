@@ -50,3 +50,18 @@ Hero-teaser floats and the cover are outside this system, so those swaps are fre
 - A matching cigar-lounge hover clip would need **Flow video credits** — video is no longer free
   after the flow.google.com migration (see `project-flow-migrated-to-flow-google-com` memory).
 - Deploy only on Leon's explicit say-so.
+
+## 2026-09-08 update
+
+- Deck is now **22 pages** (the "Build, Phase by Phase" placeholder was removed and everything renumbered).
+- Menu page runs Jade Manila's own dishes with photography generated **on the brand plate** — the
+  reference image must be ATTACHED as an ingredient chip, not described in the prompt. Describing it
+  produced generic dark-restaurant shots that the client rejected.
+- **Open item:** total project cost reads ₱38,000,000 but the itemised breakdown still sums to
+  ₱40,083,352. A note on the page states both. Needs the client's revised line items — do not invent them.
+- Flow lane: always pass `--project https://flow.google.com/project/8c6cd836-...` (the Jade tab).
+  `flow2.mjs` now hard-fails with AMBIGUOUS_LANE if a caller omits it while several Flow tabs are open —
+  that guard exists because omitting it let this job hijack another client batch's tab mid-run.
+- Typefaces remain unresolved: the logo deck is fully outlined (no font names anywhere), and quantitative
+  glyph matching against 23 Google fonts scored 0.39 at best where a true match scores 1.00. It is a
+  licensed commercial face. Clean 600-DPI crops for WhatTheFont were handed to the client.

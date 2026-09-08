@@ -2,6 +2,38 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-09-08 — Menu, timeline, cost figures
+
+**Menu (page 10)**
+- Replaced Todd English's other-restaurant dishes with Jade Manila's own opening menu: Jade Seafood
+  Tower (hero) + Caviar Cannoli, Toro Cornetto, Uni Carbonara, Lobster Paccheri, Truffle Agnolotti,
+  Miso Black Cod, A5 Wagyu Tagliata, Charcoal Lobster, Foie Gras Fried Rice.
+- Photography generated on the Flow free lane (Nano Banana 2), 10/10 first attempt, zero credits.
+- **v1 was rejected and regenerated.** v1 prompts described the look in words ("dark emerald and brass,
+  moody low-key") and produced generic dark-restaurant food on arbitrary plates. v2 attaches the brand's
+  own `img/brand-plate.jpg` as a bound reference chip, so every dish sits on the real cream/green-rim
+  plate in the logo deck's warm soft light. Lesson: attach the artwork, don't describe it.
+- Standfirst rewritten — it claimed "signature plates from Todd English's own restaurants", no longer true.
+
+**The Road to October (page 14)**
+- Sep = structure complete, fit-out begins, hiring under way · Oct = fit-out + staff training (no figures)
+  · Nov = doors open, first week. Removed the "Yr 1 / First Twelve Months" item.
+- Already Committed -> ₱21M. Removed "The Long Poles" card and the "44 Opening Roster" stat.
+- Stat band now: Nov / Opens Week One · 8 Weeks to Doors · ₱38M Total Project Cost.
+
+**Structure**
+- Removed "The Build, Phase by Phase" (a placeholder page). Deck renumbered **23 -> 22 pages**: every
+  page marker, the contents list, and the "Twenty-three pages" copy. Verified contiguous 2-22, no
+  duplicates, single total.
+
+**Cost figures — READ THIS**
+- Stated total project cost is now **₱38,000,000**: the Opportunity "Ticket" card, the Part III divider
+  ("A ₱38 million build"), the page title ("Where the ₱38 Million Goes") and the stat band.
+- **The itemised line items still total ₱40,083,352 and were NOT touched** — nobody has supplied which
+  ₱2.08M came out, and inventing line items on an investor deck is not acceptable. A factual note on the
+  cost page states both numbers. **This is the one known-open item: it needs the client's revised
+  breakdown.**
+
 ## 2026-09-07 (later still) — Real logo artwork, not a font imitation
 
 - **Root fix:** the wordmark was being re-created in Bodoni Moda + Jost. It is now the ACTUAL vector
