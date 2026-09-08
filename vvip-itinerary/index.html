@@ -154,14 +154,18 @@ a{color:inherit}
   /* Overrun the right trim like the source, but stand ON the baseline — pulling them
      below it cropped the figures mid-calf, which reads as a mistake rather than a crop. */
   margin-right:calc(-1 * var(--px))}
-.feat-fig{position:relative;flex:0 0 auto;margin-left:clamp(-3rem,-3.6vw,-1rem)}
+.feat-fig{position:relative;flex:0 0 auto;margin-left:clamp(-2rem,-2.4vw,-.6rem)}
 .feat-fig:first-child{margin-left:0}
 /* An explicit height, not max-height:100%: inside a shrink-to-fit flex row the
    percentage is indefinite and the image collapses to zero width. */
 .feat-fig img{
-  height:clamp(13rem,27vw,24rem);width:auto;max-width:none;object-fit:contain;
+  /* Complete photographs now, not cutouts: tall panels cropped to the page height,
+     still overlapping and still overrunning the trim, but nothing is a floating
+     figure on a flat ground any more. */
+  height:clamp(20rem,46vw,42rem);width:clamp(10rem,22vw,19rem);
+  object-fit:cover;object-position:center 22%;
   display:block;position:relative;z-index:1;
-  filter:drop-shadow(0 10px 18px rgba(0,0,0,.26));
+  box-shadow:0 14px 34px rgba(0,0,0,.3);
 }
 @media (max-width:56rem){
   .feat-top,.feat-bottom{grid-template-columns:1fr}
@@ -588,6 +592,9 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 
 .venue-note{margin:1.1rem 0 0;font-size:.76rem;font-weight:600;opacity:.7}
 
+.vcard-price i.live{display:block;font-style:normal;font-weight:700;font-size:.66rem;
+  color:#1F6B3A;margin-top:.15rem;letter-spacing:0}
+
 </style>
 
 <!-- ── COVER ─────────────────────────────────────────────────────────────── -->
@@ -642,7 +649,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">The Villa Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/a7d2062e7ca919ce.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/cffe5ea73a500eac.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/20f7f6689cbef6f7.png" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/b4609d0707b3bd53.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/4ed0ae26b630cb4f.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>On The Signature this is the first of two villa nights rather than the only one — the second comes on the coast.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -692,7 +699,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Island Pool Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/0648aeeced33133d.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/1702d40ed50e9956.png" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/40ca8f51c42ef902.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/1bda2de1b2c01e35.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>The Signature stages this night in the villa rather than on the island — same rig, same bar, same no-closing-time.</p><p><b>The Platinum</b>On The Platinum this is the second of two staged nights, both built where you are staying.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -742,7 +749,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Grand Finale Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/9ed4dd7053d9530b.png" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/99e96030a43a03c4.png" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/1416cfbfc24a2467.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/04e0e600d76c2b2c.jpg" alt="" loading="lazy"></div></div>
   </div>
   
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -850,43 +857,43 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <div class="venue-grid">
       <div class="vgroup"><h3>Manila</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/d786e8e59349d0af.jpg" alt="Shangri-La The Fort" loading="lazy">
+            <img src="img/8b8d3318327dacef.jpg" alt="Shangri-La The Fort" loading="lazy">
             <h4>Shangri-La The Fort</h4>
             <p class="vcard-meta">BGC · Horizon Club floor.</p>
             <p class="vcard-price"><span>Room ₱12,000–18,000</span></p>
           </article><article class="vcard">
-            <img src="img/18f22013daccb1d6.jpg" alt="Raffles Makati" loading="lazy">
+            <img src="img/3889cfe8c3881a9c.jpg" alt="Raffles Makati" loading="lazy">
             <h4>Raffles Makati</h4>
             <p class="vcard-meta">Confirmed in-suite butler service.</p>
-            <p class="vcard-price"><span>Room ₱14,000–20,000</span></p>
+            <p class="vcard-price"><span>Room ₱14,000–20,000</span><i class="live">available ₱23,265/night · checked 2026-09-08</i></p>
           </article><article class="vcard">
-            <img src="img/934b700c092bea24.jpg" alt="Grand Hyatt Manila" loading="lazy">
+            <img src="img/eaeb0fbaa4d666f7.jpg" alt="Grand Hyatt Manila" loading="lazy">
             <h4>Grand Hyatt Manila</h4>
             <p class="vcard-meta">BGC · highest rooms in the city.</p>
-            <p class="vcard-price"><span>Room ₱11,000–17,000</span></p>
+            <p class="vcard-price"><span>Room ₱11,000–17,000</span><i class="live">available ₱13,612/night · checked 2026-09-08</i></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>Boracay</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/e0a2a813e3c96649.jpg" alt="Shangri-La Boracay" loading="lazy">
+            <img src="img/960636d56f8dc525.jpg" alt="Shangri-La Boracay" loading="lazy">
             <h4>Shangri-La Boracay</h4>
             <p class="vcard-meta">Punta Bunga · two private coves; 1BR and 2BR pool villas — with Crimson, the island's only tr…</p>
-            <p class="vcard-price"><span>₱19,600–45,050 / night</span></p>
+            <p class="vcard-price"><span>₱19,600–45,050 / night</span><i class="live">available ₱24,750/night · checked 2026-09-08</i></p>
           </article><article class="vcard">
-            <img src="img/ff80461e8e44f656.jpg" alt="Discovery Shores" loading="lazy">
+            <img src="img/9d817964f30e5350.jpg" alt="Discovery Shores" loading="lazy">
             <h4>Discovery Shores</h4>
             <p class="vcard-meta">Station 1 · all-suite, 99 keys, adult-skewing.</p>
             <p class="vcard-price"><span>₱17,100–20,800 / night</span></p>
           </article><article class="vcard">
-            <img src="img/7e5f18fd5b97faa4.jpg" alt="The Lind" loading="lazy">
+            <img src="img/22b3f35c6485b189.jpg" alt="The Lind" loading="lazy">
             <h4>The Lind</h4>
             <p class="vcard-meta">Station 1 · boutique, premier beachfront address</p>
-            <p class="vcard-price"><span>₱15,600–21,300 / night</span></p>
+            <p class="vcard-price"><span>₱15,600–21,300 / night</span><i class="live">available ₱12,294/night · checked 2026-09-08</i></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>The villa</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/eb0608b651bb9acf.jpg" alt="Villa Palomo, Antipolo" loading="lazy">
+            <img src="img/2ba8907f3f0c664e.jpg" alt="Villa Palomo, Antipolo" loading="lazy">
             <h4>Villa Palomo, Antipolo</h4>
             <p class="vcard-meta">3–4BR plus VIP room, sleeps 16–25, dedicated social hall.</p>
             <p class="vcard-price"><span>₱40,000 / night</span></p>
@@ -914,7 +921,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <p class="vcard-meta">Makati · two Michelin stars, 24-seat counter.</p>
             <p class="vcard-price"><span>₱5,800–11,200 / head</span></p>
           </article><article class="vcard">
-            <img src="img/d581df9a86390a3c.jpg" alt="Toyo Eatery" loading="lazy">
+            <img src="img/3a3918558f5d39e5.jpg" alt="Toyo Eatery" loading="lazy">
             <h4>Toyo Eatery</h4>
             <p class="vcard-meta">Makati · Asia's 50 Best.</p>
             <p class="vcard-price"><span>₱3,900–6,500 / head</span></p>
@@ -932,12 +939,12 @@ footer p{margin:0 0 .5rem;max-width:72ch}
       </div>
       <div class="vgroup"><h3>Boracay</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/7efbc742cc7d46fa.jpg" alt="Sirena" loading="lazy">
+            <img src="img/fb2c60d75765ab24.jpg" alt="Sirena" loading="lazy">
             <h4>Sirena</h4>
             <p class="vcard-meta">Shangri-La clifftop · seafood, Tripadvisor Travellers' Choice.</p>
             <p class="vcard-price"><span>₱4,000–7,000 / head</span></p>
           </article><article class="vcard">
-            <img src="img/eff63e226ad8ae57.jpg" alt="Dos Mestizos" loading="lazy">
+            <img src="img/31c7cbb75601140b.jpg" alt="Dos Mestizos" loading="lazy">
             <h4>Dos Mestizos</h4>
             <p class="vcard-meta">Station 1 · Spanish-Filipino, the long-lunch institution.</p>
             <p class="vcard-price"><span>₱1,500–2,500 / head</span></p>
@@ -1019,7 +1026,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
       </div>
       <div class="vgroup"><h3>Where</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/e6e1885d9ee72bda.jpg" alt="Cove Manila, Okada" loading="lazy">
+            <img src="img/4e974dcb70eada33.jpg" alt="Cove Manila, Okada" loading="lazy">
             <h4>Cove Manila, Okada</h4>
             <p class="vcard-meta">9,000sqm glass dome, indoor beach club.</p>
             <p class="vcard-price"><span>Cabana from ₱14,000</span></p>
@@ -1060,7 +1067,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/3d361f786b47668c.jpg" alt="Laiya, San Juan" loading="lazy">
             <h4>Laiya, San Juan</h4>
             <p class="vcard-meta">Batangas · 3–4 hrs · east-facing, long sand.</p>
-            <p class="vcard-price"><span>₱9,450–13,000 / night</span></p>
+            <p class="vcard-price"><span>₱9,450–13,000 / night</span><i class="live">available ₱32,973/night · checked 2026-09-08</i></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>Bataan</h3>
@@ -1068,7 +1075,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/dd6367f3d27bb361.jpg" alt="Las Casas, Bataan" loading="lazy">
             <h4>Las Casas, Bataan</h4>
             <p class="vcard-meta">2–3 hrs · heritage estate, island villas with private pools.</p>
-            <p class="vcard-price"><span>₱10,000–11,500 / night</span></p>
+            <p class="vcard-price"><span>₱10,000–11,500 / night</span><i class="live">available ₱18,200/night · checked 2026-09-08</i></p>
           </article></div>
       </div></div>
     <p class="venue-note">Photographs show the property. The exact room, suite or table is confirmed in writing at booking.</p>
