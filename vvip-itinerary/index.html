@@ -595,6 +595,33 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 .vcard-price i.live{display:block;font-style:normal;font-weight:700;font-size:.66rem;
   color:#1F6B3A;margin-top:.15rem;letter-spacing:0}
 
+/* == MOBILE COVER =========================================================
+   On a phone the cover headline ran off the side and the two absolutely
+   positioned corner labels sat on top of it and on the subtitle. The page
+   check missed all of it because .slide sets overflow:hidden, so the text was
+   CLIPPED rather than scrolling and the document never reported an overflow.
+   Below 34rem the corners come into normal flow and the headline is sized to
+   the viewport rather than to a vw curve tuned on desktop. ================ */
+@media (max-width:34rem){
+  .cover{justify-content:flex-start;padding-top:1.5rem;text-align:center}
+  .cover .big{font-size:clamp(2.4rem,12vw,3.6rem);line-height:.92;word-break:normal;hyphens:none}
+  .cover .plane{width:min(88vw,420px);margin-top:.5rem}
+  .corner-tr,.corner-br{position:static;display:block;width:100%;text-align:center;
+    font-size:.72rem;letter-spacing:.08em}
+  .corner-tr{order:-1;margin-bottom:.9rem}
+  .corner-br{margin-top:.9rem}
+  .cover-sub{margin-top:.9rem;font-size:.78rem}
+  /* The brand mark sat on the corner labels once they were in flow. */
+  .cover .brand{position:static;margin:1rem auto 0}
+}
+/* Long unbroken headlines elsewhere get the same protection. */
+@media (max-width:34rem){
+  .big,.feat-title,.h2{overflow-wrap:break-word}
+}
+
+.vcard--noimg{border-left:3px solid var(--red)}
+.vcard--noimg h4{margin-top:.8rem}
+
 </style>
 
 <!-- ── COVER ─────────────────────────────────────────────────────────────── -->
@@ -640,7 +667,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-3">
   <p class="slide-head">Day 3 — The Villa</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/d886c4649d7f5a9d.jpg" alt="" loading="lazy"><figcaption>The company</figcaption></figure><figure><img src="img/704a2770a9a7d519.jpg" alt="" loading="lazy"><figcaption>The villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="" loading="lazy"><figcaption>Poolside, late</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/d886c4649d7f5a9d.jpg" alt="" loading="lazy"><figcaption>The company</figcaption></figure><figure><img src="img/a165a300ab636fcc.jpg" alt="" loading="lazy"><figcaption>The villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="" loading="lazy"><figcaption>Poolside, late</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Wed 23 Sept · Manila</p>
       <ul class="bul feat-bul"><li>Bags moved to the villa</li><li>Four bedrooms, private pool, gated</li><li>Afternoon free</li><li>Private chef from 8pm</li><li>Full bar, host, music, entertainment</li></ul>
@@ -649,7 +676,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">The Villa Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/b4609d0707b3bd53.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/4ed0ae26b630cb4f.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/c932255f0d74c2f2.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/7c028467a37c5fe4.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>On The Signature this is the first of two villa nights rather than the only one — the second comes on the coast.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -674,7 +701,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 </section>
 
 <section class="slide slide--cream split" id="day-5">
-  <div class="split-photo"><img src="img/21257656dd68e71b.jpg" alt="" loading="lazy"></div>
+  <div class="split-photo"><img src="img/9f13d92fc5869d86.jpg" alt="" loading="lazy"></div>
   <p class="slide-head">Day 5 — Blue Water</p>
   <div class="split-copy">
     <p class="big split-big">Day 5</p>
@@ -690,7 +717,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-6">
   <p class="slide-head">Day 6 — Saturday</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/d0ac491021d49512.jpg" alt="" loading="lazy"><figcaption>Sunset on the sand</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="" loading="lazy"><figcaption>Rooftop, after</figcaption></figure><figure><img src="img/384f33520cc36268.jpg" alt="" loading="lazy"><figcaption>Pool party</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/d0ac491021d49512.jpg" alt="" loading="lazy"><figcaption>Sunset on the sand</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="" loading="lazy"><figcaption>Rooftop, after</figcaption></figure><figure><img src="img/7c0ba9a5b4ea3fcf.jpg" alt="" loading="lazy"><figcaption>Pool party</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Sat 26 Sept · Boracay</p>
       <ul class="bul feat-bul"><li>Free morning</li><li>Helmet dive, parasail, jet ski</li><li>Or Ariel's Point by private boat</li><li>Sunset drinks on the sand</li><li>Private pool party. Our rig, our music, no closing time.</li><li>Fire dancers on the beach</li></ul>
@@ -699,7 +726,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Island Pool Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/40ca8f51c42ef902.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/1bda2de1b2c01e35.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/7305cee291810f8c.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/e1b8d51d510d8273.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>The Signature stages this night in the villa rather than on the island — same rig, same bar, same no-closing-time.</p><p><b>The Platinum</b>On The Platinum this is the second of two staged nights, both built where you are staying.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -740,7 +767,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-9">
   <p class="slide-head">Day 9 — The Finale</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/8f2923e414b904ef.jpg" alt="" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/51d267b7fd5fff6a.jpg" alt="" loading="lazy"><figcaption>Bottle service</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/8f2923e414b904ef.jpg" alt="" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/8212225cfeb856de.jpg" alt="" loading="lazy"><figcaption>Bottle service</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Tue 29 Sept · Manila</p>
       <ul class="bul feat-bul"><li>Brunch, slow afternoon</li><li>Estate handed over at 2pm</li><li>Private chef, full bar</li><li>Sound, lighting, staging</li><li>Live set over the DJ</li><li>Close protection all night</li></ul>
@@ -749,7 +776,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Grand Finale Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/1416cfbfc24a2467.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/04e0e600d76c2b2c.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/2c39080abbeb0fad.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/c2a7941f430b6e71.jpg" alt="" loading="lazy"></div></div>
   </div>
   
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -782,7 +809,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <h2 class="big big--md">Who is<br>with you</h2>
     <p class="castwall-lede">Hosts and companions are booked per night, agreed with you in advance and confirmed in writing. Nobody arrives unbriefed and nobody is a surprise. The roster below is the standard we book to.</p>
   </div>
-  <div class="castgrid"><figure><img src="img/e43f26b7c23aa68e.jpg" alt="Airside meet · Manila" loading="lazy"><figcaption>Airside meet · Manila</figcaption></figure><figure><img src="img/04e0e600d76c2b2c.jpg" alt="The suite · night one" loading="lazy"><figcaption>The suite · night one</figcaption></figure><figure><img src="img/d886c4649d7f5a9d.jpg" alt="Night one, later" loading="lazy"><figcaption>Night one, later</figcaption></figure><figure><img src="img/40ca8f51c42ef902.jpg" alt="White Beach · Boracay" loading="lazy"><figcaption>White Beach · Boracay</figcaption></figure><figure><img src="img/d0ac491021d49512.jpg" alt="The sand · golden hour" loading="lazy"><figcaption>The sand · golden hour</figcaption></figure><figure><img src="img/384f33520cc36268.jpg" alt="Pool day · the villa" loading="lazy"><figcaption>Pool day · the villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="Poolside · dusk" loading="lazy"><figcaption>Poolside · dusk</figcaption></figure><figure><img src="img/21257656dd68e71b.jpg" alt="On the water" loading="lazy"><figcaption>On the water</figcaption></figure><figure><img src="img/1bda2de1b2c01e35.jpg" alt="Sunset · beachfront" loading="lazy"><figcaption>Sunset · beachfront</figcaption></figure><figure><img src="img/704a2770a9a7d519.jpg" alt="The villa party" loading="lazy"><figcaption>The villa party</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="Rooftop · after midnight" loading="lazy"><figcaption>Rooftop · after midnight</figcaption></figure><figure><img src="img/b4609d0707b3bd53.jpg" alt="Private lounge" loading="lazy"><figcaption>Private lounge</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="The room" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/4ed0ae26b630cb4f.jpg" alt="The floor" loading="lazy"><figcaption>The floor</figcaption></figure><figure><img src="img/51d267b7fd5fff6a.jpg" alt="Bottle service" loading="lazy"><figcaption>Bottle service</figcaption></figure><figure><img src="img/8f2923e414b904ef.jpg" alt="The set" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/1416cfbfc24a2467.jpg" alt="The finale" loading="lazy"><figcaption>The finale</figcaption></figure><figure><img src="img/750b2563311e2157.jpg" alt="Recovery day" loading="lazy"><figcaption>Recovery day</figcaption></figure></div>
+  <div class="castgrid"><figure><img src="img/e43f26b7c23aa68e.jpg" alt="Airside meet · Manila" loading="lazy"><figcaption>Airside meet · Manila</figcaption></figure><figure><img src="img/c2a7941f430b6e71.jpg" alt="The suite · night one" loading="lazy"><figcaption>The suite · night one</figcaption></figure><figure><img src="img/d886c4649d7f5a9d.jpg" alt="Night one, later" loading="lazy"><figcaption>Night one, later</figcaption></figure><figure><img src="img/7305cee291810f8c.jpg" alt="White Beach · Boracay" loading="lazy"><figcaption>White Beach · Boracay</figcaption></figure><figure><img src="img/d0ac491021d49512.jpg" alt="The sand · golden hour" loading="lazy"><figcaption>The sand · golden hour</figcaption></figure><figure><img src="img/7c0ba9a5b4ea3fcf.jpg" alt="Pool day · the villa" loading="lazy"><figcaption>Pool day · the villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="Poolside · dusk" loading="lazy"><figcaption>Poolside · dusk</figcaption></figure><figure><img src="img/9f13d92fc5869d86.jpg" alt="On the water" loading="lazy"><figcaption>On the water</figcaption></figure><figure><img src="img/e1b8d51d510d8273.jpg" alt="Sunset · beachfront" loading="lazy"><figcaption>Sunset · beachfront</figcaption></figure><figure><img src="img/a165a300ab636fcc.jpg" alt="The villa party" loading="lazy"><figcaption>The villa party</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="Rooftop · after midnight" loading="lazy"><figcaption>Rooftop · after midnight</figcaption></figure><figure><img src="img/c932255f0d74c2f2.jpg" alt="Private lounge" loading="lazy"><figcaption>Private lounge</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="The room" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/7c028467a37c5fe4.jpg" alt="The floor" loading="lazy"><figcaption>The floor</figcaption></figure><figure><img src="img/8212225cfeb856de.jpg" alt="Bottle service" loading="lazy"><figcaption>Bottle service</figcaption></figure><figure><img src="img/8f2923e414b904ef.jpg" alt="The set" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/2c39080abbeb0fad.jpg" alt="The finale" loading="lazy"><figcaption>The finale</figcaption></figure><figure><img src="img/750b2563311e2157.jpg" alt="Recovery day" loading="lazy"><figcaption>Recovery day</figcaption></figure></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 <section class="slide slide--photo" id="cast">
@@ -860,17 +887,17 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/8b8d3318327dacef.jpg" alt="Shangri-La The Fort" loading="lazy">
             <h4>Shangri-La The Fort</h4>
             <p class="vcard-meta">BGC · Horizon Club floor.</p>
-            <p class="vcard-price"><span>Room ₱12,000–18,000</span></p>
+            <p class="vcard-price"><span>Room ₱12,000–18,000</span><i class="live">available · ₱26,482/night all-in · checked 2026-09-09</i></p>
           </article><article class="vcard">
             <img src="img/3889cfe8c3881a9c.jpg" alt="Raffles Makati" loading="lazy">
             <h4>Raffles Makati</h4>
             <p class="vcard-meta">Confirmed in-suite butler service.</p>
-            <p class="vcard-price"><span>Room ₱14,000–20,000</span><i class="live">available ₱23,265/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>Room ₱14,000–20,000</span><i class="live">available · ₱24,489/night all-in · checked 2026-09-09</i></p>
           </article><article class="vcard">
             <img src="img/eaeb0fbaa4d666f7.jpg" alt="Grand Hyatt Manila" loading="lazy">
             <h4>Grand Hyatt Manila</h4>
             <p class="vcard-meta">BGC · highest rooms in the city.</p>
-            <p class="vcard-price"><span>Room ₱11,000–17,000</span><i class="live">available ₱13,612/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>Room ₱11,000–17,000</span><i class="live">available · ₱28,450/night all-in · checked 2026-09-09</i></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>Boracay</h3>
@@ -878,17 +905,17 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/960636d56f8dc525.jpg" alt="Shangri-La Boracay" loading="lazy">
             <h4>Shangri-La Boracay</h4>
             <p class="vcard-meta">Punta Bunga · two private coves; 1BR and 2BR pool villas — with Crimson, the island's only tr…</p>
-            <p class="vcard-price"><span>₱19,600–45,050 / night</span><i class="live">available ₱24,750/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>₱19,600–45,050 / night</span><i class="live">available · ₱26,482/night all-in · checked 2026-09-09</i></p>
           </article><article class="vcard">
-            <img src="img/9d817964f30e5350.jpg" alt="Discovery Shores" loading="lazy">
-            <h4>Discovery Shores</h4>
+            <img src="img/9d817964f30e5350.jpg" alt="Discovery Boracay" loading="lazy">
+            <h4>Discovery Boracay</h4>
             <p class="vcard-meta">Station 1 · all-suite, 99 keys, adult-skewing.</p>
-            <p class="vcard-price"><span>₱17,100–20,800 / night</span></p>
+            <p class="vcard-price"><span>₱17,100–20,800 / night</span><i class="live">available · ₱19,041/night all-in · checked 2026-09-09</i></p>
           </article><article class="vcard">
             <img src="img/22b3f35c6485b189.jpg" alt="The Lind" loading="lazy">
             <h4>The Lind</h4>
             <p class="vcard-meta">Station 1 · boutique, premier beachfront address</p>
-            <p class="vcard-price"><span>₱15,600–21,300 / night</span><i class="live">available ₱12,294/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>₱15,600–21,300 / night</span><i class="live">available · ₱21,138/night all-in · checked 2026-09-09</i></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>The villa</h3>
@@ -1017,8 +1044,8 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <h4>The private option, first</h4>
             <p class="vcard-meta">A villa or resort taken over for the night beats a club on every axis — no queue, no minimum…</p>
             <p class="vcard-price"><span>The default</span></p>
-          </article><article class="vcard">
-            <div class="vcard-noimg" aria-hidden="true"></div>
+          </article><article class="vcard vcard--noimg">
+            
             <h4>Private table — the standard</h4>
             <p class="vcard-meta">Where we do go out it is pre-booked and private.</p>
             <p class="vcard-price"><span>₱10,000–15,000 / table</span></p>
@@ -1030,13 +1057,13 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <h4>Cove Manila, Okada</h4>
             <p class="vcard-meta">9,000sqm glass dome, indoor beach club.</p>
             <p class="vcard-price"><span>Cabana from ₱14,000</span></p>
-          </article><article class="vcard">
-            <img src="img/918d805cc856cbdd.jpg" alt="Revel at The Palace" loading="lazy">
+          </article><article class="vcard vcard--noimg">
+            
             <h4>Revel at The Palace</h4>
             <p class="vcard-meta">BGC · the main-room club night.</p>
             <p class="vcard-price"><span>Table from ₱10,000</span></p>
-          </article><article class="vcard">
-            <div class="vcard-noimg" aria-hidden="true"></div>
+          </article><article class="vcard vcard--noimg">
+            
             <h4>Bottle pricing</h4>
             <p class="vcard-meta">Premium spirits ₱8,000–20,000; champagne ₱12,000–45,000.</p>
             <p class="vcard-price"><span>Counts to the minimum</span></p>
@@ -1067,7 +1094,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/3d361f786b47668c.jpg" alt="Laiya, San Juan" loading="lazy">
             <h4>Laiya, San Juan</h4>
             <p class="vcard-meta">Batangas · 3–4 hrs · east-facing, long sand.</p>
-            <p class="vcard-price"><span>₱9,450–13,000 / night</span><i class="live">available ₱32,973/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>₱9,450–13,000 / night</span></p>
           </article></div>
       </div>
       <div class="vgroup"><h3>Bataan</h3>
@@ -1075,7 +1102,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
             <img src="img/dd6367f3d27bb361.jpg" alt="Las Casas, Bataan" loading="lazy">
             <h4>Las Casas, Bataan</h4>
             <p class="vcard-meta">2–3 hrs · heritage estate, island villas with private pools.</p>
-            <p class="vcard-price"><span>₱10,000–11,500 / night</span><i class="live">available ₱18,200/night · checked 2026-09-08</i></p>
+            <p class="vcard-price"><span>₱10,000–11,500 / night</span><i class="live">available · ₱6,402/night all-in · checked 2026-09-09</i></p>
           </article></div>
       </div></div>
     <p class="venue-note">Photographs show the property. The exact room, suite or table is confirmed in writing at booking.</p>
