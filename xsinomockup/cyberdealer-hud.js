@@ -257,10 +257,16 @@
     sendBtn.disabled = true;
     typing(true);
 
+    // Abort a hung API call (blocked local-network fetches never reject on
+    // their own) so the built-in router can take over.
+    var ctl = typeof AbortController !== "undefined" ? new AbortController() : null;
+    var timer = ctl ? setTimeout(function () { ctl.abort(); }, 6000) : null;
+
     fetch(cfg.apiBase + "/chat", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ session_id: sessionId, message: text })
+      body: JSON.stringify({ session_id: sessionId, message: text }),
+      signal: ctl ? ctl.signal : undefined
     })
       .then(function (r) {
         if (!r.ok) throw new Error("HTTP " + r.status);
@@ -277,6 +283,7 @@
         addMsg("bot", d.reply, d.referral);
       })
       .then(function () {
+        if (timer) clearTimeout(timer);
         busy = false;
         sendBtn.disabled = false;
         input.focus();
