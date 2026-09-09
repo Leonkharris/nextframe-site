@@ -14,6 +14,7 @@
   /* ---------------- config ---------------- */
   var cfg = {
     apiBase: "http://127.0.0.1:8791",
+    registerUrl: "https://xsino.io/register",
     brand: "Xsino",
     title: "NEON · Floor Host",
     greeting: "Hey, I'm NEON — the floor host. Ask me about games, deposits, withdrawals or current promos. 18+ only, play responsibly.",
@@ -208,6 +209,42 @@
     }
   }
 
+  /* ---------------- offline brain ----------------
+     Mirror of the server's intent router (same priority order), so the widget
+     answers even with no API reachable. The API adds tracking + live-LLM
+     replies when present; it is never required for the bot to respond. */
+  var refCode = null;
+  try { refCode = localStorage.getItem("cdh_ref"); } catch (e) {}
+  if (!refCode) {
+    refCode = "cyber_" + Math.random().toString(16).slice(2, 10);
+    try { localStorage.setItem("cdh_ref", refCode); } catch (e) {}
+  }
+
+  var RG = ["addict", "problem", "can't stop", "cant stop", "lost too much",
+    "losing too much", "self-exclu", "self exclu", "limit", "cool off",
+    "gamble too much", "help me stop", "chasing"];
+  var TIPS = ["strategy", "tip", "trick", "beat", "win more", "guaranteed", "system", "bankroll"];
+  var BONUS = ["bonus", "promo", "code", "free spin", "offer", "referral",
+    "sign up", "signup", "register", "invite"];
+  var PAY = ["deposit", "withdraw", "payout", "payment", "cash out", "cashout", "kyc", "verif"];
+  var GAMES = ["game", "slot", "roulette", "blackjack", "poker", "table", "play", "rtp", "demo"];
+  var GREET = ["hi", "hello", "hey", "yo", "sup"];
+
+  function localReply(raw) {
+    var text = raw.toLowerCase().trim();
+    function has(words) {
+      for (var i = 0; i < words.length; i++) { if (text.indexOf(words[i]) !== -1) return true; }
+      return false;
+    }
+    if (has(RG)) return { reply: "Straight talk, no neon: you can set deposit/session limits or self-exclude under Account → Responsible Play, and it takes effect immediately. If it's weighing on you, talk to someone — gamblersanonymous.org or your local gambling helpline. I won't bring up promos again this session.", referral: null };
+    if (has(TIPS)) return { reply: "No system beats the house — every game here is independent chance, and I don't do betting advice. The only bankroll tip that works: set a budget before you play and keep it (Account → Responsible Play).", referral: null };
+    if (has(BONUS)) return { reply: "New-player offer, on the record: sign up with this code and the welcome bonus attaches to your account. Full terms are on the register page — read them first.", referral: { code: refCode, url: cfg.registerUrl + "?promo=" + refCode } };
+    if (has(PAY)) return { reply: "Deposits land instantly; withdrawals clear after KYC verification, usually within 24h. Exact methods and fees are under Wallet. Anything account-specific, hit human support from the same page.", referral: null };
+    if (has(GAMES)) return { reply: "The floor's stocked — slots, roulette, blackjack and live tables. Every game has a demo mode, so you can try any of them without staking a thing. Published rules and RTP sit on each game's info tab.", referral: null };
+    if (GREET.indexOf(text) !== -1 || has(["who are you", "what are you"])) return { reply: "NEON here — AI floor host. I cover games, deposits/withdrawals, current promos and responsible-play tools. What do you need?", referral: null };
+    return { reply: "Outside my lane — I only cover this platform: games, payments, promos and responsible-play tools. Which one can I help with?", referral: null };
+  }
+
   /* ---------------- chat flow ---------------- */
   var busy = false;
 
@@ -234,8 +271,10 @@
         addMsg("bot", d.reply, d.referral || null);
       })
       .catch(function () {
+        // No API? The built-in router answers — the bot never goes dark.
+        var d = localReply(text);
         typing(false);
-        addMsg("bot", "Host link is offline — try again in a moment.");
+        addMsg("bot", d.reply, d.referral);
       })
       .then(function () {
         busy = false;
