@@ -622,6 +622,27 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 .vcard--noimg{border-left:3px solid var(--red)}
 .vcard--noimg h4{margin-top:.8rem}
 
+/* == SCROLLABLE TABLES ====================================================
+   The comparison table could not be scrolled on a phone at all. Cause: a grid
+   or flex item defaults to min-width:auto, so .scroller could not shrink below
+   its 44rem table — it grew to the table's width and .slide{overflow:hidden}
+   clipped it rather than the scroller ever scrolling. Everything in the chain
+   needs min-width:0 before overflow-x:auto means anything. ================ */
+.slide-body > *,.slide-body--one > *,.wrap,.wrap > *{min-width:0}
+.scroller{overflow-x:auto;max-width:100%;-webkit-overflow-scrolling:touch;
+  overscroll-behavior-x:contain}
+/* Say it is scrollable, because a cut-off table just looks broken. */
+.scroller{position:relative}
+@media (max-width:52rem){
+  .scroller::after{content:"swipe →";position:sticky;left:100%;bottom:0;
+    display:block;width:max-content;margin:-1.6rem .4rem 0 0;padding:.15rem .45rem;
+    font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;
+    color:var(--cream);background:var(--red);border-radius:3px;pointer-events:none}
+  .cmp{min-width:38rem}
+  .cmp th,.cmp td{padding:.5rem .6rem;font-size:.82rem}
+  .cmp tbody th{min-width:8.5rem}
+}
+
 </style>
 
 <!-- ── COVER ─────────────────────────────────────────────────────────────── -->
@@ -667,7 +688,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-3">
   <p class="slide-head">Day 3 — The Villa</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/d886c4649d7f5a9d.jpg" alt="" loading="lazy"><figcaption>The company</figcaption></figure><figure><img src="img/a165a300ab636fcc.jpg" alt="" loading="lazy"><figcaption>The villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="" loading="lazy"><figcaption>Poolside, late</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/d886c4649d7f5a9d.jpg" alt="" loading="lazy"><figcaption>The company</figcaption></figure><figure><img src="img/d1180a4f99f747c5.jpg" alt="" loading="lazy"><figcaption>The villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="" loading="lazy"><figcaption>Poolside, late</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Wed 23 Sept · Manila</p>
       <ul class="bul feat-bul"><li>Bags moved to the villa</li><li>Four bedrooms, private pool, gated</li><li>Afternoon free</li><li>Private chef from 8pm</li><li>Full bar, host, music, entertainment</li></ul>
@@ -676,7 +697,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">The Villa Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/c932255f0d74c2f2.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/7c028467a37c5fe4.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/c7a9c15c47062c03.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/75e072cf1f4786ce.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>On The Signature this is the first of two villa nights rather than the only one — the second comes on the coast.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -701,7 +722,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 </section>
 
 <section class="slide slide--cream split" id="day-5">
-  <div class="split-photo"><img src="img/9f13d92fc5869d86.jpg" alt="" loading="lazy"></div>
+  <div class="split-photo"><img src="img/dcf4a786bbc81768.jpg" alt="" loading="lazy"></div>
   <p class="slide-head">Day 5 — Blue Water</p>
   <div class="split-copy">
     <p class="big split-big">Day 5</p>
@@ -717,7 +738,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-6">
   <p class="slide-head">Day 6 — Saturday</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/d0ac491021d49512.jpg" alt="" loading="lazy"><figcaption>Sunset on the sand</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="" loading="lazy"><figcaption>Rooftop, after</figcaption></figure><figure><img src="img/7c0ba9a5b4ea3fcf.jpg" alt="" loading="lazy"><figcaption>Pool party</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/d0ac491021d49512.jpg" alt="" loading="lazy"><figcaption>Sunset on the sand</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="" loading="lazy"><figcaption>Rooftop, after</figcaption></figure><figure><img src="img/7f7b861e8e7dd6a1.jpg" alt="" loading="lazy"><figcaption>Pool party</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Sat 26 Sept · Boracay</p>
       <ul class="bul feat-bul"><li>Free morning</li><li>Helmet dive, parasail, jet ski</li><li>Or Ariel's Point by private boat</li><li>Sunset drinks on the sand</li><li>Private pool party. Our rig, our music, no closing time.</li><li>Fire dancers on the beach</li></ul>
@@ -726,7 +747,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Island Pool Party Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/7305cee291810f8c.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/e1b8d51d510d8273.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/7305cee291810f8c.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/5ef54f93737c1f40.jpg" alt="" loading="lazy"></div></div>
   </div>
   <div class="variant"><p><b>The Signature</b>The Signature stages this night in the villa rather than on the island — same rig, same bar, same no-closing-time.</p><p><b>The Platinum</b>On The Platinum this is the second of two staged nights, both built where you are staying.</p></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -767,7 +788,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
 <section class="slide slide--cream feature" id="day-9">
   <p class="slide-head">Day 9 — The Finale</p>
   <div class="feat-top">
-    <div class="thumbs"><figure><img src="img/8f2923e414b904ef.jpg" alt="" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/8212225cfeb856de.jpg" alt="" loading="lazy"><figcaption>Bottle service</figcaption></figure></div>
+    <div class="thumbs"><figure><img src="img/8f2923e414b904ef.jpg" alt="" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/7502c8a915a4f759.jpg" alt="" loading="lazy"><figcaption>Bottle service</figcaption></figure></div>
     <div class="feat-copy">
       <p class="feat-meta">Tue 29 Sept · Manila</p>
       <ul class="bul feat-bul"><li>Brunch, slow afternoon</li><li>Estate handed over at 2pm</li><li>Private chef, full bar</li><li>Sound, lighting, staging</li><li>Live set over the DJ</li><li>Close protection all night</li></ul>
@@ -776,7 +797,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
   </div>
   <div class="feat-bottom">
     <h2 class="feat-title">Grand Finale Experience</h2>
-    <div class="feat-figs"><div class="feat-fig"><img src="img/2c39080abbeb0fad.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/c2a7941f430b6e71.jpg" alt="" loading="lazy"></div></div>
+    <div class="feat-figs"><div class="feat-fig"><img src="img/7b3204bb25e22203.jpg" alt="" loading="lazy"></div><div class="feat-fig"><img src="img/777c86a0db3fc212.jpg" alt="" loading="lazy"></div></div>
   </div>
   
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
@@ -809,7 +830,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
     <h2 class="big big--md">Who is<br>with you</h2>
     <p class="castwall-lede">Hosts and companions are booked per night, agreed with you in advance and confirmed in writing. Nobody arrives unbriefed and nobody is a surprise. The roster below is the standard we book to.</p>
   </div>
-  <div class="castgrid"><figure><img src="img/e43f26b7c23aa68e.jpg" alt="Airside meet · Manila" loading="lazy"><figcaption>Airside meet · Manila</figcaption></figure><figure><img src="img/c2a7941f430b6e71.jpg" alt="The suite · night one" loading="lazy"><figcaption>The suite · night one</figcaption></figure><figure><img src="img/d886c4649d7f5a9d.jpg" alt="Night one, later" loading="lazy"><figcaption>Night one, later</figcaption></figure><figure><img src="img/7305cee291810f8c.jpg" alt="White Beach · Boracay" loading="lazy"><figcaption>White Beach · Boracay</figcaption></figure><figure><img src="img/d0ac491021d49512.jpg" alt="The sand · golden hour" loading="lazy"><figcaption>The sand · golden hour</figcaption></figure><figure><img src="img/7c0ba9a5b4ea3fcf.jpg" alt="Pool day · the villa" loading="lazy"><figcaption>Pool day · the villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="Poolside · dusk" loading="lazy"><figcaption>Poolside · dusk</figcaption></figure><figure><img src="img/9f13d92fc5869d86.jpg" alt="On the water" loading="lazy"><figcaption>On the water</figcaption></figure><figure><img src="img/e1b8d51d510d8273.jpg" alt="Sunset · beachfront" loading="lazy"><figcaption>Sunset · beachfront</figcaption></figure><figure><img src="img/a165a300ab636fcc.jpg" alt="The villa party" loading="lazy"><figcaption>The villa party</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="Rooftop · after midnight" loading="lazy"><figcaption>Rooftop · after midnight</figcaption></figure><figure><img src="img/c932255f0d74c2f2.jpg" alt="Private lounge" loading="lazy"><figcaption>Private lounge</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="The room" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/7c028467a37c5fe4.jpg" alt="The floor" loading="lazy"><figcaption>The floor</figcaption></figure><figure><img src="img/8212225cfeb856de.jpg" alt="Bottle service" loading="lazy"><figcaption>Bottle service</figcaption></figure><figure><img src="img/8f2923e414b904ef.jpg" alt="The set" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/2c39080abbeb0fad.jpg" alt="The finale" loading="lazy"><figcaption>The finale</figcaption></figure><figure><img src="img/750b2563311e2157.jpg" alt="Recovery day" loading="lazy"><figcaption>Recovery day</figcaption></figure></div>
+  <div class="castgrid"><figure><img src="img/e43f26b7c23aa68e.jpg" alt="Airside meet · Manila" loading="lazy"><figcaption>Airside meet · Manila</figcaption></figure><figure><img src="img/777c86a0db3fc212.jpg" alt="The suite · night one" loading="lazy"><figcaption>The suite · night one</figcaption></figure><figure><img src="img/d886c4649d7f5a9d.jpg" alt="Night one, later" loading="lazy"><figcaption>Night one, later</figcaption></figure><figure><img src="img/7305cee291810f8c.jpg" alt="White Beach · Boracay" loading="lazy"><figcaption>White Beach · Boracay</figcaption></figure><figure><img src="img/d0ac491021d49512.jpg" alt="The sand · golden hour" loading="lazy"><figcaption>The sand · golden hour</figcaption></figure><figure><img src="img/7f7b861e8e7dd6a1.jpg" alt="Pool day · the villa" loading="lazy"><figcaption>Pool day · the villa</figcaption></figure><figure><img src="img/5a1d1d2e78376ed9.jpg" alt="Poolside · dusk" loading="lazy"><figcaption>Poolside · dusk</figcaption></figure><figure><img src="img/dcf4a786bbc81768.jpg" alt="On the water" loading="lazy"><figcaption>On the water</figcaption></figure><figure><img src="img/5ef54f93737c1f40.jpg" alt="Sunset · beachfront" loading="lazy"><figcaption>Sunset · beachfront</figcaption></figure><figure><img src="img/d1180a4f99f747c5.jpg" alt="The villa party" loading="lazy"><figcaption>The villa party</figcaption></figure><figure><img src="img/d7ad9bbb593a9339.jpg" alt="Rooftop · after midnight" loading="lazy"><figcaption>Rooftop · after midnight</figcaption></figure><figure><img src="img/c7a9c15c47062c03.jpg" alt="Private lounge" loading="lazy"><figcaption>Private lounge</figcaption></figure><figure><img src="img/daeed1a3eb26a935.jpg" alt="The room" loading="lazy"><figcaption>The room</figcaption></figure><figure><img src="img/75e072cf1f4786ce.jpg" alt="The floor" loading="lazy"><figcaption>The floor</figcaption></figure><figure><img src="img/7502c8a915a4f759.jpg" alt="Bottle service" loading="lazy"><figcaption>Bottle service</figcaption></figure><figure><img src="img/8f2923e414b904ef.jpg" alt="The set" loading="lazy"><figcaption>The set</figcaption></figure><figure><img src="img/7b3204bb25e22203.jpg" alt="The finale" loading="lazy"><figcaption>The finale</figcaption></figure><figure><img src="img/750b2563311e2157.jpg" alt="Recovery day" loading="lazy"><figcaption>Recovery day</figcaption></figure></div>
   <img class="brand" src="img/90c6194ba71ca583.png" alt="Team ICCE">
 </section>
 <section class="slide slide--photo" id="cast">
@@ -920,7 +941,7 @@ footer p{margin:0 0 .5rem;max-width:72ch}
       </div>
       <div class="vgroup"><h3>The villa</h3>
         <div class="vcards"><article class="vcard">
-            <img src="img/2ba8907f3f0c664e.jpg" alt="Villa Palomo, Antipolo" loading="lazy">
+            <img src="img/1c17b1b9523cb333.jpg" alt="Villa Palomo, Antipolo" loading="lazy">
             <h4>Villa Palomo, Antipolo</h4>
             <p class="vcard-meta">3–4BR plus VIP room, sleeps 16–25, dedicated social hall.</p>
             <p class="vcard-price"><span>₱40,000 / night</span></p>
