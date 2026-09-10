@@ -50,6 +50,7 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 .panel .cap{padding:15px 20px}
 .panel .cap .ti{font-family:var(--cjk);color:var(--gold-b);font-size:16px;margin-bottom:8px}
 .panel .cap .ti small{font-family:var(--sans);color:var(--muted);font-size:11px;letter-spacing:1px;margin-left:8px}
+.panel .cap .jp-t{font-family:var(--cjk);color:#e4ddcc;font-size:15px;line-height:1.7}
 .panel .cap .cn-t{font-family:var(--cjk);color:#e4ddcc;font-size:15px;line-height:1.7}
 .panel .cap .en-t{color:var(--muted);font-size:13.5px;line-height:1.6;font-style:italic;margin-top:6px}
 .foot{text-align:center;color:var(--faint);font-size:11px;margin-top:40px;letter-spacing:1px}
@@ -71,16 +72,16 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 
   <div class="audio">
     <div class="aud">
-      <div class="lb"><span class="ic">翁</span><span class="nm">中文旁白 · 老者<small>CHINESE NARRATION · OLD STORYTELLER</small></span></div>
-      <audio controls preload="none" src="assets/prologue/prologue_cn.mp3"></audio>
+      <div class="lb"><span class="ic">語</span><span class="nm">日本語ナレーション · 語り部<small>JAPANESE NARRATION · STORYTELLER</small></span></div>
+      <audio controls preload="none" src="assets/prologue/prologue_jp.mp3"></audio>
     </div>
     <div class="aud">
       <div class="lb"><span class="ic">聲</span><span class="nm">English Narration · Female<small>ENGLISH NARRATION · FEMALE VOICE</small></span></div>
       <audio controls preload="none" src="assets/prologue/prologue_en.mp3"></audio>
     </div>
     <div class="aud">
-      <div class="lb"><span class="ic">語</span><span class="nm">日本語ナレーション · 語り部<small>JAPANESE NARRATION · STORYTELLER</small></span></div>
-      <audio controls preload="none" src="assets/prologue/prologue_jp.mp3"></audio>
+      <div class="lb"><span class="ic">翁</span><span class="nm">中文旁白 · 老者<small>CHINESE NARRATION · OLD STORYTELLER</small></span></div>
+      <audio controls preload="none" src="assets/prologue/prologue_cn.mp3"></audio>
     </div>
   </div>
   <div class="note">▶ Play a narration, then scroll the storyboard — the panels follow the narration beat by beat.</div>
@@ -95,39 +96,51 @@ body{background:radial-gradient(120% 80% at 50% -10%,#12151f,#06070b 60%);color:
 <script>
 const SHOTS = [
   {n:'01', cam:'Extreme wide · aerial push-in', tc:'夜之二聲', te:'The Two Sounds',
+   jp:'江戸の夜には、本来ふたつの音しかないはずだった。人が生きている音と、人が生きているふりをする音と。だがこの夜、江戸にはもうひとつの音が加わった。',
    cn:'江戶的夜，本該只有兩種聲音：一種是人活著的聲音，一種是人假裝自己活著的聲音。但這一夜，江戶多了一種聲音。',
    en:'The Edo night was supposed to hold only two kinds of sound — the living, and those pretending to live. But this night held one sound more.'},
   {n:'02', cam:'Low angle · locked-off', tc:'潮水般的步伐', te:'The Tread',
+   jp:'それは、ゆっくりと、揃った、潮のような足音だった。城の外の低みから押し寄せ、急ぐでもなく、しかし決して止まろうとはしない。',
    cn:'那是一種很慢、很齊、像潮水一樣的步伐，從城外低處往上推過來——不急不躁，卻絕對不會停。',
    en:'A tread — slow, even, tidelike — pushing up from the low ground, unhurried, and absolutely unwilling to stop.'},
   {n:'03', cam:'Medium · handheld drift', tc:'賣蕎麥的老人', te:'The Soba Seller',
+   jp:'深川の川辺で、夜蕎麦を売る老人は、鍋の蓋をいっそう強く押さえた。本来なら、何も見えぬはずだった。それなのに——見えてしまった。',
    cn:'在深川的河邊，賣夜蕎麥的老人把鍋蓋按得更緊。他本不該看見什麼。可他，看見了。',
    en:'By the Fukagawa river, the old night-soba seller pressed his pot lid tighter. He should not have seen anything. And yet, he saw.'},
   {n:'04', cam:'Rack-focus macro · additive glow', tc:'恐懼的第二雙眼', te:"Fear's Second Eyes",
+   jp:'目で見たのではない。恐れが胸の奥から這い出して、彼のためにもうひとつの目を開いたかのようだった。',
    cn:'不是用眼睛看，而像是恐懼從胸口爬出來，替他睜開了另一雙眼。',
    en:'Not with his eyes — as if fear had crawled out of his chest and opened a second pair for him.'},
   {n:'05', cam:'Slow dolly · inky tendrils', tc:'指名', te:'The Naming',
+   jp:'百鬼夜行とは、けっして妖怪の行列ではない。それは人の心が溜め込んだもの——あまりに多く、あまりに長く認められずにいたものが、ついに夜の中へと歩き出したものだ。そして最初に名指されるのは、いつでも鬼と決まっている。',
    cn:'百鬼夜行從來不是妖怪的遊行。它是人心積下來的東西，太久不肯承認，最後在夜裡走出來。而最先被指名的，永遠是鬼。',
    en:'The Night Parade was never a procession of yokai — it is what the heart stored too long, walking out at night. And the first to be named is always the oni.'},
   {n:'06', cam:'Low heroic · slow tilt-up', tc:'赤座玄鬼', te:'Genki, Revealed',
+   jp:'赤座玄鬼は、夜行の先頭を歩いていた。鎧はまとっていない。だが、鎧よりもなお、人を近づけさせなかった。',
    cn:'赤座玄鬼，走在夜行的最前端。他沒穿鎧甲，卻比鎧甲更讓人不敢靠近。',
    en:'Akaza Genki walked at the head of the Parade. He wore no armor, yet was harder to approach than armor.'},
   {n:'07', cam:'Wide · slow lateral track', tc:'夜行的隊伍', te:'The Column',
+   jp:'夜行は、人を害しに来たのではない。回収しに来たのだ。人が認めようとしない恐れを。押し隠された悪意を。',
    cn:'夜行不是來害人。它是來回收——回收人們不肯承認的恐懼，回收那些被壓下去的惡意。',
    en:'The Parade came not to harm but to reclaim — the fear people refused to admit, the malice pressed out of sight.'},
   {n:'08', cam:'Medium two-shot · warm vs cold', tc:'紙門後的一家', te:'Behind the Paper Door',
+   jp:'日本橋では、ある一家が障子の陰に身を縮めていた。母は子をきつく抱きしめる。——声を出すな。鬼に聞かれる。',
    cn:'在日本橋，一戶人家縮在紙門後。母親把孩子摟得死緊：「別出聲，鬼會聽見。」',
    en:'In Nihonbashi, a family huddled behind the paper door. The mother clutched her child: "Not a sound. The oni will hear."'},
   {n:'09', cam:'Intercut ECU · the eyes', tc:'孩子的目光', te:"The Child's Gaze",
+   jp:'ただ、その子供だけが、もう少しはっきりと見ていた。ふと、ばかげた考えが浮かんだ。もしあれが鬼なら、なぜあんなに揺るぎなく歩くのだろう。なぜ——あんなに、疲れて見えるのだろう。',
    cn:'只有那個孩子，看得更清楚。一個荒謬的念頭升起：如果那是鬼，為什麼走得那麼穩？為什麼，看起來那麼累？',
    en:'Only the child saw clearly. An absurd thought rose: if that is an oni, why does it walk so steadily? Why does it look… so tired?'},
   {n:'10', cam:'Push-in · on the raised hand', tc:'半拍', te:'The Half-Beat',
+   jp:'玄鬼の手が、半拍だけ遅れた。夜行においては、その半拍が、隊列すべての律動を乱すに足りる。彼にできたのは、ただ、その一歩を引き戻すことだけだった。',
    cn:'玄鬼的手，慢了半拍。就這半拍，足以擾動整條隊伍的節奏。他只能，把那一步，收回來。',
    en:"Genki's hand rose half a beat slow. In the Parade, half a beat warps the whole column. All he could do was draw that one step back."},
   {n:'11', cam:'High angle · moonlight avoids her', tc:'白蓮 · 錯誤', te:'Byakuren, the Error',
+   jp:'九条白蓮は、屋根の棟の上から、そのすべてを見ていた。——なるほど、そういうことか。綻びが、現れた。彼女の胸に、ひとつの言葉が浮かぶ。無垢界。そして、そこへ至る境地——金寂。',
    cn:'九條白蓮在屋脊上看著這一切。「原來如此。錯誤，出現了。」她想起一個詞：無垢界。以及抵達那裡的狀態，金寂。',
    en:'Kujō Byakuren watched from the ridge. "So that\'s how it is. The error has appeared." A word rose in her — the Immaculate Realm; and its arrival, Golden Stillness.'},
   {n:'12', cam:'Slow pull-back · Genki small', tc:'被留在岸上', te:'Left on the Shore',
+   jp:'隊列は、彼を待たなかった。恐れを、さらに深い闇の奥へと運んでゆく。玄鬼はひとり立ち尽くし、生まれて初めて、自分が——岸辺に取り残されたもののように思えた。',
    cn:'隊伍沒有等他，繼續把恐懼帶進更深的黑暗。玄鬼獨自站著，第一次覺得自己，像被留在岸上的東西。',
    en:'The column did not wait for him. Genki stood alone, feeling for the first time like something left on the shore.'},
 ];
@@ -143,8 +156,9 @@ document.getElementById('board').innerHTML = SHOTS.map(s=>{
     </div>
     <div class="cap">
       <div class="ti">${esc(s.tc)}<small>${esc(s.te)}</small></div>
-      <div class="cn-t">${esc(s.cn)}</div>
+      <div class="jp-t">${esc(s.jp)}</div>
       <div class="en-t">${esc(s.en)}</div>
+      <div class="cn-t">${esc(s.cn)}</div>
     </div></div>`;
 }).join('');
 </script>
