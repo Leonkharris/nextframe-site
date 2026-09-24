@@ -1,0 +1,565 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Midnight Circuit Creative</title>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;600;700;900&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;
+  --ink:#0B0B0D;--panel:#141317;--panel2:#101014;--line:#262229;--line2:#2E2933;
+  --cream:#F2D9A4;--gold:#E0AC45;--gold2:#F0BD57;--text:#EDE6DA;--muted:#9A927F;--dim:#6E6757;
+  --conv:#9FC3E8;--unc:#7CEFA8;--glam:#F2A5D6;--warn:#E8BE8A;--danger:#F09A8A}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ink);color:var(--text);font:400 15px/1.55 'Archivo',system-ui,sans-serif;padding:0 20px}
+.wrap{max-width:1180px;margin:0 auto;padding-block:40px 80px}
+h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;letter-spacing:.005em;text-wrap:balance;margin:0}
+h1{font-size:clamp(40px,6vw,64px);line-height:.95;color:var(--cream)}
+h2{font-size:clamp(28px,3.4vw,36px);color:var(--cream);margin-bottom:10px}
+h3{font-size:22px;color:var(--text)}
+p{margin:0}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
+.lede{font-size:17px;color:var(--muted);max-width:68ch;margin-top:14px}
+.lede b,.copy b{color:var(--text);font-weight:700}
+.gold{color:var(--gold)}
+.mono{font-family:'Share Tech Mono',ui-monospace,monospace;font-variant-numeric:tabular-nums}
+
+header{padding-block:10px 34px;border-bottom:1px solid var(--line)}
+header .meta{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:22px;font-size:12.5px;color:var(--dim)}
+header .meta b{color:var(--muted);font-weight:700}
+
+nav.toc{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;background:rgba(11,11,13,.92);backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--line);margin:0 -20px;padding:10px 20px;display:flex;gap:6px 18px;flex-wrap:wrap;font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+nav.toc a{color:var(--muted);text-decoration:none;padding:4px 0;border-bottom:2px solid transparent}
+nav.toc a:hover,nav.toc a:focus-visible{color:var(--cream);border-color:var(--gold);outline:none}
+
+section{padding-block:56px 8px;border-bottom:1px solid var(--line)}
+section:last-of-type{border-bottom:0}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:24px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:24px}
+.grid5{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-top:24px}
+@media (max-width:900px){.grid2,.grid3,.grid5{grid-template-columns:1fr 1fr}}
+@media (max-width:560px){.grid2,.grid3,.grid5{grid-template-columns:1fr}}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:14px;padding:20px 22px}
+.card h3{font-size:19px;margin-bottom:6px}
+.card p{font-size:14px;color:var(--muted);line-height:1.5}
+.card.bad{border-color:#4A2630;background:#171013}.card.bad h3{color:var(--danger)}
+.card.good{border-color:#245038;background:#0F1814}.card.good h3{color:var(--unc)}
+.insight{background:linear-gradient(100deg,#1C1509,#141317);border:1px solid #6A4520;border-radius:14px;padding:24px 28px;margin-top:22px}
+.insight h3{color:var(--cream);font-size:26px;margin-bottom:8px}
+.insight p{font-size:16px;color:#D6C9AE;max-width:78ch;line-height:1.55}
+.insight p b{color:#FFE9B8}
+.rule{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 16px 18px}
+.rule .n{font-family:'Anton',sans-serif;font-size:28px;color:var(--gold);line-height:1}
+.rule h4{font-size:14.5px;font-weight:900;margin:8px 0 6px;line-height:1.25}
+.rule p{font-size:12.5px;color:var(--muted);line-height:1.5}
+.stat{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px}
+.stat .v{font-family:'Anton',sans-serif;font-size:34px;color:var(--cream);line-height:1}
+.stat .k{font-size:11px;font-weight:900;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:6px}
+.sizes{display:flex;flex-wrap:wrap;gap:10px;margin-top:18px}
+.sizes span{font-family:'Share Tech Mono',monospace;font-size:13px;background:var(--panel2);border:1px dashed var(--line2);border-radius:8px;padding:6px 10px;color:var(--cream)}
+.sizes span.now{border-style:solid;border-color:var(--gold);color:var(--gold2)}
+figure{margin:24px 0 0}
+figure img{display:block;width:100%;max-width:520px;border-radius:14px;border:1px solid var(--line)}
+figcaption{font-size:12.5px;color:var(--dim);margin-top:8px;max-width:60ch}
+.note{margin-top:22px;background:#171013;border:1px solid #4A2630;border-radius:13px;padding:18px 22px}
+.note h4{font-size:15px;font-weight:900;color:var(--danger);margin:0 0 6px}
+.note p{font-size:14px;color:#BFA79F;line-height:1.55;max-width:90ch}
+.note p b{color:var(--text)}
+
+/* ---- set headers ---- */
+.sethead{display:flex;align-items:baseline;gap:16px;flex-wrap:wrap}
+.pin{font-size:10px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;padding:3px 9px;border-radius:4px;color:#0B0B0D}
+.pin.conv{background:var(--conv)}.pin.unc{background:var(--unc)}.pin.glam{background:var(--glam)}
+.setlede{font-size:15.5px;color:var(--muted);max-width:80ch;margin-top:12px;line-height:1.55}
+
+/* ---- live units + reasoning ---- */
+.units{display:grid;grid-template-columns:repeat(auto-fill,300px);gap:34px 22px;justify-content:start;margin-top:30px}
+.item{width:300px}
+.unitframe{padding:14px;background:#000;border-radius:10px;border:1px solid var(--line);display:inline-block}
+.why{margin-top:12px;border-left:2px solid var(--line2);padding-left:12px}
+.why h4{font-size:15px;font-weight:900;margin:0 0 6px;color:var(--text)}
+.why dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:4px 10px;font-size:12.5px}
+.why dt{color:var(--dim);font-weight:900;letter-spacing:.08em;text-transform:uppercase;font-size:10px;padding-top:2px}
+.why dd{margin:0;color:var(--muted);line-height:1.45}
+.why dd b{color:var(--text);font-weight:700}
+.vids{display:grid;grid-template-columns:repeat(auto-fill,300px);gap:22px;justify-content:start;margin-top:22px}
+.vids video{display:block;width:300px;height:250px;border-radius:8px;border:1px solid var(--line);background:#000}
+.vids .cap{font-size:12px;color:var(--muted);margin-top:8px;line-height:1.45}
+.vids .cap b{color:var(--text)}
+
+/* ===================== AD UNITS (shared furniture) ===================== */
+.unit{width:300px;height:250px;position:relative;overflow:hidden;background:#000;font-family:'Archivo',sans-serif;text-align:left}
+.unit *{box-sizing:border-box}
+.unit .plate{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:0;max-width:none}
+.unit .scrim{position:absolute;inset:0;z-index:1}
+.unit .brandpill{position:absolute;z-index:9;background:rgba(0,0,0,.62);border:1px solid rgba(255,220,150,.28);border-radius:999px;padding:4px 9px 3px;left:12px;top:11px}
+.unit .brandpill img{height:15px;display:block}
+.unit .cmp{position:absolute;left:0;right:0;bottom:0;height:12px;background:#151515;color:#8f8f8f;display:flex;align-items:center;justify-content:center;gap:4px;font-size:5.5px;font-weight:700;z-index:12;border-top:1px solid #262626}
+.unit .cmp b{color:#bdbdbd;font-weight:900}
+.unit .cta{display:inline-block;font-weight:900;letter-spacing:.07em;text-transform:uppercase;white-space:nowrap;border-radius:999px;padding:8px 17px;font-size:11.5px;animation:pulse 4s ease-in-out infinite}
+.unit .cta-gold{background:linear-gradient(180deg,#FFF0C4 0%,#EFC161 40%,#B4801F 100%);color:#3D2206;border:1.5px solid #FFF6DC;box-shadow:0 0 16px rgba(255,200,90,.6),0 2px 8px rgba(0,0,0,.8)}
+.unit .cta-neon{background:linear-gradient(180deg,#B15CFF 0%,#7A1FD6 100%);color:#fff;border:1.5px solid #E2C4FF;box-shadow:0 0 20px rgba(160,70,255,.85),0 2px 8px rgba(0,0,0,.8)}
+.unit .cta-live{background:linear-gradient(180deg,#34D97B 0%,#10913F 100%);color:#04240F;border:1.5px solid #B6F5D0;box-shadow:0 0 20px rgba(52,217,123,.8),0 2px 8px rgba(0,0,0,.8)}
+.unit .gold{position:relative;font-family:'Anton',sans-serif;line-height:.84;letter-spacing:-.015em;color:#E0AC45;filter:drop-shadow(0 2px 0 rgba(0,0,0,.8)) drop-shadow(0 4px 12px rgba(0,0,0,.9))}
+.unit .gold::before{content:attr(data-t);position:absolute;inset:0;-webkit-text-stroke:5px #3A1F06;color:#3A1F06;z-index:0}
+.unit .gold span{position:relative;z-index:1;background:linear-gradient(177deg,#FFFBE8 0%,#FBE3A8 18%,#F0BD57 40%,#C2861F 60%,#8E5C14 74%,#FBE7B8 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.unit .mono{font-family:'Share Tech Mono',monospace;color:#FFE968;line-height:.9;text-shadow:0 0 18px rgba(255,225,80,.95),0 0 4px #fff,0 3px 6px #000}
+.unit .word{font-family:'Anton',sans-serif;color:#fff;line-height:.9;letter-spacing:.005em;text-shadow:0 2px 0 rgba(0,0,0,.8),0 4px 14px rgba(0,0,0,.9)}
+.unit .kick{font-size:10px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;text-shadow:0 2px 6px rgba(0,0,0,.95)}
+.unit .sub{font-size:8.5px;font-weight:900;color:#fff;letter-spacing:.04em;text-transform:uppercase;line-height:1.35;text-shadow:0 2px 6px rgba(0,0,0,.95)}
+.unit .small{font-size:8.5px;font-weight:900;color:#fff;letter-spacing:.06em;text-transform:uppercase;text-shadow:0 2px 6px rgba(0,0,0,.95)}
+.unit .num{margin:4px 0 6px -2px;animation:pop 4s ease-out infinite}
+.unit .livedot{display:inline-block;width:6px;height:6px;border-radius:99px;background:#FF4D4D;box-shadow:0 0 8px #FF4D4D;vertical-align:middle;margin-right:5px;animation:blink 1s steps(2,end) infinite}
+.unit .tile{display:block;border-radius:6px;box-shadow:0 6px 16px rgba(0,0,0,.85),0 0 0 1.5px rgba(255,220,150,.45);object-fit:cover}
+.unit .cardt{position:absolute;z-index:8}
+.unit .cardt .tile{width:54px;height:72px}
+.unit .cardt.logo .tile{width:74px;height:54px;object-fit:contain;background:rgba(0,0,0,.55);padding:4px}
+.unit .fan{position:absolute;z-index:8;width:150px;height:100px}
+.unit .fan .tile{position:absolute;width:48px;height:64px;bottom:0;left:50px;transform-origin:50% 100%}
+.unit .fan .t1{transform:rotate(-16deg) translateX(-18px);z-index:1}
+.unit .fan .t2{transform:rotate(0deg);z-index:3}
+.unit .fan .t3{transform:rotate(16deg) translateX(18px);z-index:2}
+.unit .shine{position:absolute;top:-10%;bottom:-10%;left:0;width:22px;z-index:8;pointer-events:none;background:linear-gradient(90deg,transparent,rgba(255,255,255,.13),transparent);animation:shine 4s ease-in-out infinite}
+@keyframes push{from{transform:scale(1)}to{transform:scale(1.08)}}
+@keyframes pushflip{from{transform:scaleX(-1) scale(1)}to{transform:scaleX(-1) scale(1.08)}}
+@keyframes pop{0%{transform:scale(.55);opacity:0}16%{transform:scale(1.12);opacity:1}26%,100%{transform:scale(1);opacity:1}}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.06)}}
+@keyframes shine{0%{transform:translateX(-60px) skewX(-18deg)}40%,100%{transform:translateX(380px) skewX(-18deg)}}
+@keyframes blink{to{opacity:.25}}
+@keyframes revealLate{0%,62%{opacity:0;transform:scale(.6)}76%{opacity:1;transform:scale(1.12)}84%,100%{opacity:1;transform:scale(1)}}
+@keyframes hideLate{0%,60%{opacity:1}70%,100%{opacity:0}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes tapper{0%,100%{transform:translate(0,0) scale(1)}45%{transform:translate(-5px,-9px) scale(.9)}55%{transform:translate(0,0) scale(1)}}
+@keyframes ring{0%{transform:scale(.6);opacity:.9}100%{transform:scale(1.9);opacity:0}}
+@keyframes shake{0%,52%,100%{transform:translateX(0)}56%{transform:translateX(-4px)}60%{transform:translateX(4px)}64%{transform:translateX(-3px)}68%{transform:translateX(0)}}
+@keyframes cd{to{transform:translateY(-462px)}}
+@keyframes dg{to{transform:translateY(-600px)}}
+@keyframes dg52{to{transform:translateY(-520px)}}
+@media (prefers-reduced-motion:reduce){.unit *,.unit{animation-play-state:paused!important}}
+
+/* ---- SET A · the L / C / B system on the six Flow plates ---- */
+.A .plate{animation:push 6s ease-in-out infinite alternate}
+.A .flip .plate{animation-name:pushflip}
+.A .L .scrim{background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.80) 36%,rgba(0,0,0,.28) 62%,transparent 84%)}
+.A .C .scrim{background:radial-gradient(80% 70% at 50% 60%,rgba(0,0,0,.72) 0%,rgba(0,0,0,.45) 55%,transparent 100%),linear-gradient(0deg,rgba(0,0,0,.85) 0%,transparent 40%)}
+.A .B .scrim{background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.86) 38%,rgba(0,0,0,.30) 62%,transparent 80%)}
+.A .L .txt{position:absolute;z-index:6;left:14px;top:50px;width:172px}.A .L .num{font-size:56px}.A .L .ctaw{position:absolute;left:14px;bottom:24px;z-index:6}
+.A .C .txt{position:absolute;z-index:6;left:0;right:0;top:44px;text-align:center}.A .C .hero{font-size:66px;margin:6px 0 8px;animation:pop 4s ease-out infinite}.A .C .ctaw{position:absolute;left:0;right:0;bottom:24px;text-align:center;z-index:6}.A .C .brandpill{left:50%;transform:translateX(-50%)}
+.A .B .txt{position:absolute;z-index:6;left:14px;top:118px;width:170px}.A .B .num{font-size:50px}.A .B .ctaw{position:absolute;right:14px;bottom:26px;z-index:6}
+
+/* ---- SET B · mechanics with the real lobby games (generic plates) ---- */
+.H .h1 .plate{object-position:42% 54%}.H .h1 .scrim{background:linear-gradient(0deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.55) 45%,rgba(0,0,0,.25) 100%)}
+.H .h1 .cardt{right:12px;top:12px}.H .h1 .live{position:absolute;right:12px;top:94px;z-index:8;font-size:7.5px;font-weight:900;letter-spacing:.14em;color:#fff;text-transform:uppercase;width:54px;text-align:center}
+.H .h1 .lbl2{position:absolute;left:14px;top:54px;z-index:8;font-size:9px;font-weight:900;letter-spacing:.2em;color:#9FC3E8;text-transform:uppercase}
+.H .h1 .timer{position:absolute;left:14px;top:70px;z-index:8;display:flex;align-items:flex-start;font-size:74px}
+.H .h1 .win{height:66px;overflow:hidden;display:block}.H .h1 .win i{display:block;font-style:normal;line-height:66px;animation:cd 4s steps(7,end) infinite}
+.H .h1 .under{position:absolute;left:14px;top:150px;z-index:8}.H .h1 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}.H .h1 .cta{animation:pulse 1s ease-in-out infinite}
+.H .h2 .plate{object-position:72% 50%}.H .h2 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.86) 0%,rgba(0,0,0,.55) 38%,transparent 62%)}
+.H .h2 .cardt{right:14px;top:12px}.H .h2 .prompt{position:absolute;left:14px;top:48px;z-index:8;animation:hideLate 4s linear infinite}.H .h2 .prompt .word{font-size:36px}.H .h2 .prompt .small{margin-top:6px;color:#E8C98E}
+.H .h2 .hit{position:absolute;left:152px;top:44px;width:44px;height:44px;z-index:7;animation:hideLate 4s linear infinite}.H .h2 .hit i{position:absolute;inset:0;border:2px solid #FFE968;border-radius:99px;animation:ring 1.3s ease-out infinite}.H .h2 .hit i:nth-child(2){animation-delay:.65s}
+.H .h2 .finger{position:absolute;left:172px;top:70px;font-size:26px;z-index:9;animation:tapper 1.3s ease-in-out infinite,hideLate 4s linear infinite}
+.H .h2 .won{position:absolute;left:14px;top:48px;z-index:8;animation:revealLate 4s ease-out infinite;transform-origin:left center}.H .h2 .won .gold{font-size:44px}.H .h2 .won .small{margin-top:6px}
+.H .h2 .ctaw{position:absolute;right:14px;bottom:24px;z-index:8;animation:revealLate 4s ease-out infinite}
+.H .h3{background:#050507}.H .h3 .phone{position:absolute;right:16px;top:22px;width:104px;height:196px;border-radius:16px;overflow:hidden;z-index:4;border:3px solid #2a2a2e;box-shadow:0 0 0 1px #0a0a0a,0 14px 30px rgba(0,0,0,.9),0 0 34px rgba(255,120,200,.28)}
+.H .h3 .phone img{width:100%;height:100%;object-fit:cover;object-position:50% 30%;display:block}.H .h3 .phone::after{content:'';position:absolute;left:50%;top:6px;transform:translateX(-50%);width:34px;height:5px;border-radius:99px;background:#111}
+.H .h3 .phone .m{position:absolute;left:0;right:0;bottom:10px;text-align:center;font-size:7px;font-weight:900;letter-spacing:.14em;color:#fff;text-transform:uppercase;background:rgba(0,0,0,.55);padding:3px 0}
+.H .h3 .lines{position:absolute;left:14px;top:58px;z-index:8;width:160px}.H .h3 .lines .word{font-size:26px;opacity:0;animation:fadeUp .5s ease-out forwards}
+.H .h3 .lines .word:nth-child(1){animation-delay:.2s}.H .h3 .lines .word:nth-child(2){animation-delay:.8s;color:#E8C98E}.H .h3 .lines .word:nth-child(3){animation-delay:1.4s;font-size:20px;color:#9a9a9a}
+.H .h3 .lines .small{margin-top:10px;color:#F2A5D6;opacity:0;animation:fadeUp .5s ease-out 2s forwards}.H .h3 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}
+.H .h4{background:#050507}.H .h4 .fan{right:-12px;bottom:16px;opacity:0;animation:fadeUp .6s ease-out 2.1s forwards}
+.H .h4 .copy{position:absolute;left:16px;top:50px;z-index:8;width:150px}.H .h4 .copy>div{opacity:0;animation:fadeUp .5s ease-out forwards}
+.H .h4 .yes{font-size:54px;animation-delay:.1s!important}.H .h4 .l2{font-size:13px;font-weight:900;color:#fff;margin-top:6px;animation-delay:.7s!important}.H .h4 .l3{font-size:13px;font-weight:900;color:#8f8f8f;margin-top:2px;animation-delay:1.2s!important}.H .h4 .l4{font-size:17px;font-weight:900;color:#F2C14A;margin-top:12px;animation-delay:1.8s!important}
+.H .h4 .ctaw{position:absolute;left:16px;bottom:24px;z-index:8;opacity:0;animation:fadeUp .5s ease-out 2.4s forwards}
+.H .h5 .plate{object-position:58% 30%}.H .h5 .scrim{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.2) 70%,transparent 100%)}
+.H .h5 .slots,.G .g5 .slots{position:absolute;left:44px;top:36px;display:flex;gap:10px;z-index:8;animation:shake 4s ease-in-out infinite}
+.H .h5 .slot,.G .g5 .slot{width:64px;height:64px;border-radius:99px;border:2.5px solid #E0AC45;box-shadow:0 0 18px rgba(224,172,69,.55),0 6px 14px rgba(0,0,0,.8);background:url('assets/games/fortune-tiger.webp') center 28%/175% auto no-repeat #120c05}
+.H .h5 .slot.dark,.G .g5 .slot.dark{filter:grayscale(1) brightness(.55);border:2.5px dashed #9a8a6a;box-shadow:0 0 0 3px rgba(0,0,0,.7)}
+.H .h5 .copy,.G .g5 .copy{position:absolute;left:0;right:0;top:120px;text-align:center;z-index:8}.H .h5 .copy .word,.G .g5 .copy .word{font-size:34px}.H .h5 .copy .small,.G .g5 .copy .small{margin-top:7px;color:#E8C98E}
+.H .h5 .ctaw,.G .g5 .ctaw{position:absolute;left:0;right:0;bottom:24px;text-align:center;z-index:8}
+.H .h6 .plate{object-position:54% 50%;filter:brightness(.55) saturate(1.1)}.H .h6 .scrim{background:radial-gradient(90% 70% at 50% 50%,rgba(0,0,0,.35),rgba(0,0,0,.8))}
+.H .h6 .cardt{left:14px;top:150px}.H .h6 .lbl{position:absolute;left:0;right:0;top:52px;text-align:center;z-index:8;font-size:9px;font-weight:900;letter-spacing:.24em;color:#A3946A;text-transform:uppercase}
+.H .h6 .jack{position:absolute;left:0;right:0;top:78px;z-index:8;display:flex;justify-content:center;align-items:flex-start;font-size:66px;letter-spacing:.01em}
+.H .h6 .win{height:60px;overflow:hidden;display:block}.H .h6 .win i{display:block;font-style:normal;line-height:60px;animation:dg 4s steps(10,end) infinite}
+.H .h6 .take{position:absolute;right:16px;bottom:26px;z-index:8;font-size:11px;font-weight:900;color:#fff;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #FFE968;padding-bottom:2px;text-shadow:0 2px 6px #000;animation:pulse 4s ease-in-out infinite}
+
+/* ---- SET C · the same mechanics on the glamour plates ---- */
+.G .Lsc .scrim{background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.82) 34%,rgba(0,0,0,.30) 60%,transparent 82%)}
+.G .g1 .plate{object-position:74% 40%}.G .g1 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.72) 36%,rgba(0,0,0,.2) 62%,transparent 84%),linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 35%)}
+.G .g1 .cardt{right:12px;top:12px}.G .g1 .live{position:absolute;right:12px;top:90px;z-index:8;font-size:7.5px;font-weight:900;letter-spacing:.14em;color:#fff;text-transform:uppercase;width:54px;text-align:center}
+.G .g1 .lbl2{position:absolute;left:14px;top:54px;z-index:8;font-size:9px;font-weight:900;letter-spacing:.2em;color:#9FC3E8;text-transform:uppercase}
+.G .g1 .timer{position:absolute;left:14px;top:70px;z-index:8;display:flex;align-items:flex-start;font-size:74px}.G .g1 .win{height:66px;overflow:hidden;display:block}.G .g1 .win i{display:block;font-style:normal;line-height:66px;animation:cd 4s steps(7,end) infinite}
+.G .g1 .under{position:absolute;left:14px;top:150px;z-index:8}.G .g1 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}.G .g1 .cta{animation:pulse 1s ease-in-out infinite}
+.G .g2 .plate{object-position:68% 40%}.G .g2 .cardt{right:12px;top:12px}
+.G .g2 .prompt{position:absolute;left:14px;top:48px;z-index:8;animation:hideLate 4s linear infinite}.G .g2 .prompt .word{font-size:36px}.G .g2 .prompt .small{margin-top:6px;color:#E8C98E}
+.G .g2 .hit{position:absolute;left:112px;top:96px;width:44px;height:44px;z-index:7;animation:hideLate 4s linear infinite}.G .g2 .hit i{position:absolute;inset:0;border:2px solid #FFE968;border-radius:99px;animation:ring 1.3s ease-out infinite}.G .g2 .hit i:nth-child(2){animation-delay:.65s}
+.G .g2 .finger{position:absolute;left:132px;top:122px;font-size:26px;z-index:9;animation:tapper 1.3s ease-in-out infinite,hideLate 4s linear infinite}
+.G .g2 .won{position:absolute;left:14px;top:48px;z-index:8;animation:revealLate 4s ease-out infinite;transform-origin:left center}.G .g2 .won .gold{font-size:44px}.G .g2 .won .small{margin-top:6px}
+.G .g2 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8;animation:revealLate 4s ease-out infinite;transform-origin:left center}
+.G .g3 .plate{object-position:76% 45%}.G .g3 .cardt{right:12px;top:12px}
+.G .g3 .lines{position:absolute;left:14px;top:58px;z-index:8;width:160px}.G .g3 .lines .word{font-size:26px;opacity:0;animation:fadeUp .5s ease-out forwards}
+.G .g3 .lines .word:nth-child(1){animation-delay:.2s}.G .g3 .lines .word:nth-child(2){animation-delay:.8s;color:#E8C98E}.G .g3 .lines .word:nth-child(3){animation-delay:1.4s;font-size:20px;color:#bdbdbd}
+.G .g3 .lines .small{margin-top:10px;color:#F2A5D6;opacity:0;animation:fadeUp .5s ease-out 2s forwards}.G .g3 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}
+.G .g4 .plate{object-position:22% 50%}.G .g4 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 40%,rgba(0,0,0,.35) 66%,transparent 86%)}
+.G .g4 .cardt{right:12px;top:12px;opacity:0;animation:fadeUp .6s ease-out 2.1s forwards}
+.G .g4 .copy{position:absolute;left:16px;top:50px;z-index:8;width:150px}.G .g4 .copy>div{opacity:0;animation:fadeUp .5s ease-out forwards}
+.G .g4 .yes{font-size:54px;animation-delay:.1s!important}.G .g4 .l2{font-size:13px;font-weight:900;color:#fff;margin-top:6px;animation-delay:.7s!important}.G .g4 .l3{font-size:13px;font-weight:900;color:#a0a0a0;margin-top:2px;animation-delay:1.2s!important}.G .g4 .l4{font-size:17px;font-weight:900;color:#F2C14A;margin-top:12px;animation-delay:1.8s!important}
+.G .g4 .ctaw{position:absolute;left:16px;bottom:24px;z-index:8;opacity:0;animation:fadeUp .5s ease-out 2.4s forwards}
+.G .g5 .plate{object-position:96% 52%}.G .g5 .scrim{background:linear-gradient(0deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.72) 40%,rgba(0,0,0,.25) 70%,transparent 100%),linear-gradient(90deg,rgba(0,0,0,.6),transparent 50%)}
+.G .g6 .plate{object-position:66% 45%;filter:brightness(.85)}.G .g6 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.25) 68%,transparent 88%)}
+.G .g6 .cardt{left:14px;bottom:24px}.G .g6 .lbl{position:absolute;left:14px;top:52px;z-index:8;font-size:9px;font-weight:900;letter-spacing:.24em;color:#A3946A;text-transform:uppercase}
+.G .g6 .jack{position:absolute;left:14px;top:74px;z-index:8;display:flex;align-items:flex-start;font-size:56px;letter-spacing:.01em}.G .g6 .win{height:52px;overflow:hidden;display:block}.G .g6 .win i{display:block;font-style:normal;line-height:52px;animation:dg52 4s steps(10,end) infinite}
+.G .g6 .take{position:absolute;left:14px;top:136px;z-index:8;font-size:11px;font-weight:900;color:#fff;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #FFE968;padding-bottom:2px;text-shadow:0 2px 6px #000;animation:pulse 4s ease-in-out infinite;display:inline-block}
+
+footer{padding-block:40px 20px;font-size:12.5px;color:var(--dim);border-top:1px solid var(--line);display:flex;flex-wrap:wrap;gap:8px 24px}
+footer b{color:var(--muted)}
+</style>
+
+<div class="wrap">
+<header>
+  <div class="eyebrow">Winfun777 × Midnight Circuit · prepared by Lucifer Gaming</div>
+  <h1 style="margin-top:14px">Ads for people who came for something else</h1>
+  <p class="lede">Every unit here is built for one placement: the ad slots on Pornhub, RedTube, YouPorn and Tube8, bought through the Midnight Circuit network. The user did not come to evaluate a casino. <b>Nothing below asks him to.</b> Every ad is live and animating on this page exactly as it would in the slot, with the reasoning beside it.</p>
+  <div class="meta"><span><b>Client</b> Winfun777.com · US market</span><span><b>Network</b> Midnight Circuit</span><span><b>Status</b> Set E film delivered · 22 Sep 2026</span><span><b>Judged at</b> true 1× on a black page</span></div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#next">Sizes, QC, next</a>
+</nav>
+
+<section id="brief">
+  <div class="eyebrow">The brief</div>
+  <h2>Where these run, and who is looking</h2>
+  <div class="grid5">
+    <div class="stat"><div class="v">144M</div><div class="k">visits per day</div></div>
+    <div class="stat"><div class="v">84.5%</div><div class="k">mobile</div></div>
+    <div class="stat"><div class="v">38%</div><div class="k">United States</div></div>
+    <div class="stat"><div class="v">63.5%</div><div class="k">male</div></div>
+    <div class="stat"><div class="v">50%</div><div class="k">aged 18–34</div></div>
+  </div>
+  <p class="lede" style="margin-top:22px">The media kit's five display sizes. Everything on this page is built at <b>300×250</b> — the size the inline slot uses and the one that doubles as the classic interstitial. The other four are a re-run of the same templates once a direction is picked.</p>
+  <div class="sizes"><span class="now">300×250 · banner + interstitial</span><span>305×99</span><span>300×150</span><span>950×250</span><span>320×480 · interstitial</span></div>
+  <div class="grid2">
+    <div class="card"><h3>Two rules from the network that shape everything</h3><p>All creative is due <b>two business days before launch</b>, and any change to a live campaign also takes two business days. Interstitial images are capped at <b>300 KB</b>, interstitial video at <b>1 MB</b>. So we ship several variants per slot up front and let the network's Autopilot rotate to the winners, rather than planning to tune in flight.</p></div>
+    <div class="card"><h3>What the competition is doing in the same slot</h3><p>BET88 runs a model, a bonus percentage, a game-brand panel and a live jackpot counter, on a near-black ground. The network's own media kit is anime pin-ups. That is the register the page already speaks — an ad that looks like a bank's welcome screen is the thing that doesn't fit here.</p></div>
+  </div>
+  <figure><img src="assets/ref/placements-in-situ.png" alt="Mock of the three ad slots on a mobile tube-site page: a text-link bar and a native round row at the top, and the inline banner below the video's channel row"><figcaption>The three slots, mocked at device width. The inline banner under the channel row is the money slot: it sits at the post-video trough, the moment the user is most open to a new stimulus.</figcaption></figure>
+</section>
+
+<section id="strategy">
+  <div class="eyebrow">Strategy</div>
+  <h2>Selling a casino to someone who came for porn</h2>
+  <div class="grid2">
+    <div class="card bad"><h3>What the category does</h3><p>Shouts an offer — <b>"150% FIRST DEPOSIT BONUS"</b> — at a distracted, aroused, goal-directed user, and asks him to switch into financial-decision mode, open a wallet and fill a form. A cold ask at the worst possible moment, so the category compensates with volume and accepts a terrible click-to-deposit rate.</p></div>
+    <div class="card good"><h3>What we do instead</h3><p>Offer the <b>same feeling he is already chasing</b>, with less friction than the thing he is doing now. No wallet, no form, no decision. One tap, instant result. The money conversation happens later, once he is already in the loop.</p></div>
+  </div>
+  <div class="insight"><h3>The bridge</h3><p>Slots and porn browsing run on <b>the same reward circuit</b> — variable ratio, anticipation, near-miss, "one more". The user scrolling for the next clip and the user pulling for the next spin are in an identical posture. <b>So don't ask him to switch modes. Hand him the same loop in a different skin.</b> Every unit on this page is one expression of that sentence.</p></div>
+  <div class="grid5">
+    <div class="rule"><div class="n">1</div><h4>Ask for a spin, never a deposit</h4><p>"Deposit" is the friction. Winfun777 already has a <b>Free Games</b> section — that is the door. Free play → deposit is the funnel. Ad → deposit is not.</p></div>
+    <div class="rule"><div class="n">2</div><h4>Make the ad the first move of the game</h4><p>Not an ad <i>for</i> the game. A unit he can tap and win inside. The click becomes claiming a prize he already owns.</p></div>
+    <div class="rule"><div class="n">3</div><h4>Present tense beats offers</h4><p>"Round starts in 8." "Jackpot live now." Something is happening without him. That is curiosity. A bonus percentage is homework.</p></div>
+    <div class="rule"><div class="n">4</div><h4>Match the page, then pivot</h4><p>The units that get clicked look like the site's own content — round thumbnails, live dots, counters, and yes, a woman. Borrow the grammar, then deliver a game.</p></div>
+    <div class="rule"><div class="n">5</div><h4>Land him mid-action</h4><p>If he spun in the ad, the first screen after the click <b>spins</b>. A homepage kills the momentum the ad just bought. Every click here lands on free play.</p></div>
+  </div>
+  <div class="note"><h4>On the sexualised register — a deliberate line</h4><p>The competing ads in these slots use models; the native row beside ours is cam thumbnails. Matching the page is a real performance lever and the client has chosen to use it. The line we hold is <b>suggestive, not explicit</b> — and not for modesty's sake: explicit creative dissolves into the page it sits on, and the network's own ad policy bounces nudity. Satin, skin, a direct gaze and gold is what pops against that page. Set C below is built to that line.</p></div>
+</section>
+
+<section id="slots">
+  <div class="eyebrow">The three slots</div>
+  <h2>What each placement is actually for</h2>
+  <div class="grid3">
+    <div class="card"><h3 style="color:var(--danger)">Inline banner — buy this first</h3><p>Under the channel row, above the comments. It sits at the <b>post-video trough</b>. Run the mechanics from Set B and C here. Sizes 300×250 and 300×150, scaled to device width.</p></div>
+    <div class="card"><h3 style="color:var(--gold2)">Text-link bar — cheap volume</h3><p>No image, so no offer — this unit only does curiosity and numbers, present tense, under six words: <b>"$589,182 live" · "Aviator in 8s" · "Spin free"</b>. Judge it on assisted clicks, not CPA; rotate weekly.</p></div>
+    <div class="card"><h3 style="color:var(--unc)">Native round row — highest CTR upside</h3><p>It does not read as an ad; that is the whole value. Mirror the row's grammar exactly — round crop, gold ring, green live dot, a real jackpot figure underneath. Native units fatigue fastest: swap games fortnightly.</p></div>
+  </div>
+</section>
+
+<!-- ============================== SET A ============================== -->
+<section id="setA" class="A">
+  <div class="sethead"><span class="pin conv">Set A · the control</span><h2>What the category runs, done properly</h2></div>
+  <p class="setlede">Six conventional units — kicker, big gold number, sub-line, button — on rendered plates, in one design system with three plate-driven layouts. These are <b>the baseline the other sets have to beat</b>, and they exist so the test has a control. Each passed a 14-point check at true 1× on a black page. Their weakness is the honest reason Sets B and C exist: they are a well-executed BET88, and nothing in them knows where it is running.</p>
+  <div class="units">
+    <div class="item"><div class="unitframe"><div class="unit L"><img class="plate" src="assets/plates/p1-olympus.jpg" style="object-position:72% 50%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#FFD86A">Gates of Olympus</div><div class="gold num" data-t="150%"><span>150%</span></div><div class="sub">First deposit bonus</div></div><div class="ctaw"><span class="cta cta-gold">Play Now</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A1 · Olympus</h4><dl><dt>Hook</dt><dd>150% first deposit — the flagship acquisition offer</dd><dt>Why</dt><dd>Their logo is a Zeus and they carry Gates of Olympus. <b>Brand mark and hero game tell one story.</b></dd><dt>Layout</dt><dd>L — text column left, subject right</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit L"><img class="plate" src="assets/plates/p2-win-reaction.jpg" style="object-position:66% 44%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#7CEFA8">Spin &amp; win up to</div><div class="gold num" data-t="$7,777"><span>$7,777</span></div><div class="sub">Lucky Spin · cash prizes</div></div><div class="ctaw"><span class="cta cta-live">Spin Now</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A2 · Win reaction</h4><dl><dt>Hook</dt><dd>$7,777 Lucky Spin</dd><dt>Why</dt><dd>The competitor's lever done properly — a real reaction caught mid-laugh, lit by her phone, not a glamour pose. Copy is an offer, <b>not an implied winner claim</b>.</dd><dt>Layout</dt><dd>L</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit B flip"><img class="plate" src="assets/plates/p3-coins-from-phone.jpg" style="object-position:50% 50%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#FFD86A">Refer a friend, get</div><div class="gold num" data-t="$55"><span>$55</span></div><div class="sub">Per qualified friend</div></div><div class="ctaw"><span class="cta cta-gold">Invite Now</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A3 · Payout burst</h4><dl><dt>Hook</dt><dd>$55 referral</dd><dt>Why</dt><dd>Coins out of a phone is the visual for "share". The plate is <b>mirrored</b> so the burst sweeps away from the type.</dd><dt>Layout</dt><dd>B — bottom band; the burst owns the top</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit C"><img class="plate" src="assets/plates/p4-aviator.jpg" style="object-position:42% 54%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#6FA8E0">Aviator · live round</div><div class="mono hero">9.41x</div><div class="sub">Cash out before it crashes</div></div><div class="ctaw"><span class="cta cta-neon">Play Free</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A4 · Aviator</h4><dl><dt>Hook</dt><dd>The live multiplier</dd><dt>Why</dt><dd>Thirty-second rounds, one button, a rising number and a crash — <b>the only game in their lobby built for a distracted audience.</b> The multiplier is the ad, so it is the hero.</dd><dt>Layout</dt><dd>C — centred hero</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit L"><img class="plate" src="assets/plates/p5-vault.jpg" style="object-position:54% 50%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#FFD86A">Win up to</div><div class="gold num" data-t="$9,999"><span>$9,999</span></div><div class="sub">Treasure Mine</div></div><div class="ctaw"><span class="cta cta-gold">Start Digging</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A5 · The vault</h4><dl><dt>Hook</dt><dd>$9,999 Treasure Mine</dd><dt>Why</dt><dd>The most reusable plate of the set — it sits behind any big-number hook.</dd><dt>Layout</dt><dd>L</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit L"><img class="plate" src="assets/plates/p6-fortune-tiger.jpg" style="object-position:58% 50%" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="txt"><div class="kick" style="color:#FF9A7A">Daily Rescue · up to</div><div class="gold num" data-t="50%"><span>50%</span></div><div class="sub">Loss cashback every day</div></div><div class="ctaw"><span class="cta cta-gold">Claim Today</span></div><span class="shine"></span><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>A6 · Fortune Tiger</h4><dl><dt>Hook</dt><dd>50% daily loss cashback</dd><dt>Why</dt><dd>A different world from the gold plates, for the Fortune shelf. Cashback is the retention hook, not the acquisition one.</dd><dt>Layout</dt><dd>L</dd></dl></div></div>
+  </div>
+</section>
+
+<!-- ============================== SET B ============================== -->
+<section id="setB" class="H">
+  <div class="sethead"><span class="pin unc">Set B · unconventional</span><h2>Six mechanics, not six backgrounds</h2></div>
+  <p class="setlede">No unit here uses the kicker / number / sub / button layout. Each one is a different <b>mechanic</b> — a thing that happens — and each carries a <b>real tile from the winfun777 lobby</b>, because a Sweet Bonanza player recognises the candy in a tenth of a second and a generic Zeus is not Gates of Olympus. These are the ideas; Set C puts them in the register the placement demands.</p>
+  <div class="units">
+    <div class="item"><div class="unitframe"><div class="unit h1"><img class="plate" src="assets/plates/p4-aviator.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/aviator.webp" alt="Aviator"></div><div class="live"><span class="livedot"></span>Live</div><div class="lbl2">Next round in</div><div class="timer mono">00:<span class="win"><i>08<br>07<br>06<br>05<br>04<br>03<br>02<br>01</i></span></div><div class="under small">4,218 players waiting</div><div class="ctaw"><span class="cta cta-neon">Get in</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B1 · Countdown</h4><dl><dt>Mechanic</dt><dd>A live round starting in eight seconds. <b>An event, not an offer.</b></dd><dt>Earns the click</dt><dd>Something is happening without him. Rule 3.</dd><dt>Game</dt><dd>Aviator — its real tile</dd><dt>Lands on</dt><dd>The Aviator lobby, free round</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit h2"><img class="plate" src="assets/plates/p1-olympus.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/gates-of-olympus.webp" alt="Gates of Olympus"></div><div class="prompt"><div class="word">TAP<br>THE<br>BOLT</div><div class="small">One free strike · no signup</div></div><div class="hit"><i></i><i></i></div><div class="finger">👆</div><div class="won"><div class="gold" data-t="50 SPINS"><span>50 SPINS</span></div><div class="small">On Gates of Olympus</div></div><div class="ctaw"><span class="cta cta-gold">Claim them</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B2 · Tap the bolt</h4><dl><dt>Mechanic</dt><dd>The plate is the game board. Tap, win 50 spins inside the ad.</dd><dt>Earns the click</dt><dd>The click <b>claims something he already owns</b> — not a signup. Rule 2.</dd><dt>Game</dt><dd>Gates of Olympus</dd><dt>Lands on</dt><dd>The free-spin claim</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit h3"><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="phone"><img src="assets/games/sweet-bonanza.webp" alt=""><div class="m">Sweet Bonanza</div></div><div class="lines"><div class="word">30 SECONDS.</div><div class="word">ONE TAP.</div><div class="word">BACK TO YOUR VIDEO.</div><div class="small">Sweet Bonanza · free spins · no signup</div></div><div class="ctaw"><span class="cta cta-neon">Play free</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B3 · Second screen</h4><dl><dt>Mechanic</dt><dd>Names exactly what he is doing and offers a thirty-second detour.</dd><dt>Earns the click</dt><dd>It lowers the ask to the only one a mid-session viewer accepts. Rule 1.</dd><dt>Game</dt><dd>Sweet Bonanza, playing on the phone</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit h4"><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="fan"><img class="tile t1" src="assets/games/sweet-bonanza.webp" alt=""><img class="tile t2" src="assets/games/gates-of-olympus.webp" alt=""><img class="tile t3" src="assets/games/fortune-tiger.webp" alt=""></div><div class="copy"><div class="word yes">Yes.</div><div class="l2">This is a casino ad.</div><div class="l3">You knew. We knew.</div><div class="l4">Free spin anyway?</div></div><div class="ctaw"><span class="cta cta-gold">Go on then</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B4 · The confession</h4><dl><dt>Mechanic</dt><dd>Text only. Admits what it is.</dd><dt>Earns the click</dt><dd>Nothing else in that inventory is honest with him; the games fan in as the punchline. Rule 4.</dd><dt>Game</dt><dd>Three real tiles</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit h5"><img class="plate" src="assets/plates/p6-fortune-tiger.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="slots"><div class="slot"></div><div class="slot"></div><div class="slot dark"></div></div><div class="copy"><div class="word">ONE SHORT.</div><div class="small">Fortune Tiger · your next spin is free</div></div><div class="ctaw"><span class="cta cta-gold">Spin again</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B5 · One short</h4><dl><dt>Mechanic</dt><dd>Two tigers lit, the third empty, then the row shakes.</dd><dt>Earns the click</dt><dd><b>Unfinished action is harder to scroll past than an offer.</b> The near-miss is the slot machine's own oldest trick.</dd><dt>Game</dt><dd>Fortune Tiger — the medallions are its real art</dd><dt>Lands on</dt><dd>Fortune Tiger, free spin</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit h6"><img class="plate" src="assets/plates/p5-vault.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/gates-of-olympus.webp" alt="Gates of Olympus"></div><div class="lbl">Jackpot · right now</div><div class="jack mono">589,1<span class="win"><i>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0<br>1<br>2<br>3</i></span><span class="win"><i>7<br>8<br>9<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7</i></span></div><div class="take">Tap to take it ↗</div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>B6 · The number</h4><dl><dt>Mechanic</dt><dd>The jackpot fills the frame and ticks. No button.</dd><dt>Earns the click</dt><dd>A live figure is a reason to click <b>now</b>. The whole unit is the tap.</dd><dt>Game</dt><dd>Gates of Olympus</dd><dt>Lands on</dt><dd>The game page</dd></dl></div></div>
+  </div>
+</section>
+
+<!-- ============================== SET C ============================== -->
+<section id="setC" class="G">
+  <div class="sethead"><span class="pin glam">Set C · for the placement</span><h2>The same six mechanics, in the room they run in</h2></div>
+  <p class="setlede">Set B's ideas on plates that match the page: a dealer leaning in, a woman in bed on her phone, a goddess glancing back, a showgirl at the lever, a whispered shh, and the network's own anime house style. <b>Suggestive, never explicit</b> — the line above. The mechanics are unchanged; the woman is now the thing they ride on, and the real game tile still anchors every unit.</p>
+  <div class="units">
+    <div class="item"><div class="unitframe"><div class="unit g1"><img class="plate" src="assets/plates/g4-showgirl-spin.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/aviator.webp" alt="Aviator"></div><div class="live"><span class="livedot"></span>Live</div><div class="lbl2">She pulls in</div><div class="timer mono">00:<span class="win"><i>08<br>07<br>06<br>05<br>04<br>03<br>02<br>01</i></span></div><div class="under small">4,218 players waiting</div><div class="ctaw"><span class="cta cta-neon">Get in</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C1 · Countdown</h4><dl><dt>Plate</dt><dd>Showgirl in gold sequins, hand on the lever</dd><dt>Why it works</dt><dd>The countdown is now <b>to her pull</b>. The live event has a person attached to it.</dd><dt>Game</dt><dd>Aviator</dd><dt>Lands on</dt><dd>The Aviator lobby</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit g2"><img class="plate" src="assets/plates/g3-olympus-goddess.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/gates-of-olympus.webp" alt="Gates of Olympus"></div><div class="prompt"><div class="word">TAP<br>A<br>COIN</div><div class="small">One free catch · no signup</div></div><div class="hit"><i></i><i></i></div><div class="finger">👆</div><div class="won"><div class="gold" data-t="50 SPINS"><span>50 SPINS</span></div><div class="small">On Gates of Olympus</div></div><div class="ctaw"><span class="cta cta-gold">Claim them</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C2 · Tap a coin</h4><dl><dt>Plate</dt><dd>A goddess in a gold-strapped gown, coins drifting around her, looking back</dd><dt>Why it works</dt><dd>The tappable coins are already in the frame. The plate <b>is</b> the board.</dd><dt>Game</dt><dd>Gates of Olympus</dd><dt>Lands on</dt><dd>The free-spin claim</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit g3 Lsc"><img class="plate" src="assets/plates/g2-phone-in-bed.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/sweet-bonanza.webp" alt="Sweet Bonanza"></div><div class="lines"><div class="word">30 SECONDS.</div><div class="word">ONE TAP.</div><div class="word">BACK TO YOUR VIDEO.</div><div class="small">Sweet Bonanza · free spins · no signup</div></div><div class="ctaw"><span class="cta cta-neon">Play free</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C3 · Second screen</h4><dl><dt>Plate</dt><dd>On dark silk, on her stomach, on her phone, looking past it at him</dd><dt>Why it works</dt><dd>The strongest pairing in the set. <b>She is already doing the thing the copy suggests.</b></dd><dt>Game</dt><dd>Sweet Bonanza</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit g4"><img class="plate" src="assets/plates/g5-whisper.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/sweet-bonanza.webp" alt="Sweet Bonanza"></div><div class="copy"><div class="word yes">Yes.</div><div class="l2">This is a casino ad.</div><div class="l3">You knew. We knew.</div><div class="l4">Free spin anyway?</div></div><div class="ctaw"><span class="cta cta-gold">Go on then</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C4 · The confession</h4><dl><dt>Plate</dt><dd>Red lips, a gold nail, shh</dd><dt>Why it works</dt><dd>The confession now has a co-conspirator. The gesture and the copy say the same thing.</dd><dt>Game</dt><dd>Sweet Bonanza, revealed last</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit g5"><img class="plate" src="assets/plates/g6-anime-house-style.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="slots"><div class="slot"></div><div class="slot"></div><div class="slot dark"></div></div><div class="copy"><div class="word">ONE SHORT.</div><div class="small">Fortune Tiger · your next spin is free</div></div><div class="ctaw"><span class="cta cta-gold">Spin again</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C5 · One short</h4><dl><dt>Plate</dt><dd>The network's own house style — horns, white hair, lace, a pile of gold</dd><dt>Why it works</dt><dd>It looks like it belongs to the site that is serving it. Rule 4, literally.</dd><dt>Game</dt><dd>Fortune Tiger medallions</dd><dt>Lands on</dt><dd>Fortune Tiger, free spin</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit g6"><img class="plate" src="assets/plates/g1-dealer.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt logo"><img class="tile" src="assets/superace-logo.png" alt="Super Ace"></div><div class="lbl">Jackpot · right now</div><div class="jack mono">589,1<span class="win"><i>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0<br>1<br>2<br>3</i></span><span class="win"><i>7<br>8<br>9<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7</i></span></div><div class="take">Tap to take it ↗</div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>C6 · The number</h4><dl><dt>Plate</dt><dd>A dealer in black satin, leaning over the table with a fan of gold chips</dd><dt>Why it works</dt><dd>The live jackpot now has someone <b>dealing it</b>. The eye goes number → her → the tap.</dd><dt>Game</dt><dd>Super Ace (JILI)</dd><dt>Lands on</dt><dd>Super Ace</dd></dl></div></div>
+  </div>
+
+  <!-- setC-motion -->
+  <h3 style="margin-top:38px">In motion — the same set as video units</h3>
+  <p class="setlede">Each plate is now a five-second generated clip with the copy composited back over it in code, so the type stays sharp while the picture moves. Shown at the interstitial’s 320 × 480; a 300 × 250 cut of each exists too. Every file is inside the network’s 1 MB video cap. One plate of the six — the phone in bed — is still missing: the generator’s own screen rejected it twice, so that unit needs a re-plate before it can move.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/video/setC/c1-dealer-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">C1 · Live table <span>320 × 480 · 5 s · under the 1 MB cap · “One hand. Thirty seconds.”</span></div></div>
+    <div class="reel"><video src="assets/video/setC/c3-goddess-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">C2 · Coin catch <span>320 × 480 · 5 s · under the 1 MB cap · “They fall. You catch.”</span></div></div>
+    <div class="reel"><video src="assets/video/setC/c4-showgirl-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">C3 · The pull <span>320 × 480 · 5 s · under the 1 MB cap · “Pull it.”</span></div></div>
+    <div class="reel"><video src="assets/video/setC/c5-whisper-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">C4 · The whisper <span>320 × 480 · 5 s · under the 1 MB cap · “One short.”</span></div></div>
+    <div class="reel"><video src="assets/video/setC/c6-anime-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">C5 · House style <span>320 × 480 · 5 s · under the 1 MB cap · “Spin again.”</span></div></div>
+  </div>
+</section>
+
+<!-- ============================== SET D ============================== -->
+<style>
+.pin.ceil{background:#FF8A9A}
+.unit .cta-red{background:linear-gradient(180deg,#FF7A7A 0%,#C21F2E 100%);color:#fff;border:1.5px solid #FFC4C4;box-shadow:0 0 20px rgba(255,80,80,.7),0 2px 8px rgba(0,0,0,.8)}
+.D .Lsc .scrim{background:linear-gradient(90deg,rgba(0,0,0,.94) 0%,rgba(0,0,0,.82) 34%,rgba(0,0,0,.30) 60%,transparent 82%)}
+.D .d1 .plate{object-position:62% 45%}.D .d1 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.92) 0%,rgba(0,0,0,.72) 36%,rgba(0,0,0,.2) 62%,transparent 84%),linear-gradient(0deg,rgba(0,0,0,.7) 0%,transparent 35%)}
+.D .d1 .cardt{right:12px;top:12px}.D .d1 .live{position:absolute;right:12px;top:90px;z-index:8;font-size:7.5px;font-weight:900;letter-spacing:.14em;color:#fff;text-transform:uppercase;width:54px;text-align:center}
+.D .d1 .lbl2{position:absolute;left:14px;top:54px;z-index:8;font-size:9px;font-weight:900;letter-spacing:.2em;color:#9FC3E8;text-transform:uppercase}
+.D .d1 .timer{position:absolute;left:14px;top:70px;z-index:8;display:flex;align-items:flex-start;font-size:74px}.D .d1 .win{height:66px;overflow:hidden;display:block}.D .d1 .win i{display:block;font-style:normal;line-height:66px;animation:cd 4s steps(7,end) infinite}
+.D .d1 .under{position:absolute;left:14px;top:150px;z-index:8}.D .d1 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}.D .d1 .cta{animation:pulse 1s ease-in-out infinite}
+.D .d2 .plate{object-position:66% 45%}.D .d2 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.88) 0%,rgba(0,0,0,.6) 36%,transparent 60%)}
+.D .d2 .cardt{right:12px;top:12px}.D .d2 .prompt{position:absolute;left:14px;top:48px;z-index:8;animation:hideLate 4s linear infinite}.D .d2 .prompt .word{font-size:36px}.D .d2 .prompt .small{margin-top:6px;color:#E8C98E}
+.D .d2 .hit{position:absolute;left:104px;top:168px;width:44px;height:44px;z-index:7;animation:hideLate 4s linear infinite}.D .d2 .hit i{position:absolute;inset:0;border:2px solid #FFE968;border-radius:99px;animation:ring 1.3s ease-out infinite}.D .d2 .hit i:nth-child(2){animation-delay:.65s}
+.D .d2 .finger{position:absolute;left:124px;top:190px;font-size:26px;z-index:9;animation:tapper 1.3s ease-in-out infinite,hideLate 4s linear infinite}
+.D .d2 .won{position:absolute;left:14px;top:48px;z-index:8;animation:revealLate 4s ease-out infinite;transform-origin:left center}.D .d2 .won .gold{font-size:44px}.D .d2 .won .small{margin-top:6px}
+.D .d2 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8;animation:revealLate 4s ease-out infinite;transform-origin:left center}
+.D .d3 .plate{object-position:78% 40%}.D .d3 .cardt{right:12px;top:12px}
+.D .d3 .lines{position:absolute;left:14px;top:58px;z-index:8;width:164px}.D .d3 .lines .word{font-size:26px;opacity:0;animation:fadeUp .5s ease-out forwards}
+.D .d3 .lines .word:nth-child(1){animation-delay:.2s}.D .d3 .lines .word:nth-child(2){animation-delay:.8s;color:#E8C98E}.D .d3 .lines .word:nth-child(3){animation-delay:1.4s;font-size:20px;color:#bdbdbd}
+.D .d3 .lines .small{margin-top:10px;color:#F2A5D6;opacity:0;animation:fadeUp .5s ease-out 2s forwards}.D .d3 .ctaw{position:absolute;left:14px;bottom:24px;z-index:8}
+.D .d4 .plate{object-position:30% 50%}.D .d4 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.95) 0%,rgba(0,0,0,.86) 40%,rgba(0,0,0,.35) 66%,transparent 86%)}
+.D .d4 .cardt{right:12px;top:12px;opacity:0;animation:fadeUp .6s ease-out 2.1s forwards}
+.D .d4 .copy{position:absolute;left:16px;top:50px;z-index:8;width:176px}.D .d4 .copy>div{opacity:0;animation:fadeUp .5s ease-out forwards}
+.D .d4 .yes{font-size:54px;animation-delay:.1s!important}.D .d4 .l2{font-size:13px;font-weight:900;color:#fff;margin-top:6px;animation-delay:.7s!important}.D .d4 .l3{font-size:13px;font-weight:900;color:#a0a0a0;margin-top:2px;animation-delay:1.2s!important}.D .d4 .l4{font-size:16px;font-weight:900;color:#F2C14A;margin-top:12px;animation-delay:1.8s!important}
+.D .d4 .ctaw{position:absolute;left:16px;bottom:24px;z-index:8;opacity:0;animation:fadeUp .5s ease-out 2.4s forwards}
+.D .d5 .plate{object-position:62% 30%}.D .d5 .scrim{background:linear-gradient(0deg,rgba(0,0,0,.96) 0%,rgba(0,0,0,.8) 34%,rgba(0,0,0,.3) 60%,transparent 80%),linear-gradient(90deg,rgba(0,0,0,.75),transparent 48%)}
+.D .d5 .copy{position:absolute;left:14px;top:48px;z-index:8;width:170px}.D .d5 .copy .word{font-size:34px}.D .d5 .copy .small{margin-top:7px;color:#E8C98E}
+.D .d5 .slots{position:absolute;left:14px;top:132px;display:flex;gap:9px;z-index:8;animation:shake 4s ease-in-out infinite}
+.D .d5 .slot{width:56px;height:56px;border-radius:99px;border:2.5px solid #E0AC45;box-shadow:0 0 18px rgba(224,172,69,.55),0 6px 14px rgba(0,0,0,.8);background:url('assets/games/fortune-tiger.webp') center 28%/175% auto no-repeat #120c05}
+.D .d5 .slot.dark{filter:grayscale(1) brightness(.55);border:2.5px dashed #9a8a6a;box-shadow:0 0 0 3px rgba(0,0,0,.7)}
+.D .d5 .ctaw{position:absolute;right:14px;bottom:24px;z-index:8}
+.D .d6 .plate{object-position:72% 45%;filter:brightness(.9)}.D .d6 .scrim{background:linear-gradient(90deg,rgba(0,0,0,.9) 0%,rgba(0,0,0,.7) 40%,rgba(0,0,0,.25) 68%,transparent 88%)}
+.D .d6 .cardt{left:14px;bottom:24px}.D .d6 .lbl{position:absolute;left:14px;top:52px;z-index:8;font-size:9px;font-weight:900;letter-spacing:.24em;color:#A3946A;text-transform:uppercase}
+.D .d6 .jack{position:absolute;left:14px;top:74px;z-index:8;display:flex;align-items:flex-start;font-size:56px;letter-spacing:.01em}.D .d6 .win{height:52px;overflow:hidden;display:block}.D .d6 .win i{display:block;font-style:normal;line-height:52px;animation:dg52 4s steps(10,end) infinite}
+.D .d6 .take{position:absolute;left:14px;top:136px;z-index:8;font-size:11px;font-weight:900;color:#fff;letter-spacing:.06em;text-transform:uppercase;border-bottom:2px solid #FFE968;padding-bottom:2px;text-shadow:0 2px 6px #000;animation:pulse 4s ease-in-out infinite;display:inline-block}
+</style>
+<section id="setD" class="D">
+  <div class="sethead"><span class="pin ceil">Set D · the ceiling</span><h2>Everything up to the line</h2></div>
+  <p class="setlede">Set C was editorial glamour. The slot's real ceiling is lingerie, boudoir and POV — so this is the same six mechanics pushed to it: lace under a sheer robe over the table, a crawl across the sheets toward the phone, garters on the lever, a coin between her teeth. <b>The line is nudity and sex acts, and it is a hard one for three reasons that have nothing to do with taste:</b> the generator refuses past it (the first cut of D6, a wet bikini, was refused outright and re-cut as a sequinned one-piece), the network's ad policy bounces it, and explicit creative dissolves into the page it sits on. Everything below is right up against that line.</p>
+  <div class="units">
+    <div class="item"><div class="unitframe"><div class="unit d1"><img class="plate" src="assets/plates/x4-garters-lever.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/aviator.webp" alt="Aviator"></div><div class="live"><span class="livedot"></span>Live</div><div class="lbl2">She pulls in</div><div class="timer mono">00:<span class="win"><i>08<br>07<br>06<br>05<br>04<br>03<br>02<br>01</i></span></div><div class="under small">4,218 watching</div><div class="ctaw"><span class="cta cta-neon">Get in</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D1 · Countdown</h4><dl><dt>Plate</dt><dd>Garters, stockings and heels, straddling the lever</dd><dt>Why it works</dt><dd>The countdown is to <b>her</b> pull. The body language says it before the copy does.</dd><dt>Game</dt><dd>Aviator</dd><dt>Lands on</dt><dd>The Aviator lobby</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit d2"><img class="plate" src="assets/plates/x1-lace-dealer.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt logo"><img class="tile" src="assets/superace-logo.png" alt="Super Ace"></div><div class="prompt"><div class="word">TAP<br>A<br>CHIP</div><div class="small">One free hand · no signup</div></div><div class="hit"><i></i><i></i></div><div class="finger">👆</div><div class="won"><div class="gold" data-t="50 SPINS"><span>50 SPINS</span></div><div class="small">She's dealing</div></div><div class="ctaw"><span class="cta cta-gold">Claim them</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D2 · Tap a chip</h4><dl><dt>Plate</dt><dd>Black lace under an open sheer robe, leaning across the table, chips under her fingertips</dd><dt>Why it works</dt><dd>The tappable object is in her hand. The plate is the board and she is the dealer.</dd><dt>Game</dt><dd>Super Ace (JILI)</dd><dt>Lands on</dt><dd>The free-spin claim</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit d3 Lsc"><img class="plate" src="assets/plates/x2-pov-pillow.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/sweet-bonanza.webp" alt="Sweet Bonanza"></div><div class="lines"><div class="word">30 SECONDS.</div><div class="word">ONE TAP.</div><div class="word">SHE'S ON HERS.</div><div class="small">Sweet Bonanza · free spins · no signup</div></div><div class="ctaw"><span class="cta cta-neon">Play free</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D3 · Second screen</h4><dl><dt>Plate</dt><dd>POV from the pillow — she crawls toward the camera across the sheets, phone glowing beside her</dd><dt>Why it works</dt><dd>The strongest single image in the review. It is literally his point of view, and the game is already in the room.</dd><dt>Game</dt><dd>Sweet Bonanza</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit d4"><img class="plate" src="assets/plates/x5-coin-bite.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/gates-of-olympus.webp" alt="Gates of Olympus"></div><div class="copy"><div class="word yes">Yes.</div><div class="l2">This is a casino ad.</div><div class="l3">She knows.</div><div class="l4">Free spin anyway?</div></div><div class="ctaw"><span class="cta cta-gold">Go on then</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D4 · The confession</h4><dl><dt>Plate</dt><dd>A gold coin between her teeth, wet red lipstick, eyes up at the viewer</dd><dt>Why it works</dt><dd>The confession has a co-conspirator who is already in on it. The coin is the game; the bite is the wink.</dd><dt>Game</dt><dd>Gates of Olympus</dd><dt>Lands on</dt><dd>Free Games</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit d5"><img class="plate" src="assets/plates/x6-anime-succubus.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="copy"><div class="word">ONE SHORT.</div><div class="small">Fortune Tiger · your next spin is free</div></div><div class="slots"><div class="slot"></div><div class="slot"></div><div class="slot dark"></div></div><div class="ctaw"><span class="cta cta-red">Spin again</span></div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D5 · One short</h4><dl><dt>Plate</dt><dd>The network's house style, in black lace and thigh straps on a pile of gold</dd><dt>Why it works</dt><dd>Layout inverted — copy up, medallions low — so nothing sits on her face. It looks like the site's own art because it is drawn in the site's own style.</dd><dt>Game</dt><dd>Fortune Tiger medallions</dd><dt>Lands on</dt><dd>Fortune Tiger, free spin</dd></dl></div></div>
+    <div class="item"><div class="unitframe"><div class="unit d6"><img class="plate" src="assets/plates/x3-wet-gold.jpg" alt=""><div class="scrim"></div><div class="brandpill"><img src="assets/logo.png" alt="winfun777.com"></div><div class="cardt"><img class="tile" src="assets/games/crazy-777.webp" alt="Crazy 777"></div><div class="lbl">Jackpot · right now</div><div class="jack mono">589,1<span class="win"><i>3<br>4<br>5<br>6<br>7<br>8<br>9<br>0<br>1<br>2<br>3</i></span><span class="win"><i>7<br>8<br>9<br>0<br>1<br>2<br>3<br>4<br>5<br>6<br>7</i></span></div><div class="take">Tap to take it ↗</div><div class="cmp"><b>18+</b> · Play responsibly</div></div></div>
+      <div class="why"><h4>D6 · The number</h4><dl><dt>Plate</dt><dd>Gold sequins at the edge of a black pool, water on her shoulders, looking back</dd><dt>Why it works</dt><dd>This is the re-cut: the bikini version was refused by the generator. The one-piece landed. That is the ceiling, measured.</dd><dt>Game</dt><dd>Crazy 777</dd><dt>Lands on</dt><dd>The game page</dd></dl></div></div>
+  </div>
+
+  <!-- setD-motion -->
+  <h3 style="margin-top:38px">In motion — and where the ceiling actually is</h3>
+  <p class="setlede">Three of these six plates animate. The other three — the POV crawl, the figure at the pool and the anime one — were <b>refused by the generator’s own safety screen</b>, each on the first frame of the plate rather than on anything the prompt asked for. That is the ceiling measured a second time, in video rather than in stills: a plate can pass as an image and still be refused as the first frame of a clip. The three below are the ones the machine will make move, shown at the interstitial’s 320 × 480, all inside the 1 MB video cap; a 300 × 250 cut of each exists too.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/video/setD/d1-dealer-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">D2 · Tap a chip <span>320 × 480 · 5 s · under the 1 MB cap · “Tap a chip.”</span></div></div>
+    <div class="reel"><video src="assets/video/setD/d4-lever-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">D1 · The pull <span>320 × 480 · 5 s · under the 1 MB cap · “One free pull.”</span></div></div>
+    <div class="reel"><video src="assets/video/setD/d5-coin-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">D4 · The confession <span>320 × 480 · 5 s · under the 1 MB cap · “She knows.”</span></div></div>
+  </div>
+
+  <!-- poker-redirect -->
+  <h3 style="margin-top:38px">The redirect — a live poker table instead</h3>
+  <p class="setlede">Two notes killed the burlesque direction: the stage plates read <b>old-school</b> rather than hot, and the tight facial close-up rendered the skin <b>hard and lined</b> — an image-to-video crop that close magnifies every texture the model invents. So the set moves to a modern high-end poker room and a scarlet satin gown, cast young, and no crop tighter than the waist. Same line as everything else here: garments named, suggestive, nothing explicit.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/video/poker/pk1-lean-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">The live table <span>320 × 480 · 5 s · under the 1 MB cap · “Table’s live.”</span></div></div>
+    <div class="reel"><video src="assets/video/poker/pk2-cards-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">One free hand <span>320 × 480 · 5 s · under the 1 MB cap · “One free hand.”</span></div></div>
+    <div class="reel"><video src="assets/video/poker/pk3-stand-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">All in <span>320 × 480 · 5 s · under the 1 MB cap · “All in.”</span></div></div>
+  </div>
+</section>
+
+<!-- ============================== SET E ============================== -->
+<style>
+.pin.reel{background:#FFB35C}
+.board{display:grid;grid-template-columns:repeat(auto-fill,180px);gap:18px 14px;justify-content:start;margin-top:26px}
+.shot{width:180px}
+.shot .fr{width:180px;height:320px;border-radius:12px;overflow:hidden;background:#000;border:1px solid var(--line);position:relative}
+.shot .fr img{width:100%;height:100%;object-fit:cover;display:block;max-width:none}
+.shot .n{position:absolute;left:10px;top:10px;z-index:3;font-family:'Anton',sans-serif;font-size:13px;color:#0B0B0D;background:#FFB35C;padding:2px 7px;border-radius:4px}
+.shot .ov{position:absolute;left:10px;right:10px;bottom:34px;z-index:3;font-family:'Anton',sans-serif;font-size:22px;line-height:.95;color:#fff;text-shadow:0 2px 0 rgba(0,0,0,.85),0 6px 16px rgba(0,0,0,.9)}
+.shot .ov.gold{color:#E0AC45}
+.shot .cap{font-size:12px;color:var(--muted);line-height:1.45;margin-top:8px}
+.shot .cap b{color:var(--text)}
+.endcard{background:radial-gradient(90% 70% at 50% 40%,#2a1a0a,#050507 80%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:18px 14px;text-align:center}
+.endcard .pill{background:rgba(0,0,0,.62);border:1px solid rgba(255,220,150,.28);border-radius:999px;padding:5px 11px 4px}
+.endcard .pill img{height:16px;display:block;width:auto;position:static;object-fit:contain}
+.endcard .tile{width:72px;height:96px;border-radius:7px;object-fit:cover;box-shadow:0 8px 20px rgba(0,0,0,.9),0 0 0 1.5px rgba(255,220,150,.45);position:static}
+.endcard .line{font-family:'Anton',sans-serif;font-size:22px;color:#fff;line-height:1.05;text-wrap:balance}
+.endcard .line em{color:#E0AC45;font-style:normal}
+.endcard .go{display:inline-block;font-weight:900;letter-spacing:.07em;text-transform:uppercase;font-size:11px;padding:8px 18px;border-radius:999px;background:linear-gradient(180deg,#FFF0C4 0%,#EFC161 40%,#B4801F 100%);color:#3D2206;border:1.5px solid #FFF6DC;box-shadow:0 0 16px rgba(255,200,90,.6)}
+.endcard .cmp2{position:absolute;left:0;right:0;bottom:0;height:14px;background:#151515;color:#8f8f8f;font-size:6px;font-weight:700;display:flex;align-items:center;justify-content:center;gap:4px;border-top:1px solid #262626}
+.endcard .cmp2 b{color:#bdbdbd}
+/* the media-kit formats, shown at TRUE pixel size on the dark page */
+.formats{display:flex;flex-wrap:wrap;gap:26px 22px;align-items:flex-start;margin-top:26px}
+.fmt img{display:block;border:1px solid var(--line);border-radius:4px;max-width:100%}
+.fmt .lbl{font-family:'Share Tech Mono',ui-monospace,monospace;font-size:12px;color:var(--cream);margin-top:8px}
+.fmt .lbl span{color:var(--dim);margin-left:8px}
+.reels{display:flex;flex-wrap:wrap;gap:26px;align-items:flex-start;margin-top:26px}
+.reel video{display:block;background:#000;border:1px solid var(--line);border-radius:12px}
+.reel .lbl{font-family:'Share Tech Mono',ui-monospace,monospace;font-size:12px;color:var(--cream);margin-top:8px}
+.reel .lbl span{color:var(--dim);margin-left:8px}
+.decide{margin-top:26px;background:#15120c;border:1px solid #6A4520;border-radius:13px;padding:18px 22px}
+.decide h4{font-size:15px;font-weight:900;color:var(--cream);margin:0 0 8px}
+.decide p{font-size:14px;color:#D6C9AE;line-height:1.55;max-width:90ch}
+.decide p b{color:#FFE9B8}
+</style>
+<section id="setE" class="E">
+  <div class="sethead"><span class="pin reel">Set E · the reel</span><h2>The Free Spin Car Wash</h2></div>
+  <p class="setlede">A different format entirely. The reference is a twenty-second 9:16 AI reel — photoreal anthropomorphic animal women running a bikini car wash to <i>Milkshake</i>, hand-painted signs, a distracted driver who bumps a pole. It never looks like an ad until it does. Two things carry it and both are kept here. <b>The heat</b> — and the lesson of the first two passes was that heat is <i>tone</i>, not exposure: the cheerful versions read as a cartoon, so these are directed seductive — heavy-lidded, lips parted, straight into the lens, body-led framing, clinging wet fabric — while the joke moves into the copy, where <i>Milkshake</i> keeps it: <b>hand wash only · wet · rinse · repeat · one free pull.</b> The picture stays inside the line the generator and the network both enforce. <b>The strangeness</b> — it maps onto the network's Shorties slot exactly, and Winfun777's lobby already holds the cast: <b>Fortune Tiger, Fortune Rabbit and Lucky Neko are real tiles</b>, so the trio are their games in live action.</p>
+
+  <div class="board">
+    <div class="shot"><div class="fr"><span class="n">1</span><img src="assets/plates/e1-wide-sign.jpg" alt=""><div class="ov" style="font-size:15px">HAND WASH ONLY.</div></div><div class="cap"><b>Wide.</b> The forecourt, the hand-painted FREE SPIN CAR WASH sign, the trio at the road. The one innocent frame — the double meaning lands on the copy.</div></div>
+    <div class="shot"><div class="fr"><span class="n">2</span><img src="assets/plates/h1-tiger-rear-hood.jpg" alt=""><div class="ov">WET.</div></div><div class="cap"><b>Fortune Tiger.</b> On the hood from behind, back arched, looking over her shoulder into the lens. The reference's signature shot in her own stripes — and the hero frame for every static size.</div></div>
+    <div class="shot"><div class="fr"><span class="n">3</span><img src="assets/plates/h2-rabbit-wet-tank.jpg" alt=""><div class="ov">RINSE.</div></div><div class="cap"><b>Fortune Rabbit.</b> Soaked tank clinging over the two-piece, sponge to her chest, chin down, eyes up. Not laughing.</div></div>
+    <div class="shot"><div class="fr"><span class="n">4</span><img src="assets/plates/h3-neko-straddle.jpg" alt=""><div class="ov">REPEAT.</div></div><div class="cap"><b>Lucky Neko.</b> Straddling the hood, leaning forward onto her hands toward the lens, tail up.</div></div>
+    <div class="shot"><div class="fr"><span class="n">5</span><img src="assets/plates/e5-zeus-driver.jpg" alt=""><div class="ov" style="font-size:15px">EYES ON THE ROAD.</div></div><div class="cap"><b>The customer.</b> White beard, gold shades, jaw open — the Zeus from their own logo, gawking.</div></div>
+    <div class="shot"><div class="fr"><span class="n">6</span><img src="assets/plates/e6b-crash-gag.jpg" alt=""></div><div class="cap"><b>The gag.</b> His sedan bumps the light pole and the trio double over beside the sign — the beat that gets the reel shared.</div></div>
+    <div class="shot"><div class="fr"><span class="n">7</span><img src="assets/plates/h7-trio-lean-hot.jpg" alt=""><div class="ov gold" style="font-size:17px">ONE FREE PULL.</div></div><div class="cap"><b>The payoff.</b> The three of them on the foamy hood, gold cards up. The first moment it admits it is an ad — and the one beat where the tone drops to plain, the way the reference's payoff is the sign rather than a pose.</div></div>
+    <div class="shot"><div class="fr"><span class="n">8</span><img src="assets/plates/h6-trio-walk-back.jpg" alt=""></div><div class="cap"><b>The walk-away.</b> From behind, low, a runway strut toward the CAR WASH sign — feet on the centre line, hips swinging, the tiger looking back mid-stride. The reference’s closing shot and the cut into the end card.</div></div>
+    <div class="shot"><div class="fr endcard"><span class="n">9</span><div class="pill"><img src="assets/logo.png" alt="winfun777.com"></div><img class="tile" src="assets/games/fortune-tiger.webp" alt="Fortune Tiger"><div class="line">One <em>free</em><br>pull.</div><span class="go">Play free</span><div class="cmp2"><b>18+</b> · Play responsibly</div></div><div class="cap"><b>End card.</b> Built in code, not generated — the only frame with type set on it. Lands on Free Games.</div></div>
+  </div>
+
+  <h3 style="margin-top:38px">In motion — the generated film</h3>
+  <p class="setlede">Every beat is now generated video, not stills. Each clip is the character performing that beat, cut to the same copy on the same deterministic timeline and exported to the network’s video specs. The film is silent until a licensed track is cleared.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/video/setE-film-1080x1920.mp4" width="270" height="480" controls autoplay muted loop playsinline></video><div class="lbl">Shorties · 1080 × 1920 · 27.8 s <span>MP4 · 19.5 MB of a 500 MB cap</span></div></div>
+    <div class="reel"><video src="assets/video/setE-film-interstitial-320x480.mp4" width="320" height="480" autoplay muted loop playsinline></video><div class="lbl">Interstitial video · 320 × 480 · 6 s <span>MP4 · 558 KB of a 1 MB cap</span></div></div>
+    <div class="reel"><video src="assets/video/setE-film-interstitial-300x250.mp4" width="300" height="250" autoplay muted loop playsinline></video><div class="lbl">Interstitial video · 300 × 250 · 6 s <span>MP4 · 440 KB of a 1 MB cap</span></div></div>
+  </div>
+
+  <h3 style="margin-top:38px">In the media kit's formats — at true pixel size</h3>
+  <p class="setlede">All five display sizes the kit lists, plus an alternate on the payoff frame, shown at exactly the pixels the network serves. Every plate is a still from the film above, so the statics and the commercial are the same shoot. Every export is a JPEG well under the interstitial’s 300 KB image cap.</p>
+  <div class="formats">
+    <div class="fmt"><img src="assets/formats/film-320x480.jpg" width="320" height="480" alt=""><div class="lbl">320 × 480 <span>interstitial · 32 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/film-300x250.jpg" width="300" height="250" alt=""><div class="lbl">300 × 250 <span>banner / interstitial classic · 23 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/film-300x250-alt.jpg" width="300" height="250" alt=""><div class="lbl">300 × 250 alt <span>the payoff frame · 27 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/film-300x150.jpg" width="300" height="150" alt=""><div class="lbl">300 × 150 <span>banner · 16 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/film-305x99.jpg" width="305" height="99" alt=""><div class="lbl">305 × 99 <span>banner · 12 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/film-950x250.jpg" width="950" height="250" alt=""><div class="lbl">950 × 250 <span>banner · 57 KB</span></div></div>
+  </div>
+
+  <div class="decide"><h4>The one decision this set needs</h4><p><b>The track.</b> The picture is finished — every beat generated, cut, and inside the network’s caps. What is missing is music: the reference runs on <i>Milkshake</i>, which cannot be licensed, so the cut needs an equivalent from a licensed library before it can be trafficked. Until then the film carries no audio stream at all, and some ad servers reject that — so the track closes a technical gate as well as a creative one.</p></div>
+
+  <!-- bunny-static -->
+  <h3 style="margin-top:38px">Hotter rabbit — and the exact edge of what the tools allow</h3>
+  <p class="setlede">The sponge beat re-cast to a fuller figure. Getting it took a different image generator: the one that makes the rest of these plates refuses this brief in every wording tried. What came back clears the <b>image</b> filter but not the <b>video</b> one — four separate attempts to animate it were refused, including a bare action-only prompt and a second model, so this is a plate that is legal to make and not legal to move. It therefore ships as <b>static units</b>, which is four of the kit’s six slots, and the film keeps the approved sponge clip. Every attempt refunded, so the whole exercise cost about one credit.</p>
+  <div class="formats">
+    <div class="fmt"><img src="assets/formats/bunny-320x480.jpg" width="320" height="480" alt=""><div class="lbl">320 × 480 <span>interstitial · 34 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/bunny-300x250.jpg" width="300" height="250" alt=""><div class="lbl">300 × 250 <span>banner / interstitial · 23 KB</span></div></div>
+    <div class="fmt"><img src="assets/formats/bunny-300x150.jpg" width="300" height="150" alt=""><div class="lbl">300 × 150 <span>banner · 16 KB</span></div></div>
+  </div>
+</section>
+<!-- set-f-refads -->
+<section id="setF" class="E">
+  <div class="sethead"><span class="pin reel">Set F · from your two references</span><h2>Go Hard / Win Bigger</h2></div>
+  <p class="setlede">Two placements were sent over as the target. They are different jobs, so this is two ads, not one.
+  <b>The first</b> is a street-poster layout: one hero object thrust up in a fist against a painted graffiti wall, a
+  hand-lettered headline on a torn sticker, a heavy block lockup, a kicker in the opposite corner. What makes it work
+  on an adult-tube placement is not the picture, it is that the copy reads two ways at once and both are literally
+  true of the product. Ours keeps that structure exactly — <b>GO HARD</b> / <b>WIN BIGGER</b> — with a phone in the
+  fist instead of food. <b>The second</b> is a rival operator's live spot, and it is built on one device our kit did
+  not have: <b>a phone held in-hand actually running the game</b>, shot over a soft out-of-focus intimate background,
+  then a hard cut to the game world filling the frame. The viewer sees the product running, not a poster about it.
+  That is now built and it is the strongest thing in this deck.</p>
+  <p class="setlede">A note on how these were made, because it matters for revisions: the photography is generated,
+  but <b>the phone screens are not</b> — the plates were shot with a deliberately blank screen and the live game is
+  composited on afterwards through a corner-matched perspective fit. So the game on the glass can be swapped for any
+  title in the lobby, and every number on it is set in code, which is why the digits are clean. Nothing here is a
+  screenshot of a real Winfun777 session; the symbols are original art, not a captured game.</p>
+
+  <h3 style="margin-top:34px">The poster — master, 1080 × 1350</h3>
+  <div class="formats">
+    <div class="fmt"><img src="assets/formats/ref-poster-master.jpg" width="432" height="540" alt="">
+      <div class="lbl">1080 × 1350 <span>poster master (4:5)</span></div></div>
+    <div class="fmt"><img src="assets/formats/ref-poster-b950.jpg" width="475" height="125" alt="">
+      <div class="lbl">950 × 250 <span>banner · the landscape frame</span></div></div>
+  </div>
+
+  <h3 style="margin-top:34px">The poster — cut to the kit</h3>
+  <p class="setlede">Every unit under the guide's 300 KB image cap. The short sizes push the photograph right so the
+  brand slab sits on wall rather than on the hero, which is the one thing that breaks when this layout is scaled down.</p>
+  <div class="formats">
+    <div class="fmt"><img src="assets/formats/ref-poster-i320.jpg" width="320" height="480" alt=""><div class="lbl">320 × 480 <span>interstitial</span></div></div>
+    <div class="fmt"><img src="assets/formats/ref-poster-b300.jpg" width="300" height="250" alt=""><div class="lbl">300 × 250 <span>banner / interstitial</span></div></div>
+    <div class="fmt"><img src="assets/formats/ref-poster-b150.jpg" width="300" height="150" alt=""><div class="lbl">300 × 150 <span>banner</span></div></div>
+    <div class="fmt"><img src="assets/formats/ref-poster-b305.jpg" width="305" height="99" alt=""><div class="lbl">305 × 99 <span>banner</span></div></div>
+  </div>
+
+  <h3 style="margin-top:38px">The pre-roll — the phone that actually plays</h3>
+  <p class="setlede">Fifteen seconds, 9:16. The reels spin, land, and the win counts up on the glass; hard cut to the
+  game world; end card. It is cut to the same beats as the reference spot, minus the player chrome — the “skip” button
+  and the network's own bars in that recording belong to the site, not to the advertiser. Silent, like the rest of the
+  kit, until a track is cleared.</p>
+  <div class="reels">
+    <div class="reel"><video src="assets/video/ref/preroll-i320.mp4" width="320" height="480" autoplay muted loop playsinline></video>
+      <div class="lbl">Pre-roll · 320 × 480 <span>15 s · 848 KB · under the 1 MB cap</span></div></div>
+    <div class="reel"><video src="assets/video/ref/preroll-b300.mp4" width="300" height="250" autoplay muted loop playsinline></video>
+      <div class="lbl">Pre-roll · 300 × 250 <span>15 s · 696 KB · under the 1 MB cap</span></div></div>
+  </div>
+  <p class="setlede" style="margin-top:20px">A 1080 × 1920 master is in the delivery folder for the Shorties slot.</p>
+</section>
+
+
+<section id="next">
+  <div class="eyebrow">Sizes, QC and what happens next</div>
+  <h2>How these were judged, and what is still to do</h2>
+  <div class="grid3">
+    <div class="card"><h3>Judged at true 1×, on black</h3><p>Every unit was rendered at actual pixel size on a dark page — never zoomed on a white canvas — at both its resting frame and mid-animation, against a written 14-point bar: brand readable, number reads in under a second, no letter on a busy part of the plate, copy reads top-down, no word twice, no implied winner claim, gold bevel on numbers only, six distinct hooks, three plate-driven layouts, compliance strip present and muted.</p></div>
+    <div class="card"><h3>Sizes</h3><p>Everything here is 300×250. The remaining four — 305×99, 300×150, 950×250 and <b>320×480</b> — are a re-run of the same templates once the direction is chosen. 320×480 comes first: 84.5% of the audience is on a phone, the deck calls the interstitial "100% attention", and a tall frame is the natural home for a full-height hero.</p></div>
+    <div class="card"><h3>What drives the traffic</h3><p>Each unit is a tracked click to <b>Free Games</b> — never a signup wall, never the homepage. Nobody deposits on first contact from this inventory; the site's own free → register → deposit funnel does the rest. Every mechanic × plate gets its own URL so the network's Autopilot and Bidder can rotate spend to the winners. Many hooks, one destination that never asks for money, measurement per hook.</p></div>
+  </div>
+  <div class="note" style="border-color:#3a3220;background:#15120c"><h4 style="color:var(--warn)">Open items</h4><p>The <b>18+ · Play responsibly</b> strip on every unit is a placeholder holding the space; the client confirms which marks must appear. The media kit's contact page is still empty. Final destination URLs and tracking parameters are needed at trafficking. And this is a concept review: none of it is proven until it runs — which is exactly why we ship several variants per slot rather than one hero.</p></div>
+</section>
+
+<footer><span><b>Winfun777 × Midnight Circuit</b> · creative review</span><span>Lucifer Gaming · 22 Sep 2026</span><span>Plates generated with Nano Banana 2 · video generated per beat · type composited in code</span></footer>
+</div>
