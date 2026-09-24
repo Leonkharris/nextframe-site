@@ -17,11 +17,14 @@ img { display: block; }
 a { color: var(--gold-soft); text-decoration: none; }
 .kit-wrap { display: flex; flex-direction: column; align-items: center; gap: 40px; padding: 40px 16px; }
 .sheet-slot { width: 1056px; height: 816px; flex: none; }
-.sheet { width: 1056px; height: 816px; position: relative; overflow: hidden; flex: none; background: var(--sheet); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7); transform-origin: top left; }
+.sheet { width: 1056px; height: 816px; position: relative; overflow: hidden; flex: none; isolation: isolate; background: var(--sheet); box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7); transform-origin: top left; }
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--back):not(.sheet--plate)::before,
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--back):not(.sheet--plate)::after { content: ""; position: absolute; width: 24px; height: 24px; pointer-events: none; z-index: 5; border-color: rgba(194, 154, 85, 0.55); border-style: solid; }
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--back):not(.sheet--plate)::before { top: 18px; left: 18px; border-width: 1px 0 0 1px; }
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--back):not(.sheet--plate)::after { bottom: 18px; right: 18px; border-width: 0 1px 1px 0; }
+
+.sheet-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; pointer-events: none; }
+.sheet--ep .sheet-bg { display: none; }
 
 /* ---------- shared type ---------- */
 .kicker { font-size: 10px; font-weight: 600; letter-spacing: 0.22em; text-transform: uppercase; color: var(--gold); }
