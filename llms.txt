@@ -45,6 +45,7 @@
 - [Turn Long Video Into Short Clips With AI](https://next-frame.agency/blog/repurpose-one-video-into-clips/): You already have the footage sitting unused. Learn how to transcribe it, find the moments worth cutting, and turn one video into a month of clips.
 - [Email Marketing with AI for PH Small Business](https://next-frame.agency/blog/email-marketing-ai-philippines/): Should your PH business even build an email list? Here's where email beats Messenger and Viber, how to collect addresses legally, and what AI should draft.
 - [Read Your Facebook Insights With AI in PH](https://next-frame.agency/blog/read-facebook-insights-with-ai/): A monthly loop for PH small businesses: export Facebook and Instagram insights, read them with AI, and turn the answer into one real change.
+- [Build Real Customer Personas With AI From Your Own Data](https://next-frame.agency/blog/ai-customer-personas-philippines/): Stop guessing who buys from you. Turn your own Messenger chats, reviews and sales notes into 2-3 real AI customer personas with a copy-paste prompt.
 
 
 ## Contact
