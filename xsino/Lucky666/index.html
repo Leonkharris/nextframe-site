@@ -246,7 +246,10 @@ footer img{height:42px;margin:0 auto 16px;opacity:.95}
   <p class="lead" id="ep1Concept"></p>
   <p class="muted" id="ep1Tone" style="margin-top:10px;font-size:14.5px"></p>
   <div id="ep1Beats" style="margin-top:26px"></div>
-  <h5>Open questions</h5><ul class="dots" id="ep1Q"></ul>
+  <div class="cols" style="margin-top:6px"><div><h5>Open questions</h5><ul class="dots" id="ep1Q"></ul></div><div><h5>Answers (defaults)</h5><ul class="dots" id="ep1A"></ul></div></div>
+  <h5 style="margin-top:34px">Storyboard · 13 cuts</h5>
+  <div id="ep1Sheet"></div>
+  <div class="panelgrid" id="ep1Panels" style="margin-top:14px"></div>
 </div></section>
 
 <section id="social"><div class="wrap">
@@ -376,7 +379,8 @@ function closeM() { $("modal").classList.remove("open"); document.body.style.ove
 document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeM(); });
 
 // neighbours, engine
-$("support").innerHTML = L.supporting.map((s) => `<div class="card"><div class="kicker">${esc(s.role)}</div><h4>${esc(s.name)}</h4><p>${esc(s.text)}</p></div>`).join("");
+$("support").innerHTML = L.supporting.map((s) => { const img = A.support?.[s.key];
+  return `<div class="card">${img ? `<div style="aspect-ratio:4/3;border-radius:10px;margin:-6px -6px 14px;background:#0c0a26 url(${img}) center 22%/cover no-repeat"></div>` : ""}<div class="kicker">${esc(s.role)}</div><h4>${esc(s.name)}</h4><p>${esc(s.text)}</p></div>`; }).join("");
 $("loop").innerHTML = L.series.engine.map((e) => `<div class="card"><div class="kicker">${esc(e.beat)}</div><p>${esc(e.text)}</p></div>`).join("");
 $("devices").innerHTML = L.series.devices.map((d) => `<div class="card"><h4>${esc(d.name)}</h4><p>${esc(d.text)}</p></div>`).join("");
 
@@ -412,6 +416,11 @@ if (L.ep1) {
     <div class="bh">${esc(b.where)}<span>${esc(b.dur)}</span>${b.social && b.social !== "—" ? `<span class="soc">${esc(b.social)}</span>` : ""}</div>
     <div>${esc(b.action)}</div><div><b>Camera:</b> ${esc(b.camera)}</div><div><b>Line:</b> ${esc(b.line)}</div>${b.text && b.text !== "—" ? `<div><b>On screen:</b> ${esc(b.text)}</div>` : ""}</div></div>`).join("");
   $("ep1Q").innerHTML = li(E.questions);
+  $("ep1A").innerHTML = li(E.answers || []);
+  const EP = A.ep01 || { panels: {} };
+  $("ep1Sheet").innerHTML = EP.sheet ? `<a href="${EP.sheet}" target="_blank" rel="noopener"><img class="boardimg" src="${EP.sheet}" alt="Episode 1 storyboard sheet" loading="lazy"></a><p class="muted" style="font-size:13px;margin-top:8px">The full sheet: §0 shared choices · §1 cast · §2 building cross-section with every cut · §3 panels · §4 lighting/mood. Tap to open full size.</p>` : "";
+  $("ep1Panels").innerHTML = (L.ep1Board?.panels || []).map((p) => { const img = EP.panels[p.n];
+    return `<figure><figcaption>${p.n} · ${esc(p.lens)} | ${esc(p.dur)} | ${esc(p.move)} | ${esc(p.size)}</figcaption>${img ? `<img src="${img}" alt="panel ${p.n}" loading="lazy">` : `<div class="pending" style="border:0;border-radius:0">panel generating…</div>`}<div style="padding:10px 12px;font-size:13px;color:#d6d0f5">${esc(p.action)}</div></figure>`; }).join("");
 }
 // Launch kit
 const LA = A.launch || { reveals: {}, carousel: [] };

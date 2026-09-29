@@ -293,12 +293,12 @@ window.LUCKY666 = {
      "#E6007E"
     ],
     [
-     "WARM MORENA SKIN",
-     "#B07A55"
+     "LIGHT-OLIVE SKIN",
+     "#D9A983"
     ],
     [
-     "ESPRESSO CURLS",
-     "#2B1A12"
+     "DARK-BRUNETTE WAVES",
+     "#3B2518"
     ],
     [
      "RIBBED WHITE (tank)",
@@ -348,19 +348,19 @@ window.LUCKY666 = {
     ],
     [
      "HEIGHT",
-     "163 cm · petite, curvy"
+     "163 cm · slim, toned, tiny waist"
     ],
     [
      "HAIR",
-     "big messy dark-brown curls, claw-clip bun"
+     "tousled shoulder-length dark-brunette waves, half-up claw clip"
     ],
     [
      "EYES",
-     "dark brown, mischievous almond"
+     "striking hazel-green, smoky brown liner"
     ],
     [
      "SKIN",
-     "warm tan morena"
+     "warm light olive"
     ],
     [
      "FEATURES",
@@ -391,7 +391,7 @@ window.LUCKY666 = {
      "fast chilango: güey, neta, no manches, ¿me fías?"
     ]
    ],
-   "look": "Street-baddie glam: cropped magenta satin bomber, white crop top, low-rise cargos, chunky sneakers, gold hoops and chains, glossy curls in a claw clip, winged liner, and a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
+   "look": "Street-baddie glam: cropped magenta satin bomber, white crop top, low-rise cargos, chunky sneakers, gold hoops and chains, a tousled brunette lob half-clipped up, hazel-green eyes, and a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
    "personality": [
     "Shameless, charming and funny, with zero sense of consequence",
     "A hustler genius at reading people, a disaster at reading odds",
@@ -443,7 +443,7 @@ window.LUCKY666 = {
     "Cameos in everyone else's feed, borrowing something"
    ],
    "voice": "Fast chilango Spanish, sarcastic, affectionate insults, never sounds sorry.",
-   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City and a stunning street-style baddie: glowing warm medium-brown morena skin, a curvy hourglass figure with a toned waist, a striking model-pretty face with high cheekbones, full glossy lips, thick groomed dark brows, fierce dark brown almond eyes with winged eyeliner and long lashes, and a small beauty mark above the right corner of her lip. Big glossy dark-brown curls piled into a high claw-clip bun with face-framing curls. Chunky gold hoop earrings, layered gold chains, long hot-pink almond nails, a thin red ribbon tied around her left wrist. She wears a cropped hot-magenta satin bomber jacket open over a white ribbed crop top, low-rise baggy grey cargo pants that show her toned midriff, and chunky white sneakers, with a small tamarind lollipop stick in the corner of her mouth."
+   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City and a stunning, playful street-glam beauty: warm light-olive skin, a slim toned figure with a tiny waist, a soft heart-shaped face, striking hazel-green eyes with smoky brown liner and long lashes, softly arched dark brows, a small button nose, full soft rosy lips with a mischievous half-smile, a tiny beauty mark above the right corner of her lip, and tousled shoulder-length dark-brunette waves half clipped up with a claw clip. Chunky gold hoop earrings, layered gold chains, long hot-pink almond nails, a thin red ribbon tied around her left wrist. She wears a cropped hot-magenta satin bomber jacket open over a white ribbed crop top, low-rise baggy grey cargo pants that show her toned midriff, and chunky white sneakers, with a small tamarind lollipop stick in the corner of her mouth."
   },
   {
    "key": "regina",
@@ -457,47 +457,47 @@ window.LUCKY666 = {
    "hometown": "Culiacán, Sinaloa (culichi, schooled in Monterrey)",
    "vice": "VIP live blackjack and baccarat",
    "viceLong": "High-limit live-dealer blackjack and baccarat, which she insists is 'strategic risk management'. She keeps a colour-coded dashboard of her losses titled 'Q3 Learning Investments' and journals after every hand.",
-   "color": "#1B2A4A",
+   "color": "#1FB47A",
    "palette": [
     [
-     "NAVY BLAZER",
-     "#1B2A4A"
+     "BLAZER BLACK",
+     "#111014"
     ],
     [
-     "CRISP WHITE",
-     "#F7F5F0"
+     "EMERALD",
+     "#0F7A4A"
     ],
     [
-     "PLEAT CREAM",
-     "#E9DFC9"
+     "HONEY-BROWN BLOWOUT",
+     "#9A6A3A"
     ],
     [
-     "CHESTNUT HAIR",
-     "#5A3522"
+     "CARAMEL HIGHLIGHT",
+     "#C99A62"
     ],
     [
-     "OLIVE-FAIR SKIN",
-     "#D2A57E"
+     "GOLDEN-TAN SKIN",
+     "#C98E62"
     ],
     [
-     "LOAFER COGNAC",
-     "#8B4A24"
+     "BRONZE SMOKY EYE",
+     "#7A4E2E"
     ],
     [
      "SIGNET GOLD",
      "#C9A24A"
     ],
     [
-     "PEARL",
-     "#EDE8E0"
+     "NUDE-ROSE LIP",
+     "#C27C74"
     ]
    ],
    "materials": [
-    "BLAZER: tailored wool",
-    "SHIRT: poplin cotton",
-    "SKIRT: pleated crepe",
-    "LOAFERS: polished calf leather",
-    "HEADBAND: navy velvet",
+    "BLAZER DRESS: tailored wool crepe",
+    "BELT: thin polished gold",
+    "TIGHTS: sheer black nylon",
+    "BOOTS: black suede over-the-knee",
+    "JEWELRY: emerald + gold",
     "PLANNER: pebbled leather"
    ],
    "stats": [
@@ -519,31 +519,31 @@ window.LUCKY666 = {
     ],
     [
      "HEIGHT",
-     "170 cm · tall, slim"
+     "170 cm · sculpted hourglass, tiny waist, long legs"
     ],
     [
      "HAIR",
-     "glossy chestnut, sleek low bun, navy velvet headband"
+     "huge honey-brown blowout, caramel highlights, bouncy waves"
     ],
     [
      "EYES",
-     "warm hazel-brown"
+     "sultry warm brown, smoky bronze makeup"
     ],
     [
      "SKIN",
-     "light olive-brown"
+     "warm golden tan"
     ],
     [
      "FEATURES",
-     "refined straight nose · perfect posture"
+     "high cheekbones · strong arched brows · full lips · perfect posture"
     ],
     [
      "OUTFIT",
-     "tailored navy blazer · white silk camisole · cream pleated mini skirt · cognac pointed heels"
+     "black tailored blazer mini dress · thin gold belt · sheer black tights · black suede over-the-knee boots"
     ],
     [
      "JEWELRY",
-     "pearl studs · gold 'R' signet ring (a gift from Dad)"
+     "emerald drop earrings + pendant · gold 'R' signet ring (a gift from Dad)"
     ],
     [
      "PROP",
@@ -562,7 +562,7 @@ window.LUCKY666 = {
      "polished, LinkedIn-fluent Spanglish; goes full Sinaloa when angry"
     ]
    ],
-   "look": "Preppy power, turned up: tailored navy blazer over a silk cami, cream pleated mini, pointed heels, pearls, velvet headband, glossy blowout, the planner. Always the best-dressed person in the building.",
+   "look": "Boss-lady bombshell glam: a black tailored blazer mini dress with a gold belt, sheer tights, suede over-the-knee boots, emeralds, a huge honey-brown blowout, smoky bronze eyes, the planner. Always the most glamorous person in the building, and the loudest when pushed.",
    "personality": [
     "Type-A, earnest and relentlessly polite",
     "Desperate to be seen as self-made and simply understood",
@@ -613,7 +613,7 @@ window.LUCKY666 = {
     "Los Primos cameos: two giants doing her errands"
    ],
    "voice": "Polished and sincere, corporate buzzwords, sudden Sinaloa steel.",
-   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán and a stunning, polished old-money beauty: luminous light olive-brown skin, a tall slim hourglass figure with long legs, a refined model face with high cheekbones, a straight nose, full nude-glossed lips, sleek arched brows and captivating hazel-brown eyes with soft smoky makeup. Glossy chestnut-brown hair in a sleek high-shine blowout pushed back with a navy velvet headband. Pearl stud earrings, a gold signet ring, a nude manicure. She wears a sharply tailored navy blazer over a white silk camisole, a cream pleated mini skirt and cognac leather pointed heels, and carries a leather planner."
+   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán and a jaw-dropping, glamorous Latina bombshell with old-Hollywood confidence: warm golden-tan skin, a sculpted hourglass figure with a tiny cinched waist and long toned legs, a striking womanly face with high cheekbones, sultry warm brown eyes with smoky bronze eye makeup and thick lashes, strong arched brows, full glossy nude-rose lips, and a huge voluminous blowout of long honey-brown hair with caramel highlights in bouncy glamorous waves. Emerald drop earrings, a statement emerald pendant, a gold signet ring, long nude almond nails. She wears a sharply tailored black blazer as a plunging mini blazer dress cinched with a thin gold belt, sheer black tights and black suede over-the-knee boots, and carries a leather planner."
   },
   {
    "key": "citlali",
@@ -807,12 +807,12 @@ window.LUCKY666 = {
      "#C4B5FD"
     ],
     [
-     "INK BLACK BOB",
-     "#101014"
+     "BROWN CURLS",
+     "#5A3A22"
     ],
     [
-     "LIGHT-BROWN SKIN",
-     "#C08E68"
+     "CARAMEL SKIN",
+     "#C99467"
     ],
     [
      "CARGO BLACK",
@@ -858,19 +858,19 @@ window.LUCKY666 = {
     ],
     [
      "HEIGHT",
-     "157 cm · petite"
+     "157 cm · petite, slim"
     ],
     [
      "HAIR",
-     "blunt glossy black bob, straight bangs"
+     "long voluminous natural brown curls, caramel tips"
     ],
     [
      "EYES",
-     "dark brown, big round clear glasses"
+     "big warm brown doe eyes, round clear glasses"
     ],
     [
      "SKIN",
-     "light brown"
+     "sun-kissed caramel"
     ],
     [
      "FEATURES",
@@ -901,7 +901,7 @@ window.LUCKY666 = {
      "flat deadpan, gamer slang, answers questions literally"
     ]
    ],
-   "look": "Alt e-girl: cropped lilac hoodie, black cargo mini, fishnets, platform boots, cat-ear headset, round glasses, blunt bob, winged liner, lit by RGB. Always carrying a laptop and chili chips.",
+   "look": "Nerdy-cute gamer: cropped lilac hoodie, black cargo mini, fishnets, platform boots, cat-ear headset, round glasses, big brown curls, lit by RGB. Always carrying a laptop and chili chips.",
    "personality": [
     "Brilliant, literal and completely oblivious to social cues",
     "No filter: 'statistically your boyfriend is cheating, 73%'",
@@ -951,7 +951,7 @@ window.LUCKY666 = {
     "Streams with Memo 'accidentally' serenading in the background"
    ],
    "voice": "Deadpan, literal, rapid technical Spanglish, occasional tapatía 'pues'.",
-   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara and a gorgeous alt e-girl gamer with a clearly adult look: light-brown skin, a petite curvy figure, a striking face with defined cheekbones, full glossy lips and dark brown eyes with sharp winged eyeliner, a blunt glossy black bob with straight-cut bangs, big round clear-framed glasses, and holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears a cropped oversized lilac hoodie that shows her midriff, a black cargo mini skirt, fishnet tights and chunky black platform boots."
+   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara and a gorgeous nerdy gamer girl with a clearly adult look: sun-kissed caramel skin, a slim petite figure with a tiny waist, a soft oval face, big warm brown doe eyes behind big round clear-framed glasses, soft natural brows, a small straight nose, full pouty lips with a nude gloss, dewy natural makeup, and long voluminous natural brown curls with caramel tips. Holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears a cropped oversized lilac hoodie that shows her midriff, a black cargo mini skirt, fishnet tights and chunky black platform boots."
   },
   {
    "key": "marisol",
@@ -980,8 +980,8 @@ window.LUCKY666 = {
      "#A86B45"
     ],
     [
-     "GLOSSY BLACK WAVES",
-     "#1A0F0C"
+     "JET-BLACK PONYTAIL",
+     "#0E0A09"
     ],
     [
      "HEEL GOLD",
@@ -1031,15 +1031,15 @@ window.LUCKY666 = {
     ],
     [
      "HAIR",
-     "long glossy dark voluminous waves, red hibiscus"
+     "long glossy jet-black, sleek high ponytail, red hibiscus"
     ],
     [
      "EYES",
-     "sultry dark brown, winged liner"
+     "almond dark brown, smoky winged liner"
     ],
     [
      "SKIN",
-     "glowing warm caramel"
+     "luminous bronzed caramel"
     ],
     [
      "FEATURES",
@@ -1051,7 +1051,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "gold hoops · layered fine gold necklaces · red almond nails"
+     "gold teardrop hoops · layered fine gold necklaces · red almond nails"
     ],
     [
      "PROP",
@@ -1070,7 +1070,7 @@ window.LUCKY666 = {
      "jarocha: fast, musical, drops her s's, calls everyone 'papito'"
     ]
    ],
-   "look": "Cabaret bombshell: violet satin bodycon mini, gold heels, faux fur off the shoulders, hibiscus in glossy waves, smoky liner, red almond nails. Never without a man, never remembers his name.",
+   "look": "Cabaret bombshell: violet satin bodycon mini, gold heels, faux fur off the shoulders, a sleek jet-black high ponytail with a red hibiscus, smoky almond eyes, gold teardrop hoops, red almond nails. Never without a man, never remembers his name.",
    "personality": [
     "Confident, flirty and hilariously blunt about romance",
     "Big-hearted: the building's nurse, therapist and love doctor",
@@ -1121,7 +1121,7 @@ window.LUCKY666 = {
     "Dance lessons on the roof: salsa and son jarocho with the girls"
    ],
    "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
-   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping bombshell: glowing warm caramel-brown skin, a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach, long slender toned legs and a sculpted hourglass silhouette like a swimsuit model, a stunning face with full glossy lips, high cheekbones and sultry dark brown eyes with smoky winged eyeliner and long lashes, and long voluminous glossy dark waves with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping, elegant Latina bombshell: luminous bronzed caramel skin with a dewy glow, a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach and long slender toned legs, a sculpted face with high cheekbones, a sleek straight nose and a long elegant neck, almond-shaped dark brown eyes with dramatic smoky winged liner and long lashes, strong defined brows, full lips with nude-pink gloss, and long glossy jet-black hair pulled into a sleek high ponytail with a red hibiscus flower pinned at its base. Large thin gold teardrop hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
   }
  ],
  "episodes": [
@@ -1513,7 +1513,13 @@ window.LUCKY666 = {
  },
  "ep1": {
   "title": "Episode 1 · I'm Yesi, Güey / Soy la Yesi, güey",
-  "status": "DRAFT: awaiting Leon's yes. No previz, keyframes or video until approved.",
+  "status": "APPROVED by Leon ('ok continue', 2026-09-29). Storyboard stage; video waits for the 4-attachment gate.",
+  "answers": [
+   "Voices: still open. Nothing at the storyboard stage needs them; decide before the video stage (no robotic TTS).",
+   "Aspect: 16:9 master, per the standing rule.",
+   "Phone screens: generic slot UI; the logo stays end-card only.",
+   "Length: 6–8 min as planned."
+  ],
   "concept": "The rent is due Sunday, Yesi bets it on a neon omen and loses, and the solution walks in with 14 suitcases: Regina, the rich girl in hiding who becomes her roommate.",
   "tone": "Fast chilango banter, telenovela stings, a warm ending. Target 6–8 min, 16:9 master (standing video-aspect rule); each ★ beat is also cut as a standalone social skit.",
   "cast": "Yesi, Regina, Don Aurelio, Citlali, Lupe, Marisol (+ Novio #41, the firefighter), Los Primos, Chamuco",
@@ -1616,6 +1622,252 @@ window.LUCKY666 = {
    "Episode length: 6–8 min as planned, or a tighter 3–4 min to match social?"
   ]
  },
+ "ep1Board": {
+  "palette": [
+   [
+    "NEON MAGENTA",
+    "#FF2BD6"
+   ],
+   [
+    "NEON CYAN",
+    "#22D3EE"
+   ],
+   [
+    "NIGHT NAVY",
+    "#0B0A2A"
+   ],
+   [
+    "CONCRETE GREY",
+    "#8A8C90"
+   ],
+   [
+    "TERRAZZO CREAM",
+    "#E9E2D3"
+   ],
+   [
+    "TIENDITA AMBER",
+    "#F2A33A"
+   ],
+   [
+    "GOLD HOOP",
+    "#D4AF37"
+   ]
+  ],
+  "fingerprint": "Lucky 666: a sleek board-formed-concrete-and-glass tower in Roma Norte, floor-to-ceiling windows, warm LED strips, plants everywhere, and three giant rooftop neon numerals LUCKY 666 spilling magenta and cyan light into every night scene.",
+  "mood": [
+   "neon-lit sitcom",
+   "glossy influencer realism",
+   "warm chaos",
+   "telenovela sting",
+   "Roma Norte nights",
+   "comic timing",
+   "tender under the sign"
+  ],
+  "cinematography": "Glossy digital-influencer realism shot like a single-camera sitcom: wide establishing frames that let the joke play, then punch-ins for reactions. Night scenes are lit by the sign itself (magenta and cyan practicals) with a warm key on faces; the tiendita is warm amber fluorescent; day scenes use soft window light through the glass. Shallow depth on close-ups, 24–35mm for rooms and 50–85mm for reactions, a light film grain. The 999 flicker is always a hard practical change, never a grade.",
+  "panels": [
+   {
+    "n": 1,
+    "beat": "0",
+    "where": "yesi-room",
+    "refs": [
+     "yesi"
+    ],
+    "lens": "24mm",
+    "dur": "4s",
+    "move": "STATIC",
+    "size": "WIDE",
+    "action": "3:47 a.m. Yesi sprawled on her unmade bed in the trashed concrete loft, face lit by her cracked phone, lollipop stick in her mouth, the neon glow in the window behind her."
+   },
+   {
+    "n": 2,
+    "beat": "0",
+    "where": "yesi-room",
+    "refs": [
+     "yesi"
+    ],
+    "lens": "35mm",
+    "dur": "2s",
+    "move": "PUSH IN",
+    "size": "MEDIUM",
+    "action": "Yesi bolts upright on the bed staring out of the floor-to-ceiling window, where a huge rooftop neon sign outside reads exactly LUCKY 999 in bright cyan and magenta tubes, eyes wide as if she's seen a miracle. No other signs or numbers anywhere."
+   },
+   {
+    "n": 3,
+    "beat": "0",
+    "where": "yesi-room",
+    "refs": [
+     "chamuco"
+    ],
+    "lens": "50mm",
+    "dur": "1.5s",
+    "move": "WHIP PAN",
+    "size": "MEDIUM CLOSE-UP",
+    "action": "Chamuco the black cat mid-leap off a windowsill in a dark concrete bedroom at night, one paw swatting a cracked smartphone that spins through the air, motion blur; the only person is a woman's hand with hot-pink nails and a red ribbon on the wrist reaching in from the left edge of frame. No other people."
+   },
+   {
+    "n": 4,
+    "beat": "2",
+    "where": "tiendita",
+    "refs": [
+     "yesi",
+     "aurelio"
+    ],
+    "lens": "35mm",
+    "dur": "4s",
+    "move": "STATIC",
+    "size": "MEDIUM TWO-SHOT",
+    "action": "Morning in the corner shop under the wall of golden lucky cats: Don Aurelio behind the counter chalking on a small chalkboard while Yesi, across the counter, hopefully holds up a single tamal in its corn husk like a payment."
+   },
+   {
+    "n": 5,
+    "beat": "3",
+    "where": "lobby",
+    "refs": [
+     "yesi",
+     "citlali"
+    ],
+    "lens": "24mm",
+    "dur": "4s",
+    "move": "LOCKED",
+    "size": "WIDE",
+    "action": "The designer lobby: Yesi in the foreground kneeling at the candle-covered San Judas Tadeo altar, praying with her phone in both hands, while Citlali jogs in place behind her in activewear, waving."
+   },
+   {
+    "n": 6,
+    "beat": "3",
+    "where": "lobby",
+    "refs": [
+     "marisol"
+    ],
+    "lens": "35mm",
+    "dur": "3s",
+    "move": "FREEZE FRAME",
+    "size": "MEDIUM",
+    "action": "Marisol sweeps through the glass lobby doors in her violet dress and faux fur, arm in arm with a handsome firefighter in uniform, blowing a kiss at the camera."
+   },
+   {
+    "n": 7,
+    "beat": "4",
+    "where": "rooftop",
+    "refs": [
+     "yesi"
+    ],
+    "lens": "24mm",
+    "dur": "3s",
+    "move": "STATIC · LOW ANGLE",
+    "size": "WIDE",
+    "action": "Low angle on the rooftop at night: the three giant neon numerals glowing magenta and cyan above, Yesi small below them holding her phone up to the sky like an offering."
+   },
+   {
+    "n": 8,
+    "beat": "4",
+    "where": "rooftop",
+    "refs": [
+     "yesi"
+    ],
+    "lens": "85mm macro",
+    "dur": "2s",
+    "move": "PUSH IN",
+    "size": "EXTREME CLOSE-UP",
+    "action": "Extreme close-up of Yesi's hot-pink almond nail hovering over a glowing phone screen showing a generic slot machine, the red ribbon on her wrist, neon light on her fingers."
+   },
+   {
+    "n": 9,
+    "beat": "5",
+    "where": "street",
+    "refs": [
+     "regina",
+     "primos"
+    ],
+    "lens": "35mm",
+    "dur": "4s",
+    "move": "SLOW MOTION",
+    "size": "WIDE-MEDIUM",
+    "action": "Sunday on the leafy street outside the tower: two enormous men in white guayaberas hold open the door of a black SUV as Regina steps out in her navy blazer and pleated mini, a tower of matching luxury suitcases beside her."
+   },
+   {
+    "n": 10,
+    "beat": "5",
+    "where": "stairwell",
+    "refs": [
+     "yesi"
+    ],
+    "lens": "24mm",
+    "dur": "2s",
+    "move": "HANDHELD TRACK",
+    "size": "MEDIUM",
+    "action": "Yesi sprinting down a concrete stairwell three steps at a time, curls flying, magenta bomber flapping, shouting."
+   },
+   {
+    "n": 11,
+    "beat": "6",
+    "where": "livingroom",
+    "refs": [
+     "yesi",
+     "regina"
+    ],
+    "lens": "35mm",
+    "dur": "4s",
+    "move": "LATERAL DOLLY",
+    "size": "WIDE TWO-SHOT",
+    "action": "The penthouse living room split down the middle by a line of masking tape: Yesi slouched on the chaotic half, Regina sitting upright on the spotless half, both on one designer sofa that sits exactly on the tape line, eyeing each other."
+   },
+   {
+    "n": 12,
+    "beat": "7",
+    "where": "rooftop",
+    "refs": [
+     "yesi",
+     "regina"
+    ],
+    "lens": "50mm",
+    "dur": "5s",
+    "move": "SLOW PUSH IN",
+    "size": "MEDIUM TWO-SHOT",
+    "action": "Night on the rooftop under the glowing neon: Yesi and Regina sitting on the edge of the empty infinity pool, Yesi snapping a tamarind lollipop in half to share, a black cat sitting between them, city lights behind."
+   },
+   {
+    "n": 13,
+    "beat": "8",
+    "where": "livingroom",
+    "refs": [
+     "yesi",
+     "regina"
+    ],
+    "lens": "50mm",
+    "dur": "2s",
+    "move": "SNAP ZOOM",
+    "size": "CLOSE-UP",
+    "action": "Regina at her laptop showing a live blackjack table, calm and serious; behind her Yesi slowly turns around with a huge delighted grin."
+   }
+  ]
+ },
+ "supportDesign": [
+  {
+   "key": "aurelio",
+   "name": "Don Aurelio Wong",
+   "color": "#F5A524",
+   "aspect": "3:4",
+   "anchor": "Don Aurelio Wong, a 67-year-old Chinese-Mexican man from Mexicali and a proud norteño: weathered warm tan skin, East Asian features, a thick grey horseshoe moustache, kind squinting eyes behind reading glasses pushed up on his forehead, a cream straw cowboy hat, a pressed pale-blue western snap-button shirt, dark jeans with a big silver belt buckle, tan leather cowboy boots and a stub of chalk tucked behind one ear",
+   "pose": "standing behind a shop counter with his arms crossed, unimpressed but secretly amused"
+  },
+  {
+   "key": "primos",
+   "name": "Los Primos (Chato & Beto)",
+   "color": "#9AA4AD",
+   "aspect": "4:3",
+   "anchor": "Los Primos, two enormous, gentle-looking Mexican men in their thirties, cousins, each about two metres tall and very broad, short crew cuts and neat short beards, matching crisp white guayabera shirts, dark trousers and polished black shoes",
+   "pose": "standing side by side in front of a black SUV with their hands folded politely, soft shy smiles"
+  },
+  {
+   "key": "chamuco",
+   "name": "Chamuco",
+   "color": "#B8C0C8",
+   "aspect": "1:1",
+   "anchor": "Chamuco, a sleek jet-black cat with bright golden-green eyes, a small notch torn out of his left ear and a long elegant tail",
+   "pose": "sitting regally on a designer lobby bench, staring straight at the camera as if judging you"
+  }
+ ],
  "assets": {
   "env": {
    "exterior": "assets/env/exterior.webp",
@@ -1629,27 +1881,27 @@ window.LUCKY666 = {
   "chars": {
    "yesi": {
     "hero": "assets/chars/yesi/hero.webp",
-    "lifestyle": "assets/chars/yesi/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/yesi/room.webp",
-    "turnaround": "assets/chars/yesi/turnaround.webp",
-    "expressions": "assets/chars/yesi/expressions.webp",
-    "head": "assets/chars/yesi/head.webp",
-    "details": "assets/chars/yesi/details.webp",
-    "wardrobe": "assets/chars/yesi/wardrobe.webp",
-    "lighting": "assets/chars/yesi/lighting.webp",
-    "board": "assets/chars/yesi/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
-    "lifestyle": "assets/chars/regina/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/regina/room.webp",
-    "turnaround": "assets/chars/regina/turnaround.webp",
-    "expressions": "assets/chars/regina/expressions.webp",
-    "head": "assets/chars/regina/head.webp",
-    "details": "assets/chars/regina/details.webp",
-    "wardrobe": "assets/chars/regina/wardrobe.webp",
-    "lighting": "assets/chars/regina/lighting.webp",
-    "board": "assets/chars/regina/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
@@ -1665,36 +1917,36 @@ window.LUCKY666 = {
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
-    "lifestyle": "assets/chars/lupe/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/lupe/room.webp",
-    "turnaround": "assets/chars/lupe/turnaround.webp",
-    "expressions": "assets/chars/lupe/expressions.webp",
-    "head": "assets/chars/lupe/head.webp",
-    "details": "assets/chars/lupe/details.webp",
-    "wardrobe": "assets/chars/lupe/wardrobe.webp",
-    "lighting": "assets/chars/lupe/lighting.webp",
-    "board": "assets/chars/lupe/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    },
    "marisol": {
     "hero": "assets/chars/marisol/hero.webp",
-    "lifestyle": "assets/chars/marisol/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/marisol/room.webp",
-    "turnaround": "assets/chars/marisol/turnaround.webp",
-    "expressions": "assets/chars/marisol/expressions.webp",
-    "head": "assets/chars/marisol/head.webp",
-    "details": "assets/chars/marisol/details.webp",
-    "wardrobe": "assets/chars/marisol/wardrobe.webp",
-    "lighting": "assets/chars/marisol/lighting.webp",
-    "board": "assets/chars/marisol/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    }
   },
   "launch": {
    "reveals": {
-    "yesi": "assets/launch/reveal_yesi.webp",
-    "regina": "assets/launch/reveal_regina.webp",
+    "yesi": null,
+    "regina": null,
     "citlali": "assets/launch/reveal_citlali.webp",
-    "lupe": "assets/launch/reveal_lupe.webp",
-    "marisol": "assets/launch/reveal_marisol.webp"
+    "lupe": null,
+    "marisol": null
    },
    "carousel": [
     "assets/launch/carousel_01.webp",
@@ -1702,7 +1954,30 @@ window.LUCKY666 = {
     "assets/launch/carousel_03.webp"
    ],
    "teaser": "assets/launch/teaser.mp4"
+  },
+  "support": {
+   "aurelio": "assets/support/aurelio.webp",
+   "primos": "assets/support/primos.webp",
+   "chamuco": "assets/support/chamuco.webp"
+  },
+  "ep01": {
+   "sheet": null,
+   "panels": {
+    "1": null,
+    "2": null,
+    "3": null,
+    "4": null,
+    "5": null,
+    "6": null,
+    "7": null,
+    "8": null,
+    "9": null,
+    "10": null,
+    "11": null,
+    "12": null,
+    "13": null
+   }
   }
  },
- "built": "2026-09-29T04:25:50.747Z"
+ "built": "2026-09-29T12:51:57.984Z"
 };
