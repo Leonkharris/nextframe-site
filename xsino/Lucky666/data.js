@@ -1027,7 +1027,7 @@ window.LUCKY666 = {
     ],
     [
      "HEIGHT",
-     "173 cm (+ heels) · curvy hourglass"
+     "173 cm (+ heels) · slim bombshell: tiny waist, long toned legs"
     ],
     [
      "HAIR",
@@ -1121,7 +1121,7 @@ window.LUCKY666 = {
     "Dance lessons on the roof: salsa and son jarocho with the girls"
    ],
    "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
-   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping bombshell: glowing warm caramel-brown skin, a tall curvy hourglass figure, a stunning face with full glossy lips, high cheekbones and sultry dark brown eyes with smoky winged eyeliner and long lashes, and long voluminous glossy dark waves with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping bombshell: glowing warm caramel-brown skin, a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach, long slender toned legs and a sculpted hourglass silhouette like a swimsuit model, a stunning face with full glossy lips, high cheekbones and sultry dark brown eyes with smoky winged eyeliner and long lashes, and long voluminous glossy dark waves with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
   }
  ],
  "episodes": [
@@ -1704,5 +1704,5 @@ window.LUCKY666 = {
    "teaser": "assets/launch/teaser.mp4"
   }
  },
- "built": "2026-09-29T03:45:09.154Z"
+ "built": "2026-09-29T04:25:50.747Z"
 };
