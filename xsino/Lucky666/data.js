@@ -172,7 +172,7 @@ window.LUCKY666 = {
     "key": "hallway",
     "name": "The 6th-Floor Hallway",
     "nameES": "El Pasillo del Sexto",
-    "text": "Four doors, 606, 616, 626 and 666, flickering fluorescent tube, Citlali's plants, Lupe's cables, Marisol's heels, Regina's doormat that says BIENVENIDOS in serif.",
+    "text": "Four matte-black doors (606, 616, 626 and 666) under warm LED strips, Citlali's plants, Lupe's cables, Marisol's heels, Regina's doormat that says BIENVENIDOS in serif.",
     "plate": "hallway"
    },
    {
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T03:06:16.786Z"
+ "built": "2026-09-29T03:13:17.207Z"
 };
