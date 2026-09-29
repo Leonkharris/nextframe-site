@@ -1,0 +1,372 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>LUCKY 666 · Codex</title>
+<meta name="description" content="LUCKY 666: five neighbours, one cursed building, zero self-control. The XSINO digital-influencer sitcom universe codex.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Monoton&family=Montserrat:wght@400;500;600;700;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#07061a;--bg2:#0e0c26;--card:#141233;--line:#2a2656;--text:#f1edff;--muted:#a79fd0;--mag:#ff2bd6;--cyan:#22d3ee;--vio:#8b5cf6;--gold:#e8c26a;--red:#ff3b5c}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:Montserrat,system-ui,sans-serif;line-height:1.55;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:var(--cyan)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+section{padding:84px 0;border-top:1px solid #16143a}
+h2.sec{font-size:13px;letter-spacing:.42em;text-transform:uppercase;color:var(--cyan);margin-bottom:10px}
+h3.big{font-size:clamp(28px,4.4vw,46px);line-height:1.05;font-weight:800;margin-bottom:22px}
+p.lead{font-size:18px;color:#dcd6ff;max-width:820px}
+.muted{color:var(--muted)}
+/* nav */
+nav{position:sticky;top:0;z-index:40;background:rgba(7,6,26,.82);backdrop-filter:blur(10px);border-bottom:1px solid #1d1a45}
+nav .wrap{display:flex;gap:6px;align-items:center;overflow-x:auto;padding-top:10px;padding-bottom:10px;scrollbar-width:none}
+nav .brand{font-family:Monoton;color:var(--mag);font-size:18px;margin-right:14px;white-space:nowrap;text-shadow:0 0 12px rgba(255,43,214,.7)}
+nav a{color:var(--muted);text-decoration:none;font-size:12.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:7px 11px;border-radius:99px;white-space:nowrap}
+nav a:hover{color:var(--text);background:#1b1846}
+/* hero */
+.hero{position:relative;min-height:92vh;display:flex;align-items:flex-end;overflow:hidden}
+.hero .bgimg{position:absolute;inset:0;background:#0b0930 center/cover no-repeat}
+.hero .shade{position:absolute;inset:0;background:linear-gradient(180deg,rgba(7,6,26,.15) 0%,rgba(7,6,26,.35) 45%,rgba(7,6,26,.96) 100%)}
+.hero .inner{position:relative;padding-bottom:64px;width:100%}
+.sign{font-family:Monoton;font-size:clamp(64px,13vw,168px);line-height:.95;color:#ffe9fb;letter-spacing:.02em;text-shadow:0 0 6px #fff,0 0 18px var(--mag),0 0 42px var(--mag),0 0 90px rgba(255,43,214,.6)}
+.sign .n{display:inline-block;color:#e9fdff;text-shadow:0 0 6px #fff,0 0 18px var(--cyan),0 0 42px var(--cyan),0 0 90px rgba(34,211,238,.6);transition:transform .12s steps(2)}
+.sign.flip .n{transform:rotate(180deg)}
+.sign.buzz .n:last-child{animation:buzz .5s steps(3) 1}
+@keyframes buzz{0%,100%{opacity:1}30%{opacity:.25}60%{opacity:.8}80%{opacity:.1}}
+.tag{font-size:clamp(18px,2.4vw,26px);font-weight:700;margin-top:18px}
+.tag i{display:block;font-weight:500;color:var(--muted);font-size:.8em;margin-top:4px}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:22px}
+.chip{border:1px solid var(--line);background:rgba(20,18,51,.7);border-radius:99px;padding:6px 13px;font-size:12px;font-weight:600;letter-spacing:.06em}
+.chip.mag{border-color:rgba(255,43,214,.55);color:#ffc9f3}.chip.cy{border-color:rgba(34,211,238,.55);color:#c6f6ff}
+.flipnote{margin-top:14px;font-size:12px;color:var(--muted)}
+/* cards */
+.grid{display:grid;gap:18px}
+.g2{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:22px}
+.card h4{font-size:16px;font-weight:800;margin-bottom:8px}
+.card p{font-size:14.5px;color:#d6d0f5}
+.kicker{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--mag);font-weight:700;margin-bottom:6px}
+.prem p{margin-bottom:14px;font-size:16.5px;color:#dcd6ff;max-width:880px}
+/* building */
+.tower{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.2fr);gap:34px;align-items:start}
+.floors{border:1px solid var(--line);border-radius:16px;overflow:hidden;background:linear-gradient(180deg,#1a1640,#110f2c)}
+.floor{display:grid;grid-template-columns:120px 1fr;border-top:1px solid var(--line)}
+.floor:first-child{border-top:0}
+.floor b{padding:14px;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--gold);border-right:1px solid var(--line);background:rgba(0,0,0,.18)}
+.floor span{padding:14px;font-size:13.5px;color:#d6d0f5}
+.floor.six b{color:var(--mag)}
+.timeline{display:grid;gap:12px}
+.timeline div{border-left:3px solid var(--vio);padding:4px 0 4px 16px;font-size:14.5px;color:#d6d0f5}
+.plate{border-radius:14px;overflow:hidden;background:#0c0a26;border:1px solid var(--line);aspect-ratio:16/9;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:12px;letter-spacing:.14em;text-transform:uppercase}
+.plate img{width:100%;height:100%;object-fit:cover}
+.loc h4{margin-top:14px}
+/* tenants */
+.tenants{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.tenant{cursor:pointer;border-radius:18px;overflow:hidden;background:var(--card);border:1px solid var(--line);transition:transform .2s,border-color .2s;display:flex;flex-direction:column}
+.tenant:hover{transform:translateY(-4px)}
+.tenant .ph{aspect-ratio:3/4;background:#0c0a26 center/cover no-repeat;position:relative;display:flex;align-items:flex-end}
+.tenant .ph .apt{position:absolute;top:10px;left:10px;font-size:11px;font-weight:800;letter-spacing:.12em;background:rgba(7,6,26,.8);padding:4px 9px;border-radius:99px}
+.tenant .ph .pend{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;letter-spacing:.2em;text-transform:uppercase}
+.tenant .meta{padding:14px 16px 18px}
+.tenant .nm{font-size:17px;font-weight:800}
+.tenant .al{font-size:12px;color:var(--muted);margin-top:2px}
+.tenant .vc{display:inline-block;margin-top:10px;font-size:11px;font-weight:700;letter-spacing:.05em;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.06)}
+.tenant.lead{grid-column:span 1}
+/* modal */
+.modal{position:fixed;inset:0;z-index:80;background:rgba(3,2,14,.86);backdrop-filter:blur(6px);display:none;overflow-y:auto}
+.modal.open{display:block}
+.mbox{max-width:1100px;margin:34px auto;background:var(--bg2);border:1px solid var(--line);border-radius:20px;overflow:hidden}
+.mhead{display:grid;grid-template-columns:260px 1fr;gap:0}
+.mhead .ph{background:#0c0a26 center/cover no-repeat;min-height:340px}
+.mhead .txt{padding:28px 30px}
+.mhead .txt h3{font-size:34px;line-height:1.05;font-weight:800}
+.mhead .txt .al{color:var(--muted);margin-top:6px}
+.mhead .txt .role{margin-top:12px;font-weight:600}
+.close{position:sticky;top:12px;float:right;margin:12px 12px 0 0;background:#1b1846;color:var(--text);border:1px solid var(--line);border-radius:99px;width:40px;height:40px;font-size:20px;cursor:pointer;z-index:2}
+.tabs{display:flex;gap:6px;padding:0 24px;border-bottom:1px solid var(--line);overflow-x:auto}
+.tabs button{background:none;border:0;color:var(--muted);font:600 13px Montserrat;letter-spacing:.08em;text-transform:uppercase;padding:14px 12px;cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap}
+.tabs button.on{color:var(--text);border-color:var(--acc,var(--mag))}
+.tbody{padding:26px 30px 34px}
+.stats{display:grid;grid-template-columns:auto 1fr;gap:6px 16px;font-size:13.5px}
+.stats b{color:var(--acc,var(--mag));letter-spacing:.06em;font-size:11.5px;padding-top:2px;white-space:nowrap}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+ul.dots{list-style:none;display:grid;gap:8px;font-size:14.5px;color:#d6d0f5}
+ul.dots li{padding-left:18px;position:relative}
+ul.dots li:before{content:"◆";position:absolute;left:0;top:1px;font-size:9px;color:var(--acc,var(--mag))}
+h5{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--acc,var(--mag));margin:22px 0 10px}
+.quote{font-size:17px;font-weight:700}.quote i{display:block;font-weight:500;color:var(--muted);font-size:14px}
+.pal{display:flex;flex-wrap:wrap;gap:8px}
+.pal div{width:118px;font-size:10.5px;color:var(--muted)}
+.pal span{display:block;height:34px;border-radius:7px;border:1px solid rgba(255,255,255,.12);margin-bottom:4px}
+.pal b{color:var(--text);font-size:11px;display:block}
+.boardimg{border-radius:12px;border:1px solid var(--line)}
+.panelgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px}
+.panelgrid figure{background:#0c0a26;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+.panelgrid figcaption{font-size:11px;letter-spacing:.16em;text-transform:uppercase;color:var(--acc,var(--mag));padding:9px 12px;font-weight:700}
+.pending{padding:40px;text-align:center;border:1px dashed var(--line);border-radius:12px;color:var(--muted);font-size:13px}
+.anchor{font-size:13px;background:#0b0a22;border:1px solid var(--line);border-radius:10px;padding:14px;color:#cfc8f3;font-family:ui-monospace,Consolas,monospace;line-height:1.6}
+/* engine */
+.loop{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:12px;counter-reset:b}
+.loop .card{padding:18px}
+.loop .card .kicker{color:var(--cyan)}
+/* episodes */
+.ep{border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:10px;overflow:hidden}
+.ep summary{list-style:none;cursor:pointer;padding:16px 20px;display:grid;grid-template-columns:44px 1fr auto;gap:14px;align-items:center}
+.ep summary::-webkit-details-marker{display:none}
+.ep .no{font-family:Monoton;font-size:26px;color:var(--mag);text-shadow:0 0 10px rgba(255,43,214,.6)}
+.ep .t{font-weight:800;font-size:16px}.ep .t i{display:block;font-weight:500;color:var(--muted);font-size:13px}
+.ep .c{font-family:'Permanent Marker';color:var(--gold);font-size:15px;white-space:nowrap}
+.ep .body{padding:0 20px 20px 78px;font-size:14.5px;color:#d6d0f5;display:grid;gap:8px}
+.ep .body b{color:var(--cyan)}
+.cuenta{background:#fdf7e3;color:#231a07;border-radius:14px;padding:22px 24px;transform:rotate(-1deg);box-shadow:0 18px 40px rgba(0,0,0,.45);margin-bottom:26px}
+.cuenta h4{font-family:'Permanent Marker';font-size:24px;font-weight:400}
+.cuenta svg{width:100%;height:150px;margin-top:8px}
+.script{background:#fbfaf6;color:#1a1a1a;border-radius:10px;padding:34px clamp(18px,6vw,70px);font-family:"Courier New",ui-monospace,monospace;font-size:15px;line-height:1.5;max-width:760px;box-shadow:0 18px 40px rgba(0,0,0,.45)}
+.script .slug{font-weight:700;margin-bottom:16px}
+.script .act{margin:12px 0}
+.script .who{text-align:center;font-weight:700;margin-top:14px}
+.script .es{text-align:center;max-width:420px;margin:0 auto}
+.script .en{text-align:center;max-width:420px;margin:2px auto 0;color:#6b6b6b;font-size:13px}
+.phone{max-width:420px;border-radius:30px;border:8px solid #1c1a3a;background:#0b141a;overflow:hidden;margin-bottom:10px}
+.phead{background:#1f2c34;color:#e9edef;padding:14px 18px;font-weight:700;font-size:15px}
+.pbody{padding:14px 12px;display:grid;gap:8px;background:#0b141a}
+.msg{max-width:84%;background:#202c33;color:#e9edef;border-radius:10px;padding:7px 10px 8px;font-size:13.5px;justify-self:start}
+.msg.me{justify-self:end;background:#005c4b}
+.msg b{display:block;font-size:12px;margin-bottom:2px}
+.msg i{display:block;color:#8696a0;font-size:12px;margin-top:3px;font-style:normal}
+/* social */
+.acct{display:flex;gap:12px;align-items:center}
+.acct .dot{width:14px;height:14px;border-radius:50%;flex:none}
+.guard li{font-size:14.5px}
+footer{padding:54px 0 70px;border-top:1px solid #16143a;text-align:center;color:var(--muted);font-size:13px}
+footer img{height:42px;margin:0 auto 16px;opacity:.95}
+.rg{display:inline-block;border:1px solid var(--line);border-radius:99px;padding:6px 14px;margin-top:10px;font-weight:700;color:var(--text)}
+@media(max-width:820px){.tower,.cols,.mhead{grid-template-columns:1fr}.mhead .ph{min-height:420px}.floor{grid-template-columns:96px 1fr}.ep .body{padding-left:20px}.mbox{margin:0;border-radius:0}.tbody{padding:22px 18px}.mhead .txt{padding:22px 18px}}
+</style>
+</head>
+<body>
+<nav><div class="wrap">
+  <span class="brand">LUCKY 666</span>
+  <a href="#show">The Show</a><a href="#building">The Building</a><a href="#tenants">The Tenants</a><a href="#cast">Neighbours</a><a href="#engine">Comedy Engine</a><a href="#season">Season 1</a><a href="#social">Social Playbook</a><a href="#rules">Guardrails</a>
+</div></nav>
+
+<header class="hero">
+  <div class="bgimg" id="heroBg"></div><div class="shade"></div>
+  <div class="inner wrap">
+    <div class="chips" style="margin:0 0 18px"><span class="chip cy">XSINO · digital-influencer universe</span><span class="chip">Sitcom · 12 episodes + 5 live feeds</span><span class="chip mag">21+</span></div>
+    <div class="sign" id="sign">LUCKY <span class="n">6</span><span class="n">6</span><span class="n">6</span></div>
+    <div class="tag" id="tag"></div>
+    <div class="flipnote">Watch the sign. When it flickers to 999, Yesi goes all in. It is never a sign from heaven.</div>
+  </div>
+</header>
+
+<section id="show"><div class="wrap">
+  <h2 class="sec">The Show</h2>
+  <h3 class="big">A vecindad for the online-gambling era.</h3>
+  <p class="lead" id="logline"></p>
+  <div class="prem" id="premise" style="margin-top:26px"></div>
+  <h5 style="color:var(--cyan)">Built from</h5>
+  <div class="grid g3" id="insp"></div>
+  <h5 style="color:var(--cyan)">Format</h5>
+  <ul class="dots" id="format"></ul>
+</div></section>
+
+<section id="building"><div class="wrap">
+  <h2 class="sec">The Building</h2>
+  <h3 class="big" id="bname"></h3>
+  <p class="muted" id="baddr" style="margin:-10px 0 26px"></p>
+  <div class="tower">
+    <div>
+      <h5>History</h5><div class="timeline" id="history"></div>
+      <h5>The sign</h5><p class="muted" id="bsign" style="font-size:14.5px"></p>
+    </div>
+    <div><h5>Floor by floor</h5><div class="floors" id="floors"></div></div>
+  </div>
+  <h5 style="margin-top:44px">Key locations</h5>
+  <div class="grid g3" id="locs"></div>
+</div></section>
+
+<section id="tenants"><div class="wrap">
+  <h2 class="sec">The Tenants · 6th Floor</h2>
+  <h3 class="big">Five women. Five corners of Mexico. Five ways to lose it all.</h3>
+  <p class="lead" style="margin-bottom:28px">Tap a tenant for her full profile, character board, room and social feed.</p>
+  <div class="tenants" id="tenantGrid"></div>
+</div></section>
+
+<section id="cast"><div class="wrap">
+  <h2 class="sec">The Neighbours</h2>
+  <h3 class="big">Everybody else in the building.</h3>
+  <div class="grid g3" id="support"></div>
+</div></section>
+
+<section id="engine"><div class="wrap">
+  <h2 class="sec">The Comedy Engine</h2>
+  <h3 class="big">Every episode runs the same loop. That's the joke.</h3>
+  <div class="loop" id="loop"></div>
+  <h5 style="margin-top:40px">Running devices</h5>
+  <div class="grid g3" id="devices"></div>
+</div></section>
+
+<section id="season"><div class="wrap">
+  <h2 class="sec">Season 1</h2>
+  <h3 class="big">12 episodes, mirrored on Chainsmoker Cat.</h3>
+  <div class="cuenta"><h4>LA CUENTA — what Yesi owes the building</h4><div id="cuentaChart"></div></div>
+  <div id="eps"></div>
+  <h5 style="margin-top:34px">Tone sample · the pilot's cold open</h5>
+  <div class="script" id="coldOpen"></div>
+  <h5 style="margin-top:34px">Bet of the Week · between-episode challenges</h5>
+  <ul class="dots" id="bets"></ul>
+</div></section>
+
+<section id="social"><div class="wrap">
+  <h2 class="sec">Social & Influencer Playbook</h2>
+  <h3 class="big">The feeds are the show. The show feeds the accounts.</h3>
+  <div class="grid g3" id="objectives"></div>
+  <h5 style="margin-top:36px">Accounts</h5>
+  <div class="grid g2" id="accounts"></div>
+  <h5 style="margin-top:36px">Signature formats</h5>
+  <div class="grid g3" id="formats"></div>
+  <h5 style="margin-top:36px">Sample carousel · Chat del Edificio</h5>
+  <div class="phone"><div class="phead" id="chatName"></div><div class="pbody" id="chat"></div></div>
+  <div class="cols" style="margin-top:12px">
+    <div><h5>Cadence</h5><ul class="dots" id="cadence"></ul></div>
+    <div><h5>Launch plan</h5><ul class="dots" id="launch"></ul></div>
+  </div>
+</div></section>
+
+<section id="rules"><div class="wrap">
+  <h2 class="sec">Guardrails</h2>
+  <h3 class="big">Funny, never reckless.</h3>
+  <ul class="dots guard" id="guard"></ul>
+</div></section>
+
+<footer><div class="wrap">
+  <img src="assets/xsino_logo.png" alt="XSINO" onerror="this.remove()">
+  <div>LUCKY 666 is a fictional comedy universe. All characters are original, fictional adults.</div>
+  <div class="rg">21+ · Juega con responsabilidad · Play responsibly</div>
+  <div style="margin-top:14px;font-size:11px" id="built"></div>
+</div></footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeM()"><div class="mbox" id="mbox"></div></div>
+
+<script src="data.js"></script>
+<script>
+const L = window.LUCKY666, A = L.assets;
+const $ = (id) => document.getElementById(id);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+const li = (arr) => arr.map((x) => `<li>${esc(x)}</li>`).join("");
+const money = (n) => "$" + n.toLocaleString("en-US") + " MXN";
+
+// hero + sign flicker (the 999 gag: the 6s were hung upside down, so rotate them back for a second)
+if (A.env.exterior) $("heroBg").style.backgroundImage = `url(${A.env.exterior})`;
+$("tag").innerHTML = `${esc(L.series.taglineEN)}<i>${esc(L.series.taglineES)}</i>`;
+const sign = $("sign");
+setInterval(() => { sign.classList.add("buzz"); setTimeout(() => sign.classList.remove("buzz"), 600); }, 5200);
+setInterval(() => { sign.classList.add("flip"); setTimeout(() => sign.classList.remove("flip"), 1000); }, 11000);
+
+// show
+$("logline").textContent = L.series.logline;
+$("premise").innerHTML = L.series.premise.map((p) => `<p>${esc(p)}</p>`).join("");
+$("insp").innerHTML = L.series.inspirations.map((i) => `<div class="card"><div class="kicker">Inspiration</div><h4>${esc(i.name)}</h4><p>${esc(i.what)}</p></div>`).join("");
+$("format").innerHTML = li(L.series.format);
+
+// building
+const B = L.building;
+$("bname").textContent = B.name; $("baddr").textContent = B.address; $("bsign").textContent = B.sign;
+$("history").innerHTML = B.history.map((h) => `<div>${esc(h)}</div>`).join("");
+$("floors").innerHTML = B.floors.map((f) => `<div class="floor${f.level.startsWith("6") ? " six" : ""}"><b>${esc(f.level)}</b><span>${esc(f.text)}</span></div>`).join("");
+const plate = (src, label) => `<div class="plate">${src ? `<img src="${src}" alt="${esc(label)}" loading="lazy">` : "plate generating…"}</div>`;
+$("locs").innerHTML = B.locations.map((l) => `<div class="loc">${plate(A.env[l.key], l.name)}<h4>${esc(l.name)} <span class="muted" style="font-weight:500">· ${esc(l.nameES)}</span></h4><p class="muted" style="font-size:14px">${esc(l.text)}</p></div>`).join("");
+
+// tenants
+const C = L.characters;
+$("tenantGrid").innerHTML = C.map((c) => {
+  const h = A.chars[c.key]?.hero;
+  return `<div class="tenant${c.lead ? " lead" : ""}" style="border-color:${c.color}66" onclick="openM('${c.key}')">
+    <div class="ph" style="${h ? `background-image:url(${h})` : ""}"><span class="apt" style="color:${c.color === "#1B2A4A" ? "#c9a24a" : c.color}">${esc(c.apt.split(" (")[0])}</span>${h ? "" : '<span class="pend">portrait generating…</span>'}</div>
+    <div class="meta"><div class="nm">${esc(c.name)}</div><div class="al">${esc(c.alias)}</div><span class="vc" style="color:${c.color === "#1B2A4A" ? "#c9a24a" : c.color}">${esc(c.vice)}</span></div></div>`;
+}).join("");
+
+const PANEL_NAMES = [["turnaround", "Views / Turnaround"], ["expressions", "Expressions"], ["head", "Head Detail"], ["details", "Macro Details"], ["wardrobe", "Wardrobe Flat-Lay"], ["lighting", "Lighting / Mood"]];
+function tabHTML(c, t) {
+  const a = A.chars[c.key] || {};
+  if (t === "profile") return `<div class="cols"><div>
+      <h5 style="margin-top:0">Stats</h5><div class="stats">${c.stats.map(([k, v]) => `<b>${esc(k)}</b><span>${esc(v)}</span>`).join("")}</div>
+      <h5>Palette</h5><div class="pal">${c.palette.map(([n, h]) => `<div><span style="background:${h}"></span><b>${h}</b>${esc(n)}</div>`).join("")}</div>
+      <h5>Materials</h5><ul class="dots">${li(c.materials)}</ul>
+    </div><div>
+      <h5 style="margin-top:0">The vice</h5><p style="font-size:14.5px">${esc(c.viceLong)}</p>
+      <h5>Personality</h5><ul class="dots">${li(c.personality)}</ul>
+      <h5>Backstory</h5><ul class="dots">${li(c.backstory)}</ul>
+      <h5>Surprisingly cool</h5><p style="font-size:14.5px">${esc(c.surprisinglyCool)}</p>
+      <h5>Catchphrases</h5><div style="display:grid;gap:10px">${c.catchphrases.map((q) => `<div class="quote">“${esc(q.es)}”<i>${esc(q.en)}</i></div>`).join("")}</div>
+      <h5>Relationships</h5><ul class="dots">${li(c.relationships)}</ul>
+    </div></div>
+    <h5>Identity anchor · paste verbatim into every prompt</h5><div class="anchor">${esc(c.anchor)}</div>`;
+  if (t === "board") {
+    const board = a.board ? `<img class="boardimg" src="${a.board}" alt="Character board" loading="lazy">` : "";
+    const panels = PANEL_NAMES.filter(([k]) => a[k]).map(([k, n]) => `<figure><figcaption>${n}</figcaption><img src="${a[k]}" alt="${n}" loading="lazy"></figure>`).join("");
+    if (!board && !panels) return `<div class="pending">Character board panels are generating on the free lane. They appear here automatically on the next build.</div>`;
+    return board || `<div class="panelgrid">${panels}</div>`;
+  }
+  if (t === "room") return `${a.room ? `<img class="boardimg" src="${a.room}" alt="${esc(c.room.name)}" loading="lazy">` : `<div class="pending">Room plate generating…</div>`}<h5>${esc(c.room.name)}</h5><p style="font-size:15px">${esc(c.room.text)}</p>`;
+  if (t === "feed") return `<div class="cols"><div>${a.lifestyle ? `<img class="boardimg" src="${a.lifestyle}" alt="In character" loading="lazy">` : `<div class="pending">In-character photo generating…</div>`}</div><div>
+      <h5 style="margin-top:0">Account</h5><div class="quote">${esc(c.handle)}</div>
+      <h5>Content pillars</h5><ul class="dots">${li(c.pillars)}</ul>
+      <h5>Voice</h5><p style="font-size:14.5px">${esc(c.voice)}</p></div></div>`;
+}
+let cur = null;
+function openM(key, t = "profile") {
+  const c = C.find((x) => x.key === key); cur = c;
+  const acc = c.color === "#1B2A4A" ? "#c9a24a" : c.color, h = A.chars[key]?.hero;
+  $("mbox").style.setProperty("--acc", acc);
+  $("mbox").innerHTML = `<button class="close" onclick="closeM()" aria-label="Close">×</button>
+    <div class="mhead"><div class="ph" style="${h ? `background-image:url(${h})` : ""}"></div><div class="txt">
+      <div class="kicker" style="color:${acc}">${esc(c.apt)} · ${esc(c.hometown)}</div><h3>${esc(c.name)}</h3><div class="al">${esc(c.alias)}</div>
+      <div class="role">${esc(c.role)}</div><div class="chips"><span class="chip">Age ${c.age}</span><span class="chip" style="border-color:${acc}">${esc(c.vice)}</span><span class="chip">${esc(c.handle)}</span></div>
+      <p style="margin-top:16px;font-size:14.5px;color:#d6d0f5">${esc(c.look)}</p></div></div>
+    <div class="tabs">${[["profile", "Profile"], ["board", "Character Board"], ["room", "Her Room"], ["feed", "Social Feed"]].map(([k, n]) => `<button class="${k === t ? "on" : ""}" onclick="openM('${key}','${k}')">${n}</button>`).join("")}</div>
+    <div class="tbody">${tabHTML(c, t)}</div>`;
+  $("modal").classList.add("open"); document.body.style.overflow = "hidden";
+  history.replaceState(null, "", `#tenant-${key}`);
+}
+function closeM() { $("modal").classList.remove("open"); document.body.style.overflow = ""; history.replaceState(null, "", "#tenants"); }
+document.addEventListener("keydown", (e) => { if (e.key === "Escape") closeM(); });
+
+// neighbours, engine
+$("support").innerHTML = L.supporting.map((s) => `<div class="card"><div class="kicker">${esc(s.role)}</div><h4>${esc(s.name)}</h4><p>${esc(s.text)}</p></div>`).join("");
+$("loop").innerHTML = L.series.engine.map((e) => `<div class="card"><div class="kicker">${esc(e.beat)}</div><p>${esc(e.text)}</p></div>`).join("");
+$("devices").innerHTML = L.series.devices.map((d) => `<div class="card"><h4>${esc(d.name)}</h4><p>${esc(d.text)}</p></div>`).join("");
+
+// season + La Cuenta chart
+$("eps").innerHTML = L.episodes.map((e) => `<details class="ep"><summary><span class="no">${e.n}</span><span class="t">${esc(e.en)}<i>${esc(e.es)} · ${esc(e.mirror)}</i></span><span class="c">${money(e.cuenta)}</span></summary>
+  <div class="body"><div>${esc(e.logline)}</div><div><b>The bet:</b> ${esc(e.bet)}</div><div><b>The heart:</b> ${esc(e.heart)}</div></div></details>`).join("");
+(function chart() {
+  const pts = L.episodes.map((e) => e.cuenta), W = 1000, H = 150, P = 18, max = Math.max(...pts) * 1.08;
+  const x = (i) => P + (i * (W - 2 * P)) / (pts.length - 1), y = (v) => H - P - (v / max) * (H - 2 * P);
+  const path = pts.map((v, i) => `${i ? "L" : "M"}${x(i).toFixed(1)},${y(v).toFixed(1)}`).join("");
+  const dots = pts.map((v, i) => `<circle cx="${x(i)}" cy="${y(v)}" r="5" fill="#c2185b"/><text x="${x(i)}" y="${y(v) - 11}" font-size="13" text-anchor="middle" fill="#231a07" font-family="Permanent Marker">${i + 1}</text>`).join("");
+  $("cuentaChart").innerHTML = `<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" role="img" aria-label="Yesi's debt by episode"><path d="${path}" fill="none" stroke="#c2185b" stroke-width="3.5" stroke-linejoin="round"/>${dots}</svg><div style="font-size:13px;margin-top:4px">Episode 1: ${money(pts[0])} → peak ${money(Math.max(...pts))} → finale: ${money(pts[pts.length - 1])} (it was $0 for one second).</div>`;
+})();
+$("bets").innerHTML = li(L.betsOfTheWeek);
+if (L.coldOpen) $("coldOpen").innerHTML = `<div class="slug">${esc(L.coldOpen.slug)}</div>` + L.coldOpen.lines.map((l) => l.a ? `<div class="act">${esc(l.a)}</div>` : `<div class="who">${esc(l.who)}</div><div class="es">${esc(l.es)}</div><div class="en">${esc(l.en)}</div>`).join("");
+const CHAT_COL = { "Doña Chayo": "#f15c6d", Yesi: "#ff5fd2", Regina: "#e8c26a", Lupe: "#22d3ee", Citlali: "#9bd37a", Marisol: "#b69cff", "Don Aurelio": "#f5a524", Chamuco: "#aaa" };
+if (L.groupChat) { $("chatName").textContent = L.groupChat.name; $("chat").innerHTML = L.groupChat.msgs.map((m) => `<div class="msg${m.who === "Yesi" ? " me" : ""}"><b style="color:${CHAT_COL[m.who] || "#ccc"}">${esc(m.who)}</b>${esc(m.es)}<i>${esc(m.en)}</i></div>`).join(""); }
+
+// social
+const S = L.social;
+$("objectives").innerHTML = S.objectives.map((o) => `<div class="card"><div class="kicker">${esc(o.name)}</div><p>${esc(o.text)}</p></div>`).join("");
+$("accounts").innerHTML = `<div class="card acct"><span class="dot" style="background:linear-gradient(135deg,#ff2bd6,#22d3ee)"></span><div><h4 style="margin:0">@lucky666.mx</h4><p class="muted">The show account: episodes, La Cuenta, the group chat.</p></div></div>` +
+  C.map((c) => `<div class="card acct"><span class="dot" style="background:${c.color}"></span><div><h4 style="margin:0">${esc(c.handle)}</h4><p class="muted">${esc(c.name)}: ${esc(c.pillars[0])}</p></div></div>`).join("");
+$("formats").innerHTML = S.formats.map((f) => `<div class="card"><h4>${esc(f.name)}</h4><p>${esc(f.text)}</p></div>`).join("");
+$("cadence").innerHTML = li(S.cadence); $("launch").innerHTML = li(S.launch);
+$("guard").innerHTML = li(L.series.guardrails);
+$("built").textContent = "Codex build " + L.built.slice(0, 16).replace("T", " ") + " UTC";
+
+const m = location.hash.match(/^#tenant-(\w+)/); if (m && C.find((c) => c.key === m[1])) openM(m[1]);
+</script>
+</body>
+</html>

@@ -1,0 +1,1536 @@
+window.LUCKY666 = {
+ "series": {
+  "title": "LUCKY 666",
+  "taglineEN": "Five neighbours. One cursed building. Zero self-control.",
+  "taglineES": "Cinco vecinas. Un edificio salado. Cero autocontrol.",
+  "client": "XSINO — digital-influencer universe for audience building, hype and client acquisition (21+)",
+  "logline": "In a crumbling Mexico City apartment building whose neon sign was hung upside down in 1986, five women from five corners of Mexico — each hooked on a different kind of online bet — share one rooftop, one broken elevator and one terrible decision per episode.",
+  "premise": [
+   "LUCKY 666 is a vecindad for the online-gambling era. Think El Chavo del 8's courtyard, rebuilt as a six-storey building where every tenant's phone is a tiny casino.",
+   "The engine is borrowed from the anime Chainsmoker Cat (Yani Neko, 2026): a broke, shameless, weirdly lovable lead whose vice drives every plot, surrounded by neighbours who each nurse their own habit. We swap cigarettes for online bets. Yesi doesn't chain-smoke, she chain-spins.",
+   "The chemistry is borrowed from 2 Broke Girls: a street-smart hustler and a rich girl in hiding forced into the same apartment, fast insult banter, a shared dream business that keeps getting wiped out, and a running money card at the end of every episode, except ours goes UP (La Cuenta: what Yesi owes the building).",
+   "It's commentary through comedy. Nobody here gets rich. The joke is always the chase, the excuse, the spiral and the friends who drag you back. The girls lose in hilarious ways, cover for each other, and wake up the next day to do it again."
+  ],
+  "format": [
+   "Main series: 12 episodes × 6–8 min (16:9 master for YouTube/Facebook), every episode also cut into 3–5 vertical 9:16 social skits (15–60 s).",
+   "Between episodes, each girl posts in character on her own account: her room, her day, her vice, her group-chat drama. The feeds are the show, and the show feeds the accounts.",
+   "Language: Mexican Spanish dialogue (chilango, norteño/sinaloense, tapatío, oaxaqueño and jarocho flavours), English subtitles and English-first captions for the codex and marketing.",
+   "Look: photoreal digital-influencer photography (the S5 house style: glossy, vertical, beauty close-ups plus full-body OOTD), graded with XSINO neon: magenta, cyan and violet spill from the building's sign."
+  ],
+  "inspirations": [
+   {
+    "name": "Chainsmoker Cat (ヤニねこ / Yani Neko)",
+    "what": "Manga by NyanNyanFactory (Weekly Young Magazine, 2023–), anime by Bibury Animation Studio, 12 eps, Jul–Sep 2026, Netflix. Broke catgirl Yaniko scavenges cigarettes, quits every Monday, relapses by Tuesday; the run-down building is full of tenants with their own vices; a long-suffering landlord; a sister who keeps trying to fix her. We mirror its season structure episode by episode (titles in its '…, Nya' pattern become '…, Güey')."
+   },
+   {
+    "name": "2 Broke Girls (CBS, 2011–2017)",
+    "what": "Max (poor since birth) and Caroline (heiress whose father went to prison) share a Brooklyn apartment and a cupcake dream. We take the odd couple (Yesi and Regina), the ensemble of eccentric neighbours, the insult-comedy rhythm and the end-of-episode money card."
+   },
+   {
+    "name": "El Chavo del 8 / Vecinos",
+    "what": "The Mexican vecindad sitcom tradition: everyone lives on top of everyone, the landlord comes for the rent, the whole building gets involved in every scheme."
+   }
+  ],
+  "engine": [
+   {
+    "beat": "1 · THE ITCH",
+    "text": "A money problem or an omen: rent is due, a push notification, the sign flickers 999, Citlali's horoscope says 'today'."
+   },
+   {
+    "beat": "2 · THE EXCUSE",
+    "text": "'Una más y ya.' One more spin and I'm done (Yesi's version of 'last cigarette'). Every girl has her own excuse: astrology, maths, 'strategy', 'he's lucky'."
+   },
+   {
+    "beat": "3 · THE SCHEME",
+    "text": "They rope each other in. Each vice's logic makes it worse: Citlali's zodiac parlays, Lupe's bot, Regina's risk dashboard, Marisol's date-numerology."
+   },
+   {
+    "beat": "4 · THE SPIRAL",
+    "text": "Escalation to the absurd. The whole building gets involved: Don Aurelio, Doña Chayo's tanda, Los Primos, the pawnshop."
+   },
+   {
+    "beat": "5 · THE HEART",
+    "text": "A small real moment. They cover for each other, share tacos on the roof, or Chamuco the cat knocks the phone off the table just in time."
+   },
+   {
+    "beat": "6 · THE RESET",
+    "text": "Nothing is fixed. Card: LA CUENTA (what Yesi owes the building) updates. Next episode, same building, new bad idea."
+   }
+  ],
+  "devices": [
+   {
+    "name": "LA CUENTA",
+    "text": "End-of-episode card: 'Yesi le debe al edificio: $38,400 MXN.' The 2 Broke Girls cash tally, inverted: it only goes up. Fans guess the number; the building's group chat roasts it."
+   },
+   {
+    "name": "The 999 flicker",
+    "text": "When the rooftop neon glitches and reads LUCKY 999 for one second, Yesi takes it as a sign from heaven to go all in. It is never a sign from heaven."
+   },
+   {
+    "name": "Chamuco",
+    "text": "The building's black cat, a Chainsmoker Cat homage. Everyone says he's bad luck. He has a talent for knocking phones off tables right before a terrible bet. The show's accidental conscience."
+   },
+   {
+    "name": "The elevator",
+    "text": "'EN REPARACIÓN' since 2019. The girls live on the 6th floor. Every episode someone climbs six floors carrying something stupid."
+   },
+   {
+    "name": "Novio del Día",
+    "text": "Marisol enters with a different gorgeous man every time and introduces him by his job, never his name. On-screen card: 'NOVIO #41 — EL BOMBERO'."
+   },
+   {
+    "name": "Los Primos",
+    "text": "Chato and Beto, two enormous, extremely polite men in a black SUV who 'help' Regina. Anyone who disrespects her mysteriously wins an all-inclusive trip to Cancún and never comes back (because they like it there)."
+   },
+   {
+    "name": "Chat del Edificio",
+    "text": "The WhatsApp group '🏚️ Vecinos Lucky 666', as screenshots and carousels. Doña Chayo types in all caps. Don Aurelio sends voice notes from 1998."
+   },
+   {
+    "name": "The San Judas altar",
+    "text": "Lobby shrine to San Judas Tadeo, patron of desperate causes. Tenants light a candle before every bet. Candle colour = bet type. It is always fully lit."
+   },
+   {
+    "name": "La Tanda",
+    "text": "Doña Chayo's rotating savings club, the building's real bank. Yesi has borrowed against her turn three times."
+   }
+  ],
+  "guardrails": [
+   "21+ ONLY. Every character is a clear adult (24–30). Never styled or framed to read younger (no school uniforms, no childlike props).",
+   "NEVER PROMISE WINNING. The comedy is the chase and the loss. When someone wins, it's tiny and immediately undone (the Lotería 'reintegro' gag). Nobody gets rich; no 'easy money' messaging.",
+   "RESPONSIBLE PLAY IS CANON. Friends pull each other back, Chamuco knocks the phone away, Lupe's bot proves weekly that there is no system. Every post carries 21+ · Juega con responsabilidad.",
+   "BRAND = SIGNATURE, NOT BILLBOARD. XSINO is the app on their phones and the logo signature in the last 1–2 s of a video (per XSINO rules), never a mid-frame ad. The X-Coin and logo are post-overlays of the real asset files, never model-rendered.",
+   "FICTION ONLY. No real cartel, cartel member or crime is named or depicted. Regina's father is fully fictional; the 'danger' is played as absurd kindness (Cancún trips). No weapons, no violence played as glamour.",
+   "NO REAL LIKENESS. The five women are original characters. Reference photos of real people are mood only and never used as face identity references. No real team crests or brand logos on wardrobe.",
+   "MARISOL IS A PROFESSIONAL DANCER. Sexy and confident, never explicit, no nudity. Her dating life is played as fun and self-assured, never as shame.",
+   "AI DISCLOSURE. They are virtual influencers. Label accounts and posts as AI/virtual where platforms require it, and mark paid promotion."
+  ]
+ },
+ "building": {
+  "name": "Edificio Lucky 666",
+  "address": "Calle Fortuna #66, Colonia Obrera, Cuauhtémoc, Ciudad de México (fictional address)",
+  "history": [
+   "1958: Don Felipe Wong, a Cantonese immigrant who came up through Mexicali's Chinesca, wins the lot in a mahjong game and builds the Hotel Lucky 999: triple nine, for luck that lasts forever. It's a hotel for gamblers heading to the Hipódromo de las Américas racetrack.",
+   "June 1986: Mexico's World Cup. After a win, a mob of fans celebrates on the roof and knocks the three neon 9s loose. A deeply drunk electrician re-hangs them upside down. The hotel has been LUCKY 666 ever since.",
+   "1991: The hotel goes broke (nobody books a room at 666) and is converted into 42 apartments. It has the cheapest rent in the colonia, because nobody wants to live at the devil's address.",
+   "Today: Grandson Don Aurelio refuses to fix the sign. Officially it costs $80,000 pesos. Unofficially he's scared of what happens to the building's luck if he touches it."
+  ],
+  "sign": "A 4-metre vintage rooftop neon, magenta and cyan tubes, reading LUCKY 666. The last 6 buzzes and occasionally flickers into a 9. That second is the most dangerous second in the building.",
+  "floors": [
+   {
+    "level": "Azotea (roof)",
+    "text": "Tinacos (water tanks), laundry lines, mismatched plastic chairs, Citlali's herb garden, an inflatable pool, fairy lights and the giant sign. The girls' living room under the stars."
+   },
+   {
+    "level": "6th floor",
+    "text": "The girls: 666 (Yesi and Regina), 606 (Citlali), 616 (Lupe), 626 (Marisol). Farthest from the lobby, closest to the sign, no working elevator."
+   },
+   {
+    "level": "5th floor",
+    "text": "Doña Chayo (5-A): tanda boss, gossip, the building's actual bank. Her ceiling leaks every time the roof has a party."
+   },
+   {
+    "level": "4th floor",
+    "text": "4-B: a tenant nobody has ever seen. Rent is always paid, in cash, early. Theories are a running gag."
+   },
+   {
+    "level": "3rd floor",
+    "text": "Memo, a mariachi trumpeter who practises at 6 a.m. and is hopelessly in love with Lupe, who has not noticed."
+   },
+   {
+    "level": "1st–2nd floors",
+    "text": "Students, a family with nine dogs, a retired luchador. Background chaos for every hallway scene."
+   },
+   {
+    "level": "Planta baja (ground)",
+    "text": "The lobby (San Judas altar, broken elevator, mailboxes stuffed with collection notices) and Abarrotes La Suerte, Don Aurelio's corner shop: Lotería tickets, phone top-ups, chili corn chips and a wall of 48 waving lucky cats."
+   }
+  ],
+  "locations": [
+   {
+    "key": "exterior",
+    "name": "The Building",
+    "nameES": "El Edificio",
+    "text": "Six storeys of peeling pastel-pink stucco and cracked talavera, balconies full of laundry and plants, a taco stand at the door, the LUCKY 666 neon on the roof.",
+    "plate": "exterior"
+   },
+   {
+    "key": "lobby",
+    "name": "The Lobby",
+    "nameES": "El Lobby",
+    "text": "The San Judas Tadeo altar with a hundred candles, the elevator sign 'EN REPARACIÓN' (dated 2019), overflowing mailboxes, Chamuco asleep on the radiator.",
+    "plate": "lobby"
+   },
+   {
+    "key": "tiendita",
+    "name": "Abarrotes La Suerte",
+    "nameES": "Abarrotes La Suerte",
+    "text": "Don Aurelio's corner shop and rent office. Lotería 'cachitos', scratch cards, snacks, a wall of lucky cats and a hand-written board of who owes what.",
+    "plate": "tiendita"
+   },
+   {
+    "key": "hallway",
+    "name": "The 6th-Floor Hallway",
+    "nameES": "El Pasillo del Sexto",
+    "text": "Four doors, 606, 616, 626 and 666, flickering fluorescent tube, Citlali's plants, Lupe's cables, Marisol's heels, Regina's doormat that says BIENVENIDOS in serif.",
+    "plate": "hallway"
+   },
+   {
+    "key": "livingroom",
+    "name": "Depto 666: The Split Living Room",
+    "nameES": "La Sala Dividida del 666",
+    "text": "Split down the middle with masking tape: Yesi's half is a crime scene, Regina's half is Pinterest. The sofa sits exactly on the line.",
+    "plate": "livingroom"
+   },
+   {
+    "key": "rooftop",
+    "name": "The Rooftop",
+    "nameES": "La Azotea",
+    "text": "Night under the buzzing sign, the CDMX skyline, plastic chairs, beers and tacos, the city's best cheap view.",
+    "plate": "rooftop"
+   },
+   {
+    "key": "gatanegra",
+    "name": "La Gata Negra",
+    "nameES": "La Gata Negra",
+    "text": "The cabaret bar across the street where Marisol headlines as 'Candela'. Red velvet, a black-cat neon, a stage, a bartender who has seen everything.",
+    "plate": "gatanegra"
+   }
+  ]
+ },
+ "supporting": [
+  {
+   "key": "aurelio",
+   "name": "Don Aurelio Wong, 'Don Lelo'",
+   "role": "The landlord",
+   "text": "67, third-generation Chinese-Mexican from Mexicali and pure norteño: tejana hat, boots, corridos on a battery radio. He doesn't speak a word of Cantonese and is tired of being asked. Superstitious by inheritance. Collects rent in person and accepts pesos, favours and, in emergencies, tamales. Long-suffering, secretly adores the girls, and would never admit it."
+  },
+  {
+   "key": "chamuco",
+   "name": "Chamuco",
+   "role": "The building's black cat",
+   "text": "Nobody owns him; he owns the building. Knocks phones off tables right before bad bets, unplugs routers, sits on scratch cards. Bad luck to everyone except Yesi, who calls him 'my business partner'."
+  },
+  {
+   "key": "primos",
+   "name": "Los Primos: Chato & Beto",
+   "role": "Regina's shadows",
+   "text": "Two gigantic, soft-spoken men in matching guayaberas who live in a black SUV parked outside. Sent by 'El Señor' to keep Regina safe. They fix leaks, parking tickets and ex-boyfriends. They love telenovelas and Marisol's cooking."
+  },
+  {
+   "key": "chayo",
+   "name": "Doña Chayo",
+   "role": "Tanda boss, 5-A",
+   "text": "74. Runs the building's tanda (rotating savings club) with an iron notebook. Types in ALL CAPS. Knows everything that happens in the building before it happens."
+  },
+  {
+   "key": "fausto",
+   "name": "Don Fausto Montaño, 'El Señor'",
+   "role": "Regina's father (mostly off-screen)",
+   "text": "Officially 'an avocado exporter'. Communicates through gifts: a mariachi band at 3 a.m., a racehorse, a solid-gold coffee machine. Terrifying to everyone, adorable to his daughter, completely fictional."
+  },
+  {
+   "key": "tere",
+   "name": "Doña Tere Buenaventura",
+   "role": "Yesi's mother",
+   "text": "Sells phone cases in Tepito and can sell anything to anyone. The original hustler. Thinks Yesi 'just hasn't found her business yet'."
+  },
+  {
+   "key": "kim",
+   "name": "Kim Buenaventura",
+   "role": "Yesi's little sister (22)",
+   "text": "An influencer with 2 million followers and a skincare line. Everything Yesi isn't, and secretly jealous of the one thing Yesi has: real friends."
+  },
+  {
+   "key": "tina",
+   "name": "Abuela Tina",
+   "role": "Citlali's grandmother",
+   "text": "A Zapotec curandera in the Oaxaca sierra who communicates exclusively through 7-minute voice notes of limpia instructions and dire warnings about Mercury."
+  },
+  {
+   "key": "memo",
+   "name": "Memo, 'El Mariachi del 3'",
+   "role": "Lupe's secret admirer",
+   "text": "Trumpet player, 3rd floor. Serenades Lupe weekly; she thinks he's testing the building's acoustics."
+  },
+  {
+   "key": "guero",
+   "name": "El Güero",
+   "role": "Pawnshop owner across the street",
+   "text": "Runs Empeños El Güero. Yesi's most stable relationship. He has pawned and returned the same microwave to her 31 times."
+  },
+  {
+   "key": "novio",
+   "name": "El Novio del Día",
+   "role": "Marisol's rotating date",
+   "text": "A different gorgeous man every appearance. Credited by job: the firefighter, the DJ, the Uber driver, the dentist, 'the one we don't talk about'."
+  }
+ ],
+ "characters": [
+  {
+   "key": "yesi",
+   "order": 1,
+   "lead": true,
+   "name": "Yesenia 'Yesi' Buenaventura",
+   "short": "YESI",
+   "alias": "La Reina del Último Giro (The Queen of the Last Spin)",
+   "role": "The lead: the super gambling addict",
+   "apt": "Depto 666 (with Regina)",
+   "age": 29,
+   "hometown": "Tepito, Mexico City (chilanga)",
+   "vice": "Slots, the chain-spinner",
+   "viceLong": "Slots (tragamonedas) are her cigarettes: short, bright, endless. 'One more and I'm done.' She will also bet on anything that moves: which pigeon lands first, how long Don Aurelio takes to notice the rent is late, whether Marisol's date has a tattoo.",
+   "color": "#E6007E",
+   "palette": [
+    [
+     "HOT MAGENTA (bomber)",
+     "#E6007E"
+    ],
+    [
+     "WARM MORENA SKIN",
+     "#B07A55"
+    ],
+    [
+     "ESPRESSO CURLS",
+     "#2B1A12"
+    ],
+    [
+     "RIBBED WHITE (tank)",
+     "#F2EEE8"
+    ],
+    [
+     "CARGO GREY",
+     "#8A8A84"
+    ],
+    [
+     "HOOP GOLD",
+     "#D4AF37"
+    ],
+    [
+     "LISTÓN RED (wrist)",
+     "#C8102E"
+    ],
+    [
+     "NEON CYAN (sign spill)",
+     "#22D3EE"
+    ]
+   ],
+   "materials": [
+    "BOMBER: shiny satin, embroidered",
+    "TANK: ribbed cotton",
+    "CARGOS: washed cotton twill",
+    "SNEAKERS: scuffed leather + duct tape",
+    "LISTÓN: red satin ribbon",
+    "HOOPS: thin gold"
+   ],
+   "stats": [
+    [
+     "NAME",
+     "Yesenia 'Yesi' Buenaventura"
+    ],
+    [
+     "ALIAS",
+     "La Reina del Último Giro"
+    ],
+    [
+     "AGE",
+     "29"
+    ],
+    [
+     "FROM",
+     "Tepito, CDMX (chilanga)"
+    ],
+    [
+     "HEIGHT",
+     "163 cm · petite, curvy"
+    ],
+    [
+     "HAIR",
+     "big messy dark-brown curls, claw-clip bun"
+    ],
+    [
+     "EYES",
+     "dark brown, mischievous almond"
+    ],
+    [
+     "SKIN",
+     "warm tan morena"
+    ],
+    [
+     "FEATURES",
+     "beauty mark above right lip corner · thick natural brows"
+    ],
+    [
+     "OUTFIT",
+     "oversized hot-magenta satin bomber · white ribbed tank · grey cargos · taped white sneakers"
+    ],
+    [
+     "JEWELRY",
+     "gold hoops · red listón ribbon on left wrist"
+    ],
+    [
+     "PROP",
+     "cracked phone in a San Judas case · tamarind lollipop stick"
+    ],
+    [
+     "VICE",
+     "slots: 'una más y ya'"
+    ],
+    [
+     "ARCHETYPE",
+     "scummy lovable hustler, surprisingly cool"
+    ],
+    [
+     "SPEECH",
+     "fast chilango: güey, neta, no manches, ¿me fías?"
+    ]
+   ],
+   "look": "Street-glam chaos: magenta satin bomber, white tank, cargos, taped sneakers, gold hoops, curls escaping a claw clip, a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
+   "personality": [
+    "Shameless, charming and funny, with zero sense of consequence",
+    "A hustler genius at reading people, a disaster at reading odds",
+    "Scummy: borrows, pawns and 'forgets', but never with malice",
+    "Fiercely loyal in the clutch; she's the one who shows up at 3 a.m.",
+    "Allergic to responsibility, addicted to the 'maybe'"
+   ],
+   "backstory": [
+    "Grew up above her mother's pirated-DVD stall in Tepito's barrio bravo. She learned maths counting change and haggling, and learned people by watching everyone lie to her mother.",
+    "At 22 she won $40,000 pesos on a single spin at 4 a.m. on her cousin's phone. It was the best feeling of her life, and she has been chasing it for seven years ('la primera vez').",
+    "Works whatever pays that week: delivery rider, event staff, 'phone repair'. The pawnshop across the street is her savings account.",
+    "Owes money to every tenant in the building. LA CUENTA is her legacy."
+   ],
+   "surprisinglyCool": "She talked a mugger into giving back Doña Chayo's purse, and his own wallet. She knows every shortcut in CDMX, can fix any phone, and when a friend is in real trouble she is suddenly calm, brilliant and completely sober. Then she asks to borrow 200 pesos.",
+   "catchphrases": [
+    {
+     "es": "Una más y ya.",
+     "en": "One more and I'm done."
+    },
+    {
+     "es": "¿Y si sí?",
+     "en": "What if yes?"
+    },
+    {
+     "es": "¿Me fías?",
+     "en": "Spot me?"
+    },
+    {
+     "es": "La suerte es de quien la persigue, güey.",
+     "en": "Luck belongs to whoever chases it, dude."
+    }
+   ],
+   "relationships": [
+    "Regina: her roommate, opposite and reluctant best friend (the Max-and-Caroline core)",
+    "Don Aurelio: landlord, nemesis, secret grandpa figure",
+    "Chamuco: 'my business partner'",
+    "Kim: her famous little sister (episode 9)",
+    "El Güero: her pawnbroker and emotional support"
+   ],
+   "room": {
+    "name": "Yesi's room: Depto 666, left bedroom",
+    "text": "A mattress on the floor under dead fairy lights, a laundry mountain, pawn tickets and losing scratch cards taped up like wallpaper, a San Judas candle, a mini-fridge holding only salsa and one lime, a hot-pink neon 'UNA MÁS' sign stolen from a bar, and the window full of the LUCKY 666 sign glowing magenta through a torn curtain."
+   },
+   "handle": "@yesi.unamas",
+   "pillars": [
+    "'Una más y ya' POV skits: the excuse, the spin, the spiral",
+    "La Cuenta weekly: her debt counter, followers vote on her next bad idea",
+    "Tepito street wisdom: hustle hacks that almost work",
+    "Cameos in everyone else's feed, borrowing something"
+   ],
+   "voice": "Fast chilango Spanish, sarcastic, affectionate insults, never sounds sorry.",
+   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City with warm medium-brown morena mestiza skin, a petite curvy build, a round face with high cheekbones, thick natural dark eyebrows, mischievous dark brown almond eyes and a small beauty mark above the right corner of her lip. Big messy dark-brown curly hair piled up in a loose claw-clip bun with face-framing curls. Gold hoop earrings, chipped hot-pink nails, a thin red ribbon tied around her left wrist. She wears an oversized vintage hot-magenta satin bomber jacket over a white ribbed tank top, loose grey cargo pants and scuffed white chunky sneakers, with a small tamarind candy lollipop stick in the corner of her mouth."
+  },
+  {
+   "key": "regina",
+   "order": 2,
+   "name": "Regina Montaño",
+   "short": "REGINA",
+   "alias": "La Jefa (The Boss)",
+   "role": "The preppy boss lady who just wants to be understood",
+   "apt": "Depto 666 (Yesi's new roommate)",
+   "age": 30,
+   "hometown": "Culiacán, Sinaloa (culichi, schooled in Monterrey)",
+   "vice": "VIP live blackjack and baccarat",
+   "viceLong": "High-limit live-dealer blackjack and baccarat, which she insists is 'strategic risk management'. She keeps a colour-coded dashboard of her losses titled 'Q3 Learning Investments' and journals after every hand.",
+   "color": "#1B2A4A",
+   "palette": [
+    [
+     "NAVY BLAZER",
+     "#1B2A4A"
+    ],
+    [
+     "CRISP WHITE",
+     "#F7F5F0"
+    ],
+    [
+     "PLEAT CREAM",
+     "#E9DFC9"
+    ],
+    [
+     "CHESTNUT HAIR",
+     "#5A3522"
+    ],
+    [
+     "OLIVE-FAIR SKIN",
+     "#D2A57E"
+    ],
+    [
+     "LOAFER COGNAC",
+     "#8B4A24"
+    ],
+    [
+     "SIGNET GOLD",
+     "#C9A24A"
+    ],
+    [
+     "PEARL",
+     "#EDE8E0"
+    ]
+   ],
+   "materials": [
+    "BLAZER: tailored wool",
+    "SHIRT: poplin cotton",
+    "SKIRT: pleated crepe",
+    "LOAFERS: polished calf leather",
+    "HEADBAND: navy velvet",
+    "PLANNER: pebbled leather"
+   ],
+   "stats": [
+    [
+     "NAME",
+     "Regina Montaño"
+    ],
+    [
+     "ALIAS",
+     "La Jefa"
+    ],
+    [
+     "AGE",
+     "30"
+    ],
+    [
+     "FROM",
+     "Culiacán, Sinaloa · MBA, Monterrey"
+    ],
+    [
+     "HEIGHT",
+     "170 cm · tall, slim"
+    ],
+    [
+     "HAIR",
+     "glossy chestnut, sleek low bun, navy velvet headband"
+    ],
+    [
+     "EYES",
+     "warm hazel-brown"
+    ],
+    [
+     "SKIN",
+     "light olive-brown"
+    ],
+    [
+     "FEATURES",
+     "refined straight nose · perfect posture"
+    ],
+    [
+     "OUTFIT",
+     "navy wool blazer · white poplin shirt · cream pleated midi · cognac loafers"
+    ],
+    [
+     "JEWELRY",
+     "pearl studs · gold 'R' signet ring (a gift from Dad)"
+    ],
+    [
+     "PROP",
+     "leather planner · laptop with the 'Q3 Learning Investments' dashboard"
+    ],
+    [
+     "VICE",
+     "VIP live blackjack/baccarat: 'it's strategy'"
+    ],
+    [
+     "ARCHETYPE",
+     "girlboss in hiding, desperate to be understood"
+    ],
+    [
+     "SPEECH",
+     "polished, LinkedIn-fluent Spanglish; goes full Sinaloa when angry"
+    ]
+   ],
+   "look": "Preppy power: navy blazer, crisp white shirt, cream pleats, loafers, pearls, velvet headband, the planner. Always the most overdressed person in the building.",
+   "personality": [
+    "Type-A, earnest and relentlessly polite",
+    "Desperate to be seen as self-made and simply understood",
+    "Secretly lonely, adopts the building as her family",
+    "Conflict-avoidant until pushed, then terrifying (it's genetic)",
+    "Speaks fluent LinkedIn: 'Let's circle back'"
+   ],
+   "backstory": [
+    "The only daughter of Don Fausto Montaño, 'El Señor', publicly an avocado exporter, privately the most feared man in a fictional Sinaloa underworld. She grew up with bulletproof school buses and bodyguards at her quinceañera.",
+    "MBA in Monterrey, top of her class. Nobody there believed she earned it, and that hurt more than anything.",
+    "Ran away to Mexico City under her mother's surname to build something of her own. She arrived at Lucky 666 in a black SUV with 14 matching suitcases, asking for 'a humble, normal apartment with character', and paid six months up front in cash from an envelope sealed with wax.",
+    "Her dream is Café La Suerte: turning the lobby into an ethical coffee-and-coworking spot (our 2 Broke Girls cupcake business). It keeps almost happening."
+   ],
+   "surprisinglyCool": "When anyone threatens the building she drops the LinkedIn voice, negotiates like a cartel general and wins, without Los Primos. Then she apologises for raising her voice.",
+   "catchphrases": [
+    {
+     "es": "Mi papá está en la agricultura.",
+     "en": "My dad's in agriculture."
+    },
+    {
+     "es": "No es apuesta, es estrategia.",
+     "en": "It's not a bet, it's strategy."
+    },
+    {
+     "es": "¿Me entiendes? ¿De verdad me entiendes?",
+     "en": "Do you understand me? Do you REALLY understand me?"
+    },
+    {
+     "es": "Hagamos un follow-up.",
+     "en": "Let's do a follow-up."
+    }
+   ],
+   "relationships": [
+    "Yesi: roommate, opposite, the first person who treated her like a normal broke girl",
+    "Los Primos: her protection, and her embarrassment",
+    "Don Fausto: loves him and can't live near him",
+    "Don Aurelio: her 'investor' target for Café La Suerte"
+   ],
+   "room": {
+    "name": "Regina's room: Depto 666, right bedroom",
+    "text": "Pinterest-perfect in cream and navy: a tufted headboard, a vision board reading SELF-MADE 2027, labelled storage boxes, a stationary bike used as a blazer rack, fresh orchids delivered daily by Los Primos, a framed family photo with her father's face covered by a sticky note reading 'AGRICULTURA', a laptop open on a spreadsheet of losses, and a closet door that is definitely a panic room."
+   },
+   "handle": "@regina.laJefa",
+   "pillars": [
+    "'Boss Lady Lunes': LinkedIn-parody motivation that goes wrong",
+    "Café La Suerte build diary: the business plan that never survives the week",
+    "'Strategy, not luck': her blackjack journal (it's all losses)",
+    "Los Primos cameos: two giants doing her errands"
+   ],
+   "voice": "Polished and sincere, corporate buzzwords, sudden Sinaloa steel.",
+   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán with light olive-brown skin, a tall slim build, an oval face with a refined straight nose, groomed arched eyebrows and warm hazel-brown eyes. Glossy chestnut-brown hair in a sleek low bun held back by a navy velvet headband. Small pearl stud earrings, a gold signet ring, a neat nude manicure. She wears a tailored navy blazer over a crisp white collared shirt, a cream pleated midi skirt and cognac leather loafers, and carries a leather planner."
+  },
+  {
+   "key": "citlali",
+   "order": 3,
+   "name": "Citlali Zárate",
+   "short": "CITLALI",
+   "alias": "La Estrellita (Little Star)",
+   "role": "The sporty health nut, a bit hippie",
+   "apt": "Depto 606",
+   "age": 26,
+   "hometown": "Mazunte, Oaxaca coast (oaxaqueña, Zapotec grandmother)",
+   "vice": "Sports betting, picked by astrology",
+   "viceLong": "Sports betting on everything (Liga MX, NFL, F1, lucha libre, marathons), with every pick chosen by zodiac, tarot, crystals and 'the energy of the jersey'. 'The universe doesn't lie. The referee does.'",
+   "color": "#8FA876",
+   "palette": [
+    [
+     "SAGE (sports bra)",
+     "#8FA876"
+    ],
+    [
+     "TERRACOTTA (leggings)",
+     "#C8643B"
+    ],
+    [
+     "DEEP BRONZE SKIN",
+     "#9A6440"
+    ],
+    [
+     "SUN-BLEACHED WAVES",
+     "#6B4A2E"
+    ],
+    [
+     "LINEN WHITE",
+     "#F4EFE6"
+    ],
+    [
+     "HUARACHE TAN",
+     "#B07B4F"
+    ],
+    [
+     "QUARTZ CLEAR",
+     "#E8EEF2"
+    ],
+    [
+     "OAXACA SUNSET",
+     "#F2A65A"
+    ]
+   ],
+   "materials": [
+    "SPORTS BRA: ribbed recycled nylon",
+    "LEGGINGS: matte compression knit",
+    "SHIRT: washed linen",
+    "HUARACHES: woven leather",
+    "HEADBAND: hand-woven cotton",
+    "PENDANT: raw quartz on waxed cord"
+   ],
+   "stats": [
+    [
+     "NAME",
+     "Citlali Zárate"
+    ],
+    [
+     "ALIAS",
+     "La Estrellita"
+    ],
+    [
+     "AGE",
+     "26"
+    ],
+    [
+     "FROM",
+     "Mazunte, Oaxaca coast"
+    ],
+    [
+     "HEIGHT",
+     "168 cm · athletic, toned"
+    ],
+    [
+     "HAIR",
+     "long sun-bleached dark-brown beach waves, woven headband"
+    ],
+    [
+     "EYES",
+     "warm dark brown"
+    ],
+    [
+     "SKIN",
+     "sun-kissed deep bronze, nose freckles"
+    ],
+    [
+     "FEATURES",
+     "strong cheekbones · huge smile"
+    ],
+    [
+     "OUTFIT",
+     "sage sports bra · terracotta leggings · open linen shirt · woven huaraches"
+    ],
+    [
+     "JEWELRY",
+     "raw quartz pendant · wooden bead bracelet · running watch"
+    ],
+    [
+     "PROP",
+     "sticker-covered water bottle · pocket tarot deck · nopal smoothie"
+    ],
+    [
+     "VICE",
+     "sports betting chosen by astrology"
+    ],
+    [
+     "ARCHETYPE",
+     "wellness evangelist, secret degenerate"
+    ],
+    [
+     "SPEECH",
+     "sunny, spiritual, fast when she's watching a game"
+    ]
+   ],
+   "look": "Beach-to-rooftop wellness: sage and terracotta activewear, open linen shirt, huaraches, a quartz pendant, sun-bleached waves and freckles. Always mid-stretch.",
+   "personality": [
+    "Sunny and relentlessly positive, a natural cheerleader",
+    "Crunchy: temazcal, cacao ceremonies, nopal smoothies",
+    "Competitive to the bone; she'll race you to the tiendita",
+    "Preachy about wellness, blind to her own habit ('sports ARE health')",
+    "Cries at sunsets and at Chivas losses"
+   ],
+   "backstory": [
+    "Grew up surfing and running on the Oaxaca coast, raised half by her Zapotec grandmother Abuela Tina in the sierra.",
+    "Oaxaca state 5K champion at 19, until a knee injury ended the dream. She poured all that competitive fire into 'reading the energy' of games, and the energy has been wrong for five years.",
+    "Moved to CDMX to teach spin and yoga. She runs 'Azotea Fit', a 6 a.m. rooftop class nobody attends except Don Aurelio, who does it in boots."
+   ],
+   "surprisinglyCool": "The fittest person in the building and a genuine healer. She fixes Yesi's hangovers, Marisol's feet and Regina's anxiety with a limpia, a stretch and a hug.",
+   "catchphrases": [
+    {
+     "es": "Lo manifesté.",
+     "en": "I manifested it."
+    },
+    {
+     "es": "Mercurio está retrógrado… bueno, solo una.",
+     "en": "Mercury's in retrograde… okay, just one."
+    },
+    {
+     "es": "Respira, suelta, apuesta.",
+     "en": "Breathe, let go, bet."
+    },
+    {
+     "es": "El universo no miente, el árbitro sí.",
+     "en": "The universe doesn't lie. The referee does."
+    }
+   ],
+   "relationships": [
+    "Lupe: her opposite, astrology vs. algorithms, best frenemies",
+    "Yesi: her 'wellness project'",
+    "Abuela Tina: voice-note oracle",
+    "Don Aurelio: her only student"
+   ],
+   "room": {
+    "name": "Citlali's place: Depto 606",
+    "text": "A jungle of hanging plants and macramé, yoga mats unrolled everywhere, a road bike on the wall, crystals on every windowsill, a big astrology chart pinned beside a football fixtures wall-chart covered in zodiac notes, a blender full of green nopal smoothie, and a small altar with a clay figurine and a candle 'for the parlay'. Sunrise pouring in."
+   },
+   "handle": "@citlali.manifiesta",
+   "pillars": [
+    "Astro-Parlay del Domingo: weekend picks by zodiac (for fun, never advice)",
+    "Azotea Fit: 6 a.m. rooftop workouts with Don Aurelio in boots",
+    "Wellness rituals that go off the rails: limpias, cacao, temazcal",
+    "Watch-party meltdowns: live reactions to the match"
+   ],
+   "voice": "Warm, sing-song oaxaqueña calm that turns into a sports commentator the second a ball moves.",
+   "anchor": "Citlali, a 26-year-old Mexican woman from the Oaxaca coast with sun-kissed deep bronze skin, light freckles across her nose, an athletic toned build, strong cheekbones, a bright wide smile and warm dark brown eyes. Long sun-bleached dark-brown beach waves held back by a woven terracotta headband. A small raw quartz crystal pendant, a wooden bead bracelet, a black running watch. She wears a sage-green sports bra, high-waisted terracotta leggings, an open oversized white linen shirt and woven leather huarache sandals."
+  },
+  {
+   "key": "lupe",
+   "order": 4,
+   "name": "Guadalupe 'Lupe' Orozco",
+   "short": "LUPE",
+   "alias": "LUPE.EXE",
+   "role": "The geeky gamer girl, oblivious to social norms",
+   "apt": "Depto 616",
+   "age": 24,
+   "hometown": "Zapopan, Guadalajara, Jalisco (tapatía)",
+   "vice": "Crash games and 'unbeatable' roulette systems",
+   "viceLong": "Crash games (the rocket climbs, you cash out before it explodes) and roulette 'systems'. She's certain maths can beat the house. Her AI, ORÁCULO v7, is wrong every single week, which she treats as 'a data problem'.",
+   "color": "#22D3EE",
+   "palette": [
+    [
+     "ELECTRIC CYAN (headset)",
+     "#22D3EE"
+    ],
+    [
+     "LILAC HOODIE",
+     "#C4B5FD"
+    ],
+    [
+     "INK BLACK BOB",
+     "#101014"
+    ],
+    [
+     "LIGHT-BROWN SKIN",
+     "#C08E68"
+    ],
+    [
+     "CARGO BLACK",
+     "#1E1E24"
+    ],
+    [
+     "RGB MAGENTA",
+     "#E879F9"
+    ],
+    [
+     "SCREEN GLOW BLUE",
+     "#3B82F6"
+    ],
+    [
+     "CHIP RED (snack)",
+     "#E0312B"
+    ]
+   ],
+   "materials": [
+    "HOODIE: brushed fleece",
+    "CARGOS: ripstop nylon",
+    "HEADSET: matte plastic + faux-fur cat ears",
+    "GLASSES: clear acetate",
+    "SNEAKERS: chunky platform rubber",
+    "NAILS: holographic glitter"
+   ],
+   "stats": [
+    [
+     "NAME",
+     "Guadalupe 'Lupe' Orozco"
+    ],
+    [
+     "ALIAS",
+     "LUPE.EXE"
+    ],
+    [
+     "AGE",
+     "24"
+    ],
+    [
+     "FROM",
+     "Zapopan, Guadalajara (tapatía)"
+    ],
+    [
+     "HEIGHT",
+     "157 cm · petite"
+    ],
+    [
+     "HAIR",
+     "blunt glossy black bob, straight bangs"
+    ],
+    [
+     "EYES",
+     "dark brown, big round clear glasses"
+    ],
+    [
+     "SKIN",
+     "light brown"
+    ],
+    [
+     "FEATURES",
+     "unblinking stare · sleeves always over hands"
+    ],
+    [
+     "OUTFIT",
+     "oversized lilac hoodie · baggy black cargos · chunky platforms"
+    ],
+    [
+     "JEWELRY",
+     "pastel-cyan cat-ear headset around neck · glitter nails"
+    ],
+    [
+     "PROP",
+     "laptop running ORÁCULO v7 · bag of chili corn chips"
+    ],
+    [
+     "VICE",
+     "crash games + roulette 'systems'"
+    ],
+    [
+     "ARCHETYPE",
+     "oblivious genius, no filter"
+    ],
+    [
+     "SPEECH",
+     "flat deadpan, gamer slang, answers questions literally"
+    ]
+   ],
+   "look": "Cosy gamer: lilac hoodie swallowing her hands, cat-ear headset, round glasses, blunt bob, black cargos and platforms, lit by RGB. Always carrying a laptop and chili chips.",
+   "personality": [
+    "Brilliant, literal and completely oblivious to social cues",
+    "No filter: 'statistically your boyfriend is cheating, 73%'",
+    "Warm and innocent; would give you her last noodle cup",
+    "Stubborn: the system didn't fail, the variance did",
+    "Doesn't get sarcasm; asks for a tutorial"
+   ],
+   "backstory": [
+    "Raised by a devout abuela in Zapopan who still calls her Guadalupe and lights candles to the Virgen de Zapopan for her grades. Lupe now lights them for her cash-outs.",
+    "Dropped out of computer engineering at three universities, each time 'for being right'.",
+    "Small-time streamer: 312 followers, 200 of them bots she built. Her router secretly powers the whole building's Wi-Fi, which is the only reason Don Aurelio forgives her rent."
+   ],
+   "surprisinglyCool": "She can hack, fix or build anything. When the building's power dies she rigs the whole sixth floor off one generator and a car battery, and she's a monster at any real skill game.",
+   "catchphrases": [
+    {
+     "es": "Es matemáticamente imposible perder… otra vez.",
+     "en": "It's mathematically impossible to lose… again."
+    },
+    {
+     "es": "Skill issue.",
+     "en": "Skill issue."
+    },
+    {
+     "es": "¿Eso fue sarcasmo? Necesito un tutorial.",
+     "en": "Was that sarcasm? I need a tutorial."
+    },
+    {
+     "es": "El sistema no falló, falló la varianza.",
+     "en": "The system didn't fail. Variance did."
+    }
+   ],
+   "relationships": [
+    "Citlali: astrology vs. maths, the building's longest argument",
+    "Memo the mariachi: in love with her; she thinks he's testing acoustics",
+    "Yesi: her favourite test subject",
+    "Regina: pays her in 'equity' for tech support"
+   ],
+   "room": {
+    "name": "Lupe's cave: Depto 616",
+    "text": "Windows blacked out with foil, an RGB-lit gaming cave: four monitors of graphs and a crash-game rocket, a gaming chair with a cat-ear cushion, towers of instant-noodle cups, a whiteboard covered in roulette maths, a Virgen de Zapopan candle beside a glowing PC tower, and a router with twenty cables that powers the entire building. Cyan and violet LED glow."
+   },
+   "handle": "@lupe.exe",
+   "pillars": [
+    "ORÁCULO v7 Diaries: 'day 214 of beating the house' (it never does, and that's the lesson)",
+    "Brutally honest life advice: flat statistics about your love life",
+    "Setup tours and tech fixes for the building",
+    "Streams with Memo 'accidentally' serenading in the background"
+   ],
+   "voice": "Deadpan, literal, rapid technical Spanglish, occasional tapatía 'pues'.",
+   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara with light-brown skin, a petite build, a soft round face with defined cheekbones and a confident adult look, a blunt glossy black bob with straight-cut bangs, big round clear-framed glasses over dark brown eyes, and holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears an oversized lilac hoodie with the sleeves pulled over her hands, baggy black cargo pants and chunky platform sneakers."
+  },
+  {
+   "key": "marisol",
+   "order": 5,
+   "name": "Marisol Lagunes",
+   "short": "MARISOL",
+   "alias": "'CANDELA' (her stage name)",
+   "role": "The bombshell dancer who arrives with a different hot guy every time",
+   "apt": "Depto 626",
+   "age": 27,
+   "hometown": "Port of Veracruz (jarocha)",
+   "vice": "Live-dealer roulette and the lottery",
+   "viceLong": "Live-dealer roulette (only at the table of the handsome croupier she's decided is her soulmate) and Lotería tickets bought every Friday from Don Aurelio, with numbers chosen from her dates' shoe sizes, abs count and phone numbers.",
+   "color": "#7C3AED",
+   "palette": [
+    [
+     "VIOLET SATIN (dress)",
+     "#7C3AED"
+    ],
+    [
+     "CANDELA RED (nails, flower)",
+     "#E11D48"
+    ],
+    [
+     "CARAMEL SKIN",
+     "#A86B45"
+    ],
+    [
+     "GLOSSY BLACK WAVES",
+     "#1A0F0C"
+    ],
+    [
+     "HEEL GOLD",
+     "#D6A84A"
+    ],
+    [
+     "FAUX-FUR IVORY",
+     "#EEE6DA"
+    ],
+    [
+     "STAGE MAGENTA",
+     "#D946EF"
+    ],
+    [
+     "CABARET VELVET",
+     "#5B0F1E"
+    ]
+   ],
+   "materials": [
+    "DRESS: liquid satin",
+    "COAT: plush faux fur",
+    "HEELS: metallic leather straps",
+    "FLOWER: silk hibiscus",
+    "NECKLACES: layered fine gold",
+    "NAILS: glossy gel almond"
+   ],
+   "stats": [
+    [
+     "NAME",
+     "Marisol Lagunes"
+    ],
+    [
+     "ALIAS",
+     "'Candela' (stage)"
+    ],
+    [
+     "AGE",
+     "27"
+    ],
+    [
+     "FROM",
+     "Port of Veracruz (jarocha)"
+    ],
+    [
+     "HEIGHT",
+     "173 cm (+ heels) · curvy hourglass"
+    ],
+    [
+     "HAIR",
+     "long glossy dark voluminous waves, red hibiscus"
+    ],
+    [
+     "EYES",
+     "sultry dark brown, winged liner"
+    ],
+    [
+     "SKIN",
+     "glowing warm caramel"
+    ],
+    [
+     "FEATURES",
+     "full lips · megawatt confidence"
+    ],
+    [
+     "OUTFIT",
+     "violet satin slip mini · strappy gold heels · ivory faux-fur coat"
+    ],
+    [
+     "JEWELRY",
+     "gold hoops · layered fine gold necklaces · red almond nails"
+    ],
+    [
+     "PROP",
+     "a fan of Lotería tickets · a date's borrowed jacket"
+    ],
+    [
+     "VICE",
+     "live-dealer roulette + lottery numbers from her dates"
+    ],
+    [
+     "ARCHETYPE",
+     "man-magnet, big heart, the building's love doctor"
+    ],
+    [
+     "SPEECH",
+     "jarocha: fast, musical, drops her s's, calls everyone 'papito'"
+    ]
+   ],
+   "look": "Cabaret bombshell: violet satin, gold heels, faux fur, hibiscus in glossy waves, red almond nails. Never without a man, never remembers his name.",
+   "personality": [
+    "Confident, flirty and hilariously blunt about romance",
+    "Big-hearted: the building's nurse, therapist and love doctor",
+    "Emotionally the most mature of the five (don't tell her)",
+    "Superstitious about love and numbers",
+    "Lives for the dance floor: danzón, son jarocho, salsa"
+   ],
+   "backstory": [
+    "Grew up in the port of Veracruz dancing danzón in the zócalo with her abuelo every Saturday night. She still dances with him on video calls.",
+    "Studied nursing for three years before a talent scout from a CDMX show saw her dance at a wedding. Now she headlines at La Gata Negra across the street as 'Candela'.",
+    "Saving for her own academy of salsa and son jarocho, 'Academia Candela'. The fund is currently in roulette.",
+    "Her apartment is the building's lost-and-found of men's jackets."
+   ],
+   "surprisinglyCool": "The real nurse of Lucky 666. She has stitched Yesi's hand, delivered a neighbour's puppy litter and talked Regina down from a 3 a.m. panic, all in heels.",
+   "catchphrases": [
+    {
+     "es": "Ay, papito… ¿y tú cómo te llamabas?",
+     "en": "Aw, baby… and what was your name again?"
+    },
+    {
+     "es": "El amor es como la ruleta: rojo o negro, pero siempre da vueltas.",
+     "en": "Love is like roulette: red or black, but it always spins."
+    },
+    {
+     "es": "Yo no me enamoro, me divierto.",
+     "en": "I don't fall in love. I have fun."
+    },
+    {
+     "es": "Hoy juego el número de sus zapatos.",
+     "en": "Tonight I'm playing his shoe size."
+    }
+   ],
+   "relationships": [
+    "El Novio del Día: always a new one",
+    "Yesi: partner in crime and her favourite patient",
+    "Regina: teaching her to flirt (it's going badly)",
+    "Los Primos: her biggest fans, they eat her cooking every Sunday"
+   ],
+   "room": {
+    "name": "Marisol's dressing room: Depto 626",
+    "text": "A dancer's boudoir: a Hollywood vanity mirror framed in bulbs, racks of sequins and feathers, heels on every surface, a coat rack buckling under men's jackets (the lost-and-found of men), a corkboard of Lotería tickets labelled 'BOMBERO', 'DJ', 'UBER', a framed photo of her dancing with her abuelo in Veracruz, a jarana guitar, a ring light, in violet and red glow."
+   },
+   "handle": "@candela.jarocha",
+   "pillars": [
+    "Novio del Día: the date reveal, credited by job",
+    "Get ready with me for La Gata Negra",
+    "Lotería numerology: 'tonight I'm playing his shoe size'",
+    "Dance lessons on the roof: salsa and son jarocho with the girls"
+   ],
+   "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz with glowing warm caramel-brown skin, a tall curvy hourglass figure, full lips, sultry dark brown eyes with winged eyeliner, and long voluminous glossy dark wavy hair with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a violet satin slip mini dress, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
+  }
+ ],
+ "episodes": [
+  {
+   "n": 1,
+   "en": "I'm Yesi, Güey",
+   "es": "Soy la Yesi, güey",
+   "mirror": "Ep 1 'I'm Chainsmoker Cat, Meow'",
+   "logline": "Yesi is three months behind on rent and Don Aurelio gives her until Sunday. The sign flickers 999, so she bets the rent on one last spin and loses it. Then a black SUV pulls up: Regina, 14 matching suitcases, asking for 'a humble apartment with character'. Yesi rents her half of 666 by calling it a loft.",
+   "bet": "The rent money, on one spin the sign 'told' her to take.",
+   "heart": "Regina's first night, terrified of the noise. Yesi takes her up to the roof and shares her last tamarind lollipop under the buzzing sign.",
+   "cuenta": 38400
+  },
+  {
+   "n": 2,
+   "en": "Meet the Sixth Floor, Güey",
+   "es": "Te presento al sexto piso, güey",
+   "mirror": "Ep 2 'Meet My Juniors, Nya'",
+   "logline": "Regina calls a residents' assembly with a 40-slide deck. The sixth floor introduces itself one disaster at a time: Citlali's 6 a.m. rooftop HIIT, Lupe's router that runs the whole building, Marisol arriving with the firefighter.",
+   "bet": "Lupe runs live odds on how many minutes Regina's meeting survives. Everyone takes the under.",
+   "heart": "The meeting dies at slide 3, but they end up eating tacos on the roof and a group chat is born.",
+   "cuenta": 39150
+  },
+  {
+   "n": 3,
+   "en": "I'm More Serious Than Funny, Güey",
+   "es": "Soy más seria que chistosa, güey",
+   "mirror": "Ep 3 'I'm More Straight Than Funny, Nya'",
+   "logline": "Regina, desperate to be understood as 'a normal fun person', signs up for open-mic comedy night at La Gata Negra. Yesi coaches her. Regina's only material is true stories about her dad, and the crowd thinks it's brilliant absurdist fiction.",
+   "bet": "If Regina gets one laugh, Yesi's debt to her is forgiven.",
+   "heart": "Regina kills. Nobody understands her, but everybody loves her. Los Primos give a menacing standing ovation.",
+   "cuenta": 36900
+  },
+  {
+   "n": 4,
+   "en": "Freaks All Around Me, Güey",
+   "es": "Puro bicho raro, güey",
+   "mirror": "Ep 4 'Freaks All Around Me, Nya'",
+   "logline": "Lupe's AI ORÁCULO v7 announces a crash-game 'system that cannot lose'. The whole building pools in on WhatsApp. It works for three tiny rounds, then the rocket explodes at 1.01x. Chamuco unplugs the router mid-bet.",
+   "bet": "The building's pooled 'tanda de emergencia' on Lupe's bot.",
+   "heart": "Lupe is crushed and calls herself a freak. The girls tell her she's their freak. Episode lesson: there is no system.",
+   "cuenta": 41200
+  },
+  {
+   "n": 5,
+   "en": "We're Off to a Secret Place, Güey",
+   "es": "Nos vamos a un lugar secreto, güey",
+   "mirror": "Ep 5 'We're Off to a Secret Place, Nya'",
+   "logline": "Citlali's astrology says their luck will peak 'in a secret place'. They borrow Don Aurelio's ancient green compact car and drive to Abuela Tina's village in the Oaxaca sierra for a limpia against bad luck. There's no signal for three days.",
+   "bet": "Citlali bets the group they'll 'feel the energy'. Yesi bets she'll find Wi-Fi in an hour.",
+   "heart": "Nobody bets for three days, and it's the best weekend of their lives. First episode where La Cuenta doesn't move. It jumps the second they're back in range.",
+   "cuenta": 41200
+  },
+  {
+   "n": 6,
+   "en": "Summer Starts and Ends Here, Güey",
+   "es": "El verano empieza y termina aquí, güey",
+   "mirror": "Ep 6 'Summer Starts and Ends Here, Nya'",
+   "logline": "A heatwave hits and the tinaco runs dry. Can't afford the beach, so Marisol builds 'Playa Lucky' on the roof: an inflatable pool, sand liberated from a construction site and a date who's a lifeguard. The Rooftop Olympics begin.",
+   "bet": "Side bets on every Olympic event. Citlali bets on herself, Yesi bets her half of the living room, and Los Primos deliver a jet ski. To the roof.",
+   "heart": "The pool bursts into Doña Chayo's apartment. Summer lasts one afternoon, and it's perfect.",
+   "cuenta": 44750
+  },
+  {
+   "n": 7,
+   "en": "I Have Parents Too, Güey",
+   "es": "Yo también tengo papás, güey",
+   "mirror": "Ep 7 'I Was Born to Parents Too, Nya'",
+   "logline": "Don Fausto announces a surprise visit. The building must pretend Regina lives in a respectable penthouse. On the same day Yesi's mother, Doña Tere, sets up a phone-case stall in the lobby. El Señor and Doña Tere… hit it off.",
+   "bet": "The girls bet on whether Don Fausto notices the '666'. He loves it: 'The devil's number? Finally some respect, mija.'",
+   "heart": "Yesi sees that Regina's terrifying father is just a dad who misses his girl. Regina sees that Yesi's mom is the real hustler of the family.",
+   "cuenta": 43100
+  },
+  {
+   "n": 8,
+   "en": "Even We Run in December, Güey",
+   "es": "Hasta en diciembre corremos, güey",
+   "mirror": "Ep 8 'Even We Run Around in December, Nya'",
+   "logline": "The Guadalupe-Reyes marathon (Dec 12 to Jan 6) meets Citlali's New Year's 10K. Nine posadas, nine piñatas, and nine different dates for Marisol. Yesi wears red underwear for love AND yellow for money, at the same time.",
+   "bet": "Citlali bets on her own race time. The girls secretly bet against her.",
+   "heart": "Citlali's knee gives out at km 9. Yesi, in chanclas and a Santa hat, runs the last kilometre with her.",
+   "cuenta": 47300
+  },
+  {
+   "n": 9,
+   "en": "My Little Sis Is Famous, Güey",
+   "es": "Mi hermanita es famosa, güey",
+   "mirror": "Ep 9 'My Little Sis Is Popular, Nya'",
+   "logline": "Yesi's little sister Kim (2 million followers) comes to film 'a day in the life of my struggling sister'. Yesi fakes success by borrowing Regina's room, Lupe's gear, Marisol's date as a boyfriend and Citlali's abs. That last one doesn't work.",
+   "bet": "Yesi bets Kim her video won't go viral. It goes viral, for Chamuco.",
+   "heart": "Kim admits she's jealous. She has two million followers and not one friend who'd climb six floors for her.",
+   "cuenta": 45900
+  },
+  {
+   "n": 10,
+   "en": "The Tanda Job, Güey",
+   "es": "El golpe de la tanda, güey",
+   "mirror": "Original (the season's heist episode)",
+   "logline": "It's finally Yesi's turn to collect Doña Chayo's tanda, except she already borrowed against it twice. Then the tanda money disappears, and the girls run a heist-movie investigation floor by floor.",
+   "bet": "Everyone bets on who did it. Regina bets on 4-B, the tenant nobody's ever seen.",
+   "heart": "Chamuco hid it in the tinaco. The building covers Yesi's shortfall together, one tamal at a time.",
+   "cuenta": 48800
+  },
+  {
+   "n": 11,
+   "en": "The Lottery Ticket, Güey",
+   "es": "El cachito, güey",
+   "mirror": "Original",
+   "logline": "The whole building splits one Lotería Nacional ticket. The draw's number matches, so everyone quits their jobs, Regina drafts a business plan and Marisol dumps three boyfriends. Then Lupe reads the fine print.",
+   "bet": "The entire building, on one shared cachito.",
+   "heart": "It's a 'reintegro': they won back exactly what the ticket cost. They spend it on tacos for everyone and it's the richest night of the year.",
+   "cuenta": 48620
+  },
+  {
+   "n": 12,
+   "en": "Lucky 999, Güey",
+   "es": "Lucky 999, güey",
+   "mirror": "Season finale",
+   "logline": "A developer offers Don Aurelio millions to turn Lucky 666 into luxury lofts called 'THE 999'. The girls launch every scheme at once: Regina's Café La Suerte pitch, Lupe's crowdfund, Citlali's charity run, Marisol's benefit show at La Gata Negra, and Yesi… bets everything.",
+   "bet": "Yesi's 'last spin ever', for the building.",
+   "heart": "Los Primos gift the developer a one-way trip to Cancún. Don Aurelio finally fixes the sign to LUCKY 999, everything goes wrong for a week, and they hang it upside down again. La Cuenta reads $0 for one second, then Yesi orders tacos on credit.",
+   "cuenta": 180
+  }
+ ],
+ "betsOfTheWeek": [
+  "Who can go 24 hours without saying 'güey' (Yesi lasts 11 minutes)",
+  "Citlali can't mention Mercury for three days",
+  "Lupe has to make eye contact during an entire conversation",
+  "Regina has to leave the house without her planner",
+  "Marisol has to go on a date with someone whose name she remembers",
+  "Loser climbs the six floors carrying Don Aurelio's garrafón of water"
+ ],
+ "social": {
+  "objectives": [
+   {
+    "name": "Audience building",
+    "text": "Entertainment first. Five in-character accounts plus one show account (@lucky666.mx) posting the building's life daily. Nobody follows an ad; people follow a friend group."
+   },
+   {
+    "name": "Hype building",
+    "text": "Season drops and events: the 999 flicker teaser, 'Who's the new tenant?' reveal week (one girl per day), La Cuenta countdowns, rooftop livestreams on big match nights."
+   },
+   {
+    "name": "Client acquisition",
+    "text": "Every post ends on the XSINO signature (link in bio, 21+). The VIP ladder maps to the building: six VIP levels = six floors. 'Sube de piso' (move up a floor), because at Lucky 666 the higher you live, the more stairs you climb."
+   }
+  ],
+  "formats": [
+   {
+    "name": "Una Más y Ya (Yesi)",
+    "text": "15–30 s POV skit: the excuse, the spin, the spiral, the cut to La Cuenta."
+   },
+   {
+    "name": "Astro-Parlay del Domingo (Citlali)",
+    "text": "Weekend match picks by zodiac: 'Leo is dominant, so I'm backing the lions'. Pure comedy, always labelled for fun, never advice."
+   },
+   {
+    "name": "ORÁCULO v7 Diaries (Lupe)",
+    "text": "'Day 214 of beating the house with AI.' It never works. The running joke is literally the responsible-gaming message: there is no system."
+   },
+   {
+    "name": "Boss Lady Lunes (Regina)",
+    "text": "LinkedIn-parody motivation from a woman whose bodyguards are visible in the background."
+   },
+   {
+    "name": "Novio del Día (Marisol)",
+    "text": "The date reveal, credited by job, with the audience voting on his 'lucky number'."
+   },
+   {
+    "name": "Chat del Edificio",
+    "text": "Carousel screenshots of the '🏚️ Vecinos Lucky 666' WhatsApp group. The most shareable format."
+   },
+   {
+    "name": "La Cuenta",
+    "text": "The weekly debt-counter update. Followers guess the number, and the closest guess gets a shout-out from Yesi."
+   },
+   {
+    "name": "Noche de Azotea (live)",
+    "text": "Rooftop livestreams under the sign: match watch-parties, dance lessons with Candela, Q&As in character."
+   }
+  ],
+  "cadence": [
+   "Each girl: 4–5 posts/week (2 reels, 2 stories-led, 1 carousel) + daily stories.",
+   "Show account: 1 episode cutdown/day during a season drop, a Chat del Edificio carousel every Wednesday, La Cuenta every Sunday night.",
+   "Crossovers are mandatory: every girl appears in at least two other girls' feeds each week, so following one means discovering all five."
+  ],
+  "launch": [
+   "Week 0: 'The sign flickers.' A 7-second teaser of the LUCKY 666 neon glitching to 999. No explanation.",
+   "Week 1: Tenant reveal week, one girl per day, each a POV move-in video ending on her apartment door number.",
+   "Week 2: Episode 1 drops. The group chat goes public, and La Cuenta starts at $38,400.",
+   "Ongoing: one episode per week plus daily in-character feeds, and rooftop lives on Liga MX nights."
+  ]
+ },
+ "coldOpen": {
+  "title": "Episode 1 · Cold open",
+  "slug": "INT. DEPTO 666, YESI'S ROOM — 3:47 A.M.",
+  "lines": [
+   {
+    "a": "Yesi lies on her floor mattress in the glow of her cracked phone. Through the torn curtain, the LUCKY 666 sign buzzes. Chamuco watches from the windowsill."
+   },
+   {
+    "who": "YESI",
+    "es": "Una más y ya.",
+    "en": "One more and I'm done."
+   },
+   {
+    "a": "Spin. Jingle. Loss."
+   },
+   {
+    "who": "YESI",
+    "es": "Okey. Una más y ya.",
+    "en": "Okay. One more and I'm done."
+   },
+   {
+    "a": "Spin. Loss. She glares at the cat."
+   },
+   {
+    "who": "YESI",
+    "es": "No me juzgues. Tú te comiste una liga el martes.",
+    "en": "Don't judge me. You ate a rubber band on Tuesday."
+   },
+   {
+    "a": "BANG BANG BANG on the door."
+   },
+   {
+    "who": "DON AURELIO (O.S.)",
+    "es": "¡Yesenia! ¡La renta!",
+    "en": "Yesenia! The rent!"
+   },
+   {
+    "who": "YESI",
+    "es": "¡No estoy!",
+    "en": "I'm not here!"
+   },
+   {
+    "who": "DON AURELIO (O.S.)",
+    "es": "¡Te estoy oyendo!",
+    "en": "I can hear you!"
+   },
+   {
+    "who": "YESI",
+    "es": "¡Es una grabación!",
+    "en": "It's a recording!"
+   },
+   {
+    "a": "Outside, the neon glitches: for one second the sign reads LUCKY 999. Yesi sits bolt upright and crosses herself at the San Judas candle."
+   },
+   {
+    "who": "YESI",
+    "es": "San Juditas… ¿es una señal?",
+    "en": "Saint Jude… is that a sign?"
+   },
+   {
+    "a": "Her thumb hovers over ALL IN. Chamuco launches off the windowsill and swats the phone across the room. It skids under the bed, face down."
+   },
+   {
+    "who": "YESI",
+    "es": "…Chamuco.",
+    "en": "…Chamuco."
+   },
+   {
+    "a": "She crawls under the bed and flips the phone over. SALDO: $0.00. It was already zero."
+   },
+   {
+    "who": "YESI",
+    "es": "Bueno. Ya no hay 'una más'. (beat, to the door) Don Aurelio… ¿me fía?",
+    "en": "Well. No more 'one more'. (beat, to the door) Don Aurelio… can you spot me?"
+   },
+   {
+    "a": "CARD: LA CUENTA · $38,400 MXN. SMASH TO MAIN TITLES."
+   }
+  ]
+ },
+ "groupChat": {
+  "name": "🏚️ Vecinos Lucky 666",
+  "msgs": [
+   {
+    "who": "Doña Chayo",
+    "es": "BUENOS DÍAS VECINOS. LA TANDA SE PAGA EL VIERNES. YESENIA ESO ES CONTIGO.",
+    "en": "GOOD MORNING NEIGHBOURS. THE TANDA IS DUE FRIDAY. YESENIA THAT MEANS YOU."
+   },
+   {
+    "who": "Yesi",
+    "es": "buenos días doña chayo qué bonita se ve hoy",
+    "en": "good morning doña chayo you look beautiful today"
+   },
+   {
+    "who": "Doña Chayo",
+    "es": "NO ME ESTÁS VIENDO YESENIA",
+    "en": "YOU CAN'T SEE ME YESENIA"
+   },
+   {
+    "who": "Regina",
+    "es": "¡Hola a todos! 😊 Les comparto la agenda de la asamblea de mañana (40 diapositivas). ¿Confirmamos asistencia? 🙏",
+    "en": "Hi everyone! 😊 Sharing tomorrow's assembly agenda (40 slides). Can we confirm attendance? 🙏"
+   },
+   {
+    "who": "Lupe",
+    "es": "probabilidad de que alguien vaya: 3.2%",
+    "en": "probability anyone shows up: 3.2%"
+   },
+   {
+    "who": "Citlali",
+    "es": "¡¡yo voy!! pero primero Azotea Fit a las 6am ✨ ojo, Mercurio está retrógrado",
+    "en": "i'm in!! but Azotea Fit at 6am first ✨ careful, Mercury's in retrograde"
+   },
+   {
+    "who": "Marisol",
+    "es": "yo llevo a alguien 😘",
+    "en": "i'm bringing someone 😘"
+   },
+   {
+    "who": "Regina",
+    "es": "¿A quién?",
+    "en": "Who?"
+   },
+   {
+    "who": "Marisol",
+    "es": "todavía no sé 💅",
+    "en": "don't know yet 💅"
+   },
+   {
+    "who": "Don Aurelio",
+    "es": "🎤 Nota de voz · 4:37",
+    "en": "🎤 Voice note · 4:37"
+   },
+   {
+    "who": "Yesi",
+    "es": "alguien me fía 200 varos pa' tacos? se los devuelvo el viernes",
+    "en": "can anyone spot me 200 pesos for tacos? pay you back friday"
+   },
+   {
+    "who": "Lupe",
+    "es": "¿qué viernes?",
+    "en": "which friday?"
+   },
+   {
+    "who": "Chamuco",
+    "es": "[sticker: gato tirando un celular de la mesa]",
+    "en": "[sticker: cat knocking a phone off a table]"
+   }
+  ]
+ },
+ "assets": {
+  "env": {
+   "exterior": "assets/env/exterior.webp",
+   "lobby": null,
+   "tiendita": null,
+   "hallway": null,
+   "livingroom": null,
+   "rooftop": null,
+   "gatanegra": null
+  },
+  "chars": {
+   "yesi": {
+    "hero": "assets/chars/yesi/hero.webp",
+    "lifestyle": "assets/chars/yesi/lifestyle.webp",
+    "room": "assets/chars/yesi/room.webp",
+    "turnaround": "assets/chars/yesi/turnaround.webp",
+    "expressions": "assets/chars/yesi/expressions.webp",
+    "head": "assets/chars/yesi/head.webp",
+    "details": "assets/chars/yesi/details.webp",
+    "wardrobe": "assets/chars/yesi/wardrobe.webp",
+    "lighting": "assets/chars/yesi/lighting.webp",
+    "board": "assets/chars/yesi/board.webp"
+   },
+   "regina": {
+    "hero": "assets/chars/regina/hero.webp",
+    "lifestyle": null,
+    "room": null,
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
+   },
+   "citlali": {
+    "hero": "assets/chars/citlali/hero.webp",
+    "lifestyle": null,
+    "room": null,
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
+   },
+   "lupe": {
+    "hero": "assets/chars/lupe/hero.webp",
+    "lifestyle": null,
+    "room": null,
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
+   },
+   "marisol": {
+    "hero": "assets/chars/marisol/hero.webp",
+    "lifestyle": null,
+    "room": null,
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
+   }
+  }
+ },
+ "built": "2026-09-29T00:59:18.283Z"
+};
