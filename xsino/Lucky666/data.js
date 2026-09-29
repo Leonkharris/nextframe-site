@@ -1310,7 +1310,7 @@ window.LUCKY666 = {
   ],
   "launch": [
    "Week 0: 'The sign flickers.' A 7-second teaser of the LUCKY 666 neon glitching to 999. No explanation.",
-   "Week 1: Tenant reveal week, one girl per day, each a POV move-in video ending on her apartment door number.",
+   "Week 1: Tenant reveal week, one girl per day: a photo at her own door with an EN/ES caption (built, see the Launch Kit), plus her move-in clip once the four-attachment video gate is met.",
    "Week 2: Episode 1 drops. The group chat goes public, and La Cuenta starts at $38,400.",
    "Ongoing: one episode per week plus daily in-character feeds, and rooftop lives on Liga MX nights."
   ]
@@ -1704,5 +1704,5 @@ window.LUCKY666 = {
    "teaser": "assets/launch/teaser.mp4"
   }
  },
- "built": "2026-09-29T03:36:28.762Z"
+ "built": "2026-09-29T03:45:09.154Z"
 };
