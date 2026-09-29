@@ -1465,6 +1465,157 @@ window.LUCKY666 = {
    }
   ]
  },
+ "reveals": {
+  "yesi": {
+   "door": "666",
+   "day": "Day 1",
+   "action": "leaning against the doorframe spinning her keys on one finger, lollipop stick in her mouth, flashing a cocky smile at the camera",
+   "en": "Tenant #666. Yes, THAT 666. Rent's cheap because the sign is cursed, and I'm luckier than the sign. Probably. 🎰🍭 Una más y ya.",
+   "es": "Inquilina del 666. Sí, ESE 666. La renta está barata porque el letrero está salado… y yo tengo más suerte que el letrero. Creo. 🎰🍭 Una más y ya.",
+   "tags": "#Lucky666 #UnaMasYYa"
+  },
+  "regina": {
+   "door": "666",
+   "day": "Day 2",
+   "action": "arriving with a tall tower of matching luxury suitcases stacked beside her, one hand on her hip, catching her breath with a polished smile",
+   "en": "New chapter. New city. A humble apartment with character. 14 suitcases, zero elevator. Let's circle back after the stairs. 💼✨",
+   "es": "Nuevo capítulo. Nueva ciudad. Un departamento humilde con personalidad. 14 maletas, cero elevador. Hagamos un follow-up después de las escaleras. 💼✨",
+   "tags": "#Lucky666 #BossLadyLunes"
+  },
+  "citlali": {
+   "door": "606",
+   "day": "Day 3",
+   "action": "stretching one leg up high against the doorframe in a flexible yoga pose, a water bottle in her hand, potted plants by the door, laughing",
+   "en": "606 energy: plants, crystals and a 6 a.m. rooftop class. Mercury's in retrograde, so I'm only placing ONE bet today. Okay, two. ☀️🧘‍♀️",
+   "es": "Energía 606: plantas, cristales y clase en la azotea a las 6 a.m. Mercurio está retrógrado, así que hoy solo UNA apuesta. Bueno, dos. ☀️🧘‍♀️",
+   "tags": "#Lucky666 #AzoteaFit"
+  },
+  "lupe": {
+   "door": "616",
+   "day": "Day 4",
+   "action": "standing full-length in her half-open doorway hugging a sticker-covered laptop to her chest, headset on, bundles of cables snaking out from under the door along the floor, one eyebrow raised in a deadpan look",
+   "en": "Moved into 616. Blacked out the windows, set up four monitors, and my AI says my odds of making friends here are 11%. Challenge accepted. 🎮🐱",
+   "es": "Ya vivo en el 616. Tapé las ventanas, armé cuatro monitores y mi IA dice que mis probabilidades de hacer amigas aquí son del 11%. Acepto el reto. 🎮🐱",
+   "tags": "#Lucky666 #LUPEexe"
+  },
+  "marisol": {
+   "door": "626",
+   "day": "Day 5",
+   "action": "blowing a kiss at the camera while a handsome man in a firefighter uniform stands behind her slightly out of focus, holding her faux-fur coat",
+   "en": "626 🌺 Veracruz girl in the big city. The show's at La Gata Negra, right across the street. Him? Oh, that's… the firefighter. 😘🔥",
+   "es": "626 🌺 Jarocha en la gran ciudad. El show es en La Gata Negra, aquí enfrente. ¿Él? Ah, es… el bombero. 😘🔥",
+   "tags": "#Lucky666 #Candela"
+  }
+ },
+ "revealFooter": {
+  "en": "🔗 @xsino.official · 21+ · Play responsibly",
+  "es": "🔗 @xsino.official · 21+ · Juega con responsabilidad"
+ },
+ "ep1": {
+  "title": "Episode 1 · I'm Yesi, Güey / Soy la Yesi, güey",
+  "status": "DRAFT: awaiting Leon's yes. No previz, keyframes or video until approved.",
+  "concept": "The rent is due Sunday, Yesi bets it on a neon omen and loses, and the solution walks in with 14 suitcases: Regina, the rich girl in hiding who becomes her roommate.",
+  "tone": "Fast chilango banter, telenovela stings, a warm ending. Target 6–8 min, 16:9 master (standing video-aspect rule); each ★ beat is also cut as a standalone social skit.",
+  "cast": "Yesi, Regina, Don Aurelio, Citlali, Lupe, Marisol (+ Novio #41, the firefighter), Los Primos, Chamuco",
+  "beats": [
+   {
+    "n": "0",
+    "where": "Depto 666, Yesi's room · 3:47 a.m.",
+    "dur": "60s",
+    "action": "The cold open: 'una más y ya' ×2, Don Aurelio bangs on the door, the sign flickers 999, Chamuco swats the phone, the balance was already $0.00.",
+    "camera": "Static wide on the mattress, then a slow push-in on her face lit by the phone; insert of the window as the neon flips; whip to the phone skidding under the bed.",
+    "line": "YESI: «¡Es una grabación!» (It's a recording!)",
+    "text": "LA CUENTA · $38,400",
+    "social": "★ Skit 1: 'Una más y ya'"
+   },
+   {
+    "n": "1",
+    "where": "Rooftop sign · titles",
+    "dur": "10s",
+    "action": "Main titles: the teaser shot. LUCKY 666 buzzes, flips to 999, snaps back.",
+    "camera": "The teaser push-in (already built).",
+    "line": "—",
+    "text": "LUCKY 666",
+    "social": "Teaser (built)"
+   },
+   {
+    "n": "2",
+    "where": "Abarrotes La Suerte · morning",
+    "dur": "60s",
+    "action": "Don Aurelio chalks 'DOMINGO' under YESI on the FIADO board. She tries to pay with a losing scratch card, a pawn ticket and a tamal. He takes the tamal and keeps the deadline.",
+    "camera": "Over-the-counter two-shot under the lucky-cat wall; push-in on the chalkboard as he writes; reverse on Yesi holding up the tamal like an offer.",
+    "line": "DON AURELIO: «El domingo, Yesenia. O te vas a vivir con San Judas.» (Sunday, Yesenia. Or you go live with Saint Jude.)",
+    "text": "YESI · $38,400 · DOMINGO",
+    "social": "★ Skit 2: paying rent in tamales"
+   },
+   {
+    "n": "3",
+    "where": "Lobby · San Judas altar",
+    "dur": "45s",
+    "action": "Yesi lights a candle and prays with her phone in both hands. The sixth floor streams past: Citlali jogging in place to Azotea Fit, Lupe hauling a router the size of a suitcase, Marisol arriving with the firefighter.",
+    "camera": "Locked wide on the altar; each tenant crosses frame with a freeze and a name card (3–4 s each); Yesi stays in the foreground praying.",
+    "line": "YESI: «San Juditas, patrón de las causas perdidas… o sea, yo.» (Saint Jude, patron of lost causes… meaning me.)",
+    "text": "Name cards: CITLALI · 606 · apuestas por horóscopo / LUPE · 616 · juegos crash / MARISOL · 626 · NOVIO #41: EL BOMBERO",
+    "social": "★ Skit 3: 'Meet the sixth floor'"
+   },
+   {
+    "n": "4",
+    "where": "Rooftop · Saturday night",
+    "dur": "75s",
+    "action": "Yesi has scraped the rent together (pawned the microwave, the 31st time). The sign flickers 999. Everyone weighs in: Citlali says the stars agree, Lupe says 0.3%, Marisol says play the firefighter's number. Yesi: 'una más y ya'. She loses, and the sign snaps back to 666 at the same moment.",
+    "camera": "Low angle on the sign; four quick singles for the advice round; tight on Yesi's thumb over the button; smash cut to the sign flicking back as the phone screen dims (generic slot UI, no logo).",
+    "line": "LUPE: «Probabilidad: cero punto tres por ciento.» / YESI: «O sea que sí hay chance.» (So there IS a chance.)",
+    "text": "—",
+    "social": "★ Skit 4: the omen"
+   },
+   {
+    "n": "5",
+    "where": "Street, front door · Sunday",
+    "dur": "60s",
+    "action": "A black SUV. Los Primos open the door; Regina steps out in blazer and pearls with 14 matching suitcases and asks Don Aurelio for 'a humble, normal apartment with character'. He: 'Only half of 666 is left.' Yesi sprints down six floors yelling that it's a loft. Regina pays six months in cash from an envelope sealed with wax.",
+    "camera": "Wide on the tower as the SUV rolls in; slow-motion Regina reveal (heels, suitcases, headband); cut-ins of Yesi flying down the stairs; the envelope close-up; Don Aurelio's eyebrows.",
+    "line": "YESI: «¡Es un loft!» / REGINA: «¿Aceptan efectivo?» (Do you take cash?)",
+    "text": "NUEVA INQUILINA · REGINA · 666",
+    "social": "★ Skit 5: the new tenant"
+   },
+   {
+    "n": "6",
+    "where": "Depto 666 · the split",
+    "dur": "60s",
+    "action": "They tape a line down the living room. Regina unpacks orchids and a vision board; Yesi's side stays a crime scene. They ask each other what they do for work.",
+    "camera": "Top-down on the tape being laid; a slow lateral dolly across the line from chaos to Pinterest; two-shot on the sofa sitting exactly on the tape.",
+    "line": "REGINA: «¿Y tú a qué te dedicas?» YESI: «Inversiones de alto riesgo.» REGINA: «¡Yo también!» (What do you do? · High-risk investments. · Me too!)",
+    "text": "—",
+    "social": "★ Skit 6: the tape line"
+   },
+   {
+    "n": "7",
+    "where": "Rooftop · night (the heart)",
+    "dur": "60s",
+    "action": "Regina can't sleep (the mariachi, the dogs, the buzzing sign). Yesi takes her up to the roof and splits her last tamarind lollipop. Chamuco sits between them.",
+    "camera": "Wide two-shot under the sign, city behind them; a slow push-in; one close on the lollipop being snapped in half.",
+    "line": "REGINA: «Mi papá está en la agricultura.» YESI: «El mío también… creo.» (My dad's in agriculture. · Mine too… I think.)",
+    "text": "—",
+    "social": "—"
+   },
+   {
+    "n": "8",
+    "where": "Depto 666 · tag",
+    "dur": "20s",
+    "action": "Regina opens her laptop to a live blackjack table. Yesi slowly turns around. Card.",
+    "camera": "Over-the-shoulder on the laptop; snap-zoom on Yesi's grin.",
+    "line": "REGINA: «No es apuesta. Es estrategia.» (It's not a bet. It's strategy.)",
+    "text": "LA CUENTA · $38,400 MXN → logo signature, 21+",
+    "social": "★ Skit 7: 'es estrategia'"
+   }
+  ],
+  "questions": [
+   "Voices: cast real Mexican VO actors, or clone voices for the five? (No robotic TTS either way.)",
+   "Social cutdowns: 16:9 for now per the standing rule, or unlock 9:16 for the influencer feeds?",
+   "Phone screens: a generic slot UI (current plan), or the real XSINO app UI? The logo stays end-card only either way.",
+   "Episode length: 6–8 min as planned, or a tighter 3–4 min to match social?"
+  ]
+ },
  "assets": {
   "env": {
    "exterior": "assets/env/exterior.webp",
@@ -1536,7 +1687,22 @@ window.LUCKY666 = {
     "lighting": "assets/chars/marisol/lighting.webp",
     "board": "assets/chars/marisol/board.webp"
    }
+  },
+  "launch": {
+   "reveals": {
+    "yesi": "assets/launch/reveal_yesi.webp",
+    "regina": "assets/launch/reveal_regina.webp",
+    "citlali": "assets/launch/reveal_citlali.webp",
+    "lupe": "assets/launch/reveal_lupe.webp",
+    "marisol": "assets/launch/reveal_marisol.webp"
+   },
+   "carousel": [
+    "assets/launch/carousel_01.webp",
+    "assets/launch/carousel_02.webp",
+    "assets/launch/carousel_03.webp"
+   ],
+   "teaser": "assets/launch/teaser.mp4"
   }
  },
- "built": "2026-09-29T03:13:17.207Z"
+ "built": "2026-09-29T03:36:28.762Z"
 };

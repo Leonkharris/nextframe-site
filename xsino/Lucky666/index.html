@@ -138,6 +138,23 @@ h5{font-size:11.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--ac
 .msg.me{justify-self:end;background:#005c4b}
 .msg b{display:block;font-size:12px;margin-bottom:2px}
 .msg i{display:block;color:#8696a0;font-size:12px;margin-top:3px;font-style:normal}
+.status{display:inline-block;background:rgba(232,194,106,.12);border:1px solid rgba(232,194,106,.5);color:var(--gold);border-radius:99px;padding:6px 14px;font-size:12.5px;font-weight:700;margin:-8px 0 18px}
+.beat{display:grid;grid-template-columns:58px 1fr;gap:0;border:1px solid var(--line);border-radius:14px;background:var(--card);margin-bottom:10px;overflow:hidden}
+.beat .bn{font-family:Monoton;font-size:26px;color:var(--mag);display:flex;align-items:flex-start;justify-content:center;padding-top:16px;border-right:1px solid var(--line);text-shadow:0 0 10px rgba(255,43,214,.6)}
+.beat .bb{padding:14px 18px;display:grid;gap:7px;font-size:14px;color:#d6d0f5}
+.beat .bh{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font-weight:800;color:var(--text);font-size:15px}
+.beat .bh span{font-weight:600;font-size:11.5px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:2px 9px}
+.beat .bb b{color:var(--cyan);font-weight:700}
+.beat .soc{color:var(--gold);font-weight:700}
+.posts{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:16px}
+.post{background:var(--card);border:1px solid var(--line);border-radius:14px;overflow:hidden;font-size:13px}
+.post .pi{aspect-ratio:3/4;background:#0c0a26 center/cover no-repeat;display:flex;align-items:center;justify-content:center;color:var(--muted);font-size:11px;letter-spacing:.14em;text-transform:uppercase}
+.post .pc{padding:12px 14px;display:grid;gap:7px;color:#d6d0f5}
+.post .pc .d{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700}
+.post .pc i{color:var(--muted);font-style:normal}
+.slides{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+.slides img{border-radius:12px;border:1px solid var(--line)}
+video{width:100%;max-width:900px;border-radius:14px;border:1px solid var(--line);background:#000}
 /* social */
 .acct{display:flex;gap:12px;align-items:center}
 .acct .dot{width:14px;height:14px;border-radius:50%;flex:none}
@@ -151,7 +168,7 @@ footer img{height:42px;margin:0 auto 16px;opacity:.95}
 <body>
 <nav><div class="wrap">
   <span class="brand">LUCKY 666</span>
-  <a href="#show">The Show</a><a href="#building">The Building</a><a href="#tenants">The Tenants</a><a href="#cast">Neighbours</a><a href="#engine">Comedy Engine</a><a href="#season">Season 1</a><a href="#social">Social Playbook</a><a href="#rules">Guardrails</a>
+  <a href="#show">The Show</a><a href="#building">The Building</a><a href="#tenants">The Tenants</a><a href="#cast">Neighbours</a><a href="#engine">Comedy Engine</a><a href="#season">Season 1</a><a href="#ep1">Episode 1</a><a href="#social">Social Playbook</a><a href="#launch">Launch Kit</a><a href="#rules">Guardrails</a>
 </div></nav>
 
 <header class="hero">
@@ -222,6 +239,16 @@ footer img{height:42px;margin:0 auto 16px;opacity:.95}
   <ul class="dots" id="bets"></ul>
 </div></section>
 
+<section id="ep1"><div class="wrap">
+  <h2 class="sec">Episode 1 · Scene Breakdown</h2>
+  <h3 class="big" id="ep1Title"></h3>
+  <div class="status" id="ep1Status"></div>
+  <p class="lead" id="ep1Concept"></p>
+  <p class="muted" id="ep1Tone" style="margin-top:10px;font-size:14.5px"></p>
+  <div id="ep1Beats" style="margin-top:26px"></div>
+  <h5>Open questions</h5><ul class="dots" id="ep1Q"></ul>
+</div></section>
+
 <section id="social"><div class="wrap">
   <h2 class="sec">Social & Influencer Playbook</h2>
   <h3 class="big">The feeds are the show. The show feeds the accounts.</h3>
@@ -236,6 +263,17 @@ footer img{height:42px;margin:0 auto 16px;opacity:.95}
     <div><h5>Cadence</h5><ul class="dots" id="cadence"></ul></div>
     <div><h5>Launch plan</h5><ul class="dots" id="launch"></ul></div>
   </div>
+</div></section>
+
+<section id="launch"><div class="wrap">
+  <h2 class="sec">Launch Kit · Weeks 0–1</h2>
+  <h3 class="big">The sign flickers. Then the tenants move in.</h3>
+  <h5>Week 0 · Teaser: "the sign flickers"</h5>
+  <div id="teaser"></div>
+  <h5 style="margin-top:34px">Week 1 · Tenant reveal posts</h5>
+  <div class="posts" id="reveals"></div>
+  <h5 style="margin-top:34px">Carousel · Chat del Edificio, Vol. 1</h5>
+  <div class="slides" id="slides"></div>
 </div></section>
 
 <section id="rules"><div class="wrap">
@@ -365,6 +403,24 @@ $("accounts").innerHTML = `<div class="card acct"><span class="dot" style="backg
 $("formats").innerHTML = S.formats.map((f) => `<div class="card"><h4>${esc(f.name)}</h4><p>${esc(f.text)}</p></div>`).join("");
 $("cadence").innerHTML = li(S.cadence); $("launch").innerHTML = li(S.launch);
 $("guard").innerHTML = li(L.series.guardrails);
+
+// Episode 1 breakdown (approval page before any previz)
+if (L.ep1) {
+  const E = L.ep1;
+  $("ep1Title").textContent = E.title; $("ep1Status").textContent = E.status; $("ep1Concept").textContent = E.concept; $("ep1Tone").textContent = E.tone + " Cast: " + E.cast + ".";
+  $("ep1Beats").innerHTML = E.beats.map((b) => `<div class="beat"><div class="bn">${esc(b.n)}</div><div class="bb">
+    <div class="bh">${esc(b.where)}<span>${esc(b.dur)}</span>${b.social && b.social !== "—" ? `<span class="soc">${esc(b.social)}</span>` : ""}</div>
+    <div>${esc(b.action)}</div><div><b>Camera:</b> ${esc(b.camera)}</div><div><b>Line:</b> ${esc(b.line)}</div>${b.text && b.text !== "—" ? `<div><b>On screen:</b> ${esc(b.text)}</div>` : ""}</div></div>`).join("");
+  $("ep1Q").innerHTML = li(E.questions);
+}
+// Launch kit
+const LA = A.launch || { reveals: {}, carousel: [] };
+$("teaser").innerHTML = LA.teaser ? `<video src="${LA.teaser}" controls playsinline preload="metadata" poster="${A.env.exterior || ""}"></video><p class="muted" style="font-size:13px;margin-top:8px">8.4 s · 1280×720 · built from our own plates (no generated video). The three 6s rotate 180° into 9s, then snap back; the logo appears only on the end card.</p>` : `<div class="pending">Teaser rendering…</div>`;
+$("reveals").innerHTML = C.map((c) => { const r = L.reveals?.[c.key]; if (!r) return ""; const img = LA.reveals[c.key];
+  return `<div class="post"><div class="pi" style="${img ? `background-image:url(${img})` : ""}">${img ? "" : "generating…"}</div><div class="pc">
+  <div class="d" style="color:${c.color === "#1B2A4A" ? "#c9a24a" : c.color}">${esc(r.day)} · ${esc(c.handle)} · door ${esc(r.door)}</div>
+  <div>${esc(r.es)} <i>${esc(r.tags)}</i></div><div class="muted">EN: ${esc(r.en)}</div><div class="muted" style="font-size:11.5px">${esc(L.revealFooter.es)}</div></div></div>`; }).join("");
+$("slides").innerHTML = LA.carousel.length ? LA.carousel.map((s) => `<img src="${s}" alt="carousel slide" loading="lazy">`).join("") : `<div class="pending">Slides rendering…</div>`;
 $("built").textContent = "Codex build " + L.built.slice(0, 16).replace("T", " ") + " UTC";
 
 const m = location.hash.match(/^#tenant-(\w+)/); if (m && C.find((c) => c.key === m[1])) openM(m[1]);
