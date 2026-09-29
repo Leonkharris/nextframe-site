@@ -1468,12 +1468,12 @@ window.LUCKY666 = {
  "assets": {
   "env": {
    "exterior": "assets/env/exterior.webp",
-   "lobby": null,
-   "tiendita": null,
-   "hallway": null,
-   "livingroom": null,
-   "rooftop": null,
-   "gatanegra": null
+   "lobby": "assets/env/lobby.webp",
+   "tiendita": "assets/env/tiendita.webp",
+   "hallway": "assets/env/hallway.webp",
+   "livingroom": "assets/env/livingroom.webp",
+   "rooftop": "assets/env/rooftop.webp",
+   "gatanegra": "assets/env/gatanegra.webp"
   },
   "chars": {
    "yesi": {
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T02:55:15.912Z"
+ "built": "2026-09-29T03:06:16.786Z"
 };
