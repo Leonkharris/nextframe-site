@@ -1502,15 +1502,15 @@ window.LUCKY666 = {
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
-    "lifestyle": null,
-    "room": null,
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
-    "lighting": null,
-    "board": null
+    "lifestyle": "assets/chars/citlali/lifestyle.webp",
+    "room": "assets/chars/citlali/room.webp",
+    "turnaround": "assets/chars/citlali/turnaround.webp",
+    "expressions": "assets/chars/citlali/expressions.webp",
+    "head": "assets/chars/citlali/head.webp",
+    "details": "assets/chars/citlali/details.webp",
+    "wardrobe": "assets/chars/citlali/wardrobe.webp",
+    "lighting": "assets/chars/citlali/lighting.webp",
+    "board": "assets/chars/citlali/board.webp"
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T02:13:31.198Z"
+ "built": "2026-09-29T02:25:42.173Z"
 };
