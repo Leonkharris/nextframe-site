@@ -329,6 +329,9 @@ window.LUCKY666 = {
     "LISTÓN: red satin ribbon",
     "HOOPS: thin gold"
    ],
+   "face": "Yesi, a 29-year-old Mexican woman from Mexico City: a soft oval-to-heart-shaped face with a small delicate chin, large luminous light hazel-green eyes that tilt slightly down at the outer corners, thick softly arched dark-brown brows, a slim straight nose with a softly rounded tip, full lips with a defined cupid's bow in a soft rosy pink, smooth fair light-olive skin with a warm glow and a few faint freckles, and tousled shoulder-length dark chocolate-brown hair in a soft side-parted lob, with soft natural glam: fluttery lashes, soft brown liner, rosy-pink lips, glowing skin",
+   "faceShoulders": "the collar of a hot-magenta satin bomber jacket over a white crop top, gold hoops and chains",
+   "facePose": "facing the camera with her head tilted slightly, a playful knowing half-smile",
    "stats": [
     [
      "NAME",
@@ -352,19 +355,19 @@ window.LUCKY666 = {
     ],
     [
      "HAIR",
-     "tousled shoulder-length dark-brunette waves, half-up claw clip"
+     "tousled shoulder-length dark chocolate-brown lob, side part"
     ],
     [
      "EYES",
-     "striking hazel-green, smoky brown liner"
+     "large light hazel-green, slightly downturned outer corners"
     ],
     [
      "SKIN",
-     "warm light olive"
+     "fair light olive, faint freckles"
     ],
     [
      "FEATURES",
-     "beauty mark above right lip corner · thick natural brows"
+     "heart-shaped face · defined cupid's bow · beauty mark above right lip corner"
     ],
     [
      "OUTFIT",
@@ -443,7 +446,7 @@ window.LUCKY666 = {
     "Cameos in everyone else's feed, borrowing something"
    ],
    "voice": "Fast chilango Spanish, sarcastic, affectionate insults, never sounds sorry.",
-   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City and a stunning, playful street-glam beauty: warm light-olive skin, a slim toned figure with a tiny waist, a soft heart-shaped face, striking hazel-green eyes with smoky brown liner and long lashes, softly arched dark brows, a small button nose, full soft rosy lips with a mischievous half-smile, a tiny beauty mark above the right corner of her lip, and tousled shoulder-length dark-brunette waves half clipped up with a claw clip. Chunky gold hoop earrings, layered gold chains, long hot-pink almond nails, a thin red ribbon tied around her left wrist. She wears a cropped hot-magenta satin bomber jacket open over a white ribbed crop top, low-rise baggy grey cargo pants that show her toned midriff, and chunky white sneakers, with a small tamarind lollipop stick in the corner of her mouth."
+   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City: a soft oval-to-heart-shaped face with a small delicate chin, large luminous light hazel-green eyes that tilt slightly down at the outer corners, thick softly arched dark-brown brows, a slim straight nose with a softly rounded tip, full lips with a defined cupid's bow in a soft rosy pink, smooth fair light-olive skin with a warm glow and a few faint freckles, and tousled shoulder-length dark chocolate-brown hair in a soft side-parted lob, with soft natural glam: fluttery lashes, soft brown liner, rosy-pink lips, glowing skin, and a slim toned figure with a tiny waist. She wears a cropped hot-magenta satin bomber jacket open over a white ribbed crop top, low-rise baggy grey cargo pants that show her toned midriff and chunky white sneakers, chunky gold hoop earrings, layered gold chains, long hot-pink almond nails, a thin red ribbon tied around her left wrist, and a small tamarind lollipop stick in the corner of her mouth."
   },
   {
    "key": "regina",
@@ -453,7 +456,7 @@ window.LUCKY666 = {
    "alias": "La Jefa (The Boss)",
    "role": "The preppy boss lady who just wants to be understood",
    "apt": "Depto 666 (Yesi's new roommate)",
-   "age": 30,
+   "age": 32,
    "hometown": "Culiacán, Sinaloa (culichi, schooled in Monterrey)",
    "vice": "VIP live blackjack and baccarat",
    "viceLong": "High-limit live-dealer blackjack and baccarat, which she insists is 'strategic risk management'. She keeps a colour-coded dashboard of her losses titled 'Q3 Learning Investments' and journals after every hand.",
@@ -468,8 +471,8 @@ window.LUCKY666 = {
      "#0F7A4A"
     ],
     [
-     "HONEY-BROWN BLOWOUT",
-     "#9A6A3A"
+     "HONEY-BLONDE BALAYAGE",
+     "#B98A55"
     ],
     [
      "CARAMEL HIGHLIGHT",
@@ -500,6 +503,9 @@ window.LUCKY666 = {
     "JEWELRY: emerald + gold",
     "PLANNER: pebbled leather"
    ],
+   "face": "Regina, a 32-year-old Mexican woman from Culiacán: a strong sculpted oval face with high prominent cheekbones, a defined jaw and a strong chin, deep-set warm brown eyes with a slightly hooded lid, bold full arched dark brows, a straight nose with a gently rounded tip, very full lips in a nude-brown liner and gloss, bronzed golden-tan skin, womanly glamour in her early thirties, and long voluminous honey-blonde balayage hair over light-brown roots in big glamorous center-parted waves, with full red-carpet glam: a sultry smoky-bronze eye, heavy lashes, sculpted contour, glossy nude-brown lips",
+   "faceShoulders": "the plunging lapels of a black tailored blazer, a statement emerald pendant and emerald drop earrings",
+   "facePose": "one arm raised with her hand in her hair, looking straight into the camera with a confident sultry gaze",
    "stats": [
     [
      "NAME",
@@ -511,7 +517,7 @@ window.LUCKY666 = {
     ],
     [
      "AGE",
-     "30"
+     "32"
     ],
     [
      "FROM",
@@ -523,19 +529,19 @@ window.LUCKY666 = {
     ],
     [
      "HAIR",
-     "huge honey-brown blowout, caramel highlights, bouncy waves"
+     "long voluminous honey-blonde balayage over light-brown roots, big waves"
     ],
     [
      "EYES",
-     "sultry warm brown, smoky bronze makeup"
+     "deep-set warm brown, smoky bronze"
     ],
     [
      "SKIN",
-     "warm golden tan"
+     "bronzed golden tan"
     ],
     [
      "FEATURES",
-     "high cheekbones · strong arched brows · full lips · perfect posture"
+     "high prominent cheekbones · strong jaw · very full lips"
     ],
     [
      "OUTFIT",
@@ -613,7 +619,7 @@ window.LUCKY666 = {
     "Los Primos cameos: two giants doing her errands"
    ],
    "voice": "Polished and sincere, corporate buzzwords, sudden Sinaloa steel.",
-   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán and a jaw-dropping, glamorous Latina bombshell with old-Hollywood confidence: warm golden-tan skin, a sculpted hourglass figure with a tiny cinched waist and long toned legs, a striking womanly face with high cheekbones, sultry warm brown eyes with smoky bronze eye makeup and thick lashes, strong arched brows, full glossy nude-rose lips, and a huge voluminous blowout of long honey-brown hair with caramel highlights in bouncy glamorous waves. Emerald drop earrings, a statement emerald pendant, a gold signet ring, long nude almond nails. She wears a sharply tailored black blazer as a plunging mini blazer dress cinched with a thin gold belt, sheer black tights and black suede over-the-knee boots, and carries a leather planner."
+   "anchor": "Regina, a 32-year-old Mexican woman from Culiacán: a strong sculpted oval face with high prominent cheekbones, a defined jaw and a strong chin, deep-set warm brown eyes with a slightly hooded lid, bold full arched dark brows, a straight nose with a gently rounded tip, very full lips in a nude-brown liner and gloss, bronzed golden-tan skin, womanly glamour in her early thirties, and long voluminous honey-blonde balayage hair over light-brown roots in big glamorous center-parted waves, with full red-carpet glam: a sultry smoky-bronze eye, heavy lashes, sculpted contour, glossy nude-brown lips, and a sculpted hourglass figure with a tiny cinched waist and long toned legs. She wears a sharply tailored black blazer worn as a plunging mini blazer dress cinched with a thin gold belt, sheer black tights and black suede over-the-knee boots, emerald drop earrings, a statement emerald pendant, a gold signet ring, long nude almond nails, and a leather planner in her hand."
   },
   {
    "key": "citlali",
@@ -807,8 +813,8 @@ window.LUCKY666 = {
      "#C4B5FD"
     ],
     [
-     "BROWN CURLS",
-     "#5A3A22"
+     "CARAMEL BALAYAGE",
+     "#8A5A34"
     ],
     [
      "CARAMEL SKIN",
@@ -839,6 +845,9 @@ window.LUCKY666 = {
     "SNEAKERS: chunky platform rubber",
     "NAILS: holographic glitter"
    ],
+   "face": "Lupe, a 24-year-old Mexican woman from Guadalajara with a clearly adult look: a heart-shaped face with high rounded cheekbones and a small pointed chin, warm almond-shaped deep brown eyes with a gentle upturn, full straight dark brows, a small straight button nose, full soft lips in a natural pinky nude, glowing sun-kissed light-caramel skin with a dewy highlight, slim tortoiseshell rectangular glasses, and long glossy dark-brown hair with warm caramel balayage in loose soft center-parted waves, with fresh dewy makeup: bronzed glowing skin, soft brown liner, glossy pinky-nude lips",
+   "faceShoulders": "a cropped oversized lilac hoodie with a pastel-cyan cat-ear gaming headset resting around her neck",
+   "facePose": "facing the camera, pushing her tortoiseshell glasses up with one finger, a sweet shy smile",
    "stats": [
     [
      "NAME",
@@ -862,19 +871,19 @@ window.LUCKY666 = {
     ],
     [
      "HAIR",
-     "long voluminous natural brown curls, caramel tips"
+     "long glossy dark-brown waves with caramel balayage, center part"
     ],
     [
      "EYES",
-     "big warm brown doe eyes, round clear glasses"
+     "warm almond deep brown, tortoiseshell rectangular glasses"
     ],
     [
      "SKIN",
-     "sun-kissed caramel"
+     "sun-kissed light caramel, dewy"
     ],
     [
      "FEATURES",
-     "unblinking stare · sleeves always over hands"
+     "heart-shaped face · high rounded cheekbones · sleeves always over hands"
     ],
     [
      "OUTFIT",
@@ -951,7 +960,7 @@ window.LUCKY666 = {
     "Streams with Memo 'accidentally' serenading in the background"
    ],
    "voice": "Deadpan, literal, rapid technical Spanglish, occasional tapatía 'pues'.",
-   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara and a gorgeous nerdy gamer girl with a clearly adult look: sun-kissed caramel skin, a slim petite figure with a tiny waist, a soft oval face, big warm brown doe eyes behind big round clear-framed glasses, soft natural brows, a small straight nose, full pouty lips with a nude gloss, dewy natural makeup, and long voluminous natural brown curls with caramel tips. Holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears a cropped oversized lilac hoodie that shows her midriff, a black cargo mini skirt, fishnet tights and chunky black platform boots."
+   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara with a clearly adult look: a heart-shaped face with high rounded cheekbones and a small pointed chin, warm almond-shaped deep brown eyes with a gentle upturn, full straight dark brows, a small straight button nose, full soft lips in a natural pinky nude, glowing sun-kissed light-caramel skin with a dewy highlight, slim tortoiseshell rectangular glasses, and long glossy dark-brown hair with warm caramel balayage in loose soft center-parted waves, with fresh dewy makeup: bronzed glowing skin, soft brown liner, glossy pinky-nude lips, and a slim petite figure with a tiny waist. She wears a cropped oversized lilac hoodie that shows her midriff, a black cargo mini skirt, fishnet tights and chunky black platform boots, a pastel-cyan gaming headset with little cat ears resting around her neck, and holographic glitter nails."
   },
   {
    "key": "marisol",
@@ -1008,6 +1017,9 @@ window.LUCKY666 = {
     "NECKLACES: layered fine gold",
     "NAILS: glossy gel almond"
    ],
+   "face": "Marisol, a 27-year-old Mexican woman from Veracruz: a long elegant oval face with sharply sculpted high cheekbones, a slim straight nose, a defined jaw and a long graceful neck, large dark almond-shaped eyes with smoky dark-brown liner and long lashes, strong defined dark brows with a clean arch, full lips with a nude-pink gloss, luminous bronzed caramel skin with a dewy glow, and long glossy jet-black hair slicked back from a center part into a sleek high ponytail, with polished bronzed glam: smoky almond eyes, long lashes, luminous highlighted skin, nude-pink gloss",
+   "faceShoulders": "a bare shoulder with a thin violet satin strap, large thin gold teardrop hoop earrings",
+   "facePose": "glancing back over her bare shoulder at the camera with a slow knowing smile",
    "stats": [
     [
      "NAME",
@@ -1031,11 +1043,11 @@ window.LUCKY666 = {
     ],
     [
      "HAIR",
-     "long glossy jet-black, sleek high ponytail, red hibiscus"
+     "long glossy jet-black, slicked into a sleek high ponytail, small red hibiscus"
     ],
     [
      "EYES",
-     "almond dark brown, smoky winged liner"
+     "large dark almond, smoky liner"
     ],
     [
      "SKIN",
@@ -1043,7 +1055,7 @@ window.LUCKY666 = {
     ],
     [
      "FEATURES",
-     "full lips · megawatt confidence"
+     "sharply sculpted cheekbones · long graceful neck · full lips"
     ],
     [
      "OUTFIT",
@@ -1121,7 +1133,7 @@ window.LUCKY666 = {
     "Dance lessons on the roof: salsa and son jarocho with the girls"
    ],
    "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
-   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping, elegant Latina bombshell: luminous bronzed caramel skin with a dewy glow, a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach and long slender toned legs, a sculpted face with high cheekbones, a sleek straight nose and a long elegant neck, almond-shaped dark brown eyes with dramatic smoky winged liner and long lashes, strong defined brows, full lips with nude-pink gloss, and long glossy jet-black hair pulled into a sleek high ponytail with a red hibiscus flower pinned at its base. Large thin gold teardrop hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz: a long elegant oval face with sharply sculpted high cheekbones, a slim straight nose, a defined jaw and a long graceful neck, large dark almond-shaped eyes with smoky dark-brown liner and long lashes, strong defined dark brows with a clean arch, full lips with a nude-pink gloss, luminous bronzed caramel skin with a dewy glow, and long glossy jet-black hair slicked back from a center part into a sleek high ponytail, with polished bronzed glam: smoky almond eyes, long lashes, luminous highlighted skin, nude-pink gloss, and a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach and long slender toned legs. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders, large thin gold teardrop hoop earrings, layered fine gold necklaces, long glossy red almond nails, and a small red hibiscus flower pinned at the base of her ponytail."
   }
  ],
  "episodes": [
@@ -1883,25 +1895,25 @@ window.LUCKY666 = {
     "hero": "assets/chars/yesi/hero.webp",
     "lifestyle": "assets/chars/yesi/lifestyle.webp",
     "room": "assets/chars/yesi/room.webp",
-    "turnaround": "assets/chars/yesi/turnaround.webp",
-    "expressions": "assets/chars/yesi/expressions.webp",
-    "head": "assets/chars/yesi/head.webp",
-    "details": "assets/chars/yesi/details.webp",
-    "wardrobe": "assets/chars/yesi/wardrobe.webp",
-    "lighting": "assets/chars/yesi/lighting.webp",
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
     "board": "assets/chars/yesi/board.webp"
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
-    "lifestyle": "assets/chars/regina/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/regina/room.webp",
-    "turnaround": "assets/chars/regina/turnaround.webp",
-    "expressions": "assets/chars/regina/expressions.webp",
-    "head": "assets/chars/regina/head.webp",
-    "details": "assets/chars/regina/details.webp",
-    "wardrobe": "assets/chars/regina/wardrobe.webp",
-    "lighting": "assets/chars/regina/lighting.webp",
-    "board": "assets/chars/regina/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
@@ -1913,17 +1925,17 @@ window.LUCKY666 = {
     "details": "assets/chars/citlali/details.webp",
     "wardrobe": "assets/chars/citlali/wardrobe.webp",
     "lighting": "assets/chars/citlali/lighting.webp",
-    "board": "assets/chars/citlali/board.webp"
+    "board": null
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
     "lifestyle": null,
     "room": "assets/chars/lupe/room.webp",
-    "turnaround": "assets/chars/lupe/turnaround.webp",
-    "expressions": "assets/chars/lupe/expressions.webp",
-    "head": "assets/chars/lupe/head.webp",
-    "details": "assets/chars/lupe/details.webp",
-    "wardrobe": "assets/chars/lupe/wardrobe.webp",
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
     "lighting": null,
     "board": null
    },
@@ -1979,5 +1991,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T14:11:17.054Z"
+ "built": "2026-09-29T19:18:02.407Z"
 };
