@@ -4,9 +4,9 @@ window.LUCKY666 = {
   "taglineEN": "Five neighbours. One cursed building. Zero self-control.",
   "taglineES": "Cinco vecinas. Un edificio salado. Cero autocontrol.",
   "client": "XSINO — digital-influencer universe for audience building, hype and client acquisition (21+)",
-  "logline": "In a crumbling Mexico City apartment building whose neon sign was hung upside down in 1986, five women from five corners of Mexico — each hooked on a different kind of online bet — share one rooftop, one broken elevator and one terrible decision per episode.",
+  "logline": "In a gorgeous, half-broken luxury tower in Mexico City's Roma Norte, won in a poker game by a norteño shopkeeper and crowned by an upside-down neon sign, five women from five corners of Mexico share one rooftop, one broken elevator and one terrible decision per episode. Each of them is hooked on a different kind of online bet.",
   "premise": [
-   "LUCKY 666 is a vecindad for the online-gambling era. Think El Chavo del 8's courtyard, rebuilt as a six-storey building where every tenant's phone is a tiny casino.",
+   "LUCKY 666 is a vecindad inside a luxury tower. Think El Chavo del 8's courtyard dropped into a six-storey glass-and-concrete building in Roma Norte, with a rooftop infinity pool, smart locks, a designer lobby, and nothing that works. Every tenant's phone is a tiny casino.",
    "The engine is borrowed from the anime Chainsmoker Cat (Yani Neko, 2026): a broke, shameless, weirdly lovable lead whose vice drives every plot, surrounded by neighbours who each nurse their own habit. We swap cigarettes for online bets. Yesi doesn't chain-smoke, she chain-spins.",
    "The chemistry is borrowed from 2 Broke Girls: a street-smart hustler and a rich girl in hiding forced into the same apartment, fast insult banter, a shared dream business that keeps getting wiped out, and a running money card at the end of every episode, except ours goes UP (La Cuenta: what Yesi owes the building).",
    "It's commentary through comedy. Nobody here gets rich. The joke is always the chase, the excuse, the spiral and the friends who drag you back. The girls lose in hilarious ways, cover for each other, and wake up the next day to do it again."
@@ -108,22 +108,22 @@ window.LUCKY666 = {
  },
  "building": {
   "name": "Edificio Lucky 666",
-  "address": "Calle Fortuna #66, Colonia Obrera, Cuauhtémoc, Ciudad de México (fictional address)",
+  "address": "Calle Fortuna #66, Roma Norte, Cuauhtémoc, Ciudad de México (fictional address)",
   "history": [
-   "1958: Don Felipe Wong, a Cantonese immigrant who came up through Mexicali's Chinesca, wins the lot in a mahjong game and builds the Hotel Lucky 999: triple nine, for luck that lasts forever. It's a hotel for gamblers heading to the Hipódromo de las Américas racetrack.",
-   "June 1986: Mexico's World Cup. After a win, a mob of fans celebrates on the roof and knocks the three neon 9s loose. A deeply drunk electrician re-hangs them upside down. The hotel has been LUCKY 666 ever since.",
-   "1991: The hotel goes broke (nobody books a room at 666) and is converted into 42 apartments. It has the cheapest rent in the colonia, because nobody wants to live at the devil's address.",
-   "Today: Grandson Don Aurelio refuses to fix the sign. Officially it costs $80,000 pesos. Unofficially he's scared of what happens to the building's luck if he touches it."
+   "2019: Flashy developer Rodrigo 'El Rey' Villaseñor builds THE 999 — Luxury Living: six storeys of board-formed concrete and floor-to-ceiling glass in Roma Norte, a rooftop infinity pool, smart homes, and three giant neon 9s on the roof for luck that lasts forever.",
+   "Launch night: at his own opening party, El Rey bets the whole building on one poker hand against the quiet norteño who runs the corner shop downstairs, Don Aurelio Wong. Don Aurelio wins with three sixes.",
+   "The next morning the sign crew hangs the three 9s upside down. Don Aurelio looks up at LUCKY 666, remembers his three sixes and says: 'Déjenlo. Es de buena suerte.' (Leave it. It's good luck.)",
+   "Today: The smart-home system has never worked. The elevator broke on opening day. The infinity pool has never held water. Don Aurelio runs a luxury tower like a vecindad: rent in cash, tamales accepted, a San Judas altar in the designer lobby. It has the cheapest rent in Roma Norte, because Don Aurelio has no idea what luxury rent is and nobody wants to live at 666."
   ],
-  "sign": "A 4-metre vintage rooftop neon, magenta and cyan tubes, reading LUCKY 666. The last 6 buzzes and occasionally flickers into a 9. That second is the most dangerous second in the building.",
+  "sign": "Three 4-metre neon numerals on the roof, magenta and cyan tubes, reading LUCKY 666 over Roma Norte. They were built as 9s and hung upside down. The last 6 buzzes and occasionally flickers back into a 9. That second is the most dangerous second in the building.",
   "floors": [
    {
-    "level": "Azotea (roof)",
-    "text": "Tinacos (water tanks), laundry lines, mismatched plastic chairs, Citlali's herb garden, an inflatable pool, fairy lights and the giant sign. The girls' living room under the stars."
+    "level": "Rooftop",
+    "text": "A designer deck with an infinity pool that has never held water (so there's an inflatable pool inside it), sun loungers, Citlali's herb garden, fairy lights, laundry lines Don Aurelio insisted on, and the giant sign. The girls' living room under the stars."
    },
    {
     "level": "6th floor",
-    "text": "The girls: 666 (Yesi and Regina), 606 (Citlali), 616 (Lupe), 626 (Marisol). Farthest from the lobby, closest to the sign, no working elevator."
+    "text": "The 'penthouse' floor: 666 (Yesi and Regina), 606 (Citlali), 616 (Lupe), 626 (Marisol). Floor-to-ceiling glass, the best view in Roma Norte, closest to the sign, and no working elevator."
    },
    {
     "level": "5th floor",
@@ -142,8 +142,8 @@ window.LUCKY666 = {
     "text": "Students, a family with nine dogs, a retired luchador. Background chaos for every hallway scene."
    },
    {
-    "level": "Planta baja (ground)",
-    "text": "The lobby (San Judas altar, broken elevator, mailboxes stuffed with collection notices) and Abarrotes La Suerte, Don Aurelio's corner shop: Lotería tickets, phone top-ups, chili corn chips and a wall of 48 waving lucky cats."
+    "level": "Ground floor",
+    "text": "The designer lobby (terrazzo, brass and concrete, now holding a 200-candle San Judas altar, a broken elevator and smart mailboxes stuffed with collection notices) and Abarrotes La Suerte, Don Aurelio's corner shop, which moved into the space designed as a concept store: Lotería tickets, phone top-ups, chili corn chips and a wall of 48 waving lucky cats."
    }
   ],
   "locations": [
@@ -151,14 +151,14 @@ window.LUCKY666 = {
     "key": "exterior",
     "name": "The Building",
     "nameES": "El Edificio",
-    "text": "Six storeys of peeling pastel-pink stucco and cracked talavera, balconies full of laundry and plants, a taco stand at the door, the LUCKY 666 neon on the roof.",
+    "text": "Six storeys of board-formed concrete and glass on a leafy Roma Norte corner, balconies overflowing with plants, a taco stand at the designer door, and the LUCKY 666 neon glowing on the roof.",
     "plate": "exterior"
    },
    {
     "key": "lobby",
     "name": "The Lobby",
     "nameES": "El Lobby",
-    "text": "The San Judas Tadeo altar with a hundred candles, the elevator sign 'EN REPARACIÓN' (dated 2019), overflowing mailboxes, Chamuco asleep on the radiator.",
+    "text": "Terrazzo and brass luxury with a 200-candle San Judas Tadeo altar, the elevator sign 'EN REPARACIÓN' (dated opening day, 2019), overflowing smart mailboxes, and Chamuco asleep on a designer bench.",
     "plate": "lobby"
    },
    {
@@ -179,21 +179,21 @@ window.LUCKY666 = {
     "key": "livingroom",
     "name": "Depto 666: The Split Living Room",
     "nameES": "La Sala Dividida del 666",
-    "text": "Split down the middle with masking tape: Yesi's half is a crime scene, Regina's half is Pinterest. The sofa sits exactly on the line.",
+    "text": "A glass-walled penthouse living room split down the middle with masking tape: Yesi's half is a crime scene, Regina's half is Pinterest. The designer sofa sits exactly on the line.",
     "plate": "livingroom"
    },
    {
     "key": "rooftop",
     "name": "The Rooftop",
     "nameES": "La Azotea",
-    "text": "Night under the buzzing sign, the CDMX skyline, plastic chairs, beers and tacos, the city's best cheap view.",
+    "text": "Night under the buzzing sign: the empty infinity pool with an inflatable pool inside it, loungers, beers and tacos, and the best view in Roma Norte for the cheapest rent.",
     "plate": "rooftop"
    },
    {
     "key": "gatanegra",
     "name": "La Gata Negra",
     "nameES": "La Gata Negra",
-    "text": "The cabaret bar across the street where Marisol headlines as 'Candela'. Red velvet, a black-cat neon, a stage, a bartender who has seen everything.",
+    "text": "The sleek neon cabaret club across the street where Marisol headlines as 'Candela'. Velvet booths, a black-cat neon, a mirrored stage, a bartender who has seen everything.",
     "plate": "gatanegra"
    }
   ]
@@ -202,8 +202,14 @@ window.LUCKY666 = {
   {
    "key": "aurelio",
    "name": "Don Aurelio Wong, 'Don Lelo'",
-   "role": "The landlord",
-   "text": "67, third-generation Chinese-Mexican from Mexicali and pure norteño: tejana hat, boots, corridos on a battery radio. He doesn't speak a word of Cantonese and is tired of being asked. Superstitious by inheritance. Collects rent in person and accepts pesos, favours and, in emergencies, tamales. Long-suffering, secretly adores the girls, and would never admit it."
+   "role": "The landlord (won the building in a poker game)",
+   "text": "67, third-generation Chinese-Mexican from Mexicali and pure norteño. He ran the corner shop until he won the whole tower from its developer with three sixes: tejana hat, boots, corridos on a battery radio. He doesn't speak a word of Cantonese and is tired of being asked. Superstitious by inheritance. Collects rent in person and accepts pesos, favours and, in emergencies, tamales. Long-suffering, secretly adores the girls, and would never admit it."
+  },
+  {
+   "key": "rey",
+   "name": "Rodrigo 'El Rey' Villaseñor",
+   "role": "The developer who lost it all",
+   "text": "Built THE 999, bet it on one poker hand at his own launch party, and lost it to a shopkeeper. Veneers, loafers without socks, a podcast about 'mindset'. Keeps coming back with lawyers and rematch offers. The season's villain."
   },
   {
    "key": "chamuco",
@@ -362,7 +368,7 @@ window.LUCKY666 = {
     ],
     [
      "OUTFIT",
-     "oversized hot-magenta satin bomber · white ribbed tank · grey cargos · taped white sneakers"
+     "cropped hot-magenta satin bomber · white ribbed crop top · low-rise grey cargos · chunky white sneakers"
     ],
     [
      "JEWELRY",
@@ -385,7 +391,7 @@ window.LUCKY666 = {
      "fast chilango: güey, neta, no manches, ¿me fías?"
     ]
    ],
-   "look": "Street-glam chaos: magenta satin bomber, white tank, cargos, taped sneakers, gold hoops, curls escaping a claw clip, a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
+   "look": "Street-baddie glam: cropped magenta satin bomber, white crop top, low-rise cargos, chunky sneakers, gold hoops and chains, glossy curls in a claw clip, winged liner, and a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
    "personality": [
     "Shameless, charming and funny, with zero sense of consequence",
     "A hustler genius at reading people, a disaster at reading odds",
@@ -427,7 +433,7 @@ window.LUCKY666 = {
    ],
    "room": {
     "name": "Yesi's room: Depto 666, left bedroom",
-    "text": "A mattress on the floor under dead fairy lights, a laundry mountain, pawn tickets and losing scratch cards taped up like wallpaper, a San Judas candle, a mini-fridge holding only salsa and one lime, a hot-pink neon 'UNA MÁS' sign stolen from a bar, and the window full of the LUCKY 666 sign glowing magenta through a torn curtain."
+    "text": "A gorgeous concrete-and-glass loft bedroom she has completely destroyed: an unmade platform bed under dead fairy lights, a laundry mountain, pawn tickets and losing scratch cards taped over the raw concrete wall, a San Judas candle on the designer windowsill, a smart fridge holding only salsa and one lime, a hot-pink neon 'UNA MÁS' sign stolen from a bar, and floor-to-ceiling windows full of the LUCKY 666 sign glowing magenta."
    },
    "handle": "@yesi.unamas",
    "pillars": [
@@ -437,7 +443,7 @@ window.LUCKY666 = {
     "Cameos in everyone else's feed, borrowing something"
    ],
    "voice": "Fast chilango Spanish, sarcastic, affectionate insults, never sounds sorry.",
-   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City with warm medium-brown morena mestiza skin, a petite curvy build, a round face with high cheekbones, thick natural dark eyebrows, mischievous dark brown almond eyes and a small beauty mark above the right corner of her lip. Big messy dark-brown curly hair piled up in a loose claw-clip bun with face-framing curls. Gold hoop earrings, chipped hot-pink nails, a thin red ribbon tied around her left wrist. She wears an oversized vintage hot-magenta satin bomber jacket over a white ribbed tank top, loose grey cargo pants and scuffed white chunky sneakers, with a small tamarind candy lollipop stick in the corner of her mouth."
+   "anchor": "Yesi, a 29-year-old Mexican woman from Mexico City and a stunning street-style baddie: glowing warm medium-brown morena skin, a curvy hourglass figure with a toned waist, a striking model-pretty face with high cheekbones, full glossy lips, thick groomed dark brows, fierce dark brown almond eyes with winged eyeliner and long lashes, and a small beauty mark above the right corner of her lip. Big glossy dark-brown curls piled into a high claw-clip bun with face-framing curls. Chunky gold hoop earrings, layered gold chains, long hot-pink almond nails, a thin red ribbon tied around her left wrist. She wears a cropped hot-magenta satin bomber jacket open over a white ribbed crop top, low-rise baggy grey cargo pants that show her toned midriff, and chunky white sneakers, with a small tamarind lollipop stick in the corner of her mouth."
   },
   {
    "key": "regina",
@@ -533,7 +539,7 @@ window.LUCKY666 = {
     ],
     [
      "OUTFIT",
-     "navy wool blazer · white poplin shirt · cream pleated midi · cognac loafers"
+     "tailored navy blazer · white silk camisole · cream pleated mini skirt · cognac pointed heels"
     ],
     [
      "JEWELRY",
@@ -556,7 +562,7 @@ window.LUCKY666 = {
      "polished, LinkedIn-fluent Spanglish; goes full Sinaloa when angry"
     ]
    ],
-   "look": "Preppy power: navy blazer, crisp white shirt, cream pleats, loafers, pearls, velvet headband, the planner. Always the most overdressed person in the building.",
+   "look": "Preppy power, turned up: tailored navy blazer over a silk cami, cream pleated mini, pointed heels, pearls, velvet headband, glossy blowout, the planner. Always the best-dressed person in the building.",
    "personality": [
     "Type-A, earnest and relentlessly polite",
     "Desperate to be seen as self-made and simply understood",
@@ -597,7 +603,7 @@ window.LUCKY666 = {
    ],
    "room": {
     "name": "Regina's room: Depto 666, right bedroom",
-    "text": "Pinterest-perfect in cream and navy: a tufted headboard, a vision board reading SELF-MADE 2027, labelled storage boxes, a stationary bike used as a blazer rack, fresh orchids delivered daily by Los Primos, a framed family photo with her father's face covered by a sticky note reading 'AGRICULTURA', a laptop open on a spreadsheet of losses, and a closet door that is definitely a panic room."
+    "text": "Minimal luxe in cream and navy: floor-to-ceiling windows, a low upholstered bed with crisp linen, a vision board reading SELF-MADE 2027, labelled designer storage, a stationary bike used as a blazer rack, fresh orchids delivered daily by Los Primos, a framed family photo with her father's face covered by a sticky note reading 'AGRICULTURA', a laptop open on a spreadsheet of losses, and a closet door that is definitely a panic room."
    },
    "handle": "@regina.laJefa",
    "pillars": [
@@ -607,7 +613,7 @@ window.LUCKY666 = {
     "Los Primos cameos: two giants doing her errands"
    ],
    "voice": "Polished and sincere, corporate buzzwords, sudden Sinaloa steel.",
-   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán with light olive-brown skin, a tall slim build, an oval face with a refined straight nose, groomed arched eyebrows and warm hazel-brown eyes. Glossy chestnut-brown hair in a sleek low bun held back by a navy velvet headband. Small pearl stud earrings, a gold signet ring, a neat nude manicure. She wears a tailored navy blazer over a crisp white collared shirt, a cream pleated midi skirt and cognac leather loafers, and carries a leather planner."
+   "anchor": "Regina, a 30-year-old Mexican woman from Culiacán and a stunning, polished old-money beauty: luminous light olive-brown skin, a tall slim hourglass figure with long legs, a refined model face with high cheekbones, a straight nose, full nude-glossed lips, sleek arched brows and captivating hazel-brown eyes with soft smoky makeup. Glossy chestnut-brown hair in a sleek high-shine blowout pushed back with a navy velvet headband. Pearl stud earrings, a gold signet ring, a nude manicure. She wears a sharply tailored navy blazer over a white silk camisole, a cream pleated mini skirt and cognac leather pointed heels, and carries a leather planner."
   },
   {
    "key": "citlali",
@@ -703,7 +709,7 @@ window.LUCKY666 = {
     ],
     [
      "OUTFIT",
-     "sage sports bra · terracotta leggings · open linen shirt · woven huaraches"
+     "sage ribbed crop sports top · terracotta bike shorts · oversized linen shirt off one shoulder · woven huaraches"
     ],
     [
      "JEWELRY",
@@ -726,7 +732,7 @@ window.LUCKY666 = {
      "sunny, spiritual, fast when she's watching a game"
     ]
    ],
-   "look": "Beach-to-rooftop wellness: sage and terracotta activewear, open linen shirt, huaraches, a quartz pendant, sun-bleached waves and freckles. Always mid-stretch.",
+   "look": "Surf-to-rooftop fitness glow: sage crop sports top, terracotta bike shorts, a linen shirt off the shoulder, huaraches, quartz pendant, sun-bleached waves and freckles. Always mid-stretch, always glowing.",
    "personality": [
     "Sunny and relentlessly positive, a natural cheerleader",
     "Crunchy: temazcal, cacao ceremonies, nopal smoothies",
@@ -766,7 +772,7 @@ window.LUCKY666 = {
    ],
    "room": {
     "name": "Citlali's place: Depto 606",
-    "text": "A jungle of hanging plants and macramé, yoga mats unrolled everywhere, a road bike on the wall, crystals on every windowsill, a big astrology chart pinned beside a football fixtures wall-chart covered in zodiac notes, a blender full of green nopal smoothie, and a small altar with a clay figurine and a candle 'for the parlay'. Sunrise pouring in."
+    "text": "A sunlit concrete loft turned jungle: floor-to-ceiling windows, hanging plants and macramé, yoga mats everywhere, a road bike mounted on the wall, crystals on every sill, a big astrology chart pinned beside a football fixtures wall-chart covered in zodiac notes, a blender full of green nopal smoothie, and a small altar with a clay figurine and a candle 'for the parlay'."
    },
    "handle": "@citlali.manifiesta",
    "pillars": [
@@ -776,7 +782,7 @@ window.LUCKY666 = {
     "Watch-party meltdowns: live reactions to the match"
    ],
    "voice": "Warm, sing-song oaxaqueña calm that turns into a sports commentator the second a ball moves.",
-   "anchor": "Citlali, a 26-year-old Mexican woman from the Oaxaca coast with sun-kissed deep bronze skin, light freckles across her nose, an athletic toned build, strong cheekbones, a bright wide smile and warm dark brown eyes. Long sun-bleached dark-brown beach waves held back by a woven terracotta headband. A small raw quartz crystal pendant, a wooden bead bracelet, a black running watch. She wears a sage-green sports bra, high-waisted terracotta leggings, an open oversized white linen shirt and woven leather huarache sandals."
+   "anchor": "Citlali, a 26-year-old Mexican woman from the Oaxaca coast and a stunning surfer-fitness model: glowing sun-kissed deep bronze skin with light freckles across her nose, a toned athletic hourglass figure with defined abs, a gorgeous face with high cheekbones, a dazzling wide smile, full lips and warm dark brown eyes with natural glowing makeup. Long sun-bleached dark-brown beach waves held back by a woven terracotta headband. A raw quartz crystal pendant, a wooden bead bracelet, a black running watch. She wears a sage-green ribbed crop sports top, matching high-waisted terracotta bike shorts, an oversized white linen shirt slipping off one shoulder, and woven leather huarache sandals."
   },
   {
    "key": "lupe",
@@ -872,7 +878,7 @@ window.LUCKY666 = {
     ],
     [
      "OUTFIT",
-     "oversized lilac hoodie · baggy black cargos · chunky platforms"
+     "cropped oversized lilac hoodie · black cargo mini skirt · fishnet tights · chunky black platform boots"
     ],
     [
      "JEWELRY",
@@ -895,7 +901,7 @@ window.LUCKY666 = {
      "flat deadpan, gamer slang, answers questions literally"
     ]
    ],
-   "look": "Cosy gamer: lilac hoodie swallowing her hands, cat-ear headset, round glasses, blunt bob, black cargos and platforms, lit by RGB. Always carrying a laptop and chili chips.",
+   "look": "Alt e-girl: cropped lilac hoodie, black cargo mini, fishnets, platform boots, cat-ear headset, round glasses, blunt bob, winged liner, lit by RGB. Always carrying a laptop and chili chips.",
    "personality": [
     "Brilliant, literal and completely oblivious to social cues",
     "No filter: 'statistically your boyfriend is cheating, 73%'",
@@ -935,7 +941,7 @@ window.LUCKY666 = {
    ],
    "room": {
     "name": "Lupe's cave: Depto 616",
-    "text": "Windows blacked out with foil, an RGB-lit gaming cave: four monitors of graphs and a crash-game rocket, a gaming chair with a cat-ear cushion, towers of instant-noodle cups, a whiteboard covered in roulette maths, a Virgen de Zapopan candle beside a glowing PC tower, and a router with twenty cables that powers the entire building. Cyan and violet LED glow."
+    "text": "A sleek smart-home loft she has turned into an RGB cave: blackout film on the floor-to-ceiling windows, four monitors of graphs and a crash-game rocket, a gaming chair with a cat-ear cushion, towers of instant-noodle cups, a glass whiteboard covered in roulette maths, a Virgen de Zapopan candle beside a glowing PC tower, and a router with twenty cables that powers the whole building. Cyan and violet LED glow."
    },
    "handle": "@lupe.exe",
    "pillars": [
@@ -945,7 +951,7 @@ window.LUCKY666 = {
     "Streams with Memo 'accidentally' serenading in the background"
    ],
    "voice": "Deadpan, literal, rapid technical Spanglish, occasional tapatía 'pues'.",
-   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara with light-brown skin, a petite build, a soft round face with defined cheekbones and a confident adult look, a blunt glossy black bob with straight-cut bangs, big round clear-framed glasses over dark brown eyes, and holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears an oversized lilac hoodie with the sleeves pulled over her hands, baggy black cargo pants and chunky platform sneakers."
+   "anchor": "Lupe, a 24-year-old Mexican woman from Guadalajara and a gorgeous alt e-girl gamer with a clearly adult look: light-brown skin, a petite curvy figure, a striking face with defined cheekbones, full glossy lips and dark brown eyes with sharp winged eyeliner, a blunt glossy black bob with straight-cut bangs, big round clear-framed glasses, and holographic glitter nails. A pastel-cyan gaming headset with little cat ears rests around her neck. She wears a cropped oversized lilac hoodie that shows her midriff, a black cargo mini skirt, fishnet tights and chunky black platform boots."
   },
   {
    "key": "marisol",
@@ -1041,7 +1047,7 @@ window.LUCKY666 = {
     ],
     [
      "OUTFIT",
-     "violet satin slip mini · strappy gold heels · ivory faux-fur coat"
+     "short violet satin bodycon mini dress · strappy gold heels · ivory faux-fur coat off the shoulders"
     ],
     [
      "JEWELRY",
@@ -1064,7 +1070,7 @@ window.LUCKY666 = {
      "jarocha: fast, musical, drops her s's, calls everyone 'papito'"
     ]
    ],
-   "look": "Cabaret bombshell: violet satin, gold heels, faux fur, hibiscus in glossy waves, red almond nails. Never without a man, never remembers his name.",
+   "look": "Cabaret bombshell: violet satin bodycon mini, gold heels, faux fur off the shoulders, hibiscus in glossy waves, smoky liner, red almond nails. Never without a man, never remembers his name.",
    "personality": [
     "Confident, flirty and hilariously blunt about romance",
     "Big-hearted: the building's nurse, therapist and love doctor",
@@ -1105,7 +1111,7 @@ window.LUCKY666 = {
    ],
    "room": {
     "name": "Marisol's dressing room: Depto 626",
-    "text": "A dancer's boudoir: a Hollywood vanity mirror framed in bulbs, racks of sequins and feathers, heels on every surface, a coat rack buckling under men's jackets (the lost-and-found of men), a corkboard of Lotería tickets labelled 'BOMBERO', 'DJ', 'UBER', a framed photo of her dancing with her abuelo in Veracruz, a jarana guitar, a ring light, in violet and red glow."
+    "text": "A glam modern dressing room with floor-to-ceiling windows: a Hollywood vanity mirror framed in bulbs, racks of sequins and feathers, heels on every surface, a designer coat rack buckling under men's jackets (the lost-and-found of men), a corkboard of Lotería tickets labelled 'BOMBERO', 'DJ', 'UBER', a framed photo of her dancing with her abuelo in Veracruz, a jarana guitar and a ring light, all in violet and red glow."
    },
    "handle": "@candela.jarocha",
    "pillars": [
@@ -1115,7 +1121,7 @@ window.LUCKY666 = {
     "Dance lessons on the roof: salsa and son jarocho with the girls"
    ],
    "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
-   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz with glowing warm caramel-brown skin, a tall curvy hourglass figure, full lips, sultry dark brown eyes with winged eyeliner, and long voluminous glossy dark wavy hair with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a violet satin slip mini dress, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz and a jaw-dropping bombshell: glowing warm caramel-brown skin, a tall curvy hourglass figure, a stunning face with full glossy lips, high cheekbones and sultry dark brown eyes with smoky winged eyeliner and long lashes, and long voluminous glossy dark waves with a red hibiscus flower tucked behind one ear. Gold hoop earrings, layered fine gold necklaces, long glossy red almond nails. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders."
   }
  ],
  "episodes": [
@@ -1174,7 +1180,7 @@ window.LUCKY666 = {
    "en": "Summer Starts and Ends Here, Güey",
    "es": "El verano empieza y termina aquí, güey",
    "mirror": "Ep 6 'Summer Starts and Ends Here, Nya'",
-   "logline": "A heatwave hits and the tinaco runs dry. Can't afford the beach, so Marisol builds 'Playa Lucky' on the roof: an inflatable pool, sand liberated from a construction site and a date who's a lifeguard. The Rooftop Olympics begin.",
+   "logline": "A heatwave hits and the building's smart AC dies. The rooftop infinity pool has never held water, so Marisol builds 'Playa Lucky' inside it: an inflatable pool, sand liberated from a construction site and a date who's a lifeguard. The Rooftop Olympics begin.",
    "bet": "Side bets on every Olympic event. Citlali bets on herself, Yesi bets her half of the living room, and Los Primos deliver a jet ski. To the roof.",
    "heart": "The pool bursts into Doña Chayo's apartment. Summer lasts one afternoon, and it's perfect.",
    "cuenta": 44750
@@ -1234,9 +1240,9 @@ window.LUCKY666 = {
    "en": "Lucky 999, Güey",
    "es": "Lucky 999, güey",
    "mirror": "Season finale",
-   "logline": "A developer offers Don Aurelio millions to turn Lucky 666 into luxury lofts called 'THE 999'. The girls launch every scheme at once: Regina's Café La Suerte pitch, Lupe's crowdfund, Citlali's charity run, Marisol's benefit show at La Gata Negra, and Yesi… bets everything.",
+   "logline": "El Rey, the developer who lost the tower, comes back with lawyers and a rematch offer to turn it back into 'THE 999'. The girls launch every scheme at once: Regina's Café La Suerte pitch, Lupe's crowdfund, Citlali's charity run, Marisol's benefit show at La Gata Negra, and Yesi… bets everything.",
    "bet": "Yesi's 'last spin ever', for the building.",
-   "heart": "Los Primos gift the developer a one-way trip to Cancún. Don Aurelio finally fixes the sign to LUCKY 999, everything goes wrong for a week, and they hang it upside down again. La Cuenta reads $0 for one second, then Yesi orders tacos on credit.",
+   "heart": "Los Primos gift El Rey a one-way trip to Cancún. Don Aurelio finally fixes the sign to LUCKY 999, everything goes wrong for a week, and they hang it upside down again. La Cuenta reads $0 for one second, then Yesi orders tacos on credit.",
    "cuenta": 180
   }
  ],
@@ -1472,15 +1478,15 @@ window.LUCKY666 = {
   "chars": {
    "yesi": {
     "hero": "assets/chars/yesi/hero.webp",
-    "lifestyle": "assets/chars/yesi/lifestyle.webp",
+    "lifestyle": null,
     "room": "assets/chars/yesi/room.webp",
-    "turnaround": "assets/chars/yesi/turnaround.webp",
-    "expressions": "assets/chars/yesi/expressions.webp",
-    "head": "assets/chars/yesi/head.webp",
-    "details": "assets/chars/yesi/details.webp",
-    "wardrobe": "assets/chars/yesi/wardrobe.webp",
-    "lighting": "assets/chars/yesi/lighting.webp",
-    "board": "assets/chars/yesi/board.webp"
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": null
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
@@ -1532,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T00:59:18.283Z"
+ "built": "2026-09-29T01:50:44.098Z"
 };
