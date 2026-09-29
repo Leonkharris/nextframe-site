@@ -1478,15 +1478,15 @@ window.LUCKY666 = {
   "chars": {
    "yesi": {
     "hero": "assets/chars/yesi/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/yesi/lifestyle.webp",
     "room": "assets/chars/yesi/room.webp",
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
-    "lighting": null,
-    "board": null
+    "turnaround": "assets/chars/yesi/turnaround.webp",
+    "expressions": "assets/chars/yesi/expressions.webp",
+    "head": "assets/chars/yesi/head.webp",
+    "details": "assets/chars/yesi/details.webp",
+    "wardrobe": "assets/chars/yesi/wardrobe.webp",
+    "lighting": "assets/chars/yesi/lighting.webp",
+    "board": "assets/chars/yesi/board.webp"
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T01:50:44.098Z"
+ "built": "2026-09-29T02:00:19.421Z"
 };
