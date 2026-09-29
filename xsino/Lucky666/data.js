@@ -1514,15 +1514,15 @@ window.LUCKY666 = {
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
-    "lifestyle": null,
-    "room": null,
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
-    "lighting": null,
-    "board": null
+    "lifestyle": "assets/chars/lupe/lifestyle.webp",
+    "room": "assets/chars/lupe/room.webp",
+    "turnaround": "assets/chars/lupe/turnaround.webp",
+    "expressions": "assets/chars/lupe/expressions.webp",
+    "head": "assets/chars/lupe/head.webp",
+    "details": "assets/chars/lupe/details.webp",
+    "wardrobe": "assets/chars/lupe/wardrobe.webp",
+    "lighting": "assets/chars/lupe/lighting.webp",
+    "board": "assets/chars/lupe/board.webp"
    },
    "marisol": {
     "hero": "assets/chars/marisol/hero.webp",
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T02:25:42.173Z"
+ "built": "2026-09-29T02:37:48.129Z"
 };
