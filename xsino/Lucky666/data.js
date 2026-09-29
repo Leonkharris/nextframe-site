@@ -1896,12 +1896,12 @@ window.LUCKY666 = {
     "lifestyle": "assets/chars/regina/lifestyle.webp",
     "room": "assets/chars/regina/room.webp",
     "turnaround": "assets/chars/regina/turnaround.webp",
-    "expressions": null,
+    "expressions": "assets/chars/regina/expressions.webp",
     "head": "assets/chars/regina/head.webp",
     "details": "assets/chars/regina/details.webp",
     "wardrobe": "assets/chars/regina/wardrobe.webp",
     "lighting": "assets/chars/regina/lighting.webp",
-    "board": null
+    "board": "assets/chars/regina/board.webp"
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
@@ -1919,11 +1919,11 @@ window.LUCKY666 = {
     "hero": "assets/chars/lupe/hero.webp",
     "lifestyle": null,
     "room": "assets/chars/lupe/room.webp",
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
+    "turnaround": "assets/chars/lupe/turnaround.webp",
+    "expressions": "assets/chars/lupe/expressions.webp",
+    "head": "assets/chars/lupe/head.webp",
+    "details": "assets/chars/lupe/details.webp",
+    "wardrobe": "assets/chars/lupe/wardrobe.webp",
     "lighting": null,
     "board": null
    },
@@ -1979,5 +1979,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T13:41:46.370Z"
+ "built": "2026-09-29T14:11:17.054Z"
 };
