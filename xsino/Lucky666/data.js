@@ -1490,15 +1490,15 @@ window.LUCKY666 = {
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
-    "lifestyle": null,
-    "room": null,
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
-    "lighting": null,
-    "board": null
+    "lifestyle": "assets/chars/regina/lifestyle.webp",
+    "room": "assets/chars/regina/room.webp",
+    "turnaround": "assets/chars/regina/turnaround.webp",
+    "expressions": "assets/chars/regina/expressions.webp",
+    "head": "assets/chars/regina/head.webp",
+    "details": "assets/chars/regina/details.webp",
+    "wardrobe": "assets/chars/regina/wardrobe.webp",
+    "lighting": "assets/chars/regina/lighting.webp",
+    "board": "assets/chars/regina/board.webp"
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
@@ -1538,5 +1538,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-29T02:00:19.421Z"
+ "built": "2026-09-29T02:13:31.198Z"
 };
