@@ -1526,17 +1526,17 @@ window.LUCKY666 = {
    },
    "marisol": {
     "hero": "assets/chars/marisol/hero.webp",
-    "lifestyle": null,
-    "room": null,
-    "turnaround": null,
-    "expressions": null,
-    "head": null,
-    "details": null,
-    "wardrobe": null,
-    "lighting": null,
-    "board": null
+    "lifestyle": "assets/chars/marisol/lifestyle.webp",
+    "room": "assets/chars/marisol/room.webp",
+    "turnaround": "assets/chars/marisol/turnaround.webp",
+    "expressions": "assets/chars/marisol/expressions.webp",
+    "head": "assets/chars/marisol/head.webp",
+    "details": "assets/chars/marisol/details.webp",
+    "wardrobe": "assets/chars/marisol/wardrobe.webp",
+    "lighting": "assets/chars/marisol/lighting.webp",
+    "board": "assets/chars/marisol/board.webp"
    }
   }
  },
- "built": "2026-09-29T02:37:48.129Z"
+ "built": "2026-09-29T02:55:15.912Z"
 };
