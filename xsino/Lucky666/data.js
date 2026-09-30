@@ -676,6 +676,9 @@ window.LUCKY666 = {
     "HEADBAND: hand-woven cotton",
     "PENDANT: raw quartz on waxed cord"
    ],
+   "face": "Citlali, a 26-year-old Mexican woman from the Oaxaca coast: a strong-boned oval face with high cheekbones, warm dark brown eyes that crinkle when she smiles, full natural brows, a straight nose, a bright wide smile, light freckles across her nose, sun-kissed deep bronze skin, and long sun-bleached dark-brown beach waves held back by a woven terracotta headband, with fresh sporty makeup: bare glowing skin, a touch of mascara, tinted lip balm",
+   "faceShoulders": "a sage-green ribbed crop sports top under an open white linen shirt, a raw quartz pendant on a cord",
+   "facePose": "laughing mid-smile, one hand pushing back her hair",
    "stats": [
     [
      "NAME",
@@ -1795,7 +1798,7 @@ window.LUCKY666 = {
     "dur": "4s",
     "move": "SLOW MOTION",
     "size": "WIDE-MEDIUM",
-    "action": "Sunday on the leafy street outside the tower: two enormous men in white guayaberas hold open the door of a black SUV as Regina steps out in her navy blazer and pleated mini, a tower of matching luxury suitcases beside her."
+    "action": "Sunday on the leafy street outside the tower: two enormous men in white guayaberas hold open the door of a black SUV as Regina steps out in her black belted blazer dress and over-the-knee suede boots, a tower of matching luxury suitcases beside her."
    },
    {
     "n": 10,
@@ -1905,7 +1908,7 @@ window.LUCKY666 = {
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/regina/lifestyle.webp",
     "room": "assets/chars/regina/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1913,23 +1916,23 @@ window.LUCKY666 = {
     "details": null,
     "wardrobe": null,
     "lighting": null,
-    "board": null
+    "board": "assets/chars/regina/board.webp"
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
     "lifestyle": "assets/chars/citlali/lifestyle.webp",
     "room": "assets/chars/citlali/room.webp",
-    "turnaround": "assets/chars/citlali/turnaround.webp",
-    "expressions": "assets/chars/citlali/expressions.webp",
-    "head": "assets/chars/citlali/head.webp",
-    "details": "assets/chars/citlali/details.webp",
-    "wardrobe": "assets/chars/citlali/wardrobe.webp",
-    "lighting": "assets/chars/citlali/lighting.webp",
-    "board": null
+    "turnaround": null,
+    "expressions": null,
+    "head": null,
+    "details": null,
+    "wardrobe": null,
+    "lighting": null,
+    "board": "assets/chars/citlali/board.webp"
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/lupe/lifestyle.webp",
     "room": "assets/chars/lupe/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1937,11 +1940,11 @@ window.LUCKY666 = {
     "details": null,
     "wardrobe": null,
     "lighting": null,
-    "board": null
+    "board": "assets/chars/lupe/board.webp"
    },
    "marisol": {
     "hero": "assets/chars/marisol/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/marisol/lifestyle.webp",
     "room": "assets/chars/marisol/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1949,16 +1952,16 @@ window.LUCKY666 = {
     "details": null,
     "wardrobe": null,
     "lighting": null,
-    "board": null
+    "board": "assets/chars/marisol/board.webp"
    }
   },
   "launch": {
    "reveals": {
-    "yesi": null,
-    "regina": null,
+    "yesi": "assets/launch/reveal_yesi.webp",
+    "regina": "assets/launch/reveal_regina.webp",
     "citlali": "assets/launch/reveal_citlali.webp",
-    "lupe": null,
-    "marisol": null
+    "lupe": "assets/launch/reveal_lupe.webp",
+    "marisol": "assets/launch/reveal_marisol.webp"
    },
    "carousel": [
     "assets/launch/carousel_01.webp",
@@ -1973,23 +1976,23 @@ window.LUCKY666 = {
    "chamuco": "assets/support/chamuco.webp"
   },
   "ep01": {
-   "sheet": null,
+   "sheet": "assets/ep01/storyboard.webp",
    "panels": {
-    "1": null,
-    "2": null,
-    "3": null,
-    "4": null,
-    "5": null,
-    "6": null,
-    "7": null,
-    "8": null,
-    "9": null,
-    "10": null,
-    "11": null,
-    "12": null,
-    "13": null
+    "1": "assets/ep01/p01.webp",
+    "2": "assets/ep01/p02.webp",
+    "3": "assets/ep01/p03.webp",
+    "4": "assets/ep01/p04.webp",
+    "5": "assets/ep01/p05.webp",
+    "6": "assets/ep01/p06.webp",
+    "7": "assets/ep01/p07.webp",
+    "8": "assets/ep01/p08.webp",
+    "9": "assets/ep01/p09.webp",
+    "10": "assets/ep01/p10.webp",
+    "11": "assets/ep01/p11.webp",
+    "12": "assets/ep01/p12.webp",
+    "13": "assets/ep01/p13.webp"
    }
   }
  },
- "built": "2026-09-29T19:18:02.407Z"
+ "built": "2026-09-30T00:05:22.503Z"
 };
