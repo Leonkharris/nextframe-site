@@ -980,8 +980,8 @@ window.LUCKY666 = {
    "color": "#7C3AED",
    "palette": [
     [
-     "VIOLET SATIN (dress)",
-     "#7C3AED"
+     "WHITE STRETCH (halter mini)",
+     "#F4F1EC"
     ],
     [
      "CANDELA RED (nails, flower)",
@@ -1000,8 +1000,8 @@ window.LUCKY666 = {
      "#D6A84A"
     ],
     [
-     "FAUX-FUR IVORY",
-     "#EEE6DA"
+     "STAGE SEQUIN SILVER",
+     "#C9CCD3"
     ],
     [
      "STAGE MAGENTA",
@@ -1013,8 +1013,8 @@ window.LUCKY666 = {
     ]
    ],
    "materials": [
-    "DRESS: liquid satin",
-    "COAT: plush faux fur",
+    "DRESS: stretch jersey, keyhole cut-out",
+    "STAGE DRESS: silver sequins",
     "HEELS: metallic leather straps",
     "FLOWER: silk hibiscus",
     "NECKLACES: layered fine gold",
@@ -1085,7 +1085,7 @@ window.LUCKY666 = {
      "jarocha: fast, musical, drops her s's, calls everyone 'papito'"
     ]
    ],
-   "look": "Cabaret bombshell: violet satin bodycon mini, gold heels, faux fur off the shoulders, a sleek jet-black high ponytail with a red hibiscus, smoky almond eyes, gold teardrop hoops, red almond nails. Never without a man, never remembers his name.",
+   "look": "Go-go bombshell: a white halter keyhole mini by day, silver sequins on stage, a sleek jet-black high ponytail with a red hibiscus, smoky almond eyes, gold teardrop hoops, red almond nails. Never without a man, never remembers his name.",
    "personality": [
     "Confident, flirty and hilariously blunt about romance",
     "Big-hearted: the building's nurse, therapist and love doctor",
@@ -1136,7 +1136,7 @@ window.LUCKY666 = {
     "Dance lessons on the roof: salsa and son jarocho with the girls"
    ],
    "voice": "Musical, fast jarocha Spanish, flirty, warm, brutally honest about men.",
-   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz: a long elegant oval face with sharply sculpted high cheekbones, a slim straight nose, a defined jaw and a long graceful neck, large dark almond-shaped eyes with smoky dark-brown liner and long lashes, strong defined dark brows with a clean arch, full lips with a nude-pink gloss, luminous bronzed caramel skin with a dewy glow, and long glossy jet-black hair slicked back from a center part into a sleek high ponytail, with polished bronzed glam: smoky almond eyes, long lashes, luminous highlighted skin, nude-pink gloss, and a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach and long slender toned legs. She wears a short violet satin bodycon mini dress with thin straps, strappy gold heels and an ivory faux-fur coat slipping off her shoulders, large thin gold teardrop hoop earrings, layered fine gold necklaces, long glossy red almond nails, and a small red hibiscus flower pinned at the base of her ponytail."
+   "anchor": "Marisol, a 27-year-old Mexican woman from Veracruz: a long elegant oval face with sharply sculpted high cheekbones, a slim straight nose, a defined jaw and a long graceful neck, large dark almond-shaped eyes with smoky dark-brown liner and long lashes, strong defined dark brows with a clean arch, full lips with a nude-pink gloss, luminous bronzed caramel skin with a dewy glow, and long glossy jet-black hair slicked back from a center part into a sleek high ponytail, with polished bronzed glam: smoky almond eyes, long lashes, luminous highlighted skin, nude-pink gloss, and a tall slim bombshell figure with a tiny cinched waist, a toned flat stomach and long slender toned legs. She wears a white stretch halter-neck bodycon mini dress with a sculpted keyhole cut-out at the front, clear-strap high heels, large thin gold teardrop hoop earrings, a fine gold necklace, long glossy red almond nails, and a small red hibiscus flower at the base of her ponytail."
   }
  ],
  "episodes": [
@@ -1516,7 +1516,7 @@ window.LUCKY666 = {
   "marisol": {
    "door": "626",
    "day": "Day 5",
-   "action": "blowing a kiss at the camera while a handsome man in a firefighter uniform stands behind her slightly out of focus, holding her faux-fur coat",
+   "action": "blowing a kiss at the camera while a handsome man in a firefighter uniform stands behind her slightly out of focus, holding her gold clutch",
    "en": "626 🌺 Veracruz girl in the big city. The show's at La Gata Negra, right across the street. Him? Oh, that's… the firefighter. 😘🔥",
    "es": "626 🌺 Jarocha en la gran ciudad. El show es en La Gata Negra, aquí enfrente. ¿Él? Ah, es… el bombero. 😘🔥",
    "tags": "#Lucky666 #Candela"
@@ -1758,7 +1758,7 @@ window.LUCKY666 = {
     "dur": "3s",
     "move": "FREEZE FRAME",
     "size": "MEDIUM",
-    "action": "Marisol sweeps through the glass lobby doors in her violet dress and faux fur, arm in arm with a handsome firefighter in uniform, blowing a kiss at the camera."
+    "action": "Marisol sweeps through the glass lobby doors in her silver sequin stage dress, arm in arm with a handsome firefighter in uniform, blowing a kiss at the camera."
    },
    {
     "n": 7,
@@ -1902,7 +1902,7 @@ window.LUCKY666 = {
     "expressions": null,
     "head": null,
     "details": null,
-    "wardrobe": null,
+    "wardrobe": "assets/chars/yesi/wardrobe.webp",
     "lighting": null,
     "board": "assets/chars/yesi/board.webp"
    },
@@ -1914,7 +1914,7 @@ window.LUCKY666 = {
     "expressions": null,
     "head": null,
     "details": null,
-    "wardrobe": null,
+    "wardrobe": "assets/chars/regina/wardrobe.webp",
     "lighting": null,
     "board": "assets/chars/regina/board.webp"
    },
@@ -1926,7 +1926,7 @@ window.LUCKY666 = {
     "expressions": null,
     "head": null,
     "details": null,
-    "wardrobe": null,
+    "wardrobe": "assets/chars/citlali/wardrobe.webp",
     "lighting": null,
     "board": "assets/chars/citlali/board.webp"
    },
@@ -1938,7 +1938,7 @@ window.LUCKY666 = {
     "expressions": null,
     "head": null,
     "details": null,
-    "wardrobe": null,
+    "wardrobe": "assets/chars/lupe/wardrobe.webp",
     "lighting": null,
     "board": "assets/chars/lupe/board.webp"
    },
@@ -1950,7 +1950,7 @@ window.LUCKY666 = {
     "expressions": null,
     "head": null,
     "details": null,
-    "wardrobe": null,
+    "wardrobe": "assets/chars/marisol/wardrobe.webp",
     "lighting": null,
     "board": "assets/chars/marisol/board.webp"
    }
@@ -1994,5 +1994,5 @@ window.LUCKY666 = {
    }
   }
  },
- "built": "2026-09-30T00:05:22.503Z"
+ "built": "2026-09-30T00:52:45.971Z"
 };
