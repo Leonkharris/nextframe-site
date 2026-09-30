@@ -419,6 +419,7 @@ if (L.ep1) {
   $("ep1A").innerHTML = li(E.answers || []);
   const EP = A.ep01 || { panels: {} };
   $("ep1Sheet").innerHTML = EP.sheet ? `<a href="${EP.sheet}" target="_blank" rel="noopener"><img class="boardimg" src="${EP.sheet}" alt="Episode 1 storyboard sheet" loading="lazy"></a><p class="muted" style="font-size:13px;margin-top:8px">The full sheet: §0 shared choices · §1 cast · §2 building cross-section with every cut · §3 panels · §4 lighting/mood. Tap to open full size.</p>` : "";
+  if (EP.motion) $("ep1Sheet").innerHTML += `<h3 style="margin:26px 0 8px">Motion &amp; emotion board</h3><a href="${EP.motion}" target="_blank" rel="noopener"><img class="boardimg" src="${EP.motion}" alt="Episode 1 motion and emotion board" loading="lazy"></a><p class="muted" style="font-size:13px;margin-top:8px">Slot ② of the video gate: colour tags · emotion progression strips + body lines · per shot: keyframe, rough staging (blocking, camera move, light), motion line, action chain, emotion call, costume. Tap to open full size.</p>`;
   $("ep1Panels").innerHTML = (L.ep1Board?.panels || []).map((p) => { const img = EP.panels[p.n];
     return `<figure><figcaption>${p.n} · ${esc(p.lens)} | ${esc(p.dur)} | ${esc(p.move)} | ${esc(p.size)}</figcaption>${img ? `<img src="${img}" alt="panel ${p.n}" loading="lazy">` : `<div class="pending" style="border:0;border-radius:0">panel generating…</div>`}<div style="padding:10px 12px;font-size:13px;color:#d6d0f5">${esc(p.action)}</div></figure>`; }).join("");
 }

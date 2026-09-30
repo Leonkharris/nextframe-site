@@ -1991,8 +1991,9 @@ window.LUCKY666 = {
     "11": "assets/ep01/p11.webp",
     "12": "assets/ep01/p12.webp",
     "13": "assets/ep01/p13.webp"
-   }
+   },
+   "motion": "assets/ep01/motion_emotion.webp"
   }
  },
- "built": "2026-09-30T00:52:45.971Z"
+ "built": "2026-09-30T03:30:27.174Z"
 };
