@@ -46,6 +46,8 @@
 - [Email Marketing with AI for PH Small Business](https://next-frame.agency/blog/email-marketing-ai-philippines/): Should your PH business even build an email list? Here's where email beats Messenger and Viber, how to collect addresses legally, and what AI should draft.
 - [Read Your Facebook Insights With AI in PH](https://next-frame.agency/blog/read-facebook-insights-with-ai/): A monthly loop for PH small businesses: export Facebook and Instagram insights, read them with AI, and turn the answer into one real change.
 - [Build Real Customer Personas With AI From Your Own Data](https://next-frame.agency/blog/ai-customer-personas-philippines/): Stop guessing who buys from you. Turn your own Messenger chats, reviews and sales notes into 2-3 real AI customer personas with a copy-paste prompt.
+- [Viber for Business Philippines: A Small Owner Guide](https://next-frame.agency/blog/viber-for-business-philippines/): Learn how to use Viber for business in the Philippines: Channels, Communities and business messaging, plus AI-drafted broadcasts and a human check.
+- [AI Job Posts and Applicant Screening for PH Small Business](https://next-frame.agency/blog/ai-job-posts-hiring-small-business/): Write a clear job post, set an honest pay range and screen applicants with AI. A plain-English guide for Philippine small business owners hiring staff.
 
 
 ## Contact
