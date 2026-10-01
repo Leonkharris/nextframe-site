@@ -232,8 +232,9 @@ img{display:block;max-width:100%}
 .next-row p{font:400 11.5px/1.55 var(--sans);color:var(--body);margin:0}
 
 /* ============ HONORS / PARTNERSHIPS ============ */
-.honor-hero .big5{font-family:var(--grot);font-weight:900;font-size:120px;line-height:1;color:var(--ink)}
-.honor-hero .b5-label{font-family:var(--grot);font-weight:700;font-size:18px;color:var(--ink)}
+.honor-hero{display:flex;align-items:center;gap:22px;margin:26px var(--pad) 0;padding-bottom:20px;border-bottom:2px solid var(--ink)}
+.honor-hero .big5{font-family:var(--grot);font-weight:900;font-size:88px;line-height:.86;color:var(--ink);letter-spacing:-.03em}
+.honor-hero .b5-label{font-family:var(--grot);font-weight:700;font-size:20px;line-height:1.1;color:var(--ink);max-width:12ch}
 .honors-list{list-style:none;margin:0;padding:0}
 .honors-list li{font:400 12.5px/1.5 var(--sans);color:var(--body);padding:10px 0;border-bottom:1px solid var(--line)}
 .honor-meta{font:400 11.5px/1.5 var(--sans);color:var(--body)}
