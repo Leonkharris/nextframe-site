@@ -65,6 +65,32 @@ img{display:block;max-width:100%}
 /* flowing line motif */
 .mc-wave{display:block;width:94%;height:auto;margin:28px 0 0;opacity:.95}
 
+/* ============ COVER (food-forward, food-blogger style) ============ */
+.sheet--cover-food{padding:44px 50px 38px;display:flex;flex-direction:column;background:#fff}
+.fc-top{display:flex;justify-content:space-between;align-items:flex-end;border-bottom:2px solid var(--ink);padding-bottom:16px}
+.fc-name{font-family:'Playfair Display',serif;line-height:.86;display:block}
+.fc-name .fc-first{font-weight:800;font-size:50px;color:var(--ink)}
+.fc-name .fc-last{font-weight:500;font-style:italic;font-size:50px;color:var(--accent);margin-left:10px}
+.fc-sub{display:block;margin-top:10px;font:700 9.5px/1 var(--sans);letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+.fc-issue{text-align:right;font:700 10px/1.5 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--ink);display:flex;flex-direction:column;align-items:flex-end}
+.fc-issue em{font-family:'Playfair Display',serif;font-style:italic;font-weight:600;font-size:24px;letter-spacing:0;color:var(--accent);margin-top:2px}
+.fc-grid{display:grid;grid-template-columns:2fr 1fr 1fr;grid-template-rows:1fr 1fr;gap:7px;height:400px;margin-top:22px}
+.fc-grid figure{margin:0;overflow:hidden;background:#eee}
+.fc-grid .fc-big{grid-row:1/3;grid-column:1}
+.fc-grid img{width:100%;height:100%;object-fit:cover;display:block}
+.fc-stats{display:grid;grid-template-columns:repeat(5,1fr);margin-top:20px;border-top:2px solid var(--ink);border-bottom:1px solid var(--line2)}
+.fc-stats div{padding:14px 0 12px;border-right:1px solid var(--line);text-align:center}
+.fc-stats div:last-child{border-right:none}
+.fc-stats b{display:block;font-family:var(--grot);font-weight:800;font-size:30px;line-height:1;color:var(--ink);letter-spacing:-.02em}
+.fc-stats span{display:block;margin-top:6px;font:700 8px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.fc-mission{margin-top:22px;flex:1;display:flex;flex-direction:column;justify-content:space-between}
+.fc-mission h2{font-family:var(--grot);font-weight:800;font-size:23px;color:var(--ink);margin:0 0 10px;text-transform:uppercase;letter-spacing:.03em}
+.fc-mission p{font:400 13px/1.7 var(--sans);color:var(--body);margin:0;max-width:66ch}
+.fc-seen{font:600 11px/1.6 var(--sans);color:var(--body);border-top:1px solid var(--line2);padding-top:14px;margin:18px 0 0}
+.fc-seen span{font-weight:700;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-right:12px}
+.fc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:16px;border-top:1px solid var(--line2);padding-top:14px;font:700 9px/1 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.fc-foot .fc-mark{font-family:var(--grot);font-weight:800;color:var(--ink);letter-spacing:.02em}
+
 /* ============ CONTENTS ============ */
 .toc-cols{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:34px var(--pad) 0}
 .toc-part h3{font-family:var(--grot);font-weight:800;font-size:20px;color:var(--ink);margin:26px 0 14px;display:flex;align-items:baseline;gap:12px;border-bottom:2px solid var(--ink);padding-bottom:10px}
