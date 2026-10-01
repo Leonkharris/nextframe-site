@@ -10,9 +10,9 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,800;0,900;1,400;1,600;1,800&family=Inter:wght@400;500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
 
-<link rel="stylesheet" href="modern.css?v=2">
+<link rel="stylesheet" href="modern.css">
 <link rel="stylesheet" href="pdf.css" media="print">
-<script src="press.js?v=1" defer></script>
+<script src="press.js" defer></script>
 <style>
 /* v7 — image provenance labels */
 .spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
@@ -209,13 +209,7 @@ html.v7hero-on .v7hero{display:block}
         <span class="mc-eyebrow">Chef · Restaurateur · Storyteller</span>
         <h1 class="mc-name">Todd<span class="en">English</span></h1>
         <p class="mc-intro">Thirty-five years at the pass — from <b>Olives</b> in 1989 to a portfolio spanning <b>four continents</b>.</p>
-        <svg class="mc-wave" viewBox="0 0 360 150" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-          <path d="M-10,60 C90,20 180,100 370,48"/>
-          <path d="M-10,74 C90,34 180,114 370,62"/>
-          <path d="M-10,88 C100,48 190,128 370,76"/>
-          <path d="M-10,102 C100,62 190,142 370,90"/>
-          <path d="M-10,116 C110,76 200,156 370,104"/>
-        </svg>
+        <img class="mc-wave" src="wave.svg" alt="" aria-hidden="true">
         <div class="mc-spacer"></div>
         <div class="mc-tagline">Est. 1989 — Boston to the World</div>
       </div>
@@ -256,12 +250,12 @@ html.v7hero-on .v7hero{display:block}
         <h3><span class="toc-rn">II</span>The Active Table</h3>
         <ul>
           <li><span>The Venues, Verified</span><span class="toc-pg">09</span></li>
-          <li><span>Market &amp; Pub · Abu Dhabi</span><span class="toc-pg">11</span></li>
-          <li><span>Jade · Bali</span><span class="toc-pg">12</span></li>
-          <li><span>bluezoo · Orlando</span><span class="toc-pg">13</span></li>
-          <li><span>The Beast · Las Vegas</span><span class="toc-pg">14</span></li>
-          <li><span>Tuscany · Mohegan Sun</span><span class="toc-pg">15</span></li>
-          <li><span>Bentley Residences · Miami</span><span class="toc-pg">16</span></li>
+          <li><span>Bentley Residences · Miami</span><span class="toc-pg">11</span></li>
+          <li><span>Market &amp; Pub · Abu Dhabi</span><span class="toc-pg">12</span></li>
+          <li><span>Jade · Bali</span><span class="toc-pg">13</span></li>
+          <li><span>bluezoo · Orlando</span><span class="toc-pg">14</span></li>
+          <li><span>The Beast · Las Vegas</span><span class="toc-pg">15</span></li>
+          <li><span>Tuscany · Mohegan Sun</span><span class="toc-pg">16</span></li>
           <li><span>From the Kitchens</span><span class="toc-pg">17</span></li>
         </ul>
       </div>
@@ -504,9 +498,38 @@ html.v7hero-on .v7hero{display:block}
     </div>
   </section>
 
-  <!-- ============ PAGE 11 · SPOTLIGHT — MARKET & PUB ============ -->
+  <!-- ============ PAGE 11 · SPOTLIGHT — BENTLEY RESIDENCES (the headliner) ============ -->
+  <section class="sheet sheet--dark sheet--spot" id="spot-bentley" aria-labelledby="spot-bentley-heading">
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Headliner · 11/30</span></div>
+    <div class="page-rule"></div>
+    <p class="spot-no">No. 01 — Opening 2028 · Sunny Isles Beach, Miami</p>
+    <h2 class="spot-title" id="spot-bentley-heading">Proper English at Bentley Residences</h2>
+
+    <figure class="spot-hero"><img src="gallery/venues/bentley-restaurant.jpg" alt="Rendering of the Proper English restaurant at Bentley Residences, Miami."><span class="prov prov--ai">Development Rendering</span></figure>
+
+    <div class="spot-grid">
+      <div class="spot-copy">
+        <p>Sixty-two stories above Sunny Isles Beach, Bentley Residences will be the first residential tower in the world to carry the marque — and <strong>Proper English</strong> will be its only restaurant. Private, residents-only, and built to Bentley's standard of quiet luxury: a dark, high-gloss dining room inspired by the cars, with backlit banquettes and bold finishes.</p>
+        <p>Todd's menu rotates by the season — Mediterranean-rooted, with signature global touches like tuna tataki with tahini — served from breakfast through dinner, poolside, and in-residence. For Todd it is a first: a restaurant with no front door, cooking for the families of a single tower instead of the public.</p>
+      </div>
+      <aside class="spot-facts">
+        <h4>At a Glance</h4>
+        <ul>
+          <li><strong>Opens</strong>2028</li>
+          <li><strong>Concept</strong>Proper English — residents only</li>
+          <li><strong>Tower</strong>62 stories · 18401 Collins Ave</li>
+          <li><strong>Service</strong>Breakfast to dinner · in-residence</li>
+          <li><strong>Partner</strong>Dezer Development &times; Bentley</li>
+        </ul>
+      </aside>
+    </div>
+
+    <figure class="spot-strip"><img src="gallery/venues/bentley-tower.jpg" alt="Exterior rendering of Bentley Residences tower, Sunny Isles Beach, Miami."><span class="prov prov--ai">Development Rendering</span><figcaption>Sixty-two stories on Collins Avenue — the world's first Bentley-branded residential tower, with Proper English on the lobby level.</figcaption></figure>
+  </section>
+
+  <!-- ============ PAGE 12 · SPOTLIGHT — MARKET & PUB ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-market" aria-labelledby="spot-market-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 11/30</span></div>
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 12/30</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 01 — Zayed International Airport · Abu Dhabi, UAE</p>
     <h2 class="spot-title" id="spot-market-heading">Todd English Market &amp; Pub</h2>
@@ -535,7 +558,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 12 · SPOTLIGHT — JADE ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-jade" aria-labelledby="spot-jade-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 12/30</span></div>
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 13/30</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 02 — Berawa, Canggu · Bali, Indonesia</p>
     <h2 class="spot-title" id="spot-jade-heading">Jade</h2>
@@ -564,7 +587,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 13 · SPOTLIGHT — BLUEZOO ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-bluezoo" aria-labelledby="spot-bz-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 13/30</span></div>
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 14/30</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 03 — Walt Disney World Dolphin Resort · Orlando, Florida</p>
     <h2 class="spot-title" id="spot-bz-heading">bluezoo</h2>
@@ -593,7 +616,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 14 · SPOTLIGHT — THE BEAST ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-beast" aria-labelledby="spot-beast-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 14/30</span></div>
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 15/30</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 04 — AREA15 · Las Vegas, Nevada</p>
     <h2 class="spot-title" id="spot-beast-heading">The Beast</h2>
@@ -622,7 +645,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 15 · SPOTLIGHT — TUSCANY ============ -->
   <section class="sheet sheet--dark sheet--spot" id="spot-tuscany" aria-labelledby="spot-tus-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 15/30</span></div>
+    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Active Table · 16/30</span></div>
     <div class="page-rule"></div>
     <p class="spot-no">No. 05 — Mohegan Sun · Uncasville, Connecticut</p>
     <h2 class="spot-title" id="spot-tus-heading">Tuscany</h2>
@@ -649,34 +672,6 @@ html.v7hero-on .v7hero{display:block}
     <figure class="spot-strip"><img src="gallery/venues/tuscany-pasta.jpg" alt="Fresh pasta at Tuscany, Mohegan Sun."><span class="prov">Venue Photography</span><figcaption>From the pasta station — the same hand that built Olives.</figcaption></figure>
   </section>
 
-  <!-- ============ PAGE 16 · SPOTLIGHT — BENTLEY RESIDENCES (the headliner) ============ -->
-  <section class="sheet sheet--dark sheet--spot" id="spot-bentley" aria-labelledby="spot-bentley-heading">
-    <div class="page-head"><span class="ph-brand">Todd English · Media Kit</span><span class="ph-no">The Headliner · 16/30</span></div>
-    <div class="page-rule"></div>
-    <p class="spot-no">No. 06 — Opening 2028 · Sunny Isles Beach, Miami</p>
-    <h2 class="spot-title" id="spot-bentley-heading">Proper English at Bentley Residences</h2>
-
-    <figure class="spot-hero"><img src="gallery/venues/bentley-lobby.jpg" alt="Rendered lobby of Bentley Residences, Sunny Isles Beach, Miami."><span class="prov prov--ai">Development Rendering</span></figure>
-
-    <div class="spot-grid">
-      <div class="spot-copy">
-        <p>Sixty-two stories above Sunny Isles Beach, Bentley Residences will be the first residential tower in the world to carry the marque — and <strong>Proper English</strong> will be its only restaurant. Private, residents-only, and built to Bentley's standard of quiet luxury: a dark, high-gloss dining room inspired by the cars, with backlit banquettes and bold finishes.</p>
-        <p>Todd's menu rotates by the season — Mediterranean-rooted, with signature global touches like tuna tataki with tahini — served from breakfast through dinner, poolside, and in-residence. For Todd it is a first: a restaurant with no front door, cooking for the families of a single tower instead of the public.</p>
-      </div>
-      <aside class="spot-facts">
-        <h4>At a Glance</h4>
-        <ul>
-          <li><strong>Opens</strong>2028</li>
-          <li><strong>Concept</strong>Proper English — residents only</li>
-          <li><strong>Tower</strong>62 stories · 18401 Collins Ave</li>
-          <li><strong>Service</strong>Breakfast to dinner · in-residence</li>
-          <li><strong>Partner</strong>Dezer Development &times; Bentley</li>
-        </ul>
-      </aside>
-    </div>
-
-    <figure class="spot-strip"><img src="gallery/venues/bentley-wheel.jpg" alt="Interior detail rendering, Bentley Residences, Miami."><span class="prov prov--ai">Development Rendering</span><figcaption>Interiors to Bentley specification — dark palette, high-gloss accents, the marque applied to hospitality.</figcaption></figure>
-  </section>
 
   <!-- ============ PAGE 17 · FROM THE KITCHENS (gallery I) ============ -->
   <section class="sheet" id="from-the-kitchens" aria-labelledby="gallery-heading">
