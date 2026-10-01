@@ -234,6 +234,7 @@ img{display:block;max-width:100%}
 .spot-facts li strong{display:block;font:700 9px/1 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:3px}
 .spot-strip{margin:24px var(--pad) var(--pad);position:relative}
 .spot-strip img{width:100%;height:150px;object-fit:cover}
+#spot-bentley .spot-strip img{height:260px;object-position:50% 18%}
 .spot-strip figcaption{font:400 11.5px/1.5 var(--sans);color:var(--muted);margin-top:10px;font-style:normal}
 
 /* ============ GALLERIES (food grids) ============ */
@@ -241,12 +242,11 @@ img{display:block;max-width:100%}
 .gal-hero img{width:100%;height:320px;object-fit:cover}
 .gal-cap{position:absolute;left:0;bottom:0;right:0;background:linear-gradient(transparent,rgba(26,24,19,.85));padding:40px 20px 16px}
 .gal-cap p{font-family:var(--grot);font-weight:600;font-size:18px;line-height:1.3;color:#fff;margin:0;font-style:normal}
-.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:148px;gap:10px;padding:18px var(--pad) var(--pad)}
+.gal-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-auto-rows:172px;gap:10px;padding:18px var(--pad) var(--pad)}
 .gal-item{position:relative;margin:0;overflow:hidden}
-.gal-item img{width:100%;height:100%;object-fit:cover;transition:transform .4s ease}
-.gal-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:22px 12px 9px;background:linear-gradient(transparent,rgba(26,24,19,.82));color:#fff;font:700 8.5px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase}
-.gal-item:nth-child(1){grid-column:span 2;grid-row:span 2}
-.gal-item:nth-child(6){grid-column:1/-1}
+.gal-item img{width:100%;height:100%;object-fit:cover;object-position:50% 45%}
+.gal-item figcaption{position:absolute;left:0;right:0;bottom:0;padding:20px 12px 8px;background:linear-gradient(transparent,rgba(26,24,19,.8));color:#fff;font:700 8.5px/1.2 var(--sans);letter-spacing:.1em;text-transform:uppercase}
+.gal-item:nth-child(1){grid-column:1/3;grid-row:1/3}
 .gal-item .prov{top:8px}
 
 /* ============ LEGACY ============ */
@@ -329,3 +329,106 @@ img{display:block;max-width:100%}
 .back-inner .back-line{font:400 14px/1.7 var(--sans);color:#cfc8ba;max-width:50ch}
 
 @media print{.sheet{box-shadow:none}}
+
+/* ============================================================
+   QC FIXES — page margins, fit content, stop edge-clipping
+   ============================================================ */
+/* stray containers that were flush to x=0 → give them the page margin */
+.reach-cards, .partner-cols, .tv-cols { display:grid; grid-template-columns:repeat(3,1fr); gap:22px; padding:20px var(--pad) 0; }
+.assets-grid { display:grid; grid-template-columns:250px 1fr; gap:30px; padding:22px var(--pad) 0; align-items:start; }
+.assets-list { display:flex; flex-direction:column; gap:12px; }
+.next-list { padding:8px var(--pad) 0; }
+.honors-list { padding:0 var(--pad); margin:16px 0 0; }
+.honor-meta { margin:14px var(--pad) 0; }
+.seen-in, .tv-logos { margin:18px var(--pad); }
+.legacy-close { margin:16px var(--pad) 0; font-family:var(--grot); font-weight:600; font-style:normal; font-size:17px; line-height:1.3; color:var(--ink); }
+#partnerships { margin:0 var(--pad); padding-top:14px !important; }
+
+/* figure heroes: margin + fixed height + overflow so nothing runs full-bleed/off-page */
+.tv-hero, .reach-photo, .story-photo { margin:20px var(--pad) 0; position:relative; overflow:hidden; }
+.tv-hero { height:214px; } .tv-hero img { width:100%; height:100%; object-fit:cover; object-position:50% 26%; }
+.reach-photo { height:150px; } .reach-photo img { width:100%; height:100%; object-fit:cover; }
+.story-photo { height:228px; } .story-photo img { width:100%; height:100%; object-fit:cover; }
+.assets-photo { margin:0; height:360px; overflow:hidden; } .assets-photo img { width:100%; height:100%; object-fit:cover; }
+
+/* big number + label blocks: baseline-align, no crowding/overlap */
+.honor-hero, .reach-hero { display:flex; align-items:flex-end; gap:20px; margin:20px var(--pad) 0; padding-bottom:16px; border-bottom:2px solid var(--ink); }
+.reach-hero .bign { font-family:var(--grot); font-weight:900; font-size:74px; line-height:.8; color:var(--ink); letter-spacing:-.03em; }
+.reach-hero .bl { font-family:var(--grot); font-weight:700; font-size:15px; line-height:1.2; color:var(--ink); max-width:15ch; padding-bottom:7px; }
+.honor-hero .big5 { font-size:74px; }
+
+/* whats-next: compact project rows so a hotel + 4 projects fit the page */
+.hotel-row { grid-template-columns:200px 1fr; gap:22px; margin:20px var(--pad) 0; padding:16px; }
+.hotel-row img { aspect-ratio:4/3; height:auto; }
+.next-row { display:grid; grid-template-columns:26px 150px 1fr; gap:16px; align-items:center; padding:10px 0; border-bottom:1px solid var(--line); }
+.next-row .nn { font-family:var(--grot); font-weight:800; font-size:15px; color:var(--accent); }
+.next-row figure { height:82px; overflow:hidden; }
+.next-row figure img { width:100%; height:100%; object-fit:cover; }
+.next-row h4 { font-family:var(--grot); font-weight:700; font-size:14px; color:var(--ink); margin:0 0 3px; }
+.next-row p { font:400 11px/1.45 var(--sans); color:var(--body); margin:0 0 5px; }
+
+/* reach cards compact */
+.reach-card { padding:16px 18px; } .reach-card h4 { font-size:19px; } .reach-card p { font-size:10.5px; }
+
+/* on-camera logos wrap & fit */
+.tv-logo-row { display:flex; flex-wrap:wrap; align-items:center; gap:20px 26px; margin-top:14px; }
+.tv-logo-row img { height:24px; width:auto; max-width:104px; object-fit:contain; }
+
+/* About (the-chef): show the head, don't chop dishes */
+.ab-hero img { object-position:50% 20%; }
+.ab-strip img { height:140px; object-position:50% 48%; }
+
+/* galleries fit the page */
+.gal-hero { height:244px; } .gal-grid { grid-auto-rows:150px; }
+
+/* spotlight bottom strip: taller + aimed at the subject */
+.spot-strip img { height:178px; object-position:50% 42%; }
+#spot-bentley .spot-strip img { height:220px; object-position:50% 32%; }
+
+/* feature strip (English Hotel) */
+.feat-strip { margin:18px var(--pad) var(--pad); } .feat-strip img { height:150px; object-position:50% 50%; }
+
+/* olives story band: fit all stats */
+.story-band { grid-template-columns:repeat(4,1fr); }
+
+/* colophon: framed photo + proper footer */
+.sheet--back .back-inner { padding:46px var(--pad); }
+.back-photo { width:100%; height:300px; object-fit:cover; object-position:50% 45%; margin-bottom:24px; display:block; }
+.back-rule { display:block; width:60px; height:2px; background:var(--accent2); margin:20px 0; }
+.back-foot { margin-top:4px; font:600 10px/1.5 var(--sans); letter-spacing:.1em; text-transform:uppercase; color:#b7b0a2; }
+
+/* ---- QC FIXES v2: containment, spotlight fit, crops, fill gaps ---- */
+/* every figure-hero contains its absolute caption and clips its image */
+.gal-hero, .feat-hero, .tv-hero, .reach-photo, .story-photo, .assets-photo, .philo-photo, .spot-hero { position:relative; overflow:hidden; }
+.gal-hero img, .feat-hero img, .assets-photo img, .philo-photo img, .story-photo img { width:100%; height:100%; object-fit:cover; }
+/* spotlights: fit hero + strip with a real bottom margin */
+.spot-hero img { height:266px; }
+.spot-strip { margin:18px var(--pad) var(--pad); }
+.spot-strip img { height:150px; object-position:50% 42%; }
+#spot-bentley .spot-strip img { height:168px; object-position:50% 28%; }
+/* fill the under-filled pages by enlarging their heroes */
+.philo-photo { margin:26px var(--pad) 0; height:326px; }
+.story-photo { height:296px; }
+.tv-hero { height:300px; } .tv-hero img { object-position:50% 12%; }
+/* on-camera logos: bigger, evenly spread */
+.tv-logo-row { gap:26px 36px; justify-content:space-between; } .tv-logo-row img { height:30px; max-width:118px; }
+/* colophon lobster framed better */
+.back-photo { object-position:50% 38%; }
+/* whats-next: small prov tags so they don't cover thumbnails */
+.next-row .prov { font-size:6px; padding:2px 5px; letter-spacing:.08em; }
+
+/* ---- QC FIXES v3: fill the under-filled pages, last crops ---- */
+.philo-photo { height:530px; margin:30px var(--pad) 0; }
+.philo-tenets { padding:34px var(--pad) var(--pad); }
+.story-photo { height:510px; }
+.tv-hero { height:498px; }
+.tv-cols { padding:32px var(--pad) 0; }
+.assets-photo { height:520px; }
+.assets-grid { align-items:stretch; }
+/* active-two: shrink the Also-Open cards so captions clear the bottom edge */
+.also-card img { aspect-ratio:16/11; }
+.also-grid { padding:16px var(--pad) var(--pad); }
+/* last crop tweaks */
+#spot-bentley .spot-strip img { object-position:50% 34%; }
+.back-photo { height:300px; object-position:50% 42%; }
+.spot-strip img { object-position:50% 38%; }
