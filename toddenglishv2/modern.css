@@ -433,3 +433,5 @@ img{display:block;max-width:100%}
 #spot-bentley .spot-strip img { height:205px; object-position:50% 22%; }
 .back-photo { height:300px; object-position:50% 42%; }
 .spot-strip img { object-position:50% 38%; }
+/* Jade strip is a 750x1000 PORTRAIT dish photo — generic crop lands on the tile wall above the plate; drop the band onto the plate+orchid */
+#spot-jade .spot-strip img { object-position:50% 66%; }
