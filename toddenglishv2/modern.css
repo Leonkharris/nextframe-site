@@ -191,10 +191,10 @@ img{display:block;max-width:100%}
 .tl-card p{font:400 11.5px/1.55 var(--sans);color:var(--body);margin:0}
 
 /* ============ PHILOSOPHY ============ */
-.philo-block{padding:40px var(--pad) 0;position:relative}
-.philo-mark{display:none}
-.philo-quote{font-family:var(--grot);font-weight:800;font-size:38px;line-height:1.15;letter-spacing:-.02em;color:var(--ink);margin:0}
-.philo-cite{display:block;margin-top:18px;font:700 10.5px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+.philo-block{padding:52px var(--pad) 0;position:relative;text-align:center;max-width:720px;margin:0 auto}
+.philo-mark{display:block;font-family:'Playfair Display',serif;font-size:80px;line-height:.4;color:var(--faint);height:44px}
+.philo-quote{font-family:'Playfair Display',serif;font-weight:400;font-size:33px;line-height:1.4;letter-spacing:0;color:var(--ink);margin:0}
+.philo-cite{display:block;margin-top:22px;font:700 10.5px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent)}
 .philo-photo{margin:30px var(--pad) 0;position:relative}
 .philo-photo img{width:100%;height:300px;object-fit:cover}
 .philo-tenets{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;padding:28px var(--pad) var(--pad)}
