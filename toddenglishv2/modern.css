@@ -429,6 +429,7 @@ img{display:block;max-width:100%}
 .also-card img { aspect-ratio:16/11; }
 .also-grid { padding:16px var(--pad) var(--pad); }
 /* last crop tweaks */
-#spot-bentley .spot-strip img { object-position:50% 34%; }
+/* Bentley team photo (Todd+Dezer+Suárez): 3:2 group shot in a wide strip — lift crop to keep all 3 heads, taller to use the 58px of free sheet room */
+#spot-bentley .spot-strip img { height:205px; object-position:50% 22%; }
 .back-photo { height:300px; object-position:50% 42%; }
 .spot-strip img { object-position:50% 38%; }
