@@ -123,19 +123,16 @@ img{display:block;max-width:100%}
 .toc-pg{font:700 11px/1 var(--sans);color:var(--accent);letter-spacing:.06em}
 
 /* ============ DIVIDERS ============ */
-.sheet--divider{background:var(--ink);color:#d9d2c4;padding:var(--pad);position:relative;overflow:hidden}
+.sheet--divider{background:var(--paper);color:var(--ink);padding:var(--pad);position:relative;overflow:hidden}
 #part-1,#part-2,#part-3,#part-4{background-repeat:no-repeat;background-position:center;background-size:cover}
-#part-1{background-image:linear-gradient(rgba(18,16,12,.82),rgba(18,16,12,.86)),url("gallery/venues/divider-chef.png")}
-#part-2{background-image:linear-gradient(rgba(18,16,12,.82),rgba(18,16,12,.86)),url("gallery/venues/divider-table.jpg")}
-#part-3{background-image:linear-gradient(rgba(18,16,12,.82),rgba(18,16,12,.86)),url("gallery/venues/divider-legacy.jpg")}
-#part-4{background-image:linear-gradient(rgba(18,16,12,.82),rgba(18,16,12,.86)),url("gallery/venues/divider-next.jpg")}
-.div-frame{height:100%;display:flex;flex-direction:column;align-items:flex-start;justify-content:center;position:relative;border:none}
+/* dividers are clean off-white chapter pages now — dark photo backgrounds removed */
+.div-frame{height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;position:relative;border:none}
 .div-part{font:700 11px/1 var(--sans);letter-spacing:.3em;text-transform:uppercase;color:var(--accent2)}
-.div-num{font-family:var(--grot);font-weight:900;font-size:150px;line-height:.9;color:#fff;margin:14px 0 6px;letter-spacing:-.03em}
-.div-title{font-family:var(--grot);font-weight:800;font-size:54px;line-height:1;color:#fff;margin:0 0 20px;letter-spacing:-.02em}
+.div-num{font-family:'Playfair Display',serif;font-weight:500;font-size:88px;line-height:1;color:var(--faint);margin:16px 0 10px;letter-spacing:0}
+.div-title{font-family:'Playfair Display',serif;font-weight:500;font-size:50px;line-height:1.02;color:var(--ink);margin:0 0 20px;letter-spacing:0}
 .div-orn{display:none}
-.div-line{font:400 15px/1.7 var(--sans);max-width:44ch;color:#cfc8ba;font-style:normal}
-.div-foot{position:absolute;bottom:0;left:0;font:700 9.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:rgba(207,200,186,.7)}
+.div-line{font:400 15px/1.7 var(--sans);max-width:46ch;color:var(--muted);font-style:normal}
+.div-foot{position:absolute;bottom:0;left:0;right:0;text-align:center;font:700 9.5px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;color:var(--faint)}
 
 /* ============ PLATE (full-bleed photo) ============ */
 .sheet--plate{position:relative;padding:0}
