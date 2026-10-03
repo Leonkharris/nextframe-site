@@ -277,3 +277,31 @@ figure.ph.arch { border-radius: 999px 999px 0 0; }
 .sw-r { display: flex; flex-direction: column; min-height: 0; }
 .sw-g { flex: 1; min-height: 0; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; padding: 9px; }
 .sw-g figure.ph { height: 100%; }
+
+/* ---------- 2026-10-04 · two concepts: contents, brand architecture, clinic, vision stack ---------- */
+.directory .dir-h { font-family: var(--sans); font-size: 7.5px; font-weight: 700; letter-spacing: 0.4em; color: var(--gold); padding: 10px 0 2px; }
+.directory .dir-h::after { display: none; }
+.toc-title { position: absolute; left: var(--m); top: 92px; }
+.toc2 { position: absolute; left: var(--m); right: var(--m); top: 200px; display: grid; grid-template-columns: 1fr 1fr; gap: 0 60px; }
+.toc2 h5 { font-family: var(--deco); font-weight: 400; font-size: 15px; letter-spacing: 0.24em; text-transform: uppercase; color: var(--accent-2); padding-bottom: 9px; position: relative; }
+.toc2 h5 small { font-family: var(--serif); font-style: italic; font-size: 15px; letter-spacing: 0; text-transform: none; color: var(--body); margin-left: 10px; }
+.toc2 h5::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 5px; background: repeating-linear-gradient(to bottom, var(--line) 0 1px, transparent 1px 2px); }
+.toc2 ul { list-style: none; }
+.toc2 li { display: flex; align-items: baseline; gap: 10px; padding: 9px 0; border-bottom: 1px solid var(--hair); font-family: var(--serif); font-size: 17px; color: var(--ink); }
+.toc2 li::after { content: ""; flex: 1; order: 2; border-bottom: 1px dotted var(--hair-strong); transform: translateY(-4px); }
+.toc2 li span { order: 1; } .toc2 li b { order: 3; font-family: var(--deco); font-weight: 400; color: var(--accent); font-size: 15px; letter-spacing: 0.1em; }
+.toc2 li i { font-style: normal; font-family: var(--display); color: var(--accent); display: inline-block; min-width: 36px; font-size: 14px; }
+.aw { position: absolute; top: 0; bottom: 0; width: 528px; display: flex; flex-direction: column; align-items: center; text-align: center; padding: 54px 60px 40px; }
+.aw.t-lacquer { left: 0; } .aw.t-calm { right: 0; }
+.aw .kicker::after { content: ""; width: 34px; height: 5px; background: repeating-linear-gradient(to bottom, var(--accent) 0 1px, transparent 1px 2px); }
+.aw-h { font-family: var(--deco); font-weight: 400; font-size: 46px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-top: 12px; line-height: 1; }
+.aw-img { width: 270px; height: 340px; flex: none; margin-top: 30px; }
+.aw-n { font-family: var(--display); font-weight: 600; font-size: 21px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); margin-top: 34px; }
+.aw-s { font-family: var(--serif); font-style: italic; font-size: 17px; color: var(--accent); margin-top: 6px; }
+.aw-p { font-family: var(--serif); font-size: 15px; font-weight: 500; line-height: 1.45; color: var(--body); margin-top: 12px; max-width: 390px; }
+.aw-p em { display: block; color: var(--velvet); margin-top: 4px; }
+.aw-seam { position: absolute; left: 523px; top: 0; bottom: 0; width: 10px; background: var(--lacquer) repeating-linear-gradient(to right, var(--gold) 0 1px, transparent 1px 3px); z-index: 3; }
+.aw-seam img { position: absolute; left: 50%; top: 50%; width: 76px; height: 76px; transform: translate(-50%, -50%); background: var(--lacquer); border-radius: 50%; padding: 6px; box-shadow: 0 0 0 1px var(--gold), 0 0 0 4px var(--lacquer), 0 0 0 5px rgba(201, 160, 99, 0.6); }
+.duo.clinic { grid-template-columns: 1fr 1fr 1fr; gap: 18px; width: 520px; }
+.vis-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 9px; background: var(--gold); }
+.vis-stack figure { height: 100%; min-height: 0; }
