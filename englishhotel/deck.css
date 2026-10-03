@@ -271,3 +271,9 @@ figure.ph.arch { border-radius: 999px 999px 0 0; }
 .part-num { position: relative; z-index: 1; display: flex; align-items: center; gap: 14px; font-family: var(--display); font-weight: 600; font-size: 17px; line-height: 1; letter-spacing: 0.42em; text-transform: uppercase; }
 .part-num::before, .part-num::after { content: ""; width: 44px; height: 5px; background: repeating-linear-gradient(to bottom, var(--accent) 0 1px, transparent 1px 2px); }
 .began-year { font-size: 140px; }
+/* Steak & Wine sheet (real food photography) */
+.sw { position: absolute; top: 100px; bottom: 74px; left: calc(var(--m) + 9px); right: calc(var(--m) + 9px); display: grid; grid-template-columns: 400px 1fr; gap: 34px; }
+.sw-hero { height: 100%; }
+.sw-r { display: flex; flex-direction: column; min-height: 0; }
+.sw-g { flex: 1; min-height: 0; margin-top: 20px; display: grid; grid-template-columns: 1fr 1fr; grid-template-rows: 1fr 1fr; gap: 16px; padding: 9px; }
+.sw-g figure.ph { height: 100%; }
