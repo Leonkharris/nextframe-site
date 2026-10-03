@@ -323,3 +323,10 @@ figure.ph.arch { border-radius: 999px 999px 0 0; }
 .t-lacquer .tag.er { color: #d98a62; } .t-lacquer .tag.er::before { border-color: #d98a62; }
 .t-lacquer .modes span { color: var(--gold-light); border-color: var(--hair-strong); }
 .art .art-band { top: 178px; height: 380px; } .art .acs { top: 596px; }
+.sauna-pair { position: absolute; left: calc(var(--m) + 9px); top: 112px; width: 470px; display: flex; flex-direction: column; }
+.sauna-pair figure.ph { height: 236px; }
+.sauna-cap { font-family: var(--sans); font-size: 7.5px; font-weight: 700; letter-spacing: 0.32em; text-transform: uppercase; color: var(--accent); margin: 12px 0 18px; }
+.feast { position: absolute; left: calc(var(--m) + 9px); right: calc(var(--m) + 9px); top: 190px; bottom: 74px; display: grid; grid-template-columns: repeat(4, 1fr); grid-template-rows: 1.45fr 1fr; gap: 20px 22px; }
+.feast figure.ph { height: 100%; min-height: 0; }
+.feast .f2 { grid-column: span 2; }
+.feast { top: 206px; }
