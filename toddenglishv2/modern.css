@@ -107,7 +107,7 @@ img{display:block;max-width:100%}
 .sheet--cover-cream .cc-sub strong{color:var(--ink);font-weight:700}
 .sheet--cover-cream .cc-frame{margin:24px 0 0;flex:1;min-height:0;position:relative;border:1px solid rgba(169,126,63,.55);padding:9px}
 .sheet--cover-cream .cc-frame .inner{width:100%;height:100%;position:relative;overflow:hidden}
-.sheet--cover-cream .cc-frame img{width:100%;height:100%;object-fit:cover;object-position:50% 22%;filter:grayscale(1) contrast(1.04) brightness(1.03)}
+.sheet--cover-cream .cc-frame img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .sheet--cover-cream .cc-frame .tag{position:absolute;left:18px;bottom:18px;background:rgba(246,242,234,.9);color:#6b4322;font:600 9px/1 var(--sans);letter-spacing:.2em;text-transform:uppercase;padding:7px 12px;border:1px solid rgba(169,126,63,.45)}
 .sheet--cover-cream .cc-foot{display:flex;justify-content:space-between;align-items:center;margin-top:22px;gap:16px}
 .sheet--cover-cream .cc-chips{display:flex;gap:10px;flex-wrap:wrap}
@@ -530,3 +530,11 @@ img{display:block;max-width:100%}
 .arc-medals .stamp{display:block;font:700 9px/1 var(--sans);letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
 .arc-medals b{display:block;margin-top:6px;font-family:'Playfair Display',serif;font-weight:500;font-size:19px;line-height:1.15;color:var(--ink)}
 .arc-medals .t{display:block;margin:5px auto 0;max-width:30ch;font:400 11px/1.5 var(--sans);color:var(--body)}
+
+/* Also Open: image left, text right — names + descriptions were pushed off the page */
+.also-grid{padding:12px var(--pad) 0}
+.also-card{display:grid;grid-template-columns:128px 1fr;gap:14px;align-items:start}
+.also-card img{width:128px;height:128px;aspect-ratio:auto;margin:0}
+.also-card .chip{display:none}
+.also-card h4{font-size:15px;margin:0 0 5px}
+.also-card p{font-size:11px;line-height:1.5;margin:0}
