@@ -10,8 +10,8 @@ Fortune Tiger**, and the type is set in code.
 
 | Hero | Recommended | Also provided | Why |
 |---|---|---|---|
-| `champ-*` (arm + pouch) | **green** `#00B140` | blue `#0047BB` | subject is skin / gold / red — no green in it, so green keys clean |
-| `phone-*` (hand + phone) | **blue** `#0047BB` | green `#00B140` | **Fortune Tiger's UI has a green spin button and a green win bar.** Keying green punches holes straight through the game. |
+| `champ-*` (arm + pouch) | **green** `#03F802` | blue `#0147FD` | subject is skin / gold / red — no green in it, so green keys clean |
+| `phone-*` (hand + phone) | **blue** `#0147FD` | green `#03F802` | **Fortune Tiger's UI has a green spin button and a green win bar.** Keying green punches holes straight through the game. |
 
 Keying the phone variant on green will eat the spin button. This was verified on the render, not
 assumed — look at `phone-master-green.jpg` and you can see the button is the same green as the
@@ -123,7 +123,7 @@ black bezel and bleeds the background through the fingernails; at `0.10` blue su
 `0.16` keeps the bezel and the nails clean with the background fully gone:
 
 ```
-ffmpeg -i layer-hero-bluescreen.mp4 -vf "chromakey=0x0047BB:0.16:0.04" ...
+ffmpeg -i layer-hero-bluescreen.mp4 -vf "chromakey=0x0147FD:0.16:0.04" ...
 ```
 
 This is exactly the fiddling the alpha versions save you — prefer them.
