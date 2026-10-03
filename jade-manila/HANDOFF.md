@@ -125,3 +125,35 @@ a **category**, it is only dead as a **name**.
   will not see them; scan `%23` as well.
 - The zip `Jade logos with icons.zip` is flat RGB PNG with baked backgrounds and **no alpha** —
   unusable on the dark ground. Extract vector from the PDF instead.
+
+
+## The deck is 23 pages (2026-10-03, later)
+
+A page was inserted: **03 · The Jade Vine**, the brand's origin story told in the
+guidelines' own words, with the vine photograph full-height. Everything after it shifted
+by one and the deck is now **23 numbered pages across 24 sheets** (the editorial plate
+after the cover still carries no number — pre-existing, cosmetic).
+If you add or remove a page, you must update: every `NN/23` marker, the `toc-pg`
+entries, the "Twenty-three pages" standfirst, and the "see Press Assets, page 22"
+cross-reference in the contents foot-note.
+
+**Brand imagery now in `img/`** (extracted from the guidelines PDF, not re-generated):
+`vine-hero`, `vine-tall`, `jade-cocktail`, `jade-stone`, `brand-texture`,
+`vine-interior`, `app-menucard`, `app-signage`, `app-tray`, `app-coasters`.
+
+**Two assets carry conditions.**
+- `app-signage.jpg` is the guidelines' exterior mockup and it shows a **David Guetta
+  "Opening DJ" poster**. It is deliberately **not used** — in an investor kit that reads
+  as a booking claim. Only use it if Leon confirms the booking.
+- `app-menucard.jpg` has been **cropped to its head** because the specimen body is
+  lorem ipsum. Do not swap the full-height version back in.
+
+**Where the brand speaks now:** cover ("Rare by design"), editorial plate ("Jade gives
+the Philippines nights it has never had"), the vine page (the full story, "Like the jade
+vine, it isn't for every day", "Philippine soul · Global table"), a vine-icon watermark
+on all three dividers, the wordmark on both plates, and six applications on The Mark.
+
+**CSS trap learned here:** to float a watermark behind a block's own text, give the block
+a stacking context (`position:relative; z-index:0`) and the pseudo-element `z-index:-1`.
+Do **not** set `position:relative` on the children to lift them — `.div-foot` is
+absolutely positioned and that silently drops it onto the standfirst.

@@ -76,6 +76,84 @@ body{font-family:var(--body)}
 
 /* divider ornament carries the brand icon, not a generic glyph */
 .div-orn .div-icon{display:block;width:auto;height:30px}
+
+/* ---------- THE JADE VINE · the brand's origin story ----------
+   Mirrors the guidelines' own story spread: copy column, vine full-height beside it. */
+.sheet--vine{position:relative;overflow:hidden;background:#032316}
+/* The vine takes the right 350px full-bleed; the copy column is a hard 466px so
+   nothing can run under the photograph. No scrim — an absolutely positioned
+   ::before paints above the column's own text and silently swallows it. */
+.sheet--vine .vine-bleed{
+  position:absolute;top:0;right:0;width:350px;height:100%;
+  object-fit:cover;object-position:54% 50%;
+}
+.sheet--vine .vine-copy{position:relative;width:466px;height:100%;display:flex;flex-direction:column}
+.sheet--vine .page-head{padding:34px 40px 0 56px}
+.sheet--vine .page-rule{margin:12px 40px 0 56px}
+.sheet--vine .vine-mark{display:block;height:54px;width:auto;margin:34px 0 16px 56px}
+.sheet--vine .kicker{padding:0 40px 0 56px}
+.sheet--vine .section-title{
+  padding:6px 40px 0 56px;font-size:58px;line-height:.92;
+}
+.sheet--vine .vine-lede{
+  font-family:var(--body);font-size:14.5px;line-height:1.6;color:#ebdec4;
+  padding:20px 40px 0 56px;
+}
+.sheet--vine .vine-body{
+  font-family:var(--body);font-size:13px;line-height:1.68;color:#9aa59e;
+  padding:14px 40px 0 56px;
+}
+.sheet--vine .vine-pull{
+  font-family:var(--sans);font-weight:500;font-size:18px;line-height:1.36;
+  color:#3fbba1;margin:26px 40px 0 56px;
+  border-left:2px solid #b9a04b;padding-left:18px;
+}
+.sheet--vine .vine-serve{
+  display:flex;gap:16px;align-items:flex-end;
+  margin:30px 40px 92px 56px;padding-top:24px;border-top:1px solid #104333;
+  margin-top:auto;   /* anchor the serve to the foot of the column */
+}
+.sheet--vine .vine-serve img{width:132px;height:172px;object-fit:cover;flex:none}
+.sheet--vine .vine-serve figcaption{
+  font-family:var(--body);font-size:11px;line-height:1.5;color:#9aa59e;
+}
+.sheet--vine .vine-serve figcaption strong{
+  display:block;font-family:var(--sans);font-weight:600;font-size:9.5px;
+  letter-spacing:.2em;text-transform:uppercase;color:#b9a04b;margin-bottom:5px;
+}
+.sheet--vine .vine-foot{
+  position:absolute;left:56px;bottom:42px;
+  font-family:var(--sans);font-size:9.5px;font-weight:600;letter-spacing:.3em;
+  text-transform:uppercase;color:#b9a04b;
+}
+
+/* ---------- the mark carries the plates ---------- */
+.sheet--plate .plate-mark{
+  position:absolute;top:44px;left:52px;z-index:3;width:146px;height:auto;
+  filter:drop-shadow(0 2px 14px rgba(9,17,12,.75));
+}
+.plate-cap .plate-sub{
+  display:block;font-family:var(--body);font-size:13px;line-height:1.55;
+  color:#ebdec4;opacity:.84;margin-top:10px;max-width:46ch;
+}
+
+/* the card art is cropped to its head (vine framing + wordmark); the guidelines'
+   specimen body underneath is lorem and must not reach the kit */
+#the-mark .gal-item--card img{object-position:50% 42%}
+
+/* the icon reads as a brand device on the dividers, not a dingbat */
+.div-orn .div-icon{height:46px}
+/* z-index:0 makes .div-frame a stacking context so the watermark can sit at -1:
+   behind the frame's own content but still above the sheet photograph. Do NOT
+   raise the children instead — that overrides .div-foot's absolute positioning
+   and drops it on top of the standfirst. */
+.sheet--divider .div-frame{position:relative;z-index:0}
+.sheet--divider .div-frame::before{
+  content:"";position:absolute;left:50%;top:50%;z-index:-1;
+  width:560px;height:560px;transform:translate(-50%,-56%);
+  background:url("img/jade-icon-white.svg") center/contain no-repeat;
+  opacity:.05;pointer-events:none;
+}
 /* press.css ends with a warm black/gold dark theme whose colours are literal hex,
    not variables — so the :root shift above cannot reach it. Re-point those exact
    fills at the emerald equivalents. Brass (gold hairlines, #6cb79e) is kept. */
@@ -160,12 +238,12 @@ html{background:#09110c}
 .fin-tbl thead th{font:700 8.5px/1 Jost,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:8px}
 .fin-tbl tr.tot td{font-family:var(--serif);font-size:12.5px;font-weight:800;color:#ebdec4;border-bottom:1px solid rgba(63,187,161,.42)}
 .fin-tbl tbody tr:last-child td{border-bottom:0}
-/* the-return (19/22): dense sheet — two full tables + band + cards. Flow the foot-note in-line
+/* the-return (20/23): dense sheet — two full tables + band + cards. Flow the foot-note in-line
    (instead of pinning it absolute) so it can't overlap the cards, and mildly tighten the tables. */
 #the-return .fin-tbl{margin-top:13px}
 #the-return .fin-tbl th,#the-return .fin-tbl td{padding-top:5px;padding-bottom:5px}
 #the-return .foot-note{position:static;margin:6px 56px 0;padding-top:10px}
-/* chef-partner (09/22) + bar-partner (11/22): shared portrait-hero + 2-up action strip.
+/* chef-partner (10/23) + bar-partner (12/23): shared portrait-hero + 2-up action strip.
    Roman's sheet is the reference; Todd Sheet 1 reuses the same classes. The Todd-specific
    object-position overrides follow the shared rules so they win on equal specificity. */
 #bar-partner .bar-hero,#chef-partner .bar-hero{display:grid;grid-template-columns:300px 1fr;gap:26px;padding:16px 56px 0;align-items:start}
@@ -179,7 +257,7 @@ html{background:#09110c}
 #chef-partner .bar-portrait img{object-position:50% 16%}
 #chef-partner .bar-strip figure:nth-child(1) img{object-position:50% 6%}
 #chef-partner .bar-strip figure:nth-child(2) img{object-position:50% 2%}
-/* construction (15/22): eight real phases — 4 across, 2 down, no empty cell */
+/* construction (16/23): eight real phases — 4 across, 2 down, no empty cell */
 #construction .gal-grid{grid-template-columns:repeat(4,1fr)}
 /* reserved tiles — construction photography drops in as each phase is shot */
 .ph-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;height:132px;border-radius:10px;background:#09110c;border:1px dashed rgba(63,187,161,.34)}
@@ -451,57 +529,80 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ EDITORIAL PLATE · GALA OPENER ============ -->
   <section class="sheet sheet--plate" id="plate-gala" aria-label="An Editorial Preview">
+    <img class="plate-mark" src="img/jade-primary-white.svg" alt="Jade Manila">
     <img src="img/fin-editorial-live.jpg" alt="A live set at Jade Manila — the singer at the microphone on the floor and the band playing on the mezzanine.">
     <div class="plate-cap">
-      <p>A room that begins with dinner &mdash; and becomes the night.</p>
+      <p>Jade gives the Philippines nights it has never had.</p>
+      <span class="plate-sub">A room that begins with dinner &mdash; and becomes the night.</span>
       <span class="plate-meta">Jade Manila · An Editorial Preview</span>
     </div>
   </section>
 
   <!-- ============ PAGE 2 · CONTENTS ============ -->
   <section class="sheet" id="contents" aria-labelledby="toc-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Contents · 02/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Contents · 02/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="toc-heading">Contents</h2>
-    <p class="section-sub">Twenty-two pages, three parts — an evening at Jade, the menu, and the investment.</p>
+    <p class="section-sub">Twenty-three pages, three parts — an evening at Jade, the menu, and the investment.</p>
 
     <div class="toc-cols">
       <div class="toc-part">
         <h3><span class="toc-rn">I</span>An Evening at Jade</h3>
         <ul>
-          <li><span>The Story of Jade</span><span class="toc-pg">04</span></li>
-          <li><span>The Grand Room</span><span class="toc-pg">05</span></li>
-          <li><span>An Evening at Jade</span><span class="toc-pg">06</span></li>
-          <li><span>Rooms &amp; Details</span><span class="toc-pg">07</span></li>
+          <li><span>The Jade Vine</span><span class="toc-pg">03</span></li>
+          <li><span>The Story of Jade</span><span class="toc-pg">05</span></li>
+          <li><span>The Grand Room</span><span class="toc-pg">06</span></li>
+          <li><span>An Evening at Jade</span><span class="toc-pg">07</span></li>
+          <li><span>Rooms &amp; Details</span><span class="toc-pg">08</span></li>
         </ul>
         <h3><span class="toc-rn">II</span>Menu</h3>
         <ul>
-          <li><span>Todd English &middot; The Chef Partner</span><span class="toc-pg">09</span></li>
-          <li><span>From Todd&rsquo;s Kitchen</span><span class="toc-pg">10</span></li>
-          <li><span>The Bar &amp; The Cocktails</span><span class="toc-pg">11</span></li>
-          <li><span>The Cellar</span><span class="toc-pg">12</span></li>
+          <li><span>Todd English &middot; The Chef Partner</span><span class="toc-pg">10</span></li>
+          <li><span>From Todd&rsquo;s Kitchen</span><span class="toc-pg">11</span></li>
+          <li><span>The Bar &amp; The Cocktails</span><span class="toc-pg">12</span></li>
+          <li><span>The Cellar</span><span class="toc-pg">13</span></li>
         </ul>
       </div>
       <div class="toc-part">
         <h3><span class="toc-rn">III</span>The Investment</h3>
         <ul>
-          <li><span>The Road to October</span><span class="toc-pg">14</span></li>
-          <li><span>The Opportunity</span><span class="toc-pg">15</span></li>
-          <li><span>Where the ₱38 Million Goes</span><span class="toc-pg">16</span></li>
-          <li><span>Five-Year Forecast</span><span class="toc-pg">17</span></li>
-          <li><span>The Return</span><span class="toc-pg">18</span></li>
-          <li><span>How the Room Earns</span><span class="toc-pg">19</span></li>
-          <li><span>The Mark</span><span class="toc-pg">20</span></li>
-          <li><span>Press Assets</span><span class="toc-pg">21</span></li>
-          <li><span>Contact</span><span class="toc-pg">22</span></li>
+          <li><span>The Road to October</span><span class="toc-pg">15</span></li>
+          <li><span>The Opportunity</span><span class="toc-pg">16</span></li>
+          <li><span>Where the ₱38 Million Goes</span><span class="toc-pg">17</span></li>
+          <li><span>Five-Year Forecast</span><span class="toc-pg">18</span></li>
+          <li><span>The Return</span><span class="toc-pg">19</span></li>
+          <li><span>How the Room Earns</span><span class="toc-pg">20</span></li>
+          <li><span>The Mark</span><span class="toc-pg">21</span></li>
+          <li><span>Press Assets</span><span class="toc-pg">22</span></li>
+          <li><span>Contact</span><span class="toc-pg">23</span></li>
         </ul>
       </div>
     </div>
 
-    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 21.</p>
+    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 22.</p>
   </section>
 
-  <!-- ============ PAGE 3 · DIVIDER — PART I ============ -->
+  <!-- ============ PAGE 3 · THE JADE VINE — the brand's own origin story ============ -->
+  <section class="sheet sheet--vine" id="the-vine" aria-labelledby="vine-heading">
+    <img class="vine-bleed" src="img/vine-tall.jpg" alt="The Philippine jade vine in bloom — turquoise flowers cascading in the dark.">
+    <div class="vine-copy">
+      <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Story · 03/23</span></div>
+      <div class="page-rule"></div>
+      <img class="vine-mark" src="img/jade-icon-verdigris.svg" alt="">
+      <p class="kicker">The Philippine Jade Vine</p>
+      <h2 class="section-title" id="vine-heading">Rare by design</h2>
+      <p class="vine-lede">The Philippine jade vine blooms once a year, only in these islands. Its color is one of the rarest in nature. It comes alive after dark, when bats arrive at night for its nectar and carry a little of the flower away. Because they came, it blooms again.</p>
+      <p class="vine-body">Jade works the same way. The vine inspires our cocktails, our dishes and every night we host. But a room is only a room until the night set arrives: the hungry, the curious, the ones who stay for one more. They are the reason Jade blooms.</p>
+      <p class="vine-pull">Like the jade vine,<br>it isn&rsquo;t for every day.</p>
+      <figure class="vine-serve">
+        <img src="img/jade-cocktail.jpg" alt="The house jade serve — a coupe the colour of the vine, finished with a single leaf.">
+        <figcaption><strong>The house serve</strong>The vine is the reference, not the garnish — the colour runs from the flower to the glass.</figcaption>
+      </figure>
+      <span class="vine-foot">Philippine soul · Global table</span>
+    </div>
+  </section>
+
+  <!-- ============ PAGE 4 · DIVIDER — PART I ============ -->
   <section class="sheet sheet--divider" id="part-1" aria-label="Part I — An Evening at Jade">
     <div class="div-frame">
       <span class="div-part">Part I</span>
@@ -509,13 +610,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">An Evening at Jade</h2>
       <span class="div-orn"><img class="div-icon" src="img/jade-icon-gold.svg" alt=""></span>
       <p class="div-line">A green velvet corridor, a lit slab of onyx, and a room that does not tell you what time it is.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 03/22</span>
+      <span class="div-foot">Jade Manila · Media Kit 2026 · 04/23</span>
     </div>
   </section>
 
   <!-- ============ PAGE 4 · THE STORY OF JADE ============ -->
   <section class="sheet" id="the-house" aria-labelledby="bio-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 04/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 05/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>When the iconic Bank Bar closed, Jade by Todd English found its new home.</h2>
 
@@ -556,16 +657,17 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 5 · PLATE — THE GRAND ROOM ============ -->
   <section class="sheet sheet--plate" id="plate-room" aria-label="The Grand Room">
+    <img class="plate-mark" src="img/jade-primary-white.svg" alt="Jade Manila">
     <img src="img/fin-grandroom-dj.jpg" alt="The Grand Room at Jade Manila — the DJ booth beneath the gilded arch and a full dance floor.">
     <div class="plate-cap">
       <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
-      <span class="plate-meta">Jade Manila · The Grand Room · 05/22</span>
+      <span class="plate-meta">Jade Manila · The Grand Room · 06/23</span>
     </div>
   </section>
 
   <!-- ============ PAGE 6 · AN EVENING AT JADE ============ -->
   <section class="sheet" id="an-evening" aria-labelledby="tl-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 06/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 07/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="tl-heading">An Evening at Jade</h2>
 
@@ -604,7 +706,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
   <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 07/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 08/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
     <p class="section-sub">Six rooms, one material palette — emerald, brass, onyx and velvet, from the corridor to the cellar.</p>
@@ -662,13 +764,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">Menu</h2>
       <span class="div-orn"><img class="div-icon" src="img/jade-icon-gold.svg" alt=""></span>
       <p class="div-line">Todd English at the pass, Roman Mutzner behind the bar, and a cellar built for a long night.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 08/22</span>
+      <span class="div-foot">Jade Manila · Media Kit 2026 · 09/23</span>
     </div>
   </section>
 
   <!-- ============ PAGE 16 · THE CHEF PARTNER — TODD ENGLISH ============ -->
   <section class="sheet" id="chef-partner" aria-labelledby="todd-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 09/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 10/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="todd-heading">Todd English</h2>
     <p class="section-sub">The Chef Partner &mdash; five James Beard Awards, fifteen cookbooks, and his first fine-dining room in the Philippines.</p>
@@ -701,7 +803,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ FROM TODD'S KITCHEN (moved into Todd's section) ============ -->
   <section class="sheet" id="from-the-kitchen" aria-labelledby="gallery-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 10/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 11/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="gallery-heading">From Todd&rsquo;s Kitchen</h2>
     <p class="section-sub">The opening menu &mdash; one bites, raw and chilled, pasta crossed with Japan, and the robata fire.</p>
@@ -753,7 +855,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 18 · THE BAR PARTNER — ROMAN MUTZNER ============ -->
   <section class="sheet" id="bar-partner" aria-labelledby="roman-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 11/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 12/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="roman-heading">The Bar Partner</h2>
     <p class="section-sub">The newest addition to the house — and one of the most decorated bartenders in Europe — shaping the Jade bar.</p>
@@ -786,7 +888,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 21 · THE CELLAR ============ -->
   <section class="sheet" id="the-cellar" aria-labelledby="cellar-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 12/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 13/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="cellar-heading">The Cellar</h2>
     <p class="section-sub">A cold room built for sake first and wine second — the reverse of every other list in the city.</p>
@@ -829,13 +931,13 @@ html.v7hero-on .v7hero{display:block}
       <h2 class="div-title">The Investment</h2>
       <span class="div-orn"><img class="div-icon" src="img/jade-icon-gold.svg" alt=""></span>
       <p class="div-line">A ₱38 million build, a ₱13 million ticket, and a room designed to earn its keep from the first Saturday.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 13/22</span>
+      <span class="div-foot">Jade Manila · Media Kit 2026 · 14/23</span>
     </div>
   </section>
 
   <!-- ============ PAGE 30 · ROAD TO OCTOBER ============ -->
   <section class="sheet" id="road-to-october" aria-labelledby="road-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 14/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 15/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="road-heading">The Road to October</h2>
 
@@ -866,7 +968,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 32 · THE OPPORTUNITY ============ -->
   <section class="sheet" id="the-opportunity" aria-labelledby="opp-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 15/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 16/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="opp-heading">The Opportunity</h2>
     <p class="section-sub">The same five-year model, run twice — once on conservative trade, once on the room performing to the capacity it was built for.</p>
@@ -917,7 +1019,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 33 · THE ₱38 MILLION BUILD ============ -->
   <section class="sheet" id="the-build" aria-labelledby="build-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 16/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 17/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="build-heading">Where the ₱38 Million Goes</h2>
       <p class="foot-note"><strong>Note:</strong> the line items on this page total ₱40,083,352 &mdash; the build as originally costed. The current total project cost is ₱38,000,000; the itemised allocation is being updated to match.</p>
@@ -975,7 +1077,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 34 · FIVE-YEAR FORECAST ============ -->
   <section class="sheet" id="forecast" aria-labelledby="fcst-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 17/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 18/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="fcst-heading">Five-Year Forecast</h2>
     <p class="section-sub">In millions of pesos. Two rooms, two revenue lines — dinner service and the late half of the night — modelled separately and summed.</p>
@@ -1021,7 +1123,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 35 · THE RETURN ============ -->
   <section class="sheet" id="the-return" aria-labelledby="return-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 18/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 19/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="return-heading">The Return on ₱13 Million</h2>
     <p class="section-sub">An 18% holding, distributions paid annually out of net profit. Both cases below are drawn from the same model as the forecast on the previous page.</p>
@@ -1084,7 +1186,7 @@ html.v7hero-on .v7hero{display:block}
 
   <!-- ============ PAGE 36 · UNIT ECONOMICS ============ -->
   <section class="sheet" id="unit-economics" aria-labelledby="unit-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 19/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 20/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="unit-heading">How the Room Earns</h2>
     <p class="section-sub">Every area in the house is sold on a minimum spend rather than a cover charge. Filled once, the room takes ₱262,000 in a night.</p>
@@ -1135,10 +1237,10 @@ html.v7hero-on .v7hero{display:block}
   <!-- ============ PAGE 37 · PRESS ASSETS ============ -->
     <!-- ============ PAGE 21 · THE MARK ============ -->
   <section class="sheet" id="the-mark" aria-labelledby="mark-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Mark · 20/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Mark · 21/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="mark-heading">The Mark</h2>
-    <p class="section-sub">The identity as it appears in the room — cast in brass, foil-stamped on cotton, fired into porcelain, and thrown in light across the marble.</p>
+    <p class="section-sub">The identity as it appears in the room — cast in brass, foil-stamped on cotton, fired into porcelain, enamelled onto silver, and thrown in light across the marble.</p>
 
     <figure class="gal-hero">
       <img src="img/brand-signage.jpg" alt="The Jade Manila wordmark in brass on the green marble lobby wall.">
@@ -1148,21 +1250,33 @@ html.v7hero-on .v7hero{display:block}
     <div class="gal-grid">
       <figure class="gal-item">
         <img src="img/brand-card.jpg" alt="The Jade Manila calling card, gold foil on cotton stock.">
-        <figcaption>Gold foil on cotton · The Card</figcaption>
+        <figcaption>Gold foil · The Card</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/brand-plate.jpg" alt="The wordmark fired into the rim of a porcelain service plate.">
-        <figcaption>Fired into porcelain · The Service Plate</figcaption>
+        <figcaption>Porcelain · The Plate</figcaption>
       </figure>
       <figure class="gal-item">
         <img src="img/brand-laser.jpg" alt="The wordmark projected in green light across a marble table beneath jade vine blooms.">
-        <figcaption>Projected in light · The Tayabak Table</figcaption>
+        <figcaption>In light · Tayabak Table</figcaption>
+      </figure>
+      <figure class="gal-item gal-item--card">
+        <img src="img/app-menucard.jpg" alt="The cocktail card — the wordmark set between jade vine blooms above the house serve.">
+        <figcaption>Vine &amp; wordmark · The Card</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/app-tray.jpg" alt="The wordmark on a jade-green plate set into a scalloped silver tray.">
+        <figcaption>Silver &amp; enamel · The Tray</figcaption>
+      </figure>
+      <figure class="gal-item">
+        <img src="img/app-coasters.jpg" alt="A stack of jade-green coasters, the wordmark foiled on the face.">
+        <figcaption>Foiled on board · The Coaster</figcaption>
       </figure>
     </div>
   </section>
 
 <section class="sheet" id="press-assets" aria-labelledby="assets-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Press Assets · 21/22</span></div>
+    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Press Assets · 22/23</span></div>
     <div class="page-rule"></div>
     <h2 class="section-title" id="assets-heading">Press Assets</h2>
     <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
@@ -1195,7 +1309,7 @@ html.v7hero-on .v7hero{display:block}
       <p class="back-line">Reservations, private dining &amp; press inquiries via the house</p>
       <p class="back-line back-site">jadebarmanila.com</p>
       <span class="back-rule"></span>
-      <p class="back-foot">Produced October 2026 · All rooms, menus and capacities current at time of publication · 22/22</p>
+      <p class="back-foot">Produced October 2026 · All rooms, menus and capacities current at time of publication · 23/23</p>
     </div>
   </section>
 

@@ -2,6 +2,51 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-03 (later) — Let the brand and the wording carry the deck
+
+Leon: *"i would like the brand and the wording to show through more, there was alot
+more from the jade guidelines i feel like we havent utilized, like the jade flower,
+the logo etc."* The first pass applied the **system** (colour, type, logo files) but not
+the **story**. Extracted 46 images from the guidelines and put the best of them to work.
+
+**New page 03 · THE JADE VINE** — the kit now opens on the brand's own origin story,
+in the book's own words: the vine blooms once a year, only in these islands, comes alive
+after dark when bats carry a little of the flower away, *"Because they came, it blooms
+again."* Then the turn: *a room is only a room until the night set arrives.* Headline is
+**RARE BY DESIGN**, the full-height vine photograph runs down the right, and the house
+serve is inset at the foot to tie the flower to the glass. Deck goes **22 → 23 pages**;
+all markers, the contents list and the cross-reference renumbered.
+
+**The flower, used properly** — `vine-hero`, `vine-tall`, `jade-cocktail`, `jade-stone`,
+`brand-texture`, `vine-interior` installed (530 KB for ten assets).
+
+**The mark, given presence**
+- The primary wordmark now sits on both full-bleed plates.
+- The vine icon is a 560px watermark behind every divider, and the divider ornament
+  went from a generic `✦` to the brand icon at 46px.
+- **The Mark** page grew from three applications to six, adding the cocktail card,
+  the silver tray and the coasters from the guidelines' own mockups.
+
+**The wording**
+- Editorial plate now leads with **"Jade gives the Philippines nights it has never had."**
+- Vine page closes on **"Philippine soul · Global table"** and the book's
+  *"Like the jade vine, it isn't for every day."*
+
+**Judgement calls**
+- The guidelines' exterior-signage mockup carries a **David Guetta "Opening DJ" poster**.
+  Left it out — in an investor kit that reads as a booking claim, and no one has told us
+  it is one. The asset is in `img/` only if that changes.
+- The cocktail-card mockup's body is **lorem ipsum**, so the art is cropped to its head
+  (vine framing + wordmark). Checked: no lorem reaches any page.
+
+**Trap:** `.sheet--divider .div-frame > *{position:relative}` to lift text above the
+watermark **overrode `.div-foot`'s `position:absolute`** and dropped the page number on
+the standfirst. Correct fix is a stacking context on the frame (`position:relative;
+z-index:0`) with the `::before` at `z-index:-1` — never restyle the children.
+
+Verified: 24 sheets, 0 vertical/horizontal overflow, 0 broken images, no lorem, no banned
+terms, no exclamation marks.
+
 ## 2026-10-03 — Brand Guidelines V01 applied across the whole kit
 
 Source: `Jade supper club/Current Jade Updates/Jade Brand Guidelines V01 .pdf` (21pp,
