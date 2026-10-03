@@ -62,3 +62,23 @@
 
 /* text-led pages: same bottom breathing room as the gallery pages */
 .eh-senses,#a-day{padding-bottom:30px}
+
+/* ===== Brand palette — the kit's own materials palette (Wood · Warm Light · Stone · Greenery · Copper) ===== */
+:root{
+  --bg:#e4ddd1; --paper:#fbf7ef; --panel:#f4ead8; --panel2:#efe6d6;
+  --ink:#3a2a1d; --body:#5c4a3b; --muted:#847565; --faint:#b8b0a3;
+  --line:#e7dfd2; --line2:#d4c9b8; --rule:#6b4a2e;
+  --accent:#b0663a;   /* Copper */
+  --accent2:#5f7356;  /* Greenery */
+}
+.sheet--cover-cream{background:linear-gradient(176deg,#fbf6ec 0%,#f6eddc 70%,#f0e4cd 100%)}
+.sheet--cover-cream .cc-top .r,.sheet--cover-cream .cc-eyebrow,.sheet--cover-cream .cc-name .s{color:var(--accent)}
+.sheet--cover-cream .cc-rule{background:rgba(176,102,58,.5)}
+.sheet--cover-cream .cc-eyebrow i{background:#c98a5e}
+.sheet--cover-cream .cc-sub{color:var(--body)}
+.sheet--cover-cream .cc-frame{border-color:rgba(176,102,58,.55)}
+.sheet--cover-cream .cc-frame .tag{color:var(--ink);border-color:rgba(176,102,58,.45)}
+/* Greenery as the secondary accent */
+.eh-day small,.philo-tenets .pn,.spot-facts li strong,.eh-cols h4{color:var(--accent2)}
+.eh-day:before{background:var(--accent2)}
+.eh-day li:before{border-color:var(--accent2)}
