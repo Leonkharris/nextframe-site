@@ -305,3 +305,21 @@ figure.ph.arch { border-radius: 999px 999px 0 0; }
 .duo.clinic { grid-template-columns: 1fr 1fr 1fr; gap: 18px; width: 520px; }
 .vis-stack { display: grid; grid-template-rows: 1fr 1fr; gap: 9px; background: var(--gold); }
 .vis-stack figure { height: 100%; min-height: 0; }
+/* Art Sanctuary (cobalt / copper / oxblood accents) */
+.art { --art-cobalt: #24479a; }
+.art .title-block .h1 em { color: var(--art-cobalt); }
+.art .art-band { position: absolute; left: calc(var(--m) + 9px); top: 186px; width: 600px; height: 340px; }
+.art .art-side { position: absolute; left: 700px; right: var(--m); top: 190px; }
+.art .art-side .p + .p { margin-top: 12px; }
+.art .acs { position: absolute; left: var(--m); right: var(--m); top: 556px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.art .ac { border-top: 3px solid var(--art-cobalt); padding-top: 9px; }
+.art .ac:nth-child(2) { border-top-color: var(--copper); } .art .ac:nth-child(3) { border-top-color: var(--oxblood); } .art .ac:nth-child(4) { border-top-color: var(--gold-deep); }
+.art .ac h4 { font-family: var(--deco); font-weight: 400; font-size: 15px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink); }
+.art .ac p { font-family: var(--serif); font-size: 13px; font-weight: 500; line-height: 1.35; color: var(--body); margin: 4px 0 7px; }
+.t-lacquer .hi { border-top-color: var(--hair); }
+.t-lacquer .hi h5 { color: var(--ink); font-size: 16px; }
+.t-lacquer .hi p { color: var(--body); font-size: 13.5px; }
+.t-lacquer .tag.rb { color: #b9b77a; } .t-lacquer .tag.rb::before { background: #b9b77a; }
+.t-lacquer .tag.er { color: #d98a62; } .t-lacquer .tag.er::before { border-color: #d98a62; }
+.t-lacquer .modes span { color: var(--gold-light); border-color: var(--hair-strong); }
+.art .art-band { top: 178px; height: 380px; } .art .acs { top: 596px; }
