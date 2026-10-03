@@ -2,20 +2,43 @@
    Sheets are exactly 816×1056px (8.5×11in @96dpi) so screen == print. */
 
 :root {
-  --ink: #241e15;
-  --espresso: #6b4322;
-  --clay: #8a6238;
-  --gold: #54c79a;
-  --cream: #fbf7ef;
-  --panel: #f0e8da;
-  --panel-cool: #eef0f2;
-  --serif: 'Bodoni Moda', Georgia, serif;
+  /* ---- Jade Manila palette · Brand Guidelines V01, Oct 2026 ---- */
+  --woodsmoke:    #09110c;
+  --jade-green:   #032316;
+  --spring-green: #21725f;
+  --verdigris:    #3fbba1;
+  --almond:       #ebdec4;
+  --white-smoke:  #f6f5f1;
+  --gold-solid:   #b9a04b;
+  --brass:        #5c2a00;
+  --gold-leaf: linear-gradient(100deg,#663400,#916c27,#b9a04b,#dac47f,#fcebc3);
+
+  /* ---- deck roles, mapped onto the palette ---- */
+  --ink: var(--woodsmoke);
+  --espresso: var(--jade-green);
+  --clay: var(--spring-green);
+  --gold: var(--spring-green);   /* accent on light stock */
+  --cream: var(--white-smoke);
+  --panel: var(--almond);
+  --panel-cool: var(--white-smoke);
+
+  /* ---- type · Acumin Extra Condensed Black -> Archivo 62%/900,
+          Futura Bold -> Jost 700, body is Figtree exactly ---- */
+  --display: 'Archivo', 'Arial Narrow', system-ui, sans-serif;
   --sans: 'Jost', system-ui, sans-serif;
+  --body: 'Figtree', system-ui, sans-serif;
+  --serif: var(--sans);          /* legacy alias: the brand has no serif outside the logo */
+}
+
+/* Dark stock carries the bright half of the palette. */
+.sheet--cover, .sheet--plate, .sheet--divider, .sheet--back, .sheet--dark {
+  --gold: var(--verdigris);
+  --clay: var(--verdigris);
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
 
-html { background: #e6ded0; }
+html { background: #ebdec4; }
 body {
   font-family: var(--sans);
   color: var(--ink);
@@ -34,7 +57,7 @@ body {
   width: 816px;
   height: 1056px;
   background: var(--cream);
-  box-shadow: 0 18px 50px rgba(36, 30, 21, 0.22);
+  box-shadow: 0 18px 50px rgba(9, 17, 12, 0.22);
   overflow: hidden;
   position: relative;
   flex: none;
@@ -59,7 +82,7 @@ img { display: block; }
   letter-spacing: 0.06em;
   color: var(--espresso);
   background: var(--panel);
-  border: 1px solid #e0d3bd;
+  border: 1px solid #ebdec4;
   border-radius: 999px;
   padding: 5px 12px;
 }
@@ -101,7 +124,7 @@ img { display: block; }
 .section-sub {
   font-size: 13px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
   padding: 0 56px;
   max-width: 62ch;
 }
@@ -184,7 +207,7 @@ img { display: block; }
   font-family: var(--sans);
   font-weight: 600;
   text-transform: uppercase;
-  color: #f3ead9;
+  color: #ebdec4;
   font-size: 18px;
   letter-spacing: 0.3em;
   margin-top: 8px;
@@ -244,7 +267,7 @@ img { display: block; }
 .bio-text p {
   font-size: 13px;
   line-height: 1.75;
-  color: #453d31;
+  color: #0a2b1c;
   margin-bottom: 14px;
 }
 .bio-text .drop {
@@ -305,9 +328,9 @@ img { display: block; }
   list-style: none;
   font-size: 11.5px;
   line-height: 1.5;
-  color: #453d31;
+  color: #0a2b1c;
   padding: 7px 0;
-  border-top: 1px solid #e0d3bd;
+  border-top: 1px solid #ebdec4;
 }
 .facts-card li strong { color: var(--ink); }
 
@@ -327,7 +350,7 @@ img { display: block; }
   font-family: var(--serif);
   font-weight: 800;
   font-size: 34px;
-  color: #e8cfa4;
+  color: #dac47f;
   line-height: 1;
 }
 .stat-band .sl {
@@ -336,7 +359,7 @@ img { display: block; }
   font-weight: 600;
   letter-spacing: 0.16em;
   text-transform: uppercase;
-  color: #cbb28b;
+  color: #b9a04b;
   margin-top: 8px;
 }
 
@@ -350,7 +373,7 @@ img { display: block; }
   grid-template-columns: 268px 1fr;
   gap: 26px;
   padding: 20px 0;
-  border-bottom: 1px solid #e2d7c3;
+  border-bottom: 1px solid #ebdec4;
   align-items: center;
 }
 .venue:last-child { border-bottom: none; }
@@ -373,7 +396,7 @@ img { display: block; }
 .venue-copy p.vbody {
   font-size: 12px;
   line-height: 1.65;
-  color: #5c5245;
+  color: #9aa59e;
   margin-bottom: 12px;
 }
 .venue .chip { font-size: 9.5px; }
@@ -387,7 +410,7 @@ img { display: block; }
 }
 .also-card {
   background: #fff;
-  border: 1px solid #e2d7c3;
+  border: 1px solid #ebdec4;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -407,7 +430,7 @@ img { display: block; }
 .also-card p {
   font-size: 11px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
   margin-bottom: 10px;
 }
 
@@ -431,7 +454,7 @@ img { display: block; }
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(36, 30, 21, 0.62); /* solid rgba — no gradient over image (print bug) */
+  background: rgba(9, 17, 12, 0.62); /* solid rgba — no gradient over image (print bug) */
   padding: 13px 22px;
 }
 .gal-cap p {
@@ -439,7 +462,7 @@ img { display: block; }
   font-style: italic;
   font-size: 18px;
   line-height: 1.35;
-  color: #f7f0e2;
+  color: #f6f5f1;
 }
 .gal-grid {
   display: grid;
@@ -508,7 +531,7 @@ img { display: block; }
 .reach-card p {
   font-size: 10.5px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
 }
 .seen-in {
   margin: 20px 56px 0;
@@ -549,11 +572,11 @@ img { display: block; }
    PAGE 6 — THE LEGACY (dark archive sheet)
    ============================================================ */
 
-.sheet--dark { background: #2a2118; }
-.sheet--dark .page-head .ph-brand { color: #f0e8da; }
+.sheet--dark { background: #09110c; }
+.sheet--dark .page-head .ph-brand { color: #ebdec4; }
 .sheet--dark .page-head .ph-no { color: var(--gold); }
-.sheet--dark .section-title { color: #f7f0e2; }
-.sheet--dark .section-sub { color: #b3a68f; }
+.sheet--dark .section-title { color: #f6f5f1; }
+.sheet--dark .section-sub { color: #9aa59e; }
 
 .legacy-grid {
   display: grid;
@@ -562,8 +585,8 @@ img { display: block; }
   padding: 24px 56px 0;
 }
 .legacy-card {
-  background: #352a1e;
-  border: 1px solid #4a3b29;
+  background: #0a2b1c;
+  border: 1px solid #0a2b1c;
   border-radius: 14px;
   overflow: hidden;
 }
@@ -580,7 +603,7 @@ img { display: block; }
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--gold);
-  border: 1px solid #5b4930;
+  border: 1px solid #104333;
   border-radius: 999px;
   padding: 4px 10px;
   margin-bottom: 9px;
@@ -589,19 +612,19 @@ img { display: block; }
   font-family: var(--serif);
   font-weight: 800;
   font-size: 16.5px;
-  color: #f7f0e2;
+  color: #f6f5f1;
   margin-bottom: 5px;
 }
 .legacy-card p {
   font-size: 10.5px;
   line-height: 1.55;
-  color: #b3a68f;
+  color: #9aa59e;
 }
 .legacy-close {
   font-family: var(--serif);
   font-style: italic;
   font-size: 16px;
-  color: #d8c49b;
+  color: #dac47f;
   text-align: center;
   padding: 26px 56px 0;
 }
@@ -636,7 +659,7 @@ img { display: block; }
 .hotel-row p.vbody {
   font-size: 11.5px;
   line-height: 1.65;
-  color: #5c5245;
+  color: #9aa59e;
   margin-bottom: 10px;
 }
 
@@ -647,7 +670,7 @@ img { display: block; }
   gap: 20px;
   align-items: center;
   padding: 16px 0;
-  border-bottom: 1px solid #e2d7c3;
+  border-bottom: 1px solid #ebdec4;
 }
 .next-row:last-child { border-bottom: none; }
 .next-row.no-photo { grid-template-columns: 44px 1fr; }
@@ -673,7 +696,7 @@ img { display: block; }
 .next-row p {
   font-size: 11px;
   line-height: 1.55;
-  color: #5c5245;
+  color: #9aa59e;
 }
 .next-row .chip { margin-top: 7px; }
 
@@ -711,7 +734,7 @@ img { display: block; }
 .honors-list li {
   list-style: none;
   font-size: 12px;
-  color: #453d31;
+  color: #0a2b1c;
   padding: 10px 0 10px 16px;
   border-left: 2px solid var(--gold);
   background: transparent;
@@ -720,7 +743,7 @@ img { display: block; }
   padding: 18px 56px 0;
   font-size: 11.5px;
   line-height: 1.7;
-  color: #5c5245;
+  color: #9aa59e;
   max-width: 68ch;
 }
 .honor-meta strong { color: var(--espresso); }
@@ -752,7 +775,7 @@ img { display: block; }
 .partner-col p {
   font-size: 10.5px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
 }
 
 /* ============================================================
@@ -762,7 +785,7 @@ img { display: block; }
 .sheet--back { padding: 26px; background: var(--espresso); }
 .back-inner {
   height: 100%;
-  border: 1px solid rgba(232, 207, 164, 0.45);
+  border: 1px solid rgba(218, 196, 127, 0.45);
   border-radius: 16px;
   display: flex;
   flex-direction: column;
@@ -776,7 +799,7 @@ img { display: block; }
   object-fit: cover;
   border-radius: 12px;
 }
-.back-inner .kicker { color: #e8cfa4; margin-top: 48px; }
+.back-inner .kicker { color: #dac47f; margin-top: 48px; }
 .back-inner h2 {
   font-family: var(--serif);
   font-weight: 800;
@@ -787,7 +810,7 @@ img { display: block; }
 .back-inner .back-line {
   font-size: 13px;
   line-height: 1.9;
-  color: #e6d9c2;
+  color: #ebdec4;
 }
 .back-inner .back-rule {
   width: 64px;
@@ -800,7 +823,7 @@ img { display: block; }
   font-size: 9.5px;
   letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: #b99e73;
+  color: #b9a04b;
 }
 
 /* bottom foot-note panel (pages 6 & 7) */
@@ -814,7 +837,7 @@ img { display: block; }
   padding: 18px 22px;
   font-size: 11px;
   line-height: 1.65;
-  color: #5c5245;
+  color: #9aa59e;
 }
 .foot-note strong { color: var(--espresso); }
 
@@ -850,7 +873,7 @@ img { display: block; }
   align-items: baseline;
   gap: 10px;
   font-size: 12px;
-  color: #4a4033;
+  color: #0a2b1c;
   padding: 5.5px 0;
 }
 .toc-part li > span:first-child { white-space: nowrap; }
@@ -858,7 +881,7 @@ img { display: block; }
   content: "";
   order: 2;
   flex: 1;
-  border-bottom: 1px dotted #c9bda8;
+  border-bottom: 1px dotted #9aa59e;
   transform: translateY(-3px);
 }
 .toc-pg {
@@ -871,8 +894,8 @@ img { display: block; }
 
 /* ---------- part dividers ---------- */
 .sheet--divider {
-  background: #1d1710;
-  color: #b3a68f;
+  background: #032316;
+  color: #9aa59e;
   padding: 40px;
   position: relative;
   overflow: hidden;
@@ -889,8 +912,8 @@ img { display: block; }
 #part-4 { background-image: radial-gradient(ellipse at 50% 48%, rgba(12,9,5,0.88) 0%, rgba(12,9,5,0.60) 52%, rgba(12,9,5,0.44) 100%), url("gallery/venues/divider-next.jpg"); }
 .div-frame {
   height: 100%;
-  border: 1px solid rgba(84, 199, 154, 0.55);
-  outline: 1px solid rgba(84, 199, 154, 0.25);
+  border: 1px solid rgba(63, 187, 161, 0.55);
+  outline: 1px solid rgba(63, 187, 161, 0.25);
   outline-offset: 6px;
   display: flex;
   flex-direction: column;
@@ -919,13 +942,13 @@ img { display: block; }
   font-family: var(--serif);
   font-size: 52px;
   font-weight: 800;
-  color: #f7f0e2;
+  color: #f6f5f1;
   margin: 0 0 18px;
 }
 .div-orn {
   font-size: 12px;
   letter-spacing: 0.5em;
-  color: rgba(84, 199, 154, 0.8);
+  color: rgba(63, 187, 161, 0.8);
   margin-bottom: 22px;
 }
 .div-line {
@@ -934,7 +957,7 @@ img { display: block; }
   font-size: 16px;
   line-height: 1.7;
   max-width: 430px;
-  color: #b3a68f;
+  color: #9aa59e;
 }
 .div-foot {
   position: absolute;
@@ -961,7 +984,7 @@ img { display: block; }
   left: 56px;
   right: 56px;
   bottom: 48px;
-  background: rgba(36, 30, 21, 0.72);
+  background: rgba(9, 17, 12, 0.72);
   border-left: 3px solid var(--gold);
   padding: 22px 28px;
 }
@@ -970,7 +993,7 @@ img { display: block; }
   font-style: italic;
   font-size: 21px;
   line-height: 1.5;
-  color: #f7f0e2;
+  color: #f6f5f1;
   margin: 0 0 10px;
 }
 .plate-meta {
@@ -1002,7 +1025,7 @@ img { display: block; }
   font-weight: 800;
   font-size: 33px;
   line-height: 1.06;
-  color: #f7f0e2;
+  color: #f6f5f1;
   margin: 0 0 14px;
 }
 .plate-cap--brand .pc-body {
@@ -1010,7 +1033,7 @@ img { display: block; }
   font-style: normal;
   font-size: 12.5px;
   line-height: 1.7;
-  color: #eadfce;
+  color: #ebdec4;
   margin: 0;
   max-width: 62ch;
 }
@@ -1032,7 +1055,7 @@ img { display: block; }
   grid-template-columns: 74px 1fr;
   gap: 16px;
   padding: 10px 0 11px;
-  border-bottom: 1px solid #e2d8c6;
+  border-bottom: 1px solid #ebdec4;
 }
 .tl-list li:last-child { border-bottom: none; }
 .tl-year {
@@ -1052,7 +1075,7 @@ img { display: block; }
 .tl-list p {
   font-size: 11px;
   line-height: 1.55;
-  color: #5c5245;
+  color: #9aa59e;
   margin: 0;
 }
 .tl-side img {
@@ -1078,7 +1101,7 @@ img { display: block; }
 .tl-card p {
   font-size: 11px;
   line-height: 1.65;
-  color: #5c5245;
+  color: #9aa59e;
   margin: 0;
 }
 
@@ -1145,7 +1168,7 @@ img { display: block; }
 .philo-tenets p {
   font-size: 11px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
   margin: 0;
 }
 
@@ -1162,7 +1185,7 @@ img { display: block; }
   font-family: var(--serif);
   font-size: 46px;
   font-weight: 800;
-  color: #f7f0e2;
+  color: #f6f5f1;
   margin: 0;
   padding: 4px 56px 18px;
 }
@@ -1183,12 +1206,12 @@ img { display: block; }
 .spot-copy p {
   font-size: 12.5px;
   line-height: 1.7;
-  color: #b3a68f;
+  color: #9aa59e;
   margin: 0 0 12px;
 }
 .spot-facts {
-  background: #352a1e;
-  border: 1px solid #4a3b29;
+  background: #0a2b1c;
+  border: 1px solid #0a2b1c;
   border-radius: 12px;
   padding: 18px 20px;
   align-self: start;
@@ -1205,7 +1228,7 @@ img { display: block; }
 .spot-facts li {
   font-size: 10.5px;
   line-height: 1.5;
-  color: #b3a68f;
+  color: #9aa59e;
   padding: 5px 0;
   border-top: 1px solid rgba(74, 59, 41, 0.7);
 }
@@ -1216,7 +1239,7 @@ img { display: block; }
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: rgba(84, 199, 154, 0.85);
+  color: rgba(63, 187, 161, 0.85);
   margin-bottom: 1px;
 }
 .spot-strip {
@@ -1242,18 +1265,18 @@ img { display: block; }
   font-style: italic;
   font-size: 13.5px;
   line-height: 1.6;
-  color: #b3a68f;
+  color: #9aa59e;
 }
 
 /* light variant of the facts card for cream feature pages */
 .spot-facts--light {
   background: var(--panel);
-  border: 1px solid #e2d8c6;
+  border: 1px solid #ebdec4;
 }
 .spot-facts--light h4 { color: var(--espresso); }
 .spot-facts--light li {
-  color: #5c5245;
-  border-top: 1px solid #e2d8c6;
+  color: #9aa59e;
+  border-top: 1px solid #ebdec4;
 }
 .spot-facts--light li strong { color: var(--clay); }
 
@@ -1278,7 +1301,7 @@ img { display: block; }
 .story-cols p {
   font-size: 12px;
   line-height: 1.75;
-  color: #4a4033;
+  color: #0a2b1c;
   margin: 0 0 12px;
 }
 .story-band {
@@ -1330,12 +1353,12 @@ img { display: block; }
   max-height: 100%;
   object-fit: contain;
   display: block;
-  box-shadow: 0 8px 18px rgba(36, 30, 21, 0.22);
+  box-shadow: 0 8px 18px rgba(9, 17, 12, 0.22);
 }
 .shelf-item figcaption {
   font-size: 10.5px;
   font-weight: 600;
-  color: #5c5245;
+  color: #9aa59e;
   text-align: center;
   margin-top: 9px;
   letter-spacing: 0.02em;
@@ -1371,7 +1394,7 @@ img { display: block; }
 .tv-col p {
   font-size: 11px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
   margin: 0;
 }
 .tv-logos {
@@ -1426,7 +1449,7 @@ img { display: block; }
 .feat-copy p {
   font-size: 12.5px;
   line-height: 1.7;
-  color: #4a4033;
+  color: #0a2b1c;
   margin: 0 0 12px;
 }
 .feat-strip {
@@ -1448,7 +1471,7 @@ img { display: block; }
   font-style: italic;
   font-size: 13px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
 }
 
 /* ---------- press assets page ---------- */
@@ -1496,7 +1519,7 @@ img { display: block; }
 .asset-row p {
   font-size: 11px;
   line-height: 1.6;
-  color: #5c5245;
+  color: #9aa59e;
   margin: 0;
 }
 
@@ -1505,145 +1528,145 @@ img { display: block; }
    Flips the whole kit to the Bénoit-style black/gold system.
    Layouts untouched; print-safe (solid fills only, no img
    filters, no gradient-over-image).
-   Palette: sheet #14100b · panel #211a11 · hairline rgba-gold
-   body text #b9ac93 · headings #f3ead9 · gold #54c79a
+   Palette: sheet #09110c · panel #032316 · hairline rgba-gold
+   body text #9aa59e · headings #ebdec4 · gold #3fbba1
    ============================================================ */
 
-html { background: #0a0806; }
+html { background: #09110c; }
 .sheet {
-  background: #14100b;
+  background: #09110c;
   box-shadow: 0 18px 50px rgba(0, 0, 0, 0.7);
 }
 
 /* shared type */
 .kicker { color: var(--gold); }
 .chip {
-  color: #a9e0cf;
-  background: #211a11;
-  border: 1px solid rgba(84, 199, 154, 0.4);
+  color: #6cb79e;
+  background: #032316;
+  border: 1px solid rgba(63, 187, 161, 0.4);
 }
-.page-head .ph-brand { color: #f3ead9; }
-.page-rule { background: rgba(84, 199, 154, 0.65); height: 1px; }
-.section-title { color: #f3ead9; }
-.section-sub { color: #b9ac93; }
+.page-head .ph-brand { color: #ebdec4; }
+.page-rule { background: rgba(63, 187, 161, 0.65); height: 1px; }
+.section-title { color: #ebdec4; }
+.section-sub { color: #9aa59e; }
 
 /* cover */
-.cover-issue { color: #a9e0cf; background: rgba(20, 16, 11, 0.85); }
-.cover-name { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(84, 199, 154, 0.5); }
-.cover-tag { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(84, 199, 154, 0.3); }
-.cover-tag p { color: #b9ac93; }
-.cover-tag p strong { color: #f3ead9; }
-.cover-foot .chip { background: rgba(20, 16, 11, 0.85); color: #a9e0cf; }
+.cover-issue { color: #6cb79e; background: rgba(20, 16, 11, 0.85); }
+.cover-name { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(63, 187, 161, 0.5); }
+.cover-tag { background: rgba(20, 16, 11, 0.88); border: 1px solid rgba(63, 187, 161, 0.3); }
+.cover-tag p { color: #9aa59e; }
+.cover-tag p strong { color: #ebdec4; }
+.cover-foot .chip { background: rgba(20, 16, 11, 0.85); color: #6cb79e; }
 
 /* biography */
-.bio-text p { color: #b9ac93; }
+.bio-text p { color: #9aa59e; }
 .bio-text .drop { color: var(--gold); }
-.bio-quote p { color: #a9e0cf; }
-.facts-card { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
+.bio-quote p { color: #6cb79e; }
+.facts-card { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
 .facts-card h4 { color: var(--gold); }
-.facts-card li { color: #b9ac93; border-top: 1px solid rgba(84, 199, 154, 0.22); }
-.facts-card li strong { color: #f3ead9; }
-.stat-band { background: #100c08; border-top: 1px solid rgba(84, 199, 154, 0.45); }
+.facts-card li { color: #9aa59e; border-top: 1px solid rgba(63, 187, 161, 0.22); }
+.facts-card li strong { color: #ebdec4; }
+.stat-band { background: #09110c; border-top: 1px solid rgba(63, 187, 161, 0.45); }
 .stat-band .sn { color: var(--gold); }
 
 /* active table */
-.venue { border-bottom: 1px solid rgba(84, 199, 154, 0.22); }
-.venue-copy h3 { color: #f3ead9; }
-.venue-copy p.vbody { color: #b9ac93; }
-.also-card { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
-.also-card h4 { color: #f3ead9; }
-.also-card p { color: #b9ac93; }
+.venue { border-bottom: 1px solid rgba(63, 187, 161, 0.22); }
+.venue-copy h3 { color: #ebdec4; }
+.venue-copy p.vbody { color: #9aa59e; }
+.also-card { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
+.also-card h4 { color: #ebdec4; }
+.also-card p { color: #9aa59e; }
 
 /* galleries */
 .gal-item figcaption { color: var(--gold); }
 
 /* reach */
-.reach-hero .bl { color: #f3ead9; }
-.reach-card { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.22); }
-.reach-card h4 { color: #f3ead9; }
-.reach-card p { color: #b9ac93; }
-.seen-in { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
-.seen-in p { color: #a9e0cf; }
+.reach-hero .bl { color: #ebdec4; }
+.reach-card { background: #032316; border: 1px solid rgba(63, 187, 161, 0.22); }
+.reach-card h4 { color: #ebdec4; }
+.reach-card p { color: #9aa59e; }
+.seen-in { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
+.seen-in p { color: #6cb79e; }
 
 /* unify the pre-existing dark sheets with the new base */
-.sheet--dark { background: #1a140c; }
-.sheet--divider { background: #100c08; }
+.sheet--dark { background: #09110c; }
+.sheet--divider { background: #09110c; }
 
 /* hotels & what's next */
-.hotel-row { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
-.hotel-row h3 { color: #f3ead9; }
-.hotel-row p.vbody { color: #b9ac93; }
-.next-row { border-bottom: 1px solid rgba(84, 199, 154, 0.22); }
-.next-row h4 { color: #f3ead9; }
-.next-row p { color: #b9ac93; }
+.hotel-row { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
+.hotel-row h3 { color: #ebdec4; }
+.hotel-row p.vbody { color: #9aa59e; }
+.next-row { border-bottom: 1px solid rgba(63, 187, 161, 0.22); }
+.next-row h4 { color: #ebdec4; }
+.next-row p { color: #9aa59e; }
 
 /* honors & partnerships */
-.honor-hero .b5-label { color: #f3ead9; }
-.honors-list li { color: #b9ac93; }
-.honor-meta { color: #b9ac93; }
-.honor-meta strong { color: #a9e0cf; }
-.partner-col { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.22); }
-.partner-col h4 { color: #f3ead9; }
-.partner-col p { color: #b9ac93; }
+.honor-hero .b5-label { color: #ebdec4; }
+.honors-list li { color: #9aa59e; }
+.honor-meta { color: #9aa59e; }
+.honor-meta strong { color: #6cb79e; }
+.partner-col { background: #032316; border: 1px solid rgba(63, 187, 161, 0.22); }
+.partner-col h4 { color: #ebdec4; }
+.partner-col p { color: #9aa59e; }
 
 /* back page */
-.sheet--back { background: #100c08; }
+.sheet--back { background: #09110c; }
 .back-inner .kicker { color: var(--gold); }
-.back-inner .back-line { color: #b9ac93; }
+.back-inner .back-line { color: #9aa59e; }
 
 /* foot-notes */
-.foot-note { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.22); color: #b9ac93; }
-.foot-note strong { color: #a9e0cf; }
+.foot-note { background: #032316; border: 1px solid rgba(63, 187, 161, 0.22); color: #9aa59e; }
+.foot-note strong { color: #6cb79e; }
 
 /* contents */
-.toc-part h3 { color: #f3ead9; border-bottom: 1px solid rgba(84, 199, 154, 0.55); }
-.toc-part li { color: #b9ac93; }
-.toc-part li::after { border-bottom: 1px dotted rgba(84, 199, 154, 0.35); }
+.toc-part h3 { color: #ebdec4; border-bottom: 1px solid rgba(63, 187, 161, 0.55); }
+.toc-part li { color: #9aa59e; }
+.toc-part li::after { border-bottom: 1px dotted rgba(63, 187, 161, 0.35); }
 .toc-pg { color: var(--gold); }
 
 /* timeline */
-.tl-list li { border-bottom: 1px solid rgba(84, 199, 154, 0.22); }
-.tl-list h4 { color: #f3ead9; }
-.tl-list p { color: #b9ac93; }
-.tl-card { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
+.tl-list li { border-bottom: 1px solid rgba(63, 187, 161, 0.22); }
+.tl-list h4 { color: #ebdec4; }
+.tl-list p { color: #9aa59e; }
+.tl-card { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
 .tl-card h4 { color: var(--gold); }
-.tl-card p { color: #b9ac93; }
+.tl-card p { color: #9aa59e; }
 
 /* philosophy */
-.philo-quote { color: #f3ead9; }
+.philo-quote { color: #ebdec4; }
 .philo-cite { color: var(--gold); }
-.philo-tenets h4 { color: #f3ead9; }
-.philo-tenets p { color: #b9ac93; }
+.philo-tenets h4 { color: #ebdec4; }
+.philo-tenets p { color: #9aa59e; }
 
 /* facts card that was light on cream feature pages */
-.spot-facts--light { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
+.spot-facts--light { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
 .spot-facts--light h4 { color: var(--gold); }
-.spot-facts--light li { color: #b9ac93; border-top: 1px solid rgba(84, 199, 154, 0.22); }
-.spot-facts--light li strong { color: rgba(84, 199, 154, 0.85); }
+.spot-facts--light li { color: #9aa59e; border-top: 1px solid rgba(63, 187, 161, 0.22); }
+.spot-facts--light li strong { color: rgba(63, 187, 161, 0.85); }
 
 /* olives story */
-.story-cols p { color: #b9ac93; }
-.story-band { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.28); }
+.story-cols p { color: #9aa59e; }
+.story-band { background: #032316; border: 1px solid rgba(63, 187, 161, 0.28); }
 .story-band .sn { color: var(--gold); }
-.story-band .sl { color: #b9ac93; }
+.story-band .sl { color: #9aa59e; }
 
 /* bookshelf */
-.shelf-tile { background: #211a11; border: 1px solid rgba(84, 199, 154, 0.22); }
+.shelf-tile { background: #032316; border: 1px solid rgba(63, 187, 161, 0.22); }
 .shelf-tile img { box-shadow: 0 8px 18px rgba(0, 0, 0, 0.6); }
-.shelf-item figcaption { color: #b9ac93; }
+.shelf-item figcaption { color: #9aa59e; }
 
 /* on camera — logo strip stays light so dark network logos read */
-.tv-col h4 { color: #f3ead9; }
-.tv-col p { color: #b9ac93; }
-.tv-logos { background: #f0e8da; }
+.tv-col h4 { color: #ebdec4; }
+.tv-col p { color: #9aa59e; }
+.tv-logos { background: #ebdec4; }
 
 /* features */
-.feat-copy p { color: #b9ac93; }
-.feat-strip figcaption { color: #b9ac93; }
+.feat-copy p { color: #9aa59e; }
+.feat-strip figcaption { color: #9aa59e; }
 
 /* press assets */
-.asset-row h4 { color: #f3ead9; }
-.asset-row p { color: #b9ac93; }
+.asset-row h4 { color: #ebdec4; }
+.asset-row p { color: #9aa59e; }
 
 /* gold corner ornaments on standard content pages (Bénoit motif) */
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--plate):not(.sheet--back)::after {
@@ -1653,8 +1676,8 @@ html { background: #0a0806; }
   bottom: 22px;
   width: 26px;
   height: 26px;
-  border-right: 1px solid rgba(84, 199, 154, 0.55);
-  border-bottom: 1px solid rgba(84, 199, 154, 0.55);
+  border-right: 1px solid rgba(63, 187, 161, 0.55);
+  border-bottom: 1px solid rgba(63, 187, 161, 0.55);
   pointer-events: none;
 }
 .sheet:not(.sheet--cover):not(.sheet--divider):not(.sheet--plate):not(.sheet--back)::before {
@@ -1664,8 +1687,8 @@ html { background: #0a0806; }
   top: 22px;
   width: 26px;
   height: 26px;
-  border-left: 1px solid rgba(84, 199, 154, 0.55);
-  border-top: 1px solid rgba(84, 199, 154, 0.55);
+  border-left: 1px solid rgba(63, 187, 161, 0.55);
+  border-top: 1px solid rgba(63, 187, 161, 0.55);
   pointer-events: none;
   z-index: 2;
 }
@@ -1695,7 +1718,7 @@ html { background: #0a0806; }
   font-weight: 600;
   letter-spacing: 0.34em;
   text-transform: uppercase;
-  color: #a9e0cf;
+  color: #6cb79e;
   text-shadow: 0 1px 8px rgba(0, 0, 0, 0.7);
 }
 .cover-seal {
@@ -1720,7 +1743,7 @@ html { background: #0a0806; }
   content: "";
   width: 118px;
   height: 26px;
-  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 26' fill='none' stroke='%23c29a55' stroke-width='1.1'%3E%3Cpath d='M2 14 Q60 9 118 12'/%3E%3Cpath d='M16 13.2 Q19 4 28 3.5 Q23 12 16 13.2 Z'/%3E%3Cpath d='M32 12.4 Q36 21 45 21 Q40 13 32 12.4 Z'/%3E%3Cpath d='M48 11.8 Q51 3 60 2.5 Q55 11 48 11.8 Z'/%3E%3Cpath d='M64 11.4 Q68 20 77 20 Q72 12 64 11.4 Z'/%3E%3Cpath d='M80 11.2 Q83 2.5 92 2 Q87 10.5 80 11.2 Z'/%3E%3Ccircle cx='103' cy='8.5' r='2.6'/%3E%3Ccircle cx='109' cy='15' r='2.6'/%3E%3C/svg%3E") center/contain no-repeat;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 26' fill='none' stroke='%23b9a04b' stroke-width='1.1'%3E%3Cpath d='M2 14 Q60 9 118 12'/%3E%3Cpath d='M16 13.2 Q19 4 28 3.5 Q23 12 16 13.2 Z'/%3E%3Cpath d='M32 12.4 Q36 21 45 21 Q40 13 32 12.4 Z'/%3E%3Cpath d='M48 11.8 Q51 3 60 2.5 Q55 11 48 11.8 Z'/%3E%3Cpath d='M64 11.4 Q68 20 77 20 Q72 12 64 11.4 Z'/%3E%3Cpath d='M80 11.2 Q83 2.5 92 2 Q87 10.5 80 11.2 Z'/%3E%3Ccircle cx='103' cy='8.5' r='2.6'/%3E%3Ccircle cx='109' cy='15' r='2.6'/%3E%3C/svg%3E") center/contain no-repeat;
 }
 .div-orn::after { transform: scaleX(-1); }
 
@@ -1779,6 +1802,8 @@ html { background: #0a0806; }
   }
 }
 
-/* brand wordmark: the real vector logo from the logo deck, not a font imitation */
-.cover-name .cn-logo { display:block; width:100%; max-width:230px; height:auto; margin:0 auto; }
-#contact-heading .contact-logo { display:block; width:min(58vw,320px); height:auto; margin:0 auto; }
+/* Brand marks, straight off the Brand Guidelines artwork — approved colourways only.
+   Widths are pinned in px: these sheets are a fixed 816px page, and the marks carry a
+   small intrinsic viewBox that collapses under width:100% in a shrink-wrapped parent. */
+.cover-name .cn-logo { display:block; width:230px; height:auto; margin:0 auto; }
+#contact-heading .contact-logo { display:block; width:300px; height:auto; margin:0 auto; }

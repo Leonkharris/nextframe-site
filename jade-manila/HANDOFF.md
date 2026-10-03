@@ -75,3 +75,53 @@ Hero-teaser floats and the cover are outside this system, so those swaps are fre
   rules win, so editing press.css for those does nothing.
 - Gallery tiles had photos that did not match their captions. Audit **all** tiles when one is reported;
   the correct images were already sitting unused in `img/`.
+
+
+## Brand Guidelines V01 adopted (2026-10-03)
+
+`Jade supper club/Current Jade Updates/Jade Brand Guidelines V01 .pdf` is now the **source of
+truth**, superseding the logo deck for colour, type and logo colourways. The logo deck remains
+correct on lockup geometry.
+
+**Type system (settled — stop guessing at it).** The book names the faces and the PDF's embedded
+font table confirms them: primary **Acumin Variable Concept Extra Condensed Black**, alternative
+**Futura Bold**, body **Figtree Regular**. The earlier hunt that scored 23 free fonts and topped
+out at 0.393 was right that no free face matched — the primary is a licensed Adobe face.
+Web build substitutes **Archivo `font-stretch:62%` wght 900** and **Jost 700**; **Figtree is
+exact and free**. There is **no serif in the brand system** — the Didone "JADE" is logo artwork
+only, so Bodoni Moda is out of the deck.
+
+**Palette.** Woodsmoke `#09110c`, Jade Green `#032316`, Spring Green `#21725f`,
+Verdigris `#3fbba1`, Almond `#ebdec4`, White Smoke `#f6f5f1`, Gold `#b9a04b`
+(gradient `#663400 -> #fcebc3`), Brass `#5c2a00`. Three tones the book does not name were
+derived by mixing its own values: `#9aa59e` muted type, `#0a2b1c` raised panel, `#104333` border.
+Every colour in the deck is now one of these.
+
+**Logo.** Primary = `JADE / MANILA`, secondary = `JADE / TODD ENGLISH / MANILA`, plus a vine
+**brand icon**. All three extracted as true vector from the guidelines PDF into `img/`:
+`jade-primary-{white,gold,green}.svg`, `jade-secondary-{white,gold}.svg`,
+`jade-icon-{white,gold,verdigris}.svg`. `jade-manila-logo.svg` is kept as a copy of
+primary-white so older references keep resolving.
+Only **three colourways are approved**: white on dark, spring green on white smoke, gold on
+jade green. **Recolouring the logo is an explicit DON'T** — the cream `#f3ead9` wordmark this
+deck shipped through September was off-brand. Minimum size: logo 40px / 14mm, logo-with-icon
+80px / 28mm.
+
+**Voice (§01.3), applies to any future copy.** Assured never loud, warm never familiar, witty
+never silly. Short sentences, **no exclamation marks**. Say: *rare, after dark, the night set,
+bloom, indulgence*. Never say: *cheap, deals, vibes, hottest* — and **never mention Bali**.
+Note the book itself calls Jade "a supper club and cocktail bar in BGC": supper club is fine as
+a **category**, it is only dead as a **name**.
+
+**Open question for Leon:** the back cover now carries *G/F, RCBC Savings Bank Corporate Center,
+26th & 25th Street, BGC* and `jadebarmanila.com`. The address appears in the book only as the
+**typography hierarchy specimen** on p12, not as a contact block — worth confirming before print.
+
+**New traps**
+- `currentColor` does not inherit through `<img>`; bake each colourway into its own file.
+- The brand marks have a small intrinsic viewBox (196x74). `width:100%` collapses to that inside
+  a shrink-wrapped parent — pin logo widths in px.
+- Colours can hide **URL-encoded inside data-URI SVGs** (`%23c29a55` in press.css). A hex scan
+  will not see them; scan `%23` as well.
+- The zip `Jade logos with icons.zip` is flat RGB PNG with baked backgrounds and **no alpha** —
+  unusable on the dark ground. Extract vector from the PDF instead.

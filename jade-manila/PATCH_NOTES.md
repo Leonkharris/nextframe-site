@@ -2,6 +2,57 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-03 — Brand Guidelines V01 applied across the whole kit
+
+Source: `Jade supper club/Current Jade Updates/Jade Brand Guidelines V01 .pdf` (21pp,
+Illustrator, 2 Oct 2026) + `Jade logos with icons.zip`.
+
+**The typeface question is answered.** §08 names them, and the PDF's embedded font table
+confirms it — no more guessing from glyph shapes:
+- Primary: **Acumin Variable Concept, Extra Condensed, Black** (H1/H2)
+- Alternative: **Futura Bold** (H3)
+- Body: **Figtree Regular**
+
+Acumin and Futura are licensed desktop faces with no webfont here, so the build substitutes
+**Archivo at `font-stretch:62%` / weight 900** (its wdth axis goes to 62, which is why it
+matches where Oswald/Anton cannot) and **Jost 700** (a Futura revival, already loaded).
+**Figtree is the brand face itself** and is free on Google Fonts — that one is exact.
+Bodoni Moda is gone: the brand system has no serif outside the logo artwork.
+
+**Palette** — all six primaries + accents, straight from §07:
+Woodsmoke `#09110c` · Jade Green `#032316` · Spring Green `#21725f` · Verdigris `#3fbba1` ·
+Almond `#ebdec4` · White Smoke `#f6f5f1` · Gold (gradient `#663400→#fcebc3`, solid `#b9a04b`)
+· Brass `#5c2a00`. Derived three working tones the book does not name, by mixing its own
+values: `#9aa59e` muted type, `#0a2b1c` raised panel, `#104333` panel border.
+310 hardcoded colours remapped; **every colour in the deck is now a brand value**.
+
+**Logo — the artwork, not an imitation.** Pulled the primary wordmark, the secondary
+(JADE / TODD ENGLISH / MANILA) and the vine icon as true vector out of the guidelines PDF,
+then baked the three approved colourways (§03: white on dark, spring green on white smoke,
+gold on jade green) into self-contained files. The shipped cream `#f3ead9` wordmark was a
+**recolour, which §04 explicitly forbids** — now white on the cover, gold on the back.
+The supplied zip is flat RGB PNGs with baked white/black backgrounds and no alpha, so it is
+kept as reference only; the vector extraction is what ships.
+
+**Traps worth remembering**
+- `currentColor` does nothing through `<img>` — colourways must be baked per file.
+- The new marks carry a small intrinsic viewBox (196×74 vs the old 690×259), so
+  `width:100%` collapsed to 196px inside a shrink-wrapped parent. Widths are now pinned in px.
+- One off-palette gold (`#c29a55`) was hiding **URL-encoded as `%23c29a55`** inside a data-URI
+  SVG in `press.css`. A plain hex scan misses these — scan `%23` too.
+
+**Also applied**
+- Divider ornament was a generic `✦`; it now carries the brand icon.
+- Back cover gained the address from §08's hierarchy example — *G/F, RCBC Savings Bank
+  Corporate Center, 26th & 25th Street, BGC* — plus `jadebarmanila.com`. **Leon: confirm the
+  address, it appears in the book as a typography specimen rather than a contact block.**
+- Cover gained the brand line **"Rare by design"**.
+- Voice audit against §01.3 passed with nothing to fix: no *cheap/deals/vibes/hottest*, no
+  mention of Bali, no exclamation marks anywhere in 3,441 words.
+
+Verified: 23 sheets, 0 overflowing, 0 broken images, only Archivo/Jost/Figtree in use.
+`press.css?v=15`.
+
 ## 2026-09-08 (later) — Gallery accuracy + page overflow
 
 **Mislabelled gallery tiles** (client spotted two, an audit of all ten found a third)
