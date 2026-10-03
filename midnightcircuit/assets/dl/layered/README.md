@@ -13,8 +13,15 @@ Fortune Tiger**, and the type is set in code.
 | `champ-*` (arm + pouch) | **green** `#03F802` | blue `#0147FD` | subject is skin / gold / red — no green in it, so green keys clean |
 | `phone-*` (hand + phone) | **blue** `#0147FD` | green `#03F802` | **Fortune Tiger's UI has a green spin button and a green win bar.** Keying green punches holes straight through the game. |
 
-Keying the phone variant on green will eat the spin button. This was verified on the render, not
-assumed — look at `phone-master-green.jpg` and you can see the button is the same green as the
+Keying the phone STATICS on green eats the win bar and the spin button. Composited over magenta the
+holes are unmistakable -- this was tested, not assumed.
+
+**That hazard belongs to the STATICS, not the video.** The video hero plays Fortune **Rabbit**, which is
+red and gold with no green in its UI: measured, a green key costs **0.01 %** of the subject and a blue
+key costs 0.29 %. Either colour keys the video cleanly. The Fortune Tiger problem is a *statics*
+problem, because Tiger is what is on the glass there.
+
+The static warning was verified on the render, not assumed — look at `phone-master-green.jpg` and you can see the button is the same green as the
 backdrop. The green phone files exist because both colours were asked for and some editors are set up
 for green only; they are **not** the safe default.
 
