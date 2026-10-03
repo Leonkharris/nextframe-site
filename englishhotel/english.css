@@ -82,3 +82,31 @@
 .eh-day small,.philo-tenets .pn,.spot-facts li strong,.eh-cols h4{color:var(--accent2)}
 .eh-day:before{background:var(--accent2)}
 .eh-day li:before{border-color:var(--accent2)}
+
+/* ===== Modern Japanese layer (Leon: "modern, japanese inspired") ===== */
+:root{
+  --mincho:'Shippori Mincho','Playfair Display',serif;
+  --washi:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='180' height='180'><filter id='w'><feTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .40  0 0 0 0 .30  0 0 0 0 .20  0 0 0 .05 0'/></filter><rect width='180' height='180' filter='url(%23w)'/></svg>");
+}
+/* type: mincho serif for every heading; accent words restrained copper, no script */
+.sheet--cover-cream .cc-name .f,.sheet--cover-cream .cc-name .s{font-family:var(--mincho);font-style:normal;letter-spacing:.01em}
+.sheet--cover-cream .cc-name .f{font-weight:600}
+.sheet--cover-cream .cc-name .s{font-weight:500}
+.mis-name,.mis-stats b,.gal2-title,.spot-title,.philo-quote,.philo-mark,.eh-choices b,.eh-day b,.eh-panel h3,.eh-statement,.eh-back .statement{font-family:var(--mincho);font-style:normal}
+.mis-name em,.gal2-title em,.eh-panel h3 em,.eh-back .statement em{font-family:var(--mincho);font-style:normal;font-weight:500;font-size:1em;color:var(--accent)}
+.gal2-quote,.eh-note{font-family:var(--mincho);font-style:normal}
+.ab2-body .drop{font-family:var(--mincho);font-weight:600}
+.philo-tenets h4{font-family:var(--mincho);font-weight:600;letter-spacing:.02em}
+/* washi paper grain on every page */
+.sheet{background-image:var(--washi)}
+.sheet--cover-cream{background-image:var(--washi),linear-gradient(176deg,#fbf6ec 0%,#f6eddc 70%,#f0e4cd 100%)}
+/* ensō — brushed circle */
+.eh-enso{position:absolute;pointer-events:none;color:var(--accent);z-index:0}
+.eh-enso--cover{width:250px;height:250px;top:62px;right:46px;opacity:.26}
+.eh-enso--close{width:270px;height:270px;left:50%;top:612px;transform:translateX(-50%);opacity:.16}
+#cover>*:not(.eh-enso),#close>*:not(.eh-enso){position:relative;z-index:1}
+/* hanko seal */
+.eh-hanko{width:64px;height:64px}
+/* vertical editorial label */
+.eh-v{position:absolute;right:20px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;font:600 8px/1 var(--sans);letter-spacing:.42em;text-transform:uppercase;color:var(--faint);z-index:2}
+#culture .philo-quote{font-size:29px;line-height:1.42}
