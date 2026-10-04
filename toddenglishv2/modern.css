@@ -538,3 +538,12 @@ img{display:block;max-width:100%}
 .also-card .chip{display:none}
 .also-card h4{font-size:15px;margin:0 0 5px}
 .also-card p{font-size:11px;line-height:1.5;margin:0}
+
+/* Back page — the last impression: full-height colour portrait of Todd + contact on dark */
+.sheet--back{display:grid;grid-template-columns:400px 1fr;padding:0}
+.back-portrait{margin:0;height:1056px;overflow:hidden}
+.back-portrait img{display:block;width:100%;height:100%;object-fit:cover;object-position:0% 50%}
+.sheet--back .back-inner{padding:0 54px;justify-content:center}
+.back-inner h2{font-family:'Playfair Display',serif;font-weight:500;font-size:52px;line-height:1.05;letter-spacing:0;color:#fff;margin:14px 0 18px}
+.back-inner h2 em{font-family:'Great Vibes',cursive;font-style:normal;font-weight:400;font-size:66px;color:var(--accent2)}
+.back-inner .back-line{font-size:13.5px}
