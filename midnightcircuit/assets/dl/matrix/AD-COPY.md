@@ -5,17 +5,78 @@
 Every creative below ships in **all five display sizes plus the two video formats**. A unit over its
 cap is rejected by the network, so the cap is part of the design, not a step at the end.
 
+### The ad platform's own picker — this is the authority
+
+Taken off the live campaign setup screen, not from the media kit PDF:
+
+- **Ad Format:** Display · In-Stream Video · **Pop** · **Out-stream Video**
+- **Format Type** (Display): Banner · **Scrollable** *(mobile only)* · **Native**
+- **Ad Type:** Static Banner · **Video Banner** — *these take **different** dimension lists*
+- **Ad Dimensions — Static Banner (5):** `300×250` · `950×250` · `468×60` · `305×99` · `300×100`
+- **Ad Dimensions — Video Banner (7):** the same five **plus `970×90` and `320×480`**
+- **Content Category:** Straight · Gay · Trans — **Straight** for this buy
+- **Gender:** All · Male · Female
+
 | Format | Size | Cap | Notes |
 |---|---|---|---|
-| Banner / interstitial | **300 × 250** | ≤ 300 KB | the workhorse — most inventory |
-| Banner | **305 × 99** | ≤ 300 KB | very short; brand slab + CTA only |
-| Banner | **300 × 150** | ≤ 300 KB | no room for a kicker line |
+| Banner | **300 × 250** | ≤ 300 KB | the workhorse — most inventory |
 | Banner | **950 × 250** | ≤ 300 KB | the landscape frame |
-| Interstitial | **320 × 480** | ≤ 300 KB | full-screen portrait |
+| Banner | **468 × 60** | ≤ 300 KB | 7.8:1, sixty pixels tall — the hardest unit in the set |
+| Banner | **305 × 99** | ≤ 300 KB | brand slab + kicker only |
+| Banner | **300 × 100** | ≤ 300 KB | same job as 305 × 99 |
 | Interstitial video | 300 × 250 / 320 × 480 | **≤ 1 MB** | 15 s typical |
 | **In-stream video pre-roll** | **16:9, 1080p** | **≤ 500 MB**, 5–30 s | MP4/MPG/MOV/AVI/WMV · desktop + mobile |
 | Shorties | **1080 × 1920 (9:16)** | ≤ 500 MB, 5–30 s | the vertical film slot |
 | Pop-under | — | — | **carries no creative** — a traffic format, not a design brief |
+
+### ⚠ Static and Video Banner take DIFFERENT size lists — audited against both
+
+Every file in `READY-TO-POST/`, checked by actual pixel dimensions and split by type:
+
+**Static Banner — now complete.**
+
+| Size | Files |
+|---|---|
+| 300 × 250 | 7 |
+| 950 × 250 | 2 |
+| 305 × 99 | 2 |
+| **468 × 60** | **1 — was missing, now built** |
+| **300 × 100** | **1 — was missing, now built** |
+
+But **9 static images sit at sizes a Static Banner cannot be**:
+
+- **320 × 480 — 6 static JPGs.** This size *is* accepted, but **only as a Video Banner**. A JPG at
+  320 × 480 has nowhere to go.
+- **300 × 150 — 3 static JPGs.** Not accepted under either ad type. The picker offers 300 × **100**.
+
+**Video Banner — 2 of 7 sizes covered.**
+
+| Size | Files |
+|---|---|
+| 300 × 250 | 13 ✅ |
+| 320 × 480 | 13 ✅ |
+| 305 × 99 · 468 × 60 · 300 × 100 · 950 × 250 · **970 × 90** | **none** |
+
+The five missing video sizes are all **wide and short**, and they should **not** be cropped out of
+the 9:16 film — a 970 × 90 slice of a vertical frame is a letterbox of someone's forearm. They want
+rendering from a wide layout as short loops, the same way the wide statics already are. That is a
+build task, not a transcode.
+
+Both missing **static** sizes are built and under cap (`poster-b468.jpg` 9 KB, `poster-b100.jpg`
+9 KB).
+The 468 × 60 needed its own lockup and the decorative flame suppressed — anchored to the same right
+edge as the kicker, with no room to drop below it, the flame rendered straight over the last letter
+and the unit read **"WIN BIGGE🔥"**. Caught by looking at it at delivered size, which is the only way
+these get caught.
+
+### Formats nothing has been built for yet
+
+- **Out-stream Video** — an ad format in the picker. No creative in the kit addresses it.
+- **Native** — needs a headline + description + image in the site's own styling, not a banner.
+- **Scrollable** (mobile) — a distinct mobile format type.
+- **Video Banner** — video inside banner dimensions, as opposed to a static one.
+- **Pop** — correctly has **no creative options at all**; selecting it leaves only Content Category
+  and Gender. It is a traffic format, not a design brief.
 
 ### ⚠ The pre-roll slot is 16:9 and every film we have is 9:16
 
@@ -223,6 +284,60 @@ more **seductive line**, not a more explicit image. Do not escalate the picture.
 *Alt:* **TAKE HER HOME.** — lands hard with this audience, and stays literally true (you can win the
 prize and take it home). Worth a backup link if the client is comfortable; it is the most forward
 line in the set.
+
+---
+
+---
+
+## Proposed · Promotion C — redeem credit for the site you are already on
+
+**This is the strongest offer idea in the brief, and it is not in the grid yet.**
+
+Every other promotion asks the viewer to leave what they are doing and go gamble for a reward that
+belongs to a different world — cash, a bonus, a doll shipped to their house. This one pays out in
+**the thing they opened the tab for**. The reward is native to the moment, which no other offer here
+can say.
+
+> ### PLAY SLOTS. GET PREMIUM.
+> Earn credit you can spend right here.
+>
+> **[ START EARNING ]**
+
+*Alt 1:* **YOUR SPINS PAY FOR YOUR SUBSCRIPTION.**
+*Alt 2:* **STOP PAYING FOR PREMIUM. START WINNING IT.**
+*Alt 3 (suggestive arm):* **FINISH ON US.** — the innocent reading is literally the offer: we cover
+the bill. It is the most forward line in the set; backup link, client's call.
+
+**Visual:** the two worlds in one frame — a slot reel and a play button, or coins resolving into a
+credit card / gift-code. Cream and rose-gold per the house look; nothing explicit, because the *idea*
+is the adult part.
+
+**Why it is worth a cell:** a tube-site visitor converting on a casino ad has to cross a wide gap —
+different intent, different session, a deposit. A reward denominated in **premium credit** narrows
+that gap to almost nothing. If any offer in this test beats the 150%, I would expect it to be this.
+
+### Before it can run — and this is a real dependency, not a formality
+
+Paying out in credit for a specific adult platform means **either a commercial arrangement with that
+platform, or buying gift codes on the open market and reselling them as a prize.** Those are very
+different things legally and operationally:
+
+- **Named partnership** — you can use the brand name and logo in the creative. Strongest version.
+- **Unofficial gift codes** — the promotion works, but the creative **cannot** use the platform's
+  name or marks. The copy then has to say *"premium credit"* generically, which is weaker but still
+  far better than cash.
+
+The lines above are written to survive the second case: **none of them names a platform.** "Get
+Premium", "your subscription", "right here" all work on the inventory without borrowing a trademark.
+If the partnership lands, the name can be dropped in and the line gets sharper.
+
+Also: gambling-to-media-credit may read as a **cash-equivalent prize** in some US states, which is a
+promotions-compliance question for the client's counsel, not a creative one. Flagging it early
+because it determines whether this is a 4-link block or a backup test.
+
+**Slotting it in:** there is no free block — 16 cells are committed. It runs on **backup links
+(`PH_BK_01`–`04`)** as a 2-creative × 2-placement test, which is exactly what the backups are for,
+and the use gets recorded in Notes.
 
 ---
 
