@@ -221,6 +221,28 @@ footer b{color:var(--muted)}
  .dllist a{color:var(--cream);text-decoration:none;overflow-wrap:anywhere}
  .dllist a:hover{color:var(--gold2);text-decoration:underline}
  .dllist .mono{color:var(--dim);white-space:nowrap;font-size:12px}
+
+ .mx{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;margin-top:16px}
+ .mxc{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px}
+ .mxh{display:flex;align-items:baseline;gap:9px;flex-wrap:wrap;font-size:13px}
+ .mxh b{color:var(--cream)}
+ .mxv{color:var(--dim);text-transform:uppercase;letter-spacing:.07em;font-size:11px}
+ .mxs{margin-left:auto;font-size:10.5px;letter-spacing:.06em;text-transform:uppercase;
+   padding:2px 8px;border-radius:999px}
+ .mxs.have{color:var(--unc);border:1px solid color-mix(in srgb,var(--unc) 40%,transparent)}
+ .mxs.make{color:var(--warn);border:1px solid color-mix(in srgb,var(--warn) 40%,transparent)}
+ .mxl{margin-top:9px;font-family:'Anton',Impact,sans-serif;font-size:17px;line-height:1.2;
+   color:var(--gold2);letter-spacing:.01em}
+ .mxw{margin-top:7px;font-size:12.5px;color:var(--cream);line-height:1.5}
+ .mxo{margin-top:7px;font-size:11.5px;color:var(--dim)}
+ .mxn{margin-top:7px;font-size:12.5px;color:var(--muted)}
+ .mxm{margin-top:9px;font-size:11px;color:var(--dim)}
+ .mxt{margin-top:14px;overflow-x:auto;border:1px solid var(--line);border-radius:10px}
+ .mxt table{border-collapse:collapse;width:100%;font-size:12.5px}
+ .mxt th{text-align:left;padding:8px 11px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .mxt td{padding:7px 11px;border-bottom:1px solid var(--line);color:var(--text);white-space:nowrap}
+ .mxt tr:last-child td{border-bottom:0}
 </style>
 
 <div class="wrap">
@@ -232,7 +254,7 @@ footer b{color:var(--muted)}
 </header>
 
 <nav class="toc" aria-label="Sections">
-  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#downloads">Downloads</a><a href="#next">Sizes, QC, next</a>
+  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#matrix">Set H · the test</a><a href="#downloads">Downloads</a><a href="#next">Sizes, QC, next</a>
 </nav>
 
 <section id="brief">
@@ -609,6 +631,65 @@ footer b{color:var(--muted)}
 
 
 
+<!-- matrix:start -->
+<section id="matrix">
+  <div class="sethead"><span class="pin">Set H · the test</span><h2>Twenty links, sixteen cells</h2></div>
+  <p class="setlede">The buy is a structured creative test, not a flight of assorted banners. <b>Four themes × two creative versions × two placements = 16 live links</b>, plus four backups. Every registration link is distinct, so each cell can be read on its own and the weekly report can say which <i>idea</i> earned the deposits — not just which banner got clicks.</p>
+  <p class="setlede"><b>P1 and P2 are the same creative in two different slots.</b> The copy does not change between them; only the link does. That pair is what separates placement performance from creative performance — so there are <b>8 distinct creatives</b>, each trafficked twice. If P1 and P2 ever carry different artwork, the grid stops being readable.</p>
+  <p class="setlede"><b>The rule every suggestive version is held to:</b> both readings have to be literally true of the product. A line that only works dirty is just a dirty line with a logo on it, and on this inventory it reads cheap — the audience has already seen explicit. The suggestion lives in the wordplay and the composition, never in the depiction.</p>
+  <h3 style="margin-top:34px">Specs — every unit, no exceptions</h3>
+  <p class="setlede">Each creative ships in all five display sizes plus the two video formats. A unit over its cap is rejected by the network, so the cap is part of the design rather than a check at the end.</p>
+  <div class="mxt"><table><thead><tr><th>Format</th><th>Size</th><th>Cap</th><th>Note</th></tr></thead><tbody>
+    <tr><td>Banner / interstitial</td><td class="mono">300 × 250</td><td class="mono">≤ 300 KB</td><td>the workhorse — most inventory</td></tr>
+    <tr><td>Banner</td><td class="mono">305 × 99</td><td class="mono">≤ 300 KB</td><td>99 px tall; brand slab + CTA only</td></tr>
+    <tr><td>Banner</td><td class="mono">300 × 150</td><td class="mono">≤ 300 KB</td><td>no room for a kicker line</td></tr>
+    <tr><td>Banner</td><td class="mono">950 × 250</td><td class="mono">≤ 300 KB</td><td>the landscape frame</td></tr>
+    <tr><td>Interstitial</td><td class="mono">320 × 480</td><td class="mono">≤ 300 KB</td><td>full-screen portrait</td></tr>
+    <tr><td>Interstitial video</td><td class="mono">300 × 250 / 320 × 480</td><td class="mono">≤ 1 MB</td><td>15 s typical</td></tr>
+    <tr><td>In-stream video pre-roll</td><td class="mono">16:9, 1080p</td><td class="mono">≤ 500 MB</td><td>5–30 s · MP4/MPG/MOV/AVI/WMV · desktop + mobile</td></tr>
+    <tr><td>Shorties</td><td class="mono">1080 × 1920 (9:16)</td><td class="mono">≤ 500 MB</td><td>5–30 s, the vertical film slot</td></tr>
+    <tr><td>Pop-under</td><td class="mono">—</td><td class="mono">—</td><td>carries no creative — a traffic format, not a design brief</td></tr>
+  </tbody></table></div>
+  <p class="setlede"><b>One thing to flag before anything is trafficked: the in-stream pre-roll slot is 16:9, and every film in this kit is 9:16.</b> All three — the pre-roll, the car-wash film and the Set E film — are 1080 × 1920. They are correct for <b>Shorties</b> and wrong for <b>in-stream pre-roll</b>, and one of them is literally named <span class="mono">preroll</span>, which is how the wrong file ends up in the wrong slot. A 16:9 version is a <b>re-layout, not a crop</b>: the hero is a vertical phone in a vertical frame, so centre-cropping throws away both the headline and the compliance strip. The build is resolution-driven, so a 1920 × 1080 stage with its own lockup is the fix — real work, and worth scheduling rather than discovering at upload.</p>
+  <p class="setlede">Non-negotiable on every unit: the <b>18+ / play-responsibly strip</b> present and legible — this is a gambling ad and a crop that loses it fails the placement; <b>legible at the delivered size, not zoomed</b>, because a headline scaled down from the tall layout swallows a 99-pixel frame; judged at <b>phone size</b>, since the audience is 84.5% mobile; and video carrying an <b>audio stream even when silent</b>, because the network rejects a file with no audio track at all.</p>
+  <h3 style="margin-top:38px">The eight creatives</h3>
+  <div class="mx">
+    <div class="mxc"><div class="mxh"><b>Safety</b><span class="mxv">Normal</span><span class="mxs make">to make</span></div><div class="mxl">Your Money. Your Privacy. Protected. — Fast withdrawals. Secure payments.</div><div class="mxw">Subline is the client’s own wording, lifted from their display unit, so it is a claim they already make rather than one written for them.</div><div class="mxo">In the plan: <i>Your Money. Your Privacy. Protected.</i></div><div class="mxn">Shield, lock, vault – fund &amp; privacy security</div><div class="mxm mono">PH_SAFE_N_P1 · PH_SAFE_N_P2 · ch 48, 49 — New — reuses the client&#x27;s own safe render</div></div>
+    <div class="mxc"><div class="mxh"><b>Safety</b><span class="mxv">Suggestive</span><span class="mxs make">to make</span></div><div class="mxl">PLAY SAFE. ALWAYS.</div><div class="mxn">Sealed condom wrapper + chips / slot elements</div><div class="mxm mono">PH_SAFE_S_P1 · PH_SAFE_S_P2 · ch 50, 51 — New — sealed foil square + chips</div></div>
+    <div class="mxc"><div class="mxh"><b>Big Win</b><span class="mxv">Normal</span><span class="mxs have">have</span></div><div class="mxl">CHASE THE BIG WIN</div><div class="mxn">Jackpot, 777, exploding coins, high multipliers</div><div class="mxm mono">PH_WIN_N_P1 · PH_WIN_N_P2 · ch 52, 53 — Set F pre-roll, end-card line change</div></div>
+    <div class="mxc"><div class="mxh"><b>Big Win</b><span class="mxv">Suggestive</span><span class="mxs have">have</span></div><div class="mxl">GET CLOSER TO THE BIG O. — Big Odds. Bigger Wins.</div><div class="mxw">The strongest line in the set, because the subline defuses it honestly: Big <b>O</b>dds. The innocent reading is not bolted on afterwards, it is the actual mechanic being advertised — the same structure as the street-poster reference, where it reads two ways and both are true of the product.</div><div class="mxo">In the plan: <i>READY FOR THE BIG FINISH? Hit the Jackpot.</i></div><div class="mxn">Jackpot meter about to burst, champagne spray, coin shower</div><div class="mxm mono">PH_WIN_S_P1 · PH_WIN_S_P2 · ch 54, 55 — Set F poster, re-render with the new lockup</div></div>
+    <div class="mxc"><div class="mxh"><b>Promo A - 150% FDB</b><span class="mxv">Normal</span><span class="mxs have">have</span></div><div class="mxl">150% FIRST DEPOSIT BONUS – Boost Your Bankroll &amp; Start Winning Today</div><div class="mxn">Existing creative: vault + gift box + coins</div><div class="mxm mono">PH_150_N_P1 · PH_150_N_P2 · ch 56, 57 — Client asset</div></div>
+    <div class="mxc"><div class="mxh"><b>Promo A - 150% FDB</b><span class="mxv">Suggestive</span><span class="mxs make">to make</span></div><div class="mxl">MAKE YOUR FIRST TIME 150% BETTER – First Deposit Bonus up to 150%</div><div class="mxn">New creative required</div><div class="mxm mono">PH_150_S_P1 · PH_150_S_P2 · ch 58, 59 — New — restrained, words carry it</div></div>
+    <div class="mxc"><div class="mxh"><b>Promo B - Win a RealDoll</b><span class="mxv">Normal</span><span class="mxs have">have</span></div><div class="mxl">WIN A REALDOLL® – Play → Earn → Enter</div><div class="mxn">Gift box, coins, slots &amp; entry flow only – no model</div><div class="mxm mono">PH_RD_N_P1 · PH_RD_N_P2 · ch 60, 61 — Client asset, no model</div></div>
+    <div class="mxc"><div class="mxh"><b>Promo B - Win a RealDoll</b><span class="mxv">Suggestive</span><span class="mxs have">have</span></div><div class="mxl">YOUR FANTASY COULD BECOME REAL – Play. Earn. Enter for a Chance to Win a RealDoll®.</div><div class="mxn">Existing creative with model</div><div class="mxm mono">PH_RD_S_P1 · PH_RD_S_P2 · ch 62, 63 — Client asset, with model</div></div>
+  </div>
+  <h3 style="margin-top:38px">All twenty links</h3>
+  <p class="setlede">Channel IDs 48–67, one domain each. Checked on build: twenty links, no gaps in the ID run, no repeated domain, and every URL matching its own domain and channel.</p>
+  <div class="mxt"><table><thead><tr><th>#</th><th>Code</th><th>Theme</th><th>Ver</th><th>Plc</th><th>Channel</th><th>Link</th></tr></thead><tbody>
+    <tr><td>p1</td><td>PH_SAFE_N_P1</td><td>Safety</td><td>Normal</td><td>P1</td><td>48</td><td class="mono">winfun777uv.com</td></tr>
+    <tr><td>p2</td><td>PH_SAFE_N_P2</td><td>Safety</td><td>Normal</td><td>P2</td><td>49</td><td class="mono">winfun777in.com</td></tr>
+    <tr><td>p3</td><td>PH_SAFE_S_P1</td><td>Safety</td><td>Suggestive</td><td>P1</td><td>50</td><td class="mono">winfun777gg.com</td></tr>
+    <tr><td>p4</td><td>PH_SAFE_S_P2</td><td>Safety</td><td>Suggestive</td><td>P2</td><td>51</td><td class="mono">winfun7a77.com</td></tr>
+    <tr><td>p5</td><td>PH_WIN_N_P1</td><td>Big Win</td><td>Normal</td><td>P1</td><td>52</td><td class="mono">winfun77v7.com</td></tr>
+    <tr><td>p6</td><td>PH_WIN_N_P2</td><td>Big Win</td><td>Normal</td><td>P2</td><td>53</td><td class="mono">winfun777un.com</td></tr>
+    <tr><td>p7</td><td>PH_WIN_S_P1</td><td>Big Win</td><td>Suggestive</td><td>P1</td><td>54</td><td class="mono">winfun7k77k.com</td></tr>
+    <tr><td>p8</td><td>PH_WIN_S_P2</td><td>Big Win</td><td>Suggestive</td><td>P2</td><td>55</td><td class="mono">winfun77k7.com</td></tr>
+    <tr><td>p9</td><td>PH_150_N_P1</td><td>Promo A - 150% FDB</td><td>Normal</td><td>P1</td><td>56</td><td class="mono">winfun777kv.com</td></tr>
+    <tr><td>p10</td><td>PH_150_N_P2</td><td>Promo A - 150% FDB</td><td>Normal</td><td>P2</td><td>57</td><td class="mono">winfuns777.com</td></tr>
+    <tr><td>p11</td><td>PH_150_S_P1</td><td>Promo A - 150% FDB</td><td>Suggestive</td><td>P1</td><td>58</td><td class="mono">winfun777tv.com</td></tr>
+    <tr><td>p12</td><td>PH_150_S_P2</td><td>Promo A - 150% FDB</td><td>Suggestive</td><td>P2</td><td>59</td><td class="mono">winfun777ks.com</td></tr>
+    <tr><td>p13</td><td>PH_RD_N_P1</td><td>Promo B - Win a RealDoll</td><td>Normal</td><td>P1</td><td>60</td><td class="mono">winfun777mv.com</td></tr>
+    <tr><td>p14</td><td>PH_RD_N_P2</td><td>Promo B - Win a RealDoll</td><td>Normal</td><td>P2</td><td>61</td><td class="mono">winfun777df.com</td></tr>
+    <tr><td>p15</td><td>PH_RD_S_P1</td><td>Promo B - Win a RealDoll</td><td>Suggestive</td><td>P1</td><td>62</td><td class="mono">winfun777pp.com</td></tr>
+    <tr><td>p16</td><td>PH_RD_S_P2</td><td>Promo B - Win a RealDoll</td><td>Suggestive</td><td>P2</td><td>63</td><td class="mono">winfun777sv.com</td></tr>
+    <tr><td>p17</td><td>PH_BK_01</td><td>Backup</td><td>—</td><td>—</td><td>64</td><td class="mono">winfun777wa.com</td></tr>
+    <tr><td>p18</td><td>PH_BK_02</td><td>Backup</td><td>—</td><td>—</td><td>65</td><td class="mono">winfun777hk.com</td></tr>
+    <tr><td>p19</td><td>PH_BK_03</td><td>Backup</td><td>—</td><td>—</td><td>66</td><td class="mono">winfun777app.com</td></tr>
+    <tr><td>p20</td><td>PH_BK_04</td><td>Backup</td><td>—</td><td>—</td><td>67</td><td class="mono">winfun777ko.com</td></tr>
+  </tbody></table></div>
+  <p class="setlede mono" style="font-size:12.5px">16 live · 4 backup · 20 total. Backups cover a rejected creative, a scaled winner, or a new placement — every use gets recorded in Notes, or the result is unreadable.</p>
+</section>
+<!-- matrix:end -->
 <!-- downloads:start -->
 <section id="downloads">
   <div class="sethead"><span class="pin">Downloads</span><h2>Take the files</h2></div>
