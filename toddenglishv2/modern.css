@@ -463,8 +463,8 @@ img{display:block;max-width:100%}
 
 /* ============ ABOUT · Food-Blogger template page 2 (full-bleed hero + bordered headshot + 3-square row) ============ */
 .sheet--about{padding:0 0 28px}
-.ab2-hero{margin:0;height:360px;overflow:hidden}
-.ab2-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 30%}
+.ab2-hero{margin:0;height:440px;overflow:hidden}
+.ab2-hero img{width:100%;height:100%;object-fit:cover;object-position:50% 22%}
 .ab2-intro{position:relative;z-index:2;display:flex;align-items:flex-start;gap:30px;padding:0 var(--pad) 0 42px;margin-top:-78px}
 .ab2-portrait{margin:0;width:178px;flex:none}
 .ab2-portrait img{display:block;width:100%;height:226px;object-fit:cover;object-position:50% 14%;border:5px solid #fff;box-shadow:0 16px 32px rgba(40,34,20,.28)}
@@ -547,3 +547,8 @@ img{display:block;max-width:100%}
 .back-inner h2{font-family:'Playfair Display',serif;font-weight:500;font-size:52px;line-height:1.05;letter-spacing:0;color:#fff;margin:14px 0 18px}
 .back-inner h2 em{font-family:'Great Vibes',cursive;font-style:normal;font-weight:400;font-size:66px;color:var(--accent2)}
 .back-inner .back-line{font-size:13.5px}
+
+/* Collection page: two-line "Todd English Restaurant Collection" title — tighten the three cards so the page fits */
+#the-active-table .venues{gap:16px}
+#the-active-table .venue{padding-bottom:16px}
+#the-active-table .venue-photo img{aspect-ratio:16/11}
