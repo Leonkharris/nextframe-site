@@ -640,3 +640,39 @@ img{display:block;max-width:100%}
 /* Cover: wash confined to the title block — must stop short of Todd's face (Leon: "you're covering the face") */
 #cover .cc-frame::after{inset:auto;top:0;left:0;width:340px;height:330px;background:radial-gradient(ellipse at 30% 45%,rgba(248,247,243,.78) 0%,rgba(248,247,243,.5) 45%,rgba(248,247,243,0) 75%)}
 #cover .cc-name .f,#cover .cc-name .s{text-shadow:0 0 14px rgba(255,255,255,.5)}
+/* Timeline portrait: Vegas Eater 2021 (replaces the dark close-up Leon rejected), taller */
+#timeline .tl-side img{width:100%;height:420px;object-fit:cover;object-position:50% 25%}
+/* From the Kitchens: 12 dishes, 4 x 3 (Leon: use more of the dish photos) */
+#from-the-kitchens .gal2-grid{grid-template-columns:repeat(4,1fr);gap:20px 16px;padding-top:28px}
+#from-the-kitchens .gal2-grid figcaption{margin-top:8px}
+#from-the-kitchens .gal2-grid figcaption b{font-size:11px}
+/* Honors & Press v2 — visual (Leon: "too plain, where is the visuals?") */
+#trophy-room .hon-top{display:grid;grid-template-columns:300px 1fr;gap:26px;margin:16px var(--pad) 0;align-items:start}
+#trophy-room .hon-photo{margin:0}
+#trophy-room .hon-photo img{display:block;width:300px;height:250px;object-fit:cover;object-position:40% 30%}
+#trophy-room .hon-photo figcaption{margin-top:6px;font:400 8px/1.3 var(--sans);letter-spacing:.06em;color:var(--muted)}
+#trophy-room .hon-right .honor-hero{margin:0;padding:0 0 10px}
+#trophy-room .hon-right .honors-list{display:block;margin:0;padding:0}
+#trophy-room .hon-right .honors-list li{padding:4px 0;font-size:12px}
+#trophy-room .honor-meta{margin-top:14px}
+#trophy-room .press-tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+#trophy-room .press-tiles figure{margin:0}
+#trophy-room .press-tiles img{display:block;width:100%;height:178px;object-fit:cover;box-shadow:0 6px 16px rgba(0,0,0,.14)}
+#trophy-room .press-tiles figcaption{margin-top:7px;font:400 10px/1.35 var(--sans);color:var(--muted)}
+#trophy-room .press-tiles figcaption b{color:var(--ink);font-weight:700}
+#trophy-room .press-tiles figcaption span{display:block;color:var(--body)}
+#trophy-room .press-also{margin:10px 0 0;font:400 9.5px/1.5 var(--sans);color:var(--muted)}
+#trophy-room .press-also b{color:var(--ink)}
+#trophy-room .partner-col{padding:0 0 14px;overflow:hidden}
+#trophy-room .partner-col .pc-photo{display:block;width:100%;height:92px;object-fit:cover;margin-bottom:10px}
+#trophy-room .partner-col .pn,#trophy-room .partner-col h4,#trophy-room .partner-col p{padding:0 14px}
+#trophy-room .partner-col p{font-size:10.5px}
+#trophy-room #partnerships{padding-top:14px!important}
+#trophy-room .hon-photo img{height:214px}
+#trophy-room .hon-right .honors-list li{padding:3px 0}
+#trophy-room .honor-meta{margin-top:10px;font-size:10.5px}
+#trophy-room .press-block{margin-top:14px}
+#trophy-room .press-tiles img{height:156px}
+#trophy-room .partner-col .pc-photo{height:74px;margin-bottom:8px}
+#trophy-room .partner-col h4{margin-top:2px}
+#trophy-room .foot-note{margin-top:14px;padding-top:10px;padding-bottom:10px}
