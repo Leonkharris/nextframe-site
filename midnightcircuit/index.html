@@ -380,6 +380,235 @@ footer b{color:var(--muted)}
  .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
    overflow-wrap:anywhere}
 
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
+ .mxt .tgn{color:var(--cream);font-weight:700;white-space:nowrap;vertical-align:top}
+ .mxt .tgv{color:var(--gold2);font-weight:700;white-space:nowrap;vertical-align:top}
+ .mxt .tgw{color:var(--muted);white-space:normal;min-width:30ch;line-height:1.5}
+
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
  .cs{margin-top:34px;padding-top:26px;border-top:1px solid var(--line2)}
  .csh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
  .csn{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--dim);
@@ -454,7 +683,7 @@ footer b{color:var(--muted)}
 </header>
 
 <nav class="toc" aria-label="Sections">
-  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#matrix">Set H · the test</a><a href="#chooser">Set I · choose</a><a href="#downloads">Downloads</a><a href="#next">Sizes, QC, next</a>
+  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#targeting">Targeting</a><a href="#matrix">Set H · the test</a><a href="#chooser">Set I · choose</a><a href="#downloads">Downloads</a><a href="#next">Sizes, QC, next</a>
 </nav>
 
 <section id="brief">
@@ -834,6 +1063,23 @@ footer b{color:var(--muted)}
 
 
 
+<!-- targeting:start -->
+<section id="targeting">
+  <div class="sethead"><span class="pin">Targeting</span><h2>What to actually set</h2></div>
+  <p class="setlede">The exact values for the campaign setup screen, with the reasoning for each. Two of these argue <i>against</i> the obvious choice, so the evidence is given rather than the conclusion alone. Source is Pornhub’s own 2025 Year in Review, which is first-party data for this exact inventory — not a media-kit round number.</p>
+  <div class="mxt"><table><thead><tr><th>Setting</th><th>Recommended</th><th>Why</th></tr></thead><tbody>
+    <tr><td class="tgn">Device</td><td class="tgv">All</td><td class="tgw">84.5% of this inventory is mobile, but the twenty links already split by creative and placement. Splitting device as well would fragment every cell into numbers too small to read. Run All, then split device once a creative has won. <b>Judge every unit at phone size regardless.</b></td></tr>
+    <tr><td class="tgn">Ad Format</td><td class="tgv">Display → Banner → Static Banner</td><td class="tgw">Plus <b>In-Stream Video</b> as a separate campaign once the 16:9 cut exists. <b>Pop</b> carries no creative at all, so it is a volume buy, not part of this test. Out-stream, Native and Scrollable have nothing built for them yet.</td></tr>
+    <tr><td class="tgn">Ad Dimensions</td><td class="tgv">all five static sizes</td><td class="tgw">300×250 is the workhorse and will take most of the spend, but the others cost nothing extra to enable and fill inventory the 300×250 cannot reach.</td></tr>
+    <tr><td class="tgn">Content Category</td><td class="tgv">Straight</td><td class="tgw">The largest section and the one this creative is written for. Gay and Trans are real inventory but would need their own creative to be worth buying — running this set there would test the category, not the ads.</td></tr>
+    <tr><td class="tgn">Gender</td><td class="tgv"><b>All</b> — not Male</td><td class="tgw">The counter-intuitive one. <b>The US audience is already 72% male</b>, so selecting Male buys almost no extra concentration while discarding the 28% who are female — and that is the segment <b>growing, +1.5% in 2025</b>. Platform gender is inferred rather than declared, so narrowing it also raises CPM to re-buy a split you already have. Leave it open.</td></tr>
+    <tr><td class="tgn">Geo</td><td class="tgv">United States</td><td class="tgw">The client's market, and 38% of this inventory.</td></tr>
+    <tr><td class="tgn">Age <span class='mono'>(Advanced Targeting)</span></td><td class="tgv">skew 25–54</td><td class="tgw">US visitors: 23% are 18–24, 25% are 25–34, 22% are 35–44, 15% are 45–54. Average age <b>38</b>. <b>47% are 35 or over</b> — that is the half with a card on file and the income a first deposit needs. The 18–24 band clicks and does not fund, so if age targeting is available, de-prioritise it rather than chase the click rate.</td></tr>
+  </tbody></table></div>
+  <p class="setlede" style="margin-top:20px"><b>And the measurement call that matters more than any of the above: read this test on FTD rate, not CTR.</b> On adult-tube inventory the suggestive creative will almost certainly out-click the straight creative, and the youngest segment will out-click every other. Neither of those necessarily funds a deposit. The twenty links exist precisely so the question can be answered with registrations and first deposits instead of clicks.</p>
+  <p class="setlede"><b>One aside, for later.</b> The Philippines is the biggest outlier in the whole dataset — <b>64% female</b> and 49% aged 18–24, against a 38% female worldwide average. Irrelevant to a US buy, and worth remembering the day this client asks about expanding.</p>
+</section>
+<!-- targeting:end -->
 <!-- matrix:start -->
 <section id="matrix">
   <div class="sethead"><span class="pin">Set H · the test</span><h2>Twenty links, sixteen cells</h2></div>
@@ -898,11 +1144,11 @@ footer b{color:var(--muted)}
 <!-- matrix:end -->
 <!-- chooser:start -->
 <section id="chooser">
-  <div class="sethead"><span class="pin reel">Set I · choose</span><h2>Ten sets, six ways each</h2></div>
-  <p class="setlede">Every direction we can run, as <b>finished ads</b> rather than mood images — each tile is the actual unit, headline, CTA, brand lockup and 18+ strip included. All <b>60 ads</b> are built at all six sizes (<b>360 files</b>), every one under the 300 KB cap and ready to traffic. Size buttons under each tile download that file.</p>
+  <div class="sethead"><span class="pin reel">Set I · choose</span><h2>Twelve sets, six ways each</h2></div>
+  <p class="setlede">Every direction we can run, as <b>finished ads</b> rather than mood images — each tile is the actual unit, headline, CTA, brand lockup and 18+ strip included. All <b>72 ads</b> are built at all six sizes (<b>432 files</b>), every one under the 300 KB cap and ready to traffic. Size buttons under each tile download that file.</p>
   <p class="setlede"><b>How to use it:</b> pick a set, then pick which two of its six go head to head. That pair becomes the Normal and Suggestive arms of a block, and each arm runs on its own tracking link across both placements — so this page and the 20-link grid in Set H are the same structure seen from two ends. Each set below shows the tracking block it feeds.</p>
-  <p class="setlede"><b>On “eye-catching”.</b> Much of the photographic work here is moody and mid-tone; on a near-black page that <i>recedes</i>. The offer-led units — sets 05, 06 and 09 — do the opposite: champagne ground, one enormous number. With 47% of US visitors aged 35+, a clear offer also beats atmosphere. Where a set gives you both, we would back the bright one.</p>
-  <div class="pick" id="pick"><div class="pickh"><b>Your selection</b><span class="pickn" id="pickn">0 of 10 sets complete (2 each)</span><button class="pickb" id="pickcopy" type="button">Copy selection</button><button class="pickb" id="pickclear" type="button">Clear</button></div><table class="picktab"><thead><tr><th>Set</th><th>A</th><th>B</th><th>Tracking code</th><th>Links</th></tr></thead><tbody id="pickrows"></tbody></table><p class="pickhint"><b>Pick TWO ads in each set</b> — they become the A and B arms of that block, and each arm runs on its own tracking link across both placements. A third pick drops the oldest; clicking a chosen one clears it. Hover any ad for a larger preview. Your picks are saved in this browser, so the page can be closed and come back to.</p></div>
+  <p class="setlede"><b>On “eye-catching”.</b> Much of the photographic work here is moody and mid-tone; on a near-black page that <i>recedes</i>, while a single enormous number cuts straight through. <b>That is an argument about contrast, not about house style</b> — every unit on this page is <i>our</i> design carrying the client’s offers, not a reproduction of their banners. With 47% of US visitors aged 35+, a clear offer also beats atmosphere. Where a set gives you both, back the one with the number — and <b>set 11 is that argument made properly</b>: the whole offer stack in this campaign’s own frame.</p>
+  <div class="pick" id="pick"><div class="pickh"><b>Your selection</b><span class="pickn" id="pickn">0 of 12 sets complete (2 each)</span><button class="pickb" id="pickcopy" type="button">Copy selection</button><button class="pickb" id="pickclear" type="button">Clear</button></div><table class="picktab"><thead><tr><th>Set</th><th>A</th><th>B</th><th>Tracking code</th><th>Links</th></tr></thead><tbody id="pickrows"></tbody></table><p class="pickhint"><b>Pick TWO ads in each set</b> — they become the A and B arms of that block, and each arm runs on its own tracking link across both placements. A third pick drops the oldest; clicking a chosen one clears it. Hover any ad for a larger preview. Your picks are saved in this browser, so the page can be closed and come back to.</p></div>
   <div class="cs" id="set01"><div class="csh"><span class="csn">01</span><h3>Safety — the vault</h3><span class="csk">Security · normal</span><span class="csblk mono">PH_SAFE_N · p1 / p2 · ch 48, 49</span></div><p class="setlede csb">Trust, funds and privacy. The quietest set here, and against an audience that is 47% over 35 with a card on file, probably the most undervalued.</p><div class="csg">
     <div class="cc" data-id="s01c1" data-set="1" data-head="Your Money. Your Privacy. Protected." data-code="PH_SAFE_N" data-links="p1 / p2" data-prev="s01c1-i320.jpg" data-wide="s01c1-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s01c1-b300.jpg" loading="lazy" alt="Your Money. Your Privacy. Protected."><span class="ccpick">✓ chosen</span></div><div class="ccl">s01c1</div><div class="cch">Your Money. Your Privacy. Protected.</div><div class="ccs">Fast withdrawals. Secure payments.</div><div class="ccd"><a href="assets/ads/s01c1-b300.jpg" download>300x250</a> <a href="assets/ads/s01c1-i320.jpg" download>320x480</a> <a href="assets/ads/s01c1-b950.jpg" download>950x250</a> <a href="assets/ads/s01c1-b305.jpg" download>305x99</a> <a href="assets/ads/s01c1-b100.jpg" download>300x100</a> <a href="assets/ads/s01c1-b468.jpg" download>468x60</a></div></div>
     <div class="cc" data-id="s01c2" data-set="1" data-head="Locked Down. Paid Out." data-code="PH_SAFE_N" data-links="p1 / p2" data-prev="s01c2-i320.jpg" data-wide="s01c2-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s01c2-b300.jpg" loading="lazy" alt="Locked Down. Paid Out."><span class="ccpick">✓ chosen</span></div><div class="ccl">s01c2</div><div class="cch">Locked Down. Paid Out.</div><div class="ccs">Encrypted deposits, fast withdrawals</div><div class="ccd"><a href="assets/ads/s01c2-b300.jpg" download>300x250</a> <a href="assets/ads/s01c2-i320.jpg" download>320x480</a> <a href="assets/ads/s01c2-b950.jpg" download>950x250</a> <a href="assets/ads/s01c2-b305.jpg" download>305x99</a> <a href="assets/ads/s01c2-b100.jpg" download>300x100</a> <a href="assets/ads/s01c2-b468.jpg" download>468x60</a></div></div>
@@ -983,14 +1229,30 @@ footer b{color:var(--muted)}
     <div class="cc" data-id="s10c5" data-set="10" data-head="Crash, Slots, Live." data-code="PH_BK_01–04" data-links="p17–p20" data-prev="s10c5-i320.jpg" data-wide="s10c5-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s10c5-b300.jpg" loading="lazy" alt="Crash, Slots, Live."><span class="ccpick">✓ chosen</span></div><div class="ccl">s10c5</div><div class="cch">Crash, Slots, Live.</div><div class="ccs">One account, the lot</div><div class="ccd"><a href="assets/ads/s10c5-b300.jpg" download>300x250</a> <a href="assets/ads/s10c5-i320.jpg" download>320x480</a> <a href="assets/ads/s10c5-b950.jpg" download>950x250</a> <a href="assets/ads/s10c5-b305.jpg" download>305x99</a> <a href="assets/ads/s10c5-b100.jpg" download>300x100</a> <a href="assets/ads/s10c5-b468.jpg" download>468x60</a></div></div>
     <div class="cc" data-id="s10c6" data-set="10" data-head="Free To Play. Real Cash To Win." data-code="PH_BK_01–04" data-links="p17–p20" data-prev="s10c6-i320.jpg" data-wide="s10c6-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s10c6-b300.jpg" loading="lazy" alt="Free To Play. Real Cash To Win."><span class="ccpick">✓ chosen</span></div><div class="ccl">s10c6</div><div class="cch">Free To Play. Real Cash To Win.</div><div class="ccs">Start on the house</div><div class="ccd"><a href="assets/ads/s10c6-b300.jpg" download>300x250</a> <a href="assets/ads/s10c6-i320.jpg" download>320x480</a> <a href="assets/ads/s10c6-b950.jpg" download>950x250</a> <a href="assets/ads/s10c6-b305.jpg" download>305x99</a> <a href="assets/ads/s10c6-b100.jpg" download>300x100</a> <a href="assets/ads/s10c6-b468.jpg" download>468x60</a></div></div>
   </div></div>
+  <div class="cs" id="set11"><div class="csh"><span class="csn">11</span><h3>The offer, our way</h3><span class="csk">Offer stack · our design</span><span class="csblk mono">PH_150_N / PH_BK · p9 / p10 or backup · ch 56, 57 / 64–67</span></div><p class="setlede csb">The client's own offers — 150% to $1,000, 5% rebate, $55 a friend, VIP tiers — carried into this campaign's visual language rather than reproduced from their banners. Same promises, our frame. <b>s11c1 is the benefit-list format</b>: the whole offer read at a glance as rows of number and label, which is the one thing their display unit does that nothing else here did.</p><div class="csg">
+    <div class="cc" data-id="s11c1" data-set="11" data-head="Everything On The Table." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c1-i320.jpg" data-wide="s11c1-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c1-b300.jpg" loading="lazy" alt="Everything On The Table."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c1</div><div class="cch">Everything On The Table.</div><div class="ccs">The full offer</div><div class="ccd"><a href="assets/ads/s11c1-b300.jpg" download>300x250</a> <a href="assets/ads/s11c1-i320.jpg" download>320x480</a> <a href="assets/ads/s11c1-b950.jpg" download>950x250</a> <a href="assets/ads/s11c1-b305.jpg" download>305x99</a> <a href="assets/ads/s11c1-b100.jpg" download>300x100</a> <a href="assets/ads/s11c1-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s11c2" data-set="11" data-head="150% On Your First Deposit." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c2-i320.jpg" data-wide="s11c2-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c2-b300.jpg" loading="lazy" alt="150% On Your First Deposit."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c2</div><div class="cch">150% On Your First Deposit.</div><div class="ccs">Matched up to $1,000</div><div class="ccd"><a href="assets/ads/s11c2-b300.jpg" download>300x250</a> <a href="assets/ads/s11c2-i320.jpg" download>320x480</a> <a href="assets/ads/s11c2-b950.jpg" download>950x250</a> <a href="assets/ads/s11c2-b305.jpg" download>305x99</a> <a href="assets/ads/s11c2-b100.jpg" download>300x100</a> <a href="assets/ads/s11c2-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s11c3" data-set="11" data-head="5% Back. Every Bet." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c3-i320.jpg" data-wide="s11c3-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c3-b300.jpg" loading="lazy" alt="5% Back. Every Bet."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c3</div><div class="cch">5% Back. Every Bet.</div><div class="ccs">Instant betting rebate</div><div class="ccd"><a href="assets/ads/s11c3-b300.jpg" download>300x250</a> <a href="assets/ads/s11c3-i320.jpg" download>320x480</a> <a href="assets/ads/s11c3-b950.jpg" download>950x250</a> <a href="assets/ads/s11c3-b305.jpg" download>305x99</a> <a href="assets/ads/s11c3-b100.jpg" download>300x100</a> <a href="assets/ads/s11c3-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s11c4" data-set="11" data-head="Bring A Friend. Take $55." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c4-i320.jpg" data-wide="s11c4-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c4-b300.jpg" loading="lazy" alt="Bring A Friend. Take $55."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c4</div><div class="cch">Bring A Friend. Take $55.</div><div class="ccs">Treasure chest per referral</div><div class="ccd"><a href="assets/ads/s11c4-b300.jpg" download>300x250</a> <a href="assets/ads/s11c4-i320.jpg" download>320x480</a> <a href="assets/ads/s11c4-b950.jpg" download>950x250</a> <a href="assets/ads/s11c4-b305.jpg" download>305x99</a> <a href="assets/ads/s11c4-b100.jpg" download>300x100</a> <a href="assets/ads/s11c4-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s11c5" data-set="11" data-head="Daily. Weekly. Monthly." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c5-i320.jpg" data-wide="s11c5-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c5-b300.jpg" loading="lazy" alt="Daily. Weekly. Monthly."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c5</div><div class="cch">Daily. Weekly. Monthly.</div><div class="ccs">VIP rewards that keep coming</div><div class="ccd"><a href="assets/ads/s11c5-b300.jpg" download>300x250</a> <a href="assets/ads/s11c5-i320.jpg" download>320x480</a> <a href="assets/ads/s11c5-b950.jpg" download>950x250</a> <a href="assets/ads/s11c5-b305.jpg" download>305x99</a> <a href="assets/ads/s11c5-b100.jpg" download>300x100</a> <a href="assets/ads/s11c5-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s11c6" data-set="11" data-head="Paid Fast. Kept Quiet." data-code="PH_150_N / PH_BK" data-links="p9 / p10 or backup" data-prev="s11c6-i320.jpg" data-wide="s11c6-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s11c6-b300.jpg" loading="lazy" alt="Paid Fast. Kept Quiet."><span class="ccpick">✓ chosen</span></div><div class="ccl">s11c6</div><div class="cch">Paid Fast. Kept Quiet.</div><div class="ccs">Fast withdrawals. Secure payments.</div><div class="ccd"><a href="assets/ads/s11c6-b300.jpg" download>300x250</a> <a href="assets/ads/s11c6-i320.jpg" download>320x480</a> <a href="assets/ads/s11c6-b950.jpg" download>950x250</a> <a href="assets/ads/s11c6-b305.jpg" download>305x99</a> <a href="assets/ads/s11c6-b100.jpg" download>300x100</a> <a href="assets/ads/s11c6-b468.jpg" download>468x60</a></div></div>
+  </div></div>
+  <div class="cs" id="set12"><div class="csh"><span class="csn">12</span><h3>The offer shelf</h3><span class="csk">Real offers · big numbers</span><span class="csblk mono">PH_WIN_N / PH_BK · p5 / p6 or backup · ch 52, 53 / 64–67</span></div><p class="setlede csb"><b>Six offers that were already in the project and had not reached this deck:</b> $7,777 Lucky Spin, $9,999 Treasure Mine, 50% Daily Rescue cashback, the 9.41× Aviator round, Gates of Olympus and the $55 referral. They come from the concept sheet in <span class='mono'>05-flow-art</span> and were stable across three iterations, so they are the client's real offer shelf — not copy written for this test. Rendered here as finished units for the first time.</p><div class="csg">
+    <div class="cc" data-id="s12c1" data-set="12" data-head="First Deposit Bonus" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c1-i320.jpg" data-wide="s12c1-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c1-b300.jpg" loading="lazy" alt="First Deposit Bonus"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c1</div><div class="cch">First Deposit Bonus</div><div class="ccs">On your first deposit</div><div class="ccd"><a href="assets/ads/s12c1-b300.jpg" download>300x250</a> <a href="assets/ads/s12c1-i320.jpg" download>320x480</a> <a href="assets/ads/s12c1-b950.jpg" download>950x250</a> <a href="assets/ads/s12c1-b305.jpg" download>305x99</a> <a href="assets/ads/s12c1-b100.jpg" download>300x100</a> <a href="assets/ads/s12c1-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s12c2" data-set="12" data-head="Lucky Spin" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c2-i320.jpg" data-wide="s12c2-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c2-b300.jpg" loading="lazy" alt="Lucky Spin"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c2</div><div class="cch">Lucky Spin</div><div class="ccs">Cash prizes, drawn daily</div><div class="ccd"><a href="assets/ads/s12c2-b300.jpg" download>300x250</a> <a href="assets/ads/s12c2-i320.jpg" download>320x480</a> <a href="assets/ads/s12c2-b950.jpg" download>950x250</a> <a href="assets/ads/s12c2-b305.jpg" download>305x99</a> <a href="assets/ads/s12c2-b100.jpg" download>300x100</a> <a href="assets/ads/s12c2-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s12c3" data-set="12" data-head="Per Qualified Friend" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c3-i320.jpg" data-wide="s12c3-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c3-b300.jpg" loading="lazy" alt="Per Qualified Friend"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c3</div><div class="cch">Per Qualified Friend</div><div class="ccs">Paid instantly</div><div class="ccd"><a href="assets/ads/s12c3-b300.jpg" download>300x250</a> <a href="assets/ads/s12c3-i320.jpg" download>320x480</a> <a href="assets/ads/s12c3-b950.jpg" download>950x250</a> <a href="assets/ads/s12c3-b305.jpg" download>305x99</a> <a href="assets/ads/s12c3-b100.jpg" download>300x100</a> <a href="assets/ads/s12c3-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s12c4" data-set="12" data-head="Cash Out Before It Crashes" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c4-i320.jpg" data-wide="s12c4-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c4-b300.jpg" loading="lazy" alt="Cash Out Before It Crashes"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c4</div><div class="cch">Cash Out Before It Crashes</div><div class="ccs">Thirty-second rounds</div><div class="ccd"><a href="assets/ads/s12c4-b300.jpg" download>300x250</a> <a href="assets/ads/s12c4-i320.jpg" download>320x480</a> <a href="assets/ads/s12c4-b950.jpg" download>950x250</a> <a href="assets/ads/s12c4-b305.jpg" download>305x99</a> <a href="assets/ads/s12c4-b100.jpg" download>300x100</a> <a href="assets/ads/s12c4-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s12c5" data-set="12" data-head="Treasure Mine" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c5-i320.jpg" data-wide="s12c5-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c5-b300.jpg" loading="lazy" alt="Treasure Mine"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c5</div><div class="cch">Treasure Mine</div><div class="ccs">Daily prize drops</div><div class="ccd"><a href="assets/ads/s12c5-b300.jpg" download>300x250</a> <a href="assets/ads/s12c5-i320.jpg" download>320x480</a> <a href="assets/ads/s12c5-b950.jpg" download>950x250</a> <a href="assets/ads/s12c5-b305.jpg" download>305x99</a> <a href="assets/ads/s12c5-b100.jpg" download>300x100</a> <a href="assets/ads/s12c5-b468.jpg" download>468x60</a></div></div>
+    <div class="cc" data-id="s12c6" data-set="12" data-head="Loss Cashback Every Day" data-code="PH_WIN_N / PH_BK" data-links="p5 / p6 or backup" data-prev="s12c6-i320.jpg" data-wide="s12c6-b950.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s12c6-b300.jpg" loading="lazy" alt="Loss Cashback Every Day"><span class="ccpick">✓ chosen</span></div><div class="ccl">s12c6</div><div class="cch">Loss Cashback Every Day</div><div class="ccs">The retention hook</div><div class="ccd"><a href="assets/ads/s12c6-b300.jpg" download>300x250</a> <a href="assets/ads/s12c6-i320.jpg" download>320x480</a> <a href="assets/ads/s12c6-b950.jpg" download>950x250</a> <a href="assets/ads/s12c6-b305.jpg" download>305x99</a> <a href="assets/ads/s12c6-b100.jpg" download>300x100</a> <a href="assets/ads/s12c6-b468.jpg" download>468x60</a></div></div>
+  </div></div>
 <script>
 (function () {
   // The chooser has to actually choose: click a tile, it is selected for its set, and the table at
   // the top reflects it. One pick per set, because a set IS one arm of a tracking block -- allowing
   // several would produce a selection nobody can traffic.
   var KEY = 'mc-picks-v1';
-  var SETS = {"1": "Safety \u2014 the vault", "2": "Safety \u2014 PLAY SAFE", "3": "Big Win \u2014 the jackpot", "4": "Big Win \u2014 THE BIG O", "5": "150% First Deposit", "6": "150% \u2014 YOUR FIRST TIME", "7": "Win a RealDoll\u00ae", "8": "RealDoll \u2014 THE FANTASY", "9": "Premium Credit", "10": "The live game"};
-  var BLOCK = {"1": {"code": "PH_SAFE_N", "links": "p1 / p2"}, "2": {"code": "PH_SAFE_S", "links": "p3 / p4"}, "3": {"code": "PH_WIN_N", "links": "p5 / p6"}, "4": {"code": "PH_WIN_S", "links": "p7 / p8"}, "5": {"code": "PH_150_N", "links": "p9 / p10"}, "6": {"code": "PH_150_S", "links": "p11 / p12"}, "7": {"code": "PH_RD_N", "links": "p13 / p14"}, "8": {"code": "PH_RD_S", "links": "p15 / p16"}, "9": {"code": "PH_BK_01\u201304", "links": "p17\u2013p20"}, "10": {"code": "PH_BK_01\u201304", "links": "p17\u2013p20"}};
+  var SETS = {"1": "Safety \u2014 the vault", "2": "Safety \u2014 PLAY SAFE", "3": "Big Win \u2014 the jackpot", "4": "Big Win \u2014 THE BIG O", "5": "150% First Deposit", "6": "150% \u2014 YOUR FIRST TIME", "7": "Win a RealDoll\u00ae", "8": "RealDoll \u2014 THE FANTASY", "9": "Premium Credit", "10": "The live game", "11": "The offer, our way", "12": "The offer shelf"};
+  var BLOCK = {"1": {"code": "PH_SAFE_N", "links": "p1 / p2"}, "2": {"code": "PH_SAFE_S", "links": "p3 / p4"}, "3": {"code": "PH_WIN_N", "links": "p5 / p6"}, "4": {"code": "PH_WIN_S", "links": "p7 / p8"}, "5": {"code": "PH_150_N", "links": "p9 / p10"}, "6": {"code": "PH_150_S", "links": "p11 / p12"}, "7": {"code": "PH_RD_N", "links": "p13 / p14"}, "8": {"code": "PH_RD_S", "links": "p15 / p16"}, "9": {"code": "PH_BK_01\u201304", "links": "p17\u2013p20"}, "10": {"code": "PH_BK_01\u201304", "links": "p17\u2013p20"}, "11": {"code": "PH_150_N / PH_BK", "links": "p9 / p10 or backup"}, "12": {"code": "PH_WIN_N / PH_BK", "links": "p5 / p6 or backup"}};
   // TWO picks per set: the A/B runs INSIDE a set, so the two chosen executions become the A and
   // B arms of that block. A third click drops the oldest, so the pair always stays valid.
   var MAX = 2;
