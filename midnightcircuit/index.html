@@ -744,6 +744,51 @@ footer b{color:var(--muted)}
  .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
    overflow-wrap:anywhere}
 
+ .ccd a{font:400 10px 'Share Tech Mono',monospace;color:var(--cream);text-decoration:none;
+   border:1px solid var(--line2);border-radius:5px;padding:2px 6px;white-space:nowrap}
+ .ccd a:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ /* --- chosen state --- */
+ .cc{cursor:pointer;transition:border-color .12s,transform .12s}
+ .cc:hover{border-color:var(--line2);transform:translateY(-2px)}
+ .cc:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+ .cc .ccm{position:relative}
+ .ccpick{position:absolute;top:8px;left:8px;display:none;font:700 10px 'Archivo',sans-serif;
+   letter-spacing:.08em;text-transform:uppercase;color:#0B0B0D;background:var(--unc);
+   border-radius:999px;padding:3px 9px}
+ .cc.sel{border-color:var(--unc);box-shadow:0 0 0 1px var(--unc) inset}
+ .cc.sel .ccpick{display:block}
+ /* --- the live selection table --- */
+ .pick{margin-top:20px;background:var(--panel2);border:1px solid var(--line2);border-radius:12px;
+   padding:16px 18px}
+ .pickh{display:flex;align-items:center;gap:14px;flex-wrap:wrap;margin-bottom:10px}
+ .pickh b{color:var(--cream);font-size:14px}
+ .pickn{color:var(--dim);font:400 11.5px 'Share Tech Mono',monospace;margin-right:auto}
+ .pickb{font:600 11px 'Archivo',sans-serif;color:var(--text);background:transparent;
+   border:1px solid var(--line2);border-radius:7px;padding:5px 11px;cursor:pointer}
+ .pickb:hover{color:var(--ink);background:var(--gold2);border-color:var(--gold2)}
+ .picktab{border-collapse:collapse;width:100%;font-size:12.5px}
+ .picktab th{text-align:left;padding:6px 10px;color:var(--dim);font-weight:700;
+   border-bottom:1px solid var(--line2);white-space:nowrap}
+ .picktab td{padding:6px 10px;border-bottom:1px solid var(--line);color:var(--muted)}
+ .picktab tr.has td{color:var(--text)}
+ .picktab a{color:var(--cream);text-decoration:none}
+ .picktab a:hover{color:var(--gold2)}
+ .picktab .none{color:var(--dim)}
+ .picktab .ab{display:inline-block;min-width:15px;font:700 10px 'Archivo',sans-serif;
+   color:var(--ink);background:var(--gold2);border-radius:4px;text-align:center;padding:1px 4px}
+ .picktab tr.part td{color:var(--muted)}
+ .picktab tr.has .ab{background:var(--unc)}
+ .pickhint{margin-top:10px;font-size:12px;color:var(--dim);max-width:78ch}
+ /* --- hover preview --- */
+ .hv{position:fixed;z-index:99;pointer-events:none;opacity:0;transition:opacity .1s;
+   background:var(--panel);border:1px solid var(--line2);border-radius:12px;padding:10px;
+   box-shadow:0 18px 50px rgba(0,0,0,.75);width:300px}
+ .hv.on{opacity:1}
+ .hv img{display:block;width:100%;height:auto;border-radius:6px}
+ .hv .hv2{margin-top:8px}
+ .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
+   overflow-wrap:anywhere}
+
  .cs{margin-top:34px;padding-top:26px;border-top:1px solid var(--line2)}
  .csh{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
  .csn{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--dim);
