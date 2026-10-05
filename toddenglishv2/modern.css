@@ -607,3 +607,28 @@ img{display:block;max-width:100%}
 #cover .cc-frame::after{background:radial-gradient(ellipse 48% 34% at 18% 21%,rgba(248,247,243,.88) 0%,rgba(248,247,243,.6) 45%,rgba(248,247,243,0) 100%)}
 #cover .cc-name .s{color:#8f6427}
 #cover .cc-name .f,#cover .cc-name .s{text-shadow:0 0 22px rgba(255,255,255,.55)}
+/* Bentley: Haute Residence Fall 2023 cover beside the launch photo (Todd's request) */
+#spot-bentley .spot-press{display:grid;grid-template-columns:212px 1fr;gap:18px;margin:22px var(--pad) var(--pad);align-items:start}
+#spot-bentley .sp-cover{margin:0}
+#spot-bentley .sp-cover img{display:block;width:212px;height:254px;object-fit:cover;box-shadow:0 8px 22px rgba(0,0,0,.18)}
+#spot-bentley .sp-cover figcaption{margin-top:9px;font:600 9px/1.4 var(--sans);letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+#spot-bentley .sp-cover figcaption em{font-style:italic;text-transform:none;letter-spacing:.04em;font-size:10px}
+#spot-bentley .spot-press .spot-strip{margin:0}
+#spot-bentley .spot-press .spot-strip img{height:254px;object-position:50% 22%}
+#spot-bentley .spot-press{grid-template-columns:186px 1fr;margin-top:18px}
+#spot-bentley .sp-cover img{width:186px;height:223px}
+#spot-bentley .spot-press .spot-strip img{height:223px}
+/* Honors & Press: honors in two columns + "In the Press" (two covers + dated list, newest first) */
+#trophy-room .honors-list{display:grid;grid-template-columns:1fr 1fr;column-gap:28px}
+#trophy-room .press-block{margin:20px var(--pad) 0}
+#trophy-room .press-title{font:700 11px/1 var(--sans);letter-spacing:.18em;text-transform:uppercase;color:var(--accent);margin:0 0 12px}
+#trophy-room .press-row{display:grid;grid-template-columns:104px 104px 1fr;gap:16px;align-items:start}
+#trophy-room .press-cover{margin:0}
+#trophy-room .press-cover img{display:block;width:104px;height:134px;object-fit:cover;box-shadow:0 6px 16px rgba(0,0,0,.16)}
+#trophy-room .press-cover figcaption{margin-top:6px;font:600 8px/1.3 var(--sans);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+#trophy-room .press-list{list-style:none;margin:0;padding:0}
+#trophy-room .press-list li{font:400 10.5px/1.45 var(--sans);color:var(--body);padding:3px 0;border-bottom:1px solid rgba(0,0,0,.06)}
+#trophy-room .press-list b{color:var(--ink);font-weight:700}
+#trophy-room .honors-list li{padding:6px 0}
+#trophy-room .partner-col{padding:16px 18px}
+#trophy-room .partner-cols{padding-top:14px}
