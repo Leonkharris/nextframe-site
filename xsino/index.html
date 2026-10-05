@@ -213,6 +213,18 @@ h1.title .es{color:var(--gold-bright); margin-right:14px}
 .fb-alt{display:block; font-style:italic; opacity:.65; margin-top:2px}
 
 /* ---------- stories ---------- */
+.vipstrip{margin:18px 0 26px; padding:16px; border:2px solid var(--gold); border-radius:14px; background:var(--panel)}
+.vhead{font-size:14px; letter-spacing:2px; color:var(--gold); font-weight:700; margin-bottom:12px; display:flex; justify-content:space-between; gap:10px; flex-wrap:wrap}
+.vhead a{color:var(--accent); font-size:12px; letter-spacing:.5px; font-weight:400}
+.vgrid{display:grid; grid-template-columns:repeat(auto-fill,minmax(170px,1fr)); gap:12px}
+.vcard{display:block; border:1px solid var(--line2); border-radius:10px; overflow:hidden; text-decoration:none; color:inherit; background:#0006}
+.vcard:hover{border-color:var(--gold)}
+.vcard img{width:100%; aspect-ratio:9/16; object-fit:cover; display:block; max-height:260px}
+.vb{padding:8px 10px 10px}
+.vid{font-size:13px; font-weight:700; letter-spacing:1px}
+.vst{font-size:9px; padding:2px 6px; border-radius:6px; margin-left:4px; vertical-align:middle}
+.vst.done{background:#1f7a3a; color:#fff} .vst.redo{background:#b7791f; color:#fff} .vst.previz{background:#555; color:#ddd}
+.vt{font-size:12px; margin-top:4px} .vn{font-size:11px; color:var(--muted); margin-top:3px} .vw{font-size:12px; color:var(--gold); margin-top:6px}
 .story-grid{display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:14px}
 .scard{background:var(--panel); border:1px solid var(--line); border-radius:12px; padding:18px 20px; cursor:pointer; transition:.15s}
 .scard:hover{border-color:var(--line2); background:var(--panel2); transform:translateY(-3px)}
@@ -399,6 +411,7 @@ function vHub(){
       <div class="tagen">${esc(D.meta.thesis_es)}</div>
       <div class="market">${esc(MODE==='es'?D.meta.market_es:D.meta.market_en)}</div>
     </div>
+    ${vipStrip()}
     <div class="hub-grid">${cards}</div>
     <div class="doclist">${brandSections}</div>`;
 }
@@ -541,6 +554,23 @@ function vChar(id){
     </div>`;
 }
 
+// October VIP films (public copy): web-sized cuts in vip/. Update a row + its vip/VIP-0N.mp4 when a cut changes.
+const VIPS=[
+  ['VIP-01','Regalo especial VIP','Promo en el teléfono'],
+  ['VIP-02','Cashback mensual VIP','Ventanas a la ciudad neón · promo en el teléfono'],
+  ['VIP-03','100 depósitos · $1,000 MXN','Promo en las máquinas'],
+  ['VIP-04','Top 10 · $2,000 MXN','Nyx'],
+  ['VIP-05','30 depósitos · $300 MXN','Promo en las máquinas'],
+  ['VIP-06','Competencia de Slots · $4,000 MXN','Promo en la pantalla LED'],
+  ['VIP-07','20% extra primer depósito','Vega'],
+];
+function vipStrip(){
+  const cards=VIPS.map(([id,t,note])=>`<a class="vcard" href="vip/${id}.mp4" target="_blank">
+      <img src="vip/${id}.jpg" alt="${id}" loading="lazy" onerror="this.style.visibility='hidden'">
+      <div class="vb"><div class="vid">${id} <span class="vst done">FINAL DRAFT</span></div>
+      <div class="vt">${esc(t)}</div><div class="vn">${esc(note)}</div><div class="vw">▶ Watch</div></div></a>`).join('');
+  return `<div class="vipstrip"><div class="vhead">OCTOBER VIP COMMERCIALS · 7 FILMS</div><div class="vgrid">${cards}</div></div>`;
+}
 function storyCardHTML(s){
   const p = pillarOf(s.pillar);
   return `<div class="scard" onclick="go('#story/${s.id}')">
@@ -557,7 +587,7 @@ function vStories(){
     return `<div class="chip storyf" data-k="${p.key}"><span class="dot" style="background:${p.accent}"></span>${esc(p.en)} <span style="opacity:.6">${esc(p.es)} ·${n}</span></div>`;
   }).join('');
   const cards = D.stories.map(storyCardHTML).join('');
-  return `<h1 class="title">${biTitle('Historias','Stories')}</h1>
+  return `${vipStrip()}<h1 class="title">${biTitle('Historias','Stories')}</h1>
     <div class="sub">Bilingual storyboards, shot-by-shot with camera, action, and voiceover. — Guiones gráficos bilingües, tiro por tiro con cámara, acción y voz en off.</div>
     <div class="filters">
       <div class="chip storyf on" data-k="all">Todas · All</div>
