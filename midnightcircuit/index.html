@@ -341,7 +341,7 @@ footer b{color:var(--muted)}
  .hv .hv2{margin-top:8px}
  .hv .hvv{display:none;width:100%;max-height:560px;border-radius:6px;background:#000}
  .cc.ccx .ccm img{filter:blur(18px) brightness(.6)}
- .cc.ccx .ccm::before{content:"18+ · explicit";position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);
+ .cc.ccx .ccm::before{content:"18+ · click to show";position:absolute;z-index:2;left:50%;top:50%;transform:translate(-50%,-50%);
    font:700 12px 'Archivo',sans-serif;letter-spacing:.08em;text-transform:uppercase;color:#FFD355;
    background:rgba(11,11,13,.8);border:1px solid rgba(255,211,85,.5);border-radius:999px;padding:5px 12px}
  .cs.revealed .cc.ccx .ccm img{filter:none}
@@ -1023,6 +1023,9 @@ footer b{color:var(--muted)}
     function toggle(ev) {
       // let the size-download links work without also selecting the tile
       if (ev.target.closest && ev.target.closest('a')) return;
+      // a blurred explicit tile: the first click shows the set instead of picking
+      var cs = t.closest('.cs');
+      if (t.classList.contains('ccx') && !cs.classList.contains('revealed')) { cs.querySelector('.csrev').click(); return; }
       var s = t.dataset.set;
       var arr = picks[s] || (picks[s] = []);
       var i = -1;
