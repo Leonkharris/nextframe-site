@@ -841,10 +841,10 @@ footer b{color:var(--muted)}
 <!-- chooser:start -->
 <section id="chooser">
   <div class="sethead"><span class="pin reel">Set I · choose</span><h2>Choose your ads</h2></div>
-  <p class="setlede"><b>Pick one creative per pair: 10 creatives on 20 links.</b> The plan tests 2 creatives (Normal, Suggestive) × 2 placements per campaign, so each creative runs in placement P1 on one link and P2 on the other, and every creative × placement is tracked on its own. <b>Normal</b> = clean. <b>Suggestive</b> = the sexier, more explicit ones.</p>
+  <p class="setlede"><b>Choose as many as you like in each pair.</b> When it runs, a pair is one creative in both placements (P1 and P2): 10 creatives on 20 links, every creative × placement tracked on its own. <b>Normal</b> = clean. <b>Suggestive</b> = the sexier, more explicit ones.</p>
   <p class="setlede"><b>Download selected (.zip)</b> gives every size of your picks in one file, with the tracking links. Hover a tile to preview it.</p>
   <p class="setlede">The client’s samples, in our design: <a href="#pair05">s05c1</a>, <a href="#pair07">s07c1</a>, <a href="#pair05">s11c1</a>. To confirm: Wisdom of Athena 1000 (s06c4) is live on winfun777.com.</p>
-  <div class="pick" id="pick"><div class="pickh"><b>Your selection</b><span class="pickn" id="pickn">0 of 10 pairs chosen</span><button class="pickb" id="pickcopy" type="button">Copy selection</button><button class="pickb pickz" id="pickzip" type="button">Download selected (.zip)</button><button class="pickb" id="pickclear" type="button">Clear</button></div><table class="picktab"><thead><tr><th>Pair</th><th>Creative (runs in P1 and P2)</th><th>Tracking code</th><th>Links</th></tr></thead><tbody id="pickrows"></tbody></table><p class="pickhint">One per pair. A new pick replaces the old one; click a chosen one to clear it. Picks are saved in this browser.</p></div>
+  <div class="pick" id="pick"><div class="pickh"><b>Your selection</b><span class="pickn" id="pickn">0 of 10 pairs chosen</span><button class="pickb" id="pickcopy" type="button">Copy selection</button><button class="pickb pickz" id="pickzip" type="button">Download selected (.zip)</button><button class="pickb" id="pickclear" type="button">Clear</button></div><table class="picktab"><thead><tr><th>Pair</th><th>Chosen</th><th>Tracking code</th><th>Links</th></tr></thead><tbody id="pickrows"></tbody></table><p class="pickhint">Click to choose, click again to clear. Any number per pair. Picks are saved in this browser.</p></div>
   <div class="cs" id="pair01"><div class="csh"><span class="csn">01</span><h3>Safety — Normal</h3><span class="csblk mono">PH_SAFE_N · p1 / p2 · ch 48, 49</span></div>
   <p class="setlede csb"><b>Safety — the vault</b> · Security · normal · Trust, funds and privacy.</p><div class="csg">
     <div class="cc" data-id="s01c1" data-set="1" data-head="Your Money. Your Privacy. Protected." data-code="PH_SAFE_N" data-links="p1 / p2" data-prev="s01c1-i320.jpg" data-wide="s01c1-b305.jpg" tabindex="0" role="button" aria-pressed="false"><div class="ccm"><img src="assets/ads/s01c1-b300.jpg" loading="lazy" alt="Your Money. Your Privacy. Protected."><span class="ccpick">✓ chosen</span></div><div class="ccl">s01c1</div><div class="cch">Your Money. Your Privacy. Protected.</div><div class="ccs">Fast withdrawals. Secure payments.</div><div class="ccd"><a href="assets/ads/s01c1-b300.jpg" download>300x250</a> <a href="assets/ads/s01c1-i320.jpg" download>320x480</a> <a href="assets/ads/s01c1-b950.jpg" download>950x250</a> <a href="assets/ads/s01c1-b305.jpg" download>305x99</a> <a href="assets/ads/s01c1-b100.jpg" download>300x100</a> <a href="assets/ads/s01c1-b468.jpg" download>468x60</a> <a href="assets/ads/s01c1-n640.jpg" download>640x360</a></div></div>
@@ -997,10 +997,10 @@ footer b{color:var(--muted)}
   var KEY = 'mc-picks-v3';   // v3: ONE pick per PAIR (1-10)
   var SETS = {"1": "Safety \u2014 Normal", "2": "Safety \u2014 Suggestive", "3": "Big Win \u2014 Normal", "4": "Big Win \u2014 Suggestive", "5": "150% First Deposit \u2014 Normal", "6": "150% First Deposit \u2014 Suggestive", "7": "Win a RealDoll \u2014 Normal", "8": "Win a RealDoll \u2014 Suggestive", "9": "Backup 1 \u2014 the live game", "10": "Backup 2 \u2014 Premium Credit (proposed offer)"};
   var BLOCK = {"1": {"code": "PH_SAFE_N", "links": "p1 / p2"}, "2": {"code": "PH_SAFE_S", "links": "p3 / p4"}, "3": {"code": "PH_WIN_N", "links": "p5 / p6"}, "4": {"code": "PH_WIN_S", "links": "p7 / p8"}, "5": {"code": "PH_150_N", "links": "p9 / p10"}, "6": {"code": "PH_150_S", "links": "p11 / p12"}, "7": {"code": "PH_RD_N", "links": "p13 / p14"}, "8": {"code": "PH_RD_S", "links": "p15 / p16"}, "9": {"code": "PH_BK_01 / PH_BK_02", "links": "p17 / p18"}, "10": {"code": "PH_BK_03 / PH_BK_04", "links": "p19 / p20"}};
-  // ONE creative per pair. The client's plan: each campaign tests 2 creatives x 2 placements and tracks
-  // every creative x placement on its own link, so a pair = one creative run in P1 and P2. Two ads
-  // rotating on the same links would blur exactly what the links are there to measure.
-  var MAX = 1;
+  // No cap per pair. Leon: "i can only choose one at a time" -- the page is where he and the client
+  // SHORTLIST, so any number of picks per pair. (Trafficking still runs one creative per pair across P1
+  // and P2, per the client's plan; the page says so, it does not enforce it.)
+  var MAX = Infinity;
   var picks = {};   // set -> [{id, head}] up to MAX
   try { picks = JSON.parse(localStorage.getItem(KEY) || '{}'); } catch (e) { picks = {}; }
   Object.keys(picks).forEach(function (k) {
@@ -1029,11 +1029,11 @@ footer b{color:var(--muted)}
     var n = 0;
     rows.innerHTML = keys.map(function (k) {
       var arr = picks[k] || [];
-      if (arr.length === MAX) n++;
+      if (arr.length) n++;
       var pad = ('0' + k).slice(-2);
-      var q = arr[0];
-      var cell = q ? '<span class="mono">' + q.id + '</span> ' + q.head : '<span class="none">not chosen</span>';
-      return '<tr class="' + (arr.length === MAX ? 'has' : (arr.length ? 'part' : '')) + '">' +
+      var cell = arr.length ? arr.map(function (q) { return '<span class="mono">' + q.id + '</span> ' + q.head; }).join('<br>')
+                            : '<span class="none">not chosen</span>';
+      return '<tr class="' + (arr.length ? 'has' : '') + '">' +
         '<td><a href="#pair' + pad + '">' + pad + ' ' + SETS[k] + '</a></td>' +
         '<td>' + cell + '</td>' +
         '<td class="mono">' + BLOCK[k].code + '</td>' +
@@ -1075,8 +1075,10 @@ footer b{color:var(--muted)}
   document.getElementById('pickcopy').addEventListener('click', function (ev) {
     var keys = Object.keys(SETS).sort(function (a, b) { return a - b; });
     var txt = keys.map(function (k) {
-      var q = (picks[k] || [])[0], pad = ('0' + k).slice(-2);
-      return pad + '  ' + SETS[k] + '\n    ' + (q ? q.id + '  "' + q.head + '"' : '(not chosen)') +
+      var arr = picks[k] || [], pad = ('0' + k).slice(-2);
+      var lines = arr.length ? arr.map(function (q) { return '    ' + q.id + '  "' + q.head + '"'; }).join('\n')
+                             : '    (not chosen)';
+      return pad + '  ' + SETS[k] + '\n' + lines +
         '\n       ' + BLOCK[k].code + '  links ' + BLOCK[k].links + ' (P1, P2)';
     }).join('\n');
     var out = 'Winfun777 / Midnight Circuit - creative selection\n\n' + txt;
@@ -1163,7 +1165,8 @@ footer b{color:var(--muted)}
     var readme = ['Winfun777 / Midnight Circuit -- creative selection, ready to post',
       'Exported ' + new Date().toISOString().slice(0, 16).replace('T', ' ') + ' from next-frame.agency/midnightcircuit', '',
       'HOW TO POST',
-      '- Each pair folder holds its ONE creative, every size. Run it in BOTH placements: P1 on the first link, P2 on the second.',
+      '- Each pair folder holds your picks for it, every placement size. A pair runs ONE creative in BOTH placements:',
+      '  P1 on the first link, P2 on the second. If a pair has more than one pick, choose one before trafficking.',
       '- P1 and P2 are the same creative in two slots, each with its own tracking link (below).',
       '- Mobile first: the rep says most of the traffic is mobile.',
       '- Sizes and where they run:'];
