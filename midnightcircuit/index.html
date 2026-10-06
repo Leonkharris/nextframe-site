@@ -347,6 +347,10 @@ footer b{color:var(--muted)}
  .cs.revealed .cc.ccx .ccm img{filter:none}
  .cs.revealed .cc.ccx .ccm::before{display:none}
  .csrev{margin-left:auto}
+ /* Leon 2026-10-06: "we just need this one" -- the page is the chooser and the 20 tracking links. Hidden, not
+    deleted: remove these two rules to bring every section back. */
+ #brief,#strategy,#slots,#setA,#setB,#setC,#setD,#setE,#setF,#setG,#targeting,#preroll,#downloads,#next{display:none}
+ #matrix>:not(.sethead):not(.mxall):not(.mxall~*){display:none}
  .cc.ccv .ccm::after{content:"\25B6";position:absolute;top:50%;left:50%;transform:translate(-50%,-60%);
    font-size:34px;color:rgba(255,211,85,.92);text-shadow:0 2px 14px rgba(0,0,0,.9);pointer-events:none}
  .hv .hvc{margin-top:8px;font:400 10.5px 'Share Tech Mono',monospace;color:var(--dim);
@@ -363,7 +367,7 @@ footer b{color:var(--muted)}
 </header>
 
 <nav class="toc" aria-label="Sections">
-  <a href="#brief">The brief</a><a href="#strategy">Strategy</a><a href="#slots">The slots</a><a href="#setA">A · What the category runs</a><a href="#setB">B · Unconventional</a><a href="#setC">C · Sexualised</a><a href="#setD">D · The ceiling</a><a href="#setE">E · The reel</a><a href="#targeting">Targeting</a><a href="#matrix">Set H · the test</a><a href="#chooser">Set I · choose</a><a href="#preroll">Set J · pre-roll</a><a href="#downloads">Downloads</a><a href="#next">Sizes, QC, next</a>
+  <a href="#chooser">Choose your ads</a><a href="#matrix">Tracking links</a>
 </nav>
 
 <section id="brief">
@@ -811,7 +815,7 @@ footer b{color:var(--muted)}
     <div class="mxc"><div class="mxh"><b>Promo B - Win a RealDoll</b><span class="mxv">Suggestive</span><span class="mxs have">have</span></div><div class="mxl">YOUR FANTASY COULD BECOME REAL – Play. Earn. Enter for a Chance to Win a RealDoll®.</div><div class="mxn">Existing creative with model</div><div class="mxm mono">PH_RD_S_P1 · PH_RD_S_P2 · ch 62, 63 — Client asset, with model</div></div>
   </div>
   <h3 style="margin-top:38px">Proposed &middot; Promotion C &mdash; credit for the site they are already on</h3><p class="setlede">Not in the grid yet, and the strongest offer idea in the brief. Every other promotion asks the viewer to leave what they are doing and gamble for a reward belonging to a different world &mdash; cash, a bonus, a parcel. This one pays out in <b>the thing they opened the tab for</b>. The reward is native to the moment, which no other offer here can say, and it turns the widest gap in the funnel into almost none.</p><div class="mx"><div class="mxc"><div class="mxh"><b>Promotion C</b><span class="mxv">proposed</span><span class="mxs make">to make</span></div><div class="mxl">PLAY SLOTS. GET PREMIUM. &mdash; Earn credit you can spend right here.</div><div class="mxw">Alternates: <i>Your spins pay for your subscription</i> &middot; <i>Stop paying for premium. Start winning it.</i> &middot; and for the suggestive arm, <i>Finish on us</i>, whose innocent reading is literally the offer.</div><div class="mxn">Two worlds in one frame: a slot reel and a play button, or coins resolving into a gift code. Cream and rose-gold, nothing explicit &mdash; the idea is the adult part.</div><div class="mxm mono">Runs on backup links PH_BK_01&ndash;04 &mdash; there is no free block</div></div></div><p class="setlede"><b>One real dependency.</b> Paying out in credit for a named platform needs either a commercial arrangement with it, or gift codes bought and awarded as a prize &mdash; legally and operationally different things. The lines above are written so that <b>none of them names a platform</b>, so the creative survives the gift-code case; if a partnership lands, the name drops in and the line only gets sharper. Separately, gambling-to-media-credit can read as a cash-equivalent prize in some US states, which is a question for the client&rsquo;s counsel and decides whether this is a four-link block or a backup test.</p>
-  <h3 style="margin-top:38px">All twenty links</h3>
+  <h3 class="mxall" style="margin-top:38px">All twenty links</h3>
   <p class="setlede">Channel IDs 48–67, one domain each, every link clickable. <b>Status is the workbook’s own column</b> — it reads Not Live until a campaign is actually running against that link. Checked on build: twenty links, no gaps in the ID run, no repeated domain, and every URL matching its own domain and channel.</p>
   <div class="mxt"><table><thead><tr><th>#</th><th>Code</th><th>Theme</th><th>Ver</th><th>Plc</th><th>Ch</th><th>Status</th><th>Tracking link</th></tr></thead><tbody>
     <tr><td>p1</td><td>PH_SAFE_N_P1</td><td>Safety</td><td>Normal</td><td>P1</td><td>48</td><td><span class="pill nl">Not Live</span></td><td class="mono"><a href="https://winfun777uv.com?channelId=48" target="_blank" rel="noopener nofollow">https://winfun777uv.com?channelId=48</a></td></tr>
