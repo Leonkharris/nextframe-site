@@ -1,96 +1,95 @@
-/* Tokyo Rocks × Chef Todd English — deck system ("Ink, Ice & Sun")
-   Sheets are 11×8.5in (1056×816 CSS px). Crisp daylight grounds, sumi ink, four flavor fields,
-   Tokyo Metro station badges as the flavor/section code, the enso as frame. */
+/* Tokyo Rocks × Chef Todd English — deck system v2 "American edit" (Leon 2026-10-06: the ChatGPT deck's design +
+   this deck's structure). Warm ivory ground, Anton display, Playfair serif sub-lines, Jost labels, Caveat script accents,
+   circle stickers, photo + colour-panel pages. Palette = client's. Sheets 11×8.5in (1056×816). */
 :root{
-  /* Client palette (Leon 2026-10-06): warm ivory, sea blue, citrus yellow, peach pink, grapefruit coral, olive green, ink black */
-  --ink:#0B0503; --ink2:#2a2422; --paper:#F2E5D5; --ice:#F7EFE4; --aqua:#2A8FDC; --aqua2:#1F78BD; --sand:#F2E5D5;
-  --sea:#2A8FDC; --sea-light:#CFE6F7; --ivory:#F2E5D5; --ivory2:#FAF4EA;
-  --yuzu:#E7BF6D; --yuzu-d:#C9A14A; --peach:#DEADA8; --peach-d:#C98F88; --lychee:#EAC8C2; --lychee-d:#EE543B;
-  --shiso:#C3CBA3; --shiso-d:#56580B; --grape:#EE543B; --hanko:#EE543B; --olive:#56580B; --coral:#EE543B; --mute:#6b6360;
-  --d:'Oswald',sans-serif; --b:'Jost',sans-serif; --jp:'Noto Sans JP',sans-serif;
+  --ink:#0B0503; --ink2:#2a2422; --ivory:#F2E5D5; --ivory2:#FAF4EA; --paper:#F2E5D5; --ice:#F7EFE4;
+  --sea:#2A8FDC; --sea-d:#1F6FB0; --aqua:#2A8FDC; --aqua2:#1F78BD;
+  --yuzu:#E7BF6D; --yuzu-l:#F0D79A; --yuzu-d:#C9A14A; --peach:#DEADA8; --peach-d:#C9354B; --lychee:#EAC8C2; --lychee-d:#B8233C;
+  --shiso:#C3CBA3; --shiso-d:#2F4F23; --olive:#56580B; --coral:#EE543B; --grape:#EE543B; --hanko:#EE543B; --mute:#6b6360; --sand:#F2E5D5;
+  --d:'Anton','Oswald',sans-serif; --o:'Oswald',sans-serif; --s:'Playfair Display',Georgia,serif; --b:'Jost',sans-serif; --jp:'Noto Sans JP',sans-serif; --sc:'Caveat',cursive;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{background:#e4dccf}
 body{font-family:var(--b);color:var(--ink);-webkit-font-smoothing:antialiased}
 .deck{display:flex;flex-direction:column;align-items:center;gap:28px;padding:28px 0}
-.sheet{position:relative;width:1056px;height:816px;overflow:hidden;background:var(--paper);box-shadow:0 10px 40px rgba(0,0,0,.18);page-break-after:always;break-after:page}
+.sheet{position:relative;width:1056px;height:816px;overflow:hidden;background:var(--ivory);box-shadow:0 10px 40px rgba(0,0,0,.18);page-break-after:always;break-after:page}
 @page{size:11in 8.5in;margin:0}
 @media print{html{background:none}.deck{display:block;padding:0;gap:0}.sheet{box-shadow:none}}
 
 /* grounds */
-.t-ink{background:var(--ink);color:#fff}
-.t-ice{background:var(--ice)}
-.t-aqua{background:var(--sea);color:#fff}
-.t-sea-light{background:var(--sea-light)}
-.t-sand{background:var(--sand)}
-.t-yuzu{background:var(--yuzu)} .t-peach{background:var(--peach)} .t-lychee{background:var(--lychee)} .t-shiso{background:var(--shiso)}
+.t-ink{background:var(--ink);color:#fff}.t-black{background:#000;color:#fff}
+.t-ivory,.t-paper,.t-sand{background:var(--ivory)}.t-ice{background:var(--ice)}
+.t-sea,.t-aqua{background:var(--sea);color:#fff}.t-olive{background:var(--olive);color:#fff}
+.t-yuzu{background:var(--yuzu-l)}.t-peach{background:var(--peach)}.t-lychee{background:var(--lychee)}.t-shiso{background:var(--shiso)}
+.on-white{color:#fff}
 
-/* chrome: header + folio */
+/* chrome */
 .hd{position:absolute;left:48px;right:48px;top:30px;display:flex;justify-content:space-between;align-items:center;font:600 10px/1 var(--b);letter-spacing:3px;text-transform:uppercase;z-index:5}
-.hd .b{display:flex;align-items:center;gap:10px}
-.hd .b svg{width:22px;height:22px}
-.ft{position:absolute;left:48px;right:48px;bottom:26px;display:flex;justify-content:space-between;font:500 9px/1 var(--b);letter-spacing:2.5px;text-transform:uppercase;opacity:.7;z-index:5}
+.hd .b{display:flex;align-items:center;gap:10px}.hd .b svg{width:20px;height:20px}
+.ft{position:absolute;left:48px;right:48px;bottom:26px;display:flex;justify-content:space-between;font:600 9.5px/1 var(--b);letter-spacing:2.5px;text-transform:uppercase;opacity:.8;z-index:5}
 .on-photo .hd,.on-photo .ft{color:#fff;text-shadow:0 1px 8px rgba(0,0,0,.35)}
 
 /* type */
-.eyebrow{font:600 11px/1.2 var(--b);letter-spacing:4px;text-transform:uppercase}
-.h-xl{font:700 112px/.88 var(--d);text-transform:uppercase;letter-spacing:-1px}
-.h-l{font:700 76px/.9 var(--d);text-transform:uppercase;letter-spacing:-.5px}
-.h-m{font:700 52px/.92 var(--d);text-transform:uppercase}
-.h-s{font:600 30px/1 var(--d);text-transform:uppercase;letter-spacing:.5px}
-.lede{font:400 19px/1.45 var(--b)}
-.body{font:400 14.5px/1.55 var(--b)}
-.small{font:400 11.5px/1.5 var(--b)}
+.eyebrow{font:600 11px/1.2 var(--b);letter-spacing:3.5px;text-transform:uppercase}
+.h-anton{font:400 150px/.86 var(--d);text-transform:uppercase;letter-spacing:.005em}
+.h-xl{font:400 112px/.88 var(--d);text-transform:uppercase}
+.h-l{font:400 86px/.9 var(--d);text-transform:uppercase}
+.h-m{font:400 58px/.92 var(--d);text-transform:uppercase}
+.h-s{font:400 32px/1 var(--d);text-transform:uppercase;letter-spacing:.3px}
+.serif{font:400 46px/1.08 var(--s);letter-spacing:-.3px}.serif i{font-style:italic}
+.serif-m{font:400 30px/1.15 var(--s)}.serif-m i{font-style:italic}
+.lede{font:400 19px/1.45 var(--b)}.body{font:400 14.5px/1.55 var(--b)}.small{font:400 11.5px/1.5 var(--b)}
 .caps{text-transform:uppercase;letter-spacing:3px}
+.notes{font:600 12px/1.6 var(--b);letter-spacing:2.5px;text-transform:uppercase}
 .src{font:400 9px/1.35 var(--b);opacity:.6;letter-spacing:.3px}
+.script{font:400 44px/1 var(--sc);color:var(--olive)}
 .jp{font-family:var(--jp)}
 .vkanji{position:absolute;writing-mode:vertical-rl;font:900 92px/1 var(--jp);letter-spacing:6px}
-.vjp{position:absolute;writing-mode:vertical-rl;font:700 14px/1.6 var(--jp);letter-spacing:8px;opacity:.75}
+.vlabel{position:absolute;writing-mode:vertical-rl;font:600 10px/1 var(--b);letter-spacing:4px;text-transform:uppercase;opacity:.7}
 b,strong{font-weight:600}
 
-/* photo boxes */
+/* photos */
 .ph{position:absolute;overflow:hidden;background:#e8dfd2}
 .ph img{width:100%;height:100%;object-fit:cover;display:block}
+.ph.angle{clip-path:polygon(9% 0,100% 0,100% 100%,0 100%)}
 .cap{position:absolute;left:12px;bottom:10px;font:600 9px/1 var(--b);letter-spacing:2px;text-transform:uppercase;color:#fff;text-shadow:0 1px 6px rgba(0,0,0,.5)}
 .cutout{position:absolute;object-fit:contain;filter:drop-shadow(0 24px 30px rgba(0,0,0,.22))}
 
-/* Tokyo Metro station badge: ring colour = flavor, letter + number */
-.badge{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;border:7px solid var(--c,#111);font:700 13px/1 var(--d);color:var(--ink);text-align:center;flex:none}
-.badge i{display:block;font-style:normal;font:700 22px/1 var(--d)}
+/* stickers (Codex-style circle badges) */
+.sticker{position:absolute;display:grid;place-items:center;text-align:center;border-radius:50%;width:150px;height:150px;background:var(--c,var(--sea));color:#fff;transform:rotate(-12deg);font:600 12px/1.15 var(--b);letter-spacing:2px;text-transform:uppercase;padding:14px;z-index:6}
+.sticker b{display:block;font:400 30px/1 var(--d);letter-spacing:.5px}
+.sticker.ivory{background:var(--ivory2);color:var(--ink)}.sticker.coral{background:var(--coral)}.sticker.olive{background:var(--olive)}
+.sticker.serif b{font:400 26px/1 var(--s)}
+.stamp{position:absolute;width:120px;height:120px;border:2.5px solid var(--ink);border-radius:50%;display:grid;place-items:center;text-align:center;font:400 15px/1.1 var(--d);text-transform:uppercase;transform:rotate(-8deg);padding:16px}
+
+/* metro badges (kept from v1) */
+.badge{display:inline-grid;place-items:center;width:58px;height:58px;border-radius:50%;background:#fff;border:7px solid var(--c,#111);font:700 13px/1 var(--o);color:var(--ink);text-align:center;flex:none}
+.badge i{display:block;font-style:normal;font:700 22px/1 var(--o)}
 .badge.sm{width:40px;height:40px;border-width:5px;font-size:9px}.badge.sm i{font-size:15px}
 .badge.lg{width:96px;height:96px;border-width:11px;font-size:18px}.badge.lg i{font-size:38px}
-.c-y{--c:var(--yuzu)} .c-p{--c:var(--peach-d)} .c-l{--c:var(--lychee-d)} .c-s{--c:var(--shiso-d)} .c-k{--c:var(--ink)} .c-r{--c:var(--hanko)}
-
-/* hanko stamp */
-.hanko{position:absolute;display:grid;place-items:center;width:64px;height:64px;border:4px solid var(--hanko);border-radius:8px;color:var(--hanko);font:900 22px/1 var(--jp);transform:rotate(-6deg)}
-
-/* enso mask frame (set --mask url in build) */
-.enso-frame{position:absolute;-webkit-mask-size:contain;mask-size:contain;-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center}
-.enso-ring{position:absolute;color:var(--ink)}
-.enso-ring svg{width:100%;height:100%}
+.c-y{--c:var(--yuzu)} .c-p{--c:var(--peach-d)} .c-l{--c:var(--lychee-d)} .c-s{--c:var(--shiso-d)} .c-k{--c:var(--ink)} .c-r{--c:var(--coral)}
 
 /* lockup */
 .lockup{position:absolute;color:var(--ink)}
-.lockup .ring{position:absolute;inset:0}
-.lockup .ring svg{width:100%;height:100%}
-.lockup .t{position:absolute;left:0;right:0;top:36%;text-align:center;font:700 calc(var(--s)*.162)/.88 var(--d);text-transform:uppercase}
+.lockup .ring{position:absolute;inset:0}.lockup .ring svg{width:100%;height:100%}
+.lockup .t{position:absolute;left:0;right:0;top:36%;text-align:center;font:700 calc(var(--s)*.162)/.88 var(--o);text-transform:uppercase}
 .lockup .k{position:absolute;left:0;right:0;top:66.5%;text-align:center;font:700 calc(var(--s)*.037)/1 var(--jp);letter-spacing:calc(var(--s)*.005)}
 .lockup.w{color:#fff}
 
-/* stat tiles */
-.stat{position:absolute;padding:22px 22px 18px;background:#fff}
-.stat .n{font:700 64px/.9 var(--d);letter-spacing:-.5px}
-.stat .l{font:500 13.5px/1.4 var(--b);margin-top:10px}
-.stat .src{margin-top:10px}
-
-/* lists */
-.kv{display:grid;grid-template-columns:150px 1fr;column-gap:16px;row-gap:0}
+/* numbers, stats, lists */
+.bignum{font:400 120px/.9 var(--d)}.bignum small{font:600 12px/1.4 var(--b);letter-spacing:2.5px;text-transform:uppercase;display:block;margin-top:10px}
+.stat{position:absolute;padding:22px 22px 18px;background:var(--ivory2)}
+.stat .n{font:400 64px/.9 var(--d);letter-spacing:.5px}.stat .l{font:500 13.5px/1.4 var(--b);margin-top:10px}.stat .src{margin-top:10px}
+.kv{display:grid;grid-template-columns:150px 1fr;column-gap:16px}
 .kv>div{padding:10px 0;border-top:1px solid rgba(0,0,0,.14);font:400 13.5px/1.4 var(--b)}
 .kv>div:nth-child(odd){font:600 10.5px/1.4 var(--b);letter-spacing:2.5px;text-transform:uppercase;padding-top:12px}
-.t-ink .kv>div{border-color:rgba(255,255,255,.18)}
+.t-ink .kv>div,.t-sea .kv>div,.t-olive .kv>div{border-color:rgba(255,255,255,.2)}
 .ticks li{list-style:none;padding:9px 0 9px 26px;border-top:1px solid rgba(0,0,0,.12);position:relative;font:400 14px/1.45 var(--b)}
 .ticks li::before{content:"";position:absolute;left:0;top:14px;width:12px;height:12px;border-radius:50%;border:3px solid var(--c,var(--ink))}
-
-/* metro line */
+.numlist{list-style:none}
+.numlist li{display:grid;grid-template-columns:60px 1fr;gap:18px;padding:16px 0;border-top:1px solid rgba(255,255,255,.25)}
+.numlist li .n{font:400 30px/1 var(--d)}.numlist li h4{font:400 22px/1.15 var(--s);margin-bottom:6px}.numlist li p{font:400 13px/1.5 var(--b);opacity:.9}
+.t-ivory .numlist li{border-color:rgba(0,0,0,.14)}
 .line{position:absolute;height:14px;border-radius:7px}
 .stn{position:absolute;width:34px;height:34px;border-radius:50%;background:#fff;border:6px solid var(--ink);transform:translate(-50%,-50%)}
+.strip{position:absolute;height:6px;background:linear-gradient(90deg,var(--yuzu) 0 25%,var(--peach) 25% 50%,var(--lychee) 50% 75%,var(--shiso) 75%)}
