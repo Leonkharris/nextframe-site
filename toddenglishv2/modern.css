@@ -692,3 +692,12 @@ img{display:block;max-width:100%}
 #on-camera .tv-cols{padding-top:18px}
 /* About inset: Todd in whites, arms crossed (Hotel Business 2022) — replaces the old TE-coat snapshot */
 #the-chef .ab2-portrait img{object-position:50% 8%}
+/* Part dividers: title up top + a row of three photos (Leon: "on some empty pages add a few 2 to 4 photos") */
+.sheet--divider .div-frame{justify-content:flex-start;padding-top:92px;box-sizing:border-box}
+.sheet--divider .div-num{margin:14px 0 8px}
+.sheet--divider .div-photos{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;width:100%;margin-top:auto;margin-bottom:48px}
+.sheet--divider .div-photos img{display:block;width:100%;height:330px;object-fit:cover}
+.sheet--divider .div-photos img{height:400px}
+/* Contents: a strip of four new photos above the how-to note */
+#contents .toc-strip{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:22px var(--pad) 0}
+#contents .toc-strip img{display:block;width:100%;height:150px;object-fit:cover}
