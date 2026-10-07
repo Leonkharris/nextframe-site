@@ -330,7 +330,7 @@ body.present .top-btns { display: none; }
 .t-bk.op::after { background: linear-gradient(90deg, rgba(10,20,40,.86) 0%, rgba(10,20,40,.6) 36%, rgba(0,0,0,.05) 66%, rgba(0,0,0,0) 100%), linear-gradient(0deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,0) 38%), linear-gradient(180deg, rgba(0,0,0,.6) 0%, rgba(0,0,0,0) 22%); }
 
 /* fill the shorter menu cards (Jade, Roast Beast) instead of leaving a dead band */
-.t-jd .card .mh { padding: 18px 0 30px; margin-bottom: 34px; }
+.t-jd .card .mh { padding: 4px 0 20px; margin-bottom: 26px; }
 .t-jd .card .sec { margin-bottom: 34px; }
 .t-jd .card .sec h4 { font-size: 17px; margin-bottom: 16px; }
 .t-jd .card .it { margin-bottom: 15px; }
@@ -342,3 +342,8 @@ body.present .top-btns { display: none; }
 .t-rb .card .it { margin-bottom: 16px; }
 .t-rb .card .it b { font-size: 24px; }
 .t-rb .card .it span { font-size: 15px; margin-top: 4px; }
+
+/* Jade: official lockup image replaces the typeset wordmark */
+.wm-jd img { width: 500px; height: auto; display: block; }
+.wm-jd.mc { display: block; }
+.wm-jd.mc img { width: 150px; margin: 0 auto; }
