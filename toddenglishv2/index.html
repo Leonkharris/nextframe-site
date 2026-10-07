@@ -1271,5 +1271,19 @@ html.v7hero-on .v7hero{display:block}
   update();
 })();
 </script>
+<script>
+/* Mobile fit: the kit is fixed 816px sheets; on narrow screens zoom the whole kit to the screen width
+   (zoom, not transform, so page height and scrolling stay correct). Desktop (>= 848px) is untouched. */
+(function () {
+  var kit = document.querySelector('main.kit-wrap');
+  if (!kit) return;
+  function fit() {
+    var z = Math.min(1, document.documentElement.clientWidth / 848);
+    kit.style.zoom = z < 1 ? String(z) : '';
+  }
+  fit();
+  window.addEventListener('resize', fit);
+})();
+</script>
 </body>
 </html>
