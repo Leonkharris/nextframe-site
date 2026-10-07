@@ -179,7 +179,8 @@
 </main>
 <script>
 const S=[...document.querySelectorAll('.sheet')];let cur=0,on=false;
-const fit=()=>document.documentElement.style.setProperty('--z',on?Math.min(innerWidth/1920,innerHeight/1080):Math.min(1,(innerWidth-40)/1920));
+// clientWidth = the layout viewport; innerWidth inflates on phones once anything overflows, which fed the zoom back into itself
+const fit=()=>{const d=document.documentElement,w=d.clientWidth,h=d.clientHeight;d.style.setProperty('--z',on?Math.min(w/1920,h/1080):Math.min(1,(w-(w<700?16:40))/1920))};
 // present mode hides sheets, so lazy images would load late: wake the current and next two
 const wake=()=>S.slice(cur,cur+3).forEach(s=>s.querySelectorAll('img[loading=lazy]').forEach(i=>i.loading='eager'));
 const show=()=>{S.forEach((s,k)=>s.style.display=on&&k!==cur?'none':'');if(on)wake()};
