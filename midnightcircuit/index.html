@@ -1237,10 +1237,13 @@ footer b{color:var(--muted)}
         var nh = nativeHead(t);
         readme.push('  ' + q.id + '  ' + q.head, '       native headline: ' + nh);
         var all = [].slice.call(t.querySelectorAll('.ccd a[download]'));
-        var placed = all.filter(function (a) { return FITS[a.textContent.trim()]; });
+        var sz = function (a) { return a.textContent.replace('▶', '').trim(); };   // '▶ 320x480' = that size's video unit
+        var placed = all.filter(function (a) { return FITS[sz(a)]; });
+        var vids = placed.filter(function (a) { return /\.mp4$/.test(a.getAttribute('href')); }).map(sz);
+        if (vids.length) readme.push('       video units: ' + vids.join(', ') + ' (.mp4, 5 s loop)');
         (placed.length ? placed : all).forEach(function (a) {      // a non-standard file (Barbra's) goes as is
           var ext = (a.getAttribute('href').match(/\.(\w+)$/) || [0, 'jpg'])[1];
-          var size = a.textContent.trim(), name = 'winfun777_' + q.id + '_' + size + '.' + ext;
+          var size = sz(a), name = 'winfun777_' + q.id + '_' + size + '.' + ext;
           var path = dir + '/' + q.id + '/' + name;
           jobs.push({ href: a.getAttribute('href'), name: path });
           rows.push([pad, SETS[k], 'P1 + P2', q.id, q.head, nh, size, FITS[size] || 'not a TrafficJunky size -- resize before trafficking', path, BLOCK[k].code, links.join(' | ')]);
