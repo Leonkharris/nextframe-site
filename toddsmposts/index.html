@@ -28,6 +28,8 @@ h2{font:700 28px/1 Oswald;text-transform:uppercase;margin:52px 0 6px}
 .post{background:var(--paper);border-radius:18px;padding:22px;margin-top:22px;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:30px;align-items:start;scroll-margin-top:16px}
 .media{position:sticky;top:16px}
 .media video{display:block;width:100%;aspect-ratio:9/16;max-height:82vh;object-fit:contain;background:#000;border-radius:12px}
+.post.wide{grid-template-columns:minmax(0,1.35fr) minmax(0,1fr)}
+.post.wide .media video{aspect-ratio:16/9;max-height:none}
 .eyebrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:600 11px/1 Jost;letter-spacing:2px;text-transform:uppercase}
 .pill{background:var(--gold-soft);color:#6B4C10;border-radius:99px;padding:6px 10px}
 .pill.ready{background:#DDEFE3;color:#1E5A37}
@@ -79,6 +81,8 @@ h2{font:700 28px/1 Oswald;text-transform:uppercase;margin:52px 0 6px}
   .post{grid-template-columns:1fr;padding:16px;gap:20px}
   .media{position:static;max-width:420px;width:100%;margin:0 auto}
   .media video{max-height:72vh}
+  .post.wide{grid-template-columns:1fr}
+  .post.wide .media{max-width:none}
   h2{margin-top:40px}
 }
 </style></head><body><div class="wrap">
@@ -95,7 +99,7 @@ h2{font:700 28px/1 Oswald;text-transform:uppercase;margin:52px 0 6px}
 
 <div class="foot">Prepared by Next Frame for Chef Todd English's team. This is a private page, so please don't share the link.</div>
 </div>
-<script src="posts.js?v=2"></script>
+<script src="posts.js?v=3"></script>
 <script>
 (function(){
   var DAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
@@ -135,7 +139,7 @@ h2{font:700 28px/1 Oswald;text-transform:uppercase;margin:52px 0 6px}
   // post cards
   var host=document.getElementById("posts");
   POSTS.forEach(function(p){
-    var card=el("section","post");card.id="post-"+p.id;
+    var card=el("section","post"+(p.wide?" wide":""));card.id="post-"+p.id;
     var media=el("div","media"),v=document.createElement("video");
     v.controls=true;v.playsInline=true;v.preload="metadata";v.poster=p.poster;v.src=p.preview;
     media.appendChild(v);card.appendChild(media);
