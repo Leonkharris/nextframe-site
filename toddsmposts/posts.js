@@ -112,10 +112,10 @@ By day, The English Sanctuary: wellness and longevity by the sea. By night, The 
     where: "Tokyo Rocks × Chef Todd English Sake Spritz",
     status: "ready",
     wide: true,
-    preview: "media/04-tokyo-rocks-film-60s.mp4",
-    poster: "media/04-tokyo-rocks-film-60s.jpg",
+    preview: "media/04-tokyo-rocks-summer-film.mp4",
+    poster: "media/04-tokyo-rocks-summer-film.jpg",
     downloads: [
-      { label: "Download video", note: "Widescreen film, music included.", file: "media/04-tokyo-rocks-film-60s.mp4", name: "Todd-TokyoRocks-summer-film.mp4", size: "52 MB", main: true }
+      { label: "Download video", note: "Widescreen film, music included.", file: "media/04-tokyo-rocks-summer-film.mp4", name: "Todd-TokyoRocks-summer-film.mp4", size: "51 MB", main: true }
     ],
     fields: [
       { label: "Caption", text:
@@ -125,7 +125,7 @@ Rooftops, pool days, long lunches with friends. Tokyo Rocks Sake Spritz was made
 
 #TokyoRocks #SakeSpritz #ToddEnglish` }
     ],
-    steps: wideSteps("the two friends by the pool (0:39)")
+    steps: wideSteps("the couple by the pool (0:45)")
   },
   {
     id: "05",
@@ -181,10 +181,10 @@ Yuzu, White Peach, Lychee or Shiso Grapefruit: which one are you reaching for?
     where: "Tokyo Rocks × Chef Todd English Sake Spritz",
     status: "ready",
     wide: true,
-    preview: "media/07-tokyo-rocks-rafa-60s.mp4",
-    poster: "media/07-tokyo-rocks-rafa-60s.jpg",
+    preview: "media/07-tokyo-rocks-rafa-60s-v5.mp4",
+    poster: "media/07-tokyo-rocks-rafa-60s-v5.jpg",
     downloads: [
-      { label: "Download video", note: "Widescreen film, music included.", file: "media/07-tokyo-rocks-rafa-60s.mp4", name: "Todd-TokyoRocks-weekend.mp4", size: "51 MB", main: true }
+      { label: "Download video", note: "Widescreen film, music included.", file: "media/07-tokyo-rocks-rafa-60s-v5.mp4", name: "Todd-TokyoRocks-weekend.mp4", size: "51 MB", main: true }
     ],
     fields: [
       { label: "Caption", text:
@@ -194,6 +194,29 @@ Tokyo Rocks Sake Spritz: Japanese soul, Tokyo attitude, and a little Todd Englis
 
 #TokyoRocks #SakeSpritz #ToddEnglish` }
     ],
-    steps: wideSteps("the first sip at the table (0:15)")
+    steps: wideSteps("the opening shot, can raised beside his face (0:05)")
+  },
+  {
+    id: "08",
+    date: "2026-11-06",
+    type: "Film · 30 s · widescreen",
+    title: "Tokyo Rocks: cherry blossom",
+    where: "Tokyo Rocks × Chef Todd English Sake Spritz",
+    status: "ready",
+    wide: true,
+    preview: "media/08-tokyo-rocks-mika-30s.mp4",
+    poster: "media/08-tokyo-rocks-mika-30s.jpg",
+    downloads: [
+      { label: "Download video", note: "Widescreen film, music included.", file: "media/08-tokyo-rocks-mika-30s.mp4", name: "Todd-TokyoRocks-cherry-blossom.mp4", size: "23 MB", main: true }
+    ],
+    fields: [
+      { label: "Caption", text:
+`Spring in Tokyo, in a can. 🌸
+
+White Peach, Yuzu, Lychee or Shiso Grapefruit. Pick yours.
+
+#TokyoRocks #SakeSpritz #ToddEnglish` }
+    ],
+    steps: wideSteps("her under the cherry blossoms (0:18)")
   }
 ];
