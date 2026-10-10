@@ -19,9 +19,7 @@ window.POSTS = [
     preview: "media/01-yes-chef-reel.mp4",
     poster: "media/01-yes-chef-cover.jpg",
     downloads: [
-      { label: "Video, no music", note: "Post this one. The song is added in Instagram (step 2).", file: "media/01-yes-chef-reel-no-music.mp4", name: "Todd-YesChef-reel-no-music.mp4", size: "29 MB", main: true },
-      { label: "Video, music included", note: "Backup only, if “Use audio” won't work.", file: "media/01-yes-chef-reel.mp4", name: "Todd-YesChef-reel-with-music.mp4", size: "30 MB" },
-      { label: "Cover image", note: "For “Edit cover → Add from camera roll”.", file: "media/01-yes-chef-cover.jpg", name: "Todd-YesChef-cover.jpg", size: "0.3 MB" }
+      { label: "Download video", note: "The finished reel, music included.", file: "media/01-yes-chef-reel.mp4", name: "Todd-YesChef-reel.mp4", size: "30 MB", main: true }
     ],
     fields: [
       { label: "Caption", text:
@@ -41,19 +39,13 @@ Great day at Citi Field with @jacksdiningroom and some of the best in the busine
       { label: "Invite collaborator", chips: ["@yescheffoodfest"] },
       { label: "Location", chips: ["Citi Field"] }
     ],
-    music: {
-      song: "“Sultans of Swing” (live), Dire Straits",
-      link: "https://www.instagram.com/reel/DTf1zGbCEP4/",
-      linkLabel: "Open the song reel in Instagram"
-    },
     steps: [
-      "Download the <b>no-music video</b> and the <b>cover image</b>. On iPhone they land in Files → Downloads: open each one, tap Share → <b>Save Video</b> / <b>Save Image</b> so they show up in Photos.",
-      "Tap <b>Open the song reel in Instagram</b> → tap the song name at the bottom → <b>Use audio</b>.",
-      "Pick the no-music video from your gallery. The song is already timed to the cut from 0:00, so don't trim or move it.",
+      "Tap <b>Download video</b>. On iPhone it lands in Files → Downloads: open it, tap Share → <b>Save Video</b> so it shows up in Photos.",
+      "In Instagram tap <b>+</b> → <b>Reel</b> → pick the video.",
       "Tap Next → paste the <b>caption</b>.",
       "<b>Tag people</b> → add both handles. <b>Invite collaborator</b> → @yescheffoodfest.",
       "<b>Add location</b> → Citi Field.",
-      "<b>Edit cover</b> → Add from camera roll → the cover image.",
+      "<b>Edit cover</b> → slide to the frame with the “YES CHEF FOOD FEST” title (0:03).",
       "<b>Share</b>. Play the reel once to check it has sound.",
       "Pin it to the top of the profile (⋯ → Pin to your profile). Reply to comments for the first hour."
     ],
