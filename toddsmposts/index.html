@@ -1,0 +1,187 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex,nofollow">
+<title>Todd English Posting Room</title>
+<meta name="description" content="Chef Todd English: posts ready to go. Download the video, copy the caption, post.">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@600;700&family=Jost:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--ink:#14110F;--ivory:#F2E9DD;--paper:#FFFDF9;--gold:#A87A22;--gold-soft:#F3E4C2;--muted:rgba(20,17,15,.62);--line:rgba(20,17,15,.13);--ok:#2E7D4F}
+*{box-sizing:border-box;margin:0}
+body{background:var(--ivory);color:var(--ink);font:400 16px/1.5 Jost,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:40px 20px 80px}
+.top{font:600 11px/1 Jost;letter-spacing:3px;text-transform:uppercase}
+h1{font:700 clamp(44px,8vw,104px)/.9 Oswald;text-transform:uppercase;margin:30px 0 12px}
+.sub{font-size:19px;line-height:1.45;max-width:660px;color:var(--muted)}
+h2{font:700 28px/1 Oswald;text-transform:uppercase;margin:52px 0 6px}
+.h2sub{color:var(--muted);font-size:15px;margin-bottom:16px}
+
+/* schedule strip */
+.sched{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.slot{display:block;border-radius:12px;padding:12px 14px 13px;min-height:92px;text-decoration:none;color:var(--ink);border:1.5px dashed rgba(20,17,15,.25)}
+.slot .d{font:600 11px/1 Jost;letter-spacing:2px;text-transform:uppercase;opacity:.7}
+.slot .t{font:700 18px/1.05 Oswald;text-transform:uppercase;margin-top:10px}
+.slot .s{font-size:12px;margin-top:4px;opacity:.75}
+.slot.full{background:var(--ink);color:var(--paper);border:1.5px solid var(--ink)}
+.slot.full .s{color:var(--gold-soft);opacity:1}
+.slot.posted{background:var(--paper);border:1.5px solid var(--line)}
+.slot.open .t{opacity:.35}
+
+/* post card */
+.post{background:var(--paper);border-radius:18px;padding:22px;margin-top:22px;display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:30px;align-items:start;scroll-margin-top:16px}
+.media{position:sticky;top:16px}
+.media video{display:block;width:100%;aspect-ratio:9/16;max-height:82vh;object-fit:contain;background:#000;border-radius:12px}
+.eyebrow{display:flex;flex-wrap:wrap;gap:8px;align-items:center;font:600 11px/1 Jost;letter-spacing:2px;text-transform:uppercase}
+.pill{background:var(--gold-soft);color:#6B4C10;border-radius:99px;padding:6px 10px}
+.pill.ready{background:#DDEFE3;color:#1E5A37}
+.post h3{font:700 clamp(30px,4vw,44px)/.95 Oswald;text-transform:uppercase;margin:12px 0 4px}
+.where{color:var(--muted);font-size:15px}
+.block{margin-top:24px}
+.label{font:600 11px/1 Jost;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:9px}
+
+/* downloads */
+.dls{display:grid;gap:8px}
+.dl{display:flex;align-items:center;gap:14px;padding:13px 16px;border-radius:12px;border:1.5px solid var(--line);color:var(--ink);text-decoration:none;background:#fff}
+.dl.main{background:var(--ink);color:var(--paper);border-color:var(--ink)}
+.dl .ic{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--gold-soft);color:#6B4C10}
+.dl.main .ic{background:var(--gold);color:#fff}
+.dl .tx{flex:1;min-width:0}
+.dl b{display:block;font:600 16px/1.25 Jost}
+.dl small{display:block;font-size:13px;opacity:.72;line-height:1.35;margin-top:2px}
+.dl .sz{flex:none;font-size:12px;opacity:.6}
+.dl:hover{border-color:var(--gold)}
+
+/* copy fields */
+.field{border:1.5px solid var(--line);border-radius:12px;background:#fff;overflow:hidden}
+.field + .field{margin-top:10px}
+.fh{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 10px 10px 16px;border-bottom:1px solid var(--line)}
+.fh span{font:600 11px/1.2 Jost;letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.copy{flex:none;font:600 14px/1 Jost;border:0;border-radius:99px;padding:10px 16px;background:var(--ink);color:var(--paper);cursor:pointer;min-height:40px}
+.copy.ok,.chip.ok{background:var(--ok);color:#fff;border-color:var(--ok)}
+.text{white-space:pre-wrap;word-break:break-word;padding:14px 16px 16px;font:400 15.5px/1.55 Jost}
+.field.alt .text{color:var(--muted)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;padding:12px 14px 14px}
+.chip{font:500 15px/1 Jost;border:1.5px solid var(--line);background:var(--ivory);color:var(--ink);border-radius:99px;padding:10px 14px;cursor:pointer;min-height:40px}
+.chip::after{content:"  ⧉";opacity:.45}
+.chip.ok::after{content:""}
+
+.music{border:1.5px solid var(--line);border-radius:12px;background:#fff;padding:14px 16px}
+.music b{font-weight:600}
+.music a{display:inline-block;margin-top:10px;font:600 14px/1 Jost;background:var(--gold);color:#fff;text-decoration:none;border-radius:99px;padding:11px 16px}
+.steps{counter-reset:s;list-style:none;padding:0;display:grid;gap:9px}
+.steps li{counter-increment:s;position:relative;padding-left:38px;font-size:15.5px;line-height:1.45}
+.steps li::before{content:counter(s);position:absolute;left:0;top:-1px;width:26px;height:26px;border-radius:50%;background:var(--ink);color:var(--paper);display:grid;place-items:center;font:600 13px/1 Jost}
+.steps b{font-weight:600}
+.todo{margin-top:24px;background:var(--gold-soft);border-radius:12px;padding:13px 16px;font-size:15px;color:#4A3509}
+.todo b{font-weight:600}
+.foot{margin-top:56px;font-size:12px;line-height:1.6;color:var(--muted)}
+
+@media(max-width:860px){
+  .wrap{padding:24px 16px 60px}
+  .sched{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .post{grid-template-columns:1fr;padding:16px;gap:20px}
+  .media{position:static;max-width:420px;width:100%;margin:0 auto}
+  .media video{max-height:72vh}
+  h2{margin-top:40px}
+}
+</style></head><body><div class="wrap">
+<div class="top">Chef Todd English · Posting room · by Next Frame</div>
+<h1>Ready<br>to post.</h1>
+<div class="sub">Every post on one page. Watch it, download the video, then copy and paste the caption, tags and location straight into Instagram. One card per post, in posting order.</div>
+
+<h2>Schedule</h2>
+<div class="h2sub">Every Tuesday and Friday. Post when Todd is free to answer comments for the first hour.</div>
+<div class="sched" id="sched"></div>
+
+<h2>Posts</h2>
+<div id="posts"></div>
+
+<div class="foot">Prepared by Next Frame for Chef Todd English's team. This is a private page, so please don't share the link.</div>
+</div>
+<script src="posts.js"></script>
+<script>
+(function(){
+  var DAYS=["Sun","Mon","Tue","Wed","Thu","Fri","Sat"], MON=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"];
+  function parse(s){var p=s.split("-");return new Date(+p[0],+p[1]-1,+p[2]);}
+  function iso(d){return d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");}
+  function nice(d){return DAYS[d.getDay()]+" "+d.getDate()+" "+MON[d.getMonth()];}
+  function el(tag,cls,text){var e=document.createElement(tag);if(cls)e.className=cls;if(text!=null)e.textContent=text;return e;}
+
+  function copy(text,btn){
+    function done(){
+      var old=btn.dataset.label||btn.textContent;btn.dataset.label=old;
+      btn.classList.add("ok");btn.textContent="Copied ✓";
+      clearTimeout(btn._t);btn._t=setTimeout(function(){btn.textContent=old;btn.classList.remove("ok");},1600);
+    }
+    function fallback(){
+      var t=document.createElement("textarea");t.value=text;t.setAttribute("readonly","");
+      t.style.position="fixed";t.style.top="0";t.style.opacity="0";document.body.appendChild(t);
+      t.select();t.setSelectionRange(0,text.length);
+      try{document.execCommand("copy");}catch(e){}
+      document.body.removeChild(t);done();
+    }
+    if(navigator.clipboard&&window.isSecureContext){navigator.clipboard.writeText(text).then(done,fallback);}else{fallback();}
+  }
+
+  // schedule strip
+  var byDate={};POSTS.forEach(function(p){byDate[p.date]=p;});
+  var sched=document.getElementById("sched"),d=parse(SCHEDULE.start),end=new Date(d);end.setDate(end.getDate()+SCHEDULE.weeks*7);
+  for(;d<end;d.setDate(d.getDate()+1)){
+    if(SCHEDULE.days.indexOf(d.getDay())<0)continue;
+    var p=byDate[iso(d)],a=el(p?"a":"div","slot "+(p?(p.status==="posted"?"posted":"full"):"open"));
+    a.appendChild(el("div","d",nice(d)));
+    if(p){a.href="#post-"+p.id;a.appendChild(el("div","t",p.id+" · "+p.title));a.appendChild(el("div","s",p.status==="posted"?"Posted ✓":"Ready to post"));}
+    else{a.appendChild(el("div","t","Open"));a.appendChild(el("div","s","Next post goes here"));}
+    sched.appendChild(a);
+  }
+
+  // post cards
+  var host=document.getElementById("posts");
+  POSTS.forEach(function(p){
+    var card=el("section","post");card.id="post-"+p.id;
+    var media=el("div","media"),v=document.createElement("video");
+    v.controls=true;v.playsInline=true;v.preload="metadata";v.poster=p.poster;v.src=p.preview;
+    media.appendChild(v);card.appendChild(media);
+
+    var info=el("div","info"),eb=el("div","eyebrow");
+    eb.appendChild(el("span",null,"Post "+p.id+" · "+nice(parse(p.date))+" · "+p.type));
+    eb.appendChild(el("span","pill "+(p.status==="posted"?"":"ready"),p.status==="posted"?"Posted":"Ready to post"));
+    info.appendChild(eb);info.appendChild(el("h3",null,p.title));info.appendChild(el("div","where",p.where));
+
+    var b=el("div","block");b.appendChild(el("div","label","1 · Download"));
+    var dls=el("div","dls");
+    p.downloads.forEach(function(f){
+      var a=el("a","dl"+(f.main?" main":""));a.href=f.file;a.setAttribute("download",f.name);
+      var ic=el("span","ic");ic.innerHTML='<svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 2v9M4 7l4 4 4-4M2 14h12"/></svg>';
+      var tx=el("span","tx");tx.appendChild(el("b",null,f.label));tx.appendChild(el("small",null,f.note));
+      a.appendChild(ic);a.appendChild(tx);a.appendChild(el("span","sz",f.size));dls.appendChild(a);
+    });
+    b.appendChild(dls);info.appendChild(b);
+
+    b=el("div","block");b.appendChild(el("div","label","2 · Copy and paste"));
+    p.fields.forEach(function(f){
+      var box=el("div","field"+(f.alt?" alt":"")),fh=el("div","fh");fh.appendChild(el("span",null,f.label));
+      var all=f.text!=null?f.text:f.chips.join(" "),btn=el("button","copy",f.chips&&f.chips.length>1?"Copy all":"Copy");
+      btn.type="button";btn.addEventListener("click",function(){copy(all,btn);});fh.appendChild(btn);box.appendChild(fh);
+      if(f.text!=null){box.appendChild(el("div","text",f.text));}
+      else{var cs=el("div","chips");f.chips.forEach(function(c){var ch=el("button","chip",c);ch.type="button";ch.addEventListener("click",function(){copy(c,ch);});cs.appendChild(ch);});box.appendChild(cs);}
+      b.appendChild(box);
+    });
+    info.appendChild(b);
+
+    if(p.music){
+      b=el("div","block");b.appendChild(el("div","label","Music"));
+      var m=el("div","music");m.appendChild(el("b",null,p.music.song));
+      m.appendChild(el("div",null,"Added inside Instagram with “Use audio”, so the reel keeps its sound."));
+      var ml=el("a",null,p.music.linkLabel+" ↗");ml.href=p.music.link;ml.target="_blank";ml.rel="noopener";m.appendChild(ml);
+      b.appendChild(m);info.appendChild(b);
+    }
+
+    b=el("div","block");b.appendChild(el("div","label","3 · Post it, step by step"));
+    var ol=el("ol","steps");p.steps.forEach(function(s){var li=el("li");li.innerHTML=s;ol.appendChild(li);});
+    b.appendChild(ol);info.appendChild(b);
+
+    if(p.todo){var t=el("div","todo");t.innerHTML="<b>Still needed:</b> ";t.appendChild(document.createTextNode(p.todo));info.appendChild(t);}
+
+    card.appendChild(info);host.appendChild(card);
+  });
+})();
+</script>
+</body></html>
