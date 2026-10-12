@@ -139,6 +139,8 @@
 
   /* decisions / gaps */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .gallery.three{grid-template-columns:repeat(3,1fr)}
   .dc{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--sh);border-left:5px solid var(--green)}
   .dc.todo{border-color:var(--blue)}.dc.risk{border-color:var(--red)}.dc.gap{border-color:var(--amber)}
   .dc .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -241,7 +243,8 @@
   <div class="steps">
     <div class="step"><div class="n">1</div><div class="txt">
       <h3>The provider report, by game</h3>
-      <p>All of it runs through one provider, <b>GameArt</b>. Settled wagering <b>933,603,291.45</b> TWD, settled payout <b>907,393,021.40</b>, settled P&amp;L <b>26,210,270.05</b> across <b>1,658,541</b> rounds.</p>
+      <p>Almost all of it runs through one provider, <b>GameArt</b>: settled wagering <b>933,603,291.45</b> TWD, settled payout <b>907,393,021.40</b>, settled P&amp;L <b>26,210,270.05</b> across <b>1,658,541</b> settled rounds.</p>
+      <p>The grand total across every provider is <b>933,954,518.13</b> wagered over <b>1,685,967</b> total rounds, so GameArt is <b>99.96%</b> of the week's wagering. The headline figures above are the all-provider totals; the GameArt row is the line beneath them.</p>
       <p><b>Lunar Rabbit</b> carries most of it: <b>764.19M</b> wagered against <b>741.01M</b> paid out. <b>Ragna's Rock</b> is second at <b>128.45M</b>. Everything after those two drops off sharply — Olympus Majesty and Zeus Blitz Power Strike sit under 10M each.</p>
       <div class="hint">Note the unsettled column: 3 rounds and 2,197.50 TWD still open at the time of the report. Small in context, and the subject of topic 7.</div>
     </div>

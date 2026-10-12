@@ -139,6 +139,8 @@
 
   /* decisions / gaps */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .gallery.three{grid-template-columns:repeat(3,1fr)}
   .dc{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--sh);border-left:5px solid var(--green)}
   .dc.todo{border-color:var(--blue)}.dc.risk{border-color:var(--red)}.dc.gap{border-color:var(--amber)}
   .dc .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -249,6 +251,7 @@
     <div class="step flip"><div class="n">2</div><div class="txt">
       <h3>Deposits by state, which is a different ranking</h3>
       <p>Headcount and money do not agree. <b>Nuevo León</b> tops deposits at <b>$530,010</b> MXN from 61 depositors. <b>Nayarit</b> is second at <b>$391,401</b> from just <b>11</b> depositors. Mexico City, first by player count, sits sixth at <b>$164,685</b>.</p>
+      <p>Of the <b>$2,717,840</b> total, <b>$2,711,510</b> came from <b>720 depositors inside Mexico</b> — the rest is a handful of accounts elsewhere. <b>Coahuila</b> is the one state running negative, at <b>−$22,186</b> GGR.</p>
       <p>The table carries its own warning. A <b>% from top player</b> column shows how much of a state rests on one person, and a <b>without top player</b> column restates the total with that person removed. Nayarit is 99% one player. Querétaro is 91%. Chiapas is 85%.</p>
       <div class="hint">The page says it plainly: "Many states depend on a single player: the 'Without top player' column shows the market's real weight."</div>
     </div>

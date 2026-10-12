@@ -139,6 +139,8 @@
 
   /* decisions / gaps */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .gallery.three{grid-template-columns:repeat(3,1fr)}
   .dc{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--sh);border-left:5px solid var(--green)}
   .dc.todo{border-color:var(--blue)}.dc.risk{border-color:var(--red)}.dc.gap{border-color:var(--amber)}
   .dc .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -216,12 +218,12 @@
 <div class="langbar"><button data-theme="dark" title="Dark">☾</button><button data-theme="light" title="Light">☀</button></div>
 
 <header class="hero"><div class="wrap">
-  <div class="eyebrow"><i></i>Lucifer Gaming · weekly morning meeting</div>
-  <h1>Tuesday, <em>7 October 2026</em><br>in eight topics.</h1>
-  <p>Seventy-three minutes, five presenters, eight separate subjects. Each one has its own page so you can send a person only the part that concerns them.</p>
+  <div class="eyebrow"><i></i><a href="https://next-frame.agency/docs/" style="color:inherit">← All Lucifer Gaming docs</a> · weekly morning meeting</div>
+  <h1>Wednesday, <em>7 October 2026</em><br>in eight topics.</h1>
+  <p>Seventy-three minutes, five presenters, eight separate subjects. Each one has its own page so you can send a person only the part that concerns them — and the full transcript and a Chinese→English glossary sit behind them as reference.</p>
   <div class="kpis">
     <div class="kpi"><b>73</b><span>minutes, 10:04–11:17 Taipei time</span></div>
-    <div class="kpi"><b>8</b><span>topics, each with its own page</span></div>
+    <div class="kpi"><b>8</b><span>topics, plus 2 reference pages</span></div>
     <div class="kpi"><b>19</b><span>people in the call</span></div>
     <div class="kpi"><b>5</b><span>people presented</span></div>
   </div>
@@ -240,7 +242,28 @@
     <div class="dc"><div class="k">05 · 14:25–19:45 · Mao MorningStar</div><b><a href="05-provider-report.html">RPGaming weekly provider report</a></b><p>Nearly a billion in weekly turnover through GameArt, a player's big-win complaint investigated, and September's unsettled-round debt.</p></div>
     <div class="dc"><div class="k">06 · 19:45–23:00 · Mao MorningStar</div><b><a href="06-bestbet365.html">BestBet365, the US book</a></b><p>Its best week since launch, and the pending-bet display the sportsbook still needs.</p></div>
     <div class="dc"><div class="k">07 · 23:00–60:00 · 李若濘</div><b><a href="07-pending-rounds.html">Pending-round monitoring</a></b><p>The longest item by far. A new monitor that catches rounds a provider never settled, how to read it, and who pays when a win goes missing.</p></div>
-    <div class="dc"><div class="k">08 · 61:00–73:00 · Leon P Kira</div><b><a href="08-pornhub-campaign.html">Midnight Circuit ad campaign</a></b><p>Creative approved by the client, twenty tracking links built, and the three systems the numbers will come from.</p></div>
+    <div class="dc"><div class="k">08 · 61:00–73:00 · Leon P Kira</div><b><a href="08-pornhub-campaign.html">Midnight Circuit ad campaign</a></b><p>Creative approved by the client, nineteen tracking links built, and the three systems the numbers will come from.</p></div>
+  </div>
+
+  <div class="eyebrow" style="margin-top:30px"><i style="background:var(--purple)"></i>Reference</div>
+  <h2>Behind the eight topics</h2>
+  <p class="lead">Two pages that are not a topic. Use them when a figure on a topic page needs checking, or when a screenshot is in Chinese and you need the term.</p>
+  <div class="compare">
+    <div class="cmp crypto"><h3><a href="09-transcript.html">Cleaned transcript</a></h3><p class="tagline">The whole meeting, 00:09–72:42</p>
+      <ul>
+        <li><b>55</b> speaker turns in 5 blocks</li>
+        <li>Mandarin translated, original term kept where it names a thing</li>
+        <li>Timestamps match the recording</li>
+        <li class="warn">Names are unreliable — Whisper mangles them</li>
+      </ul>
+    </div>
+    <div class="cmp fiat"><h3><a href="10-glossary.html">中→EN glossary</a></h3><p class="tagline">Back-office terminology</p>
+      <ul>
+        <li><b>37</b> terms in 4 groups</li>
+        <li>Pending rounds, money columns, filters, buttons</li>
+        <li>Written for topic 7, useful across all the screens</li>
+      </ul>
+    </div>
   </div>
 </div></section>
 
