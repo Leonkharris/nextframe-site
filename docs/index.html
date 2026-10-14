@@ -233,6 +233,71 @@
   .full figcaption{position:static;background:var(--card);color:var(--ink2);border-top:1px solid var(--line);border-radius:0;max-width:none;line-height:1.45;padding:9px 14px;font-size:13px}
   .full .shot img{max-height:none}
   .full figcaption{font-size:13px}
+  /* ============ data visualisation ============
+     Series palette = the brand hues stepped into the dark lightness band and
+     validated (scripts/validate_palette.js, all-pairs, both modes). Only THREE
+     series slots are gate-safe: brand blue/purple and orange/amber/red collide
+     under CVD. A 4th series folds into "Other" or facets — never a new hue. */
+  :root{
+    --s1:#009f6e;--s2:#5282e2;--s3:#bf7023;    /* series, dark surface */
+    --s-dim:#5b677d;                            /* de-emphasis (context marks) */
+    --grid:#2a3448;--axis:#3a4559;--vsurf:var(--card);
+    --good:#0ca30c;--warn:#fab219;--serious:#ec835a;--crit:#d03b3b
+  }
+  html.theme-light{
+    --s1:#0e9f6e;--s2:#2563eb;--s3:#ea7a1a;
+    --s-dim:#9aa5b5;--grid:#e6eaf1;--axis:#c9d1dd
+  }
+
+  figure.viz{margin:0 0 4px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 16px}
+  figure.viz figcaption{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+  figure.viz figcaption b{display:inline;font-size:inherit;color:var(--ink2)}
+  .viz h4{margin:0 0 2px;font-size:17px;letter-spacing:-.01em}
+  .viz .sub{margin:0 0 16px;font-size:13.5px;color:var(--muted)}
+  .viz svg{display:block;width:100%;height:auto;overflow:visible}
+  .viz text{font-family:inherit;fill:var(--muted);font-size:12px}
+  .viz .v-val{fill:var(--ink);font-weight:700;font-size:13px}    /* direct labels: ink, never series colour */
+  .viz .v-cat{fill:var(--ink2);font-size:12.5px}
+  .viz .v-grid{stroke:var(--grid);stroke-width:1}
+  .viz .v-axis{stroke:var(--axis);stroke-width:1}
+  .viz .v-line{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .viz .v-dot{stroke:var(--vsurf);stroke-width:2}                /* 2px surface ring */
+  .viz .v-bar{rx:4}                                              /* 4px rounded data-end */
+  .viz .v-hit{fill:transparent;cursor:pointer}
+  .viz .v-hit:hover,.viz .v-hit:focus-visible{fill:var(--ink);fill-opacity:.08}
+  .viz [data-rows]{outline:none}
+  .viz rect[data-rows]:hover,.viz rect[data-rows]:focus-visible{filter:brightness(1.14)}
+
+  /* legend — mark mirrors the form: rect for bars/areas, line for lines */
+  .v-leg{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;font-size:12.5px;color:var(--ink2)}
+  .v-leg span{display:inline-flex;align-items:center;gap:7px}
+  .v-leg i{width:11px;height:11px;border-radius:3px;flex:none}
+  .v-leg i.ln{width:16px;height:3px;border-radius:2px}
+
+  /* tooltip — value leads, series name follows */
+  .v-tip{position:fixed;z-index:80;pointer-events:none;opacity:0;transition:opacity .1s;
+    background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+    box-shadow:0 10px 26px rgba(0,0,0,.3);font-size:13px;max-width:260px}
+  .v-tip.on{opacity:1}
+  .v-tip .tt-c{color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .v-tip .tt-r{display:flex;align-items:baseline;gap:8px;margin-top:3px}
+  .v-tip .tt-k{width:16px;height:3px;border-radius:2px;flex:none;align-self:center}
+  .v-tip .tt-v{font-weight:800;color:var(--ink)}
+  .v-tip .tt-n{color:var(--ink2);font-size:12px}
+
+  /* table view — every value stays reachable without hovering */
+  .v-tbl{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .v-tbl summary{cursor:pointer;font-size:12.5px;color:var(--muted);font-weight:700}
+  .v-tbl summary:hover{color:var(--ink2)}
+  .v-tbl table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;font-variant-numeric:tabular-nums}
+  .v-tbl th{text-align:left;color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 7px 0;font-weight:700}
+  .v-tbl td{padding:6px 10px 6px 0;border-top:1px solid var(--line);color:var(--ink2)}
+  .v-tbl td:first-child{color:var(--ink)}
+  @media (forced-colors:active){.viz .v-bar,.viz .v-dot{forced-color-adjust:none}}
+  .figs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
+  .figs.one{grid-template-columns:1fr}
+  @media (max-width:860px){.figs{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
@@ -243,21 +308,45 @@
   <h1>The internal record. <em>Everything, in one place.</em></h1>
   <p>This is the single place to look first. Two kinds of document live here: <b>guides</b> tell you how to do something and are written to be followed; <b>meeting records</b> tell you what was said and decided on a given day, one page per topic so a person can be sent only their part. Open questions, terminology and how all of it was made are below.</p>
   <div class="kpis">
-    <div class="kpi"><b>2</b><span>guides you can follow</span></div>
-    <div class="kpi"><b>6</b><span>meetings broken down</span></div>
-    <div class="kpi"><b>40</b><span>pages in total</span></div>
-    <div class="kpi"><b>0</b><span>recordings left unprocessed</span></div>
+    <div class="kpi"><b>−51%</b><span>Xsino’s player base, January to September</span></div>
+    <div class="kpi"><b>18.2%</b><span>of all wagering is one account</span></div>
+    <div class="kpi"><b>$21.00</b><span>CPM armed against a $0.688 floor</span></div>
+    <div class="kpi"><b>0</b><span>conversions the campaign can report</span></div>
   </div>
 </div></header>
 
 <nav class="toc"><div class="wrap">
-  <a href="#guides">Guides</a>
+  <a href="#numbers">The numbers</a>
+<a href="#guides">Guides</a>
   <a href="#meetings">Meeting records</a>
   <a href="#open">Still open</a>
   <a href="#reference">Reference</a>
   <a href="#how">How these are made</a>
 </div></nav>
 
+<section class="m" id="numbers"><div class="wrap">
+<div class="eyebrow"><i style="background:var(--s3)"></i>Where things actually stand</div>
+<h2>The numbers, as the records leave them</h2>
+<p class="lead">Five figures carrying decisions that are still open. Each is drawn from a published page and says which one. Hover any mark for its value, or open the table beneath it — nothing here is reachable only by hovering. Where a number is inferred, disputed, or read off a silent recording, the caption says so.</p>
+<div class="figs"><figure class="viz " id="f-decline">
+<h4>Xsino lost half its players this year</h4><p class="sub">1 January – 25 September 2026. Never discussed on the call.</p>
+<svg viewBox="0 0 540 186" role="img" aria-label="Xsino lost half its players this year"><line class="v-grid" x1="168" y1="34" x2="168" y2="156"/><text x="168" y="174" class="" text-anchor="middle">0</text><line class="v-grid" x1="268" y1="34" x2="268" y2="156"/><text x="268" y="174" class="" text-anchor="middle">200</text><line class="v-grid" x1="368" y1="34" x2="368" y2="156"/><text x="368" y="174" class="" text-anchor="middle">400</text><line class="v-grid" x1="468" y1="34" x2="468" y2="156"/><text x="468" y="174" class="" text-anchor="middle">600</text><text x="0" y="74" class="v-cat">Monthly active players</text><line x1="297.5" y1="70" x2="430.5" y2="70" stroke="var(--axis)" stroke-width="2" stroke-linecap="round"/><circle cx="430.5" cy="70" r="6" fill="var(--s-dim)" class="v-dot"/><circle cx="297.5" cy="70" r="6" fill="var(--s1)" class="v-dot"/><circle cx="430.5" cy="70" r="13" class="v-hit" data-c="Monthly active players" data-rows="525~January~s-dim;259~September~s1" tabindex="0"/><circle cx="297.5" cy="70" r="13" class="v-hit" data-c="Monthly active players" data-rows="525~January~s-dim;259~September~s1" tabindex="0"/><text x="430.5" y="56" class="v-val" text-anchor="middle">525</text><text x="297.5" y="56" class="v-val" text-anchor="middle">259</text><text x="538" y="74" class="v-val" text-anchor="end">−51%</text><text x="0" y="134" class="v-cat">Monthly depositors</text><line x1="227" y1="130" x2="281.5" y2="130" stroke="var(--axis)" stroke-width="2" stroke-linecap="round"/><circle cx="281.5" cy="130" r="6" fill="var(--s-dim)" class="v-dot"/><circle cx="227" cy="130" r="6" fill="var(--s1)" class="v-dot"/><circle cx="281.5" cy="130" r="13" class="v-hit" data-c="Monthly depositors" data-rows="227~January~s-dim;118~September~s1" tabindex="0"/><circle cx="227" cy="130" r="13" class="v-hit" data-c="Monthly depositors" data-rows="227~January~s-dim;118~September~s1" tabindex="0"/><text x="281.5" y="116" class="v-val" text-anchor="middle">227</text><text x="227" y="116" class="v-val" text-anchor="middle">118</text><text x="538" y="134" class="v-val" text-anchor="end">−48%</text><text x="0" y="20" class="">January 2026</text><text x="468" y="20" class="" text-anchor="end">September</text></svg>
+<figcaption>Turnover held up only because the <b>remaining players are heavier</b> — which makes the concentration alongside worse, not better. Source: <b>30 Sep review</b>.</figcaption><details class="v-tbl"><summary>Show the numbers</summary><table><thead><tr><th>Measure</th><th>January</th><th>September</th><th>Change</th></tr></thead><tbody><tr><td>Monthly active players</td><td>525</td><td>259</td><td>−51%</td></tr><tr><td>Monthly depositors</td><td>227</td><td>118</td><td>−48%</td></tr></tbody></table></details></figure><figure class="viz " id="f-concentration">
+<h4>One player is 18.2% of all wagering</h4><p class="sub">Share of the total amount staked, across 268 days.</p><div class="v-leg"><span><i class="" style="background:var(--s1)"></i>One account · 18.2%</span><span><i class="" style="background:var(--s2)"></i>The next 19 accounts · 43.8%</span><span><i class="" style="background:var(--s-dim)"></i>Everyone else · 38%</span></div>
+<svg viewBox="0 0 540 104" role="img" aria-label="One player is 18.2% of all wagering"><rect x="14.0" y="52" width="92.5" height="24" rx="4" fill="var(--s1)" data-c="One account" data-rows="18.2% of all wagering~~s1" tabindex="0"/><rect x="108.5" y="52" width="222.5" height="24" rx="4" fill="var(--s2)" data-c="The next 19 accounts" data-rows="43.8% of all wagering~~s2" tabindex="0"/><rect x="333.0" y="52" width="193.0" height="24" rx="4" fill="var(--s-dim)" data-c="Everyone else" data-rows="38% of all wagering~~s-dim" tabindex="0"/><line x1="106.5" y1="40" x2="106.5" y2="52" class="v-axis"/><text x="14" y="32" class="v-val">3.91M staked by one person — 18.2% of everything</text></svg>
+<figcaption>The same account generates <b>28.8% of GGR</b>. Of the 15 highest-wagering days, 10 had a single player at half or more — on 9 it was the same person. The record day was <b>89% his</b>. Source: <b>30 Sep review</b>.</figcaption><details class="v-tbl"><summary>Show the numbers</summary><table><thead><tr><th>Group</th><th>Share of wagering</th></tr></thead><tbody><tr><td>One account</td><td>18.2%</td></tr><tr><td>The next 19 accounts</td><td>43.8%</td></tr><tr><td>Everyone else</td><td>38%</td></tr></tbody></table></details></figure></div>
+<div class="figs one"><figure class="viz " id="f-audience">
+<h4>The campaign buys the market where the audience is least female</h4><p class="sub">Share of the network's audience that is female, by country.</p><div class="v-leg"><span><i class="" style="background:var(--s1)"></i>Where this operator already converts</span><span><i class="" style="background:var(--s3)"></i>United States — what the campaign buys</span><span><i class="" style="background:var(--s-dim)"></i>Other markets shown</span></div>
+<svg viewBox="0 0 1120 374" role="img" aria-label="The campaign buys the market where the audience is least female"><line class="v-grid" x1="150" y1="30" x2="150" y2="344"/><text x="150" y="362" class="" text-anchor="middle">0%</text><line class="v-grid" x1="267.1428571428571" y1="30" x2="267.1428571428571" y2="344"/><text x="267.1428571428571" y="362" class="" text-anchor="middle">10%</text><line class="v-grid" x1="384.2857142857143" y1="30" x2="384.2857142857143" y2="344"/><text x="384.2857142857143" y="362" class="" text-anchor="middle">20%</text><line class="v-grid" x1="501.4285714285714" y1="30" x2="501.4285714285714" y2="344"/><text x="501.4285714285714" y="362" class="" text-anchor="middle">30%</text><line class="v-grid" x1="618.5714285714286" y1="30" x2="618.5714285714286" y2="344"/><text x="618.5714285714286" y="362" class="" text-anchor="middle">40%</text><line class="v-grid" x1="735.7142857142858" y1="30" x2="735.7142857142858" y2="344"/><text x="735.7142857142858" y="362" class="" text-anchor="middle">50%</text><line class="v-grid" x1="852.8571428571428" y1="30" x2="852.8571428571428" y2="344"/><text x="852.8571428571428" y="362" class="" text-anchor="middle">60%</text><line class="v-grid" x1="970" y1="30" x2="970" y2="344"/><text x="970" y="362" class="" text-anchor="middle">70%</text><text x="138" y="53" class="v-cat" text-anchor="end">Philippines</text><rect x="150" y="40" width="749.7" height="18" rx="4" fill="var(--s1)" data-c="Philippines" data-rows="64% female audience~~s1" tabindex="0"/><text x="907.7142857142857" y="53" class="v-val">64%</text><text x="138" y="83" class="v-cat" text-anchor="end">Colombia</text><rect x="150" y="70" width="656.0" height="18" rx="4" fill="var(--s1)" data-c="Colombia" data-rows="56% female audience~~s1" tabindex="0"/><text x="814" y="83" class="v-val">56%</text><text x="138" y="113" class="v-cat" text-anchor="end">Argentina</text><rect x="150" y="100" width="656.0" height="18" rx="4" fill="var(--s1)" data-c="Argentina" data-rows="56% female audience~~s1" tabindex="0"/><text x="814" y="113" class="v-val">56%</text><text x="138" y="143" class="v-cat" text-anchor="end">Mexico</text><rect x="150" y="130" width="562.3" height="18" rx="4" fill="var(--s1)" data-c="Mexico" data-rows="48% female audience~~s1" tabindex="0"/><text x="720.2857142857143" y="143" class="v-val">48%</text><text x="138" y="173" class="v-cat" text-anchor="end">Chile</text><rect x="150" y="160" width="538.9" height="18" rx="4" fill="var(--s1)" data-c="Chile" data-rows="46% female audience~~s1" tabindex="0"/><text x="696.8571428571429" y="173" class="v-val">46%</text><text x="138" y="203" class="v-cat" text-anchor="end">Peru</text><rect x="150" y="190" width="515.4" height="18" rx="4" fill="var(--s1)" data-c="Peru" data-rows="44% female audience~~s1" tabindex="0"/><text x="673.4285714285714" y="203" class="v-val">44%</text><text x="138" y="233" class="v-cat" text-anchor="end">United States</text><rect x="150" y="220" width="328.0" height="18" rx="4" fill="var(--s3)" data-c="United States" data-rows="28% female audience~~s3" tabindex="0"/><text x="486" y="233" class="v-val">28%</text><text x="138" y="263" class="v-cat" text-anchor="end">Canada</text><rect x="150" y="250" width="328.0" height="18" rx="4" fill="var(--s-dim)" data-c="Canada" data-rows="28% female audience~~s-dim" tabindex="0"/><text x="486" y="263" class="v-val">28%</text><text x="138" y="293" class="v-cat" text-anchor="end">Germany</text><rect x="150" y="280" width="304.6" height="18" rx="4" fill="var(--s-dim)" data-c="Germany" data-rows="26% female audience~~s-dim" tabindex="0"/><text x="462.57142857142856" y="293" class="v-val">26%</text><text x="138" y="323" class="v-cat" text-anchor="end">United Kingdom</text><rect x="150" y="310" width="292.9" height="18" rx="4" fill="var(--s-dim)" data-c="United Kingdom" data-rows="25% female audience~~s-dim" tabindex="0"/><text x="450.8571428571429" y="323" class="v-val">25%</text><line x1="595.1" y1="30" x2="595.1" y2="344" stroke="var(--ink2)" stroke-width="1"/><text x="602.1428571428571" y="22" class="v-cat">worldwide average 38%</text></svg>
+<figcaption>This operator's book is Latin American and denominated in Mexican pesos. Its markets run <b>44–56% female</b>; the United States runs <b>28%</b>, below the worldwide average. Nobody has compared US inventory cost against LatAm, or asked whether the first flight should run where the brand already converts. <b>These figures were read off a chart on screen while the recording's audio was dead</b> — confirm them in the network's own dashboard before acting. Source: <b>5 Oct planning</b>.</figcaption><details class="v-tbl"><summary>Show the numbers</summary><table><thead><tr><th>Country</th><th>Female share of audience</th></tr></thead><tbody><tr><td>Philippines</td><td>64%</td></tr><tr><td>Colombia</td><td>56%</td></tr><tr><td>Argentina</td><td>56%</td></tr><tr><td>Mexico</td><td>48%</td></tr><tr><td>Chile</td><td>46%</td></tr><tr><td>Peru</td><td>44%</td></tr><tr><td>United States</td><td>28%</td></tr><tr><td>Canada</td><td>28%</td></tr><tr><td>Germany</td><td>26%</td></tr><tr><td>United Kingdom</td><td>25%</td></tr><tr><td>Worldwide average</td><td>38%</td></tr></tbody></table></details></figure></div>
+<div class="figs"><figure class="viz " id="f-bid">
+<h4>A $21.00 CPM is armed in a paused campaign</h4><p class="sub">Cost per thousand impressions, as set in the account.</p>
+<svg viewBox="0 0 540 168" role="img" aria-label="A $21.00 CPM is armed in a paused campaign"><line class="v-grid" x1="206" y1="38" x2="206" y2="138"/><text x="206" y="156" class="" text-anchor="middle">$0</text><line class="v-grid" x1="262.8181818181818" y1="38" x2="262.8181818181818" y2="138"/><text x="262.8181818181818" y="156" class="" text-anchor="middle">$5</text><line class="v-grid" x1="319.6363636363636" y1="38" x2="319.6363636363636" y2="138"/><text x="319.6363636363636" y="156" class="" text-anchor="middle">$10</text><line class="v-grid" x1="376.45454545454544" y1="38" x2="376.45454545454544" y2="138"/><text x="376.45454545454544" y="156" class="" text-anchor="middle">$15</text><line class="v-grid" x1="433.27272727272725" y1="38" x2="433.27272727272725" y2="138"/><text x="433.27272727272725" y="156" class="" text-anchor="middle">$20</text><text x="0" y="72" class="v-cat">Mobile Popunder (full screen)</text><rect x="206" y="60" width="238.6" height="16" rx="4" fill="var(--s1)" data-c="Mobile Popunder (full screen)" data-rows="$21.000~our bid~s1;$19.336~suggested~;$0.688~network minimum~" tabindex="0"/><line x1="425.7" y1="55" x2="425.7" y2="81" stroke="var(--ink2)" stroke-width="2"/><line x1="213.8" y1="55" x2="213.8" y2="81" stroke="var(--muted)" stroke-width="2"/><text x="454.6363636363636" y="72" class="v-val">$21.000</text><text x="0" y="120" class="v-cat">Mobile SFW Popunder</text><rect x="206" y="108" width="85.2" height="16" rx="4" fill="var(--s1)" data-c="Mobile SFW Popunder" data-rows="$7.500~our bid~s1;$8.676~suggested~;$7.500~network minimum~" tabindex="0"/><line x1="304.6" y1="103" x2="304.6" y2="129" stroke="var(--ink2)" stroke-width="2"/><line x1="291.2" y1="103" x2="291.2" y2="129" stroke="var(--muted)" stroke-width="2"/><text x="314.5909090909091" y="120" class="v-val">$7.500</text><text x="0" y="20" class="">Bar = our bid · ticks = network minimum and suggested CPM</text></svg>
+<figcaption>The popunder bid sits <b>above</b> the network's own suggestion and about <b>thirty times</b> the $0.688 floor. The campaign is paused, so nothing has been spent — but it is armed. The SFW line, by contrast, is parked exactly on its minimum. Source: <b>8 Oct meeting</b>.</figcaption><details class="v-tbl"><summary>Show the numbers</summary><table><thead><tr><th>Placement</th><th>Network minimum</th><th>Suggested</th><th>Our bid</th></tr></thead><tbody><tr><td>Mobile Popunder (full screen)</td><td>$0.688</td><td>$19.336</td><td>$21.000</td></tr><tr><td>Mobile SFW Popunder</td><td>$7.500</td><td>$8.676</td><td>$7.500</td></tr></tbody></table></details></figure><figure class="viz " id="f-budget">
+<h4>All sixteen ads would burn the budget in 25 days</h4><p class="sub">At the network's $25 minimum daily spend per ad.</p><div class="v-leg"><span><i class="ln" style="background:var(--s3)"></i>All 16 ads · $400/day</span><span><i class="ln" style="background:var(--s2)"></i>First flight of 4 · $100/day</span></div>
+<svg viewBox="0 0 540 232" role="img" aria-label="All sixteen ads would burn the budget in 25 days"><line class="v-grid" x1="58" y1="186.0" x2="522" y2="186.0"/><text x="50" y="190" class="" text-anchor="end">$0</text><line class="v-grid" x1="58" y1="146.0" x2="522" y2="146.0"/><text x="50" y="150" class="" text-anchor="end">$2.5k</text><line class="v-grid" x1="58" y1="106.0" x2="522" y2="106.0"/><text x="50" y="110" class="" text-anchor="end">$5k</text><line class="v-grid" x1="58" y1="66.0" x2="522" y2="66.0"/><text x="50" y="70" class="" text-anchor="end">$7.5k</text><line class="v-grid" x1="58" y1="26.0" x2="522" y2="26.0"/><text x="50" y="30" class="" text-anchor="end">$10k</text><text x="58" y="208" class="" text-anchor="middle">0</text><text x="168.47619047619048" y="208" class="" text-anchor="middle">25</text><text x="278.95238095238096" y="208" class="" text-anchor="middle">50</text><text x="389.42857142857144" y="208" class="" text-anchor="middle">75</text><text x="499.90476190476187" y="208" class="" text-anchor="middle">100</text><text x="290" y="226" class="" text-anchor="middle">days from launch</text><path class="v-line" d="M58.0 26.0 L499.9 186.0" stroke="var(--s2)"/><path class="v-line" d="M58.0 26.0 L168.5 186.0" stroke="var(--s3)"/><circle cx="168.5" cy="186.0" r="5" fill="var(--s3)" class="v-dot"/><circle cx="168.5" cy="186.0" r="13" class="v-hit" data-c="16 ads · $400/day" data-rows="budget gone on day 25~~s3" tabindex="0"/><circle cx="499.9" cy="186.0" r="5" fill="var(--s2)" class="v-dot"/><circle cx="499.9" cy="186.0" r="13" class="v-hit" data-c="4 ads · $100/day" data-rows="budget gone on day 100~~s2" tabindex="0"/><text x="170.47619047619048" y="172" class="v-val">day 25</text><text x="499.90476190476187" y="172" class="v-val" text-anchor="end">day 100</text></svg>
+<figcaption>Running the agreed first flight of four stretches the same money across <b>about 100 days</b>. <b>The $10,000 total is inferred, not stated</b> — it comes from "like around like 10k" on the call and has never been confirmed. A separate <b>$2,000 bonus</b> sits unassigned on the account. Source: <b>8 Oct meeting</b>.</figcaption><details class="v-tbl"><summary>Show the numbers</summary><table><thead><tr><th>Scenario</th><th>Ads</th><th>Daily spend</th><th>Budget exhausted</th></tr></thead><tbody><tr><td>All ads live</td><td>16</td><td>$400</td><td>~25 days</td></tr><tr><td>Agreed first flight</td><td>4</td><td>$100</td><td>~100 days</td></tr></tbody></table></details></figure></div>
+</div></section>
 <section class="m" id="guides"><div class="wrap">
   <div class="eyebrow"><i></i>Guides</div>
   <h2>Written to be followed, not just read</h2>
@@ -343,6 +432,7 @@
 <section id="how"><div class="wrap">
   <div class="eyebrow"><i></i>How these are made</div>
   <h2>And what to distrust in them</h2>
+  <p class="lead"><b>Two guides, six meetings broken down, forty pages, nothing left unprocessed.</b> Every recording in the notes folder has been written up.</p>
   <div class="tips">
     <div class="tip"><div class="ic">🎙️</div><b>Transcribed on this machine</b><p>Audio is pulled with ffmpeg and transcribed locally on the GPU. Nothing is uploaded to a transcription service.</p></div>
     <div class="tip"><div class="ic">🈯</div><b>Mandarin is translated, not transcribed</b><p>The model renders Mandarin as English translation, so the sense survives but the exact words do not — and <strong>names and numbers come through unreliably</strong>. Figures are checked against the screenshots before they are printed.</p></div>
@@ -422,6 +512,54 @@ const html=document.documentElement;
   const lb=document.getElementById("lightbox");
   document.querySelectorAll(".shot img").forEach(i=>i.onclick=()=>{lb.innerHTML="";const f=i.closest(".frame");const c=(f||i).cloneNode(true);c.style.cssText="max-width:96vw;max-height:96vh;width:min(96vw,1400px)";lb.appendChild(c);lb.style.display="flex"});
   lb.onclick=()=>lb.style.display="none";
+/* ---- chart hover layer ----------------------------------------------
+   One delegated handler for every chart on the page. A mark carries:
+     data-c     category / x label
+     data-rows  "value~name~colour-token" rows, ';' separated
+   Tooltips enhance only — every value here is also in the <details> table. */
+(function(){
+  var tip;
+  function el(){ if(!tip){ tip=document.createElement('div'); tip.className='v-tip';
+    tip.setAttribute('role','status'); document.body.appendChild(tip);} return tip; }
+
+  function fill(t,m){
+    t.textContent='';
+    var c=m.getAttribute('data-c');
+    if(c){ var h=document.createElement('div'); h.className='tt-c';
+           h.textContent=c; t.appendChild(h); }            // textContent, never innerHTML
+    (m.getAttribute('data-rows')||'').split(';').filter(Boolean).forEach(function(r){
+      var p=r.split('~'), row=document.createElement('div'); row.className='tt-r';
+      if(p[2]){ var k=document.createElement('i'); k.className='tt-k';
+                k.style.background='var(--'+p[2].replace(/[^a-z0-9-]/gi,'')+')'; row.appendChild(k); }
+      var v=document.createElement('b'); v.className='tt-v'; v.textContent=p[0]||'';
+      row.appendChild(v);
+      if(p[1]){ var n=document.createElement('span'); n.className='tt-n'; n.textContent=p[1]; row.appendChild(n); }
+      t.appendChild(row);
+    });
+  }
+  function place(t,x,y){
+    var r=t.getBoundingClientRect(), pad=14;
+    var L=Math.min(Math.max(8,x-r.width/2), innerWidth-r.width-8);
+    var T=y-r.height-pad; if(T<8) T=y+pad;
+    t.style.left=L+'px'; t.style.top=T+'px';
+  }
+  function show(m,x,y){ var t=el(); fill(t,m); t.classList.add('on'); place(t,x,y); }
+  function hide(){ if(tip) tip.classList.remove('on'); }
+
+  document.addEventListener('pointermove',function(e){
+    var m=e.target.closest&&e.target.closest('[data-rows]');
+    if(m) show(m,e.clientX,e.clientY); else hide();
+  },{passive:true});
+  document.addEventListener('pointerleave',hide,{passive:true});
+  document.addEventListener('focusin',function(e){
+    var m=e.target.closest&&e.target.closest('[data-rows]');
+    if(!m) return hide();
+    var b=m.getBoundingClientRect(); show(m,b.left+b.width/2,b.top);   // same detail on keyboard focus
+  });
+  document.addEventListener('focusout',hide);
+  addEventListener('scroll',hide,{passive:true});
+})();
+
 </script>
 </body>
 </html>
