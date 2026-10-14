@@ -90,8 +90,10 @@
   .cmp h3{margin:0 0 4px;font-size:22px}
   .cmp .tagline{color:var(--muted);margin:0 0 14px}
   .cmp ul{list-style:none;padding:0;margin:0}
-  .cmp li{padding:7px 0;border-top:1px dashed var(--line);display:flex;gap:10px;align-items:flex-start}
-  .cmp li::before{content:"✓";font-weight:900;color:var(--green)}
+  /* block, not flex: a flex <li> turns every <b>/<i>/<code> inside it into its own
+     flex item, which gaps the sentence apart and breaks it in the wrong places */
+  .cmp li{padding:7px 0 7px 24px;border-top:1px dashed var(--line);position:relative}
+  .cmp li::before{content:"✓";font-weight:900;color:var(--green);position:absolute;left:0;top:7px}
   .cmp li.no::before{content:"✕";color:var(--red)}
   .cmp li.warn::before{content:"!";color:var(--amber)}
   .cmp.fiat{border-color:var(--amber)}.cmp.crypto{border-color:var(--green)}
@@ -211,7 +213,26 @@
     .step,.step.flip{grid-template-columns:56px 1fr}.step .shot,.step.flip .shot{grid-column:1/-1;order:9}
     .compare{grid-template-columns:1fr}
   }
-  @media (max-width:600px){.kpis,.roles,.tips,.cards,.gallery{grid-template-columns:1fr}.langbar{top:8px;right:8px}}
+  @media (max-width:600px){.kpis,.roles,.tips,.cards,.gallery{grid-template-columns:1fr}.langbar{top:8px;right:8px}
+    /* quote rows stack: a 52px/96px/1fr grid leaves the quote ~210px wide */
+    .tx .t{grid-template-columns:1fr;gap:1px}.tx .t span:first-child{font-size:12px}
+    /* caption off the image, so it stops covering the bottom row of markers */
+    .shot figcaption{position:static;background:var(--card);color:var(--ink2);border-radius:0;border-top:1px solid var(--line);max-width:none;line-height:1.45;padding:8px 12px}
+  }
+  /* a dense UI screenshot gets the full content width instead of half a step row */
+  .step.wide{grid-template-columns:72px 1fr}
+  .full{margin:18px 0 22px}
+  .note+.cards,.note+.compare,.full+.cards,.full+.compare{margin-top:20px}
+  /* .dc b / .tip b are block for the card TITLE; inline bold inside a card paragraph must stay inline */
+  .dc p b,.tip p b,.box small b,.dc .own b{display:inline;font-size:inherit;margin:0}
+  /* four pills on one dense screenshot collide; the push-apart pass then detaches them
+     from their boxes and buries the numbers. Numbers on the image, words in the key. */
+  .full .lbl{display:none}
+  .full .lblkey{display:block}
+  /* static, so it sits under the shot instead of over the bottom row of content */
+  .full figcaption{position:static;background:var(--card);color:var(--ink2);border-top:1px solid var(--line);border-radius:0;max-width:none;line-height:1.45;padding:9px 14px;font-size:13px}
+  .full .shot img{max-height:none}
+  .full figcaption{font-size:13px}
 </style>
 </head>
 <body>
@@ -242,7 +263,7 @@
     <div class="dc"><div class="k">05 · 14:25–19:45 · Mao MorningStar</div><b><a href="05-provider-report.html">RPGaming weekly provider report</a></b><p>Nearly a billion in weekly turnover through GameArt, a player's big-win complaint investigated, and September's unsettled-round debt.</p></div>
     <div class="dc"><div class="k">06 · 19:45–23:00 · Mao MorningStar</div><b><a href="06-bestbet365.html">BestBet365, the US book</a></b><p>Its best week since launch, and the pending-bet display the sportsbook still needs.</p></div>
     <div class="dc"><div class="k">07 · 23:00–60:00 · 李若濘</div><b><a href="07-pending-rounds.html">Pending-round monitoring</a></b><p>The longest item by far. A new monitor that catches rounds a provider never settled, how to read it, and who pays when a win goes missing.</p></div>
-    <div class="dc"><div class="k">08 · 61:00–73:00 · Leon P Kira</div><b><a href="08-pornhub-campaign.html">Midnight Circuit ad campaign</a></b><p>Creative approved by the client, nineteen tracking links built, and the three systems the numbers will come from.</p></div>
+    <div class="dc"><div class="k">08 · 61:00–73:00 · Leon P Kira</div><b><a href="08-pornhub-campaign.html">Midnight Circuit ad campaign</a></b><p>Creative approved by the client, twenty tracking links built, and the three systems the numbers will come from.</p></div>
   </div>
 
   <div class="eyebrow" style="margin-top:30px"><i style="background:var(--purple)"></i>Reference</div>

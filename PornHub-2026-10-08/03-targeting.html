@@ -141,6 +141,8 @@
 
   /* decisions / gaps */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .gallery.three{grid-template-columns:repeat(3,1fr)}
   .dc{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--sh);border-left:5px solid var(--green)}
   .dc.todo{border-color:var(--blue)}.dc.risk{border-color:var(--red)}.dc.gap{border-color:var(--amber)}
   .dc .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -219,7 +221,10 @@
   }
   /* a dense UI screenshot gets the full content width instead of half a step row */
   .step.wide{grid-template-columns:72px 1fr}
-  .full{margin:0}
+  .full{margin:18px 0 22px}
+  .note+.cards,.note+.compare,.full+.cards,.full+.compare{margin-top:20px}
+  /* .dc b / .tip b are block for the card TITLE; inline bold inside a card paragraph must stay inline */
+  .dc p b,.tip p b,.box small b,.dc .own b{display:inline;font-size:inherit;margin:0}
   /* four pills on one dense screenshot collide; the push-apart pass then detaches them
      from their boxes and buries the numbers. Numbers on the image, words in the key. */
   .full .lbl{display:none}

@@ -90,8 +90,10 @@
   .cmp h3{margin:0 0 4px;font-size:22px}
   .cmp .tagline{color:var(--muted);margin:0 0 14px}
   .cmp ul{list-style:none;padding:0;margin:0}
-  .cmp li{padding:7px 0;border-top:1px dashed var(--line);display:flex;gap:10px;align-items:flex-start}
-  .cmp li::before{content:"✓";font-weight:900;color:var(--green)}
+  /* block, not flex: a flex <li> turns every <b>/<i>/<code> inside it into its own
+     flex item, which gaps the sentence apart and breaks it in the wrong places */
+  .cmp li{padding:7px 0 7px 24px;border-top:1px dashed var(--line);position:relative}
+  .cmp li::before{content:"✓";font-weight:900;color:var(--green);position:absolute;left:0;top:7px}
   .cmp li.no::before{content:"✕";color:var(--red)}
   .cmp li.warn::before{content:"!";color:var(--amber)}
   .cmp.fiat{border-color:var(--amber)}.cmp.crypto{border-color:var(--green)}
@@ -102,9 +104,6 @@
   .step{display:grid;grid-template-columns:72px 1fr 1.25fr;gap:22px;align-items:center;background:var(--card);border-radius:var(--r);box-shadow:var(--sh);padding:22px 24px}
   .step.flip{grid-template-columns:72px 1.25fr 1fr}
   .step.flip .shot{order:2}.step.flip .txt{order:3}
-  .step.wide{grid-template-columns:72px 1fr}
-  /* a 4-card grid reads better 2x2 than 3+1 */
-  .cards.two{grid-template-columns:repeat(2,1fr)}
   .step .n{width:56px;height:56px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-weight:900;font-size:24px;color:#fff;background:var(--green)}
   .m .step .n{background:var(--blue)}.a .step .n{background:var(--purple)}.c .step .n{background:var(--orange)}
   .step h3{margin:0 0 6px;font-size:20px;line-height:1.2}
@@ -142,6 +141,8 @@
 
   /* decisions / gaps */
   .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+  .cards.two{grid-template-columns:repeat(2,1fr)}
+  .gallery.three{grid-template-columns:repeat(3,1fr)}
   .dc{background:var(--card);border-radius:14px;padding:18px;box-shadow:var(--sh);border-left:5px solid var(--green)}
   .dc.todo{border-color:var(--blue)}.dc.risk{border-color:var(--red)}.dc.gap{border-color:var(--amber)}
   .dc .k{font-size:11px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
@@ -212,7 +213,26 @@
     .step,.step.flip{grid-template-columns:56px 1fr}.step .shot,.step.flip .shot{grid-column:1/-1;order:9}
     .compare{grid-template-columns:1fr}
   }
-  @media (max-width:600px){.kpis,.roles,.tips,.cards,.gallery{grid-template-columns:1fr}.langbar{top:8px;right:8px}}
+  @media (max-width:600px){.kpis,.roles,.tips,.cards,.gallery{grid-template-columns:1fr}.langbar{top:8px;right:8px}
+    /* quote rows stack: a 52px/96px/1fr grid leaves the quote ~210px wide */
+    .tx .t{grid-template-columns:1fr;gap:1px}.tx .t span:first-child{font-size:12px}
+    /* caption off the image, so it stops covering the bottom row of markers */
+    .shot figcaption{position:static;background:var(--card);color:var(--ink2);border-radius:0;border-top:1px solid var(--line);max-width:none;line-height:1.45;padding:8px 12px}
+  }
+  /* a dense UI screenshot gets the full content width instead of half a step row */
+  .step.wide{grid-template-columns:72px 1fr}
+  .full{margin:18px 0 22px}
+  .note+.cards,.note+.compare,.full+.cards,.full+.compare{margin-top:20px}
+  /* .dc b / .tip b are block for the card TITLE; inline bold inside a card paragraph must stay inline */
+  .dc p b,.tip p b,.box small b,.dc .own b{display:inline;font-size:inherit;margin:0}
+  /* four pills on one dense screenshot collide; the push-apart pass then detaches them
+     from their boxes and buries the numbers. Numbers on the image, words in the key. */
+  .full .lbl{display:none}
+  .full .lblkey{display:block}
+  /* static, so it sits under the shot instead of over the bottom row of content */
+  .full figcaption{position:static;background:var(--card);color:var(--ink2);border-top:1px solid var(--line);border-radius:0;max-width:none;line-height:1.45;padding:9px 14px;font-size:13px}
+  .full .shot img{max-height:none}
+  .full figcaption{font-size:13px}
 </style>
 </head>
 <body>
@@ -268,7 +288,7 @@
   </div>
 
   <div class="note info"><div class="ic">🧵</div><div>
-    <p><b>Three of these are one thread.</b> The 23 September meeting ends with the instruction to package the Pornhub materials and send them to the client. 5 October is the first working session on them. 8 October is the network briefing. Read in that order they show the same decisions being made, unmade and remade.</p>
+    <p><b>Three of these are one thread.</b> The 23 September meeting ends with the instruction to package the Pornhub materials and send them to the client. 5 October is the first working session on them. 8 October is the network briefing. Read in that order they show the same decisions being made, unmade and remade.</p>
   </div></div>
 </div></section>
 
@@ -310,6 +330,11 @@
       </ul>
     </div>
   </div>
+  <div class="cards two" style="margin-top:20px">
+    <div class="dc todo"><div class="k">Draft · for comment</div><b><a href="01-filing.html">Filing convention</a></b><p>Where things go and what they are called — the document the 23 September meeting committed to and never wrote. Four naming rules, a proposed top-level structure, and an honest note on why the last convention lapsed. <b>Nothing has been moved or renamed</b>; it is a proposal to react to.</p><span class="own">Not in force</span></div>
+    <div class="dc"><div class="k">Worked example</div><b>These records already follow it</b><p>Six breakdowns, one folder each, dated names, one home per document, cross-linked rather than duplicated. If you want to test the shape before adopting it, this is the test case.</p></div>
+  </div>
+
   <div class="note ok"><div class="ic">✅</div><div>
     <p><b>The backlog is clear.</b> Every recording in <code>Videos\Lucifer Gaming Meeting notes\</code> has now been written up. Two of the files in that folder turned out to be the same recording saved twice under different names, and two more were misnamed — see <a href="#how">below</a>.</p>
   </div></div>
@@ -337,7 +362,7 @@
   </div></div>
 </div></section>
 
-<footer><div class="wrap">Lucifer Gaming · internal record · unlisted and not indexed · last updated 13 October 2026</div></footer>
+<footer><div class="wrap">Lucifer Gaming · internal record · unlisted and not indexed · last updated 14 October 2026</div></footer>
 
 <div id="lightbox"></div>
 <script>
