@@ -642,9 +642,11 @@ function textOfTopic(t) {
   return parts.join(" ");
 }
 const DOCS = [];
+// "where" is on-screen labels too: its last step names what the page is for ({Add game|新增遊戲}), the path before it is shared context.
 for (const t of M.topics) DOCS.push({ kind: "topic", id: t.id, sec: t.section, title: t.title, href: `#/t/${t.id}`,
   snip: t.summary, fields: [[t.title, 6], [(t.asks || []).join(" "), 4], [(t.aka || []).join(" "), 4],
-    [(t.labels || []).map(l => l.join(" ")).join(" "), 3], [t.summary, 2], [textOfTopic(t), 1]] });
+    [t.where ? t.where.split("→").at(-1) : "", 4],
+    [(t.labels || []).map(l => l.join(" ")).join(" "), 3], [t.summary, 2], [t.where || "", 1], [textOfTopic(t), 1]] });
 M.situations.forEach((s, i) => DOCS.push({ kind: "sit", id: "sit" + i, sec: T[s.topic]?.section, title: s.see,
   href: `#/t/${s.topic}`, snip: s.do, fields: [[s.see, 5], [s.do, 2], [T[s.topic]?.title || "", 1]] }));
 M.glossary.forEach((g, i) => DOCS.push({ kind: "term", id: "g" + i, title: g.term, href: `#/glossary/${i}`,
