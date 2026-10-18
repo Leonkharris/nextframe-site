@@ -53,6 +53,7 @@ p { margin: 0; max-width: 60ch; }
 .hero .hero-copy { position: relative; z-index: 1; padding-block: 120px 40px; display: flex; flex-direction: column; gap: 18px; width: 100%; }
 .hero .lede { font-size: 19px; color: var(--fg); max-width: 46ch; }
 .brand { position: absolute; top: calc(18px + env(safe-area-inset-top, 0px)); left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
+.brand .wrap { width: 100%; display: flex; justify-content: space-between; gap: 12px; }
 .brand a { text-decoration: none; color: var(--fg); }
 
 /* sections */
@@ -108,7 +109,7 @@ footer a { text-decoration: none; }
 
 <header class="hero">
   <img src="img/hero.jpg" alt="A rooftop bar in BGC at blue hour, guests in evening wear talking over cocktails with the skyline behind them" width="1280" height="1707" fetchpriority="high">
-  <div class="brand gutter"><div class="wrap" style="display:flex;justify-content:space-between"><a href="https://next-frame.agency/guestlist/">Guest List Manila</a><a class="ig-link" href="#" data-dm>@guestlist.mnl</a></div></div>
+  <div class="brand gutter"><div class="wrap"><a href="https://next-frame.agency/guestlist/">Guest List Manila</a><a class="ig-link" href="#" data-dm>@guestlist.mnl</a></div></div>
   <div class="gutter" style="width:100%"><div class="wrap hero-copy">
     <div class="eyebrow">Private social club · BGC &amp; Makati</div>
     <h1>The room you were <em>hoping</em> to walk into.</h1>
