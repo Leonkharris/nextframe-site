@@ -101,7 +101,7 @@ em { font-style: italic; }
 .co-head h2 { font: 700 84px/1 var(--serif); color: var(--ink); }
 .co-head h2 em { font: 400 104px/1 var(--script); color: var(--accent); font-style: normal; }
 .co-head p { width: 760px; text-align: right; font: 400 19px/1.55 var(--sans); }
-.co-grid { position: absolute; left: 96px; right: 96px; top: 300px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 34px 26px; }
+.co-grid { position: absolute; left: 96px; right: 96px; top: 300px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 30px 22px; }
 .co-tile .co-t { display: flex; align-items: baseline; gap: 12px; margin-top: 14px; }
 .co-tile i { font: 800 16px/1 var(--grot); font-style: normal; color: var(--accent); }
 .co-tile h4 { font: 700 25px/1.1 var(--serif); color: var(--ink); }
@@ -354,3 +354,50 @@ body.present .top-btns { display: none; }
 .film p { margin: 10px 0 0; font: 600 12px/1 var(--sans); letter-spacing: .22em; text-transform: uppercase; color: rgba(255,255,255,.55); text-align: center; }
 body.present .film { display: none; }
 @media print { .film { display: none; } }
+
+/* 08 Maison Rogue — the client's deck: black + oxblood + gold; the cover's script lockup, Futura-like caps (Jost) */
+.t-mr { --acc: #9a2a34; --mbg: #110909; --cbg: #1a0e0f; --cink: #f0e4d2; --cmuted: #b8a38b; --chd: #d6b270; --crule: rgba(214,178,112,.32); --acc2: #d6b270; }
+.wm-mr img { width: 640px; height: auto; display: block; }
+.wm-mr.mc img { width: 300px; margin: 0 auto; }
+.t-mr .card { border: 1px solid rgba(214,178,112,.45); outline: 1px solid rgba(214,178,112,.18); outline-offset: -12px; }
+.t-mr.cp h2 { font: 500 58px/1.06 'Cormorant Garamond', serif; color: #1a0e0f; }
+.t-mr.cp h2 em { color: #9a2a34; }
+.t-mr .card .sec h4 { font: 500 14px/1.2 'Jost', sans-serif; letter-spacing: .26em; }
+.t-mr .card .it b { font: 500 19px/1.2 'Cormorant Garamond', serif; letter-spacing: .01em; }
+.t-mr.mn .mn-side h3 { font: italic 400 46px/1.12 'Cormorant Garamond', serif; color: #f0e4d2; }
+
+/* 09 bluezoo — the official logo; deep ocean blue, white menu card, lowercase as the menu prints */
+.t-bz { --acc: #1c6db3; --mbg: #03152b; --cbg: #f5f9fc; --cink: #0b2545; --cmuted: #50657e; --chd: #1c6db3; --crule: rgba(28,109,179,.22); --acc2: #8fcaf2; }
+.wm-bz img { width: 600px; height: auto; display: block; }
+.wm-bz.mc img { width: 300px; margin: 0 auto; }
+.t-bz .card { border-top: 10px solid #1c6db3; }
+.t-bz.cp h2 { font: 600 54px/1.08 'Montserrat', sans-serif; letter-spacing: -.01em; color: #0b2545; }
+.t-bz .card .sec h4 { font: 600 17px/1.2 'Montserrat', sans-serif; letter-spacing: .04em; text-transform: none; }
+.t-bz .card .it b { font: 600 17px/1.25 'Montserrat', sans-serif; }
+.t-bz.mn .mn-side h3 { font: 600 44px/1.12 'Montserrat', sans-serif; color: #fff; }
+
+/* fill the Maison Rogue / bluezoo menu cards (they ran ~60% full) */
+.t-mr .card .mh { padding: 6px 0 22px; margin-bottom: 30px; }
+.t-mr .card .sec { margin-bottom: 30px; }
+.t-mr .card .sec h4 { font-size: 15px; margin-bottom: 14px; }
+.t-mr .card .it { margin-bottom: 15px; }
+.t-mr .card .it b { font-size: 23px; }
+.t-mr .card .it span { font-size: 15.5px; margin-top: 4px; }
+.t-bz .card .mh { padding: 4px 0 20px; margin-bottom: 28px; }
+.t-bz .card .sec { margin-bottom: 26px; }
+.t-bz .card .sec h4 { font-size: 19px; margin-bottom: 12px; }
+.t-bz .card .it { margin-bottom: 13px; }
+.t-bz .card .it b { font-size: 19px; }
+.t-bz .card .it span { font-size: 15px; margin-top: 3px; }
+.t-mr .op-kick { margin-bottom: 26px; }
+.t-mr .card .mh { margin-bottom: 24px; }
+.t-mr .card .sec { margin-bottom: 22px; }
+.t-mr .card .it { margin-bottom: 11px; }
+.t-mr .card .it b { font-size: 21px; }
+.t-bz .card .mh { margin-bottom: 20px; }
+.t-bz .card .sec { margin-bottom: 18px; }
+.t-bz .card .it { margin-bottom: 10px; }
+.t-bz .card .it b { font-size: 18px; }
+/* English Cut card: last line ran 12 px into the footer rule (measured 2026-10-18) */
+.t-ec .card .sec { margin-bottom: 15px; }
+.t-ec .card .it { margin-bottom: 7px; }
