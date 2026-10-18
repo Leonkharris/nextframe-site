@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>You’re on the list — Guest List Manila</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0f1117">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+:root { --bg:#0f1117; --bg-2:#161923; --line:#2a2e3c; --fg:#ece7dc; --fg-2:#a4a3ad; --accent:#d9b56b; --accent-ink:#1a1405;
+  --display:"Instrument Serif",Georgia,"Times New Roman",serif; --body:"DM Sans",system-ui,-apple-system,"Segoe UI",sans-serif; --mono:"JetBrains Mono",ui-monospace,Menlo,Consolas,monospace; color-scheme:dark; }
+*{box-sizing:border-box} html,body{margin:0}
+body{background:var(--bg);color:var(--fg);font-family:var(--body);font-size:17px;line-height:1.55;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+.wrap{max-width:620px;margin:0 auto;display:flex;flex-direction:column;gap:22px;padding-block:72px 0}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--accent)}
+h1{font-family:var(--display);font-weight:400;font-size:clamp(44px,10vw,76px);line-height:1;margin:0;text-wrap:balance} h1 em{font-style:italic;color:var(--accent)}
+p{margin:0;max-width:58ch}
+ol{margin:0;padding:0;list-style:none;display:grid;gap:14px;counter-reset:s}
+ol li{display:grid;grid-template-columns:40px 1fr;gap:12px;counter-increment:s} ol li::before{content:counter(s,decimal-leading-zero);font-family:var(--mono);color:var(--accent);font-size:14px;padding-top:3px}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:52px;padding:14px 24px;border-radius:6px;font:600 16px var(--body);text-decoration:none;border:1px solid transparent}
+.btn.primary{background:var(--accent);color:var(--accent-ink)} .btn.ghost{border-color:var(--line);color:var(--fg)}
+.btn:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
+.ctas{display:flex;gap:10px;flex-wrap:wrap} @media(max-width:480px){.ctas .btn{flex:1 1 100%}}
+.small{color:var(--fg-2);font-size:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="eyebrow">Guest List Manila</div>
+  <h1>You’re <em>in.</em></h1>
+  <p>Your name is on the list. Here is what happens next.</p>
+  <ol>
+    <li><div><b>The day before</b>, you get the exact venue and door instructions by Instagram message. Make sure your DMs from <a href="https://instagram.com/guestlist.mnl">@guestlist.mnl</a> are open.</div></li>
+    <li><div><b>Doors are 8 pm.</b> Come on time. The first hour is when the host does the introductions, and that is the part you paid for.</div></li>
+    <li><div><b>Smart evening.</b> Rooftop, not club. Bring an ID; the venue checks for 21 and over.</div></li>
+  </ol>
+  <div class="ctas">
+    <a class="btn primary" id="dm" href="https://ig.me/m/guestlist.mnl?text=I%27m%20in%20for%20the%20next%20night" target="_blank" rel="noopener">Say hi to the host</a>
+    <a class="btn ghost" href="https://next-frame.agency/guestlist/">Back to the night</a>
+  </div>
+  <p class="small">Bringing a friend? Message us their Instagram handle and we keep you together on the list. Full refund up to 48 hours before doors.</p>
+</div>
+<script>
+  // Fires a Purchase event when the pixel is configured on the main page. Set the same ID here.
+  const PIXEL_ID = "";
+  const PRICE = 1500;
+  if (PIXEL_ID) {
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
+    fbq("init", PIXEL_ID); fbq("track", "PageView"); fbq("track", "Purchase", { value: PRICE, currency: "PHP" });
+  }
+</script>
+</body>
+</html>
