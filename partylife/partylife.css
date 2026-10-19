@@ -160,3 +160,9 @@ footer a { text-decoration-color: var(--spot); text-underline-offset: 3px; }
 .nrow .ns { font: 400 11px var(--mono); letter-spacing: .08em; color: var(--paper-2); }
 @media (max-width: 560px) { .nrow { grid-template-columns: 1fr; gap: 4px; } }
 .ngroup { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--spot); padding: 18px 0 6px; border-bottom: 1px solid var(--rule); }
+
+/* logo v1 (20 Oct 2026): outlined wordmark, the Y holds the drink */
+.mh img { display: block; height: clamp(38px, 8.6vw, 88px); width: auto; max-width: 100%; }
+.cover .cmh img { display: block; width: 100%; height: auto; }
+.panel .eb b img.wm { display: block; height: 15px; width: auto; }
+.ahero .eb b img.wm { display: block; height: 20px; width: auto; }
