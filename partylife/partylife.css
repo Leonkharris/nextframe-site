@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@900&family=Oswald:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap");
 :root {
   --ink: #0a0a0a; --ink-2: #141414; --rule: #2b2a28; --paper: #f3f0ea; --paper-2: #a9a49b;
-  --spot: #e1251b; --foil: #c9a45c; --foil-2: #f1dfae;
+  --spot: #e4002b; --foil: #c9a45c; --foil-2: #f1dfae;
   --masthead: "Bodoni Moda", "Didot", Georgia, serif;
   --cover: "Oswald", "Arial Narrow", Impact, sans-serif;
   --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
