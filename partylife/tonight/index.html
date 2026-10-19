@@ -85,7 +85,7 @@ ol.rank .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var
 
   <section>
     <div class="head"><h2>Check <em>in</em></h2><p>Tell us where you are and how it feels, and the room lights up for everyone else. Three words in a DM.</p></div>
-    <div class="ctas"><a class="btn" href="https://ig.me/m/partylifemanila?text=HERE" target="_blank" rel="noopener">DM "HERE" + venue</a><a class="btn ghost" href="https://ig.me/m/partylifemanila?text=TABLE" target="_blank" rel="noopener">DM "TABLE" to book</a><a class="btn ghost" href="https://next-frame.agency/guestlist/">Get on the guest list</a></div>
+    <div class="ctas"><a class="btn" href="https://ig.me/m/partylifemnl?text=HERE" target="_blank" rel="noopener">DM "HERE" + venue</a><a class="btn ghost" href="https://ig.me/m/partylifemnl?text=TABLE" target="_blank" rel="noopener">DM "TABLE" to book</a><a class="btn ghost" href="https://next-frame.agency/guestlist/">Get on the guest list</a></div>
   </section>
 </div></main>
 
@@ -99,7 +99,7 @@ ol.rank .bar i { position: absolute; left: 0; top: 0; bottom: 0; background: var
   const venues = data.venues.filter((v) => v.lat && v.lng && v.status !== "closed");
   const dow = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"][new Date().getDay()];
   $("#stamp").textContent = `${venues.length} rooms on the map. ${dow} heat, updated ${new Date(data.generated).toLocaleDateString("en-PH", { day: "numeric", month: "short" })}. Tap a dot for guest list, table and check-in.`;
-  const dm = (t) => "https://ig.me/m/partylifemanila?text=" + encodeURIComponent(t);
+  const dm = (t) => "https://ig.me/m/partylifemnl?text=" + encodeURIComponent(t);
   const isBar = (v) => /bar|speakeasy|lounge|supper|listening|agave|wine|brewery|barcade/.test(v.type);
   const match = (v, f) => f === "all" || (f === "nightclub" && /club/.test(v.type) && v.type !== "cocktail-bar" && v.type !== "supper-club") || (f === "rooftop" && v.type === "rooftop") || (f === "bar" && isBar(v)) || (f === "new" && v.opened && String(v.opened) >= "2025-11") || (f === "issue" && v.issue_status === "issue-01-candidate");
   const popup = (v) => { const status = v.status === "conflict" ? "Confirm it is open before you go." : v.status === "announced" ? "Announced, not open yet." : v.hours ? v.hours : ""; return `<div class="pop"><b>${v.name}</b><div class="m">${v.area} · ${v.type.replace(/-/g, " ")}${v.music ? " · " + v.music : ""}</div><div class="m">${status}${v.price_signal ? " · " + v.price_signal : ""}</div><div class="acts"><a href="${dm("HERE " + v.name)}" target="_blank" rel="noopener">I'm here</a><a class="g" href="${dm("TABLE " + v.name)}" target="_blank" rel="noopener">Book a table</a>${v.issue_status === "issue-01-candidate" ? '<a class="g" href="https://next-frame.agency/guestlist/">Guest list</a>' : ""}${v.ig ? `<a class="g" href="https://www.instagram.com/${v.ig}/" target="_blank" rel="noopener">@${v.ig}</a>` : ""}<a class="g" href="https://www.openstreetmap.org/?mlat=${v.lat}&mlon=${v.lng}#map=18/${v.lat}/${v.lng}" target="_blank" rel="noopener">Map</a></div></div>`; };
