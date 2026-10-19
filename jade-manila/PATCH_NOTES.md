@@ -2,6 +2,46 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-19 (later) — Forecast workbook read; financial pages deliberately NOT changed
+
+Leon supplied `Jade_Bar_Manila_Forecasts_UPDATED (1).xlsx` (the sheet that was
+access-denied earlier). Preserved at
+`Jade supper club/Current Jade Updates/Jade_Bar_Manila_Forecasts_UPDATED.xlsx`
+— **kept out of `jade-manila/`, which publishes to the public web.**
+
+**What it contains** — a SINGLE-YEAR run-rate model, four scenarios:
+
+| Scenario | Annual revenue | Gross margin | Annual net profit |
+|---|---|---|---|
+| Pessimistic | ₱92,258,743 | 71.5% | ₱20,324,541 |
+| Pragmatic | ₱131,526,514 | 72.8% | ₱40,994,888 |
+| Optimistic Low | ₱251,322,171 | 73.2% | **#REF!** |
+| Optimistic High | ₱285,001,714 | 73.7% | **#REF!** |
+
+**Three findings**
+1. **Both Optimistic columns are broken** — the OpEx line is `#REF!`, so operating
+   profit, tax and net profit are dead. Only Pessimistic and Pragmatic are usable.
+2. **No multi-year model at all** — no Year 2–5, no growth rate, no CAGR. The deck's
+   Five-Year Forecast, five-year distributions, payback and IRR have **no source** in
+   this file. Do not extrapolate them without an explicit growth assumption from Leon.
+3. **The deck is now the conservative document.** What the deck calls *High*
+   (₱130.7M Y1) is almost exactly the client's *Pragmatic* (₱131.5M); the deck's *Base*
+   (₱76.9M) sits **below** the new *Pessimistic* (₱92.3M).
+
+**Capital is not in conflict.** "Total Capital Needed" reads ₱35,483,903, but construction
+is booked at a 50% stage payment (₱9,683,180 of a ₱13.2M Jerikson contract). Add the
+~₱3.5M still owed and it is ~₱39.0M — consistent with the ₱38M the deck states. The two
+figures measure different things: *capital still needed* vs *total project cost*. The
+₱3,373,966 rent/deposit matches the deck exactly.
+
+**Watch this:** the workbook carries a **"Revenue Share %" of 5% as an OPEX line**
+(₱548,027/mo at Pragmatic). That is a *different* 5% from the investor's 5% equity —
+do not conflate them. Flagged to Leon for confirmation.
+
+**Decision (Leon, this session): leave the financial pages alone.** The published
+five-year model stands; the workbook is reference only. **No deck changes were made in
+this pass** — the timeline and 5%-ticket work from earlier today is unaffected and stays live.
+
 ## 2026-10-18 (later) — Night set v9: four acts, all-female, final visuals
 
 Seven rounds of direction from Leon in one sitting, each one landing on the page the same hour:

@@ -271,3 +271,25 @@ a grand launch — so the old "8 Weeks to Doors" stat was dropped rather than re
   and the opening is now December. Only the holder's slice was rescaled.
 - The timeline's first rows read Now · Aug · Sep, two of which are in the past.
 - `Already Committed ₱21M` and the ₱38M-vs-₱40,083,352 breakdown gap are both unchanged.
+
+
+## The forecast workbook (2026-10-19) — read, but NOT applied
+
+`Jade supper club/Current Jade Updates/Jade_Bar_Manila_Forecasts_UPDATED.xlsx`.
+**Never copy it into `jade-manila/`** — that folder is served publicly at
+next-frame.agency, and this is client financials.
+
+It is a **single-year run-rate** model over four scenarios (Pessimistic ₱92,258,743 /
+Pragmatic ₱131,526,514 / Optimistic Low ₱251,322,171 / Optimistic High ₱285,001,714).
+**Both Optimistic columns are `#REF!`-broken** from the OpEx line down, and there is
+**no Year 2–5 anywhere in the file** — so the deck's Five-Year Forecast, The Return,
+payback and IRR cannot be sourced from it. Do not extrapolate those without a growth
+rate from Leon.
+
+**Leon's decision, 2026-10-19: leave the financial pages as published.** The workbook is
+reference only. Revisit if he sends a multi-year build or repairs the Optimistic formulas.
+
+Two things to carry forward: the workbook's **"Revenue Share %" 5% is an OPEX expense**,
+not the investor's 5% equity — keep them separate; and its ₱35,483,903 "capital needed"
+is **not** a contradiction of the deck's ₱38M, because construction sits at a 50% stage
+payment (~₱3.5M still owed → ~₱39.0M).
