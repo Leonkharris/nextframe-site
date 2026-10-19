@@ -331,3 +331,28 @@ changes depreciation to ₱2,903,160/yr, NBV to ₱7,347,626, and from there net
 distribution number on The Return. **Wait for the full file, then redo the schedule,
 the classification percentages, depreciation and the model together.** The build page already
 labels its allocation superseded, so nothing on it is misleading in the meantime.
+
+
+## There are now TWO decks (2026-10-19)
+
+| | link | terms |
+|---|---|---|
+| Main | `/jade-manila/` | 5% at ₱675,000/pt = **₱3,375,000** |
+| Investor variant | `/jade-manila-18/` | 18% at ₱833,333/pt = **₱15,000,000** |
+
+Both run the **70% semi-annual** distribution policy and the same ₱38M (₱35M + ₱3M buffer)
+capex line. Everything outside the investment pages is identical.
+
+**`jade-manila-18/` is index.html ONLY.** All media, CSS and JS resolve via
+`../jade-manila/`, so brand and photography changes propagate automatically — but **any edit
+to the shared `index.html` structure must be mirrored into the variant**, and a new asset
+reference added to the main deck must be written as `../jade-manila/...` in the variant.
+Watch the three hand-repointed spots: `v.src`, `v.poster` and `vid.src = '../jade-manila/v/'
++ name + '.mp4'`. The hover-clip matcher keys on `img/NAME.jpg` and tolerates the longer path.
+
+**18% variant figures (70% policy):** distributions ₱15,926,974 / ₱38,662,598; cumulative
+return 6.2% / 157.8%; payback 4.78 / 2.40 yr; IRR 1.82% / 37.21%.
+
+**Open with Leon:** at ₱833,333/pt the base case returns only 6.2% over five years
+(IRR 1.82%). At a 90% distribution the same ticket returns 36.5% with payback at 3.99 yr.
+Raised with him; no change made without his word.

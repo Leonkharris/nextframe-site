@@ -2,6 +2,37 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-19 (night) — Second deck: ₱15M for 18% at its own link
+
+Leon: *"2 decks the current one / And another to reflect the 15 M for 18%, the return on
+investment to reflect that same amount."*
+
+New deck at **`/jade-manila-18/`**, `noindex,nofollow` since it is a private investor link.
+It is **index.html only** — every image, video, stylesheet and script is referenced out of
+`../jade-manila/`, so the two decks share one set of assets (~30 MB not duplicated) and any
+future brand or photography change lands on both automatically. The hover-clip paths
+(`v/NAME.mp4`), the preview film and `press.js` all had to be repointed by hand; the
+clip-matching regex still keys on `img/NAME.jpg`, which survives the longer path.
+
+**Terms: ₱15,000,000 for 18% = ₱833,333 per point** (implied valuation ₱83.3M). Recomputed
+on the current 70% semi-annual policy:
+
+| 18% holder | base | high |
+|---|---|---|
+| Five-year distributions | ₱15,926,974 | ₱38,662,598 |
+| Cumulative return | 6.2% | 157.8% |
+| Payback | 4.78 yr | 2.40 yr |
+| IRR | 1.82% | 37.21% |
+
+**Flagged to Leon: the base case is thin at these terms.** ₱833,333 per point is 23% dearer
+than the 5% deck's ₱675,000, and 70% distribution compounds it — five-year cumulative return
+lands at **6.2%** with an IRR of **1.82%** and payback at 4.78 years, inside a five-year
+model. At the old 90% policy the same ticket would return 36.5% cumulative with payback at
+3.99 years. Nothing is wrong with the arithmetic; the terms are simply priced where the
+conservative case barely clears. His call.
+
+Everything outside the investment pages is identical between the two decks.
+
 ## 2026-10-19 (evening) — Capex settled at ₱38M = ₱35M capex + ₱3M buffer
 
 Supersedes the ₱34M / ₱36M figures shipped an hour earlier. Leon, on WhatsApp:
