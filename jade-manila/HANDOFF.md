@@ -293,3 +293,25 @@ Two things to carry forward: the workbook's **"Revenue Share %" 5% is an OPEX ex
 not the investor's 5% equity — keep them separate; and its ₱35,483,903 "capital needed"
 is **not** a contradiction of the deck's ₱38M, because construction sits at a 50% stage
 payment (~₱3.5M still owed → ~₱39.0M).
+
+
+## Deal terms as of 2026-10-19 (supersedes everything above)
+
+- **Ticket:** 5% at ₱675,000 per point = **₱3,375,000**.
+- **Distribution:** **70% of net profit, paid semi-annually** (was 90% annual).
+- **Capex:** **₱34,000,000, buffered to ₱36,000,000** (was ₱38M).
+- Five-year, 5% holder: distributions ₱4,424,159 base / ₱10,739,610 high; cumulative return
+  31.1% / 218.2%; payback 4.11 / 2.03 yr; IRR 8.65% / 48.77%.
+
+**IRR basis matters.** Those IRRs are on **annual timing**. The real semi-annual schedule
+gives 9.44% / 55.96%. The conservative basis is published on purpose and the page says so.
+Do not "correct" it upward without asking.
+
+**Build page line items are knowingly stale.** They total ₱40,083,352 (the original costing)
+against a ₱34M envelope. Leon is revising them himself; the page labels the schedule as
+superseded. Do not rescale those line items.
+
+**Trap fixed here — check for it elsewhere.** `.foot-note` is `position:absolute`, so **two
+foot-notes in one sheet silently stack on top of each other** and only the last one in the
+DOM is visible. The build page had this for weeks. If a sheet needs two notes, merge them or
+make them static (`#the-return .foot-note` is already overridden to `static` for this reason).

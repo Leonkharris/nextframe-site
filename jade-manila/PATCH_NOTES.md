@@ -2,6 +2,44 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-19 (later still) — 70% distribution paid semi-annually; capex down to ₱34M
+
+**Distribution policy: 90% annual → 70%, paid in two instalments a year.** Leon's words:
+*"let's change to 70% (conservative) dividend distribution"*, *"Paid out semi annually"*.
+Every derived figure recomputed off the deck's own net-profit series:
+
+| 5% holder | base | high |
+|---|---|---|
+| Five-year distributions | ₱4,424,159 | ₱10,739,610 |
+| Cumulative return | 31.1% | 218.2% |
+| Payback | 4.11 yr | 2.03 yr |
+| IRR | 8.65% | 48.77% |
+
+Base now crosses into positive cash during **Year Five** (was Year Four) and high during
+**Year Three** (was Year Two) — both footnotes updated. Method re-validated first: it
+reproduces the outgoing 90% figures (5,688,205 / 68.5% / 3.41 / 17.82% and 13,808,071 /
+309.1% / 1.62 / 64.94%) exactly before being used.
+
+**IRR is deliberately quoted on annual timing.** Paying semi-annually pulls cash forward and
+raises the true IRR to 9.44% base / 55.96% high (+0.78pp / +7.18pp). Leon asked for the
+*conservative* policy, so the page keeps the annual-timing figure and the footnote now says
+plainly that it understates the benefit of the earlier payment. If he wants the semi-annual
+basis published instead, the numbers are above.
+
+**Capex: ₱38M → ₱34,000,000, buffered to ₱36,000,000.** Updated on the Part III divider, the
+timeline band (now "Capex · Buffered to ₱36M"), the ticket card, the contents, and the build
+page title (**Where the ₱34 Million Goes**).
+
+**Bug found and fixed: the build page had two `position:absolute` foot-notes stacked at the
+identical spot (top 938, bottom 1012).** The Depreciation note paints later and had been
+hiding the capex note completely — so the note explaining the ₱40,083,352 / ₱38,000,000 gap
+had been invisible on the live deck ever since it was added. Merged into a single note that
+now carries both facts (110px tall, 84px clear of the columns above).
+
+**Still Leon's:** the line items on the build page remain the ₱40,083,352 original costing —
+he said *"Got to trim this down... let me review"*, so the schedule is labelled superseded on
+the page rather than guessed at.
+
 ## 2026-10-19 (later) — Forecast workbook read; financial pages deliberately NOT changed
 
 Leon supplied `Jade_Bar_Manila_Forecasts_UPDATED (1).xlsx` (the sheet that was
