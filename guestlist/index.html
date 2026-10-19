@@ -3,28 +3,29 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>Party Life Manila — The Guest List, a private night in BGC</title>
+<title>Party Life MNL — The Guest List, issue 01, BGC</title>
 <meta name="description" content="One curated night a month in BGC. Rooftop mixers and cocktail nights for entrepreneurs, creatives and people who want a better circle in the city. Capped guest list, host-led introductions.">
 <meta name="robots" content="noindex, follow">
 <link rel="canonical" href="https://next-frame.agency/guestlist/">
 <meta name="theme-color" content="#0f1117">
 <meta property="og:type" content="website">
-<meta property="og:title" content="Party Life Manila — the room you were hoping to walk into">
+<meta property="og:title" content="Party Life MNL — the room you were hoping to walk into">
 <meta property="og:description" content="One curated night a month in BGC. Capped guest list, two drinks included, a host who does the introductions.">
 <meta property="og:url" content="https://next-frame.agency/guestlist/">
 <meta property="og:image" content="https://next-frame.agency/guestlist/img/hero.jpg">
 <meta property="og:locale" content="en_PH">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:wght@900&family=Oswald:wght@400;500&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
 <style>
 /* Layout: one column, image-led hero, then the event card, then the reasons. Dark room, champagne accent. */
 :root {
-  --bg: #0f1117; --bg-2: #161923; --line: #2a2e3c; --fg: #ece7dc; --fg-2: #a4a3ad;
-  --accent: #d9b56b; --accent-ink: #1a1405;
-  --display: "Instrument Serif", Georgia, "Times New Roman", serif;
-  --body: "DM Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
-  --mono: "JetBrains Mono", ui-monospace, Menlo, Consolas, monospace;
+  --bg: #0a0a0a; --bg-2: #141414; --line: #2b2a28; --fg: #f3f0ea; --fg-2: #a9a49b;
+  --accent: #e1251b; --accent-ink: #f3f0ea; --foil: #c9a45c;
+  --masthead: "Bodoni Moda", "Didot", Georgia, serif;
+  --display: "Oswald", "Arial Narrow", Impact, sans-serif;
+  --body: "IBM Plex Sans", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, Consolas, monospace;
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
@@ -34,12 +35,12 @@ a { color: inherit; }
 .gutter { padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 .wrap { max-width: 680px; margin: 0 auto; }
 .eyebrow { font-family: var(--mono); font-size: 12px; letter-spacing: .16em; text-transform: uppercase; color: var(--accent); }
-h1, h2 { font-family: var(--display); font-weight: 400; line-height: 1.02; margin: 0; text-wrap: balance; letter-spacing: -.01em; }
+h1, h2 { font-family: var(--display); font-weight: 500; line-height: .98; margin: 0; text-wrap: balance; letter-spacing: .01em; text-transform: uppercase; }
 h1 { font-size: clamp(42px, 9vw, 72px); }
 h2 { font-size: clamp(30px, 6vw, 42px); }
-h1 em, h2 em { font-style: italic; color: var(--accent); }
+h1 em, h2 em { font-style: normal; color: var(--accent); }
 p { margin: 0; max-width: 60ch; }
-.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 14px 24px; border-radius: 6px; font: 600 16px var(--body); text-decoration: none; cursor: pointer; border: 1px solid transparent; }
+.btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 52px; padding: 14px 24px; border-radius: 0; font: 500 17px var(--display); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; cursor: pointer; border: 1px solid transparent; }
 .btn.primary { background: var(--accent); color: var(--accent-ink); }
 .btn.ghost { background: transparent; border-color: var(--line); color: var(--fg); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
@@ -47,14 +48,21 @@ p { margin: 0; max-width: 60ch; }
 @media (max-width: 480px) { .ctas .btn { flex: 1 1 100%; } }
 
 /* hero */
-.hero { position: relative; min-height: 78vh; display: flex; align-items: flex-end; overflow: hidden; }
+.hero { position: relative; min-height: 86vh; display: flex; align-items: flex-end; overflow: hidden; }
 .hero img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: 50% 45%; max-width: 100%; }
-.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(15,17,23,.96) 0%, rgba(15,17,23,.72) 38%, rgba(15,17,23,.15) 70%, rgba(15,17,23,0) 100%); }
-.hero .hero-copy { position: relative; z-index: 1; padding-block: 120px 40px; display: flex; flex-direction: column; gap: 18px; width: 100%; }
+.hero::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to bottom, rgba(10,10,10,.75) 0%, rgba(10,10,10,0) 26%, rgba(10,10,10,0) 55%, rgba(10,10,10,.96) 100%); }
+.hero .hero-copy { position: relative; z-index: 1; padding-block: 220px 40px; display: flex; flex-direction: column; gap: 18px; width: 100%; }
 .hero .lede { font-size: 19px; color: var(--fg); max-width: 46ch; }
-.brand { position: absolute; top: calc(18px + env(safe-area-inset-top, 0px)); left: 0; right: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; font-family: var(--mono); font-size: 12px; letter-spacing: .14em; text-transform: uppercase; }
-.brand .wrap { width: 100%; display: flex; justify-content: space-between; gap: 12px; }
-.brand a { text-decoration: none; color: var(--fg); }
+.brand { position: absolute; top: calc(16px + env(safe-area-inset-top, 0px)); left: 0; right: 0; z-index: 2; }
+.brand .wrap { width: 100%; display: grid; gap: 6px; }
+.brand .mh { font: 900 clamp(52px, 13vw, 128px)/.84 var(--masthead); text-transform: uppercase; letter-spacing: -.02em; color: var(--fg); text-decoration: none; display: inline-block; position: relative; justify-self: center; }
+.brand .mh .tag { position: absolute; right: -.12em; top: -.1em; font: 500 .17em var(--display); letter-spacing: .14em; background: var(--accent); color: var(--accent-ink); padding: .2em .5em; transform: rotate(-6deg); }
+.brand .strip { display: flex; justify-content: space-between; gap: 12px; border-top: 1px solid rgba(243,240,234,.55); padding-top: 6px; font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--fg); }
+.brand .strip a { text-decoration: none; color: var(--fg); }
+.flash { position: absolute; right: max(16px, env(safe-area-inset-right, 0px)); top: 36%; z-index: 2; background: var(--accent); color: var(--accent-ink); font: 500 14px/1.1 var(--display); letter-spacing: .1em; text-transform: uppercase; padding: 9px 12px; transform: rotate(-8deg); text-align: center; }
+.code { display: grid; gap: 3px; width: 112px; }
+.code i { display: block; height: 34px; background: repeating-linear-gradient(90deg, var(--fg) 0 2px, transparent 2px 4px, var(--fg) 4px 5px, transparent 5px 9px, var(--fg) 9px 12px, transparent 12px 14px); }
+.code span { font: 400 11px var(--mono); letter-spacing: .1em; color: var(--fg-2); text-align: center; }
 
 /* sections */
 section { padding-block: 56px; }
@@ -62,14 +70,14 @@ section + section { border-top: 1px solid var(--line); }
 .stack { display: flex; flex-direction: column; gap: 18px; }
 
 /* event card */
-.event { background: var(--bg-2); border: 1px solid var(--line); border-radius: 10px; padding: 24px; display: grid; gap: 18px; }
+.event { background: var(--bg-2); border: 1px solid var(--line); border-radius: 0; padding: 24px; display: grid; gap: 18px; }
 .event dl { display: grid; grid-template-columns: auto 1fr; gap: 8px 18px; margin: 0; font-size: 16px; }
 .event dt { font-family: var(--mono); font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--fg-2); padding-top: 4px; }
 .event dd { margin: 0; }
 .price { font-family: var(--mono); font-size: 32px; font-weight: 500; font-variant-numeric: tabular-nums; line-height: 1; }
 .price small { font-family: var(--body); font-size: 14px; color: var(--fg-2); font-weight: 400; margin-left: 6px; }
 .includes { list-style: none; margin: 0; padding: 0; display: grid; gap: 6px; font-size: 16px; }
-.includes li::before { content: "—"; color: var(--accent); margin-right: 10px; }
+.includes li::before { content: "■"; font-size: 8px; vertical-align: middle; color: var(--accent); margin-right: 10px; }
 .cap { font-size: 14px; color: var(--fg-2); }
 
 /* steps: a real sequence, so numbered */
@@ -109,9 +117,10 @@ footer a { text-decoration: none; }
 
 <header class="hero">
   <img src="img/hero.jpg" alt="A rooftop bar in BGC at blue hour, guests in evening wear talking over cocktails with the skyline behind them" width="1280" height="1707" fetchpriority="high">
-  <div class="brand gutter"><div class="wrap"><a href="https://next-frame.agency/guestlist/">Party Life Manila</a><a class="ig-link" href="#" data-dm>@partylifemanila</a></div></div>
+  <div class="brand gutter"><div class="wrap"><a class="mh" href="https://next-frame.agency/guestlist/">Partylife<span class="tag">MNL</span></a><div class="strip"><span>Issue 01</span><span>The Guest List</span><a data-dm href="#">@partylifemanila</a></div></div></div>
+  <div class="flash">Guest list<br>open</div>
   <div class="gutter" style="width:100%"><div class="wrap hero-copy">
-    <div class="eyebrow">Party Life Manila presents The Guest List · BGC <div class="eyebrow">Private social club · BGC &amp; Makati</div>amp; Makati</div>
+    <div class="eyebrow">Manila's party and event host · BGC &amp; Makati</div>
     <h1>The room you were <em>hoping</em> to walk into.</h1>
     <p class="lede">One curated night a month. Rooftop mixers and cocktail nights for entrepreneurs, creatives and people who want a better circle in the city. Capped guest list. A host who does the introductions.</p>
     <div class="ctas">
@@ -140,7 +149,7 @@ footer a { text-decoration: none; }
         <li>The guest list afterwards, so a conversation can continue</li>
       </ul>
       <div class="ctas"><a class="btn primary" href="#" data-ticket>Get on the guest list</a></div>
-      <div class="cap" id="ev-cap">Capped at 80. No walk-ins. 21 and over.</div>
+      <div style="display:flex;justify-content:space-between;align-items:end;gap:12px;flex-wrap:wrap"><div class="cap" id="ev-cap">Capped at 80. No walk-ins. 21 and over.</div><div class="code"><i></i><span>MNL 01 · 1500</span></div></div>
     </div>
   </div>
 </section>
@@ -174,7 +183,7 @@ footer a { text-decoration: none; }
   <div class="wrap host">
     <div class="eyebrow">From the host</div>
     <blockquote>“I started this because every good night I ever had in Manila came from someone introducing me to someone. I just made that the job.”</blockquote>
-    <cite>Leon, host of The Guest List by Party Life Manila</cite>
+    <cite>Leon, host · Party Life MNL</cite>
   </div>
 </section>
 
@@ -187,7 +196,7 @@ footer a { text-decoration: none; }
       <details><summary>Can I bring a friend?</summary><div class="a">Yes. Buy two tickets, or message us their handle and we keep you together on the list.</div></details>
       <details><summary>What is the refund policy?</summary><div class="a">Full refund up to 48 hours before doors. After that, your ticket moves to the next night.</div></details>
       <details><summary>Is there an age limit?</summary><div class="a">21 and over. Bring an ID; the venue checks.</div></details>
-      <details><summary>Who runs this?</summary><div class="a">The Guest List is a Party Life Manila night, hosted by Leon and produced by NextFrame, a Makati marketing studio. Questions go to the Instagram account; a person answers.</div></details>
+      <details><summary>Who runs this?</summary><div class="a">The Guest List is a Party Life MNL night, hosted by Leon and produced by NextFrame, a Makati marketing studio. Questions go to the Instagram account; a person answers.</div></details>
     </div>
   </div>
 </section>
@@ -205,7 +214,7 @@ footer a { text-decoration: none; }
 </main>
 
 <footer class="gutter"><div class="wrap">
-  <div>Party Life Manila · hosted by Leon · produced by <a href="https://next-frame.agency/">NextFrame</a>, Makati</div>
+  <div>Party Life MNL · hosted by Leon · produced by <a href="https://next-frame.agency/">NextFrame</a>, Makati</div>
   <div>By buying a ticket you agree to the refund terms above. Photos are taken at every night; tell the host if you would rather not be in them.</div>
 </div></footer>
 
