@@ -159,3 +159,4 @@ footer a { text-decoration-color: var(--spot); text-underline-offset: 3px; }
 .nrow .nt { font-size: 15px; color: var(--paper-2); max-width: 70ch; }
 .nrow .ns { font: 400 11px var(--mono); letter-spacing: .08em; color: var(--paper-2); }
 @media (max-width: 560px) { .nrow { grid-template-columns: 1fr; gap: 4px; } }
+.ngroup { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--spot); padding: 18px 0 6px; border-bottom: 1px solid var(--rule); }
