@@ -2,6 +2,31 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-19 (evening) — Capex settled at ₱38M = ₱35M capex + ₱3M buffer
+
+Supersedes the ₱34M / ₱36M figures shipped an hour earlier. Leon, on WhatsApp:
+*"Total capex is 35 M based on the numbers I sent if we can follow that"*, *"Remaining 3 M
+can be classified as buffer"*, and the fallback *"If it's too tedious all good just minor
+edits to reflect 38 M"*. The ₱35M ties to the workbook's **TOTAL CAPITAL NEEDED
+₱35,483,902.70**.
+
+Applied: the envelope reads **₱38,000,000 — ₱35,000,000 of capex with ₱3,000,000 held as
+buffer**, on the Part III divider, the timeline band (now `₱38M · ₱35M Capex · ₱3M Buffer`),
+the ticket card, the contents and the build page title.
+
+**The itemised schedule was deliberately NOT part-edited.** Leon began itemising —
+*"Fashion interiors custom furniture- 2.6 M"* (deck has ₱4,000,000) and *"Air con - 1.4 M"*
+(deck has ₱2,500,000) — then switched to sending a file. Those two cuts alone total
+₱2,500,000 and would drop the schedule to ₱37,583,352, but they also move the leasehold base
+from ₱17,195,251 to ₱14,695,251, which changes annual depreciation (₱3,153,160 → ₱2,903,160),
+net book value (₱8,597,625 → ₱7,347,626) and therefore net profit and every distribution
+figure downstream. Half-applying that is worse than not applying it, so the page states the
+₱38M/₱35M+₱3M position and labels the allocation superseded pending his file. **The two
+figures are recorded here ready to apply with the rest.**
+
+The promised "easier file" had not arrived in Downloads at the time of this change — only
+`Jade_Bar_Manila_Forecasts_UPDATED (1).xlsx` from 15:09, already read.
+
 ## 2026-10-19 (later still) — 70% distribution paid semi-annually; capex down to ₱34M
 
 **Distribution policy: 90% annual → 70%, paid in two instalments a year.** Leon's words:

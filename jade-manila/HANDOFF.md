@@ -315,3 +315,19 @@ superseded. Do not rescale those line items.
 foot-notes in one sheet silently stack on top of each other** and only the last one in the
 DOM is visible. The build page had this for weeks. If a sheet needs two notes, merge them or
 make them static (`#the-return .foot-note` is already overridden to `static` for this reason).
+
+
+## Capex position (2026-10-19 evening — current)
+
+**₱38,000,000 total = ₱35,000,000 capex + ₱3,000,000 buffer.** This supersedes both the
+original flat ₱38M and the ₱34M/₱36M wording that was briefly live. ₱35M ties to the
+workbook's TOTAL CAPITAL NEEDED of ₱35,483,902.70.
+
+**Pending itemisation — do not part-apply.** Leon gave two line corrections before switching
+to sending a file: **Fashion Interiors custom furniture ₱4,000,000 → ₱2,600,000** and
+**Air conditioning ₱2,500,000 → ₱1,400,000** (−₱2,500,000 combined, schedule would become
+₱37,583,352). Applying only those two also shifts the leasehold base to ₱14,695,251, which
+changes depreciation to ₱2,903,160/yr, NBV to ₱7,347,626, and from there net profit and every
+distribution number on The Return. **Wait for the full file, then redo the schedule,
+the classification percentages, depreciation and the model together.** The build page already
+labels its allocation superseded, so nothing on it is misleading in the meantime.
