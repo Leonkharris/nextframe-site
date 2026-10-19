@@ -2,6 +2,77 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-18 (later) — Night set v9: four acts, all-female, final visuals
+
+Seven rounds of direction from Leon in one sitting, each one landing on the page the same hour:
+the feather swatch as THE palette; no coverage language; modern cut only; the halter / one-shoulder
+column gown with a high slit as the house silhouette; four dances a night, all-girl group, sexy;
+gowns in light jade, smoke grey and charcoal with gold trim; no Filipino theme at all. Library is
+now eight pieces, two per act (Jade Fans, The Chair; Gold Leaf, Mirror; Velvet, Smoke; The Shadow,
+After Dark). Final nine visuals ran once on the settled brief via Artlist Seedream 5.0 Pro at zero
+credits and passed craft QC with no fails. Decisions in order are in memory
+`project-jade-night-set-programme`.
+
+## 2026-10-18 — Night set programme page (`program/index.html`)
+
+Leon asked for a nightly schedule and programme: three dances a night, modular, achievable, with
+visuals. Mid-turn: "the first show should be burlesque with elements of jade and gold, give me a
+color pallet and fabric patterns." Shipped a standalone page (not linked, not deployed): three fixed
+acts, nine swappable pieces, six-night rotation, cue sheet, company/kit/build order, and for Show 1
+("Jade Fans") a brand-only palette with ratio bar and eight SVG fabric repeats drawn from the
+guidelines' own graphic elements. Visuals moved from Pollinations (now watermarked, 402s, 3/5 QC
+fails) to the Artlist Seedream 5.0 Pro unlimited lane.
+
+## 2026-10-19 — New timeline and a new ticket: 5% at ₱675,000 per point
+
+From Leon's two annotated screenshots.
+
+**Timeline — the opening moved a month.**
+| | was | now |
+|---|---|---|
+| Oct | Fit-Out & Training | **Final Design Items** — installed room by room, interior signed off |
+| Nov | Doors Open (friends & family, week one) | **Staff Training & Soft Launch** |
+| Dec | — | **Grand Launch** (full service, the old Nov service copy moved here) |
+
+Page retitled **The Road to December**, `id` → `road-to-december` (nothing linked to the old
+id), contents row updated, and the summary band is now `Nov Soft Launch · Dec Grand Launch ·
+₱38M`. The old band's "8 Weeks to Doors" was dropped rather than recomputed — with a soft
+launch and a grand launch there is no longer a single "doors" date to count to.
+
+**The ticket — ₱13M / 18% is gone.** New terms: **₱675,000 per 1%, 5% = ₱3,375,000**
+(implied valuation ₱67.5M; **6.5% cheaper per point** than the old ₱722,222).
+
+That figure is quoted on five pages, so leaving the derived rows at 18% would have made the
+deck contradict its own offer. The holder rows were rescaled ×5/18 off the deck's **own**
+model and every derived figure recomputed:
+
+| | base | high |
+|---|---|---|
+| Five-year distributions | ₱5,688,205 | ₱13,808,071 |
+| Cumulative return | 68.5% | 309.1% |
+| Payback | 3.41 yr | 1.62 yr |
+| IRR | 17.82% | 64.94% |
+
+**The method was validated before it was trusted** — run against the 18% inputs it
+reproduces the deck's existing 57.5% / 3.58 yr / 15.23% and 282.4% / 1.72 yr / 60.30%
+exactly (`scratchpad/recalc.py`). Returns improve slightly because the price per point fell.
+Net profit, revenue, margins and the 90% distribution policy are untouched; the Year-Four /
+Year-Two crossover note still holds.
+
+**What this is NOT.** It is a rescale of the deck's existing model, **not** the new
+spreadsheet. The reference sheet
+(`docs.google.com/spreadsheets/d/1RriSdHQxrFK9pRO6WBknHnjdgNXPz3JV`) returns **"Access
+denied"** to the Google account signed in on the `:9223` Chrome — 401 on plain export, 403
+on the in-session fetch. Leon said the sheet does not need to go in the deck, so this was
+not blocking, but **nothing in the sheet has been incorporated**.
+
+**Two things still open for Leon**
+- **Year-1 revenue may now be stale.** Opening slipped November → December, which is a month
+  of Year-1 trade. ₱76,928,570 base / ₱130,714,280 high were modelled on the old date and
+  were left alone — only the holder's slice was rescaled.
+- The timeline's first three rows still read **Now · Aug · Sep**, which in late October puts
+  two of them in the past. Not in the brief, so not touched.
+
 ## 2026-10-03 (later) — Let the brand and the wording carry the deck
 
 Leon: *"i would like the brand and the wording to show through more, there was alot
@@ -217,3 +288,8 @@ Verified: 23 sheets, 0 overflowing, 0 broken images, only Archivo/Jost/Figtree i
 
 **Not done**
 - Not deployed. Remaining gallery tiles left on `img/nr-*.jpg` to preserve their hover videos.
+- 2026-10-03 (redesign session): no change to the kit. Website motion prototypes published as a Claude artifact (see HANDOFF). Brand SVGs from img/ reused.
+
+- 2026-10-04 v29: drinks chapter IV (Jade Negroni, bar-coupe 4K still), stage+soufflé merged into VI; walk = atmosphere/food/drinks.
+- 2026-10-05 v30: tall 9:16 hero raceme (Flow), hero 110vh; stage = DJ-floor render (gold arch rejected); ESRGAN quota lockout, interim Lanczos.
+- 2026-10-19 v31: D always opens at the top (scrollRestoration manual + hash strip + pageshow scrollTo 0).
