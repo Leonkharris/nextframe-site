@@ -150,3 +150,17 @@ h2::after, .issue h1::after { content: "."; color: var(--spot); }
 .article .body { max-width: 720px; display: grid; gap: 18px; }
 .article h2::after { content: "."; color: var(--spot); }
 .article .cta { max-width: 720px; }
+
+/* front page: the latest */
+.news { display: grid; border-top: 1px solid var(--rule); }
+.nrow { display: grid; grid-template-columns: 96px 1fr; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--rule); text-decoration: none; color: var(--paper); min-width: 0; }
+.nrow:hover b::after { color: var(--paper); }
+.nrow .nd { font: 500 12px var(--mono); letter-spacing: .08em; text-transform: uppercase; color: var(--spot); padding-top: 4px; }
+.nrow.up .nd { color: var(--paper-2); }
+.nrow .nb { display: grid; gap: 3px; min-width: 0; }
+.nrow .nc { font: 400 11px var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--paper-2); }
+.nrow b { font: 600 clamp(20px, 2.4vw, 26px)/1 var(--cover); text-transform: uppercase; letter-spacing: .005em; max-width: 24ch; }
+.nrow b::after { content: "."; color: var(--spot); }
+.nrow .nt { font-size: 15px; color: var(--paper-2); max-width: 70ch; }
+.nrow .ns { font: 400 11px var(--mono); letter-spacing: .08em; color: var(--paper-2); }
+@media (max-width: 560px) { .nrow { grid-template-columns: 1fr; gap: 4px; } }
