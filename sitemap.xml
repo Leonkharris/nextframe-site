@@ -80,7 +80,7 @@
   </url>
   <url>
     <loc>https://next-frame.agency/blog/</loc>
-    <lastmod>2026-10-01</lastmod>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -291,6 +291,18 @@
   <url>
     <loc>https://next-frame.agency/blog/ai-job-posts-hiring-small-business/</loc>
     <lastmod>2026-10-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://next-frame.agency/blog/ber-months-holiday-marketing-ai-philippines/</loc>
+    <lastmod>2026-10-21</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://next-frame.agency/blog/sms-marketing-philippines-small-business/</loc>
+    <lastmod>2026-10-21</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
