@@ -233,6 +233,71 @@
   .full figcaption{position:static;background:var(--card);color:var(--ink2);border-top:1px solid var(--line);border-radius:0;max-width:none;line-height:1.45;padding:9px 14px;font-size:13px}
   .full .shot img{max-height:none}
   .full figcaption{font-size:13px}
+  /* ============ data visualisation ============
+     Series palette = the brand hues stepped into the dark lightness band and
+     validated (scripts/validate_palette.js, all-pairs, both modes). Only THREE
+     series slots are gate-safe: brand blue/purple and orange/amber/red collide
+     under CVD. A 4th series folds into "Other" or facets — never a new hue. */
+  :root{
+    --s1:#009f6e;--s2:#5282e2;--s3:#bf7023;    /* series, dark surface */
+    --s-dim:#5b677d;                            /* de-emphasis (context marks) */
+    --grid:#2a3448;--axis:#3a4559;--vsurf:var(--card);
+    --good:#0ca30c;--warn:#fab219;--serious:#ec835a;--crit:#d03b3b
+  }
+  html.theme-light{
+    --s1:#0e9f6e;--s2:#2563eb;--s3:#ea7a1a;
+    --s-dim:#9aa5b5;--grid:#e6eaf1;--axis:#c9d1dd
+  }
+
+  figure.viz{margin:0 0 4px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 16px}
+  figure.viz figcaption{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+  figure.viz figcaption b{display:inline;font-size:inherit;color:var(--ink2)}
+  .viz h4{margin:0 0 2px;font-size:17px;letter-spacing:-.01em}
+  .viz .sub{margin:0 0 16px;font-size:13.5px;color:var(--muted)}
+  .viz svg{display:block;width:100%;height:auto;overflow:visible}
+  .viz text{font-family:inherit;fill:var(--muted);font-size:12px}
+  .viz .v-val{fill:var(--ink);font-weight:700;font-size:13px}    /* direct labels: ink, never series colour */
+  .viz .v-cat{fill:var(--ink2);font-size:12.5px}
+  .viz .v-grid{stroke:var(--grid);stroke-width:1}
+  .viz .v-axis{stroke:var(--axis);stroke-width:1}
+  .viz .v-line{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .viz .v-dot{stroke:var(--vsurf);stroke-width:2}                /* 2px surface ring */
+  .viz .v-bar{rx:4}                                              /* 4px rounded data-end */
+  .viz .v-hit{fill:transparent;cursor:pointer}
+  .viz .v-hit:hover,.viz .v-hit:focus-visible{fill:var(--ink);fill-opacity:.08}
+  .viz [data-rows]{outline:none}
+  .viz rect[data-rows]:hover,.viz rect[data-rows]:focus-visible{filter:brightness(1.14)}
+
+  /* legend — mark mirrors the form: rect for bars/areas, line for lines */
+  .v-leg{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;font-size:12.5px;color:var(--ink2)}
+  .v-leg span{display:inline-flex;align-items:center;gap:7px}
+  .v-leg i{width:11px;height:11px;border-radius:3px;flex:none}
+  .v-leg i.ln{width:16px;height:3px;border-radius:2px}
+
+  /* tooltip — value leads, series name follows */
+  .v-tip{position:fixed;z-index:80;pointer-events:none;opacity:0;transition:opacity .1s;
+    background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+    box-shadow:0 10px 26px rgba(0,0,0,.3);font-size:13px;max-width:260px}
+  .v-tip.on{opacity:1}
+  .v-tip .tt-c{color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .v-tip .tt-r{display:flex;align-items:baseline;gap:8px;margin-top:3px}
+  .v-tip .tt-k{width:16px;height:3px;border-radius:2px;flex:none;align-self:center}
+  .v-tip .tt-v{font-weight:800;color:var(--ink)}
+  .v-tip .tt-n{color:var(--ink2);font-size:12px}
+
+  /* table view — every value stays reachable without hovering */
+  .v-tbl{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .v-tbl summary{cursor:pointer;font-size:12.5px;color:var(--muted);font-weight:700}
+  .v-tbl summary:hover{color:var(--ink2)}
+  .v-tbl table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;font-variant-numeric:tabular-nums}
+  .v-tbl th{text-align:left;color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 7px 0;font-weight:700}
+  .v-tbl td{padding:6px 10px 6px 0;border-top:1px solid var(--line);color:var(--ink2)}
+  .v-tbl td:first-child{color:var(--ink)}
+  @media (forced-colors:active){.viz .v-bar,.viz .v-dot{forced-color-adjust:none}}
+  .figs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
+  .figs.one{grid-template-columns:1fr}
+  @media (max-width:860px){.figs{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>

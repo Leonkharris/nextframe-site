@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex,nofollow,noarchive">
-<title>Pornhub Advertising · 8 October 2026</title>
+<title>Pornhub Campaign · 5–8 October 2026</title>
 <style>
 :root{
     --ink:#eef2f7;--ink2:#c5cedb;--muted:#8d99ad;--line:#2a3448;--bg:#0d1219;--card:#161d29;--card2:#1e2735;--chip:#273246;
@@ -233,20 +233,85 @@
   .full figcaption{position:static;background:var(--card);color:var(--ink2);border-top:1px solid var(--line);border-radius:0;max-width:none;line-height:1.45;padding:9px 14px;font-size:13px}
   .full .shot img{max-height:none}
   .full figcaption{font-size:13px}
+  /* ============ data visualisation ============
+     Series palette = the brand hues stepped into the dark lightness band and
+     validated (scripts/validate_palette.js, all-pairs, both modes). Only THREE
+     series slots are gate-safe: brand blue/purple and orange/amber/red collide
+     under CVD. A 4th series folds into "Other" or facets — never a new hue. */
+  :root{
+    --s1:#009f6e;--s2:#5282e2;--s3:#bf7023;    /* series, dark surface */
+    --s-dim:#5b677d;                            /* de-emphasis (context marks) */
+    --grid:#2a3448;--axis:#3a4559;--vsurf:var(--card);
+    --good:#0ca30c;--warn:#fab219;--serious:#ec835a;--crit:#d03b3b
+  }
+  html.theme-light{
+    --s1:#0e9f6e;--s2:#2563eb;--s3:#ea7a1a;
+    --s-dim:#9aa5b5;--grid:#e6eaf1;--axis:#c9d1dd
+  }
+
+  figure.viz{margin:0 0 4px;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 22px 16px}
+  figure.viz figcaption{font-size:13px;color:var(--muted);margin-top:12px;line-height:1.5}
+  figure.viz figcaption b{display:inline;font-size:inherit;color:var(--ink2)}
+  .viz h4{margin:0 0 2px;font-size:17px;letter-spacing:-.01em}
+  .viz .sub{margin:0 0 16px;font-size:13.5px;color:var(--muted)}
+  .viz svg{display:block;width:100%;height:auto;overflow:visible}
+  .viz text{font-family:inherit;fill:var(--muted);font-size:12px}
+  .viz .v-val{fill:var(--ink);font-weight:700;font-size:13px}    /* direct labels: ink, never series colour */
+  .viz .v-cat{fill:var(--ink2);font-size:12.5px}
+  .viz .v-grid{stroke:var(--grid);stroke-width:1}
+  .viz .v-axis{stroke:var(--axis);stroke-width:1}
+  .viz .v-line{fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+  .viz .v-dot{stroke:var(--vsurf);stroke-width:2}                /* 2px surface ring */
+  .viz .v-bar{rx:4}                                              /* 4px rounded data-end */
+  .viz .v-hit{fill:transparent;cursor:pointer}
+  .viz .v-hit:hover,.viz .v-hit:focus-visible{fill:var(--ink);fill-opacity:.08}
+  .viz [data-rows]{outline:none}
+  .viz rect[data-rows]:hover,.viz rect[data-rows]:focus-visible{filter:brightness(1.14)}
+
+  /* legend — mark mirrors the form: rect for bars/areas, line for lines */
+  .v-leg{display:flex;flex-wrap:wrap;gap:6px 18px;margin:0 0 14px;font-size:12.5px;color:var(--ink2)}
+  .v-leg span{display:inline-flex;align-items:center;gap:7px}
+  .v-leg i{width:11px;height:11px;border-radius:3px;flex:none}
+  .v-leg i.ln{width:16px;height:3px;border-radius:2px}
+
+  /* tooltip — value leads, series name follows */
+  .v-tip{position:fixed;z-index:80;pointer-events:none;opacity:0;transition:opacity .1s;
+    background:var(--card2);border:1px solid var(--line);border-radius:10px;padding:9px 12px;
+    box-shadow:0 10px 26px rgba(0,0,0,.3);font-size:13px;max-width:260px}
+  .v-tip.on{opacity:1}
+  .v-tip .tt-c{color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;margin-bottom:4px}
+  .v-tip .tt-r{display:flex;align-items:baseline;gap:8px;margin-top:3px}
+  .v-tip .tt-k{width:16px;height:3px;border-radius:2px;flex:none;align-self:center}
+  .v-tip .tt-v{font-weight:800;color:var(--ink)}
+  .v-tip .tt-n{color:var(--ink2);font-size:12px}
+
+  /* table view — every value stays reachable without hovering */
+  .v-tbl{margin-top:14px;border-top:1px solid var(--line);padding-top:12px}
+  .v-tbl summary{cursor:pointer;font-size:12.5px;color:var(--muted);font-weight:700}
+  .v-tbl summary:hover{color:var(--ink2)}
+  .v-tbl table{width:100%;border-collapse:collapse;margin-top:10px;font-size:13px;font-variant-numeric:tabular-nums}
+  .v-tbl th{text-align:left;color:var(--muted);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;padding:0 10px 7px 0;font-weight:700}
+  .v-tbl td{padding:6px 10px 6px 0;border-top:1px solid var(--line);color:var(--ink2)}
+  .v-tbl td:first-child{color:var(--ink)}
+  @media (forced-colors:active){.viz .v-bar,.viz .v-dot{forced-color-adjust:none}}
+  .figs{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:18px}
+  .figs.one{grid-template-columns:1fr}
+  @media (max-width:860px){.figs{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
 <div class="langbar"><button data-theme="dark" title="Dark">☾</button><button data-theme="light" title="Light">☀</button></div>
 
 <header class="hero"><div class="wrap">
-  <div class="eyebrow"><i></i>8 October 2026 · two recordings · 77 minutes</div>
-  <h1>Pornhub advertising: the <em>briefing</em> and the <em>debrief</em>.</h1>
-  <p>Two separate meetings recorded back to back. First the TrafficJunky account manager walking us through the network; then the internal call where the team worked out what it could actually afford to do with it. Eight topics, one page each.</p>
+  <div class="eyebrow"><i></i>5 and 8 October 2026 · three recordings · 105 minutes</div>
+  <h1>The Pornhub campaign, <em>planned</em> then <em>priced</em>.</h1>
+  <p>One record for the whole campaign. The planning call on 5 October, then the account manager's briefing and the internal debrief on 8 October. Twelve topics, one page each.</p>
   <div class="kpis">
-    <div class="kpi"><b>2</b><span>meetings, different platforms, not one session</span></div>
-    <div class="kpi"><b>8</b><span>topics, each on its own page</span></div>
-    <div class="kpi"><b>4</b><span>ads agreed for the first flight</span></div>
-    <div class="kpi"><b>0</b><span>launch dates committed to</span></div>
+    <div class="kpi"><b>3</b><span>calls across two dates, on three platforms</span></div>
+    <div class="kpi"><b>12</b><span>topics, each on its own page</span></div>
+    <div class="kpi"><b>4</b><span>ads agreed for the first flight, down from sixteen</span></div>
+    <div class="kpi"><b>0</b><span>launch dates committed to by anyone</span></div>
   </div>
 </div></header>
 
@@ -260,23 +325,74 @@
   <a href="06-whatsapp.html">6 · WhatsApp</a>
   <a href="07-creative.html">7 · Creative</a>
   <a href="08-aggregators.html">8 · Provider pricing</a>
+  <a href="09-placements.html">9 · Placements</a>
+  <a href="10-specs.html">10 · The spec kit</a>
+  <a href="11-credits-idea.html">11 · Credits idea</a>
+  <a href="12-silent-hour.html">12 · The silent hour</a>
 </div></nav>
 
 <section class="a"><div class="wrap">
-  <div class="eyebrow"><i></i>First, a correction</div>
-  <h2>These are two different meetings, not one long one</h2>
-  <p class="lead">The two files are named as part 1 and part 2 of the same recording. They are not. They are two separate calls on two different platforms, with different participants, and they are kept on separate clocks throughout this breakdown.</p>
+  <div class="eyebrow"><i></i>Start here</div>
+  <h2>Three calls, four days, one campaign</h2>
+  <p class="lead">This document used to be two. The 5 October planning call and the 8 October advertising calls were written up separately; they are merged here so the campaign reads in order. Pages 01–08 are the 8 October calls, pages 09–12 the 5 October one.</p>
+
+  <div class="timeline">
+    <div class="tl"><div class="n">5</div><b>Oct 5 · Planning</b><p>The network's pre-roll recommendation, the spec kit, and the credits idea. <a href="09-placements.html">Pages 9–12</a></p><span class="who m">Internal</span></div>
+    <div class="tl"><div class="n">7</div><b>Oct 7 · Morning meeting</b><p>The campaign came up as one item in the Monday ops meeting. <a href="https://next-frame.agency/MorningMeeting-2026-10-07/08-pornhub-campaign.html">That page →</a></p><span class="who">Elsewhere</span></div>
+    <div class="tl"><div class="n">8</div><b>Oct 8 · Briefing</b><p>TrafficJunky account manager walks the network: formats, sizes, targeting, back end. <a href="01-formats.html">Pages 1–4</a></p><span class="who a">With the AM</span></div>
+    <div class="tl"><div class="n">8</div><b>Oct 8 · Debrief</b><p>What the team can actually afford, how traffic routes, and which creatives run. <a href="05-budget.html">Pages 5–8</a></p><span class="who m">Internal</span></div>
+  </div>
+
+  <div class="note info"><div class="ic">🧭</div><div><p>Timestamps on each page are relative to <b>that recording</b>, labelled by call. Nothing is stitched into a single timeline, because the three calls do not form one.</p></div></div>
+</div></section>
+
+<section class="a"><div class="wrap">
+  <div class="eyebrow"><i></i>What changed between the two dates</div>
+  <h2>Decisions made, unmade and remade</h2>
+  <p class="lead">The value of reading both calls together is seeing which positions survived three days and which quietly did not.</p>
+  <div class="cards">
+    <div class="dc"><div class="k">Held</div><b>Banners first</b><p>On 5 October the team wanted to start with banners against the network's pre-roll push. On 8 October the account manager agreed banners as a starting point, while pushing back on treating the heavy formats as off-limits. <a href="09-placements.html">5 Oct →</a> <a href="01-formats.html">8 Oct →</a></p></div>
+    <div class="dc"><div class="k">Sharpened</div><b>From a spec kit to a size strategy</b><p>5 October was twenty-two pages of specs read off the kit. 8 October turned that into a decision: 300x250 unlocks most of the inventory, and every extra size costs another campaign at the daily floor. <a href="10-specs.html">5 Oct →</a> <a href="02-sizes.html">8 Oct →</a></p></div>
+    <div class="dc risk"><div class="k">Reversed</div><b>Sixteen ads became four</b><p>The plan assumed a Meta-style spread. The $25 per ad per day floor made sixteen cost $400 a day against a budget with about twenty-five days in it. <a href="05-budget.html">Detail →</a></p></div>
+    <div class="dc gap"><div class="k">Never asked</div><b>The credits idea went nowhere</b><p>Paying players in the currency they came for, $5 or $10 of site credit claimable through the casino. The only argument against it came from a general-purpose chatbot with no commercial visibility. The named contact who could actually answer was not asked, including on 8 October. <a href="11-credits-idea.html">Detail →</a></p></div>
+  </div>
+</div></section>
+
+<section class="a"><div class="wrap">
+  <div class="eyebrow"><i></i>The twelve topics</div>
+  <h2>Pick the page you need</h2>
+
+  <div class="cards">
+    <div class="dc"><div class="k">8 Oct briefing · 00:00–13:00</div><b><a href="01-formats.html">1 · Ad formats</a></b><p>All nine formats on the network, which five he recommended, and why native is the wrong format for gambling.</p><span class="own">Creative + media</span></div>
+    <div class="dc"><div class="k">8 Oct briefing · 05:00–28:00</div><b><a href="02-sizes.html">2 · Sizes, files &amp; safe zones</a></b><p>Why 300x250 unlocks most of the inventory, the 15 MB and 500 MB file limits, and the three pre-roll corners creative must keep clear.</p><span class="own">Creative</span></div>
+    <div class="dc"><div class="k">8 Oct briefing · 18:30–28:40</div><b><a href="03-targeting.html">3 · Targeting &amp; structure</a></b><p>Mobile only, target both safe-for-work and not because of US state law, and which campaign settings actually affect delivery.</p><span class="own">Media buying</span></div>
+    <div class="dc risk"><div class="k">8 Oct briefing · 15:30–22:30</div><b><a href="04-backend.html">4 · Back end &amp; measurement</a></b><p>His offer to build everything paused, the two existing campaigns and their bids, and the conversion gap — plus the tracking we already built and never connected to it.</p><span class="own">Read this one</span></div>
+    <div class="dc risk"><div class="k">8 Oct debrief · 00:00–10:00</div><b><a href="05-budget.html">5 · Budget &amp; test plan</a></b><p>$25 per ad per day, sixteen ads would be $400 a day, and the budget has about twenty-five days in it. Why the Meta benchmark does not transfer.</p><span class="own">Read this one</span></div>
+    <div class="dc"><div class="k">8 Oct debrief · 10:00–20:00</div><b><a href="06-whatsapp.html">6 · WhatsApp routing</a></b><p>No message objective on this platform, so a second chatbot gets built to keep adult traffic away from the Meta-linked number. Which ad goes to which destination.</p><span class="own">Molly's team</span></div>
+    <div class="dc"><div class="k">8 Oct debrief · 20:00–28:00</div><b><a href="07-creative.html">7 · Audience &amp; creative</a></b><p>The site is Asian-styled and the traffic is American. The twenty creatives already built, and why a sexy image is not a creative idea on a porn site.</p><span class="own">Leon</span></div>
+    <div class="dc gap"><div class="k">8 Oct debrief · 29:00–47:00</div><b><a href="08-aggregators.html">8 · Provider pricing</a></b><p>Nothing to do with Pornhub. Peter &amp; Sons, half a point of GGR, and a plan to consolidate the Taiwanese aggregator market.</p><span class="own">Molly / Juan Carlos</span></div>
+    <div class="dc"><div class="k">5 Oct planning</div><b><a href="09-placements.html">9 · Placements</a></b><p>The network recommends pre-roll; the client's position came back immediately. The format argument before the account manager joined it.</p><span class="own">Media buying</span></div>
+    <div class="dc"><div class="k">5 Oct planning</div><b><a href="10-specs.html">10 · The spec kit</a></b><p>Twenty-two pages of specs read straight off the kit during the call, and repeated on every banner page.</p><span class="own">Creative</span></div>
+    <div class="dc gap"><div class="k">5 Oct planning</div><b><a href="11-credits-idea.html">11 · The credits idea</a></b><p>Pay them in the currency they came for. Sharper reasoning than its delivery, and still unanswered by anyone who could answer it.</p><span class="own">Open question</span></div>
+    <div class="dc"><div class="k">5 Oct planning</div><b><a href="12-silent-hour.html">12 · The silent hour</a></b><p>Forty-nine minutes of pictures and no speech. What the recording actually contains, stated precisely.</p><span class="own">Context</span></div>
+  </div>
+</div></section>
+
+<section class="a"><div class="wrap">
+  <div class="eyebrow"><i></i>A correction worth keeping</div>
+  <h2>The 8 October files are two meetings, not one</h2>
+  <p class="lead">The two files are named as part 1 and part 2 of the same recording. They are not. They are separate calls on different platforms, with different participants, and they are kept on separate clocks throughout.</p>
 
   <div class="compare">
-    <div class="cmp crypto"><h3>Part 1 — the briefing</h3><p class="tagline">Microsoft Teams · 28 minutes</p>
+    <div class="cmp crypto"><h3>The briefing</h3><p class="tagline">Microsoft Teams · 28 minutes</p>
       <ul>
         <li>Hosted and screen-shared by the <b>TrafficJunky account manager</b></li>
         <li>Our side asking questions throughout</li>
         <li>A product walkthrough: formats, sizes, targeting, back end</li>
-        <li>This is the meeting the previous week's call said needed booking</li>
+        <li>This is the meeting the 5 October call said needed booking</li>
       </ul>
     </div>
-    <div class="cmp fiat"><h3>Part 2 — the debrief</h3><p class="tagline">Google Meet · 48 minutes</p>
+    <div class="cmp fiat"><h3>The debrief</h3><p class="tagline">Google Meet · 48 minutes</p>
       <ul>
         <li>Internal only, no account manager present</li>
         <li>Opens with <i>"the final final conclusion of the meeting"</i> — it follows directly on</li>
@@ -285,29 +401,11 @@
       </ul>
     </div>
   </div>
-
-  <div class="note info"><div class="ic">🧭</div><div><p>Timestamps on each page are relative to <b>that recording</b>, labelled Part 1 or Part 2. Nothing is stitched into a single 77-minute timeline, because the two calls do not form one.</p></div></div>
-</div></section>
-
-<section class="a"><div class="wrap">
-  <div class="eyebrow"><i></i>The eight topics</div>
-  <h2>Pick the page you need</h2>
-
-  <div class="cards">
-    <div class="dc"><div class="k">Part 1 · 00:00–13:00</div><b><a href="01-formats.html">1 · Ad formats</a></b><p>All nine formats on the network, which five he recommended, and why native is the wrong format for gambling.</p><span class="own">Creative + media</span></div>
-    <div class="dc"><div class="k">Part 1 · 05:00–28:00</div><b><a href="02-sizes.html">2 · Sizes, files &amp; safe zones</a></b><p>Why 300x250 unlocks most of the inventory, the 15 MB and 500 MB file limits, and the three pre-roll corners creative must keep clear.</p><span class="own">Creative</span></div>
-    <div class="dc"><div class="k">Part 1 · 18:30–28:40</div><b><a href="03-targeting.html">3 · Targeting &amp; structure</a></b><p>Mobile only, target both safe-for-work and not because of US state law, and which campaign settings actually affect delivery.</p><span class="own">Media buying</span></div>
-    <div class="dc risk"><div class="k">Part 1 · 15:30–22:30</div><b><a href="04-backend.html">4 · Back end &amp; measurement</a></b><p>His offer to build everything paused, the two existing campaigns and their bids, and the conversion gap — plus the tracking we already built and never connected to it.</p><span class="own">Read this one</span></div>
-    <div class="dc risk"><div class="k">Part 2 · 00:00–10:00</div><b><a href="05-budget.html">5 · Budget &amp; test plan</a></b><p>$25 per ad per day, sixteen ads would be $400 a day, and the budget has about twenty-five days in it. Why the Meta benchmark does not transfer.</p><span class="own">Read this one</span></div>
-    <div class="dc"><div class="k">Part 2 · 10:00–20:00</div><b><a href="06-whatsapp.html">6 · WhatsApp routing</a></b><p>No message objective on this platform, so a second chatbot gets built to keep adult traffic away from the Meta-linked number. Which ad goes to which destination.</p><span class="own">Molly's team</span></div>
-    <div class="dc"><div class="k">Part 2 · 20:00–28:00</div><b><a href="07-creative.html">7 · Audience &amp; creative</a></b><p>The site is Asian-styled and the traffic is American. The twenty creatives already built, and why a sexy image is not a creative idea on a porn site.</p><span class="own">Leon</span></div>
-    <div class="dc gap"><div class="k">Part 2 · 29:00–47:00</div><b><a href="08-aggregators.html">8 · Provider pricing</a></b><p>Nothing to do with Pornhub. Peter &amp; Sons, half a point of GGR, and a plan to consolidate the Taiwanese aggregator market.</p><span class="own">Molly / Juan Carlos</span></div>
-  </div>
 </div></section>
 
 <section class="m"><div class="wrap">
   <div class="eyebrow"><i></i>The short version</div>
-  <h2>What was decided across both calls</h2>
+  <h2>What was decided across all three calls</h2>
 
   <div class="timeline">
     <div class="tl"><div class="n">1</div><b>Mobile, US, both ratings</b><p>Desktop dropped. Target safe-for-work and not-safe-for-work.</p><span class="who a">Agreed</span></div>
@@ -324,13 +422,14 @@
 
 <section class="m"><div class="wrap">
   <div class="eyebrow"><i style="background:var(--red)"></i>Before anything launches</div>
-  <h2>Five things to settle first</h2>
+  <h2>Six things to settle first</h2>
   <div class="cards">
     <div class="dc risk"><div class="k">1 · Measurement</div><b>Confirm the channel IDs work</b><p>TrafficJunky will report zero conversions forever. Twenty channel-coded tracking links already exist on our side. Confirm the client's system reports registrations and deposits against those channels, and that whoever writes the weekly report knows to pull from there. <a href="04-backend.html">Detail →</a></p></div>
     <div class="dc risk"><div class="k">2 · The bids</div><b>$21.00 CPM is sitting in a paused campaign</b><p>Against a $0.688 minimum and a $19.336 suggestion, on a full-screen popunder. Nobody said who set it or why. Check it before anything is un-paused. <a href="04-backend.html">Detail →</a></p></div>
     <div class="dc risk"><div class="k">3 · The floor</div><b>Is $25/ad/day really immovable?</b><p>Every budget projection depends on it, and Molly's whole testing approach assumes it can be undercut. Ask the account manager directly. <a href="05-budget.html">Detail →</a></p></div>
     <div class="dc gap"><div class="k">4 · Success criteria</div><b>No target, no threshold, no kill rule</b><p>No target CTR, no acceptable cost per click, nothing that triggers "add budget" or "switch it off". Without one, the weekly report describes and does not decide. <a href="05-budget.html">Detail →</a></p></div>
     <div class="dc gap"><div class="k">5 · The audience</div><b>Asian-American targeting was agreed, then dropped</b><p>The platform has no ethnicity targeting. If that is the real audience it has to come through creative, and the twenty creatives built so far are English with Western casting. <a href="07-creative.html">Detail →</a></p></div>
+    <div class="dc gap"><div class="k">6 · The credits idea</div><b>Killed by a chatbot, not by the network</b><p>Three days of planning produced it and nobody put it to the person who could approve or refuse it. It is either worth asking or worth formally dropping. <a href="11-credits-idea.html">Detail →</a></p></div>
   </div>
 </div></section>
 
@@ -343,6 +442,7 @@
     <div class="t"><span>AM</span><span>Overdue</span><div>Currently-active <b>competitor creatives</b> in the target geo. Promised in "a couple of days" on 8 October.</div></div>
     <div class="t"><span>AM</span><span>Offered</span><div>Full list of <b>available sites</b> on the network beyond the four main ones.</div></div>
     <div class="t"><span>AM</span><span>Offered</span><div>Send the <b>ad-formats page</b> itself, and a written breakdown of campaign settings in chat.</div></div>
+    <div class="t"><span>AM</span><span>Never asked</span><div>Whether <b>site credit as a prize</b> is commercially possible. Raised 5 October, not put to him on the 8th.</div></div>
     <div class="t"><span>Client</span><span>In progress</span><div>New <b>landing pages</b>. "Two or three days" as of 8 October. The campaign cannot launch without the URLs.</div></div>
     <div class="t"><span>Molly</span><span>In progress</span><div>Second <b>respond.io WhatsApp agent</b>. Started Tuesday, 3–5 days to build.</div></div>
     <div class="t"><span>Juan Carlos</span><span>Open</span><div>Choose <b>which four</b> of the twenty creatives. No record exists of a selection.</div></div>
@@ -355,15 +455,15 @@
   <div class="eyebrow"><i></i>About this document</div>
   <h2>How it was made, and what was removed</h2>
   <div class="tips">
-    <div class="tip"><div class="ic">🎙️</div><b>Transcribed locally</b><p>Both recordings transcribed on this machine, then cross-checked against a frame-by-frame pass of what was on screen. No transcript service was used.</p></div>
+    <div class="tip"><div class="ic">🎙️</div><b>Transcribed locally</b><p>All three recordings transcribed on this machine, then cross-checked against a frame-by-frame pass of what was on screen. No transcript service was used.</p></div>
     <div class="tip"><div class="ic">🈯</div><b>Mandarin is translated, not transcribed</b><p>The model rendered Mandarin stretches as English translation, so exact wording is lost and names and numbers are unreliable. This affects <a href="08-aggregators.html">topic 8</a> heavily and is flagged there.</p></div>
     <div class="tip"><div class="ic">✂️</div><b>Cropped, not blurred</b><p>Screenshots are cropped to the shared window only, which removes browser tabs, bookmarks and participant names. The account balance is blurred where it appears.</p></div>
-    <div class="tip"><div class="ic">🔒</div><b>Not indexed</b><p>Every page carries noindex, nofollow and noarchive. Commercial figures, CPM bids and campaign IDs are left readable because they are the content.</p></div>
+    <div class="tip"><div class="ic">🔗</div><b>Merged from two write-ups</b><p>The 5 October call was a separate document until 22 October. Its pages are 09–12 and keep their own timestamps. The two did not contradict each other on any figure.</p></div>
   </div>
-  <div class="note warn"><div class="ic">📁</div><div><p>This document contains client commercial terms, live CPM bids and campaign identifiers. It is built to be read and shared internally. It has deliberately <b>not</b> been published to a public URL.</p></div></div>
+  <div class="note warn"><div class="ic">📁</div><div><p>This document contains client commercial terms, live CPM bids and campaign identifiers. It carries noindex, nofollow and noarchive, and is built to be read and shared internally.</p></div></div>
 </div></section>
 
-<footer><div class="wrap">Pornhub advertising · 8 October 2026 · two recordings, eight topics · built from the recordings and the on-screen material</div></footer>
+<footer><div class="wrap">Pornhub campaign · 5–8 October 2026 · three recordings, twelve topics · built from the recordings and the on-screen material</div></footer>
 
 <div id="lightbox"></div>
 <script>
