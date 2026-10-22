@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Every bar, club and KTV in Manila · Party Life MNL</title>
+<meta name="description" content="1,402 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
+<link rel="canonical" href="https://next-frame.agency/partylife/places/">
+<meta property="og:title" content="Every bar, club and KTV in Manila · Party Life MNL"><meta property="og:description" content="1,402 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
+<meta property="og:image" content="https://next-frame.agency/partylife/img/cover1.jpg"><meta name="theme-color" content="#0a0a0a">
+<link rel="stylesheet" href="/partylife/partylife.css?v=6">
+<link rel="icon" href="/partylife/img/logo/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/partylife/img/logo/favicon-180.png">
+<style>
+.v-head { display: grid; gap: 10px; margin-block: 26px 22px; }
+.v-head h1 { font: 500 clamp(36px, 6vw, 64px)/.95 var(--cover); text-transform: uppercase; margin: 0; text-wrap: balance; }
+.k { font: 500 12px var(--mono); letter-spacing: .14em; text-transform: uppercase; color: var(--spot); }
+.facts { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0; border-top: 1px solid var(--rule); }
+@media (max-width: 720px) { .facts { grid-template-columns: 1fr; } }
+.facts div { padding: 14px 0; border-bottom: 1px solid var(--rule); display: grid; gap: 4px; padding-right: 18px; min-width: 0; }
+.facts b { font: 500 11px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--paper-2); }
+.facts span { overflow-wrap: anywhere; }
+.acts { display: flex; gap: 8px; flex-wrap: wrap; margin-block: 22px; }
+.acts a { font: 500 14px var(--cover); letter-spacing: .06em; text-transform: uppercase; text-decoration: none; padding: 11px 14px; border: 1px solid var(--rule); }
+.acts a.p { background: var(--spot); border-color: var(--spot); }
+.list { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); gap: 0 24px; }
+.list li { border-top: 1px solid var(--rule); padding: 12px 0; display: grid; gap: 2px; }
+.list a { font: 500 18px/1.15 var(--cover); text-transform: uppercase; text-decoration: none; }
+.list small { color: var(--paper-2); font-size: 13px; }
+.note { color: var(--paper-2); font-size: 14px; max-width: 70ch; }
+section.blk { margin-block: 30px; display: grid; gap: 14px; }
+section.blk h2 { margin: 0; font: 500 28px var(--cover); text-transform: uppercase; }
+</style>
+
+</head>
+<body>
+<header class="top gutter"><div class="wrap">
+  <a class="mh" href="/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
+  <div class="strip"><a href="/partylife/tonight/">Tonight</a><a href="/partylife/places/">Every venue</a><a href="/partylife/manila-nightlife-guide/">Guide</a><a href="/partylife/submit/">List your night</a><a href="https://next-frame.agency/guestlist/">The Guest List</a></div>
+</div></header>
+<main class="gutter"><div class="wrap"><div class="v-head"><span class="k">The directory · 1,402 places</span><h1>Every bar, club and KTV in Manila</h1>
+<p class="note" style="font-size:17px;color:var(--paper)">Search by name, or narrow it down by area and the kind of night you want. Rated venues first.</p></div>
+<div style="display:grid;gap:10px;margin-bottom:18px">
+ <input id="q" type="search" placeholder="Search a venue" aria-label="Search a venue" style="background:var(--ink-2);border:1px solid var(--rule);color:var(--paper);font:16px var(--sans);padding:11px 12px">
+ <select id="area" aria-label="Area" style="background:var(--ink-2);border:1px solid var(--rule);color:var(--paper);font:16px var(--sans);padding:10px"><option value="">All of Metro Manila</option><option value="poblacion">Poblacion, Makati</option><option value="makati-cbd">Makati CBD</option><option value="bgc">BGC, Taguig</option><option value="kapitolyo">Kapitolyo and Capitol Commons, Pasig</option><option value="ortigas">Ortigas</option><option value="mandaluyong">Mandaluyong</option><option value="san-juan">Greenhills, San Juan</option><option value="quezon-city">Quezon City</option><option value="manila">Malate, Ermita and Binondo</option><option value="bay-area">Mall of Asia and the Bay Area, Pasay</option><option value="entertainment-city">Entertainment City, Parañaque</option><option value="south">Alabang and the south</option><option value="marikina">Marikina</option></select>
+ <div class="chips" id="kinds" style="display:flex;gap:6px;flex-wrap:wrap"><button type="button" data-k="Club">Club</button><button type="button" data-k="Cocktail bar">Cocktail bar</button><button type="button" data-k="Rooftop">Rooftop</button><button type="button" data-k="Live music">Live music</button><button type="button" data-k="Comedy">Comedy</button><button type="button" data-k="KTV and karaoke">KTV and karaoke</button><button type="button" data-k="Pub and sports bar">Pub and sports bar</button><button type="button" data-k="Wine bar">Wine bar</button><button type="button" data-k="Bar">Bar</button><button type="button" data-k="Event venue">Event venue</button><button type="button" data-k="Restaurant with events">Restaurant with events</button></div>
+ <p class="note" id="count"></p></div>
+<ul class="list" id="out"></ul>
+<style>#kinds button{background:transparent;border:1px solid var(--rule);color:var(--paper-2);font:500 12px var(--mono);letter-spacing:.08em;text-transform:uppercase;padding:7px 10px;cursor:pointer}#kinds button[aria-pressed="true"]{color:var(--spot);border-color:var(--spot)}</style>
+<script>
+const $=s=>document.querySelector(s); let all=[], kinds=new Set();
+const esc=s=>String(s??"").replace(/[&<>"]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+function draw(){ const q=$("#q").value.trim().toLowerCase(), a=$("#area").value;
+  const r=all.filter(p=>(!q||p.n.toLowerCase().includes(q))&&(!a||p.a===a)&&(!kinds.size||kinds.has(p.k)));
+  $("#count").textContent=r.length.toLocaleString()+" places";
+  $("#out").innerHTML=r.slice(0,300).map(p=>`<li>${p.s?`<a href="/partylife/places/${p.s}/">${esc(p.n)}</a>`:`<span style="font:500 18px/1.15 var(--cover);text-transform:uppercase">${esc(p.n)}</span>`}<small>${esc([p.k,p.c,p.x,p.r?p.r+"★":null].filter(Boolean).join(" · "))}</small></li>`).join("")
+    +(r.length>300?`<li class="note">Showing the first 300. Narrow by area or type to see the rest.</li>`:""); }
+document.querySelectorAll("#kinds button").forEach(b=>b.addEventListener("click",()=>{const k=b.dataset.k; kinds.has(k)?kinds.delete(k):kinds.add(k); b.setAttribute("aria-pressed",kinds.has(k)); draw();}));
+$("#q").addEventListener("input",draw); $("#area").addEventListener("change",draw);
+fetch("places.json").then(r=>r.json()).then(d=>{all=d; draw();});
+</script>
+</div></main>
+<footer class="gutter"><div class="wrap"><span>Party Life MNL · Manila's nightlife guide · 21 and over</span><span>Venue details are checked against public listings; tell us if something has changed.</span></div></footer>
+</body></html>

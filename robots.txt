@@ -22,3 +22,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://next-frame.agency/sitemap.xml
+Sitemap: https://next-frame.agency/sitemap-partylife.xml
