@@ -4,42 +4,54 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>XSINO Halloween Party · previz v1</title>
+<title>XSINO Halloween Party · review</title>
 <style>
-  :root { --bg:#040627; --card:#0d1040; --line:#232766; --text:#ecebff; --muted:#a6a8d6; --violet:#8b5cff; --cyan:#76e7f5; --yellow:#f5e776; }
+  :root { --bg:#040627; --card:#0d1040; --line:#232766; --text:#ecebff; --muted:#a6a8d6; --violet:#8b5cff; --cyan:#76e7f5; --yellow:#f5e776; --amber:#ffb86b; }
   * { box-sizing:border-box; }
   body { margin:0; background:var(--bg); color:var(--text); font:16px/1.5 system-ui, -apple-system, "Segoe UI", sans-serif; }
-  main { max-width:760px; margin:0 auto; padding:24px 16px 64px; }
+  main { max-width:820px; margin:0 auto; padding:24px 16px 64px; }
   h1 { font-size:26px; margin:0 0 4px; }
   h2 { font-size:19px; margin:40px 0 12px; color:var(--cyan); }
   p { margin:0 0 12px; }
   .muted { color:var(--muted); font-size:14px; }
   .status { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:12px 14px; font-size:14px; }
+  .status p:last-child { margin:0; }
   video { width:100%; max-width:420px; display:block; margin:0 auto; border-radius:10px; background:#000; }
   video.wide { max-width:100%; }
   .cast { display:grid; grid-template-columns:repeat(4,1fr); gap:10px; }
   .cast figure { margin:0; text-align:center; font-size:13px; }
   .cast img { width:100%; border-radius:8px; background:#1a1d4a; }
   .cast b { display:block; }
-  .shot { display:grid; grid-template-columns:150px 1fr; gap:14px; padding:14px 0; border-top:1px solid var(--line); }
-  .shot img { width:150px; border-radius:6px; }
+  .cast .held img { opacity:.35; }
+  .shot { display:grid; grid-template-columns:320px 1fr; gap:16px; padding:16px 0; border-top:1px solid var(--line); }
+  .pics { display:grid; grid-template-columns:1fr 1fr; gap:8px; }
+  .pics img, .pics .ph { width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:6px; display:block; }
+  .pics .ph { background:var(--card); border:1px dashed var(--line); color:var(--muted); font-size:12px; display:flex; align-items:center; justify-content:center; text-align:center; padding:8px; }
+  .cap { font-size:11px; color:var(--muted); text-align:center; margin-top:2px; }
   .sid { font-weight:700; color:var(--yellow); }
   .es { margin-top:6px; }
   .en { color:var(--muted); font-style:italic; }
+  .note { margin-top:6px; font-size:14px; color:var(--amber); }
+  .plates { display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+  .plates figure { margin:0; font-size:13px; }
+  .plates img { width:100%; aspect-ratio:9/16; object-fit:cover; border-radius:6px; display:block; }
   .legend span { display:inline-block; width:12px; height:12px; border-radius:3px; margin:0 4px -1px 10px; }
   ol { padding-left:20px; }
-  @media (max-width:520px) { .shot { grid-template-columns:110px 1fr; } .shot img { width:110px; } .cast { grid-template-columns:repeat(2,1fr); } }
+  @media (max-width:640px) { .shot { grid-template-columns:1fr; gap:10px; } .cast { grid-template-columns:repeat(2,1fr); } .plates { grid-template-columns:repeat(2,1fr); } }
 </style>
 </head>
 <body>
 <main>
   <h1>XSINO · Halloween Party spot</h1>
-  <p class="muted">Remake of Higgsfield Soul's Halloween short for the XSINO flash event (31 Oct – 1 Nov) · 9:16 · 47.5 s · Spanish speech, English subs · previz v1, 25 Oct 2026</p>
-  <div class="status">This is the <b>block rehearsal</b> (camera, marks and timing only). Coloured blocks stand in for the cast. The anime keyframes and the video are generated <b>after</b> you approve this. The music isn't in yet: Suno is stuck behind a CAPTCHA in the :9228 window.</div>
+  <p class="muted">Remake of Higgsfield Soul's Halloween short for the XSINO flash event (31 Oct – 1 Nov) · 9:16 · 47.5 s · Spanish speech, English subs</p>
+  <div class="status">
+    <p><b>25 Oct · previz v1 approved.</b> The anime keyframes and set plates are below, made on Flow (Nano Banana Pro) from the approved blocking. Each shot shows the block keyframe next to its anime keyframe.</p>
+    <p><b>Held:</b> S1, S8, S9, S14, S15, the five shots with Fortuna. Her old master was off-canon; the rebuilt options are below for your pick. <b>Music:</b> Suno is still waiting on the CAPTCHA in the :9228 window. No video has been generated.</p>
+  </div>
 
   <h2>The skit (previz with subtitles)</h2>
   <video controls playsinline preload="metadata" poster="kf/S01_f70.webp" src="skit_previz_v1.mp4"></video>
-  <p class="muted legend" style="margin-top:10px">Who's who: <span style="background:#ffeb3b"></span>Nyx (horns) <span style="background:#29d6f0"></span>Kairo (red slab = cape) <span style="background:#b46cf0"></span>Vega <span style="background:#fff"></span>Fortuna (halo) <span style="background:#c8b496"></span>crowd. Red face = the way each one faces.</p>
+  <p class="muted legend" style="margin-top:10px">Blocks: <span style="background:#ffeb3b"></span>Nyx (horns) <span style="background:#29d6f0"></span>Kairo (red slab = cape) <span style="background:#b46cf0"></span>Vega <span style="background:#fff"></span>Fortuna (halo) <span style="background:#c8b496"></span>crowd. A red face shows which way each block is facing.</p>
 
   <h2>Camera cut beside the top-down view</h2>
   <video class="wide" controls playsinline preload="metadata" src="cut_vs_topdown_v1.mp4"></video>
@@ -49,35 +61,52 @@
     <figure><img src="cast/nyx.webp" alt="Nyx"><b>Nyx</b>Lead: calls Kairo, arrives late</figure>
     <figure><img src="cast/kairo.webp" alt="Kairo"><b>Kairo</b>Says he can't come, shows up in a cape</figure>
     <figure><img src="cast/vega.webp" alt="Vega"><b>Vega</b>Party host / MC</figure>
-    <figure><img src="cast/fortuna.webp" alt="Fortuna"><b>Fortuna</b>Costume-contest rival</figure>
+    <figure class="held"><img src="cast/fortuna.webp" alt="Fortuna (rejected master)"><b>Fortuna</b>Rival · master rejected, rebuilding from your original</figure>
   </div>
 
-  <h2>Keyframes, shot by shot</h2>
-  <div class="shot"><img src="kf/S01_f70.webp" alt="S1"><div><span class="sid">S1 · 0–5 s · corridor</span><br>Fortuna walks up to Vega, who flicks a holo invite off her wrist.<div class="es">VEGA: "Esta noche: Halloween en XSINO." <span class="en">Tonight: Halloween at XSINO.</span><br>FORTUNA: "¡Qué chilero, voy!" <span class="en">So cool, I'm in!</span></div></div></div>
-  <div class="shot"><img src="kf/S02_f150.webp" alt="S2"><div><span class="sid">S2 · 5–7.5 s · Nyx's apartment</span><br>Nyx on the sofa arm, phone to her ear.<div class="es">NYX: "¿Vienes esta noche?" <span class="en">You coming tonight?</span><br>KAIRO (phone): "No puedo. Cena familiar." <span class="en">Can't. Family dinner.</span></div></div></div>
-  <div class="shot"><img src="kf/S03_f215.webp" alt="S3"><div><span class="sid">S3 · 7.5–10 s · close</span><br>She lowers the phone.<div class="es">NYX: "Ah… está bien." <span class="en">Oh… that's fine.</span></div></div></div>
-  <div class="shot"><img src="kf/S04_f290.webp" alt="S4"><div><span class="sid">S4 · 10–12.5 s · XSINO tower</span><br>Crane up the tower as the crowd streams in past giant neon pumpkins.</div></div>
-  <div class="shot"><img src="kf/S05_f355.webp" alt="S5"><div><span class="sid">S5 · 12.5–15 s · entrance</span><br>Push in; the doors slide open; we pass through on the cut.</div></div>
-  <div class="shot"><img src="kf/S06_f415.webp" alt="S6"><div><span class="sid">S6 · 15–17.5 s · party hall</span><br>The drop: the camera rises over the dancing crowd, stage and runway at the far end.</div></div>
-  <div class="shot"><img src="kf/S07_f470.webp" alt="S7"><div><span class="sid">S7 · 17.5–20 s · stage</span><br>Vega on stage with the mic.<div class="es">VEGA: "¡Concurso de disfraces… empieza ya!" <span class="en">Costume contest… starts now!</span></div></div></div>
-  <div class="shot"><img src="kf/S08_f585.webp" alt="S8"><div><span class="sid">S8 · 20–25 s · runway</span><br>Fortuna struts down the runway toward us, stops, poses.<div class="es">FORTUNA: "Tomen nota." <span class="en">Take notes.</span></div></div></div>
-  <div class="shot"><img src="kf/S09_f640.webp" alt="S9"><div><span class="sid">S9 · 25–27.5 s · the break</span><br>Music cuts. Vega points at the doors; the whole crowd turns.<div class="es">VEGA: "¡Alto! Alguien llegó tarde." <span class="en">Stop! Somebody's late.</span></div></div></div>
-  <div class="shot"><img src="kf/S10_f700.webp" alt="S10"><div><span class="sid">S10 · 27.5–30 s · doorway</span><br>The doors open: Nyx backlit, horns glowing.<div class="es">NYX: "Hola…" <span class="en">Hi…</span></div></div></div>
-  <div class="shot"><img src="kf/S11_f770.webp" alt="S11"><div><span class="sid">S11 · 30–32.5 s</span><br>Nyx walks in; the crowd parts for her.</div></div>
-  <div class="shot"><img src="kf/S12_f830.webp" alt="S12"><div><span class="sid">S12 · 32.5–35 s</span><br>Kairo steps out of the crowd from the left in a vampire cape; she turns.<div class="es">NYX: "¿Kairo? Dijiste que no venías." <span class="en">Kairo? You said you weren't coming.</span></div></div></div>
-  <div class="shot"><img src="kf/S13_f900.webp" alt="S13"><div><span class="sid">S13 · 35–40 s · the payoff</span><br>Two-shot. He smiles; she melts.<div class="es">KAIRO: "¿Cómo me lo iba a perder? Estás tú aquí." <span class="en">How could I miss it? You're here.</span></div></div></div>
-  <div class="shot"><img src="kf/S14_f1000.webp" alt="S14"><div><span class="sid">S14 · 40–42.5 s</span><br>Vega points the mic at them from the stage; the crowd laughs.<div class="es">VEGA: "¡Qué miedo… sobre todo tú, Kairo!" <span class="en">So scary… especially you, Kairo!</span></div></div></div>
-  <div class="shot"><img src="kf/S15_f1065.webp" alt="S15"><div><span class="sid">S15 · 42.5–45 s · the toast</span><br>All four raise their cups; the camera pulls back and up over the hall.</div></div>
-  <div class="shot"><div style="width:150px"></div><div><span class="sid">S16 · 45–47.5 s · end card</span><br>XSINO logo · HALLOWEEN · 31 OCT – 1 NOV · GIROS GRATIS · NO TE LO PIERDAS · 21+ Juega responsable. <span class="en">Don't miss it.</span></div></div>
+  <h2>Fortuna: pick her rebuilt master</h2>
+  <p>Rebuilt from your original (<code>pattern.png</code>, far left): the wink under the fringe, the orange-in-blue eye, the tilted halo, the headset pods, the sleeveless glossy bodysuit, the collar gem and the core under the bust, and the opera gloves. A, B and C are three strengths of the same restyle; the last one is a full figure made from B for casting into scenes. Your original stops at the bust, so everything below it (high-cut bodysuit, thigh-high boots) is invented.</p>
+  <a href="fortuna_options_v1.webp"><img src="fortuna_options_v1.webp" alt="Fortuna options: original, A light, B medium, C strong, full figure from B, with head crops" style="width:100%;border-radius:8px;display:block"></a>
+  <p class="note">All three read closer to clean anime than the painted Arcane finish of Nyx, Kairo and Vega. After your pick, a surface-only repaint pass can bring her finish in line with theirs. Recommendation: B, plus the full figure.</p>
+
+  <h2>Keyframes, shot by shot (block → anime)</h2>
+  <div class="shot"><div class="pics"><div><img src="kf/S01_f70.webp" alt="S1 block"><div class="cap">block</div></div><div><div class="ph">held: Fortuna</div><div class="cap">anime</div></div></div><div><span class="sid">S1 · 0–5 s · corridor</span><br>Fortuna walks up to Vega, who flicks a holo invite off her wrist.<div class="es">VEGA: "Esta noche: Halloween en XSINO." <span class="en">Tonight: Halloween at XSINO.</span><br>FORTUNA: "¡Qué chilero, voy!" <span class="en">So cool, I'm in!</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S02_f150.webp" alt="S2 block"><div class="cap">block</div></div><div><img src="kfa/S02.webp" alt="S2 anime"><div class="cap">anime</div></div></div><div><span class="sid">S2 · 5–7.5 s · Nyx's apartment</span><br>Nyx on the sofa arm, phone to her ear.<div class="es">NYX: "¿Vienes esta noche?" <span class="en">You coming tonight?</span><br>KAIRO (phone): "No puedo. Cena familiar." <span class="en">Can't. Family dinner.</span></div><div class="note">She sits more central and larger than her block.</div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S03_f215.webp" alt="S3 block"><div class="cap">block</div></div><div><img src="kfa/S03.webp" alt="S3 anime"><div class="cap">anime</div></div></div><div><span class="sid">S3 · 7.5–10 s · close</span><br>She lowers the phone.<div class="es">NYX: "Ah… está bien." <span class="en">Oh… that's fine.</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S04_f290.webp" alt="S4 block"><div class="cap">block</div></div><div><img src="kfa/S04.webp" alt="S4 anime"><div class="cap">anime</div></div></div><div><span class="sid">S4 · 10–12.5 s · XSINO tower</span><br>Crane up the tower as the crowd streams in past giant neon pumpkins.</div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S05_f355.webp" alt="S5 block"><div class="cap">block</div></div><div><img src="kfa/S05.webp" alt="S5 anime"><div class="cap">anime</div></div></div><div><span class="sid">S5 · 12.5–15 s · entrance</span><br>Push in; the doors slide open; we pass through on the cut.</div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S06_f415.webp" alt="S6 block"><div class="cap">block</div></div><div><img src="kfa/S06.webp" alt="S6 anime"><div class="cap">anime</div></div></div><div><span class="sid">S6 · 15–17.5 s · party hall</span><br>The drop: the camera rises over the dancing crowd, stage and runway at the far end.</div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S07_f470.webp" alt="S7 block"><div class="cap">block</div></div><div><img src="kfa/S07.webp" alt="S7 anime"><div class="cap">anime</div></div></div><div><span class="sid">S7 · 17.5–20 s · stage</span><br>Vega on stage with the mic.<div class="es">VEGA: "¡Concurso de disfraces… empieza ya!" <span class="en">Costume contest… starts now!</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S08_f585.webp" alt="S8 block"><div class="cap">block</div></div><div><div class="ph">held: Fortuna</div><div class="cap">anime</div></div></div><div><span class="sid">S8 · 20–25 s · runway</span><br>Fortuna struts down the runway toward us, stops, poses.<div class="es">FORTUNA: "Tomen nota." <span class="en">Take notes.</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S09_f640.webp" alt="S9 block"><div class="cap">block</div></div><div><div class="ph">held: Fortuna</div><div class="cap">anime</div></div></div><div><span class="sid">S9 · 25–27.5 s · the break</span><br>Music cuts. Vega points at the doors; the whole crowd turns.<div class="es">VEGA: "¡Alto! Alguien llegó tarde." <span class="en">Stop! Somebody's late.</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S10_f700.webp" alt="S10 block"><div class="cap">block</div></div><div><img src="kfa/S10.webp" alt="S10 anime"><div class="cap">anime</div></div></div><div><span class="sid">S10 · 27.5–30 s · doorway</span><br>The doors open: Nyx backlit, horns glowing.<div class="es">NYX: "Hola…" <span class="en">Hi…</span></div><div class="note">Her smile reads happy rather than nervous.</div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S11_f770.webp" alt="S11 block"><div class="cap">block</div></div><div><img src="kfa/S11.webp" alt="S11 anime"><div class="cap">anime</div></div></div><div><span class="sid">S11 · 30–32.5 s</span><br>Nyx walks in; the crowd parts for her.<div class="note">Weak: she reads as standing, not walking.</div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S12_f830.webp" alt="S12 block"><div class="cap">block</div></div><div><img src="kfa/S12.webp" alt="S12 anime"><div class="cap">anime</div></div></div><div><span class="sid">S12 · 32.5–35 s</span><br>Kairo steps out of the crowd from the left in a vampire cape; she turns.<div class="es">NYX: "¿Kairo? Dijiste que no venías." <span class="en">Kairo? You said you weren't coming.</span></div><div class="note">Weak: the pair is much larger than the blocking, and Nyx faces the camera instead of turning to him.</div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S13_f900.webp" alt="S13 block"><div class="cap">block</div></div><div><img src="kfa/S13.webp" alt="S13 anime"><div class="cap">anime</div></div></div><div><span class="sid">S13 · 35–40 s · the payoff</span><br>Two-shot. He smiles; she melts.<div class="es">KAIRO: "¿Cómo me lo iba a perder? Estás tú aquí." <span class="en">How could I miss it? You're here.</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S14_f1000.webp" alt="S14 block"><div class="cap">block</div></div><div><div class="ph">held: Fortuna is at the runway end</div><div class="cap">anime</div></div></div><div><span class="sid">S14 · 40–42.5 s</span><br>Vega points the mic at them from the stage; the crowd laughs.<div class="es">VEGA: "¡Qué miedo… sobre todo tú, Kairo!" <span class="en">So scary… especially you, Kairo!</span></div></div></div>
+  <div class="shot"><div class="pics"><div><img src="kf/S15_f1065.webp" alt="S15 block"><div class="cap">block</div></div><div><div class="ph">held: Fortuna</div><div class="cap">anime</div></div></div><div><span class="sid">S15 · 42.5–45 s · the toast</span><br>All four raise their cups; the camera pulls back and up over the hall.</div></div>
+  <div class="shot"><div class="pics"><div><div class="ph">end card</div></div></div><div><span class="sid">S16 · 45–47.5 s · end card</span><br>XSINO logo · HALLOWEEN · 31 OCT – 1 NOV · GIROS GRATIS · NO TE LO PIERDAS · 21+ Juega responsable. <span class="en">Don't miss it.</span></div></div>
+
+  <h2>Set plates (no people; these feed the video as location references)</h2>
+  <div class="plates">
+    <figure><img src="plates/P_A.webp" alt="Corridor">A · corridor (S1)</figure>
+    <figure><img src="plates/P_B.webp" alt="Apartment">B · Nyx's apartment (S2–S3)</figure>
+    <figure><img src="plates/P_C1.webp" alt="Tower">C1 · XSINO tower (S4)</figure>
+    <figure><img src="plates/P_C2.webp" alt="Entrance">C2 · entrance doors (S5)</figure>
+    <figure><img src="plates/P_D1.webp" alt="Hall">D1 · party hall, master (S6)</figure>
+    <figure><img src="plates/P_D2.webp" alt="Stage">D2 · stage front (S7, S14)</figure>
+    <figure><img src="plates/P_D3.webp" alt="Runway">D3 · runway (S8)</figure>
+    <figure><img src="plates/P_D4.webp" alt="Doors inside">D4 · doors from inside (S9–S11)</figure>
+    <figure><img src="plates/P_D5.webp" alt="Dance floor">D5 · dance floor (S12, S13, S15)</figure>
+  </div>
 
   <h2>Open questions</h2>
   <ol>
-    <li>Is the casting right (Nyx lead, Kairo the no-show, Vega host, Fortuna rival)?</li>
-    <li>Kairo's vampire cape is the only costume added. OK?</li>
+    <li>Fortuna: A, B, C or the full figure? Repaint to the Arcane finish, or keep it as is?</li>
     <li>"¡Qué chilero!" is Guatemalan slang for "so cool". Keep it?</li>
     <li>English-only subs (as on the Catrina film), or English over Spanish?</li>
   </ol>
-  <p class="muted">Next after approval: Suno bed (once the CAPTCHA is solved) → retime to the real bars → set plates + anime keyframes on Flow → Seedance with a live quote before any spend.</p>
+  <p class="muted">Next: Fortuna's master → her five keyframes → reroll S11/S12 → Suno bed and retime to its bars → Seedance, with a live quote before any spend.</p>
 </main>
 </body>
 </html>
