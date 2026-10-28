@@ -386,3 +386,26 @@ eye** — the PDF's image order does not follow its text order.
 panels, upscaled and worked into a website) are **not done** — only 1600×1200 composites
 exist so far. The Horny Oyster has a name and a category but no build. The build-page line
 items are still the ₱40,083,352 original costing against the ₱35M+₱3M envelope.
+
+
+## v3 = Design D, the frontend site (2026-10-28)
+
+`/jade-manila-v3/` is **no longer a deck**. It is **Design D**, ported from the artifact
+**Jade Motion Prototypes** (`https://claude.ai/artifact/C58UEe3UY2TPS7Adse3sXS`), which also
+holds A *The Curtain*, B *The Evening* and C *The Onyx*. **That artifact is the source of
+truth for the design** — it is not in git, so edit there or here deliberately, not both.
+
+- Stack: GSAP ScrollTrigger + ScrollSmoother, no framework. 14,702 px scroll, 14 chapters,
+  nav The Rooms / The Table / The Show / The Night Set / Reserve. **No investment pages.**
+- Only **33** of the artifact's 353 files are needed: `brand/ img/ rooms/ v/ audio/` = 6.3 MB.
+  **d.html never references `seq/`** — those 288 frames belong to another prototype. Do not
+  port them.
+- The old deck lives on at `jade-manila-v3/deck.html`; the investor decks are `/jade-manila/`
+  (5%) and `/jade-manila-18/` (18%).
+
+**Two things were changed from the artifact and must not be re-introduced:**
+1. The prototype **A/B/C/D switcher** (links to a/b/c.html, which are not ported → 404).
+2. **`loading="lazy"` on the two Show images.** ScrollSmoother moves the page by transform,
+   so the browser never sees those elements enter the viewport and they never load. This
+   looks like a broken file but is not — they serve 200 and load fine via `new Image()`.
+   **Any image added inside a pinned section must not be lazy.**

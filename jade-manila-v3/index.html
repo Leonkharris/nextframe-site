@@ -1,1561 +1,723 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Jade Manila — Editorial Media Kit 2026</title>
-<meta name="description" content="Jade Manila, Bonifacio Global City, Manila — official media kit. The rooms, the bar, the stage, and private dining. Chef partner Todd English; bar partner Roman Mutzner.">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<!-- Brand Guidelines V01: Acumin Variable Concept Extra Condensed Black (display),
-     Futura Bold (alternative), Figtree (body). Acumin and Futura are licensed faces,
-     so the web build substitutes Archivo at 62% width / 900 weight and Jost 700;
-     Figtree is the brand face itself. -->
-<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62,400;62,600;62,800;62,900&family=Figtree:wght@300;400;500;600;700;800&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-
-<link rel="stylesheet" href="../jade-manila/press.css?v=15">
-<link rel="stylesheet" href="../jade-manila/pdf.css" media="print">
-<script src="../jade-manila/press.js?v=1" defer></script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Jade Manila — Rare by design</title>
 <script>
-/* Fixed 816px print sheets fit a phone by zoom (press.css, <=880px). The CSS ratio is
-   a Values-4 length division that older WebKit/Blink drop, leaving zoom:1 and 220px of
-   every sheet stranded off the left edge with no way to scroll back. Set it here, in
-   the head, so it lands before first paint on every engine. */
-(function(){
-  function fit(){
-    document.documentElement.style.setProperty(
-      '--sheet-zoom', innerWidth <= 880 ? (innerWidth / 848).toFixed(4) : '1');
-  }
-  fit();
-  addEventListener('resize', fit, {passive:true});
-})();
+/* Always open at the top: the walk is a pinned sequence, so a restored scroll position or a stale #hash lands mid-animation. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+if (location.hash) history.replaceState(null, '', location.pathname + location.search);
+addEventListener('pageshow', function(){ scrollTo(0, 0); });
 </script>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sofia+Sans+Extra+Condensed:wght@800;900&family=Saira+Extra+Condensed:wght@900&family=Figtree:wght@300;400;500&family=Jost:wght@500;700&display=swap">
 <style>
-/* photo containers establish a positioning context for injected clips + captions */
-.spot-hero,.spot-strip,.gal-hero,.gal-item,.legacy-card,.story-photo,.tv-hero,.feat-hero,.feat-strip,.hotel-row,.next-row{position:relative}
+/* Jade Manila brand build. Palette and type per Brand Guidelines V.01 (Sept 2026): Woodsmoke, Jade Green, Spring Green, Verdigris, Almond, White Smoke, gold/brass accents.
+   Acumin Variable Concept Extra Condensed Black → Sofia Sans Extra Condensed 900 (web stand-in; Archivo at its narrowest read too wide). Futura Bold → Jost 700. Body: Figtree. */
+:root{--woodsmoke:#09110C;--jade:#032316;--spring:#21725F;--verdigris:#3FBBA1;--almond:#ebdec4;--smoke:#F6F5F1;--gold:#b9a04b;--gold2:#dac47f;--mute:#9FB3A9;
+--line:rgba(218,196,127,.28);--brass:linear-gradient(100deg,#663400,#916c27,#b9a04b,#dac47f,#fcebc3);
+--cond:'Sofia Sans Extra Condensed','Saira Extra Condensed',Impact,'Arial Narrow',sans-serif;--sans:'Figtree',system-ui,sans-serif;--caps:'Jost',system-ui,sans-serif;color-scheme:dark}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--woodsmoke);color:var(--almond);font-family:var(--sans);font-weight:300}
+body{line-height:1.55;overflow-x:hidden}
+a{color:inherit;text-decoration:none}
+img,video,canvas{max-width:100%;display:block}
+.h{font-family:var(--cond);font-weight:900;text-transform:uppercase;line-height:.92;letter-spacing:.012em;text-wrap:balance}
+.k{font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--verdigris)}
+.sub{font-family:var(--caps);font-weight:700;font-size:clamp(14px,1.5vw,20px);letter-spacing:.14em;text-transform:uppercase;line-height:1.3}
+.wrap{max-width:1320px;margin:0 auto;padding-inline:clamp(16px,4vw,48px)}
+.btn{display:inline-flex;align-items:center;justify-content:center;min-height:50px;padding:0 30px;border:1px solid var(--gold);color:var(--almond);font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;transition:background .3s,color .3s}
+.btn:hover{background:var(--gold);color:var(--woodsmoke)}
+.btn.solid{background:var(--gold);color:var(--woodsmoke)}.btn.solid:hover{background:var(--gold2)}
+.btn.verd{border-color:var(--verdigris);color:var(--verdigris)}.btn.verd:hover{background:var(--verdigris);color:var(--woodsmoke)}
+:focus-visible{outline:1px solid var(--verdigris);outline-offset:4px}
+@media (hover:hover){body{cursor:none}a,button,select,input,label{cursor:none}}
 
-/* ---------- JADE MANILA — Brand Guidelines V01 ----------
-   Every sheet in this kit prints on dark stock, so the deck runs the dark half of
-   the palette: Jade Green pages on a Woodsmoke table, Almond and White Smoke type,
-   Verdigris for labels and rules, Gold reserved for the logo and hairlines. */
-:root{
-  --ink:#09110c;        /* woodsmoke   */
-  --espresso:#032316;   /* jade green  */
-  --clay:#3fbba1;       /* verdigris — labels read as the accent on dark stock */
-  --gold:#3fbba1;       /* verdigris   */
-  --cream:#f6f5f1;      /* white smoke */
-  --panel:#ebdec4;      /* almond      */
-  --panel-cool:#f6f5f1;
-}
+/* preloader */
+.pre{position:fixed;inset:0;z-index:100;background:var(--jade);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;transition:opacity .9s ease,visibility .9s}
+.pre.off{opacity:0;visibility:hidden}
+.pre img{width:min(240px,50vw);opacity:.95}
+.pre .icon{width:72px;opacity:0;transform:translateY(10px);animation:bloom 1.6s ease forwards}
+@keyframes bloom{to{opacity:1;transform:none}}
+.pre .bar{width:min(320px,60vw);height:1px;background:rgba(201,168,92,.25);position:relative}
+.pre .bar i{position:absolute;inset:0;background:var(--brass);transform-origin:left;transform:scaleX(0)}
 
-/* ---------- type · Brand Guidelines V01 §08 ----------
-   H1/H2 take the primary face (Acumin Extra Condensed Black -> Archivo 62%/900),
-   H3 and labels take the alternative (Futura Bold -> Jost 700), body is Figtree. */
-body{font-family:var(--body)}
-.section-sub,.bio-text p,.venue-copy p,.facts-card li,.tl-list p,.tl-card p,
-.story-cols p,.foot-note,.asset-row p,.partner-col p,.back-inner .back-line,
-.spot-copy p,.philo-tenets p,.next-row p,.also-card p,.reach-card p,
-.honors-list li,.toc-part li,.bar-copy p,.mi-desc,.menu-note{font-family:var(--body)}
-.section-title,.div-title,.v7line,.jfilm-h{
-  font-family:var(--display);
-  font-stretch:62%;
-  font-weight:900;
-  letter-spacing:.004em;
-  text-transform:uppercase;
-}
-.section-title .script-kick{font-stretch:100%}
-.v7title .v7l,.v7meta .v7num{font-family:var(--display);font-stretch:62%;font-weight:900}
+/* cursor */
+.cur{position:fixed;left:0;top:0;z-index:99;pointer-events:none;mix-blend-mode:difference}
+.cur .dot{position:absolute;left:-3px;top:-3px;width:6px;height:6px;border-radius:50%;background:#fff}
+.cur .ring{position:absolute;left:-22px;top:-22px;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.8);display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-weight:700;font-size:9px;letter-spacing:.2em;text-transform:uppercase;color:#fff;transition:width .3s,height .3s,left .3s,top .3s,background .3s}
+.cur.big .ring{left:-40px;top:-40px;width:80px;height:80px;background:rgba(255,255,255,.12)}
+.cur .ring span{opacity:0;transition:opacity .3s}.cur.big .ring span{opacity:1}
+@media (hover:none){.cur{display:none}}
 
-/* the brand line, set in the alternative face under the wordmark */
-.cover-name .cn-line{
-  font-family:var(--sans);font-weight:600;font-size:9.5px;letter-spacing:.34em;
-  text-transform:uppercase;color:#dac47f;text-align:center;margin:9px 0 0;
-}
+/* nav */
+.nav{position:fixed;inset:0 0 auto 0;z-index:40;display:flex;align-items:center;justify-content:space-between;height:84px;padding:env(safe-area-inset-top,0px) clamp(16px,4vw,48px) 0;background:linear-gradient(180deg,rgba(9,17,12,.85),rgba(9,17,12,0))}
+.nav .mark{display:flex;align-items:center;gap:14px}
+.nav .mark img.icon{height:36px;width:auto}.nav .mark img.word{height:34px;width:auto}
+.nav .links{display:flex;gap:32px;font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase}
+.nav .right{display:flex;align-items:center;gap:22px}
+.snd{display:inline-flex;align-items:center;gap:10px;background:none;border:0;color:inherit;font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;padding:8px 0;min-height:44px}
+.snd .eq{display:flex;gap:2px;align-items:flex-end;height:14px}
+.snd .eq i{display:block;width:2px;height:4px;background:currentColor;transform-origin:bottom}
+.snd.on .eq i{animation:eq .9s ease-in-out infinite}
+.snd.on .eq i:nth-child(2){animation-delay:.15s}.snd.on .eq i:nth-child(3){animation-delay:.3s}.snd.on .eq i:nth-child(4){animation-delay:.45s}
+@keyframes eq{0%,100%{transform:scaleY(.3)}50%{transform:scaleY(1)}}
+@media (max-width:760px){.nav .links{display:none}.nav .mark img.word{height:24px}.snd span:last-child{display:none}}
 
-/* ---------- THE MENU · minimalist bifold spread ----------
-   Plate on the left, list on the right, the mark and nothing else.
-   The spread prints on the house stock, so this block runs light-on-pale
-   and sets every colour explicitly — the deck around it is dark. */
-.menu-spread{
-  display:grid;grid-template-columns:1fr 1fr;gap:3px;
-  margin:20px 56px 0;background:#104333;padding:3px;
-  box-shadow:0 14px 40px rgba(0,0,0,.45);
-}
-.menu-spread .ms-plate{margin:0;overflow:hidden;background:#09110c}
-.menu-spread .ms-plate img{width:100%;height:488px;object-fit:cover;display:block}
-.menu-spread .ms-list{
-  background:#f6f5f1;padding:30px 30px 26px;position:relative;
-  display:flex;flex-direction:column;min-height:488px;
-}
-.menu-spread .ms-mark{display:block;width:104px;height:auto;margin:0 auto 14px}
-.menu-spread .ms-eyebrow{
-  font-family:var(--sans);font-size:8px;font-weight:600;letter-spacing:.3em;
-  text-transform:uppercase;color:#21725f;text-align:center;margin:0 0 12px;
-}
-.menu-spread .ms-eyebrow--bar{margin-top:14px;padding-top:12px;border-top:1px solid #d8d6ce}
-.menu-spread ul{list-style:none;margin:0;padding:0}
-.menu-spread li{margin:0 0 11px;text-align:center}
-.menu-spread li strong{
-  display:block;font-family:var(--sans);font-weight:600;font-size:11px;
-  letter-spacing:.11em;text-transform:uppercase;color:#09110c;
-}
-.menu-spread li span{
-  display:block;font-family:var(--body);font-size:9.5px;line-height:1.45;
-  color:#5c615c;margin-top:2px;
-}
-.menu-spread .ms-bar li strong{color:#21725f}
-.menu-spread .ms-foot{
-  margin-top:auto;padding-top:12px;text-align:center;
-  font-family:var(--sans);font-size:7.5px;font-weight:600;letter-spacing:.3em;
-  text-transform:uppercase;color:#9aa59e;
-}
-.back-inner .back-site{color:#dac47f;letter-spacing:.14em;margin-top:2px}
+/* the walk */
+.walk{height:100vh;height:100svh;position:relative}
+.walk .stage{position:relative;height:100vh;height:100svh;overflow:hidden;background:#000}
+.walk canvas{position:absolute;inset:0;width:100%;height:100%}
+.walk .vignette{position:absolute;inset:0;background:radial-gradient(ellipse 80% 80% at 50% 50%,transparent 55%,rgba(9,17,12,.55) 100%)}
+.walk .grain{position:absolute;inset:-20%;opacity:.07;pointer-events:none;mix-blend-mode:overlay;animation:grain .5s steps(2) infinite;
+background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='300' height='300'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+@keyframes grain{0%{transform:translate(0,0)}25%{transform:translate(-3%,2%)}50%{transform:translate(2%,-3%)}75%{transform:translate(-1%,-2%)}100%{transform:translate(3%,1%)}}
+.walk .intro{position:absolute;inset:0;z-index:9;display:flex;flex-direction:column;align-items:center;justify-content:flex-start;text-align:center;gap:12px;padding-top:40vh;padding-inline:24px;pointer-events:none;background:radial-gradient(ellipse 46% 30% at 50% 56%,rgba(9,17,12,.6),rgba(9,17,12,.2) 70%,rgba(9,17,12,0))}
+.walk .intro a{pointer-events:auto}
+.walk .intro h1{margin:0;font-size:clamp(22px,2.8vw,40px);line-height:1;color:var(--smoke);letter-spacing:.02em}
+.walk .intro .logo{width:min(210px,38vw);height:auto;filter:drop-shadow(0 10px 40px rgba(0,0,0,.5))}
+.walk .intro .rule{display:flex;align-items:center;gap:18px;width:min(480px,60vw);color:var(--gold2)}
+.walk .intro .rule i{flex:1;height:1px;background:var(--brass);opacity:.8}
+.walk .intro .rule span{font-family:var(--caps);font-weight:700;font-size:10px;letter-spacing:.34em;text-transform:uppercase;color:var(--gold2)}
+.walk .intro .sub{color:var(--almond);max-width:30ch}
+.walk .intro .cue{display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--mute);margin-top:12px}
+.walk .intro .cue i{display:block;width:1px;height:48px;background:var(--gold);animation:cue 1.8s ease-in-out infinite}
+@keyframes cue{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1)}100%{transform:scaleY(0);transform-origin:bottom}}
+.chap{position:absolute;left:clamp(16px,5vw,80px);bottom:clamp(64px,10vh,110px);max-width:600px;opacity:0;transform:translateY(20px)}
+.chap .n{margin-bottom:12px}
+.chap h2{margin:0;font-size:clamp(32px,4.4vw,68px);color:var(--smoke)}
+.chap p{margin:14px 0 0;color:var(--almond);font-size:16px;max-width:44ch}
+.chap .btn{margin-top:18px}
+.rail{position:absolute;right:clamp(16px,4vw,48px);top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:14px;align-items:flex-end}
+.rail i{display:block;width:28px;height:1px;background:rgba(232,222,196,.3);transition:width .4s,background .4s}
+.rail i.on{width:56px;background:var(--gold)}
+.ctr{position:absolute;right:clamp(16px,4vw,48px);bottom:clamp(64px,10vh,110px);font-family:var(--cond);font-weight:900;font-size:clamp(36px,4.4vw,64px);font-variant-numeric:tabular-nums;color:var(--gold);line-height:1}
+.ctr small{font-size:.45em;color:var(--mute);font-weight:700}
+@media (max-width:760px){.rail{display:none}.ctr{bottom:76px}.chap{bottom:124px;right:16px}.walk .intro{padding-top:38vh}.walk .intro .logo{width:min(180px,50vw)}.walk .intro .rule{width:min(300px,70vw)}.walk .vines .vs.hero{top:-46vh;height:80vh;width:auto}.walk .vines .vs.l1{display:none}.wall{backdrop-filter:none;-webkit-backdrop-filter:none;background:rgba(120,170,160,.05)}.wall .sheen{opacity:.6}}
 
-/* divider ornament carries the brand icon, not a generic glyph */
-.div-orn .div-icon{display:block;width:auto;height:30px}
 
-/* ---------- THE JADE VINE · the brand's origin story ----------
-   Mirrors the guidelines' own story spread: copy column, vine full-height beside it. */
-.sheet--vine{position:relative;overflow:hidden;background:#032316}
-/* The vine takes the right 350px full-bleed; the copy column is a hard 466px so
-   nothing can run under the photograph. No scrim — an absolutely positioned
-   ::before paints above the column's own text and silently swallows it. */
-.sheet--vine .vine-bleed{
-  position:absolute;top:0;right:0;width:350px;height:100%;
-  object-fit:cover;object-position:54% 50%;
-}
-.sheet--vine .vine-copy{position:relative;width:466px;height:100%;display:flex;flex-direction:column}
-.sheet--vine .page-head{padding:34px 40px 0 56px}
-.sheet--vine .page-rule{margin:12px 40px 0 56px}
-.sheet--vine .vine-mark{display:block;height:54px;width:auto;margin:34px 0 16px 56px}
-.sheet--vine .kicker{padding:0 40px 0 56px}
-.sheet--vine .section-title{
-  padding:6px 40px 0 56px;font-size:58px;line-height:.92;
-}
-.sheet--vine .vine-lede{
-  font-family:var(--body);font-size:14.5px;line-height:1.6;color:#ebdec4;
-  padding:20px 40px 0 56px;
-}
-.sheet--vine .vine-body{
-  font-family:var(--body);font-size:13px;line-height:1.68;color:#9aa59e;
-  padding:14px 40px 0 56px;
-}
-.sheet--vine .vine-pull{
-  font-family:var(--sans);font-weight:500;font-size:18px;line-height:1.36;
-  color:#3fbba1;margin:26px 40px 0 56px;
-  border-left:2px solid #b9a04b;padding-left:18px;
-}
-.sheet--vine .vine-serve{
-  display:flex;gap:16px;align-items:flex-end;
-  margin:30px 40px 92px 56px;padding-top:24px;border-top:1px solid #104333;
-  margin-top:auto;   /* anchor the serve to the foot of the column */
-}
-.sheet--vine .vine-serve img{width:132px;height:172px;object-fit:cover;flex:none}
-.sheet--vine .vine-serve figcaption{
-  font-family:var(--body);font-size:11px;line-height:1.5;color:#9aa59e;
-}
-.sheet--vine .vine-serve figcaption strong{
-  display:block;font-family:var(--sans);font-weight:600;font-size:9.5px;
-  letter-spacing:.2em;text-transform:uppercase;color:#b9a04b;margin-bottom:5px;
-}
-.sheet--vine .vine-foot{
-  position:absolute;left:56px;bottom:42px;
-  font-family:var(--sans);font-size:9.5px;font-weight:600;letter-spacing:.3em;
-  text-transform:uppercase;color:#b9a04b;
-}
+/* every strand hangs from a leaf crown: no cut tops floating in the air */
+.crown{position:absolute;left:50%;top:0;transform:translate(-50%,-70%);height:16%;aspect-ratio:2.1/1;pointer-events:none;z-index:1;
+background:radial-gradient(ellipse 38% 55% at 32% 58%,#1d5a40 0%,rgba(16,58,40,.9) 40%,rgba(10,36,25,0) 72%),radial-gradient(ellipse 40% 60% at 66% 50%,#1a5139 0%,rgba(14,52,36,.9) 42%,rgba(10,36,25,0) 74%),radial-gradient(ellipse 30% 50% at 50% 30%,#206347 0%,rgba(18,64,44,.85) 45%,rgba(10,36,25,0) 75%);filter:blur(5px) saturate(1.1)}
+.vs.l1 .crown{filter:blur(4px) saturate(1.1)}.vs.l2 .crown{opacity:.86}.vs.l3 .crown{opacity:.7;filter:blur(5px)}.vs.l4 .crown{opacity:.52;filter:blur(6px)}.vs.l5 .crown{opacity:.4;filter:blur(7px)}.vs.l6 .crown{opacity:.3;filter:blur(8px)}
+.vs.hero .crown{height:22%;aspect-ratio:2.1/1;transform:translate(-50%,-56%);filter:blur(5px) saturate(1.1)}
 
-/* ---------- the mark carries the plates ---------- */
-.sheet--plate .plate-mark{
-  position:absolute;top:44px;left:52px;z-index:3;width:146px;height:auto;
-  filter:drop-shadow(0 2px 14px rgba(9,17,12,.75));
-}
-.plate-cap .plate-sub{
-  display:block;font-family:var(--body);font-size:13px;line-height:1.55;
-  color:#ebdec4;opacity:.84;margin-top:10px;max-width:46ch;
-}
+/* the vine curtain: strands hang in front of the house and part as the first stretch of scroll plays */
+.vines{position:absolute;inset:0;z-index:6;pointer-events:none;overflow:hidden}
+.vines .scrim{position:absolute;inset:0;background:radial-gradient(ellipse 60% 60% at 50% 40%,rgba(3,35,22,.35),rgba(3,35,22,.85))}
+.vines{--hz:22vh}
+.vs{position:absolute;left:50%;width:auto;transform-origin:50% 0;will-change:transform}
+.vs img{height:100%;width:auto;display:block;transform-origin:50% 0;animation:swayNear 7s ease-in-out infinite alternate}
+/* one horizon crosses every strand at the same fraction of its length: top = hz - s*L0*f, height = s*L0. Near = huge, far = tiny and centred on the line. */
+.vs.l1{top:-18vh;height:45vh;z-index:6;--pz:2.25vw}.vs.l1 img{animation-name:swayNear}
+.vs.l2{top:-2.0vh;height:27.0vh;z-index:5;--pz:1.5vw}.vs.l2 img{filter:brightness(0.6) blur(1.2px);animation-name:swayNear}
+.vs.l3{top:6.0vh;height:18.0vh;z-index:4;--pz:1.02vw}.vs.l3 img{filter:brightness(0.47) blur(1.58px);animation-name:swayMid}
+.vs.l4{top:12.0vh;height:11.2vh;z-index:3;--pz:0.69vw}.vs.l4 img{filter:brightness(0.38) blur(1.85px);animation-name:swayMid}
+.vs.l5{top:16.0vh;height:6.8vh;z-index:2;--pz:0.45vw}.vs.l5 img{filter:brightness(0.32) blur(2.04px);animation-name:swayFar}
+.vs.l6{top:18.0vh;height:4.5vh;z-index:1;--pz:0.3vw}.vs.l6 img{filter:brightness(0.28) blur(2.16px);animation-name:swayFar}
+.px{display:block;height:100%;transform:translate3d(calc(var(--mx,0) * var(--pz,1vw)), calc(var(--my,0) * var(--pz,1vw) * .35), 0);transition:transform .9s cubic-bezier(.2,.7,.2,1)}
+.vs.hero{z-index:8;top:-72vh;height:110vh;width:auto;--pz:3.4vw}.vs.hero img{height:100%;width:auto;filter:drop-shadow(0 30px 50px rgba(0,0,0,.75)) saturate(1.08)}
+@keyframes swayNear{from{transform:rotate(-3.4deg) translateY(0)}50%{transform:rotate(.4deg) translateY(.6vh)}to{transform:rotate(3.2deg) translateY(0)}}
+@keyframes swayMid{from{transform:rotate(-2.1deg)}to{transform:rotate(2deg)}}
+@keyframes swayFar{from{transform:rotate(-1.1deg)}to{transform:rotate(1.1deg)}}
+.vines .cue{position:absolute;left:50%;bottom:36px;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;color:var(--almond)}
+.vines .cue i{display:block;width:1px;height:48px;background:var(--gold);animation:cue 1.8s ease-in-out infinite}
+@media (max-width:760px){.vs.l2,.vs.l5,.vs.l6{display:none}.vs.l1{--x:0}.vs.hero{width:min(56vw,40vh)}.vs.l3 img{filter:brightness(.42) blur(1px)}.vs.l4 img{filter:brightness(.3) blur(1.6px)}.walk .intro{background:radial-gradient(ellipse 60% 42% at 50% 58%,rgba(9,17,12,.8),rgba(9,17,12,.35) 70%,rgba(9,17,12,0))}}
+.rm .vines{display:none}
 
-/* the card art is cropped to its head (vine framing + wordmark); the guidelines'
-   specimen body underneath is lorem and must not reach the kit */
-#the-mark .gal-item--card img{object-position:50% 42%}
+/* endless water below the vines, rain in front of them, glints on the centre strand */
+.water{position:absolute;left:0;right:0;bottom:0;height:28vh;z-index:1;pointer-events:none;will-change:transform,opacity;
+background:linear-gradient(180deg,rgba(2,13,9,0) 0%,rgba(2,13,9,.35) 18%,rgba(2,13,9,.8) 45%,#010806 100%)}
+.water::before{content:"";position:absolute;left:0;right:0;top:22%;height:1px;opacity:.5;background:linear-gradient(90deg,rgba(190,240,228,0),rgba(190,240,228,.35) 30%,rgba(190,240,228,.55) 50%,rgba(190,240,228,.35) 70%,rgba(190,240,228,0))}
+.rain{position:absolute;inset:0;width:100%;height:100%;z-index:1;pointer-events:none;filter:blur(.8px)}
+.walk canvas#wsim{position:absolute;inset:auto 0 0 0;height:28vh;width:100%;z-index:1;pointer-events:none;will-change:transform,opacity}
+/* the glass wall: everything outside softens through it; drops gather on it and run */
+.wall{position:absolute;inset:0;z-index:2;pointer-events:none;backdrop-filter:blur(1.4px) saturate(.92);-webkit-backdrop-filter:blur(1.4px) saturate(.92)}
+.wall canvas{position:absolute;inset:0;width:100%;height:100%}
+.wall .sheen{position:absolute;inset:0;background:linear-gradient(112deg,rgba(255,255,255,0) 38%,rgba(255,255,255,.05) 46%,rgba(255,255,255,.085) 50%,rgba(255,255,255,.04) 55%,rgba(255,255,255,0) 64%),radial-gradient(ellipse 70% 70% at 50% 50%,rgba(170,215,205,0) 55%,rgba(170,215,205,.07) 100%)}
+.mist{position:absolute;left:0;right:0;top:calc(var(--hz) - 9vh);height:18vh;z-index:1;pointer-events:none;background:linear-gradient(180deg,rgba(120,170,160,0),rgba(120,170,160,.10) 50%,rgba(120,170,160,0))}
+.wall .fog{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse 60% 60% at 50% 55%,rgba(160,205,195,0) 40%,rgba(160,205,195,.16) 100%)}
+.haze{position:absolute;inset:0;z-index:1;pointer-events:none;opacity:0;background:radial-gradient(ellipse 80% 60% at 50% 35%,rgba(120,180,165,.16),rgba(120,180,165,.05) 60%,rgba(120,180,165,0))}
+.vs .sw{position:relative;height:100%;transform-origin:50% 0;animation:swayNear 9.5s ease-in-out infinite alternate}
+.vs.hero .px{height:100%}
+.vs .sw img{animation:none}
+.vs .sw canvas{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
+/* a single drop from the centre strand, and its ripple on the water */
+.drop{position:absolute;left:0;top:0;width:18px;height:26px;border-radius:50% 50% 50% 50%/40% 40% 60% 60%;opacity:0;transform-origin:50% 0;z-index:6;
+background:radial-gradient(circle at 36% 30%,rgba(255,255,255,.98),rgba(200,245,235,.85) 26%,rgba(120,210,190,.45) 55%,rgba(10,40,30,.55) 88%,rgba(10,40,30,0) 100%);box-shadow:0 0 12px rgba(63,187,161,.6)}
+.rip{position:absolute;left:0;top:0;z-index:2}
+.rip i{position:absolute;left:-40px;top:-11px;width:80px;height:22px;border-radius:50%;border:1px solid rgba(190,240,228,.85);box-shadow:0 0 10px rgba(63,187,161,.35);opacity:0;transform:scale(0)}
+.rip b{position:absolute;left:-10px;top:-10px;width:20px;height:20px;border-radius:50%;background:radial-gradient(circle,rgba(255,255,255,.9),rgba(63,187,161,0) 70%);opacity:0;transform:scale(0)}
 
-/* the icon reads as a brand device on the dividers, not a dingbat */
-.div-orn .div-icon{height:46px}
-/* z-index:0 makes .div-frame a stacking context so the watermark can sit at -1:
-   behind the frame's own content but still above the sheet photograph. Do NOT
-   raise the children instead — that overrides .div-foot's absolute positioning
-   and drops it on top of the standfirst. */
-.sheet--divider .div-frame{position:relative;z-index:0}
-.sheet--divider .div-frame::before{
-  content:"";position:absolute;left:50%;top:50%;z-index:-1;
-  width:560px;height:560px;transform:translate(-50%,-56%);
-  background:url("../jade-manila/img/jade-icon-white.svg") center/contain no-repeat;
-  opacity:.05;pointer-events:none;
-}
-/* press.css ends with a warm black/gold dark theme whose colours are literal hex,
-   not variables — so the :root shift above cannot reach it. Re-point those exact
-   fills at the emerald equivalents. Brass (gold hairlines, #6cb79e) is kept. */
-html{background:#09110c}
-.sheet{background:#032316;box-shadow:0 18px 50px rgba(0,0,0,.72)}
-.sheet--dark{background:#09110c}
-.sheet--divider,.sheet--back,.stat-band{background:#09110c}
-.chip,.facts-card,.also-card,.reach-card,.seen-in,.hotel-row,.partner-col,
-.foot-note,.tl-card,.spot-facts--light,.story-band,.shelf-tile{background:#0a2b1c}
-.spot-facts{background:#0a2b1c;border-color:#104333}
-.spot-facts li{color:#9aa59e;border-top-color:rgba(63,187,161,.20)}
-.section-sub,.cover-tag p,.bio-text p,.facts-card li,.venue-copy p.vbody,.also-card p,
-.reach-card p,.hotel-row p.vbody,.next-row p,.honors-list li,.honor-meta,.partner-col p,
-.back-inner .back-line,.foot-note,.toc-part li,.tl-list p,.tl-card p,.philo-tenets p,
-.spot-facts--light li,.story-cols p,.story-band .sl,.shelf-item figcaption,.tv-col p,
-.feat-copy p,.feat-strip figcaption,.asset-row p,.bar-copy p{color:#9aa59e}
-.page-head .ph-brand,.section-title,.cover-tag p strong,.facts-card li strong,
-.venue-copy h3,.also-card h4,.reach-hero .bl,.reach-card h4,.hotel-row h3,.next-row h4,
-.honor-hero .b5-label,.partner-col h4,.toc-part h3,.tl-list h4,.philo-quote,
-.philo-tenets h4,.tv-col h4,.asset-row h4{color:#ebdec4}
-.legacy-card{background:#0a2b1c;border-color:#104333}
-.legacy-card .stamp{border-color:#104333}
-.legacy-card p,.sheet--divider,.div-line,.sheet--dark .section-sub,
-.spot-copy p,.spot-strip figcaption{color:#9aa59e}
-/* Every photograph on this kit is 16:9. The stock boxes are far wider than that, so
-   object-fit:cover was throwing away up to half of each composition side-to-side and
-   the results read as squashed. Each band below is pushed back toward 16:9, stopping
-   at whatever its tightest sheet can hold inside the 1056px page. */
-#from-the-kitchen .gal-hero img,#rooms-details .gal-hero img{height:318px}
-#from-the-kitchen .gal-item img,#rooms-details .gal-item img{height:120px}
-.spot-hero img{height:351px}
-.spot-strip img{height:199px}
-.feat-hero img{height:369px}
-.feat-strip img{height:217px}
-.reach-photo img{height:396px}
-.legacy-card img{height:191px}
-.story-photo img{height:396px}
-.tv-hero img{height:396px}
-/* The cellar ran the same 16:9 photographs contained inside a 220x250 panel, so each one
-   rendered 182x102 — 34% of its tile, the rest empty. Two columns instead of three gives
-   each photo the full width of its card at its native ratio, and the extra row takes up
-   the dead band this sheet was already carrying above the foot-note. */
-.shelf-grid{grid-template-columns:repeat(2,1fr)}
-.shelf-tile{height:auto;padding:0;overflow:hidden}
-.shelf-tile img{width:100%;height:auto;max-width:none;max-height:none;aspect-ratio:16/9;object-fit:cover;box-shadow:none}
-/* part dividers — Jade rooms behind the smoke */
-#part-1{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("../jade-manila/img/nr-entry-onyx.jpg")}
-#part-2{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("../jade-manila/img/nr-banquette.jpg")}
-#part-3{background-image:radial-gradient(ellipse at 50% 48%,rgba(5,14,11,.88) 0%,rgba(5,14,11,.60) 52%,rgba(5,14,11,.44) 100%),url("../jade-manila/img/nr-spiral.jpg")}
+/* the vine: gold arch line-work that draws on scroll */
+.vine{position:relative;background:var(--jade);overflow:hidden}
+.vine .tex{position:absolute;inset:0;background:url(brand/marble-arch.jpg) center/cover;opacity:.35;pointer-events:none}
+.vine .wrap{position:relative;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px;padding-block:120px;align-items:center}
+.arch{position:relative;aspect-ratio:3/4;max-width:100%}
+.arch img{position:absolute;inset:6%;width:88%;height:88%;object-fit:cover;clip-path:inset(0 0 0 0 round 999px 999px 0 0)}
+.arch svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.arch path{fill:none;stroke:var(--gold);stroke-width:1.2;vector-effect:non-scaling-stroke}
+.vine h2{margin:0;font-size:clamp(36px,4.8vw,72px);color:var(--verdigris)}
+.vine p{margin:0;max-width:52ch;font-size:16px;color:var(--almond)}
+.lines{position:absolute;top:0;bottom:0;right:clamp(16px,4vw,48px);display:flex;gap:18px;pointer-events:none}
+.lines i{display:block;width:1px;background:var(--brass);opacity:.5;transform-origin:top;transform:scaleY(0)}
+@media (max-width:860px){.vine .wrap{grid-template-columns:1fr}.lines{display:none}}
 
-/* ---------- menu sheets ---------- */
-.menu-cols{display:grid;grid-template-columns:1fr 1fr;gap:0 44px;padding:22px 56px 0}
-.menu-sec{margin-bottom:22px}
-.menu-sec h3{font-family:var(--serif);font-size:16px;font-weight:800;letter-spacing:.04em;text-transform:uppercase;color:#ebdec4;margin:0 0 4px;padding-bottom:7px;border-bottom:2px solid var(--gold);display:flex;align-items:baseline;justify-content:space-between;gap:10px}
-.menu-sec h3 span{font-family:var(--sans);font-size:8.5px;font-weight:600;letter-spacing:.18em;color:var(--gold);text-transform:uppercase}
-.menu-item{padding:7px 0 6px;border-bottom:1px dotted rgba(63,187,161,.22)}
-.menu-item:last-child{border-bottom:0}
-.mi-top{display:flex;align-items:baseline;gap:8px}
-.mi-name{font-family:var(--serif);font-size:12.5px;font-weight:700;color:#ebdec4;white-space:nowrap}
-.mi-top::after{content:"";order:2;flex:1;border-bottom:1px dotted rgba(63,187,161,.30);transform:translateY(-3px)}
-.mi-price{order:3;font-family:var(--serif);font-size:12px;font-weight:700;color:var(--gold);white-space:nowrap}
-.mi-desc{display:block;margin-top:2px;font-size:9.5px;line-height:1.5;color:#9aa59e;letter-spacing:.01em}
-/* The sheet is a fixed 1056px page, so the photo strip and note are anchored to the
-   foot rather than left to float after the columns — otherwise short menus leave a
-   dead band at the bottom of the page. .sheet is position:relative. */
-.menu-note{position:absolute;left:0;right:0;bottom:30px;margin:0;padding:0 56px;font-size:10px;line-height:1.6;color:#9aa59e;text-align:center;font-style:italic}
-/* menu strip of dish photography */
-.menu-strip{position:absolute;left:0;right:0;bottom:64px;display:grid;grid-template-columns:repeat(4,1fr);gap:8px;padding:0 56px}
-.menu-strip figure{position:relative;margin:0;border-radius:4px;overflow:hidden;background:#09110c}
-.menu-strip img{width:100%;aspect-ratio:16/9;object-fit:cover}
-.menu-strip figcaption{position:absolute;inset:auto 0 0 0;padding:14px 8px 6px;background:linear-gradient(to top,rgba(6,14,11,.92),transparent);color:#ebdec4;font:600 8px/1.2 Jost,sans-serif;letter-spacing:.1em;text-transform:uppercase}
-/* A clip sits at z-index 2, so the captions printed ON the photograph — rather than under
-   it — vanished the moment one played; put them at z-index 3, above the clip, so a plate
-   keeps its name while its clip runs. */
-.menu-strip figcaption,.gal-cap{z-index:3}
+/* rooms: liquid gallery */
+.rooms .wrap{padding-block:120px 80px;display:flex;flex-direction:column;gap:40px}
+.rooms h2{margin:0;font-size:clamp(36px,4.8vw,72px);color:var(--smoke);max-width:14ch}
+.lg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.lq{position:relative;aspect-ratio:4/5;overflow:hidden;background:var(--jade);display:block;border:1px solid var(--line)}
+.lq canvas,.lq img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.lq .lab{position:absolute;left:20px;right:20px;bottom:20px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-shadow:0 2px 20px rgba(0,0,0,.7)}
+.lq .lab h3{margin:0;font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:34px;line-height:.95;color:var(--smoke)}
+.lq .lab span{font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--verdigris)}
+@media (max-width:860px){.lg{grid-template-columns:1fr}.lq{aspect-ratio:16/10}}
 
-/* ---------- investor sheets ---------- */
-.fin-tbl{width:calc(100% - 112px);margin:22px 56px 0;border-collapse:collapse}
-.fin-tbl caption{caption-side:top;text-align:left;font:600 9px/1 Jost,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);padding:0 0 9px}
-.fin-tbl th,.fin-tbl td{padding:6px 7px;text-align:right;font-size:10.5px;color:#9aa59e;border-bottom:1px solid rgba(63,187,161,.16);white-space:nowrap}
-.fin-tbl th:first-child,.fin-tbl td:first-child{text-align:left;padding-left:0;font-weight:600;color:#ebdec4}
-.fin-tbl thead th{font:700 8.5px/1 Jost,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);border-bottom:2px solid var(--gold);padding-bottom:8px}
-.fin-tbl tr.tot td{font-family:var(--serif);font-size:12.5px;font-weight:800;color:#ebdec4;border-bottom:1px solid rgba(63,187,161,.42)}
-.fin-tbl tbody tr:last-child td{border-bottom:0}
-/* the-return (21/24): dense sheet — two full tables + band + cards. Flow the foot-note in-line
-   (instead of pinning it absolute) so it can't overlap the cards, and mildly tighten the tables. */
-#the-return .fin-tbl{margin-top:13px}
-#the-return .fin-tbl th,#the-return .fin-tbl td{padding-top:5px;padding-bottom:5px}
-#the-return .foot-note{position:static;margin:6px 56px 0;padding-top:10px}
-/* chef-partner (10/24) + bar-partner (13/24): shared portrait-hero + 2-up action strip.
-   Roman's sheet is the reference; Todd Sheet 1 reuses the same classes. The Todd-specific
-   object-position overrides follow the shared rules so they win on equal specificity. */
-#bar-partner .bar-hero,#chef-partner .bar-hero{display:grid;grid-template-columns:300px 1fr;gap:26px;padding:16px 56px 0;align-items:start}
-#bar-partner .bar-portrait,#chef-partner .bar-portrait{margin:0}
-#bar-partner .bar-portrait img,#chef-partner .bar-portrait img{width:100%;height:392px;object-fit:cover;object-position:50% 20%;border-radius:10px}
-#bar-partner .bar-copy .spot-facts,#chef-partner .bar-copy .spot-facts{margin-top:14px}
-#bar-partner .bar-strip,#chef-partner .bar-strip{position:absolute;left:0;right:0;bottom:56px;display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:0 56px}
-#bar-partner .bar-strip figure,#chef-partner .bar-strip figure{margin:0}
-#bar-partner .bar-strip img,#chef-partner .bar-strip img{width:100%;height:150px;object-fit:cover;object-position:50% 45%;border-radius:8px}
-#bar-partner .bar-strip figcaption,#chef-partner .bar-strip figcaption{margin-top:6px;font:500 9.5px/1.35 Jost,sans-serif;color:#9aa59e}
-#chef-partner .bar-portrait img{object-position:50% 16%}
-#chef-partner .bar-strip figure:nth-child(1) img{object-position:50% 6%}
-#chef-partner .bar-strip figure:nth-child(2) img{object-position:50% 2%}
-/* construction (17/24): eight real phases — 4 across, 2 down, no empty cell */
-#construction .gal-grid{grid-template-columns:repeat(4,1fr)}
-/* reserved tiles — construction photography drops in as each phase is shot */
-.ph-tile{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;height:132px;border-radius:10px;background:#09110c;border:1px dashed rgba(63,187,161,.34)}
-.ph-tile span{font:600 8.5px/1 Jost,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--gold)}
-.ph-tile em{font-family:var(--serif);font-style:italic;font-size:12.5px;line-height:1.25;color:#9aa59e;min-height:2.5em;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 6px}
+/* the table + caviar bar */
+.menu .wrap{padding-block:80px 120px;display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px}
+.menu .side{position:sticky;top:120px;display:flex;flex-direction:column;gap:20px;align-self:start}
+.menu h2{margin:0;font-size:clamp(36px,4.8vw,72px);color:var(--smoke)}
+.menu .coupe{aspect-ratio:4/3;overflow:hidden;border:1px solid var(--line);max-width:100%}
+.menu .coupe img{width:100%;height:100%;object-fit:cover;object-position:60% 70%}
+.list{display:flex;flex-direction:column;border-top:1px solid var(--line)}
+.grp{padding:28px 0 8px}
+.dish{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:clamp(22px,2.6vw,36px);line-height:1;transition:color .3s,padding-left .4s;opacity:0;transform:translateY(20px)}
+.dish:hover{color:var(--verdigris);padding-left:16px}
+.dish small{font-family:var(--sans);font-weight:300;text-transform:none;font-size:14px;color:var(--mute);display:block;margin-top:6px;letter-spacing:0}
+.dish b{font-family:var(--caps);font-weight:700;font-size:15px;letter-spacing:.08em;font-variant-numeric:tabular-nums;color:var(--gold)}
+.follow{position:fixed;left:0;top:0;width:280px;aspect-ratio:4/5;z-index:30;pointer-events:none;opacity:0;transform:translate(-50%,-50%) scale(.8) rotate(-4deg);overflow:hidden;box-shadow:0 30px 60px rgba(0,0,0,.6);border:1px solid var(--line)}
+.follow img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .3s}
+.follow img.on{opacity:1}
+@media (max-width:860px){.menu .wrap{grid-template-columns:1fr}.menu .side{position:static}.follow{display:none}}
 
-/* v7 — cinematic scroll hero (Artologist portal technique, screen-only) */
-.v7hero{display:none;position:relative;height:420vh;background:#09110c;--p:0;--bgs:1;--bgo:1;--fgs:1;--fgo:1;--to:1;--ty:0px;--s2o:0;--s2s:.94;--s3o:0;--s3y:80px}
-html.v7hero-on .v7hero{display:block}
-@media print{.v7hero{display:none!important}}
-.v7pin{position:sticky;top:0;height:100vh;overflow:hidden;background:#09110c}
-.v7pin::after{content:"";position:absolute;left:0;bottom:0;height:2px;width:calc(var(--p)*100%);background:linear-gradient(90deg,#3fbba1,#21725f);z-index:12}
-.v7scene{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;will-change:opacity,transform}
-.v7eyebrow{display:inline-flex;align-items:center;gap:12px;font:600 .72rem/1 Jost,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#3fbba1;margin-bottom:26px}
-.v7eyebrow i{width:36px;height:1px;background:#3fbba1}
-.v7line{font-family:var(--display);font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:clamp(2.8rem,6.5vw,6rem);line-height:.98;letter-spacing:-.02em;color:#ebdec4;margin:0 0 32px;text-shadow:0 8px 60px rgba(0,0,0,.9)}
-.v7line em{font-style:italic;font-weight:500;color:#3fbba1}
-.v7hint{display:inline-flex;align-items:center;gap:10px;font:500 .74rem/1 Jost,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:rgba(243,234,217,.6)}
-.v7hint i{font-style:normal;color:#3fbba1;animation:v7bob 2s ease-in-out infinite}
-@keyframes v7bob{0%,100%{transform:translateY(0)}50%{transform:translateY(4px)}}
-/* scene 1 — layered portal push-through */
-.v7p-bgwrap{position:absolute;inset:0;z-index:1;overflow:hidden;opacity:var(--bgo)}
-.v7p-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--bgs));transform-origin:50% 50%;filter:brightness(.78);will-change:transform}
-.v7p-veil{position:absolute;inset:0;background:radial-gradient(ellipse at 50% 50%,transparent 0%,rgba(5,14,11,.45) 70%,rgba(5,14,11,.85) 100%)}
-.v7p-fgwrap{position:absolute;inset:0;z-index:3;overflow:hidden;pointer-events:none;opacity:var(--fgo)}
-.v7p-fg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(var(--fgs));transform-origin:50% 53%;filter:brightness(.9);will-change:transform;-webkit-mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%);mask-image:radial-gradient(ellipse 30% 34% at 50% 53%,transparent 0%,transparent 55%,rgba(0,0,0,.5) 75%,black 92%)}
-.v7p-title{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:0 36px;pointer-events:none;opacity:var(--to);transform:translateY(var(--ty));will-change:opacity,transform}
-/* the title reads THROUGH the portal, so it has to fit the opening — anything wider
-   than the mask aperture is covered by the drapes and the words break apart */
-.v7p-title .v7eyebrow{font-size:.62rem;letter-spacing:.16em;gap:9px;margin-bottom:20px}
-.v7p-title .v7eyebrow i{width:22px}
-.v7p-title .v7line{font-size:clamp(1.9rem,3.1vw,3.05rem);line-height:1.06;max-width:min(30vw,440px);margin:0 auto 26px}
-/* scene 2 — sanctum */
-.v7s2{opacity:var(--s2o);transform:scale(var(--s2s));z-index:4;background:#09110c;flex-direction:column;text-align:center}
-.v7glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none}
-.v7glow-1{width:520px;height:520px;left:-140px;top:-120px;background:radial-gradient(circle,rgba(63,187,161,.16),transparent 70%);animation:v7drifta 16s ease-in-out infinite alternate}
-.v7glow-2{width:460px;height:460px;right:-120px;top:30%;background:radial-gradient(circle,rgba(58,120,97,.20),transparent 70%);animation:v7driftb 20s ease-in-out infinite alternate}
-.v7glow-3{width:420px;height:420px;left:32%;bottom:-160px;background:radial-gradient(circle,rgba(224,207,169,.08),transparent 70%);animation:v7drifta 24s 2s ease-in-out infinite alternate}
-@keyframes v7drifta{to{transform:translate(40px,26px)}}
-@keyframes v7driftb{to{transform:translate(-34px,-22px)}}
-.v7ghosts{position:absolute;inset:0;pointer-events:none}
-.v7ghost{position:absolute;width:210px;aspect-ratio:4/5;object-fit:cover;border-radius:4px;opacity:.13;filter:saturate(.55) brightness(.6) blur(1px)}
-.v7ghost.g1{left:5%;top:12%;transform:rotate(-7deg)}
-.v7ghost.g2{right:6%;top:16%;transform:rotate(6deg)}
-.v7ghost.g3{left:10%;bottom:14%;transform:rotate(5deg)}
-.v7ghost.g4{right:9%;bottom:12%;transform:rotate(-5deg)}
-.v7dust{position:absolute;inset:0;pointer-events:none}
-.v7dust i{position:absolute;left:var(--dx);top:var(--dy);width:var(--dr);height:var(--dr);border-radius:50%;background:rgba(224,207,169,.85);opacity:0;animation:v7dust var(--ds) linear var(--dd) infinite}
-@keyframes v7dust{0%{transform:translateY(0);opacity:0}12%{opacity:.65}85%{opacity:.12}100%{transform:translateY(-130px);opacity:0}}
-.v7s2-content{position:relative;z-index:2;padding:0 36px}
-.v7title{margin:0 0 26px;line-height:.9}
-.v7title .v7l{display:block;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:clamp(3.4rem,7.5vw,6.8rem);letter-spacing:.12em;color:#ebdec4;text-transform:uppercase}
-.v7title .v7logo{display:block;width:min(48vw,540px);height:auto;margin:0 auto}
-.v7title .c{display:inline-block;opacity:0;transform:translateY(.55em) rotate(4deg);transition:opacity .5s ease var(--d,0s),transform .7s cubic-bezier(.2,.7,.2,1) var(--d,0s)}
-.v7title.is-in .c{opacity:1;transform:none}
-.v7sub{max-width:640px;margin:0 auto;font:400 1rem/1.7 Jost,sans-serif;color:#9aa59e}
-.v7meta{display:flex;justify-content:center;gap:58px;margin-top:46px}
-.v7meta .v7num{display:block;font-family:var(--display);font-stretch:62%;font-weight:900;font-size:2.1rem;color:#ebdec4}
-.v7meta .v7lab{display:block;margin-top:7px;font:600 .62rem/1 Jost,sans-serif;letter-spacing:.16em;text-transform:uppercase;color:#3fbba1}
-.v7strip{position:absolute;left:0;right:0;bottom:0;z-index:2;overflow:hidden;border-top:1px solid rgba(63,187,161,.28);border-bottom:1px solid rgba(63,187,161,.28);padding:15px 0;background:rgba(5,14,11,.5)}
-.v7strip-track{display:flex;align-items:center;gap:38px;width:max-content;white-space:nowrap;animation:v7marquee 30s linear infinite}
-.v7strip-track span{font:600 .7rem/1 Jost,sans-serif;letter-spacing:.2em;text-transform:uppercase;color:#dac47f}
-.v7strip-track span em{font-family:var(--body);font-style:italic;font-weight:500;text-transform:none;letter-spacing:.02em;font-size:.92rem;color:#6cb79e}
-.v7strip-track i{font-style:normal;color:#3fbba1}
-@keyframes v7marquee{to{transform:translateX(-50%)}}
-/* scene 3 — floating room cards */
-.v7s3{opacity:var(--s3o);transform:translateY(var(--s3y));z-index:5;background:linear-gradient(180deg,#09110c,#09110c)}
-.v7floats{position:absolute;inset:0;pointer-events:none}
-.v7float{position:absolute;margin:0;border-radius:5px;overflow:hidden;box-shadow:0 30px 60px -20px rgba(0,0,0,.75),0 0 0 1px rgba(63,187,161,.14);background:#09110c}
-.v7float img{width:100%;aspect-ratio:4/5;object-fit:cover;display:block}
-.v7float figcaption{position:absolute;inset:auto 0 0 0;padding:13px 13px 11px;background:linear-gradient(to top,rgba(5,14,11,.94),transparent);color:#ebdec4}
-.v7float figcaption strong{display:block;font-family:var(--sans);font-size:.95rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
-.v7float figcaption span{display:block;margin-top:4px;font:600 .58rem/1 Jost,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:#3fbba1}
-.v7float.f1{top:10%;left:6%;width:200px;animation:v7fla 14s ease-in-out infinite alternate}
-.v7float.f2{top:16%;right:7%;width:220px;animation:v7flb 16s ease-in-out infinite alternate}
-.v7float.f3{top:62%;left:11%;width:185px;animation:v7flc 18s ease-in-out infinite alternate}
-.v7float.f4{top:64%;right:13%;width:200px;animation:v7fld 15s ease-in-out infinite alternate}
-.v7float.f5{top:7%;left:47%;width:155px;animation:v7fla 17s 1s ease-in-out infinite alternate}
-@keyframes v7fla{0%{transform:rotate(-6deg) translateY(0)}100%{transform:rotate(-3deg) translateY(-22px)}}
-@keyframes v7flb{0%{transform:rotate(5deg) translateY(0)}100%{transform:rotate(8deg) translateY(18px)}}
-@keyframes v7flc{0%{transform:rotate(8deg) translateY(0)}100%{transform:rotate(5deg) translateY(-16px)}}
-@keyframes v7fld{0%{transform:rotate(-4deg) translateY(0)}100%{transform:rotate(-7deg) translateY(14px)}}
-.v7s3-content{position:relative;z-index:2;text-align:center;max-width:900px;padding:0 36px}
-/* centre scrim — the cards crowd the headline, so darken the middle and knock them back */
-.v7s3::after{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse 34% 30% at 50% 50%,rgba(5,14,11,.92) 0%,rgba(5,14,11,.84) 45%,rgba(5,14,11,.40) 75%,rgba(5,14,11,0) 100%)}
-.v7s3 .v7line{text-shadow:0 2px 12px rgba(5,14,11,.95),0 10px 46px rgba(5,14,11,.92)}
-.v7s3 .v7eyebrow,.v7s3 .v7hint{text-shadow:0 1px 9px rgba(5,14,11,.95)}
-.v7s3 .v7hint{color:rgba(243,234,217,.88)}
-/* mobile — portrait-tuned portal */
-@media (max-width:880px){
-  .v7hero{height:340vh}
-  .v7p-fg{-webkit-mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%);mask-image:radial-gradient(ellipse 36% 23% at 50% 52%,transparent 0%,transparent 50%,rgba(0,0,0,.5) 74%,black 92%)}
-  /* selector lists so the portrait tuning still outranks the portal-fit rules above */
-  .v7eyebrow,.v7p-title .v7eyebrow{font-size:.54rem;letter-spacing:.13em;gap:7px;margin-bottom:18px}
-  .v7eyebrow i,.v7p-title .v7eyebrow i{width:14px}
-  .v7line,.v7p-title .v7line{font-size:clamp(1.45rem,5.6vw,1.95rem);max-width:210px;margin:0 auto 18px;line-height:1.12}
-  .v7hint{font-size:.62rem;letter-spacing:.12em}
-  .v7title .v7l{font-size:clamp(2.4rem,10vw,3.4rem)}
-  .v7title .v7l-it{font-size:clamp(3rem,13vw,4.4rem)}
-  .v7sub{font-size:.9rem;padding:0 6px}
-  .v7meta{gap:28px;margin-top:32px}
-  .v7meta .v7num{font-size:1.7rem}
-  .v7float.f1{width:44vw;left:3%}
-  .v7float.f2{width:44vw;right:3%}
-  .v7float.f4{width:46vw;top:65%;left:6%;right:auto}
-  .v7float.f3,.v7float.f5{display:none}
-}
-@media (prefers-reduced-motion:reduce){.v7hero{display:none!important}}
+/* chef */
+.chef{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:var(--jade)}
+.chef .wrap{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:56px;padding-block:96px;align-items:center}
+.chef h2{margin:0;font-size:clamp(34px,4.4vw,64px);color:var(--smoke)}
+.chef p{margin:0;max-width:56ch;font-size:16px}
+.chef .frame{aspect-ratio:4/5;overflow:hidden;border:1px solid var(--line);max-width:100%}
+.chef .frame img{width:100%;height:100%;object-fit:cover}
+@media (max-width:860px){.chef .wrap{grid-template-columns:1fr}}
 
-/* ---------- motion: hover or click swaps a photo for its clip, screen only ----------
-   The <video> is injected at runtime into the photo's nearest positioned ancestor and
-   sized from the image's own rect, so no sheet layout is touched and print is unaffected. */
-.jv{position:absolute;z-index:2;object-fit:cover;background:#032316;opacity:0;transition:opacity .34s ease;pointer-events:none}
-.jv.is-on{opacity:1}
-.jv-badge{position:absolute;z-index:3;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:rgba(6,16,13,.62);border:1px solid rgba(63,187,161,.55);color:#6cb79e;font-size:8px;line-height:1;padding-left:2px;pointer-events:none;opacity:0;transition:opacity .25s ease}
-/* At rest the badge is a 22px dot with nothing anchoring it, and on a page where only
-   some photographs are wired it just reads as debris. Show it on the photo you are
-   actually pointing at — which is the same gesture that starts the clip. */
-.kit-wrap *:hover > .jv-badge{opacity:1}
-.jv-badge.is-hidden{opacity:0}
+/* the night set: video seen through the letters */
+/* the show */
+.show{border-top:1px solid var(--line);background:var(--woodsmoke);isolation:isolate;position:relative;overflow:hidden}
+.show .wrap{padding-block:112px 104px;display:flex;flex-direction:column;gap:44px}
+.show h2{margin:0;font-size:clamp(40px,5.6vw,84px);color:var(--smoke);max-width:12ch}
+.show .lede{margin:0;max-width:52ch;color:var(--almond);font-size:17px;line-height:1.6}
+.show .acts{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));border:1px solid var(--line)}
+.show .act{padding:26px 22px 24px;border-left:1px solid var(--line);min-width:0;display:flex;flex-direction:column;gap:10px;opacity:0;transform:translateY(28px)}
+.show .act:first-child{border-left:0}
+.show .act .t{font-family:var(--cond);font-weight:900;font-size:clamp(40px,4.4vw,64px);line-height:.9;color:var(--gold2);font-variant-numeric:tabular-nums}
+.show .act .t small{font-family:var(--caps);font-size:11px;letter-spacing:.26em;color:var(--mute);margin-left:6px;vertical-align:middle}
+.show .act h3{margin:0;font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:26px;line-height:.95;color:var(--smoke)}
+.show .act p{margin:0;font-size:14px;line-height:1.5;color:var(--mute)}
+.show .act .w{font-family:var(--caps);font-weight:700;font-size:10.5px;letter-spacing:.24em;text-transform:uppercase;color:var(--verdigris)}
+@media (max-width:980px){.show .acts{grid-template-columns:repeat(2,minmax(0,1fr))}.show .act{border-top:1px solid var(--line)}.show .act:nth-child(-n+2){border-top:0}.show .act:nth-child(odd){border-left:0}}
+@media (max-width:560px){.show .acts{grid-template-columns:1fr}.show .act{border-left:0}.show .act:nth-child(2){border-top:1px solid var(--line)}}
+.show .frames{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
+@media (max-width:760px){.show .frames{grid-template-columns:1fr}}
+.show .fr{position:relative;aspect-ratio:16/9;overflow:hidden;border:1px solid var(--line);background:var(--jade);max-width:100%}
+.show .fr img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s ease}
+.show .fr.in img{transform:scale(1)}
+.show .fr .lab{position:absolute;left:18px;bottom:16px;right:18px;display:flex;justify-content:space-between;align-items:baseline;gap:12px;text-shadow:0 2px 20px rgba(0,0,0,.75)}
+.show .fr .lab b{font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:28px;line-height:.95;color:var(--smoke)}
+.show .fr .lab span{font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--verdigris);white-space:nowrap}
+.show .tape{border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:18px 0;overflow:hidden;white-space:nowrap;mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.show .tape .run{display:inline-block;animation:tape 48s linear infinite}
+.show .tape span{display:inline-block;font-family:var(--cond);font-weight:900;text-transform:uppercase;font-size:clamp(26px,3vw,40px);line-height:1;color:var(--smoke);padding-right:1.2em}
+.show .tape span i{font-style:normal;font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;color:var(--gold2);margin-left:14px;margin-right:.6em;vertical-align:middle}
+@keyframes tape{to{transform:translateX(-50%)}}
+@media (prefers-reduced-motion:reduce){.show .tape .run{animation:none}.show .act{opacity:1;transform:none}.show .fr img{transform:none}}
+.show .foot{display:grid;grid-template-columns:minmax(0,7fr) minmax(0,5fr);gap:40px;align-items:end}
+@media (max-width:860px){.show .foot{grid-template-columns:1fr}}
+.show .foot p{margin:0;max-width:56ch;color:var(--almond);font-size:16px;line-height:1.6}
+.show .cta{display:flex;gap:14px;flex-wrap:wrap;justify-content:flex-end}
+@media (max-width:860px){.show .cta{justify-content:flex-start}}
 
-/* ---------- preview film — screen only ---------- */
-.jfilm{background:#09110c;padding:94px 24px 100px;text-align:center;border-top:1px solid rgba(63,187,161,.16);border-bottom:1px solid rgba(63,187,161,.16)}
-/* the film is a 1280x720 master — held to 760px it plays sharp instead of soft */
-.jfilm-in{max-width:760px;margin:0 auto}
-.jfilm-h{font-family:var(--display);font-stretch:62%;font-weight:900;text-transform:uppercase;font-size:clamp(2rem,4.4vw,3.4rem);line-height:1;letter-spacing:-.02em;color:#ebdec4;margin:0 0 34px}
-.jfilm-h em{font-style:italic;font-weight:500;color:#3fbba1}
-.jfilm-frame{position:relative;aspect-ratio:16/9;border-radius:6px;overflow:hidden;background:#032316;border:1px solid rgba(63,187,161,.28);box-shadow:0 30px 90px rgba(0,0,0,.7);cursor:pointer}
-.jfilm-frame img,.jfilm-frame video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
-.jfilm-play{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);z-index:2;width:88px;height:88px;border-radius:50%;border:1px solid rgba(224,207,169,.7);background:rgba(6,16,13,.46);color:#dac47f;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:background .3s ease,transform .3s ease}
-.jfilm-frame:hover .jfilm-play{background:rgba(6,16,13,.68);transform:translate(-50%,-50%) scale(1.06)}
-.jfilm-play svg{width:26px;height:26px;margin-left:4px;fill:currentColor}
-.jfilm-cap{margin:20px auto 0;max-width:660px;font:400 .78rem/1.7 Jost,sans-serif;color:#9aa59e}
-@media (max-width:640px){.jfilm{padding:60px 16px 68px}.jfilm-play{width:62px;height:62px}.jfilm-play svg{width:20px;height:20px}}
-@media print{.jfilm,.jv,.jv-badge{display:none!important}}
+.night{background:#000;isolation:isolate}
+.night .word{position:relative;height:min(72vh,680px);display:flex;align-items:center;justify-content:center;background:#000;overflow:hidden}
+.night .word h2{margin:0;color:#fff;font-size:clamp(64px,15vw,240px);line-height:.85;text-align:center}
+.night .word video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;mix-blend-mode:multiply;pointer-events:none}
+.night .copy{background:var(--woodsmoke);display:flex;flex-direction:column;align-items:center;text-align:center;gap:22px;padding:72px clamp(16px,4vw,48px) 112px}
+.night .copy h3{margin:0;font-size:clamp(28px,3.6vw,52px);color:var(--smoke);max-width:18ch}
+.night .copy p{margin:0;max-width:56ch;color:var(--almond);font-size:17px}
+
+/* reserve */
+.reserve .wrap{padding-block:40px 120px}
+.glass{border:1px solid var(--line);background:rgba(3,35,22,.6);backdrop-filter:blur(18px);padding:clamp(24px,4vw,56px);display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:40px;align-items:center}
+.glass h2{margin:0;font-size:clamp(34px,4.4vw,64px);color:var(--smoke)}
+form{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:end}
+label{display:block;font-family:var(--caps);font-weight:700;font-size:11px;letter-spacing:.26em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+input,select{width:100%;background:transparent;border:0;border-bottom:1px solid rgba(201,168,92,.5);color:var(--almond);font:inherit;font-size:16px;padding:10px 0;min-height:44px}
+button.btn{font-family:var(--caps);width:100%}
+@media (max-width:860px){.glass{grid-template-columns:1fr}form{grid-template-columns:1fr}}
+
+footer{border-top:1px solid var(--line);background:var(--jade)}
+footer .wrap{display:grid;grid-template-columns:minmax(0,1.4fr) repeat(3,minmax(0,1fr));gap:32px;padding-block:64px 40px;font-size:14px;color:var(--almond)}
+footer a{display:block}
+footer img{width:min(220px,60%);height:auto}
+@media (max-width:760px){footer .wrap{grid-template-columns:1fr 1fr}}
+.fine{padding:0 clamp(16px,4vw,48px) 100px;font-size:12px;color:var(--mute);max-width:1320px;margin:0 auto}
+
+
+
+
+
+@media (max-width:760px){}
+
+.rm .walk{height:auto}.rm .walk .stage{position:relative;height:70vh}.rm .chap{position:static;opacity:1;transform:none;padding:32px clamp(16px,4vw,48px)}.rm .walk .intro,.rm .grain,.rm .rail,.rm .ctr{display:none}
+.rm .dish{opacity:1;transform:none}.rm .cur{display:none}.rm .lines i{transform:none}
 </style>
 </head>
 <body>
 
-<!-- v7 cinematic scroll hero — screen only, never rendered under webdriver/print -->
-<div class="v7hero" data-v7hero aria-hidden="true">
-  <div class="v7pin">
+<div class="pre" id="pre"><img class="icon" src="brand/jade-icon-verdigris.svg" alt=""><img src="brand/jade-primary-white.svg" alt="Jade Manila"><div class="bar"><i id="prebar"></i></div><div class="k" id="prepct" style="color:var(--mute)">Opening after dark · 0%</div></div>
+<div class="cur" id="cur"><div class="dot"></div><div class="ring"><span id="curlab">Scroll</span></div></div>
 
-    <div class="v7p-bgwrap">
-      <img class="v7p-bg" src="../jade-manila/img/grand-room.jpg" alt="">
-      <div class="v7p-veil"></div>
-    </div>
-    <div class="v7p-title">
-      <span class="v7eyebrow"><i></i>Bonifacio Global City &middot; Manila<i></i></span>
-      <h2 class="v7line">Past the green velvet, there is <em>another city.</em></h2>
-      <span class="v7hint">Scroll to enter <i>&darr;</i></span>
-    </div>
-    <div class="v7p-fgwrap">
-      <img class="v7p-fg" src="../jade-manila/img/hallway-portal.jpg" alt="">
-    </div>
+<nav class="nav" aria-label="Site">
+  <a class="mark" href="#top"><img class="icon" src="brand/jade-icon-white.svg" alt=""><img class="word" src="brand/jade-primary-white.svg" alt="Jade Manila"></a>
+  <div class="links"><a href="#rooms">The Rooms</a><a href="#menu">The Table</a><a href="#show">The Show</a><a href="#night">The Night Set</a></div>
+  <div class="right"><button class="snd" id="snd" type="button" aria-pressed="false"><span class="eq"><i></i><i></i><i></i><i></i></span><span id="sndlab">Sound</span></button><a class="btn" href="#reserve" style="min-height:42px;padding:0 22px">Reserve</a></div>
+</nav>
 
-    <div class="v7scene v7s2">
-      <div class="v7glow v7glow-1"></div><div class="v7glow v7glow-2"></div><div class="v7glow v7glow-3"></div>
-      <div class="v7ghosts">
-        <img class="v7ghost g1" src="../jade-manila/img/nr-dining-curve.jpg" alt="">
-        <img class="v7ghost g2" src="../jade-manila/img/nr-stage.jpg" alt="">
-        <img class="v7ghost g3" src="../jade-manila/img/nr-spiral.jpg" alt="">
-        <img class="v7ghost g4" src="../jade-manila/img/nr-banquette.jpg" alt="">
-      </div>
-      <div class="v7dust">
-        <i style="--dx:12%;--dy:70%;--dr:3px;--ds:9s;--dd:0s"></i>
-        <i style="--dx:22%;--dy:85%;--dr:2px;--ds:12s;--dd:1.4s"></i>
-        <i style="--dx:31%;--dy:60%;--dr:2px;--ds:10s;--dd:3s"></i>
-        <i style="--dx:44%;--dy:88%;--dr:3px;--ds:13s;--dd:.7s"></i>
-        <i style="--dx:52%;--dy:74%;--dr:2px;--ds:9.5s;--dd:2.2s"></i>
-        <i style="--dx:61%;--dy:82%;--dr:2px;--ds:11s;--dd:4.1s"></i>
-        <i style="--dx:69%;--dy:66%;--dr:3px;--ds:12.5s;--dd:1s"></i>
-        <i style="--dx:78%;--dy:86%;--dr:2px;--ds:10.5s;--dd:2.8s"></i>
-        <i style="--dx:86%;--dy:72%;--dr:2px;--ds:9s;--dd:.4s"></i>
-        <i style="--dx:37%;--dy:78%;--dr:2px;--ds:14s;--dd:5s"></i>
-        <i style="--dx:57%;--dy:90%;--dr:3px;--ds:11.5s;--dd:3.6s"></i>
-        <i style="--dx:91%;--dy:80%;--dr:2px;--ds:13.5s;--dd:1.8s"></i>
-      </div>
-      <div class="v7s2-content">
-        <span class="v7eyebrow"><i></i>Official Media Kit &middot; MMXXVI<i></i></span>
-        <h1 class="v7title" data-v7title>
-          <span class="c" style="--d:.12s"><img class="v7logo" src="../jade-manila/img/jade-primary-gold.svg" alt="Jade Manila"></span>
-        </h1>
-        <p class="v7sub">Dinner, then music, then the long part of the night. An emerald-and-brass room in Bonifacio Global City &mdash; with a kitchen led in partnership with chef Todd English.</p>
-        <div class="v7meta">
-          <div><span class="v7num">96</span><span class="v7lab">Seats</span></div>
-          <div><span class="v7num">2</span><span class="v7lab">Private Rooms</span></div>
-          <div><span class="v7num">3<span style="font-size:1.1rem">AM</span></span><span class="v7lab">Last Call</span></div>
-          <div><span class="v7num">7</span><span class="v7lab">Nights a Week</span></div>
-        </div>
-      </div>
-      <div class="v7strip" aria-hidden="true">
-        <div class="v7strip-track">
-          <span><em>Jade</em> Manila</span><i>&#10022;</i><span>Bonifacio Global City</span><i>&#10022;</i><span>Dinner &middot; Music &middot; Late Bar</span><i>&#10022;</i><span>Chef Partner <em>Todd English</em></span><i>&#10022;</i><span>Open Til 3AM</span><i>&#10022;</i><span>Official Media Kit</span><i>&#10022;</i>
-          <span><em>Jade</em> Manila</span><i>&#10022;</i><span>Bonifacio Global City</span><i>&#10022;</i><span>Dinner &middot; Music &middot; Late Bar</span><i>&#10022;</i><span>Chef Partner <em>Todd English</em></span><i>&#10022;</i><span>Open Til 3AM</span><i>&#10022;</i><span>Official Media Kit</span><i>&#10022;</i>
-        </div>
-      </div>
-    </div>
+<audio id="amb" src="audio/ambient.mp3" loop preload="none"></audio>
 
-    <div class="v7scene v7s3">
-      <div class="v7floats">
-        <figure class="v7float f1"><img src="../jade-manila/img/fin-bar.jpg" alt=""><figcaption><strong>Jade Bar</strong><span>The Onyx Counter</span></figcaption></figure>
-        <figure class="v7float f2"><img src="../jade-manila/img/fin-cigar-lounge.jpg" alt=""><figcaption><strong>The Cigar Lounge</strong><span>Cigars &amp; Nightcaps</span></figcaption></figure>
-        <figure class="v7float f3"><img src="../jade-manila/img/fin-floor.jpg" alt=""><figcaption><strong>The Floor</strong><span>Banquettes &amp; Booth</span></figcaption></figure>
-        <figure class="v7float f4"><img src="../jade-manila/img/fin-mezzanine.jpg" alt=""><figcaption><strong>The Mezzanine</strong><span>After Midnight</span></figcaption></figure>
-      </div>
-      <div class="v7s3-content">
-        <span class="v7eyebrow"><i></i>The rooms, one by one<i></i></span>
-        <h2 class="v7line">The Jade experience <em>awaits.</em></h2>
-        <span class="v7hint">Keep scrolling &mdash; 22 pages <i>&darr;</i></span>
-      </div>
-    </div>
+<div id="smooth-wrapper"><div id="smooth-content">
 
-  </div>
-</div>
-
-<!-- ============ PREVIEW FILM · screen only, sits between the hero and page 1 ============ -->
-<section class="jfilm" id="film" aria-label="Preview film">
-  <div class="jfilm-in">
-    <span class="v7eyebrow"><i></i>The preview<i></i></span>
-    <h2 class="jfilm-h">A walk through <em>Jade.</em></h2>
-    <div class="jfilm-frame" data-jfilm>
-      <img src="../jade-manila/v/jade-preview-poster.jpg" alt="Preview film &mdash; the arched stage and green velvet drapery at Jade Manila.">
-      <button class="jfilm-play" type="button" aria-label="Play the preview film">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg>
-      </button>
+<section class="walk" id="top">
+  <div class="stage">
+    <canvas id="film"></canvas>
+    <div class="vignette"></div>
+    <div class="intro" id="intro">
+      <img class="logo" src="brand/jade-primary-white.svg" alt="Jade Manila">
+      <div class="rule"><i></i><span>Bonifacio Global City · October 2026</span><i></i></div>
+      <h1 class="h">Rare by design.</h1>
+      <p class="sub" style="margin:0;font-size:clamp(12px,1.2vw,15px);color:var(--almond);max-width:34ch">Jade gives the Philippines nights it has never had.</p>
     </div>
-    <p class="jfilm-cap">0:44 &middot; Sound on. Interiors are pre-construction design visualisations &mdash; hover or tap any photograph in the pages below to see it move.</p>
+    <div class="chap" data-a="0.14" data-b="0.17"><div class="k n">I · The curtain</div><h2 class="h">Past the green velvet.</h2><p>The corridor is the first course. At the end of it the wood oven is already lit and the caviar is already on ice.</p></div>
+    <div class="chap" data-a="0.175" data-b="0.33"><div class="k n">II · The floor</div><h2 class="h">Seventy-seven seats. One menu by Todd English.</h2><p>Raw bar, wood and fire, pasta finished at the table. Two seatings a night, Tuesday to Sunday. The bar until 2AM.</p><a class="btn" href="#menu" data-cursor="Menu">See the menu</a></div>
+    <div class="chap" data-a="0.335" data-b="0.5"><div class="k n">III · The raw bar</div><h2 class="h">Oysters, kinilaw, caviar.</h2><p>The tower comes first: oysters, prawns, kinilaw, blue crab and clams. Caviar service at the bar, the house pour beside it.</p></div>
+    <div class="chap" data-a="0.505" data-b="0.665"><div class="k n">IV · The pour</div><h2 class="h">The Jade Negroni. The house pour.</h2><p>Emerald martini, Kyoto old fashioned, champagne by the glass, sake service. Caviar at the bar until 2AM.</p><a class="btn" href="#menu" data-cursor="Menu">The pour</a></div>
+    <div class="chap" data-a="0.67" data-b="0.83"><div class="k n">V · Wood and fire</div><h2 class="h">Lapu-lapu from the oven. Short rib. Wagyu sando.</h2><p>Food by Todd English, cooked over fire in front of the room. Filipino soul, a global table.</p><a class="btn" href="#reserve" data-cursor="Reserve">Reserve a table</a></div>
+    <div class="chap" data-a="0.835" data-b="1"><div class="k n">VI · The stage, after dark</div><h2 class="h">The night set arrives at ten. Soufflé at midnight.</h2><p>The tiers fill and the lights drop. Dinner runs through the band to the last pour. Chocolate and barako to close.</p><a class="btn solid" href="#reserve" data-cursor="Reserve">Reserve a table</a></div>
+    <div class="vines" id="vines" aria-hidden="true">
+      <div class="scrim" id="vscrim"></div>
+      <div class="water" id="water"></div>
+      <canvas class="wsim" id="wsim"></canvas>
+      <div class="haze" id="haze"></div>
+      <div class="mist"></div>
+      <div class="vs l1" data-x="-34" data-mx="-39" data-s="1" data-d="1.0"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:7.3s;animation-delay:-1.0s;transform:scaleX(-1)"></span></div>
+      <div class="vs l1" data-x="34" data-mx="39" data-s="1" data-d="1.0"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:7.8s;animation-delay:-4.1s"></span></div>
+      <div class="vs l2" data-x="-16" data-s="1" data-d="0.74"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:8.1s;animation-delay:-3.8s"></span></div>
+      <div class="vs l2" data-x="16" data-s="1" data-d="0.74"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:8.6s;animation-delay:-2.9s;transform:scaleX(-1)"></span></div>
+      <div class="vs l2" data-x="-48" data-s="1" data-d="0.74"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:9.1s;animation-delay:-1.3s"></span></div>
+      <div class="vs l2" data-x="48" data-s="1" data-d="0.74"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:9.6s;animation-delay:-4.8s;transform:scaleX(-1)"></span></div>
+      <div class="vs l3" data-x="-40" data-s="1" data-d="0.61"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:8.9s;animation-delay:-4.8s;transform:scaleX(-1)"></span></div>
+      <div class="vs l3" data-x="-8" data-s="1" data-d="0.61"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:9.4s;animation-delay:-3.1s"></span></div>
+      <div class="vs l3" data-x="24" data-s="1" data-d="0.61"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:9.9s;animation-delay:-3.0s;transform:scaleX(-1)"></span></div>
+      <div class="vs l3" data-x="44" data-s="1" data-d="0.61"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:10.4s;animation-delay:-1.4s"></span></div>
+      <div class="vs l4" data-x="-46" data-s="1" data-d="0.51"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:9.7s;animation-delay:-0.0s"></span></div>
+      <div class="vs l4" data-x="-26" data-s="1" data-d="0.51"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:10.2s;animation-delay:-2.2s;transform:scaleX(-1)"></span></div>
+      <div class="vs l4" data-x="8" data-s="1" data-d="0.51"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:10.7s;animation-delay:-3.5s"></span></div>
+      <div class="vs l4" data-x="36" data-s="1" data-d="0.51"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:11.2s;animation-delay:-0.4s;transform:scaleX(-1)"></span></div>
+      <div class="vs l5" data-x="-20" data-s="1" data-d="0.45"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:10.5s;animation-delay:-4.8s;transform:scaleX(-1)"></span></div>
+      <div class="vs l5" data-x="2" data-s="1" data-d="0.45"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:11.0s;animation-delay:-1.4s"></span></div>
+      <div class="vs l5" data-x="16" data-s="1" data-d="0.45"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:11.5s;animation-delay:-1.4s;transform:scaleX(-1)"></span></div>
+      <div class="vs l5" data-x="40" data-s="1" data-d="0.45"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:12.0s;animation-delay:-0.3s"></span></div>
+      <div class="vs l5" data-x="-36" data-s="1" data-d="0.45"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:12.5s;animation-delay:-6.0s;transform:scaleX(-1)"></span></div>
+      <div class="vs l6" data-x="-50" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:11.3s;animation-delay:-4.4s"></span></div>
+      <div class="vs l6" data-x="-12" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:11.8s;animation-delay:-5.3s;transform:scaleX(-1)"></span></div>
+      <div class="vs l6" data-x="-4" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:12.3s;animation-delay:-3.7s"></span></div>
+      <div class="vs l6" data-x="28" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:12.8s;animation-delay:-0.2s;transform:scaleX(-1)"></span></div>
+      <div class="vs l6" data-x="50" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-a.webp" alt="" style="animation-duration:13.3s;animation-delay:-2.0s"></span></div>
+      <div class="vs l6" data-x="-30" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:13.8s;animation-delay:-3.0s;transform:scaleX(-1)"></span></div>
+      <div class="vs l6" data-x="20" data-s="1" data-d="0.41"><i class="crown"></i><span class="px"><img src="brand/vine-hi-b.webp" alt="" style="animation-duration:14.3s;animation-delay:-0.7s"></span></div>
+      <div class="vs hero" data-x="0" data-mx="18" data-s="1" data-d="1"><i class="crown"></i><span class="px"><div class="sw"><img id="heroImg" src="brand/vine-hero.webp" alt="" crossorigin="anonymous"><canvas id="glint"></canvas></div></span></div>
+      <canvas class="rain" id="rain"></canvas>
+      <div class="wall" id="glass"><canvas id="pane"></canvas><div class="sheen"></div><div class="fog" id="fog"></div></div>
+      <div class="drop" id="drop"></div>
+      <div class="rip" id="rip"><b></b><i></i><i></i><i></i></div>
+      <div class="cue k"><span>Scroll to part the vines</span><i></i></div>
+    </div>
+    <div class="rail" id="rail"><i></i><i></i><i></i><i></i><i></i><i></i></div>
+    <div class="ctr"><span id="ctr">01</span><small> / 06</small></div>
   </div>
 </section>
 
-<main class="kit-wrap" id="top">
-
-  <!-- ============ PAGE 1 · COVER ============ -->
-  <section class="sheet sheet--cover" id="cover" aria-label="Cover">
-    <div class="cover-photo">
-      <img src="../jade-manila/img/fin-entry.jpg" alt="The entry corridor at Jade Manila — green velvet drapery and a backlit jade onyx slab.">
+<section class="vine" id="story">
+  <div class="tex"></div>
+  <div class="lines" aria-hidden="true"><i></i><i></i><i></i></div>
+  <div class="wrap">
+    <div class="arch" id="arch">
+      <img src="brand/vine.jpg" alt="The Philippine jade vine in bloom">
+      <svg viewBox="0 0 300 400" aria-hidden="true"><path id="archp" d="M18 400 V150 A132 132 0 0 1 282 150 V400"/><path id="archq" d="M34 400 V150 A116 116 0 0 1 266 150 V400"/></svg>
     </div>
-    <div class="cover-ink">
-      <div class="cover-seal" aria-hidden="true">
-        <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-          <defs><path id="seal-arc" d="M60,60 m-44,0 a44,44 0 1,1 88,0 a44,44 0 1,1 -88,0"/></defs>
-          <circle cx="60" cy="60" r="59" fill="rgba(7,15,11,0.6)"/>
-          <g class="seal-ring">
-            <circle cx="60" cy="60" r="57" fill="none" stroke="rgba(224,207,169,0.85)" stroke-width="1"/>
-            <circle cx="60" cy="60" r="31" fill="none" stroke="rgba(224,207,169,0.6)" stroke-width="0.8"/>
-            <text font-size="10" fill="#dac47f" font-family="Jost, sans-serif" font-weight="600" letter-spacing="2">
-              <textPath href="#seal-arc" textLength="274" lengthAdjust="spacing">JADE &#183; BY TODD ENGLISH &#183; MANILA&#160;&#183;&#160;</textPath>
-            </text>
-          </g>
-          <image href="../jade-manila/img/jade-icon-gold.svg" x="42.6" y="41" width="34.8" height="38"/>
-        </svg>
-      </div>
-      <div class="cover-blocks">
-        <div class="cover-name">
-          <img class="cn-logo" src="../jade-manila/img/jade-manila-logo.svg" alt="Jade Manila">
-          <p class="cn-line">Rare by design</p>
-        </div>
-        <div class="cover-tag">
-          <p>Dinner, music, and the long part of the night — an evening that unfolds in chapters. <strong>Bonifacio Global City, Manila</strong>, with chef partner Todd English.</p>
-        </div>
-      </div>
-      <div class="cover-foot">
-        <span class="chip"><span class="dot"></span>Tuesday–Sunday · 6PM til 3AM</span>
-        <span class="chip"><span class="dot"></span>Press &amp; partnership inquiries via Jade Manila</span>
-      </div>
+    <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+      <p class="k" style="margin:0">The story · The jade vine</p>
+      <h2 class="h">Philippine soul.<br>Global table.</h2>
+      <p>The Philippine jade vine blooms once a year, only in these islands. Its colour is one of the rarest in nature. It comes alive after dark, when bats arrive for its nectar and carry a little of the flower away. Because they came, it blooms again.</p>
+      <p>Jade works the same way. The vine inspires our cocktails, our dishes and every night we host. A room is only a room until the night set arrives.</p>
+      <a class="btn verd" href="#show" data-cursor="Read" style="align-self:flex-start">The show</a>
     </div>
-  </section>
-
-  <!-- ============ EDITORIAL PLATE · GALA OPENER ============ -->
-  <section class="sheet sheet--plate" id="plate-gala" aria-label="An Editorial Preview">
-    <img class="plate-mark" src="../jade-manila/img/jade-primary-white.svg" alt="Jade Manila">
-    <img src="../jade-manila/img/fin-editorial-live.jpg" alt="A live set at Jade Manila — the singer at the microphone on the floor and the band playing on the mezzanine.">
-    <div class="plate-cap">
-      <p>Jade gives the Philippines nights it has never had.</p>
-      <span class="plate-sub">A room that begins with dinner &mdash; and becomes the night.</span>
-      <span class="plate-meta">Jade Manila · An Editorial Preview</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 2 · CONTENTS ============ -->
-  <section class="sheet" id="contents" aria-labelledby="toc-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Contents · 02/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="toc-heading">Contents</h2>
-    <p class="section-sub">Twenty-four pages, three parts — an evening at Jade, the menu, and the investment.</p>
-
-    <div class="toc-cols">
-      <div class="toc-part">
-        <h3><span class="toc-rn">I</span>An Evening at Jade</h3>
-        <ul>
-          <li><span>The Jade Vine</span><span class="toc-pg">03</span></li>
-          <li><span>The Story of Jade</span><span class="toc-pg">05</span></li>
-          <li><span>The Grand Room</span><span class="toc-pg">06</span></li>
-          <li><span>An Evening at Jade</span><span class="toc-pg">07</span></li>
-          <li><span>Rooms &amp; Details</span><span class="toc-pg">08</span></li>
-        </ul>
-        <h3><span class="toc-rn">II</span>Menu</h3>
-        <ul>
-          <li><span>Todd English &middot; The Chef Partner</span><span class="toc-pg">10</span></li>
-          <li><span>From Todd&rsquo;s Kitchen</span><span class="toc-pg">11</span></li>
-          <li><span>The Menu</span><span class="toc-pg">12</span></li>
-          <li><span>The Bar &amp; The Cocktails</span><span class="toc-pg">13</span></li>
-          <li><span>The Cellar</span><span class="toc-pg">14</span></li>
-        </ul>
-      </div>
-      <div class="toc-part">
-        <h3><span class="toc-rn">III</span>The Investment</h3>
-        <ul>
-          <li><span>The Road to December</span><span class="toc-pg">16</span></li>
-          <li><span>The Opportunity</span><span class="toc-pg">17</span></li>
-          <li><span>Where the ₱38 Million Goes</span><span class="toc-pg">18</span></li>
-          <li><span>Five-Year Forecast</span><span class="toc-pg">19</span></li>
-          <li><span>The Return</span><span class="toc-pg">20</span></li>
-          <li><span>How the Room Earns</span><span class="toc-pg">21</span></li>
-          <li><span>The Mark</span><span class="toc-pg">22</span></li>
-          <li><span>Press Assets</span><span class="toc-pg">23</span></li>
-          <li><span>Contact</span><span class="toc-pg">24</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <p class="foot-note"><strong>How to use this kit:</strong> every room and detail in these pages reflects the house as of August 2026. High-resolution versions of all photography are available for editorial use; see Press Assets, page 23.</p>
-  </section>
-
-  <!-- ============ PAGE 3 · THE JADE VINE — the brand's own origin story ============ -->
-  <section class="sheet sheet--vine" id="the-vine" aria-labelledby="vine-heading">
-    <img class="vine-bleed" src="../jade-manila/img/vine-tall.jpg" alt="The Philippine jade vine in bloom — turquoise flowers cascading in the dark.">
-    <div class="vine-copy">
-      <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Story · 03/24</span></div>
-      <div class="page-rule"></div>
-      <img class="vine-mark" src="../jade-manila/img/jade-icon-verdigris.svg" alt="">
-      <p class="kicker">The Philippine Jade Vine</p>
-      <h2 class="section-title" id="vine-heading">Rare by design</h2>
-      <p class="vine-lede">The Philippine jade vine blooms once a year, only in these islands. Its color is one of the rarest in nature. It comes alive after dark, when bats arrive at night for its nectar and carry a little of the flower away. Because they came, it blooms again.</p>
-      <p class="vine-body">Jade works the same way. The vine inspires our cocktails, our dishes and every night we host. But a room is only a room until the night set arrives: the hungry, the curious, the ones who stay for one more. They are the reason Jade blooms.</p>
-      <p class="vine-pull">Like the jade vine,<br>it isn&rsquo;t for every day.</p>
-      <figure class="vine-serve">
-        <img src="../jade-manila/img/jade-cocktail.jpg" alt="The house jade serve — a coupe the colour of the vine, finished with a single leaf.">
-        <figcaption><strong>The house serve</strong>The vine is the reference, not the garnish — the colour runs from the flower to the glass.</figcaption>
-      </figure>
-      <span class="vine-foot">Philippine soul · Global table</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 4 · DIVIDER — PART I ============ -->
-  <section class="sheet sheet--divider" id="part-1" aria-label="Part I — An Evening at Jade">
-    <div class="div-frame">
-      <span class="div-part">Part I</span>
-      <span class="div-num">I</span>
-      <h2 class="div-title">An Evening at Jade</h2>
-      <span class="div-orn"><img class="div-icon" src="../jade-manila/img/jade-icon-gold.svg" alt=""></span>
-      <p class="div-line">A green velvet corridor, a lit slab of onyx, and a room that does not tell you what time it is.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 04/24</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 4 · THE STORY OF JADE ============ -->
-  <section class="sheet" id="the-house" aria-labelledby="bio-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 05/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="bio-heading"><span class="script-kick">the story</span>When the iconic Bank Bar closed, Jade by Todd English found its new home.</h2>
-
-    <div class="bio-grid">
-      <div class="bio-text">
-        <p><span class="drop">M</span>anila has always known how to stay up late. What it did not have was one room that could hold the whole night — dinner worth dressing for, a band worth staying for, and a bar that is still pouring when the kitchen has gone quiet. Jade was built to be that room.</p>
-        <p>It begins as a corridor. Green velvet on both sides, brass underfoot, and at the end a single slab of backlit jade onyx that glows like a held breath. You do not see the dining room until you are inside it — and then it opens: a double-height space in deep emerald and warm brass, banquettes running the long wall, a proscenium stage at the far end, and a spiral staircase in polished brass climbing to a mezzanine that looks down on all of it.</p>
-        <p>The cooking is fire-led and Manila-anchored: a wood oven at the centre of the kitchen, an ice bar for the raw list, Philippine seafood and Japanese precision meeting Mediterranean technique. The food is developed in partnership with chef Todd English, whose five James Beard Awards and thirty-five years of wood-fired cooking sit behind the pass — his first fine-dining room in the Philippines.</p>
-        <p>The name is not borrowed from the stone alone. In the Philippines the jade vine — <em>tayabak</em> — is a native flower found nowhere else on earth: cascading blooms of an impossible blue-green, rare and half-hidden, the kind of thing you do not simply see but come upon. Jade takes its name and its colour from that flower — a room with a Filipino soul, not an imported one.</p>
-        <blockquote class="bio-quote">
-          <p>&ldquo;Jade is not a restaurant with a band. It is one evening, written in three acts, and the food is only the first.&rdquo;</p>
-          <cite>Jade Manila</cite>
-        </blockquote>
-      </div>
-      <aside class="bio-side">
-        <img class="bio-portrait" src="../jade-manila/img/nr-entry-onyx.jpg" alt="The velvet entry corridor and backlit jade onyx slab at Jade Manila.">
-        <div class="facts-card">
-          <h4>Quick Facts</h4>
-          <ul>
-            <li><strong>Concept</strong> · Dinner, live music, late bar</li>
-            <li><strong>Location</strong> · Bonifacio Global City, Taguig</li>
-            <li><strong>Kitchen</strong> · Wood-fired, in partnership with Todd English</li>
-            <li><strong>Service</strong> · Tuesday–Sunday, 6PM–3AM</li>
-            <li><strong>Rooms</strong> · Grand Room · Bar · Stage · Mezzanine · Cigar Lounge · Cellar</li>
-          </ul>
-        </div>
-      </aside>
-    </div>
-
-    <div class="stat-band">
-      <div><span class="sn">96</span><span class="sl">Total Seats</span></div>
-      <div><span class="sn">2</span><span class="sl">Private Rooms</span></div>
-      <div><span class="sn">2</span><span class="sl">Sets Nightly</span></div>
-      <div><span class="sn">3AM</span><span class="sl">Last Call</span></div>
-      <div><span class="sn">7</span><span class="sl">Nights a Week</span></div>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 5 · PLATE — THE GRAND ROOM ============ -->
-  <section class="sheet sheet--plate" id="plate-room" aria-label="The Grand Room">
-    <img class="plate-mark" src="../jade-manila/img/jade-primary-white.svg" alt="Jade Manila">
-    <img src="../jade-manila/img/fin-grandroom-dj.jpg" alt="The Grand Room at Jade Manila — the DJ booth beneath the gilded arch and a full dance floor.">
-    <div class="plate-cap">
-      <p>&ldquo;The room has no clock and no windows. That is not an accident — it is the entire design brief.&rdquo;</p>
-      <span class="plate-meta">Jade Manila · The Grand Room · 06/24</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 6 · AN EVENING AT JADE ============ -->
-  <section class="sheet" id="an-evening" aria-labelledby="tl-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 07/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="tl-heading">An Evening at Jade</h2>
-
-    <div class="tl-grid">
-      <ol class="tl-list">
-        <li><span class="tl-year">6:00</span><div><h4>Doors</h4><p>The corridor lights come up. First seating in the Grand Room; the ice bar is dressed and the oven is at temperature.</p></div></li>
-        <li><span class="tl-year">6:30</span><div><h4>Cocktails &amp; Caviar</h4><p>The specialty cocktail hour — signature pours and a caviar service off a set menu. A pianist plays the room quietly — no vocal yet.</p></div></li>
-        <li><span class="tl-year">8:00</span><div><h4>Peak Service</h4><p>The wood oven runs flat out. Whole lapu-lapu, dry-aged ribeye and the flatbread that started it all.</p></div></li>
-        <li><span class="tl-year">9:00</span><div><h4>First Set</h4><p>The proscenium curtain opens. Forty-five minutes — jazz-leaning, with a vocalist, mixed live for the whole floor.</p></div></li>
-        <li><span class="tl-year">10:00</span><div><h4>Second Seating</h4><p>The room turns. Later tables arrive dressed for the music rather than the menu; the bar takes over the front.</p></div></li>
-        <li><span class="tl-year">11:00</span><div><h4>Second Set</h4><p>Louder, later, closer to the floor. The mezzanine fills; the spiral staircase becomes the best seat in the house.</p></div></li>
-        <li><span class="tl-year">12:00</span><div><h4>The Kitchen Closes</h4><p>Last order from the full menu. Bar bites — the Jade Dragon, Midnight in Manila — run until the end.</p></div></li>
-        <li><span class="tl-year">1:00</span><div><h4>The Late Room</h4><p>Lights down two stops. Resident DJ, sake carafes, and the part of the night the regulars come for.</p></div></li>
-        <li><span class="tl-year">3:00</span><div><h4>Last Call</h4><p>The brass panels dim one at a time. The corridor is the last thing you see, exactly as it was the first.</p></div></li>
-      </ol>
-      <aside class="tl-side">
-        <img src="../jade-manila/img/stage-guests.jpg" alt="The stage at Jade during the first set of the night.">
-        <div class="tl-card">
-          <h4>Three Acts</h4>
-          <p>Dinner, music, late. Every element of the house — lighting, menu, staffing, sound — is built to hand the night from one act to the next without a seam.</p>
-        </div>
-        <div class="tl-card">
-          <h4>Booking the Night</h4>
-          <p>Two seatings, 6PM and 10PM. The first is booked for dinner, the second for the music — the same room, priced and paced differently. Walk-ins are taken at the bar until the kitchen closes.</p>
-        </div>
-      </aside>
-    </div>
-
-    <div class="story-band">
-      <div><span class="sn">2</span><span class="sl">Seatings a Night</span></div>
-      <div><span class="sn">45</span><span class="sl">Minute Sets</span></div>
-      <div><span class="sn">9</span><span class="sl">Hours, Doors to Close</span></div>
-      <div><span class="sn">3AM</span><span class="sl">Last Call</span></div>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 17 · ROOMS & DETAILS (gallery II) ============ -->
-  <section class="sheet" id="rooms-details" aria-labelledby="gallery2-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">An Evening at Jade · 08/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="gallery2-heading">Rooms &amp; Details</h2>
-    <p class="section-sub">Six rooms, one material palette — emerald, brass, onyx and velvet, from the corridor to the cellar.</p>
-
-    <figure class="gal-hero">
-      <img src="../jade-manila/img/nr-dining-curve.jpg" alt="The Grand Room at Jade Manila, laid for service.">
-      <figcaption class="gal-cap"><p>The Grand Room, laid and lit an hour before doors — the only quiet it gets.</p></figcaption>
-    </figure>
-
-    <div class="gal-grid">
-      <figure class="gal-item">
-        <img src="../jade-manila/img/nr-arrival.jpg" alt="The arrival lobby at Jade Manila — onyx reception counter and stone lion.">
-        <figcaption>Arrival · The Lobby</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/nr-bar.jpg" alt="The backlit onyx bar counter and bottle wall at Jade.">
-        <figcaption>Jade Bar · The Back Bar</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/nr-chefs-counter.jpg" alt="Banquettes against the painted botanical mural, under three fan sconces.">
-        <figcaption>The Mural Wall</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/fin-cigar-lounge.jpg" alt="The Cigar Lounge at Jade.">
-        <figcaption>The Cigar Lounge</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/cellar-wall.jpg" alt="The cellar wall — wine racked along green marble under glassware.">
-        <figcaption>The Cellar</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/nr-powder-room.jpg" alt="The powder room in emerald and brass.">
-        <figcaption>The Powder Room</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/fin-banquette.jpg" alt="The long banquette run at Jade Manila.">
-        <figcaption>The Banquette Run</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/nr-stage.jpg" alt="The gilded arch framing the stage alcove.">
-        <figcaption>The Proscenium</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="../jade-manila/img/spiral-stair.jpg" alt="The brass spiral stair linking floor and mezzanine.">
-        <figcaption>The Spiral Stair</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 8 · DIVIDER — PART II ============ -->
-  <section class="sheet sheet--divider" id="part-2" aria-label="Part II — Menu">
-    <div class="div-frame">
-      <span class="div-part">Part II</span>
-      <span class="div-num">II</span>
-      <h2 class="div-title">Menu</h2>
-      <span class="div-orn"><img class="div-icon" src="../jade-manila/img/jade-icon-gold.svg" alt=""></span>
-      <p class="div-line">Todd English at the pass, Roman Mutzner behind the bar, and a cellar built for a long night.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 09/24</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 16 · THE CHEF PARTNER — TODD ENGLISH ============ -->
-  <section class="sheet" id="chef-partner" aria-labelledby="todd-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 10/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="todd-heading">Todd English</h2>
-    <p class="section-sub">The Chef Partner &mdash; five James Beard Awards, fifteen cookbooks, and his first fine-dining room in the Philippines.</p>
-
-    <div class="bar-hero">
-      <figure class="bar-portrait">
-        <img src="../jade-manila/img/todd-knife.jpg" alt="Chef Todd English, culinary partner at Jade Manila.">
-      </figure>
-      <div class="bar-copy">
-        <p><span class="drop">T</span>odd English trained under Jean-Jacques Rachou at La C&ocirc;te Basque, then cooked through Italy and came home with rustic Mediterranean food over live fire. He opened Olives in Charlestown in 1989 and built it into a group of restaurants across four continents &mdash; five James Beard Awards, fifteen cookbooks and years of national television behind him.</p>
-        <p>At Jade he is not a lent name but the house&rsquo;s anchor: he shapes the food, returns for every seasonal change and cooks the opening service himself. In a city where fine dining trades on imported chefs, his is the single biggest draw the room carries &mdash; the reason Jade opens with a national profile instead of building one over years.</p>
-        <aside class="spot-facts spot-facts--light">
-          <h4>Career Highlights</h4>
-          <ul>
-            <li><strong>1989</strong>Olives, Charlestown &mdash; the wood-oven room that made his name</li>
-            <li><strong>1991</strong>James Beard Rising Star Chef of the Year</li>
-            <li><strong>2001</strong>Iron Chef USA &mdash; national television</li>
-            <li><strong>2003</strong>bluezoo at the Walt Disney World Dolphin</li>
-            <li><strong>2022</strong>Founder, The English Hospitality Group</li>
-          </ul>
-        </aside>
-      </div>
-    </div>
-
-    <div class="bar-strip">
-      <figure><img src="../jade-manila/img/todd-kitchen.jpg" alt="Todd English cooking in chef whites."><figcaption>At the pass &mdash; live-fire cooking.</figcaption></figure>
-      <figure><img src="../jade-manila/img/todd-emmy.jpg" alt="Todd English at a television awards evening."><figcaption>Years of national television.</figcaption></figure>
-    </div>
-  </section>
-
-  <!-- ============ FROM TODD'S KITCHEN (moved into Todd's section) ============ -->
-  <section class="sheet" id="from-the-kitchen" aria-labelledby="gallery-heading">
-    <div class="page-head"><span class="ph-brand">Jade &middot; Manila</span><span class="ph-no">Menu &middot; 11/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="gallery-heading">From Todd&rsquo;s Kitchen</h2>
-    <p class="section-sub">The six signature dishes, shot for the opening menu &mdash; caviar and uni through the robata fire to matcha.</p>
-
-    <figure class="gal-hero">
-      <img src="img/app-menus-table.jpg" alt="The Jade Manila menus on green marble beneath the jade vine.">
-      <figcaption class="gal-cap"><p>The opening menu, on the table it was designed for.</p></figcaption>
-    </figure>
-
-    <div class="gal-grid">
-      <figure class="gal-item">
-        <img src="img/sig-caviar-cannoli.jpg" alt="A caviar cannoli rolled in Ossetra, filled with smoked yellowtail mousse.">
-        <figcaption>Caviar Cannoli &middot; Smoked yellowtail mousse</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/sig-chawanmushi.jpg" alt="Sweet corn and coconut chawanmushi under sea urchin and Ossetra.">
-        <figcaption>Sweet Corn&ndash;Coconut Chawanmushi &middot; Uni</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/sig-king-crab-toast.jpg" alt="King crab on Japanese milk bread, glazed with uni sabayon.">
-        <figcaption>King Crab Toast &middot; Japanese milk bread</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/sig-lobster-paccheri.jpg" alt="Paccheri with lobster in a roasted-shell tomato dashi.">
-        <figcaption>Lobster Paccheri &middot; Roasted-shell tomato dashi</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/sig-peking-duck.jpg" alt="Peking-spiced duck breast with the crisp leg, cucumber and plum-hoisin.">
-        <figcaption>Peking-Spiced Duck &middot; Crisp leg</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/sig-matcha-tiramisu.jpg" alt="Matcha tiramisu layered with espresso and mascarpone.">
-        <figcaption>Matcha Tiramisu &middot; Espresso</figcaption>
-      </figure>
-    </div>
-  </section>
-
-  <section class="sheet" id="the-menu" aria-labelledby="menu-heading">
-    <div class="page-head"><span class="ph-brand">Jade &middot; Manila</span><span class="ph-no">Menu &middot; 12/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="menu-heading">The Menu</h2>
-    <p class="section-sub">One spread, one glance. The dish on the left, the list on the right &mdash; nothing else on the page.</p>
-
-    <div class="menu-spread">
-      <figure class="ms-plate">
-        <img src="img/sig-caviar-cannoli.jpg" alt="Caviar cannoli &mdash; the signature plate carried on the menu spread.">
-      </figure>
-      <div class="ms-list">
-        <img class="ms-mark" src="../jade-manila/img/jade-primary-green.svg" alt="Jade Manila">
-        <p class="ms-eyebrow">Signature &middot; Todd English</p>
-        <ul>
-          <li><strong>Caviar Cannoli</strong><span>Smoked yellowtail mousse &middot; sesame &middot; Ossetra</span></li>
-          <li><strong>Sweet Corn&ndash;Coconut Chawanmushi</strong><span>Uni &middot; Ossetra caviar &middot; chive oil</span></li>
-          <li><strong>King Crab Toast</strong><span>Japanese milk bread &middot; uni sabayon</span></li>
-          <li><strong>Lobster Paccheri</strong><span>Roasted-shell tomato dashi &middot; Calabrian chili</span></li>
-          <li><strong>Peking-Spiced Duck</strong><span>Crisp leg &middot; cucumber &middot; scallion &middot; plum-hoisin</span></li>
-          <li><strong>Matcha Tiramisu</strong><span>Espresso &middot; mascarpone</span></li>
-        </ul>
-        <p class="ms-eyebrow ms-eyebrow--bar">From the Bar</p>
-        <ul class="ms-bar">
-          <li><strong>The Horny Oyster</strong><span>The house oyster martini</span></li>
-        </ul>
-        <span class="ms-foot">Manila &middot; Philippines</span>
-      </div>
-    </div>
-
-    <p class="foot-note"><strong>The format:</strong> an A4 bifold on the house stock &mdash; the plate on the left, the list on the right, and the mark the only other thing on the page. Covers and envelope are in the brand pack; <strong>The Horny Oyster</strong> is the house oyster martini and its build is still with the bar.</p>
-  </section>
-
-  <!-- ============ PAGE 18 · THE BAR PARTNER — ROMAN MUTZNER ============ -->
-  <section class="sheet" id="bar-partner" aria-labelledby="roman-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 13/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="roman-heading">The Bar Partner</h2>
-    <p class="section-sub">The newest addition to the house — and one of the most decorated bartenders in Europe — shaping the Jade bar.</p>
-
-    <div class="bar-hero">
-      <figure class="bar-portrait">
-        <img src="../jade-manila/img/roman-portrait.jpg" alt="Roman Mutzner, bar partner at Jade Manila.">
-      </figure>
-      <div class="bar-copy">
-        <p><span class="drop">R</span>oman Mutzner is the newest name on the Jade team and the man behind the bar. A Swiss bartender from St. Gallen, he is one of the most decorated competitors of his generation &mdash; 2026 Switzerland Champion at Diageo World Class, the industry&rsquo;s most demanding global contest, and a serial national titleholder across spirits, liqueurs and gin.</p>
-        <p>He founded R. Mutzner Barfactory in 2022 and first came to Manila on an MBA exchange in 2024. At Jade he designs the bar from the ice programme up &mdash; a cocktail list built to stand level with the kitchen, and the reason the room pours until 2AM.</p>
-        <aside class="spot-facts spot-facts--light">
-          <h4>Career Highlights</h4>
-          <ul>
-            <li><strong>2026</strong>Diageo World Class &mdash; Switzerland Champion</li>
-            <li><strong>2025</strong>Graham&rsquo;s Blend Series &mdash; Global Champion</li>
-            <li><strong>2025</strong>Bol&rsquo;s Liqueurs &amp; Hendrick&rsquo;s Gin &mdash; Swiss Champion</li>
-            <li><strong>2024</strong>European Bartender Cup &mdash; Top 3</li>
-            <li><strong>2022</strong>Founder, R. Mutzner Barfactory</li>
-          </ul>
-        </aside>
-      </div>
-    </div>
-
-    <div class="bar-strip">
-      <figure><img src="../jade-manila/img/roman-cocktail.jpg" alt="Roman Mutzner presenting a signature cocktail."><figcaption>Competition service &mdash; a signature serve.</figcaption></figure>
-      <figure><img src="../jade-manila/img/roman-flair.jpg" alt="Roman Mutzner working behind the bar."><figcaption>Behind the bar at full tilt.</figcaption></figure>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 21 · THE CELLAR ============ -->
-  <section class="sheet" id="the-cellar" aria-labelledby="cellar-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Menu · 14/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="cellar-heading">The Cellar</h2>
-    <p class="section-sub">A cold room built for sake first and wine second — the reverse of every other list in the city.</p>
-
-    <div class="shelf-grid">
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/nr-wine-wall.jpg" alt="The illuminated wine wall at Jade Manila."></div>
-        <figcaption>The Cold Room · 4°C</figcaption>
-      </figure>
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/dr-sake-service.jpg" alt="Chilled sake carafes and porcelain cups."></div>
-        <figcaption>Sake Service · Carafe</figcaption>
-      </figure>
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/glassware.jpg" alt="Crystal glassware at Jade."></div>
-        <figcaption>Crystal · By the Glass</figcaption>
-      </figure>
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/dr-champagne-pour.jpg" alt="Champagne poured into a vintage coupe."></div>
-        <figcaption>Champagne · The Coupe</figcaption>
-      </figure>
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/nr-bar.jpg" alt="The backlit onyx bar and bottle wall."></div>
-        <figcaption>The Bottle Wall</figcaption>
-      </figure>
-      <figure class="shelf-item">
-        <div class="shelf-tile"><img src="../jade-manila/img/dr-cocktail-lineup.jpg" alt="Four signature cocktails lined up on the bar."></div>
-        <figcaption>The Signature Four</figcaption>
-      </figure>
-    </div>
-
-    <p class="foot-note"><strong>For sommeliers &amp; press:</strong> the full sake list — including allocated daiginjo and single-cask whisky held off-menu — is available on request, along with tasting notes from the cellar team. Corkage is ₱2,500 per bottle, two bottles maximum.</p>
-  </section>
-
-  <!-- ============ PAGE 13 · DIVIDER — PART III ============ -->
-  <section class="sheet sheet--divider" id="part-3" aria-label="Part III — The Investment">
-    <div class="div-frame">
-      <span class="div-part">Part III</span>
-      <span class="div-num">III</span>
-      <h2 class="div-title">The Investment</h2>
-      <span class="div-orn"><img class="div-icon" src="../jade-manila/img/jade-icon-gold.svg" alt=""></span>
-      <p class="div-line">A ₱38 million build, a ₱3.375 million ticket, and a room designed to earn its keep from the first Saturday.</p>
-      <span class="div-foot">Jade Manila · Media Kit 2026 · 15/24</span>
-    </div>
-  </section>
-
-  <!-- ============ PAGE 30 · ROAD TO DECEMBER ============ -->
-  <section class="sheet" id="road-to-december" aria-labelledby="road-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 16/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="road-heading">The Road to December</h2>
-
-    <div class="tl-grid">
-      <ol class="tl-list">
-        <li><span class="tl-year">Now</span><div><h4>On Site</h4><p>Three months of advance rent and three months of security deposit — ₱3,373,966 — are placed with the landlord. Design is set with BA8 Concepts, and Jerikson Construction is on site: the first four build phases — structure and mezzanine, finishes, plumbing and electrical rough-in — are all under way.</p></div></li>
-        <li><span class="tl-year">Aug</span><div><h4>Permits &amp; Long Leads</h4><p>Permits and licences at ₱400,000 are lodged, and the point-of-sale goes in for BIR accreditation — a fixed three-to-four-week clock that gates opening day more tightly than the build does. Fire suppression, smoke detection and air conditioning are coordinated with building management.</p></div></li>
-        <li><span class="tl-year">Sep</span><div><h4>Structure Complete</h4><p>All structural elements are finished, and interior fit-out begins. Hiring is under way.</p></div></li>
-        <li><span class="tl-year">Oct</span><div><h4>Final Design Items</h4><p>The last of the design items are installed, room by room, and the interior is signed off against the drawings.</p></div></li>
-        <li><span class="tl-year">Nov</span><div><h4>Staff Training &amp; Soft Launch</h4><p>Staff training runs through the month and the house opens softly — a controlled service, friends and family first, before the room is announced.</p></div></li>
-        <li><span class="tl-year">Dec</span><div><h4>Grand Launch</h4><p>Doors open in full — Tuesday to Sunday, two seatings at 6PM and 10PM, bar until 3AM.</p></div></li>
-      </ol>
-      <aside class="tl-side">
-        <img src="../jade-manila/img/nr-chefs-counter.jpg" alt="The chef's counter during fit-out.">
-        <div class="tl-card">
-          <h4>Already Committed</h4><p>₱21M is already committed — the landlord position, the design and construction contracts, and the engineered mezzanine. The remaining spend is scheduled against the weeks above rather than drawn in a lump.</p>
-        </div>
-      </aside>
-    </div>
-
-    <div class="story-band">
-      <div><span class="sn">Nov</span><span class="sl">Soft Launch</span></div>
-      <div><span class="sn">Dec</span><span class="sl">Grand Launch</span></div>
-      <div><span class="sn">₱38M</span><span class="sl">₱35M Capex · ₱3M Buffer</span></div>
-    </div>
-  </section>
-
-  
-
-  <!-- ============ PAGE 32 · THE OPPORTUNITY ============ -->
-  <section class="sheet" id="the-opportunity" aria-labelledby="opp-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 17/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="opp-heading">The Opportunity</h2>
-    <p class="section-sub">The same five-year model, run twice — once on conservative trade, once on the room performing to the capacity it was built for.</p>
-
-    <div class="reach-hero">
-      <span class="bign">₱3.375M</span>
-      <span class="bl">for a 5% share of Jade Manila, at ₱675,000 per point</span>
-    </div>
-
-    <div class="reach-cards">
-      <div class="reach-card">
-        <p class="kicker">The Ticket</p>
-        <h4>₱3,375,000</h4>
-        <p>A 5% holding in the operating company, priced at ₱675,000 per point, drawn against a total project cost of ₱38,000,000 — ₱35,000,000 of capex with ₱3,000,000 held as buffer.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">The Policy</p>
-        <h4>70% Distributed</h4>
-        <p>Seventy per cent of net profit is paid out, in two payments a year. The remaining thirty per cent is retained against ongoing capex, budgeted at 2% of revenue.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">The Horizon</p>
-        <h4>Five Years</h4>
-        <p>Modelled to Year Five on a ten-year leasehold life, with the base case paying back in 4.1 years and the high case in 2.0.</p>
-      </div>
-    </div>
-
-    <table class="fin-tbl">
-      <caption>The Two Cases, Side by Side</caption>
-      <thead><tr><th></th><th>Base Case</th><th>High Case</th></tr></thead>
-      <tbody>
-        <tr><td>Year 1 Revenue</td><td>₱76,928,570</td><td>₱130,714,280</td></tr>
-        <tr><td>Year 5 Revenue</td><td>₱126,119,774</td><td>₱218,531,270</td></tr>
-        <tr><td>Year 1 Gross Margin</td><td>72.1%</td><td>72.4%</td></tr>
-        <tr><td>Year 1 EBITDA</td><td>₱26,367,504</td><td>₱62,547,772</td></tr>
-        <tr><td>Year 1 EBITDA Margin</td><td>34.3%</td><td>47.9%</td></tr>
-        <tr><td>Year 1 Net Profit</td><td>₱17,178,614</td><td>₱43,952,013</td></tr>
-        <tr><td>Year 5 Net Profit</td><td>₱33,553,232</td><td>₱80,110,688</td></tr>
-        <tr><td>Five-Year Distributions, 5% Holder</td><td>₱4,424,159</td><td>₱10,739,610</td></tr>
-        <tr><td>Cumulative Return on ₱3.375M</td><td>31.1%</td><td>218.2%</td></tr>
-        <tr><td>Payback Period</td><td>4.11 years</td><td>2.03 years</td></tr>
-        <tr class="tot"><td>Internal Rate of Return</td><td>8.65%</td><td>48.77%</td></tr>
-      </tbody>
-    </table>
-
-    <p class="foot-note"><strong>A note on the two cases.</strong> The base case assumes the house turns roughly one full cover a night across a six-day week. The high case assumes nightlife revenue matching dining rather than trailing it. Neither assumes a price increase. Full model available under NDA.</p>
-  </section>
-
-  <!-- ============ PAGE 33 · THE ₱38 MILLION BUILD ============ -->
-  <section class="sheet" id="the-build" aria-labelledby="build-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 18/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="build-heading">Where the ₱38 Million Goes</h2>
-
-    <div class="menu-cols">
-      <div>
-        <div class="menu-sec">
-          <h3>Construction &amp; Fit-Out <span>₱17,195,251</span></h3>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Construction</span><span class="mi-price">₱8,363,180</span></div><span class="mi-desc">Jerikson Construction — full shell fit-out</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Custom Furniture</span><span class="mi-price">₱4,000,000</span></div><span class="mi-desc">Fashion Interiors — banquettes, tables, millwork</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Air Conditioning</span><span class="mi-price">₱2,500,000</span></div><span class="mi-desc">Plant, ducting and controls</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Design, Structure &amp; Cladding</span><span class="mi-price">₱824,000</span></div><span class="mi-desc">BA8 Concepts, mezzanine engineering, wall fabrics</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Marblo Ice-Cap Bar</span><span class="mi-price">₱818,071</span></div><span class="mi-desc">The lit slab and its chilled rail</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Fire &amp; Life Safety</span><span class="mi-price">₱690,000</span></div><span class="mi-desc">Suppression and smoke detection</span></div>
-        </div>
-
-        <div class="menu-sec">
-          <h3>Kitchen, Bar &amp; Systems <span>₱7,168,175</span></h3>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Lighting, Architectural &amp; Automated</span><span class="mi-price">₱2,200,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Ovens, Hot Line &amp; Bar Refrigeration</span><span class="mi-price">₱1,010,430</span></div><span class="mi-desc">Including the Josper charcoal oven</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Speakers &amp; DJ Kit</span><span class="mi-price">₱1,000,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">POS, Booking &amp; Security</span><span class="mi-price">₱890,000</span></div><span class="mi-desc">BIR-accredited terminals, CCTV, biometrics</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Cold Line &amp; Dishwashing</span><span class="mi-price">₱789,580</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Exhaust &amp; Ducting</span><span class="mi-price">₱750,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Small Wares &amp; Contingency</span><span class="mi-price">₱528,165</span></div></div>
-        </div>
-      </div>
-
-      <div>
-        <div class="menu-sec">
-          <h3>Pre-Opening &amp; Capital <span>₱15,719,926</span></h3>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Opening Stock &amp; R&amp;D</span><span class="mi-price">₱6,000,000</span></div><span class="mi-desc">Cellar, bar and larder at open</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Advance Rent, Three Months</span><span class="mi-price">₱1,686,983</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Security Deposit, Three Months</span><span class="mi-price">₱1,686,983</span></div><span class="mi-desc">Refundable — held on the balance sheet</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Consulting, Legal &amp; Accounting</span><span class="mi-price">₱1,700,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital Reserve</span><span class="mi-price">₱1,500,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Training &amp; Payroll, One Month</span><span class="mi-price">₱1,135,960</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Kitchenware, Bar &amp; Glassware</span><span class="mi-price">₱1,100,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Chef Travel, Plants &amp; Packaging</span><span class="mi-price">₱475,000</span></div></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Permits, Licences &amp; Insurance</span><span class="mi-price">₱435,000</span></div></div>
-        </div>
-
-        <div class="menu-sec">
-          <h3>How It Is Classified <span>₱40,083,352</span></h3>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Capital Expenditure</span><span class="mi-price">60.8%</span></div><span class="mi-desc">₱24,363,426 — depreciated over ten years on the leasehold and five on equipment</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Working Capital</span><span class="mi-price">18.7%</span></div><span class="mi-desc">₱7,500,000 — stock and cash, recovered through trading</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Pre-Opening Expense</span><span class="mi-price">16.3%</span></div><span class="mi-desc">₱6,532,943 — expensed, not capitalised</span></div>
-          <div class="menu-item"><div class="mi-top"><span class="mi-name">Refundable Asset</span><span class="mi-price">4.2%</span></div><span class="mi-desc">₱1,686,983 — the deposit, returned at lease end</span></div>
-        </div>
-      </div>
-    </div>
-
-    <p class="foot-note"><strong>Note:</strong> the project is budgeted at ₱38,000,000 — ₱35,000,000 of capex with ₱3,000,000 held as buffer. The line items above total ₱40,083,352, the build as originally costed; that schedule is being re-itemised against the ₱35,000,000 figure and the allocation shown here is superseded. <strong>Depreciation:</strong> ₱3,153,160 a year — ₱1,719,525 on ₱17,195,251 of leasehold improvements over ten years, ₱1,433,635 on ₱7,168,175 of equipment over five. Net book value at the end of Year Five is ₱8,597,625.</p>
-  </section>
-
-  <!-- ============ PAGE 34 · FIVE-YEAR FORECAST ============ -->
-  <section class="sheet" id="forecast" aria-labelledby="fcst-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 19/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="fcst-heading">Five-Year Forecast</h2>
-    <p class="section-sub">In millions of pesos. Two rooms, two revenue lines — dinner service and the late half of the night — modelled separately and summed.</p>
-
-    <table class="fin-tbl">
-      <caption>Base Case</caption>
-      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
-      <tbody>
-        <tr><td>Dining</td><td>42.3</td><td>50.8</td><td>58.4</td><td>64.2</td><td>69.4</td></tr>
-        <tr><td>Nightlife</td><td>34.6</td><td>41.5</td><td>47.8</td><td>52.5</td><td>56.8</td></tr>
-        <tr class="tot"><td>Total Revenue</td><td>76.9</td><td>92.3</td><td>106.2</td><td>116.8</td><td>126.1</td></tr>
-        <tr><td>Revenue Growth</td><td>—</td><td>+20.0%</td><td>+15.0%</td><td>+10.0%</td><td>+8.0%</td></tr>
-        <tr><td>Cost of Sales</td><td>21.4</td><td>25.7</td><td>29.6</td><td>32.5</td><td>35.1</td></tr>
-        <tr><td>Gross Margin</td><td>55.5</td><td>66.6</td><td>76.6</td><td>84.2</td><td>91.0</td></tr>
-        <tr><td>Operating Expenses</td><td>29.1</td><td>36.7</td><td>38.5</td><td>40.5</td><td>42.5</td></tr>
-        <tr><td>EBITDA</td><td>26.4</td><td>29.9</td><td>38.0</td><td>43.8</td><td>48.5</td></tr>
-        <tr><td>EBITDA Margin</td><td>34.3%</td><td>32.4%</td><td>35.8%</td><td>37.5%</td><td>38.5%</td></tr>
-        <tr class="tot"><td>Net Profit</td><td>17.2</td><td>19.8</td><td>25.8</td><td>30.1</td><td>33.6</td></tr>
-        <tr><td>Net Margin</td><td>22.3%</td><td>21.4%</td><td>24.3%</td><td>25.7%</td><td>26.6%</td></tr>
-      </tbody>
-    </table>
-
-    <table class="fin-tbl">
-      <caption>High Case</caption>
-      <thead><tr><th></th><th>Yr 1</th><th>Yr 2</th><th>Yr 3</th><th>Yr 4</th><th>Yr 5</th></tr></thead>
-      <tbody>
-        <tr><td>Dining</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
-        <tr><td>Nightlife</td><td>65.4</td><td>77.1</td><td>88.7</td><td>99.3</td><td>109.3</td></tr>
-        <tr class="tot"><td>Total Revenue</td><td>130.7</td><td>154.2</td><td>177.4</td><td>198.7</td><td>218.5</td></tr>
-        <tr><td>Revenue Growth</td><td>—</td><td>+18.0%</td><td>+15.0%</td><td>+12.0%</td><td>+10.0%</td></tr>
-        <tr><td>Cost of Sales</td><td>36.1</td><td>42.6</td><td>49.0</td><td>54.8</td><td>60.3</td></tr>
-        <tr><td>Gross Margin</td><td>94.6</td><td>111.7</td><td>128.4</td><td>143.8</td><td>158.2</td></tr>
-        <tr><td>Operating Expenses</td><td>32.1</td><td>40.4</td><td>42.5</td><td>44.6</td><td>46.8</td></tr>
-        <tr><td>EBITDA</td><td>62.5</td><td>71.2</td><td>86.0</td><td>99.3</td><td>111.4</td></tr>
-        <tr><td>EBITDA Margin</td><td>47.8%</td><td>46.2%</td><td>48.5%</td><td>50.0%</td><td>51.0%</td></tr>
-        <tr class="tot"><td>Net Profit</td><td>44.0</td><td>50.4</td><td>61.3</td><td>71.1</td><td>80.1</td></tr>
-        <tr><td>Net Margin</td><td>33.6%</td><td>32.7%</td><td>34.6%</td><td>35.8%</td><td>36.7%</td></tr>
-      </tbody>
-    </table>
-
-    <p class="foot-note">Cost of sales runs at 27.9% in the base case and 27.6% in the high, for a gross margin of roughly 72% in both. Corporation tax is taken at 26%. Depreciation of ₱3,153,160 a year is charged below EBITDA; the model carries no debt and no interest.</p>
-  </section>
-
-  <!-- ============ PAGE 35 · THE RETURN ============ -->
-  <section class="sheet" id="the-return" aria-labelledby="return-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 20/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="return-heading">The Return on ₱3.375 Million</h2>
-    <p class="section-sub">A 5% holding at ₱675,000 per point, distributions paid semi-annually out of net profit. Both cases below are drawn from the same model as the forecast on the previous page.</p>
-
-    <table class="fin-tbl">
-      <caption>Base Case — 5% Holder</caption>
-      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>5% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
-      <tbody>
-        <tr><td>Year 0</td><td>—</td><td>—</td><td>(3,375,000)</td><td>—</td><td>(3,375,000)</td></tr>
-        <tr><td>Year 1</td><td>17.2M</td><td>12.0M</td><td>601,252</td><td>17.8%</td><td>(2,773,748)</td></tr>
-        <tr><td>Year 2</td><td>19.8M</td><td>13.9M</td><td>692,569</td><td>20.5%</td><td>(2,081,179)</td></tr>
-        <tr><td>Year 3</td><td>25.8M</td><td>18.1M</td><td>903,763</td><td>26.8%</td><td>(1,177,416)</td></tr>
-        <tr><td>Year 4</td><td>30.1M</td><td>21.0M</td><td>1,052,212</td><td>31.2%</td><td>(125,204)</td></tr>
-        <tr><td>Year 5</td><td>33.6M</td><td>23.5M</td><td>1,174,363</td><td>34.8%</td><td>1,049,159</td></tr>
-        <tr class="tot"><td>Five Years</td><td></td><td></td><td>4,424,159</td><td>31.1%</td><td>1,049,159</td></tr>
-      </tbody>
-    </table>
-
-    <table class="fin-tbl">
-      <caption>High Case — 5% Holder</caption>
-      <thead><tr><th></th><th>Net Profit</th><th>Distributed</th><th>5% Share</th><th>ROI</th><th>Cumulative</th></tr></thead>
-      <tbody>
-        <tr><td>Year 0</td><td>—</td><td>—</td><td>(3,375,000)</td><td>—</td><td>(3,375,000)</td></tr>
-        <tr><td>Year 1</td><td>44.0M</td><td>30.8M</td><td>1,538,320</td><td>45.6%</td><td>(1,836,680)</td></tr>
-        <tr><td>Year 2</td><td>50.4M</td><td>35.3M</td><td>1,763,429</td><td>52.2%</td><td>(73,251)</td></tr>
-        <tr><td>Year 3</td><td>61.3M</td><td>42.9M</td><td>2,144,914</td><td>63.6%</td><td>2,071,663</td></tr>
-        <tr><td>Year 4</td><td>71.1M</td><td>49.8M</td><td>2,489,073</td><td>73.8%</td><td>4,560,736</td></tr>
-        <tr><td>Year 5</td><td>80.1M</td><td>56.1M</td><td>2,803,874</td><td>83.1%</td><td>7,364,610</td></tr>
-        <tr class="tot"><td>Five Years</td><td></td><td></td><td>10,739,610</td><td>218.2%</td><td>7,364,610</td></tr>
-      </tbody>
-    </table>
-
-    <div class="story-band">
-      <div><span class="sn">4.11</span><span class="sl">Years to Payback · Base</span></div>
-      <div><span class="sn">8.7%</span><span class="sl">IRR · Base</span></div>
-      <div><span class="sn">2.03</span><span class="sl">Years to Payback · High</span></div>
-      <div><span class="sn">48.8%</span><span class="sl">IRR · High</span></div>
-    </div>
-
-    <div class="reach-cards">
-      <div class="reach-card">
-        <p class="kicker">Distribution Policy</p>
-        <h4>70% of Net Profit</h4>
-        <p>Paid in two instalments a year. The remaining thirty per cent is retained for ongoing improvement capex, budgeted at 2% of revenue.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">Cumulative Return</p>
-        <h4>31.1% · Base</h4>
-        <p>₱4,424,159 returned on ₱3,375,000 over five years, with the holding intact at the end of it.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">Cumulative Return</p>
-        <h4>218.2% · High</h4>
-        <p>₱10,739,610 on the same ₱3,375,000, if the room trades closer to a full house on a Friday and Saturday.</p>
-      </div>
-    </div>
-
-    <p class="foot-note">Figures in parentheses are cash out. Distribution is 70% of net profit, paid in two instalments a year. The rate of return above is computed on annual timing, so it understates the benefit of the earlier payment. The base case crosses into positive cumulative cash during Year Five; the high case crosses during Year Three.</p>
-  </section>
-
-  <!-- ============ PAGE 36 · UNIT ECONOMICS ============ -->
-  <section class="sheet" id="unit-economics" aria-labelledby="unit-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">The Investment · 21/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="unit-heading">How the Room Earns</h2>
-    <p class="section-sub">Every area in the house is sold on a minimum spend rather than a cover charge. Filled once, the room takes ₱262,000 in a night.</p>
-
-    <table class="fin-tbl">
-      <caption>One Full Cover of the House</caption>
-      <thead><tr><th></th><th>Seats</th><th>Minimum Spend</th></tr></thead>
-      <tbody>
-        <tr><td>Private Dining Room</td><td>6–12</td><td>₱50,000</td></tr>
-        <tr><td>Omakase Counter</td><td>4–5</td><td>₱30,000</td></tr>
-        <tr><td>Banquette Three</td><td>8–10</td><td>₱20,000</td></tr>
-        <tr><td>Banquette Four</td><td>8–10</td><td>₱20,000</td></tr>
-        <tr><td>Banquette One</td><td>6</td><td>₱15,000</td></tr>
-        <tr><td>Banquette Two</td><td>6</td><td>₱15,000</td></tr>
-        <tr><td>Dining Room, ₱4,000 a head</td><td>28</td><td>₱112,000</td></tr>
-        <tr class="tot"><td>One Cover</td><td>96</td><td>₱262,000</td></tr>
-      </tbody>
-    </table>
-
-    <div class="reach-cards">
-      <div class="reach-card">
-        <p class="kicker">What the Base Case Asks</p>
-        <h4>₱246,565 a Night</h4>
-        <p>Year One revenue over 312 trading nights is one full cover of the house — before the second seating, before the bar, before a single buyout.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">Gross Margin</p>
-        <h4>72%</h4>
-        <p>Cost of sales at 27.9%. Jade sells a room and a night, not only plates — which is what holds the margin above a restaurant's.</p>
-      </div>
-      <div class="reach-card">
-        <p class="kicker">The Payroll</p>
-        <h4>44 at Open</h4>
-        <p>₱1,362,100 a month across kitchen, floor and bar, rising to 48 in the high case. The largest single line in operating expense.</p>
-      </div>
-    </div>
-
-    <div class="story-band">
-      <div><span class="sn">312</span><span class="sl">Trading Nights a Year</span></div>
-      <div><span class="sn">₱262,000</span><span class="sl">One Full Cover</span></div>
-      <div><span class="sn">94%</span><span class="sl">What the Base Case Needs</span></div>
-      <div><span class="sn">₱2.43M</span><span class="sl">Operating Cost a Month</span></div>
-    </div>
-
-    <p class="foot-note"><strong>The rest of the operating line:</strong> rent at ₱4.5 million in Year One on 180 sqm, a 5% revenue share, ₱600,000 a month for talent — DJs and live sets — ₱205,000 in professional services, ₱198,000 in staff benefits, ₱50,000 in marketing, and roughly ₱219,000 in utilities, internet and storage.</p>
-  </section>
-
-  <!-- ============ PAGE 37 · PRESS ASSETS ============ -->
-    <!-- ============ PAGE 21 · THE MARK ============ -->
-  <section class="sheet" id="the-mark" aria-labelledby="mark-heading">
-    <div class="page-head"><span class="ph-brand">Jade &middot; Manila</span><span class="ph-no">The Mark &middot; 22/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="mark-heading">The Mark</h2>
-    <p class="section-sub">The identity as it reaches the table &mdash; menu, envelope, coaster, napkin and the card that closes service.</p>
-
-    <figure class="gal-hero">
-      <img src="img/app-cardbox.jpg" alt="The Jade Manila menu card and gift box on green marble beneath the jade vine.">
-      <figcaption class="gal-cap"><p>The card and the box, dressed on green marble.</p></figcaption>
-    </figure>
-
-    <div class="gal-grid">
-      <figure class="gal-item">
-        <img src="img/app-menu-front.jpg" alt="The A4 cover on the house stock.">
-        <figcaption>Menu cover, front</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/app-menu-back.jpg" alt="The mark alone, Manila &middot; Philippines.">
-        <figcaption>Menu cover, back</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/app-envelope.jpg" alt="Dark green stock, blind mark.">
-        <figcaption>The envelope</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/app-coaster.jpg" alt="On green marble, with the folder.">
-        <figcaption>The coaster</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/app-napkin.jpg" alt="Embroidered, table-dressed.">
-        <figcaption>The napkin</figcaption>
-      </figure>
-      <figure class="gal-item">
-        <img src="img/app-thankyou.jpg" alt="The close of service.">
-        <figcaption>Thank you card</figcaption>
-      </figure>
-    </div>
-  </section>
-
-<section class="sheet" id="press-assets" aria-labelledby="assets-heading">
-    <div class="page-head"><span class="ph-brand">Jade · Manila</span><span class="ph-no">Press Assets · 23/24</span></div>
-    <div class="page-rule"></div>
-    <h2 class="section-title" id="assets-heading">Press Assets</h2>
-    <p class="section-sub">Everything in this kit — and more — is available in high resolution on request.</p>
-
-    <div class="assets-grid">
-      <figure class="assets-photo">
-        <img src="../jade-manila/img/nr-corridor.jpg" alt="The green velvet entry corridor leading to the backlit onyx portal.">
-        <figcaption class="gal-cap"><p>The corridor — the house's signature image.</p></figcaption>
-      </figure>
-      <div class="assets-list">
-        <div class="asset-row"><span class="pn">01</span><div><h4>Photography</h4><p>All six rooms, the bar, the stage and the food from the kitchen — in print resolution.</p></div></div>
-        <div class="asset-row"><span class="pn">02</span><div><h4>The Team</h4><p>Chef partner Todd English and bar partner Roman Mutzner — biographies, credits and portrait photography.</p></div></div>
-        <div class="asset-row"><span class="pn">03</span><div><h4>Capacity Pack</h4><p>Floor plans, room dimensions, rigging points, power and load-in for every bookable space.</p></div></div>
-        <div class="asset-row"><span class="pn">04</span><div><h4>Interviews &amp; Access</h4><p>Kitchen and cellar interviews, chef-partner requests, and shoot access outside service hours.</p></div></div>
-        <div class="asset-row"><span class="pn">05</span><div><h4>Brand Approvals</h4><p>Logo usage, partnership announcements and co-branded creative, reviewed by the house.</p></div></div>
-      </div>
-    </div>
-
-    <p class="foot-note"><strong>Usage &amp; provenance:</strong> imagery is released for editorial coverage of Jade Manila. Interiors and food imagery are pre-opening design visualisations rather than documentary photography. Commercial use requires written approval from the house.</p>
-  </section>
-
-  <!-- ============ PAGE 30 · CONTACT ============ -->
-  <section class="sheet sheet--back" id="colophon" aria-labelledby="contact-heading">
-    <div class="back-inner">
-      <img class="back-photo" src="../jade-manila/img/nr-entry-onyx.jpg" alt="The backlit jade onyx slab at the end of the entry corridor.">
-      <p class="kicker">Reach Out</p>
-      <h2 id="contact-heading"><img class="contact-logo" src="../jade-manila/img/jade-secondary-gold.svg" alt="Jade — Todd English — Manila"></h2>
-      <p class="back-line">G/F, RCBC Savings Bank Corporate Center · 26th &amp; 25th Street, BGC</p>
-      <p class="back-line">Tuesday–Sunday · Doors 6PM · Bar until 3AM</p>
-      <p class="back-line">Reservations, private dining &amp; press inquiries via the house</p>
-      <p class="back-line back-site">jadebarmanila.com</p>
-      <span class="back-rule"></span>
-      <p class="back-foot">Jade Manila &middot; Version 3 &middot; Produced October 2026 · All rooms, menus and capacities current at time of publication · 24/24</p>
-    </div>
-  </section>
-
-</main>
-
+  </div>
+</section>
+
+<section class="rooms" id="rooms"><div class="wrap">
+  <div style="display:flex;justify-content:space-between;align-items:flex-end;gap:24px;flex-wrap:wrap">
+    <div><p class="k" style="margin:0 0 14px">Immersive space</p><h2 class="h">Six rooms. Each keeps its own hour.</h2></div>
+    <p style="margin:0;max-width:40ch;color:var(--mute)">Move across a room and the picture ripples like the onyx. Choose the room first. The kitchen follows you.</p>
+  </div>
+  <div class="lg">
+    <a class="lq" href="#reserve" data-cursor="Open"><img src="img/grand-room.jpg" alt="The Grand Room" crossorigin="anonymous"><canvas></canvas><div class="lab"><h3>The Grand Room</h3><span>6PM · 24</span></div></a>
+    <a class="lq" href="#reserve" data-cursor="Open"><img src="img/stage-dj.jpg" alt="The Stage" crossorigin="anonymous"><canvas></canvas><div class="lab"><h3>The Stage</h3><span>10PM · 18</span></div></a>
+    <a class="lq" href="#reserve" data-cursor="Open"><img src="img/bar-main.jpg" alt="The Caviar Bar" crossorigin="anonymous"><canvas></canvas><div class="lab"><h3>The Caviar Bar</h3><span>To 2AM</span></div></a>
+  </div>
+</div></section>
+
+<section class="menu" id="menu"><div class="wrap">
+  <div class="side">
+    <p class="k" style="margin:0">The table · The caviar bar</p>
+    <h2 class="h">Raw. Wood. Fire.</h2>
+    <div class="coupe"><img src="brand/coupe.jpg" alt="The Jade coupe"></div>
+    <p style="margin:0;color:var(--mute);font-size:14px">Hover a line. The plate follows you.</p>
+  </div>
+  <div class="list" id="list">
+    <div class="grp k">Raw</div>
+    <div class="dish" data-img="fd-oyster-real"><span>Oyster Tower<small>Oysters, prawns, kinilaw, blue crab and clams.</small></span><b>₱1,880</b></div>
+    <div class="dish" data-img="fd-caviar"><span>Caviar Service<small>The bar's reason for being.</small></span><b>₱9,800</b></div>
+    <div class="dish" data-img="fd-uni-toast"><span>Uni Toast</span><b>₱1,980</b></div>
+    <div class="grp k">Wood and fire</div>
+    <div class="dish" data-img="fd-lapu-lapu"><span>Lapu-Lapu<small>Wood oven, brown butter.</small></span><b>₱2,880</b></div>
+    <div class="dish" data-img="fd-wagyu"><span>Wagyu Sando</span><b>₱1,480</b></div>
+    <div class="dish" data-img="fd-beef-real"><span>Short Rib</span><b>₱1,880</b></div>
+    <div class="dish" data-img="fd-tagliatelle"><span>Tagliatelle<small>Finished at the table.</small></span><b>₱1,280</b></div>
+    <div class="grp k">The pour</div>
+    <div class="dish" data-img="dr-jade-negroni"><span>Jade Negroni<small>The house pour.</small></span><b>₱780</b></div>
+    <div class="dish" data-img="fd-souffle"><span>Soufflé</span><b>₱680</b></div>
+  </div>
+</div></section>
+
+<section class="chef"><div class="wrap">
+  <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
+    <p class="k" style="margin:0">Food by Todd English</p>
+    <h2 class="h">Three decades in. Still in the room.</h2>
+    <p>Born in Amarillo, trained at the Culinary Institute of America, apprenticed in Italy. In 1989 he opened Olives, a fifty-seat storefront in Charlestown that grew into one of America's best-known restaurant brands. The James Beard Foundation named him National Rising Star Chef and Best Chef of the Northeast.</p>
+    <p>His kitchens have run from Las Vegas to the Bahamas to Abu Dhabi. At Jade, he brings the world to a Filipino table.</p>
+  </div>
+  <div class="frame"><img src="img/fd-beef-real.jpg" alt="From the wood oven"></div>
+</div></section>
+
+<section class="show" id="show"><div class="wrap">
+  <div style="display:flex;flex-direction:column;gap:18px">
+    <p class="k" style="margin:0">The show · Four acts a night</p>
+    <h2 class="h">Four acts. Six women. One story a night.</h2>
+    <p class="lede">The night set arrives at ten. One company, one gown in three colourways, four fixed times. The piece inside each act changes with the night; the clock does not. Service never stops for more than eight minutes.</p>
+  </div>
+  <div class="acts">
+    <div class="act"><div class="t">10:00<small>PM</small></div><h3>The opener</h3><div class="w">The stage</div><p>One woman, two feather fans, three behind her. Slow, lit, the first slit of the night.</p></div>
+    <div class="act"><div class="t">11:00<small>PM</small></div><h3>The line</h3><div class="w">The stage</div><p>Four in one line, mirrored; or one coming down the stair. Wednesday and the weekend: Cell Block, six chairs, six stories.</p></div>
+    <div class="act"><div class="t">12:15<small>AM</small></div><h3>The walk</h3><div class="w">The floor</div><p>After the soufflé the women come between the tables. A hand on a shoulder. One table is served the house pour.</p></div>
+    <div class="act"><div class="t">1:00<small>AM</small></div><h3>The late set</h3><div class="w">Floor and booth</div><p>The night tips into the DJ. The piece that keeps the room until two.</p></div>
+  </div>
+  <div class="frames">
+    <div class="fr"><img src="img/show-stage.jpg" alt="The opener on the stage"><div class="lab"><b>Jade Fans</b><span>Act I · The stage</span></div></div>
+    <div class="fr"><img src="img/show-stair.jpg" alt="The star's entrance down the spiral stair"><div class="lab"><b>The Staircase</b><span>Act II · Thursday</span></div></div>
+  </div>
+  <div class="tape" aria-label="One story a night"><div class="run"><span>The Pearl<i>Tuesday · Sunday</i></span><span>The Vine<i>Thursday</i></span><span>The Night Set<i>Wednesday · Friday · Saturday</i></span><span>The Stone<i>When Cell Block rests</i></span><span>Rare by Design<i>Opening week</i></span><span>The Pearl<i>Tuesday · Sunday</i></span><span>The Vine<i>Thursday</i></span><span>The Night Set<i>Wednesday · Friday · Saturday</i></span><span>The Stone<i>When Cell Block rests</i></span><span>Rare by Design<i>Opening week</i></span></div></div>
+  <div class="foot">
+    <p>Six positions, one company. Four work a quiet night, all six on Wednesday, Friday and Saturday. Every piece carries one moveable prop and strikes in two minutes. Nothing flies, nothing burns, nothing is fixed to the room.</p>
+    <div class="cta"><a class="btn verd" href="https://claude.ai/artifact/2UA98njU9uVDhE47R9KLDh" target="_blank" rel="noopener" data-cursor="Open">The programme</a><a class="btn solid" href="#reserve" data-cursor="Book">Book the ten o'clock</a></div>
+  </div>
+</div></section>
+
+<section class="night" id="night">
+  <div class="word"><h2 class="h">The night set</h2><video src="v/cellar-wall.mp4" muted loop playsinline autoplay poster="img/cellar-wall.jpg"></video></div>
+  <div class="copy">
+    <p class="k" style="margin:0">After dark · By application</p>
+    <h3 class="h">The hungry. The curious. The ones who stay for one more.</h3>
+    <p>Forty founding members. Priority at both seatings, the late room after midnight, the cellar at cost, a host who knows your name. One tier. The door closes at forty.</p>
+    <a class="btn solid" href="#reserve" data-cursor="Apply">Join the night set</a>
+  </div>
+</section>
+
+<section class="reserve" id="reserve"><div class="wrap"><div class="glass">
+  <div><p class="k" style="margin:0 0 14px">Reserve</p><h2 class="h">Tonight, or any night.</h2><p style="color:var(--mute);margin:16px 0 0;font-size:14px">Up to twelve here. Larger evenings go through the house.</p></div>
+  <form onsubmit="return false">
+    <div><label for="date">Date</label><input id="date" type="date" value="2026-10-16"></div>
+    <div><label for="seat">Seating</label><select id="seat"><option>6PM · The Grand Room</option><option>10PM · The Stage · The Show</option></select></div>
+    <div><label for="guests">Guests</label><select id="guests"><option>2</option><option>4</option><option>6</option><option>Up to 12</option></select></div>
+    <button class="btn solid" type="button" data-cursor="Go">Find a table</button>
+  </form>
+</div></div></section>
+
+<footer><div class="wrap">
+  <div><img src="brand/jade-secondary-gold.svg" alt="Jade · Todd English · Manila"><p style="margin:18px 0 0;color:var(--mute)">G/F, RCBC Savings Bank Corporate Center<br>26th &amp; 25th Street, Bonifacio Global City</p></div>
+  <div><span class="k">Hours</span><p style="margin:10px 0 0">Tuesday to Sunday<br>Seatings 6PM and 10PM<br>The bar until 2AM</p></div>
+  <div><span class="k">Contact</span><p style="margin:10px 0 0">reservations@jadebarmanila.com<br>+63 [NUMBER] · WhatsApp<br><a href="#top">Instagram</a></p></div>
+  <div><span class="k">Behind the curtain</span><a href="#top" style="margin-top:10px">Press &amp; Partners</a><a href="#top">Request the investor kit</a><a href="#top">Careers</a></div>
+</div><p class="fine">jadebarmanila.com · Interiors are pre-opening design visualisations. The walk is cut from the Jade preview film. © 2026 Jade Manila.</p></footer>
+
+</div></div>
+
+<div class="follow" id="follow">
+  <img src="img/fd-oyster-real.jpg" alt="" data-k="fd-oyster-real"><img src="img/fd-caviar.jpg" alt="" data-k="fd-caviar"><img src="img/fd-uni-toast.jpg" alt="" data-k="fd-uni-toast"><img src="img/fd-wagyu.jpg" alt="" data-k="fd-wagyu"><img src="img/fd-lapu-lapu.jpg" alt="" data-k="fd-lapu-lapu"><img src="img/fd-beef-real.jpg" alt="" data-k="fd-beef-real"><img src="img/fd-tagliatelle.jpg" alt="" data-k="fd-tagliatelle"><img src="img/dr-jade-negroni.jpg" alt="" data-k="dr-jade-negroni"><img src="img/fd-souffle.jpg" alt="" data-k="fd-souffle">
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.13.0/ScrollSmoother.min.js"></script>
 <script>
-/* v7 hero scroll driver — enabled only for real, wide, motion-OK browsers */
 (function(){
-  var hero = document.querySelector('[data-v7hero]');
-  if (!hero) return;
-  if (navigator.webdriver) return;
-  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
-  document.documentElement.classList.add('v7hero-on');
-
-  var title = hero.querySelector('[data-v7title]');
-  var ticking = false;
-
-  function clamp(v,a,b){ return v<a?a:(v>b?b:v); }
-  function ramp(v,a,b){ return clamp((v-a)/(b-a),0,1); }
-  function lerp(a,b,t){ return a+(b-a)*t; }
-
-  function frame(){
-    ticking = false;
-    var rect  = hero.getBoundingClientRect();
-    var total = hero.offsetHeight - window.innerHeight;
-    if (total <= 0) return;
-    var p  = clamp(-rect.top, 0, total) / total;
-    var pp = ramp(p, 0, 0.60);
-
-    var s = hero.style;
-    s.setProperty('--p',   p.toFixed(4));
-    s.setProperty('--fgs', lerp(1, 5.5, pp).toFixed(3));
-    s.setProperty('--fgo', (1 - pp).toFixed(3));
-    s.setProperty('--bgs', lerp(1, 1.3, pp).toFixed(3));
-    s.setProperty('--bgo', (1 - ramp(p, .42, .60)).toFixed(3));
-    s.setProperty('--to',  (1 - pp*pp).toFixed(3));
-    s.setProperty('--ty',  (-80 * pp * pp).toFixed(1) + 'px');
-    s.setProperty('--s2o', (ramp(p,.58,.72) * (1 - ramp(p,.84,.92))).toFixed(3));
-    s.setProperty('--s2s', lerp(.94, 1, ramp(p,.58,.74)).toFixed(3));
-    s.setProperty('--s3o', ramp(p,.82,.94).toFixed(3));
-    s.setProperty('--s3y', lerp(80, 0, ramp(p,.82,.94)).toFixed(1) + 'px');
-
-    if (title && p > 0.60) title.classList.add('is-in');
+  var rm = matchMedia('(prefers-reduced-motion: reduce)').matches || !window.gsap;
+  if(rm){ document.querySelectorAll('.show .act').forEach(function(a){ a.style.opacity=1; a.style.transform='none'; }); document.querySelectorAll('.show .fr').forEach(function(f){ f.classList.add('in'); }); }
+  // six rooms as 4K stills; the scroll pushes slowly into each one and dissolves to the next
+  var ROOMS = ['rooms/r1-corridor.webp','rooms/r2-floor.webp','rooms/r3-rawbar.webp','rooms/r4-bar.webp','rooms/r4-fire.webp','rooms/r6-dj.webp'];
+  var N = ROOMS.length, frames = new Array(N), MOVES = [[0.5,0.5,1.0,1.10],[0.45,0.5,1.04,1.14],[0.5,0.5,1.0,1.12],[0.4,0.6,1.0,1.12],[0.5,0.55,1.02,1.14],[0.5,0.55,1.0,1.09]]; // [focus x, focus y, scale from, scale to]
+  var pre = document.getElementById('pre'), prebar = document.getElementById('prebar'), prepct = document.getElementById('prepct');
+  var canvas = document.getElementById('film'), ctx = canvas.getContext('2d'), walkP = 0, lastKey = '';
+  function size(){ var dpr = Math.min(2, devicePixelRatio||1); canvas.width = innerWidth*dpr; canvas.height = innerHeight*dpr; ctx.imageSmoothingEnabled = true; ctx.imageSmoothingQuality = 'high'; lastKey = ''; draw(); }
+  function cover(im, fx, fy, sc, alpha){ // draw an image covering the canvas, scaled about a focus point
+    var cw = canvas.width, ch = canvas.height, s0 = Math.max(cw/im.width, ch/im.height)*sc, w = im.width*s0, h = im.height*s0;
+    var x = cw*fx - w*fx, y = ch*fy - h*fy; ctx.globalAlpha = alpha; ctx.drawImage(im, x, y, w, h); ctx.globalAlpha = 1;
   }
-
-  function onScroll(){
-    if (!ticking){ ticking = true; requestAnimationFrame(frame); }
+  function draw(){
+    if(!frames.some(function(f){ return f && f.ok; })) return;
+    var seg = 1/N, i = Math.min(N-1, Math.floor(walkP/seg)), t = (walkP - i*seg)/seg, FADE = .18;
+    var key = i + ':' + t.toFixed(3); if(key === lastKey) return; lastKey = key;
+    var a = frames[i] && frames[i].ok ? frames[i] : null, m = MOVES[i];
+    ctx.fillStyle = '#000'; ctx.fillRect(0,0,canvas.width,canvas.height);
+    if(a) cover(a, m[0], m[1], m[2] + (m[3]-m[2])*t, 1);
+    if(t > 1-FADE && i < N-1 && frames[i+1] && frames[i+1].ok){ var n = MOVES[i+1]; cover(frames[i+1], n[0], n[1], n[2], (t-(1-FADE))/FADE); }
   }
+  function load(i, cb){ var im = new Image(); im.onload = function(){ im.ok = true; cb && cb(); lastKey=''; draw(); }; im.onerror = function(){ cb && cb(); }; im.src = ROOMS[i]; frames[i] = im; }
+  var done = 0, opened = false;
+  setTimeout(function(){ if(!opened){ opened = true; pre.classList.add('off'); start(); } }, 7000);
+  function tick(){ var p = Math.min(1, done/N); if(window.gsap) gsap.set(prebar,{scaleX:p}); else prebar.style.transform = 'scaleX('+p+')'; prepct.textContent = 'Opening after dark · ' + Math.round(p*100) + '%';
+    if(!opened && done >= 1){ opened = true; setTimeout(function(){ pre.classList.add('off'); start(); }, 600); } }
+  load(0, function(){ done++; tick(); for(var k=1;k<N;k++) load(k, function(){ done++; tick(); }); });
+  addEventListener('resize', size); size();
 
-  window.addEventListener('scroll', onScroll, {passive:true});
-  window.addEventListener('resize', onScroll);
-  frame();
-})();
-</script>
+  if(rm){ document.documentElement.classList.add('rm'); return; }
+  gsap.registerPlugin(ScrollTrigger, ScrollSmoother);
+  ScrollTrigger.config({ ignoreMobileResize:true });
+  if(matchMedia('(hover:hover)').matches){ ScrollSmoother.create({ smooth:1.2, effects:false, normalizeScroll:true }); }
 
-<script>
-/* ---- preview film: the poster swaps to the player on click ---- */
-(function(){
-  var f = document.querySelector('[data-jfilm]');
-  if (!f) return;
-  f.addEventListener('click', function(){
-    if (f.querySelector('video')) return;
-    var v = document.createElement('video');
-    v.src = '../jade-manila/v/jade-preview.mp4';
-    v.poster = '../jade-manila/v/jade-preview-poster.jpg';
-    v.controls = true; v.autoplay = true; v.playsInline = true;
-    v.setAttribute('playsinline', '');
-    f.textContent = '';
-    f.appendChild(v);
-    f.style.cursor = 'default';
-  });
-})();
+  function start(){
+    if(rm) return;
+    var chaps = gsap.utils.toArray('.chap'), rail = document.querySelectorAll('#rail i'), ctr = document.getElementById('ctr'), intro = document.getElementById('intro');
+    var strands = gsap.utils.toArray('.vs'), vscrim = document.getElementById('vscrim'), vcue = document.querySelector('.vines .cue'), water = document.getElementById('water');
+    strands.forEach(function(v){ v._x = (innerWidth < 760 && v.dataset.mx) ? +v.dataset.mx : +v.dataset.x; v._s = +v.dataset.s; v._d = +v.dataset.d; gsap.set(v,{xPercent:-50, x:v._x+'vw', scale:v._s}); });
+    var PART = 0.16; // first 16% of the pin parts the curtain
 
-/* ---- photographs that move: hover plays, click pins ----
-   Fifteen of the stills have a matching clip in v/, named after the still itself.
-   The <video> is built on demand (nothing downloads until asked), dropped into the
-   photograph's nearest positioned ancestor and sized from the image's own rect, so
-   no sheet layout is disturbed and the print pages are unaffected. */
-(function(){
-  var CLIPS = ['nr-arrival','nr-corridor','nr-entry-onyx','nr-grand-room','nr-bar',
-               'nr-dining-curve','nr-spiral','nr-stage','nr-chefs-counter',
-               'nr-private-dining','nr-powder-room','glassware'];
-  var fits = [];
-
-  function host(im){
-    var el = im.parentElement;
-    while (el && el !== document.body){
-      if (getComputedStyle(el).position !== 'static') return el;
-      el = el.parentElement;
+    // weather on the curtain: rain loops, subsides, one drop falls into the water below and ripples; then it rains again
+    var drop = document.getElementById('drop'), rip = document.getElementById('rip'), rings = rip.querySelectorAll('i'), splash = rip.querySelector('b');
+    var heroImg = document.getElementById('heroImg'), glint = document.getElementById('glint'), gctx = glint.getContext('2d');
+    var rain = document.getElementById('rain'), rctx = rain.getContext('2d'), stage = document.querySelector('.walk .stage'), haze = document.getElementById('haze');
+    var W = 0, H = 0, DPR = 1, curtainQ = 0, wx = {I:0, G:0}, streaks = [], ripples = [], pts = [], tip = null;
+    function sizeRain(){ DPR = innerWidth < 760 ? 1 : Math.min(1.5, devicePixelRatio||1); W = stage.clientWidth; H = stage.clientHeight; rain.width = W*DPR; rain.height = H*DPR; }
+    sizeRain(); addEventListener('resize', sizeRain);
+    // sample the centre strand's opaque, bright pixels: where droplets can sit, and where the tip is
+    function sample(){
+      try{
+        var c = document.createElement('canvas'), w = 240, h = Math.round(240*heroImg.naturalHeight/heroImg.naturalWidth); c.width = w; c.height = h;
+        var x = c.getContext('2d'); x.drawImage(heroImg,0,0,w,h); var d = x.getImageData(0,0,w,h).data, cand = [];
+        for(var i=0;i<d.length;i+=4){ if(d[i+3]>230 && (d[i]+d[i+1]+d[i+2])>330){ cand.push([(i/4)%w/w, Math.floor(i/4/w)/h]); } }
+        for(var k=0;k<34 && cand.length;k++){ pts.push(cand.splice(Math.floor(Math.random()*cand.length),1)[0].concat([Math.random()*6.28, .6+Math.random()*1.2, 5+Math.random()*6])); }
+        var lowY = -1, sx = 0, sn = 0;
+        for(var yy=h-1; yy>=0 && lowY<0; yy--){ for(var xx=0; xx<w; xx++){ if(d[(yy*w+xx)*4+3] > 200){ lowY = yy; break; } } }
+        if(lowY >= 0){ for(var y2=Math.max(0,lowY-6); y2<=lowY; y2++) for(var x2=0; x2<w; x2++){ if(d[(y2*w+x2)*4+3] > 200){ sx += x2; sn++; } } }
+        tip = (lowY >= 0 && sn) ? [sx/sn/w, (lowY+1)/h] : [0.5, 0.99];
+        glint.width = heroImg.clientWidth*DPR; glint.height = heroImg.clientHeight*DPR;
+      }catch(e){ pts = []; tip = [0.5, 0.985]; }
     }
-    el = im.parentElement;
-    el.style.position = 'relative';
-    return el;
-  }
-
-  /* Sheets carry a fractional zoom under 880px. getBoundingClientRect() reports viewport
-     pixels, but left/top/width/height set on a child are read back in the host's own
-     scale, so the two disagree and the clip lands short of the photograph. */
-  function zoomOf(el){
-    var z = 1;
-    for (var n = el; n && n.nodeType === 1; n = n.parentElement){
-      var v = parseFloat(getComputedStyle(n).zoom);
-      if (v && v !== 1) z *= v;
+    if(heroImg.complete && heroImg.naturalWidth) sample(); else heroImg.addEventListener('load', sample);
+    var N_STREAK = innerWidth < 760 ? 90 : 220;
+    for(var i=0;i<N_STREAK;i++) streaks.push({x:Math.random()*2000, y:Math.random()*1400, l:7+Math.random()*12, v:360+Math.random()*260, a:.1+Math.random()*.22});
+    function waterTop(){ return H*(1-waterFrac()) + H*waterFrac()*0.22; }
+    // the pool: a height-field water simulation (impulses from rain and the drop; waves spread, interfere and decay)
+    var wsim = document.getElementById('wsim'), wctx = wsim.getContext('2d'), GW = innerWidth < 760 ? 100 : 220, GH = innerWidth < 760 ? 30 : 56;
+    var hA = new Float32Array(GW*GH), hB = new Float32Array(GW*GH), wbuf = document.createElement('canvas'), bctx; wbuf.width = GW; wbuf.height = GH; bctx = wbuf.getContext('2d'); var wimg = bctx.createImageData(GW, GH), wpx = wimg.data;
+    function waterFrac(){ return 0.28; }
+    function sizeWater(){ wsim.width = W; wsim.height = Math.round(H*waterFrac()); }
+    sizeWater(); addEventListener('resize', sizeWater);
+    function poke(sx, sy, amp, rad){ // screen coords -> grid
+      var gx = Math.round(sx / W * GW), gy = Math.round((sy - H*(1-waterFrac())) / (H*waterFrac()) * GH), r = rad || 1;
+      for(var y=-r;y<=r;y++) for(var x=-r;x<=r;x++){ var X = gx+x, Y = gy+y; if(X>0 && X<GW-1 && Y>0 && Y<GH-1){ var f = 1 - Math.hypot(x,y)/(r+1); if(f>0) hA[Y*GW+X] -= amp*f; } }
     }
-    return z || 1;
-  }
+    function stepWater(I){
+      var damp = .968;
+      for(var y=1;y<GH-1;y++){ var row = y*GW; for(var x=1;x<GW-1;x++){ var i = row+x; hB[i] = ((hA[i-1]+hA[i+1]+hA[i-GW]+hA[i+GW])*.5 - hB[i]) * damp; } }
+      var t = hA; hA = hB; hB = t;
+      // shade: still water is near-black jade; crests catch a cool highlight from above, troughs darken
+      for(var y=0;y<GH;y++){ var depth = y/GH, base = 6 + depth*4; for(var x=0;x<GW;x++){ var i = y*GW+x, hgt = hA[i], nx = (x>0&&x<GW-1) ? hA[i+1]-hA[i-1] : 0, ny = (y>0&&y<GH-1) ? hA[i+GW]-hA[i-GW] : 0;
+        var spec = Math.max(0, -ny*3.0) + Math.max(0, hgt*1.0), dark = Math.max(0, ny*2.0);
+        var r = base*.6 + spec*70 - dark*14, g = base*1.6 + spec*120 - dark*20, b = base*1.3 + spec*110 - dark*18;
+        var o = i*4; wpx[o] = r<0?0:r>255?255:r; wpx[o+1] = g<0?0:g>255?255:g; wpx[o+2] = b<0?0:b>255?255:b; wpx[o+3] = depth < .4 ? Math.round(235*depth/.4) : 235; } }
+      bctx.putImageData(wimg, 0, 0);
+      wctx.imageSmoothingEnabled = true; wctx.imageSmoothingQuality = 'high';
+      wctx.clearRect(0,0,wsim.width,wsim.height); wctx.drawImage(wbuf, 0, 0, GW, GH, 0, 0, wsim.width, wsim.height);
 
-  function box(el, im, h){
-    var z = zoomOf(h);
-    var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
-    el.style.left   = (b.left - a.left) / z + 'px';
-    el.style.top    = (b.top  - a.top)  / z + 'px';
-    el.style.width  = b.width  / z + 'px';
-    el.style.height = b.height / z + 'px';
-  }
-
-  function wire(im, name){
-    var h = host(im), vid = null, pinned = false;
-
-    var badge = document.createElement('span');
-    badge.className = 'jv-badge';
-    badge.innerHTML = '&#9654;';
-    h.appendChild(badge);
-
-    function fit(){
-      var z = zoomOf(h);
-      var a = h.getBoundingClientRect(), b = im.getBoundingClientRect();
-      badge.style.left = ((b.left - a.left) / z + 8) + 'px';
-      badge.style.top  = ((b.top - a.top + b.height) / z - 30) + 'px';
-      if (vid) box(vid, im, h);
     }
-
-    function play(){
-      if (!vid){
-        vid = document.createElement('video');
-        vid.className = 'jv';
-        vid.muted = true; vid.loop = true; vid.playsInline = true;
-        vid.setAttribute('playsinline', '');
-        vid.setAttribute('preload', 'none');
-        vid.style.borderRadius = getComputedStyle(im).borderRadius;
-        vid.src = '../jade-manila/v/' + name + '.mp4';
-        /* only reveal once frames are genuinely running, never on a stalled load */
-        vid.addEventListener('playing', function(){
-          vid.classList.add('is-on');
-          badge.classList.add('is-hidden');
-        });
-        h.appendChild(vid);
+    var waterSplashQueued = 0;
+    // drops on the glass
+    var pane = document.getElementById('pane'), pctx = pane.getContext('2d'), fog = document.getElementById('fog'), gd = [], MOB = innerWidth < 760, MAXD = MOB ? 26 : 90, MAXR = MOB ? 2.4 : 3.4;
+    function sizePane(){ pane.width = W*DPR; pane.height = H*DPR; }
+    sizePane(); addEventListener('resize', sizePane);
+    function drawGlass(I, s){
+      pctx.setTransform(DPR,0,0,DPR,0,0); pctx.clearRect(0,0,W,H);
+      fog.style.opacity = I*.8;
+      if(I > .05 && gd.length < MAXD && Math.random() < .22*I) gd.push({x:Math.random()*W, y:Math.random()*H*.9, r:.8+Math.random()*1.2, vy:0, run:false, trail:[], age:0, cap:MAXR*(.7+Math.random()*.3)});
+      for(var i=gd.length-1;i>=0;i--){ var d = gd[i]; d.age += s;
+        if(!d.run){ d.r += (I > .05 ? (.18+I*.32) : -.9) * s; if(d.r <= 0){ gd.splice(i,1); continue; } if(d.r > d.cap) d.r = d.cap;
+          if(d.r > d.cap*.92 && Math.random() < .004 + I*.01*s*60){ d.run = true; d.vy = 8; } }
+        else { d.vy += 90*s; d.y += d.vy*s; d.x += Math.sin(d.age*5)*10*s; d.r -= .5*s; d.trail.push({x:d.x, y:d.y, a:.5}); if(d.trail.length > 22) d.trail.shift(); if(d.y > H+10 || d.r < 1){ gd.splice(i,1); continue; } }
+        if(d.trail.length > 1){ pctx.lineCap = 'round'; pctx.lineWidth = Math.max(.6, d.r*.45);
+          for(var k=1;k<d.trail.length;k++){ var t0 = d.trail[k-1], t1 = d.trail[k]; t1.a -= .35*s; if(t1.a <= 0) continue;
+            pctx.strokeStyle = 'rgba(200,235,228,' + (t1.a*.3) + ')'; pctx.beginPath(); pctx.moveTo(t0.x, t0.y); pctx.lineTo(t1.x, t1.y); pctx.stroke(); } }
+        var g = pctx.createRadialGradient(d.x, d.y+d.r*.25, d.r*.15, d.x, d.y, d.r); g.addColorStop(0,'rgba(215,245,238,.4)'); g.addColorStop(.7,'rgba(150,205,190,.2)'); g.addColorStop(.92,'rgba(5,25,18,.5)'); g.addColorStop(1,'rgba(5,25,18,0)');
+        pctx.fillStyle = g; pctx.beginPath(); pctx.ellipse(d.x, d.y, d.r, d.r*(d.run?1.45:1.08), 0, 0, 6.283); pctx.fill();
+        pctx.fillStyle = 'rgba(255,255,255,.7)'; pctx.beginPath(); pctx.arc(d.x-d.r*.35, d.y-d.r*.4, Math.max(.5,d.r*.25), 0, 6.283); pctx.fill(); }
+    }
+    function frame(t, dt){
+      if((document.hidden && !window.__forceWeather) || curtainQ > PART*1.1 || !W){ if(W){ rctx.setTransform(1,0,0,1,0,0); rctx.clearRect(0,0,rain.width,rain.height); pctx.setTransform(1,0,0,1,0,0); pctx.clearRect(0,0,pane.width,pane.height); } return; }
+      if(!wsim.width) sizeWater();
+      var I = wx.I, s = dt/1000, wt = waterTop(); haze.style.opacity = I;
+      rctx.setTransform(DPR,0,0,DPR,0,0); rctx.clearRect(0,0,W,H);
+      if(I > .01){
+        rctx.lineWidth = .8; rctx.lineCap = 'round';
+        var n = Math.round(N_STREAK*I);
+        for(var i=0;i<n;i++){ var r = streaks[i]; r.y += r.v*s*(0.85+0.3*I); r.x += r.v*s*0.06;
+          if(r.y > wt + 20){ r.y = -40 - Math.random()*200; r.x = Math.random()*W*1.1 - W*.05; if(Math.random() < .22*I) poke(r.x, wt + Math.random()*(H-wt)*.85, .08+Math.random()*.12, 1); }
+          if(r.x > W+40) r.x -= W+80;
+          rctx.strokeStyle = 'rgba(200,240,232,' + (r.a*I) + ')'; rctx.beginPath(); rctx.moveTo(r.x, r.y); rctx.lineTo(r.x - r.l*.06, r.y - r.l); rctx.stroke(); }
       }
-      box(vid, im, h);
-      var p = vid.play();
-      if (p && p.catch) p.catch(function(){});
+      drawGlass(I, s);
+      stepWater(I);
+      // glints on the centre strand
+      var G = wx.G;
+      if(glint.width){ gctx.setTransform(DPR,0,0,DPR,0,0); gctx.clearRect(0,0,glint.width,glint.height);
+        if(G > .01){ var gw = heroImg.clientWidth, gh = heroImg.clientHeight;
+          var sc = gw/240;
+          for(var k=0;k<pts.length;k++){ var p = pts[k], tw = .7 + .3*Math.sin(t/1000*p[3] + p[2]), al = G*tw, px = p[0]*gw, py = p[1]*gh, R = p[4]*sc*.55;
+            // a bead of water: dark rim, glassy body, bright highlight
+            var body = gctx.createRadialGradient(px, py+R*.2, R*.1, px, py, R); body.addColorStop(0,'rgba(190,240,230,'+(al*.35)+')'); body.addColorStop(.75,'rgba(120,200,185,'+(al*.22)+')'); body.addColorStop(.92,'rgba(10,40,30,'+(al*.55)+')'); body.addColorStop(1,'rgba(10,40,30,0)');
+            gctx.fillStyle = body; gctx.beginPath(); gctx.ellipse(px, py, R, R*1.15, 0, 0, 6.283); gctx.fill();
+            var hi = gctx.createRadialGradient(px-R*.35, py-R*.45, 0, px-R*.35, py-R*.45, R*.5); hi.addColorStop(0,'rgba(255,255,255,'+al+')'); hi.addColorStop(1,'rgba(255,255,255,0)');
+            gctx.fillStyle = hi; gctx.beginPath(); gctx.arc(px-R*.35, py-R*.45, R*.5, 0, 6.283); gctx.fill(); } } }
     }
-
-    function stop(){
-      if (!vid) return;
-      vid.classList.remove('is-on');
-      badge.classList.remove('is-hidden');
-      vid.pause();
+    gsap.ticker.add(frame);
+    var vinesEl = document.getElementById('vines');
+    stage.addEventListener('pointermove', function(e){ var r = stage.getBoundingClientRect(); vinesEl.style.setProperty('--mx', ((e.clientX - r.left)/r.width - .5)*2); vinesEl.style.setProperty('--my', ((e.clientY - r.top)/r.height - .5)*2); });
+    function theDrop(done){
+      var srcImg = heroImg.offsetParent ? heroImg : document.querySelector('.vs.l1 img'), r = srcImg.getBoundingClientRect(), sr = stage.getBoundingClientRect(), tp = (srcImg === heroImg && tip) ? tip : [0.5,0.97];
+      var x = r.left - sr.left + r.width*tp[0], y0 = r.top - sr.top + r.height*tp[1] - 4, y1 = waterTop() + (H - waterTop())*.38;
+      gsap.set(drop,{x:x, y:y0, scale:0, scaleY:1, opacity:1}); gsap.set(rip,{x:x, y:y1}); gsap.set([rings, splash],{scale:0, opacity:0});
+      gsap.timeline({ onComplete: done })
+        .to(drop,{scale:1, duration:1.8, ease:'power1.inOut'})
+        .to(drop,{scaleY:1.35, duration:.4, ease:'power1.in'})
+        .to(drop,{y:y1, scaleY:1.15, duration:.7, ease:'power2.in'})
+        .set(drop,{opacity:0})
+        .add(function(){ poke(x, y1, 4.8, 2); })
+        .add(function(){ poke(x, y1, 1.0, 1); }, '+=.28')
+        .add(function(){ poke(x, y1, .5, 1); }, '+=.22')
+        .to({},{duration:4});
     }
-
-    im.style.cursor = 'pointer';
-    im.addEventListener('mouseenter', function(){ if (!pinned) play(); });
-    im.addEventListener('mouseleave', function(){ if (!pinned) stop(); });
-    im.addEventListener('click', function(e){
-      e.preventDefault();
-      pinned = !pinned;
-      if (pinned) play(); else stop();
-    });
-
-    fits.push(fit);
-    fit();
+    var firstCycle = true;
+    function weather(){
+      if((document.hidden && !window.__forceWeather) || curtainQ > PART*1.1){ gsap.delayedCall(2, weather); return; }
+      if(firstCycle){ // the opening beat: stillness, one drop, the ripple. Rain comes later.
+        firstCycle = false;
+        gsap.timeline({ onComplete:function(){ gsap.delayedCall(1.5, weather); } })
+          .to({},{duration:1.2})
+          .add(function(){ theDrop(function(){}); })
+          .to({},{duration:8});
+        return;
+      }
+      gsap.timeline({ onComplete:function(){ gsap.delayedCall(2.5, weather); } })
+        .to(wx,{I:1, G:1, duration:4, ease:'power1.inOut'})
+        .to({},{duration:7})
+        .to(wx,{I:0, duration:6, ease:'power2.inOut'})
+        .to(wx,{G:.55, duration:3, ease:'power1.out'}, '<1')
+        .to({},{duration:1.2})
+        .add(function(){ theDrop(function(){ gsap.to(wx,{G:0, duration:2.5}); }); })
+        .to({},{duration:7.5});
+    }
+    gsap.delayedCall(.6, weather);
+    window.__dropNow = function(){ theDrop(function(){}); };
+    ScrollTrigger.create({ trigger:'.walk', start:'top top', end:'+=720%', pin:true, scrub:true, onUpdate:function(st){
+      var q = st.progress, e = Math.min(1, q/PART); e = e*e*(3-2*e); curtainQ = q;
+      strands.forEach(function(v){
+        if(v._x === 0){ gsap.set(v,{x:'0vw', y:(-120*e)+'vh', rotation:0, scale:v._s}); return; }
+        // layered lift: near strands go first and fastest, far strands trail (parallax)
+        var lag = .22*(1-v._d), el = Math.max(0, Math.min(1, (e - lag)/(1 - lag))), lift = el * (18 + 92*v._d*v._d);
+        gsap.set(v,{x:v._x+'vw', y:(-lift)+'vh', rotation:0, scale:v._s}); });
+      gsap.set([water, wsim],{yPercent:70*e, opacity:1-e}); gsap.set('#glass',{opacity:1-e});
+      gsap.set(vscrim,{opacity:1-e}); gsap.set(vcue,{opacity:1-Math.min(1,q/(PART*.5))}); document.getElementById('vines').style.visibility = e >= 1 ? 'hidden' : 'visible';
+      var p = Math.max(0, (q-PART)/(1-PART)); walkP = p; draw();
+      var f = Math.max(0, Math.min(1, (p-0.07)/0.06)); gsap.set(intro,{opacity: 1 - f, filter:'blur(' + f*14 + 'px)'});
+      var active = -1;
+      chaps.forEach(function(ch,i){ var a = +ch.dataset.a, b = +ch.dataset.b, inn = p>=a && p<=b; var e = Math.min(1, (p-a)/0.03, (b-p)/0.03); if(inn){ active = i; gsap.set(ch,{opacity:Math.max(0,e), y:(1-Math.max(0,e))*20, pointerEvents:'auto'}); } else gsap.set(ch,{opacity:0, pointerEvents:'none'}); });
+      if(active<0) active = Math.min(5, Math.floor(p*6));
+      rail.forEach(function(r,i){ r.classList.toggle('on', i===active); }); ctr.textContent = String(active+1).padStart(2,'0');
+    }});
+    // gold arch draws in, line-works rise
+    ['archp','archq'].forEach(function(id){ var p = document.getElementById(id), L = p.getTotalLength(); p.style.strokeDasharray = L; p.style.strokeDashoffset = L;
+      gsap.to(p,{strokeDashoffset:0, ease:'none', scrollTrigger:{trigger:'#arch', start:'top 85%', end:'bottom 45%', scrub:true}}); });
+    gsap.to('.lines i',{scaleY:1, stagger:.15, ease:'none', scrollTrigger:{trigger:'.vine', start:'top 80%', end:'bottom 60%', scrub:true}});
+    ScrollTrigger.batch('.show .act',{ start:'top 88%', once:true, onEnter:function(els){ gsap.to(els,{opacity:1, y:0, stagger:.1, duration:.8, ease:'power2.out'}); } });
+    ScrollTrigger.batch('.show .fr',{ start:'top 85%', once:true, onEnter:function(els){ els.forEach(function(e){ e.classList.add('in'); }); } });
+    ScrollTrigger.batch('.dish',{ start:'top 88%', once:true, onEnter:function(els){ gsap.to(els,{opacity:1, y:0, stagger:.07, duration:.7, ease:'power2.out'}); } });
+    gsap.utils.toArray('.vine h2, .rooms h2, .menu h2, .chef h2, .show h2, .night .copy, .glass').forEach(function(el){ gsap.from(el,{y:40, opacity:0, duration:1, ease:'power2.out', scrollTrigger:{trigger:el, start:'top 88%', once:true}}); });
+    ScrollTrigger.refresh();
   }
 
-  [].forEach.call(document.querySelectorAll('.kit-wrap img'), function(im){
-    /* the cover stays a still — the clip is far too soft blown up to a full page */
-    if (im.closest('.cover-photo')) return;
-    var m = /img\/([^\/]+)\.jpg/.exec(im.getAttribute('src') || '');
-    if (m && CLIPS.indexOf(m[1]) > -1) wire(im, m[1]);
+  // cursor
+  var curEl = document.getElementById('cur'), curLab = document.getElementById('curlab');
+  var cx = gsap.quickTo(curEl,'x',{duration:.18,ease:'power3'}), cy = gsap.quickTo(curEl,'y',{duration:.18,ease:'power3'});
+  addEventListener('pointermove',function(e){ cx(e.clientX); cy(e.clientY); var t = e.target.closest('[data-cursor],a,button'); if(t){ curEl.classList.add('big'); curLab.textContent = t.dataset.cursor || 'Open'; } else curEl.classList.remove('big'); });
+  ScrollTrigger.create({ trigger:'.walk', start:'top top', end:'+=720%', onToggle:function(st){ if(st.isActive){ curLab.textContent='Scroll'; } } });
+
+  // sound
+  var amb = document.getElementById('amb'), snd = document.getElementById('snd'), sndlab = document.getElementById('sndlab');
+  snd.addEventListener('click',function(){ if(amb.paused){ amb.volume = 0; amb.play().then(function(){ gsap.to(amb,{volume:.6,duration:2}); snd.classList.add('on'); snd.setAttribute('aria-pressed','true'); sndlab.textContent='Sound on'; }).catch(function(){}); } else { gsap.to(amb,{volume:0,duration:.8,onComplete:function(){ amb.pause(); }}); snd.classList.remove('on'); snd.setAttribute('aria-pressed','false'); sndlab.textContent='Sound'; } });
+
+  // liquid gallery
+  var VS = 'attribute vec2 p;varying vec2 v;void main(){v=p*.5+.5;v.y=1.-v.y;gl_Position=vec4(p,0.,1.);}';
+  var FS = 'precision mediump float;varying vec2 v;uniform sampler2D tex;uniform vec2 m;uniform float a;uniform float t;uniform vec2 cov;' +
+    'void main(){vec2 uv=(v-.5)*cov+.5;vec2 d=uv-m;float r=length(d);float rip=sin(r*34.-t*5.)*exp(-r*5.)*.018*a;vec2 off=normalize(d+1e-4)*rip;' +
+    'float ab=.004*a;vec3 c=vec3(texture2D(tex,uv+off*(1.+ab*40.)).r,texture2D(tex,uv+off).g,texture2D(tex,uv+off*(1.-ab*40.)).b);' +
+    'c+=vec3(.25,.73,.63)*exp(-r*9.)*.14*a;gl_FragColor=vec4(c,1.);}';
+  document.querySelectorAll('.lq').forEach(function(box){
+    var img = box.querySelector('img'), cv = box.querySelector('canvas'), gl = cv.getContext('webgl',{alpha:false,antialias:false}); if(!gl) return;
+    function sh(t,s){ var o=gl.createShader(t); gl.shaderSource(o,s); gl.compileShader(o); return o; }
+    var pr = gl.createProgram(); gl.attachShader(pr,sh(gl.VERTEX_SHADER,VS)); gl.attachShader(pr,sh(gl.FRAGMENT_SHADER,FS)); gl.linkProgram(pr); gl.useProgram(pr);
+    var buf = gl.createBuffer(); gl.bindBuffer(gl.ARRAY_BUFFER,buf); gl.bufferData(gl.ARRAY_BUFFER,new Float32Array([-1,-1,1,-1,-1,1,1,1]),gl.STATIC_DRAW);
+    var loc = gl.getAttribLocation(pr,'p'); gl.enableVertexAttribArray(loc); gl.vertexAttribPointer(loc,2,gl.FLOAT,false,0,0);
+    var tex = gl.createTexture(), uM = gl.getUniformLocation(pr,'m'), uA = gl.getUniformLocation(pr,'a'), uT = gl.getUniformLocation(pr,'t'), uC = gl.getUniformLocation(pr,'cov');
+    var m=[.5,.5], tm=[.5,.5], amt=0, tamt=0, ready=false, raf=null, t0=performance.now();
+    function up(){ gl.bindTexture(gl.TEXTURE_2D,tex); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_S,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_WRAP_T,gl.CLAMP_TO_EDGE); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MIN_FILTER,gl.LINEAR); gl.texParameteri(gl.TEXTURE_2D,gl.TEXTURE_MAG_FILTER,gl.LINEAR); try{ gl.texImage2D(gl.TEXTURE_2D,0,gl.RGB,gl.RGB,gl.UNSIGNED_BYTE,img); ready=true; img.style.visibility='hidden'; }catch(e){ ready=false; } size(); render(); }
+    function size(){ var r = box.getBoundingClientRect(); cv.width = Math.round(r.width*Math.min(1.5,devicePixelRatio||1)); cv.height = Math.round(r.height*Math.min(1.5,devicePixelRatio||1)); gl.viewport(0,0,cv.width,cv.height);
+      var ia = img.naturalWidth/img.naturalHeight, ba = r.width/r.height; gl.uniform2f(uC, ba>ia ? 1 : ba/ia, ba>ia ? ia/ba : 1); }
+    function render(){ if(!ready) return; m[0]+=(tm[0]-m[0])*.08; m[1]+=(tm[1]-m[1])*.08; amt+=(tamt-amt)*.06;
+      gl.uniform2f(uM,m[0],m[1]); gl.uniform1f(uA,amt); gl.uniform1f(uT,(performance.now()-t0)/1000); gl.drawArrays(gl.TRIANGLE_STRIP,0,4);
+      if(amt>.002 || tamt>0) raf = requestAnimationFrame(render); else raf = null; }
+    box.addEventListener('pointerenter',function(){ tamt=1; if(!raf) render(); });
+    box.addEventListener('pointermove',function(e){ var r = box.getBoundingClientRect(); tm=[(e.clientX-r.left)/r.width,(e.clientY-r.top)/r.height]; });
+    box.addEventListener('pointerleave',function(){ tamt=0; if(!raf) render(); });
+    addEventListener('resize', function(){ if(ready){ size(); render(); } });
+    if(img.complete && img.naturalWidth) up(); else img.addEventListener('load', up);
   });
 
-  if (!fits.length) return;
-  function refit(){ for (var i = 0; i < fits.length; i++) fits[i](); }
-  window.addEventListener('resize', refit);
-  window.addEventListener('load', refit);
+  // menu follow image
+  var fol = document.getElementById('follow'), imgs = fol.querySelectorAll('img'), list = document.getElementById('list');
+  var fx = gsap.quickTo(fol,'x',{duration:.5,ease:'power3'}), fy = gsap.quickTo(fol,'y',{duration:.5,ease:'power3'});
+  list.addEventListener('pointermove',function(e){ fx(e.clientX+40); fy(e.clientY); });
+  list.querySelectorAll('.dish').forEach(function(d){ d.addEventListener('pointerenter',function(){ imgs.forEach(function(i){ i.classList.toggle('on', i.dataset.k===d.dataset.img); }); gsap.to(fol,{opacity:1, scale:1, rotate:-2, duration:.5, ease:'power3.out'}); }); });
+  list.addEventListener('pointerleave',function(){ gsap.to(fol,{opacity:0, scale:.8, rotate:-6, duration:.4}); });
 })();
 </script>
-
 </body>
 </html>

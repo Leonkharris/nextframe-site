@@ -2,6 +2,42 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-28 (later) — v3 becomes **Design D**, the frontend site
+
+Leon: *"This is still the old design. This is not what I asked for."* He was right — the v3
+I had shipped was the old paged deck with new content in it. What he meant by "the D
+variation" is a **real design**, and it was never in this repo.
+
+**Where it was.** The artifact **Jade Motion Prototypes** —
+`https://claude.ai/artifact/C58UEe3UY2TPS7Adse3sXS` — a hub of four scroll-animated
+prototypes (353 published files): A *The Curtain*, B *The Evening*, C *The Onyx*, and
+**D *The Walkthrough***, which the hub itself ranks first and describes as "the one built to
+the book" (A/B/C keep their own display faces). Disk and site searches found nothing because
+it had never been committed anywhere.
+
+**v3 is now Design D.** `d.html` → `jade-manila-v3/index.html`, title *Jade Manila — Rare by
+design*: GSAP ScrollTrigger + ScrollSmoother, nav of The Rooms / The Table / The Show /
+The Night Set / Reserve, fourteen chapters over a 14,702 px scroll. **No investment pages** —
+per Leon, v3 is the frontend.
+
+**Only 33 of the artifact's 353 files were needed.** d.html never references `seq/` (the
+288-file frame sequence belongs to another prototype), so the port is **6.3 MB**, not ~50 MB.
+Verified: 33 referenced, 0 missing.
+
+**Two fixes on the way in**
+- The prototype **A/B/C/D switcher** came across inside d.html, linking to `a.html`/`b.html`/
+  `c.html`, which were not ported and would have 404'd. Removed, with its CSS.
+- **A real loading bug:** `img/show-stage.jpg` and `img/show-stair.jpg` carried
+  `loading="lazy"` inside the pinned Show section. ScrollSmoother translates the page rather
+  than scrolling it, so the browser's lazy heuristic never fires and **those two would never
+  have loaded for a visitor** — they served 200 and a direct `new Image()` returned 1376 px,
+  which is what proved it was the attribute and not the file. `loading="lazy"` removed.
+
+**The deck is not lost:** my Version 3 deck (six signature dishes, the minimalist menu spread
+with The Horny Oyster, The Mark from Yohji's pack) is kept at `jade-manila-v3/deck.html`.
+
+Verified after the fixes: 50 images, 0 broken, GSAP live, video playing.
+
 ## 2026-10-28 — Jade Manila **Version 3**: the October brand pack mounted
 
 Leon sent the Oct-25 material and said to mount everything as Version 3 and make it live.
