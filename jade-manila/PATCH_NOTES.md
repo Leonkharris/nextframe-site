@@ -2,6 +2,40 @@
 
 > Newest first. Append, never rewrite.
 
+## 2026-10-28 — Jade Manila **Version 3**: the October brand pack mounted
+
+Leon sent the Oct-25 material and said to mount everything as Version 3 and make it live.
+New deck at **`/jade-manila-v3/`** (24 numbered pages across 25 sheets).
+
+**Where the material came from.** Both PDFs were read at source rather than off the chat
+screenshots — the screenshots are 1600×1200 composites, the PDFs hold the originals:
+- `Jade_Signature_Dishes_Photo_Collection.pdf` — 1 page, **6 dish photographs at ~1300px**
+  with their real names and garnish lines.
+- `Jade Assets Oct 25.pdf` — 14 pages by **Yohji Alexander Kanki**, the real brand pack:
+  menu covers at 1163×1632, and menu/envelope/coaster/napkin mockups at **2752×1536**, plus
+  a thank-you card at **3840×2160**.
+All extracted at native resolution to `Jade supper club/brand-assets-oct25/` (outside the
+published repo), then web-optimised into `jade-manila-v3/img/` — 14 files, 2.7 MB.
+
+**The six signature dishes** now carry the menu page, replacing the AI-generated plates:
+Caviar Cannoli · Sweet Corn–Coconut Chawanmushi · King Crab Toast · Lobster Paccheri ·
+Peking-Spiced Duck · Matcha Tiramisu. Dish-to-name mapping was confirmed **visually**, not
+by xref order — image order in the PDF does not follow the text order.
+
+**New page 12 · The Menu.** Leon's brief verbatim: minimalist, dishes on one side, the
+signature photo on the left. Built as an A4 bifold spread — plate left, list right, the mark
+and nothing else — on the house stock, so the block sets every colour explicitly against the
+dark deck around it. **The Horny Oyster** is listed under *From the Bar* as the house oyster
+martini; its build is still with the bar, so nothing was invented beyond what Leon said.
+
+**The Mark** now shows the real applications — menu cover front and back, envelope, coaster,
+napkin, thank-you card — replacing the earlier AI mockups.
+
+**Shared assets, one copy.** `jade-manila-v3/` is index.html plus its own 14 new images;
+everything else resolves from `../jade-manila/`. Three decks now share one media set.
+
+Verified: 25 sheets, 0 overflow, 68 images loading, 6 dishes, 6 applications.
+
 ## 2026-10-19 (night) — Second deck: ₱15M for 18% at its own link
 
 Leon: *"2 decks the current one / And another to reflect the 15 M for 18%, the return on

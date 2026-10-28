@@ -356,3 +356,33 @@ return 6.2% / 157.8%; payback 4.78 / 2.40 yr; IRR 1.82% / 37.21%.
 **Open with Leon:** at ₱833,333/pt the base case returns only 6.2% over five years
 (IRR 1.82%). At a 90% distribution the same ticket returns 36.5% with payback at 3.99 yr.
 Raised with him; no change made without his word.
+
+
+## THREE decks as of 2026-10-28
+
+| | link | what it is |
+|---|---|---|
+| v1 | `/jade-manila/` | 5% at ₱675,000/pt = ₱3,375,000 |
+| 18% | `/jade-manila-18/` | 18% at ₱833,333/pt = ₱15,000,000 |
+| **v3** | **`/jade-manila-v3/`** | **current** — v1's terms plus the October brand pack |
+
+**v3 is the live front.** 24 numbered pages. It adds page 12 **The Menu** (the minimalist
+bifold), swaps the menu page to the six real signature dishes, and rebuilds **The Mark** from
+the real Oct-25 applications. Its investment pages still carry v1's 5% terms.
+
+**Asset provenance — do not re-derive from screenshots.** Native-resolution originals live in
+`Jade supper club/brand-assets-oct25/` (`assets-pdf/`, `signature-dishes/`), extracted from
+`Jade Assets Oct 25.pdf` (Yohji Alexander Kanki, 2752×1536 and 3840×2160) and
+`Jade_Signature_Dishes_Photo_Collection.pdf`. The chat screenshots of the caviar boards are
+only 1600×1200 composites — always prefer the PDFs.
+
+**The six dishes:** Caviar Cannoli (yellowtail mousse, sesame, Ossetra) · Sweet Corn–Coconut
+Chawanmushi (uni, Ossetra, chive oil) · King Crab Toast (milk bread, uni sabayon) · Lobster
+Paccheri (roasted-shell tomato dashi, Calabrian chili) · Peking-Spiced Duck (crisp leg,
+cucumber, scallion, plum-hoisin) · Matcha Tiramisu (espresso, mascarpone). **Match them by
+eye** — the PDF's image order does not follow its text order.
+
+**Still open:** the caviar *Private Collection* packaging boards (Leon wants them sliced into
+panels, upscaled and worked into a website) are **not done** — only 1600×1200 composites
+exist so far. The Horny Oyster has a name and a category but no build. The build-page line
+items are still the ₱40,083,352 original costing against the ₱35M+₱3M envelope.
