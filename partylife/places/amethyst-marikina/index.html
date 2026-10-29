@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Marikina</span></div><div><b>Address</b><span>Mayor Gil Fernando Ave</span></div><div><b>Google rating</b><span>4.0 from 4 reviews</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST Amethyst">Plan a night here</a><a href="https://www.google.com/maps/place/Amethyst/data=!4m7!3m6!1s0x3397b98d5c596033:0xd5bcd9abf1c707e5!8m2!3d14.637719!4d121.1022606!16s%2Fg%2F11kk63pfm5!19sChIJM2BZXI25lzMR5QfH8avZvNU" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

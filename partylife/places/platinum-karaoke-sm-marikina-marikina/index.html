@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Marikina</span></div><div><b>Address</b><span>SM, 1801 Lansangang Marikina-Infanta</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST Platinum Karaoke | SM Marikina">Plan a night here</a><a href="https://www.google.com/maps/place/Platinum+Karaoke+%7C+SM+Marikina/data=!4m7!3m6!1s0x3397b9ecbcb33caf:0xd363a0d33f09385e!8m2!3d14.6260403!4d121.0837833!16s%2Fg%2F11kbsfmsk1!19sChIJrzyzvOy5lzMRXjgJP9OgY9M" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

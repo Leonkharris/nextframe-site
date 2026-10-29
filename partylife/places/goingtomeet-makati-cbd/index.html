@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Makati CBD</span></div><div><b>Address</b><span>6D, Cypress Gardens, 112 V.A. Rufino St</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST GoingToMeet">Plan a night here</a><a href="https://www.google.com/maps/place/GoingToMeet/data=!4m7!3m6!1s0x3397c90e66b3954b:0x280eae2a31b0af06!8m2!3d14.555846!4d121.017445!16s%2Fg%2F11bzv_hqqz!19sChIJS5WzZg7JlzMRBq-wMSquDig" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

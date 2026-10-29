@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Makati CBD</span></div><div><b>Address</b><span>H256+649, Victoria</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST 金豪KTV">Plan a night here</a><a href="https://www.google.com/maps/place/%E9%87%91%E8%B1%AAKTV/data=!4m7!3m6!1s0x3397c9648a1ab343:0xd9aaa5aa8ace4978!8m2!3d14.5580292!4d121.0103632!16s%2Fg%2F11rs9m0600!19sChIJQ7MaimTJlzMReEnOiqqlqtk" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

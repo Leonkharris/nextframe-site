@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Ortigas</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST Kenny and D Jazzbar Company">Plan a night here</a><a href="https://www.google.com/maps/place/Kenny+and+D+Jazzbar+Company/data=!4m7!3m6!1s0x3397c86cb14f517f:0xf69525f08f188c3!8m2!3d14.577543!4d121.063207!16s%2Fg%2F11bzv_zsby!19sChIJf1FPsWzIlzMRw4jxCF9SaQ8" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

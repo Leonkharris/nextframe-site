@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Makati CBD</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST PUB - Brown Town">Plan a night here</a><a href="https://www.google.com/maps/place/PUB+-+Brown+Town/data=!4m7!3m6!1s0x3397c9000de4653d:0x5e0ec2b1ab2c22c8!8m2!3d14.5480838!4d121.0655014!16s%2Fg%2F11z1t9lyy2!19sChIJPWXkDQDJlzMRyCIsq7HCDl4" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

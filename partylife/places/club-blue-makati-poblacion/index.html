@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Poblacion, Makati</span></div><div><b>Address</b><span>5038 Calderon</span></div><div><b>Hours</b><span>Opens 8 pm</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST Club BLUE Makati">Plan a night here</a><a href="https://www.google.com/maps/place/Club+BLUE+Makati/data=!4m7!3m6!1s0x3397c908cbb77b7f:0xa0ec8f0a94b5128b!8m2!3d14.564285!4d121.030614!16s%2Fg%2F11v6fw_3m2!19sChIJf3u3ywjJlzMRixK1lAqP7KA" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

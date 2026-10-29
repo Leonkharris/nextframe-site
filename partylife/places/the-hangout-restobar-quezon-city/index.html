@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Quezon City</span></div><div><b>Address</b><span>88 Nicanor Ramirez</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST The Hangout Restobar">Plan a night here</a><a href="https://www.google.com/maps/place/The+Hangout+Restobar/data=!4m7!3m6!1s0x3397b760c98f49db:0x250decb8cfdda7f4!8m2!3d14.614352!4d121.006741!16s%2Fg%2F11zgcvdzzm!19sChIJ20mPyWC3lzMR9Kfdz7jsDSU" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

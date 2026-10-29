@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Makati CBD</span></div><div><b>Address</b><span>1120 House, Amapola, Rockwell Dr</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST Bar 11">Plan a night here</a><a href="https://www.google.com/maps/place/Bar+11/data=!4m7!3m6!1s0x3397c90659b088a1:0xadc72e4f6bd53644!8m2!3d14.5631395!4d121.0392681!16s%2Fg%2F11k3jgfwsd!19sChIJoYiwWQbJlzMRRDbVa08ux60" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>

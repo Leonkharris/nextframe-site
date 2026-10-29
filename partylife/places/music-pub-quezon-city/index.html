@@ -69,6 +69,7 @@ const show=x=>{r.querySelectorAll('div[data-day]').forEach(e=>e.hidden=e.dataset
 show(d);r.querySelectorAll('.rep-days button').forEach(b=>b.onclick=()=>show(b.dataset.day));
 const h=r.querySelector('[data-hrs]');if(h){try{const o=JSON.parse(h.dataset.hrs);if(o[d])h.textContent='Tonight ('+d+'): '+o[d]}catch(e){}}})();
 </script></section>
+
 <div class="facts"><div><b>Area</b><span>Quezon City</span></div><div><b>Address</b><span>9 Sct. Rallos St</span></div></div>
 <div class="acts"><a class="p" href="https://ig.me/m/partylifemnl?text=LIST music pub">Plan a night here</a><a href="https://www.google.com/maps/place/music+pub/data=!4m7!3m6!1s0x3397b6526935f40b:0xd85ddc7937027e4e!8m2!3d14.6355937!4d121.0295738!16s%2Fg%2F11c1q4pyh3!19sChIJC_Q1aVK2lzMRTn4CN3ncXdg" rel="noopener" target="_blank">Directions</a>
 <a href="/partylife/submit/">Run a night here? Send the poster</a></div>
