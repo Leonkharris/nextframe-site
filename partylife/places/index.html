@@ -4,11 +4,12 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Every bar, club and KTV in Manila · Party Life MNL</title>
-<meta name="description" content="3,262 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
+<meta name="description" content="3,220 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
 <link rel="canonical" href="https://next-frame.agency/partylife/places/">
-<meta property="og:title" content="Every bar, club and KTV in Manila · Party Life MNL"><meta property="og:description" content="3,262 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
+<meta property="og:title" content="Every bar, club and KTV in Manila · Party Life MNL"><meta property="og:description" content="3,220 nightlife venues across Metro Manila: bars, clubs, rooftops, KTV, live music and comedy. Search by area and type.">
 <meta property="og:image" content="https://next-frame.agency/partylife/img/cover1.jpg"><meta name="theme-color" content="#0a0a0a">
 <link rel="stylesheet" href="/partylife/partylife.css?v=6">
+<link rel="stylesheet" href="/partylife/nav.css?v=1">
 <link rel="icon" href="/partylife/img/logo/favicon.svg" type="image/svg+xml"><link rel="apple-touch-icon" href="/partylife/img/logo/favicon-180.png">
 <style>
 .v-head { display: grid; gap: 10px; margin-block: 26px 22px; }
@@ -34,11 +35,14 @@ section.blk h2 { margin: 0; font: 500 28px var(--cover); text-transform: upperca
 <script defer src="/partylife/concierge/concierge.js"></script>
 </head>
 <body>
-<header class="top gutter"><div class="wrap">
-  <a class="mh" href="/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
-  <div class="strip"><a href="/partylife/tonight/">Tonight</a><a href="/partylife/places/">Every venue</a><a href="/partylife/manila-nightlife-guide/">Guide</a><a href="/partylife/submit/">List your night</a><a href="https://next-frame.agency/guestlist/">The Guest List</a></div>
-</div></header>
-<main class="gutter"><div class="wrap"><div class="v-head"><span class="k">The directory · 3,262 places</span><h1>Every bar, club and KTV in Manila</h1>
+<header class="nav">
+  <a class="nav-logo" href="/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
+  <nav class="nav-links" id="nav-links" aria-label="Main"><a href="/partylife/tonight/">Tonight</a><a href="/partylife/places/">Venues</a><a href="/partylife/manila-nightlife-guide/">Guide</a><a href="/partylife/#magazine">Articles</a></nav>
+  <a class="btn nav-cta" href="/partylife/promoters/">For promoters</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span></button>
+</header>
+<script>(function(){var t=document.querySelector('.nav-toggle'),l=document.getElementById('nav-links');t.addEventListener('click',function(){var o=l.classList.toggle('open');t.setAttribute('aria-expanded',String(o));});})();</script>
+<main class="gutter"><div class="wrap"><div class="v-head"><span class="k">The directory · 3,220 places</span><h1>Every bar, club and KTV in Manila</h1>
 <p class="note" style="font-size:17px;color:var(--paper)">Search by name, or narrow it down by area and the kind of night you want. Rated venues first.</p></div>
 <div style="display:grid;gap:10px;margin-bottom:18px">
  <input id="q" type="search" placeholder="Search a venue" aria-label="Search a venue" style="background:var(--ink-2);border:1px solid var(--rule);color:var(--paper);font:16px var(--sans);padding:11px 12px">
