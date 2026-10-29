@@ -416,6 +416,7 @@
       input.focus();
     }
     function close() { panel.hidden = true; btn.setAttribute('aria-expanded', 'false'); btn.focus(); }
+    root.PLAsk = function (q) { if (panel.hidden) open(); ask(String(q || '')); };   // page hook: open the panel with a query (home-v2 ask box)
     btn.addEventListener('click', function () { panel.hidden ? open() : close(); });
     x.addEventListener('click', close);
     form.addEventListener('submit', function (e) { e.preventDefault(); ask(input.value); });

@@ -1,0 +1,58 @@
+<div id="plIntro" aria-hidden="true">
+<style>
+#plIntro{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;overflow:hidden;cursor:pointer;clip-path:inset(0 0 0 0);transition:clip-path .7s cubic-bezier(.76,0,.24,1)}
+#plIntro.out{clip-path:inset(0 0 100% 0)}
+#plIntro .f{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.12);filter:contrast(1.15) saturate(1.2)}
+#plIntro .f.on{opacity:1;transform:scale(1);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+#plIntro .flash{position:absolute;inset:0;background:var(--spot,#e4002b);opacity:0;mix-blend-mode:screen}
+#plIntro .flash.on{animation:plFlash .16s ease-out 1}
+@keyframes plFlash{0%{opacity:.45}100%{opacity:0}}
+#plIntro .mk{position:relative;width:min(78vw,820px);opacity:0;transform:scale(1.6);filter:blur(6px) drop-shadow(0 0 40px rgba(228,0,43,.55))}
+#plIntro .mk.on{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 0 28px rgba(228,0,43,.45));transition:transform .55s cubic-bezier(.2,1.4,.4,1),filter .45s ease-out,opacity .15s}
+#plIntro .mk img{width:100%;height:auto;display:block}
+#plIntro .tg{position:absolute;left:0;right:0;bottom:22%;text-align:center;font:500 clamp(12px,1.6vw,16px)/1 var(--mono,monospace);letter-spacing:.32em;text-transform:uppercase;color:#f3efe6;opacity:0}
+#plIntro .tg.on{opacity:1;transition:opacity .3s}
+#plIntro .tg b{color:var(--spot,#e4002b);font-weight:500}
+#plIntro .sk{position:absolute;right:20px;bottom:20px;font:500 12px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#f3efe699;background:none;border:1px solid #f3efe633;padding:10px 14px;cursor:pointer}
+</style>
+<div class="f" data-w="/partylife/img/cover1.jpg" data-t="/partylife/home-v2/media/cover-h02.jpg"></div>
+<div class="f" data-w="/partylife/img/rooftop-crowd.jpg" data-t="/partylife/home-v2/media/cover-h04.jpg"></div>
+<div class="f" data-w="/partylife/img/bar-toast.jpg" data-t="/partylife/home-v2/media/cover-h01.jpg"></div>
+<div class="f" data-w="/partylife/img/o2.jpg" data-t="/partylife/home-v2/media/cover-h05.jpg"></div>
+<div class="f" data-w="/partylife/img/antidote.jpg" data-t="/partylife/home-v2/media/cover-h03.jpg"></div>
+<div class="flash"></div>
+<div class="mk"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="" width="794" height="100"></div>
+<p class="tg">Manila <b>·</b> every bar, every club, <b>tonight</b></p>
+<button class="sk" type="button">Skip</button>
+<script>
+(function () {
+  var el = document.getElementById('plIntro'), seen = false;
+  try { seen = sessionStorage.getItem('plIntro') === '1'; sessionStorage.setItem('plIntro', '1'); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+  document.documentElement.style.overflow = 'hidden';
+  var fr = el.querySelectorAll('.f'), fl = el.querySelector('.flash'), q = el.querySelector.bind(el), timers = [], done = false;
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function end() {
+    if (done) return; done = true; timers.forEach(clearTimeout);
+    el.classList.add('out'); document.documentElement.style.overflow = '';
+    setTimeout(function () { el.remove(); }, 750);
+  }
+  // ponytail: fixed 140 ms cuts (~107 bpm feel); sync to a track only if the intro gets sound
+  // wait for the cover stills (max 1.2 s) so the cuts never flash an empty frame
+  var left = fr.length, started = false;
+  function go() { if (!started) { started = true; run(); } }
+  for (var k = 0; k < fr.length; k++) { var im = new Image(); im.onload = im.onerror = function () { if (--left === 0) go(); }; var u = innerWidth > innerHeight ? fr[k].dataset.w : fr[k].dataset.t; fr[k].style.backgroundImage = 'url(' + u + ')'; im.src = u; }
+  setTimeout(go, 1200);
+  function run() {
+  for (var i = 0; i < fr.length; i++) (function (i) {
+    at(120 + i * 140, function () { if (i) fr[i - 1].classList.remove('on'); fr[i].classList.add('on'); if (i % 2) { fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); } });
+  })(i);
+  at(120 + fr.length * 140, function () { fr[fr.length - 1].classList.remove('on'); fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); q('.mk').classList.add('on'); });
+  at(120 + fr.length * 140 + 420, function () { q('.tg').classList.add('on'); });
+  at(120 + fr.length * 140 + 1700, end);
+  }
+  el.addEventListener('click', end);
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') end(); }, { once: true });
+})();
+</script>
+</div>

@@ -15,136 +15,199 @@
 <meta name="theme-color" content="#0a0a0a">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="partylife.css?v=6">
+<link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
+<link rel="stylesheet" href="/partylife/partylife.css?v=6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="/partylife/home-v2/home.css?v=2">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Party Life MNL","url":"https://next-frame.agency/partylife/","sameAs":["https://www.instagram.com/partylifemnl/","https://www.facebook.com/profile.php?id=100075939717613"],"description":"Manila's interactive media for nightlife and venues. Covers the rooms, hosts capped nights, lets readers pick the next cover venue.","areaServed":"Metro Manila","parentOrganization":{"@type":"Organization","name":"NextFrame","url":"https://next-frame.agency/"}}
 </script>
 <link rel="icon" href="/partylife/img/logo/favicon.svg" type="image/svg+xml"><link rel="icon" href="/partylife/img/logo/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/partylife/img/logo/favicon-180.png">
 <script defer src="/partylife/concierge/concierge.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script defer src="/partylife/home-v2/home.js?v=2"></script>
 </head>
 <body>
-<header class="top gutter"><div class="wrap">
-  <a class="mh" href="https://next-frame.agency/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
-  <div class="strip"><span>Issue 01 · October 2026</span><a href="#latest">Latest</a><a href="tonight/">Tonight</a><a href="places/">Every venue</a><a href="manila-nightlife-guide/">Guide</a><a href="submit/">List your night</a><a href="#articles">Articles</a><a href="#columns">Columns</a><a href="#opened">Just opened</a><a href="#world">World</a><a href="#venues">Venues</a><a href="history/">Our history</a><a href="#vote">Vote</a><a href="#concierge">Need a venue?</a><a href="https://next-frame.agency/guestlist/">The Guest List</a></div>
-</div></header>
+<div id="plIntro" aria-hidden="true">
+<style>
+#plIntro{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;overflow:hidden;cursor:pointer;clip-path:inset(0 0 0 0);transition:clip-path .7s cubic-bezier(.76,0,.24,1)}
+#plIntro.out{clip-path:inset(0 0 100% 0)}
+#plIntro .f{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.12);filter:contrast(1.15) saturate(1.2)}
+#plIntro .f.on{opacity:1;transform:scale(1);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+#plIntro .flash{position:absolute;inset:0;background:var(--spot,#e4002b);opacity:0;mix-blend-mode:screen}
+#plIntro .flash.on{animation:plFlash .16s ease-out 1}
+@keyframes plFlash{0%{opacity:.45}100%{opacity:0}}
+#plIntro .mk{position:relative;width:min(78vw,820px);opacity:0;transform:scale(1.6);filter:blur(6px) drop-shadow(0 0 40px rgba(228,0,43,.55))}
+#plIntro .mk.on{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 0 28px rgba(228,0,43,.45));transition:transform .55s cubic-bezier(.2,1.4,.4,1),filter .45s ease-out,opacity .15s}
+#plIntro .mk img{width:100%;height:auto;display:block}
+#plIntro .tg{position:absolute;left:0;right:0;bottom:22%;text-align:center;font:500 clamp(12px,1.6vw,16px)/1 var(--mono,monospace);letter-spacing:.32em;text-transform:uppercase;color:#f3efe6;opacity:0}
+#plIntro .tg.on{opacity:1;transition:opacity .3s}
+#plIntro .tg b{color:var(--spot,#e4002b);font-weight:500}
+#plIntro .sk{position:absolute;right:20px;bottom:20px;font:500 12px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#f3efe699;background:none;border:1px solid #f3efe633;padding:10px 14px;cursor:pointer}
+</style>
+<div class="f" data-w="/partylife/img/cover1.jpg" data-t="/partylife/home-v2/media/cover-h02.jpg"></div>
+<div class="f" data-w="/partylife/img/rooftop-crowd.jpg" data-t="/partylife/home-v2/media/cover-h04.jpg"></div>
+<div class="f" data-w="/partylife/img/bar-toast.jpg" data-t="/partylife/home-v2/media/cover-h01.jpg"></div>
+<div class="f" data-w="/partylife/img/o2.jpg" data-t="/partylife/home-v2/media/cover-h05.jpg"></div>
+<div class="f" data-w="/partylife/img/antidote.jpg" data-t="/partylife/home-v2/media/cover-h03.jpg"></div>
+<div class="flash"></div>
+<div class="mk"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="" width="794" height="100"></div>
+<p class="tg">Manila <b>·</b> every bar, every club, <b>tonight</b></p>
+<button class="sk" type="button">Skip</button>
+<script>
+(function () {
+  var el = document.getElementById('plIntro'), seen = false;
+  try { seen = sessionStorage.getItem('plIntro') === '1'; sessionStorage.setItem('plIntro', '1'); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+  document.documentElement.style.overflow = 'hidden';
+  var fr = el.querySelectorAll('.f'), fl = el.querySelector('.flash'), q = el.querySelector.bind(el), timers = [], done = false;
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function end() {
+    if (done) return; done = true; timers.forEach(clearTimeout);
+    el.classList.add('out'); document.documentElement.style.overflow = '';
+    setTimeout(function () { el.remove(); }, 750);
+  }
+  // ponytail: fixed 140 ms cuts (~107 bpm feel); sync to a track only if the intro gets sound
+  // wait for the cover stills (max 1.2 s) so the cuts never flash an empty frame
+  var left = fr.length, started = false;
+  function go() { if (!started) { started = true; run(); } }
+  for (var k = 0; k < fr.length; k++) { var im = new Image(); im.onload = im.onerror = function () { if (--left === 0) go(); }; var u = innerWidth > innerHeight ? fr[k].dataset.w : fr[k].dataset.t; fr[k].style.backgroundImage = 'url(' + u + ')'; im.src = u; }
+  setTimeout(go, 1200);
+  function run() {
+  for (var i = 0; i < fr.length; i++) (function (i) {
+    at(120 + i * 140, function () { if (i) fr[i - 1].classList.remove('on'); fr[i].classList.add('on'); if (i % 2) { fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); } });
+  })(i);
+  at(120 + fr.length * 140, function () { fr[fr.length - 1].classList.remove('on'); fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); q('.mk').classList.add('on'); });
+  at(120 + fr.length * 140 + 420, function () { q('.tg').classList.add('on'); });
+  at(120 + fr.length * 140 + 1700, end);
+  }
+  el.addEventListener('click', end);
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') end(); }, { once: true });
+})();
+</script>
+</div>
 
-<main>
-<section class="gutter" id="latest" style="border-top:0;padding-block:22px 10px"><div class="wrap">
-  <div class="head" style="margin-bottom:14px"><h2>The <em>latest</em></h2><p id="latest-stamp">Good living in Manila, newest first: openings, nights, awards, fashion, food, travel.</p></div>
-  <div class="news" id="news"><div class="nrow"><span class="nd">—</span><div class="nb"><b>Loading the latest.</b></div></div></div>
-</div></section>
-<div class="gutter"><div class="wrap issue" style="padding-top:34px;border-top:1px solid var(--rule)">
-  <div class="cover">
-    <img src="img/cover1.jpg" alt="Issue 01 cover: a woman in a black sequined slip dress on a BGC rooftop at night, coupe glass in hand" width="1280" height="1707" fetchpriority="high">
-    <div class="fade"></div>
-    <div class="cmh"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL"></div>
-    <div class="cstrip"><span>Issue 01</span><span>The Guest List</span><span>Oct 2026</span></div>
-    <div class="flash">Guest list<br>open</div>
-    <div class="lines"><div class="l1">The room you were <em>hoping</em> to walk into</div><div class="l2">Rooftop · BGC · 80 guests</div><div class="l3">Hosted by Leon · DM "LIST"</div></div>
-    <div class="code"><i></i><span>MNL 01 · 1500</span></div>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="nav-logo" href="/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
+  <nav class="nav-links" id="nav-links" aria-label="Main">
+    <a href="/partylife/tonight/">Tonight</a>
+    <a href="/partylife/places/">Venues</a>
+    <a href="/partylife/manila-nightlife-guide/">Guide</a>
+    <a href="#magazine">Articles</a>
+  </nav>
+  <a class="btn nav-cta" href="/partylife/promoters/">For promoters</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Manila · 21+</p>
+    <h1>What's on in Manila <em>tonight</em></h1>
+    <form class="ask" id="ask" role="search">
+      <label class="sr" for="ask-q">Ask Party Life where to go</label>
+      <input id="ask-q" type="text" autocomplete="off" enterkeyhint="search" placeholder="rooftop bar in BGC">
+      <button type="submit">Ask</button>
+    </form>
+    <p class="ask-note">Ask in plain words. We answer from 3,262 venues and this week's calendar.</p>
+    <div class="vibes" id="vibes" aria-label="Quick asks">
+      <button type="button" data-q="clubs open late">Clubs</button>
+      <button type="button" data-q="rooftop bar">Rooftops</button>
+      <button type="button" data-q="live music">Live music</button>
+      <button type="button" data-q="karaoke">Karaoke</button>
+      <button type="button" data-q="trivia night">Trivia &amp; quiz</button>
+      <button type="button" data-q="salsa bachata night">Salsa &amp; bachata</button>
+    </div>
   </div>
-  <div class="copy">
-    <div class="k">Manila's interactive media for nightlife and venues</div>
-    <h1>Every night is an issue. Every venue gets a cover. <em>You</em> pick the next one.</h1>
-    <p class="lede">Party Life MNL covers the rooms that run Manila after dark, hosts its own capped nights, and puts the readers in charge of where the next cover is shot. Issue 01 is The Guest List: eighty people, a rooftop in BGC, two drinks in, a host who does the introductions.</p>
-    <dl class="facts"><dt>Issue 01</dt><dd>The Guest List, rooftop, BGC. Date goes to the list first.</dd><dt>Spots</dt><dd>80, no walk-ins, 21 and over.</dd><dt>Price</dt><dd>₱1,500 with your first two drinks.</dd></dl>
-    <div class="ctas"><a class="btn" href="https://next-frame.agency/guestlist/">Get on the guest list</a><a class="btn ghost" href="tonight/">Where the party is tonight</a></div>
+
+  <div class="mapwrap" id="mapwrap">
+    <div class="map-bar">
+      <div class="map-chips" id="map-chips" role="group" aria-label="Filter the map">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="tonight" aria-pressed="false">Tonight only</button>
+        <button type="button" data-f="club" aria-pressed="false">Clubs</button>
+        <button type="button" data-f="bar" aria-pressed="false">Bars</button>
+        <button type="button" data-f="rooftop" aria-pressed="false">Rooftops</button>
+        <button type="button" data-f="live" aria-pressed="false">Live music</button>
+        <button type="button" data-f="ktv" aria-pressed="false">Karaoke</button>
+      </div>
+      <button type="button" class="map-full" id="map-full" aria-pressed="false">Open full map</button>
+    </div>
+    <div id="map" role="region" aria-label="Map of Manila venues and this week's events"></div>
+    <p class="map-status" id="map-status" aria-live="polite">Loading the map.</p>
   </div>
-</div></div>
+</section>
 
-<section class="gutter" id="articles"><div class="wrap">
-  <div class="head"><h2>From <em>issue</em> 01</h2><p>Field guides to the rooms, the manifesto, and how the night works. New articles land with every issue.</p></div>
-  <div class="panels">
-    <a class="panel" href="articles/why-manila-nightlife-needed-a-magazine/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/rooftop-crowd.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>Why Manila nightlife <em>needed</em> a magazine</h3><p>The venues have the audiences. The hosts have the DMs. Nobody had the story of the rooms, until now.</p><div class="ft"><span class="lbl">Issue 01</span><span class="meta">Manifesto</span></div></a>
-    <a class="panel" href="articles/the-palace-bgc-field-guide/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/thepeak.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>The Palace, BGC: four rooms, <em>one</em> roof</h3><p>Yes Please, Revel, Clubhouse and Medusa, what each night is for, and what happened to XYLO.</p><div class="ft"><span class="lbl">Field guide</span><span class="meta">BGC</span></div></a>
-    <a class="panel" href="articles/poblacion-after-midnight/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/bar-toast.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>Poblacion <em>after</em> midnight</h3><p>Apotheka and the collectives, the bars, and the Thursday-to-Saturday rhythm of Manila's loosest neighbourhood.</p><div class="ft"><span class="lbl">Field guide</span><span class="meta">Makati</span></div></a>
-    <a class="panel" href="articles/rooftop-season-five-bars-above-the-skyline/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/antidote.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>Five bars <em>above</em> the skyline</h3><p>Antidote, Straight Up, O2, The Peak and Vu's, and why The Guest List starts up here.</p><div class="ft"><span class="lbl">Field guide</span><span class="meta">Rooftops</span></div></a>
-    <a class="panel" href="articles/how-the-guest-list-works/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/straightup.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>How The Guest List <em>works</em></h3><p>From the DM to the door to the recap, for someone coming alone for the first time.</p><div class="ft"><span class="lbl">Issue 01</span><span class="meta">The night</span></div></a>
-    <a class="panel" href="articles/just-opened-in-manila-2026/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/bar-toast.jpg" alt="" loading="lazy" width="900" height="1200" style="object-position:50% 30%"></div><h3>Just <em>opened</em> in Manila</h3><p>Problem Child to Makati Central Square: what opened, what closed, and where to go first.</p><div class="ft"><span class="lbl">Just opened</span><span class="meta">Party Life MNL</span></div></a>
-    <a class="panel" href="articles/world-the-rooms-we-are-watching/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/cover1.jpg" alt="" loading="lazy" width="1280" height="1707" style="object-position:50% 20%"></div><h3>The rooms we are <em>watching</em></h3><p>Ibiza, Bangkok, Singapore, London, New York: the openings, the lists, and where Manila ranks.</p><div class="ft"><span class="lbl">World</span><span class="meta">Party Life MNL</span></div></a>
-    <a class="panel" href="articles/what-a-venue-gets-from-a-party-life-issue/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/o2.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>What a venue <em>gets</em> from an issue</h3><p>A capped room at a quiet hour, a cover with your name on it, and a guest list you keep.</p><div class="ft"><span class="lbl">Issue 01</span><span class="meta">For venues</span></div></a>
+<section class="rail-band" aria-labelledby="rail-h">
+  <div class="rail-head">
+    <div>
+      <p class="eyebrow">Covers · news · on next</p>
+      <h2 id="rail-h">This week in <em>Manila</em></h2>
+    </div>
+    <div class="rail-tools">
+      <a class="tlink" href="/partylife/tonight/">See everything on tonight</a>
+      <button type="button" class="rail-btn" id="rail-pause" aria-pressed="false">Pause covers</button>
+      <button type="button" class="rail-btn arrow" id="rail-prev" aria-label="Scroll back">&larr;</button>
+      <button type="button" class="rail-btn arrow" id="rail-next" aria-label="Scroll forward">&rarr;</button>
+    </div>
   </div>
-</div></section>
+  <ul class="rail" id="rail" tabindex="0" aria-label="Covers, latest news and upcoming events"></ul>
+</section>
 
-<section class="gutter" id="venues"><div class="wrap">
-  <div class="head"><h2>The <em>rooms</em></h2><p>The venue index, read from public profiles on 19 October 2026. Every one of them is a future cover. Vote by DM; the venue with the most votes gets Issue 02.</p></div>
-  <div class="tbl"><table>
-    <thead><tr><th>Venue</th><th>Area</th><th>Type</th><th>Instagram</th><th>Issue</th><th></th></tr></thead>
-    <tbody>
-      <tr><td>Antidote</td><td>Poblacion edge, Makati</td><td>Rooftop, two decks</td><td><a href="https://www.instagram.com/antidotebarph/">@antidotebarph</a></td><td><span class="pill on">Issue 01 candidate</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20ANTIDOTE">Vote</a></td></tr>
-      <tr><td>Straight Up</td><td>Seda, BGC</td><td>Rooftop</td><td><a href="https://www.instagram.com/straightupatseda/">@straightupatseda</a></td><td><span class="pill on">Issue 01 candidate</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20STRAIGHT%20UP">Vote</a></td></tr>
-      <tr><td>O2 Rooftop</td><td>Brittany, BGC</td><td>Rooftop</td><td><a href="https://www.instagram.com/o2rooftopbar/">@o2rooftopbar</a></td><td><span class="pill on">Issue 01 candidate</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20O2">Vote</a></td></tr>
-      <tr><td>The Peak</td><td>Grand Hyatt, BGC</td><td>Rooftop</td><td><a href="https://www.instagram.com/thepeakmanila/">@thepeakmanila</a></td><td><span class="pill on">Issue 01 candidate</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20THE%20PEAK">Vote</a></td></tr>
-      <tr><td>Yes Please</td><td>The Palace, BGC</td><td>Cocktail bar with DJs</td><td><a href="https://www.instagram.com/yespleaseph/">@yespleaseph</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20YES%20PLEASE">Vote</a></td></tr>
-      <tr><td>Revel</td><td>The Palace, BGC</td><td>Lounge</td><td><a href="https://www.instagram.com/revelatthepalace/">@revelatthepalace</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20REVEL">Vote</a></td></tr>
-      <tr><td>Clubhouse</td><td>The Palace, BGC</td><td>Nightclub</td><td><a href="https://www.instagram.com/clubhousemnl/">@clubhousemnl</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20CLUBHOUSE">Vote</a></td></tr>
-      <tr><td>Medusa</td><td>The Palace, BGC</td><td>Supper club</td><td><a href="https://www.instagram.com/thepalacemanila/">@thepalacemanila</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20MEDUSA">Vote</a></td></tr>
-      <tr><td>XYLO</td><td>The Palace, BGC</td><td>Superclub</td><td>—</td><td><span class="pill">Closed Jan 2026</span></td><td></td></tr>
-      <tr><td>Apotheka</td><td>Poblacion, Makati</td><td>Club</td><td><a href="https://www.instagram.com/apothekamanila/">@apothekamanila</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20APOTHEKA">Vote</a></td></tr>
-      <tr><td>TOPIC</td><td>Poblacion, Makati</td><td>Club</td><td><a href="https://www.instagram.com/topicmnl/">@topicmnl</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20TOPIC">Vote</a></td></tr>
-      <tr><td>Black Market</td><td>Makati</td><td>Club</td><td><a href="https://www.instagram.com/blackmarketmnl/">@blackmarketmnl</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20BLACK%20MARKET">Vote</a></td></tr>
-      <tr><td>Nokal</td><td>Makati</td><td>Club</td><td><a href="https://www.instagram.com/nokal.manila/">@nokal.manila</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20NOKAL">Vote</a></td></tr>
-      <tr><td>Bombvinos Bodega</td><td>Makati</td><td>Bar and venue</td><td><a href="https://www.instagram.com/bombvinos.bodega/">@bombvinos.bodega</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20BOMBVINOS">Vote</a></td></tr>
-      <tr><td>Cove Manila</td><td>Okada, Parañaque</td><td>Club</td><td><a href="https://www.instagram.com/covemanila/">@covemanila</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20COVE">Vote</a></td></tr>
-      <tr><td>Vu's Sky Bar</td><td>Marco Polo, Ortigas</td><td>Rooftop</td><td><a href="https://www.instagram.com/marcopolomanila/">@marcopolomanila</a></td><td><span class="pill">Open</span></td><td><a class="vote" href="https://ig.me/m/partylifemnl?text=VOTE%20VUS">Vote</a></td></tr>
-    </tbody>
-  </table></div>
-</div></section>
-
-<section class="gutter" id="columns"><div class="wrap">
-  <div class="head"><h2>The <em>columns</em></h2><p>Party to your heart's content, in your own style, with tomorrow intact. One column a week, in rotation.</p></div>
-  <div class="panels" style="counter-reset: pn 8">
-    <a class="panel" href="articles/party-tech-the-kit-for-a-long-night/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/o2.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>The kit for a <em>long</em> night</h3><p>Earplugs sold in Manila, what a night does to your heart rate, the sound the best rooms in Asia run.</p><div class="ft"><span class="lbl">Party Tech</span><span class="meta">DM "TECH"</span></div></a>
-    <a class="panel" href="articles/your-kind-of-night/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/bar-toast.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>Loud, late, or <em>neither</em></h3><p>A night is a choice: the listening bar, the dinner first, the loud room, the rooftop, or none of them.</p><div class="ft"><span class="lbl">Your Kind of Night</span><span class="meta">DM "NIGHT"</span></div></a>
-    <a class="panel red" href="articles/free-time-what-money-buys-on-a-manila-night/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/thepeak.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>What money <em>buys</em> on a Manila night</h3><p>The clubs, the chef at home, the boat out of Subic, the 6 am plunge. And the parts that cost nothing.</p><div class="ft"><span class="lbl">Free Time</span><span class="meta">DM "FREE"</span></div></a>
-    <a class="panel" href="articles/no-hangover-what-the-evidence-says/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/straightup.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>What the evidence says about the <em>hangover</em></h3><p>No remedy is proven. What holds up is pacing, food and sleep. The honest column.</p><div class="ft"><span class="lbl">No Hangover</span><span class="meta">DM "SOBER"</span></div></a>
-    <a class="panel" href="articles/good-night-no-regrets/"><div class="eb"><b><img class="wm" src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life"><small>Manila after dark</small></b><i>MNL</i></div><div class="ph"><img src="img/antidote.jpg" alt="" loading="lazy" width="900" height="1200"></div><h3>You remember <em>all</em> of it</h3><p>Bad decisions are not what makes a good night. The house rules of The Guest List.</p><div class="ft"><span class="lbl">Good Night, No Regrets</span><span class="meta">DM "HOME"</span></div></a>
+<section class="band vibes-band" aria-labelledby="vibe-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">Browse by vibe</p><h2 id="vibe-h">Pick the kind of <em>night</em></h2></div>
+    <div class="vgrid">
+      <button type="button" class="vt big rv" data-q="rooftop bar"><img src="/partylife/img/rooftop-crowd.jpg" alt="A crowd on a lantern-lit rooftop bar above the city at dusk" loading="lazy" width="900" height="1200"><span>Rooftops</span></button>
+      <button type="button" class="vt rv" data-q="cocktail bar"><img src="/partylife/img/bar-toast.jpg" alt="Friends toasting at a wooden cocktail bar under pendant lights" loading="lazy" width="900" height="1200"><span>Cocktail bars</span></button>
+      <button type="button" class="vt txt red rv" data-q="clubs open late"><b>Clubs till late</b><small>345 clubs listed</small></button>
+      <button type="button" class="vt tall rv" data-q="quiet bar for a date"><img src="/partylife/img/cover1.jpg" alt="A woman in a black sequined dress with a coupe on a night rooftop" loading="lazy" width="1280" height="1708" style="object-position:50% 25%"><span>Date night</span></button>
+      <button type="button" class="vt wide rv" data-q="rooftop bar Makati"><img src="/partylife/img/o2.jpg" alt="Guests in white on a rooftop with a sunset skyline behind" loading="lazy" width="900" height="1206" style="object-position:50% 40%"><span>Skyline drinks</span></button>
+      <button type="button" class="vt txt rv" data-q="karaoke"><b>Karaoke rooms</b><small>362 KTV spots</small></button>
+      <button type="button" class="vt txt paper rv" data-q="live music"><b>Live bands</b><small>Gigs, jazz, open mics</small></button>
+    </div>
   </div>
-</div></section>
+</section>
 
-<section class="gutter" id="opened"><div class="wrap">
-  <div class="head"><h2>Just <em>opened</em></h2><p>Late 2025 to October 2026, from the Party Life database. Months are the month the press covered the opening; handles print only where verified.</p></div>
-  <div class="tbl"><table>
-    <thead><tr><th>Room</th><th>Area</th><th>What</th><th>Opened</th><th>Instagram</th></tr></thead>
-    <tbody id="opened-rows"><tr><td colspan="5" style="color:var(--paper-2)">Loading from the database.</td></tr></tbody>
-  </table></div>
-  <p class="lede" style="margin-top:14px"><a href="articles/just-opened-in-manila-2026/">Read the roundup</a>, including what closed.</p>
-</div></section>
-
-<section class="gutter" id="world"><div class="wrap">
-  <div class="head"><h2>The <em>world</em> column</h2><p>Where Manila ranks, what opened abroad, and the nights worth a flight. Updated with every issue.</p></div>
-  <div class="two">
-    <div class="block"><div class="k">Where Manila ranks</div><h3>Asia's 50 Best Bars 2026</h3><p>Problem Child, Makati, No. 44 and best bar in the Philippines. The Spirits Library, Makati, No. 98. Bar Leone, Hong Kong, is No. 1 in the world for the second year.</p></div>
-    <div class="block"><div class="k">Best nightlife cities 2026</div><h3>Bangkok is No. 1</h3><p>Time Out's resident survey put Bangkok first, Berlin second, New York third. Manila is not on the list. That is the job.</p></div>
-    <div class="block"><div class="k">Openings</div><h3>UNVRS, FVTURE, Zouk</h3><p>Ibiza's new hyperclub went straight to No. 1 on DJ Mag. Bangkok opened a 6,000-capacity room. Zouk Singapore reopened all three rooms in 2026.</p></div>
-    <div class="block"><div class="k">Worth a flight</div><h3>Nov 2026 to Apr 2027</h3><p>Wonderfruit 3 to 7 Dec, Tomorrowland Thailand 11 to 13 Dec, Savaya Bali NYE with Carl Cox, Zamna Phuket 29 to 30 Jan, Ultra Miami 26 to 28 Mar.</p></div>
+<section class="band" aria-labelledby="area-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">Areas</p><h2 id="area-h">Where you'll <em>end up</em></h2></div>
+    <ul class="areas" id="areas"></ul>
   </div>
-  <p class="lede" style="margin-top:14px"><a href="articles/world-the-rooms-we-are-watching/">Read the column</a>.</p>
-</div></section>
+</section>
 
-<section class="gutter" id="vote"><div class="wrap">
-  <div class="head"><h2>You pick the <em>next</em> cover</h2></div>
-  <div class="two">
-    <div class="block"><div class="k">Vote</div><h3>Issue 02 goes where you send it</h3><p>DM "VOTE" and the venue name to @partylifemnl. The room with the most votes by the end of Issue 01 gets the next cover, the next night and a month on the masthead strip. Votes are counted on the night and announced in the recap.</p><a class="btn" href="https://ig.me/m/partylifemnl?text=VOTE" target="_blank" rel="noopener">DM "VOTE"</a></div>
-    <div class="block"><div class="k">Cover star</div><h3>Be on the cover</h3><p>A photographer shoots every night to the cover brief. Guests who want to be on the recap cover tell the host at the door. Tag @partylifemnl in your own photos from the night and the best one runs in the next issue.</p><a class="btn ghost" href="https://www.instagram.com/partylifemnl/" target="_blank" rel="noopener">Follow @partylifemnl</a></div>
-  </div>
-</div></section>
+<section class="band nums-band" aria-label="Party Life in numbers">
+  <div class="wrap nums" id="nums"></div>
+</section>
 
-<section class="gutter" id="concierge"><div class="wrap">
-  <div class="head"><h2>Need a <em>venue?</em> Give us a shout.</h2><p>We know the rooms, the managers and the terms. Tell us the night you have in mind and we arrange the details: venue, minimum spend, drinks package, door, photographer, guest list.</p></div>
-  <div class="two">
-    <div class="block"><div class="k">For you</div><h3>A birthday, a launch, a team night, a date you want to land</h3><p>Send the date, the headcount, the neighbourhood and the budget per head. We come back within a day with three rooms that fit and what each one costs. No fee to ask.</p><a class="btn" href="https://ig.me/m/partylifemnl?text=VENUE%20HELP" target="_blank" rel="noopener">DM "VENUE HELP"</a></div>
-    <div class="block"><div class="k">For venues</div><h3>One issue a month, with your name on the masthead</h3><p>A capped, ticketed room at a quiet hour, your handle in every post, a recap within 48 hours and a guest list you keep. Terms we are open to: minimum spend, a per-head drinks package, or a ticket split.</p><div class="ctas"><a class="btn" href="https://ig.me/m/partylifemnl?text=VENUE" target="_blank" rel="noopener">DM "VENUE"</a><a class="btn ghost" href="articles/what-a-venue-gets-from-a-party-life-issue/">What a venue gets</a></div></div>
+<section class="band" id="magazine" aria-labelledby="mag-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">From the magazine</p><h2 id="mag-h">Read before you <em>go</em></h2></div>
+    <div class="mag">
+      <a class="card rv" href="/partylife/articles/why-manila-nightlife-needed-a-magazine/"><div class="ph"><img src="/partylife/img/rooftop-crowd.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Issue 01 · Manifesto</span><h3>Why Manila nightlife needed a magazine</h3></a>
+      <a class="card rv" href="/partylife/articles/the-palace-bgc-field-guide/"><div class="ph"><img src="/partylife/img/thepeak.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · BGC</span><h3>The Palace, BGC: four rooms, one roof</h3></a>
+      <a class="card rv" href="/partylife/articles/poblacion-after-midnight/"><div class="ph"><img src="/partylife/img/bar-toast.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · Makati</span><h3>Poblacion after midnight</h3></a>
+      <a class="card rv" href="/partylife/articles/rooftop-season-five-bars-above-the-skyline/"><div class="ph"><img src="/partylife/img/antidote.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · Rooftops</span><h3>Five bars above the skyline</h3></a>
+    </div>
   </div>
-</div></section>
+</section>
+
+<section class="org" aria-labelledby="org-h">
+  <div class="wrap org-in">
+    <h2 id="org-h">Running a night? Send the poster. We do the rest.</h2>
+    <div class="org-acts">
+      <a class="btn ink" href="/partylife/promoters/">Join as a promoter</a>
+      <a class="btn line" href="/partylife/submit/">Send a poster</a>
+      <a class="tlink" href="https://ig.me/m/partylifemnl?text=VENUE%20HELP" target="_blank" rel="noopener">Need a venue?</a>
+    </div>
+  </div>
+</section>
 </main>
-<script>
-(async function(){try{const d=await (await fetch("data/news.json",{cache:"no-cache"})).json();const box=document.getElementById("news");box.replaceChildren();const today=new Date().toISOString().slice(0,10);const fmt=s=>new Date(s+"T00:00:00").toLocaleDateString("en-PH",{day:"numeric",month:"short"});const past=d.news.filter(n=>n.date<=today).sort((a,b)=>b.date.localeCompare(a.date)).slice(0,10);const up=d.news.filter(n=>n.date>today).sort((a,b)=>a.date.localeCompare(b.date)).slice(0,8);const row=(n,up)=>{const el=document.createElement("a");el.className="nrow"+(up?" up":"");el.href=n.url;el.target="_blank";el.rel="noopener";el.innerHTML=`<span class="nd">${fmt(n.date)}</span><div class="nb"><span class="nc">${n.category}${n.area?" · "+n.area:""}</span><b>${n.headline}</b><span class="nt">${n.detail}</span><span class="ns">${n.source}${n.verified?"":" · unconfirmed"}</span></div>`;return el};for(const n of past)box.append(row(n,false));if(up.length){const h=document.createElement("div");h.className="ngroup";h.textContent="Coming up";box.append(h);for(const n of up)box.append(row(n,true))}document.getElementById("latest-stamp").textContent=`${past.length} latest and ${up.length} coming up. Updated ${new Date(d.generated).toLocaleDateString("en-PH",{day:"numeric",month:"short"})}. Openings, nights, awards, fashion, food, travel.`}catch(e){}})();
-</script>
-<script>
-(async function(){try{const d=await (await fetch("data/venues.json",{cache:"no-cache"})).json();const rows=d.venues.filter(v=>v.opened&&String(v.opened)>="2025-11"&&v.status!=="closed").sort((a,b)=>String(b.opened).localeCompare(String(a.opened)));const fmt=o=>{const s=String(o);const m={"01":"Jan","02":"Feb","03":"Mar","04":"Apr","05":"May","06":"Jun","07":"Jul","08":"Aug","09":"Sep","10":"Oct","11":"Nov","12":"Dec"};return s.length>=7?(m[s.slice(5,7)]||"")+" "+s.slice(0,4):s};const tb=document.getElementById("opened-rows");tb.replaceChildren();for(const v of rows){const tr=document.createElement("tr");tr.innerHTML=`<td>${v.name}</td><td>${v.area}</td><td>${v.type.replace(/-/g," ")}${v.status==="announced"?" (announced)":""}</td><td>${fmt(v.opened)}</td><td>${v.ig?`<a href="https://www.instagram.com/${v.ig}/">@${v.ig}</a>`:"—"}</td>`;tb.append(tr)}}catch(e){}})();
-</script>
 
-<footer class="gutter"><div class="wrap"><span>Party Life MNL · Manila's interactive media for nightlife and venues · 21 and over</span><span>Produced by <a href="https://next-frame.agency/">NextFrame</a>, Makati</span><span class="soc" style="display:flex;gap:14px;flex-wrap:wrap"><a href="https://www.instagram.com/partylifemnl/" rel="me noopener" target="_blank">Instagram @partylifemnl</a><a href="https://www.facebook.com/profile.php?id=100075939717613" rel="me noopener" target="_blank">Facebook · Party Life Manila</a><a href="https://www.tiktok.com/@partylifemnl" rel="me noopener" target="_blank">TikTok @partylifemnl</a></span></div></footer>
+<footer class="gutter"><div class="wrap"><span>Party Life MNL · Manila's interactive media for nightlife and venues · 21 and over</span><span>Produced by <a href="https://next-frame.agency/">NextFrame</a>, Makati · Map tiles © Esri, © OpenStreetMap contributors</span><span class="soc" style="display:flex;gap:14px;flex-wrap:wrap"><a href="https://www.instagram.com/partylifemnl/" rel="me noopener" target="_blank">Instagram @partylifemnl</a><a href="https://www.facebook.com/profile.php?id=100075939717613" rel="me noopener" target="_blank">Facebook · Party Life Manila</a><a href="https://www.tiktok.com/@partylifemnl" rel="me noopener" target="_blank">TikTok @partylifemnl</a></span></div></footer>
 </body>
 </html>

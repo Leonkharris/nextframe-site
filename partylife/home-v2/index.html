@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en-PH">
+<head>
+<meta name="robots" content="noindex">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Party Life MNL — Manila's interactive media for nightlife and venues</title>
+<meta name="description" content="Party Life MNL covers the rooms that run Manila nightlife, hosts its own capped nights, and lets readers pick the next cover venue. Issue 01: The Guest List.">
+<link rel="canonical" href="https://next-frame.agency/partylife/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Party Life MNL — Manila's interactive media for nightlife and venues">
+<meta property="og:description" content="Every night is an issue. Every venue gets a cover. You pick the next one.">
+<meta property="og:url" content="https://next-frame.agency/partylife/">
+<meta property="og:image" content="https://next-frame.agency/partylife/img/cover1.jpg">
+<meta property="og:locale" content="en_PH">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
+<link rel="stylesheet" href="/partylife/partylife.css?v=6">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
+<link rel="stylesheet" href="/partylife/home-v2/home.css?v=2">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Organization","name":"Party Life MNL","url":"https://next-frame.agency/partylife/","sameAs":["https://www.instagram.com/partylifemnl/","https://www.facebook.com/profile.php?id=100075939717613"],"description":"Manila's interactive media for nightlife and venues. Covers the rooms, hosts capped nights, lets readers pick the next cover venue.","areaServed":"Metro Manila","parentOrganization":{"@type":"Organization","name":"NextFrame","url":"https://next-frame.agency/"}}
+</script>
+<link rel="icon" href="/partylife/img/logo/favicon.svg" type="image/svg+xml"><link rel="icon" href="/partylife/img/logo/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/partylife/img/logo/favicon-180.png">
+<script defer src="/partylife/concierge/concierge.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
+<script defer src="/partylife/home-v2/home.js?v=2"></script>
+</head>
+<body>
+<div id="plIntro" aria-hidden="true">
+<style>
+#plIntro{position:fixed;inset:0;z-index:9999;background:#0a0a0a;display:grid;place-items:center;overflow:hidden;cursor:pointer;clip-path:inset(0 0 0 0);transition:clip-path .7s cubic-bezier(.76,0,.24,1)}
+#plIntro.out{clip-path:inset(0 0 100% 0)}
+#plIntro .f{position:absolute;inset:0;background:center/cover no-repeat;opacity:0;transform:scale(1.12);filter:contrast(1.15) saturate(1.2)}
+#plIntro .f.on{opacity:1;transform:scale(1);transition:transform .5s cubic-bezier(.16,1,.3,1)}
+#plIntro .flash{position:absolute;inset:0;background:var(--spot,#e4002b);opacity:0;mix-blend-mode:screen}
+#plIntro .flash.on{animation:plFlash .16s ease-out 1}
+@keyframes plFlash{0%{opacity:.45}100%{opacity:0}}
+#plIntro .mk{position:relative;width:min(78vw,820px);opacity:0;transform:scale(1.6);filter:blur(6px) drop-shadow(0 0 40px rgba(228,0,43,.55))}
+#plIntro .mk.on{opacity:1;transform:scale(1);filter:blur(0) drop-shadow(0 0 28px rgba(228,0,43,.45));transition:transform .55s cubic-bezier(.2,1.4,.4,1),filter .45s ease-out,opacity .15s}
+#plIntro .mk img{width:100%;height:auto;display:block}
+#plIntro .tg{position:absolute;left:0;right:0;bottom:22%;text-align:center;font:500 clamp(12px,1.6vw,16px)/1 var(--mono,monospace);letter-spacing:.32em;text-transform:uppercase;color:#f3efe6;opacity:0}
+#plIntro .tg.on{opacity:1;transition:opacity .3s}
+#plIntro .tg b{color:var(--spot,#e4002b);font-weight:500}
+#plIntro .sk{position:absolute;right:20px;bottom:20px;font:500 12px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#f3efe699;background:none;border:1px solid #f3efe633;padding:10px 14px;cursor:pointer}
+</style>
+<div class="f" data-w="/partylife/img/cover1.jpg" data-t="/partylife/home-v2/media/cover-h02.jpg"></div>
+<div class="f" data-w="/partylife/img/rooftop-crowd.jpg" data-t="/partylife/home-v2/media/cover-h04.jpg"></div>
+<div class="f" data-w="/partylife/img/bar-toast.jpg" data-t="/partylife/home-v2/media/cover-h01.jpg"></div>
+<div class="f" data-w="/partylife/img/o2.jpg" data-t="/partylife/home-v2/media/cover-h05.jpg"></div>
+<div class="f" data-w="/partylife/img/antidote.jpg" data-t="/partylife/home-v2/media/cover-h03.jpg"></div>
+<div class="flash"></div>
+<div class="mk"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="" width="794" height="100"></div>
+<p class="tg">Manila <b>·</b> every bar, every club, <b>tonight</b></p>
+<button class="sk" type="button">Skip</button>
+<script>
+(function () {
+  var el = document.getElementById('plIntro'), seen = false;
+  try { seen = sessionStorage.getItem('plIntro') === '1'; sessionStorage.setItem('plIntro', '1'); } catch (e) {}
+  if (seen || matchMedia('(prefers-reduced-motion: reduce)').matches) { el.remove(); return; }
+  document.documentElement.style.overflow = 'hidden';
+  var fr = el.querySelectorAll('.f'), fl = el.querySelector('.flash'), q = el.querySelector.bind(el), timers = [], done = false;
+  function at(ms, fn) { timers.push(setTimeout(fn, ms)); }
+  function end() {
+    if (done) return; done = true; timers.forEach(clearTimeout);
+    el.classList.add('out'); document.documentElement.style.overflow = '';
+    setTimeout(function () { el.remove(); }, 750);
+  }
+  // ponytail: fixed 140 ms cuts (~107 bpm feel); sync to a track only if the intro gets sound
+  // wait for the cover stills (max 1.2 s) so the cuts never flash an empty frame
+  var left = fr.length, started = false;
+  function go() { if (!started) { started = true; run(); } }
+  for (var k = 0; k < fr.length; k++) { var im = new Image(); im.onload = im.onerror = function () { if (--left === 0) go(); }; var u = innerWidth > innerHeight ? fr[k].dataset.w : fr[k].dataset.t; fr[k].style.backgroundImage = 'url(' + u + ')'; im.src = u; }
+  setTimeout(go, 1200);
+  function run() {
+  for (var i = 0; i < fr.length; i++) (function (i) {
+    at(120 + i * 140, function () { if (i) fr[i - 1].classList.remove('on'); fr[i].classList.add('on'); if (i % 2) { fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); } });
+  })(i);
+  at(120 + fr.length * 140, function () { fr[fr.length - 1].classList.remove('on'); fl.classList.remove('on'); void fl.offsetWidth; fl.classList.add('on'); q('.mk').classList.add('on'); });
+  at(120 + fr.length * 140 + 420, function () { q('.tg').classList.add('on'); });
+  at(120 + fr.length * 140 + 1700, end);
+  }
+  el.addEventListener('click', end);
+  addEventListener('keydown', function (e) { if (e.key === 'Escape' || e.key === 'Enter' || e.key === ' ') end(); }, { once: true });
+})();
+</script>
+</div>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="nav">
+  <a class="nav-logo" href="/partylife/"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="Party Life MNL" width="794" height="100"></a>
+  <nav class="nav-links" id="nav-links" aria-label="Main">
+    <a href="/partylife/tonight/">Tonight</a>
+    <a href="/partylife/places/">Venues</a>
+    <a href="/partylife/manila-nightlife-guide/">Guide</a>
+    <a href="#magazine">Articles</a>
+  </nav>
+  <a class="btn nav-cta" href="/partylife/promoters/">For promoters</a>
+  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-links" aria-label="Menu"><span></span><span></span></button>
+</header>
+
+<main id="main">
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">Manila · 21+</p>
+    <h1>What's on in Manila <em>tonight</em></h1>
+    <form class="ask" id="ask" role="search">
+      <label class="sr" for="ask-q">Ask Party Life where to go</label>
+      <input id="ask-q" type="text" autocomplete="off" enterkeyhint="search" placeholder="rooftop bar in BGC">
+      <button type="submit">Ask</button>
+    </form>
+    <p class="ask-note">Ask in plain words. We answer from 3,262 venues and this week's calendar.</p>
+    <div class="vibes" id="vibes" aria-label="Quick asks">
+      <button type="button" data-q="clubs open late">Clubs</button>
+      <button type="button" data-q="rooftop bar">Rooftops</button>
+      <button type="button" data-q="live music">Live music</button>
+      <button type="button" data-q="karaoke">Karaoke</button>
+      <button type="button" data-q="trivia night">Trivia &amp; quiz</button>
+      <button type="button" data-q="salsa bachata night">Salsa &amp; bachata</button>
+    </div>
+  </div>
+
+  <div class="mapwrap" id="mapwrap">
+    <div class="map-bar">
+      <div class="map-chips" id="map-chips" role="group" aria-label="Filter the map">
+        <button type="button" data-f="all" aria-pressed="true">All</button>
+        <button type="button" data-f="tonight" aria-pressed="false">Tonight only</button>
+        <button type="button" data-f="club" aria-pressed="false">Clubs</button>
+        <button type="button" data-f="bar" aria-pressed="false">Bars</button>
+        <button type="button" data-f="rooftop" aria-pressed="false">Rooftops</button>
+        <button type="button" data-f="live" aria-pressed="false">Live music</button>
+        <button type="button" data-f="ktv" aria-pressed="false">Karaoke</button>
+      </div>
+      <button type="button" class="map-full" id="map-full" aria-pressed="false">Open full map</button>
+    </div>
+    <div id="map" role="region" aria-label="Map of Manila venues and this week's events"></div>
+    <p class="map-status" id="map-status" aria-live="polite">Loading the map.</p>
+  </div>
+</section>
+
+<section class="rail-band" aria-labelledby="rail-h">
+  <div class="rail-head">
+    <div>
+      <p class="eyebrow">Covers · news · on next</p>
+      <h2 id="rail-h">This week in <em>Manila</em></h2>
+    </div>
+    <div class="rail-tools">
+      <a class="tlink" href="/partylife/tonight/">See everything on tonight</a>
+      <button type="button" class="rail-btn" id="rail-pause" aria-pressed="false">Pause covers</button>
+      <button type="button" class="rail-btn arrow" id="rail-prev" aria-label="Scroll back">&larr;</button>
+      <button type="button" class="rail-btn arrow" id="rail-next" aria-label="Scroll forward">&rarr;</button>
+    </div>
+  </div>
+  <ul class="rail" id="rail" tabindex="0" aria-label="Covers, latest news and upcoming events"></ul>
+</section>
+
+<section class="band vibes-band" aria-labelledby="vibe-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">Browse by vibe</p><h2 id="vibe-h">Pick the kind of <em>night</em></h2></div>
+    <div class="vgrid">
+      <button type="button" class="vt big rv" data-q="rooftop bar"><img src="/partylife/img/rooftop-crowd.jpg" alt="A crowd on a lantern-lit rooftop bar above the city at dusk" loading="lazy" width="900" height="1200"><span>Rooftops</span></button>
+      <button type="button" class="vt rv" data-q="cocktail bar"><img src="/partylife/img/bar-toast.jpg" alt="Friends toasting at a wooden cocktail bar under pendant lights" loading="lazy" width="900" height="1200"><span>Cocktail bars</span></button>
+      <button type="button" class="vt txt red rv" data-q="clubs open late"><b>Clubs till late</b><small>345 clubs listed</small></button>
+      <button type="button" class="vt tall rv" data-q="quiet bar for a date"><img src="/partylife/img/cover1.jpg" alt="A woman in a black sequined dress with a coupe on a night rooftop" loading="lazy" width="1280" height="1708" style="object-position:50% 25%"><span>Date night</span></button>
+      <button type="button" class="vt wide rv" data-q="rooftop bar Makati"><img src="/partylife/img/o2.jpg" alt="Guests in white on a rooftop with a sunset skyline behind" loading="lazy" width="900" height="1206" style="object-position:50% 40%"><span>Skyline drinks</span></button>
+      <button type="button" class="vt txt rv" data-q="karaoke"><b>Karaoke rooms</b><small>362 KTV spots</small></button>
+      <button type="button" class="vt txt paper rv" data-q="live music"><b>Live bands</b><small>Gigs, jazz, open mics</small></button>
+    </div>
+  </div>
+</section>
+
+<section class="band" aria-labelledby="area-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">Areas</p><h2 id="area-h">Where you'll <em>end up</em></h2></div>
+    <ul class="areas" id="areas"></ul>
+  </div>
+</section>
+
+<section class="band nums-band" aria-label="Party Life in numbers">
+  <div class="wrap nums" id="nums"></div>
+</section>
+
+<section class="band" id="magazine" aria-labelledby="mag-h">
+  <div class="wrap">
+    <div class="shead rv"><p class="eyebrow">From the magazine</p><h2 id="mag-h">Read before you <em>go</em></h2></div>
+    <div class="mag">
+      <a class="card rv" href="/partylife/articles/why-manila-nightlife-needed-a-magazine/"><div class="ph"><img src="/partylife/img/rooftop-crowd.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Issue 01 · Manifesto</span><h3>Why Manila nightlife needed a magazine</h3></a>
+      <a class="card rv" href="/partylife/articles/the-palace-bgc-field-guide/"><div class="ph"><img src="/partylife/img/thepeak.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · BGC</span><h3>The Palace, BGC: four rooms, one roof</h3></a>
+      <a class="card rv" href="/partylife/articles/poblacion-after-midnight/"><div class="ph"><img src="/partylife/img/bar-toast.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · Makati</span><h3>Poblacion after midnight</h3></a>
+      <a class="card rv" href="/partylife/articles/rooftop-season-five-bars-above-the-skyline/"><div class="ph"><img src="/partylife/img/antidote.jpg" alt="" loading="lazy" width="900" height="1200"></div><span class="k">Field guide · Rooftops</span><h3>Five bars above the skyline</h3></a>
+    </div>
+  </div>
+</section>
+
+<section class="org" aria-labelledby="org-h">
+  <div class="wrap org-in">
+    <h2 id="org-h">Running a night? Send the poster. We do the rest.</h2>
+    <div class="org-acts">
+      <a class="btn ink" href="/partylife/promoters/">Join as a promoter</a>
+      <a class="btn line" href="/partylife/submit/">Send a poster</a>
+      <a class="tlink" href="https://ig.me/m/partylifemnl?text=VENUE%20HELP" target="_blank" rel="noopener">Need a venue?</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="gutter"><div class="wrap"><span>Party Life MNL · Manila's interactive media for nightlife and venues · 21 and over</span><span>Produced by <a href="https://next-frame.agency/">NextFrame</a>, Makati · Map tiles © Esri, © OpenStreetMap contributors</span><span class="soc" style="display:flex;gap:14px;flex-wrap:wrap"><a href="https://www.instagram.com/partylifemnl/" rel="me noopener" target="_blank">Instagram @partylifemnl</a><a href="https://www.facebook.com/profile.php?id=100075939717613" rel="me noopener" target="_blank">Facebook · Party Life Manila</a><a href="https://www.tiktok.com/@partylifemnl" rel="me noopener" target="_blank">TikTok @partylifemnl</a></span></div></footer>
+</body>
+</html>
