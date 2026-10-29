@@ -19,16 +19,14 @@
 <link rel="preconnect" href="https://server.arcgisonline.com" crossorigin>
 <link rel="stylesheet" href="/partylife/partylife.css?v=6">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/MarkerCluster.min.css">
-<link rel="stylesheet" href="/partylife/home-v2/home.css?v=2">
+<link rel="stylesheet" href="/partylife/home-v2/home.css?v=3">
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Organization","name":"Party Life MNL","url":"https://next-frame.agency/partylife/","sameAs":["https://www.instagram.com/partylifemnl/","https://www.facebook.com/profile.php?id=100075939717613"],"description":"Manila's interactive media for nightlife and venues. Covers the rooms, hosts capped nights, lets readers pick the next cover venue.","areaServed":"Metro Manila","parentOrganization":{"@type":"Organization","name":"NextFrame","url":"https://next-frame.agency/"}}
 </script>
 <link rel="icon" href="/partylife/img/logo/favicon.svg" type="image/svg+xml"><link rel="icon" href="/partylife/img/logo/favicon-32.png" sizes="32x32"><link rel="apple-touch-icon" href="/partylife/img/logo/favicon-180.png">
 <script defer src="/partylife/concierge/concierge.js"></script>
 <script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
-<script defer src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.markercluster/1.5.3/leaflet.markercluster.min.js"></script>
-<script defer src="/partylife/home-v2/home.js?v=2"></script>
+<script defer src="/partylife/home-v2/home.js?v=4"></script>
 </head>
 <body>
 <div id="plIntro" aria-hidden="true">
@@ -48,11 +46,11 @@
 #plIntro .tg b{color:var(--spot,#e4002b);font-weight:500}
 #plIntro .sk{position:absolute;right:20px;bottom:20px;font:500 12px var(--mono,monospace);letter-spacing:.14em;text-transform:uppercase;color:#f3efe699;background:none;border:1px solid #f3efe633;padding:10px 14px;cursor:pointer}
 </style>
-<div class="f" data-w="/partylife/img/cover1.jpg" data-t="/partylife/home-v2/media/cover-h02.jpg"></div>
-<div class="f" data-w="/partylife/img/rooftop-crowd.jpg" data-t="/partylife/home-v2/media/cover-h04.jpg"></div>
-<div class="f" data-w="/partylife/img/bar-toast.jpg" data-t="/partylife/home-v2/media/cover-h01.jpg"></div>
-<div class="f" data-w="/partylife/img/o2.jpg" data-t="/partylife/home-v2/media/cover-h05.jpg"></div>
-<div class="f" data-w="/partylife/img/antidote.jpg" data-t="/partylife/home-v2/media/cover-h03.jpg"></div>
+<div class="f" data-w="/partylife/home-v2/media/web-h02.jpg" data-t="/partylife/home-v2/media/web-h02-tall.jpg"></div>
+<div class="f" data-w="/partylife/home-v2/media/web-h04.jpg" data-t="/partylife/home-v2/media/web-h04-tall.jpg"></div>
+<div class="f" data-w="/partylife/home-v2/media/web-h01.jpg" data-t="/partylife/home-v2/media/web-h01-tall.jpg"></div>
+<div class="f" data-w="/partylife/home-v2/media/web-h05.jpg" data-t="/partylife/home-v2/media/web-h05-tall.jpg"></div>
+<div class="f" data-w="/partylife/home-v2/media/web-h03.jpg" data-t="/partylife/home-v2/media/web-h03-tall.jpg"></div>
 <div class="flash"></div>
 <div class="mk"><img src="/partylife/img/logo/partylife-wordmark-paper.svg" alt="" width="794" height="100"></div>
 <p class="tg">Manila <b>·</b> every bar, every club, <b>tonight</b></p>
@@ -146,17 +144,49 @@
 <section class="rail-band" aria-labelledby="rail-h">
   <div class="rail-head">
     <div>
-      <p class="eyebrow">Covers · news · on next</p>
+      <p class="eyebrow">News · on next</p>
       <h2 id="rail-h">This week in <em>Manila</em></h2>
     </div>
     <div class="rail-tools">
       <a class="tlink" href="/partylife/tonight/">See everything on tonight</a>
-      <button type="button" class="rail-btn" id="rail-pause" aria-pressed="false">Pause covers</button>
       <button type="button" class="rail-btn arrow" id="rail-prev" aria-label="Scroll back">&larr;</button>
       <button type="button" class="rail-btn arrow" id="rail-next" aria-label="Scroll forward">&rarr;</button>
     </div>
   </div>
-  <ul class="rail" id="rail" tabindex="0" aria-label="Covers, latest news and upcoming events"></ul>
+  <ul class="rail" id="rail" tabindex="0" aria-label="Latest news and upcoming events"></ul>
+</section>
+
+<section class="arch-band" aria-labelledby="arch-h">
+  <div class="wrap">
+    <div class="arch-head">
+      <div class="shead"><p class="eyebrow">Party Life · 2023 to 2024</p><h2 id="arch-h">Nights we were in the <em>room</em></h2></div>
+      <div class="rail-tools"><a class="tlink" href="/partylife/history/">The full archive</a><button type="button" class="rail-btn" id="arch-pause" aria-pressed="false">Pause video</button></div>
+    </div>
+    <div class="arch">
+    <div class="arch-lead"><a class="ax lead" href="/partylife/history/">
+      <div class="ax-m"><video muted loop playsinline preload="none" aria-hidden="true" poster="/partylife/home-v2/media/web-h02.jpg" src="/partylife/home-v2/media/web-h02.mp4"></video></div>
+      <div class="ax-t"><span class="ax-tag">From the archive</span><p class="ax-k">Newport World Resorts · Oct 2023</p><h3>Kao went full <em>Menagerie</em></h3><p class="ax-d">An LED ceiling, a giant mask over the decks and a floor that never sat down.</p></div>
+    </a></div>
+    <ul class="arch-list">
+    <li><a class="ax" href="/partylife/history/">
+      <div class="ax-m"><video muted loop playsinline preload="none" aria-hidden="true" poster="/partylife/home-v2/media/web-h01.jpg" src="/partylife/home-v2/media/web-h01.mp4"></video></div>
+      <div class="ax-t"><span class="ax-tag">From the archive</span><p class="ax-k">Mansion · Feb 2023</p><h3>Office <em>Escape</em> Wednesdays</h3><p class="ax-d">Darts, pool and a DJ in the middle of the week.</p></div>
+    </a></li>
+    <li><a class="ax" href="/partylife/history/">
+      <div class="ax-m"><video muted loop playsinline preload="none" aria-hidden="true" poster="/partylife/home-v2/media/web-h03.jpg" src="/partylife/home-v2/media/web-h03.mp4"></video></div>
+      <div class="ax-t"><span class="ax-tag">From the archive</span><p class="ax-k">White Banana · Nov 2023</p><h3>Glasses <em>up</em></h3><p class="ax-d">A rooftop crowd with every glass in the air.</p></div>
+    </a></li>
+    <li><a class="ax" href="/partylife/history/">
+      <div class="ax-m"><video muted loop playsinline preload="none" aria-hidden="true" poster="/partylife/home-v2/media/web-h04.jpg" src="/partylife/home-v2/media/web-h04.mp4"></video></div>
+      <div class="ax-t"><span class="ax-tag">From the archive</span><p class="ax-k">H Club · Dec 2023</p><h3>Pink hair, red <em>stage</em></h3><p class="ax-d">Smoke, red light and a DJ to match.</p></div>
+    </a></li>
+    <li><a class="ax" href="/partylife/history/">
+      <div class="ax-m"><video muted loop playsinline preload="none" aria-hidden="true" poster="/partylife/home-v2/media/web-h05.jpg" src="/partylife/home-v2/media/web-h05.mp4"></video></div>
+      <div class="ax-t"><span class="ax-tag">From the archive</span><p class="ax-k">H Club · New Year 2024</p><h3>H Club rings in <em>2024</em></h3><p class="ax-d">Confetti, fan dancers and a full floor.</p></div>
+    </a></li>
+    </ul>
+    </div>
+  </div>
 </section>
 
 <section class="band vibes-band" aria-labelledby="vibe-h">

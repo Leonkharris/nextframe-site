@@ -1,4 +1,4 @@
-/* Party Life MNL home v2: ask box, live map, covers + news + events rail, areas and numbers. Data is read live; nothing is hard-coded but the five covers. */
+/* Party Life MNL home v2: ask box, live map, news + events rail, archive feature, areas and numbers. Data is read live; the five archive stories are static HTML. */
 (function () {
   'use strict';
   var B = '/partylife/';
@@ -27,15 +27,8 @@
   var PH = ['rooftop bar in BGC', 'salsa night', 'cheap drinks Poblacion'], pi = 0, inp = $('#ask-q');
   if (!RM) setInterval(function () { if (document.activeElement !== inp && !inp.value) inp.placeholder = PH[pi = (pi + 1) % PH.length]; }, 2600);
 
-  /* ---------- rail: covers + latest news + upcoming events ---------- */
-  var COVERS = [
-    ['h01', 'Office Escape Wednesdays, Mansion, February 2023'], ['h02', 'Kao went full Menagerie, Newport World Resorts, October 2023'],
-    ['h03', 'Glasses up, White Banana, November 2023'], ['h04', 'Pink hair, red stage, H Club, December 2023'], ['h05', 'H Club rings in 2024, New Year 2024']
-  ];
+  /* ---------- rail: latest news + upcoming events (the archive stories have their own section below) ---------- */
   var wm = '<img src="' + B + 'img/logo/partylife-wordmark-ink.svg" alt="" width="794" height="100">';
-  function coverCard(c) {
-    return '<li><a class="rc cv" href="' + B + 'history/" aria-label="Cover: ' + esc(c[1]) + '"><video muted loop playsinline preload="none" poster="' + B + 'home-v2/media/cover-' + c[0] + '.jpg" src="' + B + 'home-v2/media/cover-' + c[0] + '.mp4"></video></a></li>';
-  }
   function eventCard(e) {
     var tn = isTonight(e), chip = tn ? 'Tonight' : fmt(e.date, { weekday: 'short' });
     var price = e.price ? e.price.split(/;|\(/)[0].trim() : '';
@@ -50,38 +43,36 @@
   Promise.all([getJSON(B + 'data/events.json'), getJSON(B + 'data/news.json')]).then(function (r) {
     var evs = r[0].events.filter(upcoming).sort(function (a, b) { return a.date.localeCompare(b.date); }).slice(0, 8);
     var news = r[1].news.filter(function (n) { return n.date <= today; }).sort(function (a, b) { return b.date.localeCompare(a.date); }).slice(0, 5);
-    var html = [], c = COVERS.slice(), e = evs.slice(), n = news.slice();
-    while (c.length || e.length || n.length) {   // cover, event, news, event, then repeat: covers lead so they are in view first
-      if (c.length) html.push(coverCard(c.shift()));
+    var html = [], e = evs.slice(), n = news.slice();
+    while (e.length || n.length) {   // event, news, event, then repeat
       if (e.length) html.push(eventCard(e.shift()));
       if (n.length) html.push(newsCard(n.shift()));
       if (e.length) html.push(eventCard(e.shift()));
     }
     if (!evs.length) html.splice(1, 0, '<li><a class="rc nw" href="https://ig.me/m/partylifemnl?text=WHATSON" target="_blank" rel="noopener"><span class="d">Quiet week</span><h3>Nothing on the calendar yet</h3><span class="t">DM "WHATSON" and we will tell you where to go.</span></a></li>');
     $('#rail').innerHTML = html.join('');
-    wireCovers();
     stat('ev', evs.length ? r[0].events.filter(upcoming).length : 0);
   }).catch(function () { $('#rail').innerHTML = '<li><span class="rc nw"><h3>The calendar did not load</h3><span class="t">Reload the page.</span></span></li>'; });
 
-  var paused = RM;
-  function wireCovers() {
-    var vids = [].slice.call(document.querySelectorAll('.rc.cv video'));
-    var vis = new Map();
-    var play = function (v) { if (!paused) { var p = v.play(); if (p) p.catch(function () {}); } };
-    var io = new IntersectionObserver(function (es) { es.forEach(function (x) { vis.set(x.target, x.isIntersecting); x.isIntersecting ? play(x.target) : x.target.pause(); }); }, { threshold: .25 });
-    vids.forEach(function (v) {
-      io.observe(v);
-      var a = v.parentNode;
-      a.addEventListener('mouseenter', function () { if (!RM) { var p = v.play(); if (p) p.catch(function () {}); } });
-      a.addEventListener('mouseleave', function () { if (paused || !vis.get(v)) v.pause(); });
+  /* ---------- from the archive: the lead loops only while in view; the others play on hover (desktop) ---------- */
+  (function () {
+    var lead = $('.ax.lead video'), pb = $('#arch-pause'), paused = RM, seen = false;
+    var play = function (v) { var p = v.play(); if (p) p.catch(function () {}); };
+    function sync() {
+      pb.textContent = paused ? 'Play video' : 'Pause video'; pb.setAttribute('aria-pressed', String(paused));
+      if (paused || !seen) lead.pause(); else play(lead);
+    }
+    new IntersectionObserver(function (es) { seen = es[0].isIntersecting; sync(); }, { threshold: .4 }).observe(lead);
+    pb.addEventListener('click', function () { paused = !paused; sync(); });
+    sync();
+    if (RM || !matchMedia('(hover: hover)').matches) return;
+    document.querySelectorAll('.arch-list .ax').forEach(function (a) {
+      var v = a.querySelector('video');
+      a.addEventListener('mouseenter', function () { play(v); });
+      a.addEventListener('mouseleave', function () { v.pause(); });
     });
-    var pb = $('#rail-pause');
-    pb.textContent = paused ? 'Play covers' : 'Pause covers'; pb.setAttribute('aria-pressed', String(paused));
-    pb.addEventListener('click', function () {
-      paused = !paused; pb.textContent = paused ? 'Play covers' : 'Pause covers'; pb.setAttribute('aria-pressed', String(paused));
-      vids.forEach(function (v) { paused ? v.pause() : vis.get(v) && play(v); });
-    });
-  }
+  })();
+
   var rail = $('#rail');
   var step = function (d) { var li = rail.querySelector('li'); rail.scrollBy({ left: d * (li ? li.offsetWidth + 14 : 260) * 2, behavior: RM ? 'auto' : 'smooth' }); };
   $('#rail-prev').addEventListener('click', function () { step(-1); });
@@ -111,14 +102,14 @@
   var LBL = { bgc: 'BGC', poblacion: 'Poblacion', 'makati-cbd': 'Makati', manila: 'Malate', 'quezon-city': 'QC', 'bay-area': 'Pasay', 'entertainment-city': 'Ent. City',
     ortigas: 'Ortigas', kapitolyo: 'Kapitolyo', mandaluyong: 'Mandaluyong', 'san-juan': 'Greenhills', south: 'Alabang', marikina: 'Marikina' };
   function initMap() {
-    if (!window.L || !L.markerClusterGroup) { $('#map-status').textContent = 'The map did not load. Reload the page.'; return; }
+    if (!window.L) { $('#map-status').textContent = 'The map did not load. Reload the page.'; return; }
     var touch = matchMedia('(pointer: coarse)').matches;
     var map = L.map('map', { zoomControl: true, scrollWheelZoom: false, dragging: !touch, tap: true, minZoom: 10, maxZoom: 18 });
     // CARTO basemaps now answer "API key required" (checked 29 Oct 2026); Esri World Street Map has the clearest street labels without a key
     L.tileLayer('https://server.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer/tile/{z}/{y}/{x}', {
       maxZoom: 18, attribution: 'Tiles &copy; <a href="https://www.esri.com/">Esri</a>, HERE, Garmin, &copy; OpenStreetMap contributors'
     }).addTo(map);
-    map.setView([14.5555, 121.0335], innerWidth < 861 ? 14 : 15);   // Makati CBD, Poblacion, BGC at street-name zoom
+    map.setView([14.575, 121.03], innerWidth < 861 ? 12 : 13);   // Metro Manila core, so the spread of venues reads at a glance
     var st = $('#map-status');
     if (touch) {
       st.textContent = 'Tap the map to move it';
@@ -127,20 +118,18 @@
     map.on('focus click', function () { map.scrollWheelZoom.enable(); });
     map.on('blur mouseout', function () { map.scrollWheelZoom.disable(); });
 
-    var vIcon = L.divIcon({ className: '', html: '<span class="pin pin-v"></span>', iconSize: [16, 16], iconAnchor: [8, 8], popupAnchor: [0, -8] });
-    var cluster = L.markerClusterGroup({ chunkedLoading: true, showCoverageOnHover: false, maxClusterRadius: 60, spiderfyOnMaxZoom: true,
-      iconCreateFunction: function (c) { var n = c.getChildCount(), s = n < 20 ? 'S' : n < 100 ? 'm' : 'l', px = n < 20 ? 36 : n < 100 ? 44 : 54;
-        return L.divIcon({ className: '', html: '<span class="clu ' + s + '" style="width:' + px + 'px;height:' + px + 'px">' + n + '</span>', iconSize: [px, px] }); } });
+    // one canvas dot per venue: 2,500 DOM pins (or clusters) either crawl or hide the scale; canvas draws them all
+    var cv = L.canvas({ padding: 0.5, tolerance: 6 }), vLayer = L.layerGroup().addTo(map);
+    var DOT = { radius: 5, color: '#0a0a0a', weight: 1.5, fillColor: '#f3efe6', fillOpacity: 0.95, renderer: cv };
     var evLayer = L.layerGroup().addTo(map), lblPane = map.createPane('lbl');
     lblPane.style.zIndex = 640; lblPane.style.pointerEvents = 'none';
     map.createPane('ev').style.zIndex = 660;   // red event pins sit above area labels and clusters
-    map.addLayer(cluster);
 
     Promise.all([getJSON(B + 'home-v2/map.json'), getJSON(B + 'data/events.json').catch(function () { return { events: [] }; })]).then(function (r) {
       var V = r[0].v, E = r[0].e.filter(function (e) { return (e.e || e.d) >= today; });
       var ev = {}; r[1].events.forEach(function (e) { ev[e.id] = e; });
       var markers = V.map(function (p) {
-        var m = L.marker([p.y, p.x], { icon: vIcon, title: p.n, keyboard: false });
+        var m = L.circleMarker([p.y, p.x], DOT);
         m.bindPopup(function () { return '<div class="pop"><b>' + esc(p.n) + '</b><span class="m">' + esc(p.k) + ' · ' + esc((AREAS[p.a] || [p.a])[0]) + (p.r ? ' · ' + p.r + ' ★' : '') + '</span><a class="go" href="' + B + 'places/' + p.s + '/">Open the venue page</a></div>'; });
         m._k = p.k; return m;
       });
@@ -164,7 +153,7 @@
         return list.length;
       }
       function apply(f) {
-        cluster.clearLayers();
+        vLayer.clearLayers();
         if (f === 'tonight') {
           var n = drawEvents(true);
           if (!n) { drawEvents(false); st.textContent = 'Nothing pinned for tonight. Red pins show the next events.'; }
@@ -173,10 +162,11 @@
         }
         drawEvents(false);
         var ms = f === 'all' ? markers : markers.filter(function (m) { return KIND[f].indexOf(m._k) >= 0; });
-        cluster.addLayers(ms);
-        if (!touch || map.dragging.enabled()) st.textContent = '';
+        ms.forEach(function (m) { vLayer.addLayer(m); });
+        if (!touch || map.dragging.enabled()) st.textContent = ms.length.toLocaleString() + ' venues on the map';
       }
       apply('all');
+      map.on('zoomend', function () { var r = map.getZoom() >= 15 ? 7 : map.getZoom() >= 13 ? 5 : 4; vLayer.eachLayer(function (m) { m.setRadius(r); }); });
       stat('map', V.length, 'Venues on the map');
       $('#map-chips').addEventListener('click', function (e) {
         var b = e.target.closest('button'); if (!b) return;
