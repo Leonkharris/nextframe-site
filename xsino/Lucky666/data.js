@@ -1528,7 +1528,7 @@ window.LUCKY666 = {
  },
  "ep1": {
   "title": "Episode 1 · I'm Yesi, Güey / Soy la Yesi, güey",
-  "status": "APPROVED by Leon ('ok continue', 2026-09-29). Storyboard stage; video waits for the 4-attachment gate.",
+  "status": "Story approved by Leon ('ok continue', 2026-09-29). Images rebuilt on the new cast 2026-11-02, not yet reviewed. Video waits for the 4-attachment gate.",
   "answers": [
    "Voices: still open. Nothing at the storyboard stage needs them; decide before the video stage (no robotic TTS).",
    "Aspect: 16:9 master, per the standing rule.",
@@ -1995,5 +1995,5 @@ window.LUCKY666 = {
    "motion": "assets/ep01/motion_emotion.webp"
   }
  },
- "built": "2026-11-02T14:12:03.710Z"
+ "built": "2026-11-02T14:21:33.567Z"
 };
