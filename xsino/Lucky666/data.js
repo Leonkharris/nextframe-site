@@ -289,7 +289,7 @@ window.LUCKY666 = {
    "color": "#E6007E",
    "palette": [
     [
-     "HOT MAGENTA (bomber)",
+     "HOT MAGENTA (corset)",
      "#E6007E"
     ],
     [
@@ -297,16 +297,16 @@ window.LUCKY666 = {
      "#D9A983"
     ],
     [
-     "DARK-BRUNETTE WAVES",
+     "CHOCOLATE WAVES",
      "#3B2518"
     ],
     [
-     "RIBBED WHITE (tank)",
-     "#F2EEE8"
+     "LEATHER BLACK (mini)",
+     "#141214"
     ],
     [
-     "CARGO GREY",
-     "#8A8A84"
+     "CHAMPAGNE LID",
+     "#D8B98A"
     ],
     [
      "HOOP GOLD",
@@ -322,12 +322,12 @@ window.LUCKY666 = {
     ]
    ],
    "materials": [
-    "BOMBER: shiny satin, embroidered",
-    "TANK: ribbed cotton",
-    "CARGOS: washed cotton twill",
-    "SNEAKERS: scuffed leather + duct tape",
+    "CORSET: boned satin",
+    "MINI: black leather",
+    "BOOTS: pointed heeled leather",
+    "HOOPS: gold beaded",
     "LISTÓN: red satin ribbon",
-    "HOOPS: thin gold"
+    "NAILS: hot-pink almond"
    ],
    "face": "Yesi, a 29-year-old Mexican woman from Mexico City: a soft oval face with high rounded cheekbones, warm brown doe eyes, softly arched groomed dark-brown brows, a small slightly upturned nose and full glossy rosy-mauve lips, light warm-olive skin with a pink flush, and long voluminous dark chocolate-brown hair in soft blowout waves with long face-framing layers swept over one shoulder, with full warm glam: shimmering champagne-gold eyelids, a black wing, long lashes and rosy blush high on the cheekbones",
    "faceShoulders": "a hot-magenta satin strapless corset top, large gold beaded hoop earrings and a gold charm choker",
@@ -363,11 +363,11 @@ window.LUCKY666 = {
     ],
     [
      "SKIN",
-     "fair light olive, faint freckles"
+     "light warm-olive with a pink flush"
     ],
     [
      "FEATURES",
-     "heart-shaped face · defined cupid's bow · beauty mark above right lip corner"
+     "soft oval face · high rounded cheekbones · full glossy rosy-mauve lips"
     ],
     [
      "OUTFIT",
@@ -375,7 +375,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "gold hoops · red listón ribbon on left wrist"
+     "large gold beaded hoops · gold charm choker · red listón ribbon on left wrist"
     ],
     [
      "PROP",
@@ -463,7 +463,7 @@ window.LUCKY666 = {
    "color": "#1FB47A",
    "palette": [
     [
-     "BLAZER BLACK",
+     "BANDAGE BLACK",
      "#111014"
     ],
     [
@@ -479,8 +479,8 @@ window.LUCKY666 = {
      "#5A3A26"
     ],
     [
-     "GOLDEN-TAN SKIN",
-     "#C98E62"
+     "GOLDEN LIGHT-OLIVE SKIN",
+     "#D3A27A"
     ],
     [
      "BRONZE SMOKY EYE",
@@ -496,11 +496,11 @@ window.LUCKY666 = {
     ]
    ],
    "materials": [
-    "BLAZER DRESS: tailored wool crepe",
-    "BELT: thin polished gold",
-    "TIGHTS: sheer black nylon",
-    "BOOTS: black suede over-the-knee",
-    "JEWELRY: emerald + gold",
+    "DRESS: stretch bandage knit",
+    "HEELS: black strappy stilettos",
+    "EARRINGS: emerald drops",
+    "PENDANT: oval polished gold",
+    "RING: gold signet",
     "PLANNER: pebbled leather"
    ],
    "face": "Regina, a 32-year-old Mexican woman from Culiacán: a sculpted face with high sharp cheekbones and a defined jaw, large cat-like light hazel-green eyes, thick bold sculpted dark brows, a straight slim nose and very full plump overlined lips in glossy nude-mauve, golden light-olive skin, and very long voluminous espresso-brown hair in big glossy bouncy blowout waves from a centre part, with heavy glam: a soft brown smoky eye, dramatic lashes, sculpted contour and glossy overlined nude lips",
@@ -537,11 +537,11 @@ window.LUCKY666 = {
     ],
     [
      "SKIN",
-     "bronzed golden tan"
+     "golden light-olive"
     ],
     [
      "FEATURES",
-     "high prominent cheekbones · strong jaw · very full lips"
+     "high sharp cheekbones · defined jaw · very full overlined lips"
     ],
     [
      "OUTFIT",
@@ -549,7 +549,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "emerald drop earrings + pendant · gold 'R' signet ring (a gift from Dad)"
+     "emerald drop earrings · oval gold pendant · gold 'R' signet ring (a gift from Dad)"
     ],
     [
      "PROP",
@@ -636,23 +636,23 @@ window.LUCKY666 = {
    "color": "#8FA876",
    "palette": [
     [
-     "SAGE (sports bra)",
-     "#8FA876"
+     "BIKINI BLUE",
+     "#2F6FB5"
     ],
     [
-     "TERRACOTTA (leggings)",
-     "#C8643B"
+     "BIKINI YELLOW",
+     "#F2C94C"
     ],
     [
-     "DEEP BRONZE SKIN",
-     "#9A6440"
+     "LIGHT-GOLDEN SKIN",
+     "#DDAF85"
     ],
     [
-     "SUN-BLEACHED WAVES",
-     "#6B4A2E"
+     "HONEY-BLONDE HAIR",
+     "#B98A4E"
     ],
     [
-     "LINEN WHITE",
+     "CROCHET WHITE",
      "#F4EFE6"
     ],
     [
@@ -669,12 +669,12 @@ window.LUCKY666 = {
     ]
    ],
    "materials": [
-    "SPORTS BRA: ribbed recycled nylon",
-    "LEGGINGS: matte compression knit",
-    "SHIRT: washed linen",
+    "BIKINI: floral print, gingham trim",
+    "SARONG: sheer white crochet",
+    "CHAINS: fine silver, starfish + seashell",
     "HUARACHES: woven leather",
-    "HEADBAND: hand-woven cotton",
-    "PENDANT: raw quartz on waxed cord"
+    "PENDANT: raw quartz",
+    "BOTTLE: sticker-covered steel"
    ],
    "face": "Citlali, a 26-year-old Mexican woman from the Oaxaca coast: a soft oval face with high full cheekbones, large sultry heavy-lidded light hazel-green eyes, softly arched light-brown brows, a slim nose with a slightly upturned tip and very full plump pouty lips in glossy rosy-nude, glowing light golden sun-kissed skin, and long honey-blonde hair with darker golden-brown roots, pulled back loosely with long curtain strands falling on both sides of her face, with sun-kissed glam: bronzed glowing skin, soft brown liner, long lashes and warm peach blush",
    "faceShoulders": "a blue-and-yellow floral triangle bikini top with thin blue gingham trim, layered fine silver necklaces with tiny starfish and seashell charms",
@@ -710,11 +710,11 @@ window.LUCKY666 = {
     ],
     [
      "SKIN",
-     "sun-kissed deep bronze, nose freckles"
+     "glowing light golden, sun-kissed"
     ],
     [
      "FEATURES",
-     "strong cheekbones · huge smile"
+     "soft oval face · high full cheekbones · very full pouty lips"
     ],
     [
      "OUTFIT",
@@ -722,7 +722,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "raw quartz pendant · wooden bead bracelet · running watch"
+     "raw quartz pendant · layered silver starfish and seashell chains"
     ],
     [
      "PROP",
@@ -808,23 +808,23 @@ window.LUCKY666 = {
    "color": "#22D3EE",
    "palette": [
     [
-     "ELECTRIC CYAN (headset)",
-     "#22D3EE"
+     "PASTEL CYAN (headphones)",
+     "#8FD8D8"
     ],
     [
-     "LILAC HOODIE",
+     "LILAC LED",
      "#C4B5FD"
     ],
     [
-     "CARAMEL BALAYAGE",
-     "#8A5A34"
+     "JET-BLACK HAIR",
+     "#0E0E12"
     ],
     [
-     "CARAMEL SKIN",
-     "#C99467"
+     "FAIR ROSY SKIN",
+     "#E9BFA3"
     ],
     [
-     "CARGO BLACK",
+     "LEATHER BLACK",
      "#1E1E24"
     ],
     [
@@ -841,12 +841,12 @@ window.LUCKY666 = {
     ]
    ],
    "materials": [
-    "HOODIE: brushed fleece",
-    "CARGOS: ripstop nylon",
-    "HEADSET: matte plastic + faux-fur cat ears",
-    "GLASSES: clear acetate",
-    "SNEAKERS: chunky platform rubber",
-    "NAILS: holographic glitter"
+    "TOP: black halter, thin straps",
+    "MINI: faux leather + silver chain belt",
+    "TIGHTS: black fishnet",
+    "BOOTS: chunky black platforms",
+    "CHOKER: black velvet",
+    "HEADPHONES: matte pastel-cyan"
    ],
    "face": "Lupe, a 24-year-old Mexican woman from Guadalajara with a clearly adult look: an oval face with high defined cheekbones and a defined jaw, almond eyes with pale grey-green irises, straight full dark brows, a straight slim nose and very full plump glossy cherry-pink lips, fair light skin with a soft rosy flush across the cheeks and the bridge of the nose, and extremely long sleek poker-straight jet-black hair parted in the centre falling past her waist, with gamer-girl glam: rosy blush, fine black liner and long separated lashes",
    "faceShoulders": "a black thin-strap halter crop top, a thin black velvet choker and pastel-cyan gaming headphones resting on her collarbone",
@@ -882,11 +882,11 @@ window.LUCKY666 = {
     ],
     [
      "SKIN",
-     "sun-kissed light caramel, dewy"
+     "fair light, dewy, soft rosy flush"
     ],
     [
      "FEATURES",
-     "heart-shaped face · high rounded cheekbones · sleeves always over hands"
+     "oval face · high defined cheekbones · very full glossy cherry-pink lips"
     ],
     [
      "OUTFIT",
@@ -894,7 +894,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "pastel-cyan cat-ear headset around neck · glitter nails"
+     "thin black velvet choker · pastel-cyan gaming headphones on her collarbone"
     ],
     [
      "PROP",
@@ -1017,7 +1017,7 @@ window.LUCKY666 = {
     "STAGE DRESS: silver sequins",
     "HEELS: metallic leather straps",
     "FLOWER: silk hibiscus",
-    "NECKLACES: layered fine gold",
+    "EARRINGS: red teardrop drops",
     "NAILS: glossy gel almond"
    ],
    "face": "Marisol, a 27-year-old Mexican woman from Veracruz: a soft V-shaped face with high full cheekbones, a refined adult jawline and a softly pointed chin, large luminous dark-brown eyes with a sultry heavy-lidded gaze and a slight downward tilt at the outer corners, thin softly arched brows, a small refined straight nose with a delicate tip, small full pouty lips with a defined cupid's bow in a rosy-red tint, smooth glowing light-golden skin, and dark-brown hair swept up into a low loose twisted bun at the nape with soft curled tendrils falling by her face and neck and a small red hibiscus flower pinned into the bun, with soft sultry glam: glowing skin, a soft winged liner, long lashes and rosy-red lips",
@@ -1054,11 +1054,11 @@ window.LUCKY666 = {
     ],
     [
      "SKIN",
-     "luminous bronzed caramel"
+     "smooth glowing light-golden"
     ],
     [
      "FEATURES",
-     "sharply sculpted cheekbones · long graceful neck · full lips"
+     "soft V-shaped face · high full cheekbones · small full pouty lips"
     ],
     [
      "OUTFIT",
@@ -1066,7 +1066,7 @@ window.LUCKY666 = {
     ],
     [
      "JEWELRY",
-     "gold teardrop hoops · layered fine gold necklaces · red almond nails"
+     "long red teardrop earrings · long glossy red almond nails"
     ],
     [
      "PROP",
@@ -1500,7 +1500,7 @@ window.LUCKY666 = {
   "citlali": {
    "door": "606",
    "day": "Day 3",
-   "action": "stretching one leg up high against the doorframe in a flexible yoga pose, a water bottle in her hand, potted plants by the door, laughing",
+   "action": "stretching one leg up high against the doorframe in a flexible yoga pose, her full bust and slim waist filling the mint top, facing the lens, a water bottle in her hand, potted plants by the door, laughing",
    "en": "606 energy: plants, crystals and a 6 a.m. rooftop class. Mercury's in retrograde, so I'm only placing ONE bet today. Okay, two. ☀️🧘‍♀️",
    "es": "Energía 606: plantas, cristales y clase en la azotea a las 6 a.m. Mercurio está retrógrado, así que hoy solo UNA apuesta. Bueno, dos. ☀️🧘‍♀️",
    "tags": "#Lucky666 #AzoteaFit"
@@ -1508,7 +1508,7 @@ window.LUCKY666 = {
   "lupe": {
    "door": "616",
    "day": "Day 4",
-   "action": "standing full-length in her half-open doorway hugging a sticker-covered laptop to her chest, headset on, bundles of cables snaking out from under the door along the floor, one eyebrow raised in a deadpan look",
+   "action": "standing full-length in her half-open doorway hugging a sticker-covered laptop to her chest, her cyan headphones around her neck, bundles of cables snaking out from under the door along the floor, one eyebrow raised in a deadpan look",
    "en": "Moved into 616. Blacked out the windows, set up four monitors, and my AI says my odds of making friends here are 11%. Challenge accepted. 🎮🐱",
    "es": "Ya vivo en el 616. Tapé las ventanas, armé cuatro monitores y mi IA dice que mis probabilidades de hacer amigas aquí son del 11%. Acepto el reto. 🎮🐱",
    "tags": "#Lucky666 #LUPEexe"
@@ -1593,8 +1593,8 @@ window.LUCKY666 = {
     "n": "5",
     "where": "Street, front door · Sunday",
     "dur": "60s",
-    "action": "A black SUV. Los Primos open the door; Regina steps out in blazer and pearls with 14 matching suitcases and asks Don Aurelio for 'a humble, normal apartment with character'. He: 'Only half of 666 is left.' Yesi sprints down six floors yelling that it's a loft. Regina pays six months in cash from an envelope sealed with wax.",
-    "camera": "Wide on the tower as the SUV rolls in; slow-motion Regina reveal (heels, suitcases, headband); cut-ins of Yesi flying down the stairs; the envelope close-up; Don Aurelio's eyebrows.",
+    "action": "A black SUV. Los Primos open the door; Regina steps out in a black bandage mini dress with 14 matching suitcases and asks Don Aurelio for 'a humble, normal apartment with character'. He: 'Only half of 666 is left.' Yesi sprints down six floors yelling that it's a loft. Regina pays six months in cash from an envelope sealed with wax.",
+    "camera": "Wide on the tower as the SUV rolls in; slow-motion Regina reveal (heels, suitcases, hair sweep); cut-ins of Yesi flying down the stairs; the envelope close-up; Don Aurelio's eyebrows.",
     "line": "YESI: «¡Es un loft!» / REGINA: «¿Aceptan efectivo?» (Do you take cash?)",
     "text": "NUEVA INQUILINA · REGINA · 666",
     "social": "★ Skit 5: the new tenant"
@@ -1691,7 +1691,7 @@ window.LUCKY666 = {
     "dur": "4s",
     "move": "STATIC",
     "size": "WIDE",
-    "action": "3:47 a.m. Yesi sprawled on her unmade bed in the trashed concrete loft, face lit by her cracked phone, lollipop stick in her mouth, the neon glow in the window behind her."
+    "action": "3:47 a.m. Yesi sprawled on her unmade bed in the trashed concrete loft, face lit by her cracked phone, the neon glow in the window behind her."
    },
    {
     "n": 2,
@@ -1798,7 +1798,7 @@ window.LUCKY666 = {
     "dur": "4s",
     "move": "SLOW MOTION",
     "size": "WIDE-MEDIUM",
-    "action": "Sunday on the leafy street outside the tower: two enormous men in white guayaberas hold open the door of a black SUV as Regina steps out in her black belted blazer dress and over-the-knee suede boots, a tower of matching luxury suitcases beside her."
+    "action": "Sunday on the leafy street outside the tower: two enormous men in white guayaberas hold open the door of a black SUV as Regina steps out in her black bandage mini dress and strappy stilettos, a tower of matching luxury suitcases beside her."
    },
    {
     "n": 10,
@@ -1811,7 +1811,7 @@ window.LUCKY666 = {
     "dur": "2s",
     "move": "HANDHELD TRACK",
     "size": "MEDIUM",
-    "action": "Yesi sprinting down a concrete stairwell three steps at a time, curls flying, magenta bomber flapping, shouting."
+    "action": "Yesi sprinting down a concrete stairwell three steps at a time, long waves flying, red ribbon flapping on her wrist, shouting."
    },
    {
     "n": 11,
@@ -1896,7 +1896,7 @@ window.LUCKY666 = {
   "chars": {
    "yesi": {
     "hero": "assets/chars/yesi/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/yesi/lifestyle.webp",
     "room": "assets/chars/yesi/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1908,7 +1908,7 @@ window.LUCKY666 = {
    },
    "regina": {
     "hero": "assets/chars/regina/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/regina/lifestyle.webp",
     "room": "assets/chars/regina/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1920,7 +1920,7 @@ window.LUCKY666 = {
    },
    "citlali": {
     "hero": "assets/chars/citlali/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/citlali/lifestyle.webp",
     "room": "assets/chars/citlali/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1932,7 +1932,7 @@ window.LUCKY666 = {
    },
    "lupe": {
     "hero": "assets/chars/lupe/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/lupe/lifestyle.webp",
     "room": "assets/chars/lupe/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1944,7 +1944,7 @@ window.LUCKY666 = {
    },
    "marisol": {
     "hero": "assets/chars/marisol/hero.webp",
-    "lifestyle": null,
+    "lifestyle": "assets/chars/marisol/lifestyle.webp",
     "room": "assets/chars/marisol/room.webp",
     "turnaround": null,
     "expressions": null,
@@ -1995,5 +1995,5 @@ window.LUCKY666 = {
    "motion": "assets/ep01/motion_emotion.webp"
   }
  },
- "built": "2026-11-02T08:01:37.424Z"
+ "built": "2026-11-02T13:29:00.055Z"
 };
