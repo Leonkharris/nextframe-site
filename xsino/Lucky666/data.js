@@ -379,7 +379,7 @@ window.LUCKY666 = {
     ],
     [
      "PROP",
-     "cracked phone in a San Judas case · tamarind lollipop stick"
+     "cracked phone in a San Judas case · tamarind lollipops in her bag"
     ],
     [
      "VICE",
@@ -394,7 +394,7 @@ window.LUCKY666 = {
      "fast chilango: güey, neta, no manches, ¿me fías?"
     ]
    ],
-   "look": "Tepito baddie glam: a hot-magenta strapless corset, a black leather micro mini and heeled ankle boots, gold beaded hoops and a charm choker, long chocolate-brown blowout waves, the red wrist ribbon, and a tamarind lollipop stick where a cigarette would be (our Chainsmoker Cat homage).",
+   "look": "Tepito baddie glam: a hot-magenta strapless corset, a black leather micro mini and heeled ankle boots, gold beaded hoops and a charm choker, long chocolate-brown blowout waves and the red wrist ribbon.",
    "personality": [
     "Shameless, charming and funny, with zero sense of consequence",
     "A hustler genius at reading people, a disaster at reading odds",
@@ -1484,9 +1484,9 @@ window.LUCKY666 = {
   "yesi": {
    "door": "666",
    "day": "Day 1",
-   "action": "leaning against the doorframe spinning her keys on one finger, lollipop stick in her mouth, flashing a cocky smile at the camera",
-   "en": "Tenant #666. Yes, THAT 666. Rent's cheap because the sign is cursed, and I'm luckier than the sign. Probably. 🎰🍭 Una más y ya.",
-   "es": "Inquilina del 666. Sí, ESE 666. La renta está barata porque el letrero está salado… y yo tengo más suerte que el letrero. Creo. 🎰🍭 Una más y ya.",
+   "action": "leaning against the doorframe spinning her keys on one finger, flashing a cocky smile at the camera",
+   "en": "Tenant #666. Yes, THAT 666. Rent's cheap because the sign is cursed, and I'm luckier than the sign. Probably. 🎰 Una más y ya.",
+   "es": "Inquilina del 666. Sí, ESE 666. La renta está barata porque el letrero está salado… y yo tengo más suerte que el letrero. Creo. 🎰 Una más y ya.",
    "tags": "#Lucky666 #UnaMasYYa"
   },
   "regina": {
@@ -1995,5 +1995,5 @@ window.LUCKY666 = {
    "motion": "assets/ep01/motion_emotion.webp"
   }
  },
- "built": "2026-11-02T14:21:33.567Z"
+ "built": "2026-11-02T15:09:14.015Z"
 };
