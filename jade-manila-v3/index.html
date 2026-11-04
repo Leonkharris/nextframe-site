@@ -270,6 +270,29 @@ footer img{width:min(220px,60%);height:auto}
 
 .rm .walk{height:auto}.rm .walk .stage{position:relative;height:70vh}.rm .chap{position:static;opacity:1;transform:none;padding:32px clamp(16px,4vw,48px)}.rm .walk .intro,.rm .grain,.rm .rail,.rm .ctr{display:none}
 .rm .dish{opacity:1;transform:none}.rm .cur{display:none}.rm .lines i{transform:none}
+
+/* --- added bands: the plates, the caviar collection, the brand craft --- */
+.plates,.craft{padding:clamp(56px,8vw,110px) 0;border-top:1px solid var(--line)}
+.plates .wrap,.craft .wrap{display:flex;flex-direction:column;gap:clamp(22px,3vw,40px)}
+.g3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+@media (max-width:900px){.g3{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media (max-width:560px){.g3{grid-template-columns:1fr}}
+.g3 .fr{position:relative;overflow:hidden;background:#09110c;border:1px solid var(--line)}
+.g3 .fr img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;transition:transform .9s ease}
+.g3 .fr:hover img{transform:scale(1.04)}
+.g3 .fr .lab{position:absolute;left:0;right:0;bottom:0;padding:14px 16px;
+  background:linear-gradient(180deg,rgba(7,17,13,0),rgba(7,17,13,.92))}
+.g3 .fr .lab b{display:block;font-family:'Jost',system-ui,sans-serif;font-weight:600;
+  font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:#F6F5F1}
+.g3 .fr .lab span{display:block;margin-top:3px;font-size:11px;color:var(--mute)}
+.caviar{position:relative;min-height:clamp(320px,46vw,560px);display:flex;align-items:center;
+  border-top:1px solid var(--line);overflow:hidden}
+.caviar img.bed{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.caviar::after{content:"";position:absolute;inset:0;
+  background:linear-gradient(90deg,rgba(7,17,13,.92),rgba(7,17,13,.55) 52%,rgba(7,17,13,.15))}
+.caviar .wrap{position:relative;z-index:1;display:flex;flex-direction:column;gap:16px;max-width:1320px}
+.caviar .wrap p{max-width:46ch}
+
 </style>
 </head>
 <body>
@@ -408,6 +431,31 @@ footer img{width:min(220px,60%);height:auto}
   </div>
 </div></section>
 
+<section class="plates" id="plates"><div class="wrap">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <p class="k" style="margin:0">Signature &middot; Todd English</p>
+    <h2 class="h">Six plates the kitchen opens with.</h2>
+    <p class="lede">Shot for the opening menu. Caviar and uni through the wood oven to matcha.</p>
+  </div>
+  <div class="g3">
+    <div class="fr"><img src="img/sig-caviar-cannoli.jpg" alt="Caviar Cannoli"><div class="lab"><b>Caviar Cannoli</b><span>Smoked yellowtail mousse · sesame · Ossetra</span></div></div>
+    <div class="fr"><img src="img/sig-chawanmushi.jpg" alt="Chawanmushi"><div class="lab"><b>Chawanmushi</b><span>Sweet corn &amp; coconut · uni · Ossetra</span></div></div>
+    <div class="fr"><img src="img/sig-king-crab-toast.jpg" alt="King Crab Toast"><div class="lab"><b>King Crab Toast</b><span>Japanese milk bread · uni sabayon</span></div></div>
+    <div class="fr"><img src="img/sig-lobster-paccheri.jpg" alt="Lobster Paccheri"><div class="lab"><b>Lobster Paccheri</b><span>Roasted-shell tomato dashi · Calabrian chili</span></div></div>
+    <div class="fr"><img src="img/sig-peking-duck.jpg" alt="Peking-Spiced Duck"><div class="lab"><b>Peking-Spiced Duck</b><span>Crisp leg · cucumber · scallion · plum-hoisin</span></div></div>
+    <div class="fr"><img src="img/sig-matcha-tiramisu.jpg" alt="Matcha Tiramisu"><div class="lab"><b>Matcha Tiramisu</b><span>Espresso · mascarpone</span></div></div>
+  </div>
+</div></section>
+
+<section class="caviar" id="caviar">
+  <img class="bed" src="img/caviar-hero.jpg" alt="Jade Private Collection caviar on green marble">
+  <div class="wrap">
+    <p class="k" style="margin:0">The caviar bar</p>
+    <h2 class="h">The Private Collection.</h2>
+    <p class="lede">Classic, Imperial, Royal Ossetra and Grand Reserve, served at the bar until two, with blinis, cr&egrave;me fra&icirc;che and a mother-of-pearl spoon.</p>
+  </div>
+</section>
+
 <section class="chef"><div class="wrap">
   <div style="display:flex;flex-direction:column;gap:22px;min-width:0">
     <p class="k" style="margin:0">Food by Todd English</p>
@@ -416,6 +464,22 @@ footer img{width:min(220px,60%);height:auto}
     <p>His kitchens have run from Las Vegas to the Bahamas to Abu Dhabi. At Jade, he brings the world to a Filipino table.</p>
   </div>
   <div class="frame"><img src="img/fd-beef-real.jpg" alt="From the wood oven"></div>
+</div></section>
+
+<section class="craft" id="craft"><div class="wrap">
+  <div style="display:flex;flex-direction:column;gap:14px">
+    <p class="k" style="margin:0">The mark, in the room</p>
+    <h2 class="h">It reaches the table before the food does.</h2>
+    <p class="lede">Menu, envelope, coaster, napkin and the card that closes service.</p>
+  </div>
+  <div class="g3">
+    <div class="fr"><img src="img/app-menu-front.jpg" alt="The menu"><div class="lab"><b>The menu</b><span>A4 cover on the house stock</span></div></div>
+    <div class="fr"><img src="img/app-menu-back.jpg" alt="The reverse"><div class="lab"><b>The reverse</b><span>The mark alone &middot; Manila</span></div></div>
+    <div class="fr"><img src="img/app-envelope.jpg" alt="The envelope"><div class="lab"><b>The envelope</b><span>Dark green stock, blind mark</span></div></div>
+    <div class="fr"><img src="img/app-coaster.jpg" alt="The coaster"><div class="lab"><b>The coaster</b><span>On green marble</span></div></div>
+    <div class="fr"><img src="img/app-napkin.jpg" alt="The napkin"><div class="lab"><b>The napkin</b><span>Embroidered, table-dressed</span></div></div>
+    <div class="fr"><img src="img/app-thankyou.jpg" alt="Thank you"><div class="lab"><b>Thank you</b><span>The close of service</span></div></div>
+  </div>
 </div></section>
 
 <section class="show" id="show"><div class="wrap">
