@@ -1,0 +1,801 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Jade Manila</title>
+<meta name="description" content="A restaurant, caviar bar and cocktail bar in BGC, Manila, with Todd English. Few tables, released at noon, thirty days ahead. For the rare nights.">
+<meta name="robots" content="noindex, nofollow">
+<meta property="og:title" content="Jade Manila">
+<meta property="og:description" content="Restaurant, caviar bar and cocktail bar in BGC. For the rare nights.">
+<meta property="og:image" content="assets/img/hero-todd.webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500&family=Inter:wght@400;500;600&display=swap">
+<script>
+/* Jade envelope intro: decides before first paint whether the intro shows, so the site never flashes first. */
+(function () {
+  var KEY = 'jadeIntroSeen';
+  var MODE = 'session'; /* 'session' = once per visit, 'once' = first visit ever, 'always' = every load */
+  var force = /(^|#)intro$/.test(location.hash);
+  var still = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var seen = false;
+  try {
+    if (MODE === 'session') seen = sessionStorage.getItem(KEY) === '1';
+    if (MODE === 'once') seen = localStorage.getItem(KEY) === '1';
+  } catch (e) {}
+  if (force || (!still && !seen)) document.documentElement.classList.add('jade-intro');
+})();
+</script>
+<style>
+#jadeIntro { display: none; }
+html.jade-intro, html.jade-intro body { overflow: hidden; height: 100%; }
+html.jade-intro #jadeIntro {
+  display: block; position: fixed; inset: 0; z-index: 2147483000;
+  background: #08100D; overflow: hidden;
+  -webkit-tap-highlight-color: transparent; touch-action: none;
+  transition: opacity .9s cubic-bezier(.4, 0, .2, 1);
+  font-family: "Figtree", "Helvetica Neue", Arial, sans-serif;
+}
+#jadeIntro video, #jadeIntro .ji-poster {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  object-fit: cover; object-position: 50% 50%; display: block;
+}
+#jadeIntro .ji-poster { z-index: 2; transition: opacity .25s linear; }
+#jadeIntro.is-playing .ji-poster { opacity: 0; }
+#jadeIntro .ji-veil { position: absolute; inset: 0; z-index: 3; background: #08100D; opacity: 0; pointer-events: none; transition: opacity 1.3s cubic-bezier(.4, 0, .2, 1); }
+#jadeIntro.is-ending .ji-veil { opacity: 1; }
+#jadeIntro.is-done { opacity: 0; pointer-events: none; }
+#jadeIntro .ji-tap { position: absolute; inset: 0; z-index: 4; width: 100%; height: 100%; margin: 0; padding: 0; border: 0; background: transparent; cursor: pointer; color: #EDE6D8; font: inherit; }
+#jadeIntro .ji-ring {
+  position: absolute; left: 50%; top: 50%;
+  width: min(34vw, 19vh); aspect-ratio: 1; transform: translate(-50%, -50%);
+  border-radius: 50%; border: 1px solid rgba(222, 196, 132, .55);
+  box-shadow: 0 0 28px rgba(222, 196, 132, .18), inset 0 0 22px rgba(222, 196, 132, .12);
+  animation: jiBreathe 2.8s ease-in-out infinite;
+}
+#jadeIntro .ji-ring::after { content: ""; position: absolute; inset: -14px; border-radius: 50%; border: 1px solid rgba(222, 196, 132, .22); animation: jiRipple 2.8s ease-out infinite; }
+#jadeIntro .ji-label {
+  position: absolute; left: 0; right: 0; top: calc(50% + min(17vw, 9.5vh) + 26px);
+  text-align: center; font-size: 11px; line-height: 1; letter-spacing: .34em;
+  text-transform: uppercase; padding-left: .34em; opacity: 0;
+  text-shadow: 0 1px 12px rgba(0, 0, 0, .55); animation: jiIn 1.2s .5s ease-out forwards;
+}
+#jadeIntro.is-loading .ji-ring { animation-duration: 1.2s; }
+#jadeIntro.is-started .ji-tap { opacity: 0; pointer-events: none; transition: opacity .35s ease; }
+#jadeIntro .ji-skip {
+  position: absolute; z-index: 5;
+  top: calc(env(safe-area-inset-top, 0px) + 14px); right: calc(env(safe-area-inset-right, 0px) + 14px);
+  padding: 10px 12px; border: 0; background: transparent; color: rgba(237, 230, 216, .7);
+  font: inherit; font-size: 10px; letter-spacing: .3em; text-transform: uppercase; cursor: pointer;
+  opacity: 0; pointer-events: none; transition: opacity .6s ease .8s;
+}
+#jadeIntro.is-started .ji-skip { opacity: 1; pointer-events: auto; }
+#jadeIntro button:focus-visible { outline: 1px solid rgba(222, 196, 132, .8); outline-offset: 4px; }
+@media (min-aspect-ratio: 1/1) {
+  #jadeIntro .ji-ring { width: calc(max(100vh, 56.25vw) * .47); }
+  #jadeIntro .ji-label { top: calc(50% + max(100vh, 56.25vw) * .235 + 30px); font-size: 12px; }
+  #jadeIntro .ji-skip { font-size: 11px; top: calc(env(safe-area-inset-top, 0px) + 22px); right: calc(env(safe-area-inset-right, 0px) + 26px); }
+}
+@keyframes jiBreathe { 0%, 100% { transform: translate(-50%, -50%) scale(1); opacity: .75; } 50% { transform: translate(-50%, -50%) scale(1.06); opacity: 1; } }
+@keyframes jiRipple { 0% { transform: scale(.92); opacity: 0; } 30% { opacity: .9; } 100% { transform: scale(1.22); opacity: 0; } }
+@keyframes jiIn { to { opacity: .85; } }
+</style>
+<style>
+/* Layout: full-bleed bands alternating Late Night (noir) and Dining (sand), 1440 design grid with 72px gutters, collapsing to one column under 900px. */
+:root{
+  --noir:#08100d; --jade:#002415; --ivory:#f7f3ea; --sand:#eae3d6; --bone:#d7ccba;
+  --taupe:#b7ab98; --stone:#a49c8f; --gold:#dec293; --verdigris:#00bea0; --white:#fff;
+  --f-body:"Inter",ui-sans-serif,system-ui,-apple-system,"Segoe UI",Arial,sans-serif;
+  --f-alt:"Figtree","Inter",ui-sans-serif,system-ui,sans-serif;
+  --gut:72px; --hl-h:51px;
+  color-scheme:dark;
+}
+@media (max-width:1100px){:root{--gut:40px}}
+@media (max-width:700px){:root{--gut:20px;--hl-h:34px}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--noir);color:var(--ivory);font-family:var(--f-body);font-size:16px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+body.locked{overflow:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:60;background:var(--noir)}
+img{max-width:100%;display:block}
+a{color:inherit}
+button{font:inherit}
+.sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.wrap{padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+.label{font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;line-height:1.25;margin:0}
+.hl{margin:0;line-height:0;color:inherit}
+.hl svg{height:var(--hl-h);width:auto;max-width:100%;display:block}
+.hl svg path{fill:currentColor}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:12px;height:54px;padding:0 24px;border-radius:2px;font-weight:600;font-size:13px;letter-spacing:.03em;text-transform:uppercase;text-decoration:none;border:1px solid transparent;cursor:pointer;transition:background .25s,color .25s,border-color .25s,transform .25s;white-space:nowrap}
+.btn svg{width:16px;height:16px;flex:none;transition:transform .25s}
+.btn:hover svg{transform:translate(2px,-2px)}
+.btn--taupe{background:var(--taupe);color:var(--jade)}
+.btn--taupe:hover{background:var(--bone)}
+.btn--jade{background:var(--jade);color:var(--ivory)}
+.btn--jade:hover{background:#013a22}
+.btn--ghost{background:transparent;border-color:var(--stone);color:var(--sand)}
+.btn--ghost:hover{border-color:var(--sand)}
+.intro-row{display:flex;align-items:flex-end;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.intro-row .hgroup{display:flex;flex-direction:column;gap:18px;min-width:0}
+.intro-row .aside{width:400px;max-width:100%;font-size:15px;line-height:1.65;margin:0}
+
+/* ---------- NAV ---------- */
+.nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;height:125px;display:flex;align-items:center;justify-content:space-between;transition:height .35s,background .35s,backdrop-filter .35s}
+.nav.scrolled{height:84px;background:rgba(8,16,13,.86);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px)}
+.brand{display:block;color:var(--white);line-height:0}
+.brand svg{width:135px;height:auto}
+.nav.scrolled .brand svg{width:110px}
+.nav-links{display:flex;align-items:center;gap:32px;list-style:none;margin:0;padding:0}
+.nav-links a{font-weight:500;font-size:12px;letter-spacing:.06em;text-transform:uppercase;text-decoration:none;color:var(--sand);opacity:.92}
+.nav-links a:hover{opacity:1;color:var(--white)}
+.nav-links .req{display:inline-flex;align-items:center;height:42px;padding:0 18px;border:1px solid var(--gold);border-radius:2px;font-weight:600}
+.nav-links .req:hover{background:var(--gold);color:var(--noir)}
+.menu-btn{display:none;background:none;border:0;color:var(--sand);align-items:center;gap:10px;font-size:11px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;padding:12px 0}
+.menu-btn i{display:block;width:18px;height:6px;border-top:1px solid currentColor;border-bottom:1px solid currentColor}
+@media (max-width:900px){
+  .nav{height:82px}.brand svg{width:96px}.nav.scrolled .brand svg{width:86px}
+  .menu-btn{display:inline-flex}
+  .nav-links{position:fixed;inset:0;flex-direction:column;justify-content:center;gap:26px;background:rgba(8,16,13,.97);opacity:0;pointer-events:none;transition:opacity .3s}
+  .nav-links a{font-size:15px}
+  .nav.open .nav-links{opacity:1;pointer-events:auto}
+  .nav.open .menu-btn{position:relative;z-index:2}
+}
+
+/* ---------- HERO ---------- */
+.hero{position:relative;height:clamp(640px,100svh,900px);display:flex;flex-direction:column;justify-content:flex-end;padding-bottom:64px;overflow:hidden;background:var(--noir)}
+.hero-img{position:absolute;inset:0 -86px;width:calc(100% + 172px);height:100%;object-fit:cover;object-position:50% 40%}
+.veil{position:absolute;inset:0;pointer-events:none}
+.veil.a{background:linear-gradient(224deg,rgba(17,18,15,.2) 13.6%,rgba(17,18,15,.5) 57.2%,#11120f 97.5%);mix-blend-mode:multiply;opacity:.5}
+.veil.b{background:linear-gradient(224deg,rgba(17,18,15,.2) 13.6%,rgba(17,18,15,.5) 57.2%,#11120f 97.5%);mix-blend-mode:multiply}
+.veil.c{top:auto;height:360px;background:linear-gradient(180deg,rgba(8,16,13,0),rgba(8,16,13,.13) 22%,rgba(8,16,13,.42) 44%,rgba(8,16,13,.74) 67%,rgba(8,16,13,.97) 89%,#08100d)}
+.hero-copy{position:relative;display:flex;flex-direction:column;gap:20px;max-width:850px}
+.hero-copy h1{font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;color:var(--bone);margin:0;line-height:1.3}
+.hero-display{color:var(--ivory);line-height:0}
+.hero-display svg{width:auto;height:clamp(118px,16.9vw,243px);max-width:100%}
+.hero-display svg path{fill:currentColor}
+.hero-sub{font-family:var(--f-alt);font-size:18px;color:var(--sand);margin:0}
+.hero-act{display:flex;flex-direction:column;align-items:flex-start;gap:16px;margin-top:10px}
+.hero-act .btn{color:#000}
+.note{font-size:12px;color:var(--bone);margin:0}
+.reveal{opacity:1;transform:none;transition:opacity 1s ease,transform 1s ease}
+html.jade-intro .reveal{opacity:0;transform:translateY(24px)}
+
+/* ---------- STORY ---------- */
+.story{position:relative;background:var(--noir);min-height:660px;padding-block:70px;overflow:hidden;display:flex;align-items:center}
+.jade-rain{position:absolute;top:0;bottom:0;right:0;width:800px;max-width:58%;overflow:hidden;pointer-events:none}
+.petal{position:absolute;top:0;left:0;will-change:transform;mix-blend-mode:screen}
+.petal img{width:100%;height:auto}
+@keyframes fall{from{transform:translate3d(var(--x),-240px,0) rotate(var(--r0))}to{transform:translate3d(calc(var(--x) + var(--dx)),calc(var(--h) + 60px),0) rotate(var(--r1))}}
+.petal.run{animation:fall var(--d) linear var(--delay) infinite}
+.jade-rain.paused .petal{animation-play-state:paused}
+.story-inner{position:relative;width:100%;display:flex;align-items:center;gap:32px}
+.story-copy{width:560px;max-width:100%;padding:40px;display:flex;flex-direction:column;gap:54px;position:relative;z-index:2}
+.story-copy .txt{display:flex;flex-direction:column;gap:14px}
+.story-copy .label{color:var(--bone)}
+.story-copy .hl{color:var(--ivory)}
+.story-copy p.p1{color:var(--stone);margin:0;line-height:1.7}
+.story-copy p.p2{color:var(--bone);margin:0;line-height:1.7}
+.oyster{position:absolute;left:calc(var(--gut) + 702px);top:calc(70px + 188px);width:245px;z-index:1}
+@media (max-width:1100px){.oyster{left:auto;right:8%}}
+@media (max-width:900px){
+  .story{flex-direction:column;align-items:stretch;padding-bottom:0;min-height:0}
+  .story-copy{padding:20px 0}
+  .jade-rain{position:relative;width:100%;max-width:none;height:420px;order:2;margin-top:12px}
+  .oyster{position:absolute;left:50%;right:auto;top:auto;bottom:40px;transform:translateX(-50%);width:200px}
+  .story-inner{position:static;display:block}
+}
+
+/* ---------- RESERVATIONS ---------- */
+.res{background:var(--sand);color:var(--jade);padding-block:70px}
+.res-grid{display:grid;grid-template-columns:430px 1fr;gap:92px;align-items:center}
+.res-intro{display:flex;flex-direction:column;gap:28px;min-width:0}
+.res-intro .hl{color:var(--noir)}
+.res-intro p{margin:0;line-height:1.7}
+.res-img{aspect-ratio:270/239;width:100%;object-fit:cover}
+.res-note{display:flex;gap:12px;font-size:12px;line-height:1.55;margin:0}
+.res-note svg{flex:none;width:18px;height:18px}
+.form{background:var(--ivory);border-radius:16px;box-shadow:0 18px 48px rgba(0,0,0,.2);padding:40px;display:flex;flex-direction:column;gap:22px;min-width:0}
+.form-head{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.form-head h2{font-family:var(--f-alt);font-weight:400;font-size:32px;line-height:1.2;color:var(--noir);margin:0}
+.form-head p{font-size:12px;margin:4px 0 0}
+.form-head .label{font-size:11px}
+.row{display:grid;gap:14px}
+.row.c3{grid-template-columns:repeat(3,1fr)}.row.c2{grid-template-columns:repeat(2,1fr)}
+.field{display:flex;flex-direction:column;gap:8px;min-width:0}
+.field label{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase}
+.ctl{position:relative}
+.ctl input,.ctl select,.ctl textarea{width:100%;height:54px;border:1px solid var(--taupe);border-radius:2px;background:transparent;color:var(--noir);font:400 14px/1.3 var(--f-body);padding:0 16px;appearance:none;-webkit-appearance:none;color-scheme:light}
+.ctl textarea{height:82px;padding:16px;resize:vertical}
+.ctl input::placeholder,.ctl textarea::placeholder{color:var(--stone)}
+.ctl input:focus,.ctl select:focus,.ctl textarea:focus{outline:none;border-color:var(--jade);box-shadow:0 0 0 1px var(--jade)}
+.ctl .ico{position:absolute;right:16px;top:50%;width:17px;height:17px;transform:translateY(-50%);pointer-events:none}
+.ctl input[type=date]::-webkit-calendar-picker-indicator{opacity:0;position:absolute;right:0;width:48px;height:100%;cursor:pointer}
+.consent{display:flex;align-items:center;gap:10px;font-size:11px;line-height:1.5}
+.consent input{width:16px;height:16px;margin:0;accent-color:var(--jade);flex:none}
+.form .btn{width:100%}
+.policy{font-size:10px;color:var(--stone);text-align:center;margin:0}
+.form-msg{font-size:13px;line-height:1.55;padding:14px 16px;border-radius:2px;background:#e2ece4;color:var(--jade);margin:0}
+.form-msg.err{background:#f3e3df;color:#7a2a17}
+.form-msg code{user-select:all;font-family:inherit;font-weight:600}
+@media (max-width:1100px){.res-grid{grid-template-columns:1fr;gap:48px}.res-img{max-width:520px}}
+@media (max-width:640px){.form{padding:24px 20px}.row.c3,.row.c2{grid-template-columns:1fr}}
+
+/* ---------- ROOM / GALLERY ---------- */
+.room{background:var(--sand);color:var(--jade);padding-block:70px;display:flex;flex-direction:column;gap:42px}
+.room .hl{color:var(--noir)}
+.collage{display:flex;flex-direction:column;gap:16px}
+.collage .r1{display:grid;grid-template-columns:826fr 526fr;gap:16px;height:350px;padding-left:max(var(--gut),env(safe-area-inset-left,0px))}
+.collage .r2{display:grid;grid-template-columns:420fr 566fr 350fr;gap:16px;height:290px;padding-right:max(var(--gut),env(safe-area-inset-right,0px))}
+.collage img{width:100%;height:100%;object-fit:cover}
+.quote{background:var(--taupe);color:var(--jade);padding:30px;font-family:var(--f-alt);font-size:30px;line-height:1.08;margin:0}
+@media (max-width:900px){
+  .collage .r1,.collage .r2{grid-template-columns:1fr 1fr;height:auto;padding-left:0;padding-right:0}
+  .collage .r1 img:first-child,.collage .r2 .quote{grid-column:1/-1}
+  .collage img{aspect-ratio:3/2;height:auto}
+  .collage .r1 img:first-child{aspect-ratio:16/8}
+  .quote{font-size:24px;min-height:180px;margin-inline:max(var(--gut),env(safe-area-inset-left,0px))}
+}
+
+/* ---------- SUPPER MENU ---------- */
+.supper{background:var(--sand);color:var(--jade);padding-block:0 70px;display:flex;flex-direction:column;gap:32px}
+.supper .hl{color:var(--noir)}
+.carousel{position:relative}
+.track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;padding-bottom:4px;scroll-padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-left:max(var(--gut),env(safe-area-inset-left,0px));padding-right:max(var(--gut),env(safe-area-inset-right,0px));margin:0;list-style:none}
+.track::-webkit-scrollbar{display:none}
+.dish{flex:0 0 260px;height:360px;background:var(--jade);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;scroll-snap-align:start}
+.dish img{width:100%;height:180px;object-fit:cover}
+.dish .d{padding:20px;display:flex;flex-direction:column;gap:8px}
+.dish h3{font-family:var(--f-alt);font-weight:400;font-size:22px;line-height:1.2;color:var(--ivory);margin:0}
+.dish p{font-size:12px;line-height:1.55;color:var(--stone);margin:0}
+.dish.more{flex-basis:192px;background:var(--ivory);align-items:center;justify-content:center;gap:9px;text-decoration:none;color:var(--jade);font-family:var(--f-alt);font-size:20px;line-height:1.25;text-align:center}
+.dish.more svg{width:50px;height:50px;transition:transform .3s}
+.dish.more:hover svg{transform:translateX(4px)}
+.car-ctl{display:flex;gap:10px;justify-content:flex-end;margin-top:20px}
+.car-ctl button{width:44px;height:44px;border-radius:50%;border:1px solid var(--taupe);background:transparent;color:var(--jade);cursor:pointer;display:grid;place-items:center}
+.car-ctl button:hover{background:var(--jade);color:var(--ivory);border-color:var(--jade)}
+.car-ctl svg{width:18px;height:18px}
+
+/* ---------- CAVIAR ---------- */
+.caviar{background:var(--noir);padding-block:70px}
+.cav-grid{display:grid;grid-template-columns:560px 1fr;gap:32px;min-height:420px}
+.cav-panel{background:var(--jade);padding:40px;display:flex;flex-direction:column;justify-content:center;gap:54px;min-width:0}
+.cav-panel .txt{display:flex;flex-direction:column;gap:14px}
+.cav-panel .label{color:var(--bone)}
+.cav-panel p{color:var(--stone);margin:0;line-height:1.7}
+.cav-img{width:100%;height:100%;object-fit:cover;min-height:300px}
+@media (max-width:1100px){.cav-grid{grid-template-columns:1fr}.cav-img{aspect-ratio:704/420;height:auto}}
+@media (max-width:640px){.cav-panel{padding:28px 22px;gap:36px}}
+
+/* ---------- DRINKS ---------- */
+.drinks{background:var(--noir);padding-block:60px;display:flex;flex-direction:column;gap:42px}
+.drinks .label{color:var(--bone)}
+.drinks .hl{color:var(--ivory)}
+.drinks .aside{width:340px;display:flex;flex-direction:column;gap:18px;align-items:flex-start}
+.drinks .aside p{font-size:14px;line-height:1.6;color:var(--stone);margin:0}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.drink{background:var(--jade);border-radius:8px;overflow:hidden;display:flex;flex-direction:column;min-height:500px}
+.drink img{width:100%;aspect-ratio:421/361;object-fit:cover}
+.drink .d{padding:20px 24px;display:flex;flex-direction:column;gap:10px}
+.drink h3{font-family:var(--f-alt);font-weight:400;font-size:25px;line-height:1.2;color:var(--ivory);margin:0}
+.drink p{font-size:13px;line-height:1.55;color:var(--stone);margin:0}
+@media (max-width:900px){.cards{grid-template-columns:1fr;max-width:480px}.drink{min-height:0}}
+
+/* ---------- CHEF ---------- */
+.chef{background:var(--white);color:var(--jade);padding-block:70px;display:flex;flex-direction:column;gap:42px}
+.chef .hl{color:var(--noir)}
+.chef .marker{display:flex;align-items:center;gap:10px}
+.chef .marker i{display:block;width:28px;height:1px;background:var(--taupe)}
+.chef .aside{width:340px;font-size:14px}
+.chef-grid{display:grid;grid-template-columns:357px 1fr;gap:20px;align-items:start}
+.chef-img{width:100%;aspect-ratio:357/478;object-fit:cover}
+.bio{padding:20px 40px;display:flex;flex-direction:column;gap:24px;min-width:0}
+.bio .who{display:flex;flex-direction:column;gap:8px}
+.bio .hl{color:var(--noir)}
+.bio .role{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);margin:0}
+.bio > p{margin:0;line-height:1.7}
+.tags{display:flex;flex-direction:column;gap:12px}
+.tags h3{font-weight:600;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--stone);margin:0}
+.tags ul{display:flex;flex-wrap:wrap;gap:12px;list-style:none;margin:0;padding:0}
+.tags li a,.tags li span{display:inline-flex;align-items:center;height:36px;padding:0 14px;border-radius:999px;background:var(--noir);color:var(--white);font-weight:600;font-size:12px;text-decoration:none;border:1px solid var(--jade)}
+.tags li a:hover{background:var(--jade)}
+.soc{display:flex;gap:10px}
+.soc a{width:38px;height:38px;border-radius:50%;display:grid;place-items:center;background:var(--taupe);color:var(--sand)}
+.soc a:hover{background:var(--jade)}
+.soc svg{width:16px;height:16px}
+.soc svg path{stroke:currentColor}
+@media (max-width:900px){.chef-grid{grid-template-columns:1fr}.chef-img{max-width:400px}.bio{padding:8px 0}}
+
+/* ---------- VISIT ---------- */
+.visit{background:var(--noir);display:grid;grid-template-columns:687fr 753fr;min-height:650px}
+.visit-img{width:100%;height:100%;object-fit:cover}
+.visit-info{padding:76px max(76px,env(safe-area-inset-right,0px)) 76px 76px;display:flex;flex-direction:column;gap:28px;justify-content:flex-start;min-width:0}
+.visit-info .label{color:var(--bone)}
+.visit-info .hl{color:var(--ivory)}
+.hours{list-style:none;margin:0;padding:0;border-top:1px solid var(--jade)}
+.hours li{display:flex;justify-content:space-between;gap:16px;padding:16px 0;border-bottom:1px solid var(--jade);font-size:13px}
+.hours span{color:var(--bone)}.hours b{font-weight:600;color:var(--ivory)}
+.addr{font-size:13px;line-height:1.6;color:var(--bone);margin:0}
+.visit-act{display:flex;gap:14px;flex-wrap:wrap}
+.visit-act .btn--taupe{color:var(--ivory)}
+.visit-act .btn--taupe:hover{color:var(--jade)}
+@media (max-width:900px){.visit{grid-template-columns:1fr}.visit-img{aspect-ratio:687/560;height:auto}.visit-info{padding:56px max(var(--gut),env(safe-area-inset-right,0px)) 56px max(var(--gut),env(safe-area-inset-left,0px))}}
+
+/* ---------- GLANCE + FAQ ---------- */
+.glance{background:var(--sand);color:var(--jade);padding-block:100px;display:grid;grid-template-columns:1fr 1fr;gap:96px}
+.glance > div{display:flex;flex-direction:column;gap:24px;min-width:0}
+.glance .lead{font-family:var(--f-alt);font-size:22px;line-height:32px;margin:0}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:22px 32px;margin:0}
+.facts div{display:flex;flex-direction:column;gap:6px}
+.facts dt{font-weight:600;font-size:11px;letter-spacing:.08em;text-transform:uppercase;line-height:14px}
+.facts dd{margin:0;font-size:15px;line-height:22px}
+.faq details{border-top:1px solid rgba(0,36,21,.15);padding:18px 0}
+.faq details:last-child{border-bottom:1px solid rgba(0,36,21,.15)}
+.faq summary{list-style:none;display:flex;justify-content:space-between;gap:16px;font-family:var(--f-alt);font-size:22px;line-height:28px;cursor:pointer}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none}
+.faq details[open] summary::after{content:"–"}
+.faq h3{font:inherit;margin:0}
+.faq p{font-size:15px;line-height:24px;margin:10px 0 0}
+@media (max-width:900px){.glance{grid-template-columns:1fr;gap:64px;padding-block:72px}}
+@media (max-width:480px){.facts{grid-template-columns:1fr}.faq summary{font-size:19px}}
+
+/* ---------- FOOTER ---------- */
+.foot{position:relative;padding-block:72px 36px;display:flex;flex-direction:column;gap:48px;background:
+  radial-gradient(ellipse 60% 70% at 18% 30%,rgba(18,72,48,.55),transparent 70%),
+  radial-gradient(ellipse 50% 60% at 78% 70%,rgba(12,58,38,.6),transparent 70%),
+  radial-gradient(ellipse 40% 50% at 55% 10%,rgba(30,90,62,.25),transparent 70%),
+  linear-gradient(180deg,#05140d,#03100a)}
+.foot-main{display:flex;justify-content:space-between;gap:48px;flex-wrap:wrap}
+.foot .brand svg{width:135px}
+.foot-links{display:flex;gap:88px;flex-wrap:wrap}
+.foot-links div{display:flex;flex-direction:column;gap:12px}
+.foot-links h2{font-weight:600;font-size:10px;letter-spacing:.08em;text-transform:uppercase;color:var(--bone);margin:0}
+.foot-links a,.foot-links p{font-size:13px;color:var(--sand);text-decoration:none;margin:0;line-height:1.55}
+.foot-links a:hover{color:var(--white)}
+.foot .soc a{background:transparent;border:1px solid var(--jade);color:var(--sand)}
+.foot .soc a:hover{border-color:var(--sand)}
+.foot hr{border:0;height:1px;background:var(--jade);margin:0}
+.legal{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:10px;color:var(--stone)}
+.legal p{margin:0}.legal div{display:flex;gap:24px}
+.legal a,.legal button{color:var(--stone);text-decoration:none;background:none;border:0;padding:0;font-size:10px;cursor:pointer}
+.legal a:hover,.legal button:hover{color:var(--sand)}
+@media (max-width:700px){.foot-links{gap:36px}}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  .reveal,html.jade-intro .reveal{opacity:1;transform:none;transition:none}
+}
+</style>
+
+</head>
+<body>
+<!-- ============ ENVELOPE INTRO ============ -->
+<div id="jadeIntro" role="dialog" aria-label="Jade" aria-modal="true">
+  <img class="ji-poster" alt="" decoding="async">
+  <div class="ji-veil"></div>
+  <button class="ji-tap" type="button" aria-label="Tap to open">
+    <span class="ji-ring" aria-hidden="true"></span>
+    <span class="ji-label">Tap to open</span>
+  </button>
+  <button class="ji-skip" type="button">Skip</button>
+</div>
+<script>
+(function () {
+  var ASSETS = 'assets/intro/';
+  var KEY = 'jadeIntroSeen';
+  var root = document.documentElement;
+  var el = document.getElementById('jadeIntro');
+  if (!el) return;
+  if (!root.classList.contains('jade-intro')) { el.remove(); return; }
+
+  var wide = window.matchMedia('(min-aspect-ratio: 1/1)').matches;
+  var px = Math.round(Math.max(window.innerWidth, window.innerHeight) * (window.devicePixelRatio || 1));
+  var lite = navigator.connection && navigator.connection.saveData;
+  var files = wide
+    ? (!lite && px >= 1500 ? ['jade-intro-wide-1920.mp4', 'jade-intro-wide-poster.jpg'] : ['jade-intro-wide-1280.mp4', 'jade-intro-wide-poster-1280.jpg'])
+    : (!lite && Math.round(window.innerWidth * (window.devicePixelRatio || 1)) >= 900 ? ['jade-intro-1080.mp4', 'jade-intro-poster.jpg'] : ['jade-intro-720.mp4', 'jade-intro-poster-720.jpg']);
+  var poster = el.querySelector('.ji-poster');
+  var tap = el.querySelector('.ji-tap');
+  var skip = el.querySelector('.ji-skip');
+  poster.src = ASSETS + files[1];
+  if (!window.matchMedia('(pointer: coarse)').matches) el.querySelector('.ji-label').textContent = 'Click to open';
+
+  var v = document.createElement('video');
+  v.muted = true; v.defaultMuted = true; v.playsInline = true;
+  v.setAttribute('muted', ''); v.setAttribute('playsinline', ''); v.setAttribute('webkit-playsinline', '');
+  v.preload = 'auto'; v.disablePictureInPicture = true; v.poster = poster.src;
+  v.setAttribute('aria-hidden', 'true');
+  v.src = ASSETS + files[0];
+  el.insertBefore(v, poster);
+  v.load();
+
+  var started = false, ending = false, finished = false, stallTimer = null;
+  function markSeen() { try { sessionStorage.setItem(KEY, '1'); localStorage.setItem(KEY, '1'); } catch (e) {} }
+  function finish() {
+    if (finished) return; finished = true;
+    clearTimeout(stallTimer);
+    el.classList.add('is-ending');
+    setTimeout(function () {
+      el.classList.add('is-done');
+      root.classList.remove('jade-intro');
+      if (location.hash === '#intro') { try { history.replaceState(null, '', location.pathname + location.search); } catch (e) {} }
+      setTimeout(function () { try { v.pause(); v.removeAttribute('src'); v.load(); } catch (e) {} el.remove(); }, 950);
+    }, ending ? 0 : 450);
+  }
+  function showFirstFrame() { el.classList.add('is-playing'); el.classList.remove('is-loading'); }
+  function start() {
+    if (started) return; started = true;
+    markSeen();
+    el.classList.add('is-started');
+    if (v.readyState < 3) el.classList.add('is-loading');
+    var p = v.play();
+    if (p && p.catch) p.catch(function () { finish(); });
+    stallTimer = setTimeout(function () { if (v.currentTime < 0.2) finish(); }, 9000);
+  }
+  v.addEventListener('playing', function () {
+    clearTimeout(stallTimer);
+    if (v.requestVideoFrameCallback) v.requestVideoFrameCallback(showFirstFrame); else setTimeout(showFirstFrame, 60);
+  });
+  v.addEventListener('timeupdate', function () {
+    if (!ending && v.duration && v.currentTime >= v.duration - 1.5) { ending = true; el.classList.add('is-ending'); setTimeout(finish, 1300); }
+  });
+  v.addEventListener('ended', function () { ending = true; finish(); });
+  v.addEventListener('error', function () { if (started) finish(); });
+  tap.addEventListener('click', start);
+  skip.addEventListener('click', function (e) { e.stopPropagation(); finish(); });
+  document.addEventListener('keydown', function (e) {
+    if (finished) return;
+    if (e.key === 'Escape') finish();
+    else if (!started && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); start(); }
+  });
+})();
+</script>
+
+<!-- ============ NAV ============ -->
+<header class="nav wrap" id="nav">
+  <a class="brand" href="#top" aria-label="Jade Manila, home"><svg aria-hidden="true" focusable="false" width="135" height="51" viewBox="0 0 135 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.0898 42.77L36.8098 47.58L34.5198 42.77H32.5298V50.64H34.1398V45.33L36.2298 49.84H37.3898L39.4798 45.33V50.64H41.0798V42.77H39.0998H39.0898Z" fill="currentColor"/><path d="M52.1099 42.77H50.2799L46.8599 50.64H48.6899L49.3099 49.11H52.9499L53.5699 50.64H55.4699L52.1099 42.77ZM49.8999 47.69L51.1499 44.63L52.3899 47.69H49.8999Z" fill="currentColor"/><path d="M66.6797 42.77V47.83L62.8597 42.77H61.2397V50.64H62.9397V45.59L66.7497 50.64H68.3697V42.77H66.6797Z" fill="currentColor"/><path d="M75.0498 42.77V50.64H76.8198V42.77H75.0498Z" fill="currentColor"/><path d="M85.29 49.09V42.77H83.52V50.64H88.67V49.09H85.3H85.29Z" fill="currentColor"/><path d="M99.0596 42.77H97.2296L93.8096 50.64H95.6396L96.2596 49.11H99.8996L100.52 50.64H102.42L99.0596 42.77ZM96.8496 47.69L98.0996 44.63L99.3396 47.69H96.8596H96.8496Z" fill="currentColor"/><path d="M99.3001 9.66C98.1501 6.35 95.8401 3.86 92.7601 2.27C89.9101 0.79 86.8301 0.04 83.5701 0.03L73.3701 0L73.8501 2.45V28.34L73.3501 30.97L84.0701 30.95C89.8101 30.95 95.5301 28.4 98.2801 23.32C100.55 19.12 100.86 14.15 99.3001 9.66ZM94.1301 23.23C92.3701 27.7 88.3901 30.12 83.7401 30.11H78.5601L78.3301 26.19V4.11L78.4301 0.84L83.9201 0.88C86.7301 0.9 89.4301 1.98 91.4801 3.9C93.0401 5.36 94.0601 7.21 94.6701 9.27C96.0201 13.85 95.9001 18.74 94.1401 23.23H94.1301Z" fill="currentColor"/><path d="M60.6803 30.97L47.3003 0H46.2903L34.9103 26.75C34.2503 28.3 33.5203 29.54 32.5303 30.97H36.5703C35.6503 30.24 35.4103 29.43 35.6303 28.38L37.1503 24.15L39.0603 19.66H50.9703L51.8203 21.68L54.3703 28.29C54.7003 29.14 55.2303 30.19 54.8603 30.97H60.6803ZM39.6903 18.16L45.0303 5.58L50.3303 18.16H39.6803H39.6903Z" fill="currentColor"/><path d="M14.8202 -9.76585e-06L15.3002 2.44999V21.33C15.3002 24.61 15.0202 28.76 12.1002 29.88C9.08023 31.04 4.77023 30.22 4.06023 27.03L3.54023 24.7C3.32023 23.73 2.67023 22.82 1.54023 22.76L-0.00976562 22.68L0.670234 26.06C1.70023 31.14 8.56023 32.05 13.3302 30.8C13.8902 30.65 14.4002 30.47 14.8702 30.24C18.5002 28.52 19.7102 24.64 19.7102 20.41L19.7402 3.57999C19.7402 2.37999 19.8302 -0.0100098 19.8302 -0.0100098H14.8002L14.8202 -9.76585e-06Z" fill="currentColor"/><path d="M133.59 26.84L133.51 26.99C132.76 28.44 131.34 29.43 129.72 29.61C129.71 29.61 129.7 29.61 129.69 29.61C125.77 30.03 121.96 30.12 118.02 30.12L118.08 16C121.82 16.05 122.03 16.13 124.19 16.28C124.2 16.28 124.21 16.28 124.22 16.28C125.84 16.4 127.26 17.04 128.01 17.97L128.09 18.06L129.01 18.15V12.77L128.09 12.86L128.01 12.95C127.26 13.88 125.84 14.52 124.22 14.64C124.21 14.64 124.2 14.64 124.19 14.64C122.03 14.79 121.82 14.87 118.08 14.92L118.02 0.800001C121.96 0.800001 125.78 0.900001 129.69 1.31C129.7 1.31 129.71 1.31 129.72 1.31C131.34 1.49 132.76 2.49 133.51 3.93L133.59 4.08L134.66 4.25L134.94 -0.0299988H112.94L113.37 2.42V15.44V28.31L112.94 30.94H134.94L134.66 26.64L133.59 26.81V26.84Z" fill="currentColor"/></svg></a>
+  <button class="menu-btn" type="button" id="menuBtn" aria-expanded="false" aria-controls="navLinks">Menu <i></i></button>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#story">Story</a></li>
+    <li><a href="#dining">Dining</a></li>
+    <li><a href="#late-night">Late Night</a></li>
+    <li><a href="#caviar">Caviar</a></li>
+    <li><a href="#visit">Visit</a></li>
+    <li><a class="req" href="#reserve">Request</a></li>
+  </ul>
+</header>
+
+<main id="top">
+<!-- ============ HERO ============ -->
+<section class="hero wrap" aria-labelledby="h1">
+  <img class="hero-img" src="assets/img/hero-todd.webp" width="1440" height="900" alt="Todd English finishing a plate with caviar at Jade Manila" fetchpriority="high">
+  <div class="veil a"></div><div class="veil b"></div><div class="veil c"></div>
+  <div class="hero-copy">
+    <h1 id="h1" class="reveal">Restaurant, caviar bar and cocktail bar in BGC, Manila</h1>
+    <div class="hero-display reveal" style="transition-delay:.12s" role="img" aria-label="For the rare nights."><svg aria-hidden="true" focusable="false" width="614" height="243" viewBox="0 0 614 243" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M24 105V106.5H1.78814e-07V105H6V3H1.78814e-07V1.5H43.5V22.5H42C42 11.7 37.65 3 32.25 3H18V53.25H27C30.3 53.25 33 47.85 33 41.25H34.5V66.75H33C33 60.15 30.3 54.75 27 54.75H18V105H24ZM89.8266 84V24C89.8266 11.55 85.3266 1.5 77.8266 1.5C70.3266 1.5 65.8266 11.55 65.8266 24V84C65.8266 96.45 70.3266 106.5 77.8266 106.5C85.3266 106.5 89.8266 96.45 89.8266 84ZM53.8266 84V24C53.8266 10.8 63.8766 -1.90735e-06 77.8266 -1.90735e-06C91.7766 -1.90735e-06 101.827 10.8 101.827 24V84C101.827 97.2 91.7766 108 77.8266 108C63.8766 108 53.8266 97.2 53.8266 84ZM137.672 55.5H131.672V105H137.672V106.5H113.672V105H119.672V3H113.672V1.5H137.672C153.872 1.5 164.672 12.3 164.672 25.5V31.5C164.672 42.6 156.872 52.05 144.872 54.75C156.872 57.45 164.672 66.9 164.672 78V98.25C164.672 101.1 166.022 103.35 167.672 103.35C169.322 103.35 170.672 101.1 170.672 98.25H172.172C172.172 103.65 167.822 108 162.422 108C157.022 108 152.672 103.65 152.672 98.25V78C152.672 65.55 145.922 55.5 137.672 55.5ZM137.672 3H131.672V54H137.672C145.922 54 152.672 43.95 152.672 31.5V25.5C152.672 13.05 145.922 3 137.672 3ZM198.291 1.5H252.291V22.5H250.791C250.791 11.7 246.441 3 241.041 3H231.291V105H237.291V106.5H213.291V105H219.291V3H209.541C204.141 3 199.791 11.7 199.791 22.5H198.291V1.5ZM292.131 1.5H316.131V3H310.131V105H316.131V106.5H292.131V105H298.131V54.75H277.131V105H283.131V106.5H259.131V105H265.131V3H259.131V1.5H283.131V3H277.131V53.25H298.131V3H292.131V1.5ZM368.695 1.5V22.5H367.195C367.195 11.7 362.845 3 357.445 3H343.195V53.25H352.195C355.495 53.25 358.195 47.85 358.195 41.25H359.695V66.75H358.195C358.195 60.15 355.495 54.75 352.195 54.75H343.195V105H357.445C362.845 105 367.195 96.3 367.195 85.5H368.695V106.5H325.195V105H331.195V3H325.195V1.5H368.695ZM24 190.5H18V240H24V241.5H1.78814e-07V240H6V138H1.78814e-07V136.5H24C40.2 136.5 51 147.3 51 160.5V166.5C51 177.6 43.2 187.05 31.2 189.75C43.2 192.45 51 201.9 51 213V233.25C51 236.1 52.35 238.35 54 238.35C55.65 238.35 57 236.1 57 233.25H58.5C58.5 238.65 54.15 243 48.75 243C43.35 243 39 238.65 39 233.25V213C39 200.55 32.25 190.5 24 190.5ZM24 138H18V189H24C32.25 189 39 178.95 39 166.5V160.5C39 148.05 32.25 138 24 138ZM58.6137 241.5V240C63.4137 240 66.2637 237.75 67.0137 234.3L88.0137 135H90.4137L113.514 240H119.514V241.5H95.2137V240H101.214L94.9137 210.75H73.4637L67.3137 240H73.0137V241.5H58.6137ZM83.9637 161.55L73.7637 209.25H94.6137L83.9637 161.55ZM148.072 190.5H142.072V240H148.072V241.5H124.072V240H130.072V138H124.072V136.5H148.072C164.272 136.5 175.072 147.3 175.072 160.5V166.5C175.072 177.6 167.272 187.05 155.272 189.75C167.272 192.45 175.072 201.9 175.072 213V233.25C175.072 236.1 176.422 238.35 178.072 238.35C179.722 238.35 181.072 236.1 181.072 233.25H182.572C182.572 238.65 178.222 243 172.822 243C167.422 243 163.072 238.65 163.072 233.25V213C163.072 200.55 156.322 190.5 148.072 190.5ZM148.072 138H142.072V189H148.072C156.322 189 163.072 178.95 163.072 166.5V160.5C163.072 148.05 156.322 138 148.072 138ZM231.586 136.5V157.5H230.086C230.086 146.7 225.736 138 220.336 138H206.086V188.25H215.086C218.386 188.25 221.086 182.85 221.086 176.25H222.586V201.75H221.086C221.086 195.15 218.386 189.75 215.086 189.75H206.086V240H220.336C225.736 240 230.086 231.3 230.086 220.5H231.586V241.5H188.086V240H194.086V138H188.086V136.5H231.586ZM266.145 136.5H282.195L310.095 211.2V138H304.095V136.5H318.345V138C313.545 138 311.595 139.95 311.595 142.5V241.5H309.195L274.395 148.05V240H280.395V241.5H266.145V240C270.945 240 272.895 238.05 272.895 235.5V142.5C272.895 139.95 270.945 138 266.145 138V136.5ZM325.928 136.5H349.928V138H343.928V240H349.928V241.5H325.928V240H331.928V138H325.928V136.5ZM406.737 190.65V233.7C396.087 233.7 392.937 243 384.237 243C371.787 243 361.737 232.2 361.737 219V159C361.737 145.8 371.787 135 384.237 135C390.537 135 395.037 137.55 398.337 141.9C400.437 141.9 402.237 140.1 402.237 136.5H403.737V159H402.237C402.237 146.1 394.587 136.5 385.737 136.5C378.237 136.5 373.737 146.55 373.737 159V219C373.737 231.45 378.387 241.5 384.237 241.5C390.087 241.5 394.737 231.45 394.737 219V190.65H388.737V189.15H412.737V190.65H406.737ZM452.238 136.5H476.238V138H470.238V240H476.238V241.5H452.238V240H458.238V189.75H437.238V240H443.238V241.5H419.238V240H425.238V138H419.238V136.5H443.238V138H437.238V188.25H458.238V138H452.238V136.5ZM483.203 136.5H537.203V157.5H535.703C535.703 146.7 531.353 138 525.953 138H516.203V240H522.203V241.5H498.203V240H504.203V138H494.453C489.053 138 484.703 146.7 484.703 157.5H483.203V136.5ZM544.943 241.5V217.5H546.443C546.443 230.55 555.143 241.05 565.043 241.05C573.143 241.05 578.843 232.65 578.843 222C578.843 194.25 544.943 192 544.943 160.5C544.943 146.4 552.443 135 565.793 135C572.693 135 577.643 137.7 581.093 141.9C583.343 141.9 585.143 140.1 585.143 136.5H586.643V159H585.143C585.143 146.85 577.193 136.95 568.043 136.95C559.943 136.95 555.743 143.85 555.743 154.5C555.743 182.55 589.643 184.8 589.643 216C589.643 230.85 581.393 243 567.293 243C559.193 243 553.343 239.55 549.593 234C547.943 234.6 546.443 236.7 546.443 241.5H544.943ZM598.842 235.5C598.842 231.3 602.142 228 606.342 228C610.542 228 613.842 231.3 613.842 235.5C613.842 239.7 610.542 243 606.342 243C602.142 243 598.842 239.7 598.842 235.5Z" fill="currentColor"/></svg></div>
+    <p class="hero-sub reveal" style="transition-delay:.24s">Todd English in the kitchen. The night, long after.</p>
+    <div class="hero-act reveal" style="transition-delay:.36s">
+      <a class="btn btn--taupe" href="#reserve">Request a table <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <p class="note">Tables release at noon, thirty days ahead.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ STORY ============ -->
+<section class="story wrap" id="story" aria-labelledby="h-story">
+  <div class="jade-rain" id="rain" data-calm="left" aria-hidden="true"></div>
+  <div class="story-inner">
+    <div class="story-copy">
+      <div class="txt">
+        <p class="label">Our story</p>
+        <h2 class="hl" id="h-story"><svg aria-hidden="true" focusable="false" width="310" height="51" viewBox="0 0 310 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-7.81287e-05 49.7V49C2.23992 49 3.56992 47.95 3.91992 46.34L13.7199 9.53674e-06H14.8399L25.6199 49H28.4199V49.7H17.0799V49H19.8799L16.9399 35.35H6.92992L4.05992 49H6.71992V49.7H-7.81287e-05ZM11.8299 12.39L7.06992 34.65H16.7999L11.8299 12.39ZM52.0012 25.9H49.2012V49H52.0012V49.7H40.8012V49H43.6012V1.40001H40.8012V0.700009H52.0012C59.5612 0.700009 64.6012 5.74001 64.6012 11.9V14.7C64.6012 19.88 60.9612 24.29 55.3612 25.55C60.9612 26.81 64.6012 31.22 64.6012 36.4V45.85C64.6012 47.18 65.2312 48.23 66.0012 48.23C66.7712 48.23 67.4012 47.18 67.4012 45.85H68.1012C68.1012 48.37 66.0712 50.4 63.5512 50.4C61.0312 50.4 59.0012 48.37 59.0012 45.85V36.4C59.0012 30.59 55.8512 25.9 52.0012 25.9ZM52.0012 1.40001H49.2012V25.2H52.0012C55.8512 25.2 59.0012 20.51 59.0012 14.7V11.9C59.0012 6.09001 55.8512 1.40001 52.0012 1.40001ZM68.1542 49.7V49C70.3942 49 71.7242 47.95 72.0742 46.34L81.8742 9.53674e-06H82.9942L93.7742 49H96.5742V49.7H85.2342V49H88.0342L85.0942 35.35H75.0842L72.2142 49H74.8742V49.7H68.1542ZM79.9842 12.39L75.2242 34.65H84.9542L79.9842 12.39ZM109.902 25.9H107.102V49H109.902V49.7H98.7016V49H101.502V1.40001H98.7016V0.700009H109.902C117.462 0.700009 122.502 5.74001 122.502 11.9V14.7C122.502 19.88 118.862 24.29 113.262 25.55C118.862 26.81 122.502 31.22 122.502 36.4V45.85C122.502 47.18 123.132 48.23 123.902 48.23C124.672 48.23 125.302 47.18 125.302 45.85H126.002C126.002 48.37 123.972 50.4 121.452 50.4C118.932 50.4 116.902 48.37 116.902 45.85V36.4C116.902 30.59 113.752 25.9 109.902 25.9ZM109.902 1.40001H107.102V25.2H109.902C113.752 25.2 116.902 20.51 116.902 14.7V11.9C116.902 6.09001 113.752 1.40001 109.902 1.40001ZM148.875 0.700009V10.5H148.175C148.175 5.46001 146.145 1.40001 143.625 1.40001H136.975V24.85H141.175C142.715 24.85 143.975 22.33 143.975 19.25H144.675V31.15H143.975C143.975 28.07 142.715 25.55 141.175 25.55H136.975V49H143.625C146.145 49 148.175 44.94 148.175 39.9H148.875V49.7H128.575V49H131.375V1.40001H128.575V0.700009H148.875ZM165.352 49H168.152V1.40001H165.352V0.700009H176.552C184.112 0.700009 189.152 5.74001 189.152 11.9V13.3C189.152 19.88 183.482 22.89 178.652 24.15C183.482 25.41 189.852 28.42 189.852 35V38.5C189.852 44.66 184.812 49.7 177.252 49.7H165.352V49ZM184.252 38.5V35C184.252 28.77 180.402 24.5 176.552 24.5H173.752V49H177.252C181.102 49 184.252 44.31 184.252 38.5ZM183.552 13.3V11.9C183.552 6.09001 180.402 1.40001 176.552 1.40001H173.752V23.8H176.552C180.402 23.8 183.552 19.53 183.552 13.3ZM214.568 49.7H194.268V49H197.068V1.40001H194.268V0.700009H205.468V1.40001H202.668V49H209.318C211.838 49 213.868 44.94 213.868 39.9H214.568V49.7ZM235.777 39.2V11.2C235.777 5.39001 233.677 0.700009 230.177 0.700009C226.677 0.700009 224.577 5.39001 224.577 11.2V39.2C224.577 45.01 226.677 49.7 230.177 49.7C233.677 49.7 235.777 45.01 235.777 39.2ZM218.977 39.2V11.2C218.977 5.04001 223.667 9.53674e-06 230.177 9.53674e-06C236.687 9.53674e-06 241.377 5.04001 241.377 11.2V39.2C241.377 45.36 236.687 50.4 230.177 50.4C223.667 50.4 218.977 45.36 218.977 39.2ZM265.035 39.2V11.2C265.035 5.39001 262.935 0.700009 259.435 0.700009C255.935 0.700009 253.835 5.39001 253.835 11.2V39.2C253.835 45.01 255.935 49.7 259.435 49.7C262.935 49.7 265.035 45.01 265.035 39.2ZM248.235 39.2V11.2C248.235 5.04001 252.925 9.53674e-06 259.435 9.53674e-06C265.945 9.53674e-06 270.635 5.04001 270.635 11.2V39.2C270.635 45.36 265.945 50.4 259.435 50.4C252.925 50.4 248.235 45.36 248.235 39.2ZM275.813 0.700009H284.073L293.033 37.94L300.733 0.700009H309.133V1.40001H306.333V49H309.133V49.7H297.933V49H300.733V4.13001L291.283 49.7H290.163L279.663 6.16001V49H282.463V49.7H275.813V49C278.053 49 278.963 48.09 278.963 46.9V3.50001C278.963 2.31001 278.053 1.40001 275.813 1.40001V0.700009Z" fill="currentColor"/></svg><span class="sr">Named for a rare bloom</span></h2>
+        <p class="p1">The jade vine grows wild in one place on earth: the Philippines. It blooms once a year. It comes alive after dark. Jade is named for it, and keeps the same hours.</p>
+        <p class="p2">The vine needs the ones who come at night. So does Jade. You are the night set.</p>
+      </div>
+      <div><a class="btn btn--taupe" href="#glance">Read our story <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div>
+    </div>
+  </div>
+  <img class="oyster" src="assets/img/cocktail-oyster.webp" width="245" height="319" alt="" loading="lazy">
+</section>
+
+<!-- ============ RESERVATIONS ============ -->
+<section class="res wrap" id="reserve" aria-labelledby="h-res">
+  <div class="res-grid">
+    <div class="res-intro">
+      <p class="label">Reservations</p>
+      <h2 class="hl" id="h-res"><svg aria-hidden="true" focusable="false" width="381" height="55" viewBox="0 0 381 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M7.48977 49H10.2898V27.72L2.79977 1.39995H-0.00023436V0.699948H11.1998V1.39995H8.39977L15.5398 26.6L23.0998 1.39995H20.3698V0.699948H27.2298V1.39995C24.7798 1.39995 23.4498 2.58995 23.0298 3.98995L15.8898 27.7899V49H18.6898V49.7H7.48977V49ZM45.7847 39.2V11.2C45.7847 5.38995 43.6847 0.699948 40.1847 0.699948C36.6847 0.699948 34.5847 5.38995 34.5847 11.2V39.2C34.5847 45.01 36.6847 49.7 40.1847 49.7C43.6847 49.7 45.7847 45.01 45.7847 39.2ZM28.9847 39.2V11.2C28.9847 5.03995 33.6747 -5.14984e-05 40.1847 -5.14984e-05C46.6947 -5.14984e-05 51.3847 5.03995 51.3847 11.2V39.2C51.3847 45.36 46.6947 50.4 40.1847 50.4C33.6747 50.4 28.9847 45.36 28.9847 39.2ZM78.7525 3.49995V39.2C78.7525 45.36 74.9725 50.4 70.3525 50.4C63.8425 50.4 59.1525 45.36 59.1525 39.2V1.39995H56.3525V0.699948H67.5525V1.39995H64.7525V39.2C64.7525 45.01 66.8525 49.7 70.3525 49.7C74.6225 49.7 78.0525 45.01 78.0525 39.2V1.39995H75.2525V0.699948H81.9025V1.39995C79.6625 1.39995 78.7525 2.30995 78.7525 3.49995ZM96.4816 25.9H93.6816V49H96.4816V49.7H85.2816V49H88.0816V1.39995H85.2816V0.699948H96.4816C104.042 0.699948 109.082 5.73995 109.082 11.8999V14.7C109.082 19.8799 105.442 24.29 99.8416 25.5499C105.442 26.8099 109.082 31.22 109.082 36.4V45.85C109.082 47.18 109.712 48.23 110.482 48.23C111.252 48.23 111.882 47.18 111.882 45.85H112.582C112.582 48.37 110.552 50.4 108.032 50.4C105.512 50.4 103.482 48.37 103.482 45.85V36.4C103.482 30.59 100.332 25.9 96.4816 25.9ZM96.4816 1.39995H93.6816V25.1999H96.4816C100.332 25.1999 103.482 20.5099 103.482 14.7V11.8999C103.482 6.08995 100.332 1.39995 96.4816 1.39995ZM126.631 0.699948H134.121L147.141 35.56V1.39995H144.341V0.699948H150.991V1.39995C148.751 1.39995 147.841 2.30995 147.841 3.49995V49.7H146.721L130.481 6.08995V49H133.281V49.7H126.631V49C128.871 49 129.781 48.09 129.781 46.9V3.49995C129.781 2.30995 128.871 1.39995 126.631 1.39995V0.699948ZM154.53 0.699948H165.73V1.39995H162.93V49H165.73V49.7H154.53V49H157.33V1.39995H154.53V0.699948ZM192.241 25.97V46.06C187.271 46.06 185.801 50.4 181.741 50.4C175.931 50.4 171.241 45.36 171.241 39.2V11.2C171.241 5.03995 175.931 -5.14984e-05 181.741 -5.14984e-05C184.681 -5.14984e-05 186.781 1.18995 188.321 3.21995C189.301 3.21995 190.141 2.37995 190.141 0.699948H190.841V11.2H190.141C190.141 5.17995 186.571 0.699948 182.441 0.699948C178.941 0.699948 176.841 5.38995 176.841 11.2V39.2C176.841 45.01 179.011 49.7 181.741 49.7C184.471 49.7 186.641 45.01 186.641 39.2V25.97H183.841V25.27H195.041V25.97H192.241ZM213.475 0.699948H224.675V1.39995H221.875V49H224.675V49.7H213.475V49H216.275V25.5499H206.475V49H209.275V49.7H198.075V49H200.875V1.39995H198.075V0.699948H209.275V1.39995H206.475V24.8499H216.275V1.39995H213.475V0.699948ZM227.925 0.699948H253.125V10.5H252.425C252.425 5.45995 250.395 1.39995 247.875 1.39995H243.325V49H246.125V49.7H234.925V49H237.725V1.39995H233.175C230.655 1.39995 228.625 5.45995 228.625 10.5H227.925V0.699948ZM254.341 46.9C254.341 44.94 255.881 43.33 257.841 43.33C259.591 43.33 261.061 44.66 261.341 46.41C261.411 46.76 261.411 47.18 261.411 47.53C261.411 51.38 258.261 54.6 255.111 54.6V53.9C256.651 53.9 258.891 52.22 259.311 50.05C258.891 50.26 258.331 50.4 257.841 50.4C255.881 50.4 254.341 48.86 254.341 46.9ZM293.182 0.699948H304.382V1.39995H301.582V49H304.382V49.7H293.182V49H295.982V25.5499H286.182V49H288.982V49.7H277.782V49H280.582V1.39995H277.782V0.699948H288.982V1.39995H286.182V24.8499H295.982V1.39995H293.182V0.699948ZM328.912 0.699948V10.5H328.212C328.212 5.45995 326.182 1.39995 323.662 1.39995H317.012V24.8499H321.212C322.752 24.8499 324.012 22.3299 324.012 19.2499H324.712V31.15H324.012C324.012 28.07 322.752 25.5499 321.212 25.5499H317.012V49H323.662C326.182 49 328.212 44.94 328.212 39.9H328.912V49.7H308.612V49H311.412V1.39995H308.612V0.699948H328.912ZM353.863 49.7H333.563V49H336.363V1.39995H333.563V0.699948H344.763V1.39995H341.963V49H348.613C351.133 49 353.163 44.94 353.163 39.9H353.863V49.7ZM357.147 49H359.947V1.39995H357.147V0.699948H368.347C375.907 0.699948 380.947 5.73995 380.947 11.8999V38.5C380.947 44.66 375.907 49.7 368.347 49.7H357.147V49ZM375.347 38.5V11.8999C375.347 6.08995 372.197 1.39995 368.347 1.39995H365.547V49H368.347C372.197 49 375.347 44.31 375.347 38.5Z" fill="currentColor"/></svg><span class="sr">Your night, held</span></h2>
+      <p>Few tables. Released at noon, thirty days ahead. A handful of bar seats are kept for those who arrive unannounced.</p>
+      <img class="res-img" src="assets/img/reservations.webp" width="430" height="381" alt="The Jade menu and a tin of Royal Ossetra on the marble bar" loading="lazy">
+      <p class="res-note"><svg aria-hidden="true" focusable="false" width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M6.81732 6.7495C6.99366 6.24821 7.34173 5.82551 7.79986 5.55626C8.258 5.28701 8.79665 5.18858 9.3204 5.27842C9.84415 5.36826 10.3192 5.64056 10.6614 6.04709C11.0037 6.45363 11.191 6.96816 11.1902 7.49956C11.1902 8.99968 8.93999 9.74974 8.93999 9.74974M9.00011 12.7503H9.00761M16.5007 8.99999C16.5007 13.1425 13.1426 16.5006 9.00011 16.5006C4.85764 16.5006 1.49951 13.1425 1.49951 8.99999C1.49951 4.85752 4.85764 1.49939 9.00011 1.49939C13.1426 1.49939 16.5007 4.85752 16.5007 8.99999Z" stroke="#B7AB98" stroke-width="1.4" stroke-linecap="round"/></svg><span>Hotel concierges, private dining and parties of 7 or more: write to reservations@jademanila.com and we will hold the right table.</span></p>
+    </div>
+    <form class="form" id="resForm" novalidate>
+      <div class="form-head">
+        <div><h3 style="margin:0"><span class="sr">The form: </span></h3><h2>Request a table</h2><p>Every request is confirmed by a person.</p></div>
+        <p class="label">Released at noon, 30 days ahead</p>
+      </div>
+      <div class="row c3">
+        <div class="field"><label for="f-date">Date</label><div class="ctl"><input id="f-date" name="date" type="date" required><svg aria-hidden="true" focusable="false" class="ico" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M5.66667 1.41614V4.2497M11.3333 1.41614V4.2497M2.125 7.08326H14.875M5.66667 9.91682H5.67375M8.5 9.91682H8.50708M11.3333 9.91682H11.3404M5.66667 12.7504H5.67375M8.5 12.7504H8.50708M11.3333 12.7504H11.3404M3.54167 2.83292H13.4583C14.2407 2.83292 14.875 3.46723 14.875 4.2497V14.1672C14.875 14.9496 14.2407 15.5839 13.4583 15.5839H3.54167C2.75926 15.5839 2.125 14.9496 2.125 14.1672V4.2497C2.125 3.46723 2.75926 2.83292 3.54167 2.83292Z" stroke="#A49C8F" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        <div class="field"><label for="f-time">Time</label><div class="ctl"><select id="f-time" name="time"></select><svg aria-hidden="true" focusable="false" class="ico" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M8.49992 4.2497V8.50004H11.3335M15.5838 8.50004C15.5838 12.4124 12.4122 15.5839 8.49992 15.5839C4.58759 15.5839 1.41602 12.4124 1.41602 8.50004C1.41602 4.58771 4.58759 1.41614 8.49992 1.41614C12.4122 1.41614 15.5838 4.58771 15.5838 8.50004Z" stroke="#A49C8F" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+        <div class="field"><label for="f-guests">Guests</label><div class="ctl"><select id="f-guests" name="guests"><option>1 guest</option><option selected>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 guests</option><option>6 guests</option><option value="7+">7 or more</option></select><svg aria-hidden="true" focusable="false" class="ico" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3335 14.875V13.4583C11.3335 12.7069 11.0349 11.9862 10.5035 11.4549C9.97215 10.9235 9.25142 10.625 8.49992 10.625H4.24958C3.49807 10.625 2.77734 10.9235 2.24595 11.4549C1.71455 11.9862 1.41602 12.7069 1.41602 13.4583V14.875M11.3335 2.21562C11.9411 2.37313 12.4792 2.72793 12.8634 3.22433C13.2475 3.72073 13.456 4.33062 13.456 4.95828C13.456 5.58595 13.2475 6.19584 12.8634 6.69224C12.4792 7.18864 11.9411 7.54344 11.3335 7.70095M15.5838 14.8749V13.4582C15.5833 12.8305 15.3744 12.2206 14.9897 11.7245C14.6051 11.2283 14.0665 10.8739 13.4586 10.717M9.20831 4.95833C9.20831 6.52314 7.93968 7.79167 6.37475 7.79167C4.80981 7.79167 3.54119 6.52314 3.54119 4.95833C3.54119 3.39353 4.80981 2.125 6.37475 2.125C7.93968 2.125 9.20831 3.39353 9.20831 4.95833Z" stroke="#A49C8F" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label for="f-name">Name</label><div class="ctl"><input id="f-name" name="name" type="text" placeholder="Your full name" autocomplete="name" required></div></div>
+        <div class="field"><label for="f-email">Email</label><div class="ctl"><input id="f-email" name="email" type="email" placeholder="you@example.com" autocomplete="email" required></div></div>
+      </div>
+      <div class="row c2">
+        <div class="field"><label for="f-phone">Phone</label><div class="ctl"><input id="f-phone" name="phone" type="tel" placeholder="+63 917 000 0000" autocomplete="tel"></div></div>
+        <div class="field"><label for="f-occ">Occasion</label><div class="ctl"><select id="f-occ" name="occasion"><option value="">Select an occasion</option><option>Birthday</option><option>Anniversary</option><option>Date night</option><option>Business supper</option><option>Celebration</option><option>Just because</option></select><svg aria-hidden="true" focusable="false" class="ico" width="17" height="17" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4.25 6.375L8.5 10.625L12.75 6.375" stroke="#00BEA0" stroke-width="1.5" stroke-linecap="round"/></svg></div></div>
+      </div>
+      <div class="field"><label for="f-req">Special requests</label><div class="ctl"><textarea id="f-req" name="requests" placeholder="Allergies, celebrations, or a favourite corner"></textarea></div></div>
+      <label class="consent" for="f-list"><input id="f-list" name="list" type="checkbox"> Join the list: guest nights, new menus, the rare evening. Seldom sent.</label>
+      <button class="btn btn--jade" type="submit">Request a table <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <p class="form-msg" id="formMsg" hidden></p>
+      <p class="policy">Tables are held 15 minutes. Late Night is secured by card. Dress: elegant evening.</p>
+    </form>
+  </div>
+</section>
+
+<!-- ============ THE ROOM ============ -->
+<section class="room" aria-labelledby="h-room">
+  <div class="intro-row wrap">
+    <div class="hgroup"><p class="label">The room</p><h2 class="hl" id="h-room"><svg aria-hidden="true" focusable="false" width="485" height="55" viewBox="0 0 485 55" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.42 49.7V49C1.82 49 3.15 47.95 3.5 46.34L13.3 -5.14984e-05H14.42L25.2 49H28V49.7H16.66V49H19.46L16.52 35.35H6.51L3.64 49H6.3V49.7H-0.42ZM11.41 12.3899L6.65 34.65H16.38L11.41 12.3899ZM41.3273 49V49.7H30.1273V49H32.9273V1.39995H30.1273V0.699948H50.4273V10.5H49.7273C49.7273 5.45995 47.6973 1.39995 45.1773 1.39995H38.5273V24.8499H42.7273C44.2673 24.8499 45.5273 22.3299 45.5273 19.2499H46.2273V31.15H45.5273C45.5273 28.07 44.2673 25.5499 42.7273 25.5499H38.5273V49H41.3273ZM52.9364 0.699948H78.1364V10.5H77.4364C77.4364 5.45995 75.4064 1.39995 72.8864 1.39995H68.3364V49H71.1364V49.7H59.9364V49H62.7364V1.39995H58.1864C55.6664 1.39995 53.6364 5.45995 53.6364 10.5H52.9364V0.699948ZM101.629 0.699948V10.5H100.929C100.929 5.45995 98.8985 1.39995 96.3785 1.39995H89.7285V24.8499H93.9285C95.4685 24.8499 96.7285 22.3299 96.7285 19.2499H97.4285V31.15H96.7285C96.7285 28.07 95.4685 25.5499 93.9285 25.5499H89.7285V49H96.3785C98.8985 49 100.929 44.94 100.929 39.9H101.629V49.7H81.3285V49H84.1285V1.39995H81.3285V0.699948H101.629ZM117.48 25.9H114.68V49H117.48V49.7H106.28V49H109.08V1.39995H106.28V0.699948H117.48C125.04 0.699948 130.08 5.73995 130.08 11.8999V14.7C130.08 19.8799 126.44 24.29 120.84 25.5499C126.44 26.8099 130.08 31.22 130.08 36.4V45.85C130.08 47.18 130.71 48.23 131.48 48.23C132.25 48.23 132.88 47.18 132.88 45.85H133.58C133.58 48.37 131.55 50.4 129.03 50.4C126.51 50.4 124.48 48.37 124.48 45.85V36.4C124.48 30.59 121.33 25.9 117.48 25.9ZM117.48 1.39995H114.68V25.1999H117.48C121.33 25.1999 124.48 20.5099 124.48 14.7V11.8999C124.48 6.08995 121.33 1.39995 117.48 1.39995ZM147.979 49H150.779V1.39995H147.979V0.699948H159.179C166.739 0.699948 171.779 5.73995 171.779 11.8999V38.5C171.779 44.66 166.739 49.7 159.179 49.7H147.979V49ZM166.179 38.5V11.8999C166.179 6.08995 163.029 1.39995 159.179 1.39995H156.379V49H159.179C163.029 49 166.179 44.31 166.179 38.5ZM173.486 49.7V49C175.726 49 177.056 47.95 177.406 46.34L187.206 -5.14984e-05H188.326L199.106 49H201.906V49.7H190.566V49H193.366L190.426 35.35H180.416L177.546 49H180.206V49.7H173.486ZM185.316 12.3899L180.556 34.65H190.286L185.316 12.3899ZM215.234 25.9H212.434V49H215.234V49.7H204.034V49H206.834V1.39995H204.034V0.699948H215.234C222.794 0.699948 227.834 5.73995 227.834 11.8999V14.7C227.834 19.8799 224.194 24.29 218.594 25.5499C224.194 26.8099 227.834 31.22 227.834 36.4V45.85C227.834 47.18 228.464 48.23 229.234 48.23C230.004 48.23 230.634 47.18 230.634 45.85H231.334C231.334 48.37 229.304 50.4 226.784 50.4C224.264 50.4 222.234 48.37 222.234 45.85V36.4C222.234 30.59 219.084 25.9 215.234 25.9ZM215.234 1.39995H212.434V25.1999H215.234C219.084 25.1999 222.234 20.5099 222.234 14.7V11.8999C222.234 6.08995 219.084 1.39995 215.234 1.39995ZM233.907 0.699948H245.107V1.39995H242.307V26.25L255.467 1.39995H252.877V0.699948H259.737V1.39995C256.657 1.39995 255.747 2.37995 255.047 3.70995L248.117 16.7999L258.477 49H261.277V49.7H250.147V49H252.877L244.547 23.4499L242.307 27.6499V49H245.107V49.7H233.907V49H236.707V1.39995H233.907V0.699948ZM262.693 46.9C262.693 44.94 264.233 43.33 266.193 43.33C267.943 43.33 269.413 44.66 269.693 46.41C269.763 46.76 269.763 47.18 269.763 47.53C269.763 51.38 266.613 54.6 263.463 54.6V53.9C265.003 53.9 267.243 52.22 267.663 50.05C267.243 50.26 266.683 50.4 266.193 50.4C264.233 50.4 262.693 48.86 262.693 46.9ZM286.133 0.699948H297.333V1.39995H294.533V49H297.333V49.7H286.133V49H288.933V1.39995H286.133V0.699948ZM301.164 0.699948H308.654L321.674 35.56V1.39995H318.874V0.699948H325.524V1.39995C323.284 1.39995 322.374 2.30995 322.374 3.49995V49.7H321.254L305.014 6.08995V49H307.814V49.7H301.164V49C303.404 49 304.314 48.09 304.314 46.9V3.49995C304.314 2.30995 303.404 1.39995 301.164 1.39995V0.699948ZM340.889 49H343.689V1.39995H340.889V0.699948H352.089C359.649 0.699948 364.689 5.73995 364.689 11.8999V13.2999C364.689 19.8799 359.019 22.89 354.189 24.15C359.019 25.41 365.389 28.4199 365.389 35V38.5C365.389 44.66 360.349 49.7 352.789 49.7H340.889V49ZM359.789 38.5V35C359.789 28.7699 355.939 24.5 352.089 24.5H349.289V49H352.789C356.639 49 359.789 44.31 359.789 38.5ZM359.089 13.2999V11.8999C359.089 6.08995 355.939 1.39995 352.089 1.39995H349.289V23.8H352.089C355.939 23.8 359.089 19.5299 359.089 13.2999ZM390.105 49.7H369.805V49H372.605V1.39995H369.805V0.699948H381.005V1.39995H378.205V49H384.855C387.375 49 389.405 44.94 389.405 39.9H390.105V49.7ZM411.314 39.2V11.2C411.314 5.38995 409.214 0.699948 405.714 0.699948C402.214 0.699948 400.114 5.38995 400.114 11.2V39.2C400.114 45.01 402.214 49.7 405.714 49.7C409.214 49.7 411.314 45.01 411.314 39.2ZM394.514 39.2V11.2C394.514 5.03995 399.204 -5.14984e-05 405.714 -5.14984e-05C412.224 -5.14984e-05 416.914 5.03995 416.914 11.2V39.2C416.914 45.36 412.224 50.4 405.714 50.4C399.204 50.4 394.514 45.36 394.514 39.2ZM440.572 39.2V11.2C440.572 5.38995 438.472 0.699948 434.972 0.699948C431.472 0.699948 429.372 5.38995 429.372 11.2V39.2C429.372 45.01 431.472 49.7 434.972 49.7C438.472 49.7 440.572 45.01 440.572 39.2ZM423.772 39.2V11.2C423.772 5.03995 428.462 -5.14984e-05 434.972 -5.14984e-05C441.482 -5.14984e-05 446.172 5.03995 446.172 11.2V39.2C446.172 45.36 441.482 50.4 434.972 50.4C428.462 50.4 423.772 45.36 423.772 39.2ZM451.35 0.699948H459.61L468.57 37.94L476.27 0.699948H484.67V1.39995H481.87V49H484.67V49.7H473.47V49H476.27V4.12995L466.82 49.7H465.7L455.2 6.15995V49H458V49.7H451.35V49C453.59 49 454.5 48.09 454.5 46.9V3.49995C454.5 2.30995 453.59 1.39995 451.35 1.39995V0.699948Z" fill="currentColor"/></svg><span class="sr">After dark, in bloom</span></h2></div>
+    <p class="aside">Velvet, low gold light, green marble.<br>The room is best seen late.</p>
+  </div>
+  <div class="collage">
+    <div class="r1">
+      <img src="assets/img/room-1.webp" width="826" height="350" alt="Guests at supper in the Jade dining room" loading="lazy">
+      <img src="assets/img/room-2.webp" width="526" height="350" alt="The Jade Manila dining room in low gold light" loading="lazy">
+    </div>
+    <div class="r2">
+      <img src="assets/img/room-3.webp" width="420" height="290" alt="Hands finishing a plate with caviar on green marble" loading="lazy">
+      <img src="assets/img/room-4.webp" width="566" height="290" alt="Todd English plating at the pass" loading="lazy">
+      <blockquote class="quote">Planned as one drink. Remembered for a year.</blockquote>
+    </div>
+  </div>
+</section>
+
+<!-- ============ SUPPER MENU ============ -->
+<section class="supper" id="dining" aria-labelledby="h-supper">
+  <div class="intro-row wrap">
+    <div class="hgroup"><p class="label">Dining</p><h2 class="hl" id="h-supper"><svg aria-hidden="true" focusable="false" width="386" height="51" viewBox="0 0 386 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.000117134 0.699948H25.1999V10.5H24.4999C24.4999 5.45995 22.4699 1.39995 19.9499 1.39995H15.3999V49H18.1999V49.7H6.99988V49H9.79988V1.39995H5.24988C2.72988 1.39995 0.699883 5.45995 0.699883 10.5H-0.000117134V0.699948ZM43.792 0.699948H54.992V1.39995H52.192V49H54.992V49.7H43.792V49H46.592V25.5499H36.792V49H39.592V49.7H28.392V49H31.192V1.39995H28.392V0.699948H39.592V1.39995H36.792V24.8499H46.592V1.39995H43.792V0.699948ZM79.5221 0.699948V10.5H78.8221C78.8221 5.45995 76.7921 1.39995 74.2721 1.39995H67.6221V24.8499H71.8221C73.3621 24.8499 74.6221 22.3299 74.6221 19.2499H75.3221V31.15H74.6221C74.6221 28.07 73.3621 25.5499 71.8221 25.5499H67.6221V49H74.2721C76.7921 49 78.8221 44.94 78.8221 39.9H79.5221V49.7H59.2221V49H62.0221V1.39995H59.2221V0.699948H79.5221ZM96.4194 49.7V38.5H97.1194C97.1194 44.59 101.179 49.49 105.799 49.49C109.579 49.49 112.239 45.57 112.239 40.6C112.239 27.6499 96.4194 26.6 96.4194 11.8999C96.4194 5.31995 99.9194 -5.14984e-05 106.149 -5.14984e-05C109.369 -5.14984e-05 111.679 1.25995 113.289 3.21995C114.339 3.21995 115.179 2.37995 115.179 0.699948H115.879V11.2H115.179C115.179 5.52995 111.469 0.909949 107.199 0.909949C103.419 0.909949 101.459 4.12995 101.459 9.09995C101.459 22.19 117.279 23.2399 117.279 37.8C117.279 44.73 113.429 50.4 106.849 50.4C103.069 50.4 100.339 48.79 98.5894 46.2C97.8194 46.48 97.1194 47.46 97.1194 49.7H96.4194ZM143.132 3.49995V39.2C143.132 45.36 139.352 50.4 134.732 50.4C128.222 50.4 123.532 45.36 123.532 39.2V1.39995H120.732V0.699948H131.932V1.39995H129.132V39.2C129.132 45.01 131.232 49.7 134.732 49.7C139.002 49.7 142.432 45.01 142.432 39.2V1.39995H139.632V0.699948H146.282V1.39995C144.042 1.39995 143.132 2.30995 143.132 3.49995ZM160.862 28.7H158.062V49H160.862V49.7H149.662V49H152.462V1.39995H149.662V0.699948H160.862C168.422 0.699948 173.462 5.73995 173.462 11.8999V17.5C173.462 23.66 168.422 28.7 160.862 28.7ZM160.862 1.39995H158.062V28H160.862C164.712 28 167.862 23.31 167.862 17.5V11.8999C167.862 6.08995 164.712 1.39995 160.862 1.39995ZM188.342 28.7H185.542V49H188.342V49.7H177.142V49H179.942V1.39995H177.142V0.699948H188.342C195.902 0.699948 200.942 5.73995 200.942 11.8999V17.5C200.942 23.66 195.902 28.7 188.342 28.7ZM188.342 1.39995H185.542V28H188.342C192.192 28 195.342 23.31 195.342 17.5V11.8999C195.342 6.08995 192.192 1.39995 188.342 1.39995ZM224.922 0.699948V10.5H224.222C224.222 5.45995 222.192 1.39995 219.672 1.39995H213.022V24.8499H217.222C218.762 24.8499 220.022 22.3299 220.022 19.2499H220.722V31.15H220.022C220.022 28.07 218.762 25.5499 217.222 25.5499H213.022V49H219.672C222.192 49 224.222 44.94 224.222 39.9H224.922V49.7H204.622V49H207.422V1.39995H204.622V0.699948H224.922ZM240.774 25.9H237.974V49H240.774V49.7H229.574V49H232.374V1.39995H229.574V0.699948H240.774C248.334 0.699948 253.374 5.73995 253.374 11.8999V14.7C253.374 19.8799 249.734 24.29 244.134 25.5499C249.734 26.8099 253.374 31.22 253.374 36.4V45.85C253.374 47.18 254.004 48.23 254.774 48.23C255.544 48.23 256.174 47.18 256.174 45.85H256.874C256.874 48.37 254.844 50.4 252.324 50.4C249.804 50.4 247.774 48.37 247.774 45.85V36.4C247.774 30.59 244.624 25.9 240.774 25.9ZM240.774 1.39995H237.974V25.1999H240.774C244.624 25.1999 247.774 20.5099 247.774 14.7V11.8999C247.774 6.08995 244.624 1.39995 240.774 1.39995ZM270.923 0.699948H279.183L288.143 37.94L295.843 0.699948H304.243V1.39995H301.443V49H304.243V49.7H293.043V49H295.843V4.12995L286.393 49.7H285.273L274.773 6.15995V49H277.573V49.7H270.923V49C273.163 49 274.073 48.09 274.073 46.9V3.49995C274.073 2.30995 273.163 1.39995 270.923 1.39995V0.699948ZM328.76 0.699948V10.5H328.06C328.06 5.45995 326.03 1.39995 323.51 1.39995H316.86V24.8499H321.06C322.6 24.8499 323.86 22.3299 323.86 19.2499H324.56V31.15H323.86C323.86 28.07 322.6 25.5499 321.06 25.5499H316.86V49H323.51C326.03 49 328.06 44.94 328.06 39.9H328.76V49.7H308.46V49H311.26V1.39995H308.46V0.699948H328.76ZM333.062 0.699948H340.552L353.572 35.56V1.39995H350.772V0.699948H357.422V1.39995C355.182 1.39995 354.272 2.30995 354.272 3.49995V49.7H353.152L336.912 6.08995V49H339.712V49.7H333.062V49C335.302 49 336.212 48.09 336.212 46.9V3.49995C336.212 2.30995 335.302 1.39995 333.062 1.39995V0.699948ZM382.8 3.49995V39.2C382.8 45.36 379.02 50.4 374.4 50.4C367.89 50.4 363.2 45.36 363.2 39.2V1.39995H360.4V0.699948H371.6V1.39995H368.8V39.2C368.8 45.01 370.9 49.7 374.4 49.7C378.67 49.7 382.1 45.01 382.1 39.2V1.39995H379.3V0.699948H385.95V1.39995C383.71 1.39995 382.8 2.30995 382.8 3.49995Z" fill="currentColor"/></svg><span class="sr">The supper menu</span></h2></div>
+    <p class="aside">Plates for sharing, slowly.<br>Supper from 6pm, Tuesday to Sunday.</p>
+  </div>
+  <div class="carousel">
+    <ul class="track" id="track" aria-label="Signature dishes">
+      <li class="dish" id="dish-cannoli"><img src="assets/img/food-1.webp" width="260" height="180" alt="Caviar cannoli on a Jade plate" loading="lazy"><div class="d"><h3>Caviar Cannoli</h3><p>Smoked yellowtail mousse, sesame, Ossetra</p></div></li>
+      <li class="dish" id="dish-chawanmushi"><img src="assets/img/food-2.webp" width="260" height="180" alt="Sweet corn coconut chawanmushi with uni and caviar" loading="lazy"><div class="d"><h3>Sweet Corn Coconut Chawanmushi</h3><p>Coconut, uni, Ossetra, chive oil</p></div></li>
+      <li class="dish" id="dish-crab"><img src="assets/img/food-3.webp" width="260" height="180" alt="King crab toast on milk bread" loading="lazy"><div class="d"><h3>King Crab Toast</h3><p>Japanese milk bread, uni sabayon</p></div></li>
+      <li class="dish" id="dish-lobster"><img src="assets/img/food-4.webp" width="260" height="180" alt="Lobster paccheri" loading="lazy"><div class="d"><h3>Lobster Paccheri</h3><p>Roasted-shell tomato dashi, Calabrian chili</p></div></li>
+      <li class="dish" id="dish-duck"><img src="assets/img/food-5.webp" width="390" height="270" alt="Peking spiced duck" loading="lazy"><div class="d"><h3>Peking Spiced Duck</h3><p>Duck breast and confit leg, star anise jus, cucumber</p></div></li>
+      <li class="dish" id="dish-tiramisu"><img src="assets/img/food-6.webp" width="390" height="270" alt="Matcha tiramisu" loading="lazy"><div class="d"><h3>Matcha Tiramisu</h3><p>Matcha, mascarpone, cocoa tuile</p></div></li>
+      <li style="display:contents"><a class="dish more" href="#reserve"><span>View<br>Full Menu</span><svg viewBox="0 0 50 50" fill="none" aria-hidden="true"><circle cx="25" cy="25" r="22" stroke="currentColor" stroke-width="1.5"/><path d="M19 25h12M26 19.5l5.5 5.5-5.5 5.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></a></li>
+    </ul>
+    <div class="car-ctl wrap"><button type="button" id="prev" aria-label="Previous dishes"><svg viewBox="0 0 18 18" fill="none"><path d="M11 4 6 9l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button><button type="button" id="next" aria-label="Next dishes"><svg viewBox="0 0 18 18" fill="none"><path d="m7 4 5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button></div>
+  </div>
+</section>
+
+<!-- ============ CAVIAR ============ -->
+<section class="caviar wrap" id="caviar" aria-labelledby="h-caviar">
+  <div class="cav-grid">
+    <div class="cav-panel">
+      <div class="txt">
+        <p class="label">Caviar bar</p>
+        <h2 class="hl" id="h-caviar" style="color:var(--ivory)"><svg aria-hidden="true" focusable="false" width="425" height="56" viewBox="0 0 425 56" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.000117134 0.699948H25.1999V10.5H24.4999C24.4999 5.45995 22.4699 1.39995 19.9499 1.39995H15.3999V49H18.1999V49.7H6.99988V49H9.79988V1.39995H5.24988C2.72988 1.39995 0.699883 5.45995 0.699883 10.5H-0.000117134V0.699948ZM43.792 0.699948H54.992V1.39995H52.192V49H54.992V49.7H43.792V49H46.592V25.5499H36.792V49H39.592V49.7H28.392V49H31.192V1.39995H28.392V0.699948H39.592V1.39995H36.792V24.8499H46.592V1.39995H43.792V0.699948ZM79.5221 0.699948V10.5H78.8221C78.8221 5.45995 76.7921 1.39995 74.2721 1.39995H67.6221V24.8499H71.8221C73.3621 24.8499 74.6221 22.3299 74.6221 19.2499H75.3221V31.15H74.6221C74.6221 28.07 73.3621 25.5499 71.8221 25.5499H67.6221V49H74.2721C76.7921 49 78.8221 44.94 78.8221 39.9H79.5221V49.7H59.2221V49H62.0221V1.39995H59.2221V0.699948H79.5221ZM104.706 1.39995V43.4C104.706 49.98 99.3857 55.3 92.8057 55.3V54.6C96.3057 54.6 99.1057 49.56 99.1057 43.4V1.39995H96.3057V0.699948H107.506V1.39995H104.706ZM108.108 49.7V49C110.348 49 111.678 47.95 112.028 46.34L121.828 -5.14984e-05H122.948L133.728 49H136.528V49.7H125.188V49H127.988L125.048 35.35H115.038L112.168 49H114.828V49.7H108.108ZM119.938 12.3899L115.178 34.65H124.908L119.938 12.3899ZM138.656 49H141.456V1.39995H138.656V0.699948H149.856C157.416 0.699948 162.456 5.73995 162.456 11.8999V38.5C162.456 44.66 157.416 49.7 149.856 49.7H138.656V49ZM156.856 38.5V11.8999C156.856 6.08995 153.706 1.39995 149.856 1.39995H147.056V49H149.856C153.706 49 156.856 44.31 156.856 38.5ZM188.213 0.699948V10.5H187.513C187.513 5.45995 185.483 1.39995 182.963 1.39995H176.313V24.8499H180.513C182.053 24.8499 183.313 22.3299 183.313 19.2499H184.013V31.15H183.313C183.313 28.07 182.053 25.5499 180.513 25.5499H176.313V49H182.963C185.483 49 187.513 44.94 187.513 39.9H188.213V49.7H167.913V49H170.713V1.39995H167.913V0.699948H188.213ZM205.111 49.7V38.5H205.811C205.811 44.59 209.871 49.49 214.491 49.49C218.271 49.49 220.931 45.57 220.931 40.6C220.931 27.6499 205.111 26.6 205.111 11.8999C205.111 5.31995 208.611 -5.14984e-05 214.841 -5.14984e-05C218.061 -5.14984e-05 220.371 1.25995 221.981 3.21995C223.031 3.21995 223.871 2.37995 223.871 0.699948H224.571V11.2H223.871C223.871 5.52995 220.161 0.909949 215.891 0.909949C212.111 0.909949 210.151 4.12995 210.151 9.09995C210.151 22.19 225.971 23.2399 225.971 37.8C225.971 44.73 222.121 50.4 215.541 50.4C211.761 50.4 209.031 48.79 207.281 46.2C206.511 46.48 205.811 47.46 205.811 49.7H205.111ZM250.284 0.699948V10.5H249.584C249.584 5.45995 247.554 1.39995 245.034 1.39995H238.384V24.8499H242.584C244.124 24.8499 245.384 22.3299 245.384 19.2499H246.084V31.15H245.384C245.384 28.07 244.124 25.5499 242.584 25.5499H238.384V49H245.034C247.554 49 249.584 44.94 249.584 39.9H250.284V49.7H229.984V49H232.784V1.39995H229.984V0.699948H250.284ZM275.235 49.7H254.935V49H257.735V1.39995H254.935V0.699948H266.135V1.39995H263.335V49H269.985C272.505 49 274.535 44.94 274.535 39.9H275.235V49.7ZM298.819 0.699948V10.5H298.119C298.119 5.45995 296.089 1.39995 293.569 1.39995H286.919V24.8499H291.119C292.659 24.8499 293.919 22.3299 293.919 19.2499H294.619V31.15H293.919C293.919 28.07 292.659 25.5499 291.119 25.5499H286.919V49H293.569C296.089 49 298.119 44.94 298.119 39.9H298.819V49.7H278.519V49H281.319V1.39995H278.519V0.699948H298.819ZM323.7 39.2H324.4V49.7H323.7C323.7 48.02 322.86 47.18 321.88 47.18C320.34 49.14 318.24 50.4 315.3 50.4C309.49 50.4 304.8 45.36 304.8 39.2V11.2C304.8 5.03995 309.49 -5.14984e-05 315.3 -5.14984e-05C318.24 -5.14984e-05 320.34 1.18995 321.88 3.21995C322.86 3.21995 323.7 2.37995 323.7 0.699948H324.4V11.2H323.7C323.7 5.17995 320.13 0.699948 316 0.699948C312.5 0.699948 310.4 5.38995 310.4 11.2V39.2C310.4 45.01 312.5 49.7 316 49.7C320.13 49.7 323.7 45.22 323.7 39.2ZM327.783 0.699948H352.983V10.5H352.283C352.283 5.45995 350.253 1.39995 347.733 1.39995H343.183V49H345.983V49.7H334.783V49H337.583V1.39995H333.033C330.513 1.39995 328.483 5.45995 328.483 10.5H327.783V0.699948ZM356.175 0.699948H367.375V1.39995H364.575V49H367.375V49.7H356.175V49H358.975V1.39995H356.175V0.699948ZM389.686 39.2V11.2C389.686 5.38995 387.586 0.699948 384.086 0.699948C380.586 0.699948 378.486 5.38995 378.486 11.2V39.2C378.486 45.01 380.586 49.7 384.086 49.7C387.586 49.7 389.686 45.01 389.686 39.2ZM372.886 39.2V11.2C372.886 5.03995 377.576 -5.14984e-05 384.086 -5.14984e-05C390.596 -5.14984e-05 395.286 5.03995 395.286 11.2V39.2C395.286 45.36 390.596 50.4 384.086 50.4C377.576 50.4 372.886 45.36 372.886 39.2ZM400.464 0.699948H407.954L420.974 35.56V1.39995H418.174V0.699948H424.824V1.39995C422.584 1.39995 421.674 2.30995 421.674 3.49995V49.7H420.554L404.314 6.08995V49H407.114V49.7H400.464V49C402.704 49 403.614 48.09 403.614 46.9V3.49995C403.614 2.30995 402.704 1.39995 400.464 1.39995V0.699948Z" fill="currentColor"/></svg><span class="sr">The Jade selection</span></h2>
+        <p>Rare, like the flower. Royal Ossetra from our private collection with Todd English. At the caviar bar, or at your table.</p>
+      </div>
+      <div><a class="btn btn--taupe" href="#reserve">Reserve the caviar bar <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div>
+    </div>
+    <img class="cav-img" src="assets/img/caviar.webp" width="704" height="420" alt="A tin of Jade Royal Ossetra caviar" loading="lazy">
+  </div>
+</section>
+
+<!-- ============ LATE NIGHT ============ -->
+<section class="drinks" id="late-night" aria-labelledby="h-drinks">
+  <div class="intro-row wrap">
+    <div class="hgroup"><p class="label">Late Night</p><h2 class="hl" id="h-drinks"><svg aria-hidden="true" focusable="false" width="581" height="51" viewBox="0 0 581 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.000117134 0.700192H25.1999V10.5002H24.4999C24.4999 5.46019 22.4699 1.40019 19.9499 1.40019H15.3999V49.0002H18.1999V49.7002H6.99988V49.0002H9.79988V1.40019H5.24988C2.72988 1.40019 0.699883 5.46019 0.699883 10.5002H-0.000117134V0.700192ZM43.792 0.700192H54.992V1.40019H52.192V49.0002H54.992V49.7002H43.792V49.0002H46.592V25.5502H36.792V49.0002H39.592V49.7002H28.392V49.0002H31.192V1.40019H28.392V0.700192H39.592V1.40019H36.792V24.8502H46.592V1.40019H43.792V0.700192ZM70.4221 25.9002H67.6221V49.0002H70.4221V49.7002H59.2221V49.0002H62.0221V1.40019H59.2221V0.700192H70.4221C77.9821 0.700192 83.0221 5.74019 83.0221 11.9002V14.7002C83.0221 19.8802 79.3821 24.2902 73.7821 25.5502C79.3821 26.8102 83.0221 31.2202 83.0221 36.4002V45.8502C83.0221 47.1802 83.6521 48.2302 84.4221 48.2302C85.1921 48.2302 85.8221 47.1802 85.8221 45.8502H86.5221C86.5221 48.3702 84.4921 50.4002 81.9721 50.4002C79.4521 50.4002 77.4221 48.3702 77.4221 45.8502V36.4002C77.4221 30.5902 74.2721 25.9002 70.4221 25.9002ZM70.4221 1.40019H67.6221V25.2002H70.4221C74.2721 25.2002 77.4221 20.5102 77.4221 14.7002V11.9002C77.4221 6.09019 74.2721 1.40019 70.4221 1.40019ZM109.395 0.700192V10.5002H108.695C108.695 5.46019 106.665 1.40019 104.145 1.40019H97.4951V24.8502H101.695C103.235 24.8502 104.495 22.3302 104.495 19.2502H105.195V31.1502H104.495C104.495 28.0702 103.235 25.5502 101.695 25.5502H97.4951V49.0002H104.145C106.665 49.0002 108.695 44.9402 108.695 39.9002H109.395V49.7002H89.0951V49.0002H91.8951V1.40019H89.0951V0.700192H109.395ZM134.346 0.700192V10.5002H133.646C133.646 5.46019 131.616 1.40019 129.096 1.40019H122.446V24.8502H126.646C128.186 24.8502 129.446 22.3302 129.446 19.2502H130.146V31.1502H129.446C129.446 28.0702 128.186 25.5502 126.646 25.5502H122.446V49.0002H129.096C131.616 49.0002 133.646 44.9402 133.646 39.9002H134.346V49.7002H114.046V49.0002H116.846V1.40019H114.046V0.700192H134.346ZM174.805 38.0102L182.575 1.40019H179.775V0.700192H186.635V1.40019C184.395 1.40019 183.065 2.45019 182.715 4.06019L172.915 50.4002H171.795L166.615 27.0902L161.715 50.4002H160.595L149.815 1.40019H147.015V0.700192H175.435V1.40019C173.195 1.40019 171.865 2.45019 171.515 4.06019L169.415 13.7902L174.805 38.0102ZM163.605 38.0102L166.265 25.4102L161.015 1.40019H155.555L163.605 38.0102ZM171.375 1.40019H166.755L169.065 12.1102L171.375 1.40019ZM205.321 39.2002V11.2002C205.321 5.39019 203.221 0.700192 199.721 0.700192C196.221 0.700192 194.121 5.39019 194.121 11.2002V39.2002C194.121 45.0102 196.221 49.7002 199.721 49.7002C203.221 49.7002 205.321 45.0102 205.321 39.2002ZM188.521 39.2002V11.2002C188.521 5.04019 193.211 0.000192642 199.721 0.000192642C206.231 0.000192642 210.921 5.04019 210.921 11.2002V39.2002C210.921 45.3602 206.231 50.4002 199.721 50.4002C193.211 50.4002 188.521 45.3602 188.521 39.2002ZM227.649 25.9002H224.849V49.0002H227.649V49.7002H216.449V49.0002H219.249V1.40019H216.449V0.700192H227.649C235.209 0.700192 240.249 5.74019 240.249 11.9002V14.7002C240.249 19.8802 236.609 24.2902 231.009 25.5502C236.609 26.8102 240.249 31.2202 240.249 36.4002V45.8502C240.249 47.1802 240.879 48.2302 241.649 48.2302C242.419 48.2302 243.049 47.1802 243.049 45.8502H243.749C243.749 48.3702 241.719 50.4002 239.199 50.4002C236.679 50.4002 234.649 48.3702 234.649 45.8502V36.4002C234.649 30.5902 231.499 25.9002 227.649 25.9002ZM227.649 1.40019H224.849V25.2002H227.649C231.499 25.2002 234.649 20.5102 234.649 14.7002V11.9002C234.649 6.09019 231.499 1.40019 227.649 1.40019ZM244.932 0.700192H270.132V10.5002H269.432C269.432 5.46019 267.402 1.40019 264.882 1.40019H260.332V49.0002H263.132V49.7002H251.932V49.0002H254.732V1.40019H250.182C247.662 1.40019 245.632 5.46019 245.632 10.5002H244.932V0.700192ZM288.724 0.700192H299.924V1.40019H297.124V49.0002H299.924V49.7002H288.724V49.0002H291.524V25.5502H281.724V49.0002H284.524V49.7002H273.324V49.0002H276.124V1.40019H273.324V0.700192H284.524V1.40019H281.724V24.8502H291.524V1.40019H288.724V0.700192ZM316.4 49.7002V38.5002H317.1C317.1 44.5902 321.16 49.4902 325.78 49.4902C329.56 49.4902 332.22 45.5702 332.22 40.6002C332.22 27.6502 316.4 26.6002 316.4 11.9002C316.4 5.3202 319.9 0.000192642 326.13 0.000192642C329.35 0.000192642 331.66 1.26019 333.27 3.22019C334.32 3.22019 335.16 2.38019 335.16 0.700192H335.86V11.2002H335.16C335.16 5.53019 331.45 0.910193 327.18 0.910193C323.4 0.910193 321.44 4.13019 321.44 9.10019C321.44 22.1902 337.26 23.2402 337.26 37.8002C337.26 44.7302 333.41 50.4002 326.83 50.4002C323.05 50.4002 320.32 48.7902 318.57 46.2002C317.8 46.4802 317.1 47.4602 317.1 49.7002H316.4ZM340.293 0.700192H365.493V10.5002H364.793C364.793 5.46019 362.763 1.40019 360.243 1.40019H355.693V49.0002H358.493V49.7002H347.293V49.0002H350.093V1.40019H345.543C343.023 1.40019 340.993 5.46019 340.993 10.5002H340.293V0.700192ZM362.815 49.7002V49.0002C365.055 49.0002 366.385 47.9502 366.735 46.3402L376.535 0.000192642H377.655L388.435 49.0002H391.235V49.7002H379.895V49.0002H382.695L379.755 35.3502H369.745L366.875 49.0002H369.535V49.7002H362.815ZM374.645 12.3902L369.885 34.6502H379.615L374.645 12.3902ZM395.756 49.0002H398.556V27.7202L391.066 1.40019H388.266V0.700192H399.466V1.40019H396.666L403.806 26.6002L411.366 1.40019H408.636V0.700192H415.496V1.40019C413.046 1.40019 411.716 2.59019 411.296 3.99019L404.156 27.7902V49.0002H406.956V49.7002H395.756V49.0002ZM417.083 0.700192H428.283V1.40019H425.483V49.0002H428.283V49.7002H417.083V49.0002H419.883V1.40019H417.083V0.700192ZM432.114 0.700192H439.604L452.624 35.5602V1.40019H449.824V0.700192H456.474V1.40019C454.234 1.40019 453.324 2.31019 453.324 3.50019V49.7002H452.204L435.964 6.09019V49.0002H438.764V49.7002H432.114V49.0002C434.354 49.0002 435.264 48.0902 435.264 46.9002V3.50019C435.264 2.31019 434.354 1.40019 432.114 1.40019V0.700192ZM482.343 25.9702V46.0602C477.373 46.0602 475.903 50.4002 471.843 50.4002C466.033 50.4002 461.343 45.3602 461.343 39.2002V11.2002C461.343 5.04019 466.033 0.000192642 471.843 0.000192642C474.783 0.000192642 476.883 1.19019 478.423 3.22019C479.403 3.22019 480.243 2.38019 480.243 0.700192H480.943V11.2002H480.243C480.243 5.18019 476.673 0.700192 472.543 0.700192C469.043 0.700192 466.943 5.39019 466.943 11.2002V39.2002C466.943 45.0102 469.113 49.7002 471.843 49.7002C474.573 49.7002 476.743 45.0102 476.743 39.2002V25.9702H473.943V25.2702H485.143V25.9702H482.343ZM511.203 49.0002V49.7002H500.003V49.0002H502.803V1.40019H500.003V0.700192H520.303V10.5002H519.603C519.603 5.46019 517.573 1.40019 515.053 1.40019H508.403V24.8502H512.603C514.143 24.8502 515.403 22.3302 515.403 19.2502H516.103V31.1502H515.403C515.403 28.0702 514.143 25.5502 512.603 25.5502H508.403V49.0002H511.203ZM541.922 39.2002V11.2002C541.922 5.39019 539.822 0.700192 536.322 0.700192C532.822 0.700192 530.722 5.39019 530.722 11.2002V39.2002C530.722 45.0102 532.822 49.7002 536.322 49.7002C539.822 49.7002 541.922 45.0102 541.922 39.2002ZM525.122 39.2002V11.2002C525.122 5.04019 529.812 0.000192642 536.322 0.000192642C542.832 0.000192642 547.522 5.04019 547.522 11.2002V39.2002C547.522 45.3602 542.832 50.4002 536.322 50.4002C529.812 50.4002 525.122 45.3602 525.122 39.2002ZM564.25 25.9002H561.45V49.0002H564.25V49.7002H553.05V49.0002H555.85V1.40019H553.05V0.700192H564.25C571.81 0.700192 576.85 5.74019 576.85 11.9002V14.7002C576.85 19.8802 573.21 24.2902 567.61 25.5502C573.21 26.8102 576.85 31.2202 576.85 36.4002V45.8502C576.85 47.1802 577.48 48.2302 578.25 48.2302C579.02 48.2302 579.65 47.1802 579.65 45.8502H580.35C580.35 48.3702 578.32 50.4002 575.8 50.4002C573.28 50.4002 571.25 48.3702 571.25 45.8502V36.4002C571.25 30.5902 568.1 25.9002 564.25 25.9002ZM564.25 1.40019H561.45V25.2002H564.25C568.1 25.2002 571.25 20.5102 571.25 14.7002V11.9002C571.25 6.09019 568.1 1.40019 564.25 1.40019Z" fill="currentColor"/></svg><span class="sr">Three worth staying for</span></h2></div>
+    <div class="aside"><p>At 11, the room turns. Music, rare pours, the night set. Until 2am. By reservation, or by the list.</p><a class="btn btn--ghost" href="#reserve">View the bar menu <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a></div>
+  </div>
+  <div class="cards wrap">
+    <article class="drink"><img src="assets/img/drink-1.webp" width="419" height="361" alt="Tayabak cocktail with a jade vine flower" loading="lazy"><div class="d"><h3>Tayabak</h3><p>Gin, fino sherry, basil, verjus, olive leaf</p></div></article>
+    <article class="drink"><img src="assets/img/drink-2.webp" width="419" height="357" alt="Jade Old Fashioned topped with an oyster and caviar" loading="lazy"><div class="d"><h3>Jade Old Fashioned</h3><p>Rye, toasted fig, walnut, aromatic bitters</p></div></article>
+    <article class="drink"><img src="assets/img/drink-3.webp" width="419" height="361" alt="The Pollinator cocktail in a coupe" loading="lazy"><div class="d"><h3>The Pollinator</h3><p>Dark rum, coffee, cacao, burnt sugar cream</p></div></article>
+  </div>
+</section>
+
+<!-- ============ CHEF ============ -->
+<section class="chef" aria-labelledby="h-chef">
+  <div class="intro-row wrap" style="align-items:center">
+    <div class="hgroup"><p class="label marker"><i></i>The kitchen</p><h2 class="hl" id="h-chef"><svg aria-hidden="true" focusable="false" width="198" height="51" viewBox="0 0 198 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.000117134 0.700192H25.1999V10.5002H24.4999C24.4999 5.46019 22.4699 1.40019 19.9499 1.40019H15.3999V49.0002H18.1999V49.7002H6.99988V49.0002H9.79988V1.40019H5.24988C2.72988 1.40019 0.699883 5.46019 0.699883 10.5002H-0.000117134V0.700192ZM43.792 0.700192H54.992V1.40019H52.192V49.0002H54.992V49.7002H43.792V49.0002H46.592V25.5502H36.792V49.0002H39.592V49.7002H28.392V49.0002H31.192V1.40019H28.392V0.700192H39.592V1.40019H36.792V24.8502H46.592V1.40019H43.792V0.700192ZM79.5221 0.700192V10.5002H78.8221C78.8221 5.46019 76.7921 1.40019 74.2721 1.40019H67.6221V24.8502H71.8221C73.3621 24.8502 74.6221 22.3302 74.6221 19.2502H75.3221V31.1502H74.6221C74.6221 28.0702 73.3621 25.5502 71.8221 25.5502H67.6221V49.0002H74.2721C76.7921 49.0002 78.8221 44.9402 78.8221 39.9002H79.5221V49.7002H59.2221V49.0002H62.0221V1.40019H59.2221V0.700192H79.5221ZM116.229 39.2002H116.929V49.7002H116.229C116.229 48.0202 115.389 47.1802 114.409 47.1802C112.869 49.1402 110.769 50.4002 107.829 50.4002C102.019 50.4002 97.3294 45.3602 97.3294 39.2002V11.2002C97.3294 5.04019 102.019 0.000192642 107.829 0.000192642C110.769 0.000192642 112.869 1.19019 114.409 3.22019C115.389 3.22019 116.229 2.38019 116.229 0.700192H116.929V11.2002H116.229C116.229 5.18019 112.659 0.700192 108.529 0.700192C105.029 0.700192 102.929 5.39019 102.929 11.2002V39.2002C102.929 45.0102 105.029 49.7002 108.529 49.7002C112.659 49.7002 116.229 45.2202 116.229 39.2002ZM136.692 0.700192H147.892V1.40019H145.092V49.0002H147.892V49.7002H136.692V49.0002H139.492V25.5502H129.692V49.0002H132.492V49.7002H121.292V49.0002H124.092V1.40019H121.292V0.700192H132.492V1.40019H129.692V24.8502H139.492V1.40019H136.692V0.700192ZM172.422 0.700192V10.5002H171.722C171.722 5.46019 169.692 1.40019 167.172 1.40019H160.522V24.8502H164.722C166.262 24.8502 167.522 22.3302 167.522 19.2502H168.222V31.1502H167.522C167.522 28.0702 166.262 25.5502 164.722 25.5502H160.522V49.0002H167.172C169.692 49.0002 171.722 44.9402 171.722 39.9002H172.422V49.7002H152.122V49.0002H154.922V1.40019H152.122V0.700192H172.422ZM188.274 49.0002V49.7002H177.074V49.0002H179.874V1.40019H177.074V0.700192H197.374V10.5002H196.674C196.674 5.46019 194.644 1.40019 192.124 1.40019H185.474V24.8502H189.674C191.214 24.8502 192.474 22.3302 192.474 19.2502H193.174V31.1502H192.474C192.474 28.0702 191.214 25.5502 189.674 25.5502H185.474V49.0002H188.274Z" fill="currentColor"/></svg><span class="sr">The chef</span></h2></div>
+    <p class="aside">Decades of kitchens around the world.<br>One room in Manila.</p>
+  </div>
+  <div class="chef-grid wrap">
+    <img class="chef-img" src="assets/img/chef.webp" width="357" height="478" alt="Todd English at work in the Jade kitchen" loading="lazy">
+    <div class="bio">
+      <div class="who"><p class="hl" aria-hidden="true"><svg aria-hidden="true" focusable="false" width="300" height="51" viewBox="0 0 300 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-0.000117134 0.700192H25.1999V10.5002H24.4999C24.4999 5.46019 22.4699 1.40019 19.9499 1.40019H15.3999V49.0002H18.1999V49.7002H6.99988V49.0002H9.79988V1.40019H5.24988C2.72988 1.40019 0.699883 5.46019 0.699883 10.5002H-0.000117134V0.700192ZM46.522 39.2002V11.2002C46.522 5.39019 44.422 0.700192 40.922 0.700192C37.422 0.700192 35.322 5.39019 35.322 11.2002V39.2002C35.322 45.0102 37.422 49.7002 40.922 49.7002C44.422 49.7002 46.522 45.0102 46.522 39.2002ZM29.722 39.2002V11.2002C29.722 5.04019 34.412 0.000192642 40.922 0.000192642C47.432 0.000192642 52.122 5.04019 52.122 11.2002V39.2002C52.122 45.3602 47.432 50.4002 40.922 50.4002C34.412 50.4002 29.722 45.3602 29.722 39.2002ZM57.6498 49.0002H60.4498V1.40019H57.6498V0.700192H68.8498C76.4098 0.700192 81.4498 5.74019 81.4498 11.9002V38.5002C81.4498 44.6602 76.4098 49.7002 68.8498 49.7002H57.6498V49.0002ZM75.8498 38.5002V11.9002C75.8498 6.09019 72.6998 1.40019 68.8498 1.40019H66.0498V49.0002H68.8498C72.6998 49.0002 75.8498 44.3102 75.8498 38.5002ZM86.9076 49.0002H89.7076V1.40019H86.9076V0.700192H98.1076C105.668 0.700192 110.708 5.74019 110.708 11.9002V38.5002C110.708 44.6602 105.668 49.7002 98.1076 49.7002H86.9076V49.0002ZM105.108 38.5002V11.9002C105.108 6.09019 101.958 1.40019 98.1076 1.40019H95.3076V49.0002H98.1076C101.958 49.0002 105.108 44.3102 105.108 38.5002ZM148.292 0.700192V10.5002H147.592C147.592 5.46019 145.562 1.40019 143.042 1.40019H136.392V24.8502H140.592C142.132 24.8502 143.392 22.3302 143.392 19.2502H144.092V31.1502H143.392C143.392 28.0702 142.132 25.5502 140.592 25.5502H136.392V49.0002H143.042C145.562 49.0002 147.592 44.9402 147.592 39.9002H148.292V49.7002H127.992V49.0002H130.792V1.40019H127.992V0.700192H148.292ZM152.593 0.700192H160.083L173.103 35.5602V1.40019H170.303V0.700192H176.953V1.40019C174.713 1.40019 173.803 2.31019 173.803 3.50019V49.7002H172.683L156.443 6.09019V49.0002H159.243V49.7002H152.593V49.0002C154.833 49.0002 155.743 48.0902 155.743 46.9002V3.50019C155.743 2.31019 154.833 1.40019 152.593 1.40019V0.700192ZM202.822 25.9702V46.0602C197.852 46.0602 196.382 50.4002 192.322 50.4002C186.512 50.4002 181.822 45.3602 181.822 39.2002V11.2002C181.822 5.04019 186.512 0.000192642 192.322 0.000192642C195.262 0.000192642 197.362 1.19019 198.902 3.22019C199.882 3.22019 200.722 2.38019 200.722 0.700192H201.422V11.2002H200.722C200.722 5.18019 197.152 0.700192 193.022 0.700192C189.522 0.700192 187.422 5.39019 187.422 11.2002V39.2002C187.422 45.0102 189.592 49.7002 192.322 49.7002C195.052 49.7002 197.222 45.0102 197.222 39.2002V25.9702H194.422V25.2702H205.622V25.9702H202.822ZM228.956 49.7002H208.656V49.0002H211.456V1.40019H208.656V0.700192H219.856V1.40019H217.056V49.0002H223.706C226.226 49.0002 228.256 44.9402 228.256 39.9002H228.956V49.7002ZM232.24 0.700192H243.44V1.40019H240.64V49.0002H243.44V49.7002H232.24V49.0002H235.04V1.40019H232.24V0.700192ZM248.041 49.7002V38.5002H248.741C248.741 44.5902 252.801 49.4902 257.421 49.4902C261.201 49.4902 263.861 45.5702 263.861 40.6002C263.861 27.6502 248.041 26.6002 248.041 11.9002C248.041 5.3202 251.541 0.000192642 257.771 0.000192642C260.991 0.000192642 263.301 1.26019 264.911 3.22019C265.961 3.22019 266.801 2.38019 266.801 0.700192H267.501V11.2002H266.801C266.801 5.53019 263.091 0.910193 258.821 0.910193C255.041 0.910193 253.081 4.13019 253.081 9.10019C253.081 22.1902 268.901 23.2402 268.901 37.8002C268.901 44.7302 265.051 50.4002 258.471 50.4002C254.691 50.4002 251.961 48.7902 250.211 46.2002C249.441 46.4802 248.741 47.4602 248.741 49.7002H248.041ZM288.313 0.700192H299.513V1.40019H296.713V49.0002H299.513V49.7002H288.313V49.0002H291.113V25.5502H281.313V49.0002H284.113V49.7002H272.913V49.0002H275.713V1.40019H272.913V0.700192H284.113V1.40019H281.313V24.8502H291.113V1.40019H288.313V0.700192Z" fill="currentColor"/></svg></p><h3 class="sr">Todd English</h3><p class="role">Culinary Partner</p></div>
+      <p>Bold Mediterranean technique. Philippine produce and a Philippine team. Plates to share at supper, and a kitchen that keeps pace with the bar after dark.</p>
+      <div class="tags"><h3>His table</h3><ul><li><span>Mediterranean technique</span></li><li><span>Philippine produce</span></li><li><span>Global flavours</span></li></ul></div>
+      <div class="tags"><h3>Chef's picks</h3><ul><li><a href="#dish-cannoli" data-dish>Caviar Cannoli</a></li><li><a href="#dish-crab" data-dish>King Crab Toast</a></li><li><a href="#dish-lobster" data-dish>Lobster Paccheri</a></li><li><a href="#dish-chawanmushi" data-dish>Sweet Corn Chawanmushi</a></li></ul></div>
+      <div class="tags"><h3>Follow Todd English</h3><div class="soc"><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.6672 4.33325H11.6738M4.66661 1.33301H11.3338C13.1749 1.33301 14.6674 2.82551 14.6674 4.66661V11.3338C14.6674 13.1749 13.1749 14.6674 11.3338 14.6674H4.66661C2.82551 14.6674 1.33301 13.1749 1.33301 11.3338V4.66661C1.33301 2.82551 2.82551 1.33301 4.66661 1.33301ZM10.6669 7.58038C10.7492 8.13525 10.6544 8.70194 10.396 9.19985C10.1377 9.69775 9.72892 10.1015 9.22786 10.3537C8.72681 10.6059 8.15899 10.6937 7.60517 10.6046C7.05135 10.5155 6.53974 10.254 6.14309 9.85733C5.74644 9.46069 5.48497 8.94907 5.39585 8.39525C5.30673 7.84143 5.39451 7.27361 5.64671 6.77256C5.8989 6.27151 6.30267 5.86273 6.80057 5.60438C7.29848 5.34602 7.86517 5.25125 8.42005 5.33353C8.98604 5.41746 9.51003 5.6812 9.91463 6.08579C10.3192 6.49039 10.583 7.01438 10.6669 7.58038Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.99994 1.33301H11.9998V3.99989H9.99994C9.82314 3.99989 9.65358 4.07013 9.52857 4.19517C9.40355 4.3202 9.33332 4.48978 9.33332 4.66661V6.66677H11.9998L11.3332 9.33365H9.33332V14.6674H6.66685V9.33365H4.66699V6.66677H6.66685V4.66661C6.66685 3.78248 7.01801 2.93457 7.64309 2.3094C8.26816 1.68423 9.11595 1.33301 9.99994 1.33301Z" stroke="currentColor" stroke-linecap="round"/></svg></a></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ VISIT ============ -->
+<section class="visit" id="visit" aria-labelledby="h-visit">
+  <img class="visit-img" src="assets/img/visit.webp" width="687" height="650" alt="Guests at supper under a single shaft of light at Jade Manila" loading="lazy">
+  <div class="visit-info">
+    <p class="label">Find us</p>
+    <h2 class="hl" id="h-visit"><svg aria-hidden="true" focusable="false" width="371" height="51" viewBox="0 0 371 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M-1.9379e-05 49.7002V38.5002H0.699981C0.699981 44.5902 4.75998 49.4902 9.37998 49.4902C13.16 49.4902 15.82 45.5702 15.82 40.6002C15.82 27.6502 -1.9379e-05 26.6002 -1.9379e-05 11.9002C-1.9379e-05 5.3202 3.49998 0.000192642 9.72998 0.000192642C12.95 0.000192642 15.26 1.26019 16.87 3.22019C17.92 3.22019 18.76 2.38019 18.76 0.700192H19.46V11.2002H18.76C18.76 5.53019 15.05 0.910193 10.78 0.910193C6.99998 0.910193 5.03998 4.13019 5.03998 9.10019C5.03998 22.1902 20.86 23.2402 20.86 37.8002C20.86 44.7302 17.01 50.4002 10.43 50.4002C6.64998 50.4002 3.91998 48.7902 2.16998 46.2002C1.39998 46.4802 0.699981 47.4602 0.699981 49.7002H-1.9379e-05ZM45.173 0.700192V10.5002H44.4729C44.4729 5.46019 42.443 1.40019 39.9229 1.40019H33.2729V24.8502H37.4729C39.0129 24.8502 40.2729 22.3302 40.2729 19.2502H40.973V31.1502H40.2729C40.2729 28.0702 39.0129 25.5502 37.4729 25.5502H33.2729V49.0002H39.9229C42.443 49.0002 44.4729 44.9402 44.4729 39.9002H45.173V49.7002H24.8729V49.0002H27.6729V1.40019H24.8729V0.700192H45.173ZM70.1241 0.700192V10.5002H69.4241C69.4241 5.46019 67.3941 1.40019 64.8741 1.40019H58.2241V24.8502H62.4241C63.9641 24.8502 65.2241 22.3302 65.2241 19.2502H65.9241V31.1502H65.2241C65.2241 28.0702 63.9641 25.5502 62.4241 25.5502H58.2241V49.0002H64.8741C67.3941 49.0002 69.4241 44.9402 69.4241 39.9002H70.1241V49.7002H49.8241V49.0002H52.6241V1.40019H49.8241V0.700192H70.1241ZM90.8408 49.0002H93.6408V27.7202L86.1508 1.40019H83.3508V0.700192H94.5508V1.40019H91.7508L98.8908 26.6002L106.451 1.40019H103.721V0.700192H110.581V1.40019C108.131 1.40019 106.801 2.59019 106.381 3.99019L99.2408 27.7902V49.0002H102.041V49.7002H90.8408V49.0002ZM129.136 39.2002V11.2002C129.136 5.39019 127.036 0.700192 123.536 0.700192C120.036 0.700192 117.936 5.39019 117.936 11.2002V39.2002C117.936 45.0102 120.036 49.7002 123.536 49.7002C127.036 49.7002 129.136 45.0102 129.136 39.2002ZM112.336 39.2002V11.2002C112.336 5.04019 117.026 0.000192642 123.536 0.000192642C130.046 0.000192642 134.736 5.04019 134.736 11.2002V39.2002C134.736 45.3602 130.046 50.4002 123.536 50.4002C117.026 50.4002 112.336 45.3602 112.336 39.2002ZM162.104 3.50019V39.2002C162.104 45.3602 158.324 50.4002 153.704 50.4002C147.194 50.4002 142.504 45.3602 142.504 39.2002V1.40019H139.704V0.700192H150.904V1.40019H148.104V39.2002C148.104 45.0102 150.204 49.7002 153.704 49.7002C157.974 49.7002 161.404 45.0102 161.404 39.2002V1.40019H158.604V0.700192H165.254V1.40019C163.014 1.40019 162.104 2.31019 162.104 3.50019ZM178.248 0.700192H203.448V10.5002H202.748C202.748 5.46019 200.718 1.40019 198.198 1.40019H193.648V49.0002H196.448V49.7002H185.248V49.0002H188.048V1.40019H183.498C180.978 1.40019 178.948 5.46019 178.948 10.5002H178.248V0.700192ZM224.771 39.2002V11.2002C224.771 5.39019 222.671 0.700192 219.171 0.700192C215.671 0.700192 213.571 5.39019 213.571 11.2002V39.2002C213.571 45.0102 215.671 49.7002 219.171 49.7002C222.671 49.7002 224.771 45.0102 224.771 39.2002ZM207.971 39.2002V11.2002C207.971 5.04019 212.661 0.000192642 219.171 0.000192642C225.681 0.000192642 230.371 5.04019 230.371 11.2002V39.2002C230.371 45.3602 225.681 50.4002 219.171 50.4002C212.661 50.4002 207.971 45.3602 207.971 39.2002ZM235.548 0.700192H243.038L256.058 35.5602V1.40019H253.258V0.700192H259.908V1.40019C257.668 1.40019 256.758 2.31019 256.758 3.50019V49.7002H255.638L239.398 6.09019V49.0002H242.198V49.7002H235.548V49.0002C237.788 49.0002 238.698 48.0902 238.698 46.9002V3.50019C238.698 2.31019 237.788 1.40019 235.548 1.40019V0.700192ZM263.447 0.700192H274.647V1.40019H271.847V49.0002H274.647V49.7002H263.447V49.0002H266.247V1.40019H263.447V0.700192ZM301.158 25.9702V46.0602C296.188 46.0602 294.718 50.4002 290.658 50.4002C284.848 50.4002 280.158 45.3602 280.158 39.2002V11.2002C280.158 5.04019 284.848 0.000192642 290.658 0.000192642C293.598 0.000192642 295.698 1.19019 297.238 3.22019C298.218 3.22019 299.058 2.38019 299.058 0.700192H299.758V11.2002H299.058C299.058 5.18019 295.488 0.700192 291.358 0.700192C287.858 0.700192 285.758 5.39019 285.758 11.2002V39.2002C285.758 45.0102 287.928 49.7002 290.658 49.7002C293.388 49.7002 295.558 45.0102 295.558 39.2002V25.9702H292.758V25.2702H303.958V25.9702H301.158ZM322.392 0.700192H333.592V1.40019H330.792V49.0002H333.592V49.7002H322.392V49.0002H325.192V25.5502H315.392V49.0002H318.192V49.7002H306.992V49.0002H309.792V1.40019H306.992V0.700192H318.192V1.40019H315.392V24.8502H325.192V1.40019H322.392V0.700192ZM336.842 0.700192H362.042V10.5002H361.342C361.342 5.46019 359.312 1.40019 356.792 1.40019H352.242V49.0002H355.042V49.7002H343.842V49.0002H346.642V1.40019H342.092C339.572 1.40019 337.542 5.46019 337.542 10.5002H336.842V0.700192ZM363.258 46.9002C363.258 44.9402 364.798 43.4002 366.758 43.4002C368.718 43.4002 370.258 44.9402 370.258 46.9002C370.258 48.8602 368.718 50.4002 366.758 50.4002C364.798 50.4002 363.258 48.8602 363.258 46.9002Z" fill="currentColor"/></svg><span class="sr">See you tonight.</span></h2>
+    <ul class="hours">
+      <li><span>Tuesday to Sunday</span><b>6pm to 2am</b></li>
+      <li><span>Monday</span><b>Closed</b></li>
+    </ul>
+    <p class="addr">G/F, RCBC Savings Bank Corporate Center,<br>26th &amp; 25th Street, BGC, Taguig</p>
+    <div class="visit-act">
+      <a class="btn btn--taupe" href="https://www.google.com/maps/search/?api=1&amp;query=RCBC+Savings+Bank+Corporate+Center+26th+Street+BGC+Taguig" target="_blank" rel="noopener">Get directions <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+      <a class="btn btn--ghost" href="tel:+63200000000">Call Jade <svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.3326 11.3328V4.66721H4.66699M11.3326 4.66721L4.66699 11.3328" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GLANCE + FAQ ============ -->
+<section class="glance wrap" id="glance">
+  <div>
+    <h2 class="label">Jade at a glance</h2>
+    <p class="lead">Jade Manila is a restaurant, caviar bar and cocktail bar in Bonifacio Global City (BGC), Taguig, Metro Manila, with Todd English as Culinary Partner.</p>
+    <dl class="facts">
+      <div><dt>What</dt><dd>Restaurant, caviar bar and cocktail bar</dd></div>
+      <div><dt>Kitchen</dt><dd>Todd English, Culinary Partner</dd></div>
+      <div><dt>Where</dt><dd>G/F, RCBC Savings Bank Corporate Center, 26th and 25th Street, Bonifacio Global City, Taguig, Metro Manila</dd></div>
+      <div><dt>Hours</dt><dd>Tuesday to Sunday, 6pm to 2am</dd></div>
+      <div><dt>Reservations</dt><dd>Released at noon, 30 days ahead</dd></div>
+      <div><dt>Dress</dt><dd>Elegant evening</dd></div>
+      <div><dt>Price</dt><dd>[₱ PRICE RANGE]</dd></div>
+      <div><dt>Private dining</dt><dd>Parties of 7 or more, on request</dd></div>
+    </dl>
+  </div>
+  <div class="faq">
+    <h2 class="label">Before you come</h2>
+    <div>
+      <details open><summary><h3>Do I need a reservation?</h3></summary><p>For supper, yes. Tables release at noon, 30 days ahead. The bar keeps a handful of seats for walk-ins, and Late Night is by reservation or by the list.</p></details>
+      <details><summary><h3>What is the dress code?</h3></summary><p>Elegant evening. [CONFIRM DRESS CODE DETAILS]</p></details>
+      <details><summary><h3>What is Late Night?</h3></summary><p>From 11pm the room turns from supper to cocktails and music, until 2am.</p></details>
+      <details><summary><h3>Who is behind Jade?</h3></summary><p>Jade Manila is independent, founded by Philippine partners, with Todd English as Culinary Partner.</p></details>
+      <details><summary><h3>Is there private dining?</h3></summary><p>Yes, for parties of 7 or more. Write to reservations@jademanila.com.</p></details>
+      <details><summary><h3>Where is the entrance?</h3></summary><p>G/F, RCBC Savings Bank Corporate Center, 26th and 25th Street, BGC. [ENTRANCE DIRECTIONS]</p></details>
+    </div>
+  </div>
+</section>
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="foot wrap">
+  <div class="foot-main">
+    <a class="brand" href="#top" aria-label="Jade Manila, back to top"><svg aria-hidden="true" focusable="false" width="135" height="51" viewBox="0 0 135 51" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M39.0898 42.77L36.8098 47.58L34.5198 42.77H32.5298V50.64H34.1398V45.33L36.2298 49.84H37.3898L39.4798 45.33V50.64H41.0798V42.77H39.0998H39.0898Z" fill="currentColor"/><path d="M52.1099 42.77H50.2799L46.8599 50.64H48.6899L49.3099 49.11H52.9499L53.5699 50.64H55.4699L52.1099 42.77ZM49.8999 47.69L51.1499 44.63L52.3899 47.69H49.8999Z" fill="currentColor"/><path d="M66.6797 42.77V47.83L62.8597 42.77H61.2397V50.64H62.9397V45.59L66.7497 50.64H68.3697V42.77H66.6797Z" fill="currentColor"/><path d="M75.0498 42.77V50.64H76.8198V42.77H75.0498Z" fill="currentColor"/><path d="M85.29 49.09V42.77H83.52V50.64H88.67V49.09H85.3H85.29Z" fill="currentColor"/><path d="M99.0596 42.77H97.2296L93.8096 50.64H95.6396L96.2596 49.11H99.8996L100.52 50.64H102.42L99.0596 42.77ZM96.8496 47.69L98.0996 44.63L99.3396 47.69H96.8596H96.8496Z" fill="currentColor"/><path d="M99.3001 9.66C98.1501 6.35 95.8401 3.86 92.7601 2.27C89.9101 0.79 86.8301 0.04 83.5701 0.03L73.3701 0L73.8501 2.45V28.34L73.3501 30.97L84.0701 30.95C89.8101 30.95 95.5301 28.4 98.2801 23.32C100.55 19.12 100.86 14.15 99.3001 9.66ZM94.1301 23.23C92.3701 27.7 88.3901 30.12 83.7401 30.11H78.5601L78.3301 26.19V4.11L78.4301 0.84L83.9201 0.88C86.7301 0.9 89.4301 1.98 91.4801 3.9C93.0401 5.36 94.0601 7.21 94.6701 9.27C96.0201 13.85 95.9001 18.74 94.1401 23.23H94.1301Z" fill="currentColor"/><path d="M60.6803 30.97L47.3003 0H46.2903L34.9103 26.75C34.2503 28.3 33.5203 29.54 32.5303 30.97H36.5703C35.6503 30.24 35.4103 29.43 35.6303 28.38L37.1503 24.15L39.0603 19.66H50.9703L51.8203 21.68L54.3703 28.29C54.7003 29.14 55.2303 30.19 54.8603 30.97H60.6803ZM39.6903 18.16L45.0303 5.58L50.3303 18.16H39.6803H39.6903Z" fill="currentColor"/><path d="M14.8202 -9.76585e-06L15.3002 2.44999V21.33C15.3002 24.61 15.0202 28.76 12.1002 29.88C9.08023 31.04 4.77023 30.22 4.06023 27.03L3.54023 24.7C3.32023 23.73 2.67023 22.82 1.54023 22.76L-0.00976562 22.68L0.670234 26.06C1.70023 31.14 8.56023 32.05 13.3302 30.8C13.8902 30.65 14.4002 30.47 14.8702 30.24C18.5002 28.52 19.7102 24.64 19.7102 20.41L19.7402 3.57999C19.7402 2.37999 19.8302 -0.0100098 19.8302 -0.0100098H14.8002L14.8202 -9.76585e-06Z" fill="currentColor"/><path d="M133.59 26.84L133.51 26.99C132.76 28.44 131.34 29.43 129.72 29.61C129.71 29.61 129.7 29.61 129.69 29.61C125.77 30.03 121.96 30.12 118.02 30.12L118.08 16C121.82 16.05 122.03 16.13 124.19 16.28C124.2 16.28 124.21 16.28 124.22 16.28C125.84 16.4 127.26 17.04 128.01 17.97L128.09 18.06L129.01 18.15V12.77L128.09 12.86L128.01 12.95C127.26 13.88 125.84 14.52 124.22 14.64C124.21 14.64 124.2 14.64 124.19 14.64C122.03 14.79 121.82 14.87 118.08 14.92L118.02 0.800001C121.96 0.800001 125.78 0.900001 129.69 1.31C129.7 1.31 129.71 1.31 129.72 1.31C131.34 1.49 132.76 2.49 133.51 3.93L133.59 4.08L134.66 4.25L134.94 -0.0299988H112.94L113.37 2.42V15.44V28.31L112.94 30.94H134.94L134.66 26.64L133.59 26.81V26.84Z" fill="currentColor"/></svg></a>
+    <div class="foot-links">
+      <div><h2>Explore</h2><a href="#story">Our story</a><a href="#dining">Dining</a><a href="#late-night">Late Night</a><a href="#reserve">Reservations</a></div>
+      <div><h2>Visit</h2><p>G/F, RCBC Savings Bank Corporate Center,<br>26th &amp; 25th Street, BGC</p><p>+63 2 0000 0000</p><p style="user-select:all">reservations@jademanila.com</p></div>
+      <div><h2>Follow</h2><div class="soc"><a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M11.6672 4.33325H11.6738M4.66661 1.33301H11.3338C13.1749 1.33301 14.6674 2.82551 14.6674 4.66661V11.3338C14.6674 13.1749 13.1749 14.6674 11.3338 14.6674H4.66661C2.82551 14.6674 1.33301 13.1749 1.33301 11.3338V4.66661C1.33301 2.82551 2.82551 1.33301 4.66661 1.33301ZM10.6669 7.58038C10.7492 8.13525 10.6544 8.70194 10.396 9.19985C10.1377 9.69775 9.72892 10.1015 9.22786 10.3537C8.72681 10.6059 8.15899 10.6937 7.60517 10.6046C7.05135 10.5155 6.53974 10.254 6.14309 9.85733C5.74644 9.46069 5.48497 8.94907 5.39585 8.39525C5.30673 7.84143 5.39451 7.27361 5.64671 6.77256C5.8989 6.27151 6.30267 5.86273 6.80057 5.60438C7.29848 5.34602 7.86517 5.25125 8.42005 5.33353C8.98604 5.41746 9.51003 5.6812 9.91463 6.08579C10.3192 6.49039 10.583 7.01438 10.6669 7.58038Z" stroke="currentColor" stroke-width="1.4" stroke-linecap="round"/></svg></a><a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><svg aria-hidden="true" focusable="false" width="16" height="16" viewBox="0 0 16 16" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M9.99994 1.33301H11.9998V3.99989H9.99994C9.82314 3.99989 9.65358 4.07013 9.52857 4.19517C9.40355 4.3202 9.33332 4.48978 9.33332 4.66661V6.66677H11.9998L11.3332 9.33365H9.33332V14.6674H6.66685V9.33365H4.66699V6.66677H6.66685V4.66661C6.66685 3.78248 7.01801 2.93457 7.64309 2.3094C8.26816 1.68423 9.11595 1.33301 9.99994 1.33301Z" stroke="currentColor" stroke-linecap="round"/></svg></a></div></div>
+    </div>
+  </div>
+  <hr>
+  <div class="legal"><p>© 2026 Jade Manila. All rare nights reserved.</p><div><button type="button" id="replay">Replay the invitation</button><a href="#top">Privacy</a><a href="#top">Accessibility</a></div></div>
+</footer>
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@graph":[
+{"@type":"Restaurant","name":"Jade Manila","description":"Jade Manila is a restaurant, caviar bar and cocktail bar in Bonifacio Global City (BGC), Taguig, Metro Manila, with Todd English as Culinary Partner.","servesCuisine":["Mediterranean","Global"],"acceptsReservations":true,"email":"reservations@jademanila.com","address":{"@type":"PostalAddress","streetAddress":"G/F, RCBC Savings Bank Corporate Center, 26th and 25th Street","addressLocality":"Bonifacio Global City, Taguig","addressRegion":"Metro Manila","addressCountry":"PH"},"openingHoursSpecification":[{"@type":"OpeningHoursSpecification","dayOfWeek":["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"18:00","closes":"02:00"}],"founder":{"@type":"Person","name":"Todd English","jobTitle":"Culinary Partner"}},
+{"@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"Do I need a reservation?","acceptedAnswer":{"@type":"Answer","text":"For supper, yes. Tables release at noon, 30 days ahead. The bar keeps a handful of seats for walk-ins, and Late Night is by reservation or by the list."}},
+{"@type":"Question","name":"What is Late Night?","acceptedAnswer":{"@type":"Answer","text":"From 11pm the room turns from supper to cocktails and music, until 2am."}},
+{"@type":"Question","name":"Who is behind Jade?","acceptedAnswer":{"@type":"Answer","text":"Jade Manila is independent, founded by Philippine partners, with Todd English as Culinary Partner."}},
+{"@type":"Question","name":"Is there private dining?","acceptedAnswer":{"@type":"Answer","text":"Yes, for parties of 7 or more. Write to reservations@jademanila.com."}}]}]}
+</script>
+
+<script>
+(function(){
+  var reduce = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var VINES = ['vine1.jpg','vine2.jpg','vine3.jpg','vine4.png','vine5.jpg','vine6.jpg','vine7.jpg','vine8.jpg','vine9.jpg'];
+  function vineSrc(i){ return 'assets/vine/' + VINES[i % VINES.length]; }
+  function rnd(a,b){ return a + Math.random()*(b-a); }
+
+  /* ---------- Jade vine rain (Our Story) ---------- */
+  // Still layout from the Figma frame (x%, y%, width px, rotation, opacity, blur)
+  var STILL = [[59,-9,80,-20,.32,1.5],[85,9,78,25,.3,1.5],[30,10,57,-28,.6,.5],[60,21,190,12,.95,0],[85,23,130,-50,.58,.5],[15,45,21,35,.33,1.5],[48,48,91,-10,.92,0],[76,50,90,-80,.36,1.5],[2,71,63,50,.6,.5],[58,72,120,-30,.55,.5],[84,85,185,18,.9,0],[36,84,75,-40,.3,1.5]];
+  var STILL_IMG = [0,1,2,3,4,5,6,7,8,3,1,4];
+  function makePetal(host, idx, opts){
+    var p = document.createElement('div'); p.className = 'petal';
+    var img = document.createElement('img'); img.alt=''; img.src = vineSrc(opts.img); img.decoding='async';
+    p.appendChild(img);
+    p.style.width = opts.w + 'px'; p.style.opacity = opts.o;
+    if (opts.blur) p.style.filter = 'blur(' + opts.blur + 'px)';
+    host.appendChild(p); return p;
+  }
+  function buildRain(host, count, still){
+    host.innerHTML='';
+    var W = host.clientWidth || 800, H = host.clientHeight || 660;
+    if (still || reduce){
+      STILL.forEach(function(s,i){
+        var p = makePetal(host,i,{img:STILL_IMG[i],w:s[2]*(W<500?.7:1),o:s[4],blur:s[5]});
+        p.style.transform = 'translate3d(' + (s[0]/100*W) + 'px,' + (s[1]/100*H) + 'px,0) rotate(' + s[3] + 'deg)';
+      });
+      return;
+    }
+    for (var i=0;i<count;i++){
+      var depth = Math.random();            // 0 far, 1 near
+      var w = Math.round(rnd(24,70) + depth*rnd(40,130)) * (W<500?.7:1);
+      var p = makePetal(host,i,{img:i, w:w, o:(.28 + depth*.67).toFixed(2), blur: depth<.35?1.5:(depth<.7?.5:0)});
+      var d = rnd(16,30) - depth*6;
+      p.style.setProperty('--x', rnd(-40, W-40) + 'px');
+      p.style.setProperty('--dx', rnd(-140,140) + 'px');
+      p.style.setProperty('--r0', rnd(-80,80) + 'deg');
+      p.style.setProperty('--r1', rnd(120,420)*(Math.random()<.5?-1:1) + 'deg');
+      p.style.setProperty('--h', H + 'px');
+      p.style.setProperty('--d', d.toFixed(1) + 's');
+      p.style.setProperty('--delay', (-rnd(0,d)).toFixed(1) + 's');
+      p.classList.add('run');
+    }
+  }
+  var rain = document.getElementById('rain');
+  function initRain(){ buildRain(rain, 13, false); }
+  initRain();
+  var rt; window.addEventListener('resize', function(){ clearTimeout(rt); rt = setTimeout(initRain, 300); });
+  if ('IntersectionObserver' in window){
+    new IntersectionObserver(function(es){ es.forEach(function(e){ rain.classList.toggle('paused', !e.isIntersecting); }); }).observe(rain);
+  }
+
+  /* ---------- Replay the envelope intro ---------- */
+  document.getElementById('replay').addEventListener('click', function(){
+    try { sessionStorage.removeItem('jadeIntroSeen'); localStorage.removeItem('jadeIntroSeen'); } catch (e) {}
+    location.hash = 'intro'; location.reload();
+  });
+
+  /* ---------- Nav ---------- */
+  var nav = document.getElementById('nav'), menuBtn = document.getElementById('menuBtn');
+  function onScroll(){ nav.classList.toggle('scrolled', window.scrollY > 40); }
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+  menuBtn.addEventListener('click', function(){ var o = nav.classList.toggle('open'); menuBtn.setAttribute('aria-expanded', o); document.body.classList.toggle('locked', o); });
+  document.querySelectorAll('#navLinks a').forEach(function(a){ a.addEventListener('click', function(){ nav.classList.remove('open'); menuBtn.setAttribute('aria-expanded', false); document.body.classList.remove('locked'); }); });
+
+  /* ---------- Carousel ---------- */
+  var track = document.getElementById('track');
+  function step(dir){ track.scrollBy({left: dir * 276 * (window.innerWidth > 900 ? 2 : 1), behavior: reduce ? 'auto' : 'smooth'}); }
+  document.getElementById('prev').addEventListener('click', function(){ step(-1); });
+  document.getElementById('next').addEventListener('click', function(){ step(1); });
+  document.querySelectorAll('[data-dish]').forEach(function(a){
+    a.addEventListener('click', function(e){
+      var card = document.querySelector(a.getAttribute('href')); if (!card) return;
+      e.preventDefault();
+      document.getElementById('dining').scrollIntoView({behavior: reduce ? 'auto' : 'smooth'});
+      setTimeout(function(){ track.scrollTo({left: card.offsetLeft - track.offsetLeft - parseFloat(getComputedStyle(track).paddingLeft), behavior: reduce ? 'auto' : 'smooth'}); }, reduce ? 0 : 500);
+    });
+  });
+
+  /* ---------- Reservation form ---------- */
+  var date = document.getElementById('f-date'), time = document.getElementById('f-time');
+  var times = ['6:00 PM','6:30 PM','7:00 PM','7:30 PM','8:00 PM','8:30 PM','9:00 PM','9:30 PM','10:00 PM','10:30 PM','11:00 PM (Late Night)','11:30 PM (Late Night)','12:00 AM (Late Night)','12:30 AM (Late Night)'];
+  times.forEach(function(t){ var o = document.createElement('option'); o.textContent = t; if (t === '8:00 PM') o.selected = true; time.appendChild(o); });
+  function iso(d){ return d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0'); }
+  var today = new Date(), max = new Date(); max.setDate(max.getDate()+30);
+  date.min = iso(today); date.max = iso(max);
+  var form = document.getElementById('resForm'), msg = document.getElementById('formMsg');
+  function say(text, err){ msg.hidden = false; msg.className = 'form-msg' + (err ? ' err' : ''); msg.innerHTML = text; }
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    var v = Object.fromEntries(new FormData(form).entries());
+    if (!v.date){ say('Choose a date for your table.', true); date.focus(); return; }
+    var d = new Date(v.date + 'T12:00:00');
+    if (d.getDay() === 1){ say('Jade is closed on Mondays. Choose a Tuesday to Sunday.', true); date.focus(); return; }
+    if (v.date < date.min || v.date > date.max){ say('Tables are released 30 days ahead. Choose a date between today and ' + date.max + '.', true); date.focus(); return; }
+    if (v.guests === '7+'){ say('For parties of 7 or more, write to <code>reservations@jademanila.com</code> and we will hold the right table.'); return; }
+    if (!v.name || !v.name.trim()){ say('Add the name for the reservation.', true); document.getElementById('f-name').focus(); return; }
+    if (!v.email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(v.email)){ say('Add an email address so we can confirm your table.', true); document.getElementById('f-email').focus(); return; }
+    var nice = d.toLocaleDateString('en-PH', {weekday:'long', month:'long', day:'numeric'});
+    say('Request noted for ' + nice + ' at ' + v.time.replace(' (Late Night)','') + ', ' + v.guests + '. This preview does not send requests yet. Once booking is connected, a person will confirm by email.');
+  });
+})();
+</script>
+</body>
+</html>
