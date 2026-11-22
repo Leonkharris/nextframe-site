@@ -1,0 +1,858 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<meta name="theme-color" content="#060B24">
+<title>247iBET Pitch</title>
+<link rel="icon" href="data:,">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{color-scheme:dark;
+  --ink:#060B24;--deep:#040818;--navy:#001E3C;--panel:#0A1534;--panel2:#0D1A3F;
+  --line:#1A2B57;--line2:#24396B;--glow:rgba(39,245,246,.30);
+  --cyan:#27F5F6;--magenta:#EA33C9;--blue:#498FCD;--white:#FFFFFF;
+  --text:#E9EFFC;--muted:#A3B3D6;--dim:#7083AE;--ok:#7CEFA8;--warn:#F3C77A}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+body{margin:0;background:var(--ink);color:var(--text);font:400 16px/1.6 'Inter',system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+img{display:block;max-width:100%;height:auto}
+a{color:var(--cyan)}
+:focus-visible{outline:2px solid var(--cyan);outline-offset:3px;border-radius:4px}
+.skip{position:absolute;left:-999px;top:8px;background:var(--cyan);color:var(--ink);padding:8px 14px;font-weight:700;z-index:99;border-radius:6px}
+.skip:focus{left:12px}
+.wrap{max-width:1200px;margin:0 auto;padding:0 16px}
+@media (min-width:768px){.wrap{padding:0 32px}}
+h1,h2,h3{font-family:'Anton',Impact,sans-serif;font-weight:400;letter-spacing:.01em;margin:0;text-wrap:balance;color:var(--white)}
+h1{font-size:clamp(40px,1.6rem + 4.6vw,80px);line-height:1}
+h2{font-size:clamp(30px,1.2rem + 2.4vw,50px);line-height:1.08}
+h3{font-size:clamp(20px,1rem + .6vw,26px);line-height:1.2}
+p{margin:0;text-wrap:pretty}
+b,strong{color:var(--white);font-weight:700}
+.eyebrow{font:700 12px/1.3 'JetBrains Mono',ui-monospace,monospace;letter-spacing:.2em;text-transform:uppercase;color:var(--cyan)}
+.mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+.lede{font-size:clamp(17px,1rem + .4vw,21px);line-height:1.5;color:var(--muted);max-width:62ch;margin-top:18px}
+.cap{font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.06em;color:var(--dim);text-transform:uppercase;margin-top:8px}
+.note{font-size:13.5px;color:var(--dim);max-width:90ch;margin-top:18px}
+.panel{background:linear-gradient(180deg,var(--panel2),var(--panel));border:1px solid var(--line2);border-radius:16px;padding:22px}
+.panel.lit{border-color:var(--glow);box-shadow:0 0 0 1px rgba(39,245,246,.06),0 18px 50px -30px rgba(39,245,246,.45)}
+.tag{display:inline-block;font:700 10.5px/1 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;padding:5px 8px;border-radius:999px;border:1px solid var(--line2);color:var(--muted)}
+.tag.new{border-color:rgba(234,51,201,.55);color:#F7A6E8}
+.tag.open{border-color:rgba(243,199,122,.5);color:var(--warn)}
+.tag.on{border-color:rgba(124,239,168,.5);color:var(--ok)}
+.tag.tba{border-color:rgba(73,143,205,.6);color:#9CC8F0}
+
+/* header */
+.top{border-bottom:1px solid var(--line);background:radial-gradient(1200px 500px at 85% -10%,rgba(39,245,246,.10),transparent 60%),radial-gradient(900px 500px at -10% 10%,rgba(234,51,201,.08),transparent 60%)}
+.brandbar{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:20px 0 0}
+.logo{background:var(--navy);border-radius:10px;padding:4px 6px;line-height:0;box-shadow:inset 0 0 0 1px rgba(255,255,255,.06)}
+.logo img{width:150px;height:45px}
+.hero{display:grid;gap:40px;padding:40px 0 56px}
+@media (min-width:1024px){.hero{grid-template-columns:1.05fr 1fr;align-items:center;padding:56px 0 72px}}
+.facts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:14px;overflow:hidden;margin-top:28px;max-width:640px}
+.facts>div{background:var(--deep);padding:14px 16px}
+.facts .k{font:700 10.5px/1.3 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.facts .v{font-weight:700;color:var(--white);margin-top:4px;font-size:15px}
+.heroart{display:grid;gap:14px;grid-template-columns:auto;justify-content:center}
+@media (min-width:640px){.heroart{grid-template-columns:auto auto;align-items:start}}
+.heroart figure{margin:0}
+.heroart .stack{display:grid;gap:14px;align-content:start}
+.ad{border-radius:6px;box-shadow:0 20px 50px -24px rgba(0,0,0,.8),0 0 0 1px rgba(255,255,255,.06)}
+.funnelline{margin-top:24px;padding:16px 18px;border-radius:14px;border:1px solid var(--glow);background:rgba(39,245,246,.05);max-width:640px}
+.funnelline h3{font-size:22px;color:var(--cyan)}
+.funnelline p{color:var(--muted);margin-top:6px;font-size:15px}
+
+nav.toc{position:sticky;top:0;z-index:40;background:rgba(6,11,36,.9);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav.toc .wrap{display:flex;gap:4px 22px;overflow-x:auto;scrollbar-width:none;white-space:nowrap}
+nav.toc .wrap::-webkit-scrollbar{display:none}
+nav.toc a{display:inline-block;padding:14px 0;font:700 12px/1 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent}
+nav.toc a:hover,nav.toc a.on{color:var(--cyan);border-bottom-color:var(--cyan)}
+
+section{padding:72px 0;border-bottom:1px solid var(--line);scroll-margin-top:48px}
+@media (min-width:768px){section{padding:96px 0}}
+section.alt{background:var(--deep)}
+.shead{max-width:760px;margin-bottom:36px}
+.shead h2{margin-top:10px}
+.shead p{color:var(--muted);margin-top:14px;font-size:17px}
+.grid2{display:grid;gap:18px}
+@media (min-width:900px){.grid2{grid-template-columns:1fr 1fr}}
+.grid3{display:grid;gap:18px}
+.hero>*,.place>*,.grid2>*,.grid3>*,.room>*,.arch>*{min-width:0}
+@media (min-width:900px){.grid3{grid-template-columns:repeat(3,1fr)}}
+
+/* funnel */
+.flow{display:grid;gap:12px;counter-reset:st}
+@media (min-width:1024px){.flow{grid-template-columns:repeat(5,1fr);gap:0}}
+.step{position:relative;padding:20px 18px;border:1px solid var(--line2);background:var(--panel);border-radius:14px}
+@media (min-width:1024px){.step{border-radius:0;border-left-width:0}.step:first-child{border-radius:14px 0 0 14px;border-left-width:1px}.step:last-child{border-radius:0 14px 14px 0}
+  .step:not(:last-child)::after{content:"";position:absolute;right:-9px;top:34px;width:16px;height:16px;background:var(--panel);border-top:1px solid var(--cyan);border-right:1px solid var(--cyan);transform:rotate(45deg);z-index:2}}
+.step .n{font:700 12px/1 'JetBrains Mono',monospace;color:var(--ink);background:var(--cyan);width:26px;height:26px;border-radius:50%;display:grid;place-items:center}
+.step h3{font-size:21px;margin-top:14px}
+.step p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.step .kpi{margin-top:14px;padding-top:12px;border-top:1px dashed var(--line2)}
+.step .kpi .k{font:700 10px/1.2 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--dim);text-transform:uppercase}
+.step .kpi .v{font-weight:700;color:var(--cyan);margin-top:4px}
+.step .kpi .s{font-size:12.5px;color:var(--dim)}
+.step.main{background:linear-gradient(180deg,rgba(39,245,246,.10),var(--panel));border-color:var(--glow)}
+.why{display:grid;gap:14px;margin-top:22px}
+@media (min-width:768px){.why{grid-template-columns:1fr 1fr}}
+.why>div{padding:16px 18px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.why b{display:block;margin-bottom:4px}
+.why p{color:var(--muted);font-size:15px}
+
+/* integration */
+.arch{display:grid;gap:12px;align-items:stretch}
+@media (min-width:900px){.arch{grid-template-columns:1fr 220px 1fr}}
+.node{padding:22px;border-radius:14px;background:var(--panel);border:1px solid var(--line2)}
+.node.us{border-color:rgba(234,51,201,.45)}
+.node .k{font:700 11px/1.2 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--dim)}
+.node h3{margin-top:8px}
+.node p{color:var(--muted);font-size:15px;margin-top:6px}
+.pipe{display:grid;gap:6px;align-content:center;padding:8px 0}
+.pipe div{font:700 11px/1 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);text-align:center;padding:9px 6px;border:1px solid var(--glow);border-radius:999px;background:rgba(39,245,246,.05)}
+.pipe .api{color:var(--ink);background:var(--cyan);border-color:var(--cyan)}
+.steps5{display:grid;gap:12px;margin-top:22px}
+@media (min-width:768px){.steps5{grid-template-columns:repeat(5,1fr)}}
+.steps5>div{padding:16px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.steps5 .n{font:700 12px 'JetBrains Mono',monospace;color:var(--cyan)}
+.steps5 b{display:block;margin-top:6px;font-size:15px}
+.steps5 p{color:var(--muted);font-size:13.5px;margin-top:6px}
+.formula{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin-top:16px}
+.formula span{padding:9px 14px;border-radius:10px;background:var(--navy);border:1px solid var(--line2);font-weight:700}
+.formula .op{background:none;border:0;padding:0 2px;color:var(--cyan);font-size:20px}
+.formula .res{border-color:var(--glow);color:var(--cyan)}
+.formula .tba{color:#9CC8F0;border-style:dashed}
+table{width:100%;border-collapse:collapse;font-size:14.5px;font-variant-numeric:tabular-nums}
+th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+th{font:700 10.5px/1.3 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--dim);background:var(--deep)}
+td{color:var(--muted)}
+td b{color:var(--white)}
+.tablewrap{overflow-x:auto;border:1px solid var(--line2);border-radius:14px;background:var(--panel)}
+.tablewrap table{min-width:560px}
+.kpis{display:grid;gap:12px;margin-top:18px}
+@media (min-width:768px){.kpis{grid-template-columns:repeat(4,1fr)}}
+.kpis>div{padding:18px;border-radius:12px;background:var(--panel);border:1px solid var(--line)}
+.kpis>div.main{border-color:var(--glow);background:linear-gradient(180deg,rgba(39,245,246,.09),var(--panel))}
+.kpis b{font-family:'Anton',sans-serif;font-weight:400;font-size:24px;letter-spacing:.01em;display:block}
+.kpis .f{font:600 12.5px 'JetBrains Mono',monospace;color:var(--cyan);margin-top:4px}
+.kpis p{color:var(--muted);font-size:14px;margin-top:8px}
+.who{display:grid;gap:12px;margin-top:18px}
+@media (min-width:768px){.who{grid-template-columns:repeat(3,1fr)}}
+.who>div{padding:18px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.who .k{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+.who p{color:var(--muted);font-size:14.5px;margin-top:8px}
+
+/* games */
+.room{display:grid;gap:22px;padding:24px;border-radius:18px;border:1px solid var(--line2);background:var(--panel);margin-top:18px}
+@media (min-width:1024px){.room{grid-template-columns:330px 1fr;align-items:start}}
+.room .k{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.16em;color:var(--cyan);text-transform:uppercase}
+.room h3{font-size:32px;margin-top:8px}
+.titles{list-style:none;margin:16px 0 0;padding:0}
+.titles li{display:flex;justify-content:space-between;gap:12px;padding:9px 0;border-bottom:1px solid var(--line);font-size:15px}
+.titles li span:first-child{color:var(--white);font-weight:600}
+.titles li span:last-child{color:var(--dim);font-size:13px}
+.room p.d{color:var(--muted);font-size:15px;margin-top:14px}
+.shots{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.shots figure{margin:0}
+.shots img{border-radius:14px;border:1px solid var(--line2);aspect-ratio:440/952;object-fit:cover;width:100%}
+.blurwrap{position:relative}
+.blurwrap::after{content:"Preview blurred";position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font:700 10px/1 'JetBrains Mono',monospace;letter-spacing:.12em;text-transform:uppercase;color:var(--white);background:rgba(6,11,36,.78);border:1px solid var(--line2);padding:7px 9px;border-radius:999px;white-space:nowrap}
+.tiles{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;margin-top:12px}
+.tiles img{border-radius:8px;border:1px solid var(--line2);width:100%}
+
+/* creative */
+.concepts{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px 14px}
+@media (min-width:768px){.concepts{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media (min-width:1100px){.concepts{grid-template-columns:repeat(5,minmax(0,1fr))}}
+.concept{margin:0;background:none;border:0;padding:0;text-align:left;color:inherit;font:inherit;cursor:pointer}
+.concept img{width:100%;aspect-ratio:2/3;object-fit:cover;border-radius:8px;border:1px solid var(--line2);transition:transform .25s cubic-bezier(.16,1,.3,1),border-color .25s}
+.concept:hover img{transform:translateY(-3px);border-color:var(--glow)}
+.concept .t{display:block;font-weight:700;color:var(--white);margin-top:10px;font-size:15px}
+.concept .t i{font-style:normal;color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:12px;margin-right:6px}
+.concept .s{display:block;font-size:13px;color:var(--dim);margin-top:2px}
+.sets{display:grid;gap:12px;margin-top:28px}
+@media (min-width:900px){.sets{grid-template-columns:repeat(3,1fr)}}
+.sets>div{padding:16px 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.sets b{display:block}
+.sets p{color:var(--muted);font-size:14.5px;margin-top:4px}
+.lib{margin-top:48px}
+.controls{display:flex;flex-wrap:wrap;gap:10px 22px;align-items:center;margin:18px 0 22px}
+.seg{display:inline-flex;flex-wrap:wrap;gap:4px;padding:4px;border-radius:12px;background:var(--deep);border:1px solid var(--line2)}
+.seg button{appearance:none;border:0;background:none;color:var(--muted);font:700 12.5px/1 'JetBrains Mono',monospace;letter-spacing:.04em;padding:10px 12px;min-height:40px;border-radius:9px;cursor:pointer;touch-action:manipulation}
+.seg button:hover{color:var(--white)}
+.seg button[aria-pressed="true"]{background:var(--cyan);color:var(--ink)}
+.seglabel{font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-right:2px}
+.gallery{display:flex;flex-wrap:wrap;gap:26px 22px;align-items:flex-start}
+.gallery figure{margin:0;max-width:100%}
+.gallery figcaption{font:500 11px/1.4 'JetBrains Mono',monospace;letter-spacing:.05em;color:var(--dim);margin-top:8px;text-transform:uppercase}
+.gallery figcaption b{color:var(--cyan);font-weight:700}
+.sizerole{margin-top:28px}
+
+/* placements */
+.place{display:grid;gap:28px}
+@media (min-width:1024px){.place{grid-template-columns:1fr 380px;align-items:start}}
+td.yes b{color:var(--ok)}
+td.no{color:var(--dim)}
+.phonebox{display:grid;justify-items:center;gap:14px}
+.phone{width:min(360px,100%);border-radius:40px;padding:12px;background:#0B0F1C;border:1px solid #2A3557;box-shadow:0 30px 80px -30px rgba(0,0,0,.9),inset 0 0 0 2px #151B30}
+.screen{position:relative;border-radius:30px;overflow:hidden;background:#121212;height:640px;display:flex;flex-direction:column}
+.sbar{display:flex;justify-content:space-between;padding:12px 22px 6px;font:600 12px 'Inter',sans-serif;color:#ddd}
+.url{margin:0 12px;padding:7px 12px;border-radius:10px;background:#222;color:#aaa;font-size:12px;text-align:center}
+.siteh{display:flex;justify-content:space-between;align-items:center;padding:10px 14px;color:#888;font:700 11px 'JetBrains Mono',monospace;letter-spacing:.08em}
+.slot{display:flex;justify-content:center;padding:6px 0;min-height:111px}
+.player{margin:6px 12px;border-radius:8px;background:#1d1d1d;height:170px;display:grid;place-items:center;color:#555;font:600 11px 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase}
+.thumbs{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:8px 12px}
+.thumbs i{display:block;height:74px;border-radius:6px;background:#1b1b1b}
+.overlay{position:absolute;inset:0;background:rgba(0,0,0,.72);display:none;place-items:center}
+.overlay.show{display:grid}
+.overlay .x{position:absolute;top:58px;right:22px;width:28px;height:28px;border-radius:50%;background:#333;color:#ccc;display:grid;place-items:center;font-size:14px}
+.overlay img{max-width:calc(100% - 24px)}
+.landing{border-radius:16px;border:1px solid var(--glow);background:linear-gradient(180deg,var(--navy),var(--deep));padding:22px;max-width:420px}
+.landing .u{font:600 11.5px 'JetBrains Mono',monospace;color:var(--dim);padding:7px 10px;border-radius:8px;background:rgba(255,255,255,.04);margin-bottom:16px}
+.landing h4{font-family:'Anton',sans-serif;font-weight:400;font-size:28px;margin:0;color:var(--white);letter-spacing:.01em}
+.landing p{color:var(--muted);font-size:14.5px;margin-top:8px}
+.landing .btn{display:block;text-align:center;margin-top:16px;padding:13px;border-radius:999px;background:var(--cyan);color:var(--ink);font-weight:800}
+.landing .locks{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.landing .locks span{font:700 9.5px/1.3 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);text-align:center;padding:10px 4px;border-radius:8px;border:1px dashed var(--line2)}
+.landing .fine{font-size:12px;color:var(--dim);margin-top:14px}
+.rot{display:grid;gap:12px;margin-top:18px}
+@media (min-width:768px){.rot{grid-template-columns:repeat(3,1fr)}}
+.rot>div{padding:16px 18px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.rot .w{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+.rot p{color:var(--muted);font-size:14.5px;margin-top:6px}
+
+/* timing */
+td.money{color:var(--white);font-weight:700;text-align:right}
+th.r,td.r{text-align:right}
+tr.sum td{background:rgba(39,245,246,.06);color:var(--white);font-weight:700}
+tr.sum td.money{color:var(--cyan)}
+.daily{display:grid;gap:12px;margin-top:18px}
+@media (min-width:768px){.daily{grid-template-columns:repeat(4,1fr)}}
+.daily>div{padding:16px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.daily .k{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+.daily p{color:var(--muted);font-size:14.5px;margin-top:6px}
+.bands{display:flex;flex-wrap:wrap;gap:10px 22px;margin:18px 0 14px;font-size:14px;color:var(--muted)}
+.bands span::before{content:"";display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:8px;vertical-align:-1px;background:var(--c)}
+
+/* pricing */
+.bar{display:flex;height:58px;border-radius:12px;overflow:hidden;border:1px solid var(--line2);margin-top:8px}
+.bar div{display:flex;flex-direction:column;justify-content:center;padding:0 12px;min-width:0;border-right:1px solid rgba(6,11,36,.6)}
+.bar div:last-child{border-right:0}
+.bar b{font-size:15px;color:var(--ink)}
+.bar span{font:700 10px 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase;color:rgba(6,11,36,.75);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.lines{list-style:none;margin:22px 0 0;padding:0}
+.lines li{display:grid;grid-template-columns:72px 1fr;gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.lines li b.amt{font-family:'Anton',sans-serif;font-weight:400;font-size:22px;color:var(--cyan)}
+.lines li p{color:var(--muted);font-size:14.5px;margin-top:2px}
+.total{display:flex;justify-content:space-between;align-items:baseline;margin-top:18px;padding:16px 18px;border-radius:12px;border:1px solid var(--glow);background:rgba(39,245,246,.06)}
+.total span{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;color:var(--muted)}
+.total b{font-family:'Anton',sans-serif;font-weight:400;font-size:34px;color:var(--white)}
+.stepsm{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:16px}
+.stepsm>div{padding:14px;border-radius:12px;background:var(--navy);border:1px solid var(--line2);text-align:center}
+.stepsm b{font-family:'Anton',sans-serif;font-weight:400;font-size:26px;display:block}
+.stepsm span{font:700 10.5px 'JetBrains Mono',monospace;letter-spacing:.12em;color:var(--dim);text-transform:uppercase}
+.tl{display:grid;gap:12px}
+@media (min-width:640px){.tl{grid-template-columns:repeat(2,1fr)}}
+.tl>div{padding:16px;border-radius:12px;border:1px solid var(--line);background:var(--panel)}
+.tl .w{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+.tl b{display:block;margin-top:6px}
+.tl p{color:var(--muted);font-size:14px;margin-top:6px}
+.pkgs{display:grid;gap:14px;margin-top:18px}
+@media (min-width:900px){.pkgs{grid-template-columns:repeat(3,1fr)}}
+.pkg{padding:22px;border-radius:16px;border:1px solid var(--line2);background:var(--panel)}
+.pkg .k{font:700 11px 'JetBrains Mono',monospace;letter-spacing:.14em;color:var(--cyan);text-transform:uppercase}
+.pkg .p{font-family:'Anton',sans-serif;font-size:36px;color:var(--white);margin-top:10px;line-height:1}
+.pkg .p small{font-family:'Inter',sans-serif;font-size:14px;color:var(--muted);font-weight:500}
+.pkg .m{color:var(--muted);font-size:14px;margin-top:6px}
+.pkg ul{margin:16px 0 0;padding:0;list-style:none}
+.pkg li{padding:8px 0;border-top:1px solid var(--line);font-size:14.5px;color:var(--text)}
+.callout{margin-top:22px;padding:18px 20px;border-radius:14px;border:1px solid rgba(234,51,201,.4);background:rgba(234,51,201,.06)}
+.callout b{display:block;color:var(--white)}
+.callout p{color:var(--muted);font-size:15px;margin-top:4px}
+
+/* gates */
+.gates{display:grid;gap:14px}
+@media (min-width:768px){.gates{grid-template-columns:repeat(2,1fr)}}
+@media (min-width:1100px){.gates{grid-template-columns:repeat(3,1fr)}}
+.gate{padding:20px;border-radius:14px;border:1px solid var(--line2);background:var(--panel);display:flex;flex-direction:column}
+.gate .h{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.gate .num{font-family:'Anton',sans-serif;font-size:28px;color:var(--cyan);margin-right:4px;line-height:1}
+.gate h3{font-size:21px;margin-top:12px}
+.gate p{color:var(--muted);font-size:14.5px;margin-top:8px;flex:1}
+.gate .own{font:700 10.5px/1.4 'JetBrains Mono',monospace;letter-spacing:.1em;color:var(--dim);text-transform:uppercase;margin-top:14px;padding-top:12px;border-top:1px dashed var(--line2)}
+.need{columns:1;margin:0;padding:0;list-style:none}
+@media (min-width:768px){.need{columns:2;column-gap:28px}}
+.need li{break-inside:avoid;padding:10px 0 10px 26px;border-bottom:1px solid var(--line);position:relative;color:var(--text)}
+.need li::before{content:"";position:absolute;left:4px;top:18px;width:10px;height:10px;border:2px solid var(--cyan);border-radius:3px}
+blockquote{margin:22px 0 0;padding:16px 20px;border-radius:12px;background:var(--deep);border:1px solid var(--line);color:var(--muted);font-size:14.5px}
+blockquote cite{display:block;font:500 11px 'JetBrains Mono',monospace;color:var(--dim);margin-top:8px;font-style:normal}
+.decide{display:grid;gap:14px;margin-top:22px}
+@media (min-width:768px){.decide{grid-template-columns:1fr 1fr}}
+.decide ol{margin:10px 0 0;padding-left:20px;color:var(--text)}
+.decide li{padding:6px 0}
+
+footer{padding:40px 0 56px;background:var(--deep)}
+.rg{display:flex;flex-wrap:wrap;gap:8px 18px;align-items:center;padding:16px 18px;border-radius:12px;border:1px solid var(--line2);background:var(--panel);font-weight:700;color:var(--white)}
+.rg .b21{font-family:'Anton',sans-serif;font-weight:400;font-size:22px;color:var(--ink);background:var(--cyan);padding:2px 10px;border-radius:8px}
+.rg .ph{font-family:'JetBrains Mono',monospace;color:var(--warn);font-size:13.5px}
+.foot{display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;margin-top:22px;font-size:13px;color:var(--dim)}
+</style>
+</head>
+<body>
+<a class="skip" href="#funnel">Skip to the plan</a>
+
+<header class="top">
+  <div class="wrap">
+    <div class="brandbar">
+      <span class="eyebrow">Lucifer Gaming · Next Frame · 22 Nov 2026</span>
+      <span class="logo"><img src="assets/v5/logo_247ibet.png" width="200" height="60" alt="247iBET"></span>
+    </div>
+    <div class="hero">
+      <div>
+        <p class="eyebrow" style="color:var(--muted)">Pitch for the 247iBET team</p>
+        <h1 style="margin-top:14px">Register and play free: ten invitations, one funnel</h1>
+        <p class="lede">Ten seductive creative concepts lead viewers from TrafficJunky to your site, where <b>registration unlocks free play</b> on the 9game titles. Real play follows the first deposit.</p>
+        <div class="facts">
+          <div><div class="k">Market</div><div class="v">Canada, excluding Ontario</div></div>
+          <div><div class="k">Network</div><div class="v">TrafficJunky, mobile first</div></div>
+          <div><div class="k">Proposed test</div><div class="v">US$1,000, media US$500</div></div>
+          <div><div class="k">Status</div><div class="v">Concepts · no spend authorised</div></div>
+        </div>
+        <div class="funnelline">
+          <h3>One funnel. Ten distinct invitations.</h3>
+          <p>TrafficJunky ad → 247iBET landing page → register → free-play 9game titles unlocked → deposit and real play.</p>
+        </div>
+      </div>
+      <div class="heroart">
+        <figure>
+          <img class="ad" src="assets/v5/ads/247ibet_C1_320x480_EN.jpg" width="320" height="480" alt="Concept C1, She's waiting, 320 by 480, English" fetchpriority="high">
+          <figcaption class="cap">C1 · She's waiting · 320×480 · EN · concept</figcaption>
+        </figure>
+        <div class="stack">
+          <figure>
+            <img class="ad" src="assets/v5/ads/247ibet_C8_300x250_ES.jpg" width="300" height="250" alt="Concept C8, Size matters, 300 by 250, Spanish">
+            <figcaption class="cap">C8 · Size matters · 300×250 · ES</figcaption>
+          </figure>
+          <figure>
+            <img class="ad" src="assets/v5/ads/247ibet_C10_305x99_EN.jpg" width="305" height="99" alt="Concept C10, Your hand or hers?, 305 by 99, English">
+            <figcaption class="cap">C10 · Your hand or hers? · 305×99 · EN</figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc" aria-label="Sections">
+  <div class="wrap">
+    <a href="#funnel">Funnel</a><a href="#revenue">Revenue</a><a href="#games">Games</a><a href="#creative">Creative</a><a href="#placements">Placements</a><a href="#timing">Timing</a><a href="#pricing">Pricing</a><a href="#gates">Go-live gates</a>
+  </div>
+</nav>
+
+<main>
+<!-- FUNNEL -->
+<section id="funnel">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Strategy · the funnel</p>
+      <h2>Register and play free</h2>
+      <p>Our goal is to drive traffic to your game site and turn it into players. The ad gives the viewer a reason to register today: sign-up unlocks free play on 9game titles from our aggregator, and real play follows the first deposit.</p>
+    </div>
+    <ol class="flow" style="list-style:none;margin:0;padding:0">
+      <li class="step"><span class="n">1</span><h3>TrafficJunky ad</h3><p>A mobile Header, Interstitial or Full Page ad carries one promise: register and play these games free. Popunder opens the landing page directly.</p><div class="kpi"><div class="k">Measured by</div><div class="v">CTR</div><div class="s">clicks ÷ impressions</div></div></li>
+      <li class="step"><span class="n">2</span><h3>247iBET landing page</h3><p>The click lands on a page that repeats the ad: same headline, same button, and the titles that unlock after sign-up. One action on the page.</p><div class="kpi"><div class="k">Measured by</div><div class="v">Landing visits</div><div class="s">tracked click → visit</div></div></li>
+      <li class="step main"><span class="n">3</span><h3>Register</h3><p>A short sign-up with the 21+ age, identity and location checks. A completed registration fires the registration event to TrafficJunky and to our report.</p><div class="kpi"><div class="k">Measured by · main KPI</div><div class="v">Landing → registration %</div></div></li>
+      <li class="step"><span class="n">4</span><h3>Free play unlocked</h3><p>The new account opens Marble Rush, Plinko and PlayGirl in demo mode, on free demo credits with no cash value that cannot be withdrawn.</p><div class="kpi"><div class="k">Measured by</div><div class="v">Free-play starts</div><div class="s">per registration</div></div></li>
+      <li class="step"><span class="n">5</span><h3>Deposit and real play</h3><p>When the player wants real stakes, they deposit and switch the same games to real money, or move on to the rest of the casino and sportsbook.</p><div class="kpi"><div class="k">Measured by</div><div class="v">Registration → first deposit %</div><div class="s">then GGR</div></div></li>
+    </ol>
+    <div class="why">
+      <div><b>A reason to sign up now</b><p>The ad offers something the visitor can only get by registering, so the form is the way to the reward, not a chore before it.</p></div>
+      <div><b>A smaller ask</b><p>Trying a game on free demo credits needs no deposit, so “register to play free” asks less of a first-time visitor than “deposit to play”.</p></div>
+      <div><b>One message, start to finish</b><p>Ad, landing page and button say the same thing, which cuts the drop-off between the click and the form.</p></div>
+      <div><b>Every free player is an account</b><p>Open demo play lets visitors leave anonymous. Gated play turns them into registered players you can invite back to deposit, with their consent.</p></div>
+    </div>
+    <p class="note">We do not assume a lift figure. Weeks 2–4 measure it: C1–C10 run in small, balanced creative cells on the same placements, and landing-to-registration % is compared side by side.</p>
+  </div>
+</section>
+
+<!-- REVENUE -->
+<section id="revenue" class="alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Strategy · integration and GGR</p>
+      <h2>How the games pay</h2>
+      <p>Free play brings players in. Revenue starts when they play the same 9game titles for real money.</p>
+    </div>
+    <div class="arch">
+      <div class="node"><div class="k">247iBET platform</div><h3>Your site</h3><p>Accounts, wallet, KYC and payments.</p></div>
+      <div class="pipe" aria-hidden="true"><div>Game launch →</div><div class="api">API integration</div><div>← Round results</div><div>Bets · wins →</div></div>
+      <div class="node us"><div class="k">Our aggregator</div><h3>9game titles</h3><p>Demo mode, round reporting and GGR reporting.</p></div>
+    </div>
+    <div class="steps5">
+      <div><span class="n">01</span><b>Integrate</b><p>Your team connects to our aggregator once. The titles then appear in your lobby as your own games.</p></div>
+      <div><span class="n">02</span><b>Free play for new accounts</b><p>Registered players get a demo wallet. Demo rounds carry no cash value and earn nothing for either side.</p></div>
+      <div><span class="n">03</span><b>Real play after deposit</b><p>A real-money round on a 9game title settles in your wallet like any other casino game.</p></div>
+      <div><span class="n">04</span><b>GGR is reported</b><p>The aggregator records every real-money round: bets, wins and GGR per game and per day.</p></div>
+      <div><span class="n">05</span><b>The share is settled</b><p>GGR on these games is shared between 247iBET and us at the agreed rate, on the agreed cycle.</p></div>
+    </div>
+    <div class="grid2" style="margin-top:22px">
+      <div class="panel">
+        <h3>What GGR means here</h3>
+        <p style="color:var(--muted);margin-top:8px;font-size:15px">Gross gaming revenue = real-money bets − real-money wins on the 9game titles played on 247iBET through the integration. Free-play rounds create no GGR. Everything else your new players deposit and play elsewhere on 247iBET stays outside this share.</p>
+        <div class="formula"><span>Real bets</span><span class="op">−</span><span>Real wins</span><span class="op">=</span><span class="res">GGR</span></div>
+        <div class="formula"><span class="res">GGR</span><span class="op">×</span><span class="tba">Share: to be agreed</span><span class="op">=</span><span>Our revenue</span></div>
+      </div>
+      <div class="tablewrap">
+        <table>
+          <thead><tr><th>Commercial term</th><th>Status</th></tr></thead>
+          <tbody>
+            <tr><td><b>Basis</b></td><td>GGR on real-money rounds of 9game titles</td></tr>
+            <tr><td><b>Revenue share to us</b></td><td><span class="tag tba">To be agreed</span></td></tr>
+            <tr><td><b>Deductions</b> (bonuses, taxes, fees)</td><td><span class="tag tba">To be agreed</span></td></tr>
+            <tr><td><b>Settlement cycle and currency</b></td><td><span class="tag tba">To be agreed</span></td></tr>
+            <tr><td><b>Reporting</b></td><td>Aggregator round and GGR reports, shared with both sides (format to be confirmed)</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <h3 style="margin-top:44px">The four numbers we report every week</h3>
+    <div class="kpis">
+      <div><b>CTR</b><div class="f">clicks ÷ impressions</div><p>Is the free-play hook pulling clicks? TrafficJunky reporting.</p></div>
+      <div class="main"><b>Landing → registration %</b><div class="f">registrations ÷ landing visits</div><p>The main KPI of the test, read from the registration event.</p></div>
+      <div><b>Registration → first deposit %</b><div class="f">first deposits ÷ registrations</div><p>Does free play turn into real players? 247iBET reporting.</p></div>
+      <div><b>GGR</b><div class="f">real-money bets − wins</div><p>On 9game titles, from aggregator reports; then the agreed share.</p></div>
+    </div>
+    <h3 style="margin-top:44px">Who does what</h3>
+    <div class="who">
+      <div><div class="k">247iBET team</div><p>Integrates the aggregator, runs the demo wallet, the registration flow and the free-play landing page, and handles KYC, payments and player support.</p></div>
+      <div><div class="k">Our aggregator</div><p>Supplies the 9game titles and demo mode, supports the integration, and issues the round and GGR reports used for settlement.</p></div>
+      <div><div class="k">Lucifer Gaming · media</div><p>Buys and runs the TrafficJunky placements, makes the ads, checks tracking before launch, and sends the weekly KPI report.</p></div>
+    </div>
+    <p class="note">No share percentage, deduction or target is assumed here. Targets are set with you after the week 2 baseline. The registration event, first-deposit event and GGR report are new tracking items (go-live gates 01–03).</p>
+  </div>
+</section>
+
+<!-- GAMES -->
+<section id="games">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">The games · 9game</p>
+      <h2>The titles your players unlock</h2>
+      <p>Captured from our aggregator's public demo on 22 Nov 2026 (9G-Demo → 9GameLobby): three rooms, with three Marble Rush tracks, three Plinko games and five PlayGirl titles, one of them coming soon. The rooms open in demo mode today, so the free-play side already exists.</p>
+    </div>
+
+    <div class="room">
+      <div>
+        <div class="k">Room 1 · Marble racing</div>
+        <h3>Marble Rush</h3>
+        <ul class="titles"><li><span>Extreme</span><span>Track MR004</span></li><li><span>Lightning</span><span>Track MR003</span></li><li><span>Legendray</span><span>Track MR001</span></li></ul>
+        <p class="d">Bet on a race: pick a marble 1–10, Big / Small, Odd / Even or the Lucky Ball, then watch the race. Bright, fast and easy to read on a phone: a safe hero for the ads.</p>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/v5/games/mr_lobby.jpg" width="440" height="952" loading="lazy" alt="9GameLobby on a phone, demo mode"><figcaption class="cap">9GameLobby</figcaption></figure>
+        <figure><img src="assets/v5/games/mr_tracks.jpg" width="440" height="952" loading="lazy" alt="Marble Rush track lobby"><figcaption class="cap">Track lobby</figcaption></figure>
+        <figure><img src="assets/v5/games/mr_board.jpg" width="440" height="952" loading="lazy" alt="Marble Rush bet board"><figcaption class="cap">Bet board</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="room">
+      <div>
+        <div class="k">Room 2 · Drop-ball multiplier</div>
+        <h3>Plinko</h3>
+        <ul class="titles"><li><span>Plinko Go</span><span>Plinko</span></li><li><span>Plinko Plus</span><span>Plinko</span></li><li><span>Super Plinko</span><span>Plinko</span></li></ul>
+        <p class="d">Choose the number of rows and the stake, then Drop or Auto. Each ball lands on a multiplier slot. Simple to learn in a free round: the second hero for the ads.</p>
+      </div>
+      <div class="shots">
+        <figure><img src="assets/v5/games/pk_lobby.jpg" width="440" height="952" loading="lazy" alt="Plinko lobby"><figcaption class="cap">Plinko lobby</figcaption></figure>
+        <figure><img src="assets/v5/games/pk_go.jpg" width="440" height="952" loading="lazy" alt="Plinko Go game screen, idle demo"><figcaption class="cap">Plinko Go</figcaption></figure>
+        <figure><img src="assets/v5/games/pk_super.jpg" width="440" height="952" loading="lazy" alt="Super Plinko game screen, idle demo"><figcaption class="cap">Super Plinko</figcaption></figure>
+      </div>
+    </div>
+
+    <div class="room">
+      <div>
+        <div class="k">Room 3 · Adult-themed games</div>
+        <h3>PlayGirl</h3>
+        <ul class="titles"><li><span>Play Girl</span><span>Crash / multiplier</span></li><li><span>Rock Paper Scissors</span><span>Mini-game</span></li><li><span>Climax Time</span><span>Multiplier</span></li><li><span>Goalie Babes Shoot Out</span><span>Mini-game</span></li><li><span>G-Slot</span><span>Slot · coming soon</span></li></ul>
+        <p class="d">The room's in-game screens are explicit adult content, a natural fit for the Pornhub audience. TrafficJunky ads stay non-nude: the PlayGirl concepts use the lobby art only. Room previews are blurred on this page.</p>
+      </div>
+      <div class="shots">
+        <figure><div class="blurwrap"><img src="assets/v5/games/pg_lobby.jpg" width="440" height="952" loading="lazy" alt="PlayGirl lobby, blurred"></div><figcaption class="cap">PlayGirl lobby</figcaption></figure>
+        <figure><div class="blurwrap"><img src="assets/v5/games/pg_more.jpg" width="440" height="952" loading="lazy" alt="More PlayGirl titles, blurred"></div><figcaption class="cap">More titles</figcaption></figure>
+        <figure>
+          <div class="tiles">
+            <img src="assets/v5/games/tile_playgirl.jpg" width="360" height="151" loading="lazy" alt="Play Girl tile, blurred">
+            <img src="assets/v5/games/tile_rps.jpg" width="360" height="151" loading="lazy" alt="Rock Paper Scissors tile, blurred">
+            <img src="assets/v5/games/tile_climax.jpg" width="360" height="151" loading="lazy" alt="Climax Time tile, blurred">
+            <img src="assets/v5/games/tile_goalie.jpg" width="360" height="152" loading="lazy" alt="Goalie Babes Shoot Out tile, blurred">
+          </div>
+          <figcaption class="cap">Room tiles</figcaption>
+        </figure>
+      </div>
+    </div>
+    <p class="note">Source: the aggregator's public “Play Demo” entry (English), mobile view, 22 Nov 2026. Balances in the screenshots are demo credits and player counts are lobby displays, not real statistics. Game categories are our description from the lobby and game screens. No real money was used.</p>
+  </div>
+</section>
+
+<!-- CREATIVE -->
+<section id="creative" class="alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Creative · Seductive v2.1</p>
+      <h2>Ten ideas, not ten reskins</h2>
+      <p>Each concept changes the composition, crop, palette, typography and CTA treatment. All use the official 9game lobby art; none uses nude gameplay. Tap a concept to see all its cuts below.</p>
+    </div>
+    <div class="concepts" id="concepts"></div>
+    <div class="sets">
+      <div><b>Invitation, challenge, free play</b><p>C1 She's waiting · C3 Handle her? · C5 No deposit</p></div>
+      <div><b>Choice, intimacy, casino craft</b><p>C2 Pick your girl · C4 Closer. · C6 Card reveal · C7 Free play tonight</p></div>
+      <div><b>The innuendo set</b><p>C8–C10 use double meanings, not nudity: bet size, all-in, and a hand of cards or Rock Paper Scissors make the joke.</p></div>
+    </div>
+
+    <div class="lib" id="library">
+      <h3>The creative library</h3>
+      <p style="color:var(--muted);margin-top:8px;max-width:70ch">Ten concepts × five sizes × two languages = 100 supplied files, shown at their true pixel size. CTA language varies by concept; the destination always explains that registration unlocks free play.</p>
+      <div class="controls">
+        <div><span class="seglabel">Size</span> <span class="seg" id="segSize" role="group" aria-label="Banner size"></span></div>
+        <div><span class="seglabel">Language</span> <span class="seg" id="segLang" role="group" aria-label="Language"></span></div>
+        <div><span class="seglabel">Concept</span> <span class="seg" id="segConcept" role="group" aria-label="Concept"></span></div>
+      </div>
+      <div class="gallery" id="gallery" aria-live="polite"></div>
+      <div class="tablewrap sizerole">
+        <table>
+          <thead><tr><th>Size</th><th>Role</th><th>Flight</th></tr></thead>
+          <tbody>
+            <tr><td><b>305 × 99 / 300 × 100</b></td><td>Mobile header</td><td>Weeks 2–4</td></tr>
+            <tr><td><b>300 × 250</b></td><td>Mobile interstitial</td><td>Weeks 2–4</td></tr>
+            <tr><td><b>320 × 480</b></td><td>Mobile full-page interstitial</td><td>Weeks 3–4</td></tr>
+            <tr><td><b>640 × 360</b></td><td>16:9 mobile video direction (pre-roll storyboard, not a finished film)</td><td>Next phase</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">All supplied artwork is used unchanged. Every banner carries “21+ · Play responsibly” and the [HELPLINE] / [LICENCIA] placeholders, which are replaced with the licence and helpline details per province before export. Concepts, not ad-platform approvals: every route lands on the matching 247iBET registration / free-play page, and no ad implies guaranteed winnings.</p>
+    </div>
+  </div>
+</section>
+
+<!-- PLACEMENTS -->
+<section id="placements">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Placements · TrafficJunky</p>
+      <h2>Where 247iBET appears</h2>
+      <p>The slots we plan to buy on Pornhub through TrafficJunky, using the network's own format names and sizes.</p>
+    </div>
+    <div class="place">
+      <div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Placement</th><th>Size</th><th>Device</th><th>In this test</th><th>What runs</th></tr></thead>
+            <tbody>
+              <tr><td><b>Header</b></td><td>305×99 · 300×100</td><td>Mobile</td><td>Weeks 2–4</td><td>C1–C10 in staged creative cells</td></tr>
+              <tr><td><b>Interstitial</b></td><td>300×250</td><td>Mobile</td><td>Weeks 2–4</td><td>C1–C10 in staged creative cells</td></tr>
+              <tr><td><b>Full Page Interstitial</b></td><td>320×480</td><td>Mobile</td><td>Weeks 3–4</td><td>The two strongest ads from week 2</td></tr>
+              <tr><td><b>Popunder</b></td><td>Full page</td><td>Desktop + mobile</td><td>Week 4</td><td>The 247iBET free-play landing page</td></tr>
+              <tr><td><b>Pre-Roll &amp; Out-Stream</b></td><td>16:9 · 5–30 s</td><td>Mobile</td><td>Next phase</td><td>16:9 cut of the 15-second film</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note" style="margin-top:12px">All five are open to Casino / Sports Betting. These are not: Top Right Square 300×250 (desktop), Video A / B and Inplayer 300×250 · 468×60, Footer 950×250 · 300×250, Underplayer 305×99 · 300×100 (mobile), and Native Static / Rollover, Shorties and desktop Pre-Roll. On mobile, 247iBET can sit at the top of the page, open as an interstitial between pages, and later run before videos. <b>On desktop, it reaches people through the popunder only.</b></p>
+
+        <h3 style="margin-top:36px">Popunder: the landing page is the ad</h3>
+        <p style="color:var(--muted);margin-top:8px;max-width:62ch">No banner is used. The visitor's browser opens the 247iBET free-play landing page in a new tab or window: one headline, one button, and the titles that unlock after sign-up. Runs in week 4, after the landing page passes tracking QA. Layout sketch below; the real page is built by the 247iBET team.</p>
+        <div class="landing" style="margin-top:18px">
+          <div class="u">🔒 [landing link to be supplied]</div>
+          <h4>Register &amp; play free</h4>
+          <p>Create your account to unlock Marble Rush, Plinko and PlayGirl on free demo credits.</p>
+          <span class="btn">Register &amp; play free</span>
+          <div class="locks"><span>🔒 Free after sign-up<br>Marble Rush</span><span>🔒 Free after sign-up<br>Plinko</span><span>🔒 Free after sign-up<br>PlayGirl</span></div>
+          <p class="fine">Free play uses demo credits with no cash value. Real-money play needs a deposit.<br>21+ · Play responsibly · Help: [HELPLINE] · [LICENCIA]</p>
+        </div>
+      </div>
+      <div class="phonebox">
+        <div class="seg" id="segPlace" role="group" aria-label="Placement preview"></div>
+        <div class="phone" aria-label="Illustrative mobile publisher page">
+          <div class="screen">
+            <div class="sbar"><span>9:41</span><span>●●● ▮</span></div>
+            <div class="url">🔒 publisher page · illustrative</div>
+            <div class="siteh"><span>SITE LOGO</span><span>☰</span></div>
+            <div class="slot" id="slotHeader"></div>
+            <div class="player">Video content</div>
+            <div class="thumbs"><i></i><i></i><i></i><i></i></div>
+            <div class="overlay" id="overlay"><span class="x" aria-hidden="true">×</span><div id="overlayAd"></div></div>
+          </div>
+        </div>
+        <p class="cap" id="placeCap" style="text-align:center;max-width:340px"></p>
+      </div>
+    </div>
+
+    <h3 style="margin-top:48px">Creative rotation</h3>
+    <div class="rot">
+      <div><div class="w">Week 2</div><p>Small balanced cells from C1–C10 in header and interstitial. Compare registration conversion, not only clicks.</p></div>
+      <div><div class="w">Week 3</div><p>Keep the distinct leaders and add full-page cuts. Do not fragment a small budget across every file at once.</p></div>
+      <div><div class="w">Week 4</div><p>Back the leaders; test the matching free-play landing page via popunder.</p></div>
+    </div>
+    <p class="note">English first. Spanish only for a confirmed audience. Source: TrafficJunky Ad Formats, “Available” categories per placement (Casino / Sports Betting), and Rules &amp; Regulations (300 KB maximum for static banners), both read 22 Nov 2026. Availability applies to Pornhub, RedTube, Tube8 and YouPorn.</p>
+  </div>
+</section>
+
+<!-- TIMING -->
+<section id="timing" class="alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Timing · flighting and dayparting</p>
+      <h2>When each ad goes live</h2>
+      <p>The US$500 media budget, week by week and placement by placement. Weeks 0 and 1 spend nothing.</p>
+    </div>
+    <div class="tablewrap">
+      <table style="min-width:720px">
+        <thead><tr><th>Placement</th><th class="r">Week 0</th><th class="r">Week 1</th><th class="r">Week 2</th><th class="r">Week 3</th><th class="r">Week 4</th><th class="r">Total</th></tr></thead>
+        <tbody>
+          <tr><td><b>Gates</b><br><span style="font-size:13px">Aggregator, free-play wallet, licence, helpline</span></td><td class="r">All gates closed</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="money">$0</td></tr>
+          <tr><td><b>Build</b><br><span style="font-size:13px">Re-cut ads, free-play landing, registration tracking</span></td><td class="r">—</td><td class="r">Final files + QA</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="money">$0</td></tr>
+          <tr><td><b>Header</b><br><span style="font-size:13px">305×99 · 300×100 · mobile</span></td><td class="r">—</td><td class="r">—</td><td class="money">$60</td><td class="money">$60</td><td class="money">$80</td><td class="money">$200</td></tr>
+          <tr><td><b>Interstitial</b><br><span style="font-size:13px">300×250 · mobile</span></td><td class="r">—</td><td class="r">—</td><td class="money">$40</td><td class="money">$45</td><td class="money">$60</td><td class="money">$145</td></tr>
+          <tr><td><b>Full Page Interstitial</b><br><span style="font-size:13px">320×480 · mobile</span></td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="money">$45</td><td class="money">$60</td><td class="money">$105</td></tr>
+          <tr><td><b>Popunder</b><br><span style="font-size:13px">Desktop + mobile · landing page</span></td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="money">$50</td><td class="money">$50</td></tr>
+          <tr><td><b>Pre-Roll</b><br><span style="font-size:13px">16:9 · mobile</span></td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">—</td><td class="r">Next phase</td><td class="r">—</td></tr>
+          <tr class="sum"><td>Media per week</td><td class="money">$0</td><td class="money">$0</td><td class="money">$100<br><span class="mono" style="font-size:11px;color:var(--muted)">step 1 · ≈$14/day</span></td><td class="money">$150<br><span class="mono" style="font-size:11px;color:var(--muted)">step 2 · ≈$21/day</span></td><td class="money">$250<br><span class="mono" style="font-size:11px;color:var(--muted)">step 3 · ≈$36/day</span></td><td class="money">$500</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="grid3" style="margin-top:18px">
+      <div class="panel"><p class="eyebrow">Week 2 · step 1</p><h3 style="margin-top:8px">Test distinct directions</h3><p style="color:var(--muted);font-size:14.5px;margin-top:8px">Selected C1–C10 concepts, English, in balanced Header and Interstitial cells. Checks delivery, tracking and landing-to-registration.</p></div>
+      <div class="panel"><p class="eyebrow">Week 3 · step 2</p><h3 style="margin-top:8px">Add fresh cuts and full page</h3><p style="color:var(--muted);font-size:14.5px;margin-top:8px">Fresh concept cells join. Full Page Interstitial opens with the two strongest ads. Spanish twins start only if that audience is confirmed.</p></div>
+      <div class="panel lit"><p class="eyebrow">Week 4 · step 3</p><h3 style="margin-top:8px">Back the leaders</h3><p style="color:var(--muted);font-size:14.5px;margin-top:8px">Budget follows the two best ads by registrations, then first deposits. Weak ads pause. Popunder opens on the landing page. Decision at week's end.</p></div>
+    </div>
+    <p class="note">Each step is a gate. Step 2 is released only if step 1 delivered cleanly and tracking matched; step 3 only if step 2 showed real sign-ups at an acceptable cost. If a gate fails, the remaining media stays unspent. Amounts are planned caps per week, not guaranteed delivery; TrafficJunky minimum bids and daily limits are confirmed in the account at setup.</p>
+    <div class="daily">
+      <div><div class="k">Daily</div><p>Delivery, spend and tracking checked every Manila morning, after the Canadian evening.</p></div>
+      <div><div class="k">Mid-week</div><p>Bids and hours adjusted. Any ad TrafficJunky flags is paused and fixed.</p></div>
+      <div><div class="k">End of week</div><p>A short note to you: spend, CTR, registrations, first deposits, GGR, and the next step.</p></div>
+      <div><div class="k">Your call</div><p>The next media step is released only with your approval.</p></div>
+    </div>
+
+    <h3 style="margin-top:56px">Prime time in each province</h3>
+    <p style="color:var(--muted);margin-top:8px;max-width:66ch">Ads run hardest in the local evening, when the audience is browsing on their phones, and pause overnight to protect a small budget. One campaign per time-zone group, so “evening” means evening where the viewer is.</p>
+    <div class="bands"><span style="--c:var(--cyan)">Prime 19:00–01:00 local · about 70% of daily budget</span><span style="--c:var(--blue)">Shoulder 12:00–19:00 and 01:00–02:00 · about 30%</span><span style="--c:#24396B">Off 02:00–12:00 local</span></div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Province</th><th>Time zone</th><th>Prime, local</th><th>Prime, Asia/Manila</th></tr></thead>
+        <tbody>
+          <tr><td><b>British Columbia</b></td><td>PT (UTC−8)</td><td>19:00–01:00</td><td>11:00–17:00 PHT</td></tr>
+          <tr><td><b>Alberta</b></td><td>MT (UTC−7)</td><td>19:00–01:00</td><td>10:00–16:00 PHT</td></tr>
+          <tr><td><b>Saskatchewan</b></td><td>CST (UTC−6)</td><td>19:00–01:00</td><td>09:00–15:00 PHT · no clock change</td></tr>
+          <tr><td><b>Manitoba</b></td><td>CT (UTC−6)</td><td>19:00–01:00</td><td>09:00–15:00 PHT</td></tr>
+          <tr><td><b>Québec*</b></td><td>ET (UTC−5)</td><td>19:00–01:00</td><td>08:00–14:00 PHT</td></tr>
+          <tr><td><b>NB · NS · PEI</b></td><td>AT (UTC−4)</td><td>19:00–01:00</td><td>07:00–13:00 PHT</td></tr>
+          <tr><td><b>Newfoundland</b></td><td>NT (UTC−3.5)</td><td>19:00–01:00</td><td>06:30–12:30 PHT</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">Ontario is excluded throughout. *Québec runs only with a French version of the ads and landing page, which is not yet made; until then it stays switched off. Manila times move one hour earlier from 14 Mar 2027 (except Saskatchewan). Friday and Saturday evenings get a larger share only if week 2 data supports it.</p>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Pricing</p>
+      <h2>What US$1,000 gets you</h2>
+      <p>A proposed test total, not a confirmed monthly fee and not approved spend. It pays for one complete, measured test on TrafficJunky.</p>
+    </div>
+    <div class="grid2">
+      <div>
+        <div class="bar" role="img" aria-label="US$1,000 split: media 500, creative 200, tracking 100, management and report 100, reserve 100">
+          <div style="flex:5;background:var(--cyan)"><b>$500</b><span>Media</span></div>
+          <div style="flex:2;background:#7FD8F0"><b>$200</b><span>Creative</span></div>
+          <div style="flex:1;background:var(--blue)"><b>$100</b></div>
+          <div style="flex:1;background:#B98CE0"><b>$100</b></div>
+          <div style="flex:1;background:#8A97BC"><b>$100</b></div>
+        </div>
+        <ul class="lines">
+          <li><b class="amt">$500</b><div><b>Media, released in gated steps</b><p>Paid to the network for ad space, released in steps only after each gate passes and is approved.</p></div></li>
+          <li><b class="amt" style="color:#7FD8F0">$200</b><div><b>Creative</b><p>Selected final cuts from the 10-concept library (5 sizes, EN + ES), plus the 15-second video ad.</p></div></li>
+          <li><b class="amt" style="color:var(--blue)">$100</b><div><b>Tracking setup and testing</b><p>Built and tested on the matching landing page before any media runs.</p></div></li>
+          <li><b class="amt" style="color:#B98CE0">$100</b><div><b>Management and results report</b><p>TrafficJunky campaign setup and management, a matching landing page, and a plain results report at the end of the test.</p></div></li>
+          <li><b class="amt" style="color:#8A97BC">$100</b><div><b>Reserve</b><p>Stays unspent unless needed.</p></div></li>
+        </ul>
+        <div class="total"><span>Total proposed test</span><b>US$1,000</b></div>
+      </div>
+      <div>
+        <div class="panel">
+          <h3>Media release steps</h3>
+          <div class="stepsm"><div><b>~$100</b><span>Step 1</span></div><div><b>~$150</b><span>Step 2</span></div><div><b>~$250</b><span>Step 3</span></div></div>
+          <p style="color:var(--muted);font-size:14.5px;margin-top:14px">Each step is released only after its gate passes. If a gate fails, the rest of the media stays unspent. Unused media and reserve are not charged.</p>
+        </div>
+        <h3 style="margin-top:28px">First month</h3>
+        <div class="tl" style="margin-top:12px">
+          <div><div class="w">Week 0</div><b>Gates</b><p>Licence, market and offer claims confirmed. Support email and handles fixed. Zero media until this passes.</p></div>
+          <div><div class="w">Week 1</div><b>Creatives and page</b><p>Final creatives at 21+, the matching landing page, tracking QA, geo and age controls.</p></div>
+          <div><div class="w">Week 2</div><b>Small live test</b><p>If approved: a small media slice on one network in one verified territory.</p></div>
+          <div><div class="w">Weeks 3–4</div><b>Read and decide</b><p>Real first deposits and full costs only. Then keep, rewrite or stop. No automatic scale.</p></div>
+        </div>
+      </div>
+    </div>
+
+    <h3 style="margin-top:56px">After the test: monthly growth packages</h3>
+    <p style="color:var(--muted);margin-top:8px;max-width:70ch">Only if the results justify it: verified eligible customers, clean tracking and a healthy compliance picture. If the economics or licence gaps fail, we hold or stop. Media budget is paid to the network on top of the monthly fee.</p>
+    <div class="pkgs">
+      <div class="pkg"><div class="k">Phase 2 · Grow</div><div class="p">US$600 <small>/ month</small></div><div class="m">+ about US$1,000 media budget</div><ul><li>Management and optimisation</li><li>One new creative cycle a month</li><li>One network, one territory</li><li>Monthly report</li></ul></div>
+      <div class="pkg"><div class="k">Phase 2 · Grow+</div><div class="p">US$1,000 <small>/ month</small></div><div class="m">+ about US$2,500 media budget</div><ul><li>Everything in Grow</li><li>A second placement or territory</li><li>Landing page tests</li><li>Fortnightly check-in</li></ul></div>
+      <div class="pkg"><div class="k">Phase 3 · Scale</div><div class="p">US$1,800 <small>/ month</small></div><div class="m">+ US$5,000 or more media budget</div><ul><li>Everything in Grow+</li><li>Multiple placements and countries</li><li>Two creative cycles a month</li><li>Weekly check-in</li></ul></div>
+    </div>
+    <div class="callout"><b>No guarantees</b><p>There are no revenue guarantees, and no promised traffic, cost per acquisition or return. This plan shows no performance figures because none exist yet. The test exists to find out.</p></div>
+  </div>
+</section>
+
+<!-- GATES -->
+<section id="gates" class="alt">
+  <div class="wrap">
+    <div class="shead">
+      <p class="eyebrow">Checklist · go-live gates</p>
+      <h2>Before anything goes live</h2>
+      <p>Nine gates sit between this plan and the first impression. Three are new and cover the free-play funnel. No media is bought until gates 01–07 are closed and you approve step 1.</p>
+    </div>
+    <div class="gates">
+      <div class="gate"><div class="h"><span class="num">01</span><span class="tag new">New</span><span class="tag open">Open</span></div><h3>Aggregator integration</h3><p>Your team integrates our aggregator API and adds the 9game titles to the lobby: game launch, wallet calls, round results and GGR reporting, tested end to end.</p><div class="own">Owner: 247iBET team + aggregator</div></div>
+      <div class="gate"><div class="h"><span class="num">02</span><span class="tag new">New</span><span class="tag open">Open</span></div><h3>Demo-mode free-play wallet</h3><p>A separate demo wallet credited at registration. Demo credits have no cash value, cannot be withdrawn or moved to the real balance, and the switch to real play is clear.</p><div class="own">Owner: 247iBET team + aggregator</div></div>
+      <div class="gate"><div class="h"><span class="num">03</span><span class="tag new">New</span><span class="tag open">Open</span></div><h3>Registration flow and tracking</h3><p>A short sign-up with 21+ age, identity and location checks. The registration event (the test KPI) and the first-deposit event post back to TrafficJunky and our report.</p><div class="own">Owner: 247iBET team, then us</div></div>
+      <div class="gate"><div class="h"><span class="num">04</span><span class="tag open">Open</span></div><h3>Licence line and helpline</h3><p>Every ad ends with “Help: [HELPLINE] · [LICENCIA]”. Your team supplies the licence number, issuer and helpline per province; we then re-export the selected C1–C10 size and language files.</p><div class="own">Owner: 247iBET team, then us</div></div>
+      <div class="gate"><div class="h"><span class="num">05</span><span class="tag open">Open</span></div><h3>Landing link and tracking links</h3><p>The free-play landing URL for each ad, and the tracking and postback links. We test every link on the matching landing page before any media runs.</p><div class="own">Owner: 247iBET team, then us</div></div>
+      <div class="gate"><div class="h"><span class="num">06</span><span class="tag open">Open</span></div><h3>TrafficJunky gambling policy</h3><p>The advertiser is solely responsible for each market's gambling-ad law. Ads run only in placements open to Casino / Sports Betting; every ad, domain and geo is approved by TrafficJunky first.</p><div class="own">Owner: us, with TrafficJunky</div></div>
+      <div class="gate"><div class="h"><span class="num">07</span><span class="tag open">Open</span></div><h3>Market and language</h3><p>Canada excluding Ontario, per the 7 Nov site audit, confirmed against the licence. Spanish runs only if that audience is confirmed. Québec needs a French set.</p><div class="own">Owner: 247iBET team</div></div>
+      <div class="gate"><div class="h"><span class="num">08</span><span class="tag on">On all ads</span></div><h3>Age: 21+ on every ad</h3><p>Every ad and concept carries 21+ and responsible-gambling wording, above the provincial minimum of 18 or 19. The landing page and sign-up repeat the age check.</p><div class="own">Owner: us · final QA</div></div>
+      <div class="gate"><div class="h"><span class="num">09</span><span class="tag">Final QA</span></div><h3>Files and ad rules</h3><p>Final selected statics meet the 300 KB limit. No countdowns, play buttons, fake close buttons or system messages, and no promise of winning.</p><div class="own">Owner: us · final QA</div></div>
+    </div>
+
+    <div class="grid2" style="margin-top:40px">
+      <div>
+        <h3>What we need from the 247iBET team</h3>
+        <ul class="need" style="margin-top:14px">
+          <li>Go-ahead on the aggregator integration</li>
+          <li>Free-play landing URL for each ad</li>
+          <li>Demo-wallet rules and registration flow</li>
+          <li>Registration, deposit and postback links</li>
+          <li>Licence number, issuer and helpline per province</li>
+          <li>Provinces and languages to target</li>
+          <li>GGR share terms, to be agreed together</li>
+          <li>Approval of each media step</li>
+        </ul>
+      </div>
+      <div>
+        <h3>Settled before launch</h3>
+        <p style="color:var(--muted);margin-top:8px;font-size:15px">From the 7 Nov site audit: the bonus wording (generic “Welcome Bonus” in ads until clarified), one support email, consistent social handles, aligned verification wording, and the named operator and licence. Ads stay plain and honest: no fake buttons, countdowns or controls, no promise of winning, glamour never explicit.</p>
+        <blockquote>“Advertisers must abide by country and/or state-specific laws on digital advertisement with gambling … It is the sole responsibility of advertisers to ensure that their advertisement is in compliance with all regulations based on the targeted state.”<cite>TrafficJunky, Rules &amp; Regulations, read 22 Nov 2026</cite></blockquote>
+      </div>
+    </div>
+
+    <div class="decide">
+      <div class="panel"><h3>What happens next</h3><ol><li>Confirm operator, licence and allowed markets</li><li>Agree the Welcome Bonus wording</li><li>Approve the draft packages, or adjust them</li><li>Cut the final ads and film at 21+</li></ol></div>
+      <div class="panel lit"><h3>What you decide</h3><ol><li>Whether to start the proposed test</li><li>Each media step, after its gate</li><li>Whether to continue after weeks 3–4</li></ol></div>
+    </div>
+    <p class="note">Network approval is not a compliance certificate. This page clears no jurisdiction and authorises no spend. Provincial minimum gambling age: 18 in Alberta, Manitoba and Québec; 19 in the other provinces.</p>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="rg"><span class="b21">21+</span><span>Play responsibly</span><span class="ph">Help: [HELPLINE] · [LICENCIA]</span></div>
+    <div class="foot">
+      <span>Prepared for the 247iBET team by Lucifer Gaming · Mirrors Pitch Deck v5.2.1 (22 Nov 2026) · Banners: Seductive v2.1</span>
+      <span class="mono">next-frame.agency</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(() => {
+  const C = [
+    ["C1","She's waiting","Near-native photo · Free casino games offer panel"],
+    ["C2","Pick your girl","Three-game grid · purple club glow"],
+    ["C3","Handle her?","Red / black split · bold bar CTA"],
+    ["C4","Closer.","Extreme crop · script · outline CTA"],
+    ["C5","No deposit","Phone-in-ad · navy glow"],
+    ["C6","Card reveal","Gold-foil ace · casino felt · ticket CTA"],
+    ["C7","Free play tonight","Cyan duotone · neon frame"],
+    ["C8","Size matters","Type poster · circular peek · FYI sticker"],
+    ["C9","Go all in","Whisper crop · secret panel · script aside"],
+    ["C10","Your hand or hers?","Stacked type · RPS hand-game poster"]
+  ];
+  const SIZES = ["305x99","300x100","300x250","320x480","640x360"];
+  const src = (c, s, l) => `assets/v5/ads/247ibet_${c}_${s}_${l}.jpg`;
+  const dims = s => s.split("x").map(Number);
+  const st = { size: "300x250", lang: "EN", concept: "all" };
+
+  // concept overview
+  const cw = document.getElementById("concepts");
+  C.forEach(([id, name, how]) => {
+    const b = document.createElement("button");
+    b.className = "concept"; b.type = "button";
+    b.innerHTML = `<img src="${src(id,"320x480","EN")}" width="320" height="480" loading="lazy" alt="Concept ${id}, ${name}, full page"><span class="t"><i>${id}</i>${name}</span><span class="s">${how}</span>`;
+    b.addEventListener("click", () => { st.concept = id; st.size = "all"; render(); document.getElementById("library").scrollIntoView({ behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }); });
+    cw.appendChild(b);
+  });
+
+  // segmented controls
+  function seg(el, items, key) {
+    el.innerHTML = "";
+    items.forEach(([val, label]) => {
+      const b = document.createElement("button");
+      b.type = "button"; b.textContent = label;
+      b.setAttribute("aria-pressed", String(st[key] === val));
+      b.addEventListener("click", () => { st[key] = val; render(); });
+      el.appendChild(b);
+    });
+  }
+  function render() {
+    seg(document.getElementById("segSize"), [["all","All"], ...SIZES.map(s => [s, s.replace("x","×")])], "size");
+    seg(document.getElementById("segLang"), [["EN","EN"],["ES","ES"]], "lang");
+    seg(document.getElementById("segConcept"), [["all","All"], ...C.map(c => [c[0], c[0]])], "concept");
+    const g = document.getElementById("gallery");
+    g.innerHTML = "";
+    const cs = st.concept === "all" ? C : C.filter(c => c[0] === st.concept);
+    const ss = st.size === "all" ? SIZES : [st.size];
+    cs.forEach(([id, name]) => ss.forEach(s => {
+      const [w, h] = dims(s);
+      const f = document.createElement("figure");
+      f.innerHTML = `<img class="ad" src="${src(id,s,st.lang)}" width="${w}" height="${h}" loading="lazy" alt="Concept ${id}, ${name}, ${w} by ${h}, ${st.lang === "EN" ? "English" : "Spanish"}"><figcaption><b>${id}</b> · ${name} · ${w}×${h} · ${st.lang}</figcaption>`;
+      g.appendChild(f);
+    }));
+  }
+  render();
+
+  // placement phone preview
+  const P = [
+    ["header","Header","305x99","C4","EN","Header · 305×99 · top of the page · weeks 2–4"],
+    ["inter","Interstitial","300x250","C3","EN","Interstitial · 300×250 · between pages · weeks 2–4"],
+    ["full","Full page","320x480","C1","EN","Full Page Interstitial · 320×480 · weeks 3–4"]
+  ];
+  let cur = "header";
+  function place() {
+    const el = document.getElementById("segPlace"); el.innerHTML = "";
+    P.forEach(([k, label]) => { const b = document.createElement("button"); b.type = "button"; b.textContent = label; b.setAttribute("aria-pressed", String(cur === k)); b.addEventListener("click", () => { cur = k; place(); }); el.appendChild(b); });
+    const [k, , s, c, l, cap] = P.find(p => p[0] === cur);
+    const [w, h] = dims(s);
+    const img = `<img class="ad" src="${src(c,s,l)}" width="${w}" height="${h}" alt="Concept ${c} in the ${k} slot">`;
+    document.getElementById("slotHeader").innerHTML = k === "header" ? img : `<img class="ad" src="${src("C8","305x99","EN")}" width="305" height="99" alt="Concept C8 in the header slot">`;
+    const ov = document.getElementById("overlay");
+    ov.classList.toggle("show", k !== "header");
+    document.getElementById("overlayAd").innerHTML = k !== "header" ? img : "";
+    document.getElementById("placeCap").textContent = cap + " · illustrative layout; close controls belong to the publisher";
+  }
+  place();
+
+  // highlight the current section in the nav
+  const links = [...document.querySelectorAll("nav.toc a")];
+  const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting) links.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + e.target.id)); }), { rootMargin: "-45% 0px -50% 0px" });
+  document.querySelectorAll("main section, header.top").forEach(s => io.observe(s));
+})();
+</script>
+</body>
+</html>
